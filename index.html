@@ -1,0 +1,1345 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="Mehedi Hasan — ERP Business Analyst & Odoo Consultant helping manufacturers map, automate, and scale their operations." />
+<title>Mehedi Hasan — ERP Consultant &amp; Business Analyst</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap">
+<style>
+  :root{
+    --bg:#0A0B0D;
+    --bg-1:#0E1013;
+    --surface:#111317;
+    --elev:#15181D;
+    --border:#1E2228;
+    --border-2:#2A2F38;
+    --hair:rgba(255,255,255,0.06);
+    --text:#EDEEF0;
+    --text-2:#9BA1AA;
+    --text-3:#5D6470;
+    --accent: oklch(0.80 0.17 155);
+    --accent-dim: oklch(0.80 0.17 155 / 0.14);
+    --accent-glow: oklch(0.80 0.17 155 / 0.35);
+    --sans:'Geist', ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif;
+    --mono:'Geist Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+    --serif:'Instrument Serif', ui-serif, Georgia, serif;
+    --max: 1280px;
+    --gutter: 24px;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;background:var(--bg);color:var(--text);font-family:var(--sans);font-feature-settings:"ss01","cv11";-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+  body{
+    background:
+      radial-gradient(900px 600px at 80% -10%, rgba(80,230,160,0.08), transparent 60%),
+      radial-gradient(700px 500px at 10% 10%, rgba(40,60,90,0.18), transparent 70%),
+      var(--bg);
+    min-height:100vh;
+  }
+  a{color:inherit;text-decoration:none}
+  ::selection{background:var(--accent);color:#000}
+
+  /* subtle grid background */
+  .grid-bg{
+    position:fixed;inset:0;pointer-events:none;z-index:0;
+    background-image:
+      linear-gradient(to right, rgba(255,255,255,0.025) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255,255,255,0.025) 1px, transparent 1px);
+    background-size: 80px 80px;
+    mask-image: radial-gradient(1200px 800px at 50% 20%, #000 40%, transparent 85%);
+  }
+  .noise{position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.04;mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.6 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>")}
+
+  /* layout */
+  .shell{max-width:var(--max);margin:0 auto;padding:0 var(--gutter);position:relative;z-index:1}
+
+  /* nav */
+  .nav{position:sticky;top:0;z-index:50;padding:16px 0}
+  .nav-inner{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:10px 14px 10px 18px;
+    border:1px solid var(--hair);
+    background:rgba(14,16,19,0.6);
+    backdrop-filter: blur(16px) saturate(140%);
+    -webkit-backdrop-filter: blur(16px) saturate(140%);
+    border-radius:999px;
+  }
+  .brand{display:flex;align-items:center;gap:12px;font-weight:500;letter-spacing:-0.01em}
+  .brand-mark{
+    width:30px;height:30px;border-radius:8px;
+    background:linear-gradient(135deg,var(--accent) 0%, oklch(0.55 0.14 170) 100%);
+    box-shadow:0 0 0 1px rgba(0,0,0,.35), inset 0 0 0 1px rgba(255,255,255,.18);
+    position:relative;display:grid;place-items:center;
+    font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:0.04em;
+    color:#04140B;
+  }
+  .brand-mark::after{content:"MH";position:relative;z-index:1}
+  .brand-name{display:flex;flex-direction:column;line-height:1.1}
+  .brand-name b{font-weight:500;font-size:14px;letter-spacing:-0.01em;color:var(--text)}
+  .brand-name em{font-style:normal;font-family:var(--mono);font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-3);margin-top:2px}
+  .nav-links{display:flex;gap:6px}
+  .nav-links a{
+    font-size:13.5px;color:var(--text-2);padding:8px 14px;border-radius:999px;transition:all .2s ease;
+  }
+  .nav-links a:hover{color:var(--text);background:var(--hair)}
+  .nav-cta{
+    display:inline-flex;align-items:center;gap:8px;
+    font-size:13px;font-weight:500;
+    padding:9px 14px;border-radius:999px;
+    background:var(--text);color:#0A0B0D;
+    transition: transform .15s ease, background .15s ease;
+  }
+  .nav-cta:hover{transform:translateY(-1px)}
+  .nav-cta .arrow{display:inline-block;transition:transform .2s ease}
+  .nav-cta:hover .arrow{transform:translate(2px,-2px)}
+  @media (max-width: 760px){
+    .nav-links{display:none}
+  }
+
+  /* eyebrow label */
+  .eyebrow{
+    font-family:var(--mono);font-size:11.5px;letter-spacing:0.14em;color:var(--text-3);
+    text-transform:uppercase;display:inline-flex;align-items:center;gap:10px;
+  }
+  .eyebrow::before{content:"";width:18px;height:1px;background:var(--border-2)}
+
+  /* status pill */
+  .status{
+    display:inline-flex;align-items:center;gap:10px;
+    padding:7px 13px 7px 10px;border-radius:999px;
+    border:1px solid var(--border);
+    background:rgba(21,24,29,0.6);backdrop-filter:blur(10px);
+    font-size:12.5px;color:var(--text-2);
+    font-family:var(--mono);letter-spacing:0.02em;
+  }
+  .pulse{
+    width:8px;height:8px;border-radius:50%;background:var(--accent);
+    box-shadow:0 0 0 0 var(--accent-glow);
+    animation:pulse 2s ease-out infinite;
+  }
+  @keyframes pulse{
+    0%{box-shadow:0 0 0 0 var(--accent-glow)}
+    70%{box-shadow:0 0 0 10px rgba(0,0,0,0)}
+    100%{box-shadow:0 0 0 0 rgba(0,0,0,0)}
+  }
+
+  /* hero */
+  .hero{padding:56px 0 120px;position:relative}
+  .name-byline{
+    display:flex;align-items:center;gap:14px;
+    margin-top:28px;
+    font-family:var(--mono);font-size:11.5px;letter-spacing:0.22em;text-transform:uppercase;
+    color:var(--text-2);
+  }
+  .name-byline .nb-name{color:var(--text);font-weight:500}
+  .name-byline .nb-rule{flex:none;width:36px;height:1px;background:var(--accent);opacity:.7}
+  .name-byline .nb-meta{color:var(--text-3);margin-left:auto;padding-left:14px;border-left:1px solid var(--border);font-size:11px}
+  @media(max-width:560px){.name-byline .nb-meta{display:none}}
+  .hero-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:24px;align-items:end}
+  .hero-copy{grid-column:1 / span 9}
+  .hero h1{
+    font-family:var(--sans);font-weight:500;letter-spacing:-0.035em;
+    font-size: clamp(44px, 6.4vw, 92px);
+    line-height:0.98;margin:28px 0 0;
+    color:var(--text);
+  }
+  .hero h1 .italic{font-family:var(--serif);font-style:italic;font-weight:400;color:var(--text);}
+  .hero h1 .dim{color:var(--text-3)}
+  .hero h1 .accent{color:var(--accent)}
+  .hero-sub{
+    grid-column:1 / span 7;
+    font-size:17px;line-height:1.55;color:var(--text-2);
+    margin-top:28px;max-width:620px;
+  }
+  .hero-actions{grid-column:1/-1;display:flex;gap:12px;margin-top:36px;flex-wrap:wrap}
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;
+    font-size:14px;font-weight:500;
+    padding:12px 18px;border-radius:10px;
+    border:1px solid var(--border);background:var(--elev);color:var(--text);
+    transition: all .2s ease;
+  }
+  .btn:hover{border-color:var(--border-2);background:#191C22;transform:translateY(-1px)}
+  .btn-primary{background:var(--accent);color:#04140B;border-color:transparent;font-weight:600}
+  .btn-primary:hover{background:oklch(0.85 0.17 155);transform:translateY(-1px)}
+  .btn .dot{width:5px;height:5px;border-radius:50%;background:currentColor;opacity:.5}
+
+  /* hero meta strip */
+  .meta-strip{
+    grid-column:1/-1;
+    margin-top:72px;
+    display:grid;grid-template-columns:repeat(4,1fr);gap:0;
+    border-top:1px solid var(--border);
+  }
+  .meta-cell{
+    padding:24px 28px 18px 0;
+    border-right:1px solid var(--border);
+    min-height:108px;display:flex;flex-direction:column;justify-content:flex-start;
+  }
+  .meta-cell + .meta-cell{padding-left:28px}
+  .meta-cell:last-child{border-right:none;padding-right:0}
+  .meta-k{font-family:var(--mono);font-size:11px;color:var(--text-3);letter-spacing:0.12em;text-transform:uppercase}
+  .meta-v{font-size:15px;color:var(--text);margin-top:10px;letter-spacing:-0.01em;line-height:1.45}
+  .meta-v .small{color:var(--text-2);font-size:13px;display:block;margin-top:2px}
+  @media (max-width:860px){
+    .hero-copy,.hero-sub{grid-column:1/-1}
+    .meta-strip{grid-template-columns:repeat(2,1fr)}
+    .meta-cell{min-height:0;padding:22px 20px 18px 0}
+    .meta-cell + .meta-cell{padding-left:20px}
+    .meta-cell:nth-child(2){border-right:none;padding-right:0}
+    .meta-cell:nth-child(3){padding-left:0}
+    .meta-cell:nth-child(1),.meta-cell:nth-child(2){border-bottom:1px solid var(--border)}
+  }
+
+  /* section head */
+  section{padding:96px 0;position:relative}
+  .section-head{display:grid;grid-template-columns:repeat(12,1fr);gap:24px;margin-bottom:48px;align-items:end}
+  .section-title{grid-column:1 / span 8;font-weight:500;letter-spacing:-0.03em;font-size:clamp(32px,4vw,54px);line-height:1.02;margin:14px 0 0;color:var(--text)}
+  .section-title .serif{font-family:var(--serif);font-style:italic;font-weight:400}
+  .section-desc{grid-column:9 / span 4;font-size:14.5px;color:var(--text-2);line-height:1.6;padding-bottom:6px}
+  @media(max-width:860px){.section-title,.section-desc{grid-column:1/-1}}
+
+  /* proof cards */
+  .proof-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:24px}
+  .proof-card{
+    grid-column: span 6;
+    border:1px solid var(--border);
+    border-radius:14px;
+    background:linear-gradient(180deg, rgba(21,24,29,0.7) 0%, rgba(14,16,19,0.7) 100%);
+    backdrop-filter:blur(10px);
+    padding:24px;
+    display:flex;flex-direction:column;
+    transition: border-color .25s ease, transform .25s ease;
+    position:relative;overflow:hidden;
+  }
+  .proof-card:hover{border-color:var(--border-2);transform:translateY(-2px)}
+  .proof-card .head{display:flex;justify-content:space-between;align-items:flex-start;gap:16px}
+  .proof-card .index{font-family:var(--mono);font-size:11.5px;color:var(--text-3);letter-spacing:0.1em}
+  .proof-card .status-chip{
+    font-family:var(--mono);font-size:10.5px;letter-spacing:0.12em;text-transform:uppercase;
+    padding:4px 9px;border-radius:999px;border:1px solid var(--border);color:var(--text-2);
+  }
+  .proof-card .status-chip.live{color:var(--accent);border-color:oklch(0.80 0.17 155 / 0.4)}
+  .proof-card h3{font-size:22px;font-weight:500;letter-spacing:-0.02em;margin:22px 0 0;line-height:1.2}
+  .proof-card .client{font-family:var(--mono);font-size:12px;color:var(--text-3);margin-top:6px}
+  .proof-card p.summary{font-size:14px;line-height:1.6;color:var(--text-2);margin:16px 0 20px}
+  .mockup{
+    margin:0 -24px;height:200px;border-top:1px solid var(--border);border-bottom:1px solid var(--border);
+    background:
+      repeating-linear-gradient(135deg, rgba(255,255,255,0.02) 0 8px, transparent 8px 16px),
+      linear-gradient(180deg,#0D0F13,#0A0B0D);
+    position:relative;display:flex;align-items:center;justify-content:center;
+    font-family:var(--mono);font-size:11px;color:var(--text-3);letter-spacing:0.12em;
+  }
+  .mockup::before{content:"";position:absolute;inset:14px;border:1px dashed var(--border-2);border-radius:4px}
+  .mockup .dots{position:absolute;top:18px;left:22px;display:flex;gap:6px}
+  .mockup .dots span{width:8px;height:8px;border-radius:50%;background:var(--border-2)}
+
+  /* BPMN process flow mockup (Card 3) */
+  .mock-flow{
+    margin:0 -24px;height:200px;border-top:1px solid var(--border);border-bottom:1px solid var(--border);
+    background:#0B0D10;padding:0 28px;
+    display:flex;flex-direction:column;justify-content:center;gap:14px;
+    position:relative;overflow:hidden;
+  }
+  .mock-flow::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(10,11,13,0.55) 100%);pointer-events:none}
+  .mf-steps{display:flex;align-items:flex-start;position:relative;z-index:1}
+  .mf-step{flex:1;display:flex;flex-direction:column;align-items:center;gap:7px}
+  .mf-node{
+    width:34px;height:34px;border-radius:7px;border:1px solid var(--border-2);
+    display:grid;place-items:center;
+    font-family:var(--mono);font-size:9.5px;font-weight:500;letter-spacing:0.04em;color:var(--text-3);
+    background:#0E1115;
+  }
+  .mf-step.done .mf-node{border-color:oklch(0.80 0.17 155 / 0.35);color:oklch(0.80 0.17 155 / 0.7);background:var(--accent-dim)}
+  .mf-step.active .mf-node{border-color:var(--accent);color:var(--accent);box-shadow:0 0 10px var(--accent-glow)}
+  .mf-lbl{font-family:var(--mono);font-size:9px;color:var(--text-3);letter-spacing:0.09em;text-transform:uppercase;text-align:center;line-height:1.35}
+  .mf-step.done .mf-lbl,.mf-step.active .mf-lbl{color:var(--text-2)}
+  .mf-conn{flex:none;width:28px;height:1px;background:var(--border-2);margin-top:17px;position:relative}
+  .mf-conn::after{content:"▸";position:absolute;right:-5px;top:-7px;font-size:9px;color:var(--border-2)}
+  .mf-conn.lit{background:oklch(0.80 0.17 155 / 0.4)}
+  .mf-conn.lit::after{color:oklch(0.80 0.17 155 / 0.5)}
+  .mf-meta{font-family:var(--mono);font-size:9.5px;color:var(--text-3);letter-spacing:0.1em;text-transform:uppercase;position:relative;z-index:1;padding-top:2px}
+
+  /* Training adoption mockup (Card 4) */
+  .mock-adoption{
+    margin:0 -24px;height:200px;border-top:1px solid var(--border);border-bottom:1px solid var(--border);
+    background:#0B0D10;padding:16px 28px;
+    display:flex;flex-direction:column;justify-content:center;gap:9px;
+    position:relative;overflow:hidden;
+  }
+  .mock-adoption::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(10,11,13,0.55) 100%);pointer-events:none}
+  .ma-row{display:grid;grid-template-columns:106px 1fr 48px;align-items:center;gap:10px;position:relative;z-index:1}
+  .ma-dept{font-family:var(--mono);font-size:9.5px;color:var(--text-2);letter-spacing:0.07em;text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .ma-bar{height:3px;background:var(--border);border-radius:999px;overflow:hidden}
+  .ma-bar span{display:block;height:100%;background:var(--accent);border-radius:999px}
+  .ma-bar span.full{box-shadow:0 0 6px var(--accent-glow)}
+  .ma-count{font-family:var(--mono);font-size:9.5px;color:var(--text-3);letter-spacing:0.04em;text-align:right}
+  .ma-header{display:grid;grid-template-columns:106px 1fr 48px;gap:10px;position:relative;z-index:1;margin-bottom:2px}
+  .ma-header span{font-family:var(--mono);font-size:8.5px;color:var(--text-3);letter-spacing:0.12em;text-transform:uppercase}
+  .ma-header span:last-child{text-align:right}
+
+  /* Odoo-style dashboard mockup */
+  .mock-dash{
+    margin:0 -24px;height:220px;border-top:1px solid var(--border);border-bottom:1px solid var(--border);
+    background:#0B0D10;
+    display:grid;grid-template-columns: 140px 1fr;position:relative;overflow:hidden;
+  }
+  .mock-dash::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 60%, rgba(10,11,13,0.6) 100%);pointer-events:none}
+  .mock-side{border-right:1px solid var(--border);padding:16px 12px;display:flex;flex-direction:column;gap:8px}
+  .mock-side .row{height:8px;border-radius:3px;background:var(--border)}
+  .mock-side .row.active{background:var(--accent-dim);box-shadow: inset 2px 0 0 var(--accent);}
+  .mock-side .row.w1{width:70%}.mock-side .row.w2{width:85%}.mock-side .row.w3{width:55%}
+  .mock-main{padding:14px 16px;display:flex;flex-direction:column;gap:10px}
+  .mock-tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+  .mock-tile{border:1px solid var(--border);border-radius:6px;padding:8px 10px;background:#0E1115}
+  .mock-tile .num{font-family:var(--mono);font-size:15px;color:var(--text);letter-spacing:-0.02em}
+  .mock-tile .lbl{font-family:var(--mono);font-size:9.5px;color:var(--text-3);letter-spacing:0.08em;text-transform:uppercase;margin-top:3px}
+  .mock-tile.accent .num{color:var(--accent)}
+  .mock-chart{flex:1;border:1px solid var(--border);border-radius:6px;padding:10px;position:relative;background:#0E1115;min-height:0;overflow:hidden}
+  .mock-chart svg{width:100%;height:100%;display:block}
+
+  /* card footer */
+  .stack{display:flex;gap:6px;flex-wrap:wrap;margin-top:20px}
+  .chip{font-family:var(--mono);font-size:11px;padding:5px 9px;border-radius:6px;border:1px solid var(--border);color:var(--text-2);background:rgba(255,255,255,0.02)}
+  .impact{
+    margin-top:22px;display:flex;align-items:baseline;justify-content:space-between;gap:14px;padding-top:18px;border-top:1px solid var(--border)
+  }
+  .impact .metric{font-family:var(--sans);font-size:34px;font-weight:500;letter-spacing:-0.035em;color:var(--accent);line-height:1}
+  .impact .metric sup{font-size:16px;font-weight:400;color:var(--accent);margin-left:2px}
+  .impact .metric-lbl{font-family:var(--mono);font-size:11px;color:var(--text-3);letter-spacing:0.1em;text-transform:uppercase;max-width:55%;text-align:right;line-height:1.5}
+
+  @media(max-width:860px){.proof-card{grid-column:1/-1}}
+
+  /* services */
+  .services-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:24px}
+  .svc{
+    grid-column: span 6;
+    border:1px solid var(--border);border-radius:14px;padding:28px;
+    background:linear-gradient(180deg,rgba(17,19,23,0.6),rgba(10,11,13,0.6));
+    position:relative;overflow:hidden;
+  }
+  .svc.enterprise{
+    background:
+      radial-gradient(600px 200px at 100% 0%, oklch(0.80 0.17 155 / 0.08), transparent 60%),
+      linear-gradient(180deg,rgba(17,19,23,0.8),rgba(10,11,13,0.8));
+    border-color: oklch(0.80 0.17 155 / 0.18);
+  }
+  .svc .svc-kicker{display:flex;align-items:center;justify-content:space-between}
+  .svc h3{font-size:28px;font-weight:500;letter-spacing:-0.025em;margin:18px 0 8px;line-height:1.1}
+  .svc .price{font-family:var(--mono);font-size:12px;color:var(--text-3);letter-spacing:0.05em}
+  .svc p{font-size:14.5px;color:var(--text-2);line-height:1.6;margin:0 0 22px}
+  .svc ul{list-style:none;padding:0;margin:0;border-top:1px solid var(--border)}
+  .svc li{padding:14px 0;border-bottom:1px solid var(--border);display:flex;gap:14px;align-items:flex-start;font-size:14px;color:var(--text)}
+  .svc li::before{content:"";flex:none;width:14px;height:14px;border-radius:3px;margin-top:3px;border:1px solid var(--border-2);position:relative}
+  .svc li::after{content:"";position:absolute;width:6px;height:6px;margin-top:7px;margin-left:4px;background:var(--accent);border-radius:1px;opacity:0}
+  .svc.enterprise li::before{border-color: oklch(0.80 0.17 155 / 0.5)}
+  .svc.enterprise li{position:relative}
+  .svc.enterprise li::after{opacity:1}
+  .svc .svc-footer{margin-top:22px;display:flex;justify-content:space-between;align-items:center}
+  @media(max-width:860px){.svc{grid-column:1/-1}}
+
+  /* courses */
+  .courses{display:grid;grid-template-columns:repeat(12,1fr);gap:24px}
+  .course-card{
+    grid-column: span 4;border:1px solid var(--border);border-radius:12px;padding:22px;
+    background:var(--surface);
+    display:flex;flex-direction:column;min-height:280px;
+    transition:all .25s ease;position:relative;overflow:hidden;
+  }
+  .course-card:hover{border-color:var(--border-2);transform:translateY(-2px)}
+  .course-card .c-top{display:flex;justify-content:space-between;align-items:flex-start}
+  .course-card .badge{font-family:var(--mono);font-size:10.5px;letter-spacing:0.1em;padding:4px 8px;border-radius:4px;background:var(--hair);color:var(--text-2);text-transform:uppercase}
+  .course-card .badge.soon{color:var(--text-3)}
+  .course-card .lessons{font-family:var(--mono);font-size:11px;color:var(--text-3);letter-spacing:0.1em}
+  .course-card h4{font-size:19px;font-weight:500;letter-spacing:-0.02em;margin:auto 0 6px;line-height:1.25}
+  .course-card .sub{font-size:13.5px;color:var(--text-2);line-height:1.55;margin:0 0 16px}
+  .progress{height:3px;background:var(--border);border-radius:999px;overflow:hidden;margin-top:auto}
+  .progress > span{display:block;height:100%;background:var(--accent);border-radius:999px}
+  .course-card .meta-row{display:flex;justify-content:space-between;margin-top:10px;font-family:var(--mono);font-size:10.5px;color:var(--text-3);letter-spacing:0.08em;text-transform:uppercase}
+  @media(max-width:1000px){.course-card{grid-column: span 6}}
+  @media(max-width:640px){.course-card{grid-column:1/-1}}
+
+  /* technical lab */
+  .lab{border:1px solid var(--border);border-radius:14px;overflow:hidden;background:var(--surface)}
+  .lab-head{
+    display:grid;grid-template-columns: 80px 1fr 160px 160px 120px;
+    padding:14px 22px;border-bottom:1px solid var(--border);
+    font-family:var(--mono);font-size:10.5px;letter-spacing:0.14em;color:var(--text-3);text-transform:uppercase;
+  }
+  .lab-row{
+    display:grid;grid-template-columns: 80px 1fr 160px 160px 120px;
+    padding:22px;border-bottom:1px solid var(--border);align-items:center;gap:16px;
+    transition:background .2s ease;position:relative;cursor:pointer;
+  }
+  .lab-row:last-child{border-bottom:none}
+  .lab-row:hover{background:rgba(255,255,255,0.015)}
+  .lab-row:hover .lab-title{color:var(--accent)}
+  .lab-row:hover .lab-arrow{transform:translate(4px,-4px);color:var(--accent)}
+  .lab-num{font-family:var(--mono);font-size:12px;color:var(--text-3);letter-spacing:0.05em}
+  .lab-title{font-size:17px;letter-spacing:-0.01em;color:var(--text);transition:color .2s ease}
+  .lab-title .sub{display:block;font-size:13px;color:var(--text-2);margin-top:4px;letter-spacing:0}
+  .lab-kind{font-family:var(--mono);font-size:11.5px;color:var(--text-2);letter-spacing:0.06em}
+  .lab-date{font-family:var(--mono);font-size:11.5px;color:var(--text-3);letter-spacing:0.06em}
+  .lab-arrow{justify-self:end;font-family:var(--mono);color:var(--text-3);transition: all .2s ease;font-size:16px}
+  @media(max-width:900px){
+    .lab-head{display:none}
+    .lab-row{grid-template-columns: 40px 1fr auto;grid-template-rows:auto auto;padding:18px 20px}
+    .lab-kind{grid-column:2;grid-row:2}
+    .lab-date{display:none}
+  }
+
+  /* about strip */
+  .about{display:grid;grid-template-columns:repeat(12,1fr);gap:24px;align-items:start}
+  .about-l{grid-column:1 / span 5}
+  .about-r{grid-column:7 / span 6}
+  .about-r p{font-size:17px;line-height:1.6;color:var(--text-2);margin:0 0 18px}
+  .about-r p strong{color:var(--text);font-weight:500}
+  .timeline{margin-top:8px;border-top:1px solid var(--border)}
+  .tl-row{display:grid;grid-template-columns: 110px 1fr;gap:16px;padding:16px 0;border-bottom:1px solid var(--border)}
+  .tl-year{font-family:var(--mono);font-size:12px;color:var(--text-3);letter-spacing:0.05em}
+  .tl-body{font-size:14px;color:var(--text);line-height:1.5}
+  .tl-body .muted{color:var(--text-2);display:block;font-size:13px;margin-top:2px}
+  @media(max-width:860px){.about-l,.about-r{grid-column:1/-1}}
+
+  /* contact */
+  .contact-wrap{
+    border:1px solid var(--border);border-radius:18px;padding:56px 48px;
+    background:
+      radial-gradient(500px 280px at 85% 0%, oklch(0.80 0.17 155 / 0.12), transparent 70%),
+      linear-gradient(180deg,rgba(17,19,23,0.8),rgba(10,11,13,0.8));
+    display:grid;grid-template-columns:repeat(12,1fr);gap:24px;align-items:end;
+    position:relative;overflow:hidden;
+  }
+  .contact-wrap h2{grid-column:1 / span 8;font-weight:500;letter-spacing:-0.03em;font-size:clamp(32px,4.4vw,58px);line-height:1.02;margin:16px 0 0}
+  .contact-wrap h2 .serif{font-family:var(--serif);font-style:italic;font-weight:400}
+  .contact-actions{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+  .contact-grid{grid-column:1/-1;display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:48px;border-top:1px solid var(--border)}
+  .contact-cell{padding:24px 28px 22px 0;border-right:1px solid var(--border);min-height:108px;display:flex;flex-direction:column}
+  .contact-cell + .contact-cell{padding-left:28px}
+  .contact-cell:last-child{border-right:none;padding-right:0}
+  .contact-cell .k{font-family:var(--mono);font-size:11px;color:var(--text-3);letter-spacing:0.1em;text-transform:uppercase}
+  .contact-cell .v{font-size:14.5px;color:var(--text);margin-top:10px;letter-spacing:-0.005em;line-height:1.45}
+  @media(max-width:860px){
+    .contact-wrap{padding:36px 24px}
+    .contact-wrap h2{grid-column:1/-1}
+    .contact-grid{grid-template-columns:repeat(2,1fr)}
+    .contact-cell{min-height:0;padding:22px 20px 18px 0}
+    .contact-cell + .contact-cell{padding-left:20px}
+    .contact-cell:nth-child(2){border-right:none;padding-right:0}
+    .contact-cell:nth-child(3){padding-left:0}
+    .contact-cell:nth-child(1),.contact-cell:nth-child(2){border-bottom:1px solid var(--border)}
+  }
+
+  /* footer */
+  footer{padding:40px 0 48px;border-top:1px solid var(--border);margin-top:48px}
+  .foot{display:flex;justify-content:space-between;align-items:center;font-family:var(--mono);font-size:11.5px;color:var(--text-3);letter-spacing:0.06em;text-transform:uppercase}
+  .foot a:hover{color:var(--text)}
+
+  /* reveal */
+  .reveal{opacity:0;transform:translateY(14px);transition:opacity .7s cubic-bezier(.2,.6,.2,1), transform .7s cubic-bezier(.2,.6,.2,1)}
+  .reveal.in{opacity:1;transform:none}
+
+  /* divider */
+  .rule{height:1px;background:linear-gradient(to right, transparent, var(--border) 20%, var(--border) 80%, transparent);margin:0}
+
+  /* signature */
+  .signature{padding:56px 0 24px;position:relative;z-index:1}
+  .sig-shell{max-width:1440px;margin:0 auto;padding:0 var(--gutter)}
+  .sig-row{display:flex;align-items:center;gap:16px;font-family:var(--mono);font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:var(--text-3)}
+  .sig-meta{justify-content:space-between;padding-bottom:18px;border-bottom:1px solid var(--border)}
+  .sig-name{
+    font-family:var(--sans);font-weight:500;letter-spacing:-0.05em;
+    font-size:clamp(56px, 13.5vw, 210px);line-height:0.88;
+    margin:38px 0 36px;
+    background:linear-gradient(180deg, var(--text) 0%, var(--text) 55%, var(--text-3) 100%);
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+    white-space:nowrap;
+    display:flex;align-items:flex-end;gap:0.06em;
+    overflow:hidden;
+  }
+  .sig-name .sig-dot{color:var(--accent);-webkit-text-fill-color:var(--accent);margin-left:0.04em}
+  .sig-foot{justify-content:space-between;padding-top:18px;border-top:1px solid var(--border)}
+  .sig-foot .sig-line{flex:1;height:1px;background:var(--border)}
+  @media(max-width:640px){
+    .sig-name{letter-spacing:-0.045em}
+    .sig-meta span:nth-child(3),.sig-foot span:nth-child(2){display:none}
+  }
+
+  /* mood variants */
+  html[data-bg="slate"]{--bg:#0B0F16;--bg-1:#0E131B;--surface:#121823;--elev:#162031;--border:#1E2A3C;--border-2:#2A3A52}
+  html[data-bg="warm"]{--bg:#0E0B08;--bg-1:#13100B;--surface:#1A150E;--elev:#1F1A11;--border:#2A2217;--border-2:#3A2F20}
+
+  /* grid overlay tweak */
+  html[data-grid="on"] .grid-bg{mask-image:none;opacity:0.7}
+
+  /* serif off */
+  html[data-serif="off"] .italic,
+  html[data-serif="off"] .serif{font-family:var(--sans) !important;font-style:normal !important;font-weight:500 !important}
+
+  /* density */
+  html[data-density="compact"] section{padding:72px 0}
+  html[data-density="airy"] section{padding:128px 0}
+
+  /* tweaks toggle button */
+  #twk-toggle{
+    position:fixed;bottom:20px;right:20px;z-index:2147483645;
+    width:36px;height:36px;border-radius:10px;
+    border:1px solid var(--border);
+    background:rgba(17,19,23,0.8);
+    backdrop-filter:blur(16px);
+    color:var(--text-3);
+    cursor:pointer;
+    display:grid;place-items:center;
+    font-size:15px;
+    transition:all .2s ease;
+  }
+  #twk-toggle:hover{color:var(--text);border-color:var(--border-2);background:var(--elev)}
+</style>
+</head>
+<body>
+<div class="grid-bg"></div>
+<div class="noise"></div>
+
+<!-- NAV -->
+<header class="nav">
+  <div class="shell">
+    <div class="nav-inner">
+      <a class="brand" href="#">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span class="brand-name"><b>Mehedi Hasan</b><em>ERP · Business Analyst</em></span>
+      </a>
+      <nav class="nav-links">
+        <a href="#work">Work</a>
+        <a href="#services">Services</a>
+        <a href="#courses">Courses</a>
+        <a href="#lab">Lab</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <a class="nav-cta" href="#contact">
+        Book a call <span class="arrow">↗</span>
+      </a>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="shell">
+    <div class="hero-grid">
+      <div class="hero-copy reveal">
+        <div class="status">
+          <span class="pulse"></span>
+          <span>Available for specialized ERP consulting — Q2 / Q3 2026</span>
+        </div>
+        <div class="name-byline" aria-hidden="true">
+          <span class="nb-rule"></span>
+          <span class="nb-name">Mehedi&nbsp;Hasan</span>
+          <span class="nb-meta">Portfolio · 2026</span>
+        </div>
+        <h1>
+          ERP that <span class="italic">actually</span><br/>
+          fits the business<span class="accent">.</span><br/>
+          <span class="dim">Not the other way around.</span>
+        </h1>
+      </div>
+      <p class="hero-sub reveal">
+        I'm Mehedi — a Business Analyst &amp; Odoo consultant helping manufacturers map, automate, and scale their operations. Led Bangladesh's largest manufacturing Odoo ERP deployment across 5 production facilities.
+      </p>
+      <div class="hero-actions reveal">
+        <a class="btn btn-primary" href="#work">See selected work <span>↗</span></a>
+        <a class="btn" href="#services">Services &amp; scope <span class="dot"></span></a>
+      </div>
+
+      <div class="meta-strip reveal">
+        <div class="meta-cell">
+          <div class="meta-k">Based in</div>
+          <div class="meta-v">Dhaka, Bangladesh <span class="small">· GMT+6</span></div>
+        </div>
+        <div class="meta-cell">
+          <div class="meta-k">Current</div>
+          <div class="meta-v">Business Analyst <span class="small">· Metamorphosis Ltd.</span></div>
+        </div>
+        <div class="meta-cell">
+          <div class="meta-k">Specialty</div>
+          <div class="meta-v">Odoo ERP <span class="small">· Manufacturing &amp; Export</span></div>
+        </div>
+        <div class="meta-cell">
+          <div class="meta-k">Trained</div>
+          <div class="meta-v">100+ end users <span class="small">· across 5 sites</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROOF / WORK -->
+<section id="work">
+  <div class="shell">
+    <div class="section-head">
+      <div class="reveal">
+        <span class="eyebrow">Selected work · 001</span>
+        <h2 class="section-title">Deployments that <span class="serif">moved</span> the numbers.</h2>
+      </div>
+      <p class="section-desc reveal">
+        A small, honest sample of ERP implementations — rewritten processes, retrained teams, and measurable operational gains.
+      </p>
+    </div>
+
+    <div class="proof-grid">
+      <!-- Card 1 -->
+      <article class="proof-card reveal">
+        <div class="head">
+          <span class="index">CASE / 001</span>
+          <span class="status-chip live">● Live</span>
+        </div>
+        <h3>National textile group — multi-site manufacturing ERP</h3>
+        <div class="client">Bangladesh · 5 production facilities · 10+ departments</div>
+        <p class="summary">Led the largest manufacturing Odoo ERP implementation in Bangladesh. Mapped operations across spinning, weaving, dyeing and finishing into a unified system; re-engineered inventory and production planning.</p>
+
+        <div class="mock-dash" aria-hidden="true">
+          <div class="mock-side">
+            <div class="row w1 active"></div>
+            <div class="row w2"></div>
+            <div class="row w3"></div>
+            <div class="row w2"></div>
+            <div class="row w1"></div>
+            <div class="row w3"></div>
+          </div>
+          <div class="mock-main">
+            <div class="mock-tiles">
+              <div class="mock-tile accent"><div class="num">60%</div><div class="lbl">Efficiency</div></div>
+              <div class="mock-tile"><div class="num">5</div><div class="lbl">Sites</div></div>
+              <div class="mock-tile"><div class="num">100+</div><div class="lbl">Users</div></div>
+            </div>
+            <div class="mock-chart">
+              <svg viewBox="0 0 300 80" preserveAspectRatio="none">
+                <defs>
+                  <linearGradient id="g1" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="oklch(0.80 0.17 155)" stop-opacity="0.45"/>
+                    <stop offset="100%" stop-color="oklch(0.80 0.17 155)" stop-opacity="0"/>
+                  </linearGradient>
+                </defs>
+                <path d="M0,60 L30,55 L60,58 L90,42 L120,48 L150,32 L180,36 L210,22 L240,28 L270,14 L300,18 L300,80 L0,80 Z" fill="url(#g1)"/>
+                <path d="M0,60 L30,55 L60,58 L90,42 L120,48 L150,32 L180,36 L210,22 L240,28 L270,14 L300,18" fill="none" stroke="oklch(0.80 0.17 155)" stroke-width="1.25"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+
+        <div class="stack">
+          <span class="chip">Odoo ERP</span>
+          <span class="chip">Manufacturing</span>
+          <span class="chip">Inventory</span>
+          <span class="chip">BPMN</span>
+          <span class="chip">Change Mgmt</span>
+        </div>
+        <div class="impact">
+          <div>
+            <div class="metric">60<sup>%</sup></div>
+          </div>
+          <div class="metric-lbl">Process efficiency gain across 5 production facilities</div>
+        </div>
+      </article>
+
+      <!-- Card 2 -->
+      <article class="proof-card reveal">
+        <div class="head">
+          <span class="index">CASE / 002</span>
+          <span class="status-chip live">● Live</span>
+        </div>
+        <h3>Cycle export manufacturer — traceable procurement</h3>
+        <div class="client">Export market · Multi-currency · Global supply chain</div>
+        <p class="summary">Delivered the largest cycle export manufacturing Odoo implementation — full traceability from raw material to finished goods, automated procurement workflows, and multi-currency financial ops.</p>
+
+        <div class="mock-dash" aria-hidden="true">
+          <div class="mock-side">
+            <div class="row w2"></div>
+            <div class="row w1"></div>
+            <div class="row w2 active"></div>
+            <div class="row w3"></div>
+            <div class="row w1"></div>
+            <div class="row w2"></div>
+          </div>
+          <div class="mock-main">
+            <div class="mock-tiles">
+              <div class="mock-tile accent"><div class="num">65%</div><div class="lbl">Automation</div></div>
+              <div class="mock-tile"><div class="num">3</div><div class="lbl">Currencies</div></div>
+              <div class="mock-tile"><div class="num">E2E</div><div class="lbl">Traceable</div></div>
+            </div>
+            <div class="mock-chart">
+              <svg viewBox="0 0 300 80" preserveAspectRatio="none">
+                <g stroke="var(--border-2)" stroke-width="1" fill="none">
+                  <line x1="0" y1="40" x2="300" y2="40"/>
+                </g>
+                <g fill="oklch(0.80 0.17 155 / 0.6)">
+                  <rect x="12" y="30" width="14" height="40"/>
+                  <rect x="36" y="22" width="14" height="48"/>
+                  <rect x="60" y="34" width="14" height="36"/>
+                  <rect x="84" y="18" width="14" height="52"/>
+                  <rect x="108" y="26" width="14" height="44"/>
+                  <rect x="132" y="12" width="14" height="58"/>
+                  <rect x="156" y="20" width="14" height="50"/>
+                  <rect x="180" y="14" width="14" height="56"/>
+                  <rect x="204" y="8" width="14" height="62"/>
+                  <rect x="228" y="10" width="14" height="60"/>
+                  <rect x="252" y="6" width="14" height="64"/>
+                  <rect x="276" y="4" width="14" height="66"/>
+                </g>
+              </svg>
+            </div>
+          </div>
+        </div>
+
+        <div class="stack">
+          <span class="chip">Odoo ERP</span>
+          <span class="chip">Procurement</span>
+          <span class="chip">Traceability</span>
+          <span class="chip">Multi-currency</span>
+          <span class="chip">Export Ops</span>
+        </div>
+        <div class="impact">
+          <div>
+            <div class="metric">65<sup>%</sup></div>
+          </div>
+          <div class="metric-lbl">Procurement efficiency through end-to-end automation</div>
+        </div>
+      </article>
+
+      <!-- Card 3 -->
+      <article class="proof-card reveal">
+        <div class="head">
+          <span class="index">CASE / 003</span>
+          <span class="status-chip">● Ongoing</span>
+        </div>
+        <h3>Cross-module business process optimization</h3>
+        <div class="client">Manufacturing · Inventory · Sales · Purchase · Finance</div>
+        <p class="summary">Conducted requirements gathering with 10+ department heads, translating business needs into technical specifications and orchestrating UAT cycles before production release.</p>
+
+        <div class="mock-flow" aria-hidden="true">
+          <div class="mf-steps">
+            <div class="mf-step done">
+              <div class="mf-node">DS</div>
+              <div class="mf-lbl">Disco-<br>very</div>
+            </div>
+            <div class="mf-conn lit"></div>
+            <div class="mf-step done">
+              <div class="mf-node">GA</div>
+              <div class="mf-lbl">Gap<br>Analysis</div>
+            </div>
+            <div class="mf-conn lit"></div>
+            <div class="mf-step active">
+              <div class="mf-node">US</div>
+              <div class="mf-lbl">User<br>Stories</div>
+            </div>
+            <div class="mf-conn"></div>
+            <div class="mf-step">
+              <div class="mf-node">UT</div>
+              <div class="mf-lbl">UAT<br>Cycle</div>
+            </div>
+            <div class="mf-conn"></div>
+            <div class="mf-step">
+              <div class="mf-node">SO</div>
+              <div class="mf-lbl">Sign-<br>off</div>
+            </div>
+          </div>
+          <div class="mf-meta">10+ dept heads · 5 modules · cross-functional UAT</div>
+        </div>
+
+        <div class="stack">
+          <span class="chip">Requirements</span>
+          <span class="chip">UAT</span>
+          <span class="chip">Gap Analysis</span>
+          <span class="chip">Root Cause</span>
+          <span class="chip">User Stories</span>
+        </div>
+        <div class="impact">
+          <div>
+            <div class="metric">10<sup>+</sup></div>
+          </div>
+          <div class="metric-lbl">Department heads aligned on unified workflow</div>
+        </div>
+      </article>
+
+      <!-- Card 4 -->
+      <article class="proof-card reveal">
+        <div class="head">
+          <span class="index">CASE / 004</span>
+          <span class="status-chip">● Delivered</span>
+        </div>
+        <h3>End-user enablement &amp; post-go-live support</h3>
+        <div class="client">100+ employees · Multiple departments · Multi-site rollout</div>
+        <p class="summary">Built the training curriculum and change management program that took an entire organization from spreadsheet-driven operations to an integrated ERP — without pausing production.</p>
+
+        <div class="mock-adoption" aria-hidden="true">
+          <div class="ma-header">
+            <span>Department</span>
+            <span>Adoption</span>
+            <span>Users</span>
+          </div>
+          <div class="ma-row">
+            <span class="ma-dept">Manufacturing</span>
+            <div class="ma-bar"><span style="width:86%"></span></div>
+            <span class="ma-count">24 / 28</span>
+          </div>
+          <div class="ma-row">
+            <span class="ma-dept">Finance</span>
+            <div class="ma-bar"><span class="full" style="width:100%"></span></div>
+            <span class="ma-count">20 / 20</span>
+          </div>
+          <div class="ma-row">
+            <span class="ma-dept">Procurement</span>
+            <div class="ma-bar"><span style="width:90%"></span></div>
+            <span class="ma-count">18 / 20</span>
+          </div>
+          <div class="ma-row">
+            <span class="ma-dept">Sales</span>
+            <div class="ma-bar"><span style="width:86%"></span></div>
+            <span class="ma-count">19 / 22</span>
+          </div>
+          <div class="ma-row">
+            <span class="ma-dept">Admin</span>
+            <div class="ma-bar"><span style="width:92%"></span></div>
+            <span class="ma-count">22 / 24</span>
+          </div>
+        </div>
+
+        <div class="stack">
+          <span class="chip">Training</span>
+          <span class="chip">Change Mgmt</span>
+          <span class="chip">QA Coord.</span>
+          <span class="chip">C-level Engagement</span>
+        </div>
+        <div class="impact">
+          <div>
+            <div class="metric">100<sup>+</sup></div>
+          </div>
+          <div class="metric-lbl">End users trained with zero downtime to operations</div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="shell">
+    <div class="section-head">
+      <div class="reveal">
+        <span class="eyebrow">Services · 002</span>
+        <h2 class="section-title">Two engagements. <span class="serif">One</span> disciplined method.</h2>
+      </div>
+      <p class="section-desc reveal">
+        Whether you're a 20-person SME or a multi-site manufacturer, the work begins the same way: map the business, then map the software to it.
+      </p>
+    </div>
+
+    <div class="services-grid">
+      <div class="svc reveal">
+        <div class="svc-kicker">
+          <span class="eyebrow">For SMEs</span>
+          <span class="price">Fixed scope · 6–10 wks</span>
+        </div>
+        <h3>SME Starter — get off spreadsheets, cleanly.</h3>
+        <p>A focused Odoo rollout for small-to-mid businesses that have outgrown manual workflows. I handle discovery, configuration, data migration and training — so you launch with confidence, not chaos.</p>
+        <ul>
+          <li>Business mapping across 3–5 core modules</li>
+          <li>BPMN process documentation &amp; gap analysis</li>
+          <li>Data migration plan &amp; UAT orchestration</li>
+          <li>On-site training for up to 25 end users</li>
+          <li>30-day post-launch hypercare</li>
+        </ul>
+        <div class="svc-footer">
+          <span class="eyebrow">Start</span>
+          <a class="btn" href="#contact">Scope a rollout <span>↗</span></a>
+        </div>
+      </div>
+
+      <div class="svc enterprise reveal">
+        <div class="svc-kicker">
+          <span class="eyebrow">For Enterprise</span>
+          <span class="price">Retainer · Multi-quarter</span>
+        </div>
+        <h3>Enterprise Partner — multi-site, multi-module, multi-currency.</h3>
+        <p>A senior analyst embedded across your operations. I lead C-level workshops, orchestrate cross-functional teams, and translate the operational reality of manufacturing, export and finance into a single Odoo system.</p>
+        <ul>
+          <li>Cross-site implementation across 5+ facilities</li>
+          <li>Workflow automation &amp; traceability design</li>
+          <li>Manufacturing, inventory, procurement, finance</li>
+          <li>C-level stakeholder engagement &amp; UAT governance</li>
+          <li>Change management for 100+ end users</li>
+          <li>Post-implementation support &amp; continuous improvement</li>
+        </ul>
+        <div class="svc-footer">
+          <span class="eyebrow">Start</span>
+          <a class="btn btn-primary" href="#contact">Book discovery call <span>↗</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COURSES -->
+<section id="courses">
+  <div class="shell">
+    <div class="section-head">
+      <div class="reveal">
+        <span class="eyebrow">Courses · 003</span>
+        <h2 class="section-title">Educational hub — <span class="serif">learn</span> the craft.</h2>
+      </div>
+      <p class="section-desc reveal">
+        Short, field-tested curricula drawn from live ERP projects. Built for business analysts, operations leads and founders.
+      </p>
+    </div>
+
+    <div class="courses">
+      <a class="course-card reveal" href="#">
+        <div class="c-top">
+          <span class="badge">Course · 01</span>
+          <span class="lessons">12 LESSONS</span>
+        </div>
+        <h4>Odoo for Manufacturing — from mapping to go-live</h4>
+        <p class="sub">BPMN discovery, module configuration, UAT orchestration and the change-management playbook that actually lands.</p>
+        <div class="progress"><span style="width:72%"></span></div>
+        <div class="meta-row"><span>In production</span><span>~ 6 hrs</span></div>
+      </a>
+
+      <a class="course-card reveal" href="#">
+        <div class="c-top">
+          <span class="badge">Course · 02</span>
+          <span class="lessons">9 LESSONS</span>
+        </div>
+        <h4>Requirements gathering for business analysts</h4>
+        <p class="sub">How to run stakeholder workshops, write user stories that survive UAT, and translate ambiguity into technical specs.</p>
+        <div class="progress"><span style="width:40%"></span></div>
+        <div class="meta-row"><span>Drafting</span><span>~ 4 hrs</span></div>
+      </a>
+
+      <a class="course-card reveal" href="#">
+        <div class="c-top">
+          <span class="badge soon">Course · 03</span>
+          <span class="lessons">SOON</span>
+        </div>
+        <h4>Multi-currency &amp; export operations, demystified</h4>
+        <p class="sub">A practical guide to configuring ERP for cross-border manufacturing: currencies, tax, intercompany, and traceability.</p>
+        <div class="progress"><span style="width:10%"></span></div>
+        <div class="meta-row"><span>Outlining</span><span>~ 5 hrs</span></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- TECHNICAL LAB -->
+<section id="lab">
+  <div class="shell">
+    <div class="section-head">
+      <div class="reveal">
+        <span class="eyebrow">Technical Lab · 004</span>
+        <h2 class="section-title">Small <span class="serif">experiments</span>, honest notes.</h2>
+      </div>
+      <p class="section-desc reveal">
+        A digital garden of utilities, templates and short essays on ERP, data modeling and enterprise workflow. Loose thoughts, publicly.
+      </p>
+    </div>
+
+    <div class="lab reveal">
+      <div class="lab-head">
+        <span>No.</span><span>Title</span><span>Kind</span><span>Published</span><span>&nbsp;</span>
+      </div>
+
+      <a class="lab-row" href="#">
+        <span class="lab-num">0011</span>
+        <span class="lab-title">
+          Odoo inventory valuation cheatsheet
+          <span class="sub">FIFO vs. weighted avg — when each actually makes sense on the factory floor.</span>
+        </span>
+        <span class="lab-kind">Utility · CSV</span>
+        <span class="lab-date">APR 2026</span>
+        <span class="lab-arrow">↗</span>
+      </a>
+
+      <a class="lab-row" href="#">
+        <span class="lab-num">0010</span>
+        <span class="lab-title">
+          BPMN templates for manufacturing discovery
+          <span class="sub">A starter pack of process maps I use in Week 1 of every engagement.</span>
+        </span>
+        <span class="lab-kind">Template · .bpmn</span>
+        <span class="lab-date">MAR 2026</span>
+        <span class="lab-arrow">↗</span>
+      </a>
+
+      <a class="lab-row" href="#">
+        <span class="lab-num">0009</span>
+        <span class="lab-title">
+          The UAT script I wish I had 200 users ago
+          <span class="sub">On writing test cases that surface real operational edge cases, not happy paths.</span>
+        </span>
+        <span class="lab-kind">Essay</span>
+        <span class="lab-date">FEB 2026</span>
+        <span class="lab-arrow">↗</span>
+      </a>
+
+      <a class="lab-row" href="#">
+        <span class="lab-num">0008</span>
+        <span class="lab-title">
+          Excel → Odoo migration checklist (v3)
+          <span class="sub">The 40-item list that makes data migration feel like a weekend, not a quarter.</span>
+        </span>
+        <span class="lab-kind">Checklist · MD</span>
+        <span class="lab-date">JAN 2026</span>
+        <span class="lab-arrow">↗</span>
+      </a>
+
+      <a class="lab-row" href="#">
+        <span class="lab-num">0007</span>
+        <span class="lab-title">
+          Change management isn't a memo
+          <span class="sub">Short field notes from training 100+ operators through a go-live.</span>
+        </span>
+        <span class="lab-kind">Essay</span>
+        <span class="lab-date">DEC 2025</span>
+        <span class="lab-arrow">↗</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="shell">
+    <div class="section-head">
+      <div class="reveal">
+        <span class="eyebrow">About · 005</span>
+        <h2 class="section-title">Business first, <span class="serif">software</span> second.</h2>
+      </div>
+    </div>
+    <div class="about">
+      <div class="about-l reveal">
+        <div class="timeline">
+          <div class="tl-row"><span class="tl-year">2024 — now</span><span class="tl-body">Business Analyst <span class="muted">Metamorphosis Ltd. · Dhaka</span></span></div>
+          <div class="tl-row"><span class="tl-year">2025</span><span class="tl-body">MBA, Marketing <span class="muted">University of Dhaka · CGPA 3.59</span></span></div>
+          <div class="tl-row"><span class="tl-year">2022</span><span class="tl-body">BBA, Finance &amp; Banking <span class="muted">Jahangirnagar University · CGPA 3.41</span></span></div>
+          <div class="tl-row"><span class="tl-year">2017 — 22</span><span class="tl-body">Program coordination &amp; content <span class="muted">Asia Foundation · UNICEF · Jaago · 10 Minute School</span></span></div>
+          <div class="tl-row"><span class="tl-year">2019</span><span class="tl-body">Key Contributor, Blog Project 4.0 <span class="muted">10 Minute School</span></span></div>
+          <div class="tl-row"><span class="tl-year">2009</span><span class="tl-body">1st Runner-up, Mathematical Olympiad <span class="muted">Bangladesh</span></span></div>
+        </div>
+      </div>
+      <div class="about-r reveal">
+        <p>My background is <strong>finance and marketing</strong>, but my craft is <strong>operational clarity</strong>. I spend most of my week mapping how businesses actually work — then rebuilding that logic inside Odoo so the system mirrors the factory, not the other way around.</p>
+        <p>Before ERP, I spent five years coordinating educational and community programs across Bangladesh with <strong>The Asia Foundation, UNICEF, Jaago</strong> and <strong>10 Minute School</strong> — work that taught me how to run stakeholder workshops, align cross-functional teams, and write for people who don't read specs for a living.</p>
+        <p>Today, I partner with manufacturers, exporters and SMEs who are ready to leave spreadsheets behind — and want someone who'll stay through the messy middle, not just the demo.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="shell">
+    <div class="contact-wrap reveal">
+      <div style="grid-column:1 / -1">
+        <span class="eyebrow">Contact · 006</span>
+      </div>
+      <h2>Have a rollout that needs a <span class="serif">steady</span> hand?</h2>
+      <p class="section-desc" style="grid-column:9 / span 4">I reply within 1 business day. The best intros mention your industry, team size, and what's breaking today.</p>
+
+      <div class="contact-actions">
+        <a class="btn btn-primary" href="mailto:mhasanju46@gmail.com">mhasanju46@gmail.com <span>↗</span></a>
+        <a class="btn" href="https://www.linkedin.com/in/mehedi-hasan-consultant/" target="_blank" rel="noopener">LinkedIn <span>↗</span></a>
+        <a class="btn" href="tel:+8801521414851">+880 1521 414 851 <span>↗</span></a>
+      </div>
+
+      <div class="contact-grid">
+        <div class="contact-cell"><div class="k">Email</div><div class="v">mhasanju46@gmail.com</div></div>
+        <div class="contact-cell"><div class="k">Location</div><div class="v">Dhaka, Bangladesh</div></div>
+        <div class="contact-cell"><div class="k">Availability</div><div class="v">Q2 / Q3 2026 · Limited slots</div></div>
+        <div class="contact-cell"><div class="k">Languages</div><div class="v">English · Bangla</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Signature wordmark -->
+<section class="signature" aria-hidden="true">
+  <div class="sig-shell">
+    <div class="sig-row sig-meta">
+      <span>— Signed</span>
+      <span>Dhaka · Bangladesh</span>
+      <span>MMXXVI</span>
+    </div>
+    <div class="sig-name">Mehedi<span class="sig-amp"> </span>Hasan<span class="sig-dot">.</span></div>
+    <div class="sig-row sig-foot">
+      <span>ERP · Business Analyst</span>
+      <span class="sig-line"></span>
+      <span>mhasanju46@gmail.com</span>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="shell">
+    <div class="foot">
+      <span>© 2026 Mehedi Hasan · Built with quiet discipline</span>
+      <span><a href="#">↑ Back to top</a></span>
+    </div>
+  </div>
+</footer>
+
+<!-- Tweaks Panel -->
+<button id="twk-toggle" title="Open tweaks panel (T)" aria-label="Open tweaks panel">⚙</button>
+
+<div id="twk" hidden>
+  <div class="twk-hd"><b>Tweaks</b><button class="twk-x" data-close aria-label="Close">✕</button></div>
+  <div class="twk-body">
+    <div class="twk-sect">Accent</div>
+    <div class="twk-row">
+      <div class="twk-lbl"><span>Color</span><span class="twk-val" data-accent-sw></span></div>
+      <div class="twk-swatches" data-accent>
+        <button data-v="emerald" style="--c:oklch(0.80 0.17 155)"></button>
+        <button data-v="electric" style="--c:oklch(0.78 0.20 255)"></button>
+        <button data-v="amber"    style="--c:oklch(0.82 0.16 85)"></button>
+        <button data-v="magenta"  style="--c:oklch(0.72 0.24 340)"></button>
+        <button data-v="cyan"     style="--c:oklch(0.82 0.14 200)"></button>
+        <button data-v="mono"     style="--c:oklch(0.92 0 0)"></button>
+      </div>
+    </div>
+    <div class="twk-sect">Mood</div>
+    <div class="twk-row">
+      <div class="twk-lbl"><span>Background</span></div>
+      <div class="twk-seg" data-bg>
+        <button data-v="black">Black</button>
+        <button data-v="slate">Slate</button>
+        <button data-v="warm">Warm</button>
+      </div>
+    </div>
+    <div class="twk-row">
+      <div class="twk-lbl"><span>Grid overlay</span></div>
+      <label class="twk-switch"><input type="checkbox" data-grid><span></span></label>
+    </div>
+    <div class="twk-row">
+      <div class="twk-lbl"><span>Serif accents</span></div>
+      <label class="twk-switch"><input type="checkbox" data-serif checked><span></span></label>
+    </div>
+    <div class="twk-sect">Type</div>
+    <div class="twk-row">
+      <div class="twk-lbl"><span>Headline weight</span><span class="twk-val" data-weight-val>500</span></div>
+      <input type="range" min="300" max="700" step="100" value="500" data-weight class="twk-range">
+    </div>
+    <div class="twk-row">
+      <div class="twk-lbl"><span>Density</span></div>
+      <div class="twk-seg" data-density>
+        <button data-v="compact">Compact</button>
+        <button data-v="regular">Regular</button>
+        <button data-v="airy">Airy</button>
+      </div>
+    </div>
+    <div class="twk-sect">Hero</div>
+    <div class="twk-row">
+      <div class="twk-lbl"><span>Availability copy</span></div>
+      <input type="text" class="twk-field" data-status value="Available for specialized ERP consulting — Q2 / Q3 2026">
+    </div>
+  </div>
+</div>
+
+<style>
+  #twk{position:fixed;right:16px;bottom:64px;z-index:2147483646;width:280px;max-height:calc(100vh - 80px);
+    display:flex;flex-direction:column;
+    background:rgba(17,19,23,0.72);color:var(--text);
+    -webkit-backdrop-filter:blur(24px) saturate(150%);backdrop-filter:blur(24px) saturate(150%);
+    border:1px solid var(--border);border-radius:14px;
+    box-shadow:0 12px 40px rgba(0,0,0,0.45), inset 0 1px 0 rgba(255,255,255,0.04);
+    font:12px/1.4 var(--sans);overflow:hidden}
+  #twk[hidden]{display:none}
+  .twk-hd{display:flex;align-items:center;justify-content:space-between;padding:12px 10px 12px 16px;cursor:move;user-select:none;border-bottom:1px solid var(--border)}
+  .twk-hd b{font-size:12px;font-weight:500;letter-spacing:0.02em}
+  .twk-x{appearance:none;border:0;background:transparent;color:var(--text-3);width:24px;height:24px;border-radius:6px;cursor:pointer;font-size:13px;line-height:1}
+  .twk-x:hover{background:var(--hair);color:var(--text)}
+  .twk-body{padding:10px 16px 16px;display:flex;flex-direction:column;gap:12px;overflow-y:auto;min-height:0;scrollbar-width:thin;scrollbar-color:var(--border-2) transparent}
+  .twk-sect{font-family:var(--mono);font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-3);padding-top:6px}
+  .twk-sect:first-child{padding-top:0}
+  .twk-row{display:flex;flex-direction:column;gap:8px}
+  .twk-lbl{display:flex;justify-content:space-between;align-items:baseline;color:var(--text-2);font-size:12px}
+  .twk-val{color:var(--text-3);font-family:var(--mono);font-size:11px;font-variant-numeric:tabular-nums}
+  .twk-swatches{display:flex;gap:6px}
+  .twk-swatches button{appearance:none;width:26px;height:26px;border-radius:7px;border:1px solid var(--border);background:var(--c);cursor:pointer;padding:0;transition:transform .15s ease, box-shadow .15s ease}
+  .twk-swatches button:hover{transform:translateY(-1px)}
+  .twk-swatches button[aria-pressed="true"]{box-shadow:0 0 0 2px var(--bg), 0 0 0 3px var(--text)}
+  .twk-seg{display:grid;grid-auto-flow:column;grid-auto-columns:1fr;border:1px solid var(--border);border-radius:8px;padding:2px;background:rgba(0,0,0,0.2)}
+  .twk-seg button{appearance:none;border:0;background:transparent;color:var(--text-2);font:500 11px/1 var(--sans);padding:7px 6px;border-radius:6px;cursor:pointer;transition:all .15s ease}
+  .twk-seg button:hover{color:var(--text)}
+  .twk-seg button[aria-pressed="true"]{background:var(--elev);color:var(--text);box-shadow:inset 0 0 0 1px var(--border-2)}
+  .twk-switch{position:relative;width:34px;height:20px;display:inline-block;cursor:pointer}
+  .twk-switch input{position:absolute;opacity:0;pointer-events:none}
+  .twk-switch span{position:absolute;inset:0;background:var(--border);border-radius:999px;transition:background .15s}
+  .twk-switch span::after{content:"";position:absolute;top:2px;left:2px;width:16px;height:16px;border-radius:50%;background:var(--text-2);transition:all .18s ease}
+  .twk-switch input:checked + span{background:var(--accent)}
+  .twk-switch input:checked + span::after{left:16px;background:#04140B}
+  .twk-range{appearance:none;width:100%;height:4px;border-radius:999px;background:var(--border);outline:none}
+  .twk-range::-webkit-slider-thumb{appearance:none;width:14px;height:14px;border-radius:50%;background:var(--text);cursor:pointer;border:2px solid var(--bg)}
+  .twk-range::-moz-range-thumb{width:14px;height:14px;border-radius:50%;background:var(--text);cursor:pointer;border:2px solid var(--bg)}
+  .twk-field{width:100%;padding:8px 10px;border:1px solid var(--border);border-radius:7px;background:rgba(0,0,0,0.25);color:var(--text);font:12px var(--sans);outline:none}
+  .twk-field:focus{border-color:var(--border-2);background:rgba(0,0,0,0.4)}
+</style>
+
+<script>
+  // reveal on scroll
+  const io = new IntersectionObserver((entries) => {
+    for (const e of entries) {
+      if (e.isIntersecting) {
+        e.target.classList.add('in');
+        io.unobserve(e.target);
+      }
+    }
+  }, { threshold: 0.12, rootMargin: "0px 0px -60px 0px" });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // sticky nav shadow after scroll
+  const nav = document.querySelector('.nav-inner');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 8) nav.style.boxShadow = '0 10px 30px rgba(0,0,0,0.35)';
+    else nav.style.boxShadow = 'none';
+  }, { passive: true });
+
+  /* ── Tweaks ─────────────────────────────────────────────── */
+  const TWEAK_DEFAULTS = {
+    accent: "emerald",
+    bg: "slate",
+    density: "regular",
+    headingWeight: 500,
+    gridOverlay: false,
+    serifAccents: true,
+    statusText: "Available for specialized ERP consulting — Q2 / Q3 2026"
+  };
+
+  const ACCENTS = {
+    emerald:  { c: "oklch(0.80 0.17 155)", dim: "oklch(0.80 0.17 155 / 0.14)", glow: "oklch(0.80 0.17 155 / 0.35)", fg: "#04140B" },
+    electric: { c: "oklch(0.78 0.20 255)", dim: "oklch(0.78 0.20 255 / 0.14)", glow: "oklch(0.78 0.20 255 / 0.35)", fg: "#04091A" },
+    amber:    { c: "oklch(0.82 0.16 85)",  dim: "oklch(0.82 0.16 85 / 0.14)",  glow: "oklch(0.82 0.16 85 / 0.35)",  fg: "#170E03" },
+    magenta:  { c: "oklch(0.72 0.24 340)", dim: "oklch(0.72 0.24 340 / 0.14)", glow: "oklch(0.72 0.24 340 / 0.35)", fg: "#170316" },
+    cyan:     { c: "oklch(0.82 0.14 200)", dim: "oklch(0.82 0.14 200 / 0.14)", glow: "oklch(0.82 0.14 200 / 0.35)", fg: "#04141A" },
+    mono:     { c: "oklch(0.92 0 0)",      dim: "oklch(0.92 0 0 / 0.12)",      glow: "oklch(0.92 0 0 / 0.25)",      fg: "#0A0B0D" }
+  };
+
+  const state = { ...TWEAK_DEFAULTS };
+  const root = document.documentElement;
+  const twk = document.getElementById('twk');
+  const twkToggle = document.getElementById('twk-toggle');
+
+  function applyAccent(name){
+    const a = ACCENTS[name] || ACCENTS.emerald;
+    root.style.setProperty('--accent', a.c);
+    root.style.setProperty('--accent-dim', a.dim);
+    root.style.setProperty('--accent-glow', a.glow);
+    const btn = document.querySelector('.btn-primary');
+    if (btn) btn.style.color = a.fg;
+    document.querySelectorAll('#twk [data-accent] button').forEach(b=>{
+      b.setAttribute('aria-pressed', b.dataset.v === name ? 'true' : 'false');
+    });
+    const sw = document.querySelector('[data-accent-sw]');
+    if (sw) sw.textContent = name;
+  }
+  function applyBg(name){
+    root.setAttribute('data-bg', name);
+    document.querySelectorAll('#twk [data-bg] button').forEach(b=>{
+      b.setAttribute('aria-pressed', b.dataset.v === name ? 'true' : 'false');
+    });
+  }
+  function applyDensity(name){
+    root.setAttribute('data-density', name);
+    document.querySelectorAll('#twk [data-density] button').forEach(b=>{
+      b.setAttribute('aria-pressed', b.dataset.v === name ? 'true' : 'false');
+    });
+  }
+  function applyWeight(v){
+    document.querySelectorAll('.hero h1, .section-title, .contact-wrap h2').forEach(el=>{
+      el.style.fontWeight = v;
+    });
+    const lbl = document.querySelector('[data-weight-val]');
+    if (lbl) lbl.textContent = v;
+    const r = document.querySelector('[data-weight]');
+    if (r && +r.value !== +v) r.value = v;
+  }
+  function applyGrid(on){
+    root.setAttribute('data-grid', on ? 'on' : 'off');
+    const i = document.querySelector('[data-grid]'); if (i) i.checked = !!on;
+  }
+  function applySerif(on){
+    root.setAttribute('data-serif', on ? 'on' : 'off');
+    const i = document.querySelector('[data-serif]'); if (i) i.checked = !!on;
+  }
+  function applyStatus(text){
+    const el = document.querySelector('.status span:last-child');
+    if (el) el.textContent = text;
+    const i = document.querySelector('[data-status]');
+    if (i && i.value !== text) i.value = text;
+  }
+
+  function applyAll(s){
+    applyAccent(s.accent);
+    applyBg(s.bg);
+    applyDensity(s.density);
+    applyWeight(s.headingWeight);
+    applyGrid(s.gridOverlay);
+    applySerif(s.serifAccents);
+    applyStatus(s.statusText);
+  }
+  applyAll(state);
+
+  // wire controls
+  document.querySelectorAll('#twk [data-accent] button').forEach(b=>{
+    b.addEventListener('click', ()=>{ state.accent = b.dataset.v; applyAccent(state.accent); });
+  });
+  document.querySelectorAll('#twk [data-bg] button').forEach(b=>{
+    b.addEventListener('click', ()=>{ state.bg = b.dataset.v; applyBg(state.bg); });
+  });
+  document.querySelectorAll('#twk [data-density] button').forEach(b=>{
+    b.addEventListener('click', ()=>{ state.density = b.dataset.v; applyDensity(state.density); });
+  });
+  document.querySelector('[data-weight]')?.addEventListener('input', e=>{
+    state.headingWeight = +e.target.value; applyWeight(state.headingWeight);
+  });
+  document.querySelector('input[data-grid]')?.addEventListener('change', e=>{
+    state.gridOverlay = e.target.checked; applyGrid(state.gridOverlay);
+  });
+  document.querySelector('input[data-serif]')?.addEventListener('change', e=>{
+    state.serifAccents = e.target.checked; applySerif(state.serifAccents);
+  });
+  document.querySelector('[data-status]')?.addEventListener('input', e=>{
+    state.statusText = e.target.value; applyStatus(state.statusText);
+  });
+
+  // toggle tweaks panel
+  twkToggle.addEventListener('click', ()=>{ twk.hidden = !twk.hidden; });
+  twk.querySelector('[data-close]').addEventListener('click', ()=>{ twk.hidden = true; });
+
+  // keyboard shortcut: T to toggle
+  document.addEventListener('keydown', e=>{
+    if (e.key === 't' && !e.ctrlKey && !e.metaKey && !e.altKey && e.target.tagName !== 'INPUT') {
+      twk.hidden = !twk.hidden;
+    }
+  });
+
+  // draggable header
+  (function drag(){
+    const hd = twk.querySelector('.twk-hd');
+    let sx=0,sy=0,ox=0,oy=0,on=false;
+    hd.addEventListener('mousedown', e=>{
+      on=true; sx=e.clientX; sy=e.clientY;
+      const r=twk.getBoundingClientRect(); ox=r.left; oy=r.top;
+      twk.style.right='auto'; twk.style.bottom='auto'; twk.style.left=ox+'px'; twk.style.top=oy+'px';
+      e.preventDefault();
+    });
+    window.addEventListener('mousemove', e=>{
+      if(!on) return;
+      twk.style.left=(ox+e.clientX-sx)+'px';
+      twk.style.top =(oy+e.clientY-sy)+'px';
+    });
+    window.addEventListener('mouseup', ()=>{ on=false; });
+  })();
+</script>
+</body>
+</html>

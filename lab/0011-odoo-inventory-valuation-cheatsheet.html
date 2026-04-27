@@ -1,0 +1,803 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="Odoo inventory valuation cheatsheet — FIFO vs. weighted average, when each actually makes sense on the factory floor. By Mehedi Hasan." />
+<title>0011 · Odoo Inventory Valuation Cheatsheet — Mehedi Hasan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap">
+<style>
+  :root{
+    --bg:#0A0B0D;
+    --bg-1:#0E1013;
+    --surface:#111317;
+    --elev:#15181D;
+    --border:#1E2228;
+    --border-2:#2A2F38;
+    --hair:rgba(255,255,255,0.06);
+    --text:#EDEEF0;
+    --text-2:#9BA1AA;
+    --text-3:#5D6470;
+    --accent: oklch(0.80 0.17 155);
+    --accent-dim: oklch(0.80 0.17 155 / 0.14);
+    --accent-glow: oklch(0.80 0.17 155 / 0.35);
+    --sans:'Geist', ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif;
+    --mono:'Geist Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+    --serif:'Instrument Serif', ui-serif, Georgia, serif;
+    --max: 900px;
+    --gutter: 24px;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;background:var(--bg);color:var(--text);font-family:var(--sans);font-feature-settings:"ss01","cv11";-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+  body{
+    background:
+      radial-gradient(900px 600px at 80% -10%, rgba(80,230,160,0.06), transparent 60%),
+      radial-gradient(700px 500px at 10% 10%, rgba(40,60,90,0.12), transparent 70%),
+      var(--bg);
+    min-height:100vh;
+  }
+  a{color:inherit;text-decoration:none}
+  ::selection{background:var(--accent);color:#000}
+
+  /* grid bg */
+  .grid-bg{
+    position:fixed;inset:0;pointer-events:none;z-index:0;
+    background-image:
+      linear-gradient(to right, rgba(255,255,255,0.025) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255,255,255,0.025) 1px, transparent 1px);
+    background-size: 80px 80px;
+    mask-image: radial-gradient(1200px 800px at 50% 20%, #000 40%, transparent 85%);
+  }
+
+  /* layout */
+  .shell{max-width:var(--max);margin:0 auto;padding:0 var(--gutter);position:relative;z-index:1}
+
+  /* top bar */
+  .topbar{
+    position:sticky;top:0;z-index:50;
+    padding:14px 0;
+    border-bottom:1px solid var(--hair);
+    background:rgba(10,11,13,0.75);
+    backdrop-filter:blur(16px) saturate(140%);
+    -webkit-backdrop-filter:blur(16px) saturate(140%);
+  }
+  .topbar-inner{display:flex;align-items:center;justify-content:space-between;gap:16px}
+  .back-link{
+    display:inline-flex;align-items:center;gap:8px;
+    font-family:var(--mono);font-size:11.5px;letter-spacing:0.1em;text-transform:uppercase;
+    color:var(--text-3);transition:color .2s ease;
+  }
+  .back-link:hover{color:var(--accent)}
+  .back-link .arrow{display:inline-block;transition:transform .2s ease}
+  .back-link:hover .arrow{transform:translateX(-3px)}
+  .doc-id{font-family:var(--mono);font-size:11px;color:var(--text-3);letter-spacing:0.16em}
+  .doc-kind{
+    font-family:var(--mono);font-size:10.5px;letter-spacing:0.12em;text-transform:uppercase;
+    padding:4px 10px;border-radius:999px;
+    border:1px solid oklch(0.80 0.17 155 / 0.35);
+    color:var(--accent);
+  }
+
+  /* page progress bar */
+  .progress-track{
+    position:fixed;top:0;left:0;right:0;z-index:100;height:2px;background:transparent;pointer-events:none;
+  }
+  .progress-bar{
+    height:100%;background:var(--accent);
+    transition:width .35s cubic-bezier(.4,0,.2,1);
+    box-shadow:0 0 8px var(--accent-glow);
+  }
+
+  /* hero block */
+  .doc-hero{padding:56px 0 48px;border-bottom:1px solid var(--border)}
+  .doc-meta-row{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:24px}
+  .doc-num{font-family:var(--mono);font-size:11.5px;color:var(--text-3);letter-spacing:0.12em}
+  .dot-sep{width:3px;height:3px;border-radius:50%;background:var(--border-2)}
+  .doc-date{font-family:var(--mono);font-size:11.5px;color:var(--text-3);letter-spacing:0.06em}
+  .doc-type-badge{
+    font-family:var(--mono);font-size:10.5px;letter-spacing:0.12em;text-transform:uppercase;
+    padding:4px 10px;border-radius:6px;
+    background:var(--accent-dim);color:var(--accent);
+    border:1px solid oklch(0.80 0.17 155 / 0.2);
+  }
+  .doc-hero h1{
+    font-family:var(--sans);font-weight:500;letter-spacing:-0.03em;
+    font-size:clamp(32px,5vw,54px);line-height:1.02;
+    margin:0 0 16px;color:var(--text);
+  }
+  .doc-hero h1 .serif{font-family:var(--serif);font-style:italic;font-weight:400}
+  .doc-hero .lead{
+    font-size:17px;line-height:1.6;color:var(--text-2);margin:0 0 32px;max-width:680px;
+  }
+  .doc-stats{display:flex;gap:32px;flex-wrap:wrap;padding-top:28px;border-top:1px solid var(--border)}
+  .doc-stat .k{font-family:var(--mono);font-size:10.5px;letter-spacing:0.12em;color:var(--text-3);text-transform:uppercase}
+  .doc-stat .v{font-size:14px;color:var(--text);margin-top:6px}
+
+  /* page nav tabs */
+  .page-nav{
+    position:sticky;top:49px;z-index:40;
+    padding:0;
+    background:rgba(10,11,13,0.85);
+    backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--border);
+  }
+  .page-tabs{
+    display:flex;overflow-x:auto;
+    scrollbar-width:none;-ms-overflow-style:none;
+  }
+  .page-tabs::-webkit-scrollbar{display:none}
+  .page-tab{
+    flex:none;
+    padding:14px 20px;
+    font-family:var(--mono);font-size:11px;letter-spacing:0.1em;text-transform:uppercase;
+    color:var(--text-3);
+    cursor:pointer;
+    border-bottom:2px solid transparent;
+    transition:all .2s ease;
+    white-space:nowrap;
+    background:none;border-left:0;border-right:0;border-top:0;
+  }
+  .page-tab:hover{color:var(--text-2)}
+  .page-tab.active{color:var(--accent);border-bottom-color:var(--accent)}
+
+  /* pages */
+  .doc-pages{padding:56px 0 80px}
+  .page{display:none}
+  .page.active{display:block;animation:fadeIn .25s ease}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+  /* content typography */
+  .page-title{
+    font-family:var(--sans);font-weight:500;letter-spacing:-0.025em;
+    font-size:clamp(24px,3.5vw,38px);line-height:1.1;
+    margin:0 0 8px;color:var(--text);
+  }
+  .page-title .serif{font-family:var(--serif);font-style:italic;font-weight:400}
+  .page-number{font-family:var(--mono);font-size:11px;color:var(--text-3);letter-spacing:0.14em;text-transform:uppercase;margin-bottom:16px}
+  .page-lead{font-size:16px;line-height:1.65;color:var(--text-2);margin:0 0 40px;padding-bottom:28px;border-bottom:1px solid var(--border)}
+
+  /* section groups */
+  .content-section{margin-bottom:40px}
+  .content-section h3{
+    font-size:13px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;
+    font-family:var(--mono);color:var(--text-3);margin:0 0 16px;
+  }
+  p.body{font-size:15px;line-height:1.7;color:var(--text-2);margin:0 0 16px}
+  p.body strong{color:var(--text);font-weight:500}
+
+  /* comparison table */
+  .cmp-table{width:100%;border-collapse:collapse;margin-bottom:32px}
+  .cmp-table th{
+    font-family:var(--mono);font-size:10.5px;letter-spacing:0.12em;text-transform:uppercase;
+    color:var(--text-3);padding:12px 16px;text-align:left;
+    border-bottom:1px solid var(--border);
+  }
+  .cmp-table th:first-child{width:180px}
+  .cmp-table td{
+    font-size:14px;color:var(--text-2);padding:14px 16px;
+    border-bottom:1px solid var(--border);vertical-align:top;line-height:1.55;
+  }
+  .cmp-table td:first-child{font-family:var(--mono);font-size:12.5px;color:var(--text);letter-spacing:0.04em;font-weight:500}
+  .cmp-table tr:last-child td{border-bottom:none}
+  .cmp-table .good{color:var(--accent)}
+  .cmp-table .warn{color:oklch(0.82 0.16 85)}
+  .cmp-table .bad{color:oklch(0.72 0.24 340)}
+
+  /* callout boxes */
+  .callout{
+    border:1px solid var(--border);border-radius:10px;padding:18px 20px;margin:20px 0;
+    background:linear-gradient(135deg,rgba(21,24,29,0.7),rgba(14,16,19,0.5));
+    position:relative;overflow:hidden;
+  }
+  .callout::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--accent)}
+  .callout.warn::before{background:oklch(0.82 0.16 85)}
+  .callout.info::before{background:oklch(0.78 0.20 255)}
+  .callout .callout-head{font-family:var(--mono);font-size:10.5px;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-3);margin-bottom:8px}
+  .callout p{font-size:14px;line-height:1.6;color:var(--text-2);margin:0}
+  .callout p strong{color:var(--text);font-weight:500}
+
+  /* code block (for config paths) */
+  .code-block{
+    background:#09090B;border:1px solid var(--border);border-radius:8px;
+    padding:16px 18px;margin:16px 0;
+    font-family:var(--mono);font-size:12.5px;line-height:1.65;color:var(--text-2);
+    overflow-x:auto;
+  }
+  .code-block .k{color:oklch(0.78 0.20 255)}
+  .code-block .v{color:var(--accent)}
+  .code-block .c{color:var(--text-3)}
+
+  /* scenario cards grid */
+  .scenario-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:20px 0}
+  @media(max-width:600px){.scenario-grid{grid-template-columns:1fr}}
+  .scenario-card{
+    border:1px solid var(--border);border-radius:10px;padding:18px;
+    background:rgba(17,19,23,0.5);
+    display:flex;flex-direction:column;gap:10px;
+  }
+  .scenario-card.fifo{border-color:oklch(0.80 0.17 155 / 0.3)}
+  .scenario-card.wavg{border-color:oklch(0.78 0.20 255 / 0.3)}
+  .sc-tag{font-family:var(--mono);font-size:10px;letter-spacing:0.14em;text-transform:uppercase;padding:3px 8px;border-radius:4px}
+  .sc-tag.fifo{background:var(--accent-dim);color:var(--accent)}
+  .sc-tag.wavg{background:oklch(0.78 0.20 255 / 0.12);color:oklch(0.78 0.20 255)}
+  .sc-title{font-size:15px;font-weight:500;color:var(--text);letter-spacing:-0.01em}
+  .sc-body{font-size:13px;line-height:1.6;color:var(--text-2)}
+
+  /* step list */
+  .step-list{list-style:none;padding:0;margin:0 0 24px;display:flex;flex-direction:column;gap:0}
+  .step-list li{
+    display:grid;grid-template-columns:40px 1fr;gap:12px;align-items:start;
+    padding:14px 0;border-bottom:1px solid var(--border);
+  }
+  .step-list li:last-child{border-bottom:none}
+  .step-num{
+    font-family:var(--mono);font-size:11px;color:var(--text-3);letter-spacing:0.08em;
+    padding-top:3px;
+  }
+  .step-body{font-size:14.5px;line-height:1.6;color:var(--text-2)}
+  .step-body strong{color:var(--text);font-weight:500}
+  .step-body .step-path{
+    display:block;margin-top:6px;font-family:var(--mono);font-size:11.5px;
+    color:var(--text-3);letter-spacing:0.04em;
+  }
+  .step-body .step-path span{color:var(--accent)}
+
+  /* decision matrix */
+  .matrix{border:1px solid var(--border);border-radius:10px;overflow:hidden;margin:20px 0}
+  .matrix-row{display:grid;grid-template-columns:200px 1fr 1fr;border-bottom:1px solid var(--border)}
+  .matrix-row:last-child{border-bottom:none}
+  .matrix-row.head{background:rgba(21,24,29,0.8)}
+  .matrix-cell{padding:14px 16px;font-size:13.5px;color:var(--text-2);line-height:1.5}
+  .matrix-cell:first-child{font-family:var(--mono);font-size:11.5px;color:var(--text);letter-spacing:0.04em;border-right:1px solid var(--border)}
+  .matrix-cell:nth-child(2){border-right:1px solid var(--border)}
+  .matrix-row.head .matrix-cell{font-family:var(--mono);font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-3)}
+  .yes{color:var(--accent)}
+  .no{color:oklch(0.72 0.24 340)}
+  .partial{color:oklch(0.82 0.16 85)}
+
+  /* pill tags inline */
+  .pill{display:inline-block;font-family:var(--mono);font-size:11px;padding:2px 8px;border-radius:4px;background:var(--hair);color:var(--text-2);letter-spacing:0.06em}
+
+  /* page footer nav */
+  .page-footer-nav{
+    display:flex;justify-content:space-between;align-items:center;
+    margin-top:48px;padding-top:28px;
+    border-top:1px solid var(--border);
+    gap:16px;
+  }
+  .pf-btn{
+    display:inline-flex;align-items:center;gap:8px;
+    font-family:var(--mono);font-size:11px;letter-spacing:0.1em;text-transform:uppercase;
+    color:var(--text-3);cursor:pointer;
+    padding:10px 16px;border-radius:8px;
+    border:1px solid var(--border);background:var(--surface);
+    transition:all .2s ease;
+  }
+  .pf-btn:hover{color:var(--text);border-color:var(--border-2)}
+  .pf-btn:disabled{opacity:0.3;cursor:not-allowed}
+  .pf-btn .arr{display:inline-block;transition:transform .2s ease}
+  .pf-btn.prev:hover .arr{transform:translateX(-3px)}
+  .pf-btn.next:hover .arr{transform:translateX(3px)}
+  .pf-counter{font-family:var(--mono);font-size:11px;color:var(--text-3);letter-spacing:0.1em}
+
+  /* doc footer */
+  .doc-footer{border-top:1px solid var(--border);padding:32px 0 48px;margin-top:0}
+  .doc-footer-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+  .doc-footer .about-author{font-family:var(--mono);font-size:11px;color:var(--text-3);letter-spacing:0.08em}
+  .doc-footer .back-btn{
+    display:inline-flex;align-items:center;gap:8px;
+    font-family:var(--mono);font-size:11px;letter-spacing:0.1em;text-transform:uppercase;
+    color:var(--text-2);cursor:pointer;
+    padding:9px 14px;border-radius:8px;
+    border:1px solid var(--border);background:var(--surface);
+    transition:all .2s ease;
+  }
+  .doc-footer .back-btn:hover{color:var(--text);border-color:var(--border-2)}
+
+  /* reveal */
+  .reveal{opacity:0;transform:translateY(10px);transition:opacity .6s cubic-bezier(.2,.6,.2,1), transform .6s cubic-bezier(.2,.6,.2,1)}
+  .reveal.in{opacity:1;transform:none}
+</style>
+</head>
+<body>
+<div class="grid-bg"></div>
+
+<!-- progress indicator -->
+<div class="progress-track">
+  <div class="progress-bar" id="prog-bar" style="width:20%"></div>
+</div>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="shell">
+    <div class="topbar-inner">
+      <a class="back-link" href="../index.html#lab">
+        <span class="arrow">←</span> Back to Lab
+      </a>
+      <span class="doc-id">LAB · 0011</span>
+      <span class="doc-kind">Utility · CSV</span>
+    </div>
+  </div>
+</div>
+
+<!-- HERO -->
+<div class="doc-hero">
+  <div class="shell">
+    <div class="doc-meta-row">
+      <span class="doc-num">0011</span>
+      <span class="dot-sep"></span>
+      <span class="doc-type-badge">Cheatsheet</span>
+      <span class="dot-sep"></span>
+      <span class="doc-date">APR 2026</span>
+    </div>
+    <h1>Odoo inventory <span class="serif">valuation</span> cheatsheet</h1>
+    <p class="lead">FIFO vs. weighted average — when each actually makes sense on the factory floor. A practical field guide for Odoo 17 / Community &amp; Enterprise.</p>
+    <div class="doc-stats">
+      <div class="doc-stat"><div class="k">Pages</div><div class="v">5 sections</div></div>
+      <div class="doc-stat"><div class="k">Read time</div><div class="v">~8 min</div></div>
+      <div class="doc-stat"><div class="k">Odoo version</div><div class="v">v17 · v16</div></div>
+      <div class="doc-stat"><div class="k">Audience</div><div class="v">Consultants · Ops managers</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- PAGE TABS -->
+<div class="page-nav">
+  <div class="shell">
+    <div class="page-tabs" id="page-tabs">
+      <button class="page-tab active" data-page="1">01 · Overview</button>
+      <button class="page-tab" data-page="2">02 · FIFO</button>
+      <button class="page-tab" data-page="3">03 · Weighted Avg</button>
+      <button class="page-tab" data-page="4">04 · Decision Matrix</button>
+      <button class="page-tab" data-page="5">05 · Odoo Config</button>
+    </div>
+  </div>
+</div>
+
+<!-- PAGES CONTENT -->
+<div class="doc-pages">
+  <div class="shell">
+
+    <!-- ── PAGE 1: OVERVIEW ── -->
+    <div class="page active" id="page-1">
+      <div class="page-number">Section 01 of 05</div>
+      <h2 class="page-title">Why valuation <span class="serif">matters</span> more than people think</h2>
+      <p class="page-lead">Inventory valuation isn't just an accounting checkbox — it directly shapes your COGS, gross margin, and the accuracy of every financial report your ops team touches. Choosing the wrong method in Odoo is a one-way door that's painful to reverse mid-year.</p>
+
+      <div class="content-section">
+        <h3>The core problem</h3>
+        <p class="body">When you buy the same raw material at different prices across multiple purchase orders, you have to decide: <strong>which price do you use when that material leaves your warehouse?</strong></p>
+        <p class="body">Odoo gives you two primary methods: <strong>FIFO</strong> (First In, First Out) and <strong>Average Cost</strong> (weighted moving average). Both are IFRS and GAAP compliant. Both are available in Odoo's inventory module. But they produce meaningfully different numbers — and different operational behaviors.</p>
+      </div>
+
+      <div class="content-section">
+        <h3>A quick illustration</h3>
+        <div class="callout">
+          <div class="callout-head">Example · Steel coil purchases</div>
+          <p>You buy steel coil three times: <strong>100 kg at ৳80/kg</strong> in January, <strong>100 kg at ৳95/kg</strong> in February, and <strong>100 kg at ৳110/kg</strong> in March. You then consume 150 kg in production in April. Which cost hits your COGS?</p>
+        </div>
+        <p class="body">Under <strong>FIFO</strong>: 100 kg at ৳80 + 50 kg at ৳95 = ৳12,750 COGS. The remaining stock still holds the February and March costs.</p>
+        <p class="body">Under <strong>Weighted Average</strong>: blended cost = (8,000 + 9,500 + 11,000) / 300 = ৳95/kg. So 150 kg × ৳95 = ৳14,250 COGS. Simpler math, different bottom line.</p>
+      </div>
+
+      <div class="content-section">
+        <h3>What Odoo supports</h3>
+        <div class="cmp-table-wrap" style="overflow-x:auto">
+          <table class="cmp-table">
+            <thead>
+              <tr>
+                <th>Method</th>
+                <th>Odoo availability</th>
+                <th>Valuation mode</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>FIFO</td>
+                <td class="good">Community + Enterprise</td>
+                <td>Manual or Automated (Enterprise)</td>
+              </tr>
+              <tr>
+                <td>Average Cost (AVCO)</td>
+                <td class="good">Community + Enterprise</td>
+                <td>Manual or Automated (Enterprise)</td>
+              </tr>
+              <tr>
+                <td>Standard Price</td>
+                <td class="good">Community + Enterprise</td>
+                <td>Manual only</td>
+              </tr>
+              <tr>
+                <td>LIFO</td>
+                <td class="bad">Not available</td>
+                <td>Not IFRS-compliant</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="callout warn">
+          <div class="callout-head">Important</div>
+          <p>Changing the costing method on an active product in Odoo requires <strong>careful planning</strong> — it can trigger journal entry reversals and affect open manufacturing orders. Always change at the start of a fiscal period with zero stock if possible.</p>
+        </div>
+      </div>
+
+      <div class="page-footer-nav">
+        <button class="pf-btn prev" disabled><span class="arr">←</span> Previous</button>
+        <span class="pf-counter">1 / 5</span>
+        <button class="pf-btn next" onclick="goToPage(2)">Next <span class="arr">→</span></button>
+      </div>
+    </div>
+
+    <!-- ── PAGE 2: FIFO ── -->
+    <div class="page" id="page-2">
+      <div class="page-number">Section 02 of 05</div>
+      <h2 class="page-title">First In, First Out <span class="serif">(FIFO)</span></h2>
+      <p class="page-lead">FIFO matches the physical flow most manufacturers actually use — older stock gets consumed first. It produces the most accurate per-unit cost tracking but demands more from your Odoo configuration.</p>
+
+      <div class="content-section">
+        <h3>How it works in Odoo</h3>
+        <p class="body">Odoo maintains a <strong>queue of inventory lots</strong> with their original purchase costs. When you validate a delivery or post a manufacturing consumption, Odoo pulls from the oldest layers first. Each layer is a purchase order line with its own unit cost.</p>
+        <p class="body">In Enterprise with automated accounting, each stock move generates a journal entry in real time. In Community (manual), you run a periodic valuation report and post manually.</p>
+      </div>
+
+      <div class="content-section">
+        <h3>When FIFO is the right call</h3>
+        <div class="scenario-grid">
+          <div class="scenario-card fifo">
+            <span class="sc-tag fifo">FIFO</span>
+            <div class="sc-title">Perishable or time-sensitive materials</div>
+            <div class="sc-body">Food manufacturing, pharma, chemicals with shelf life. Physical flow actually matches FIFO — older stock leaves first.</div>
+          </div>
+          <div class="scenario-card fifo">
+            <span class="sc-tag fifo">FIFO</span>
+            <div class="sc-title">High price-volatility inputs</div>
+            <div class="sc-body">Steel, copper, plastics where purchase prices swing 15-30% quarterly. FIFO traces actual cost layers, preventing margin surprise.</div>
+          </div>
+          <div class="scenario-card fifo">
+            <span class="sc-tag fifo">FIFO</span>
+            <div class="sc-title">Lot / serial number tracking required</div>
+            <div class="sc-body">If you need full traceability from supplier batch to finished good, FIFO + Lot tracking is the natural combination in Odoo.</div>
+          </div>
+          <div class="scenario-card fifo">
+            <span class="sc-tag fifo">FIFO</span>
+            <div class="sc-title">Export / GAAP reporting requirements</div>
+            <div class="sc-body">Many export-oriented manufacturers must use FIFO for customs valuation or for GAAP-compliant statements when reporting to foreign partners.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="content-section">
+        <h3>FIFO pain points on the factory floor</h3>
+        <div class="callout warn">
+          <div class="callout-head">Watch out</div>
+          <p><strong>Negative stock kills FIFO.</strong> If Odoo allows stock to go negative (common in Community without strict validation), the cost layer queue breaks — Odoo can't pull from a layer that doesn't exist yet. The cost gets assigned as $0 or revalued after the receipt, creating phantom journal entries.</p>
+        </div>
+        <p class="body">Also: FIFO with <strong>many small purchase orders</strong> creates a long cost layer list. Reports can become slow and valuation exports grow large. For high-transaction environments, monitor the <code style="font-family:var(--mono);font-size:13px;color:var(--accent)">stock.valuation.layer</code> table size.</p>
+      </div>
+
+      <div class="content-section">
+        <h3>Key Odoo behaviors under FIFO</h3>
+        <ul class="step-list">
+          <li><span class="step-num">01</span><span class="step-body"><strong>Receipts</strong> create a new cost layer in the valuation queue at the vendor price on the PO line.</span></li>
+          <li><span class="step-num">02</span><span class="step-body"><strong>Delivery / consumption</strong> pops from the oldest layer. If the layer is partially consumed, the remainder stays in queue.</span></li>
+          <li><span class="step-num">03</span><span class="step-body"><strong>Vendor price difference</strong> (when bill differs from PO) creates a <em>landed cost</em> or a revaluation journal entry, not a change to the original layer.</span></li>
+          <li><span class="step-num">04</span><span class="step-body"><strong>Returns to vendor</strong> pop cost layers in reverse FIFO order — oldest first. Watch for rounding differences at the journal entry level.</span></li>
+          <li><span class="step-num">05</span><span class="step-body"><strong>Inventory adjustments</strong> create a new layer at the current average cost, not at the oldest layer cost. This is a frequent gotcha.</span></li>
+        </ul>
+      </div>
+
+      <div class="page-footer-nav">
+        <button class="pf-btn prev" onclick="goToPage(1)"><span class="arr">←</span> Previous</button>
+        <span class="pf-counter">2 / 5</span>
+        <button class="pf-btn next" onclick="goToPage(3)">Next <span class="arr">→</span></button>
+      </div>
+    </div>
+
+    <!-- ── PAGE 3: WEIGHTED AVERAGE ── -->
+    <div class="page" id="page-3">
+      <div class="page-number">Section 03 of 05</div>
+      <h2 class="page-title">Average Cost <span class="serif">(AVCO)</span></h2>
+      <p class="page-lead">Weighted average blends all purchase prices into a single running cost per unit. It's simpler to manage day-to-day and produces smoother margins — at the cost of per-batch cost precision.</p>
+
+      <div class="content-section">
+        <h3>How Odoo calculates AVCO</h3>
+        <p class="body">Every time a receipt is validated, Odoo recalculates the average cost using:</p>
+        <div class="code-block">
+          <span class="c"># Odoo AVCO formula on each receipt</span><br>
+          <span class="k">new_avg_cost</span> = (<br>
+          &nbsp;&nbsp;<span class="v">(current_qty_on_hand × current_avg_cost)</span><br>
+          &nbsp;&nbsp;+ <span class="v">(incoming_qty × incoming_unit_cost)</span><br>
+          ) / <span class="v">(current_qty_on_hand + incoming_qty)</span>
+        </div>
+        <p class="body">This new average cost then applies to <strong>all existing stock</strong> — Odoo revalues the entire on-hand quantity. Under automated accounting, this triggers a journal entry for the revaluation difference.</p>
+      </div>
+
+      <div class="content-section">
+        <h3>When AVCO is the right call</h3>
+        <div class="scenario-grid">
+          <div class="scenario-card wavg">
+            <span class="sc-tag wavg">AVCO</span>
+            <div class="sc-title">Fungible bulk materials</div>
+            <div class="sc-body">Sand, gravel, grain, generic chemicals — material from different suppliers is physically indistinguishable. AVCO reflects economic reality better than FIFO here.</div>
+          </div>
+          <div class="scenario-card wavg">
+            <span class="sc-tag wavg">AVCO</span>
+            <div class="sc-title">Stable or slowly-moving prices</div>
+            <div class="sc-body">If your material costs are relatively stable (±5%), AVCO smooths reporting without materially distorting margins. Less accounting noise.</div>
+          </div>
+          <div class="scenario-card wavg">
+            <span class="sc-tag wavg">AVCO</span>
+            <div class="sc-title">High-volume, low-unit-value items</div>
+            <div class="sc-body">Nuts, bolts, packaging material — tracking individual cost layers for pennies-per-unit items is overhead without benefit. AVCO is operationally cleaner.</div>
+          </div>
+          <div class="scenario-card wavg">
+            <span class="sc-tag wavg">AVCO</span>
+            <div class="sc-title">Teams new to Odoo</div>
+            <div class="sc-body">AVCO produces fewer valuation surprises for operations teams who aren't yet fluent in Odoo's cost layer mechanics. Lower training overhead.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="content-section">
+        <h3>AVCO edge cases that catch people out</h3>
+        <div class="callout warn">
+          <div class="callout-head">Negative stock + AVCO</div>
+          <p>Unlike FIFO, AVCO <strong>tolerates negative stock</strong> better — but the resulting average cost becomes meaningless (mathematically undefined). When stock goes negative and then a receipt arrives, Odoo uses the receipt cost as the new AVCO. This often inflates or deflates the average depending on timing.</p>
+        </div>
+        <div class="callout info">
+          <div class="callout-head">Revaluation entries</div>
+          <p>Each receipt under AVCO potentially posts a <strong>revaluation journal entry</strong> for the difference between the old AVCO and the new AVCO applied to existing stock. In high-receipt-frequency environments, this creates a large volume of small journal entries. Consider your accountant's bandwidth.</p>
+        </div>
+      </div>
+
+      <div class="content-section">
+        <h3>AVCO vs. FIFO: which produces higher COGS in an inflationary environment?</h3>
+        <p class="body">When prices are <strong>rising</strong>: FIFO produces <strong>lower COGS</strong> (older, cheaper layers consumed first) → higher gross profit → higher tax. AVCO blends, landing somewhere in between.</p>
+        <p class="body">When prices are <strong>falling</strong>: FIFO produces <strong>higher COGS</strong> → lower profit. Neither method is universally "better" — it depends on your margin management goals and tax planning strategy.</p>
+      </div>
+
+      <div class="page-footer-nav">
+        <button class="pf-btn prev" onclick="goToPage(2)"><span class="arr">←</span> Previous</button>
+        <span class="pf-counter">3 / 5</span>
+        <button class="pf-btn next" onclick="goToPage(4)">Next <span class="arr">→</span></button>
+      </div>
+    </div>
+
+    <!-- ── PAGE 4: DECISION MATRIX ── -->
+    <div class="page" id="page-4">
+      <div class="page-number">Section 04 of 05</div>
+      <h2 class="page-title">Decision <span class="serif">matrix</span></h2>
+      <p class="page-lead">Use this reference during your Week 1 discovery call. Run through each dimension with your client and score them. The method with more ticks wins — but always verify against their accountant's requirements.</p>
+
+      <div class="content-section">
+        <h3>Method selection matrix</h3>
+        <div class="matrix">
+          <div class="matrix-row head">
+            <div class="matrix-cell">Factor</div>
+            <div class="matrix-cell">FIFO</div>
+            <div class="matrix-cell">AVCO</div>
+          </div>
+          <div class="matrix-row">
+            <div class="matrix-cell">Material has shelf life / expiry</div>
+            <div class="matrix-cell yes">✓ Strongly preferred</div>
+            <div class="matrix-cell no">✗ Poor match</div>
+          </div>
+          <div class="matrix-row">
+            <div class="matrix-cell">Lot / serial traceability required</div>
+            <div class="matrix-cell yes">✓ Natural fit</div>
+            <div class="matrix-cell partial">~ Works, less precise</div>
+          </div>
+          <div class="matrix-row">
+            <div class="matrix-cell">Price volatility >10% per quarter</div>
+            <div class="matrix-cell yes">✓ More accurate margins</div>
+            <div class="matrix-cell partial">~ Smooths volatility</div>
+          </div>
+          <div class="matrix-row">
+            <div class="matrix-cell">Bulk fungible materials (same grade)</div>
+            <div class="matrix-cell partial">~ Technically works</div>
+            <div class="matrix-cell yes">✓ Correct economic model</div>
+          </div>
+          <div class="matrix-row">
+            <div class="matrix-cell">GAAP / export reporting required</div>
+            <div class="matrix-cell yes">✓ Common requirement</div>
+            <div class="matrix-cell yes">✓ Also acceptable</div>
+          </div>
+          <div class="matrix-row">
+            <div class="matrix-cell">Team is new to Odoo ERP</div>
+            <div class="matrix-cell no">✗ More complexity</div>
+            <div class="matrix-cell yes">✓ Easier to manage</div>
+          </div>
+          <div class="matrix-row">
+            <div class="matrix-cell">Negative stock happens regularly</div>
+            <div class="matrix-cell no">✗ Breaks cost layers</div>
+            <div class="matrix-cell partial">~ Survives but degrades</div>
+          </div>
+          <div class="matrix-row">
+            <div class="matrix-cell">Many small POs per month (>50)</div>
+            <div class="matrix-cell partial">~ Watch table size</div>
+            <div class="matrix-cell yes">✓ Fewer layer records</div>
+          </div>
+          <div class="matrix-row">
+            <div class="matrix-cell">Per-job / project cost tracking</div>
+            <div class="matrix-cell yes">✓ Layer costs visible</div>
+            <div class="matrix-cell partial">~ Blended cost only</div>
+          </div>
+          <div class="matrix-row">
+            <div class="matrix-cell">Rising input prices, tax minimization</div>
+            <div class="matrix-cell no">✗ Higher profit reported</div>
+            <div class="matrix-cell partial">~ Moderate effect</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="content-section">
+        <h3>The hybrid approach</h3>
+        <p class="body">Odoo lets you set costing method <strong>per product category</strong>. In practice, most mid-size manufacturers end up with:</p>
+        <div class="callout">
+          <div class="callout-head">Recommended split</div>
+          <p><strong>FIFO</strong> for strategic raw materials (metals, chemicals, key imported components) where price visibility matters. <span class="pill">FIFO</span><br><br>
+          <strong>AVCO</strong> for generic consumables, packaging, and low-value MRO items where cost-layer overhead isn't worth the granularity. <span class="pill">AVCO</span><br><br>
+          <strong>Standard Price</strong> for finished goods if you want to isolate production variances from material cost variances.</p>
+        </div>
+      </div>
+
+      <div class="page-footer-nav">
+        <button class="pf-btn prev" onclick="goToPage(3)"><span class="arr">←</span> Previous</button>
+        <span class="pf-counter">4 / 5</span>
+        <button class="pf-btn next" onclick="goToPage(5)">Next <span class="arr">→</span></button>
+      </div>
+    </div>
+
+    <!-- ── PAGE 5: ODOO CONFIG ── -->
+    <div class="page" id="page-5">
+      <div class="page-number">Section 05 of 05</div>
+      <h2 class="page-title">Setting it up <span class="serif">in Odoo</span></h2>
+      <p class="page-lead">A step-by-step guide to configuring inventory valuation in Odoo 17. Do this before any stock is received — changing mid-flight requires a full revaluation exercise with your accountant.</p>
+
+      <div class="content-section">
+        <h3>Enable the accounting settings</h3>
+        <ul class="step-list">
+          <li>
+            <span class="step-num">01</span>
+            <span class="step-body">
+              <strong>Enable automated inventory valuation</strong> (Enterprise only — Community uses manual journal entries).
+              <span class="step-path">Accounting → Settings → <span>Automatic accounting for inventory</span></span>
+            </span>
+          </li>
+          <li>
+            <span class="step-num">02</span>
+            <span class="step-body">
+              <strong>Enable anglo-saxon accounting</strong> if your client reports under IFRS or US GAAP (this posts COGS at delivery, not at invoice).
+              <span class="step-path">Accounting → Settings → <span>Anglo-Saxon accounting</span></span>
+            </span>
+          </li>
+          <li>
+            <span class="step-num">03</span>
+            <span class="step-body">
+              <strong>Verify fiscal years and lock dates</strong> before any live stock movement. A misconfigured lock date causes valuation journal entries to post to a closed period.
+              <span class="step-path">Accounting → Settings → <span>Fiscal Years</span></span>
+            </span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="content-section">
+        <h3>Configure product categories</h3>
+        <ul class="step-list">
+          <li>
+            <span class="step-num">04</span>
+            <span class="step-body">
+              <strong>Create dedicated product categories</strong> for each costing method — do not mix FIFO and AVCO products in the same category.
+              <span class="step-path">Inventory → Configuration → <span>Product Categories</span></span>
+            </span>
+          </li>
+          <li>
+            <span class="step-num">05</span>
+            <span class="step-body">
+              <strong>Set Costing Method</strong> on the category (not on the product itself — product-level override is not available in standard Odoo).
+              <span class="step-path">Category → General Information → <span>Costing Method</span></span>
+            </span>
+          </li>
+          <li>
+            <span class="step-num">06</span>
+            <span class="step-body">
+              <strong>Set Inventory Valuation</strong> to <em>Automated</em> (Enterprise) or <em>Manual</em> (Community).
+              <span class="step-path">Category → General Information → <span>Inventory Valuation</span></span>
+            </span>
+          </li>
+          <li>
+            <span class="step-num">07</span>
+            <span class="step-body">
+              <strong>Assign stock input / output / valuation accounts</strong> — these must match your chart of accounts. For manufacturers, typical mapping: Stock Valuation → Inventory Asset, Stock Input → Goods Received Not Invoiced (GRNI), Stock Output → COGS.
+            </span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="content-section">
+        <h3>Validate with a test receipt</h3>
+        <ul class="step-list">
+          <li>
+            <span class="step-num">08</span>
+            <span class="step-body">Create a test product in your new category. <strong>Post a draft PO, receive it, and immediately check the generated journal entry</strong> — verify accounts, amounts, and that the valuation layer appears in Inventory → Reporting → Inventory Valuation.</span>
+          </li>
+          <li>
+            <span class="step-num">09</span>
+            <span class="step-body">Then post a manufacturing order consuming that product. <strong>Verify the COGS journal entry</strong> hits at the correct cost layer (FIFO: oldest price; AVCO: current blended price).</span>
+          </li>
+          <li>
+            <span class="step-num">10</span>
+            <span class="step-body">Run the <strong>Inventory Valuation report</strong> and reconcile the total against the trial balance. If these two numbers don't match, you have a configuration error — stop and investigate before going live.
+              <span class="step-path">Inventory → Reporting → <span>Inventory Valuation</span></span>
+            </span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="callout">
+        <div class="callout-head">Field note · from 200+ operator go-lives</div>
+        <p>The single most common valuation misconfiguration I see: the <strong>Stock Input account is set to an expense account instead of a liability/GRNI account</strong>. This causes double-booking of COGS — once on receipt, once on vendor bill. Always use a clearing (GRNI) account for Stock Input, never an expense account directly.</p>
+      </div>
+
+      <div class="page-footer-nav">
+        <button class="pf-btn prev" onclick="goToPage(4)"><span class="arr">←</span> Previous</button>
+        <span class="pf-counter">5 / 5</span>
+        <button class="pf-btn next" disabled>Next <span class="arr">→</span></button>
+      </div>
+    </div>
+
+  </div><!-- /shell -->
+</div><!-- /doc-pages -->
+
+<!-- DOC FOOTER -->
+<div class="doc-footer">
+  <div class="shell">
+    <div class="doc-footer-inner">
+      <span class="about-author">Written by Mehedi Hasan · ERP Consultant · Dhaka, Bangladesh</span>
+      <a class="back-btn" href="../index.html#lab">← Back to Lab</a>
+    </div>
+  </div>
+</div>
+
+<script>
+  const TOTAL_PAGES = 5;
+  let currentPage = 1;
+
+  function goToPage(n) {
+    if (n < 1 || n > TOTAL_PAGES) return;
+
+    // hide current
+    document.getElementById('page-' + currentPage).classList.remove('active');
+    document.querySelectorAll('.page-tab')[currentPage - 1].classList.remove('active');
+
+    currentPage = n;
+
+    // show new
+    const page = document.getElementById('page-' + currentPage);
+    page.classList.add('active');
+    document.querySelectorAll('.page-tab')[currentPage - 1].classList.add('active');
+
+    // progress bar
+    document.getElementById('prog-bar').style.width = ((currentPage / TOTAL_PAGES) * 100) + '%';
+
+    // scroll to top of content
+    document.querySelector('.doc-pages').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  // tab click
+  document.querySelectorAll('.page-tab').forEach((tab, i) => {
+    tab.addEventListener('click', () => goToPage(i + 1));
+  });
+
+  // reveal on scroll
+  const io = new IntersectionObserver((entries) => {
+    for (const e of entries) {
+      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+    }
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+</body>
+</html>

@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="Short field notes from training 100+ operators through a go-live — and why the system you ship is only half of what people will actually use on Monday morning. By Mehedi Hasan." />
+<title>0007 · Change management isn't a memo — Mehedi Hasan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap">
+<link rel="stylesheet" href="_styles.css">
+<style>
+  .pull{
+    font-family:var(--serif);font-style:italic;
+    font-size:clamp(28px,3.4vw,42px);line-height:1.2;color:var(--text);
+    margin:48px 0;padding:0;border:none;
+    max-width:18ch;letter-spacing:-0.01em;
+  }
+  .pull::before{content:"";display:block;width:36px;height:1px;background:var(--accent);margin-bottom:18px}
+
+  .field-note{
+    margin:28px 0;border:1px solid var(--border);border-radius:12px;overflow:hidden;
+    background:var(--surface);
+  }
+  .fn-hd{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:12px 18px;border-bottom:1px solid var(--border);
+    font-family:var(--mono);font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-3);
+  }
+  .fn-hd .when{color:var(--accent)}
+  .fn-body{padding:18px 22px;font-size:15px;line-height:1.65;color:var(--text-2)}
+  .fn-body strong{color:var(--text);font-weight:500}
+  .fn-body em{font-family:var(--serif);font-style:italic;color:var(--text)}
+
+  .three-up{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:28px 0}
+  .three-up .card{
+    border:1px solid var(--border);border-radius:10px;padding:18px;background:var(--surface);
+    display:flex;flex-direction:column;gap:10px;
+  }
+  .three-up .card .num{font-family:var(--mono);font-size:11px;color:var(--accent);letter-spacing:0.14em}
+  .three-up .card h4{margin:0;font-size:16px;font-weight:500;letter-spacing:-0.01em}
+  .three-up .card p{margin:0;font-size:13.5px;color:var(--text-2);line-height:1.55}
+  @media(max-width:680px){.three-up{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="grid-bg"></div>
+
+<header class="nav">
+  <div class="shell">
+    <div class="nav-inner">
+      <a class="brand" href="../index.html">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span class="brand-name"><b>Mehedi Hasan</b><em>ERP · Business Analyst</em></span>
+      </a>
+      <a class="back-link" href="../index.html#lab">← Back to Lab</a>
+    </div>
+  </div>
+</header>
+
+<section class="post-head">
+  <div class="shell">
+    <span class="eyebrow">Technical Lab · 0007</span>
+    <h1>Change management <span class="serif">isn't</span> a memo.</h1>
+    <p class="lede">Short field notes from training 100+ operators through a go-live — and why the system you ship is only half of what people will actually use on Monday morning.</p>
+    <div class="post-meta">
+      <span class="chip accent">Essay</span>
+      <span class="chip">Field notes</span>
+      <span class="chip">Adoption</span>
+    </div>
+    <div class="byline">
+      <span>Published<b>December 2025</b></span>
+      <span>Read time<b>7 minutes</b></span>
+      <span>Form<b>Essay</b></span>
+      <span>Drawn from<b>5 sites · 100+ users</b></span>
+    </div>
+  </div>
+</section>
+
+<article class="post">
+  <aside class="toc">
+    <div class="toc-k">In this essay</div>
+    <ol>
+      <li><a href="#open">The morning after</a></li>
+      <li><a href="#myth">The memo myth</a></li>
+      <li><a href="#three">Three things, repeated</a></li>
+      <li><a href="#notes">Field notes</a></li>
+      <li><a href="#close">What I tell C-levels now</a></li>
+    </ol>
+  </aside>
+
+  <div class="body">
+    <h2 id="open">The morning after</h2>
+    <p>Go-live was at 6 AM on a Saturday. By Monday at 10:14 — I remember the time because I was reading email standing up — a department head wrote: <em>"Everything is fine. The team is using the old format on paper and someone keys it in at the end of the day."</em></p>
+
+    <p>That single sentence cost the company more than the implementation. Not because anything in the software was broken. Because <strong>the change had been announced, but not absorbed</strong>.</p>
+
+    <p class="pull">A new system rolls out in a weekend. A new habit takes a quarter.</p>
+
+    <h2 id="myth">The memo myth</h2>
+    <p>Most ERP projects budget change management as a line item somewhere between "User Manual" and "Town Hall." Both deliverables get checked off. Neither one moves a person from the way they worked on Friday to the way you need them to work on Monday.</p>
+
+    <p>The memo myth is the belief that <strong>announcement equals adoption</strong>. It almost never does. Behavior is sticky. Spreadsheets are sticky. The ten-year-old workaround that one person built and the whole team relies on is the stickiest thing in the building.</p>
+
+    <div class="callout">
+      <span class="tag">Heuristic</span>
+      <p>If you can't name three people who will <em>lose status</em> from the new system, you haven't found the resistance yet.</p>
+    </div>
+
+    <h2 id="three">Three things, repeated</h2>
+    <p>Across five go-lives, the change-management tactics that actually moved adoption were small, embarrassingly low-tech, and repeated constantly.</p>
+
+    <div class="three-up">
+      <div class="card">
+        <span class="num">01</span>
+        <h4>Train on the Tuesday job</h4>
+        <p>Not "how to create a vendor." The actual sequence Rina runs from 9 AM to 5 PM on a normal Tuesday — including the awkward parts.</p>
+      </div>
+      <div class="card">
+        <span class="num">02</span>
+        <h4>Walk the floor every morning</h4>
+        <p>For two weeks post-launch, the BA stands next to operators while they do real work. No demos. No screens projected. Just stand and watch.</p>
+      </div>
+      <div class="card">
+        <span class="num">03</span>
+        <h4>Promote a champion per shift</h4>
+        <p>One operator, one shift, formally named. They don't fix bugs. They translate, defuse, and report what's actually happening.</p>
+      </div>
+    </div>
+
+    <h2 id="notes">Field notes</h2>
+
+    <div class="field-note">
+      <div class="fn-hd"><span>Note 01 · Spinning unit</span><span class="when">Day 3</span></div>
+      <div class="fn-body">
+        Floor supervisor was logging production at end-of-shift on paper, then re-typing into Odoo at the canteen during dinner. The fix wasn't a training video. <strong>It was a barcode scanner mounted on a pillar near the loom</strong>, so the entry happened where the work happened. Adoption: zero to 100% in four days.
+      </div>
+    </div>
+
+    <div class="field-note">
+      <div class="fn-hd"><span>Note 02 · Procurement</span><span class="when">Week 2</span></div>
+      <div class="fn-body">
+        Buyer kept calling vendors on WhatsApp instead of the new RFQ flow. Reason, when finally asked: <em>"The vendor doesn't read email and we've been doing it this way for nine years."</em> The right answer wasn't to retrain the buyer. <strong>It was to add a "WhatsApp out" button</strong> that drafted a templated message and logged the RFQ in the system. Tool met the human halfway.
+      </div>
+    </div>
+
+    <div class="field-note">
+      <div class="fn-hd"><span>Note 03 · Finance</span><span class="when">Week 4</span></div>
+      <div class="fn-body">
+        Senior accountant who'd been at the company 22 years was the loudest holdout. Not because he didn't understand — because he'd built the spreadsheet himself, and it was, in a way, his career. <strong>We gave him a named role: "Reconciliation Champion"</strong>, with a quarterly review owner. The spreadsheet quietly went away.
+      </div>
+    </div>
+
+    <div class="field-note">
+      <div class="fn-hd"><span>Note 04 · Quality</span><span class="when">Day 28</span></div>
+      <div class="fn-body">
+        QC team was logging defects into Odoo, but also keeping a parallel notebook "in case the system loses it." I didn't argue. I just sat with them at the morning huddle for two weeks and read the notebook out loud while pulling the same number from the system. After fourteen mornings of identical numbers, the notebook stopped appearing on the table.
+      </div>
+    </div>
+
+    <h2 id="close">What I tell C-levels now</h2>
+    <p>When I scope an enterprise engagement now, I'm explicit about the math. The software is roughly 50% of the budget and 30% of the impact. <strong>Adoption is the rest.</strong> If a leadership team isn't willing to fund the boring part — floor walks, named champions, three rounds of refresher training, a feedback loop that closes the same week — I'd rather they wait six months and start when they are.</p>
+
+    <p>Because the worst outcome for an ERP project isn't a bug. It's a quietly successful go-live with a team that, three months in, has reverted to the spreadsheets — politely, around the system, without ever telling anyone.</p>
+
+    <blockquote>
+      Change management isn't a memo. It's the patience to keep showing up on the floor until the new way of working becomes the only way anyone remembers.
+    </blockquote>
+
+    <div class="callout">
+      <span class="tag">PS</span>
+      <p>If you're scoping a rollout and want a sober view of what adoption actually costs — <a href="../index.html#contact" style="color:var(--accent)">let's talk →</a></p>
+    </div>
+  </div>
+</article>
+
+<footer>
+  <div class="shell">
+    <div class="post-foot">
+      <span class="eyebrow">Continue exploring</span>
+      <div class="next">
+        <a class="next-card" href="0008-excel-odoo-migration-checklist.html">
+          <span class="dir">Newer · 0008</span>
+          <h4>Excel → Odoo migration checklist (v3)</h4>
+          <p>The 40-item list that makes data migration feel like a weekend, not a quarter.</p>
+          <span class="arrow">→</span>
+        </a>
+        <a class="next-card disabled" href="#">
+          <span class="dir">Older · 0006</span>
+          <h4>Coming soon</h4>
+          <p>—</p>
+          <span class="arrow">→</span>
+        </a>
+      </div>
+    </div>
+    <div class="foot">
+      <span>© 2026 Mehedi Hasan · Lab / 0007</span>
+      <span><a href="../index.html#lab">↑ Back to lab index</a></span>
+    </div>
+  </div>
+</footer>
+<script src="_toc.js" defer></script>
+</body>
+</html>

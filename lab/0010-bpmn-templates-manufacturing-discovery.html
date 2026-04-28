@@ -1,0 +1,388 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="Six BPMN process map templates for manufacturing discovery — Procure-to-Pay, Plan-to-Produce, Order-to-Cash, and more. By Mehedi Hasan." />
+<title>0010 · BPMN templates for manufacturing discovery — Mehedi Hasan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap">
+<link rel="stylesheet" href="_styles.css">
+<style>
+  .tpl-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin:28px 0}
+  .tpl-card{
+    border:1px solid var(--border);border-radius:12px;
+    background:var(--surface);overflow:hidden;
+    display:flex;flex-direction:column;
+    transition:border-color .2s ease, transform .2s ease;
+  }
+  .tpl-card:hover{border-color:var(--border-2);transform:translateY(-2px)}
+  .tpl-canvas{
+    height:160px;border-bottom:1px solid var(--border);
+    background:
+      linear-gradient(to right, rgba(255,255,255,0.04) 1px, transparent 1px) 0 0/24px 24px,
+      linear-gradient(to bottom, rgba(255,255,255,0.04) 1px, transparent 1px) 0 0/24px 24px,
+      #0B0D10;
+    position:relative;
+  }
+  .tpl-canvas svg{position:absolute;inset:0;width:100%;height:100%;display:block}
+  .tpl-meta{padding:18px 20px;display:flex;flex-direction:column;gap:8px;flex:1}
+  .tpl-meta .row1{display:flex;justify-content:space-between;align-items:center;font-family:var(--mono);font-size:10.5px;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-3)}
+  .tpl-meta .row1 .accent{color:var(--accent)}
+  .tpl-meta h3{margin:4px 0 0;font-size:17px;font-weight:500;letter-spacing:-0.01em}
+  .tpl-meta p{margin:0;font-size:13.5px;color:var(--text-2);line-height:1.55}
+  .tpl-meta .foot{display:flex;justify-content:space-between;align-items:center;margin-top:8px;padding-top:14px;border-top:1px solid var(--border);font-family:var(--mono);font-size:11px;color:var(--text-3);letter-spacing:0.06em}
+  .tpl-meta .foot a{color:var(--accent)}
+  @media(max-width:680px){.tpl-grid{grid-template-columns:1fr}}
+
+  /* legend */
+  .legend{display:flex;flex-wrap:wrap;gap:18px;margin:24px 0;padding:16px 20px;border:1px solid var(--border);border-radius:10px;background:var(--surface)}
+  .legend .item{display:flex;align-items:center;gap:8px;font-family:var(--mono);font-size:11.5px;color:var(--text-2)}
+  .legend .glyph{width:22px;height:22px;flex:none;display:grid;place-items:center}
+  .legend .g-event{width:14px;height:14px;border-radius:50%;border:1.5px solid var(--accent)}
+  .legend .g-task{width:18px;height:12px;border-radius:3px;border:1.5px solid var(--text-2)}
+  .legend .g-gateway{width:14px;height:14px;border:1.5px solid var(--text-2);transform:rotate(45deg)}
+  .legend .g-end{width:14px;height:14px;border-radius:50%;border:2px solid var(--text);background:transparent}
+
+  .pack-bar{
+    margin:32px 0;padding:22px;border:1px solid oklch(0.80 0.17 155 / 0.3);border-radius:14px;
+    background:
+      radial-gradient(400px 200px at 100% 0%, oklch(0.80 0.17 155 / 0.08), transparent 70%),
+      linear-gradient(180deg,rgba(21,24,29,0.6),rgba(14,16,19,0.6));
+    display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;
+  }
+  .pack-bar h3{margin:0 0 6px;font-size:18px;font-weight:500;letter-spacing:-0.01em}
+  .pack-bar p{margin:0;font-size:13.5px;color:var(--text-2);line-height:1.5}
+  .pack-bar .meta{font-family:var(--mono);font-size:11px;color:var(--text-3);letter-spacing:0.08em;text-transform:uppercase;margin-top:8px;display:block}
+  .pack-bar .btn-dl{font-family:var(--sans);font-size:13px;font-weight:500;padding:11px 16px;border-radius:8px;background:var(--accent);color:#04140B;border:none;cursor:pointer;display:inline-flex;align-items:center;gap:8px;text-decoration:none}
+</style>
+</head>
+<body>
+<div class="grid-bg"></div>
+
+<header class="nav">
+  <div class="shell">
+    <div class="nav-inner">
+      <a class="brand" href="../index.html">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span class="brand-name"><b>Mehedi Hasan</b><em>ERP · Business Analyst</em></span>
+      </a>
+      <a class="back-link" href="../index.html#lab">← Back to Lab</a>
+    </div>
+  </div>
+</header>
+
+<section class="post-head">
+  <div class="shell">
+    <span class="eyebrow">Technical Lab · 0010</span>
+    <h1>BPMN templates for <span class="serif">manufacturing</span> discovery.</h1>
+    <p class="lede">A starter pack of process maps I use in Week 1 of every engagement — Procure-to-Pay, Plan-to-Produce, Order-to-Cash, and the awkward in-between flows that always show up by Day 3.</p>
+    <div class="post-meta">
+      <span class="chip accent">Template</span>
+      <span class="chip">.bpmn · .drawio</span>
+      <span class="chip">Discovery</span>
+      <span class="chip">Workshop-ready</span>
+    </div>
+    <div class="byline">
+      <span>Published<b>March 2026</b></span>
+      <span>Templates<b>6 included</b></span>
+      <span>License<b>CC BY 4.0</b></span>
+      <span>Tooling<b>Camunda · draw.io</b></span>
+    </div>
+  </div>
+</section>
+
+<article class="post">
+  <aside class="toc">
+    <div class="toc-k">On this page</div>
+    <ol>
+      <li><a href="#why">Why these six</a></li>
+      <li><a href="#legend">Notation legend</a></li>
+      <li><a href="#templates">The templates</a></li>
+      <li><a href="#download">Get the pack</a></li>
+    </ol>
+  </aside>
+
+  <div class="body">
+    <h2 id="why">Why these six</h2>
+    <p>I've sat through enough discovery workshops to notice the pattern: every manufacturer I work with has the same six flows. Names change. Departments change. The shape doesn't. So I keep these as <strong>blank scaffolds</strong> and walk into Day 1 with them on a wall.</p>
+    <p>What you get below isn't a finished BPMN diagram — it's a <em>starting prompt</em>. The lanes are right. The decision points are right. The actors are wrong on purpose, so the room argues productively about who owns what.</p>
+
+    <h2 id="legend">Notation legend</h2>
+    <p>Bare-bones BPMN 2.0. If your team has never seen this notation before, three glyphs cover 90% of what we need to draw on Day 1.</p>
+    <div class="legend">
+      <div class="item"><span class="glyph"><span class="g-event"></span></span>Event (start)</div>
+      <div class="item"><span class="glyph"><span class="g-task"></span></span>Task / activity</div>
+      <div class="item"><span class="glyph"><span class="g-gateway"></span></span>Gateway (decision)</div>
+      <div class="item"><span class="glyph"><span class="g-end"></span></span>End event</div>
+    </div>
+
+    <h2 id="templates">The templates</h2>
+
+    <div class="tpl-grid">
+
+      <!-- 1: Procure-to-Pay -->
+      <div class="tpl-card">
+        <div class="tpl-canvas" aria-hidden="true">
+          <svg viewBox="0 0 400 160" preserveAspectRatio="none">
+            <defs>
+              <marker id="a1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                <path d="M0,0 L10,5 L0,10 z" fill="#5D6470"/>
+              </marker>
+            </defs>
+            <g fill="none" stroke="#2A2F38" stroke-dasharray="3 4">
+              <line x1="0" y1="80" x2="400" y2="80"/>
+            </g>
+            <circle cx="30" cy="80" r="9" fill="none" stroke="oklch(0.80 0.17 155)" stroke-width="1.6"/>
+            <rect x="65" y="68" width="64" height="24" rx="3" fill="#0E1115" stroke="#9BA1AA" stroke-width="1.2"/>
+            <g transform="translate(155 80) rotate(45)"><rect x="-11" y="-11" width="22" height="22" fill="#0E1115" stroke="#9BA1AA" stroke-width="1.2"/></g>
+            <rect x="190" y="68" width="64" height="24" rx="3" fill="#0E1115" stroke="#9BA1AA" stroke-width="1.2"/>
+            <rect x="278" y="68" width="64" height="24" rx="3" fill="#0E1115" stroke="#9BA1AA" stroke-width="1.2"/>
+            <circle cx="370" cy="80" r="9" fill="none" stroke="#EDEEF0" stroke-width="2"/>
+            <g stroke="#5D6470" stroke-width="1.2" fill="none" marker-end="url(#a1)">
+              <line x1="40" y1="80" x2="62" y2="80"/>
+              <line x1="130" y1="80" x2="144" y2="80"/>
+              <line x1="166" y1="80" x2="188" y2="80"/>
+              <line x1="255" y1="80" x2="276" y2="80"/>
+              <line x1="343" y1="80" x2="361" y2="80"/>
+            </g>
+            <g stroke="#5D6470" stroke-width="1.2" fill="none" marker-end="url(#a1)" stroke-dasharray="3 3">
+              <path d="M155 92 L155 120 L222 120 L222 95"/>
+            </g>
+            <text x="158" y="115" font-family="ui-monospace,Menlo,monospace" font-size="9" fill="#5D6470">reject →</text>
+          </svg>
+        </div>
+        <div class="tpl-meta">
+          <div class="row1"><span class="accent">P2P · 01</span><span>5 lanes</span></div>
+          <h3>Procure-to-Pay</h3>
+          <p>From requisition to vendor payment, with the approval gateway and three-way match where they actually live.</p>
+          <div class="foot"><span>procure-to-pay.bpmn</span><a href="#download">Download →</a></div>
+        </div>
+      </div>
+
+      <!-- 2: Plan-to-Produce -->
+      <div class="tpl-card">
+        <div class="tpl-canvas" aria-hidden="true">
+          <svg viewBox="0 0 400 160" preserveAspectRatio="none">
+            <defs>
+              <marker id="a2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#5D6470"/></marker>
+            </defs>
+            <g stroke="#2A2F38" fill="none">
+              <line x1="0" y1="60" x2="400" y2="60" stroke-dasharray="3 4"/>
+              <line x1="0" y1="110" x2="400" y2="110" stroke-dasharray="3 4"/>
+            </g>
+            <text x="6" y="40" font-family="ui-monospace,Menlo,monospace" font-size="9" fill="#5D6470" letter-spacing="1">PLN</text>
+            <text x="6" y="90" font-family="ui-monospace,Menlo,monospace" font-size="9" fill="#5D6470" letter-spacing="1">MFG</text>
+            <circle cx="30" cy="35" r="8" fill="none" stroke="oklch(0.80 0.17 155)" stroke-width="1.6"/>
+            <rect x="58" y="24" width="60" height="22" rx="3" fill="#0E1115" stroke="#9BA1AA" stroke-width="1.2"/>
+            <rect x="138" y="24" width="60" height="22" rx="3" fill="#0E1115" stroke="#9BA1AA" stroke-width="1.2"/>
+            <rect x="138" y="76" width="60" height="22" rx="3" fill="#0E1115" stroke="#9BA1AA" stroke-width="1.2"/>
+            <rect x="222" y="76" width="60" height="22" rx="3" fill="#0E1115" stroke="#9BA1AA" stroke-width="1.2"/>
+            <g transform="translate(310 87) rotate(45)"><rect x="-10" y="-10" width="20" height="20" fill="#0E1115" stroke="#9BA1AA" stroke-width="1.2"/></g>
+            <circle cx="370" cy="87" r="8" fill="none" stroke="#EDEEF0" stroke-width="2"/>
+            <g stroke="#5D6470" stroke-width="1.2" fill="none" marker-end="url(#a2)">
+              <line x1="38" y1="35" x2="56" y2="35"/>
+              <line x1="118" y1="35" x2="136" y2="35"/>
+              <path d="M168 46 L168 76"/>
+              <line x1="198" y1="87" x2="220" y2="87"/>
+              <line x1="282" y1="87" x2="299" y2="87"/>
+              <line x1="320" y1="87" x2="362" y2="87"/>
+            </g>
+          </svg>
+        </div>
+        <div class="tpl-meta">
+          <div class="row1"><span class="accent">P2M · 02</span><span>3 lanes</span></div>
+          <h3>Plan-to-Produce</h3>
+          <p>MRP run, work order release, shop-floor execution, and the QC gateway that decides what flows back upstream.</p>
+          <div class="foot"><span>plan-to-produce.bpmn</span><a href="#download">Download →</a></div>
+        </div>
+      </div>
+
+      <!-- 3: Order-to-Cash -->
+      <div class="tpl-card">
+        <div class="tpl-canvas" aria-hidden="true">
+          <svg viewBox="0 0 400 160" preserveAspectRatio="none">
+            <defs><marker id="a3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#5D6470"/></marker></defs>
+            <g fill="none" stroke="#2A2F38" stroke-dasharray="3 4"><line x1="0" y1="80" x2="400" y2="80"/></g>
+            <circle cx="26" cy="80" r="9" fill="none" stroke="oklch(0.80 0.17 155)" stroke-width="1.6"/>
+            <rect x="56" y="68" width="56" height="24" rx="3" fill="#0E1115" stroke="#9BA1AA" stroke-width="1.2"/>
+            <rect x="128" y="68" width="56" height="24" rx="3" fill="#0E1115" stroke="#9BA1AA" stroke-width="1.2"/>
+            <rect x="200" y="68" width="56" height="24" rx="3" fill="#0E1115" stroke="#9BA1AA" stroke-width="1.2"/>
+            <rect x="272" y="68" width="56" height="24" rx="3" fill="#0E1115" stroke="#9BA1AA" stroke-width="1.2"/>
+            <circle cx="368" cy="80" r="9" fill="none" stroke="#EDEEF0" stroke-width="2"/>
+            <g stroke="#5D6470" stroke-width="1.2" fill="none" marker-end="url(#a3)">
+              <line x1="36" y1="80" x2="54" y2="80"/>
+              <line x1="112" y1="80" x2="126" y2="80"/>
+              <line x1="184" y1="80" x2="198" y2="80"/>
+              <line x1="256" y1="80" x2="270" y2="80"/>
+              <line x1="328" y1="80" x2="358" y2="80"/>
+            </g>
+            <circle cx="160" cy="125" r="9" fill="#0E1115" stroke="#9BA1AA" stroke-width="1.2"/>
+            <circle cx="160" cy="125" r="6" fill="none" stroke="#9BA1AA" stroke-width="1"/>
+            <line x1="160" y1="125" x2="160" y2="121" stroke="#9BA1AA"/>
+            <line x1="160" y1="125" x2="163" y2="125" stroke="#9BA1AA"/>
+            <text x="174" y="129" font-family="ui-monospace,Menlo,monospace" font-size="9" fill="#5D6470">+30 days</text>
+          </svg>
+        </div>
+        <div class="tpl-meta">
+          <div class="row1"><span class="accent">O2C · 03</span><span>4 lanes</span></div>
+          <h3>Order-to-Cash</h3>
+          <p>Quote, order, ship, invoice, dunning. With the boundary timer that catches receivables before finance does.</p>
+          <div class="foot"><span>order-to-cash.bpmn</span><a href="#download">Download →</a></div>
+        </div>
+      </div>
+
+      <!-- 4: Quality & NCR -->
+      <div class="tpl-card">
+        <div class="tpl-canvas" aria-hidden="true">
+          <svg viewBox="0 0 400 160" preserveAspectRatio="none">
+            <defs><marker id="a4" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#5D6470"/></marker></defs>
+            <circle cx="30" cy="80" r="9" fill="none" stroke="oklch(0.80 0.17 155)" stroke-width="1.6"/>
+            <rect x="60" y="68" width="60" height="24" rx="3" fill="#0E1115" stroke="#9BA1AA" stroke-width="1.2"/>
+            <g transform="translate(160 80) rotate(45)"><rect x="-13" y="-13" width="26" height="26" fill="#0E1115" stroke="oklch(0.80 0.17 155)" stroke-width="1.4"/></g>
+            <rect x="200" y="40" width="70" height="22" rx="3" fill="#0E1115" stroke="#9BA1AA" stroke-width="1.2"/>
+            <rect x="200" y="98" width="70" height="22" rx="3" fill="#0E1115" stroke="#9BA1AA" stroke-width="1.2"/>
+            <rect x="290" y="68" width="60" height="24" rx="3" fill="#0E1115" stroke="#9BA1AA" stroke-width="1.2"/>
+            <circle cx="378" cy="80" r="9" fill="none" stroke="#EDEEF0" stroke-width="2"/>
+            <g stroke="#5D6470" stroke-width="1.2" fill="none" marker-end="url(#a4)">
+              <line x1="40" y1="80" x2="58" y2="80"/>
+              <line x1="120" y1="80" x2="148" y2="80"/>
+              <path d="M173 71 L173 51 L198 51"/>
+              <path d="M173 89 L173 109 L198 109"/>
+              <path d="M270 51 L290 80"/>
+              <path d="M270 109 L290 80"/>
+              <line x1="350" y1="80" x2="368" y2="80"/>
+            </g>
+            <text x="178" y="48" font-family="ui-monospace,Menlo,monospace" font-size="9" fill="oklch(0.80 0.17 155)">pass</text>
+            <text x="178" y="120" font-family="ui-monospace,Menlo,monospace" font-size="9" fill="#9BA1AA">fail → NCR</text>
+          </svg>
+        </div>
+        <div class="tpl-meta">
+          <div class="row1"><span class="accent">QC · 04</span><span>2 lanes</span></div>
+          <h3>QC &amp; non-conformance</h3>
+          <p>Inspection, deviation, rework loop. Always more contested in the workshop than the actual production flow.</p>
+          <div class="foot"><span>qc-ncr.bpmn</span><a href="#download">Download →</a></div>
+        </div>
+      </div>
+
+      <!-- 5: Inventory transfer -->
+      <div class="tpl-card">
+        <div class="tpl-canvas" aria-hidden="true">
+          <svg viewBox="0 0 400 160" preserveAspectRatio="none">
+            <defs><marker id="a5" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#5D6470"/></marker></defs>
+            <g fill="none" stroke="#2A2F38" stroke-dasharray="3 4"><line x1="0" y1="55" x2="400" y2="55"/><line x1="0" y1="105" x2="400" y2="105"/></g>
+            <text x="6" y="40" font-family="ui-monospace,Menlo,monospace" font-size="9" fill="#5D6470" letter-spacing="1">SRC</text>
+            <text x="6" y="135" font-family="ui-monospace,Menlo,monospace" font-size="9" fill="#5D6470" letter-spacing="1">DST</text>
+            <circle cx="30" cy="30" r="8" fill="none" stroke="oklch(0.80 0.17 155)" stroke-width="1.6"/>
+            <rect x="60" y="20" width="60" height="20" rx="3" fill="#0E1115" stroke="#9BA1AA" stroke-width="1.2"/>
+            <rect x="140" y="20" width="60" height="20" rx="3" fill="#0E1115" stroke="#9BA1AA" stroke-width="1.2"/>
+            <rect x="220" y="125" width="60" height="20" rx="3" fill="#0E1115" stroke="#9BA1AA" stroke-width="1.2"/>
+            <rect x="300" y="125" width="60" height="20" rx="3" fill="#0E1115" stroke="#9BA1AA" stroke-width="1.2"/>
+            <circle cx="378" cy="135" r="8" fill="none" stroke="#EDEEF0" stroke-width="2"/>
+            <g stroke="#5D6470" stroke-width="1.2" fill="none" marker-end="url(#a5)">
+              <line x1="38" y1="30" x2="58" y2="30"/>
+              <line x1="120" y1="30" x2="138" y2="30"/>
+              <path d="M170 40 L170 80 L250 80 L250 123"/>
+              <line x1="280" y1="135" x2="298" y2="135"/>
+              <line x1="360" y1="135" x2="370" y2="135"/>
+            </g>
+            <text x="172" y="76" font-family="ui-monospace,Menlo,monospace" font-size="9" fill="#5D6470">in transit</text>
+          </svg>
+        </div>
+        <div class="tpl-meta">
+          <div class="row1"><span class="accent">INV · 05</span><span>2 lanes</span></div>
+          <h3>Inter-warehouse transfer</h3>
+          <p>Pick, ship, in-transit, receipt. The "in transit" state is where most stock loss arguments begin.</p>
+          <div class="foot"><span>inv-transfer.bpmn</span><a href="#download">Download →</a></div>
+        </div>
+      </div>
+
+      <!-- 6: Discovery interview -->
+      <div class="tpl-card">
+        <div class="tpl-canvas" aria-hidden="true">
+          <svg viewBox="0 0 400 160" preserveAspectRatio="none">
+            <defs><marker id="a6" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#5D6470"/></marker></defs>
+            <g fill="none" stroke="#2A2F38" stroke-dasharray="3 4"><line x1="0" y1="80" x2="400" y2="80"/></g>
+            <circle cx="26" cy="80" r="9" fill="none" stroke="oklch(0.80 0.17 155)" stroke-width="1.6"/>
+            <rect x="56" y="68" width="50" height="24" rx="3" fill="#0E1115" stroke="#9BA1AA" stroke-width="1.2"/>
+            <rect x="120" y="68" width="50" height="24" rx="3" fill="#0E1115" stroke="#9BA1AA" stroke-width="1.2"/>
+            <rect x="184" y="68" width="50" height="24" rx="3" fill="#0E1115" stroke="#9BA1AA" stroke-width="1.2"/>
+            <rect x="248" y="68" width="50" height="24" rx="3" fill="#0E1115" stroke="#9BA1AA" stroke-width="1.2"/>
+            <rect x="312" y="68" width="50" height="24" rx="3" fill="#0E1115" stroke="#9BA1AA" stroke-width="1.2"/>
+            <circle cx="378" cy="80" r="9" fill="none" stroke="#EDEEF0" stroke-width="2"/>
+            <g stroke="#5D6470" stroke-width="1.2" fill="none" marker-end="url(#a6)">
+              <line x1="36" y1="80" x2="54" y2="80"/>
+              <line x1="106" y1="80" x2="118" y2="80"/>
+              <line x1="170" y1="80" x2="182" y2="80"/>
+              <line x1="234" y1="80" x2="246" y2="80"/>
+              <line x1="298" y1="80" x2="310" y2="80"/>
+              <line x1="362" y1="80" x2="368" y2="80"/>
+            </g>
+            <g font-family="ui-monospace,Menlo,monospace" font-size="8" fill="#5D6470" letter-spacing="0.5">
+              <text x="62" y="108">scope</text>
+              <text x="126" y="108">map</text>
+              <text x="190" y="108">pain</text>
+              <text x="254" y="108">data</text>
+              <text x="318" y="108">recap</text>
+            </g>
+          </svg>
+        </div>
+        <div class="tpl-meta">
+          <div class="row1"><span class="accent">WS · 06</span><span>1 lane</span></div>
+          <h3>Stakeholder discovery interview</h3>
+          <p>The 45-minute conversation flow. Use it as the agenda; mark it up live; ship it as the meeting notes.</p>
+          <div class="foot"><span>discovery-interview.bpmn</span><a href="#download">Download →</a></div>
+        </div>
+      </div>
+
+    </div>
+
+    <h2 id="download">Get the pack</h2>
+    <p>One ZIP. Six diagrams in <code>.bpmn</code> (Camunda Modeler), <code>.drawio</code>, and <code>.png</code> for the wall. Lanes pre-named in English; rename freely.</p>
+
+    <div class="pack-bar">
+      <div>
+        <h3>BPMN Discovery Pack v3</h3>
+        <p>Six templates · three formats each · CC BY 4.0.</p>
+        <span class="meta">ZIP · 184 KB · updated MAR 2026</span>
+      </div>
+      <a class="btn-dl" href="#" onclick="event.preventDefault()">Download pack <span>↓</span></a>
+    </div>
+
+    <blockquote>
+      A blank canvas in front of ten department heads is a recipe for silence. A wrong diagram is a recipe for a real conversation.
+    </blockquote>
+
+    <p>Tip from the field: print the templates A3, lay them on the table, and hand out red pens. The first 20 minutes will tell you more about the business than any spreadsheet you'll be sent later.</p>
+  </div>
+</article>
+
+<footer>
+  <div class="shell">
+    <div class="post-foot">
+      <span class="eyebrow">Continue exploring</span>
+      <div class="next">
+        <a class="next-card" href="0011-odoo-inventory-valuation-cheatsheet.html">
+          <span class="dir">Newer · 0011</span>
+          <h4>Odoo inventory valuation cheatsheet</h4>
+          <p>FIFO vs. weighted avg — when each actually makes sense on the factory floor.</p>
+          <span class="arrow">→</span>
+        </a>
+        <a class="next-card" href="0009-uat-script-200-users-ago.html">
+          <span class="dir">Older · 0009</span>
+          <h4>The UAT script I wish I had 200 users ago</h4>
+          <p>On test cases that surface real operational edge cases, not happy paths.</p>
+          <span class="arrow">→</span>
+        </a>
+      </div>
+    </div>
+    <div class="foot">
+      <span>© 2026 Mehedi Hasan · Lab / 0010</span>
+      <span><a href="../index.html#lab">↑ Back to lab index</a></span>
+    </div>
+  </div>
+</footer>
+<script src="_toc.js" defer></script>
+</body>
+</html>

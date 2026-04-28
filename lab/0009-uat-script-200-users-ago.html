@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="A field essay on writing UAT test cases that surface real operational edge cases — not the happy paths a vendor would demo on a Tuesday. By Mehedi Hasan." />
+<title>0009 · The UAT script I wish I had 200 users ago — Mehedi Hasan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap">
+<link rel="stylesheet" href="_styles.css">
+<style>
+  .pull{
+    font-family:var(--serif);font-style:italic;
+    font-size:clamp(28px,3.4vw,42px);line-height:1.2;color:var(--text);
+    margin:48px 0;padding:0;border:none;
+    max-width:18ch;letter-spacing:-0.01em;
+  }
+  .pull::before{content:"";display:block;width:36px;height:1px;background:var(--accent);margin-bottom:18px}
+
+  .case-pair{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:24px 0}
+  .case-pair > div{
+    border:1px solid var(--border);border-radius:10px;padding:18px;
+    background:var(--surface);
+  }
+  .case-pair h4{margin:0 0 10px;font-family:var(--mono);font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-3);font-weight:400}
+  .case-pair .bad h4{color:#C76A6A}
+  .case-pair .good h4{color:var(--accent)}
+  .case-pair p{font-size:14px;line-height:1.6;color:var(--text-2);margin:0}
+  .case-pair p code{font-size:0.92em}
+  @media(max-width:680px){.case-pair{grid-template-columns:1fr}}
+
+  .kv{display:grid;grid-template-columns:140px 1fr;gap:8px 18px;margin:18px 0;padding:18px 22px;border:1px solid var(--border);border-radius:10px;background:var(--surface);font-family:var(--mono);font-size:13px}
+  .kv .k{color:var(--text-3);letter-spacing:0.08em;text-transform:uppercase;font-size:10.5px;align-self:center}
+  .kv .v{color:var(--text)}
+</style>
+</head>
+<body>
+<div class="grid-bg"></div>
+
+<header class="nav">
+  <div class="shell">
+    <div class="nav-inner">
+      <a class="brand" href="../index.html">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span class="brand-name"><b>Mehedi Hasan</b><em>ERP · Business Analyst</em></span>
+      </a>
+      <a class="back-link" href="../index.html#lab">← Back to Lab</a>
+    </div>
+  </div>
+</header>
+
+<section class="post-head">
+  <div class="shell">
+    <span class="eyebrow">Technical Lab · 0009</span>
+    <h1>The UAT script I wish I had <span class="serif">200 users</span> ago.</h1>
+    <p class="lede">A short field essay on writing test cases that surface the real operational edge cases — not the happy paths a vendor would demo on a Tuesday.</p>
+    <div class="post-meta">
+      <span class="chip accent">Essay</span>
+      <span class="chip">UAT</span>
+      <span class="chip">Field notes</span>
+    </div>
+    <div class="byline">
+      <span>Published<b>February 2026</b></span>
+      <span>Read time<b>9 minutes</b></span>
+      <span>Form<b>Essay</b></span>
+      <span>Drawn from<b>5 go-lives</b></span>
+    </div>
+  </div>
+</section>
+
+<article class="post">
+  <aside class="toc">
+    <div class="toc-k">In this essay</div>
+    <ol>
+      <li><a href="#open">A confession</a></li>
+      <li><a href="#why">Why happy paths lie</a></li>
+      <li><a href="#shape">The shape of a useful script</a></li>
+      <li><a href="#examples">Two cases, side by side</a></li>
+      <li><a href="#close">What I do differently now</a></li>
+    </ol>
+  </aside>
+
+  <div class="body">
+    <h2 id="open">A confession</h2>
+    <p>The first UAT script I ever wrote was 187 cases long. Every case passed. Two weeks after go-live, the procurement team told me they were running parallel spreadsheets because <em>the system couldn't handle a partial GRN against a multi-currency PO with a freight charge tied to a different vendor</em>. I had tested partial GRN. I had tested multi-currency. I had tested freight. I had not tested <strong>the messy combination an actual buyer faces on a Tuesday afternoon</strong>.</p>
+
+    <p>That sentence is the entire essay. The rest is just craft.</p>
+
+    <p class="pull">Happy paths pass UAT. Tuesday afternoons fail it.</p>
+
+    <h2 id="why">Why happy paths lie</h2>
+    <p>UAT is the last line of defense against an ERP that is technically correct and operationally useless. But most scripts are written by the people closest to the configuration — the consultant, the integrator, the BA — which means they are written from <strong>inside</strong> the system. They walk forward through screens. They check that buttons do what the spec said.</p>
+
+    <p>Operations doesn't walk forward through screens. Operations walks forward through <em>days</em>. A script that doesn't account for that will catch typos and miss the things that actually break a business.</p>
+
+    <h2 id="shape">The shape of a useful script</h2>
+    <p>Here's the structure I land on now, after enough painful Mondays:</p>
+
+    <ol>
+      <li><strong>Anchor each case to a person, a moment, and a constraint.</strong> Not "user creates SO with multiple lines," but "Rina, on the last working day of the month, reopens an SO that was already partially shipped to add an urgent line item."</li>
+      <li><strong>Force one variable off the happy path.</strong> A late vendor. A wrong currency. A missing approval. A barcode that doesn't scan. The system has to fail gracefully or the user will work around it.</li>
+      <li><strong>Define the failure mode out loud.</strong> If the case fails, what does Rina actually do at her desk? If the answer is "call IT," you haven't designed for production.</li>
+      <li><strong>Tie the case to a measurable result, not a screen state.</strong> "Stock value reconciles to the source POs to the rupee" is a UAT case. "Inventory page loads" is a smoke test.</li>
+    </ol>
+
+    <h2 id="examples">Two cases, side by side</h2>
+    <p>Same intent, two scripts. The left is what I used to write. The right is what I write now.</p>
+
+    <div class="case-pair">
+      <div class="bad">
+        <h4>Before · happy path</h4>
+        <p>Create a Purchase Order with 3 lines, validate, receive in full, post the bill, register payment.<br/><br/><strong>Pass criteria:</strong> all four documents reach "Done."</p>
+      </div>
+      <div class="good">
+        <h4>After · operational</h4>
+        <p>Rina raises a PO in <code>USD</code> for a vendor who delivers in two split shipments — one short, one over. The short one arrives on the last day of the month; the over arrives next quarter. Freight is invoiced separately by a forwarder.<br/><br/><strong>Pass criteria:</strong> stock value, COGS and FX gain/loss reconcile to the source documents at month-end close.</p>
+      </div>
+    </div>
+
+    <p>The first version takes twelve minutes to run. It will pass. The second version takes forty minutes and exposes three configuration gaps before lunch — none of which would have surfaced before live operations.</p>
+
+    <div class="callout">
+      <span class="tag">Heuristic</span>
+      <p>If you can run a UAT case without ever asking an end user a question, the case is probably testing the software, not the business.</p>
+    </div>
+
+    <h2>What goes in the script header</h2>
+    <p>Every case I write now starts with the same six fields. They look bureaucratic. They aren't — they're the difference between a tester who knows what they're doing and a tester who's politely clicking through.</p>
+
+    <div class="kv">
+      <span class="k">ID</span><span class="v">UAT-PROC-014</span>
+      <span class="k">Persona</span><span class="v">Rina · Procurement officer · 4 yrs tenure</span>
+      <span class="k">Trigger</span><span class="v">Last working day of fiscal month</span>
+      <span class="k">Constraint</span><span class="v">Vendor splits delivery; freight invoiced separately</span>
+      <span class="k">Measurable</span><span class="v">FX gain/loss reconciles to ±0.5%</span>
+      <span class="k">Fail mode</span><span class="v">Manual journal required → flag to controller</span>
+    </div>
+
+    <h2 id="close">What I do differently now</h2>
+    <p>Three things, none of them complicated.</p>
+
+    <p><strong>I write the script with operations, not for them.</strong> The procurement lead writes their own cases for two hours, in their own words, before I touch them. I add the technical scaffolding afterward. The cases are messier. They're also right.</p>
+
+    <p><strong>I budget for the second-week bug.</strong> The bugs that surface in UAT week one are configuration. The bugs that surface in week two are <em>workflow</em> — and you only find them by running a full operational cycle, not a screen tour. I build a 5-day "shadow week" into the plan where users do their real job inside the system, in parallel with the old one. It costs time. It saves a quarter.</p>
+
+    <p><strong>I ban the word "works."</strong> A case doesn't <em>work</em>. It produces a number, a document, a state — and that number, document or state either reconciles with the business or it doesn't. "Works" is how you ship 187 green checkmarks and a procurement team running spreadsheets in the corner.</p>
+
+    <blockquote>
+      The script is not the test. The test is whether your operations team will, unprompted, reach for the system instead of the spreadsheet on Tuesday afternoon.
+    </blockquote>
+
+    <p>If they do, you didn't pass UAT — you passed change management. The script just got you in the door.</p>
+
+    <div class="callout">
+      <span class="tag">PS</span>
+      <p>The companion utility for this piece is <a href="0008-excel-odoo-migration-checklist.html" style="color:var(--accent)">the migration checklist</a> — same philosophy, different artifact.</p>
+    </div>
+  </div>
+</article>
+
+<footer>
+  <div class="shell">
+    <div class="post-foot">
+      <span class="eyebrow">Continue exploring</span>
+      <div class="next">
+        <a class="next-card" href="0010-bpmn-templates-manufacturing-discovery.html">
+          <span class="dir">Newer · 0010</span>
+          <h4>BPMN templates for manufacturing discovery</h4>
+          <p>A starter pack of process maps I use in Week 1 of every engagement.</p>
+          <span class="arrow">→</span>
+        </a>
+        <a class="next-card" href="0008-excel-odoo-migration-checklist.html">
+          <span class="dir">Older · 0008</span>
+          <h4>Excel → Odoo migration checklist (v3)</h4>
+          <p>The 40-item list that makes data migration feel like a weekend, not a quarter.</p>
+          <span class="arrow">→</span>
+        </a>
+      </div>
+    </div>
+    <div class="foot">
+      <span>© 2026 Mehedi Hasan · Lab / 0009</span>
+      <span><a href="../index.html#lab">↑ Back to lab index</a></span>
+    </div>
+  </div>
+</footer>
+<script src="_toc.js" defer></script>
+</body>
+</html>

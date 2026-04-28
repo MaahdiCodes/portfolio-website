@@ -1,0 +1,292 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="The 40-item Excel to Odoo migration checklist — field-tested across five manufacturing go-lives. By Mehedi Hasan." />
+<title>0008 · Excel → Odoo migration checklist (v3) — Mehedi Hasan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap">
+<link rel="stylesheet" href="_styles.css">
+<style>
+  .phase{margin:32px 0}
+  .phase-hd{
+    display:flex;align-items:baseline;gap:14px;
+    padding:14px 0;border-bottom:1px solid var(--border);
+    margin-bottom:0;
+  }
+  .phase-hd .num{font-family:var(--mono);font-size:11px;color:var(--accent);letter-spacing:0.14em;text-transform:uppercase}
+  .phase-hd h2{margin:0;font-size:22px;font-weight:500;letter-spacing:-0.02em}
+  .phase-hd .right{margin-left:auto;font-family:var(--mono);font-size:11px;color:var(--text-3);letter-spacing:0.08em;text-transform:uppercase}
+  .phase-desc{font-size:14.5px;color:var(--text-2);line-height:1.6;margin:14px 0 18px}
+
+  .check{list-style:none;padding:0;margin:0;border:1px solid var(--border);border-radius:10px;overflow:hidden;background:var(--surface)}
+  .check li{
+    display:grid;grid-template-columns:36px 1fr 110px 90px;
+    gap:14px;align-items:start;
+    padding:14px 18px;border-bottom:1px solid var(--border);
+    font-size:14px;color:var(--text);
+  }
+  .check li:last-child{border-bottom:none}
+  .check li:hover{background:rgba(255,255,255,0.012)}
+  .check .id{font-family:var(--mono);font-size:11px;color:var(--text-3);letter-spacing:0.06em;padding-top:4px}
+  .check .text{line-height:1.55}
+  .check .text .sub{display:block;color:var(--text-2);font-size:13px;margin-top:4px}
+  .check .owner{font-family:var(--mono);font-size:11px;color:var(--text-2);letter-spacing:0.04em;text-align:right;padding-top:4px}
+  .check .owner small{display:block;color:var(--text-3);font-size:10px;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:3px}
+  .check .pill{
+    justify-self:end;align-self:start;font-family:var(--mono);font-size:10px;letter-spacing:0.1em;text-transform:uppercase;
+    padding:4px 8px;border-radius:4px;border:1px solid var(--border-2);color:var(--text-2);background:rgba(0,0,0,0.2);
+    margin-top:2px;
+  }
+  .check .pill.crit{color:#E1A66B;border-color:rgba(225,166,107,0.4)}
+  .check .pill.must{color:var(--accent);border-color:oklch(0.80 0.17 155 / 0.4)}
+  .check .pill.nice{color:var(--text-3)}
+  @media(max-width:680px){
+    .check li{grid-template-columns:32px 1fr;gap:10px}
+    .check .owner,.check .pill{grid-column:2;text-align:left;justify-self:start;margin-top:2px}
+  }
+
+  .summary-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin:28px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+  .summary-cell{padding:18px 18px;border-right:1px solid var(--border)}
+  .summary-cell:last-child{border-right:none}
+  .summary-cell .k{font-family:var(--mono);font-size:10.5px;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-3)}
+  .summary-cell .v{font-size:22px;font-weight:500;letter-spacing:-0.02em;margin-top:6px;color:var(--text)}
+  .summary-cell .v.accent{color:var(--accent)}
+  @media(max-width:680px){.summary-grid{grid-template-columns:repeat(2,1fr)}.summary-cell:nth-child(2){border-right:none}.summary-cell:nth-child(1),.summary-cell:nth-child(2){border-bottom:1px solid var(--border)}}
+
+  .legend-pills{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0 0}
+  .legend-pills .pill{font-family:var(--mono);font-size:10.5px;letter-spacing:0.1em;text-transform:uppercase;padding:5px 10px;border-radius:5px;border:1px solid var(--border-2);color:var(--text-2)}
+  .legend-pills .pill.crit{color:#E1A66B;border-color:rgba(225,166,107,0.4)}
+  .legend-pills .pill.must{color:var(--accent);border-color:oklch(0.80 0.17 155 / 0.4)}
+
+  .download-strip{
+    display:flex;align-items:center;justify-content:space-between;gap:16px;
+    margin:32px 0 0;padding:18px 22px;
+    border:1px solid var(--border);border-radius:12px;
+    background:linear-gradient(180deg,rgba(21,24,29,0.6),rgba(14,16,19,0.6));
+  }
+  .download-strip .file{display:flex;align-items:center;gap:14px;font-family:var(--mono);font-size:13px;color:var(--text)}
+  .download-strip .file .icon{width:36px;height:42px;border:1px solid var(--border-2);border-radius:5px;display:grid;place-items:center;font-size:9px;letter-spacing:0.1em;color:var(--text-3);background:#0E1115;flex:none}
+  .download-strip .meta{display:block;font-family:var(--mono);font-size:11px;color:var(--text-3);letter-spacing:0.06em;text-transform:uppercase;margin-top:3px}
+  .download-strip .btn-dl{font-family:var(--sans);font-size:13px;font-weight:500;padding:10px 14px;border-radius:8px;background:var(--accent);color:#04140B;border:none;cursor:pointer;display:inline-flex;align-items:center;gap:8px;text-decoration:none}
+</style>
+</head>
+<body>
+<div class="grid-bg"></div>
+
+<header class="nav">
+  <div class="shell">
+    <div class="nav-inner">
+      <a class="brand" href="../index.html">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span class="brand-name"><b>Mehedi Hasan</b><em>ERP · Business Analyst</em></span>
+      </a>
+      <a class="back-link" href="../index.html#lab">← Back to Lab</a>
+    </div>
+  </div>
+</header>
+
+<section class="post-head">
+  <div class="shell">
+    <span class="eyebrow">Technical Lab · 0008</span>
+    <h1>Excel → Odoo migration <span class="serif">checklist</span> (v3).</h1>
+    <p class="lede">The 40-item list that makes data migration feel like a weekend, not a quarter. Field-tested across five manufacturing go-lives — refined every time something blew up at 11 PM the night before launch.</p>
+    <div class="post-meta">
+      <span class="chip accent">Checklist</span>
+      <span class="chip">Markdown</span>
+      <span class="chip">Pre-launch</span>
+      <span class="chip">v3 · April 2026</span>
+    </div>
+    <div class="byline">
+      <span>Published<b>January 2026</b></span>
+      <span>Items<b>40</b></span>
+      <span>Phases<b>5</b></span>
+      <span>Battle-tested on<b>5 go-lives</b></span>
+    </div>
+  </div>
+</section>
+
+<article class="post">
+  <aside class="toc">
+    <div class="toc-k">Phases</div>
+    <ol>
+      <li><a href="#phase-1">1 · Inventory of truth</a></li>
+      <li><a href="#phase-2">2 · Cleanse &amp; normalize</a></li>
+      <li><a href="#phase-3">3 · Map &amp; transform</a></li>
+      <li><a href="#phase-4">4 · Load &amp; reconcile</a></li>
+      <li><a href="#phase-5">5 · Cutover &amp; sign-off</a></li>
+      <li><a href="#download">Download MD</a></li>
+    </ol>
+  </aside>
+
+  <div class="body">
+    <p>I've watched two go-lives slip a month because someone underestimated migration. The work is not glamorous. It is also, more than anything else, where ERP projects quietly fail. This is the list I run, in order, for every engagement.</p>
+
+    <div class="summary-grid">
+      <div class="summary-cell"><div class="k">Items</div><div class="v">40</div></div>
+      <div class="summary-cell"><div class="k">Critical</div><div class="v accent">12</div></div>
+      <div class="summary-cell"><div class="k">Must-do</div><div class="v">21</div></div>
+      <div class="summary-cell"><div class="k">Nice-to-have</div><div class="v">7</div></div>
+    </div>
+
+    <div class="legend-pills">
+      <span class="pill crit">Critical</span>
+      <span class="pill must">Must-do</span>
+      <span class="pill nice">Nice-to-have</span>
+    </div>
+
+    <!-- PHASE 1 -->
+    <div class="phase" id="phase-1">
+      <div class="phase-hd">
+        <span class="num">Phase 01</span>
+        <h2>Inventory of truth</h2>
+        <span class="right">~ 1 week</span>
+      </div>
+      <p class="phase-desc">Find every spreadsheet, every Access database, every WhatsApp group where data lives. If you skip this, you'll discover the "real" master list two weeks after go-live.</p>
+
+      <ul class="check">
+        <li><span class="id">01</span><span class="text">List every system, sheet and folder where business data currently lives.<span class="sub">Include the "shadow" spreadsheets people maintain on their own laptops.</span></span><span class="owner"><small>Owner</small>BA + Ops Lead</span><span class="pill crit">Critical</span></li>
+        <li><span class="id">02</span><span class="text">For each source, name the human owner — not the department.<span class="sub">A department doesn't answer email at 9 PM during cutover.</span></span><span class="owner"><small>Owner</small>BA</span><span class="pill must">Must-do</span></li>
+        <li><span class="id">03</span><span class="text">Snapshot row counts and last-modified dates per sheet.<span class="sub">You're going to need this for reconciliation later.</span></span><span class="owner"><small>Owner</small>Data Lead</span><span class="pill must">Must-do</span></li>
+        <li><span class="id">04</span><span class="text">Flag duplicate masters (e.g. two customer lists, three product catalogs).<span class="sub">Decide which is canonical before anyone touches a transformation script.</span></span><span class="owner"><small>Owner</small>BA + Finance</span><span class="pill crit">Critical</span></li>
+        <li><span class="id">05</span><span class="text">Identify all external feeds (banks, customs, marketplace, EDI).</span><span class="owner"><small>Owner</small>IT</span><span class="pill must">Must-do</span></li>
+        <li><span class="id">06</span><span class="text">Document the data dictionary in business language, not column names.</span><span class="owner"><small>Owner</small>BA</span><span class="pill must">Must-do</span></li>
+        <li><span class="id">07</span><span class="text">Confirm legal data retention requirements per object class.</span><span class="owner"><small>Owner</small>Legal / Finance</span><span class="pill nice">Nice-to-have</span></li>
+        <li><span class="id">08</span><span class="text">Freeze the source spreadsheets in a "before" backup folder.</span><span class="owner"><small>Owner</small>IT</span><span class="pill crit">Critical</span></li>
+      </ul>
+    </div>
+
+    <!-- PHASE 2 -->
+    <div class="phase" id="phase-2">
+      <div class="phase-hd">
+        <span class="num">Phase 02</span>
+        <h2>Cleanse &amp; normalize</h2>
+        <span class="right">~ 2 weeks</span>
+      </div>
+      <p class="phase-desc">The painful one. Most migration disasters live here. Don't let anyone tell you a tool will solve it — a person has to make decisions, line by line.</p>
+
+      <ul class="check">
+        <li><span class="id">09</span><span class="text">De-duplicate customer master on tax ID + normalized name.<span class="sub">Matching on name alone is how you end up with three "ABC Trading."</span></span><span class="owner"><small>Owner</small>Sales + Finance</span><span class="pill crit">Critical</span></li>
+        <li><span class="id">10</span><span class="text">Standardize units of measure across product master.</span><span class="owner"><small>Owner</small>Ops</span><span class="pill crit">Critical</span></li>
+        <li><span class="id">11</span><span class="text">Validate currency codes against ISO-4217.</span><span class="owner"><small>Owner</small>Finance</span><span class="pill must">Must-do</span></li>
+        <li><span class="id">12</span><span class="text">Resolve "unknown vendor" / "misc supplier" catch-all entries.</span><span class="owner"><small>Owner</small>Procurement</span><span class="pill must">Must-do</span></li>
+        <li><span class="id">13</span><span class="text">Decide the cut-off rule for open vs. closed transactions.<span class="sub">Open as of which date? Counted in which period? Get finance to sign this in writing.</span></span><span class="owner"><small>Owner</small>Finance</span><span class="pill crit">Critical</span></li>
+        <li><span class="id">14</span><span class="text">Flag and isolate non-ASCII data that breaks downstream tools.</span><span class="owner"><small>Owner</small>Data Lead</span><span class="pill must">Must-do</span></li>
+        <li><span class="id">15</span><span class="text">Scrub PII from non-production environments.</span><span class="owner"><small>Owner</small>IT</span><span class="pill must">Must-do</span></li>
+        <li><span class="id">16</span><span class="text">Enrich missing GL codes against the new chart of accounts.</span><span class="owner"><small>Owner</small>Finance</span><span class="pill crit">Critical</span></li>
+      </ul>
+    </div>
+
+    <!-- PHASE 3 -->
+    <div class="phase" id="phase-3">
+      <div class="phase-hd">
+        <span class="num">Phase 03</span>
+        <h2>Map &amp; transform</h2>
+        <span class="right">~ 1.5 weeks</span>
+      </div>
+      <p class="phase-desc">Where you decide what the new system is going to <em>think</em> the past was. Spend disproportionate time on the mapping. The transform script is the easy part.</p>
+
+      <ul class="check">
+        <li><span class="id">17</span><span class="text">Build source → target field map for every object you'll migrate.</span><span class="owner"><small>Owner</small>BA + Tech</span><span class="pill crit">Critical</span></li>
+        <li><span class="id">18</span><span class="text">Define default values for every required Odoo field with no source.</span><span class="owner"><small>Owner</small>BA</span><span class="pill must">Must-do</span></li>
+        <li><span class="id">19</span><span class="text">Decide opening balance strategy: per-customer, per-account, per-product.</span><span class="owner"><small>Owner</small>Finance</span><span class="pill crit">Critical</span></li>
+        <li><span class="id">20</span><span class="text">Map taxes, fiscal positions and analytic tags.</span><span class="owner"><small>Owner</small>Finance</span><span class="pill must">Must-do</span></li>
+        <li><span class="id">21</span><span class="text">Lock the external ID convention (<code>__import__.&lt;source&gt;.&lt;id&gt;</code>).</span><span class="owner"><small>Owner</small>Tech</span><span class="pill must">Must-do</span></li>
+        <li><span class="id">22</span><span class="text">Translate UoM conversions where source &amp; target differ.</span><span class="owner"><small>Owner</small>Ops</span><span class="pill must">Must-do</span></li>
+        <li><span class="id">23</span><span class="text">Pre-compute lot/serial assignments for inventory on hand.</span><span class="owner"><small>Owner</small>Warehouse</span><span class="pill nice">Nice-to-have</span></li>
+        <li><span class="id">24</span><span class="text">Document one-way fields (no rollback path) prominently.</span><span class="owner"><small>Owner</small>BA</span><span class="pill must">Must-do</span></li>
+      </ul>
+    </div>
+
+    <!-- PHASE 4 -->
+    <div class="phase" id="phase-4">
+      <div class="phase-hd">
+        <span class="num">Phase 04</span>
+        <h2>Load &amp; reconcile</h2>
+        <span class="right">~ 1 week (×2 dry runs)</span>
+      </div>
+      <p class="phase-desc">Two full dry runs. Minimum. The first one will fail in interesting ways. The second one is the rehearsal for cutover.</p>
+
+      <ul class="check">
+        <li><span class="id">25</span><span class="text">Load order: company → COA → partners → products → BOMs → stock → open docs.</span><span class="owner"><small>Owner</small>Tech</span><span class="pill crit">Critical</span></li>
+        <li><span class="id">26</span><span class="text">Run dry run #1 against a copy of production config.</span><span class="owner"><small>Owner</small>Tech</span><span class="pill crit">Critical</span></li>
+        <li><span class="id">27</span><span class="text">Reconcile counts: source rows vs. target records, per object.</span><span class="owner"><small>Owner</small>Data Lead</span><span class="pill must">Must-do</span></li>
+        <li><span class="id">28</span><span class="text">Reconcile sums: open AR, AP, stock value to the rupee/dollar.</span><span class="owner"><small>Owner</small>Finance</span><span class="pill crit">Critical</span></li>
+        <li><span class="id">29</span><span class="text">Spot-check 20 random records per object with the source owner.</span><span class="owner"><small>Owner</small>BA + Owners</span><span class="pill must">Must-do</span></li>
+        <li><span class="id">30</span><span class="text">Document the time-to-load per object for the cutover plan.</span><span class="owner"><small>Owner</small>Tech</span><span class="pill must">Must-do</span></li>
+        <li><span class="id">31</span><span class="text">Run dry run #2 with the actual cutover team and timing.</span><span class="owner"><small>Owner</small>PM</span><span class="pill crit">Critical</span></li>
+        <li><span class="id">32</span><span class="text">Capture every error message into a known-issue log.</span><span class="owner"><small>Owner</small>Tech</span><span class="pill must">Must-do</span></li>
+      </ul>
+    </div>
+
+    <!-- PHASE 5 -->
+    <div class="phase" id="phase-5">
+      <div class="phase-hd">
+        <span class="num">Phase 05</span>
+        <h2>Cutover &amp; sign-off</h2>
+        <span class="right">~ 1 weekend</span>
+      </div>
+      <p class="phase-desc">Go-live is logistics, not engineering. Print the runbook. Print the rollback. Have coffee. Don't be a hero.</p>
+
+      <ul class="check">
+        <li><span class="id">33</span><span class="text">Communicate freeze window to operations 14 days in advance.</span><span class="owner"><small>Owner</small>PM</span><span class="pill must">Must-do</span></li>
+        <li><span class="id">34</span><span class="text">Take final source snapshot at T-0; lock write access.</span><span class="owner"><small>Owner</small>IT</span><span class="pill crit">Critical</span></li>
+        <li><span class="id">35</span><span class="text">Execute the load runbook, signing each step in real time.</span><span class="owner"><small>Owner</small>Tech</span><span class="pill crit">Critical</span></li>
+        <li><span class="id">36</span><span class="text">Reconcile balances against pre-cutover figures.</span><span class="owner"><small>Owner</small>Finance</span><span class="pill crit">Critical</span></li>
+        <li><span class="id">37</span><span class="text">Run the smoke-test script: 10 happy-path transactions, all modules.</span><span class="owner"><small>Owner</small>BA</span><span class="pill must">Must-do</span></li>
+        <li><span class="id">38</span><span class="text">Get written sign-off from each module owner before re-opening operations.</span><span class="owner"><small>Owner</small>PM</span><span class="pill crit">Critical</span></li>
+        <li><span class="id">39</span><span class="text">Post the rollback playbook somewhere physical and visible.</span><span class="owner"><small>Owner</small>PM</span><span class="pill must">Must-do</span></li>
+        <li><span class="id">40</span><span class="text">Schedule a 7-day, 30-day and 90-day reconciliation review.</span><span class="owner"><small>Owner</small>BA + Finance</span><span class="pill nice">Nice-to-have</span></li>
+      </ul>
+    </div>
+
+    <h2 id="download">Download as Markdown</h2>
+    <p>Drop it into Notion, GitHub, or your project wiki. Tick boxes. Add columns. Make it yours.</p>
+
+    <div class="download-strip">
+      <div class="file">
+        <span class="icon">MD</span>
+        <span>
+          excel-to-odoo-migration-checklist.v3.md
+          <span class="meta">40 ITEMS · 5 PHASES · 14 KB</span>
+        </span>
+      </div>
+      <a class="btn-dl" href="#" onclick="event.preventDefault()">Download <span>↓</span></a>
+    </div>
+
+    <blockquote>
+      A weekend cutover is just a Tuesday's worth of work, executed by people who slept the night before. Everything in this list exists to make that sentence true.
+    </blockquote>
+  </div>
+</article>
+
+<footer>
+  <div class="shell">
+    <div class="post-foot">
+      <span class="eyebrow">Continue exploring</span>
+      <div class="next">
+        <a class="next-card" href="0009-uat-script-200-users-ago.html">
+          <span class="dir">Newer · 0009</span>
+          <h4>The UAT script I wish I had 200 users ago</h4>
+          <p>On test cases that surface real operational edge cases, not happy paths.</p>
+          <span class="arrow">→</span>
+        </a>
+        <a class="next-card" href="0007-change-management-isnt-a-memo.html">
+          <span class="dir">Older · 0007</span>
+          <h4>Change management isn't a memo</h4>
+          <p>Field notes from training 100+ operators through a go-live.</p>
+          <span class="arrow">→</span>
+        </a>
+      </div>
+    </div>
+    <div class="foot">
+      <span>© 2026 Mehedi Hasan · Lab / 0008</span>
+      <span><a href="../index.html#lab">↑ Back to lab index</a></span>
+    </div>
+  </div>
+</footer>
+<script src="_toc.js" defer></script>
+</body>
+</html>

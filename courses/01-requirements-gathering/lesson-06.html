@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 06 — Translating Ambiguity into Technical Specs · Course 01</title>
+<meta name="description" content="Write precise functional requirements, data dictionaries, and SRS-lite specifications that developers can build from — with RMG and Bangladesh compliance context.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300..700&family=Geist+Mono:wght@300..500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../lab/_styles.css">
+<style>
+.three-up{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:28px 0}
+.three-up .card{border:1px solid var(--border);border-radius:12px;padding:20px;background:rgba(21,24,29,0.5)}
+.three-up .card h4{font-size:14px;font-weight:500;margin:0 0 8px;color:var(--text)}
+.three-up .card p{font-size:13.5px;color:var(--text-2);margin:0;line-height:1.55}
+.field-note{border:1px solid var(--border);border-radius:12px;padding:22px 24px;margin:28px 0;background:linear-gradient(180deg,rgba(21,24,29,0.55),rgba(14,16,19,0.55))}
+.field-note .fn-label{font-family:var(--mono);font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:var(--accent);margin:0 0 10px}
+.field-note p{font-size:14.5px;color:var(--text-2);margin:0;line-height:1.6}
+.field-note p+p{margin-top:10px}
+.req-hierarchy{display:grid;grid-template-columns:1fr;gap:0;border:1px solid var(--border);border-radius:12px;overflow:hidden;margin:28px 0}
+.rh-row{padding:18px 22px;border-bottom:1px solid var(--border);display:flex;gap:16px;align-items:flex-start}
+.rh-row:last-child{border-bottom:none}
+.rh-level{font-family:var(--mono);font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-3);flex:none;width:100px;margin-top:2px}
+.rh-content h4{font-size:14.5px;font-weight:500;color:var(--text);margin:0 0 4px}
+.rh-content p{font-size:13.5px;color:var(--text-2);margin:0;line-height:1.5}
+@media(max-width:680px){.three-up{grid-template-columns:1fr}.rh-row{flex-direction:column}.rh-level{width:auto}}
+</style>
+</head>
+<body>
+<div class="grid-bg"></div>
+
+<nav class="nav">
+  <div class="shell">
+    <div class="nav-inner">
+      <a href="../../" class="brand">
+        <div class="brand-mark"></div>
+        <div class="brand-name"><b>Mehedi Hasan</b><em>ERP Consultant</em></div>
+      </a>
+      <a href="index.html" class="back-link">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10 12L6 8l4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Course overview
+      </a>
+    </div>
+  </div>
+</nav>
+
+<div class="shell">
+  <div class="post-head">
+    <span class="eyebrow">Course 01 &nbsp;·&nbsp; Lesson 06 &nbsp;·&nbsp; 27 min</span>
+    <div class="post-meta">
+      <span class="chip accent">Technical Specs</span>
+      <span class="chip">SRS</span>
+      <span class="chip">Data Dictionary</span>
+    </div>
+    <h1>Translating Ambiguity into <span class="serif">Technical Specs</span></h1>
+    <p class="lede">Ambiguity is not a stakeholder problem — it is a BA problem. The moment a vague business ask reaches a developer unchanged, the clock starts counting down to a rework conversation. Here is how to be the translator the project needs.</p>
+    <div class="byline">
+      <span>Lesson<b>06 of 09</b></span>
+      <span>Duration<b>27 minutes</b></span>
+      <span>Course<b>Requirements Gathering</b></span>
+    </div>
+  </div>
+</div>
+
+<div class="shell">
+  <div class="post">
+    <nav class="toc" id="toc" aria-label="Lesson contents">
+      <button class="toc-toggle" onclick="toggleToc()" aria-expanded="false" aria-controls="toc">
+        <span class="label">In this lesson</span>
+        <span class="current" id="toc-current">The Hierarchy</span>
+        <span class="chev"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 4l3 3 3-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </button>
+      <div class="toc-k">Contents</div>
+      <ol>
+        <li><a href="#s1">The Requirements Hierarchy</a></li>
+        <li><a href="#s2">Functional Requirements</a></li>
+        <li><a href="#s3">Data Requirements</a></li>
+        <li><a href="#s4">Integration Requirements</a></li>
+        <li><a href="#s5">Non-functional Requirements</a></li>
+        <li><a href="#s6">Bangladesh Compliance Context</a></li>
+        <li><a href="#s7">Ambiguity Detector</a></li>
+        <li><a href="#s8">Template: SRS-lite</a></li>
+        <li><a href="#s9">Reflection</a></li>
+      </ol>
+      <div class="toc-progress"><span>Progress</span><div class="bar"><i id="prog-bar"></i></div></div>
+    </nav>
+    <div class="toc-progress-mobile"><i id="prog-bar-m"></i></div>
+
+    <article class="body">
+
+      <h2 id="s1">The Requirements Hierarchy</h2>
+      <p>Requirements exist at different levels of abstraction. The BA's job is to work from the most abstract (what the business needs to achieve) down to the most concrete (what specific functions and data the system must handle), while ensuring each level is traceable to the one above it.</p>
+
+      <div class="req-hierarchy">
+        <div class="rh-row">
+          <span class="rh-level">Business</span>
+          <div class="rh-content">
+            <h4>Business Requirements</h4>
+            <p>The high-level outcomes the organisation needs the project to produce. "Reduce export documentation processing time by 40%." No system, no solution — just the goal.</p>
+          </div>
+        </div>
+        <div class="rh-row">
+          <span class="rh-level">Stakeholder</span>
+          <div class="rh-content">
+            <h4>Stakeholder Requirements</h4>
+            <p>What specific people need to be true about the system from their perspective. "The merchandiser needs to generate a complete commercial invoice from a PO in under three minutes." Tied to a person and a context.</p>
+          </div>
+        </div>
+        <div class="rh-row">
+          <span class="rh-level">Functional</span>
+          <div class="rh-content">
+            <h4>Functional Requirements</h4>
+            <p>What the system must do — specific, testable functions. "The system shall allow a user with the 'Merchandiser' role to generate a commercial invoice from a selected PO using data from the PO header, line items, and buyer master record."</p>
+          </div>
+        </div>
+        <div class="rh-row">
+          <span class="rh-level">Non-functional</span>
+          <div class="rh-content">
+            <h4>Non-functional Requirements</h4>
+            <p>Quality attributes the system must exhibit. "The invoice generation function shall complete within 5 seconds for POs with up to 100 line items." Defines how the system performs, not what it does.</p>
+          </div>
+        </div>
+      </div>
+
+      <p>Every functional requirement should trace back to at least one stakeholder requirement, which traces back to at least one business requirement. If you cannot draw that line, question whether the requirement belongs in scope at all.</p>
+
+      <h2 id="s2">Functional Requirements: Writing the SRS Section by Section</h2>
+      <p>A Software Requirements Specification (SRS) is the formal document that captures functional and non-functional requirements in sufficient detail for development to begin. For most projects in Bangladesh's SME sector, a full IEEE-standard SRS is overkill. A "SRS-lite" — structured but streamlined — achieves the same result with a fraction of the bureaucratic overhead.</p>
+      <p>Principles for writing good functional requirements:</p>
+      <ul>
+        <li><strong>Use "shall" for mandatory requirements</strong> — "The system shall…" is unambiguous. "The system should be able to…" leaves room for negotiation that does not belong in a spec.</li>
+        <li><strong>One requirement per sentence</strong> — If you use "and" in a functional requirement, split it into two. Each requirement should be independently verifiable.</li>
+        <li><strong>Name the actor</strong> — "The system shall allow a user to…" is weaker than "The system shall allow a user with the Merchandiser role to…"</li>
+        <li><strong>Specify the trigger and the outcome</strong> — "When the user clicks Export, the system shall generate a PDF of the commercial invoice containing [fields]." Trigger → action → output.</li>
+        <li><strong>Include error handling</strong> — "If the PO is in a Cancelled status, the system shall prevent invoice generation and display the message: 'Invoice cannot be generated for cancelled orders.'"</li>
+      </ul>
+
+      <div class="field-note">
+        <p class="fn-label">RMG Example</p>
+        <p>The factory MD's requirement: "I want full visibility into our production orders." This cannot be a functional requirement — it is a business aspiration. A good BA unpacks it:</p>
+        <p><strong>Functional requirements derived from "full visibility":</strong><br>
+        FR-01: The system shall display all open production orders on a single screen, filterable by buyer, product type, and production status.<br>
+        FR-02: Each production order record shall include planned start date, actual start date, planned completion date, and current completion percentage.<br>
+        FR-03: The system shall highlight any production order where completion percentage is more than 10% below the planned percentage for the current date.<br>
+        FR-04: The system shall allow the MD role to export the production order view as an Excel file.</p>
+        <p>"Full visibility" is now four testable requirements. A developer can build them. A tester can verify them.</p>
+      </div>
+
+      <h2 id="s3">Data Requirements &amp; Data Dictionary</h2>
+      <p>Data requirements define what information the system stores, how it is structured, and what the rules governing it are. This is where most BAs underinvest — and where developers spend the most time making assumptions that later cause migration problems or integration failures.</p>
+      <p>For each data entity, document:</p>
+      <ul>
+        <li><strong>Field name</strong> — exact name as it should appear in the system</li>
+        <li><strong>Data type</strong> — text, number, date, boolean, dropdown, etc.</li>
+        <li><strong>Maximum length or range</strong> — for text fields, max characters; for numbers, min/max values</li>
+        <li><strong>Mandatory or optional</strong> — can the form be submitted without this field?</li>
+        <li><strong>Default value</strong> — is there a default? What is it?</li>
+        <li><strong>Validation rules</strong> — "Must be a valid Bangladeshi NID format (17 digits)"; "Cannot be a future date"</li>
+        <li><strong>Source</strong> — where does this data come from? (user input, API, calculated, imported from another module)</li>
+        <li><strong>Linked to</strong> — what other tables or entities does this field reference?</li>
+      </ul>
+
+      <div class="callout">
+        <span class="tag">Why it matters</span>
+        <p>Undefined data fields are the primary cause of post-launch data migration failures. When the new system launches and the old Excel data does not fit — fields too long, mandatory fields that were optional before, lookup tables that do not match — the cost of correction is always paid in production. A data dictionary prevents this.</p>
+      </div>
+
+      <h2 id="s4">Integration Requirements: APIs, Legacy Systems, ERP Connectors</h2>
+      <p>Most new systems in Bangladesh's RMG and services sector do not exist in isolation. They integrate with: existing ERPs (Odoo, SAP, locally developed systems); third-party services (shipping tracking APIs, payment gateways, SMS/email services); and government systems (NBR VAT, BGMEA reporting portals).</p>
+      <p>Each integration requires its own specification:</p>
+      <ul>
+        <li><strong>What data flows in which direction</strong> — "Shipment status is pulled from the carrier API every 30 minutes and written to the shipment record"</li>
+        <li><strong>Frequency</strong> — real-time, scheduled (every X minutes), or on-demand</li>
+        <li><strong>Error handling</strong> — what happens if the external API is unavailable?</li>
+        <li><strong>Authentication</strong> — API key, OAuth, basic auth</li>
+        <li><strong>Data mapping</strong> — how do the external system's field names map to the internal data model?</li>
+      </ul>
+      <p>Integration requirements are the area most likely to be underspecified by a BA and most likely to cause project overruns. Budget extra time here.</p>
+
+      <h2 id="s5">Non-functional Requirements: Performance, Security, Uptime</h2>
+      <p>Non-functional requirements (NFRs) define the quality attributes of the system — how fast, how secure, how reliable, how usable. They are often stated as vague aspirations ("the system should be fast and secure") and need to be made as specific as functional requirements.</p>
+
+      <div class="three-up">
+        <div class="card">
+          <h4>Performance</h4>
+          <p>The system shall load the shipment dashboard within 3 seconds for up to 500 concurrent users. Report generation shall complete within 10 seconds for date ranges up to 12 months.</p>
+        </div>
+        <div class="card">
+          <h4>Security</h4>
+          <p>All data transmission shall use TLS 1.2 or above. Passwords shall be stored using bcrypt with minimum 12-character length. Session shall expire after 30 minutes of inactivity.</p>
+        </div>
+        <div class="card">
+          <h4>Availability</h4>
+          <p>The system shall maintain 99.5% uptime during business hours (8am–8pm BDT, Monday–Saturday). Planned maintenance windows shall be communicated 72 hours in advance.</p>
+        </div>
+        <div class="card">
+          <h4>Usability</h4>
+          <p>A new merchandiser with no system training shall be able to create their first shipment record within 15 minutes of first login, using only in-system help text.</p>
+        </div>
+        <div class="card">
+          <h4>Scalability</h4>
+          <p>The system architecture shall support a tenfold increase in transaction volume without code changes, through infrastructure scaling alone.</p>
+        </div>
+        <div class="card">
+          <h4>Data retention</h4>
+          <p>Production orders shall be retained in the system for a minimum of 7 years to support buyer audit requirements. Deleted records shall be soft-deleted with an audit trail.</p>
+        </div>
+      </div>
+
+      <h2 id="s6">Bangladesh Compliance Context: What Specs Must Account For</h2>
+      <p>Bangladesh's digital project requirements must account for a specific regulatory environment. Key compliance constraints to include in your NFRs:</p>
+      <ul>
+        <li><strong>NBR and VAT compliance</strong> — Any system handling invoicing, sales, or purchases must comply with Bangladesh VAT regulations and support the NBR's VAT return formats</li>
+        <li><strong>BGMEA/BKMEA reporting</strong> — Factories in the garment sector may have reporting obligations to their industry association that affect what data the system must capture</li>
+        <li><strong>Buyer audit trails</strong> — International buyers (UK, EU, US) increasingly require systems to produce documented audit trails for production records, worker records, and environmental compliance data</li>
+        <li><strong>Data localisation</strong> — Bangladesh's Digital Security Act and emerging data protection frameworks may require that certain categories of data (especially worker personal data) be stored on servers within Bangladesh</li>
+        <li><strong>Bangladesh Bank regulations</strong> — For systems handling foreign currency, remittance, or trade finance, Bangladesh Bank regulations may impose specific data fields and reporting requirements</li>
+      </ul>
+
+      <div class="field-note">
+        <p class="fn-label">Field Note</p>
+        <p>On a factory compliance system project, we discovered six months into development that the buyer required an audit trail for every change to a worker record — including who made the change, when, and what the previous value was. This is a standard requirement for SMETA audits, but it had never been mentioned in requirements because the local team did not know it was a system-level requirement (they assumed it was handled manually).</p>
+        <p>The database redesign to add full audit trail functionality took three additional weeks and delayed the launch. A document analysis of the buyer's compliance checklist at the start of the project would have surfaced this requirement in day one.</p>
+      </div>
+
+      <h2 id="s7">The Ambiguity Detector: Red-flag Phrases</h2>
+      <p>Train yourself to hear these phrases as requirements failures in progress. When you encounter one, do not accept it — press for specificity.</p>
+
+      <div class="three-up">
+        <div class="card">
+          <h4>"The system should be fast"</h4>
+          <p>Fast relative to what? For whom? Under what load? Replace with: "The [function] shall complete within [X] seconds for [Y] concurrent users."</p>
+        </div>
+        <div class="card">
+          <h4>"Easy to use"</h4>
+          <p>Usability is testable, but only with a specific benchmark. Replace with: "A user with no training shall be able to [complete task] within [X] minutes."</p>
+        </div>
+        <div class="card">
+          <h4>"And so on" / "etc."</h4>
+          <p>These phrases in a requirement mean the BA gave up. "The report shall show PO number, buyer, status, etc." What is etc.? Name every field.</p>
+        </div>
+        <div class="card">
+          <h4>"Appropriate" / "adequate" / "sufficient"</h4>
+          <p>These are judgment calls disguised as requirements. "The system shall provide adequate security" is not a requirement. Name the controls.</p>
+        </div>
+        <div class="card">
+          <h4>"The system should handle all cases"</h4>
+          <p>Enumerate the cases. What are all cases? If you cannot list them, you do not know your own requirements.</p>
+        </div>
+        <div class="card">
+          <h4>"Standard industry practice"</h4>
+          <p>Which standard? From which organisation? What specific practice? This phrase hides a requirements gap behind borrowed authority.</p>
+        </div>
+      </div>
+
+      <h2 id="s8">Template: SRS-lite Structure</h2>
+
+      <div class="callout">
+        <span class="tag">Template</span>
+        <p><strong>SRS-lite — document sections</strong><br><br>
+        <strong>1. Introduction</strong> — Project overview, document scope, definitions/acronyms, stakeholder sign-off record<br><br>
+        <strong>2. Business Requirements</strong> — High-level goals the system must achieve (3–7 bullet statements)<br><br>
+        <strong>3. Stakeholder Requirements</strong> — By role: what each user role needs the system to do for them<br><br>
+        <strong>4. Functional Requirements</strong> — Numbered list, one requirement per statement, grouped by module/domain. Each formatted as: FR-[number]: The system shall [action] when [trigger], for [actor], producing [output].<br><br>
+        <strong>5. Data Requirements</strong> — Entity list with field-level data dictionary (see section 3 format above)<br><br>
+        <strong>6. Integration Requirements</strong> — Per integration point: direction, frequency, protocol, error handling<br><br>
+        <strong>7. Non-functional Requirements</strong> — Performance, security, availability, usability, scalability, compliance<br><br>
+        <strong>8. Out of Scope</strong> — Explicit list of what this project does NOT include. Sign-off required from sponsor.<br><br>
+        <strong>9. Open Questions</strong> — Unresolved items with owner and due date<br><br>
+        <strong>10. Change log</strong> — Version, date, author, summary of changes, approver</p>
+      </div>
+
+      <h2 id="s9">Reflection Questions</h2>
+      <ol>
+        <li>Take a project you are currently working on and write three functional requirements in "The system shall…" format for the core module. Now check each one: is it testable? Does it name the actor? Does it specify the trigger and outcome?</li>
+        <li>What compliance requirements apply to your current or most recent project that were not in the initial requirements document? How would document analysis at the start of the project have surfaced them?</li>
+        <li>Audit one section of a requirements document you own or have access to. How many "red-flag phrases" from the Ambiguity Detector can you find? Rewrite three of them.</li>
+      </ol>
+
+    </article>
+  </div>
+</div>
+
+<div class="shell">
+  <div class="post-foot">
+    <div class="next">
+      <a href="lesson-05.html" class="next-card">
+        <span class="dir">← Previous</span>
+        <h4>Lesson 05 — User Stories</h4>
+        <p>INVEST, Given/When/Then, and the anti-pattern gallery.</p>
+        <span class="arrow">← lesson 05</span>
+      </a>
+      <a href="lesson-07.html" class="next-card">
+        <span class="dir">Next →</span>
+        <h4>Lesson 07 — Conflicting Requirements</h4>
+        <p>Resolve conflicts, manage change requests, and maintain the RTM.</p>
+        <span class="arrow">→ lesson 07</span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="shell">
+    <div class="foot">
+      <span>Course 01 · Lesson 06</span>
+      <a href="../../" style="color:var(--text-3);transition:color .15s" onmouseover="this.style.color='var(--text)'" onmouseout="this.style.color='var(--text-3)'">← Portfolio</a>
+    </div>
+  </div>
+</footer>
+<script src="../../lab/_toc.js"></script>
+</body>
+</html>

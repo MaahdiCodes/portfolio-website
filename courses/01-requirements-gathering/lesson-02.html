@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 02 — Stakeholder Mapping & Power Dynamics · Course 01</title>
+<meta name="description" content="Identify every stakeholder, map their power and interest, build a RACI matrix, and navigate hierarchy in Bangladeshi organisations.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300..700&family=Geist+Mono:wght@300..500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../lab/_styles.css">
+<style>
+.three-up{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:28px 0}
+.three-up .card{border:1px solid var(--border);border-radius:12px;padding:20px;background:rgba(21,24,29,0.5)}
+.three-up .card h4{font-size:14px;font-weight:500;margin:0 0 8px;color:var(--text)}
+.three-up .card p{font-size:13.5px;color:var(--text-2);margin:0;line-height:1.55}
+.field-note{border:1px solid var(--border);border-radius:12px;padding:22px 24px;margin:28px 0;background:linear-gradient(180deg,rgba(21,24,29,0.55),rgba(14,16,19,0.55))}
+.field-note .fn-label{font-family:var(--mono);font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:var(--accent);margin:0 0 10px}
+.field-note p{font-size:14.5px;color:var(--text-2);margin:0;line-height:1.6}
+.field-note p+p{margin-top:10px}
+.power-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--border);border-radius:12px;overflow:hidden;margin:28px 0}
+.power-cell{padding:22px;border-bottom:1px solid var(--border);border-right:1px solid var(--border)}
+.power-cell:nth-child(2n){border-right:none}
+.power-cell:nth-last-child(-n+2){border-bottom:none}
+.power-cell .pc-label{font-family:var(--mono);font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-3);margin-bottom:8px}
+.power-cell h4{font-size:15px;font-weight:500;margin:0 0 8px;color:var(--text)}
+.power-cell p{font-size:13.5px;color:var(--text-2);margin:0;line-height:1.55}
+@media(max-width:680px){.three-up{grid-template-columns:1fr}.power-grid{grid-template-columns:1fr}.power-cell{border-right:none}.power-cell:nth-last-child(-n+2){border-bottom:1px solid var(--border)}.power-cell:last-child{border-bottom:none}}
+</style>
+</head>
+<body>
+<div class="grid-bg"></div>
+
+<nav class="nav">
+  <div class="shell">
+    <div class="nav-inner">
+      <a href="../../" class="brand">
+        <div class="brand-mark"></div>
+        <div class="brand-name"><b>Mehedi Hasan</b><em>ERP Consultant</em></div>
+      </a>
+      <a href="index.html" class="back-link">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10 12L6 8l4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Course overview
+      </a>
+    </div>
+  </div>
+</nav>
+
+<div class="shell">
+  <div class="post-head">
+    <span class="eyebrow">Course 01 &nbsp;·&nbsp; Lesson 02 &nbsp;·&nbsp; 27 min</span>
+    <div class="post-meta">
+      <span class="chip accent">Stakeholders</span>
+      <span class="chip">Power dynamics</span>
+      <span class="chip">RACI</span>
+    </div>
+    <h1>Stakeholder Mapping &amp; <span class="serif">Power</span> Dynamics</h1>
+    <p class="lede">Before you can gather requirements, you need to know who has requirements. And before you know that, you need to understand who has power — because in every organisation, some voices carry more weight than their job title suggests.</p>
+    <div class="byline">
+      <span>Lesson<b>02 of 09</b></span>
+      <span>Duration<b>27 minutes</b></span>
+      <span>Course<b>Requirements Gathering</b></span>
+    </div>
+  </div>
+</div>
+
+<div class="shell">
+  <div class="post">
+    <nav class="toc" id="toc" aria-label="Lesson contents">
+      <button class="toc-toggle" onclick="toggleToc()" aria-expanded="false" aria-controls="toc">
+        <span class="label">In this lesson</span>
+        <span class="current" id="toc-current">Why It Matters</span>
+        <span class="chev"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 4l3 3 3-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </button>
+      <div class="toc-k">Contents</div>
+      <ol>
+        <li><a href="#s1">Why It Matters</a></li>
+        <li><a href="#s2">The Onion Model</a></li>
+        <li><a href="#s3">Power/Interest Grid</a></li>
+        <li><a href="#s4">RACI Matrix</a></li>
+        <li><a href="#s5">Hierarchy in Bangladesh</a></li>
+        <li><a href="#s6">The Silent Stakeholder</a></li>
+        <li><a href="#s7">Template: Stakeholder Register</a></li>
+        <li><a href="#s8">Reflection</a></li>
+      </ol>
+      <div class="toc-progress"><span>Progress</span><div class="bar"><i id="prog-bar"></i></div></div>
+    </nav>
+    <div class="toc-progress-mobile"><i id="prog-bar-m"></i></div>
+
+    <article class="body">
+
+      <h2 id="s1">Why Stakeholder Analysis Is Not a Box-ticking Exercise</h2>
+      <p>Most BAs do stakeholder analysis once, at project kick-off, and never revisit it. They create a list of names, assign a communication frequency, file the document, and move on to requirements workshops. This is a mistake.</p>
+      <p>Stakeholders change. A factory's HR manager who seemed peripheral at kick-off turns out to be the only person who can authorise access to payroll data — which you need for a critical integration. A floor supervisor who was not consulted becomes your most vocal critic at UAT because the system does not match how they actually work.</p>
+      <p>Stakeholder analysis is not a one-time document. It is a living practice. You are continuously asking: who else should be in this conversation? Who has information I do not have? Whose silence in this room is actually a signal?</p>
+
+      <div class="field-note">
+        <p class="fn-label">Field Note</p>
+        <p>On a payroll and attendance system for a knitwear factory in Narayanganj, we conducted workshops with the HR manager, the finance director, and the IT head. The system launched. Within two weeks, floor supervisors were refusing to enter data, citing errors that did not make sense from a process standpoint.</p>
+        <p>We had never spoken to them. The HR manager had described their work as simple. In reality, they had a complex system of handwritten exception codes that our digital form did not support. Eighty percent of the rework that followed would have been prevented by two hours of observation with supervisors during requirements.</p>
+      </div>
+
+      <h2 id="s2">The Onion Model: Layers of Stakeholder Influence</h2>
+      <p>The Onion Model visualises stakeholders in concentric rings, with the most directly affected users at the centre and the most distant, influential parties at the outer edge. The key insight: people at the outer rings often have more power to approve or kill the project than people at the centre who will actually use it.</p>
+      <ol>
+        <li><strong>Core users</strong> — The people who will interact with the system daily. Floor supervisors, merchandisers, the accounts clerk. High interest, often low formal power.</li>
+        <li><strong>Direct management</strong> — Line managers and department heads who authorise and oversee core users. Moderate power, moderate interest.</li>
+        <li><strong>Executive layer</strong> — The MD, directors, owners. Low day-to-day interest, high power to approve scope, budget, and timeline changes.</li>
+        <li><strong>External parties</strong> — Buyers, compliance auditors, regulators, integration vendors. Can impose requirements from outside the organisation that override internal preferences.</li>
+      </ol>
+      <p>Your goal is to ensure you have perspectives from every ring before you finalise requirements. Over-indexing on the executive layer gives you politically approved requirements that nobody can use. Over-indexing on core users gives you operationally accurate requirements that nobody will fund.</p>
+
+      <h2 id="s3">Power/Interest Grid: The BA's Most Useful Map</h2>
+      <p>Plot every stakeholder on a two-axis grid: Power (their authority to influence or block the project) vs Interest (how much they care about the outcome). The quadrant they fall in determines your engagement strategy.</p>
+
+      <div class="power-grid">
+        <div class="power-cell">
+          <div class="pc-label">High Power · High Interest</div>
+          <h4>Manage closely</h4>
+          <p>These are your key stakeholders. Keep them involved, informed, and aligned. They can champion the project or kill it. In RMG: the MD, finance director, key buyer relationship managers.</p>
+        </div>
+        <div class="power-cell">
+          <div class="pc-label">High Power · Low Interest</div>
+          <h4>Keep satisfied</h4>
+          <p>They do not want frequent updates but need to feel their concerns are respected. A wrong move here — surprising them, or going over their head — creates friction disproportionate to the effort. In RMG: company board members, external auditors.</p>
+        </div>
+        <div class="power-cell">
+          <div class="pc-label">Low Power · High Interest</div>
+          <h4>Keep informed</h4>
+          <p>These people care deeply and can become your internal champions or your most persistent critics. Involve them in workshops; they provide the best ground-level requirements. In RMG: floor supervisors, experienced merchandisers.</p>
+        </div>
+        <div class="power-cell">
+          <div class="pc-label">Low Power · Low Interest</div>
+          <h4>Monitor</h4>
+          <p>Minimal engagement for now, but watch for changes. Someone who is not interested today can quickly become a key blocker if the project starts affecting their area. Communicate on a need-to-know basis.</p>
+        </div>
+      </div>
+
+      <p>One practical tip: revisit the grid every four to six weeks on longer projects. Stakeholders move between quadrants as projects progress. A supplier who was "monitor" at kick-off may become "manage closely" once you start building the integration with their system.</p>
+
+      <h2 id="s4">RACI Matrix: Assigning Accountability Without the Politics</h2>
+      <p>RACI stands for Responsible, Accountable, Consulted, and Informed. It answers the question that causes the most confusion on requirements-heavy projects: who gets to make decisions, and who just gets to weigh in?</p>
+      <ul>
+        <li><strong>Responsible</strong> — Does the work. The BA who writes the requirements.</li>
+        <li><strong>Accountable</strong> — The single person who approves the output and owns the outcome. One person only. If there are two, you have a political problem that will surface at sign-off.</li>
+        <li><strong>Consulted</strong> — Provides input before a decision is made. Two-way communication. These are your workshop participants.</li>
+        <li><strong>Informed</strong> — Notified of outcomes after decisions are made. One-way communication.</li>
+      </ul>
+
+      <div class="field-note">
+        <p class="fn-label">RMG Example — Attendance System RACI</p>
+        <p><strong>Requirement: Define the leave request approval workflow</strong><br><br>
+        Responsible: Business Analyst (writes the spec)<br>
+        Accountable: HR Director (sole approver of the workflow design)<br>
+        Consulted: Floor supervisors, payroll clerk (input on current process)<br>
+        Informed: IT lead, MD (notified once workflow is agreed)</p>
+        <p>Without this, both the HR Director and the MD might try to approve the workflow — and disagree. The RACI prevents that meeting from happening.</p>
+      </div>
+
+      <p>Build a RACI for each major decision area or requirements domain, not for every individual requirement. A RACI for "payroll rules," "leave policy," and "reporting access levels" is sufficient for most projects. A RACI for every user story is bureaucratic overhead that nobody will follow.</p>
+
+      <h2 id="s5">Navigating Hierarchy in Bangladeshi Organisations</h2>
+      <p>Bangladesh's organisational culture is high-context and hierarchical. Understanding this is not about stereotyping — it is about being effective. A BA who applies Western flat-organisation assumptions to a Bangladeshi factory or corporate environment will make predictable, avoidable mistakes.</p>
+
+      <div class="three-up">
+        <div class="card">
+          <h4>Get top-down buy-in first</h4>
+          <p>Before running workshops with any team, ensure the MD or department head has personally sanctioned your presence. Without it, middle managers will deflect, and junior staff will not engage honestly.</p>
+        </div>
+        <div class="card">
+          <h4>Never contradict seniority in public</h4>
+          <p>If a senior stakeholder states a requirement in a group session that you believe is wrong, do not challenge it in the room. Take notes, and raise your concern privately afterward. Public challenge damages their face and kills the relationship.</p>
+        </div>
+        <div class="card">
+          <h4>"Yes" is not agreement</h4>
+          <p>A polite "yes, we can consider that" often means "I will not be doing this." In one-on-one conversations, ask follow-up questions: "What would need to be true for this to work in your department?" This surfaces the real concern.</p>
+        </div>
+        <div class="card">
+          <h4>Formal decisions need formal channels</h4>
+          <p>Verbal agreement in a workshop is not a decision. A requirements document signed by the accountable stakeholder is a decision. Always move from verbal to written, even if it feels unnecessarily formal.</p>
+        </div>
+        <div class="card">
+          <h4>Titles matter for scheduling</h4>
+          <p>When booking stakeholder interviews, a request from the MD's office gets responses. A request from the project team may not. Understand the reporting lines and use them strategically.</p>
+        </div>
+        <div class="card">
+          <h4>Junior staff often know the most</h4>
+          <p>The person who actually runs the process often has the most detailed and accurate knowledge of it. Create safe contexts for them to share — small group sessions or one-on-ones, not large workshops where they will defer to seniors.</p>
+        </div>
+      </div>
+
+      <h2 id="s6">The Silent Stakeholder: Identifying the Invisible Veto</h2>
+      <p>In every project, there is at least one person who has not been invited to any workshop, is not on the distribution list, and is rarely mentioned in project meetings — but whose approval is necessary for the project to proceed. I call this person the silent stakeholder.</p>
+      <p>In Bangladesh's business environment, the silent stakeholder is often:</p>
+      <ul>
+        <li>A silent business partner or investor whose name never appears on the org chart</li>
+        <li>A powerful middle manager whose team controls critical data</li>
+        <li>An external buyer or compliance officer whose sign-off is required for system changes affecting export documentation</li>
+        <li>The founder's spouse or family member who has informal authority over financial decisions</li>
+      </ul>
+      <p>You will find silent stakeholders by asking, early in the project: "Is there anyone outside this room whose support we will need in order for this project to succeed?" Ask it of your sponsor, and ask it again of two or three other stakeholders. The names that keep appearing are your silent stakeholders.</p>
+      <p>Once identified, the strategy is simple: bring them into the conversation early, give them a clear and appropriate role (often "Consulted" or "Informed" in RACI terms), and ensure they feel respected, not ambushed.</p>
+
+      <h2 id="s7">Template: Stakeholder Register</h2>
+      <p>The Stakeholder Register is the living document that tracks everyone involved in or affected by the project. It is updated throughout the requirements phase and used to guide communication planning.</p>
+
+      <div class="callout">
+        <span class="tag">Template</span>
+        <p><strong>Stakeholder Register — column structure</strong><br><br>
+        <strong>Name</strong> | <strong>Title/Role</strong> | <strong>Department</strong> | <strong>Power (H/M/L)</strong> | <strong>Interest (H/M/L)</strong> | <strong>RACI Role</strong> | <strong>Concerns/Motivations</strong> | <strong>Preferred Communication</strong> | <strong>Last Engaged</strong><br><br>
+        <em>Example row:</em> Karim Ahmed | HR Director | Human Resources | H | H | Accountable for payroll workflow | Concerned about data privacy for worker records | Email + weekly 30-min meeting | [Date]<br><br>
+        Maintain this in Excel or a shared Google Sheet. Review and update it at the start of every requirements sprint. A stale stakeholder register is worse than no register — it gives you false confidence about coverage.</p>
+      </div>
+
+      <p>In practice, ten to fifteen rows covers most medium-complexity projects. If your register has more than twenty stakeholders in the "Manage closely" quadrant, you have a scope problem, not a stakeholder problem.</p>
+
+      <h2 id="s8">Reflection Questions</h2>
+      <ol>
+        <li>On a project you are familiar with, draw the Power/Interest grid from memory. Now ask yourself: were any of those stakeholders placed in the wrong quadrant — and what was the consequence?</li>
+        <li>Who was the "silent stakeholder" on the last significant project you worked on? When did they appear, and what happened when they did?</li>
+        <li>Write a RACI for one key decision on your current project. Who is the single Accountable person? If you cannot name one — what does that tell you about the project's governance?</li>
+      </ol>
+
+    </article>
+  </div>
+</div>
+
+<div class="shell">
+  <div class="post-foot">
+    <div class="next">
+      <a href="lesson-01.html" class="next-card">
+        <span class="dir">← Previous</span>
+        <h4>Lesson 01 — Foundations</h4>
+        <p>What business analysts actually do, and the five most common failure modes.</p>
+        <span class="arrow">← lesson 01</span>
+      </a>
+      <a href="lesson-03.html" class="next-card">
+        <span class="dir">Next →</span>
+        <h4>Lesson 03 — Running Discovery Workshops</h4>
+        <p>Prepare, facilitate, and document workshops that produce real decisions.</p>
+        <span class="arrow">→ lesson 03</span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="shell">
+    <div class="foot">
+      <span>Course 01 · Lesson 02</span>
+      <a href="../../" style="color:var(--text-3);transition:color .15s" onmouseover="this.style.color='var(--text)'" onmouseout="this.style.color='var(--text-3)'">← Portfolio</a>
+    </div>
+  </div>
+</footer>
+<script src="../../lab/_toc.js"></script>
+</body>
+</html>

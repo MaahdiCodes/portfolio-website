@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 03 — Running Discovery Workshops · Course 01</title>
+<meta name="description" content="How to prepare, facilitate, and document requirements workshops that produce real decisions — including handling difficult dynamics and remote sessions.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300..700&family=Geist+Mono:wght@300..500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../lab/_styles.css">
+<style>
+.three-up{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:28px 0}
+.three-up .card{border:1px solid var(--border);border-radius:12px;padding:20px;background:rgba(21,24,29,0.5)}
+.three-up .card h4{font-size:14px;font-weight:500;margin:0 0 8px;color:var(--text)}
+.three-up .card p{font-size:13.5px;color:var(--text-2);margin:0;line-height:1.55}
+.field-note{border:1px solid var(--border);border-radius:12px;padding:22px 24px;margin:28px 0;background:linear-gradient(180deg,rgba(21,24,29,0.55),rgba(14,16,19,0.55))}
+.field-note .fn-label{font-family:var(--mono);font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:var(--accent);margin:0 0 10px}
+.field-note p{font-size:14.5px;color:var(--text-2);margin:0;line-height:1.6}
+.field-note p+p{margin-top:10px}
+.phase-row{display:flex;gap:0;border:1px solid var(--border);border-radius:12px;overflow:hidden;margin:28px 0}
+.phase-item{flex:1;padding:20px;border-right:1px solid var(--border)}
+.phase-item:last-child{border-right:none}
+.phase-item .p-num{font-family:var(--mono);font-size:10px;color:var(--accent);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:8px}
+.phase-item h4{font-size:14px;font-weight:500;margin:0 0 6px;color:var(--text)}
+.phase-item p{font-size:13px;color:var(--text-2);margin:0;line-height:1.5}
+@media(max-width:680px){.three-up{grid-template-columns:1fr}.phase-row{flex-direction:column}.phase-item{border-right:none;border-bottom:1px solid var(--border)}.phase-item:last-child{border-bottom:none}}
+</style>
+</head>
+<body>
+<div class="grid-bg"></div>
+
+<nav class="nav">
+  <div class="shell">
+    <div class="nav-inner">
+      <a href="../../" class="brand">
+        <div class="brand-mark"></div>
+        <div class="brand-name"><b>Mehedi Hasan</b><em>ERP Consultant</em></div>
+      </a>
+      <a href="index.html" class="back-link">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10 12L6 8l4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Course overview
+      </a>
+    </div>
+  </div>
+</nav>
+
+<div class="shell">
+  <div class="post-head">
+    <span class="eyebrow">Course 01 &nbsp;·&nbsp; Lesson 03 &nbsp;·&nbsp; 30 min</span>
+    <div class="post-meta">
+      <span class="chip accent">Workshops</span>
+      <span class="chip">Facilitation</span>
+      <span class="chip">Discovery</span>
+    </div>
+    <h1>Running Discovery <span class="serif">Workshops</span></h1>
+    <p class="lede">A requirements workshop is the most powerful tool a BA has — and one of the easiest to run badly. Here is how to prepare, facilitate, and document a session that produces real decisions instead of polite conversation.</p>
+    <div class="byline">
+      <span>Lesson<b>03 of 09</b></span>
+      <span>Duration<b>30 minutes</b></span>
+      <span>Course<b>Requirements Gathering</b></span>
+    </div>
+  </div>
+</div>
+
+<div class="shell">
+  <div class="post">
+    <nav class="toc" id="toc" aria-label="Lesson contents">
+      <button class="toc-toggle" onclick="toggleToc()" aria-expanded="false" aria-controls="toc">
+        <span class="label">In this lesson</span>
+        <span class="current" id="toc-current">Why Workshops Fail</span>
+        <span class="chev"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 4l3 3 3-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </button>
+      <div class="toc-k">Contents</div>
+      <ol>
+        <li><a href="#s1">Why Workshops Fail</a></li>
+        <li><a href="#s2">Pre-workshop Preparation</a></li>
+        <li><a href="#s3">Facilitation Techniques</a></li>
+        <li><a href="#s4">Difficult Dynamics</a></li>
+        <li><a href="#s5">Remote vs In-person</a></li>
+        <li><a href="#s6">The 48-hour Rule</a></li>
+        <li><a href="#s7">Template: Agenda</a></li>
+        <li><a href="#s8">Reflection</a></li>
+      </ol>
+      <div class="toc-progress"><span>Progress</span><div class="bar"><i id="prog-bar"></i></div></div>
+    </nav>
+    <div class="toc-progress-mobile"><i id="prog-bar-m"></i></div>
+
+    <article class="body">
+
+      <h2 id="s1">Why Workshops Fail (and Why Yours Won't)</h2>
+      <p>The most common complaint about requirements workshops is that they consume half a day of senior stakeholders' time and produce nothing actionable. A long agenda, a room full of people, lots of talking — and at the end, the BA goes away to "write something up" that nobody reads.</p>
+      <p>Workshops fail for predictable reasons. The BA has not prepared an agenda with clear objectives. The right people are not in the room. One or two people dominate the conversation. Outputs are captured as meeting notes rather than structured decisions. There is no follow-up that holds anyone accountable.</p>
+      <p>Fix these five things and your workshops will produce requirements that developers can actually build against.</p>
+
+      <h2 id="s2">Pre-workshop Preparation: The Work That Makes the Workshop Work</h2>
+      <p>A two-hour requirements workshop requires at least two hours of preparation. This ratio surprises people who have been trained to equate productivity with visible output — but the investment pays off in the room.</p>
+
+      <div class="phase-row">
+        <div class="phase-item">
+          <div class="p-num">01 — One week before</div>
+          <h4>Define objectives</h4>
+          <p>What specific decisions will this workshop produce? Write them as "By the end of this session, we will have agreed on…" Not topics. Decisions.</p>
+        </div>
+        <div class="phase-item">
+          <div class="p-num">02 — Five days before</div>
+          <h4>Confirm attendees</h4>
+          <p>Apply the stakeholder register. Each decision needs its Accountable person present. No Accountable person, no binding decision. If they cannot attend, reschedule.</p>
+        </div>
+        <div class="phase-item">
+          <div class="p-num">03 — Three days before</div>
+          <h4>Send pre-read</h4>
+          <p>Share a one-page summary: the context, the questions to be answered, and any background material. This prevents the first 30 minutes from being spent on "let me give you some context."</p>
+        </div>
+        <div class="phase-item">
+          <div class="p-num">04 — One day before</div>
+          <h4>Prepare materials</h4>
+          <p>Draft the outputs you expect to produce — a blank stakeholder map, an empty user story template, a process flow to be reviewed. Bringing empty canvases is more effective than blank paper.</p>
+        </div>
+      </div>
+
+      <div class="field-note">
+        <p class="fn-label">BD Context</p>
+        <p>In Bangladeshi corporate environments, pre-reads are frequently ignored. Do not assume the room has read your materials. Design the workshop so it works even if nobody prepared — but design your first five minutes to quickly bring everyone up to speed, not to punish those who did not prepare.</p>
+        <p>Also: senior participants are often late. Build a five-minute "soft start" into your agenda that reviews context before moving into the core work. This respects those who arrived on time while not penalising the session for those who did not.</p>
+      </div>
+
+      <h2 id="s3">Core Facilitation Techniques</h2>
+      <p>The BA's role in a workshop is facilitator, not presenter. Your job is to create the conditions for good thinking to happen — not to tell people what the requirements are. Here are the techniques that work in practice.</p>
+
+      <div class="three-up">
+        <div class="card">
+          <h4>Brainwriting (not brainstorming)</h4>
+          <p>Give every participant a stack of sticky notes or index cards. Each person writes one idea per card in silence for five minutes. Then share. This prevents the first voice from anchoring the conversation and gives quieter participants an equal voice.</p>
+        </div>
+        <div class="card">
+          <h4>Dot voting</h4>
+          <p>After generating options, give each participant three to five "dot" votes (stickers or marks). They allocate their votes to the options they value most. Results in a quick, visible prioritisation that the group has ownership of.</p>
+        </div>
+        <div class="card">
+          <h4>Affinity mapping</h4>
+          <p>Group similar ideas together into clusters. Name each cluster. This transforms a wall of sticky notes into structured categories — which become your requirements domains. Works well for "what are all the things this system needs to do?"</p>
+        </div>
+        <div class="card">
+          <h4>Fishbone (cause and effect)</h4>
+          <p>To understand why a current process fails, use a fishbone diagram. Draw a horizontal arrow pointing to "the problem" on the right; branches represent causes. Useful for the "as-is" phase of workshops.</p>
+        </div>
+        <div class="card">
+          <h4>Process walkthrough</h4>
+          <p>Ask a subject-matter expert to walk the room through a real example of the current process — "walk me through what happens from when a PO arrives to when the goods leave the factory." Real examples surface edge cases that abstract discussion misses.</p>
+        </div>
+        <div class="card">
+          <h4>Split and converge</h4>
+          <p>Divide the room into two groups. Each group works on the same problem independently for 15 minutes, then the groups share and compare. Differences highlight assumptions that need to be resolved.</p>
+        </div>
+      </div>
+
+      <p>Do not use more than two or three techniques in a single session. Technique-switching every twenty minutes feels chaotic. Pick the approach that best matches your objectives and commit to it.</p>
+
+      <h2 id="s4">Handling Difficult Dynamics</h2>
+      <p>Even a well-prepared workshop can be derailed by human dynamics. Every BA encounters these situations; knowing how to handle them in advance is what separates experienced facilitators from nervous ones.</p>
+
+      <h3>The HiPPO effect</h3>
+      <p>HiPPO stands for Highest Paid Person's Opinion. In hierarchical organisations like most Bangladeshi firms, the most senior person in the room can inadvertently shut down all other contributions by stating their view early. Everyone else adjusts their position to agree.</p>
+      <p>The fix: use brainwriting before any group discussion. Get everyone's ideas on paper before the senior person speaks. Once ideas are visible and attributed, they are harder to dismiss. Alternatively, facilitate a round-robin where everyone speaks in turn before open discussion begins.</p>
+
+      <h3>The dominant voice</h3>
+      <p>One person speaks 70% of the time. Others disengage. The BA must intervene, diplomatically: "That's really useful — let me make sure we capture that, and then I'd like to hear from [name] about how this affects their area." Always redirect to a specific person, not "anyone else?"</p>
+
+      <h3>The silent room</h3>
+      <p>You ask a question. Nobody answers. In a Bangladeshi cultural context, silence often means the question was unclear, the topic is sensitive, or participants are deferring to the most senior person present. Do not interpret silence as agreement.</p>
+      <p>Strategies: switch to brainwriting; ask the question one-on-one; reframe the question as a hypothetical ("If this were your project to design, what would you make sure it could do?"); or take a five-minute break and reconvene in smaller groups.</p>
+
+      <div class="field-note">
+        <p class="fn-label">Field Note</p>
+        <p>I ran a workshop for a buyer portal project with twelve participants — the local merchandising team plus two buyer representatives joining via video from Europe. Every time a buyer spoke, the local team went silent. Not because they agreed, but because disagreeing with a buyer felt professionally risky.</p>
+        <p>We broke the session into two parts: the buyer representatives joined for the first 45 minutes, then left. In the second half, the local team was frank about what was operationally impossible. We captured those concerns separately and presented them to the buyers as "process constraints we need to accommodate." Every concern was addressed. A merged session would have produced requirements the local team could not implement.</p>
+      </div>
+
+      <h2 id="s5">Remote vs In-person: Adapting for Bangladesh Context</h2>
+      <p>Since 2020, remote workshops have become standard. In Bangladesh, they present specific challenges: variable internet connectivity, a culture of camera-off participation, and junior staff who are significantly more passive on video than in person.</p>
+      <p>Recommendations for remote sessions in Bangladesh:</p>
+      <ul>
+        <li><strong>Keep sessions shorter.</strong> Two-hour remote sessions produce better output than four-hour ones. Attention degrades faster on video.</li>
+        <li><strong>Use async pre-work.</strong> Send a Google Form or a shared Miro board with a brainstorming prompt the day before. Participants contribute when they have connectivity, not in real-time.</li>
+        <li><strong>Assign roles explicitly.</strong> Designate a note-taker and a timekeeper before the session. Without explicit assignment, these roles are assumed by nobody.</li>
+        <li><strong>Avoid long-form verbal discussion.</strong> Use shared documents or whiteboards that everyone can see and edit. Verbal discussion over unstable video is inefficient and excludes those with poor audio.</li>
+        <li><strong>Validate all outputs in writing before the session ends.</strong> Ask participants to confirm what was decided by typing it in chat. This catches miscommunication before it becomes a requirements error.</li>
+      </ul>
+
+      <h2 id="s6">The 48-hour Documentation Rule</h2>
+      <p>Every requirements workshop must produce a written output within 48 hours. This is not negotiable. After 48 hours, memory decays, nuance is lost, and participants begin to revise their recollection of what was agreed — usually in the direction of what they would have preferred.</p>
+      <p>The 48-hour output is not a polished document. It is a structured summary:</p>
+      <ol>
+        <li><strong>Decisions made</strong> — Statements beginning with "We agreed that…" Each decision has a named owner.</li>
+        <li><strong>Open questions</strong> — Items not resolved in the session, with a named person responsible for answering and a deadline.</li>
+        <li><strong>Next steps</strong> — Three to five specific actions, each with an owner and a due date.</li>
+        <li><strong>Requirements captured</strong> — A numbered list of requirements or user stories surfaced in the session. Not final — but specific enough to be reviewed.</li>
+      </ol>
+      <p>Send this summary to all participants and ask for corrections within five business days. Silence after five days means the summary is accepted. This is your paper trail.</p>
+
+      <h2 id="s7">Template: Workshop Agenda + Output Template</h2>
+
+      <div class="callout">
+        <span class="tag">Template</span>
+        <p><strong>Workshop Agenda — 2-hour session structure</strong><br><br>
+        <strong>0:00–0:05</strong> — Welcome, objectives, ground rules (BA)<br>
+        <strong>0:05–0:15</strong> — Context recap and as-is process overview (sponsor or SME)<br>
+        <strong>0:15–0:35</strong> — Individual brainwriting: "What must this system do?"<br>
+        <strong>0:35–0:55</strong> — Affinity mapping: group and name the clusters<br>
+        <strong>0:55–1:05</strong> — Dot voting: prioritise the clusters<br>
+        <strong>1:05–1:30</strong> — Deep dive on top 2–3 clusters: process walkthrough per area<br>
+        <strong>1:30–1:50</strong> — Open discussion: constraints, concerns, out-of-scope items<br>
+        <strong>1:50–2:00</strong> — Wrap-up: read back decisions, confirm open questions, assign next steps<br><br>
+        <strong>Output template (sent within 48 hours):</strong><br>
+        Session: [Name] | Date: [Date] | Attendees: [List]<br>
+        Decisions: [Numbered list]<br>
+        Open questions: [Item | Owner | Due date]<br>
+        Requirements captured: [Numbered list]<br>
+        Next steps: [Action | Owner | Due date]</p>
+      </div>
+
+      <h2 id="s8">Reflection Questions</h2>
+      <ol>
+        <li>Think about the last workshop or meeting you attended that felt unproductive. Using the failure modes from this lesson — which one applied? What one change to the preparation or facilitation would have made the biggest difference?</li>
+        <li>In the Bangladeshi cultural context, which facilitation technique from this lesson do you think would be most effective for getting honest input from junior staff when senior management is in the room? Why?</li>
+        <li>Write the first three lines of the 48-hour summary for a recent meeting — even a casual one. What would go in "Decisions made," "Open questions," and "Next steps"?</li>
+      </ol>
+
+    </article>
+  </div>
+</div>
+
+<div class="shell">
+  <div class="post-foot">
+    <div class="next">
+      <a href="lesson-02.html" class="next-card">
+        <span class="dir">← Previous</span>
+        <h4>Lesson 02 — Stakeholder Mapping</h4>
+        <p>Power/Interest grids, RACI, and navigating hierarchy.</p>
+        <span class="arrow">← lesson 02</span>
+      </a>
+      <a href="lesson-04.html" class="next-card">
+        <span class="dir">Next →</span>
+        <h4>Lesson 04 — Elicitation Techniques</h4>
+        <p>Interviews, observation, document analysis, JAD sessions and prototyping.</p>
+        <span class="arrow">→ lesson 04</span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="shell">
+    <div class="foot">
+      <span>Course 01 · Lesson 03</span>
+      <a href="../../" style="color:var(--text-3);transition:color .15s" onmouseover="this.style.color='var(--text)'" onmouseout="this.style.color='var(--text-3)'">← Portfolio</a>
+    </div>
+  </div>
+</footer>
+<script src="../../lab/_toc.js"></script>
+</body>
+</html>

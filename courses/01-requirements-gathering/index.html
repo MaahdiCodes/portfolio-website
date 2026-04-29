@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Requirements Gathering for Business Analysts — Course 01 · Mehedi Hasan</title>
+<meta name="description" content="A comprehensive 9-lesson course on requirements gathering for business analysts. Run stakeholder workshops, write user stories that survive UAT, and translate ambiguity into technical specs. Built for the Bangladeshi market, applicable worldwide.">
+<meta property="og:title" content="Requirements Gathering for Business Analysts — Course 01">
+<meta property="og:description" content="9 lessons · 4 hours · Bangladeshi market context · Globally applicable. Free to enrol.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300..700&family=Geist+Mono:wght@300..500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../_styles.css">
+<style>
+  /* Page-specific overrides */
+  .course-layout{display:grid;grid-template-columns:1fr 340px;gap:48px;align-items:start;padding:56px 0 96px}
+  .course-sidebar{position:sticky;top:96px}
+  .sidebar-card{border:1px solid var(--border);border-radius:16px;padding:28px;background:linear-gradient(180deg,rgba(21,24,29,0.7),rgba(14,16,19,0.7));backdrop-filter:blur(8px)}
+  .sidebar-card .s-title{font-family:var(--mono);font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-3);margin:0 0 16px}
+  .sidebar-stat{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid var(--border);font-size:14px}
+  .sidebar-stat:last-of-type{border-bottom:none}
+  .sidebar-stat .s-label{color:var(--text-3)}
+  .sidebar-stat .s-val{color:var(--text);font-weight:500}
+  .sidebar-unlock{width:100%;padding:14px;border-radius:10px;background:var(--accent);color:#04140B;font-family:var(--sans);font-weight:500;font-size:15px;border:none;cursor:pointer;transition:opacity .18s,transform .12s;margin-top:20px;letter-spacing:-0.01em}
+  .sidebar-unlock:hover{opacity:0.88;transform:translateY(-1px)}
+  .sidebar-note{font-family:var(--mono);font-size:10.5px;color:var(--text-3);text-align:center;margin-top:12px;letter-spacing:0.03em}
+  .sidebar-enrolled{display:none;padding:14px;border-radius:10px;border:1px solid oklch(0.80 0.17 155 / 0.4);background:oklch(0.80 0.17 155 / 0.07);font-size:14px;color:var(--text-2);margin-top:20px;text-align:center;line-height:1.5}
+  .sidebar-enrolled strong{color:var(--text);display:block;margin-bottom:4px}
+  @media(max-width:960px){
+    .course-layout{grid-template-columns:1fr;gap:0}
+    .course-sidebar{position:static;margin-top:40px}
+  }
+</style>
+</head>
+<body>
+<div class="grid-bg"></div>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="shell">
+    <div class="nav-inner">
+      <a href="../../" class="brand">
+        <div class="brand-mark"></div>
+        <div class="brand-name"><b>Mehedi Hasan</b><em>ERP Consultant</em></div>
+      </a>
+      <a href="../../#courses" class="back-link">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10 12L6 8l4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        All courses
+      </a>
+    </div>
+  </div>
+</nav>
+
+<!-- COURSE HEADER -->
+<div class="shell">
+  <div class="course-head">
+    <span class="eyebrow">Course · 01 &nbsp;·&nbsp; 9 Lessons &nbsp;·&nbsp; ~ 4 hrs</span>
+    <h1>Requirements <span class="serif">gathering</span> for business analysts</h1>
+    <p class="lede">How to run stakeholder workshops, write user stories that survive UAT, and translate ambiguity into technical specs — drawn from live projects in Bangladesh's RMG and services sectors.</p>
+    <div class="course-meta-row">
+      <span class="chip accent">Free</span>
+      <span class="chip">RMG · Manufacturing context</span>
+      <span class="chip">Globally applicable</span>
+      <span class="chip">Beginner → Intermediate</span>
+    </div>
+
+    <ul class="learn-list">
+      <li>Run structured stakeholder workshops that produce real decisions</li>
+      <li>Write user stories and acceptance criteria that survive UAT without revision</li>
+      <li>Translate vague business asks into precise technical specifications</li>
+      <li>Handle conflicting requirements and mid-project change requests</li>
+      <li>Secure stakeholder sign-off — even when they go quiet</li>
+      <li>Build a complete BA artefact portfolio for career growth</li>
+    </ul>
+  </div>
+</div>
+
+<!-- MAIN LAYOUT -->
+<div class="shell">
+  <div class="course-layout">
+
+    <!-- LESSON LIST -->
+    <main>
+      <div id="enrolled-banner" class="enrolled-banner">
+        <span class="dot"></span>
+        <span>Welcome back, <strong id="enrolled-name"></strong> — all lessons are unlocked.</span>
+      </div>
+
+      <div class="lessons-section" style="padding-top:0">
+        <div class="lessons-header">
+          <h2>9 Lessons</h2>
+          <button class="unlock-btn" id="unlock-cta" onclick="openModal()">
+            <svg viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="6" width="10" height="7" rx="2" stroke="currentColor" stroke-width="1.4"/><path d="M4.5 6V4.5a2.5 2.5 0 0 1 5 0V6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+            Unlock Free Course
+          </button>
+        </div>
+
+        <ul class="lesson-list" id="lesson-list">
+          <li class="lesson-item locked" id="li-01">
+            <span class="lesson-num">01</span>
+            <span class="lesson-title">Foundations — What Business Analysts Actually Do</span>
+            <span class="lesson-dur">25 min</span>
+            <span class="lesson-icon" id="ico-01">🔒</span>
+          </li>
+          <li class="lesson-item locked" id="li-02">
+            <span class="lesson-num">02</span>
+            <span class="lesson-title">Stakeholder Mapping &amp; Power Dynamics</span>
+            <span class="lesson-dur">27 min</span>
+            <span class="lesson-icon" id="ico-02">🔒</span>
+          </li>
+          <li class="lesson-item locked" id="li-03">
+            <span class="lesson-num">03</span>
+            <span class="lesson-title">Running Discovery Workshops</span>
+            <span class="lesson-dur">30 min</span>
+            <span class="lesson-icon" id="ico-03">🔒</span>
+          </li>
+          <li class="lesson-item locked" id="li-04">
+            <span class="lesson-num">04</span>
+            <span class="lesson-title">Elicitation Techniques Deep Dive</span>
+            <span class="lesson-dur">27 min</span>
+            <span class="lesson-icon" id="ico-04">🔒</span>
+          </li>
+          <li class="lesson-item locked" id="li-05">
+            <span class="lesson-num">05</span>
+            <span class="lesson-title">Writing User Stories That Survive UAT</span>
+            <span class="lesson-dur">27 min</span>
+            <span class="lesson-icon" id="ico-05">🔒</span>
+          </li>
+          <li class="lesson-item locked" id="li-06">
+            <span class="lesson-num">06</span>
+            <span class="lesson-title">Translating Ambiguity into Technical Specs</span>
+            <span class="lesson-dur">27 min</span>
+            <span class="lesson-icon" id="ico-06">🔒</span>
+          </li>
+          <li class="lesson-item locked" id="li-07">
+            <span class="lesson-num">07</span>
+            <span class="lesson-title">Managing Conflicting Requirements &amp; Change</span>
+            <span class="lesson-dur">25 min</span>
+            <span class="lesson-icon" id="ico-07">🔒</span>
+          </li>
+          <li class="lesson-item locked" id="li-08">
+            <span class="lesson-num">08</span>
+            <span class="lesson-title">UAT Planning &amp; Getting Sign-off</span>
+            <span class="lesson-dur">27 min</span>
+            <span class="lesson-icon" id="ico-08">🔒</span>
+          </li>
+          <li class="lesson-item locked" id="li-09">
+            <span class="lesson-num">09</span>
+            <span class="lesson-title">BA Toolkit, Templates &amp; Career in Bangladesh</span>
+            <span class="lesson-dur">25 min</span>
+            <span class="lesson-icon" id="ico-09">🔒</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- About this course -->
+      <div style="margin-top:64px;padding-top:48px;border-top:1px solid var(--border)">
+        <h2 style="font-size:22px;font-weight:500;letter-spacing:-0.02em;margin:0 0 24px">About this course</h2>
+        <p style="font-size:16px;line-height:1.7;color:var(--text-2);margin:0 0 18px">Requirements gathering is where most projects are won or lost. Not in the sprint planning, not in the UAT, not in the deployment — but in those early sessions where a business analyst sits across from a stakeholder and tries to turn a fog of competing needs into something a developer can actually build.</p>
+        <p style="font-size:16px;line-height:1.7;color:var(--text-2);margin:0 0 18px">This course is built from real projects in Bangladesh — garment factories, export houses, financial services firms — where requirements chaos is not an edge case but a daily reality. The techniques here work in those environments, which means they work anywhere.</p>
+        <p style="font-size:16px;line-height:1.7;color:var(--text-2);margin:0 0 18px">Each lesson runs 25–30 minutes and includes practical frameworks, field notes from actual engagements, and templates you can use immediately. By the end, you will have a complete BA toolkit: stakeholder maps, workshop agendas, user story cards, functional specs, UAT plans, and a sign-off matrix.</p>
+        <div class="callout" style="margin-top:32px">
+          <span class="tag">Who this is for</span>
+          <p>Business analysts new to the discipline, project managers who handle requirements work, operations leads managing ERP or digital transformation projects, and anyone who has ever been handed a vague brief and told to "sort it out."</p>
+        </div>
+      </div>
+    </main>
+
+    <!-- SIDEBAR -->
+    <aside class="course-sidebar">
+      <div class="sidebar-card">
+        <p class="s-title">Course details</p>
+        <div class="sidebar-stat"><span class="s-label">Lessons</span><span class="s-val">9</span></div>
+        <div class="sidebar-stat"><span class="s-label">Total duration</span><span class="s-val">~ 4 hours</span></div>
+        <div class="sidebar-stat"><span class="s-label">Level</span><span class="s-val">Beginner → Intermediate</span></div>
+        <div class="sidebar-stat"><span class="s-label">Market focus</span><span class="s-val">Bangladesh (RMG)</span></div>
+        <div class="sidebar-stat"><span class="s-label">Language</span><span class="s-val">English</span></div>
+        <div class="sidebar-stat"><span class="s-label">Price</span><span class="s-val" style="color:var(--accent)">Free</span></div>
+
+        <button class="sidebar-unlock" id="sidebar-unlock-cta" onclick="openModal()">Unlock All 9 Lessons →</button>
+        <p class="sidebar-note">No spam. Your email stays with us.</p>
+        <div class="sidebar-enrolled" id="sidebar-enrolled">
+          <strong id="sidebar-enrolled-name">You're enrolled</strong>
+          All lessons are unlocked. Good luck.
+        </div>
+      </div>
+    </aside>
+
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="shell">
+    <div class="foot">
+      <span>Course 01 · Requirements Gathering</span>
+      <a href="../../" style="color:var(--text-3);transition:color .15s" onmouseover="this.style.color='var(--text)'" onmouseout="this.style.color='var(--text-3)'">← Back to portfolio</a>
+    </div>
+  </div>
+</footer>
+
+<!-- ENROL MODAL -->
+<div class="modal-overlay" id="modal-overlay" onclick="handleOverlayClick(event)">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <button class="modal-close" onclick="closeModal()" aria-label="Close">✕</button>
+    <h2 id="modal-title">Unlock this course — it's free</h2>
+    <p class="modal-sub">Enter your details and get instant access to all 9 lessons.</p>
+
+    <form id="enrol-form" onsubmit="handleSubmit(event)">
+      <div class="field">
+        <label for="f-name">Full Name *</label>
+        <input type="text" id="f-name" name="name" placeholder="Rahim Uddin" autocomplete="name" required>
+      </div>
+      <div class="field">
+        <label for="f-email">Email Address *</label>
+        <input type="email" id="f-email" name="email" placeholder="you@example.com" autocomplete="email" required>
+      </div>
+      <div class="field">
+        <label for="f-role">Current Role *</label>
+        <select id="f-role" name="profession" required>
+          <option value="" disabled selected>Select your role…</option>
+          <option>Business Analyst</option>
+          <option>Project Manager</option>
+          <option>Operations / Process Manager</option>
+          <option>ERP Consultant</option>
+          <option>Software Developer</option>
+          <option>Student</option>
+          <option>Founder / Entrepreneur</option>
+          <option>Other</option>
+        </select>
+      </div>
+
+      <div class="modal-error" id="modal-error"></div>
+      <button type="submit" class="modal-submit" id="modal-submit">Get Instant Access</button>
+      <p class="modal-note">No spam · Unsubscribe anytime · Your data is yours</p>
+    </form>
+  </div>
+</div>
+
+<script>
+/* ─── Google Apps Script endpoint ─── */
+/* SETUP: Replace the URL below after deploying your Apps Script web app.
+   Steps:
+   1. Go to script.google.com → New project
+   2. Paste the Apps Script code from the plan (see README or plan file)
+   3. Deploy → New deployment → Web App
+      Execute as: Me | Who has access: Anyone
+   4. Copy the Web App URL and paste it below
+*/
+const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwePoTRBcwfPmS2C4Zw03OAE0fLaI6QMC5D72-6WZSlHHML1nhKqKowPgpFpUboMFmi/exec';
+
+/* ─── Lesson links ─── */
+const LESSONS = [
+  { id: '01', href: 'lesson-01.html', title: 'Foundations — What Business Analysts Actually Do' },
+  { id: '02', href: 'lesson-02.html', title: 'Stakeholder Mapping & Power Dynamics' },
+  { id: '03', href: 'lesson-03.html', title: 'Running Discovery Workshops' },
+  { id: '04', href: 'lesson-04.html', title: 'Elicitation Techniques Deep Dive' },
+  { id: '05', href: 'lesson-05.html', title: 'Writing User Stories That Survive UAT' },
+  { id: '06', href: 'lesson-06.html', title: 'Translating Ambiguity into Technical Specs' },
+  { id: '07', href: 'lesson-07.html', title: 'Managing Conflicting Requirements & Change' },
+  { id: '08', href: 'lesson-08.html', title: 'UAT Planning & Getting Sign-off' },
+  { id: '09', href: 'lesson-09.html', title: 'BA Toolkit, Templates & Career in Bangladesh' },
+];
+
+const LS_KEY = 'course_01_rg_user';
+
+/* ─── Check unlock state on load ─── */
+(function init() {
+  const stored = localStorage.getItem(LS_KEY);
+  if (!stored) return;
+  try {
+    const user = JSON.parse(stored);
+    if (user && user.name && user.email) unlockUI(user.name);
+  } catch (_) {}
+})();
+
+function unlockUI(name) {
+  /* Lesson items → clickable links */
+  LESSONS.forEach(l => {
+    const li = document.getElementById('li-' + l.id);
+    const ico = document.getElementById('ico-' + l.id);
+    if (!li) return;
+    li.classList.remove('locked');
+    li.classList.add('unlocked');
+    ico.textContent = '✓';
+    ico.style.color = 'var(--accent)';
+    li.style.cursor = 'pointer';
+    li.onclick = () => window.location.href = l.href;
+  });
+
+  /* CTAs → hide */
+  const cta = document.getElementById('unlock-cta');
+  const sCta = document.getElementById('sidebar-unlock-cta');
+  const sNote = document.querySelector('.sidebar-note');
+  if (cta) cta.style.display = 'none';
+  if (sCta) sCta.style.display = 'none';
+  if (sNote) sNote.style.display = 'none';
+
+  /* Enrolled banner + sidebar message */
+  const banner = document.getElementById('enrolled-banner');
+  const eName = document.getElementById('enrolled-name');
+  const sEnrolled = document.getElementById('sidebar-enrolled');
+  const sEnrolledName = document.getElementById('sidebar-enrolled-name');
+  if (banner) { banner.classList.add('show'); }
+  if (eName) eName.textContent = name;
+  if (sEnrolled) sEnrolled.style.display = 'block';
+  if (sEnrolledName) sEnrolledName.textContent = 'You\'re in, ' + name + '.';
+}
+
+/* ─── Modal ─── */
+function openModal() {
+  document.getElementById('modal-overlay').classList.add('open');
+  document.getElementById('f-name').focus();
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal() {
+  document.getElementById('modal-overlay').classList.remove('open');
+  document.body.style.overflow = '';
+  clearError();
+}
+
+function handleOverlayClick(e) {
+  if (e.target === document.getElementById('modal-overlay')) closeModal();
+}
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') closeModal();
+});
+
+/* ─── Form submit ─── */
+async function handleSubmit(e) {
+  e.preventDefault();
+  clearError();
+
+  const name = document.getElementById('f-name').value.trim();
+  const email = document.getElementById('f-email').value.trim();
+  const profession = document.getElementById('f-role').value;
+
+  if (!name || !email || !profession) {
+    showError('Please fill in all fields.');
+    return;
+  }
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    showError('Please enter a valid email address.');
+    return;
+  }
+
+  const btn = document.getElementById('modal-submit');
+  btn.disabled = true;
+  btn.textContent = 'Saving…';
+
+  const payload = { name, email, profession, course: 'course-01-requirements-gathering', timestamp: new Date().toISOString() };
+
+  /* Save to Google Sheets — fire and forget; unlock regardless */
+  if (SCRIPT_URL && SCRIPT_URL !== 'GOOGLE_APPS_SCRIPT_URL') {
+    try {
+      await fetch(SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+    } catch (_) {}
+  }
+
+  /* Save locally and unlock */
+  localStorage.setItem(LS_KEY, JSON.stringify({ name, email, profession, unlockedAt: new Date().toISOString() }));
+  closeModal();
+  unlockUI(name);
+
+  btn.disabled = false;
+  btn.textContent = 'Get Instant Access';
+}
+
+function showError(msg) {
+  const el = document.getElementById('modal-error');
+  el.textContent = msg;
+  el.classList.add('show');
+}
+
+function clearError() {
+  const el = document.getElementById('modal-error');
+  el.textContent = '';
+  el.classList.remove('show');
+}
+</script>
+</body>
+</html>

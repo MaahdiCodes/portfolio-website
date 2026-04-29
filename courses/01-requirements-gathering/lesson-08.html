@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 08 — UAT Planning & Getting Sign-off · Course 01</title>
+<meta name="description" content="Build the UAT plan, facilitate testing sessions, triage defects, and secure stakeholder sign-off — including the Bangladesh challenge of stakeholders going quiet.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300..700&family=Geist+Mono:wght@300..500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../lab/_styles.css">
+<style>
+.three-up{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:28px 0}
+.three-up .card{border:1px solid var(--border);border-radius:12px;padding:20px;background:rgba(21,24,29,0.5)}
+.three-up .card h4{font-size:14px;font-weight:500;margin:0 0 8px;color:var(--text)}
+.three-up .card p{font-size:13.5px;color:var(--text-2);margin:0;line-height:1.55}
+.field-note{border:1px solid var(--border);border-radius:12px;padding:22px 24px;margin:28px 0;background:linear-gradient(180deg,rgba(21,24,29,0.55),rgba(14,16,19,0.55))}
+.field-note .fn-label{font-family:var(--mono);font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:var(--accent);margin:0 0 10px}
+.field-note p{font-size:14.5px;color:var(--text-2);margin:0;line-height:1.6}
+.field-note p+p{margin-top:10px}
+.defect-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid var(--border);border-radius:12px;overflow:hidden;margin:28px 0}
+.dg-cell{padding:18px 20px;border-bottom:1px solid var(--border);border-right:1px solid var(--border)}
+.dg-cell:nth-child(3n){border-right:none}
+.dg-cell:nth-last-child(-n+3){border-bottom:none}
+.dg-cell .sev{font-family:var(--mono);font-size:10px;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:8px;display:inline-block;padding:2px 8px;border-radius:4px}
+.sev-critical{background:rgba(248,113,113,0.15);color:#f87171;border:1px solid rgba(248,113,113,0.3)}
+.sev-major{background:rgba(251,191,36,0.12);color:#fbbf24;border:1px solid rgba(251,191,36,0.25)}
+.sev-minor{background:rgba(96,165,250,0.12);color:#60a5fa;border:1px solid rgba(96,165,250,0.25)}
+.dg-cell h4{font-size:14px;font-weight:500;margin:0 0 6px;color:var(--text)}
+.dg-cell p{font-size:13px;color:var(--text-2);margin:0;line-height:1.5}
+@media(max-width:680px){.three-up{grid-template-columns:1fr}.defect-grid{grid-template-columns:1fr}.dg-cell{border-right:none}.dg-cell:nth-last-child(-n+3){border-bottom:1px solid var(--border)}.dg-cell:last-child{border-bottom:none}}
+</style>
+</head>
+<body>
+<div class="grid-bg"></div>
+
+<nav class="nav">
+  <div class="shell">
+    <div class="nav-inner">
+      <a href="../../" class="brand">
+        <div class="brand-mark"></div>
+        <div class="brand-name"><b>Mehedi Hasan</b><em>ERP Consultant</em></div>
+      </a>
+      <a href="index.html" class="back-link">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10 12L6 8l4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Course overview
+      </a>
+    </div>
+  </div>
+</nav>
+
+<div class="shell">
+  <div class="post-head">
+    <span class="eyebrow">Course 01 &nbsp;·&nbsp; Lesson 08 &nbsp;·&nbsp; 27 min</span>
+    <div class="post-meta">
+      <span class="chip accent">UAT</span>
+      <span class="chip">Sign-off</span>
+      <span class="chip">Defect Triage</span>
+    </div>
+    <h1>UAT Planning &amp; Getting <span class="serif">Sign-off</span></h1>
+    <p class="lede">UAT is where requirements prove their quality — or expose their gaps. As the BA, your role here is not to test, but to advocate for the user, triage what you find, and navigate the sign-off process with enough structure to prevent it from becoming a political standoff.</p>
+    <div class="byline">
+      <span>Lesson<b>08 of 09</b></span>
+      <span>Duration<b>27 minutes</b></span>
+      <span>Course<b>Requirements Gathering</b></span>
+    </div>
+  </div>
+</div>
+
+<div class="shell">
+  <div class="post">
+    <nav class="toc" id="toc" aria-label="Lesson contents">
+      <button class="toc-toggle" onclick="toggleToc()" aria-expanded="false" aria-controls="toc">
+        <span class="label">In this lesson</span>
+        <span class="current" id="toc-current">The UAT Mindset</span>
+        <span class="chev"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 4l3 3 3-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </button>
+      <div class="toc-k">Contents</div>
+      <ol>
+        <li><a href="#s1">The UAT Mindset</a></li>
+        <li><a href="#s2">Building Test Scenarios</a></li>
+        <li><a href="#s3">UAT Plan Structure</a></li>
+        <li><a href="#s4">Facilitating UAT</a></li>
+        <li><a href="#s5">Defect Triage</a></li>
+        <li><a href="#s6">Getting Sign-off</a></li>
+        <li><a href="#s7">The Sign-off Playbook</a></li>
+        <li><a href="#s8">Template</a></li>
+        <li><a href="#s9">Reflection</a></li>
+      </ol>
+      <div class="toc-progress"><span>Progress</span><div class="bar"><i id="prog-bar"></i></div></div>
+    </nav>
+    <div class="toc-progress-mobile"><i id="prog-bar-m"></i></div>
+
+    <article class="body">
+
+      <h2 id="s1">The UAT Planning Mindset: You Are the User's Advocate</h2>
+      <p>There is a common mistake where BAs see UAT as the finish line — requirements are done, the system is built, all that remains is getting signatures. This mistake produces bad UAT: superficial testing, discovered problems ignored or deferred, sign-off obtained under schedule pressure rather than genuine acceptance.</p>
+      <p>The correct mindset is that UAT is the moment of truth. It is where the requirements work you did is either validated or revealed to have been insufficient. A good BA approaches UAT with curiosity, not defensiveness. If UAT finds problems, you want to find them — that is the entire point.</p>
+      <p>Your role in UAT is distinct from the tester's and the developer's:</p>
+      <ul>
+        <li>You translate requirements into test scenarios (before UAT begins)</li>
+        <li>You moderate between users who are testing and developers who are defending their work</li>
+        <li>You triage whether a reported issue is a defect (implementation does not match requirement), a change request (implementation matches requirement but stakeholder has changed their mind), or working-as-designed (stakeholder misunderstood how the feature works)</li>
+        <li>You maintain the defect log and communicate status to all parties</li>
+        <li>You manage the sign-off process against the agreed exit criteria</li>
+      </ul>
+
+      <h2 id="s2">Building Test Scenarios from Requirements (Not from Dev Assumptions)</h2>
+      <p>Every acceptance criterion in your user stories is a test scenario. The BA's job is to make that explicit before UAT begins — creating a numbered list of test scenarios, with steps, expected outcomes, and the requirement they verify.</p>
+      <p>Test scenarios derived from requirements have a different quality than test scenarios derived from how developers described the system. Requirements-derived scenarios test for what was agreed. Developer-described scenarios test for what was built. These are not always the same thing.</p>
+
+      <div class="field-note">
+        <p class="fn-label">Worked Example</p>
+        <p><strong>User story:</strong> As a merchandiser, I want to see delayed shipments highlighted, so that I can prioritise my follow-up calls.<br><br>
+        <strong>Acceptance criterion:</strong> Given a shipment's expected arrival date has passed without confirmation, when the merchandiser views the shipments screen, then the shipment row is highlighted in red and displays a "Delayed" status badge.<br><br>
+        <strong>Test scenario TC-012:</strong><br>
+        Precondition: Shipment #SH-449 has expected arrival date 5 days ago. No arrival confirmed.<br>
+        Steps: 1. Log in as merchandiser. 2. Navigate to Shipments screen.<br>
+        Expected result: Row for SH-449 is highlighted red. Status badge shows "Delayed."<br>
+        Linked requirement: FR-08, US-012, AC2</p>
+      </div>
+
+      <p>Build test scenarios before UAT starts, not during. Giving users a structured test scenario to follow produces far more useful feedback than asking them to "just play around with the system." Undirected testing finds surface issues. Scenario-based testing finds requirements failures.</p>
+
+      <h2 id="s3">UAT Plan Structure: Scope, Schedule, Entry Criteria, Exit Criteria</h2>
+      <p>The UAT plan is agreed and signed off before testing begins. Its purpose is to define what "done with testing" means — so that when the time comes, everyone knows whether UAT is complete or not.</p>
+
+      <div class="three-up">
+        <div class="card">
+          <h4>Scope</h4>
+          <p>Which modules, user roles, and test scenarios are included in this UAT cycle. What is explicitly out of scope (e.g., "performance testing is excluded from UAT scope and covered separately").</p>
+        </div>
+        <div class="card">
+          <h4>Schedule</h4>
+          <p>UAT start date, end date, and key milestones. Daily or weekly check-in schedule. Date by which all critical defects must be resolved for go-live to proceed as planned.</p>
+        </div>
+        <div class="card">
+          <h4>Entry criteria</h4>
+          <p>Conditions that must be true before UAT begins. "Development is complete and signed off by the tech lead. All Critical defects from system testing are resolved. UAT environment is available with production-equivalent data."</p>
+        </div>
+        <div class="card">
+          <h4>Exit criteria</h4>
+          <p>Conditions that must be true before UAT is considered complete. "All test scenarios are executed. Zero open Critical defects. Open Major defects are documented and agreed as acceptable for go-live. Sign-off document is signed by all named approvers."</p>
+        </div>
+        <div class="card">
+          <h4>Test team</h4>
+          <p>Named business users who will execute test scenarios. Their availability is confirmed in advance and scheduled. A UAT plan with unnamed testers is not a plan.</p>
+        </div>
+        <div class="card">
+          <h4>Defect process</h4>
+          <p>How defects are logged (tool or spreadsheet), categorised, and communicated. Who has authority to classify severity? What is the SLA for developer response by severity level?</p>
+        </div>
+      </div>
+
+      <h2 id="s4">Facilitating UAT: Your Role, Your Boundaries</h2>
+      <p>The BA facilitates UAT — they do not conduct it. Business users test the system. The BA's job is to ensure the testing is effective, the defects are properly recorded, and the conversations between business and IT stay productive rather than becoming disputes about who is at fault.</p>
+      <p>Practical facilitation guidelines:</p>
+      <ul>
+        <li><strong>Daily standup during UAT</strong> — fifteen minutes each morning: what was tested yesterday, what defects were found, what is being tested today, any blockers</li>
+        <li><strong>Separate defect triage from testing sessions</strong> — defects are logged during testing, triaged in a separate session with the technical lead. Combining the two causes testing sessions to become debugging sessions</li>
+        <li><strong>Clarify "defect vs change request" immediately</strong> — when a user reports something, determine within the session whether it is a defect (gap between system and agreed requirement) or a change request (gap between system and what the user now wants). Both are valid findings; only the defect is a go-live blocker</li>
+        <li><strong>Document everything in writing</strong> — verbal agreements in UAT sessions evaporate. Write every decision, every deferred defect, and every "we'll accept this for now" in the defect log immediately</li>
+      </ul>
+
+      <h2 id="s5">Defect Triage: Critical, Major, Minor</h2>
+      <p>Not all defects are created equal. Triage determines which defects block go-live and which can be accepted with a documented plan for resolution.</p>
+
+      <div class="defect-grid">
+        <div class="dg-cell">
+          <span class="sev sev-critical">Critical</span>
+          <h4>Blocks go-live</h4>
+          <p>System cannot perform its core function. Data loss or corruption possible. Business process cannot be completed. Example: invoice generation produces incorrect totals.</p>
+        </div>
+        <div class="dg-cell">
+          <span class="sev sev-major">Major</span>
+          <h4>Significant impact</h4>
+          <p>A required function does not work as specified, but a workaround exists. Goes to production only with explicit written sign-off from the sponsor and a committed resolution date. Example: export to Excel produces incorrectly formatted cells.</p>
+        </div>
+        <div class="dg-cell">
+          <span class="sev sev-minor">Minor</span>
+          <h4>Cosmetic / low impact</h4>
+          <p>UI inconsistencies, label wording, non-critical formatting issues. Can be deferred to a post-launch maintenance release without business impact. Example: column headers are not sentence-cased.</p>
+        </div>
+      </div>
+
+      <p>The triage must be done jointly by the BA and the technical lead. The BA brings requirements knowledge (is this what was specified?), the technical lead brings implementation knowledge (what does fixing this actually involve?).</p>
+
+      <h2 id="s6">Getting Sign-off: The Bangladesh Challenge</h2>
+      <p>Sign-off is the formal acknowledgement by the accountable stakeholder that UAT is complete, the exit criteria are met, and the system is accepted for production deployment. In a well-run project, sign-off is a formality — the outcome of a process everyone understood and followed.</p>
+      <p>In practice, particularly in Bangladesh's corporate environment, sign-off creates unique challenges:</p>
+
+      <div class="three-up">
+        <div class="card">
+          <h4>The disappearing approver</h4>
+          <p>The MD or director who needs to sign off becomes unavailable. Meetings are rescheduled. The project sits in "pending sign-off" for weeks. Prevention: define a named deputy approver in the UAT plan who can sign off if the primary approver is unavailable for more than five business days.</p>
+        </div>
+        <div class="card">
+          <h4>"It looks different than I imagined"</h4>
+          <p>A stakeholder refuses to sign off not because of a defect, but because the visual design or workflow is different from their mental image. This is a requirements problem — specifically a prototyping gap. The fix for next time is a signed prototype review. For now, triage whether the concern is a defect or a change request.</p>
+        </div>
+        <div class="card">
+          <h4>Conditional sign-off creep</h4>
+          <p>Sign-off is given "subject to" a list of minor fixes that keeps growing. Set a clear policy: sign-off can be conditional on resolution of up to three named Minor defects. Any additional conditions restart the sign-off process.</p>
+        </div>
+      </div>
+
+      <h2 id="s7">The Sign-off Meeting Playbook</h2>
+      <p>Do not wait for sign-off to emerge — orchestrate it. The sign-off meeting is a scheduled event, not a casual ask. Here is the structure:</p>
+      <ol>
+        <li><strong>Pre-read sent 48 hours before</strong> — a one-page summary: test scenarios executed, pass/fail status, open defects (severity and status), and the specific sign-off you are requesting</li>
+        <li><strong>Open with the exit criteria</strong> — read out the exit criteria from the UAT plan. Show that they are met. This reframes the meeting as "we have met the agreed standard" rather than "please agree the work is done"</li>
+        <li><strong>Defects presented transparently</strong> — every open defect, its severity, and its resolution plan. No surprises. Stakeholders who are surprised at sign-off by defects they did not know about will not sign</li>
+        <li><strong>Sign-off in the meeting</strong> — have the physical or digital document available. Request signature before the meeting ends. "I'll send it for signature later" is where sign-off goes to die</li>
+        <li><strong>If sign-off is withheld</strong> — ask specifically what condition must be met and by when. Get it in writing. If the condition is not in the UAT plan, determine whether it is a defect or a change request. Do not accept vague objections</li>
+      </ol>
+
+      <h2 id="s8">Template: UAT Plan + Sign-off Matrix</h2>
+
+      <div class="callout">
+        <span class="tag">Template</span>
+        <p><strong>UAT Plan — key sections</strong><br><br>
+        <strong>1. Overview:</strong> Project name, UAT period, UAT coordinator (BA name)<br>
+        <strong>2. Scope:</strong> Modules in scope / out of scope<br>
+        <strong>3. Entry criteria:</strong> [checklist]<br>
+        <strong>4. Exit criteria:</strong> [checklist — this becomes the sign-off standard]<br>
+        <strong>5. Test team:</strong> Name | Role | Modules assigned | Availability<br>
+        <strong>6. Schedule:</strong> Start date | End date | Daily standup time | Triage session timing<br>
+        <strong>7. Defect process:</strong> Log location | Severity definitions | SLA by severity | Escalation path<br>
+        <strong>8. Test scenario index:</strong> TC-ID | Description | Linked requirements | Tester | Status<br><br>
+        <strong>Sign-off Matrix — columns:</strong><br>
+        Module | Approver name | Approver title | Approval date | Conditions | Signature<br><br>
+        <em>One row per module or functional area. All rows must be completed before go-live.</em></p>
+      </div>
+
+      <h2 id="s9">Reflection Questions</h2>
+      <ol>
+        <li>On the most recent project you know that went to UAT: were test scenarios derived from requirements or from ad-hoc user exploration? What defect categories were found? Is there a relationship between how testing was structured and what was found?</li>
+        <li>Design the exit criteria for the UAT of a system you know. What specific conditions must be true before sign-off? Write three measurable criteria.</li>
+        <li>Think about a sign-off that was delayed or contentious. Which of the "Bangladesh challenge" scenarios applied? What would you do differently to prevent it?</li>
+      </ol>
+
+    </article>
+  </div>
+</div>
+
+<div class="shell">
+  <div class="post-foot">
+    <div class="next">
+      <a href="lesson-07.html" class="next-card">
+        <span class="dir">← Previous</span>
+        <h4>Lesson 07 — Conflicting Requirements</h4>
+        <p>Conflict resolution, change control, and the RTM.</p>
+        <span class="arrow">← lesson 07</span>
+      </a>
+      <a href="lesson-09.html" class="next-card">
+        <span class="dir">Next →</span>
+        <h4>Lesson 09 — BA Toolkit &amp; Career</h4>
+        <p>Your complete artefacts checklist, tools guide, and BA career paths in Bangladesh.</p>
+        <span class="arrow">→ lesson 09</span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="shell">
+    <div class="foot">
+      <span>Course 01 · Lesson 08</span>
+      <a href="../../" style="color:var(--text-3);transition:color .15s" onmouseover="this.style.color='var(--text)'" onmouseout="this.style.color='var(--text-3)'">← Portfolio</a>
+    </div>
+  </div>
+</footer>
+<script src="../../lab/_toc.js"></script>
+</body>
+</html>

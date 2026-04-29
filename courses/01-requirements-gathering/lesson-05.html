@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 05 — Writing User Stories That Survive UAT · Course 01</title>
+<meta name="description" content="Write user stories with acceptance criteria that hold up at UAT — INVEST criteria, Given/When/Then, splitting techniques, and the anti-pattern gallery.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300..700&family=Geist+Mono:wght@300..500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../lab/_styles.css">
+<style>
+.three-up{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:28px 0}
+.three-up .card{border:1px solid var(--border);border-radius:12px;padding:20px;background:rgba(21,24,29,0.5)}
+.three-up .card h4{font-size:14px;font-weight:500;margin:0 0 8px;color:var(--text)}
+.three-up .card p{font-size:13.5px;color:var(--text-2);margin:0;line-height:1.55}
+.three-up .card .bad{color:#f87171;font-size:12px;font-family:var(--mono);margin-top:10px;padding-top:10px;border-top:1px solid var(--border)}
+.three-up .card .good{color:var(--accent);font-size:12px;font-family:var(--mono);margin-top:6px}
+.field-note{border:1px solid var(--border);border-radius:12px;padding:22px 24px;margin:28px 0;background:linear-gradient(180deg,rgba(21,24,29,0.55),rgba(14,16,19,0.55))}
+.field-note .fn-label{font-family:var(--mono);font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:var(--accent);margin:0 0 10px}
+.field-note p{font-size:14.5px;color:var(--text-2);margin:0;line-height:1.6}
+.field-note p+p{margin-top:10px}
+.story-card{border:1px solid oklch(0.80 0.17 155 / 0.3);border-radius:12px;padding:22px 24px;margin:28px 0;background:oklch(0.80 0.17 155 / 0.05)}
+.story-card .sc-label{font-family:var(--mono);font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:var(--accent);margin:0 0 14px}
+.story-card p{font-size:15px;line-height:1.65;margin:0 0 10px;color:var(--text)}
+.story-card p:last-child{margin:0}
+.story-card .ac{font-size:14px;color:var(--text-2);padding-left:18px;border-left:2px solid var(--accent);margin:12px 0}
+.story-card .ac+.ac{margin-top:6px}
+@media(max-width:680px){.three-up{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="grid-bg"></div>
+
+<nav class="nav">
+  <div class="shell">
+    <div class="nav-inner">
+      <a href="../../" class="brand">
+        <div class="brand-mark"></div>
+        <div class="brand-name"><b>Mehedi Hasan</b><em>ERP Consultant</em></div>
+      </a>
+      <a href="index.html" class="back-link">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10 12L6 8l4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Course overview
+      </a>
+    </div>
+  </div>
+</nav>
+
+<div class="shell">
+  <div class="post-head">
+    <span class="eyebrow">Course 01 &nbsp;·&nbsp; Lesson 05 &nbsp;·&nbsp; 27 min</span>
+    <div class="post-meta">
+      <span class="chip accent">User Stories</span>
+      <span class="chip">Acceptance Criteria</span>
+      <span class="chip">INVEST</span>
+    </div>
+    <h1>Writing User Stories That <span class="serif">Survive</span> UAT</h1>
+    <p class="lede">A user story that fails at UAT is not a UAT problem — it is a requirements problem that was deferred until the worst possible moment. Here is how to write stories that are precise enough to test, specific enough to build, and honest enough to reflect what the business actually needs.</p>
+    <div class="byline">
+      <span>Lesson<b>05 of 09</b></span>
+      <span>Duration<b>27 minutes</b></span>
+      <span>Course<b>Requirements Gathering</b></span>
+    </div>
+  </div>
+</div>
+
+<div class="shell">
+  <div class="post">
+    <nav class="toc" id="toc" aria-label="Lesson contents">
+      <button class="toc-toggle" onclick="toggleToc()" aria-expanded="false" aria-controls="toc">
+        <span class="label">In this lesson</span>
+        <span class="current" id="toc-current">The Anatomy</span>
+        <span class="chev"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 4l3 3 3-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </button>
+      <div class="toc-k">Contents</div>
+      <ol>
+        <li><a href="#s1">The Anatomy of a User Story</a></li>
+        <li><a href="#s2">Acceptance Criteria</a></li>
+        <li><a href="#s3">INVEST Criteria</a></li>
+        <li><a href="#s4">Story Splitting</a></li>
+        <li><a href="#s5">The Anti-pattern Gallery</a></li>
+        <li><a href="#s6">RMG Context</a></li>
+        <li><a href="#s7">Template</a></li>
+        <li><a href="#s8">Reflection</a></li>
+      </ol>
+      <div class="toc-progress"><span>Progress</span><div class="bar"><i id="prog-bar"></i></div></div>
+    </nav>
+    <div class="toc-progress-mobile"><i id="prog-bar-m"></i></div>
+
+    <article class="body">
+
+      <h2 id="s1">The Anatomy of a User Story</h2>
+      <p>The user story format was developed in the Agile community as a lightweight alternative to long-form requirements documents. Its power is not in the format itself — it is in what the format forces you to think about: who needs something, what they need, and why they need it.</p>
+      <p>The standard format: <strong>As a [role], I want [capability], so that [outcome/value].</strong></p>
+      <p>Each of the three parts earns its place:</p>
+      <ul>
+        <li><strong>As a [role]</strong> — forces you to identify a specific user persona, not "the user" or "the system." Different roles have different needs and different privilege levels. Getting this wrong leads to features that serve the wrong person.</li>
+        <li><strong>I want [capability]</strong> — describes the feature in terms of what the user can do, not how the system will implement it. "I want to see a dashboard" is a capability. "The system should use a bar chart" is a solution — and it belongs in design, not in requirements.</li>
+        <li><strong>So that [outcome]</strong> — this is the most important and most frequently omitted part. The "so that" clause reveals the business value. It allows developers and testers to make judgment calls when implementation details are unclear, because they know what the feature is trying to achieve.</li>
+      </ul>
+
+      <div class="story-card">
+        <p class="sc-label">Worked Example — Shipment Tracking Module</p>
+        <p><strong>As a</strong> merchandiser, <strong>I want</strong> to see the real-time status of each open shipment on a single screen, <strong>so that</strong> I can immediately identify delays and notify buyers before they contact us.</p>
+      </div>
+
+      <p>Notice what this story does not include: it does not specify the colour of the status indicators, the database structure, or how the data will be fetched. Those are implementation decisions. The story defines the need. Implementation is a conversation for the development team to have, informed by this story.</p>
+
+      <h2 id="s2">Acceptance Criteria: Given/When/Then</h2>
+      <p>A user story without acceptance criteria is an intention, not a requirement. Acceptance criteria define exactly what "done" looks like — the conditions that a tester can verify, unambiguously, as met or not met.</p>
+      <p>The Given/When/Then (GWT) format, drawn from Behaviour-Driven Development (BDD), is the most useful structure for acceptance criteria:</p>
+      <ul>
+        <li><strong>Given</strong> — the starting state or context</li>
+        <li><strong>When</strong> — the action the user takes</li>
+        <li><strong>Then</strong> — the observable outcome</li>
+      </ul>
+
+      <div class="story-card">
+        <p class="sc-label">Acceptance Criteria — Shipment Status Story</p>
+        <p>AC1:</p>
+        <div class="ac">Given a merchandiser is logged in, When they open the shipments screen, Then they see a list of all open shipments with status (On track / At risk / Delayed) visible without scrolling.</div>
+        <p>AC2:</p>
+        <div class="ac">Given a shipment's expected date of arrival has passed without a confirmation, When the merchandiser views that shipment, Then its status shows as "Delayed" and is highlighted in red.</div>
+        <p>AC3:</p>
+        <div class="ac">Given a merchandiser clicks on a shipment, When the detail view opens, Then it shows: PO number, buyer name, origin port, destination port, carrier, container number, current status, and last update timestamp.</div>
+      </div>
+
+      <p>Three acceptance criteria is typically the right number for one user story. If you are writing seven or more, the story is too large and needs to be split. If you cannot write even one, the story is too vague to implement.</p>
+
+      <div class="field-note">
+        <p class="fn-label">The UAT Test</p>
+        <p>For every acceptance criterion you write, ask yourself: "Could a tester who has never spoken to me verify whether this is met or not, using only this text?" If the answer is no — if it requires interpretation, memory of a conversation, or context that is not in writing — the criterion is not ready. Rewrite it until the answer is yes.</p>
+      </div>
+
+      <h2 id="s3">INVEST Criteria: The Quality Checklist</h2>
+      <p>INVEST is an acronym that describes the properties of a well-formed user story. Run every story through this checklist before considering it ready for development.</p>
+
+      <div class="three-up">
+        <div class="card">
+          <h4>I — Independent</h4>
+          <p>Stories should be deliverable without being blocked by other stories. If story A can only be built after story B is complete, they should probably be a single story or an epic with a defined dependency. Highly coupled stories make sprint planning unreliable.</p>
+        </div>
+        <div class="card">
+          <h4>N — Negotiable</h4>
+          <p>Stories are not contracts. The details can and should be refined through conversation between the BA, the developer, and the business. If a story is so rigid that no discussion is possible, it has become a specification, not a story.</p>
+        </div>
+        <div class="card">
+          <h4>V — Valuable</h4>
+          <p>Every story should deliver value to a specific user or the business. Technical stories ("refactor the database schema") are valid but must be tied to a business value. "So that the system can handle 1,000 concurrent users during peak export season" is a value statement.</p>
+        </div>
+        <div class="card">
+          <h4>E — Estimable</h4>
+          <p>Developers must be able to estimate the effort required. If they cannot — usually because the story is too vague, or requires technical investigation — that is a signal to either break it down or spike it (do a time-boxed investigation first).</p>
+        </div>
+        <div class="card">
+          <h4>S — Small</h4>
+          <p>A story should be completable within one sprint (typically one to two weeks). If it cannot be, it is an epic — a container for multiple smaller stories. Break epics down until each story can be delivered and tested independently.</p>
+        </div>
+        <div class="card">
+          <h4>T — Testable</h4>
+          <p>If you cannot write at least one acceptance criterion, the story is not ready. "The system should be user-friendly" is not testable. "The user can complete the shipment approval workflow in under three clicks" is testable.</p>
+        </div>
+      </div>
+
+      <h2 id="s4">Story Splitting Techniques</h2>
+      <p>Epics and large stories need to be split into deliverable pieces. The most common splitting mistakes: splitting by technical component (front-end/back-end), which never delivers a complete feature; or splitting by timeline, which delivers half-finished functionality.</p>
+      <p>Effective splitting techniques:</p>
+      <ul>
+        <li><strong>By user workflow step</strong> — "Upload a file" and "Review uploaded file" are two stories, even though they are part of one workflow</li>
+        <li><strong>By data type</strong> — "Track fabric shipments" and "Track accessories shipments" can be two stories if they have different rules</li>
+        <li><strong>By business rule</strong> — One story for standard cases, a separate story for exception handling</li>
+        <li><strong>By user role</strong> — "View shipment status (merchandiser)" and "Edit shipment status (logistics manager)" are different stories with different access rules</li>
+        <li><strong>By acceptance criterion</strong> — If your story has seven ACs, split it into three stories, each with two or three ACs</li>
+      </ul>
+
+      <h2 id="s5">The Anti-pattern Gallery</h2>
+      <div class="three-up">
+        <div class="card">
+          <h4>Too big</h4>
+          <p>The story spans an entire module. "As an admin, I want to manage all user permissions" covers hundreds of scenarios.</p>
+          <div class="bad">❌ "manage all user permissions"</div>
+          <div class="good">✓ "add a new user with role assignment"</div>
+        </div>
+        <div class="card">
+          <h4>Too vague</h4>
+          <p>The story has no testable outcome. "The system should be easy to use" is a design aspiration, not a requirement.</p>
+          <div class="bad">❌ "so that it's easy to use"</div>
+          <div class="good">✓ "so that I can complete approval in under 2 minutes"</div>
+        </div>
+        <div class="card">
+          <h4>Solution-first</h4>
+          <p>The story describes implementation, not need. "As a user, I want a drop-down menu with 12 options" is a design decision disguised as a requirement.</p>
+          <div class="bad">❌ "I want a drop-down with 12 options"</div>
+          <div class="good">✓ "I want to filter shipments by status"</div>
+        </div>
+        <div class="card">
+          <h4>Missing "so that"</h4>
+          <p>Without the value clause, stories look trivial and developers cannot make judgment calls. The "so that" is what connects the story to the business.</p>
+          <div class="bad">❌ "I want to see shipment status"</div>
+          <div class="good">✓ "…so that I can alert buyers before delays become complaints"</div>
+        </div>
+        <div class="card">
+          <h4>No acceptance criteria</h4>
+          <p>Story is approved, sprint begins, development finishes — then at UAT nobody can agree what "done" looks like. The result is a three-day argument about scope.</p>
+          <div class="bad">❌ Story with 0 ACs in backlog</div>
+          <div class="good">✓ Minimum 1 AC per story, ideally 2–3</div>
+        </div>
+        <div class="card">
+          <h4>Orphaned story</h4>
+          <p>The story exists in a backlog but is not linked to any epics, test cases, or business requirements. When the feature fails UAT, nobody can trace it back to what was agreed.</p>
+          <div class="bad">❌ No parent epic, no test case link</div>
+          <div class="good">✓ Linked to epic, to business req, to UAT test case</div>
+        </div>
+      </div>
+
+      <h2 id="s6">User Stories in RMG Context: Across the Three Tiers</h2>
+      <p>In a garment factory, the same process — shipment tracking, for example — looks entirely different at three levels of the organisation. Write stories for each level separately, because their needs, their vocabulary, and their privilege requirements are distinct.</p>
+
+      <div class="story-card">
+        <p class="sc-label">Three-tier Example — Shipment Tracking in RMG</p>
+        <p><strong>Merchandiser level</strong></p>
+        <p>As a merchandiser, I want to log container departure and arrival events against each open PO, so that the status timeline is accurate and buyer inquiries can be answered immediately.</p>
+        <p style="margin-top:16px"><strong>Management level</strong></p>
+        <p>As a production manager, I want to see a weekly summary of all shipments by buyer, status, and delay days, so that I can identify which buyers need proactive communication this week.</p>
+        <p style="margin-top:16px"><strong>Executive level</strong></p>
+        <p>As the MD, I want to see a single dashboard showing on-time shipment rate for the current quarter against the same period last year, so that I can assess operational performance in one view.</p>
+      </div>
+
+      <h2 id="s7">Template: User Story Card + Acceptance Criteria</h2>
+
+      <div class="callout">
+        <span class="tag">Template</span>
+        <p><strong>User Story Card — fields</strong><br><br>
+        <strong>ID:</strong> [US-001]<br>
+        <strong>Epic:</strong> [Parent epic name]<br>
+        <strong>As a:</strong> [specific user role]<br>
+        <strong>I want:</strong> [capability, not solution]<br>
+        <strong>So that:</strong> [business value/outcome]<br>
+        <strong>Priority:</strong> [Must-have / Should-have / Could-have / Won't-have]<br>
+        <strong>Story points / Estimate:</strong> [TBD with dev team]<br>
+        <strong>Acceptance Criteria:</strong><br>
+        AC1: Given… When… Then…<br>
+        AC2: Given… When… Then…<br>
+        AC3: Given… When… Then…<br>
+        <strong>Notes / Assumptions:</strong> [What you are assuming that is not stated explicitly]<br>
+        <strong>Out of scope:</strong> [What this story explicitly does NOT cover]<br>
+        <strong>Linked test cases:</strong> [TC-001, TC-002]<br>
+        <strong>Status:</strong> [Draft / Reviewed / Approved / In progress / Done / Rejected]</p>
+      </div>
+
+      <h2 id="s8">Reflection Questions</h2>
+      <ol>
+        <li>Take a requirement from a project you know: "The system should allow users to manage their accounts." Rewrite it as a proper user story with at least two acceptance criteria in Given/When/Then format. Run it through the INVEST checklist. What needs to change?</li>
+        <li>Find an example of the "solution-first" anti-pattern in a project you have worked on. What was the actual need behind the stated solution? How would a proper user story have captured it differently?</li>
+        <li>For a garment factory's quality control system, write three separate user stories — one for a QC inspector, one for a QC supervisor, and one for the QC director. How do their needs and acceptance criteria differ?</li>
+      </ol>
+
+    </article>
+  </div>
+</div>
+
+<div class="shell">
+  <div class="post-foot">
+    <div class="next">
+      <a href="lesson-04.html" class="next-card">
+        <span class="dir">← Previous</span>
+        <h4>Lesson 04 — Elicitation Techniques</h4>
+        <p>Interviews, observation, JAD sessions and the decision matrix.</p>
+        <span class="arrow">← lesson 04</span>
+      </a>
+      <a href="lesson-06.html" class="next-card">
+        <span class="dir">Next →</span>
+        <h4>Lesson 06 — Technical Specs</h4>
+        <p>Translate ambiguity into functional requirements, data dictionaries, and SRS-lite documents.</p>
+        <span class="arrow">→ lesson 06</span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="shell">
+    <div class="foot">
+      <span>Course 01 · Lesson 05</span>
+      <a href="../../" style="color:var(--text-3);transition:color .15s" onmouseover="this.style.color='var(--text)'" onmouseout="this.style.color='var(--text-3)'">← Portfolio</a>
+    </div>
+  </div>
+</footer>
+<script src="../../lab/_toc.js"></script>
+</body>
+</html>

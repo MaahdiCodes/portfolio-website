@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 07 — Managing Conflicting Requirements & Change · Course 01</title>
+<meta name="description" content="How to resolve conflicting requirements, manage mid-project change requests, run impact analysis, and maintain the Requirements Traceability Matrix.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300..700&family=Geist+Mono:wght@300..500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../lab/_styles.css">
+<style>
+.three-up{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:28px 0}
+.three-up .card{border:1px solid var(--border);border-radius:12px;padding:20px;background:rgba(21,24,29,0.5)}
+.three-up .card h4{font-size:14px;font-weight:500;margin:0 0 8px;color:var(--text)}
+.three-up .card p{font-size:13.5px;color:var(--text-2);margin:0;line-height:1.55}
+.field-note{border:1px solid var(--border);border-radius:12px;padding:22px 24px;margin:28px 0;background:linear-gradient(180deg,rgba(21,24,29,0.55),rgba(14,16,19,0.55))}
+.field-note .fn-label{font-family:var(--mono);font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:var(--accent);margin:0 0 10px}
+.field-note p{font-size:14.5px;color:var(--text-2);margin:0;line-height:1.6}
+.field-note p+p{margin-top:10px}
+.process-flow{display:flex;gap:0;border:1px solid var(--border);border-radius:12px;overflow:hidden;margin:28px 0}
+.pf-step{flex:1;padding:18px;border-right:1px solid var(--border);text-align:center}
+.pf-step:last-child{border-right:none}
+.pf-step .pf-num{font-family:var(--mono);font-size:20px;color:var(--accent);display:block;margin-bottom:8px;font-weight:300}
+.pf-step h4{font-size:13px;font-weight:500;margin:0 0 6px;color:var(--text)}
+.pf-step p{font-size:12px;color:var(--text-2);margin:0;line-height:1.45}
+@media(max-width:680px){.three-up{grid-template-columns:1fr}.process-flow{flex-direction:column}.pf-step{border-right:none;border-bottom:1px solid var(--border)}.pf-step:last-child{border-bottom:none}}
+</style>
+</head>
+<body>
+<div class="grid-bg"></div>
+
+<nav class="nav">
+  <div class="shell">
+    <div class="nav-inner">
+      <a href="../../" class="brand">
+        <div class="brand-mark"></div>
+        <div class="brand-name"><b>Mehedi Hasan</b><em>ERP Consultant</em></div>
+      </a>
+      <a href="index.html" class="back-link">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10 12L6 8l4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Course overview
+      </a>
+    </div>
+  </div>
+</nav>
+
+<div class="shell">
+  <div class="post-head">
+    <span class="eyebrow">Course 01 &nbsp;·&nbsp; Lesson 07 &nbsp;·&nbsp; 25 min</span>
+    <div class="post-meta">
+      <span class="chip accent">Conflict Resolution</span>
+      <span class="chip">Change Control</span>
+      <span class="chip">RTM</span>
+    </div>
+    <h1>Managing Conflicting Requirements <span class="serif">&amp; Change</span></h1>
+    <p class="lede">Requirements conflict is not a sign of a bad process — it is a sign that stakeholders have real, competing interests. Your job is not to eliminate the conflict, but to surface it, resolve it transparently, and document the decision. Here is how.</p>
+    <div class="byline">
+      <span>Lesson<b>07 of 09</b></span>
+      <span>Duration<b>25 minutes</b></span>
+      <span>Course<b>Requirements Gathering</b></span>
+    </div>
+  </div>
+</div>
+
+<div class="shell">
+  <div class="post">
+    <nav class="toc" id="toc" aria-label="Lesson contents">
+      <button class="toc-toggle" onclick="toggleToc()" aria-expanded="false" aria-controls="toc">
+        <span class="label">In this lesson</span>
+        <span class="current" id="toc-current">Why Conflict Is Normal</span>
+        <span class="chev"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 4l3 3 3-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </button>
+      <div class="toc-k">Contents</div>
+      <ol>
+        <li><a href="#s1">Why Conflict Is Normal</a></li>
+        <li><a href="#s2">Resolution Techniques</a></li>
+        <li><a href="#s3">Change Control Process</a></li>
+        <li><a href="#s4">Impact Analysis</a></li>
+        <li><a href="#s5">Traceability Matrix</a></li>
+        <li><a href="#s6">Template: Change Register</a></li>
+        <li><a href="#s7">Reflection</a></li>
+      </ol>
+      <div class="toc-progress"><span>Progress</span><div class="bar"><i id="prog-bar"></i></div></div>
+    </nav>
+    <div class="toc-progress-mobile"><i id="prog-bar-m"></i></div>
+
+    <article class="body">
+
+      <h2 id="s1">Why Requirements Conflict (and Why That's Normal, Not a Failure)</h2>
+      <p>Requirements conflict because people have genuinely different, sometimes incompatible, needs. The finance director wants a system that enforces purchase order approval before any invoice can be raised. The operations manager wants to be able to raise an invoice first and get approval retroactively when the normal approval chain is unavailable. Both requirements are legitimate. They cannot both be fully implemented without a trade-off.</p>
+      <p>A BA who encounters this situation has two options. The wrong one: note both requirements and pass the problem to the developers. The right one: surface the conflict, facilitate a conversation between the two stakeholders, reach a decision about which requirement takes priority (or how to satisfy both with a configurable rule), and document that decision with the name of the person who made it.</p>
+      <p>Conflict that is resolved by the BA becomes a documented design decision. Conflict that is not resolved becomes a bug report six months after launch.</p>
+
+      <div class="field-note">
+        <p class="fn-label">RMG Example</p>
+        <p>On a biometric attendance project for a knitwear factory, the HR director wanted workers to be able to claim overtime only after a line supervisor had approved the extra hours in the system. The production manager wanted workers to be able to self-register overtime and have supervisors approve it in batch at the end of each week.</p>
+        <p>Both requirements made it into the spec. Neither was flagged as conflicting. Development built both workflows. At UAT, supervisors found the system presented them with two different overtime approval interfaces and no clear guidance on which to use. Three sprints of rework followed.</p>
+        <p>The conflict should have been resolved in a 30-minute conversation between the HR director and the production manager, facilitated by the BA, two months earlier.</p>
+      </div>
+
+      <h2 id="s2">Conflict Resolution Techniques</h2>
+      <div class="three-up">
+        <div class="card">
+          <h4>Prioritisation</h4>
+          <p>When two requirements cannot both be implemented fully, ask the accountable stakeholder to rank them. MoSCoW (Must-have, Should-have, Could-have, Won't-have) is a structured way to do this. One stakeholder's "Must" may be another's "Should" — the gap reveals the real priority.</p>
+        </div>
+        <div class="card">
+          <h4>Configuration-based resolution</h4>
+          <p>Sometimes both requirements can be met through a configurable option — a system setting that allows the organisation to choose its own policy. Document both options and who holds the authority to set the configuration.</p>
+        </div>
+        <div class="card">
+          <h4>Separation by phase</h4>
+          <p>Implement one approach for Phase 1, with the intent to expand to the second approach in Phase 2. This requires a clear commitment to Phase 2 — "we'll handle it later" without a commitment is not resolution, it is deferral.</p>
+        </div>
+        <div class="card">
+          <h4>Escalation to shared authority</h4>
+          <p>When two stakeholders cannot agree and the BA cannot resolve it, escalate to their shared line manager with the conflict clearly documented. Present both requirements, the implications of each, and request a decision. The decision must be in writing.</p>
+        </div>
+        <div class="card">
+          <h4>Negotiated compromise</h4>
+          <p>Facilitate a joint session between the two parties. Use a structured approach: "What is the minimum you need for this requirement to be met?" Often the real need is a subset of the stated need, and the overlap between two subsets creates a workable solution.</p>
+        </div>
+        <div class="card">
+          <h4>Business rule documentation</h4>
+          <p>Some apparent conflicts are actually business rules in disguise: "Finance requires approval before invoicing UNLESS the PO is below Tk. 10,000 AND the vendor has a Grade A rating." Document the rule precisely; both stakeholders may find it satisfactory.</p>
+        </div>
+      </div>
+
+      <h2 id="s3">The Change Control Process: What Changes After Sign-off</h2>
+      <p>Once requirements are signed off, any change to them is a change request — not a "we forgot to mention," not a "small tweak," and certainly not a bug. This distinction matters enormously because it affects scope, timeline, cost, and accountability. A BA who allows informal "small additions" after sign-off is doing the project a disservice, even if each individual change is genuinely small.</p>
+
+      <div class="process-flow">
+        <div class="pf-step">
+          <span class="pf-num">01</span>
+          <h4>Request raised</h4>
+          <p>Stakeholder submits a formal change request with description, business justification, and priority</p>
+        </div>
+        <div class="pf-step">
+          <span class="pf-num">02</span>
+          <h4>Impact analysis</h4>
+          <p>BA and tech lead assess scope, timeline, cost, and risk implications</p>
+        </div>
+        <div class="pf-step">
+          <span class="pf-num">03</span>
+          <h4>Decision</h4>
+          <p>Sponsor approves, rejects, or defers. Decision documented with rationale</p>
+        </div>
+        <div class="pf-step">
+          <span class="pf-num">04</span>
+          <h4>Spec updated</h4>
+          <p>Approved changes are incorporated into the SRS with version number and date</p>
+        </div>
+        <div class="pf-step">
+          <span class="pf-num">05</span>
+          <h4>Communicated</h4>
+          <p>All affected parties notified: developers, testers, project manager, impacted users</p>
+        </div>
+      </div>
+
+      <p>The process needs to be defined and agreed with the sponsor before the project starts — not after the first change request arrives. A change control process defined under pressure is rarely followed consistently.</p>
+      <p><strong>What counts as a change request:</strong> any modification to a previously agreed requirement, any addition of a new functional requirement, any change to a non-functional requirement, any removal of a requirement previously in scope.</p>
+      <p><strong>What does not count:</strong> clarifications that do not change the agreed scope (answering "what did we mean by X?"), bug fixes where the implementation does not match the agreed requirement, internal technical decisions by the development team that do not affect user-visible behaviour.</p>
+
+      <h2 id="s4">Impact Analysis: Mapping the Ripple Effect</h2>
+      <p>Every change to a requirement has consequences beyond the change itself. A field added to a form affects the database schema, the API contract, the validation logic, the report that displays that field, and the migration script that must populate existing records. A business rule changed in one module may conflict with a rule in another.</p>
+      <p>Impact analysis is the BA's structured assessment of these consequences before a change is approved. It does not require technical depth — it requires knowing the system well enough to identify which areas are touched.</p>
+      <p>The impact analysis for a change request should answer:</p>
+      <ul>
+        <li>Which existing requirements are affected or invalidated?</li>
+        <li>Which user stories or test cases need to be updated?</li>
+        <li>Which system modules or integrations are touched?</li>
+        <li>What data migration work is required?</li>
+        <li>What is the effort estimate (in days, provided by the technical lead)?</li>
+        <li>What is the impact on the project timeline?</li>
+        <li>What is the risk if this change is not implemented?</li>
+      </ul>
+
+      <div class="field-note">
+        <p class="fn-label">RMG Example — Biometric Integration Change Request</p>
+        <p>The factory MD, midway through a payroll system project, requested the addition of a biometric integration — workers' attendance records to be pulled directly from fingerprint scanners into the payroll module. The project was six weeks from go-live.</p>
+        <p>Impact analysis identified: the data model for attendance records needed to be restructured to accommodate a device identifier field; the existing manual attendance import module would need to be disabled or run in parallel; three reports that read attendance data needed to be updated; the go-live timeline would extend by a minimum of four weeks; the hardware vendor for the scanners had a six-week lead time for API documentation.</p>
+        <p>The MD deferred the biometric integration to Phase 2. Without the impact analysis, the team might have attempted to absorb the change and failed the go-live date.</p>
+      </div>
+
+      <h2 id="s5">Requirements Traceability Matrix (RTM): The Safety Net</h2>
+      <p>The Requirements Traceability Matrix links every requirement to: the business objective it serves, the user story or functional requirement document where it is defined, the test case(s) that verify it, and the development sprint or delivery milestone when it is being built.</p>
+      <p>The RTM is the document that makes "we agreed on this" provable. Without it, every UAT dispute becomes a memory contest. With it, you can point to the signed-off requirement, the test case derived from it, and the acceptance criterion that defines done.</p>
+
+      <div class="callout">
+        <span class="tag">RTM Structure</span>
+        <p><strong>Columns:</strong> Req ID | Business Objective | Description | Source (SRS section / US ID) | Priority | Status | Test Case ID | Test Status | Sprint / Phase | Notes<br><br>
+        <strong>Maintain throughout the project:</strong> Add a row when a requirement is added. Update status when it moves from Draft → Approved → In Progress → Done. Update test status after UAT. This is a living document — a frozen RTM is useless.</p>
+      </div>
+
+      <p>The RTM does not need to be a complex tool. A shared Google Sheet works for most projects. What matters is that it is updated — a stale RTM is worse than no RTM, because it creates false confidence.</p>
+
+      <h2 id="s6">Template: Change Register + Impact Assessment</h2>
+
+      <div class="callout">
+        <span class="tag">Template</span>
+        <p><strong>Change Register — row structure</strong><br><br>
+        <strong>CR-ID</strong> | <strong>Date raised</strong> | <strong>Raised by</strong> | <strong>Description</strong> | <strong>Business justification</strong> | <strong>Priority (H/M/L)</strong> | <strong>Status</strong> | <strong>Decision date</strong> | <strong>Decision maker</strong> | <strong>Decision (Approve/Reject/Defer)</strong> | <strong>Timeline impact</strong> | <strong>Cost impact</strong> | <strong>Affected requirements (Req IDs)</strong> | <strong>Notes</strong><br><br>
+        <strong>Impact Assessment form (per CR):</strong><br>
+        CR-ID: [ID]<br>
+        Change description: [one paragraph]<br>
+        Requirements affected: [list Req IDs]<br>
+        Test cases to update: [list TC IDs]<br>
+        Modules/integrations touched: [list]<br>
+        Data migration required: [Yes/No + description]<br>
+        Development effort: [X days — from technical lead]<br>
+        Timeline impact: [+X days to go-live]<br>
+        Risk if not implemented: [description]<br>
+        BA recommendation: [Approve / Reject / Defer + rationale]</p>
+      </div>
+
+      <h2 id="s7">Reflection Questions</h2>
+      <ol>
+        <li>Think of a conflict between two stakeholders' requirements on a project you know. How was it resolved — or was it left unresolved? What were the consequences? Which resolution technique from this lesson would have been most effective?</li>
+        <li>On your current or most recent project, is there a formal change control process? What happens when a stakeholder asks for "a small change"? How could a Change Register have helped?</li>
+        <li>Build a mini-RTM for five requirements from a project you know — linking each to a business objective and a test scenario. What does building this surface about the requirements quality?</li>
+      </ol>
+
+    </article>
+  </div>
+</div>
+
+<div class="shell">
+  <div class="post-foot">
+    <div class="next">
+      <a href="lesson-06.html" class="next-card">
+        <span class="dir">← Previous</span>
+        <h4>Lesson 06 — Technical Specs</h4>
+        <p>SRS-lite, data dictionaries, and the ambiguity detector.</p>
+        <span class="arrow">← lesson 06</span>
+      </a>
+      <a href="lesson-08.html" class="next-card">
+        <span class="dir">Next →</span>
+        <h4>Lesson 08 — UAT Planning</h4>
+        <p>Build the UAT plan, facilitate the sessions, and get sign-off.</p>
+        <span class="arrow">→ lesson 08</span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="shell">
+    <div class="foot">
+      <span>Course 01 · Lesson 07</span>
+      <a href="../../" style="color:var(--text-3);transition:color .15s" onmouseover="this.style.color='var(--text)'" onmouseout="this.style.color='var(--text-3)'">← Portfolio</a>
+    </div>
+  </div>
+</footer>
+<script src="../../lab/_toc.js"></script>
+</body>
+</html>

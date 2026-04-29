@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 09 — BA Toolkit, Templates & Career in Bangladesh · Course 01</title>
+<meta name="description" content="Your complete BA artefacts checklist, tools guide, handover documentation, certifications worth pursuing, and career paths for business analysts in Bangladesh.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300..700&family=Geist+Mono:wght@300..500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../lab/_styles.css">
+<style>
+.three-up{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:28px 0}
+.three-up .card{border:1px solid var(--border);border-radius:12px;padding:20px;background:rgba(21,24,29,0.5)}
+.three-up .card h4{font-size:14px;font-weight:500;margin:0 0 8px;color:var(--text)}
+.three-up .card p{font-size:13.5px;color:var(--text-2);margin:0;line-height:1.55}
+.field-note{border:1px solid var(--border);border-radius:12px;padding:22px 24px;margin:28px 0;background:linear-gradient(180deg,rgba(21,24,29,0.55),rgba(14,16,19,0.55))}
+.field-note .fn-label{font-family:var(--mono);font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:var(--accent);margin:0 0 10px}
+.field-note p{font-size:14.5px;color:var(--text-2);margin:0;line-height:1.6}
+.field-note p+p{margin-top:10px}
+.toolkit-list{list-style:none;padding:0;margin:24px 0;border:1px solid var(--border);border-radius:12px;overflow:hidden}
+.toolkit-item{padding:14px 20px;border-bottom:1px solid var(--border);display:flex;gap:14px;align-items:flex-start;font-size:14.5px;color:var(--text);background:var(--surface)}
+.toolkit-item:last-child{border-bottom:none}
+.toolkit-item::before{content:"✓";font-family:var(--mono);font-size:11px;color:var(--accent);flex:none;margin-top:2px;width:16px}
+.toolkit-item .tk-desc{font-size:13px;color:var(--text-3);margin-top:2px;display:block}
+.cert-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin:28px 0}
+.cert-card{border:1px solid var(--border);border-radius:12px;padding:20px;background:rgba(21,24,29,0.5)}
+.cert-card .cert-badge{font-family:var(--mono);font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--accent);display:inline-block;padding:3px 8px;border:1px solid oklch(0.80 0.17 155 / 0.4);border-radius:4px;margin-bottom:10px}
+.cert-card h4{font-size:15px;font-weight:500;margin:0 0 8px;color:var(--text)}
+.cert-card p{font-size:13.5px;color:var(--text-2);margin:0;line-height:1.55}
+.career-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:28px 0}
+.career-card{border:1px solid var(--border);border-radius:12px;padding:20px;background:rgba(21,24,29,0.5)}
+.career-card .path-label{font-family:var(--mono);font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-3);margin-bottom:8px}
+.career-card h4{font-size:15px;font-weight:500;margin:0 0 10px;color:var(--text)}
+.career-card p{font-size:13.5px;color:var(--text-2);margin:0;line-height:1.5}
+.course-complete{border:1px solid oklch(0.80 0.17 155 / 0.4);border-radius:16px;padding:36px;margin:48px 0;background:oklch(0.80 0.17 155 / 0.06);text-align:center}
+.course-complete h3{font-size:26px;font-weight:500;letter-spacing:-0.02em;margin:0 0 12px;color:var(--text)}
+.course-complete p{font-size:15px;color:var(--text-2);margin:0 0 24px;max-width:50ch;display:block;margin-left:auto;margin-right:auto}
+.course-complete a{display:inline-flex;align-items:center;gap:8px;padding:12px 24px;background:var(--accent);color:#04140B;border-radius:999px;font-weight:500;font-size:14px;transition:opacity .18s,transform .12s}
+.course-complete a:hover{opacity:0.88;transform:translateY(-1px)}
+@media(max-width:680px){.three-up,.cert-grid,.career-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="grid-bg"></div>
+
+<nav class="nav">
+  <div class="shell">
+    <div class="nav-inner">
+      <a href="../../" class="brand">
+        <div class="brand-mark"></div>
+        <div class="brand-name"><b>Mehedi Hasan</b><em>ERP Consultant</em></div>
+      </a>
+      <a href="index.html" class="back-link">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10 12L6 8l4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Course overview
+      </a>
+    </div>
+  </div>
+</nav>
+
+<div class="shell">
+  <div class="post-head">
+    <span class="eyebrow">Course 01 &nbsp;·&nbsp; Lesson 09 &nbsp;·&nbsp; 25 min</span>
+    <div class="post-meta">
+      <span class="chip accent">Final Lesson</span>
+      <span class="chip">Toolkit</span>
+      <span class="chip">Career</span>
+    </div>
+    <h1>BA Toolkit, Templates &amp; <span class="serif">Career</span> in Bangladesh</h1>
+    <p class="lede">This final lesson is your reference shelf: every artefact you should produce on a project, every tool worth knowing, the certifications that open doors, and what a BA career in Bangladesh actually looks like — in the corporate, consulting, and freelance lanes.</p>
+    <div class="byline">
+      <span>Lesson<b>09 of 09</b></span>
+      <span>Duration<b>25 minutes</b></span>
+      <span>Course<b>Requirements Gathering</b></span>
+    </div>
+  </div>
+</div>
+
+<div class="shell">
+  <div class="post">
+    <nav class="toc" id="toc" aria-label="Lesson contents">
+      <button class="toc-toggle" onclick="toggleToc()" aria-expanded="false" aria-controls="toc">
+        <span class="label">In this lesson</span>
+        <span class="current" id="toc-current">Artefacts Checklist</span>
+        <span class="chev"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 4l3 3 3-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </button>
+      <div class="toc-k">Contents</div>
+      <ol>
+        <li><a href="#s1">Artefacts Checklist</a></li>
+        <li><a href="#s2">Handover Documentation</a></li>
+        <li><a href="#s3">Post-Implementation Review</a></li>
+        <li><a href="#s4">Tools BAs Use</a></li>
+        <li><a href="#s5">Certifications</a></li>
+        <li><a href="#s6">Career Paths in Bangladesh</a></li>
+        <li><a href="#s7">International Applicability</a></li>
+        <li><a href="#s8">Your Next Steps</a></li>
+        <li><a href="#s9">Reflection</a></li>
+      </ol>
+      <div class="toc-progress"><span>Progress</span><div class="bar"><i id="prog-bar"></i></div></div>
+    </nav>
+    <div class="toc-progress-mobile"><i id="prog-bar-m"></i></div>
+
+    <article class="body">
+
+      <h2 id="s1">The BA Artefacts Checklist: What to Hand Over at Project Close</h2>
+      <p>At the end of a project, the BA's output should be a complete, organised set of documents that allow any future team member — or auditor — to understand what was built, why, and what was agreed. This is not bureaucracy. It is institutional memory.</p>
+      <p>The following checklist covers every artefact this course has taught you to produce. Check off what you have delivered by the end of a project:</p>
+
+      <ul class="toolkit-list">
+        <li class="toolkit-item">BA Role Charter<span class="tk-desc">Scope of the BA's responsibilities, agreed with the project sponsor</span></li>
+        <li class="toolkit-item">Stakeholder Register<span class="tk-desc">All stakeholders, their power/interest mapping, RACI roles, communication preferences</span></li>
+        <li class="toolkit-item">Workshop agendas and 48-hour summaries<span class="tk-desc">One per session conducted, with decisions, open questions, and next steps</span></li>
+        <li class="toolkit-item">Interview notes or summaries<span class="tk-desc">Structured notes from all key stakeholder interviews</span></li>
+        <li class="toolkit-item">As-is process documentation<span class="tk-desc">Documented current state of the processes the system replaces or changes</span></li>
+        <li class="toolkit-item">Business Requirements document<span class="tk-desc">High-level goals the project must achieve, signed by the sponsor</span></li>
+        <li class="toolkit-item">SRS-lite (Functional Specification)<span class="tk-desc">Numbered functional, non-functional, and integration requirements</span></li>
+        <li class="toolkit-item">Data dictionary<span class="tk-desc">Field-level definitions, types, validations, and rules for every data entity</span></li>
+        <li class="toolkit-item">User Story Backlog<span class="tk-desc">All user stories with acceptance criteria, priority, and status</span></li>
+        <li class="toolkit-item">Requirements Traceability Matrix (RTM)<span class="tk-desc">Links requirements to test cases, delivery sprints, and business objectives</span></li>
+        <li class="toolkit-item">Change Register<span class="tk-desc">All change requests raised, with decisions, impact assessments, and outcomes</span></li>
+        <li class="toolkit-item">UAT Plan<span class="tk-desc">Scope, schedule, entry/exit criteria, test team, defect process</span></li>
+        <li class="toolkit-item">UAT Test Scenarios<span class="tk-desc">Numbered test cases linked to requirements and acceptance criteria</span></li>
+        <li class="toolkit-item">Defect Log<span class="tk-desc">All defects raised during UAT, severity, resolution, and sign-off status</span></li>
+        <li class="toolkit-item">Sign-off Matrix<span class="tk-desc">Signed acceptance by module/area from all named approvers</span></li>
+        <li class="toolkit-item">Post-Implementation Review notes<span class="tk-desc">Lessons learned, requirements quality assessment, process improvements for next project</span></li>
+      </ul>
+
+      <div class="callout">
+        <span class="tag">Rule</span>
+        <p>A document that lives only on your laptop is not a project artefact — it is a personal note. Every artefact must be in a shared, version-controlled location (SharePoint, Google Drive, Confluence) that the project sponsor can access without asking you. If you leave the project tomorrow, the work should survive.</p>
+      </div>
+
+      <h2 id="s2">Handover Documentation: Writing for the Person Who Comes After You</h2>
+      <p>The hardest part of handover documentation is that you write it knowing the context that makes everything obvious — so the obvious context gets left out. Write for someone who has never spoken to any stakeholder and never attended any workshop. What do they need to know to take over this project without causing harm?</p>
+      <p>A good BA handover document includes:</p>
+      <ul>
+        <li><strong>Project summary</strong> — In three paragraphs: what was being built, why, and where it currently stands</li>
+        <li><strong>Key stakeholder contacts</strong> — Name, title, role on the project, and one sentence on how to work with each effectively</li>
+        <li><strong>Document index</strong> — Where every artefact lives, what version it is, and what state it is in</li>
+        <li><strong>Open items</strong> — Every unresolved requirement, open change request, deferred defect, and pending sign-off. With owner and deadline.</li>
+        <li><strong>Known risks and sensitivities</strong> — Interpersonal dynamics, political landmines, technical assumptions that are fragile. These never appear in formal documents but they shape every decision.</li>
+        <li><strong>Glossary</strong> — Organisation-specific terms, acronyms, and product names that appear throughout the documentation</li>
+      </ul>
+
+      <h2 id="s3">Post-Implementation Review: Closing the Requirements Loop</h2>
+      <p>Four to eight weeks after go-live, conduct a post-implementation review (PIR). This is not a blame exercise — it is a learning exercise. The questions to answer:</p>
+      <ul>
+        <li>Did the system achieve the business requirements stated at the start of the project? How do we know?</li>
+        <li>Which requirements turned out to be wrong, incomplete, or unnecessary? What would better elicitation have looked like?</li>
+        <li>Which defects found at UAT were preventable with better requirements work?</li>
+        <li>Which change requests were genuine scope gaps (requirements failure) versus legitimate business changes?</li>
+        <li>What would we do differently in the requirements phase on the next project?</li>
+      </ul>
+      <p>The PIR output is a one-page retrospective, shared with the project sponsor and stored with the project artefacts. It is the source of the "field notes" in this course.</p>
+
+      <h2 id="s4">Tools BAs Use</h2>
+      <div class="three-up">
+        <div class="card">
+          <h4>JIRA</h4>
+          <p>Industry-standard backlog and issue tracking. Stores user stories, tracks sprints, manages defect logs. Essential for Agile projects. Learning JIRA is non-negotiable for any BA working with a software development team.</p>
+        </div>
+        <div class="card">
+          <h4>Confluence</h4>
+          <p>Atlassian's wiki tool. The de-facto home for requirements documents, meeting notes, and project documentation on teams using JIRA. Integrates tightly with JIRA stories.</p>
+        </div>
+        <div class="card">
+          <h4>Miro / Lucidchart</h4>
+          <p>Online whiteboard tools for process mapping, stakeholder maps, and workshop facilitation. Miro is better for facilitated sessions; Lucidchart is better for polished process flow diagrams.</p>
+        </div>
+        <div class="card">
+          <h4>Figma</h4>
+          <p>The standard tool for UI prototyping. A BA who can produce low-fidelity wireframes in Figma dramatically reduces the gap between written requirements and what developers actually build.</p>
+        </div>
+        <div class="card">
+          <h4>Microsoft Excel / Google Sheets</h4>
+          <p>The most-used BA tool in Bangladesh, across all sectors. RTMs, data dictionaries, UAT logs, and stakeholder registers often live in spreadsheets. Mastery of Excel is foundational.</p>
+        </div>
+        <div class="card">
+          <h4>Visio / draw.io</h4>
+          <p>Process flow diagramming tools. BPMN diagrams, system context diagrams, and data flow diagrams. draw.io (now diagrams.net) is free and integrates with Google Drive.</p>
+        </div>
+      </div>
+
+      <div class="field-note">
+        <p class="fn-label">BD Tool Reality</p>
+        <p>In most Bangladeshi organisations, the BA toolkit is: Microsoft Word (specs), Excel (everything else), and WhatsApp (all real communication). Do not be snobby about this. A well-structured Excel-based RTM maintained consistently outperforms a poorly maintained JIRA backlog every time.</p>
+        <p>However: invest in learning at least one diagramming tool (draw.io is free), one backlog tool (JIRA has a free tier), and Figma (free for basic use). These skills differentiate you when working with international clients or on digital transformation projects.</p>
+      </div>
+
+      <h2 id="s5">Certifications Worth Pursuing</h2>
+      <div class="cert-grid">
+        <div class="cert-card">
+          <span class="cert-badge">CBAP</span>
+          <h4>Certified Business Analysis Professional</h4>
+          <p>Offered by IIBA (International Institute of Business Analysis). The gold standard BA certification globally. Requires five years of BA experience. Recognised by international employers and consulting firms. Preparation takes 3–6 months. Exam fee is approximately USD 325 (member) or USD 450 (non-member).</p>
+        </div>
+        <div class="cert-card">
+          <span class="cert-badge">PMI-PBA</span>
+          <h4>PMI Professional in Business Analysis</h4>
+          <p>Offered by the Project Management Institute. Bridges BA and PM disciplines — well-suited for the Bangladeshi market where the BA-PM hybrid role is common. Requires a bachelor's degree plus experience. Pairs well with PMP.</p>
+        </div>
+        <div class="cert-card">
+          <span class="cert-badge">ECBA / CCBA</span>
+          <h4>Entry/Intermediate IIBA Certifications</h4>
+          <p>ECBA (Entry Certificate) requires no prior experience — good for professionals transitioning into BA work. CCBA (Capability) requires 3.75 years experience. Both use the BABOK (Business Analysis Body of Knowledge) as the curriculum, which is worth reading even without certification.</p>
+        </div>
+        <div class="cert-card">
+          <span class="cert-badge">Agile BA</span>
+          <h4>Agile Business Analysis Certifications</h4>
+          <p>IIBA-AACBA (Agile Analysis Certification) and the SAFe POPM (SAFe Product Owner/Product Manager) are increasingly relevant as Bangladeshi tech firms adopt Agile delivery. These signal comfort with user story-centric requirements work and sprint-based delivery.</p>
+        </div>
+      </div>
+
+      <h2 id="s6">Career Paths for BAs in Bangladesh</h2>
+      <div class="career-grid">
+        <div class="career-card">
+          <div class="path-label">Path 01</div>
+          <h4>Corporate / In-house</h4>
+          <p>BA at a bank, telco, conglomerate, or large RMG group. Stable salary, structured environment. Progression: BA → Senior BA → Business Systems Lead → IT Manager or Process Excellence Head. Best for: building deep domain knowledge in one industry. Salary range: BDT 40,000–150,000/month depending on company and seniority.</p>
+        </div>
+        <div class="career-card">
+          <div class="path-label">Path 02</div>
+          <h4>Consulting</h4>
+          <p>BA at an ERP or digital transformation consultancy (local or multinational). Higher variation, faster skill development, exposure to multiple industries. Progression: BA → Senior BA → Functional Consultant → Solution Architect or Engagement Lead. Best for: breadth and career acceleration. Salary: BDT 50,000–200,000/month plus bonuses.</p>
+        </div>
+        <div class="career-card">
+          <div class="path-label">Path 03</div>
+          <h4>Freelance / Independent</h4>
+          <p>Independent BA serving SMEs, startups, or international clients via platforms (Upwork, Toptal) or direct relationships. High earning potential (USD 40–80/hour on international platforms), high variability. Best for: experienced BAs (3+ years) with a track record and self-marketing ability. Requires business development discipline.</p>
+        </div>
+      </div>
+
+      <div class="field-note">
+        <p class="fn-label">International Applicability</p>
+        <p>The skills in this course are not Bangladesh-specific. Requirements gathering, stakeholder management, user story writing, and UAT facilitation are globally applicable disciplines used in every technology project worldwide.</p>
+        <p>What Bangladesh specifically taught you — how to navigate hierarchical organisations, how to elicit requirements when documentation does not exist, how to run workshops with mixed-capability participants, how to work across language and cultural gaps — is a premium skill set in international consulting. These are the environments that consultants from more documented, lower-context cultures struggle with. You have trained in the hard mode. That is an advantage.</p>
+      </div>
+
+      <h2 id="s7">How These Skills Travel Internationally</h2>
+      <p>If you want to work internationally — in the UK, UAE, Singapore, or elsewhere — the CBAP certification is your entry credential. Pair it with documented project experience (specific industries, system types, project outcomes), a portfolio of anonymised artefacts, and English business communication skills. The combination is competitive in any market.</p>
+      <p>Bangladeshi BAs who successfully transition internationally typically find two advantages: they are comfortable with ambiguity (because they have rarely had the luxury of well-defined processes); and they are used to building consensus across very different stakeholder personalities, which is a skill that Western-trained BAs often lack.</p>
+
+      <h2 id="s8">Your Next Steps: Building Your BA Portfolio</h2>
+      <p>A BA portfolio is a curated collection of anonymised artefacts that demonstrates your capabilities to a potential employer or client. Start building it now, even if you are in your first BA role:</p>
+      <ol>
+        <li><strong>Anonymise and save your best artefacts</strong> — Remove company names and sensitive data. Keep the structure, the quality of thinking, and the techniques. A strong stakeholder register and RTM from a real project are more compelling than any certification.</li>
+        <li><strong>Document your projects</strong> — Maintain a project log: industry, system type, your role, key techniques used, outcome. Even if each entry is one paragraph, this becomes the basis for interview answers and proposal writing.</li>
+        <li><strong>Write about what you have learned</strong> — A LinkedIn article about one BA technique you found effective on a real project demonstrates more credibility than a resume bullet point. Write one article per quarter.</li>
+        <li><strong>Join IIBA Bangladesh chapter</strong> — Connect with other BAs, access events and learning resources, and start building the professional network that generates referrals.</li>
+        <li><strong>Find a mentor</strong> — One experienced BA who will review your work honestly and give you specific feedback is worth ten certifications. Ask explicitly. Most experienced practitioners are willing to mentor someone who is serious.</li>
+      </ol>
+
+      <div class="course-complete">
+        <h3>Course complete.</h3>
+        <p>You have covered the full requirements gathering curriculum — from BA foundations through stakeholder mapping, workshop facilitation, elicitation, user stories, technical specs, conflict resolution, UAT, and career development. The rest is practice.</p>
+        <a href="index.html">← Back to course overview</a>
+      </div>
+
+      <h2 id="s9">Reflection Questions</h2>
+      <ol>
+        <li>Review the artefacts checklist in this lesson against your current or most recent project. What is missing? What would the consequences be if a new BA joined the project tomorrow with only the artefacts that exist?</li>
+        <li>Which of the three career paths — corporate, consulting, freelance — aligns best with your current situation and five-year goal? What is the single most important skill gap between where you are now and where you want to be?</li>
+        <li>Identify one artefact from this course that you will commit to producing on your next project, even if it is not standard practice in your organisation. What would you say to the project manager to explain why it is worth the time?</li>
+      </ol>
+
+    </article>
+  </div>
+</div>
+
+<div class="shell">
+  <div class="post-foot">
+    <div class="next">
+      <a href="lesson-08.html" class="next-card">
+        <span class="dir">← Previous</span>
+        <h4>Lesson 08 — UAT Planning</h4>
+        <p>UAT plan, defect triage, and the sign-off playbook.</p>
+        <span class="arrow">← lesson 08</span>
+      </a>
+      <a href="index.html" class="next-card">
+        <span class="dir">Course complete</span>
+        <h4>Back to Course Overview</h4>
+        <p>Review the full lesson list and return to the course index.</p>
+        <span class="arrow">→ course index</span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="shell">
+    <div class="foot">
+      <span>Course 01 · Lesson 09 · Final lesson</span>
+      <a href="../../" style="color:var(--text-3);transition:color .15s" onmouseover="this.style.color='var(--text)'" onmouseout="this.style.color='var(--text-3)'">← Portfolio</a>
+    </div>
+  </div>
+</footer>
+<script src="../../lab/_toc.js"></script>
+</body>
+</html>

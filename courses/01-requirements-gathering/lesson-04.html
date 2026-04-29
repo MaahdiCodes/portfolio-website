@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 04 — Elicitation Techniques Deep Dive · Course 01</title>
+<meta name="description" content="Master the full elicitation toolkit: interviews, observation, document analysis, JAD sessions, prototyping — and know which to use when.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300..700&family=Geist+Mono:wght@300..500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../lab/_styles.css">
+<style>
+.three-up{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:28px 0}
+.three-up .card{border:1px solid var(--border);border-radius:12px;padding:20px;background:rgba(21,24,29,0.5)}
+.three-up .card h4{font-size:14px;font-weight:500;margin:0 0 8px;color:var(--text)}
+.three-up .card p{font-size:13.5px;color:var(--text-2);margin:0;line-height:1.55}
+.field-note{border:1px solid var(--border);border-radius:12px;padding:22px 24px;margin:28px 0;background:linear-gradient(180deg,rgba(21,24,29,0.55),rgba(14,16,19,0.55))}
+.field-note .fn-label{font-family:var(--mono);font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:var(--accent);margin:0 0 10px}
+.field-note p{font-size:14.5px;color:var(--text-2);margin:0;line-height:1.6}
+.field-note p+p{margin-top:10px}
+.decision-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:0;border:1px solid var(--border);border-radius:12px;overflow:hidden;margin:28px 0}
+.dg-row{display:contents}
+.dg-cell{padding:14px 18px;border-bottom:1px solid var(--border);border-right:1px solid var(--border);font-size:14px;color:var(--text-2)}
+.dg-cell:nth-child(even){border-right:none}
+.dg-cell:nth-last-child(-n+2){border-bottom:none}
+.dg-cell.hd{font-family:var(--mono);font-size:10.5px;color:var(--text-3);letter-spacing:0.1em;text-transform:uppercase;background:rgba(21,24,29,0.6)}
+.dg-cell strong{color:var(--text);font-weight:500}
+@media(max-width:680px){.three-up{grid-template-columns:1fr}.decision-grid{grid-template-columns:1fr}.dg-cell{border-right:none}.dg-cell:nth-last-child(-n+2){border-bottom:1px solid var(--border)}.dg-cell:last-child{border-bottom:none}}
+</style>
+</head>
+<body>
+<div class="grid-bg"></div>
+
+<nav class="nav">
+  <div class="shell">
+    <div class="nav-inner">
+      <a href="../../" class="brand">
+        <div class="brand-mark"></div>
+        <div class="brand-name"><b>Mehedi Hasan</b><em>ERP Consultant</em></div>
+      </a>
+      <a href="index.html" class="back-link">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10 12L6 8l4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Course overview
+      </a>
+    </div>
+  </div>
+</nav>
+
+<div class="shell">
+  <div class="post-head">
+    <span class="eyebrow">Course 01 &nbsp;·&nbsp; Lesson 04 &nbsp;·&nbsp; 27 min</span>
+    <div class="post-meta">
+      <span class="chip accent">Elicitation</span>
+      <span class="chip">Interviews</span>
+      <span class="chip">Observation</span>
+    </div>
+    <h1>Elicitation Techniques <span class="serif">Deep Dive</span></h1>
+    <p class="lede">Requirements do not elicit themselves. Every technique in the BA toolkit extracts a different kind of knowledge from a different kind of source. Knowing which to deploy — and when — is the difference between complete requirements and dangerous gaps.</p>
+    <div class="byline">
+      <span>Lesson<b>04 of 09</b></span>
+      <span>Duration<b>27 minutes</b></span>
+      <span>Course<b>Requirements Gathering</b></span>
+    </div>
+  </div>
+</div>
+
+<div class="shell">
+  <div class="post">
+    <nav class="toc" id="toc" aria-label="Lesson contents">
+      <button class="toc-toggle" onclick="toggleToc()" aria-expanded="false" aria-controls="toc">
+        <span class="label">In this lesson</span>
+        <span class="current" id="toc-current">The Toolkit</span>
+        <span class="chev"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 4l3 3 3-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </button>
+      <div class="toc-k">Contents</div>
+      <ol>
+        <li><a href="#s1">The Elicitation Toolkit</a></li>
+        <li><a href="#s2">Interviews</a></li>
+        <li><a href="#s3">Observation &amp; Shadowing</a></li>
+        <li><a href="#s4">Document Analysis</a></li>
+        <li><a href="#s5">JAD Sessions</a></li>
+        <li><a href="#s6">Surveys &amp; Questionnaires</a></li>
+        <li><a href="#s7">Prototyping</a></li>
+        <li><a href="#s8">Decision Matrix</a></li>
+        <li><a href="#s9">Reflection</a></li>
+      </ol>
+      <div class="toc-progress"><span>Progress</span><div class="bar"><i id="prog-bar"></i></div></div>
+    </nav>
+    <div class="toc-progress-mobile"><i id="prog-bar-m"></i></div>
+
+    <article class="body">
+
+      <h2 id="s1">The Elicitation Toolkit Overview</h2>
+      <p>Elicitation is the process of drawing out knowledge that stakeholders have but have not yet expressed in the form of requirements. The key word is <em>drawing out</em> — not asking and transcribing, not guessing, and not assuming. Requirements exist in people's heads in fragmented, context-dependent, often contradictory form. Your job is to make them explicit.</p>
+      <p>Different techniques access different types of knowledge. Interviews surface articulated preferences. Observation surfaces unarticulated behaviours. Document analysis surfaces formalised constraints. No single technique is sufficient for a real project. The experienced BA combines them.</p>
+
+      <h2 id="s2">Interviews: Structured vs Semi-structured</h2>
+      <p>The one-on-one stakeholder interview is the foundation of requirements elicitation. It is the technique that gives you honest, nuanced input that group settings rarely produce — especially in hierarchical environments where people moderate their views in front of colleagues.</p>
+
+      <h3>Structured interviews</h3>
+      <p>A fixed set of questions, asked in the same order to every interviewee. Good for gathering consistent, comparable data across many stakeholders. Use structured interviews when you need to identify common themes or when you have a large group to interview (more than ten people) and need to compare responses systematically.</p>
+
+      <h3>Semi-structured interviews</h3>
+      <p>A guide of open questions, but you follow the thread of the conversation when something interesting surfaces. The most productive format for requirements elicitation because it combines structure with flexibility. Use it for key stakeholders and subject matter experts.</p>
+
+      <p><strong>Interview guide best practices:</strong></p>
+      <ul>
+        <li>Open with rapport-building (two minutes) — ask about their role and how long they have been doing it</li>
+        <li>Use open questions: "Walk me through what happens when…" not "Does the system do X?"</li>
+        <li>Follow the thread: when something is mentioned in passing, press it — "You mentioned the exception process — can you tell me more about that?"</li>
+        <li>Silence is productive — after an answer, wait three seconds before speaking. People often add important detail into the silence</li>
+        <li>Close with: "Is there anything you expected me to ask that I haven't? Is there anyone else you think I should speak to?"</li>
+      </ul>
+
+      <div class="field-note">
+        <p class="fn-label">BD Context</p>
+        <p>In Bangladesh, one-on-one interviews are significantly more productive than group discussions for gathering honest requirements. In a group, junior staff defer to seniors. In private, the same staff member will tell you exactly what is broken about the current system and what they need. Always arrange some private time with actual system users — even 20 minutes — before finalising requirements.</p>
+      </div>
+
+      <h2 id="s3">Observation &amp; Process Shadowing: Following the Work, Not the Narrative</h2>
+      <p>What people <em>say</em> they do and what they <em>actually</em> do are almost always different. Not because they are dishonest — but because most process knowledge is tacit and unconscious. The experienced clerk does not think about the three verification steps she performs before approving a purchase order; she just does them. She will not mention them in an interview because she does not think of them as notable.</p>
+      <p>Observation captures what interviews miss. You watch the actual work, in the actual environment, with actual data, under real time pressure.</p>
+
+      <div class="field-note">
+        <p class="fn-label">RMG Example</p>
+        <p>I was working on a QC inspection system for a woven fabric factory in Gazipur. After interviewing the QC manager, I had a clear picture of the inspection workflow. Then I spent three hours on the factory floor watching inspectors actually work.</p>
+        <p>I observed four things not mentioned in any interview: inspectors used a separate tally sheet on a clipboard in addition to the master form; they photographed every defect with personal mobile phones and sent images to a WhatsApp group; the defect codes on the form were mostly wrong because the codes had changed two years ago and nobody had updated the form; and the "inspection complete" signature was sometimes done by a supervisor who had not witnessed the inspection at all.</p>
+        <p>Every one of these observations became a requirements decision.</p>
+      </div>
+
+      <p>Observation guidelines: announce yourself as someone who is learning the process, not auditing it. Sit beside the user rather than across from them. Take notes, but do not interrupt — note the questions and ask them at the end. Return the next day if the first day was atypical.</p>
+
+      <h2 id="s4">Document Analysis: SOPs, Export Forms, and Compliance Docs in RMG</h2>
+      <p>Every organisation has more documentation than it realises — and much of it contains requirements in latent form. Existing documents reveal what the business has already agreed is true, what rules it operates under, and what data it considers important enough to record.</p>
+      <p>In RMG and export manufacturing, prioritise these document types:</p>
+      <ul>
+        <li><strong>Standard Operating Procedures</strong> — Even outdated SOPs reveal the intended process and the language the organisation uses</li>
+        <li><strong>Export documentation</strong> — Commercial invoices, packing lists, certificates of origin, LC documents. Every field is a data requirement</li>
+        <li><strong>Compliance checklists</strong> — Buyer code of conduct audits, BSCI/SMETA checklists. These contain mandatory requirements that cannot be negotiated</li>
+        <li><strong>Current system reports</strong> — If the business currently runs a report, they will need that data in the new system. Collect every report format currently in use</li>
+        <li><strong>Exception registers</strong> — The log of things that went wrong. Every exception is a business rule that the system needs to handle</li>
+      </ul>
+
+      <h2 id="s5">JAD Sessions: Joint Application Design for Cross-functional Alignment</h2>
+      <p>A Joint Application Design (JAD) session is an intensive, facilitated workshop where business stakeholders and technical team members jointly design the requirements — and sometimes the high-level solution — in real time. It originated in IBM in the 1970s and remains one of the most effective techniques for complex systems with multiple integration points.</p>
+      <p>JAD differs from a standard requirements workshop in three ways: the technical team participates actively (not just as observers); the session is longer (typically a full day or multi-day); and the output is more detailed — often including data models, process flows, and interface sketches, not just requirement statements.</p>
+      <p>Use JAD when: the project has significant technical complexity; there are multiple systems to integrate; or there is a history of business-IT miscommunication on similar projects. Avoid JAD for simple requirements work — the overhead is not justified.</p>
+
+      <h2 id="s6">Surveys &amp; Questionnaires: When and How</h2>
+      <p>Surveys are the right tool when you have many stakeholders (more than you can interview individually) and need quantitative or comparative data. They are the wrong tool for eliciting nuanced, context-dependent requirements from key decision-makers.</p>
+      <p>Best uses for surveys in BA work:</p>
+      <ul>
+        <li>Validate priorities across a large user group after requirements are drafted: "Which of these features is most important to your daily work?"</li>
+        <li>Gather baseline data on current pain points before requirements workshops</li>
+        <li>Confirm that requirements are consistently understood across departments</li>
+      </ul>
+      <p>Survey design pitfalls: avoid leading questions; use scales (1–5) rather than yes/no for preference questions; include one open field per section for insights you did not anticipate; keep total time under ten minutes. In Bangladesh, Google Forms distributed via WhatsApp has high response rates for operational staff.</p>
+
+      <h2 id="s7">Prototyping for Requirements Validation</h2>
+      <p>A prototype — a mockup, a wireframe, or even a hand-drawn sketch — surfaces requirements that no amount of verbal discussion will reveal. When stakeholders see something tangible, they immediately react to what is missing or wrong. This reaction is a form of elicitation.</p>
+      <p>The two types of prototypes for BA work:</p>
+      <ul>
+        <li><strong>Throwaway prototype</strong> — A quick sketch or wireframe built specifically to generate requirements feedback, then discarded. Does not become the final product. Use Balsamiq, Figma, or even pen on paper.</li>
+        <li><strong>Evolutionary prototype</strong> — An early version of the actual system that is refined based on feedback. More expensive to create but reduces rework in later stages. Used in Agile projects where the first sprint produces a usable, if thin, product.</li>
+      </ul>
+      <p>Prototyping rule: always label a prototype as a prototype. "This is a sketch to help us discuss what we need — it is not the final system." Without this label, stakeholders form attachment to the layout, colour choices, and specific wording — creating scope for superficial debates that waste requirements time.</p>
+
+      <h2 id="s8">Decision Matrix: Which Technique for Which Scenario</h2>
+      <div class="decision-grid">
+        <div class="dg-cell hd">Scenario</div>
+        <div class="dg-cell hd">Recommended technique(s)</div>
+        <div class="dg-cell"><strong>Key executive stakeholder, limited time</strong></div>
+        <div class="dg-cell">Semi-structured interview (30–45 min max)</div>
+        <div class="dg-cell"><strong>Large group of end-users (10+)</strong></div>
+        <div class="dg-cell">Survey + focused group observation sessions</div>
+        <div class="dg-cell"><strong>Process that nobody can fully describe</strong></div>
+        <div class="dg-cell">Observation + process walkthrough interview</div>
+        <div class="dg-cell"><strong>Complex multi-system integration</strong></div>
+        <div class="dg-cell">JAD session with business and IT together</div>
+        <div class="dg-cell"><strong>Validating drafted requirements</strong></div>
+        <div class="dg-cell">Prototype review + structured walkthrough interview</div>
+        <div class="dg-cell"><strong>Regulatory or compliance constraints</strong></div>
+        <div class="dg-cell">Document analysis of compliance docs + expert interview</div>
+        <div class="dg-cell"><strong>First project in an organisation with no documentation</strong></div>
+        <div class="dg-cell">Observation + process shadowing + informal interviews</div>
+      </div>
+
+      <h2 id="s9">Reflection Questions</h2>
+      <ol>
+        <li>On a recent project, which elicitation technique was used most? Which was not used — and what requirements did you subsequently discover were missing? Is there a connection?</li>
+        <li>Think of a process in your organisation that is done by one person who has never fully documented it. What would you observe if you shadowed that person for a day? What requirements do you think you would find?</li>
+        <li>Design a five-question semi-structured interview guide for eliciting requirements from a factory floor supervisor for a new attendance tracking system. What would your questions be, and in what order?</li>
+      </ol>
+
+    </article>
+  </div>
+</div>
+
+<div class="shell">
+  <div class="post-foot">
+    <div class="next">
+      <a href="lesson-03.html" class="next-card">
+        <span class="dir">← Previous</span>
+        <h4>Lesson 03 — Discovery Workshops</h4>
+        <p>Prepare, facilitate, and document workshops that produce decisions.</p>
+        <span class="arrow">← lesson 03</span>
+      </a>
+      <a href="lesson-05.html" class="next-card">
+        <span class="dir">Next →</span>
+        <h4>Lesson 05 — User Stories That Survive UAT</h4>
+        <p>INVEST, Given/When/Then, and the anti-pattern gallery.</p>
+        <span class="arrow">→ lesson 05</span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="shell">
+    <div class="foot">
+      <span>Course 01 · Lesson 04</span>
+      <a href="../../" style="color:var(--text-3);transition:color .15s" onmouseover="this.style.color='var(--text)'" onmouseout="this.style.color='var(--text-3)'">← Portfolio</a>
+    </div>
+  </div>
+</footer>
+<script src="../../lab/_toc.js"></script>
+</body>
+</html>

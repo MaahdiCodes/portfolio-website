@@ -217,7 +217,7 @@
       </div>
       <div class="field">
         <label for="f-role">Current Role *</label>
-        <select id="f-role" name="profession" required>
+        <select id="f-role" name="profession" required onchange="handleRoleChange(this)">
           <option value="" disabled selected>Select your role…</option>
           <option>Business Analyst</option>
           <option>Project Manager</option>
@@ -228,6 +228,10 @@
           <option>Founder / Entrepreneur</option>
           <option>Other</option>
         </select>
+      </div>
+      <div class="field" id="f-role-other-field" style="display:none">
+        <label for="f-role-other">Please specify your role *</label>
+        <input type="text" id="f-role-other" name="profession_other" placeholder="e.g. Supply Chain Manager" maxlength="120">
       </div>
 
       <div class="modal-error" id="modal-error"></div>
@@ -328,6 +332,20 @@ document.addEventListener('keydown', e => {
   if (e.key === 'Escape') closeModal();
 });
 
+/* ─── Role "Other" toggle ─── */
+function handleRoleChange(select) {
+  const otherField = document.getElementById('f-role-other-field');
+  const otherInput = document.getElementById('f-role-other');
+  if (select.value === 'Other') {
+    otherField.style.display = '';
+    otherInput.required = true;
+  } else {
+    otherField.style.display = 'none';
+    otherInput.required = false;
+    otherInput.value = '';
+  }
+}
+
 /* ─── Form submit ─── */
 async function handleSubmit(e) {
   e.preventDefault();
@@ -335,10 +353,18 @@ async function handleSubmit(e) {
 
   const name = document.getElementById('f-name').value.trim();
   const email = document.getElementById('f-email').value.trim();
-  const profession = document.getElementById('f-role').value;
+  const roleSelect = document.getElementById('f-role').value;
+  const roleOther = document.getElementById('f-role-other').value.trim();
 
-  if (!name || !email || !profession) {
+  const profession = roleSelect === 'Other' ? ('Other: ' + roleOther) : roleSelect;
+
+  if (!name || !email || !roleSelect) {
     showError('Please fill in all fields.');
+    return;
+  }
+  if (roleSelect === 'Other' && !roleOther) {
+    showError('Please specify your role.');
+    document.getElementById('f-role-other').focus();
     return;
   }
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
@@ -385,5 +411,6 @@ function clearError() {
   el.classList.remove('show');
 }
 </script>
+<script src="_progress.js"></script>
 </body>
 </html>

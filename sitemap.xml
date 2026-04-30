@@ -3,44 +3,49 @@
 
   <url>
     <loc>https://mhasan.me/</loc>
-    <lastmod>2026-04-28</lastmod>
+    <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
 
+  <!-- High-value Odoo keyword: inventory valuation, FIFO, manufacturing ERP -->
   <url>
-    <loc>https://mhasan.me/lab/0007-change-management-isnt-a-memo.html</loc>
-    <lastmod>2026-04-28</lastmod>
+    <loc>https://mhasan.me/lab/0011-odoo-inventory-valuation-cheatsheet</loc>
+    <lastmod>2026-04-30</lastmod>
     <changefreq>yearly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
   </url>
 
+  <!-- High-value keyword: Excel to Odoo migration, ERP data migration Bangladesh -->
   <url>
-    <loc>https://mhasan.me/lab/0008-excel-odoo-migration-checklist.html</loc>
-    <lastmod>2026-04-28</lastmod>
+    <loc>https://mhasan.me/lab/0008-excel-odoo-migration-checklist</loc>
+    <lastmod>2026-04-30</lastmod>
     <changefreq>yearly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
   </url>
 
+  <!-- High-value keyword: BPMN manufacturing, process mapping ERP, Odoo implementation -->
   <url>
-    <loc>https://mhasan.me/lab/0009-uat-script-200-users-ago.html</loc>
-    <lastmod>2026-04-28</lastmod>
+    <loc>https://mhasan.me/lab/0010-bpmn-templates-manufacturing-discovery</loc>
+    <lastmod>2026-04-30</lastmod>
     <changefreq>yearly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
   </url>
 
+  <!-- Mid-value keyword: ERP UAT, Odoo user acceptance testing -->
   <url>
-    <loc>https://mhasan.me/lab/0010-bpmn-templates-manufacturing-discovery.html</loc>
-    <lastmod>2026-04-28</lastmod>
+    <loc>https://mhasan.me/lab/0009-uat-script-200-users-ago</loc>
+    <lastmod>2026-04-30</lastmod>
     <changefreq>yearly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.7</priority>
   </url>
 
+  <!-- Mid-value keyword: ERP change management, Odoo go-live training -->
   <url>
-    <loc>https://mhasan.me/lab/0011-odoo-inventory-valuation-cheatsheet.html</loc>
-    <lastmod>2026-04-28</lastmod>
+    <loc>https://mhasan.me/lab/0007-change-management-isnt-a-memo</loc>
+    <lastmod>2026-04-30</lastmod>
     <changefreq>yearly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.7</priority>
   </url>
 
 </urlset>

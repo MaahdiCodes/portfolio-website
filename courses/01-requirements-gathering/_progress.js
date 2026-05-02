@@ -57,7 +57,7 @@
   document.head.appendChild(css);
 
   /* ── page detection ── */
-  var urlMatch  = location.pathname.match(/lesson-(\d+)\.html/i);
+  var urlMatch  = location.pathname.match(/lesson-(\d+)(?:\.html)?$/i);
   var lessonNum = urlMatch ? parseInt(urlMatch[1], 10) : 0;
 
   /* ══════════════════════════════════════════

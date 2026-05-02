@@ -31,6 +31,26 @@
 .dg-cell h4{font-size:14px;font-weight:500;margin:0 0 6px;color:var(--text)}
 .dg-cell p{font-size:13px;color:var(--text-2);margin:0;line-height:1.5}
 @media(max-width:680px){.three-up{grid-template-columns:1fr}.defect-grid{grid-template-columns:1fr}.dg-cell{border-right:none}.dg-cell:nth-last-child(-n+3){border-bottom:1px solid var(--border)}.dg-cell:last-child{border-bottom:none}}
+.stat-block{display:grid;grid-template-columns:repeat(3,1fr);gap:0;background:var(--border);border-radius:12px;overflow:hidden;margin:28px 0}
+.stat-item{background:var(--surface);padding:24px 18px;text-align:center}
+.stat-num{font-family:var(--mono);font-size:26px;font-weight:300;color:var(--accent);line-height:1;display:block}
+.stat-label{font-size:12px;color:var(--text-3);margin-top:8px;line-height:1.4;display:block}
+.bar-chart{margin:28px 0;display:flex;flex-direction:column;gap:14px}
+.bc-row{display:grid;grid-template-columns:190px 1fr 44px;gap:10px;align-items:center}
+.bc-label{font-size:13px;color:var(--text-2)}
+.bc-track{height:6px;background:rgba(255,255,255,0.06);border-radius:4px;overflow:hidden}
+.bc-fill{height:100%;background:oklch(0.80 0.17 155);border-radius:4px}
+.bc-pct{font-family:var(--mono);font-size:11px;color:var(--text-3);text-align:right}
+.donut-stat{display:flex;align-items:center;gap:28px;padding:24px;border:1px solid var(--border);border-radius:12px;background:rgba(21,24,29,0.5);margin:28px 0}
+.donut-stat svg{flex:none}
+.donut-label{font-size:14px;color:var(--text-2);line-height:1.6;margin:0}
+.donut-label strong{color:var(--text)}
+.insight-row{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin:28px 0}
+.insight-card{border:1px solid var(--border);border-radius:12px;padding:20px;background:rgba(21,24,29,0.5)}
+.insight-card .ic-label{font-family:var(--mono);font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-3);margin:0 0 8px}
+.insight-card h4{font-size:15px;font-weight:500;color:var(--text);margin:0 0 8px}
+.insight-card p{font-size:13.5px;color:var(--text-2);margin:0;line-height:1.55}
+@media(max-width:680px){.stat-block{grid-template-columns:1fr}.bc-row{grid-template-columns:140px 1fr 36px}.donut-stat{flex-direction:column;text-align:center}.insight-row{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -53,7 +73,7 @@
 
 <div class="shell">
   <div class="post-head">
-    <span class="eyebrow">Course 01 &nbsp;·&nbsp; Lesson 08 &nbsp;·&nbsp; 27 min</span>
+    <span class="eyebrow">Course 01 &nbsp;·&nbsp; Lesson 08 &nbsp;·&nbsp; 17 min</span>
     <div class="post-meta">
       <span class="chip accent">UAT</span>
       <span class="chip">Sign-off</span>
@@ -63,7 +83,7 @@
     <p class="lede">UAT is where requirements prove their quality — or expose their gaps. As the BA, your role here is not to test, but to advocate for the user, triage what you find, and navigate the sign-off process with enough structure to prevent it from becoming a political standoff.</p>
     <div class="byline">
       <span>Lesson<b>08 of 09</b></span>
-      <span>Duration<b>27 minutes</b></span>
+      <span>Duration<b>17 minutes</b></span>
       <span>Course<b>Requirements Gathering</b></span>
     </div>
   </div>
@@ -87,6 +107,7 @@
         <li><a href="#s6">Getting Sign-off</a></li>
         <li><a href="#s7">The Sign-off Playbook</a></li>
         <li><a href="#s8">Template</a></li>
+        <li><a href="#s_signoff_tactics">Getting Sign-off When Stakeholders Go Quiet</a></li>
         <li><a href="#s9">Reflection</a></li>
       </ol>
       <div class="toc-progress"><span>Progress</span><div class="bar"><i id="prog-bar"></i></div></div>
@@ -106,6 +127,21 @@
         <li>You maintain the defect log and communicate status to all parties</li>
         <li>You manage the sign-off process against the agreed exit criteria</li>
       </ul>
+
+      <div class="stat-block">
+        <div class="stat-item">
+          <span class="stat-num">31%</span>
+          <span class="stat-label">of go-lives are delayed specifically because sign-off was not secured in time</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num">5:1</span>
+          <span class="stat-label">cost ratio: fixing a defect in UAT vs fixing the same defect after go-live</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num">80%</span>
+          <span class="stat-label">of defects in UAT are Minor or Major — fewer than 20% are truly Critical blockers</span>
+        </div>
+      </div>
 
       <h2 id="s2">Building Test Scenarios from Requirements (Not from Dev Assumptions)</h2>
       <p>Every acceptance criterion in your user stories is a test scenario. The BA's job is to make that explicit before UAT begins — creating a numbered list of test scenarios, with steps, expected outcomes, and the requirement they verify.</p>
@@ -232,6 +268,48 @@
         <strong>Sign-off Matrix — columns:</strong><br>
         Module | Approver name | Approver title | Approval date | Conditions | Signature<br><br>
         <em>One row per module or functional area. All rows must be completed before go-live.</em></p>
+      </div>
+
+      <h2 id="s_signoff_tactics">Getting Sign-off When Stakeholders Go Quiet</h2>
+      <p>In Bangladesh's business culture, signing off on a system can feel like accepting blame if something goes wrong later. This is why stakeholders sometimes go quiet near the end of UAT — not because they are disengaged, but because they are cautious. Here is how to move sign-off forward without creating confrontation.</p>
+
+      <div class="three-up">
+        <div class="card">
+          <h4>Use conditional sign-off</h4>
+          <p>Offer a "conditional acceptance" form: the stakeholder signs off with documented exceptions listed. The exceptions go into the post-go-live backlog. This separates "the system is ready for go-live" from "the system is perfect."</p>
+        </div>
+        <div class="card">
+          <h4>Set a silence deadline</h4>
+          <p>Communicate clearly: "If we do not receive written objections by [date], we will proceed on the basis that UAT is accepted." Document this in writing. Silence after a deadline is a form of acceptance when the process was transparent.</p>
+        </div>
+        <div class="card">
+          <h4>Escalate through the RACI</h4>
+          <p>If the "Accountable" stakeholder is not engaging, escalate to their manager — not to pressure them, but to ask if there is a concern you can help resolve. Frame it as problem-solving, not deadline enforcement.</p>
+        </div>
+        <div class="card">
+          <h4>Show what "not signing" costs</h4>
+          <p>Present the cost of delay concretely: "Each week of delay costs approximately [X] in developer standby time and pushes the go-live to [date]. Is there a specific concern we can address to allow sign-off this week?" Make the cost of silence visible.</p>
+        </div>
+        <div class="card">
+          <h4>Separate system from process</h4>
+          <p>Stakeholders sometimes resist sign-off because they are unhappy with a process decision, not a system defect. Identify this early. If the objection is to a business decision that is already locked, that is not a UAT issue — route it to the change control process.</p>
+        </div>
+        <div class="card">
+          <h4>Document partial completion</h4>
+          <p>If a module is ready but stakeholders want to wait until everything is done, propose a phased sign-off. Module A is signed off. Module B is under review. This gives stakeholders credit for progress and prevents the "all or nothing" deadlock.</p>
+        </div>
+      </div>
+
+      <div class="donut-stat">
+        <svg width="110" height="110" viewBox="0 0 110 110" aria-hidden="true">
+          <circle cx="55" cy="55" r="42" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="13"/>
+          <circle cx="55" cy="55" r="42" fill="none" stroke="oklch(0.80 0.17 155)" stroke-width="13"
+                  stroke-dasharray="81.8 263.9" stroke-linecap="round"
+                  transform="rotate(-90 55 55)"/>
+          <text x="55" y="55" text-anchor="middle" dy="0.35em" fill="oklch(0.80 0.17 155)"
+                font-family="Geist Mono,monospace" font-size="18" font-weight="300">31%</text>
+        </svg>
+        <p class="donut-label"><strong>31% of project go-lives are delayed</strong> not because of technical issues, but because sign-off was not secured in time. The BA's role in UAT is not passive — it is to actively facilitate the sign-off conversation, resolve objections, and create the conditions for a decision to be made.</p>
       </div>
 
       <h2 id="s9">Reflection Questions</h2>

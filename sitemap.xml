@@ -8,10 +8,26 @@
     <priority>1.0</priority>
   </url>
 
+  <!-- Target: Odoo Partner Bangladesh, Odoo consultant bangladesh -->
+  <url>
+    <loc>https://mhasan.me/services/odoo-partner-consultant</loc>
+    <lastmod>2026-05-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Target: manufacturing consultant bangladesh, manufacturing ERP -->
+  <url>
+    <loc>https://mhasan.me/services/manufacturing-erp-consultant</loc>
+    <lastmod>2026-05-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
   <!-- Target: Requirements gathering business analysts Bangladesh, BA training course -->
   <url>
     <loc>https://mhasan.me/courses/01-requirements-gathering/</loc>
-    <lastmod>2026-04-30</lastmod>
+    <lastmod>2026-05-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>

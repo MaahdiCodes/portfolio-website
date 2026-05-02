@@ -27,6 +27,26 @@
 .pf-step h4{font-size:13px;font-weight:500;margin:0 0 6px;color:var(--text)}
 .pf-step p{font-size:12px;color:var(--text-2);margin:0;line-height:1.45}
 @media(max-width:680px){.three-up{grid-template-columns:1fr}.process-flow{flex-direction:column}.pf-step{border-right:none;border-bottom:1px solid var(--border)}.pf-step:last-child{border-bottom:none}}
+.stat-block{display:grid;grid-template-columns:repeat(3,1fr);gap:0;background:var(--border);border-radius:12px;overflow:hidden;margin:28px 0}
+.stat-item{background:var(--surface);padding:24px 18px;text-align:center}
+.stat-num{font-family:var(--mono);font-size:26px;font-weight:300;color:var(--accent);line-height:1;display:block}
+.stat-label{font-size:12px;color:var(--text-3);margin-top:8px;line-height:1.4;display:block}
+.bar-chart{margin:28px 0;display:flex;flex-direction:column;gap:14px}
+.bc-row{display:grid;grid-template-columns:190px 1fr 44px;gap:10px;align-items:center}
+.bc-label{font-size:13px;color:var(--text-2)}
+.bc-track{height:6px;background:rgba(255,255,255,0.06);border-radius:4px;overflow:hidden}
+.bc-fill{height:100%;background:oklch(0.80 0.17 155);border-radius:4px}
+.bc-pct{font-family:var(--mono);font-size:11px;color:var(--text-3);text-align:right}
+.donut-stat{display:flex;align-items:center;gap:28px;padding:24px;border:1px solid var(--border);border-radius:12px;background:rgba(21,24,29,0.5);margin:28px 0}
+.donut-stat svg{flex:none}
+.donut-label{font-size:14px;color:var(--text-2);line-height:1.6;margin:0}
+.donut-label strong{color:var(--text)}
+.insight-row{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin:28px 0}
+.insight-card{border:1px solid var(--border);border-radius:12px;padding:20px;background:rgba(21,24,29,0.5)}
+.insight-card .ic-label{font-family:var(--mono);font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-3);margin:0 0 8px}
+.insight-card h4{font-size:15px;font-weight:500;color:var(--text);margin:0 0 8px}
+.insight-card p{font-size:13.5px;color:var(--text-2);margin:0;line-height:1.55}
+@media(max-width:680px){.stat-block{grid-template-columns:1fr}.bc-row{grid-template-columns:140px 1fr 36px}.donut-stat{flex-direction:column;text-align:center}.insight-row{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -49,7 +69,7 @@
 
 <div class="shell">
   <div class="post-head">
-    <span class="eyebrow">Course 01 &nbsp;·&nbsp; Lesson 07 &nbsp;·&nbsp; 25 min</span>
+    <span class="eyebrow">Course 01 &nbsp;·&nbsp; Lesson 07 &nbsp;·&nbsp; 15 min</span>
     <div class="post-meta">
       <span class="chip accent">Conflict Resolution</span>
       <span class="chip">Change Control</span>
@@ -59,7 +79,7 @@
     <p class="lede">Requirements conflict is not a sign of a bad process — it is a sign that stakeholders have real, competing interests. Your job is not to eliminate the conflict, but to surface it, resolve it transparently, and document the decision. Here is how.</p>
     <div class="byline">
       <span>Lesson<b>07 of 09</b></span>
-      <span>Duration<b>25 minutes</b></span>
+      <span>Duration<b>15 minutes</b></span>
       <span>Course<b>Requirements Gathering</b></span>
     </div>
   </div>
@@ -81,6 +101,8 @@
         <li><a href="#s4">Impact Analysis</a></li>
         <li><a href="#s5">Traceability Matrix</a></li>
         <li><a href="#s6">Template: Change Register</a></li>
+        <li><a href="#s_conflict_types">The Four Types of Requirements Conflict</a></li>
+        <li><a href="#s_change_impact">Change Impact Analysis</a></li>
         <li><a href="#s7">Reflection</a></li>
       </ol>
       <div class="toc-progress"><span>Progress</span><div class="bar"><i id="prog-bar"></i></div></div>
@@ -99,6 +121,21 @@
         <p>On a biometric attendance project for a knitwear factory, the HR director wanted workers to be able to claim overtime only after a line supervisor had approved the extra hours in the system. The production manager wanted workers to be able to self-register overtime and have supervisors approve it in batch at the end of each week.</p>
         <p>Both requirements made it into the spec. Neither was flagged as conflicting. Development built both workflows. At UAT, supervisors found the system presented them with two different overtime approval interfaces and no clear guidance on which to use. Three sprints of rework followed.</p>
         <p>The conflict should have been resolved in a 30-minute conversation between the HR director and the production manager, facilitated by the BA, two months earlier.</p>
+      </div>
+
+      <div class="stat-block">
+        <div class="stat-item">
+          <span class="stat-num">85%</span>
+          <span class="stat-label">of projects experience at least one significant change request after sign-off</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num">3.2×</span>
+          <span class="stat-label">cost multiplier: a change in requirements during build vs during discovery</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num">RTM</span>
+          <span class="stat-label">is the BA's single most important tool for managing change impact</span>
+        </div>
       </div>
 
       <h2 id="s2">Conflict Resolution Techniques</h2>
@@ -215,6 +252,59 @@
         Risk if not implemented: [description]<br>
         BA recommendation: [Approve / Reject / Defer + rationale]</p>
       </div>
+
+      <h2 id="s_conflict_types">The Four Types of Requirements Conflict</h2>
+      <p>Not all requirements conflicts are the same. Understanding what type of conflict you are dealing with determines which resolution approach is appropriate. Applying a negotiation technique to a technical constraint conflict wastes time. Applying a technical analysis to a political conflict creates enemies.</p>
+
+      <div class="insight-row">
+        <div class="insight-card">
+          <p class="ic-label">Type 01</p>
+          <h4>Stakeholder vs stakeholder</h4>
+          <p>Two departments want the system to do different, incompatible things. The HR director wants workers' attendance records private; the MD wants full visibility. Resolution: escalate to the single Accountable person in the RACI. This is a governance decision, not a BA decision.</p>
+        </div>
+        <div class="insight-card">
+          <p class="ic-label">Type 02</p>
+          <h4>Stated vs actual need</h4>
+          <p>The stakeholder says they need X, but observation and probing reveal the real need is Y, which X does not address. Resolution: present both the stated and real requirements side by side, with evidence. Never contradict a stakeholder directly — show them the data.</p>
+        </div>
+        <div class="insight-card">
+          <p class="ic-label">Type 03</p>
+          <h4>Business vs technical constraint</h4>
+          <p>The business requires a feature by go-live that the development team says cannot be built in time. Resolution: BA facilitates a scope trade-off discussion — what can be deferred, what is truly non-negotiable, and what MVP looks like for go-live.</p>
+        </div>
+        <div class="insight-card">
+          <p class="ic-label">Type 04</p>
+          <h4>New requirement vs agreed scope</h4>
+          <p>A stakeholder introduces a new requirement after sign-off. Resolution: log it as a change request. Run a formal impact analysis. Present the options: implement now (scope and timeline impact), implement in phase 2, or defer indefinitely. Do not absorb undocumented scope.</p>
+        </div>
+      </div>
+
+      <h2 id="s_change_impact">Change Impact Analysis: A Quick Framework</h2>
+      <p>Every change request should be assessed across four dimensions before a decision is made. This is the analysis you present to the project sponsor when a change request arrives — not your recommendation, but the information they need to make a decision.</p>
+
+      <div class="bar-chart">
+        <div class="bc-row">
+          <span class="bc-label">Scope impact</span>
+          <div class="bc-track"><div class="bc-fill" style="width:100%"></div></div>
+          <span class="bc-pct">What changes?</span>
+        </div>
+        <div class="bc-row">
+          <span class="bc-label">Timeline impact</span>
+          <div class="bc-track"><div class="bc-fill" style="width:85%"></div></div>
+          <span class="bc-pct">How many days?</span>
+        </div>
+        <div class="bc-row">
+          <span class="bc-label">Cost impact</span>
+          <div class="bc-track"><div class="bc-fill" style="width:75%"></div></div>
+          <span class="bc-pct">Estimate range</span>
+        </div>
+        <div class="bc-row">
+          <span class="bc-label">Risk impact</span>
+          <div class="bc-track"><div class="bc-fill" style="width:65%"></div></div>
+          <span class="bc-pct">What breaks?</span>
+        </div>
+      </div>
+      <p>Document each analysis in writing and share it with the requester before any decision is made. This prevents the "but we agreed" conversation at go-live — because the analysis shows what the decision actually was and what information was available when it was made.</p>
 
       <h2 id="s7">Reflection Questions</h2>
       <ol>

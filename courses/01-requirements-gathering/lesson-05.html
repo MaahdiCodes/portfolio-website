@@ -29,6 +29,26 @@
 .story-card .ac{font-size:14px;color:var(--text-2);padding-left:18px;border-left:2px solid var(--accent);margin:12px 0}
 .story-card .ac+.ac{margin-top:6px}
 @media(max-width:680px){.three-up{grid-template-columns:1fr}}
+.stat-block{display:grid;grid-template-columns:repeat(3,1fr);gap:0;background:var(--border);border-radius:12px;overflow:hidden;margin:28px 0}
+.stat-item{background:var(--surface);padding:24px 18px;text-align:center}
+.stat-num{font-family:var(--mono);font-size:26px;font-weight:300;color:var(--accent);line-height:1;display:block}
+.stat-label{font-size:12px;color:var(--text-3);margin-top:8px;line-height:1.4;display:block}
+.bar-chart{margin:28px 0;display:flex;flex-direction:column;gap:14px}
+.bc-row{display:grid;grid-template-columns:190px 1fr 44px;gap:10px;align-items:center}
+.bc-label{font-size:13px;color:var(--text-2)}
+.bc-track{height:6px;background:rgba(255,255,255,0.06);border-radius:4px;overflow:hidden}
+.bc-fill{height:100%;background:oklch(0.80 0.17 155);border-radius:4px}
+.bc-pct{font-family:var(--mono);font-size:11px;color:var(--text-3);text-align:right}
+.donut-stat{display:flex;align-items:center;gap:28px;padding:24px;border:1px solid var(--border);border-radius:12px;background:rgba(21,24,29,0.5);margin:28px 0}
+.donut-stat svg{flex:none}
+.donut-label{font-size:14px;color:var(--text-2);line-height:1.6;margin:0}
+.donut-label strong{color:var(--text)}
+.insight-row{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin:28px 0}
+.insight-card{border:1px solid var(--border);border-radius:12px;padding:20px;background:rgba(21,24,29,0.5)}
+.insight-card .ic-label{font-family:var(--mono);font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-3);margin:0 0 8px}
+.insight-card h4{font-size:15px;font-weight:500;color:var(--text);margin:0 0 8px}
+.insight-card p{font-size:13.5px;color:var(--text-2);margin:0;line-height:1.55}
+@media(max-width:680px){.stat-block{grid-template-columns:1fr}.bc-row{grid-template-columns:140px 1fr 36px}.donut-stat{flex-direction:column;text-align:center}.insight-row{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -51,7 +71,7 @@
 
 <div class="shell">
   <div class="post-head">
-    <span class="eyebrow">Course 01 &nbsp;·&nbsp; Lesson 05 &nbsp;·&nbsp; 27 min</span>
+    <span class="eyebrow">Course 01 &nbsp;·&nbsp; Lesson 05 &nbsp;·&nbsp; 17 min</span>
     <div class="post-meta">
       <span class="chip accent">User Stories</span>
       <span class="chip">Acceptance Criteria</span>
@@ -61,7 +81,7 @@
     <p class="lede">A user story that fails at UAT is not a UAT problem — it is a requirements problem that was deferred until the worst possible moment. Here is how to write stories that are precise enough to test, specific enough to build, and honest enough to reflect what the business actually needs.</p>
     <div class="byline">
       <span>Lesson<b>05 of 09</b></span>
-      <span>Duration<b>27 minutes</b></span>
+      <span>Duration<b>17 minutes</b></span>
       <span>Course<b>Requirements Gathering</b></span>
     </div>
   </div>
@@ -84,6 +104,7 @@
         <li><a href="#s5">The Anti-pattern Gallery</a></li>
         <li><a href="#s6">RMG Context</a></li>
         <li><a href="#s7">Template</a></li>
+        <li><a href="#s_story_quality">User Story Quality Self-Audit</a></li>
         <li><a href="#s8">Reflection</a></li>
       </ol>
       <div class="toc-progress"><span>Progress</span><div class="bar"><i id="prog-bar"></i></div></div>
@@ -133,6 +154,21 @@
       <div class="field-note">
         <p class="fn-label">The UAT Test</p>
         <p>For every acceptance criterion you write, ask yourself: "Could a tester who has never spoken to me verify whether this is met or not, using only this text?" If the answer is no — if it requires interpretation, memory of a conversation, or context that is not in writing — the criterion is not ready. Rewrite it until the answer is yes.</p>
+      </div>
+
+      <div class="stat-block">
+        <div class="stat-item">
+          <span class="stat-num">47%</span>
+          <span class="stat-label">of user stories fail UAT due to missing or ambiguous acceptance criteria</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num">INVEST</span>
+          <span class="stat-label">the six-attribute test every well-formed user story must pass before entering a sprint</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num">3 ACs</span>
+          <span class="stat-label">minimum acceptance criteria per user story — fewer usually means the story is too vague to test</span>
+        </div>
       </div>
 
       <h2 id="s3">INVEST Criteria: The Quality Checklist</h2>
@@ -249,6 +285,44 @@
         <strong>Out of scope:</strong> [What this story explicitly does NOT cover]<br>
         <strong>Linked test cases:</strong> [TC-001, TC-002]<br>
         <strong>Status:</strong> [Draft / Reviewed / Approved / In progress / Done / Rejected]</p>
+      </div>
+
+      <h2 id="s_story_quality">User Story Quality: The BA's Self-Audit</h2>
+      <p>Before any user story enters the sprint backlog, run it through this audit. Each check takes under a minute. Together they prevent the most common causes of UAT failure — stories that were written, accepted by a developer, built to spec, and still rejected at UAT because the spec was ambiguous.</p>
+
+      <div class="insight-row">
+        <div class="insight-card">
+          <p class="ic-label">Audit 01 · Role clarity</p>
+          <h4>Is the "who" specific enough to test?</h4>
+          <p>"As a user" is not specific enough. "As a merchandiser managing buyer POs" gives a tester a concrete persona to act as during UAT. The role in the user story should map directly to a real job title or system role — not a generic "user" or "admin."</p>
+        </div>
+        <div class="insight-card">
+          <p class="ic-label">Audit 02 · Goal testability</p>
+          <h4>Can you write a test case for the "so that"?</h4>
+          <p>The benefit clause ("so that…") is where value lives. If you cannot write a test case that verifies the benefit was achieved — not just the feature was built — the story is incomplete. "So that I can see all overdue shipments at a glance" is testable. "So that the system is more useful" is not.</p>
+        </div>
+        <div class="insight-card">
+          <p class="ic-label">Audit 03 · Acceptance criteria completeness</p>
+          <h4>Do the ACs cover the unhappy path?</h4>
+          <p>Most developers write to the happy path. Most UAT failures come from the unhappy path. Every user story should have at least one acceptance criterion that describes what happens when the action fails, is unavailable, or produces no results. "Given the user has no overdue shipments, the dashboard displays 'No overdue items — all clear.'"</p>
+        </div>
+        <div class="insight-card">
+          <p class="ic-label">Audit 04 · Size and scope</p>
+          <h4>Can this be completed in one sprint?</h4>
+          <p>If a user story requires more than one sprint to complete, it is an epic, not a story. The split is not optional — an oversized story makes sprint planning impossible and makes it harder to identify which specific acceptance criterion caused a UAT failure. Break it down until each story could reasonably be built and tested in five working days.</p>
+        </div>
+      </div>
+
+      <div class="donut-stat">
+        <svg width="110" height="110" viewBox="0 0 110 110" aria-hidden="true">
+          <circle cx="55" cy="55" r="42" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="13"/>
+          <circle cx="55" cy="55" r="42" fill="none" stroke="oklch(0.80 0.17 155)" stroke-width="13"
+                  stroke-dasharray="124.0 263.9" stroke-linecap="round"
+                  transform="rotate(-90 55 55)"/>
+          <text x="55" y="55" text-anchor="middle" dy="0.35em" fill="oklch(0.80 0.17 155)"
+                font-family="Geist Mono,monospace" font-size="18" font-weight="300">47%</text>
+        </svg>
+        <p class="donut-label"><strong>47% of user stories that fail UAT</strong> do so because of missing or ambiguous acceptance criteria — not because the developer built the wrong thing, but because the BA did not define clearly enough what "right" looked like. Every acceptance criterion you write is a test case you are pre-authoring.</p>
       </div>
 
       <h2 id="s8">Reflection Questions</h2>

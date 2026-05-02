@@ -41,6 +41,26 @@
 .course-complete a{display:inline-flex;align-items:center;gap:8px;padding:12px 24px;background:var(--accent);color:#04140B;border-radius:999px;font-weight:500;font-size:14px;transition:opacity .18s,transform .12s}
 .course-complete a:hover{opacity:0.88;transform:translateY(-1px)}
 @media(max-width:680px){.three-up,.cert-grid,.career-grid{grid-template-columns:1fr}}
+.stat-block{display:grid;grid-template-columns:repeat(3,1fr);gap:0;background:var(--border);border-radius:12px;overflow:hidden;margin:28px 0}
+.stat-item{background:var(--surface);padding:24px 18px;text-align:center}
+.stat-num{font-family:var(--mono);font-size:26px;font-weight:300;color:var(--accent);line-height:1;display:block}
+.stat-label{font-size:12px;color:var(--text-3);margin-top:8px;line-height:1.4;display:block}
+.bar-chart{margin:28px 0;display:flex;flex-direction:column;gap:14px}
+.bc-row{display:grid;grid-template-columns:190px 1fr 44px;gap:10px;align-items:center}
+.bc-label{font-size:13px;color:var(--text-2)}
+.bc-track{height:6px;background:rgba(255,255,255,0.06);border-radius:4px;overflow:hidden}
+.bc-fill{height:100%;background:oklch(0.80 0.17 155);border-radius:4px}
+.bc-pct{font-family:var(--mono);font-size:11px;color:var(--text-3);text-align:right}
+.donut-stat{display:flex;align-items:center;gap:28px;padding:24px;border:1px solid var(--border);border-radius:12px;background:rgba(21,24,29,0.5);margin:28px 0}
+.donut-stat svg{flex:none}
+.donut-label{font-size:14px;color:var(--text-2);line-height:1.6;margin:0}
+.donut-label strong{color:var(--text)}
+.insight-row{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin:28px 0}
+.insight-card{border:1px solid var(--border);border-radius:12px;padding:20px;background:rgba(21,24,29,0.5)}
+.insight-card .ic-label{font-family:var(--mono);font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-3);margin:0 0 8px}
+.insight-card h4{font-size:15px;font-weight:500;color:var(--text);margin:0 0 8px}
+.insight-card p{font-size:13.5px;color:var(--text-2);margin:0;line-height:1.55}
+@media(max-width:680px){.stat-block{grid-template-columns:1fr}.bc-row{grid-template-columns:140px 1fr 36px}.donut-stat{flex-direction:column;text-align:center}.insight-row{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -63,7 +83,7 @@
 
 <div class="shell">
   <div class="post-head">
-    <span class="eyebrow">Course 01 &nbsp;·&nbsp; Lesson 09 &nbsp;·&nbsp; 25 min</span>
+    <span class="eyebrow">Course 01 &nbsp;·&nbsp; Lesson 09 &nbsp;·&nbsp; 15 min</span>
     <div class="post-meta">
       <span class="chip accent">Final Lesson</span>
       <span class="chip">Toolkit</span>
@@ -73,7 +93,7 @@
     <p class="lede">This final lesson is your reference shelf: every artefact you should produce on a project, every tool worth knowing, the certifications that open doors, and what a BA career in Bangladesh actually looks like — in the corporate, consulting, and freelance lanes.</p>
     <div class="byline">
       <span>Lesson<b>09 of 09</b></span>
-      <span>Duration<b>25 minutes</b></span>
+      <span>Duration<b>15 minutes</b></span>
       <span>Course<b>Requirements Gathering</b></span>
     </div>
   </div>
@@ -97,6 +117,8 @@
         <li><a href="#s6">Career Paths in Bangladesh</a></li>
         <li><a href="#s7">International Applicability</a></li>
         <li><a href="#s8">Your Next Steps</a></li>
+        <li><a href="#s_career_paths">The Three BA Career Paths</a></li>
+        <li><a href="#s_portfolio">Building Your BA Portfolio</a></li>
         <li><a href="#s9">Reflection</a></li>
       </ol>
       <div class="toc-progress"><span>Progress</span><div class="bar"><i id="prog-bar"></i></div></div>
@@ -131,6 +153,21 @@
       <div class="callout">
         <span class="tag">Rule</span>
         <p>A document that lives only on your laptop is not a project artefact — it is a personal note. Every artefact must be in a shared, version-controlled location (SharePoint, Google Drive, Confluence) that the project sponsor can access without asking you. If you leave the project tomorrow, the work should survive.</p>
+      </div>
+
+      <div class="stat-block">
+        <div class="stat-item">
+          <span class="stat-num">12+</span>
+          <span class="stat-label">artefacts a BA should produce and own across a full project lifecycle</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num">4–7 yr</span>
+          <span class="stat-label">typical timeline from junior BA to senior BA/consultant in Bangladesh</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num">BDT 80K+</span>
+          <span class="stat-label">monthly median for experienced BAs in Dhaka's tech and consulting sector</span>
+        </div>
       </div>
 
       <h2 id="s2">Handover Documentation: Writing for the Person Who Comes After You</h2>
@@ -252,6 +289,63 @@
         <li><strong>Join IIBA Bangladesh chapter</strong> — Connect with other BAs, access events and learning resources, and start building the professional network that generates referrals.</li>
         <li><strong>Find a mentor</strong> — One experienced BA who will review your work honestly and give you specific feedback is worth ten certifications. Ask explicitly. Most experienced practitioners are willing to mentor someone who is serious.</li>
       </ol>
+
+      <h2 id="s_career_paths">The Three BA Career Paths in Bangladesh</h2>
+      <p>There is no single career ladder for business analysts in Bangladesh. The discipline splits early into three recognisably different trajectories, each with its own progression logic, income ceiling, and day-to-day reality.</p>
+
+      <div class="bar-chart">
+        <div class="bc-row">
+          <span class="bc-label">Corporate BA → BA Lead</span>
+          <div class="bc-track"><div class="bc-fill" style="width:70%"></div></div>
+          <span class="bc-pct">Stability</span>
+        </div>
+        <div class="bc-row">
+          <span class="bc-label">Consulting / ERP track</span>
+          <div class="bc-track"><div class="bc-fill" style="width:90%"></div></div>
+          <span class="bc-pct">Variety</span>
+        </div>
+        <div class="bc-row">
+          <span class="bc-label">Freelance / international</span>
+          <div class="bc-track"><div class="bc-fill" style="width:100%"></div></div>
+          <span class="bc-pct">Income ceiling</span>
+        </div>
+      </div>
+
+      <div class="insight-row">
+        <div class="insight-card">
+          <p class="ic-label">Path A · Corporate</p>
+          <h4>In-house BA → BA Lead → Head of Business Analysis</h4>
+          <p>Steady progression within one organisation. Deep knowledge of one sector. The ceiling in Bangladesh is typically a senior manager role, with a monthly salary of BDT 60K–120K for experienced practitioners. Best for those who value depth, stability, and a clear internal path.</p>
+        </div>
+        <div class="insight-card">
+          <p class="ic-label">Path B · Consulting</p>
+          <h4>ERP/IT Consultant → Senior Consultant → Principal</h4>
+          <p>The ERP and systems integration track — Odoo, SAP, Oracle, Microsoft — moves faster and pays better than the corporate path. Variety is high: different clients, different industries. Income ceiling for principals in Dhaka is BDT 150K–250K+. Requires building a specialisation quickly.</p>
+        </div>
+        <div class="insight-card">
+          <p class="ic-label">Path C · Freelance</p>
+          <h4>Remote consultant → International clients</h4>
+          <p>A growing path as Bangladeshi BAs with international exposure find remote work on platforms like Upwork and Toptal, or through LinkedIn networks. Income in USD/GBP removes the Bangladesh salary ceiling entirely. Requires strong English, demonstrable portfolio work, and self-marketing.</p>
+        </div>
+        <div class="insight-card">
+          <p class="ic-label">Making the transition</p>
+          <h4>From corporate to consulting</h4>
+          <p>The most common move is from a corporate BA role to an ERP or IT consulting firm. The transition is easier if you have already worked on a project that touched a major system (Odoo, SAP, etc.). Build that experience first, even if it means taking a more complex internal project than you would otherwise choose.</p>
+        </div>
+      </div>
+
+      <h2 id="s_portfolio">Building Your BA Portfolio</h2>
+      <p>A BA portfolio is not a collection of screenshots. It is documented evidence that you can move from a vague brief to a testable specification. Here is what to include, and how to present it without violating any confidentiality agreements.</p>
+
+      <div class="callout">
+        <span class="tag">Portfolio Guide</span>
+        <p><strong>What to include (anonymised where needed):</strong><br><br>
+        <strong>1. A stakeholder map</strong> — Even a fictitious one, with a real explanation of how you would apply it. Shows you understand power dynamics, not just org charts.<br><br>
+        <strong>2. A requirements document (SRS-lite)</strong> — One real-world page of functional requirements you wrote, with ambiguity resolved and measurable acceptance criteria. Remove client names; keep the structure.<br><br>
+        <strong>3. A user story set</strong> — Five to ten user stories with Given/When/Then acceptance criteria. Ideally from a real project, even if the domain is described generically ("for a garment factory attendance system…").<br><br>
+        <strong>4. A UAT plan or test case set</strong> — Shows you can think forward from requirements to verification. One real UAT plan, even for a small feature, is worth more than ten theoretical frameworks.<br><br>
+        <strong>5. A retrospective note</strong> — One page on what went wrong in a requirements phase, what you would do differently, and what you actually learned. This is rare and extremely credible. Most candidates only show successes.</p>
+      </div>
 
       <div class="course-complete">
         <h3>Course complete.</h3>

@@ -27,6 +27,26 @@
 .rh-content h4{font-size:14.5px;font-weight:500;color:var(--text);margin:0 0 4px}
 .rh-content p{font-size:13.5px;color:var(--text-2);margin:0;line-height:1.5}
 @media(max-width:680px){.three-up{grid-template-columns:1fr}.rh-row{flex-direction:column}.rh-level{width:auto}}
+.stat-block{display:grid;grid-template-columns:repeat(3,1fr);gap:0;background:var(--border);border-radius:12px;overflow:hidden;margin:28px 0}
+.stat-item{background:var(--surface);padding:24px 18px;text-align:center}
+.stat-num{font-family:var(--mono);font-size:26px;font-weight:300;color:var(--accent);line-height:1;display:block}
+.stat-label{font-size:12px;color:var(--text-3);margin-top:8px;line-height:1.4;display:block}
+.bar-chart{margin:28px 0;display:flex;flex-direction:column;gap:14px}
+.bc-row{display:grid;grid-template-columns:190px 1fr 44px;gap:10px;align-items:center}
+.bc-label{font-size:13px;color:var(--text-2)}
+.bc-track{height:6px;background:rgba(255,255,255,0.06);border-radius:4px;overflow:hidden}
+.bc-fill{height:100%;background:oklch(0.80 0.17 155);border-radius:4px}
+.bc-pct{font-family:var(--mono);font-size:11px;color:var(--text-3);text-align:right}
+.donut-stat{display:flex;align-items:center;gap:28px;padding:24px;border:1px solid var(--border);border-radius:12px;background:rgba(21,24,29,0.5);margin:28px 0}
+.donut-stat svg{flex:none}
+.donut-label{font-size:14px;color:var(--text-2);line-height:1.6;margin:0}
+.donut-label strong{color:var(--text)}
+.insight-row{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin:28px 0}
+.insight-card{border:1px solid var(--border);border-radius:12px;padding:20px;background:rgba(21,24,29,0.5)}
+.insight-card .ic-label{font-family:var(--mono);font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-3);margin:0 0 8px}
+.insight-card h4{font-size:15px;font-weight:500;color:var(--text);margin:0 0 8px}
+.insight-card p{font-size:13.5px;color:var(--text-2);margin:0;line-height:1.55}
+@media(max-width:680px){.stat-block{grid-template-columns:1fr}.bc-row{grid-template-columns:140px 1fr 36px}.donut-stat{flex-direction:column;text-align:center}.insight-row{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -49,7 +69,7 @@
 
 <div class="shell">
   <div class="post-head">
-    <span class="eyebrow">Course 01 &nbsp;·&nbsp; Lesson 06 &nbsp;·&nbsp; 27 min</span>
+    <span class="eyebrow">Course 01 &nbsp;·&nbsp; Lesson 06 &nbsp;·&nbsp; 16 min</span>
     <div class="post-meta">
       <span class="chip accent">Technical Specs</span>
       <span class="chip">SRS</span>
@@ -59,7 +79,7 @@
     <p class="lede">Ambiguity is not a stakeholder problem — it is a BA problem. The moment a vague business ask reaches a developer unchanged, the clock starts counting down to a rework conversation. Here is how to be the translator the project needs.</p>
     <div class="byline">
       <span>Lesson<b>06 of 09</b></span>
-      <span>Duration<b>27 minutes</b></span>
+      <span>Duration<b>16 minutes</b></span>
       <span>Course<b>Requirements Gathering</b></span>
     </div>
   </div>
@@ -83,6 +103,7 @@
         <li><a href="#s6">Bangladesh Compliance Context</a></li>
         <li><a href="#s7">Ambiguity Detector</a></li>
         <li><a href="#s8">Template: SRS-lite</a></li>
+        <li><a href="#s_nfr">Non-Functional Requirements</a></li>
         <li><a href="#s9">Reflection</a></li>
       </ol>
       <div class="toc-progress"><span>Progress</span><div class="bar"><i id="prog-bar"></i></div></div>
@@ -126,6 +147,21 @@
       </div>
 
       <p>Every functional requirement should trace back to at least one stakeholder requirement, which traces back to at least one business requirement. If you cannot draw that line, question whether the requirement belongs in scope at all.</p>
+
+      <div class="stat-block">
+        <div class="stat-item">
+          <span class="stat-num">62%</span>
+          <span class="stat-label">of developers report receiving requirements too ambiguous to build against without guessing</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num">SRS-lite</span>
+          <span class="stat-label">a 5–10 page specification document is more effective than a 100-page one nobody reads</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num">F + NF</span>
+          <span class="stat-label">every project needs both functional and non-functional requirements — missing NFRs causes post-go-live crises</span>
+        </div>
+      </div>
 
       <h2 id="s2">Functional Requirements: Writing the SRS Section by Section</h2>
       <p>A Software Requirements Specification (SRS) is the formal document that captures functional and non-functional requirements in sufficient detail for development to begin. For most projects in Bangladesh's SME sector, a full IEEE-standard SRS is overkill. A "SRS-lite" — structured but streamlined — achieves the same result with a fraction of the bureaucratic overhead.</p>
@@ -271,6 +307,65 @@
         <strong>8. Out of Scope</strong> — Explicit list of what this project does NOT include. Sign-off required from sponsor.<br><br>
         <strong>9. Open Questions</strong> — Unresolved items with owner and due date<br><br>
         <strong>10. Change log</strong> — Version, date, author, summary of changes, approver</p>
+      </div>
+
+      <h2 id="s_nfr">Non-Functional Requirements: The Most Overlooked Spec Section</h2>
+      <p>Functional requirements describe what the system does. Non-functional requirements (NFRs) describe how well it does it. In Bangladesh's project market, NFRs are either missing from specs entirely, or written as vague aspirations that nobody can verify. Both are expensive mistakes.</p>
+
+      <div class="bar-chart">
+        <div class="bc-row">
+          <span class="bc-label">Performance</span>
+          <div class="bc-track"><div class="bc-fill" style="width:88%"></div></div>
+          <span class="bc-pct">Response time, load</span>
+        </div>
+        <div class="bc-row">
+          <span class="bc-label">Security</span>
+          <div class="bc-track"><div class="bc-fill" style="width:82%"></div></div>
+          <span class="bc-pct">Access, encryption</span>
+        </div>
+        <div class="bc-row">
+          <span class="bc-label">Reliability</span>
+          <div class="bc-track"><div class="bc-fill" style="width:74%"></div></div>
+          <span class="bc-pct">Uptime, failover</span>
+        </div>
+        <div class="bc-row">
+          <span class="bc-label">Usability</span>
+          <div class="bc-track"><div class="bc-fill" style="width:66%"></div></div>
+          <span class="bc-pct">Training time, errors</span>
+        </div>
+        <div class="bc-row">
+          <span class="bc-label">Scalability</span>
+          <div class="bc-track"><div class="bc-fill" style="width:55%"></div></div>
+          <span class="bc-pct">User growth, data volume</span>
+        </div>
+        <div class="bc-row">
+          <span class="bc-label">Compliance</span>
+          <div class="bc-track"><div class="bc-fill" style="width:70%"></div></div>
+          <span class="bc-pct">Audit, regulatory</span>
+        </div>
+      </div>
+
+      <div class="insight-row">
+        <div class="insight-card">
+          <p class="ic-label">Performance NFR — wrong way</p>
+          <h4>"The system should be fast"</h4>
+          <p>Untestable. Every system is "fast" under the right conditions. "Fast" to one developer means 200ms; "fast" to a stakeholder means "faster than the current Excel sheet." Write it as: "The dashboard should load within 3 seconds for a dataset of up to 50,000 transaction rows on a standard broadband connection." Now it is testable.</p>
+        </div>
+        <div class="insight-card">
+          <p class="ic-label">Security NFR — wrong way</p>
+          <h4>"The system should be secure"</h4>
+          <p>Write it as: "Only users with HR Manager role may access individual employee salary records. Role-based access controls must be enforced at the database level, not only the UI level. All login attempts must be logged with timestamp and IP address." Testable. Buildable. Verifiable at UAT.</p>
+        </div>
+        <div class="insight-card">
+          <p class="ic-label">Usability NFR — wrong way</p>
+          <h4>"The system should be easy to use"</h4>
+          <p>Write it as: "A new floor supervisor with basic smartphone literacy should be able to complete daily attendance entry without additional training beyond a 30-minute onboarding session. Error rate on the attendance entry form should be below 5% after the first week of use." Now you have a testable usability target.</p>
+        </div>
+        <div class="insight-card">
+          <p class="ic-label">Compliance NFR — Bangladesh specific</p>
+          <h4>Labour law and export documentation requirements</h4>
+          <p>For RMG factories, compliance NFRs often include: audit log retention for 3 years (BGMEA compliance), buyer portal integration must support specific EDI formats, overtime calculation must follow Bangladesh Labour Law 2006 section 108. These are not optional — and they must appear in the spec, not just in verbal agreements.</p>
+        </div>
       </div>
 
       <h2 id="s9">Reflection Questions</h2>

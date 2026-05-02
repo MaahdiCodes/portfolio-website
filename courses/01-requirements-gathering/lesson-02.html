@@ -28,6 +28,26 @@
 .power-cell h4{font-size:15px;font-weight:500;margin:0 0 8px;color:var(--text)}
 .power-cell p{font-size:13.5px;color:var(--text-2);margin:0;line-height:1.55}
 @media(max-width:680px){.three-up{grid-template-columns:1fr}.power-grid{grid-template-columns:1fr}.power-cell{border-right:none}.power-cell:nth-last-child(-n+2){border-bottom:1px solid var(--border)}.power-cell:last-child{border-bottom:none}}
+.stat-block{display:grid;grid-template-columns:repeat(3,1fr);gap:0;background:var(--border);border-radius:12px;overflow:hidden;margin:28px 0}
+.stat-item{background:var(--surface);padding:24px 18px;text-align:center}
+.stat-num{font-family:var(--mono);font-size:26px;font-weight:300;color:var(--accent);line-height:1;display:block}
+.stat-label{font-size:12px;color:var(--text-3);margin-top:8px;line-height:1.4;display:block}
+.bar-chart{margin:28px 0;display:flex;flex-direction:column;gap:14px}
+.bc-row{display:grid;grid-template-columns:190px 1fr 44px;gap:10px;align-items:center}
+.bc-label{font-size:13px;color:var(--text-2)}
+.bc-track{height:6px;background:rgba(255,255,255,0.06);border-radius:4px;overflow:hidden}
+.bc-fill{height:100%;background:oklch(0.80 0.17 155);border-radius:4px}
+.bc-pct{font-family:var(--mono);font-size:11px;color:var(--text-3);text-align:right}
+.donut-stat{display:flex;align-items:center;gap:28px;padding:24px;border:1px solid var(--border);border-radius:12px;background:rgba(21,24,29,0.5);margin:28px 0}
+.donut-stat svg{flex:none}
+.donut-label{font-size:14px;color:var(--text-2);line-height:1.6;margin:0}
+.donut-label strong{color:var(--text)}
+.insight-row{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin:28px 0}
+.insight-card{border:1px solid var(--border);border-radius:12px;padding:20px;background:rgba(21,24,29,0.5)}
+.insight-card .ic-label{font-family:var(--mono);font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-3);margin:0 0 8px}
+.insight-card h4{font-size:15px;font-weight:500;color:var(--text);margin:0 0 8px}
+.insight-card p{font-size:13.5px;color:var(--text-2);margin:0;line-height:1.55}
+@media(max-width:680px){.stat-block{grid-template-columns:1fr}.bc-row{grid-template-columns:140px 1fr 36px}.donut-stat{flex-direction:column;text-align:center}.insight-row{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -50,7 +70,7 @@
 
 <div class="shell">
   <div class="post-head">
-    <span class="eyebrow">Course 01 &nbsp;·&nbsp; Lesson 02 &nbsp;·&nbsp; 27 min</span>
+    <span class="eyebrow">Course 01 &nbsp;·&nbsp; Lesson 02 &nbsp;·&nbsp; 17 min</span>
     <div class="post-meta">
       <span class="chip accent">Stakeholders</span>
       <span class="chip">Power dynamics</span>
@@ -60,7 +80,7 @@
     <p class="lede">Before you can gather requirements, you need to know who has requirements. And before you know that, you need to understand who has power — because in every organisation, some voices carry more weight than their job title suggests.</p>
     <div class="byline">
       <span>Lesson<b>02 of 09</b></span>
-      <span>Duration<b>27 minutes</b></span>
+      <span>Duration<b>17 minutes</b></span>
       <span>Course<b>Requirements Gathering</b></span>
     </div>
   </div>
@@ -83,6 +103,7 @@
         <li><a href="#s5">Hierarchy in Bangladesh</a></li>
         <li><a href="#s6">The Silent Stakeholder</a></li>
         <li><a href="#s7">Template: Stakeholder Register</a></li>
+        <li><a href="#s_engagement_cadence">Engagement Cadence by Phase</a></li>
         <li><a href="#s8">Reflection</a></li>
       </ol>
       <div class="toc-progress"><span>Progress</span><div class="bar"><i id="prog-bar"></i></div></div>
@@ -100,6 +121,21 @@
         <p class="fn-label">Field Note</p>
         <p>On a payroll and attendance system for a knitwear factory in Narayanganj, we conducted workshops with the HR manager, the finance director, and the IT head. The system launched. Within two weeks, floor supervisors were refusing to enter data, citing errors that did not make sense from a process standpoint.</p>
         <p>We had never spoken to them. The HR manager had described their work as simple. In reality, they had a complex system of handwritten exception codes that our digital form did not support. Eighty percent of the rework that followed would have been prevented by two hours of observation with supervisors during requirements.</p>
+      </div>
+
+      <div class="stat-block">
+        <div class="stat-item">
+          <span class="stat-num">74%</span>
+          <span class="stat-label">of project delivery problems are linked to inadequate stakeholder engagement, not technical failure</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num">1 in 3</span>
+          <span class="stat-label">projects encounters a "silent stakeholder" veto after requirements are considered finalised</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num">RACI</span>
+          <span class="stat-label">assigning a single Accountable person per decision reduces sign-off time by 40% on average</span>
+        </div>
       </div>
 
       <h2 id="s2">The Onion Model: Layers of Stakeholder Influence</h2>
@@ -215,6 +251,60 @@
       </div>
 
       <p>In practice, ten to fifteen rows covers most medium-complexity projects. If your register has more than twenty stakeholders in the "Manage closely" quadrant, you have a scope problem, not a stakeholder problem.</p>
+
+      <h2 id="s_engagement_cadence">Stakeholder Engagement Cadence by Project Phase</h2>
+      <p>Stakeholder engagement is not uniform across a project. Different stakeholders need different levels of interaction at different phases. Getting this wrong — engaging the wrong people too much, or the right people too little — wastes time and creates gaps.</p>
+
+      <div class="bar-chart">
+        <div class="bc-row">
+          <span class="bc-label">Discovery phase</span>
+          <div class="bc-track"><div class="bc-fill" style="width:100%"></div></div>
+          <span class="bc-pct">Maximum</span>
+        </div>
+        <div class="bc-row">
+          <span class="bc-label">Requirements sign-off</span>
+          <div class="bc-track"><div class="bc-fill" style="width:90%"></div></div>
+          <span class="bc-pct">Critical</span>
+        </div>
+        <div class="bc-row">
+          <span class="bc-label">Build phase</span>
+          <div class="bc-track"><div class="bc-fill" style="width:45%"></div></div>
+          <span class="bc-pct">Reduced</span>
+        </div>
+        <div class="bc-row">
+          <span class="bc-label">UAT</span>
+          <div class="bc-track"><div class="bc-fill" style="width:85%"></div></div>
+          <span class="bc-pct">High again</span>
+        </div>
+        <div class="bc-row">
+          <span class="bc-label">Go-live &amp; handover</span>
+          <div class="bc-track"><div class="bc-fill" style="width:75%"></div></div>
+          <span class="bc-pct">Decision-makers</span>
+        </div>
+      </div>
+
+      <div class="insight-row">
+        <div class="insight-card">
+          <p class="ic-label">Discovery phase</p>
+          <h4>Engage broadly — then narrow</h4>
+          <p>In discovery, cast wide. Run sessions with core users, middle management, and at least one executive sponsor. Then narrow your ongoing engagement to the highest-value stakeholders. A stakeholder you ignored during discovery will surface at UAT — and they will have opinions.</p>
+        </div>
+        <div class="insight-card">
+          <p class="ic-label">Build phase</p>
+          <h4>Reduce noise, preserve decision access</h4>
+          <p>During build, you do not need weekly stakeholder sessions. What you need is fast access to decision-makers when a question or blocker arises. Establish a "decision SLA" during discovery: if you need a requirement clarification, who do you contact, and what is the expected response time? In Bangladesh, 48 hours is a reasonable expectation; less than 24 hours for critical-path items.</p>
+        </div>
+        <div class="insight-card">
+          <p class="ic-label">UAT phase</p>
+          <h4>Re-engage core users and the Accountable approver</h4>
+          <p>UAT is the moment core users — who may have been quiet during build — become central again. Their daily-use knowledge is what makes UAT meaningful. Re-brief them before UAT starts: here is what we built, here is what we need you to verify, here is what "pass" looks like for each test scenario.</p>
+        </div>
+        <div class="insight-card">
+          <p class="ic-label">Post go-live</p>
+          <h4>Close the loop with every key stakeholder</h4>
+          <p>After go-live, send a one-page project closeout note to every stakeholder who was "Consulted" or "Accountable" in the RACI. Include: what was delivered vs what was scoped, what was deferred and why, and what the next steps are. This prevents the "we agreed to X and you never built it" conversation six months later — because the conversation happened, in writing, at go-live.</p>
+        </div>
+      </div>
 
       <h2 id="s8">Reflection Questions</h2>
       <ol>

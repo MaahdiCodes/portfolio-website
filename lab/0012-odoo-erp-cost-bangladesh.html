@@ -3,15 +3,15 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta name="description" content="How much does Odoo ERP implementation cost in Bangladesh? Real cost breakdown for SMEs and manufacturers — modules, consulting, training, and total cost of ownership." />
+<meta name="description" content="Odoo ERP implementation cost in Bangladesh — a real breakdown covering licensing, consulting fees, data migration, training, and total cost of ownership for SMEs and manufacturers." />
 <meta name="robots" content="index, follow" />
 <title>Odoo ERP Implementation Cost in Bangladesh (2026 Guide) | Mehedi Hasan</title>
 <link rel="canonical" href="https://mhasan.me/lab/0012-odoo-erp-cost-bangladesh" />
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png" />
 <!-- Open Graph -->
-<meta property="og:title" content="Odoo ERP Implementation Cost in Bangladesh (2026) | Mehedi Hasan" />
-<meta property="og:description" content="Real cost breakdown for Odoo ERP implementation in Bangladesh — SME vs Enterprise, modules, consulting fees, training, and how to get accurate quotes." />
+<meta property="og:title" content="Odoo ERP Implementation Cost in Bangladesh (2026 Guide) | Mehedi Hasan" />
+<meta property="og:description" content="Odoo ERP implementation cost in Bangladesh — real breakdown for SMEs and manufacturers: licensing, consulting fees, data migration, training, and total cost of ownership." />
 <meta property="og:url" content="https://mhasan.me/lab/0012-odoo-erp-cost-bangladesh" />
 <meta property="og:type" content="article" />
 <meta property="og:image" content="https://mhasan.me/assets/og-default.jpg" />
@@ -21,8 +21,8 @@
 <meta property="og:site_name" content="Mehedi Hasan | Odoo ERP Consultant" />
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Odoo ERP Implementation Cost in Bangladesh (2026)" />
-<meta name="twitter:description" content="Real cost breakdown for Odoo ERP implementation in Bangladesh. SME vs Enterprise pricing, modules, and consulting fees explained." />
+<meta name="twitter:title" content="Odoo ERP Implementation Cost in Bangladesh (2026 Guide)" />
+<meta name="twitter:description" content="Real cost breakdown for Odoo ERP in Bangladesh — licensing, consulting, training, and total cost of ownership for SMEs and manufacturers." />
 <meta name="twitter:image" content="https://mhasan.me/assets/og-default.jpg" />
 <!-- JSON-LD: Article + BreadcrumbList + FAQPage -->
 <script type="application/ld+json">
@@ -41,15 +41,8 @@
       "jobTitle": "Odoo ERP Consultant & Business Analyst",
       "sameAs": "https://www.linkedin.com/in/mehedi-hasan-consultant/"
     },
-    "publisher": {
-      "@type": "Person",
-      "name": "Mehedi Hasan",
-      "url": "https://mhasan.me"
-    },
-    "mainEntityOfPage": {
-      "@type": "WebPage",
-      "@id": "https://mhasan.me/lab/0012-odoo-erp-cost-bangladesh"
-    }
+    "publisher": { "@type": "Person", "name": "Mehedi Hasan", "url": "https://mhasan.me" },
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://mhasan.me/lab/0012-odoo-erp-cost-bangladesh" }
   },
   {
     "@context": "https://schema.org",
@@ -85,7 +78,7 @@
         "name": "What is the cheapest way to implement Odoo ERP in Bangladesh?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "The most cost-effective Odoo implementation in Bangladesh is a scoped SME package using Odoo Community, limited to 3–5 core modules (Inventory, Sales, Purchase), and a local Odoo consultant rather than an international firm. Avoid heavy customization in the first phase."
+          "text": "The most cost-effective Odoo implementation in Bangladesh uses Odoo Community, limits Phase 1 to 3–5 core modules, avoids heavy customization, and engages a local Odoo consultant rather than an international firm."
         }
       }
     ]
@@ -97,178 +90,289 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap">
 <link rel="stylesheet" href="_styles.css">
 <style>
-  .cost-table{width:100%;border-collapse:collapse;margin:28px 0;font-size:14px}
-  .cost-table th{text-align:left;padding:12px 16px;border-bottom:1px solid var(--border);font-family:var(--mono);font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-3);background:var(--surface)}
-  .cost-table td{padding:14px 16px;border-bottom:1px solid var(--border);color:var(--text-2);vertical-align:top;line-height:1.55}
-  .cost-table tr:last-child td{border-bottom:none}
-  .cost-table td:first-child{color:var(--text);font-weight:500}
-  .cost-table td.accent{color:var(--accent);font-family:var(--mono);font-weight:500}
-  .cost-table tbody tr:hover td{background:rgba(255,255,255,0.015)}
-  .callout{border:1px solid oklch(0.80 0.17 155 / 0.3);background:oklch(0.80 0.17 155 / 0.06);border-radius:10px;padding:20px 24px;margin:28px 0}
-  .callout strong{color:var(--accent)}
-  .callout p{margin:0;font-size:14.5px;color:var(--text-2);line-height:1.65}
+  /* Cost tier cards */
+  .tier-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:28px 0}
+  .tier-card{
+    border:1px solid var(--border);border-radius:12px;padding:22px;background:var(--surface);
+    display:flex;flex-direction:column;gap:12px;position:relative;overflow:hidden;
+  }
+  .tier-card.featured{
+    border-color:oklch(0.80 0.17 155 / 0.4);
+    background:linear-gradient(180deg,oklch(0.80 0.17 155 / 0.07),rgba(17,19,23,0.8));
+  }
+  .tier-card .tc-label{font-family:var(--mono);font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:var(--text-3)}
+  .tier-card.featured .tc-label{color:var(--accent)}
+  .tier-card h4{margin:0;font-size:17px;font-weight:500;letter-spacing:-0.01em;color:var(--text)}
+  .tier-card .tc-price{font-family:var(--mono);font-size:22px;font-weight:500;letter-spacing:-0.03em;color:var(--accent)}
+  .tier-card .tc-price small{font-size:11px;color:var(--text-3);font-weight:400;letter-spacing:0}
+  .tier-card p{margin:0;font-size:13.5px;color:var(--text-2);line-height:1.55}
+  @media(max-width:780px){.tier-grid{grid-template-columns:1fr}}
+
+  /* cost driver list */
+  .driver-list{list-style:none;padding:0;margin:18px 0;border:1px solid var(--border);border-radius:10px;overflow:hidden}
+  .driver-list li{display:flex;align-items:flex-start;gap:14px;padding:14px 18px;border-bottom:1px solid var(--border);font-size:14.5px;color:var(--text-2)}
+  .driver-list li:last-child{border-bottom:none}
+  .driver-list li .dl-label{color:var(--text);font-weight:500;min-width:130px;flex:none}
+  .driver-list li .dl-badge{margin-left:auto;font-family:var(--mono);font-size:10.5px;padding:3px 8px;border-radius:4px;border:1px solid var(--border);color:var(--text-3);flex:none}
+  .driver-list li .dl-badge.high{color:oklch(0.72 0.18 25);border-color:oklch(0.72 0.18 25 / 0.35)}
+  .driver-list li .dl-badge.med{color:oklch(0.82 0.16 85);border-color:oklch(0.82 0.16 85 / 0.35)}
+  .driver-list li .dl-badge.low{color:var(--accent);border-color:oklch(0.80 0.17 155 / 0.35)}
+  @media(max-width:600px){.driver-list li{flex-wrap:wrap}.driver-list li .dl-badge{margin-left:0}}
+
+  /* pull quote */
+  .pull{
+    font-family:var(--serif);font-style:italic;
+    font-size:clamp(24px,3vw,36px);line-height:1.25;color:var(--text);
+    margin:48px 0;padding:0;border:none;
+    max-width:20ch;letter-spacing:-0.01em;
+  }
+  .pull::before{content:"";display:block;width:36px;height:1px;background:var(--accent);margin-bottom:18px}
 </style>
 </head>
 <body>
 <div class="grid-bg"></div>
-<div class="noise"></div>
 
-<header class="lab-nav">
-  <div class="lab-nav-inner">
-    <a href="/" class="lab-home">← mhasan.me</a>
-    <span class="lab-tag">Technical Lab</span>
+<header class="nav">
+  <div class="shell">
+    <div class="nav-inner">
+      <a class="brand" href="../index.html">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span class="brand-name"><b>Mehedi Hasan</b><em>ERP · Business Analyst</em></span>
+      </a>
+      <a class="back-link" href="../index.html#lab">← Back to Lab</a>
+    </div>
   </div>
 </header>
 
-<main class="lab-main">
-  <article class="lab-article">
+<section class="post-head">
+  <div class="shell">
+    <span class="eyebrow">Technical Lab · 0012</span>
+    <h1>Odoo ERP cost in Bangladesh — <span class="serif">what nobody</span> tells you upfront.</h1>
+    <p class="lede">A real breakdown of what Odoo ERP implementation actually costs in Bangladesh — licensing, consulting, data migration, training, and the hidden costs that blow budgets. No vague ranges. Drawn from live project data.</p>
+    <div class="post-meta">
+      <span class="chip accent">Cost Guide</span>
+      <span class="chip">Odoo ERP</span>
+      <span class="chip">Bangladesh</span>
+      <span class="chip">Manufacturing</span>
+    </div>
+    <div class="byline">
+      <span>Published<b>May 2026</b></span>
+      <span>Read time<b>9 minutes</b></span>
+      <span>Form<b>Guide</b></span>
+      <span>Scope<b>SME to Enterprise</b></span>
+    </div>
+  </div>
+</section>
 
-    <div class="lab-meta-top">
-      <div class="lab-no">0012</div>
-      <div class="lab-kind-pill">Guide · Cost Analysis</div>
+<article class="post">
+  <aside class="toc">
+    <div class="toc-k">In this guide</div>
+    <ol>
+      <li><a href="#five-buckets">The five cost buckets</a></li>
+      <li><a href="#license">Odoo license cost</a></li>
+      <li><a href="#consulting">Consulting &amp; implementation</a></li>
+      <li><a href="#tiers">Project tier breakdown</a></li>
+      <li><a href="#drivers">What drives cost up</a></li>
+      <li><a href="#tco">Total cost of ownership</a></li>
+      <li><a href="#faq">Frequently asked questions</a></li>
+    </ol>
+  </aside>
+
+  <div class="body">
+
+    <p>The question I hear before every engagement: <em>"How much does Odoo ERP actually cost in Bangladesh?"</em></p>
+
+    <p>Partners quote ranges so wide they're useless. "It depends" is the default answer — technically true, practically worthless. This guide fixes that. Below is a structured cost breakdown drawn from real Odoo ERP implementations I've led in Bangladesh — from a 12-user textile SME to a 200+ user, 5-facility manufacturing rollout.</p>
+
+    <p class="pull">A proper quote requires a discovery session. Everything before that is an estimate.</p>
+
+    <h2 id="five-buckets">The five cost buckets</h2>
+
+    <p>Every Odoo ERP project in Bangladesh — regardless of size — has the same five cost components. Misunderstanding any one of them leads to budget overruns and post-go-live resentment.</p>
+
+    <ul>
+      <li><strong>Odoo License</strong> — Community (free) vs. Enterprise (paid per user/month)</li>
+      <li><strong>Consulting &amp; Implementation</strong> — Discovery, configuration, customization, go-live management</li>
+      <li><strong>Data Migration</strong> — Extracting, cleaning, and importing your existing business data</li>
+      <li><strong>Training</strong> — End-user training, administrator training, and post-go-live hypercare</li>
+      <li><strong>Hosting &amp; Ongoing Support</strong> — Server infrastructure, maintenance, and future upgrades</li>
+    </ul>
+
+    <div class="callout">
+      <span class="tag">Key insight</span>
+      <p>Most businesses budget well for Items 1 and 2 but severely underestimate Items 3, 4, and 5. In my experience, <strong>data migration and training together account for 30–40% of total project cost</strong> — and 80% of go-live delays.</p>
     </div>
 
-    <h1 class="lab-title">Odoo ERP Implementation Cost in Bangladesh (2026 Guide)</h1>
-    <p class="lab-sub">A real-world cost breakdown for manufacturers, SMEs, and decision-makers considering Odoo ERP in Bangladesh — from first quote to go-live.</p>
+    <h2 id="license">Odoo license cost</h2>
 
-    <div class="lab-byline">
-      <span>By <strong>Mehedi Hasan</strong> — Odoo ERP Consultant &amp; Business Analyst, Metamorphosis Ltd.</span>
-      <span class="lab-date">04 May 2026</span>
+    <p><strong>Odoo Community</strong> is completely free and open-source. No license fee, ever. You pay only for implementation, hosting, and support.</p>
+
+    <p><strong>Odoo Enterprise</strong> is charged per user per month. In 2026, the pricing is:</p>
+
+    <table>
+      <thead>
+        <tr><th>Plan</th><th>USD/user/month</th><th>Approx. BDT/user/month</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Enterprise (Annual billing)</td><td>$31.10</td><td>~BDT 3,400</td></tr>
+        <tr><td>Enterprise (Monthly billing)</td><td>$37.30</td><td>~BDT 4,100</td></tr>
+        <tr><td>Community edition</td><td>Free</td><td>BDT 0</td></tr>
+      </tbody>
+    </table>
+
+    <p>For a 25-user Enterprise deployment, the <strong>annual license cost alone is ~BDT 10.2 lakh</strong>. This recurring cost is what makes the Community vs. Enterprise decision so consequential for Bangladesh SMEs.</p>
+
+    <div class="callout">
+      <span class="tag">Decision</span>
+      <p>Start with Community if you can live without: advanced manufacturing (MRP v2), Odoo Studio, mobile offline mode, and direct Odoo S.A. support. Most Bangladesh SMEs in trading and services can. Most manufacturers cannot — the MRP v2 module alone justifies Enterprise for multi-level BoM operations.</p>
     </div>
 
-    <div class="rule" style="margin:32px 0"></div>
+    <h2 id="consulting">Consulting &amp; implementation cost</h2>
 
-    <div class="lab-body">
+    <p>This is the most variable and most misunderstood component. A scoped implementation project by an experienced <a href="/services/odoo-partner-consultant">Odoo ERP consultant in Bangladesh</a> is priced by scope — number of modules, level of customization, and complexity of data migration — not by the hour.</p>
 
-      <p>The question I hear most before every engagement: <em>"How much does Odoo ERP actually cost in Bangladesh?"</em></p>
+    <p>Hourly rates for qualified Odoo consultants in Bangladesh currently range from <strong>BDT 1,500–4,000/hour</strong> for local practitioners to USD 50–120/hour for internationally-positioned firms. The total project fee depends on estimated hours, not the rate card alone.</p>
 
-      <p>Nobody gives a straight answer. Partners quote ranges so wide they're useless. This article fixes that. Below is a real, structured cost breakdown — drawn from my experience as an <a href="/services/odoo-partner-consultant">Odoo ERP consultant in Bangladesh</a> — covering every cost component you'll encounter.</p>
+    <blockquote>
+      Any consultant who gives you a fixed price without a discovery session is guessing. And you'll pay for that guess at go-live.
+    </blockquote>
 
-      <h2>The 5 Cost Components of Any Odoo ERP Project</h2>
+    <h2 id="tiers">Project tier breakdown</h2>
 
-      <p>Odoo ERP implementation cost in Bangladesh is made up of five distinct buckets. Misunderstanding any one of them leads to budget overruns.</p>
+    <p>Based on live project data, here is how I categorize Odoo ERP implementations in Bangladesh by size and investment:</p>
 
-      <ol>
-        <li><strong>Odoo License Cost</strong> — Community (free) vs Enterprise (paid per user)</li>
-        <li><strong>Consulting &amp; Implementation Fee</strong> — Discovery, configuration, customization</li>
-        <li><strong>Data Migration</strong> — Cleaning and importing your existing data</li>
-        <li><strong>Training</strong> — End-user and administrator training</li>
-        <li><strong>Hosting &amp; Ongoing Support</strong> — Server, maintenance, future upgrades</li>
-      </ol>
-
-      <h2>Odoo License Cost in Bangladesh</h2>
-
-      <p><strong>Odoo Community Edition</strong> is completely free and open-source. There is no license fee. You pay only for implementation, hosting, and support.</p>
-
-      <p><strong>Odoo Enterprise Edition</strong> (2026 pricing) is charged per user per month:</p>
-
-      <table class="cost-table">
-        <thead>
-          <tr><th>Plan</th><th>Price (USD)</th><th>Approx. BDT/month (1 user)</th></tr>
-        </thead>
-        <tbody>
-          <tr><td>Odoo Enterprise (Annual)</td><td>$31.10/user/mo</td><td class="accent">~BDT 3,400/user/mo</td></tr>
-          <tr><td>Odoo Enterprise (Monthly)</td><td>$37.30/user/mo</td><td class="accent">~BDT 4,100/user/mo</td></tr>
-          <tr><td>Odoo Community</td><td>Free</td><td class="accent">BDT 0</td></tr>
-        </tbody>
-      </table>
-
-      <div class="callout">
-        <p><strong>Practical note:</strong> For a 25-user Odoo Enterprise deployment in Bangladesh, the annual license cost alone is approximately <strong>BDT 10.2 lakh/year</strong>. Many Bangladesh SMEs start with Odoo Community to eliminate this cost — but lose access to advanced manufacturing and accounting modules.</p>
+    <div class="tier-grid">
+      <div class="tier-card">
+        <span class="tc-label">SME Starter</span>
+        <h4>Off Spreadsheets, Cleanly</h4>
+        <div class="tc-price">BDT 2–5 lakh <small>(one-time)</small></div>
+        <p>3–5 core modules. Up to 25 users. Single location. Typically: Inventory, Sales, Purchase, and basic Accounting. 6–10 week timeline.</p>
       </div>
-
-      <h2>Consulting &amp; Implementation Cost in Bangladesh</h2>
-
-      <p>This is the largest variable cost. A qualified <strong>Odoo ERP consultant in Bangladesh</strong> charges based on scope, not just hourly rate. Here's a realistic breakdown:</p>
-
-      <table class="cost-table">
-        <thead>
-          <tr><th>Project Type</th><th>Modules</th><th>Users</th><th>Estimated Cost (BDT)</th></tr>
-        </thead>
-        <tbody>
-          <tr><td>SME Starter</td><td>3–4 core modules (Inventory, Sales, Purchase, Accounting)</td><td>10–25</td><td class="accent">2–5 lakh</td></tr>
-          <tr><td>Mid-Market</td><td>5–7 modules (+ Manufacturing, HR)</td><td>25–75</td><td class="accent">5–12 lakh</td></tr>
-          <tr><td>Enterprise / Multi-site</td><td>Full suite (Manufacturing, Inventory, Procurement, Finance, HR)</td><td>75–200+</td><td class="accent">15–40 lakh+</td></tr>
-          <tr><td>Export / Multi-currency</td><td>+ LC management, multi-currency, intercompany</td><td>Varies</td><td class="accent">+5–15 lakh premium</td></tr>
-        </tbody>
-      </table>
-
-      <h2>What Drives Cost Up (And How to Control It)</h2>
-
-      <p><strong>Customization</strong> is the biggest cost inflator. Every time a business says "Odoo doesn't work exactly the way we do it," that's a customization request. My strong advice: in Phase 1, adapt your process to Odoo's standard workflow. Customize only what genuinely has no standard equivalent.</p>
-
-      <p><strong>Data quality</strong> is the second-largest driver. If your existing data (inventory, customers, bills of material) is scattered across spreadsheets with no clean master data, expect 30–50% of your migration budget to go into data cleaning — before a single record is imported into Odoo.</p>
-
-      <p>Learn more about managing this in my <a href="/lab/0008-excel-odoo-migration-checklist">Excel to Odoo migration checklist</a>.</p>
-
-      <h2>Total Cost of Ownership: A Realistic SME Scenario</h2>
-
-      <table class="cost-table">
-        <thead>
-          <tr><th>Cost Item</th><th>One-Time</th><th>Annual Recurring</th></tr>
-        </thead>
-        <tbody>
-          <tr><td>Odoo Enterprise License (20 users)</td><td>—</td><td class="accent">~BDT 8.1 lakh/yr</td></tr>
-          <tr><td>Implementation &amp; Consulting</td><td class="accent">BDT 4–6 lakh</td><td>—</td></tr>
-          <tr><td>Data Migration</td><td class="accent">BDT 0.5–1.5 lakh</td><td>—</td></tr>
-          <tr><td>End-User Training (20 users)</td><td class="accent">BDT 0.5–1 lakh</td><td>—</td></tr>
-          <tr><td>Hosting (VPS / Odoo.sh)</td><td>—</td><td class="accent">BDT 0.6–1.5 lakh/yr</td></tr>
-          <tr><td>Annual Support &amp; Maintenance</td><td>—</td><td class="accent">BDT 1–2 lakh/yr</td></tr>
-          <tr><td><strong>Total (Year 1)</strong></td><td><strong>BDT 5–9 lakh</strong></td><td><strong>BDT 9.7–11.6 lakh</strong></td></tr>
-        </tbody>
-      </table>
-
-      <div class="callout">
-        <p><strong>ROI reality check:</strong> In my deployments, manufacturers typically recover their full Year 1 investment within 8–14 months through reduced manual work, fewer stockouts, faster procurement cycles, and real-time financial visibility. The <strong>60% efficiency gain</strong> in our national textile group deployment was achieved within the first year post-go-live.</p>
+      <div class="tier-card featured">
+        <span class="tc-label">Mid-Market</span>
+        <h4>Full Operations Suite</h4>
+        <div class="tc-price">BDT 5–15 lakh <small>(one-time)</small></div>
+        <p>5–8 modules including Manufacturing (MRP), HR, and multi-warehouse. 25–75 users. 10–20 week timeline. Most common for BD manufacturers.</p>
       </div>
-
-      <h2>Frequently Asked Questions</h2>
-
-      <h3>Is Odoo Community free in Bangladesh?</h3>
-      <p>Yes. Odoo Community is free and open-source. You pay for implementation, hosting, and support — but not the software itself. The trade-off is losing access to Enterprise-only modules like advanced manufacturing, studio, and mobile apps.</p>
-
-      <h3>What is the cheapest way to implement Odoo in Bangladesh?</h3>
-      <p>Start with Odoo Community, limit your first phase to 3 core modules (Inventory, Sales, Purchase), use a local Odoo consultant instead of an international firm, and <strong>resist customizations in Phase 1</strong>. A disciplined SME starter can go live for under BDT 3 lakh.</p>
-
-      <h3>How long does Odoo ERP implementation take in Bangladesh?</h3>
-      <p>SME projects typically take <strong>6–10 weeks</strong> from kick-off to go-live. Multi-site enterprise implementations like a national manufacturing rollout take <strong>6–18 months</strong> depending on complexity, number of sites, and organizational change management requirements.</p>
-
-      <h2>How to Get an Accurate Quote</h2>
-
-      <p>Any consultant who quotes you a price before completing a <strong>requirements discovery session</strong> is guessing. A proper Odoo implementation quote requires:</p>
-
-      <ol>
-        <li>A 1–2 hour discovery call covering your business processes</li>
-        <li>A list of the Odoo modules you need</li>
-        <li>An honest assessment of your data quality</li>
-        <li>A clear go-live target date</li>
-      </ol>
-
-      <p>If you're evaluating an <a href="/services/odoo-partner-consultant">Odoo ERP implementation in Bangladesh</a>, I'm happy to provide a free scoped estimate. Reach out via the <a href="/#contact">contact section</a>.</p>
-
-      <p>For further reading, see my <a href="/lab/0011-odoo-inventory-valuation-cheatsheet">Odoo Inventory Valuation Cheatsheet</a> — a practical guide to one of the most commonly misconfigured Odoo modules in manufacturing.</p>
-
+      <div class="tier-card">
+        <span class="tc-label">Enterprise</span>
+        <h4>Multi-site, Multi-module</h4>
+        <div class="tc-price">BDT 15–40 lakh+ <small>(one-time)</small></div>
+        <p>Full suite across 2+ facilities. 75–200+ users. Multi-currency for export ops. Complex BoM, AVCO, intercompany. 6–18 month timeline.</p>
+      </div>
     </div>
 
-    <div class="rule" style="margin:48px 0 32px"></div>
+    <p>Export-oriented businesses (cycle manufacturers, RMG, textiles) requiring LC management, multi-currency financial ops, and intercompany should add <strong>BDT 5–15 lakh</strong> to any tier estimate for the additional configuration and reporting complexity.</p>
 
-    <div class="lab-footer-cta">
-      <div>
-        <p class="lab-cta-label">Need a scoped Odoo ERP estimate?</p>
-        <a class="btn btn-primary" href="/#contact">Book a free discovery call ↗</a>
-      </div>
-      <a class="btn" href="/">← Back to mhasan.me</a>
+    <h2 id="drivers">What drives cost up</h2>
+
+    <p>Understanding cost drivers is more useful than any price table. These are the factors — ranked by impact — that consistently inflate Odoo implementation budgets in Bangladesh:</p>
+
+    <ul class="driver-list">
+      <li>
+        <span class="dl-label">Customization scope</span>
+        <span>Every "Odoo doesn't work the way we do it" becomes a development ticket. In Phase 1, adapt your process to Odoo. Customize only what has no standard equivalent.</span>
+        <span class="dl-badge high">High impact</span>
+      </li>
+      <li>
+        <span class="dl-label">Data quality</span>
+        <span>Messy master data (items, vendors, customers, BoMs) scattered across spreadsheets adds 30–50% to migration costs. Clean before you migrate. See my <a href="/lab/0008-excel-odoo-migration-checklist" style="color:var(--accent)">Excel → Odoo migration checklist</a>.</span>
+        <span class="dl-badge high">High impact</span>
+      </li>
+      <li>
+        <span class="dl-label">Scope creep</span>
+        <span>Adding modules mid-project is the most common budget killer. Lock scope in writing at kickoff. Phase 2 is a real thing.</span>
+        <span class="dl-badge med">Medium impact</span>
+      </li>
+      <li>
+        <span class="dl-label">User count</span>
+        <span>More users = more training = more Enterprise licenses. Audit who actually needs system access vs. who just needs reports.</span>
+        <span class="dl-badge med">Medium impact</span>
+      </li>
+      <li>
+        <span class="dl-label">Change management</span>
+        <span>Underinvesting in adoption training is the #1 cause of ERP failure. Budget for floor walks, refresher sessions, and named champions. Read my notes on <a href="/lab/0007-change-management-isnt-a-memo" style="color:var(--accent)">ERP change management</a>.</span>
+        <span class="dl-badge med">Medium impact</span>
+      </li>
+      <li>
+        <span class="dl-label">Integration requirements</span>
+        <span>Connecting Odoo to legacy systems (e-commerce, barcode hardware, government tax portals) adds development cost. Validate integration scope before signing any contract.</span>
+        <span class="dl-badge low">Lower impact</span>
+      </li>
+    </ul>
+
+    <h2 id="tco">Total cost of ownership: a real SME scenario</h2>
+
+    <p>Here is a complete Year 1 cost model for a mid-size Bangladesh manufacturer — 20 Odoo Enterprise users, 5 modules (Manufacturing, Inventory, Purchase, Sales, Accounting), single site:</p>
+
+    <table>
+      <thead>
+        <tr><th>Cost Item</th><th>One-Time (BDT)</th><th>Annual Recurring (BDT)</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Odoo Enterprise license (20 users)</td><td>—</td><td>~8.1 lakh/yr</td></tr>
+        <tr><td>Implementation &amp; consulting</td><td>5–8 lakh</td><td>—</td></tr>
+        <tr><td>Data migration</td><td>0.5–1.5 lakh</td><td>—</td></tr>
+        <tr><td>End-user training (20 staff)</td><td>0.5–1 lakh</td><td>—</td></tr>
+        <tr><td>Hosting (VPS / Odoo.sh)</td><td>—</td><td>0.6–1.5 lakh/yr</td></tr>
+        <tr><td>Annual support &amp; maintenance</td><td>—</td><td>1–2 lakh/yr</td></tr>
+        <tr><td><strong>Total Year 1</strong></td><td><strong>6–10.5 lakh</strong></td><td><strong>9.7–11.6 lakh</strong></td></tr>
+      </tbody>
+    </table>
+
+    <div class="callout">
+      <span class="tag">ROI note</span>
+      <p>In our national textile group deployment, the business recovered its full Year 1 investment within <strong>11 months</strong> — through reduced manual double-entry, fewer stockouts, faster procurement cycles, and real-time financial visibility across 5 sites. The <strong>60% process efficiency gain</strong> wasn't from the software. It was from the process redesign the software forced.</p>
     </div>
 
-  </article>
-</main>
+    <h2 id="faq">Frequently asked questions</h2>
 
-<script>
-  // Minimal reveal script
-  const io = new IntersectionObserver(entries => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
-  }, { threshold: 0.1 });
-  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
-</script>
+    <h3>Is Odoo Community free in Bangladesh?</h3>
+    <p>Yes — Odoo Community is fully free and open-source. You pay for implementation, hosting, and support, but not the software itself. The trade-off is losing access to Enterprise-only modules: advanced MRP, Odoo Studio, mobile offline, and Odoo S.A. direct support.</p>
+
+    <h3>What is the cheapest way to implement Odoo ERP in Bangladesh?</h3>
+    <p>Start with Odoo Community, limit Phase 1 to 3 core modules, resist customization pressure, and engage a local Odoo consultant rather than an international firm. A disciplined SME rollout can go live for under BDT 3 lakh — if data is clean and scope is locked.</p>
+
+    <h3>How long does Odoo ERP implementation take in Bangladesh?</h3>
+    <p>SME projects (1 site, up to 25 users, 3–5 modules) typically take <strong>6–10 weeks</strong> from kick-off to go-live. Multi-site enterprise implementations — like a national manufacturing rollout — take <strong>6–18 months</strong>, depending on the number of sites, customization depth, and change management investment.</p>
+
+    <h3>How do I get an accurate Odoo quote in Bangladesh?</h3>
+    <p>Any consultant who quotes before a discovery session is guessing. A proper estimate requires: a 1–2 hour discovery call, a module list, an honest data quality assessment, and a confirmed go-live target. <a href="/#contact" style="color:var(--accent)">Reach out here</a> and I'll scope your project at no charge.</p>
+
+    <div class="callout">
+      <span class="tag">Next step</span>
+      <p>If you're evaluating an <a href="/services/odoo-partner-consultant" style="color:var(--accent)">Odoo ERP implementation in Bangladesh</a>, I provide free scoped estimates after a 30-minute discovery call. No slides. No sales pitch. Just an honest scope and a realistic number.</p>
+    </div>
+
+  </div>
+</article>
+
+<footer>
+  <div class="shell">
+    <div class="post-foot">
+      <span class="eyebrow">Continue exploring</span>
+      <div class="next">
+        <a class="next-card" href="0011-odoo-inventory-valuation-cheatsheet.html">
+          <span class="dir">Older · 0011</span>
+          <h4>Odoo inventory valuation cheatsheet</h4>
+          <p>FIFO vs. weighted average — when each actually makes sense on the factory floor.</p>
+          <span class="arrow">→</span>
+        </a>
+        <a class="next-card" href="0013-odoo-community-vs-enterprise-bangladesh.html">
+          <span class="dir">Newer · 0013</span>
+          <h4>Odoo Community vs Enterprise in Bangladesh</h4>
+          <p>Which edition is right for your business? A practical decision framework for manufacturers and SMEs.</p>
+          <span class="arrow">→</span>
+        </a>
+      </div>
+    </div>
+    <div class="foot">
+      <span>© 2026 Mehedi Hasan · Lab / 0012</span>
+      <span><a href="../index.html#lab">↑ Back to lab index</a></span>
+    </div>
+  </div>
+</footer>
+
+<script src="_toc.js" defer></script>
 </body>
 </html>

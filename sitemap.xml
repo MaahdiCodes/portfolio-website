@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
+  <!-- Target: Odoo ERP Consultant Bangladesh, Odoo consultant Bangladesh -->
   <url>
     <loc>https://mhasan.me/</loc>
-    <lastmod>2026-04-30</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-05-04</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
 
   <!-- Target: Odoo Partner Bangladesh, Odoo consultant bangladesh -->
   <url>
     <loc>https://mhasan.me/services/odoo-partner-consultant</loc>
-    <lastmod>2026-05-02</lastmod>
+    <lastmod>2026-05-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -19,7 +20,15 @@
   <!-- Target: manufacturing consultant bangladesh, manufacturing ERP -->
   <url>
     <loc>https://mhasan.me/services/manufacturing-erp-consultant</loc>
-    <lastmod>2026-05-02</lastmod>
+    <lastmod>2026-05-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Target: odoo erp implementation cost bangladesh — Tier 1 new article -->
+  <url>
+    <loc>https://mhasan.me/lab/0012-odoo-erp-cost-bangladesh</loc>
+    <lastmod>2026-05-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>

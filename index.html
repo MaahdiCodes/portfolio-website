@@ -181,7 +181,7 @@
     --gutter: 24px;
   }
   *{box-sizing:border-box}
-  html,body{margin:0;background:var(--bg);color:var(--text);font-family:var(--sans);font-feature-settings:"ss01","cv11";-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+  html,body{margin:0;overflow-x:hidden;background:var(--bg);color:var(--text);font-family:var(--sans);font-feature-settings:"ss01","cv11";-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
   body{
     background:
       radial-gradient(900px 600px at 80% -10%, rgba(80,230,160,0.08), transparent 60%),
@@ -232,6 +232,19 @@
   .brand-name b{font-weight:500;font-size:14px;letter-spacing:-0.01em;color:var(--text)}
   .brand-name em{font-style:normal;font-family:var(--mono);font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-3);margin-top:2px}
   .nav-links{display:flex;gap:6px}
+  .nav-right{display:flex;align-items:center;gap:10px}
+  .theme-toggle{
+    appearance:none;border:1px solid var(--border);background:var(--elev);
+    color:var(--text-2);width:34px;height:34px;border-radius:10px;
+    cursor:pointer;display:grid;place-items:center;
+    transition:all .2s ease;flex:none;padding:0;
+  }
+  .theme-toggle:hover{color:var(--text);border-color:var(--border-2)}
+  .theme-toggle svg{display:block;pointer-events:none}
+  .theme-toggle .icon-sun{display:block}
+  .theme-toggle .icon-moon{display:none}
+  html[data-theme="light"] .theme-toggle .icon-sun{display:none}
+  html[data-theme="light"] .theme-toggle .icon-moon{display:block}
   .nav-links a{
     font-size:13.5px;color:var(--text-2);padding:8px 14px;border-radius:999px;transition:all .2s ease;
   }
@@ -640,35 +653,55 @@
     .sig-meta span:nth-child(3),.sig-foot span:nth-child(2){display:none}
   }
 
-  /* mood variants */
-  html[data-bg="slate"]{--bg:#0B0F16;--bg-1:#0E131B;--surface:#121823;--elev:#162031;--border:#1E2A3C;--border-2:#2A3A52}
-  html[data-bg="warm"]{--bg:#0E0B08;--bg-1:#13100B;--surface:#1A150E;--elev:#1F1A11;--border:#2A2217;--border-2:#3A2F20}
+  /* light theme */
+  html[data-theme="light"]{
+    --bg:#F5F7FA;
+    --bg-1:#EEF1F5;
+    --surface:#FFFFFF;
+    --elev:#EDF0F4;
+    --border:#E2E6EC;
+    --border-2:#CBD0D9;
+    --hair:rgba(0,0,0,0.05);
+    --text:#0E1013;
+    --text-2:#4A5265;
+    --text-3:#8A909E;
+  }
+  html[data-theme="light"] body{
+    background:radial-gradient(900px 600px at 80% -10%,rgba(80,230,160,0.05),transparent 60%),var(--bg);
+  }
+  html[data-theme="light"] .noise{opacity:0}
+  html[data-theme="light"] .grid-bg{
+    background-image:linear-gradient(to right,rgba(0,0,0,0.04) 1px,transparent 1px),linear-gradient(to bottom,rgba(0,0,0,0.04) 1px,transparent 1px);
+  }
+  html[data-theme="light"] .nav-inner{background:rgba(245,247,250,0.9)}
+  html[data-theme="light"] .proof-card{background:linear-gradient(180deg,rgba(255,255,255,0.95) 0%,rgba(237,240,244,0.95) 100%)}
+  html[data-theme="light"] .mockup,html[data-theme="light"] .mock-flow,html[data-theme="light"] .mock-adoption,html[data-theme="light"] .mock-dash{background:#EDF0F4}
+  html[data-theme="light"] .mock-side,html[data-theme="light"] .mock-tile,html[data-theme="light"] .mock-chart{background:#E8EBF0}
+  html[data-theme="light"] .svc{background:linear-gradient(180deg,rgba(255,255,255,0.95),rgba(237,240,244,0.95))}
+  html[data-theme="light"] .svc.enterprise{
+    background:radial-gradient(600px 200px at 100% 0%,oklch(0.80 0.17 155/0.07),transparent 60%),linear-gradient(180deg,rgba(255,255,255,0.98),rgba(237,240,244,0.98));
+  }
+  html[data-theme="light"] .course-card{background:var(--surface)}
+  html[data-theme="light"] .faq-list{background:var(--surface)}
+  html[data-theme="light"] .status{background:rgba(237,240,244,0.85)}
+  html[data-theme="light"] .contact-wrap{
+    background:radial-gradient(500px 280px at 85% 0%,oklch(0.80 0.17 155/0.07),transparent 70%),linear-gradient(180deg,rgba(255,255,255,0.97),rgba(237,240,244,0.97));
+  }
+  html[data-theme="light"] .sig-name{
+    background:linear-gradient(180deg,var(--text) 0%,var(--text) 55%,var(--text-3) 100%);
+    -webkit-background-clip:text;background-clip:text;
+  }
 
-  /* grid overlay tweak */
-  html[data-grid="on"] .grid-bg{mask-image:none;opacity:0.7}
-
-  /* serif off */
-  html[data-serif="off"] .italic,
-  html[data-serif="off"] .serif{font-family:var(--sans) !important;font-style:normal !important;font-weight:500 !important}
-
-  /* density */
-  html[data-density="compact"] section{padding:72px 0}
-  html[data-density="airy"] section{padding:128px 0}
-
-  /* tweaks toggle button */
-  #twk-toggle{
-    position:fixed;bottom:20px;right:20px;z-index:2147483645;
-    width:36px;height:36px;border-radius:10px;
-    border:1px solid var(--border);
-    background:rgba(17,19,23,0.8);
-    backdrop-filter:blur(16px);
-    color:var(--text-3);
-    cursor:pointer;
-    display:grid;place-items:center;
-    font-size:15px;
+  /* lab view all link */
+  .lab-footer{display:flex;justify-content:flex-end;margin-top:20px}
+  .lab-view-all{
+    display:inline-flex;align-items:center;gap:8px;
+    font-family:var(--mono);font-size:12px;letter-spacing:0.08em;text-transform:uppercase;
+    color:var(--text-2);padding:10px 18px;border-radius:8px;
+    border:1px solid var(--border);background:var(--elev);
     transition:all .2s ease;
   }
-  #twk-toggle:hover{color:var(--text);border-color:var(--border-2);background:var(--elev)}
+  .lab-view-all:hover{color:var(--accent);border-color:oklch(0.80 0.17 155/0.4);background:var(--accent-dim)}
 </style>
 </head>
 <body>
@@ -687,12 +720,18 @@
         <a href="#work">Work</a>
         <a href="#services">Services</a>
         <a href="#courses">Courses</a>
-        <a href="#lab">Lab</a>
+        <a href="lab/">Lab</a>
         <a href="#contact">Contact</a>
       </nav>
-      <a class="nav-cta" href="#contact">
-        Book a call <span class="arrow">↗</span>
-      </a>
+      <div class="nav-right">
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle light/dark theme" title="Toggle light/dark theme">
+          <svg class="icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+          <svg class="icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+        <a class="nav-cta" href="#contact">
+          Book a call <span class="arrow">↗</span>
+        </a>
+      </div>
     </div>
   </div>
 </header>
@@ -1187,71 +1226,9 @@
         <span class="lab-arrow">↗</span>
       </a>
 
-      <a class="lab-row" href="lab/0006-odoo-multi-company-setup-guide.html">
-        <span class="lab-num">0006</span>
-        <span class="lab-title">
-          Odoo multi-company setup guide
-          <span class="sub">When it genuinely helps, when it makes everything worse, and how to configure it right.</span>
-        </span>
-        <span class="lab-kind">Guide</span>
-        <span class="lab-date">NOV 2025</span>
-        <span class="lab-arrow">↗</span>
-      </a>
-
-      <a class="lab-row" href="lab/0005-erp-go-live-cost-manufacturing-bangladesh.html">
-        <span class="lab-num">0005</span>
-        <span class="lab-title">
-          The real cost of going live wrong
-          <span class="sub">What a failed ERP go-live actually costs in Bangladesh manufacturing — the hidden invoices.</span>
-        </span>
-        <span class="lab-kind">Essay</span>
-        <span class="lab-date">OCT 2025</span>
-        <span class="lab-arrow">↗</span>
-      </a>
-
-      <a class="lab-row" href="lab/0004-odoo-vs-sap-vs-tally-bangladesh.html">
-        <span class="lab-num">0004</span>
-        <span class="lab-title">
-          Odoo vs SAP vs Tally: the honest comparison for Bangladesh SMEs
-          <span class="sub">Which ERP fits your scale, budget, and operations — from someone who has recommended all three.</span>
-        </span>
-        <span class="lab-kind">Comparison</span>
-        <span class="lab-date">OCT 2025</span>
-        <span class="lab-arrow">↗</span>
-      </a>
-
-      <a class="lab-row" href="lab/0003-nbr-vat-compliance-odoo-bangladesh.html">
-        <span class="lab-num">0003</span>
-        <span class="lab-title">
-          NBR VAT compliance in Odoo: a Bangladesh practitioner's guide
-          <span class="sub">Mushak forms, BIN setup, and month-end VAT reconciliation for Bangladesh businesses.</span>
-        </span>
-        <span class="lab-kind">Guide · VAT</span>
-        <span class="lab-date">SEP 2025</span>
-        <span class="lab-arrow">↗</span>
-      </a>
-
-      <a class="lab-row" href="lab/0002-discovery-session-business-process-mapping.html">
-        <span class="lab-num">0002</span>
-        <span class="lab-title">
-          The discovery session: map your business before you open Odoo
-          <span class="sub">How to run a proper ERP discovery — what to capture, how to run sessions, what to hand off.</span>
-        </span>
-        <span class="lab-kind">Guide</span>
-        <span class="lab-date">AUG 2025</span>
-        <span class="lab-arrow">↗</span>
-      </a>
-
-      <a class="lab-row" href="lab/0001-why-erp-fails-bangladesh.html">
-        <span class="lab-num">0001</span>
-        <span class="lab-title">
-          Why most ERP implementations fail in Bangladesh
-          <span class="sub">Five root causes, in order of frequency. None of them are about the software.</span>
-        </span>
-        <span class="lab-kind">Essay</span>
-        <span class="lab-date">JUL 2025</span>
-        <span class="lab-arrow">↗</span>
-      </a>
+    </div>
+    <div class="lab-footer">
+      <a class="lab-view-all" href="lab/">Browse all 12 articles ↗</a>
     </div>
   </div>
 </section>
@@ -1388,101 +1365,6 @@
   </div>
 </footer>
 
-<!-- Tweaks Panel -->
-<button id="twk-toggle" title="Open tweaks panel (T)" aria-label="Open tweaks panel">⚙</button>
-
-<div id="twk" hidden>
-  <div class="twk-hd"><b>Tweaks</b><button class="twk-x" data-close aria-label="Close">✕</button></div>
-  <div class="twk-body">
-    <div class="twk-sect">Accent</div>
-    <div class="twk-row">
-      <div class="twk-lbl"><span>Color</span><span class="twk-val" data-accent-sw></span></div>
-      <div class="twk-swatches" data-accent>
-        <button data-v="emerald" style="--c:oklch(0.80 0.17 155)"></button>
-        <button data-v="electric" style="--c:oklch(0.78 0.20 255)"></button>
-        <button data-v="amber"    style="--c:oklch(0.82 0.16 85)"></button>
-        <button data-v="magenta"  style="--c:oklch(0.72 0.24 340)"></button>
-        <button data-v="cyan"     style="--c:oklch(0.82 0.14 200)"></button>
-        <button data-v="mono"     style="--c:oklch(0.92 0 0)"></button>
-      </div>
-    </div>
-    <div class="twk-sect">Mood</div>
-    <div class="twk-row">
-      <div class="twk-lbl"><span>Background</span></div>
-      <div class="twk-seg" data-bg>
-        <button data-v="black">Black</button>
-        <button data-v="slate">Slate</button>
-        <button data-v="warm">Warm</button>
-      </div>
-    </div>
-    <div class="twk-row">
-      <div class="twk-lbl"><span>Grid overlay</span></div>
-      <label class="twk-switch"><input type="checkbox" data-grid><span></span></label>
-    </div>
-    <div class="twk-row">
-      <div class="twk-lbl"><span>Serif accents</span></div>
-      <label class="twk-switch"><input type="checkbox" data-serif checked><span></span></label>
-    </div>
-    <div class="twk-sect">Type</div>
-    <div class="twk-row">
-      <div class="twk-lbl"><span>Headline weight</span><span class="twk-val" data-weight-val>500</span></div>
-      <input type="range" min="300" max="700" step="100" value="500" data-weight class="twk-range">
-    </div>
-    <div class="twk-row">
-      <div class="twk-lbl"><span>Density</span></div>
-      <div class="twk-seg" data-density>
-        <button data-v="compact">Compact</button>
-        <button data-v="regular">Regular</button>
-        <button data-v="airy">Airy</button>
-      </div>
-    </div>
-    <div class="twk-sect">Hero</div>
-    <div class="twk-row">
-      <div class="twk-lbl"><span>Availability copy</span></div>
-      <input type="text" class="twk-field" data-status value="Available for specialized ERP consulting — Q2 / Q3 2026">
-    </div>
-  </div>
-</div>
-
-<style>
-  #twk{position:fixed;right:16px;bottom:64px;z-index:2147483646;width:280px;max-height:calc(100vh - 80px);
-    display:flex;flex-direction:column;
-    background:rgba(17,19,23,0.72);color:var(--text);
-    -webkit-backdrop-filter:blur(24px) saturate(150%);backdrop-filter:blur(24px) saturate(150%);
-    border:1px solid var(--border);border-radius:14px;
-    box-shadow:0 12px 40px rgba(0,0,0,0.45), inset 0 1px 0 rgba(255,255,255,0.04);
-    font:12px/1.4 var(--sans);overflow:hidden}
-  #twk[hidden]{display:none}
-  .twk-hd{display:flex;align-items:center;justify-content:space-between;padding:12px 10px 12px 16px;cursor:move;user-select:none;border-bottom:1px solid var(--border)}
-  .twk-hd b{font-size:12px;font-weight:500;letter-spacing:0.02em}
-  .twk-x{appearance:none;border:0;background:transparent;color:var(--text-3);width:24px;height:24px;border-radius:6px;cursor:pointer;font-size:13px;line-height:1}
-  .twk-x:hover{background:var(--hair);color:var(--text)}
-  .twk-body{padding:10px 16px 16px;display:flex;flex-direction:column;gap:12px;overflow-y:auto;min-height:0;scrollbar-width:thin;scrollbar-color:var(--border-2) transparent}
-  .twk-sect{font-family:var(--mono);font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-3);padding-top:6px}
-  .twk-sect:first-child{padding-top:0}
-  .twk-row{display:flex;flex-direction:column;gap:8px}
-  .twk-lbl{display:flex;justify-content:space-between;align-items:baseline;color:var(--text-2);font-size:12px}
-  .twk-val{color:var(--text-3);font-family:var(--mono);font-size:11px;font-variant-numeric:tabular-nums}
-  .twk-swatches{display:flex;gap:6px}
-  .twk-swatches button{appearance:none;width:26px;height:26px;border-radius:7px;border:1px solid var(--border);background:var(--c);cursor:pointer;padding:0;transition:transform .15s ease, box-shadow .15s ease}
-  .twk-swatches button:hover{transform:translateY(-1px)}
-  .twk-swatches button[aria-pressed="true"]{box-shadow:0 0 0 2px var(--bg), 0 0 0 3px var(--text)}
-  .twk-seg{display:grid;grid-auto-flow:column;grid-auto-columns:1fr;border:1px solid var(--border);border-radius:8px;padding:2px;background:rgba(0,0,0,0.2)}
-  .twk-seg button{appearance:none;border:0;background:transparent;color:var(--text-2);font:500 11px/1 var(--sans);padding:7px 6px;border-radius:6px;cursor:pointer;transition:all .15s ease}
-  .twk-seg button:hover{color:var(--text)}
-  .twk-seg button[aria-pressed="true"]{background:var(--elev);color:var(--text);box-shadow:inset 0 0 0 1px var(--border-2)}
-  .twk-switch{position:relative;width:34px;height:20px;display:inline-block;cursor:pointer}
-  .twk-switch input{position:absolute;opacity:0;pointer-events:none}
-  .twk-switch span{position:absolute;inset:0;background:var(--border);border-radius:999px;transition:background .15s}
-  .twk-switch span::after{content:"";position:absolute;top:2px;left:2px;width:16px;height:16px;border-radius:50%;background:var(--text-2);transition:all .18s ease}
-  .twk-switch input:checked + span{background:var(--accent)}
-  .twk-switch input:checked + span::after{left:16px;background:#04140B}
-  .twk-range{appearance:none;width:100%;height:4px;border-radius:999px;background:var(--border);outline:none}
-  .twk-range::-webkit-slider-thumb{appearance:none;width:14px;height:14px;border-radius:50%;background:var(--text);cursor:pointer;border:2px solid var(--bg)}
-  .twk-range::-moz-range-thumb{width:14px;height:14px;border-radius:50%;background:var(--text);cursor:pointer;border:2px solid var(--bg)}
-  .twk-field{width:100%;padding:8px 10px;border:1px solid var(--border);border-radius:7px;background:rgba(0,0,0,0.25);color:var(--text);font:12px var(--sans);outline:none}
-  .twk-field:focus{border-color:var(--border-2);background:rgba(0,0,0,0.4)}
-</style>
 
 <script>
   // reveal on scroll
@@ -1503,141 +1385,21 @@
     else nav.style.boxShadow = 'none';
   }, { passive: true });
 
-  /* ── Tweaks ─────────────────────────────────────────────── */
-  const TWEAK_DEFAULTS = {
-    accent: "emerald",
-    bg: "slate",
-    density: "regular",
-    headingWeight: 500,
-    gridOverlay: false,
-    serifAccents: true,
-    statusText: "Available for specialized ERP consulting — Q2 / Q3 2026"
-  };
-
-  const ACCENTS = {
-    emerald:  { c: "oklch(0.80 0.17 155)", dim: "oklch(0.80 0.17 155 / 0.14)", glow: "oklch(0.80 0.17 155 / 0.35)", fg: "#04140B" },
-    electric: { c: "oklch(0.78 0.20 255)", dim: "oklch(0.78 0.20 255 / 0.14)", glow: "oklch(0.78 0.20 255 / 0.35)", fg: "#04091A" },
-    amber:    { c: "oklch(0.82 0.16 85)",  dim: "oklch(0.82 0.16 85 / 0.14)",  glow: "oklch(0.82 0.16 85 / 0.35)",  fg: "#170E03" },
-    magenta:  { c: "oklch(0.72 0.24 340)", dim: "oklch(0.72 0.24 340 / 0.14)", glow: "oklch(0.72 0.24 340 / 0.35)", fg: "#170316" },
-    cyan:     { c: "oklch(0.82 0.14 200)", dim: "oklch(0.82 0.14 200 / 0.14)", glow: "oklch(0.82 0.14 200 / 0.35)", fg: "#04141A" },
-    mono:     { c: "oklch(0.92 0 0)",      dim: "oklch(0.92 0 0 / 0.12)",      glow: "oklch(0.92 0 0 / 0.25)",      fg: "#0A0B0D" }
-  };
-
-  const state = { ...TWEAK_DEFAULTS };
-  const root = document.documentElement;
-  const twk = document.getElementById('twk');
-  const twkToggle = document.getElementById('twk-toggle');
-
-  function applyAccent(name){
-    const a = ACCENTS[name] || ACCENTS.emerald;
-    root.style.setProperty('--accent', a.c);
-    root.style.setProperty('--accent-dim', a.dim);
-    root.style.setProperty('--accent-glow', a.glow);
-    const btn = document.querySelector('.btn-primary');
-    if (btn) btn.style.color = a.fg;
-    document.querySelectorAll('#twk [data-accent] button').forEach(b=>{
-      b.setAttribute('aria-pressed', b.dataset.v === name ? 'true' : 'false');
+  // theme toggle
+  (function(){
+    const root = document.documentElement;
+    const btn = document.getElementById('theme-toggle');
+    if (localStorage.getItem('mh-theme') === 'light') root.setAttribute('data-theme', 'light');
+    btn.addEventListener('click', () => {
+      const isLight = root.getAttribute('data-theme') === 'light';
+      if (isLight) {
+        root.removeAttribute('data-theme');
+        localStorage.setItem('mh-theme', 'dark');
+      } else {
+        root.setAttribute('data-theme', 'light');
+        localStorage.setItem('mh-theme', 'light');
+      }
     });
-    const sw = document.querySelector('[data-accent-sw]');
-    if (sw) sw.textContent = name;
-  }
-  function applyBg(name){
-    root.setAttribute('data-bg', name);
-    document.querySelectorAll('#twk [data-bg] button').forEach(b=>{
-      b.setAttribute('aria-pressed', b.dataset.v === name ? 'true' : 'false');
-    });
-  }
-  function applyDensity(name){
-    root.setAttribute('data-density', name);
-    document.querySelectorAll('#twk [data-density] button').forEach(b=>{
-      b.setAttribute('aria-pressed', b.dataset.v === name ? 'true' : 'false');
-    });
-  }
-  function applyWeight(v){
-    document.querySelectorAll('.hero h1, .section-title, .contact-wrap h2').forEach(el=>{
-      el.style.fontWeight = v;
-    });
-    const lbl = document.querySelector('[data-weight-val]');
-    if (lbl) lbl.textContent = v;
-    const r = document.querySelector('[data-weight]');
-    if (r && +r.value !== +v) r.value = v;
-  }
-  function applyGrid(on){
-    root.setAttribute('data-grid', on ? 'on' : 'off');
-    const i = document.querySelector('[data-grid]'); if (i) i.checked = !!on;
-  }
-  function applySerif(on){
-    root.setAttribute('data-serif', on ? 'on' : 'off');
-    const i = document.querySelector('[data-serif]'); if (i) i.checked = !!on;
-  }
-  function applyStatus(text){
-    const el = document.querySelector('.status span:last-child');
-    if (el) el.textContent = text;
-    const i = document.querySelector('[data-status]');
-    if (i && i.value !== text) i.value = text;
-  }
-
-  function applyAll(s){
-    applyAccent(s.accent);
-    applyBg(s.bg);
-    applyDensity(s.density);
-    applyWeight(s.headingWeight);
-    applyGrid(s.gridOverlay);
-    applySerif(s.serifAccents);
-    applyStatus(s.statusText);
-  }
-  applyAll(state);
-
-  // wire controls
-  document.querySelectorAll('#twk [data-accent] button').forEach(b=>{
-    b.addEventListener('click', ()=>{ state.accent = b.dataset.v; applyAccent(state.accent); });
-  });
-  document.querySelectorAll('#twk [data-bg] button').forEach(b=>{
-    b.addEventListener('click', ()=>{ state.bg = b.dataset.v; applyBg(state.bg); });
-  });
-  document.querySelectorAll('#twk [data-density] button').forEach(b=>{
-    b.addEventListener('click', ()=>{ state.density = b.dataset.v; applyDensity(state.density); });
-  });
-  document.querySelector('[data-weight]')?.addEventListener('input', e=>{
-    state.headingWeight = +e.target.value; applyWeight(state.headingWeight);
-  });
-  document.querySelector('input[data-grid]')?.addEventListener('change', e=>{
-    state.gridOverlay = e.target.checked; applyGrid(state.gridOverlay);
-  });
-  document.querySelector('input[data-serif]')?.addEventListener('change', e=>{
-    state.serifAccents = e.target.checked; applySerif(state.serifAccents);
-  });
-  document.querySelector('[data-status]')?.addEventListener('input', e=>{
-    state.statusText = e.target.value; applyStatus(state.statusText);
-  });
-
-  // toggle tweaks panel
-  twkToggle.addEventListener('click', ()=>{ twk.hidden = !twk.hidden; });
-  twk.querySelector('[data-close]').addEventListener('click', ()=>{ twk.hidden = true; });
-
-  // keyboard shortcut: T to toggle
-  document.addEventListener('keydown', e=>{
-    if (e.key === 't' && !e.ctrlKey && !e.metaKey && !e.altKey && e.target.tagName !== 'INPUT') {
-      twk.hidden = !twk.hidden;
-    }
-  });
-
-  // draggable header
-  (function drag(){
-    const hd = twk.querySelector('.twk-hd');
-    let sx=0,sy=0,ox=0,oy=0,on=false;
-    hd.addEventListener('mousedown', e=>{
-      on=true; sx=e.clientX; sy=e.clientY;
-      const r=twk.getBoundingClientRect(); ox=r.left; oy=r.top;
-      twk.style.right='auto'; twk.style.bottom='auto'; twk.style.left=ox+'px'; twk.style.top=oy+'px';
-      e.preventDefault();
-    });
-    window.addEventListener('mousemove', e=>{
-      if(!on) return;
-      twk.style.left=(ox+e.clientX-sx)+'px';
-      twk.style.top =(oy+e.clientY-sy)+'px';
-    });
-    window.addEventListener('mouseup', ()=>{ on=false; });
   })();
 </script>
 </body>

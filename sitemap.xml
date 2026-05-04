@@ -9,6 +9,14 @@
     <priority>1.0</priority>
   </url>
 
+  <!-- Lab index page -->
+  <url>
+    <loc>https://mhasan.me/lab/</loc>
+    <lastmod>2026-05-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
   <!-- Target: Odoo Partner Bangladesh, Odoo consultant bangladesh -->
   <url>
     <loc>https://mhasan.me/services/odoo-partner-consultant</loc>

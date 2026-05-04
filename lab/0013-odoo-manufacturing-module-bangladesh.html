@@ -1,0 +1,550 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description"
+    content="Odoo Manufacturing module setup guide for Bangladesh factories — Bill of Materials, Work Centers, routing, Manufacturing Orders, and the Bangladesh-specific pitfalls to avoid." />
+  <meta name="robots" content="index, follow" />
+  <title>Odoo Manufacturing Module Setup Bangladesh | Mehedi Hasan</title>
+  <link rel="canonical" href="https://mhasan.me/lab/0013-odoo-manufacturing-module-bangladesh" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png" />
+  <!-- Open Graph -->
+  <meta property="og:title" content="Odoo Manufacturing Module Setup for Bangladesh Factories (2026 Guide) | Mehedi Hasan" />
+  <meta property="og:description"
+    content="Step-by-step Odoo Manufacturing module setup for Bangladesh factories — BoM, Work Centers, routing, MO lifecycle, and real-world pitfalls from live deployments." />
+  <meta property="og:url" content="https://mhasan.me/lab/0013-odoo-manufacturing-module-bangladesh" />
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="https://mhasan.me/assets/og-default.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:site_name" content="Mehedi Hasan | Odoo ERP Consultant" />
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Odoo Manufacturing Module Setup for Bangladesh Factories (2026 Guide)" />
+  <meta name="twitter:description"
+    content="BoM, Work Centers, routing, and Manufacturing Orders — a practical Odoo Manufacturing setup guide for Bangladesh factories." />
+  <meta name="twitter:image" content="https://mhasan.me/assets/og-default.jpg" />
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Odoo Manufacturing Module Setup for Bangladesh Factories (2026 Guide)",
+    "description": "A step-by-step guide to setting up the Odoo Manufacturing module for Bangladesh factories — covering Bill of Materials, Work Centers, routing, Manufacturing Orders, and real-world pitfalls.",
+    "datePublished": "2026-05-04T09:00:00+06:00",
+    "dateModified": "2026-05-04T09:00:00+06:00",
+    "author": {
+      "@type": "Person",
+      "name": "Mehedi Hasan",
+      "url": "https://mhasan.me",
+      "jobTitle": "Odoo ERP Consultant & Business Analyst",
+      "sameAs": "https://www.linkedin.com/in/mehedi-hasan-consultant/"
+    },
+    "publisher": { "@type": "Person", "name": "Mehedi Hasan", "url": "https://mhasan.me" },
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://mhasan.me/lab/0013-odoo-manufacturing-module-bangladesh" }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://mhasan.me" },
+      { "@type": "ListItem", "position": 2, "name": "Lab", "item": "https://mhasan.me/lab/" },
+      { "@type": "ListItem", "position": 3, "name": "Odoo Manufacturing Module Bangladesh", "item": "https://mhasan.me/lab/0013-odoo-manufacturing-module-bangladesh" }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Does Odoo Community include the Manufacturing module?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Odoo Community includes a basic Manufacturing module (MRP v1). Odoo Enterprise adds MRP v2 — which unlocks multi-level BoM, Work Center capacity planning, Overall Equipment Effectiveness (OEE) tracking, unbuild orders, and the Manufacturing app for shop-floor operators. Most Bangladesh factories with routing complexity need Enterprise."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I set up a Bill of Materials in Odoo for garment manufacturing?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "In Odoo Manufacturing, go to Products → Bills of Materials → New. Set the finished product (e.g., 'Men's Polo Shirt'), the BoM type (Manufacture), and add component lines for fabric (in meters), thread, buttons, labels, and trims with their quantities. For garments with multiple size/colour variants, use a single BoM on the product template — Odoo handles variant quantities through component attributes."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between Work Center and Operation in Odoo Manufacturing?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A Work Center is a physical resource — a machine, a production line, or a team of workers. An Operation is a task performed at that Work Center — cutting, stitching, finishing. A Routing links Operations to Work Centers in sequence, defining how a product flows through the factory floor. Work Centers have capacity (hours/day); Operations have standard duration per unit."
+        }
+      }
+    ]
+  }
+]
+</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap">
+  <link rel="stylesheet" href="_styles.css">
+  <style>
+    .pull {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: clamp(24px, 3vw, 36px);
+      line-height: 1.25;
+      color: var(--text);
+      margin: 48px 0;
+      padding: 0;
+      border: none;
+      max-width: 22ch;
+      letter-spacing: -0.01em;
+    }
+    .pull::before {
+      content: "";
+      display: block;
+      width: 36px;
+      height: 1px;
+      background: var(--accent);
+      margin-bottom: 18px;
+    }
+
+    /* step list */
+    .step-list {
+      list-style: none;
+      padding: 0;
+      margin: 24px 0;
+      counter-reset: steps;
+    }
+    .step-list li {
+      counter-increment: steps;
+      display: flex;
+      gap: 18px;
+      padding: 18px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 14.5px;
+      color: var(--text-2);
+      line-height: 1.6;
+    }
+    .step-list li:last-child { border-bottom: none; }
+    .step-list li::before {
+      content: counter(steps, decimal-leading-zero);
+      font-family: var(--mono);
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--accent);
+      letter-spacing: 0.06em;
+      flex: none;
+      width: 28px;
+      padding-top: 2px;
+    }
+    .step-list li strong { color: var(--text); }
+
+    /* compare grid */
+    .bom-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin: 24px 0;
+    }
+    .bom-card {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 20px;
+      background: var(--surface);
+    }
+    .bom-card.highlight { border-color: oklch(0.80 0.17 155 / 0.4); }
+    .bom-card .bc-label {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--text-3);
+      margin-bottom: 10px;
+    }
+    .bom-card.highlight .bc-label { color: var(--accent); }
+    .bom-card h4 { margin: 0 0 8px; font-size: 15px; font-weight: 500; color: var(--text); }
+    .bom-card p { margin: 0; font-size: 13px; color: var(--text-2); line-height: 1.55; }
+    @media(max-width:700px) { .bom-grid { grid-template-columns: 1fr; } }
+
+    /* MO flow */
+    .mo-flow {
+      margin: 24px 0;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+      background: var(--surface);
+    }
+    .mo-step {
+      display: grid;
+      grid-template-columns: 140px 1fr;
+      gap: 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .mo-step:last-child { border-bottom: none; }
+    .mo-step .ms-label {
+      padding: 16px 18px;
+      font-family: var(--mono);
+      font-size: 10.5px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      border-right: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      background: oklch(0.80 0.17 155 / 0.04);
+    }
+    .mo-step .ms-body {
+      padding: 16px 20px;
+      font-size: 13.5px;
+      color: var(--text-2);
+      line-height: 1.55;
+    }
+    .mo-step .ms-body strong { color: var(--text); }
+    @media(max-width:600px) {
+      .mo-step { grid-template-columns: 1fr; }
+      .mo-step .ms-label { border-right: none; border-bottom: 1px solid var(--border); }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="grid-bg"></div>
+
+  <header class="nav">
+    <div class="shell">
+      <div class="nav-inner">
+        <a class="brand" href="../index.html">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span class="brand-name"><b>Mehedi Hasan</b><em>ERP · Business Analyst</em></span>
+        </a>
+        <a class="back-link" href="../index.html#lab">← Back to Lab</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="post-head">
+    <div class="shell">
+      <span class="eyebrow">Technical Lab · 0013</span>
+      <h1>Odoo Manufacturing module setup for Bangladesh factories — <span class="serif">the complete guide.</span></h1>
+      <p class="lede">BoM types, Work Centers, routing, and the full Manufacturing Order lifecycle — configured for how Bangladesh factories actually run. Drawn from RMG, textile, and cycle export deployments.</p>
+      <div class="post-meta">
+        <span class="chip accent">Module Guide</span>
+        <span class="chip">Manufacturing</span>
+        <span class="chip">Odoo</span>
+        <span class="chip">Bangladesh</span>
+      </div>
+      <div class="byline">
+        <span>Published<b>May 2026</b></span>
+        <span>Read time<b>12 minutes</b></span>
+        <span>Form<b>Setup Guide</b></span>
+        <span>Scope<b>Factory floor to MRP</b></span>
+      </div>
+    </div>
+  </section>
+
+  <article class="post">
+    <aside class="toc">
+      <div class="toc-k">In this guide</div>
+      <ol>
+        <li><a href="#what-mrp">What MRP covers (and what it doesn't)</a></li>
+        <li><a href="#prereqs">Prerequisites & module activation</a></li>
+        <li><a href="#bom">Bill of Materials setup</a></li>
+        <li><a href="#workcenters">Work Centers & capacity</a></li>
+        <li><a href="#routing">Operations & routing</a></li>
+        <li><a href="#mo">Manufacturing Order lifecycle</a></li>
+        <li><a href="#pitfalls">Bangladesh factory pitfalls</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ol>
+    </aside>
+
+    <div class="body">
+      <p>The Manufacturing module is the centre of gravity for every factory Odoo deployment I run in Bangladesh. Get it right and everything downstream — inventory, costing, procurement, and financial reporting — flows naturally. Get it wrong and you end up with ghost stock, unclosed Manufacturing Orders, and a costing engine producing numbers nobody trusts.</p>
+
+      <p>This guide walks through the setup sequence I use in every engagement: prerequisites, Bill of Materials types, Work Center configuration, routing, and the Manufacturing Order lifecycle. Where relevant, I've noted Bangladesh-specific nuances — particularly for RMG, textile, and export manufacturing contexts.</p>
+
+      <p class="pull">BoMs are the single source of truth. If the BoM is wrong, every MO, cost, and stock move is wrong.</p>
+
+      <h2 id="what-mrp">What the Manufacturing module covers (and what it doesn't)</h2>
+
+      <p>Odoo's Manufacturing module (technically MRP — Material Requirements Planning) handles:</p>
+
+      <ul>
+        <li><strong>Bill of Materials (BoM)</strong> — the recipe: what goes into making a finished product</li>
+        <li><strong>Work Centers</strong> — physical production resources (machines, lines, teams)</li>
+        <li><strong>Operations & Routing</strong> — the sequence of tasks from raw material to finished goods</li>
+        <li><strong>Manufacturing Orders (MO)</strong> — the actual production instruction document</li>
+        <li><strong>Scrap & Rework</strong> — recording material losses and rejected output</li>
+        <li><strong>Work Orders</strong> — task-level instructions for each Work Center (Enterprise only)</li>
+      </ul>
+
+      <p>What it does not handle without additional configuration:</p>
+
+      <ul>
+        <li><strong>Quality control</strong> — needs the Quality module (Enterprise)</li>
+        <li><strong>Maintenance scheduling</strong> — separate Maintenance module</li>
+        <li><strong>Advanced capacity planning</strong> — uses Work Center working hours but is not a full production scheduler</li>
+        <li><strong>Subcontracting</strong> — requires specific BoM type and vendor setup</li>
+      </ul>
+
+      <div class="callout">
+        <span class="tag">Community vs Enterprise</span>
+        <p>Odoo Community includes MRP v1 — sufficient for simple single-level BoMs and MOs. Enterprise adds <strong>MRP v2</strong>: multi-level BoM explosion, Work Order tracking, OEE (Overall Equipment Effectiveness), unbuild orders, and the shop-floor tablet interface. Most Bangladesh factories with more than two production steps need Enterprise.</p>
+      </div>
+
+      <h2 id="prereqs">Prerequisites & module activation</h2>
+
+      <p>Before activating Manufacturing, confirm the following are already configured:</p>
+
+      <ol class="step-list">
+        <li><strong>Inventory module configured</strong> — product categories, units of measure, warehouses, and storage locations must be defined. Manufacturing moves stock; if your inventory structure is wrong, MOs will post to the wrong locations.</li>
+        <li><strong>Units of Measure enabled</strong> — Settings → Inventory → Units of Measure. Critical for Bangladesh factories where fabric is bought in meters but consumed per-unit, or chemicals bought in litres but used in grams.</li>
+        <li><strong>Product variants enabled (if needed)</strong> — Settings → Inventory → Variants. Essential for RMG and garment factories where the same product has multiple sizes and colours with shared BoMs.</li>
+        <li><strong>Costing method decided</strong> — AVCO (Average Cost) for most Bangladesh manufacturers. FIFO if you're ISO-certified and need lot-level cost traceability. Set at the product category level before any stock moves. Changing it later is painful. See my <a href="0011-odoo-inventory-valuation-cheatsheet.html" style="color:var(--accent)">inventory valuation guide</a> for the full decision tree.</li>
+        <li><strong>Manufacturing module activated</strong> — Apps → Manufacturing → Install. This also installs MRP. For Enterprise users, verify that MRP v2 features appear under Settings → Manufacturing.</li>
+      </ol>
+
+      <h2 id="bom">Bill of Materials setup</h2>
+
+      <p>The BoM is the foundation of every manufacturing transaction. Every MO, cost roll-up, and procurement trigger derives from it. A BoM defines: what you make, what you consume to make it, and how many of each component per unit of output.</p>
+
+      <h3>BoM types</h3>
+
+      <div class="bom-grid">
+        <div class="bom-card highlight">
+          <div class="bc-label">Most Common</div>
+          <h4>Manufacture</h4>
+          <p>Standard in-house production. Creates a Manufacturing Order. Components are consumed from inventory, finished goods are added to stock. Use this for 95% of Bangladesh factory production.</p>
+        </div>
+        <div class="bom-card">
+          <div class="bc-label">Sub-assembly</div>
+          <h4>Kit</h4>
+          <p>No MO is created. The product is sold as a kit and components are picked from stock. Used for spare parts kits and bundled export packaging — not for production.</p>
+        </div>
+        <div class="bom-card">
+          <div class="bc-label">Outsourced Work</div>
+          <h4>Subcontracting</h4>
+          <p>Components are sent to a vendor who performs manufacturing. Odoo creates a Purchase Order alongside the MO. Common for job work in Bangladesh textile — sending grey fabric for dyeing.</p>
+        </div>
+      </div>
+
+      <h3>Creating a BoM — step by step</h3>
+
+      <p>Go to Manufacturing → Products → Bills of Materials → New.</p>
+
+      <ol class="step-list">
+        <li><strong>Set the product</strong> — select the finished product. If variants are enabled, you can set a BoM for all variants or a specific one (e.g., "Polo Shirt — White, XL"). For variant-specific quantities (different fabric consumption by size), use the same BoM template and set component quantity by attribute.</li>
+        <li><strong>Set BoM type</strong> — "Manufacture" for standard in-house production.</li>
+        <li><strong>Set quantity</strong> — the BoM quantity should typically be 1 unit. Odoo scales component consumption proportionally when you produce larger quantities in an MO. Setting BoM quantity to 100 (for batch costing) is a common mistake — it works but confuses operators and auditors.</li>
+        <li><strong>Add components</strong> — list every raw material consumed per unit. For a garment: fabric (2.5 m), thread (200 m), buttons (8 pcs), label (1 pcs), poly bag (1 pcs). Set the correct UoM for each. Check that UoMs match how these items are stored in your warehouse — mismatches cause stock valuation errors.</li>
+        <li><strong>Set operations (if routing enabled)</strong> — link each component to the operation where it is consumed. This enables Work Order-level component tracking. Optional but highly recommended for multi-step production lines.</li>
+        <li><strong>Save and confirm</strong> — once live, the BoM drives every MO for this product. Changes apply only to new MOs, not in-progress ones.</li>
+      </ol>
+
+      <div class="callout">
+        <span class="tag">Bangladesh note</span>
+        <p>For garment factories, define a separate BoM for each style or buyer. Fabric consumption, trim specs, and accessory lists differ by buyer — use Odoo's BoM versioning (archive old, create new) to maintain a clean history without deleting production records.</p>
+      </div>
+
+      <h3>Multi-level BoMs (Enterprise)</h3>
+
+      <p>If your factory makes sub-assemblies before final assembly — for example, a cycle manufacturer who welds frames before painting — you need multi-level BoMs. The finished product BoM references a semi-finished product (the frame), which itself has a BoM. When Odoo explodes the MO, it creates sub-MOs for each level. This is an Enterprise-only feature under MRP v2.</p>
+
+      <h2 id="workcenters">Work Centers & capacity</h2>
+
+      <p>A Work Center represents a physical production resource: a machine, a production line, a finishing table, or a team. Work Centers have capacity measured in hours per day and are the foundation of work order scheduling.</p>
+
+      <h3>Creating Work Centers</h3>
+
+      <p>Manufacturing → Configuration → Work Centers → New. Key fields:</p>
+
+      <table>
+        <thead>
+          <tr><th>Field</th><th>What to enter</th><th>Bangladesh notes</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Name</td>
+            <td>Machine or line name</td>
+            <td>Use names operators recognise: "Line 1 – Stitching", "Flat Knit Machine 3"</td>
+          </tr>
+          <tr>
+            <td>Working Hours</td>
+            <td>Shift schedule</td>
+            <td>Bangladesh factories often run two 8-hour shifts. Create separate Working Time records for Single Shift and Double Shift — link the appropriate one per Work Center</td>
+          </tr>
+          <tr>
+            <td>Time Efficiency %</td>
+            <td>Actual vs. theoretical output</td>
+            <td>Start at 80% for most Bangladesh factories. Refine after 3 months of real production data</td>
+          </tr>
+          <tr>
+            <td>Capacity</td>
+            <td>Parallel operations</td>
+            <td>A production line with 20 operators running in parallel has a capacity of 20 — set this so Odoo doesn't schedule 21 simultaneous work orders on it</td>
+          </tr>
+          <tr>
+            <td>OEE Target %</td>
+            <td>Target OEE (Enterprise)</td>
+            <td>Typical RMG factory: 60–75%. Automated weaving mills: 85%+</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="callout">
+        <span class="tag">Working Hours critical</span>
+        <p>The most common Work Center error I encounter: Bangladesh public holidays are not removed from the Working Time calendar. Odoo schedules production on Eid holidays. Create a proper Bangladesh public holiday list in the Working Time record at the start of each year.</p>
+      </div>
+
+      <h2 id="routing">Operations & routing</h2>
+
+      <p>An Operation is a task — cutting, stitching, washing, finishing. A Routing is the ordered sequence of Operations that transforms raw materials into a finished product. Routing is an <strong>Enterprise-only</strong> feature and must be enabled in Settings → Manufacturing → Work Orders.</p>
+
+      <h3>Creating Operations</h3>
+
+      <p>Manufacturing → Configuration → Operations → New. For each operation, set:</p>
+
+      <ul>
+        <li><strong>Name</strong> — what the task is: "Cutting", "Stitching – Body", "Stitching – Sleeve", "Finishing", "QC Inspection", "Packing"</li>
+        <li><strong>Default Work Center</strong> — which machine or line performs this operation by default</li>
+        <li><strong>Duration Computation</strong> — "Based on Real Time" (workers log actual time) or "Set Duration" (fixed standard time per unit). Use "Set Duration" initially; migrate to real-time tracking once operators are trained.</li>
+        <li><strong>Default Duration (minutes)</strong> — standard time per unit produced. E.g., "Stitching – Body": 4 minutes per shirt.</li>
+      </ul>
+
+      <h3>Adding routing to a BoM</h3>
+
+      <p>Open the BoM → Operations tab → Add a line for each operation in the production sequence. Odoo creates Work Orders automatically when an MO is confirmed — one Work Order per Operation per Manufacturing Order.</p>
+
+      <h2 id="mo">Manufacturing Order lifecycle</h2>
+
+      <p>The Manufacturing Order (MO) is the operational document that drives daily production. Here is the full lifecycle:</p>
+
+      <div class="mo-flow">
+        <div class="mo-step">
+          <div class="ms-label">Draft</div>
+          <div class="ms-body"><strong>MO created.</strong> Can be created manually (Manufacturing → Manufacturing Orders → New), triggered by a Sales Order (Make to Order), or generated by scheduler (reordering rules). Components are reserved but not consumed. Still editable.</div>
+        </div>
+        <div class="mo-step">
+          <div class="ms-label">Confirmed</div>
+          <div class="ms-body"><strong>MO confirmed.</strong> Work Orders are generated (if routing configured). Component availability is checked. Scheduled date is set. At this point the MO appears in the shop-floor app for operators. Components transition to "reserved" in inventory.</div>
+        </div>
+        <div class="mo-step">
+          <div class="ms-label">In Progress</div>
+          <div class="ms-body"><strong>Production started.</strong> Operators log Work Order progress (start, pause, done). In the simple flow (no Work Orders), you update the "Quantity Producing" field directly. Component lots/serial numbers are assigned at this stage if lot tracking is enabled.</div>
+        </div>
+        <div class="mo-step">
+          <div class="ms-label">Scrap</div>
+          <div class="ms-body"><strong>Scrap recorded (optional).</strong> Any rejected raw materials or work-in-progress are scrapped via the Scrap button — this moves the quantity out of production stock and into a Scrap location, posting the cost to a Scrap expense account. Track scrap by product and reason.</div>
+        </div>
+        <div class="mo-step">
+          <div class="ms-label">Produce</div>
+          <div class="ms-body"><strong>Quantity produced set.</strong> Enter the actual quantity produced. If it differs from the planned quantity (common in garment production due to rejection), Odoo handles the variance — either creating a backorder for the remaining quantity or closing the shortfall.</div>
+        </div>
+        <div class="mo-step">
+          <div class="ms-label">Done</div>
+          <div class="ms-body"><strong>MO closed.</strong> Components are consumed from stock (inventory decreases). Finished goods are added to stock (inventory increases). Journal entries are posted: Raw Materials → WIP → Finished Goods. Valuation at standard or average cost depending on your costing method.</div>
+        </div>
+      </div>
+
+      <div class="callout">
+        <span class="tag">Critical discipline</span>
+        <p>Unclosed Manufacturing Orders are the #1 cause of inventory discrepancy in Bangladesh factory deployments. An MO that is "In Progress" for 30 days means components are reserved but not consumed — your stock report shows phantom availability. Enforce a daily close discipline: every MO must be Done or backorder-split by end of shift.</p>
+      </div>
+
+      <h2 id="pitfalls">Bangladesh factory pitfalls</h2>
+
+      <p>After setting up Manufacturing for factories across RMG, textiles, and cycle export, these are the most consistent errors I encounter:</p>
+
+      <table>
+        <thead>
+          <tr><th>Pitfall</th><th>What happens</th><th>Fix</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>UoM mismatches in BoM</td>
+            <td>Fabric bought in yards, BoM in meters — automatic conversion produces wrong costs</td>
+            <td>Standardise one UoM per material category. Configure UoM conversions precisely (1 yard = 0.9144 m) before go-live</td>
+          </tr>
+          <tr>
+            <td>No scrap tracking</td>
+            <td>Rejected garments / cut-off fabric disappear from records — phantom inventory builds up</td>
+            <td>Enable Scrap on every MO. Create scrap reasons (Cutting Waste, Stitching Defect, Washing Shrinkage) for reporting</td>
+          </tr>
+          <tr>
+            <td>BoM not reflecting real consumption</td>
+            <td>Standard cost is wrong; profitability reports are unreliable</td>
+            <td>Run MO variance reports monthly. Update BoM component quantities quarterly from actual production data</td>
+          </tr>
+          <tr>
+            <td>Wrong costing method</td>
+            <td>Standard cost for fashion items means cost is always outdated as fabric prices move</td>
+            <td>Use AVCO for most Bangladesh factories. Standard cost only if you have a dedicated cost accounting team maintaining it</td>
+          </tr>
+          <tr>
+            <td>Subcontracting not configured</td>
+            <td>Job work (washing, dyeing, printing) is done manually outside Odoo — stock disappears during process</td>
+            <td>Configure Subcontracting BoM for each job work process. Link to the vendor and set the component flow</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>For the cost implications of getting this wrong at go-live, see my notes on <a href="0005-erp-go-live-cost-manufacturing-bangladesh.html" style="color:var(--accent)">the real cost of a bad ERP go-live in Bangladesh manufacturing</a>. The pattern is consistent: good setup costs one week of consultant time; fixing a bad setup costs three months and a re-implementation.</p>
+
+      <div class="callout">
+        <span class="tag">Next step</span>
+        <p>Manufacturing module setup is part of every <a href="../services/manufacturing-erp-consultant/index.html" style="color:var(--accent)">manufacturing ERP implementation</a> I lead. If you're configuring for a Bangladesh factory, I'm happy to review your BoM structure and Work Center setup before go-live. <a href="../index.html#contact" style="color:var(--accent)">Book a scoping call →</a></p>
+      </div>
+
+      <h2 id="faq">Frequently asked questions</h2>
+
+      <h3>Does Odoo Community include the Manufacturing module?</h3>
+      <p>Yes — Odoo Community includes a basic Manufacturing module (MRP v1) with BoMs, MOs, and simple scrap. Odoo Enterprise adds MRP v2: Work Order tracking, multi-level BoM explosion, OEE dashboard, unbuild orders, and the shop-floor tablet interface. Most Bangladesh factories with multiple production steps benefit from Enterprise's routing features.</p>
+
+      <h3>How do I set up a Bill of Materials for garment manufacturing?</h3>
+      <p>Go to Manufacturing → Products → Bills of Materials → New. Set the finished product (e.g., "Men's Polo Shirt"), select "Manufacture" as the BoM type, and add component lines for each material: fabric (meters), thread (meters), buttons (pcs), label (pcs), poly bag (pcs). For size variants with different fabric consumption, use a single BoM template with component quantity set by variant attribute.</p>
+
+      <h3>What is the difference between a Work Center and an Operation in Odoo?</h3>
+      <p>A Work Center is a physical resource — a machine, a production line, or a team. An Operation is a task performed at that Work Center: cutting, stitching, finishing. A Routing links Operations to Work Centers in sequence. Work Centers have capacity (hours/day and parallel operators); Operations have standard duration per unit produced.</p>
+
+      <h3>How does Odoo handle production variances?</h3>
+      <p>When you close an MO with a produced quantity different from the planned quantity, Odoo offers two options: create a backorder (for the remaining quantity to be produced later) or close the shortfall immediately. Component consumption is proportionally adjusted to the actual quantity produced. Cost variances (actual consumption vs. BoM standard) are visible in the Production Variance report — critical for profitability tracking in Bangladesh manufacturing.</p>
+    </div>
+  </article>
+
+  <footer>
+    <div class="shell">
+      <div class="post-foot">
+        <span class="eyebrow">Continue exploring</span>
+        <div class="next">
+          <a class="next-card" href="0012-odoo-erp-cost-bangladesh.html">
+            <span class="dir">Older · 0012</span>
+            <h4>Odoo ERP implementation cost in Bangladesh</h4>
+            <p>Real-world cost breakdown — licensing, consulting, training, and total cost of ownership.</p>
+            <span class="arrow">→</span>
+          </a>
+          <a class="next-card" href="0014-odoo-accounting-setup-bangladesh.html">
+            <span class="dir">Newer · 0014</span>
+            <h4>Odoo Accounting setup for Bangladesh</h4>
+            <p>Chart of Accounts, fiscal positions, and NBR compliance hooks for Bangladesh businesses.</p>
+            <span class="arrow">→</span>
+          </a>
+        </div>
+      </div>
+      <div class="foot">
+        <span>© 2026 Mehedi Hasan · Lab / 0013</span>
+        <span><a href="../index.html#lab">↑ Back to lab index</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="_toc.js" defer></script>
+</body>
+
+</html>

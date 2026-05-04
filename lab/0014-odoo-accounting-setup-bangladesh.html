@@ -1,0 +1,578 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description"
+    content="Odoo Accounting setup guide for Bangladesh — Chart of Accounts structure, fiscal positions for domestic and export, bank journal configuration, and NBR VAT compliance hooks." />
+  <meta name="robots" content="index, follow" />
+  <title>Odoo Accounting Setup Bangladesh | NBR VAT | Mehedi Hasan</title>
+  <link rel="canonical" href="https://mhasan.me/lab/0014-odoo-accounting-setup-bangladesh" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png" />
+  <!-- Open Graph -->
+  <meta property="og:title" content="Odoo Accounting Setup for Bangladesh: Chart of Accounts & Fiscal Positions (2026) | Mehedi Hasan" />
+  <meta property="og:description"
+    content="How to configure Odoo Accounting for Bangladesh — COA structure, fiscal positions for VAT and export, bank journals, and NBR compliance. Built from live deployments." />
+  <meta property="og:url" content="https://mhasan.me/lab/0014-odoo-accounting-setup-bangladesh" />
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="https://mhasan.me/assets/og-default.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:site_name" content="Mehedi Hasan | Odoo ERP Consultant" />
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Odoo Accounting Setup for Bangladesh: Chart of Accounts & Fiscal Positions (2026)" />
+  <meta name="twitter:description"
+    content="Odoo Accounting configuration for Bangladesh — COA, fiscal positions, bank journals, and NBR VAT compliance." />
+  <meta name="twitter:image" content="https://mhasan.me/assets/og-default.jpg" />
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Odoo Accounting Setup for Bangladesh: Chart of Accounts & Fiscal Positions (2026)",
+    "description": "A practitioner's guide to configuring Odoo Accounting for Bangladesh businesses — covering the Chart of Accounts structure, fiscal positions, bank journal setup, payment terms, and NBR VAT compliance hooks.",
+    "datePublished": "2026-05-04T10:00:00+06:00",
+    "dateModified": "2026-05-04T10:00:00+06:00",
+    "author": {
+      "@type": "Person",
+      "name": "Mehedi Hasan",
+      "url": "https://mhasan.me",
+      "jobTitle": "Odoo ERP Consultant & Business Analyst",
+      "sameAs": "https://www.linkedin.com/in/mehedi-hasan-consultant/"
+    },
+    "publisher": { "@type": "Person", "name": "Mehedi Hasan", "url": "https://mhasan.me" },
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://mhasan.me/lab/0014-odoo-accounting-setup-bangladesh" }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://mhasan.me" },
+      { "@type": "ListItem", "position": 2, "name": "Lab", "item": "https://mhasan.me/lab/" },
+      { "@type": "ListItem", "position": 3, "name": "Odoo Accounting Setup Bangladesh", "item": "https://mhasan.me/lab/0014-odoo-accounting-setup-bangladesh" }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Does Odoo have a Bangladesh Chart of Accounts template?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Odoo does not ship a pre-built Bangladesh Chart of Accounts template. When you install the Accounting module, it installs a generic COA. You must customise it to match Bangladesh accounting standards: NBR tax account codes, VAT payable/receivable accounts, AIT/TDS accounts, and the standard groupings used for Bangladesh corporate tax returns."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I configure VAT for Bangladesh in Odoo?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "In Odoo, Bangladesh VAT is configured as a Tax record: 15% VAT rate, type 'Sales' or 'Purchase', posted to dedicated Tax Account codes (VAT Payable for sales, VAT Creditable Input for purchases). These tax accounts must be linked in each product or product category. Fiscal Positions then control which tax applies to which customer/supplier — domestic customers get 15% VAT; export customers get 0% (zero-rated)."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What fiscal positions should I create for Bangladesh?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Create at least three fiscal positions for Bangladesh: (1) Domestic — standard 15% VAT applies; (2) Export — zero-rated, Mushak 6.3 applies; (3) VAT-exempt — for transactions covered by NBR exemptions, such as agricultural inputs. Assign fiscal positions to customer and supplier records so Odoo applies the correct tax automatically on every transaction."
+        }
+      }
+    ]
+  }
+]
+</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap">
+  <link rel="stylesheet" href="_styles.css">
+  <style>
+    .pull {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: clamp(24px, 3vw, 36px);
+      line-height: 1.25;
+      color: var(--text);
+      margin: 48px 0;
+      padding: 0;
+      border: none;
+      max-width: 22ch;
+      letter-spacing: -0.01em;
+    }
+    .pull::before {
+      content: "";
+      display: block;
+      width: 36px;
+      height: 1px;
+      background: var(--accent);
+      margin-bottom: 18px;
+    }
+
+    /* COA structure */
+    .coa-group {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+      background: var(--surface);
+      margin: 24px 0;
+    }
+    .coa-row {
+      display: grid;
+      grid-template-columns: 90px 1fr 180px;
+      gap: 0;
+      padding: 12px 18px;
+      border-bottom: 1px solid var(--border);
+      font-size: 13.5px;
+      align-items: center;
+    }
+    .coa-row:last-child { border-bottom: none; }
+    .coa-row.header {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-3);
+      padding: 10px 18px;
+    }
+    .coa-row .code {
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--accent);
+      letter-spacing: 0.04em;
+    }
+    .coa-row .name { color: var(--text); }
+    .coa-row .note { font-size: 12px; color: var(--text-3); }
+    @media(max-width:640px) {
+      .coa-row { grid-template-columns: 70px 1fr; }
+      .coa-row .note { display: none; }
+    }
+
+    /* fiscal position cards */
+    .fp-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin: 24px 0;
+    }
+    .fp-card {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 20px;
+      background: var(--surface);
+    }
+    .fp-card.main { border-color: oklch(0.80 0.17 155 / 0.4); }
+    .fp-card .fp-label {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-3);
+      margin-bottom: 10px;
+    }
+    .fp-card.main .fp-label { color: var(--accent); }
+    .fp-card h4 { margin: 0 0 10px; font-size: 15px; font-weight: 500; color: var(--text); }
+    .fp-card ul { margin: 0; padding: 0 0 0 16px; }
+    .fp-card ul li { font-size: 13px; color: var(--text-2); margin-bottom: 6px; line-height: 1.5; }
+    @media(max-width:700px) { .fp-grid { grid-template-columns: 1fr; } }
+
+    /* step list */
+    .step-list {
+      list-style: none;
+      padding: 0;
+      margin: 20px 0;
+      counter-reset: steps;
+    }
+    .step-list li {
+      counter-increment: steps;
+      display: flex;
+      gap: 16px;
+      padding: 16px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 14.5px;
+      color: var(--text-2);
+      line-height: 1.6;
+    }
+    .step-list li:last-child { border-bottom: none; }
+    .step-list li::before {
+      content: counter(steps, decimal-leading-zero);
+      font-family: var(--mono);
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--accent);
+      letter-spacing: 0.06em;
+      flex: none;
+      width: 28px;
+      padding-top: 2px;
+    }
+    .step-list li strong { color: var(--text); }
+  </style>
+</head>
+
+<body>
+  <div class="grid-bg"></div>
+
+  <header class="nav">
+    <div class="shell">
+      <div class="nav-inner">
+        <a class="brand" href="../index.html">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span class="brand-name"><b>Mehedi Hasan</b><em>ERP · Business Analyst</em></span>
+        </a>
+        <a class="back-link" href="../index.html#lab">← Back to Lab</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="post-head">
+    <div class="shell">
+      <span class="eyebrow">Technical Lab · 0014</span>
+      <h1>Odoo Accounting setup for Bangladesh — <span class="serif">chart of accounts & fiscal positions.</span></h1>
+      <p class="lede">How to configure Odoo's accounting engine for Bangladesh: COA structure, fiscal positions for domestic and export, bank journals, payment terms, and the NBR VAT compliance hooks every deployment needs.</p>
+      <div class="post-meta">
+        <span class="chip accent">Setup Guide</span>
+        <span class="chip">Accounting</span>
+        <span class="chip">Bangladesh</span>
+        <span class="chip">NBR · VAT</span>
+      </div>
+      <div class="byline">
+        <span>Published<b>May 2026</b></span>
+        <span>Read time<b>11 minutes</b></span>
+        <span>Form<b>Configuration Guide</b></span>
+        <span>Scope<b>SME to Enterprise</b></span>
+      </div>
+    </div>
+  </section>
+
+  <article class="post">
+    <aside class="toc">
+      <div class="toc-k">In this guide</div>
+      <ol>
+        <li><a href="#why-first">Why accounting setup comes first</a></li>
+        <li><a href="#install">Installing the Accounting module</a></li>
+        <li><a href="#coa">Chart of Accounts for Bangladesh</a></li>
+        <li><a href="#taxes">Tax configuration</a></li>
+        <li><a href="#fiscal">Fiscal positions</a></li>
+        <li><a href="#journals">Bank &amp; cash journals</a></li>
+        <li><a href="#payment-terms">Payment terms</a></li>
+        <li><a href="#opening">Opening balances</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ol>
+    </aside>
+
+    <div class="body">
+      <p>Accounting configuration is the most consequential setup decision in any Odoo deployment — and the one most often rushed. In Bangladesh, the stakes are higher than most: a wrong fiscal position means VAT is miscalculated on every transaction. A wrong COA account code means your tax return doesn't reconcile with the system. A wrong costing method (set here, at the accounting layer) means inventory values are untrustworthy from day one.</p>
+
+      <p>This guide follows the setup sequence I use in every Bangladesh deployment: install, COA, taxes, fiscal positions, journals, payment terms, opening balances — in that order. Do not skip ahead.</p>
+
+      <p class="pull">Accounting configuration errors compound silently. One wrong account code produces thousands of wrong journal entries before anyone notices.</p>
+
+      <h2 id="why-first">Why accounting setup must come first</h2>
+
+      <p>Every other Odoo module posts journal entries. Inventory movements create stock valuation entries. Manufacturing Orders move costs from raw materials through WIP to finished goods. Sales orders create receivables. Purchase orders create payables. None of these work correctly unless the accounts they post to exist and are correctly typed.</p>
+
+      <p>The consequence of setting up inventory before accounting: you will need to reverse stock valuation entries, correct account assignments on product categories, and reconcile opening balances — work that takes days. Set up accounting first, and every other module flows into a correctly structured financial ledger from the first transaction.</p>
+
+      <h2 id="install">Installing the Accounting module</h2>
+
+      <p>Apps → Accounting → Install. This also installs Invoicing. If you also need multi-currency (required for exporters), go to Settings → Accounting → Currencies and activate the currencies you trade in (USD, EUR, GBP are most common for Bangladesh exporters). Set BDT as the company currency.</p>
+
+      <p>Under Settings → Accounting, configure:</p>
+
+      <ul>
+        <li><strong>Fiscal Year</strong> — Bangladesh fiscal year is July 1 to June 30. Set this before creating any journal entries.</li>
+        <li><strong>Tax Calculation</strong> — "Tax included in price" or "Tax excluded from price". Bangladesh invoices typically show tax separately (exclusive). Confirm with your finance team.</li>
+        <li><strong>Lock Date</strong> — once a period is closed, set a lock date so nobody can post back to it. Critical for audit compliance.</li>
+        <li><strong>Default Accounts</strong> — set the default income, expense, receivable, and payable accounts. These become the fallback when no specific account is set on a product or contact.</li>
+      </ul>
+
+      <h2 id="coa">Chart of Accounts for Bangladesh</h2>
+
+      <p>Odoo installs a generic COA when you activate Accounting. You must customise it for Bangladesh. The standard Bangladesh COA structure follows this grouping:</p>
+
+      <div class="coa-group">
+        <div class="coa-row header">
+          <span>Code</span><span>Account Name</span><span>Notes</span>
+        </div>
+        <div class="coa-row">
+          <span class="code">1000</span><span class="name">Assets</span><span class="note">Current + fixed assets</span>
+        </div>
+        <div class="coa-row">
+          <span class="code">1100</span><span class="name">Cash &amp; Bank</span><span class="note">One account per bank account</span>
+        </div>
+        <div class="coa-row">
+          <span class="code">1200</span><span class="name">Accounts Receivable</span><span class="note">Trade debtors — link to AR reconciliation</span>
+        </div>
+        <div class="coa-row">
+          <span class="code">1300</span><span class="name">Advance to Suppliers</span><span class="note">Common in Bangladesh — vendor advances</span>
+        </div>
+        <div class="coa-row">
+          <span class="code">1400</span><span class="name">Inventory / Stock</span><span class="note">Set per product category costing method</span>
+        </div>
+        <div class="coa-row">
+          <span class="code">1500</span><span class="name">VAT Creditable Input</span><span class="note">Input VAT on purchases — reconciled monthly</span>
+        </div>
+        <div class="coa-row">
+          <span class="code">1600</span><span class="name">AIT Receivable (TDS)</span><span class="note">Tax deducted at source on receipts</span>
+        </div>
+        <div class="coa-row">
+          <span class="code">2000</span><span class="name">Liabilities</span><span class="note">Current + long-term liabilities</span>
+        </div>
+        <div class="coa-row">
+          <span class="code">2100</span><span class="name">Accounts Payable</span><span class="note">Trade creditors — link to AP reconciliation</span>
+        </div>
+        <div class="coa-row">
+          <span class="code">2200</span><span class="name">VAT Payable (Output)</span><span class="note">15% VAT collected on sales — remitted to NBR</span>
+        </div>
+        <div class="coa-row">
+          <span class="code">2300</span><span class="name">TDS Payable</span><span class="note">AIT deducted from vendor payments</span>
+        </div>
+        <div class="coa-row">
+          <span class="code">2400</span><span class="name">Salaries &amp; Benefits Payable</span><span class="note">Accrued payroll — HR module posts here</span>
+        </div>
+        <div class="coa-row">
+          <span class="code">3000</span><span class="name">Equity</span><span class="note">Share capital + retained earnings</span>
+        </div>
+        <div class="coa-row">
+          <span class="code">4000</span><span class="name">Revenue</span><span class="note">Sales by category (domestic, export)</span>
+        </div>
+        <div class="coa-row">
+          <span class="code">4100</span><span class="name">Domestic Sales</span><span class="note">VATable sales in Bangladesh</span>
+        </div>
+        <div class="coa-row">
+          <span class="code">4200</span><span class="name">Export Sales</span><span class="note">Zero-rated; separate for tax return</span>
+        </div>
+        <div class="coa-row">
+          <span class="code">5000</span><span class="name">Cost of Goods Sold</span><span class="note">Manufacturing &amp; inventory COGS</span>
+        </div>
+        <div class="coa-row">
+          <span class="code">6000</span><span class="name">Operating Expenses</span><span class="note">Admin, selling, finance charges</span>
+        </div>
+      </div>
+
+      <div class="callout">
+        <span class="tag">Key accounts to add</span>
+        <p>Odoo's generic COA misses three accounts that Bangladesh businesses need: <strong>Advance to Suppliers</strong> (vendor advances paid before delivery — very common in local procurement), <strong>AIT Receivable</strong> (TDS withheld from your receipts by customers), and <strong>TDS Payable</strong> (AIT you must deduct from vendor payments). Add all three before go-live.</p>
+      </div>
+
+      <h2 id="taxes">Tax configuration</h2>
+
+      <p>Accounting → Configuration → Taxes → New. Bangladesh requires the following tax records at minimum:</p>
+
+      <table>
+        <thead>
+          <tr><th>Tax Name</th><th>Rate</th><th>Type</th><th>Account</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>VAT 15% (Sales)</td>
+            <td>15%</td>
+            <td>Sales</td>
+            <td>2200 — VAT Payable</td>
+          </tr>
+          <tr>
+            <td>VAT 15% (Purchase)</td>
+            <td>15%</td>
+            <td>Purchase</td>
+            <td>1500 — VAT Creditable Input</td>
+          </tr>
+          <tr>
+            <td>VAT 0% Export (Sales)</td>
+            <td>0%</td>
+            <td>Sales</td>
+            <td>None (zero-rated)</td>
+          </tr>
+          <tr>
+            <td>AIT 3% (Purchase)</td>
+            <td>3%</td>
+            <td>Purchase (withholding)</td>
+            <td>2300 — TDS Payable</td>
+          </tr>
+          <tr>
+            <td>AIT 5% (Service — Purchase)</td>
+            <td>5%</td>
+            <td>Purchase (withholding)</td>
+            <td>2300 — TDS Payable</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>For each tax, ensure the <strong>tax computation</strong> is "Percentage of Price" and the <strong>tax account</strong> is correctly mapped. Odoo posts one journal entry line per tax on every invoice. If the account is wrong, VAT reconciliation with NBR returns will not work.</p>
+
+      <div class="callout">
+        <span class="tag">NBR compliance link</span>
+        <p>For the full Mushak form setup and VAT reporting workflow in Odoo, see my detailed guide on <a href="0003-nbr-vat-compliance-odoo-bangladesh.html" style="color:var(--accent)">NBR VAT compliance in Odoo Bangladesh</a>. That guide covers Mushak 6.1, 6.2, 6.3, and 9.1 — the most commonly required forms for Bangladesh businesses.</p>
+      </div>
+
+      <h2 id="fiscal">Fiscal positions</h2>
+
+      <p>Fiscal Positions are Odoo's mechanism for automatically applying the right taxes and account mappings based on who you're selling to or buying from. They are the most underused configuration feature in Bangladesh deployments — and the source of most tax errors.</p>
+
+      <p>Create at least these three fiscal positions:</p>
+
+      <div class="fp-grid">
+        <div class="fp-card main">
+          <div class="fp-label">Default</div>
+          <h4>Domestic — VATable</h4>
+          <ul>
+            <li>Tax mapping: VAT 15% Sales → VAT 15% Sales (no change)</li>
+            <li>Assign to all Bangladesh-registered customers</li>
+            <li>Revenue account: 4100 Domestic Sales</li>
+            <li>Triggers Mushak 6.3 (delivery challan) on outgoing shipments</li>
+          </ul>
+        </div>
+        <div class="fp-card">
+          <div class="fp-label">Export / Zero-rated</div>
+          <h4>Export — Zero VAT</h4>
+          <ul>
+            <li>Tax mapping: VAT 15% Sales → VAT 0% Export</li>
+            <li>Assign to all foreign customers and EPZ entities</li>
+            <li>Revenue account: 4200 Export Sales</li>
+            <li>No Mushak 6.3 — export documentation applies instead</li>
+          </ul>
+        </div>
+        <div class="fp-card">
+          <div class="fp-label">Special</div>
+          <h4>VAT-exempt</h4>
+          <ul>
+            <li>Tax mapping: VAT 15% → None (removes tax line)</li>
+            <li>Assign to NBR-exempt counterparties (e.g., agricultural cooperatives)</li>
+            <li>Keep account on main revenue code — exemption is on tax only</li>
+            <li>Document the NBR exemption certificate number on the contact record</li>
+          </ul>
+        </div>
+      </div>
+
+      <p>Assign fiscal positions on the contact (customer/supplier) record — Accounting tab → Fiscal Position. Odoo applies the correct tax automatically on every invoice and purchase order for that partner. If a customer sometimes buys domestically and sometimes exports, create separate contact records or set the fiscal position per order.</p>
+
+      <h2 id="journals">Bank &amp; cash journals</h2>
+
+      <p>Accounting → Configuration → Journals. Create one journal per physical bank account. Bangladesh businesses typically have:</p>
+
+      <ol class="step-list">
+        <li><strong>BDT current account</strong> — main operating account. Journal type: Bank. Currency: BDT. Set the bank account number and bank name. Connect to bank statement import if you do bank reconciliation in Odoo (recommended for all businesses with &gt;50 transactions/month).</li>
+        <li><strong>USD / foreign currency account</strong> — for exporters receiving payments in USD, EUR, or GBP. Journal type: Bank. Currency: USD (or the relevant foreign currency). Odoo auto-converts to BDT at the transaction rate. Exchange gain/loss posts automatically to the accounts you configure.</li>
+        <li><strong>Petty Cash</strong> — Journal type: Cash. Set a maximum float and a responsible user. Petty cash transactions should be entered daily and reconciled weekly in Bangladesh operations — cash leakage is a common audit finding.</li>
+        <li><strong>LC (Letter of Credit) journal</strong> — for businesses using LCs, create a separate bank journal to track LC utilisation. This makes it straightforward to report total LC exposure to the bank at month-end.</li>
+      </ol>
+
+      <div class="callout">
+        <span class="tag">Multi-currency note</span>
+        <p>If you maintain a foreign currency bank account, enable Settings → Accounting → Multi-Currencies → Automatic Currency Rate Update. Link to the Bangladesh Bank official rate feed or update manually monthly. Exchange rate differences are a significant line item in export-oriented Bangladesh P&amp;Ls — don't let Odoo use a stale rate.</p>
+      </div>
+
+      <h2 id="payment-terms">Payment terms</h2>
+
+      <p>Accounting → Configuration → Payment Terms. Create the terms that match your actual contracts. Bangladesh-specific terms to configure:</p>
+
+      <table>
+        <thead>
+          <tr><th>Term Name</th><th>Structure</th><th>Common use</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Immediate</td>
+            <td>100% on invoice date</td>
+            <td>Cash sales, advance payments</td>
+          </tr>
+          <tr>
+            <td>Net 30</td>
+            <td>100% due 30 days after invoice</td>
+            <td>Domestic B2B credit sales</td>
+          </tr>
+          <tr>
+            <td>Net 60</td>
+            <td>100% due 60 days after invoice</td>
+            <td>Large domestic distributor terms</td>
+          </tr>
+          <tr>
+            <td>LC at Sight</td>
+            <td>100% on document presentation</td>
+            <td>Export LC — payment on presentation of shipping docs</td>
+          </tr>
+          <tr>
+            <td>LC 90 Days DP</td>
+            <td>100% due 90 days after LC date</td>
+            <td>Deferred payment LC for export buyers</td>
+          </tr>
+          <tr>
+            <td>50% Advance + 50% on Delivery</td>
+            <td>50% on invoice date + 50% on delivery</td>
+            <td>Local custom manufacturing orders</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>Setting payment terms correctly means Odoo's Aged Receivables and Aged Payables reports become accurate — essential for cash flow management and banking relationships in Bangladesh.</p>
+
+      <h2 id="opening">Opening balances</h2>
+
+      <p>Before you go live, import opening balances from your previous accounting system. In Odoo, this is done by posting a journal entry dated the day before go-live, with the closing balances of every account in your old system as the opening figures.</p>
+
+      <ol class="step-list">
+        <li><strong>Extract trial balance</strong> from your old system as of the go-live date minus one day. Every account with a non-zero balance must be included.</li>
+        <li><strong>Create a journal entry</strong> in Odoo — Accounting → Journal Entries → New. Date: go-live date minus 1 day. Reference: "Opening Balances — [Date]". Add one line per account.</li>
+        <li><strong>Validate the entry</strong> — the entry must balance (debits = credits). If it doesn't, one account is missing. The most common missing account is "Opening Retained Earnings" — the cumulative net of all prior years.</li>
+        <li><strong>Reconcile open items</strong> — for Accounts Receivable and Payable, mark the individual open invoices and bills in Odoo (or import them as draft documents) and reconcile against the opening balance entry. This makes the Aged Receivables accurate from day one.</li>
+      </ol>
+
+      <p>The opening balance step typically takes 3–5 days for a mid-size Bangladesh company. For the full cost and effort breakdown, see my <a href="0012-odoo-erp-cost-bangladesh.html" style="color:var(--accent)">Odoo ERP cost guide</a> — data migration and opening balances account for a larger share of the project budget than most clients expect.</p>
+
+      <div class="callout">
+        <span class="tag">Next step</span>
+        <p>Accounting setup for Bangladesh is part of every implementation I scope. If you're unsure whether your COA structure is correct for NBR compliance or your fiscal positions are mapped correctly, <a href="../index.html#contact" style="color:var(--accent)">let's run a 30-minute configuration review →</a></p>
+      </div>
+
+      <h2 id="faq">Frequently asked questions</h2>
+
+      <h3>Does Odoo have a Bangladesh Chart of Accounts template?</h3>
+      <p>No — Odoo does not ship a pre-built Bangladesh COA. The generic COA installed with the Accounting module needs customisation: add NBR-specific VAT and AIT accounts, split revenue into domestic and export, and add the advance-to-supplier and TDS accounts that Bangladesh operations require. The setup takes 4–8 hours for a standard Bangladesh SME.</p>
+
+      <h3>How do I configure VAT for Bangladesh in Odoo?</h3>
+      <p>Create Tax records for 15% Sales VAT (posting to VAT Payable), 15% Purchase VAT (posting to VAT Creditable Input), and 0% Export VAT. Then create Fiscal Positions that map the correct tax to each customer type — domestic gets 15%, export gets 0%, VAT-exempt gets no tax. Assign fiscal positions to customer records, and Odoo applies the correct tax automatically on every invoice.</p>
+
+      <h3>What fiscal positions should I create for Bangladesh?</h3>
+      <p>Minimum three: Domestic (standard 15% VAT), Export (zero-rated, triggers different documentation flow), and VAT-exempt (removes VAT entirely for NBR-exempt counterparties). Exporters with EPZ customers need a fourth position for EPZ-specific treatment. Assign the correct position to each customer and supplier record during master data setup — this is one step you cannot skip.</p>
+
+      <h3>How do I handle AIT (Tax Deducted at Source) in Odoo?</h3>
+      <p>Configure AIT as Purchase withholding taxes at the rates applicable to your procurement categories (typically 3% for goods, 5% for services). On vendor bills, Odoo deducts the AIT and posts to your TDS Payable account automatically. At month-end, pay the TDS Payable amount to the revenue authority. For income received with AIT deducted by customers, create a separate AIT Receivable account and reconcile against your tax certificates.</p>
+    </div>
+  </article>
+
+  <footer>
+    <div class="shell">
+      <div class="post-foot">
+        <span class="eyebrow">Continue exploring</span>
+        <div class="next">
+          <a class="next-card" href="0013-odoo-manufacturing-module-bangladesh.html">
+            <span class="dir">Older · 0013</span>
+            <h4>Odoo Manufacturing module setup for Bangladesh factories</h4>
+            <p>BoM, Work Centers, routing, and the full Manufacturing Order lifecycle for Bangladesh.</p>
+            <span class="arrow">→</span>
+          </a>
+          <a class="next-card" href="0015-odoo-purchase-vendor-management-bangladesh.html">
+            <span class="dir">Newer · 0015</span>
+            <h4>Odoo Purchase & Vendor Management: Bangladesh SME Playbook</h4>
+            <p>RFQ workflow, approval matrix, 3-way matching, and vendor payment management.</p>
+            <span class="arrow">→</span>
+          </a>
+        </div>
+      </div>
+      <div class="foot">
+        <span>© 2026 Mehedi Hasan · Lab / 0014</span>
+        <span><a href="../index.html#lab">↑ Back to lab index</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="_toc.js" defer></script>
+</body>
+
+</html>

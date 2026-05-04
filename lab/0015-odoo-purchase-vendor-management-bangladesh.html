@@ -1,0 +1,524 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description"
+    content="Odoo Purchase module setup for Bangladesh SMEs — vendor master, RFQ workflow, 3-way matching, approval matrix, reorder rules, and vendor payment management with TDS." />
+  <meta name="robots" content="index, follow" />
+  <title>Odoo Purchase Module Bangladesh | SME Guide | Mehedi Hasan</title>
+  <link rel="canonical" href="https://mhasan.me/lab/0015-odoo-purchase-vendor-management-bangladesh" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png" />
+  <!-- Open Graph -->
+  <meta property="og:title" content="Odoo Purchase & Vendor Management: Bangladesh SME Playbook (2026) | Mehedi Hasan" />
+  <meta property="og:description"
+    content="How to configure Odoo's Purchase module for Bangladesh SMEs — RFQ to PO workflow, 3-way matching, vendor bill management, reorder rules, and TDS on vendor payments." />
+  <meta property="og:url" content="https://mhasan.me/lab/0015-odoo-purchase-vendor-management-bangladesh" />
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="https://mhasan.me/assets/og-default.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:site_name" content="Mehedi Hasan | Odoo ERP Consultant" />
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Odoo Purchase & Vendor Management: Bangladesh SME Playbook (2026)" />
+  <meta name="twitter:description"
+    content="Odoo Purchase module setup for Bangladesh — RFQ workflow, 3-way matching, vendor management, and TDS compliance." />
+  <meta name="twitter:image" content="https://mhasan.me/assets/og-default.jpg" />
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Odoo Purchase & Vendor Management: Bangladesh SME Playbook (2026)",
+    "description": "A practitioner's guide to setting up Odoo's Purchase module for Bangladesh SMEs — covering vendor master setup, RFQ-to-PO workflow, purchase approval matrix, 3-way matching, and vendor payment management including TDS deduction.",
+    "datePublished": "2026-05-04T11:00:00+06:00",
+    "dateModified": "2026-05-04T11:00:00+06:00",
+    "author": {
+      "@type": "Person",
+      "name": "Mehedi Hasan",
+      "url": "https://mhasan.me",
+      "jobTitle": "Odoo ERP Consultant & Business Analyst",
+      "sameAs": "https://www.linkedin.com/in/mehedi-hasan-consultant/"
+    },
+    "publisher": { "@type": "Person", "name": "Mehedi Hasan", "url": "https://mhasan.me" },
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://mhasan.me/lab/0015-odoo-purchase-vendor-management-bangladesh" }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://mhasan.me" },
+      { "@type": "ListItem", "position": 2, "name": "Lab", "item": "https://mhasan.me/lab/" },
+      { "@type": "ListItem", "position": 3, "name": "Odoo Purchase Module Bangladesh", "item": "https://mhasan.me/lab/0015-odoo-purchase-vendor-management-bangladesh" }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How does 3-way matching work in Odoo for Bangladesh businesses?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "3-way matching in Odoo checks that the Purchase Order (what you agreed to buy), the Goods Receipt (what was actually delivered), and the Vendor Bill (what the vendor is charging) all match before payment is approved. Odoo enforces this automatically when vendor bill control is set to 'On Receipt' — the bill can only be validated after the receipt is confirmed, and Odoo flags quantity or price discrepancies. This prevents overpayment and duplicate billing."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I set up purchase approval workflows in Odoo?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Enable purchase approval in Settings → Purchase → Purchase Order Approval → Require approval for purchase orders. Set the minimum order amount that triggers approval. In Odoo, any PO above this threshold requires a second user (configured as purchase manager) to confirm before the order is sent to the vendor. For multi-level approval (e.g., department head then CFO), use a custom approval workflow or the Approvals app."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I handle vendor advance payments in Odoo for Bangladesh?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "For vendor advance payments, create a vendor bill for the advance amount and post it to an 'Advance to Suppliers' account (not the main expense account). When the goods arrive and the final vendor bill is received, create a credit note from the advance and apply it against the invoice. This keeps your Accounts Payable accurate and gives you clear visibility into advance balances — critical for Bangladesh businesses where advance payments to suppliers are very common."
+        }
+      }
+    ]
+  }
+]
+</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap">
+  <link rel="stylesheet" href="_styles.css">
+  <style>
+    .pull {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: clamp(24px, 3vw, 36px);
+      line-height: 1.25;
+      color: var(--text);
+      margin: 48px 0;
+      padding: 0;
+      border: none;
+      max-width: 22ch;
+      letter-spacing: -0.01em;
+    }
+    .pull::before {
+      content: "";
+      display: block;
+      width: 36px;
+      height: 1px;
+      background: var(--accent);
+      margin-bottom: 18px;
+    }
+
+    /* flow diagram */
+    .po-flow {
+      margin: 28px 0;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+      background: var(--surface);
+    }
+    .po-step {
+      display: grid;
+      grid-template-columns: 160px 1fr;
+      border-bottom: 1px solid var(--border);
+    }
+    .po-step:last-child { border-bottom: none; }
+    .po-step .ps-label {
+      padding: 16px 18px;
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      border-right: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      background: oklch(0.80 0.17 155 / 0.04);
+    }
+    .po-step .ps-body {
+      padding: 16px 20px;
+      font-size: 13.5px;
+      color: var(--text-2);
+      line-height: 1.55;
+    }
+    .po-step .ps-body strong { color: var(--text); }
+    @media(max-width:600px) {
+      .po-step { grid-template-columns: 1fr; }
+      .po-step .ps-label { border-right: none; border-bottom: 1px solid var(--border); }
+    }
+
+    /* vendor setup checklist */
+    .vendor-list {
+      list-style: none;
+      padding: 0;
+      margin: 20px 0;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .vendor-list li {
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      gap: 16px;
+      padding: 14px 18px;
+      border-bottom: 1px solid var(--border);
+      font-size: 13.5px;
+      align-items: start;
+    }
+    .vendor-list li:last-child { border-bottom: none; }
+    .vendor-list li .vl-field {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-3);
+      padding-top: 2px;
+    }
+    .vendor-list li .vl-desc { color: var(--text-2); line-height: 1.55; }
+    .vendor-list li .vl-desc strong { color: var(--text); }
+    @media(max-width:640px) {
+      .vendor-list li { grid-template-columns: 1fr; gap: 4px; }
+    }
+
+    /* 3-way match table */
+    .match-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin: 24px 0;
+    }
+    .match-card {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 20px;
+      background: var(--surface);
+    }
+    .match-card .mc-num {
+      font-family: var(--mono);
+      font-size: 28px;
+      font-weight: 500;
+      color: var(--accent);
+      margin-bottom: 8px;
+      line-height: 1;
+    }
+    .match-card h4 { margin: 0 0 8px; font-size: 15px; font-weight: 500; color: var(--text); }
+    .match-card p { margin: 0; font-size: 13px; color: var(--text-2); line-height: 1.55; }
+    @media(max-width:680px) { .match-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+
+<body>
+  <div class="grid-bg"></div>
+
+  <header class="nav">
+    <div class="shell">
+      <div class="nav-inner">
+        <a class="brand" href="../index.html">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span class="brand-name"><b>Mehedi Hasan</b><em>ERP · Business Analyst</em></span>
+        </a>
+        <a class="back-link" href="../index.html#lab">← Back to Lab</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="post-head">
+    <div class="shell">
+      <span class="eyebrow">Technical Lab · 0015</span>
+      <h1>Odoo Purchase & vendor management for Bangladesh SMEs — <span class="serif">the full playbook.</span></h1>
+      <p class="lede">From vendor master setup to 3-way matching, purchase approvals, reorder automation, and vendor payment with TDS deduction — everything the Odoo Purchase module needs to run clean in a Bangladesh SME.</p>
+      <div class="post-meta">
+        <span class="chip accent">Module Guide</span>
+        <span class="chip">Purchase</span>
+        <span class="chip">Bangladesh</span>
+        <span class="chip">Procurement</span>
+      </div>
+      <div class="byline">
+        <span>Published<b>May 2026</b></span>
+        <span>Read time<b>11 minutes</b></span>
+        <span>Form<b>Setup Guide</b></span>
+        <span>Scope<b>SME Procurement</b></span>
+      </div>
+    </div>
+  </section>
+
+  <article class="post">
+    <aside class="toc">
+      <div class="toc-k">In this guide</div>
+      <ol>
+        <li><a href="#module">What the Purchase module covers</a></li>
+        <li><a href="#vendor">Vendor master setup</a></li>
+        <li><a href="#rfq">RFQ to Purchase Order workflow</a></li>
+        <li><a href="#approval">Purchase approval matrix</a></li>
+        <li><a href="#receipt">Goods receipt &amp; 3-way matching</a></li>
+        <li><a href="#bills">Vendor bills &amp; payments</a></li>
+        <li><a href="#reorder">Reorder rules &amp; automation</a></li>
+        <li><a href="#bangladesh">Bangladesh-specific notes</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ol>
+    </aside>
+
+    <div class="body">
+      <p>Procurement is where cash leaves the business. In Bangladesh SMEs, it is also where the most informal processes live — verbal agreements with vendors, handwritten receipts, payments before documents, and no systematic record of what was ordered vs. what arrived vs. what was billed. Odoo's Purchase module formalises all of this. The discipline it enforces is valuable. The configuration required to make it fit Bangladesh workflows is non-trivial.</p>
+
+      <p>This guide covers the full setup: vendor master, RFQ-to-PO workflow, approval controls, 3-way matching, vendor bill management, reorder automation, and the Bangladesh-specific considerations that most Odoo guides overlook.</p>
+
+      <p class="pull">The gap between "what was ordered" and "what was paid" is where procurement fraud lives. 3-way matching closes it.</p>
+
+      <h2 id="module">What the Purchase module covers</h2>
+
+      <p>Odoo Purchase manages the buy side of the business: requesting quotes from vendors, issuing Purchase Orders, receiving goods against those orders, and processing vendor invoices for payment. It integrates directly with:</p>
+
+      <ul>
+        <li><strong>Inventory</strong> — PO confirmation triggers a Goods Receipt in the designated warehouse</li>
+        <li><strong>Accounting</strong> — vendor bills are created from receipts and posted to AP journals</li>
+        <li><strong>Manufacturing</strong> — MRP generates Purchase Orders automatically when raw materials are needed</li>
+        <li><strong>Inventory reordering</strong> — min/max rules trigger RFQs when stock falls below the reorder point</li>
+      </ul>
+
+      <h2 id="vendor">Vendor master setup</h2>
+
+      <p>Every vendor is a Contact in Odoo (Contacts → New). The Purchase tab adds procurement-specific fields. Here is what to configure for each vendor in Bangladesh:</p>
+
+      <ul class="vendor-list">
+        <li>
+          <span class="vl-field">Company Type</span>
+          <span class="vl-desc"><strong>Company</strong> for registered businesses, <strong>Individual</strong> for sole traders. This affects how Odoo formats documents and which tax certificates apply.</span>
+        </li>
+        <li>
+          <span class="vl-field">BIN / Tax ID</span>
+          <span class="vl-desc">Enter the vendor's Business Identification Number (BIN). This is required for input VAT credit — Odoo can print the BIN on purchase orders and vendor receipts. Without it, input VAT claims are unsubstantiated.</span>
+        </li>
+        <li>
+          <span class="vl-field">Payment Terms</span>
+          <span class="vl-desc">Set the agreed payment terms (Net 30, Net 60, Advance, etc.). Odoo uses this to calculate payment due dates on vendor bills and the Aged Payables report.</span>
+        </li>
+        <li>
+          <span class="vl-field">Currency</span>
+          <span class="vl-desc">BDT for domestic vendors; USD/EUR for foreign suppliers. If a domestic vendor quotes in USD, set currency to USD — Odoo converts at the daily rate on the PO date.</span>
+        </li>
+        <li>
+          <span class="vl-field">Fiscal Position</span>
+          <span class="vl-desc">Assign the correct fiscal position (Domestic VATable, VAT-exempt, etc.). This controls which purchase tax applies automatically. Import suppliers should use a "Zero-rated Import" position if you handle customs duty separately.</span>
+        </li>
+        <li>
+          <span class="vl-field">Purchase Lead Time</span>
+          <span class="vl-desc">The vendor's standard delivery lead time in days. Odoo uses this for automated reorder scheduling — the PO is triggered lead-time days before the stock-out date.</span>
+        </li>
+        <li>
+          <span class="vl-field">Vendor Pricelists</span>
+          <span class="vl-desc">Add product-specific prices if you have negotiated rates. When you add a product to an RFQ, Odoo auto-fills the vendor's last or agreed price — eliminating manual price entry errors.</span>
+        </li>
+      </ul>
+
+      <div class="callout">
+        <span class="tag">Migration tip</span>
+        <p>When importing vendor master data from spreadsheets, clean TIN/BIN numbers first — they come in inconsistent formats (with dashes, without dashes, with letters). Odoo stores them as plain text but your VAT reports need them formatted correctly. See my <a href="0008-excel-odoo-migration-checklist.html" style="color:var(--accent)">Excel → Odoo migration checklist</a> for the vendor data cleaning steps I run before every go-live.</p>
+      </div>
+
+      <h2 id="rfq">RFQ to Purchase Order workflow</h2>
+
+      <p>The standard Odoo purchase flow is: Request for Quotation (RFQ) → Purchase Order (PO) → Goods Receipt → Vendor Bill → Payment. Here is each step:</p>
+
+      <div class="po-flow">
+        <div class="po-step">
+          <div class="ps-label">RFQ Created</div>
+          <div class="ps-body"><strong>Purchase → Orders → New.</strong> Select vendor, add product lines with quantity and unit price. RFQ status is "Draft". At this stage you can send the RFQ to the vendor by email (Odoo generates a formatted PDF). Multiple vendors can receive the same RFQ for comparison.</div>
+        </div>
+        <div class="po-step">
+          <div class="ps-label">RFQ Sent</div>
+          <div class="ps-body"><strong>Send RFQ button.</strong> Odoo emails the RFQ to the vendor contact. The vendor can respond with a price confirmation. You update the unit price and delivery date in Odoo based on the vendor's response. If comparing multiple vendors, use the Purchase Alternatives view to select the best offer.</div>
+        </div>
+        <div class="po-step">
+          <div class="ps-label">PO Confirmed</div>
+          <div class="ps-body"><strong>Confirm Order button.</strong> RFQ becomes a Purchase Order. Status changes from "RFQ" to "Purchase Order". A Goods Receipt (incoming shipment) is automatically created in Inventory. If approval is required (configured separately), the PO waits for approval before confirmation.</div>
+        </div>
+        <div class="po-step">
+          <div class="ps-label">Goods Received</div>
+          <div class="ps-body"><strong>Inventory → Receipts.</strong> When goods arrive, validate the receipt. Enter actual received quantities — if they differ from the PO, Odoo creates a backorder for the remaining quantity or lets you close the shortfall. Stock is added to inventory and the inventory valuation is updated.</div>
+        </div>
+        <div class="po-step">
+          <div class="ps-label">Vendor Bill</div>
+          <div class="ps-body"><strong>Purchase → Vendor Bills (from the PO).</strong> Create the vendor bill from the PO or receipt. Odoo pre-fills the lines from the receipt quantities (3-way match). Review for discrepancies, add TDS/AIT deduction, and validate. The bill is now in Accounting → to be paid.</div>
+        </div>
+        <div class="po-step">
+          <div class="ps-label">Payment</div>
+          <div class="ps-body"><strong>Accounting → Vendor Bills → Register Payment.</strong> Select payment journal (bank account), enter payment date and amount. If TDS was deducted, the net payment amount is automatically calculated. Payment is reconciled against the vendor bill and the AP balance clears.</div>
+        </div>
+      </div>
+
+      <h2 id="approval">Purchase approval matrix</h2>
+
+      <p>Enable purchase approvals in Settings → Purchase → Purchase Orders → tick "Purchase Order Approval". Set a threshold amount — any PO above this amount requires a designated approver to confirm before it is sent to the vendor.</p>
+
+      <p>Bangladesh SMEs typically implement a two-level approval matrix:</p>
+
+      <table>
+        <thead>
+          <tr><th>PO Amount</th><th>Required Approver</th><th>Odoo implementation</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Under BDT 50,000</td>
+            <td>Purchase Officer (self-approve)</td>
+            <td>Threshold set at BDT 50,000 — no approval popup below this</td>
+          </tr>
+          <tr>
+            <td>BDT 50,000 – 5 lakh</td>
+            <td>Purchase Manager</td>
+            <td>PO goes to "To Approve" state; manager receives notification</td>
+          </tr>
+          <tr>
+            <td>Above BDT 5 lakh</td>
+            <td>Director / CFO</td>
+            <td>Use the Approvals app for multi-level routing; Odoo base only supports one approval level natively</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>For the third level (Director/CFO approval), the Approvals app (part of the Community edition) extends the base approval mechanism. Configure an Approval Type linked to "Purchase" with a minimum amount threshold and assign the approver by user group.</p>
+
+      <h2 id="receipt">Goods receipt &amp; 3-way matching</h2>
+
+      <p>3-way matching is the control that prevents overpayment. Odoo enforces it when you set the <strong>Vendor Bills control policy</strong> to "On Receipt" (Settings → Purchase → Invoicing Control).</p>
+
+      <div class="match-grid">
+        <div class="match-card">
+          <div class="mc-num">01</div>
+          <h4>Purchase Order</h4>
+          <p>What you agreed to buy: product, quantity, unit price, delivery date. This is your contractual commitment.</p>
+        </div>
+        <div class="match-card">
+          <div class="mc-num">02</div>
+          <h4>Goods Receipt</h4>
+          <p>What was actually delivered to your warehouse: actual quantity received and accepted. Odoo records this as a stock move.</p>
+        </div>
+        <div class="match-card">
+          <div class="mc-num">03</div>
+          <h4>Vendor Bill</h4>
+          <p>What the vendor is charging: quantity billed and price. Odoo pre-fills from the receipt — discrepancies are immediately visible before the bill is validated.</p>
+        </div>
+      </div>
+
+      <p>When all three documents match, the vendor bill can be validated and paid. When they don't — a vendor bills for 100 units but only 80 were received, or the price on the bill exceeds the PO — Odoo flags the discrepancy. Finance must resolve it before payment. This single control, consistently applied, eliminates the most common procurement fraud pattern in Bangladesh SMEs.</p>
+
+      <h2 id="bills">Vendor bills &amp; payments</h2>
+
+      <p>Once a vendor bill is validated in Odoo, it sits in Accounting → Vendor Bills → To Pay. Key payment controls for Bangladesh businesses:</p>
+
+      <ul>
+        <li><strong>TDS deduction</strong> — configure AIT withholding tax on the vendor (Accounting tab → Fiscal Position with AIT). When paying, Odoo deducts the AIT and shows the net payable. The AIT amount posts to TDS Payable and must be remitted to NBR separately.</li>
+        <li><strong>Advance payment reconciliation</strong> — if you paid an advance before receiving goods, create a vendor credit note from the advance payment and apply it against the vendor bill. The net amount is the balance due.</li>
+        <li><strong>Payment batch</strong> — at end of week, use Accounting → Batch Payments to pay multiple vendor bills in a single bank transfer. Odoo generates a reconciliation report matching the batch to the bank statement.</li>
+        <li><strong>Outstanding payables report</strong> — Accounting → Reporting → Aged Payables. Review weekly. In Bangladesh, vendor relationships are personal — overdue balances damage credit terms. Keep the Aged Payables clean.</li>
+      </ul>
+
+      <h2 id="reorder">Reorder rules &amp; automation</h2>
+
+      <p>Odoo can trigger Purchase Orders automatically when stock falls below a minimum level. This is configured via Inventory → Replenishment → Reorder Rules.</p>
+
+      <p>For each product that needs automatic replenishment, set:</p>
+
+      <ul>
+        <li><strong>Minimum Quantity</strong> — the stock level that triggers the reorder</li>
+        <li><strong>Maximum Quantity</strong> — the level to replenish up to</li>
+        <li><strong>Quantity Multiple</strong> — purchase in multiples of this number (e.g., 500 pcs per carton)</li>
+        <li><strong>Lead Time</strong> — days until delivery. Odoo uses this to schedule the PO so goods arrive before stock hits zero.</li>
+        <li><strong>Preferred Vendor</strong> — set on the product or in vendor pricelists. Odoo creates the RFQ for this vendor automatically.</li>
+      </ul>
+
+      <p>Run the scheduler manually (Inventory → Replenishment → Run Scheduler) or let Odoo run it daily via the automated scheduler. For Bangladesh factories where raw material consumption is predictable, reorder rules eliminate the "we ran out of thread at midnight" emergency purchases that cost 20% more from local markets.</p>
+
+      <div class="callout">
+        <span class="tag">Inventory valuation link</span>
+        <p>The unit cost of goods received through Purchase Orders directly affects your inventory valuation. If you're using AVCO, each receipt recalculates the weighted average cost of the product. If the price on your PO doesn't match what you're actually paying (a common issue with vendor price changes), your COGS and gross margin reports will be wrong. See my <a href="0011-odoo-inventory-valuation-cheatsheet.html" style="color:var(--accent)">inventory valuation cheatsheet</a> for how to handle price variance correctly.</p>
+      </div>
+
+      <h2 id="bangladesh">Bangladesh-specific procurement notes</h2>
+
+      <table>
+        <thead>
+          <tr><th>Bangladesh Pattern</th><th>Odoo handling</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Vendor advance payments before delivery</td>
+            <td>Create a vendor bill for the advance amount posted to "Advance to Suppliers" account. Apply as a credit note against the final vendor bill on delivery. Never post directly to the expense account — it overstates cost before the goods arrive.</td>
+          </tr>
+          <tr>
+            <td>Cash purchases from local markets</td>
+            <td>Create a Purchase Order (even for cash purchases) to maintain the 3-way match. Use Petty Cash as the payment journal. This keeps procurement records complete for audit — "no PO, no payment" is a policy worth enforcing from day one.</td>
+          </tr>
+          <tr>
+            <td>Vendor price renegotiation mid-contract</td>
+            <td>Update the vendor pricelist in Odoo. For open POs, amend the unit price before the receipt is validated — changing price after validation requires a credit note and a new bill.</td>
+          </tr>
+          <tr>
+            <td>Import purchases with LC and customs duty</td>
+            <td>Create the PO in the foreign currency. Receive goods at the PO price. Add landed costs (freight, customs duty, port charges) separately via Inventory → Landed Costs — this adds them to the product cost. Do not add to the vendor bill of the supplier.</td>
+          </tr>
+          <tr>
+            <td>Multiple vendors for same product</td>
+            <td>Add all vendors in the product's Vendor Pricelist tab with their respective prices and minimum quantities. When creating an RFQ, Odoo shows the best vendor price automatically. Use Purchase Alternatives to compare simultaneously.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="callout">
+        <span class="tag">Next step</span>
+        <p>Purchase module configuration is part of every SME implementation I lead in Bangladesh. If you're running procurement on WhatsApp and spreadsheets and want to formalise it, <a href="../index.html#contact" style="color:var(--accent)">let's talk about a structured transition →</a></p>
+      </div>
+
+      <h2 id="faq">Frequently asked questions</h2>
+
+      <h3>How does 3-way matching work in Odoo for Bangladesh businesses?</h3>
+      <p>3-way matching checks that the Purchase Order, Goods Receipt, and Vendor Bill all agree. With invoice control set to "On Receipt", a vendor bill can only be created after goods are received. Odoo pre-fills the bill from the receipt quantities — any variance from the PO price or quantity is immediately visible before the bill is validated or paid. This is the primary control against overpayment and duplicate billing.</p>
+
+      <h3>How do I set up purchase approval workflows in Odoo?</h3>
+      <p>Enable Settings → Purchase → Purchase Order Approval → tick "Require approval for purchase orders above..." and set your threshold (e.g., BDT 50,000). Any PO above that amount requires a user with the "Purchase Manager" role to approve before the order is sent. For two-level approval (e.g., manager then director), install the Approvals app and create a custom approval type linked to purchase documents.</p>
+
+      <h3>How do I handle vendor advance payments in Odoo?</h3>
+      <p>Post advances to a dedicated "Advance to Suppliers" balance sheet account — never directly to expense. When the vendor delivers and bills, create a vendor credit note from the advance entry and apply it against the vendor bill. The net remaining amount is the payment due. This gives you a clean advance balance per vendor and prevents double-counting cost.</p>
+
+      <h3>Can Odoo generate Purchase Orders automatically for manufacturing?</h3>
+      <p>Yes. When the Manufacturing module's MRP scheduler runs, it calculates raw material requirements from open Manufacturing Orders and existing stock, and generates RFQs for the shortfall — automatically, for the correct vendor, at the correct lead time. This is called Make to Stock replenishment. For custom or job-order production, use Make to Order rules on the product, and Odoo generates the PO when the Sales Order is confirmed.</p>
+    </div>
+  </article>
+
+  <footer>
+    <div class="shell">
+      <div class="post-foot">
+        <span class="eyebrow">Continue exploring</span>
+        <div class="next">
+          <a class="next-card" href="0014-odoo-accounting-setup-bangladesh.html">
+            <span class="dir">Older · 0014</span>
+            <h4>Odoo Accounting setup for Bangladesh</h4>
+            <p>Chart of Accounts, fiscal positions, bank journals, and NBR VAT compliance.</p>
+            <span class="arrow">→</span>
+          </a>
+          <a class="next-card" href="0016-odoo-hr-payroll-bangladesh.html">
+            <span class="dir">Newer · 0016</span>
+            <h4>Odoo HR & Payroll Bangladesh</h4>
+            <p>PF, Gratuity, leave policy, and Bangladesh labor law compliance in Odoo.</p>
+            <span class="arrow">→</span>
+          </a>
+        </div>
+      </div>
+      <div class="foot">
+        <span>© 2026 Mehedi Hasan · Lab / 0015</span>
+        <span><a href="../index.html#lab">↑ Back to lab index</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="_toc.js" defer></script>
+</body>
+
+</html>

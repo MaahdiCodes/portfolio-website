@@ -1,0 +1,527 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description"
+    content="Odoo Sales & CRM setup for Bangladesh exporters — B2B pipeline stages, multi-currency quotations, proforma invoices for LC, customer master with fiscal positions, and sales KPI dashboards." />
+  <meta name="robots" content="index, follow" />
+  <title>Odoo CRM Bangladesh | B2B Export Pipeline | Mehedi Hasan</title>
+  <link rel="canonical" href="https://mhasan.me/lab/0017-odoo-sales-crm-bangladesh" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png" />
+  <!-- Open Graph -->
+  <meta property="og:title" content="Odoo Sales & CRM for Bangladesh Exporters: B2B Pipeline Setup (2026) | Mehedi Hasan" />
+  <meta property="og:description"
+    content="How to configure Odoo CRM and Sales for Bangladesh exporters — pipeline stages, multi-currency quotations, proforma invoices for LC, and customer fiscal position setup." />
+  <meta property="og:url" content="https://mhasan.me/lab/0017-odoo-sales-crm-bangladesh" />
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="https://mhasan.me/assets/og-default.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:site_name" content="Mehedi Hasan | Odoo ERP Consultant" />
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Odoo Sales & CRM for Bangladesh Exporters: B2B Pipeline Setup (2026)" />
+  <meta name="twitter:description"
+    content="Odoo CRM and Sales configuration for Bangladesh exporters — pipeline, multi-currency, proforma invoices, and fiscal positions." />
+  <meta name="twitter:image" content="https://mhasan.me/assets/og-default.jpg" />
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Odoo Sales & CRM for Bangladesh Exporters: B2B Pipeline Setup (2026)",
+    "description": "A practitioner's guide to configuring Odoo CRM and Sales for Bangladesh exporters — covering B2B pipeline stages, multi-currency quotations, proforma invoices for Letter of Credit, customer master setup with fiscal positions, and sales reporting.",
+    "datePublished": "2026-05-04T13:00:00+06:00",
+    "dateModified": "2026-05-04T13:00:00+06:00",
+    "author": {
+      "@type": "Person",
+      "name": "Mehedi Hasan",
+      "url": "https://mhasan.me",
+      "jobTitle": "Odoo ERP Consultant & Business Analyst",
+      "sameAs": "https://www.linkedin.com/in/mehedi-hasan-consultant/"
+    },
+    "publisher": { "@type": "Person", "name": "Mehedi Hasan", "url": "https://mhasan.me" },
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://mhasan.me/lab/0017-odoo-sales-crm-bangladesh" }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://mhasan.me" },
+      { "@type": "ListItem", "position": 2, "name": "Lab", "item": "https://mhasan.me/lab/" },
+      { "@type": "ListItem", "position": 3, "name": "Odoo Sales CRM Bangladesh", "item": "https://mhasan.me/lab/0017-odoo-sales-crm-bangladesh" }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is the difference between Odoo CRM and Odoo Sales?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Odoo CRM manages the pre-sale process: leads, opportunities, pipeline stages, follow-up activities, and win/loss tracking. Odoo Sales manages the post-commitment process: quotations, Sales Orders, deliveries, and invoicing. For Bangladesh exporters with long B2B sales cycles (sample → buyer approval → price negotiation → order), CRM handles the opportunity until a price is agreed, then Sales handles the order and fulfillment. Both modules share the same customer database and can be used together or independently."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I generate a proforma invoice in Odoo for Letter of Credit?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "In Odoo Sales, a proforma invoice is generated from a confirmed Sales Order. Go to the Sales Order → Other Info tab → set the Incoterm and shipping terms → then click the 'Preview' button on the Invoice or use the 'Send Proforma Invoice' button (if enabled in Settings → Sales → Invoicing → Proforma Invoices). The proforma invoice shows the buyer, products, quantities, prices, and terms without creating an accounting entry — it is used to open the Letter of Credit at the buyer's bank."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How does Odoo handle multi-currency sales for Bangladesh exporters?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Enable Settings → Accounting → Multi-Currencies. Set the company currency to BDT. Assign USD (or the relevant currency) to the customer record or the Sales Order. Odoo converts the foreign currency price to BDT on the invoice date using the exchange rate set in the system (updated from the Bangladesh Bank rate or manually). Exchange rate differences on payment collection are posted automatically to a Currency Exchange Gain/Loss account."
+        }
+      }
+    ]
+  }
+]
+</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap">
+  <link rel="stylesheet" href="_styles.css">
+  <style>
+    .pull {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: clamp(24px, 3vw, 36px);
+      line-height: 1.25;
+      color: var(--text);
+      margin: 48px 0;
+      padding: 0;
+      border: none;
+      max-width: 22ch;
+      letter-spacing: -0.01em;
+    }
+    .pull::before {
+      content: "";
+      display: block;
+      width: 36px;
+      height: 1px;
+      background: var(--accent);
+      margin-bottom: 18px;
+    }
+
+    /* pipeline stages */
+    .pipeline {
+      margin: 28px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+      background: var(--surface);
+    }
+    .stage {
+      display: grid;
+      grid-template-columns: 200px 1fr 120px;
+      border-bottom: 1px solid var(--border);
+      align-items: start;
+    }
+    .stage:last-child { border-bottom: none; }
+    .stage .st-name {
+      padding: 16px 18px;
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      border-right: 1px solid var(--border);
+      background: oklch(0.80 0.17 155 / 0.04);
+    }
+    .stage .st-desc {
+      padding: 16px 20px;
+      font-size: 13.5px;
+      color: var(--text-2);
+      line-height: 1.55;
+    }
+    .stage .st-desc strong { color: var(--text); }
+    .stage .st-prob {
+      padding: 16px 16px;
+      font-family: var(--mono);
+      font-size: 13px;
+      color: var(--text-3);
+      text-align: right;
+      border-left: 1px solid var(--border);
+    }
+    @media(max-width:700px) {
+      .stage { grid-template-columns: 1fr; }
+      .stage .st-name { border-right: none; border-bottom: 1px solid var(--border); }
+      .stage .st-prob { border-left: none; border-top: 1px solid var(--border); text-align: left; }
+    }
+
+    /* module compare */
+    .mod-split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin: 24px 0;
+    }
+    .mod-card {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 20px;
+      background: var(--surface);
+    }
+    .mod-card.crm { border-color: oklch(0.80 0.17 155 / 0.4); }
+    .mod-card .mc-label {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-3);
+      margin-bottom: 10px;
+    }
+    .mod-card.crm .mc-label { color: var(--accent); }
+    .mod-card h4 { margin: 0 0 10px; font-size: 15px; font-weight: 500; color: var(--text); }
+    .mod-card ul { margin: 0; padding: 0 0 0 16px; }
+    .mod-card ul li { font-size: 13px; color: var(--text-2); margin-bottom: 6px; line-height: 1.5; }
+    @media(max-width:640px) { .mod-split { grid-template-columns: 1fr; } }
+
+    /* customer setup fields */
+    .cust-list {
+      list-style: none;
+      padding: 0;
+      margin: 20px 0;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .cust-list li {
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      gap: 16px;
+      padding: 14px 18px;
+      border-bottom: 1px solid var(--border);
+      font-size: 13.5px;
+      align-items: start;
+    }
+    .cust-list li:last-child { border-bottom: none; }
+    .cust-list li .cl-field {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-3);
+      padding-top: 2px;
+    }
+    .cust-list li .cl-desc { color: var(--text-2); line-height: 1.55; }
+    .cust-list li .cl-desc strong { color: var(--text); }
+    @media(max-width:640px) {
+      .cust-list li { grid-template-columns: 1fr; gap: 4px; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="grid-bg"></div>
+
+  <header class="nav">
+    <div class="shell">
+      <div class="nav-inner">
+        <a class="brand" href="../index.html">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span class="brand-name"><b>Mehedi Hasan</b><em>ERP · Business Analyst</em></span>
+        </a>
+        <a class="back-link" href="../index.html#lab">← Back to Lab</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="post-head">
+    <div class="shell">
+      <span class="eyebrow">Technical Lab · 0017</span>
+      <h1>Odoo Sales & CRM for Bangladesh exporters — <span class="serif">the B2B pipeline setup.</span></h1>
+      <p class="lede">Pipeline stages for long export sales cycles, multi-currency quotations, proforma invoices for LC opening, customer master with fiscal positions, and the sales reports that matter. Built from cycle export, RMG, and textile deployments.</p>
+      <div class="post-meta">
+        <span class="chip accent">Module Guide</span>
+        <span class="chip">CRM · Sales</span>
+        <span class="chip">Bangladesh Exporters</span>
+        <span class="chip">Multi-currency</span>
+      </div>
+      <div class="byline">
+        <span>Published<b>May 2026</b></span>
+        <span>Read time<b>11 minutes</b></span>
+        <span>Form<b>Setup Guide</b></span>
+        <span>Scope<b>B2B Export Operations</b></span>
+      </div>
+    </div>
+  </section>
+
+  <article class="post">
+    <aside class="toc">
+      <div class="toc-k">In this guide</div>
+      <ol>
+        <li><a href="#crm-vs-sales">CRM vs Sales — what each does</a></li>
+        <li><a href="#pipeline">Pipeline stages for B2B export</a></li>
+        <li><a href="#customer">Customer master setup</a></li>
+        <li><a href="#quotation">Quotations &amp; Sales Orders</a></li>
+        <li><a href="#proforma">Proforma invoices for LC</a></li>
+        <li><a href="#multicurrency">Multi-currency configuration</a></li>
+        <li><a href="#reporting">Sales reporting &amp; KPIs</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ol>
+    </aside>
+
+    <div class="body">
+      <p>Most Bangladesh exporters I work with have a common problem: the sales process lives in WhatsApp, email, and the MD's notebook. Prices, samples, buyer feedback, order quantities, delivery commitments — all scattered across personal channels. When I ask "what's in the pipeline?", the answer is usually a gut feeling rather than data.</p>
+
+      <p>Odoo's CRM and Sales modules change this — but they need to be configured for the export B2B context: long sales cycles, multi-currency pricing, proforma invoices for LC opening, and fiscal positions that auto-apply zero VAT for foreign buyers. This guide covers the full setup.</p>
+
+      <p class="pull">A pipeline is only useful when it reflects reality. Garbage data in CRM is worse than no CRM — it generates false confidence.</p>
+
+      <h2 id="crm-vs-sales">CRM vs Sales — what each module does</h2>
+
+      <div class="mod-split">
+        <div class="mod-card crm">
+          <div class="mc-label">Pre-commitment</div>
+          <h4>CRM (Customer Relationship Management)</h4>
+          <ul>
+            <li>Manage buyer enquiries as <strong>Leads → Opportunities</strong></li>
+            <li>Track pipeline stages from first contact to order commitment</li>
+            <li>Log activities: calls, emails, factory visits, sample shipments</li>
+            <li>Assign salespeople and track response times</li>
+            <li>Win/loss analysis by buyer, product, and salesperson</li>
+            <li>Revenue forecast from pipeline probability</li>
+          </ul>
+        </div>
+        <div class="mod-card">
+          <div class="mc-label">Post-commitment</div>
+          <h4>Sales (Order Management)</h4>
+          <ul>
+            <li>Create quotations and <strong>Sales Orders (SO)</strong> once price is agreed</li>
+            <li>Issue proforma invoices for LC opening</li>
+            <li>Trigger delivery / shipment from confirmed SO</li>
+            <li>Create customer invoices (commercial invoice)</li>
+            <li>Track payment against invoices</li>
+            <li>Sales reports: revenue by product, customer, period</li>
+          </ul>
+        </div>
+      </div>
+
+      <p>For Bangladesh exporters, the CRM-to-Sales handover typically happens when the buyer issues a Purchase Order or a Letter of Credit is opened. Until then, the opportunity lives in CRM. Once the LC is in hand, it moves to a confirmed Sales Order.</p>
+
+      <h2 id="pipeline">Pipeline stages for B2B export</h2>
+
+      <p>The default Odoo CRM pipeline stages (New, Qualified, Proposition, Won) are too generic for export manufacturing. Here are the stages I configure for Bangladesh garment, textile, and cycle export businesses:</p>
+
+      <div class="pipeline">
+        <div class="stage">
+          <div class="st-name">Enquiry Received</div>
+          <div class="st-desc"><strong>Buyer contacted us or we approached them.</strong> Log the enquiry in CRM as an Opportunity. Record: buyer company, country, product category, estimated annual volume, and who referred them. Assign a salesperson and set the first follow-up activity.</div>
+          <div class="st-prob">10%</div>
+        </div>
+        <div class="stage">
+          <div class="st-name">Sample Sent</div>
+          <div class="st-desc"><strong>Samples dispatched to buyer.</strong> This is the investment stage — samples cost money and time. Record the sample number, product details, and expected feedback date. Most Bangladesh export enquiries stall here. Follow-up activities are critical.</div>
+          <div class="st-prob">25%</div>
+        </div>
+        <div class="stage">
+          <div class="st-name">Sample Approved</div>
+          <div class="st-desc"><strong>Buyer has approved the sample.</strong> Price negotiation begins. Create a draft Quotation from the Opportunity — link the CRM opportunity to the Sales Order. Log all price revision rounds as activities. This is where costing accuracy matters most.</div>
+          <div class="st-prob">40%</div>
+        </div>
+        <div class="stage">
+          <div class="st-name">Price Agreed</div>
+          <div class="st-desc"><strong>Price and delivery terms confirmed.</strong> Buyer's PI (Purchase Intent) or email confirmation received. Confirm the Sales Order in Odoo. If LC payment: issue the Proforma Invoice for LC opening. If TT payment: confirm order and schedule production.</div>
+          <div class="st-prob">70%</div>
+        </div>
+        <div class="stage">
+          <div class="st-name">LC / PO Received</div>
+          <div class="st-desc"><strong>LC or Purchase Order officially in hand.</strong> LC details are logged against the Sales Order (LC number, expiry date, amount, bank). Production scheduling begins. This stage triggers the Manufacturing Order if using Make to Order route.</div>
+          <div class="st-prob">85%</div>
+        </div>
+        <div class="stage">
+          <div class="st-name">Won</div>
+          <div class="st-desc"><strong>Goods shipped and documents submitted.</strong> Sales Order is fulfilled and invoiced. Mark the CRM opportunity as Won. The commercial invoice, packing list, and bill of lading are uploaded against the Sales Order record.</div>
+          <div class="st-prob">100%</div>
+        </div>
+      </div>
+
+      <p>Configure these stages in CRM → Configuration → Stages. The "probability" column on the right is used by Odoo's revenue forecasting — make sure it reflects your actual win rates per stage, not just round numbers.</p>
+
+      <h2 id="customer">Customer master setup</h2>
+
+      <p>Every buyer (foreign or domestic) is a Contact in Odoo. For export customers, configure these fields carefully — they control how Odoo generates invoices, applies tax, and handles currency:</p>
+
+      <ul class="cust-list">
+        <li>
+          <span class="cl-field">Company Type</span>
+          <span class="cl-desc"><strong>Company</strong> for corporate buyers. This affects how the contact name prints on commercial invoices and shipping documents. For individual buyers (rare in B2B export), use Individual.</span>
+        </li>
+        <li>
+          <span class="cl-field">Country</span>
+          <span class="cl-desc"><strong>Critical for export compliance.</strong> Set the buyer's country. Odoo uses this with fiscal positions to automatically determine that this is a zero-VAT export sale. Without the correct country, VAT may be applied incorrectly on the invoice.</span>
+        </li>
+        <li>
+          <span class="cl-field">Currency</span>
+          <span class="cl-desc">Set to <strong>USD, EUR, GBP</strong>, or the buyer's trading currency. All quotations and invoices for this buyer will default to this currency. Odoo converts to BDT in the accounting layer using the rate on the document date.</span>
+        </li>
+        <li>
+          <span class="cl-field">Fiscal Position</span>
+          <span class="cl-desc">Assign <strong>"Export — Zero VAT"</strong> to all foreign buyers. This maps the standard 15% VAT to 0%, and changes the revenue account from "Domestic Sales" to "Export Sales". Without this, every export invoice will incorrectly include 15% VAT.</span>
+        </li>
+        <li>
+          <span class="cl-field">Payment Terms</span>
+          <span class="cl-desc">Set the agreed payment terms: LC at Sight, LC 90 Days DP, TT 30 days, etc. This populates the invoice due date automatically and drives the Aged Receivables report. Accurate payment terms are the foundation of export cash flow management.</span>
+        </li>
+        <li>
+          <span class="cl-field">Incoterm (default)</span>
+          <span class="cl-desc">Set the buyer's standard Incoterm (FOB Chittagong, CIF Destination, etc.). This prints on quotations and invoices — important for freight responsibility and LC compliance. Can be overridden per Sales Order if terms vary by shipment.</span>
+        </li>
+        <li>
+          <span class="cl-field">Salesperson</span>
+          <span class="cl-desc">Assign the responsible salesperson. This links all opportunities, orders, and invoices for this buyer to the salesperson's performance report — essential for export commission tracking.</span>
+        </li>
+      </ul>
+
+      <h2 id="quotation">Quotations &amp; Sales Orders</h2>
+
+      <p>Sales → Orders → Quotations → New. For a Bangladesh export quotation:</p>
+
+      <ol>
+        <li><strong>Select customer</strong> — fiscal position, currency, payment terms, and Incoterm auto-populate from the customer record.</li>
+        <li><strong>Set the order date and expiry</strong> — export quotes typically have a 15–30 day validity. Set expiry date on the quotation.</li>
+        <li><strong>Add product lines</strong> — product, quantity (in export units: pcs, dozens, cartons), unit price in the buyer's currency. Odoo calculates the total in both foreign currency and BDT.</li>
+        <li><strong>Shipping &amp; delivery tab</strong> — set the commitment date, delivery address (port), and Incoterm. For LC sales, the commitment date must match the LC shipment deadline.</li>
+        <li><strong>Send by email</strong> — Odoo generates a formatted PDF quotation. Send directly from Odoo so the email is logged against the record — no more "I sent it but can't find the email" situations.</li>
+        <li><strong>Confirm the Sales Order</strong> — when the buyer confirms. A delivery order (outgoing shipment) is created automatically. If using Make to Order, a Manufacturing Order is also triggered.</li>
+      </ol>
+
+      <div class="callout">
+        <span class="tag">Accounting integration</span>
+        <p>Odoo Sales and Accounting share the same customer database, fiscal positions, and currency settings. If your accounting setup is correct (see my <a href="0014-odoo-accounting-setup-bangladesh.html" style="color:var(--accent)">Odoo Accounting setup guide</a>), the invoice generated from a Sales Order will automatically: apply 0% VAT for export customers, post to the Export Sales revenue account, and show the BDT equivalent at the correct exchange rate — with no manual intervention.</p>
+      </div>
+
+      <h2 id="proforma">Proforma invoices for LC</h2>
+
+      <p>For export buyers opening a Letter of Credit, a proforma invoice is the document the buyer presents to their bank. It must show: exporter details, buyer details, product description, quantity, unit price, total value, currency, Incoterm, and shipment terms. It does not create an accounting entry.</p>
+
+      <p>To enable proforma invoices in Odoo: Settings → Sales → Invoicing → tick "Proforma Invoice". After enabling, the Sales Order will have a "Send Pro Forma Invoice" button — click it to generate and email the proforma directly from the order.</p>
+
+      <p>For LC compliance, the proforma invoice must match the LC terms exactly — product description, quantity, amount, and Incoterm must be identical to what the buyer declared to their bank. Any discrepancy will cause a document discrepancy when you present shipping documents for payment. Build a proforma review step into your sales process before sending to the buyer.</p>
+
+      <div class="callout">
+        <span class="tag">Multi-company note</span>
+        <p>If your group has a trading entity that sells to buyers and a manufacturing entity that produces, the Sales Order may be raised in the trading company but fulfilled by the factory. This requires an intercompany Sales Order-to-Purchase Order flow. For the full intercompany configuration, see my <a href="0006-odoo-multi-company-setup-guide.html" style="color:var(--accent)">Odoo multi-company setup guide</a>.</p>
+      </div>
+
+      <h2 id="multicurrency">Multi-currency configuration</h2>
+
+      <p>For Bangladesh exporters, multi-currency is not optional — it is mandatory. Here is the full configuration:</p>
+
+      <ol>
+        <li><strong>Enable multi-currency</strong> — Settings → Accounting → Currencies → tick "Multi-Currencies". Activate USD, EUR, GBP (and any other currencies you trade in).</li>
+        <li><strong>Set exchange rates</strong> — Accounting → Configuration → Currencies → select USD → set the Rate. Options: manual update, automatic from a currency rate provider. For Bangladesh, update manually from the Bangladesh Bank official rate, or use a third-party provider that pulls the BB rate. Update weekly at minimum.</li>
+        <li><strong>Currency exchange accounts</strong> — Accounting → Configuration → Settings → Currency Exchange Gain/Loss accounts. These accounts receive the exchange rate differences when the payment rate differs from the invoice rate. Every Bangladesh exporter will have exchange gain/loss entries every month.</li>
+        <li><strong>Foreign currency invoices</strong> — when you invoice a USD customer, the invoice shows amounts in USD. The BDT equivalent is shown in a separate column. The accounting entry posts in BDT at the invoice date rate. When the payment arrives and you book it (at the actual rate on the payment date), the rate difference posts automatically to gain/loss.</li>
+      </ol>
+
+      <h2 id="reporting">Sales reporting &amp; KPIs</h2>
+
+      <p>Odoo Sales provides built-in reporting. The KPIs most useful for Bangladesh export businesses:</p>
+
+      <table>
+        <thead>
+          <tr><th>Report / KPI</th><th>Where to find</th><th>Why it matters</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Pipeline by Stage</td>
+            <td>CRM → Pipeline → Kanban view</td>
+            <td>Visualise deal velocity — how fast opportunities move from Sample to LC</td>
+          </tr>
+          <tr>
+            <td>Revenue Forecast</td>
+            <td>CRM → Reporting → Forecast</td>
+            <td>Expected revenue this quarter weighted by stage probability — production planning input</td>
+          </tr>
+          <tr>
+            <td>Sales by Customer</td>
+            <td>Sales → Reporting → Sales Analysis → group by Customer</td>
+            <td>Buyer concentration risk — if 60%+ of revenue is from one buyer, that's a business continuity risk</td>
+          </tr>
+          <tr>
+            <td>Sales by Product</td>
+            <td>Sales → Reporting → Sales Analysis → group by Product</td>
+            <td>Which products / styles drive revenue — informs next season's development</td>
+          </tr>
+          <tr>
+            <td>Sales by Salesperson</td>
+            <td>Sales → Reporting → Sales Analysis → group by Salesperson</td>
+            <td>Commission calculation and performance review</td>
+          </tr>
+          <tr>
+            <td>Aged Receivables</td>
+            <td>Accounting → Reporting → Partner Ledger → Aged Receivables</td>
+            <td>Export payments overdue — critical for LC tracking and bank relationship management</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="callout">
+        <span class="tag">Next step</span>
+        <p>CRM and Sales setup for export businesses involves configuration choices that compound into the accounting and inventory modules. If you're setting up from scratch or cleaning up an existing deployment, <a href="../index.html#contact" style="color:var(--accent)">book a scoping call and I'll map out the right configuration for your business →</a></p>
+      </div>
+
+      <h2 id="faq">Frequently asked questions</h2>
+
+      <h3>What is the difference between Odoo CRM and Odoo Sales?</h3>
+      <p>CRM manages the pre-sale process: leads, opportunities, pipeline stages, sample tracking, and follow-up activities. Sales manages post-commitment: quotations, Sales Orders, deliveries, invoicing, and payment tracking. For Bangladesh exporters, CRM handles the buyer until the LC or PO is confirmed; Sales handles the order and fulfillment. Both share the same customer database and can be linked via the "Create Quotation from CRM" flow.</p>
+
+      <h3>How do I generate a proforma invoice in Odoo for a Letter of Credit?</h3>
+      <p>Enable proforma invoices in Settings → Sales → Invoicing → tick "Proforma Invoice". From any confirmed (or draft) Sales Order, use the "Send Pro Forma Invoice" button. Odoo generates a PDF with your company details, buyer details, products, quantities, unit prices, total value, currency, and Incoterm — everything a buyer's bank needs to open the LC. No accounting entry is created by the proforma.</p>
+
+      <h3>How does Odoo handle multi-currency sales for Bangladesh exporters?</h3>
+      <p>Enable multi-currencies in Settings → Accounting → Currencies. Assign USD (or relevant currency) to each export customer. Sales Orders and invoices for that customer will be in the buyer's currency. Odoo converts to BDT using the exchange rate on the invoice date and posts the BDT equivalent to your accounting. When payment arrives at a different rate, Odoo automatically calculates and posts the exchange gain or loss to your configured exchange accounts.</p>
+
+      <h3>Can Odoo track pipeline for fashion seasons and annual buyer calendars?</h3>
+      <p>Yes — use Odoo CRM's Tags feature to tag opportunities by season (SS2027, AW2027) and buyer category. Create custom pipeline stages that reflect your seasonal sales cycle. The Revenue Forecast report can be filtered by tag, giving you a seasonal pipeline view. For factories on a buyer-style-season workflow, adding the style number and season as mandatory fields on the Opportunity form keeps data clean for reporting.</p>
+    </div>
+  </article>
+
+  <footer>
+    <div class="shell">
+      <div class="post-foot">
+        <span class="eyebrow">Continue exploring</span>
+        <div class="next">
+          <a class="next-card" href="0016-odoo-hr-payroll-bangladesh.html">
+            <span class="dir">Older · 0016</span>
+            <h4>Odoo HR & Payroll Bangladesh</h4>
+            <p>PF, Gratuity, leave policies, and Bangladesh labor law compliance in Odoo.</p>
+            <span class="arrow">→</span>
+          </a>
+          <a class="next-card" href="../index.html#lab">
+            <span class="dir">All articles</span>
+            <h4>Browse the full Lab</h4>
+            <p>17 guides, essays, and templates on Odoo ERP and business analysis in Bangladesh.</p>
+            <span class="arrow">→</span>
+          </a>
+        </div>
+      </div>
+      <div class="foot">
+        <span>© 2026 Mehedi Hasan · Lab / 0017</span>
+        <span><a href="../index.html#lab">↑ Back to lab index</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="_toc.js" defer></script>
+</body>
+
+</html>

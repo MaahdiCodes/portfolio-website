@@ -1,0 +1,625 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description"
+    content="Odoo HR & Payroll setup for Bangladesh — PF, Gratuity, leave policies, salary structures, and Bangladesh labor law compliance. A practitioner's configuration guide." />
+  <meta name="robots" content="index, follow" />
+  <title>Odoo Payroll Bangladesh | PF Gratuity & Leave | Mehedi Hasan</title>
+  <link rel="canonical" href="https://mhasan.me/lab/0016-odoo-hr-payroll-bangladesh" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png" />
+  <!-- Open Graph -->
+  <meta property="og:title" content="Odoo HR & Payroll Bangladesh: PF, Gratuity & Leave Policy Setup (2026) | Mehedi Hasan" />
+  <meta property="og:description"
+    content="How to configure Odoo HR and Payroll for Bangladesh compliance — Provident Fund, Gratuity, annual/sick/casual leave, salary structures, and income tax on salary." />
+  <meta property="og:url" content="https://mhasan.me/lab/0016-odoo-hr-payroll-bangladesh" />
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="https://mhasan.me/assets/og-default.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:site_name" content="Mehedi Hasan | Odoo ERP Consultant" />
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Odoo HR & Payroll Bangladesh: PF, Gratuity & Leave Policy Setup (2026)" />
+  <meta name="twitter:description"
+    content="Configure Odoo HR and Payroll for Bangladesh — PF, Gratuity, leave policies, and income tax on salary." />
+  <meta name="twitter:image" content="https://mhasan.me/assets/og-default.jpg" />
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Odoo HR & Payroll Bangladesh: PF, Gratuity & Leave Policy Setup (2026)",
+    "description": "A practitioner's guide to configuring Odoo HR and Payroll for Bangladesh compliance — Provident Fund, Gratuity, leave types, salary structures, and income tax deduction at source.",
+    "datePublished": "2026-05-04T12:00:00+06:00",
+    "dateModified": "2026-05-04T12:00:00+06:00",
+    "author": {
+      "@type": "Person",
+      "name": "Mehedi Hasan",
+      "url": "https://mhasan.me",
+      "jobTitle": "Odoo ERP Consultant & Business Analyst",
+      "sameAs": "https://www.linkedin.com/in/mehedi-hasan-consultant/"
+    },
+    "publisher": { "@type": "Person", "name": "Mehedi Hasan", "url": "https://mhasan.me" },
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://mhasan.me/lab/0016-odoo-hr-payroll-bangladesh" }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://mhasan.me" },
+      { "@type": "ListItem", "position": 2, "name": "Lab", "item": "https://mhasan.me/lab/" },
+      { "@type": "ListItem", "position": 3, "name": "Odoo HR Payroll Bangladesh", "item": "https://mhasan.me/lab/0016-odoo-hr-payroll-bangladesh" }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How do I configure Provident Fund (PF) in Odoo for Bangladesh?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "In Odoo Payroll, Provident Fund is configured as two salary rules: one for the Employee PF contribution (5% of basic salary, deducted from gross) and one for the Employer PF contribution (5% of basic salary, added as a company cost). Both rules are added to the salary structure. The employee deduction appears on the payslip as a negative line; the employer contribution posts to a PF Payable account. Both amounts are remitted to the employee's PF fund monthly."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How is Gratuity calculated in Odoo for Bangladesh?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Under Bangladesh Labor Law, an employee who has completed one year of continuous service is entitled to Gratuity: 30 days' wages for each year of service (for workers), or one month's last drawn basic salary per year of service (for staff, as defined in the service agreement). In Odoo, Gratuity is typically tracked as a provision — a monthly accrual (1/12 of annual Gratuity entitlement) posted to a Gratuity Provision liability account. It is not deducted from payslips but appears on the balance sheet as a growing liability."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What leave types are legally required in Bangladesh?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Under the Bangladesh Labor Act 2006 (amended 2018), every worker is entitled to: 10 days Earned Leave (annual leave) for every 12 months of service; 14 days Sick Leave per year with full pay; 10 days Casual Leave per year. In addition: female employees are entitled to 16 weeks Maternity Leave (8 weeks before + 8 weeks after delivery). Employers may offer additional leave beyond these minimums. All leave balances must be tracked and any unutilised Earned Leave must be carried forward or encashed at the end of the year."
+        }
+      }
+    ]
+  }
+]
+</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap">
+  <link rel="stylesheet" href="_styles.css">
+  <style>
+    .pull {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: clamp(24px, 3vw, 36px);
+      line-height: 1.25;
+      color: var(--text);
+      margin: 48px 0;
+      padding: 0;
+      border: none;
+      max-width: 22ch;
+      letter-spacing: -0.01em;
+    }
+    .pull::before {
+      content: "";
+      display: block;
+      width: 36px;
+      height: 1px;
+      background: var(--accent);
+      margin-bottom: 18px;
+    }
+
+    /* salary structure */
+    .salary-table {
+      width: 100%;
+      border-collapse: collapse;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+      margin: 24px 0;
+    }
+    .salary-table thead tr { background: var(--elev); }
+    .salary-table th {
+      font-family: var(--mono);
+      font-size: 10.5px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-3);
+      padding: 12px 16px;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+    }
+    .salary-table td {
+      padding: 12px 16px;
+      font-size: 13.5px;
+      color: var(--text-2);
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .salary-table tr:last-child td { border-bottom: none; }
+    .salary-table .earning { color: var(--accent); }
+    .salary-table .deduction { color: oklch(0.72 0.18 25); }
+    .salary-table .company { color: oklch(0.82 0.16 85); }
+    .salary-table td strong { color: var(--text); }
+
+    /* leave grid */
+    .leave-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+      margin: 24px 0;
+    }
+    .leave-card {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 20px;
+      background: var(--surface);
+    }
+    .leave-card.mandatory { border-color: oklch(0.80 0.17 155 / 0.4); }
+    .leave-card .lc-label {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-3);
+      margin-bottom: 10px;
+    }
+    .leave-card.mandatory .lc-label { color: var(--accent); }
+    .leave-card h4 { margin: 0 0 6px; font-size: 15px; font-weight: 500; color: var(--text); }
+    .leave-card .lc-days {
+      font-family: var(--mono);
+      font-size: 22px;
+      font-weight: 500;
+      color: var(--accent);
+      margin-bottom: 10px;
+    }
+    .leave-card p { margin: 0; font-size: 13px; color: var(--text-2); line-height: 1.55; }
+    @media(max-width:640px) { .leave-grid { grid-template-columns: 1fr; } }
+
+    /* payslip example */
+    .payslip {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+      background: var(--surface);
+      margin: 24px 0;
+      font-family: var(--mono);
+      font-size: 13px;
+    }
+    .payslip-head {
+      padding: 14px 18px;
+      background: var(--elev);
+      border-bottom: 1px solid var(--border);
+      font-size: 10.5px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-3);
+    }
+    .payslip-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 18px;
+      border-bottom: 1px solid var(--border);
+      color: var(--text-2);
+    }
+    .payslip-row:last-child { border-bottom: none; }
+    .payslip-row.total {
+      color: var(--text);
+      font-weight: 600;
+      background: oklch(0.80 0.17 155 / 0.04);
+    }
+    .payslip-row .pr-label { }
+    .payslip-row .pr-amount { color: var(--text); }
+    .payslip-row.deduction .pr-amount { color: oklch(0.72 0.18 25); }
+    .payslip-section {
+      padding: 8px 18px;
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-3);
+      background: var(--elev);
+      border-bottom: 1px solid var(--border);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="grid-bg"></div>
+
+  <header class="nav">
+    <div class="shell">
+      <div class="nav-inner">
+        <a class="brand" href="../index.html">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span class="brand-name"><b>Mehedi Hasan</b><em>ERP · Business Analyst</em></span>
+        </a>
+        <a class="back-link" href="../index.html#lab">← Back to Lab</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="post-head">
+    <div class="shell">
+      <span class="eyebrow">Technical Lab · 0016</span>
+      <h1>Odoo HR & Payroll Bangladesh — <span class="serif">PF, Gratuity & leave setup.</span></h1>
+      <p class="lede">How to configure Odoo's HR and Payroll modules for Bangladesh labor law compliance — Provident Fund, Gratuity provisions, leave types, salary structures, and income tax deduction on salary.</p>
+      <div class="post-meta">
+        <span class="chip accent">Module Guide</span>
+        <span class="chip">HR &amp; Payroll</span>
+        <span class="chip">Bangladesh Labor Law</span>
+        <span class="chip">Compliance</span>
+      </div>
+      <div class="byline">
+        <span>Published<b>May 2026</b></span>
+        <span>Read time<b>12 minutes</b></span>
+        <span>Form<b>Configuration Guide</b></span>
+        <span>Scope<b>SME to Manufacturing</b></span>
+      </div>
+    </div>
+  </section>
+
+  <article class="post">
+    <aside class="toc">
+      <div class="toc-k">In this guide</div>
+      <ol>
+        <li><a href="#compliance">Bangladesh labor law baseline</a></li>
+        <li><a href="#employee">Employee master setup</a></li>
+        <li><a href="#leave">Leave types &amp; allocation</a></li>
+        <li><a href="#salary">Salary structure</a></li>
+        <li><a href="#pf">Provident Fund (PF) setup</a></li>
+        <li><a href="#gratuity">Gratuity provision</a></li>
+        <li><a href="#tax">Income tax on salary</a></li>
+        <li><a href="#payroll">Running payroll</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ol>
+    </aside>
+
+    <div class="body">
+      <p>HR and Payroll is the Odoo module that touches every employee — and where compliance failure has the most direct legal consequences. In Bangladesh, the Labor Act 2006 (amended 2018) sets mandatory minimums for leave, Provident Fund, and Gratuity that every employer must meet. Odoo can be configured to enforce all of them — but it does not arrive pre-configured for Bangladesh.</p>
+
+      <p>This guide covers the complete setup sequence: employee records, leave types, salary structures, PF rules, Gratuity provisioning, income tax deduction, and payroll processing. I've drawn on live deployments in RMG factories (400+ employees), SME trading companies, and Dhaka-based service businesses.</p>
+
+      <p class="pull">A payroll error affects real people. Test every salary rule against actual employee data before go-live.</p>
+
+      <h2 id="compliance">Bangladesh labor law baseline</h2>
+
+      <p>Before configuring anything in Odoo, confirm the legal baseline your payroll must meet. Under the Bangladesh Labor Act 2006 (as amended), the mandatory minimum obligations are:</p>
+
+      <table>
+        <thead>
+          <tr><th>Obligation</th><th>Legal minimum</th><th>Who it applies to</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Earned Leave</td>
+            <td>1 day per 18 working days (approx. 10–11 days/year for factory workers; varies for staff)</td>
+            <td>All workers after 12 months of service</td>
+          </tr>
+          <tr>
+            <td>Sick Leave</td>
+            <td>14 days per year with full pay</td>
+            <td>All employees</td>
+          </tr>
+          <tr>
+            <td>Casual Leave</td>
+            <td>10 days per year with full pay</td>
+            <td>All employees</td>
+          </tr>
+          <tr>
+            <td>Maternity Leave</td>
+            <td>16 weeks (8 pre + 8 post delivery) with full pay</td>
+            <td>Female employees with ≥6 months service</td>
+          </tr>
+          <tr>
+            <td>Festival Leave</td>
+            <td>11 days per year (Eid ul-Fitr, Eid ul-Adha, and national holidays)</td>
+            <td>All employees</td>
+          </tr>
+          <tr>
+            <td>Provident Fund</td>
+            <td>5% employee contribution + 5% employer contribution of basic salary (where PF scheme exists)</td>
+            <td>Employees covered by company PF scheme</td>
+          </tr>
+          <tr>
+            <td>Gratuity</td>
+            <td>30 days' wages per year of service (workers); 1 month basic per year (staff)</td>
+            <td>Employees with ≥1 year of service on termination</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="callout">
+        <span class="tag">Industry-specific</span>
+        <p>BGMEA/BKMEA member factories are additionally governed by the Minimum Wage Board gazette notification, which sets minimum wages by grade for RMG workers. If your factory is a BGMEA member, your Odoo salary structure must enforce these minimums. Underpaying by grade is a compliance failure — not just a payroll error. For the full BGMEA wage board configuration, see my upcoming article on that specific setup.</p>
+      </div>
+
+      <h2 id="employee">Employee master setup</h2>
+
+      <p>Each employee record in Odoo (Employees → New) must capture these Bangladesh-specific fields:</p>
+
+      <table>
+        <thead>
+          <tr><th>Field / Tab</th><th>What to configure</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Job Position / Grade</td>
+            <td>Link to a Job Position that determines salary band and PF eligibility. Create grades that match your company's grading structure (Grade A, B, C or Officer, Senior Officer, Manager).</td>
+          </tr>
+          <tr>
+            <td>Date of Joining</td>
+            <td>Critical for Gratuity calculation and leave entitlement accrual. Odoo calculates years of service from this date.</td>
+          </tr>
+          <tr>
+            <td>NID / Passport</td>
+            <td>Store National ID number in the "Private Information" tab. Required for bank transfers, PF registration, and income tax filing.</td>
+          </tr>
+          <tr>
+            <td>Bank Account</td>
+            <td>Add under Private Information → Save → Salary tab → Bank Account. This is the account Odoo uses for direct payroll payment. Required if you batch-pay salaries via bank transfer.</td>
+          </tr>
+          <tr>
+            <td>TIN (Tax ID)</td>
+            <td>Employee TIN for income tax computation and Form-16 equivalent. Store in the Private Information tab under "Tax ID".</td>
+          </tr>
+          <tr>
+            <td>Contract</td>
+            <td>Every employee must have an active contract (Employees → Employee → Contracts tab → New). The contract sets the salary structure, wage, and PF/Gratuity eligibility. Payroll will not run for an employee without a confirmed contract.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2 id="leave">Leave types &amp; allocation</h2>
+
+      <p>Odoo's Leave module (Time Off) manages requests, approvals, and balance tracking. Configure these leave types for Bangladesh:</p>
+
+      <div class="leave-grid">
+        <div class="leave-card mandatory">
+          <div class="lc-label">Mandatory — Labor Act</div>
+          <h4>Earned Leave (Annual)</h4>
+          <div class="lc-days">10–11 days/year</div>
+          <p>Accrual type: "Based on worked time" — 1 day per 18 working days. Configure as carried-forward leave. Unused balance must be encashed or carried to next year.</p>
+        </div>
+        <div class="leave-card mandatory">
+          <div class="lc-label">Mandatory — Labor Act</div>
+          <h4>Sick Leave</h4>
+          <div class="lc-days">14 days/year</div>
+          <p>Allocation type: Fixed (14 days at start of each leave year). Sick leave cannot be carried forward. Paid at full basic salary.</p>
+        </div>
+        <div class="leave-card mandatory">
+          <div class="lc-label">Mandatory — Labor Act</div>
+          <h4>Casual Leave</h4>
+          <div class="lc-days">10 days/year</div>
+          <p>Allocation type: Fixed (10 days at start of leave year). Cannot be accumulated or encashed. Used for short-notice personal emergencies.</p>
+        </div>
+        <div class="leave-card mandatory">
+          <div class="lc-label">Mandatory — Female Employees</div>
+          <h4>Maternity Leave</h4>
+          <div class="lc-days">16 weeks</div>
+          <p>Create as a separate leave type with "No allocation" (applied on request). Fully paid. Requires medical certificate. Cannot be denied to eligible employees.</p>
+        </div>
+        <div class="leave-card">
+          <div class="lc-label">Company Policy</div>
+          <h4>Festival / Public Holiday</h4>
+          <div class="lc-days">11 days/year</div>
+          <p>Configure as Public Holidays in the Work Schedule (not leave allocations). These are non-working days on the company calendar — they don't consume leave balance.</p>
+        </div>
+        <div class="leave-card">
+          <div class="lc-label">Common in SMEs</div>
+          <h4>Without Pay Leave</h4>
+          <div class="lc-days">As requested</div>
+          <p>Create as a separate leave type with "No allocation" — the leave is unpaid and triggers a salary deduction on the payslip. Odoo calculates the deduction automatically if the "Leave Deduction" option is enabled on the salary structure.</p>
+        </div>
+      </div>
+
+      <p>Set the leave approval workflow on each leave type: one-step (direct manager) or two-step (manager then HR). For large manufacturing operations with 400+ employees, I recommend a two-step approval for Earned Leave and Maternity Leave; single-step for Casual and Sick.</p>
+
+      <h2 id="salary">Salary structure</h2>
+
+      <p>The salary structure defines every earning and deduction line on the payslip. In Bangladesh, the typical staff salary structure looks like this:</p>
+
+      <div class="payslip">
+        <div class="payslip-head">Sample Bangladesh Payslip — Monthly Staff (BDT)</div>
+        <div class="payslip-section">Earnings</div>
+        <div class="payslip-row">
+          <span class="pr-label">Basic Salary</span>
+          <span class="pr-amount">30,000</span>
+        </div>
+        <div class="payslip-row">
+          <span class="pr-label">House Rent Allowance (50% of Basic)</span>
+          <span class="pr-amount">15,000</span>
+        </div>
+        <div class="payslip-row">
+          <span class="pr-label">Medical Allowance</span>
+          <span class="pr-amount">1,500</span>
+        </div>
+        <div class="payslip-row">
+          <span class="pr-label">Transport Allowance</span>
+          <span class="pr-amount">2,500</span>
+        </div>
+        <div class="payslip-row total">
+          <span class="pr-label">Gross Salary</span>
+          <span class="pr-amount">49,000</span>
+        </div>
+        <div class="payslip-section">Deductions</div>
+        <div class="payslip-row deduction">
+          <span class="pr-label">Employee PF (5% of Basic)</span>
+          <span class="pr-amount">–1,500</span>
+        </div>
+        <div class="payslip-row deduction">
+          <span class="pr-label">Income Tax (TDS on Salary)</span>
+          <span class="pr-amount">–1,200</span>
+        </div>
+        <div class="payslip-row total">
+          <span class="pr-label">Net Payable</span>
+          <span class="pr-amount">46,300</span>
+        </div>
+        <div class="payslip-section">Employer Contributions (not on payslip — company cost)</div>
+        <div class="payslip-row">
+          <span class="pr-label">Employer PF (5% of Basic)</span>
+          <span class="pr-amount">1,500</span>
+        </div>
+        <div class="payslip-row">
+          <span class="pr-label">Gratuity Provision (1/12 of annual entitlement)</span>
+          <span class="pr-amount">2,500</span>
+        </div>
+      </div>
+
+      <p>In Odoo, each line is a <strong>salary rule</strong> within the salary structure. Go to Payroll → Configuration → Salary Structures → New. Add rules for each earning and deduction. Rules are ordered — Basic Salary must exist before HRA can reference it (since HRA = 50% × Basic).</p>
+
+      <h2 id="pf">Provident Fund (PF) setup</h2>
+
+      <p>PF in Odoo is two salary rules: one employee deduction, one employer contribution.</p>
+
+      <table>
+        <thead>
+          <tr><th>Rule</th><th>Code</th><th>Type</th><th>Computation</th><th>Account</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Employee PF</td>
+            <td>EMP_PF</td>
+            <td>Deduction (negative)</td>
+            <td>-5% × Basic Salary</td>
+            <td>PF Payable (2XXX)</td>
+          </tr>
+          <tr>
+            <td>Employer PF</td>
+            <td>COM_PF</td>
+            <td>Not on payslip — company cost</td>
+            <td>5% × Basic Salary</td>
+            <td>PF Payable (2XXX)</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>Both amounts accumulate in the PF Payable account. At month-end, the total PF Payable balance is remitted to the employee's PF trust or fund. The journal entry: Debit PF Payable → Credit Bank. After remittance, the PF Payable account balances to zero.</p>
+
+      <div class="callout">
+        <span class="tag">PF eligibility</span>
+        <p>In most Bangladesh companies, PF applies only after a probation period (typically 3–6 months). In Odoo, handle this by creating two contract templates: one "Probation" template with a salary structure that has no PF rules, and one "Confirmed" template that includes PF. When an employee passes probation, update their contract to the Confirmed template.</p>
+      </div>
+
+      <h2 id="gratuity">Gratuity provision</h2>
+
+      <p>Gratuity in Bangladesh is a terminal benefit — paid only when the employee leaves after completing at least one year of service. In Odoo, track Gratuity as a monthly provision (accrual), not a payslip deduction.</p>
+
+      <p>The monthly accrual entry:</p>
+      <ul>
+        <li>Debit: Gratuity Expense (P&amp;L)</li>
+        <li>Credit: Gratuity Provision (Balance Sheet liability)</li>
+      </ul>
+
+      <p>Accrual amount = (Last Basic Salary ÷ 12) × years of service. For most companies, this is approximated as 1/12 of annual basic salary per month. The Gratuity Provision account on the balance sheet grows each month. When an employee leaves after qualifying for Gratuity, the actual payment is settled against the provision: Debit Gratuity Provision → Credit Bank.</p>
+
+      <p>Odoo does not have a native Gratuity provision module for Bangladesh. Implement this as either (a) a manual monthly journal entry, or (b) a salary rule marked as "Does not appear on payslip" with the appropriate account mapping — the rule calculates the provision per employee and posts the accrual automatically during payroll processing.</p>
+
+      <h2 id="tax">Income tax on salary</h2>
+
+      <p>Income tax deduction at source (TDS on salary) must be applied monthly from the salary of every employee who earns above the tax-free threshold. For the 2025–26 tax year, the threshold is BDT 3,50,000 annual income (BDT 29,167/month gross).</p>
+
+      <p>Configure TDS as a salary rule:</p>
+
+      <ul>
+        <li>Rule code: <code>INCOME_TAX</code></li>
+        <li>Type: Deduction (negative, appears on payslip)</li>
+        <li>Computation: Python code that applies the Bangladesh progressive tax slabs to the employee's annual projected income, divides by 12, and returns the monthly TDS amount</li>
+        <li>Account: TDS on Salary Payable (2XXX)</li>
+      </ul>
+
+      <p>The progressive tax slabs for Bangladesh FY2025–26 are:</p>
+
+      <table>
+        <thead>
+          <tr><th>Annual Income (BDT)</th><th>Tax Rate</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Up to 3,50,000</td><td>Nil</td></tr>
+          <tr><td>3,50,001 – 4,50,000</td><td>5%</td></tr>
+          <tr><td>4,50,001 – 7,50,000</td><td>10%</td></tr>
+          <tr><td>7,50,001 – 11,50,000</td><td>15%</td></tr>
+          <tr><td>11,50,001 – 16,50,000</td><td>20%</td></tr>
+          <tr><td>Above 16,50,000</td><td>25%</td></tr>
+        </tbody>
+      </table>
+
+      <p>Implement this as a Python-based salary rule in Odoo. The rule annualises the employee's current month gross salary, applies the slab calculation, and returns 1/12 of the annual tax liability. At year-end, reconcile the total TDS deducted against the employee's actual tax return to handle any over- or under-deduction.</p>
+
+      <div class="callout">
+        <span class="tag">Compliance link</span>
+        <p>Salary TDS must be remitted to the NBR via treasury challan by the 15th of the following month. This is tracked separately from VAT compliance — see my guide on <a href="0003-nbr-vat-compliance-odoo-bangladesh.html" style="color:var(--accent)">NBR VAT compliance in Odoo</a> for the broader NBR filing structure. Salary TDS remittance uses Treasury Form-Challan, not the Mushak forms.</p>
+      </div>
+
+      <h2 id="payroll">Running payroll in Odoo</h2>
+
+      <p>Once salary structures, PF rules, and leave deductions are configured, the monthly payroll process in Odoo is:</p>
+
+      <ol>
+        <li><strong>Close attendance / leave</strong> — ensure all leave requests for the month are approved or rejected. Any approved Unpaid Leave affects the salary deduction calculation.</li>
+        <li><strong>Create payslip batch</strong> — Payroll → Payslip Batches → New. Set the period (e.g., May 2026). Click "Generate Payslips" — Odoo creates one draft payslip per active employee with a confirmed contract.</li>
+        <li><strong>Review payslips</strong> — open any payslip and verify the computed values. Pay particular attention to employees who had salary changes, promotions, or joined mid-month (partial month calculation).</li>
+        <li><strong>Validate the batch</strong> — once satisfied, Confirm the batch. Odoo posts the journal entries: Salary Expense (P&amp;L) → Salaries Payable (BS), Employee PF deduction, Employer PF contribution, TDS deduction, and Gratuity accrual.</li>
+        <li><strong>Pay salaries</strong> — generate the salary payment in Accounting → Vendor Bills or use Batch Payments. Debit Salaries Payable → Credit Bank. For companies paying via mobile banking (bKash, Nagad), export the payment file from Odoo and upload to the mobile banking portal.</li>
+        <li><strong>Remit statutory deductions</strong> — by the 15th of the following month: PF to PF fund, TDS to NBR treasury challan.</li>
+      </ol>
+
+      <p>For change management during payroll go-live — convincing finance teams and employees to trust the new system — see my field notes on <a href="0007-change-management-isnt-a-memo.html" style="color:var(--accent)">change management in ERP deployments</a>. Payroll is the module that generates the most resistance: everyone checks their payslip.</p>
+
+      <div class="callout">
+        <span class="tag">Next step</span>
+        <p>Payroll configuration for Bangladesh compliance is one of the more technically involved parts of an Odoo implementation. If you're setting up for the first time or migrating from a legacy payroll system, <a href="../index.html#contact" style="color:var(--accent)">reach out for a configuration review →</a></p>
+      </div>
+
+      <h2 id="faq">Frequently asked questions</h2>
+
+      <h3>How do I configure Provident Fund in Odoo for Bangladesh?</h3>
+      <p>PF is configured as two salary rules: Employee PF (–5% of Basic, posted to PF Payable) and Employer PF (+5% of Basic, also to PF Payable, but not shown on the employee's payslip — it's a company cost). Both accumulate in the PF Payable account monthly. Remit the combined balance to the PF fund by the 15th of the following month. Exclude employees in probation by using a separate contract template without PF rules.</p>
+
+      <h3>How is Gratuity calculated and provisioned in Odoo?</h3>
+      <p>Under Bangladesh Labor Law, Gratuity = 1 month's basic salary × years of service (for staff), paid on termination after 1+ year of service. In Odoo, provision it monthly via a journal entry: Debit Gratuity Expense (P&L) → Credit Gratuity Provision (Balance Sheet). Accrual = 1/12 of annual entitlement. On the employee's last day, settle the Gratuity Provision balance: Debit Provision → Credit Bank.</p>
+
+      <h3>What leave types are legally required in Bangladesh?</h3>
+      <p>Under the Bangladesh Labor Act: Earned Leave (10–11 days/year, accrual-based), Sick Leave (14 days/year, fixed allocation), Casual Leave (10 days/year, fixed allocation), Maternity Leave (16 weeks for eligible female employees). Public holidays (11 national days) are configured as non-working days on the Work Schedule — they do not consume leave allocation.</p>
+
+      <h3>Can Odoo handle income tax (TDS) on salary for Bangladesh?</h3>
+      <p>Yes, with a custom Python-based salary rule that implements the NBR's progressive income tax slabs. The rule annualises the monthly gross, applies the current-year tax table, divides by 12, and posts the monthly TDS to an Income Tax Payable account. This must be recalculated if an employee's salary changes mid-year (Odoo handles the recalculation automatically on the next payslip run).</p>
+    </div>
+  </article>
+
+  <footer>
+    <div class="shell">
+      <div class="post-foot">
+        <span class="eyebrow">Continue exploring</span>
+        <div class="next">
+          <a class="next-card" href="0015-odoo-purchase-vendor-management-bangladesh.html">
+            <span class="dir">Older · 0015</span>
+            <h4>Odoo Purchase & Vendor Management: Bangladesh SME Playbook</h4>
+            <p>RFQ workflow, 3-way matching, approval matrix, and vendor payment with TDS.</p>
+            <span class="arrow">→</span>
+          </a>
+          <a class="next-card" href="0017-odoo-sales-crm-bangladesh.html">
+            <span class="dir">Newer · 0017</span>
+            <h4>Odoo Sales & CRM for Bangladesh Exporters</h4>
+            <p>B2B pipeline setup, multi-currency, proforma invoices, and export CRM configuration.</p>
+            <span class="arrow">→</span>
+          </a>
+        </div>
+      </div>
+      <div class="foot">
+        <span>© 2026 Mehedi Hasan · Lab / 0016</span>
+        <span><a href="../index.html#lab">↑ Back to lab index</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="_toc.js" defer></script>
+</body>
+
+</html>

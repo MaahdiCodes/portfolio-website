@@ -76,9 +76,57 @@
   <!-- Mid-value keyword: ERP change management, Odoo go-live training -->
   <url>
     <loc>https://mhasan.me/lab/0007-change-management-isnt-a-memo</loc>
-    <lastmod>2026-04-30</lastmod>
+    <lastmod>2026-05-04</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
+  </url>
+
+  <!-- High-value keyword: Odoo multi-company setup, inter-company ERP Bangladesh -->
+  <url>
+    <loc>https://mhasan.me/lab/0006-odoo-multi-company-setup-guide</loc>
+    <lastmod>2026-05-04</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- High-value keyword: ERP go-live cost Bangladesh, manufacturing ERP implementation cost -->
+  <url>
+    <loc>https://mhasan.me/lab/0005-erp-go-live-cost-manufacturing-bangladesh</loc>
+    <lastmod>2026-05-04</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- High-value keyword: Odoo vs SAP Bangladesh, best ERP for SME Bangladesh, ERP comparison -->
+  <url>
+    <loc>https://mhasan.me/lab/0004-odoo-vs-sap-vs-tally-bangladesh</loc>
+    <lastmod>2026-05-04</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- High-value keyword: NBR VAT Odoo Bangladesh, Odoo accounting Bangladesh, Mushak form -->
+  <url>
+    <loc>https://mhasan.me/lab/0003-nbr-vat-compliance-odoo-bangladesh</loc>
+    <lastmod>2026-05-04</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- High-value keyword: ERP discovery phase, business process mapping Bangladesh, Odoo requirements -->
+  <url>
+    <loc>https://mhasan.me/lab/0002-discovery-session-business-process-mapping</loc>
+    <lastmod>2026-05-04</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- High-value keyword: ERP implementation failure Bangladesh, why ERP fails, Odoo consultant -->
+  <url>
+    <loc>https://mhasan.me/lab/0001-why-erp-fails-bangladesh</loc>
+    <lastmod>2026-05-04</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
   </url>
 
 </urlset>

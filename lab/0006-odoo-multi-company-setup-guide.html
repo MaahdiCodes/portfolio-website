@@ -1,0 +1,280 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="Odoo multi-company setup guide — when it genuinely helps, when it makes everything worse, and how to configure inter-company transactions correctly." />
+<meta name="robots" content="index, follow" />
+<title>Odoo Multi-Company Setup Guide | When To Use It | Mehedi Hasan</title>
+<link rel="canonical" href="https://mhasan.me/lab/0006-odoo-multi-company-setup-guide" />
+<!-- Open Graph -->
+<meta property="og:title" content="Odoo Multi-Company Setup Guide | When To Use It | Mehedi Hasan" />
+<meta property="og:description" content="Odoo multi-company setup guide — when it genuinely helps, when it makes everything worse, and how to configure inter-company transactions correctly." />
+<meta property="og:url" content="https://mhasan.me/lab/0006-odoo-multi-company-setup-guide" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://mhasan.me/assets/og-default.jpg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:site_name" content="Mehedi Hasan | Odoo Consultant" />
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Odoo Multi-Company Setup Guide | When To Use It | Mehedi Hasan" />
+<meta name="twitter:description" content="Odoo multi-company setup guide — when it genuinely helps, when it makes everything worse, and how to configure inter-company transactions correctly." />
+<meta name="twitter:image" content="https://mhasan.me/assets/og-default.jpg" />
+<!-- JSON-LD: Article + BreadcrumbList + FAQPage -->
+<script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Odoo Multi-Company Setup Guide — When to Use It and When to Avoid It",
+    "description": "Odoo multi-company setup guide — when it genuinely helps, when it makes everything worse, and how to configure inter-company transactions correctly.",
+    "datePublished": "2025-11-01T08:00:00+06:00",
+    "dateModified": "2026-05-04T08:00:00+06:00",
+    "author": {
+      "@type": "Person",
+      "name": "Mehedi Hasan",
+      "url": "https://mhasan.me",
+      "sameAs": "https://www.linkedin.com/in/mehedi-hasan-consultant/"
+    },
+    "publisher": { "@type": "Person", "name": "Mehedi Hasan", "url": "https://mhasan.me" },
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://mhasan.me/lab/0006-odoo-multi-company-setup-guide" }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://mhasan.me" },
+      { "@type": "ListItem", "position": 2, "name": "Lab", "item": "https://mhasan.me/#lab" },
+      { "@type": "ListItem", "position": 3, "name": "Odoo Multi-Company Setup Guide", "item": "https://mhasan.me/lab/0006-odoo-multi-company-setup-guide" }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "When should I use Odoo multi-company setup?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Use Odoo multi-company when you have separate legal entities with distinct chart of accounts, different VAT registrations, or independent financial reporting requirements. Do not use it for departments, branches, or cost centres — use analytical accounts and branches instead." }
+      },
+      {
+        "@type": "Question",
+        "name": "How does inter-company transaction work in Odoo?",
+        "acceptedAnswer": { "@type": "Answer", "text": "When configured, a sales order in Company A automatically creates a purchase order in Company B. An invoice in Company A creates a vendor bill in Company B. Each transaction generates matching journal entries on both sides. The reconciliation of these inter-company balances at month-end is the primary maintenance overhead of multi-company setups." }
+      }
+    ]
+  }
+]
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap">
+<link rel="stylesheet" href="_styles.css">
+<style>
+  .pull{
+    font-family:var(--serif);font-style:italic;
+    font-size:clamp(28px,3.4vw,42px);line-height:1.2;color:var(--text);
+    margin:48px 0;padding:0;border:none;
+    max-width:18ch;letter-spacing:-0.01em;
+  }
+  .pull::before{content:"";display:block;width:36px;height:1px;background:var(--accent);margin-bottom:18px}
+
+  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:28px 0}
+  .two-col .col{border:1px solid var(--border);border-radius:10px;padding:20px;background:var(--surface)}
+  .two-col .col.use{border-color:oklch(0.80 0.17 155 / 0.35)}
+  .two-col .col.avoid{border-color:oklch(0.65 0.15 25 / 0.35)}
+  .two-col .col h4{margin:0 0 12px;font-family:var(--mono);font-size:11px;letter-spacing:0.12em;text-transform:uppercase;font-weight:600}
+  .two-col .col.use h4{color:var(--accent)}
+  .two-col .col.avoid h4{color:#C76A6A}
+  .two-col .col ul{margin:0;padding:0 0 0 16px;display:flex;flex-direction:column;gap:8px}
+  .two-col .col ul li{font-size:13.5px;color:var(--text-2);line-height:1.55}
+  @media(max-width:680px){.two-col{grid-template-columns:1fr}}
+
+  .kv{display:grid;grid-template-columns:200px 1fr;gap:8px 18px;margin:18px 0;padding:18px 22px;border:1px solid var(--border);border-radius:10px;background:var(--surface);font-family:var(--mono);font-size:13px}
+  .kv .k{color:var(--text-3);letter-spacing:0.08em;text-transform:uppercase;font-size:10.5px;align-self:start;padding-top:2px}
+  .kv .v{color:var(--text)}
+
+  .flow{margin:24px 0;border:1px solid var(--border);border-radius:10px;overflow:hidden;background:var(--surface)}
+  .flow-row{display:grid;grid-template-columns:1fr 40px 1fr;align-items:center;padding:14px 20px;border-bottom:1px solid var(--border);gap:10px}
+  .flow-row:last-child{border-bottom:none}
+  .flow-row .side{font-size:13.5px;line-height:1.5;color:var(--text-2)}
+  .flow-row .side strong{color:var(--text);font-weight:500;display:block;font-size:12.5px;margin-bottom:4px;font-family:var(--mono);letter-spacing:0.06em;text-transform:uppercase}
+  .flow-row .arrow{text-align:center;color:var(--accent);font-size:18px}
+</style>
+</head>
+<body>
+<div class="grid-bg"></div>
+
+<header class="nav">
+  <div class="shell">
+    <div class="nav-inner">
+      <a class="brand" href="../index.html">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span class="brand-name"><b>Mehedi Hasan</b><em>ERP · Business Analyst</em></span>
+      </a>
+      <a class="back-link" href="../index.html#lab">← Back to Lab</a>
+    </div>
+  </div>
+</header>
+
+<section class="post-head">
+  <div class="shell">
+    <span class="eyebrow">Technical Lab · 0006</span>
+    <h1>Odoo multi-company setup: when to use it, and when to <span class="serif">avoid</span> it.</h1>
+    <p class="lede">Multi-company is one of Odoo's most powerful features and its most frequently misused one. A decision guide — plus the configuration fundamentals if you've already decided to proceed.</p>
+    <div class="post-meta">
+      <span class="chip accent">Guide</span>
+      <span class="chip">Multi-company</span>
+      <span class="chip">Configuration</span>
+    </div>
+    <div class="byline">
+      <span>Published<b>November 2025</b></span>
+      <span>Read time<b>10 minutes</b></span>
+      <span>Form<b>Technical Guide</b></span>
+      <span>Drawn from<b>Multi-entity deployments</b></span>
+    </div>
+  </div>
+</section>
+
+<article class="post">
+  <aside class="toc">
+    <div class="toc-k">In this guide</div>
+    <ol>
+      <li><a href="#what">What multi-company is and isn't</a></li>
+      <li><a href="#use">Three cases where it helps</a></li>
+      <li><a href="#avoid">Three cases where it doesn't</a></li>
+      <li><a href="#setup">Setup fundamentals</a></li>
+      <li><a href="#interco">Intercompany transactions</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ol>
+  </aside>
+
+  <div class="body">
+    <h2 id="what">What multi-company is — and isn't</h2>
+    <p>Odoo's multi-company feature allows multiple legal entities to coexist in a single Odoo database, sharing some master data (products, contacts) while maintaining separate financial books, VAT registrations, chart of accounts, and access controls.</p>
+
+    <p>What it is not: a way to create departmental separation, handle branch reporting, or give different users different "views" of the same business. Those requirements are served by <strong>analytical accounts</strong> (for cost centre reporting), <strong>branches</strong> (Odoo 17+, for operational separation within one legal entity), and <strong>user groups</strong> (for access control).</p>
+
+    <p>The confusion between these use cases is the source of most multi-company misconfiguration. A business adds a second company because "the factory and the trading arm feel like separate businesses" — and then spends six months fighting intercompany reconciliation for transactions that were never truly intercompany.</p>
+
+    <p class="pull">Multi-company solves a legal structure problem, not an organisational one.</p>
+
+    <h2 id="use">Three cases where it genuinely helps</h2>
+
+    <div class="two-col">
+      <div class="col use">
+        <h4>Use multi-company when…</h4>
+        <ul>
+          <li>You have <strong>separate legal entities</strong> registered under different Trade Licences or TIN numbers in Bangladesh</li>
+          <li>Each entity files its own <strong>tax return and VAT return</strong> independently, with separate BINs</li>
+          <li>You need true <strong>separate financial statements</strong> per entity that are legally distinct</li>
+          <li>There are genuine <strong>intercompany sales</strong> — Company A sells products to Company B at a transfer price, and both need that transaction in their respective books</li>
+          <li>Entities operate in <strong>different currencies</strong> — e.g., a Bangladesh entity and a Singapore entity in the same group</li>
+        </ul>
+      </div>
+      <div class="col avoid">
+        <h4>Do not use it when…</h4>
+        <ul>
+          <li>You want separate reporting for <strong>departments or cost centres</strong> (use analytical accounts)</li>
+          <li>You have <strong>multiple warehouses or sites</strong> under one legal entity (use multi-warehouse in one company)</li>
+          <li>You want different users to see <strong>"their" part of the business</strong> only (use record rules and user groups)</li>
+          <li>Your "two businesses" share a <strong>single bank account and file one tax return</strong> — they are one entity regardless of how they are managed operationally</li>
+          <li>You are trying to create a <strong>cleaner UI</strong> for different teams — there are better ways</li>
+        </ul>
+      </div>
+    </div>
+
+    <h2 id="setup">Setup fundamentals</h2>
+    <p>If you have confirmed that multi-company is genuinely required, here is the setup sequence. The order matters — skipping ahead creates configuration debt that is painful to unwind.</p>
+
+    <div class="kv">
+      <span class="k">Step 1</span><span class="v">Settings → Companies: create Company B with its own name, address, TIN, BIN, and logo. Do not share a parent company record if they are truly independent legal entities.</span>
+      <span class="k">Step 2</span><span class="v">Chart of Accounts: each company needs its own COA. You can copy from Company A, but review each account — different entities often have different VAT obligations, different depreciation treatment, different intercompany accounts.</span>
+      <span class="k">Step 3</span><span class="v">Shared master data: products and contacts can be shared (company-agnostic). Decide upfront which product categories are shared and which are company-specific. Shared products with different pricing need company-specific pricelists.</span>
+      <span class="k">Step 4</span><span class="v">User access: every user must be explicitly assigned to one or more companies. A user not assigned to Company B cannot see or transact in it. Name access rules carefully — accidental cross-company visibility causes audit issues.</span>
+      <span class="k">Step 5</span><span class="v">Intercompany rules: Settings → Technical → Intercompany Rules. Configure which document types auto-generate counterpart documents (SO→PO, Invoice→Vendor Bill). Start minimal — only enable what you actually need.</span>
+      <span class="k">Step 6</span><span class="v">Test the full cycle before go-live: create a sale in Company A to Company B, validate the intercompany PO in Company B, invoice in Company A, post the vendor bill in Company B, and reconcile. If the numbers don't balance, the COA mapping is wrong.</span>
+    </div>
+
+    <div class="callout">
+      <span class="tag">Common mistake</span>
+      <p>Teams enable multi-company and assume the system will "figure out" the intercompany accounts. It won't. You must explicitly map the intercompany receivable and payable accounts in each company's COA and point the intercompany rule at the correct account on both sides. A missing mapping posts to a suspense account silently.</p>
+    </div>
+
+    <h2 id="interco">Intercompany transactions — the part that breaks</h2>
+    <p>When configured, this is what intercompany automation looks like. Each step generates a matching entry in both companies' books:</p>
+
+    <div class="flow">
+      <div class="flow-row">
+        <div class="side"><strong>Company A (Seller)</strong>Sales Order created for Company B at transfer price</div>
+        <div class="arrow">→</div>
+        <div class="side"><strong>Company B (Buyer)</strong>Purchase Order auto-created, awaiting confirmation</div>
+      </div>
+      <div class="flow-row">
+        <div class="side"><strong>Company A</strong>Delivery validated; goods leave Company A warehouse</div>
+        <div class="arrow">→</div>
+        <div class="side"><strong>Company B</strong>Receipt auto-created; goods enter Company B warehouse</div>
+      </div>
+      <div class="flow-row">
+        <div class="side"><strong>Company A</strong>Invoice posted: Debit Intercompany Receivable / Credit Revenue</div>
+        <div class="arrow">→</div>
+        <div class="side"><strong>Company B</strong>Vendor Bill auto-created: Debit Expense / Credit Intercompany Payable</div>
+      </div>
+      <div class="flow-row">
+        <div class="side"><strong>Company A</strong>Payment registered → Intercompany Receivable cleared</div>
+        <div class="arrow">→</div>
+        <div class="side"><strong>Company B</strong>Payment registered → Intercompany Payable cleared</div>
+      </div>
+    </div>
+
+    <p>At month-end, the intercompany receivable balance in Company A must equal the intercompany payable balance in Company B (adjusted for any timing differences). If they don't, something was posted incorrectly on one side. This reconciliation is a permanent monthly task — budget 4–8 hours per month for it in a mid-complexity multi-company setup.</p>
+
+    <p>For most Bangladesh group structures I have seen — a trading entity and a manufacturing entity under the same family ownership — the simpler path is <strong>one Odoo company with analytical accounts per entity</strong> and separate tax reporting handled at month-end. The accounting is marginally more manual; the operational complexity is dramatically lower.</p>
+
+    <p>Before committing to multi-company, walk through the <a href="0002-discovery-session-business-process-mapping.html" style="color:var(--accent)">discovery process</a> specifically for intercompany flows — the transaction volume, the transfer pricing method, and who reconciles the balances. And read about <a href="0005-erp-go-live-cost-manufacturing-bangladesh.html" style="color:var(--accent)">what complex configurations cost when they go wrong at go-live</a>. The math changes the decision more often than not.</p>
+
+    <div class="callout">
+      <span class="tag">PS</span>
+      <p>Multi-company configuration and intercompany reconciliation setup is part of my <a href="../services/odoo-partner-consultant/index.html" style="color:var(--accent)">enterprise consulting engagements</a>. If you're evaluating the structure, <a href="../index.html#contact" style="color:var(--accent)">let's talk before you configure anything →</a></p>
+    </div>
+
+    <h2 id="faq">FAQ</h2>
+
+    <h3>When should I use Odoo multi-company setup?</h3>
+    <p>Use Odoo multi-company when you have separate legal entities with distinct chart of accounts, different VAT registrations (separate BINs in Bangladesh), or independent financial reporting requirements. Do not use it for departments, branches, or cost centres — those are handled by analytical accounts and Odoo's branch feature in v17+.</p>
+
+    <h3>How does inter-company transaction work in Odoo?</h3>
+    <p>When configured via Intercompany Rules, a sales order in Company A automatically creates a purchase order in Company B. An invoice in Company A creates a vendor bill in Company B. Each transaction generates matching journal entries on both sides. Reconciling the intercompany receivable and payable balances at month-end is the primary maintenance overhead of a multi-company setup — budget 4–8 hours per month.</p>
+  </div>
+</article>
+
+<footer>
+  <div class="shell">
+    <div class="post-foot">
+      <span class="eyebrow">Continue exploring</span>
+      <div class="next">
+        <a class="next-card" href="0007-change-management-isnt-a-memo.html">
+          <span class="dir">Newer · 0007</span>
+          <h4>Change management isn't a memo</h4>
+          <p>Field notes from training 200+ operators through a go-live.</p>
+          <span class="arrow">→</span>
+        </a>
+        <a class="next-card" href="0005-erp-go-live-cost-manufacturing-bangladesh.html">
+          <span class="dir">Older · 0005</span>
+          <h4>The real cost of going live wrong</h4>
+          <p>The hidden cost of a failed ERP go-live in Bangladesh manufacturing.</p>
+          <span class="arrow">→</span>
+        </a>
+      </div>
+    </div>
+    <div class="foot">
+      <span>© 2026 Mehedi Hasan · Lab / 0006</span>
+      <span><a href="../index.html#lab">↑ Back to lab index</a></span>
+    </div>
+  </div>
+</footer>
+<script src="_toc.js" defer></script>
+</body>
+</html>

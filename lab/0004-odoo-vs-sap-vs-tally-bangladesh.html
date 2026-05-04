@@ -1,0 +1,328 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="Odoo vs SAP vs Tally for Bangladesh SMEs — an honest comparison from an ERP consultant who has deployed all three. Find which ERP fits your business." />
+<meta name="robots" content="index, follow" />
+<title>Odoo vs SAP vs Tally Bangladesh | Best ERP for SME | Mehedi Hasan</title>
+<link rel="canonical" href="https://mhasan.me/lab/0004-odoo-vs-sap-vs-tally-bangladesh" />
+<!-- Open Graph -->
+<meta property="og:title" content="Odoo vs SAP vs Tally Bangladesh | Best ERP for SME | Mehedi Hasan" />
+<meta property="og:description" content="Odoo vs SAP vs Tally for Bangladesh SMEs — an honest comparison from an ERP consultant who has deployed all three. Find which ERP fits your business." />
+<meta property="og:url" content="https://mhasan.me/lab/0004-odoo-vs-sap-vs-tally-bangladesh" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://mhasan.me/assets/og-default.jpg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:site_name" content="Mehedi Hasan | Odoo Consultant" />
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Odoo vs SAP vs Tally Bangladesh | Best ERP for SME | Mehedi Hasan" />
+<meta name="twitter:description" content="Odoo vs SAP vs Tally for Bangladesh SMEs — an honest comparison from an ERP consultant who has deployed all three. Find which ERP fits your business." />
+<meta name="twitter:image" content="https://mhasan.me/assets/og-default.jpg" />
+<!-- JSON-LD: Article + BreadcrumbList + FAQPage -->
+<script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Odoo vs SAP vs Tally — The Honest Comparison for Bangladesh SMEs",
+    "description": "Odoo vs SAP vs Tally for Bangladesh SMEs — an honest comparison from an ERP consultant who has deployed all three.",
+    "datePublished": "2025-10-01T08:00:00+06:00",
+    "dateModified": "2026-05-04T08:00:00+06:00",
+    "author": {
+      "@type": "Person",
+      "name": "Mehedi Hasan",
+      "url": "https://mhasan.me",
+      "sameAs": "https://www.linkedin.com/in/mehedi-hasan-consultant/"
+    },
+    "publisher": { "@type": "Person", "name": "Mehedi Hasan", "url": "https://mhasan.me" },
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://mhasan.me/lab/0004-odoo-vs-sap-vs-tally-bangladesh" }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://mhasan.me" },
+      { "@type": "ListItem", "position": 2, "name": "Lab", "item": "https://mhasan.me/#lab" },
+      { "@type": "ListItem", "position": 3, "name": "Odoo vs SAP vs Tally Bangladesh", "item": "https://mhasan.me/lab/0004-odoo-vs-sap-vs-tally-bangladesh" }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Which is better — Odoo or SAP for Bangladesh manufacturing?",
+        "acceptedAnswer": { "@type": "Answer", "text": "For mid-size Bangladesh manufacturers (under 500 employees, 1–5 sites), Odoo offers full manufacturing ERP capability at a fraction of SAP's implementation cost. SAP makes sense for large groups with international GAAP requirements, complex intercompany structures, and dedicated IT teams to maintain it." }
+      },
+      {
+        "@type": "Question",
+        "name": "Is Tally an ERP system?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Tally is an accounting and inventory software, not a full ERP. It handles ledger accounting, basic inventory, and GST/VAT reporting well, but lacks manufacturing MRP, procurement workflow, multi-site operations management, and CRM. Most Bangladesh SMEs outgrow Tally when their operations expand beyond pure accounting." }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the cost of Odoo implementation in Bangladesh vs SAP?",
+        "acceptedAnswer": { "@type": "Answer", "text": "An Odoo implementation for a Bangladesh SME typically costs BDT 5–25 lakh all-in (software + implementation). A comparable SAP Business One implementation starts at BDT 40–80 lakh and requires ongoing SAP-certified support. Tally is the cheapest entry point but cannot support operations management." }
+      }
+    ]
+  }
+]
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap">
+<link rel="stylesheet" href="_styles.css">
+<style>
+  .pull{
+    font-family:var(--serif);font-style:italic;
+    font-size:clamp(28px,3.4vw,42px);line-height:1.2;color:var(--text);
+    margin:48px 0;padding:0;border:none;
+    max-width:18ch;letter-spacing:-0.01em;
+  }
+  .pull::before{content:"";display:block;width:36px;height:1px;background:var(--accent);margin-bottom:18px}
+
+  .compare{width:100%;border-collapse:collapse;margin:28px 0;font-size:13.5px}
+  .compare th{text-align:left;padding:11px 14px;font-family:var(--mono);font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-3);border-bottom:2px solid var(--border);font-weight:400;background:var(--surface)}
+  .compare th:not(:first-child){color:var(--text);font-size:11.5px;letter-spacing:0.06em}
+  .compare td{padding:12px 14px;border-bottom:1px solid var(--border);color:var(--text-2);vertical-align:top;line-height:1.5}
+  .compare td:first-child{font-family:var(--mono);font-size:11px;color:var(--text-3);text-transform:uppercase;letter-spacing:0.08em;font-weight:500;white-space:nowrap}
+  .compare tr:last-child td{border-bottom:none}
+  .compare .pos{color:var(--accent)}
+  .compare .neg{color:#C76A6A}
+  .compare .neu{color:var(--text-2)}
+
+  .when-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:28px 0}
+  .when-cards .wc{border:1px solid var(--border);border-radius:10px;padding:20px;background:var(--surface)}
+  .when-cards .wc .title{font-family:var(--mono);font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:10px;font-weight:600}
+  .when-cards .wc ul{margin:0;padding:0 0 0 16px;display:flex;flex-direction:column;gap:6px}
+  .when-cards .wc ul li{font-size:13.5px;color:var(--text-2);line-height:1.5}
+  @media(max-width:900px){.when-cards{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="grid-bg"></div>
+
+<header class="nav">
+  <div class="shell">
+    <div class="nav-inner">
+      <a class="brand" href="../index.html">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span class="brand-name"><b>Mehedi Hasan</b><em>ERP · Business Analyst</em></span>
+      </a>
+      <a class="back-link" href="../index.html#lab">← Back to Lab</a>
+    </div>
+  </div>
+</header>
+
+<section class="post-head">
+  <div class="shell">
+    <span class="eyebrow">Technical Lab · 0004</span>
+    <h1>Odoo vs SAP vs Tally: the <span class="serif">honest</span> comparison for Bangladesh SMEs.</h1>
+    <p class="lede">I have worked with all three. Each has a genuine use case — and each is also regularly sold into situations where it causes more problems than it solves. Here is what I actually tell clients.</p>
+    <div class="post-meta">
+      <span class="chip accent">Comparison</span>
+      <span class="chip">ERP selection</span>
+      <span class="chip">Bangladesh SME</span>
+    </div>
+    <div class="byline">
+      <span>Published<b>October 2025</b></span>
+      <span>Read time<b>10 minutes</b></span>
+      <span>Form<b>Essay + Comparison</b></span>
+      <span>Drawn from<b>Client evaluation sessions</b></span>
+    </div>
+  </div>
+</section>
+
+<article class="post">
+  <aside class="toc">
+    <div class="toc-k">In this essay</div>
+    <ol>
+      <li><a href="#lies">Why comparisons lie</a></li>
+      <li><a href="#three">The three systems, plainly</a></li>
+      <li><a href="#bd">Bangladesh-specific variables</a></li>
+      <li><a href="#framework">My decision framework</a></li>
+      <li><a href="#when">When I've recommended each</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ol>
+  </aside>
+
+  <div class="body">
+    <h2 id="lies">Why comparison articles usually lie</h2>
+    <p>Every ERP comparison article online is written by someone with a financial interest in one of the options. Odoo partners write that Odoo wins. SAP resellers write that SAP is enterprise-grade. Tally distributors write that Tally is all you need.</p>
+
+    <p>I am an Odoo partner. I have a clear bias. I am also going to tell you the truth: <strong>Odoo is the wrong answer for some businesses, and I have recommended against it to clients who came to me specifically to buy it.</strong></p>
+
+    <p>The honest version of this comparison starts by acknowledging that these are not competitors serving the same market. They are tools built for different problem sizes, different team sizes, and different operational complexities. The question isn't which is best — it's which fits where you are right now.</p>
+
+    <p class="pull">There is no best ERP. There is only the right ERP for your current scale.</p>
+
+    <h2 id="three">The three systems, plainly stated</h2>
+
+    <table class="compare">
+      <thead>
+        <tr>
+          <th>Dimension</th>
+          <th>Tally Prime</th>
+          <th>Odoo (Community/Enterprise)</th>
+          <th>SAP Business One</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>What it is</td>
+          <td class="neu">Accounting + basic inventory software</td>
+          <td class="neu">Full modular ERP (operations + accounting + CRM + MRP)</td>
+          <td class="neu">Enterprise ERP with deep financial consolidation</td>
+        </tr>
+        <tr>
+          <td>Implementation cost (Bangladesh)</td>
+          <td class="pos">BDT 50k–2L (software + basic setup)</td>
+          <td class="pos">BDT 5–25L (depending on modules + customisation)</td>
+          <td class="neg">BDT 40–100L+ (license + certified partner)</td>
+        </tr>
+        <tr>
+          <td>Manufacturing (MRP, BOM, routing)</td>
+          <td class="neg">Not available</td>
+          <td class="pos">Full MRP, multi-level BOM, work centres, routings</td>
+          <td class="pos">Full MRP, but expensive to configure</td>
+        </tr>
+        <tr>
+          <td>NBR VAT compliance</td>
+          <td class="pos">Good out-of-box (designed for South Asian VAT)</td>
+          <td class="neu">Needs configuration (2 weeks; fully achievable)</td>
+          <td class="neu">Needs localisation partner (expensive)</td>
+        </tr>
+        <tr>
+          <td>Multi-currency</td>
+          <td class="neu">Basic (manual rate entry)</td>
+          <td class="pos">Full (auto rate fetch, FX gain/loss, landed cost)</td>
+          <td class="pos">Enterprise-grade multi-currency and consolidation</td>
+        </tr>
+        <tr>
+          <td>User limit before pain</td>
+          <td class="neg">5–10 concurrent users</td>
+          <td class="pos">Scales to hundreds</td>
+          <td class="pos">Scales to enterprise</td>
+        </tr>
+        <tr>
+          <td>Local consultant ecosystem</td>
+          <td class="pos">Wide; many Tally-trained accountants</td>
+          <td class="neu">Growing; quality varies</td>
+          <td class="neg">Very thin in Bangladesh; mostly India-based support</td>
+        </tr>
+        <tr>
+          <td>Ongoing annual cost</td>
+          <td class="pos">Low (subscription or one-time)</td>
+          <td class="neu">Moderate (Enterprise: ~$28/user/month)</td>
+          <td class="neg">High (license + mandatory annual maintenance)</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2 id="bd">Bangladesh-specific variables</h2>
+    <p>Global comparisons don't account for the local reality. Three variables matter specifically in Bangladesh:</p>
+
+    <p><strong>The Tally starting point.</strong> Almost every Bangladesh SME starts with Tally. It is cheap, widely understood, and handles basic accounting and NBR VAT out of the box. The question is not "Tally vs Odoo" — it's "when does your Tally setup stop being enough?" The answer is typically when you need inventory tracking across warehouses, production order management, multi-user concurrent access, or procurement workflows.</p>
+
+    <p><strong>SAP's support gap.</strong> SAP Business One is technically available in Bangladesh but the certified partner ecosystem is thin. Most support escalates to India-based partners. When something goes wrong — and in manufacturing ERP, things do go wrong — the response time and local knowledge gap is real.</p>
+
+    <p><strong>The export complexity factor.</strong> Bangladesh's export-oriented industries (RMG, textiles, cycle, leather) deal with multi-currency transactions, LC-based payments, bonded warehouse operations, and duty drawback — daily. Odoo's multi-currency and inventory valuation features handle this well. Tally handles parts of it manually. SAP handles it completely, but at a cost most mid-size exporters cannot justify.</p>
+
+    <h2 id="framework">My decision framework</h2>
+    <p>When a client comes to me asking which system to choose, I ask five questions:</p>
+    <ol>
+      <li><strong>Do you need to track production orders?</strong> If yes, eliminate Tally immediately.</li>
+      <li><strong>Do you have a dedicated IT team or internal system administrator?</strong> If no, SAP's complexity and cost become unmanageable.</li>
+      <li><strong>How many concurrent users in the system?</strong> Under 5, Tally is fine. 5–200, Odoo. 200+, either works.</li>
+      <li><strong>Do you have multi-entity or multi-country operations requiring IFRS consolidation?</strong> If yes, SAP earns its cost. If no, Odoo handles this adequately.</li>
+      <li><strong>What is your total budget — software plus implementation plus 2 years of support?</strong> If it's under BDT 30L, SAP is out. If it's under BDT 3L, Odoo Enterprise is out.</li>
+    </ol>
+
+    <h2 id="when">The cases where I've recommended each</h2>
+
+    <div class="when-cards">
+      <div class="wc">
+        <div class="title">Tally — when to choose it</div>
+        <ul>
+          <li>Pure accounting + VAT reporting need</li>
+          <li>Under 5 users, single office</li>
+          <li>No production or procurement workflow</li>
+          <li>Budget under BDT 2 lakh all-in</li>
+          <li>Accountants already trained on Tally</li>
+        </ul>
+      </div>
+      <div class="wc">
+        <div class="title">Odoo — when to choose it</div>
+        <ul>
+          <li>Manufacturing, trading, or services business</li>
+          <li>5–300 users across departments</li>
+          <li>Multi-warehouse or multi-currency operations</li>
+          <li>Want CRM, procurement, inventory integrated</li>
+          <li>Phased implementation is acceptable</li>
+        </ul>
+      </div>
+      <div class="wc">
+        <div class="title">SAP — when to choose it</div>
+        <ul>
+          <li>500+ employees, multiple legal entities</li>
+          <li>IFRS or group consolidation required</li>
+          <li>Dedicated IT team and CFO-led governance</li>
+          <li>International group with India/Singapore entity</li>
+          <li>Budget is BDT 50L+ with no ceiling pressure</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="callout">
+      <span class="tag">Honest note</span>
+      <p>Most Bangladesh manufacturers asking this question belong in the Odoo column. Not because Odoo is objectively better — but because the alternative (SAP at BDT 80L with India-based support) is genuinely disproportionate to the operational complexity of a 100-person factory. Match the tool to the problem size.</p>
+    </div>
+
+    <p>If you're in the evaluation phase and want to stress-test this against your specific situation, the <a href="0001-why-erp-fails-bangladesh.html" style="color:var(--accent)">ERP failure analysis</a> is worth reading first — the wrong choice isn't just a financial issue, it's a year of disrupted operations. And if you're already moving toward Odoo, read about <a href="0005-erp-go-live-cost-manufacturing-bangladesh.html" style="color:var(--accent)">what a go-live actually costs</a> before you sign a contract. You can also <a href="../index.html#contact" style="color:var(--accent)">book an evaluation call →</a></p>
+
+    <h2 id="faq">FAQ</h2>
+
+    <h3>Which is better — Odoo or SAP for Bangladesh manufacturing?</h3>
+    <p>For mid-size Bangladesh manufacturers under 500 employees across 1–5 sites, Odoo offers full manufacturing ERP capability at a fraction of SAP's implementation cost. SAP makes sense for large groups with international GAAP requirements, complex intercompany structures, and dedicated IT teams to maintain it. Most Bangladesh factories belong in Odoo.</p>
+
+    <h3>Is Tally an ERP system?</h3>
+    <p>Tally is accounting and inventory software, not a full ERP. It handles ledger accounting, basic inventory, and VAT reporting well, but lacks manufacturing MRP, multi-step procurement workflow, multi-site operations management, and CRM. Most Bangladesh SMEs outgrow Tally when their operations expand beyond pure accounting and single-warehouse inventory.</p>
+
+    <h3>What is the cost of Odoo implementation in Bangladesh vs SAP?</h3>
+    <p>An Odoo implementation for a Bangladesh SME typically costs BDT 5–25 lakh all-in (software license + implementation services). A comparable SAP Business One implementation starts at BDT 40–80 lakh and requires ongoing SAP-certified partner support. Tally is the cheapest entry point but cannot support operations management beyond accounting.</p>
+  </div>
+</article>
+
+<footer>
+  <div class="shell">
+    <div class="post-foot">
+      <span class="eyebrow">Continue exploring</span>
+      <div class="next">
+        <a class="next-card" href="0005-erp-go-live-cost-manufacturing-bangladesh.html">
+          <span class="dir">Newer · 0005</span>
+          <h4>The real cost of going live wrong</h4>
+          <p>What a failed ERP go-live actually costs in Bangladesh manufacturing — the hidden invoices.</p>
+          <span class="arrow">→</span>
+        </a>
+        <a class="next-card" href="0003-nbr-vat-compliance-odoo-bangladesh.html">
+          <span class="dir">Older · 0003</span>
+          <h4>NBR VAT compliance in Odoo</h4>
+          <p>Mushak forms, BIN setup, and month-end reconciliation for Bangladesh businesses.</p>
+          <span class="arrow">→</span>
+        </a>
+      </div>
+    </div>
+    <div class="foot">
+      <span>© 2026 Mehedi Hasan · Lab / 0004</span>
+      <span><a href="../index.html#lab">↑ Back to lab index</a></span>
+    </div>
+  </div>
+</footer>
+<script src="_toc.js" defer></script>
+</body>
+</html>

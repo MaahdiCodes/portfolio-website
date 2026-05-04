@@ -1,0 +1,304 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="ERP implementation failure in Bangladesh: 5 root causes from real deployments. Why most Odoo projects miss the mark and what the successful ones do right." />
+<meta name="robots" content="index, follow" />
+<title>Why ERP Implementations Fail in Bangladesh | Mehedi Hasan</title>
+<link rel="canonical" href="https://mhasan.me/lab/0001-why-erp-fails-bangladesh" />
+<!-- Open Graph -->
+<meta property="og:title" content="Why ERP Implementations Fail in Bangladesh | Mehedi Hasan" />
+<meta property="og:description" content="ERP implementation failure in Bangladesh: 5 root causes from real deployments. Why most Odoo projects miss the mark and what the successful ones do right." />
+<meta property="og:url" content="https://mhasan.me/lab/0001-why-erp-fails-bangladesh" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://mhasan.me/assets/og-default.jpg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:site_name" content="Mehedi Hasan | Odoo Consultant" />
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Why ERP Implementations Fail in Bangladesh | Mehedi Hasan" />
+<meta name="twitter:description" content="ERP implementation failure in Bangladesh: 5 root causes from real deployments. Why most Odoo projects miss the mark and what the successful ones do right." />
+<meta name="twitter:image" content="https://mhasan.me/assets/og-default.jpg" />
+<!-- JSON-LD: Article + BreadcrumbList + FAQPage -->
+<script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Why ERP Implementations Fail in Bangladesh — 5 Root Causes",
+    "description": "ERP implementation failure in Bangladesh: 5 root causes from real deployments. Why most Odoo projects miss the mark and what the successful ones do right.",
+    "datePublished": "2025-07-01T08:00:00+06:00",
+    "dateModified": "2026-05-04T08:00:00+06:00",
+    "author": {
+      "@type": "Person",
+      "name": "Mehedi Hasan",
+      "url": "https://mhasan.me",
+      "sameAs": "https://www.linkedin.com/in/mehedi-hasan-consultant/"
+    },
+    "publisher": { "@type": "Person", "name": "Mehedi Hasan", "url": "https://mhasan.me" },
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://mhasan.me/lab/0001-why-erp-fails-bangladesh" }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://mhasan.me" },
+      { "@type": "ListItem", "position": 2, "name": "Lab", "item": "https://mhasan.me/#lab" },
+      { "@type": "ListItem", "position": 3, "name": "Why ERP Implementations Fail in Bangladesh", "item": "https://mhasan.me/lab/0001-why-erp-fails-bangladesh" }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Why do ERP implementations fail in Bangladesh?",
+        "acceptedAnswer": { "@type": "Answer", "text": "The five most common root causes are: skipping the discovery phase, choosing a vendor on price alone, underestimating change management, migrating dirty data, and selecting the wrong modules for the business model." }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the ERP failure rate in Bangladesh?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Global studies put ERP failure rates at 55–75%. In Bangladesh, the rate is likely higher due to compressed timelines, under-scoped budgets, and a thin ecosystem of experienced functional consultants." }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you choose the right ERP consultant in Bangladesh?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Look for a consultant with a structured discovery methodology, industry-specific references (manufacturing, RMG, trading), a defined UAT process, and a post-go-live support commitment. The cheapest quote is almost always the most expensive outcome." }
+      }
+    ]
+  }
+]
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap">
+<link rel="stylesheet" href="_styles.css">
+<style>
+  .pull{
+    font-family:var(--serif);font-style:italic;
+    font-size:clamp(28px,3.4vw,42px);line-height:1.2;color:var(--text);
+    margin:48px 0;padding:0;border:none;
+    max-width:18ch;letter-spacing:-0.01em;
+  }
+  .pull::before{content:"";display:block;width:36px;height:1px;background:var(--accent);margin-bottom:18px}
+
+  .failure-cards{display:grid;grid-template-columns:1fr;gap:14px;margin:28px 0}
+  .fc{
+    border:1px solid var(--border);border-radius:12px;overflow:hidden;
+    background:var(--surface);display:flex;align-items:stretch;
+  }
+  .fc-num{
+    flex:none;width:52px;display:flex;align-items:center;justify-content:center;
+    font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:0.1em;
+    color:var(--text-3);border-right:1px solid var(--border);
+    writing-mode:vertical-rl;text-orientation:mixed;
+  }
+  .fc-body{padding:18px 22px;flex:1}
+  .fc-body h4{margin:0 0 6px;font-size:15px;font-weight:600;letter-spacing:-0.01em}
+  .fc-body p{margin:0;font-size:14px;line-height:1.65;color:var(--text-2)}
+  .fc-body strong{color:var(--text);font-weight:500}
+  .fc.hi .fc-num{color:var(--accent);background:var(--accent-dim)}
+  .fc.hi{border-color:oklch(0.80 0.17 155 / 0.3)}
+
+  .signal-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin:28px 0}
+  .signal-grid .sg{
+    border:1px solid var(--border);border-radius:10px;padding:18px;background:var(--surface);
+  }
+  .signal-grid .sg h4{margin:0 0 8px;font-size:13px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--accent);font-family:var(--mono)}
+  .signal-grid .sg p{margin:0;font-size:13.5px;line-height:1.6;color:var(--text-2)}
+  @media(max-width:680px){.signal-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="grid-bg"></div>
+
+<header class="nav">
+  <div class="shell">
+    <div class="nav-inner">
+      <a class="brand" href="../index.html">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span class="brand-name"><b>Mehedi Hasan</b><em>ERP · Business Analyst</em></span>
+      </a>
+      <a class="back-link" href="../index.html#lab">← Back to Lab</a>
+    </div>
+  </div>
+</header>
+
+<section class="post-head">
+  <div class="shell">
+    <span class="eyebrow">Technical Lab · 0001</span>
+    <h1>Why most ERP implementations <span class="serif">fail</span> in Bangladesh.</h1>
+    <p class="lede">Five root causes, in order of frequency — drawn from deployments across RMG, textiles, and manufacturing. None of them are about the software.</p>
+    <div class="post-meta">
+      <span class="chip accent">Essay</span>
+      <span class="chip">Strategy</span>
+      <span class="chip">Failure analysis</span>
+    </div>
+    <div class="byline">
+      <span>Published<b>July 2025</b></span>
+      <span>Read time<b>9 minutes</b></span>
+      <span>Form<b>Essay</b></span>
+      <span>Drawn from<b>8+ deployments</b></span>
+    </div>
+  </div>
+</section>
+
+<article class="post">
+  <aside class="toc">
+    <div class="toc-k">In this essay</div>
+    <ol>
+      <li><a href="#stat">The number nobody quotes twice</a></li>
+      <li><a href="#five">Five failure modes</a></li>
+      <li><a href="#ecosystem">The consultant problem</a></li>
+      <li><a href="#thirty">What the 30% did right</a></li>
+      <li><a href="#question">One question to ask first</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ol>
+  </aside>
+
+  <div class="body">
+    <h2 id="stat">The number nobody quotes twice</h2>
+    <p>Global research puts ERP implementation failure rates between 55% and 75%, depending on how you define failure. Most companies don't define it at all — they call a missed timeline a "delay," a budget overrun a "scope addition," and a system nobody uses three months after go-live a "training issue."</p>
+
+    <p>In Bangladesh, the picture is worse. The local ERP ecosystem is thin on experienced functional consultants, thick with vendors who learned configuration from YouTube and price their engagements accordingly. Business owners — rightly skeptical of cost — compress timelines and budgets until the project is structurally incapable of delivering what was promised.</p>
+
+    <p>The failure, when it comes, is always attributed to the software. It almost never is.</p>
+
+    <p class="pull">The software rarely fails. The project around it almost always does.</p>
+
+    <h2 id="five">Five failure modes, in order of frequency</h2>
+    <p>After eight-plus deployments across RMG, textiles, cycle export, and trading, the same root causes appear — in roughly this order of frequency:</p>
+
+    <div class="failure-cards">
+      <div class="fc hi">
+        <div class="fc-num">01</div>
+        <div class="fc-body">
+          <h4>Skipping the discovery phase</h4>
+          <p>The business signs a contract, the vendor shows up with a demo environment, and configuration starts. Nobody maps what the business actually does. <strong>The gap between "how the software works" and "how your business works" is where projects die.</strong> Discovery — properly done — takes two to four weeks. Most projects don't budget a day for it.</p>
+        </div>
+      </div>
+      <div class="fc hi">
+        <div class="fc-num">02</div>
+        <div class="fc-body">
+          <h4>Choosing a vendor on price alone</h4>
+          <p>Bangladesh ERP procurement runs on the lowest-quote principle. Three vendors pitch; the middle one gets the work. The cheapest vendor survives by under-scoping: fewer modules, compressed training, no data migration support, no post-go-live clause. <strong>The "saved" BDT 3 lakh becomes BDT 15 lakh in rework six months later.</strong> I have seen this pattern at least four times.</p>
+        </div>
+      </div>
+      <div class="fc">
+        <div class="fc-num">03</div>
+        <div class="fc-body">
+          <h4>Underestimating change management</h4>
+          <p>A company trains its staff once, the week before go-live, for four hours. That's the change management plan. The system goes live. By week three, the old spreadsheets are back — used in parallel, then used instead. Nobody told the floor supervisors the <em>why</em>. Nobody built the new workflow into muscle memory before the stakes were real.</p>
+        </div>
+      </div>
+      <div class="fc">
+        <div class="fc-num">04</div>
+        <div class="fc-body">
+          <h4>Migrating dirty data</h4>
+          <p>The item master has 4,000 SKUs. Eight hundred are duplicates. Three hundred have wrong units of measure. Nobody audited it before import. On day one of live operations, <strong>stock valuations are wrong, BOMs don't reconcile, and purchase orders are generating for items that no longer exist.</strong> Data migration is not a technical task. It is a business process — and it takes weeks, not hours.</p>
+        </div>
+      </div>
+      <div class="fc">
+        <div class="fc-num">05</div>
+        <div class="fc-body">
+          <h4>Wrong module selection</h4>
+          <p>A trading company buys Manufacturing because the vendor said it handles "inventory." A service company buys a full suite when it needed Accounting and CRM. More common: a business buys the right modules but activates them all simultaneously, overwhelming the team and creating a configuration surface too large to test properly.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout">
+      <span class="tag">Heuristic</span>
+      <p>If the implementation plan doesn't include a dedicated data audit week, a formal change management budget, and named internal champions per department — it's not an implementation plan. It's a configuration schedule.</p>
+    </div>
+
+    <h2 id="ecosystem">The consultant problem</h2>
+    <p>Bangladesh has a small but growing base of Odoo consultants. It also has a much larger base of people who have configured Odoo once, watched some documentation, and now sell "ERP implementation" at any price point. The distinction matters because <strong>ERP consulting is a domain skill, not a software skill.</strong></p>
+
+    <p>A good ERP consultant knows your industry before they touch the system. They know what a garment factory's production order flow looks like, what a cycle exporter's multi-currency landed cost calculation should produce, what an RMG accounts department means when they say "booking." A configuration-only consultant knows how to click the right buttons. They are not the same job.</p>
+
+    <p>The tell: ask a prospective consultant what their discovery deliverables are. If they hand you a module list, walk away. If they hand you a process map and a gap analysis, stay.</p>
+
+    <h2 id="thirty">What the 30% did right</h2>
+    <p>The implementations that succeed share a short list of traits. They are not about technology.</p>
+
+    <div class="signal-grid">
+      <div class="sg">
+        <h4>Internal champion</h4>
+        <p>One person inside the business owns the ERP project — not as a sponsor, but as a day-to-day operator. They attend every session, escalate blockers to leadership, and translate between the consultant and the floor.</p>
+      </div>
+      <div class="sg">
+        <h4>Phased go-live</h4>
+        <p>Successful projects go live in one department or one module set first. Sales and invoicing before manufacturing. Inventory before procurement. The team learns the system at low stakes before it handles full production volume.</p>
+      </div>
+      <div class="sg">
+        <h4>Realistic timeline</h4>
+        <p>Five modules in six weeks is not a timeline. It is a fantasy. Every successful project I have seen gave itself at least three months for a mid-size deployment — and built in explicit buffer for data migration and UAT.</p>
+      </div>
+      <div class="sg">
+        <h4>Post-go-live commitment</h4>
+        <p>The contract includes a 90-day hypercare period. The consultant is reachable, onsite for the first two weeks, and available for reconciliation reviews at month-end. The system doesn't end at go-live — it starts there.</p>
+      </div>
+    </div>
+
+    <h2 id="question">One question to ask before you sign</h2>
+    <p>Before any ERP engagement, I ask the business owner one question: <strong>"Who will own this system after the consultant leaves?"</strong></p>
+
+    <p>If the answer is "the consultant," the project is already set up to fail. Dependency on an external party for routine operations is not a feature — it is a structural liability. The goal of a good implementation is to make the business self-sufficient: a named internal owner who can configure new users, run month-end close, and diagnose a workflow error without calling anyone.</p>
+
+    <p>If you can't name that person before the project starts, spend the first two weeks of the engagement finding and training them. Everything else follows from that.</p>
+
+    <blockquote>
+      ERP failure in Bangladesh is not a technology problem. It is a project management problem, a consultant quality problem, and a change management problem — in that order. Fix those three things and the software takes care of itself.
+    </blockquote>
+
+    <div class="callout">
+      <span class="tag">Related</span>
+      <p>The discovery work that prevents failure mode #1 is covered in depth in <a href="0002-discovery-session-business-process-mapping.html" style="color:var(--accent)">The Discovery Session</a>. For the change management side, read <a href="0007-change-management-isnt-a-memo.html" style="color:var(--accent)">Change management isn't a memo</a>. If you're evaluating an engagement, <a href="../index.html#contact" style="color:var(--accent)">let's talk →</a></p>
+    </div>
+
+    <h2 id="faq">FAQ</h2>
+
+    <h3>Why do ERP implementations fail in Bangladesh?</h3>
+    <p>The five most common root causes are: skipping the discovery phase, choosing a vendor on price alone, underestimating change management, migrating dirty data, and selecting the wrong modules. None of these are about the software — they are about project structure and execution.</p>
+
+    <h3>What is the ERP failure rate in Bangladesh?</h3>
+    <p>Global studies put ERP failure rates at 55–75%. In Bangladesh, the rate is likely higher due to compressed timelines, under-scoped budgets, and a thin ecosystem of experienced functional consultants with industry-specific knowledge.</p>
+
+    <h3>How do you choose the right ERP consultant in Bangladesh?</h3>
+    <p>Look for a consultant with a structured <a href="0002-discovery-session-business-process-mapping.html" style="color:var(--accent)">discovery methodology</a>, industry-specific references in manufacturing, RMG, or trading, a defined UAT process, and a post-go-live support commitment. The cheapest quote is almost always the most expensive outcome.</p>
+  </div>
+</article>
+
+<footer>
+  <div class="shell">
+    <div class="post-foot">
+      <span class="eyebrow">Continue exploring</span>
+      <div class="next">
+        <a class="next-card" href="0002-discovery-session-business-process-mapping.html">
+          <span class="dir">Newer · 0002</span>
+          <h4>The discovery session</h4>
+          <p>How to map your business processes before you configure a single screen in Odoo.</p>
+          <span class="arrow">→</span>
+        </a>
+        <a class="next-card disabled" href="#">
+          <span class="dir">Older · —</span>
+          <h4>First article</h4>
+          <p>This is where the lab begins.</p>
+          <span class="arrow">→</span>
+        </a>
+      </div>
+    </div>
+    <div class="foot">
+      <span>© 2026 Mehedi Hasan · Lab / 0001</span>
+      <span><a href="../index.html#lab">↑ Back to lab index</a></span>
+    </div>
+  </div>
+</footer>
+<script src="_toc.js" defer></script>
+</body>
+</html>

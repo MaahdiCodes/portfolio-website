@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="ERP discovery session guide — how to map business processes before configuring Odoo. The phase that prevents scope creep, bad data, and failed implementations." />
+<meta name="robots" content="index, follow" />
+<title>ERP Discovery Session | Business Process Mapping Guide | Mehedi Hasan</title>
+<link rel="canonical" href="https://mhasan.me/lab/0002-discovery-session-business-process-mapping" />
+<!-- Open Graph -->
+<meta property="og:title" content="ERP Discovery Session | Business Process Mapping Guide | Mehedi Hasan" />
+<meta property="og:description" content="ERP discovery session guide — how to map business processes before configuring Odoo. The phase that prevents scope creep, bad data, and failed implementations." />
+<meta property="og:url" content="https://mhasan.me/lab/0002-discovery-session-business-process-mapping" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://mhasan.me/assets/og-default.jpg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:site_name" content="Mehedi Hasan | Odoo Consultant" />
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="ERP Discovery Session | Business Process Mapping Guide | Mehedi Hasan" />
+<meta name="twitter:description" content="ERP discovery session guide — how to map business processes before configuring Odoo. The phase that prevents scope creep, bad data, and failed implementations." />
+<meta name="twitter:image" content="https://mhasan.me/assets/og-default.jpg" />
+<!-- JSON-LD: Article + BreadcrumbList -->
+<script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "The Discovery Session — Mapping Business Processes Before You Configure Odoo",
+    "description": "ERP discovery session guide — how to map business processes before configuring Odoo. The phase that prevents scope creep, bad data, and failed implementations.",
+    "datePublished": "2025-08-01T08:00:00+06:00",
+    "dateModified": "2026-05-04T08:00:00+06:00",
+    "author": {
+      "@type": "Person",
+      "name": "Mehedi Hasan",
+      "url": "https://mhasan.me",
+      "sameAs": "https://www.linkedin.com/in/mehedi-hasan-consultant/"
+    },
+    "publisher": { "@type": "Person", "name": "Mehedi Hasan", "url": "https://mhasan.me" },
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://mhasan.me/lab/0002-discovery-session-business-process-mapping" }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://mhasan.me" },
+      { "@type": "ListItem", "position": 2, "name": "Lab", "item": "https://mhasan.me/#lab" },
+      { "@type": "ListItem", "position": 3, "name": "ERP Discovery Session Guide", "item": "https://mhasan.me/lab/0002-discovery-session-business-process-mapping" }
+    ]
+  }
+]
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap">
+<link rel="stylesheet" href="_styles.css">
+<style>
+  .pull{
+    font-family:var(--serif);font-style:italic;
+    font-size:clamp(28px,3.4vw,42px);line-height:1.2;color:var(--text);
+    margin:48px 0;padding:0;border:none;
+    max-width:18ch;letter-spacing:-0.01em;
+  }
+  .pull::before{content:"";display:block;width:36px;height:1px;background:var(--accent);margin-bottom:18px}
+
+  .four-up{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin:28px 0}
+  .four-up .card{
+    border:1px solid var(--border);border-radius:10px;padding:20px;background:var(--surface);
+    display:flex;flex-direction:column;gap:8px;
+  }
+  .four-up .card .num{font-family:var(--mono);font-size:11px;color:var(--accent);letter-spacing:0.14em}
+  .four-up .card h4{margin:0;font-size:15px;font-weight:600;letter-spacing:-0.01em}
+  .four-up .card p{margin:0;font-size:13.5px;color:var(--text-2);line-height:1.6}
+  @media(max-width:680px){.four-up{grid-template-columns:1fr}}
+
+  .kv{display:grid;grid-template-columns:160px 1fr;gap:8px 18px;margin:18px 0;padding:18px 22px;border:1px solid var(--border);border-radius:10px;background:var(--surface);font-family:var(--mono);font-size:13px}
+  .kv .k{color:var(--text-3);letter-spacing:0.08em;text-transform:uppercase;font-size:10.5px;align-self:center}
+  .kv .v{color:var(--text)}
+
+  .case-pair{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:24px 0}
+  .case-pair > div{border:1px solid var(--border);border-radius:10px;padding:18px;background:var(--surface)}
+  .case-pair h4{margin:0 0 10px;font-family:var(--mono);font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-3);font-weight:400}
+  .case-pair .bad h4{color:#C76A6A}
+  .case-pair .good h4{color:var(--accent)}
+  .case-pair p{font-size:14px;line-height:1.6;color:var(--text-2);margin:0}
+  @media(max-width:680px){.case-pair{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="grid-bg"></div>
+
+<header class="nav">
+  <div class="shell">
+    <div class="nav-inner">
+      <a class="brand" href="../index.html">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span class="brand-name"><b>Mehedi Hasan</b><em>ERP · Business Analyst</em></span>
+      </a>
+      <a class="back-link" href="../index.html#lab">← Back to Lab</a>
+    </div>
+  </div>
+</header>
+
+<section class="post-head">
+  <div class="shell">
+    <span class="eyebrow">Technical Lab · 0002</span>
+    <h1>The discovery session: map your business <span class="serif">before</span> you open Odoo.</h1>
+    <p class="lede">The phase that gets cut to save budget is the one that saves the budget. How to run a proper ERP discovery — what to capture, how to run the sessions, and what to hand off to configuration.</p>
+    <div class="post-meta">
+      <span class="chip accent">Guide</span>
+      <span class="chip">Discovery</span>
+      <span class="chip">Process mapping</span>
+    </div>
+    <div class="byline">
+      <span>Published<b>August 2025</b></span>
+      <span>Read time<b>10 minutes</b></span>
+      <span>Form<b>Guide</b></span>
+      <span>Drawn from<b>6 discovery engagements</b></span>
+    </div>
+  </div>
+</section>
+
+<article class="post">
+  <aside class="toc">
+    <div class="toc-k">In this guide</div>
+    <ol>
+      <li><a href="#skip">The phase everyone skips</a></li>
+      <li><a href="#four">Four things you're mapping</a></li>
+      <li><a href="#run">How to run the sessions</a></li>
+      <li><a href="#output">What good output looks like</a></li>
+      <li><a href="#handoff">The handoff to configuration</a></li>
+    </ol>
+  </aside>
+
+  <div class="body">
+    <h2 id="skip">The phase everyone skips</h2>
+    <p>A client calls me in mid-project. The vendor has been configuring for three weeks. The sales module is set up. The inventory module is set up. The problem: <strong>the client's sales process involves three approval layers, a customer credit check tied to accounts receivable, and a currency conversion that happens at a different exchange rate than the system default.</strong> None of this was captured before configuration started.</p>
+
+    <p>The vendor is not incompetent. They just started on the wrong end. They opened Odoo first and mapped the business second — which is like writing a building's floor plan after pouring the foundation.</p>
+
+    <p>Discovery is the period — typically two to four weeks — before any configuration happens. Its only job is to understand how the business currently operates, how it wants to operate after the ERP, and what the gap between those two states looks like. That gap is the project scope.</p>
+
+    <p class="pull">Open the business first. Open Odoo second.</p>
+
+    <h2 id="four">Four things you're mapping</h2>
+    <p>A complete discovery produces four artifacts. Miss any of them and you'll find the gap during UAT — which is the most expensive place to find it.</p>
+
+    <div class="four-up">
+      <div class="card">
+        <span class="num">ARTIFACT 01</span>
+        <h4>Process flows (as-is)</h4>
+        <p>Who does what, in what sequence, with what inputs and outputs. Draw it — even a whiteboard sketch counts. The act of drawing surfaces assumptions that verbal descriptions hide.</p>
+      </div>
+      <div class="card">
+        <span class="num">ARTIFACT 02</span>
+        <h4>Data entities &amp; master data</h4>
+        <p>What lists does the business run on: products, customers, vendors, chart of accounts, warehouses, production routes. Their current state — volume, quality, format — determines how long migration takes.</p>
+      </div>
+      <div class="card">
+        <span class="num">ARTIFACT 03</span>
+        <h4>System touchpoints</h4>
+        <p>What other systems does the ERP need to talk to? Banking portals, payroll software, customs declarations, e-commerce. Each integration is a separate scope item and a separate risk.</p>
+      </div>
+      <div class="card">
+        <span class="num">ARTIFACT 04</span>
+        <h4>Roles &amp; access rules</h4>
+        <p>Who can see what, who can approve what. In Bangladesh manufacturing, this often means multi-site access rules, shift-based roles, and sometimes a hard separation between entity-level accounts visibility.</p>
+      </div>
+    </div>
+
+    <h2 id="run">How to run the sessions</h2>
+    <p>Discovery is not a requirements workshop. A requirements workshop produces a wish list. A discovery session produces a map of reality. The format I use:</p>
+
+    <div class="kv">
+      <span class="k">Session type</span><span class="v">One-on-one process interview per department head</span>
+      <span class="k">Duration</span><span class="v">90 minutes per session (2–3 departments per day max)</span>
+      <span class="k">Attendees</span><span class="v">BA + department lead + one floor-level operator</span>
+      <span class="k">Output</span><span class="v">Annotated process sketch + exception list + data volume estimate</span>
+      <span class="k">Forbidden</span><span class="v">No demos, no screens, no "Odoo can do that" during session</span>
+      <span class="k">Total time</span><span class="v">2–3 weeks for a mid-size deployment (5–8 departments)</span>
+    </div>
+
+    <p>The floor-level operator is the most important person in the room. Department heads describe the <em>intended</em> process. Operators describe the <em>actual</em> one. The gap between those two is where your configuration will be tested.</p>
+
+    <div class="callout">
+      <span class="tag">Rule</span>
+      <p>Ask "what happens when it goes wrong?" for every step. Exceptions and edge cases are not footnotes — they are where the real process lives. If your discovery doesn't capture them, your UAT will.</p>
+    </div>
+
+    <h2 id="output">What good output looks like</h2>
+    <p>Bad discovery output is a bullet-pointed list of features the client wants. Good discovery output has three documents:</p>
+
+    <div class="case-pair">
+      <div class="bad">
+        <h4>Bad output — wish list</h4>
+        <p>• Inventory management<br />• Sales order tracking<br />• Purchase approvals<br />• Multi-warehouse<br /><br /><em>No flows. No exceptions. No data volume. No roles. Useless for configuration.</em></p>
+      </div>
+      <div class="good">
+        <h4>Good output — gap map</h4>
+        <p><strong>As-is:</strong> Procurement raises PO in Excel → manager WhatsApp approval → vendor delivers → manually entered in Tally.<br /><strong>Gaps:</strong> No 3-way match today. Partial GRN not tracked. FX not captured at PO date.<br /><strong>Odoo config required:</strong> Purchase → Inventory → Accounting integration + approval workflow.</p>
+      </div>
+    </div>
+
+    <p>The gap map is the project scope. If the vendor's statement of work doesn't map back to a gap-by-gap list, you don't have a project — you have a verbal agreement that will be interpreted differently on both sides.</p>
+
+    <h2 id="handoff">The handoff to configuration</h2>
+    <p>Discovery ends with a formal handoff session where the BA walks the configuration team through every gap, every exception, and every data migration requirement — in writing. This session should take half a day. If it takes less, something wasn't captured.</p>
+
+    <p>Three things must be resolved before configuration starts:</p>
+    <ol>
+      <li><strong>Scope freeze.</strong> Any new requirement after this point is a change order with a timeline impact. Both sides must agree to this in writing.</li>
+      <li><strong>Data migration owner named.</strong> The client names one person responsible for delivering clean master data by a fixed date. The consultant names the import format. A date is set.</li>
+      <li><strong>UAT entry criteria defined.</strong> What does "ready for UAT" mean? Which flows must pass, at what fidelity, before end-users are invited to test? If this isn't defined upfront, UAT never ends.</li>
+    </ol>
+
+    <p>For the <a href="0010-bpmn-templates-manufacturing-discovery.html" style="color:var(--accent)">BPMN templates I use during manufacturing discovery</a>, there's a starter pack in Lab 0010 — built for Week 1 of every engagement. The <a href="0009-uat-script-200-users-ago.html" style="color:var(--accent)">UAT scripting guide</a> picks up where discovery hands off.</p>
+
+    <div class="callout">
+      <span class="tag">PS</span>
+      <p>If you're starting an Odoo engagement and want a scoped discovery — not a demo — <a href="../index.html#contact" style="color:var(--accent)">let's talk →</a></p>
+    </div>
+  </div>
+</article>
+
+<footer>
+  <div class="shell">
+    <div class="post-foot">
+      <span class="eyebrow">Continue exploring</span>
+      <div class="next">
+        <a class="next-card" href="0003-nbr-vat-compliance-odoo-bangladesh.html">
+          <span class="dir">Newer · 0003</span>
+          <h4>NBR VAT compliance in Odoo</h4>
+          <p>Mushak forms, BIN setup, and month-end VAT reconciliation for Bangladesh businesses.</p>
+          <span class="arrow">→</span>
+        </a>
+        <a class="next-card" href="0001-why-erp-fails-bangladesh.html">
+          <span class="dir">Older · 0001</span>
+          <h4>Why ERP implementations fail in Bangladesh</h4>
+          <p>Five root causes, in order of frequency. None of them are about the software.</p>
+          <span class="arrow">→</span>
+        </a>
+      </div>
+    </div>
+    <div class="foot">
+      <span>© 2026 Mehedi Hasan · Lab / 0002</span>
+      <span><a href="../index.html#lab">↑ Back to lab index</a></span>
+    </div>
+  </div>
+</footer>
+<script src="_toc.js" defer></script>
+</body>
+</html>

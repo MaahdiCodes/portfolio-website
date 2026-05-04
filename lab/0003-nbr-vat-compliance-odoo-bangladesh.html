@@ -1,0 +1,314 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="NBR VAT compliance in Odoo for Bangladesh — Mushak forms, BIN setup, tax configuration, and month-end VAT reconciliation. A practitioner's field guide." />
+<meta name="robots" content="index, follow" />
+<title>NBR VAT Compliance Odoo Bangladesh | ERP Accounting Setup | Mehedi Hasan</title>
+<link rel="canonical" href="https://mhasan.me/lab/0003-nbr-vat-compliance-odoo-bangladesh" />
+<!-- Open Graph -->
+<meta property="og:title" content="NBR VAT Compliance Odoo Bangladesh | ERP Accounting Setup | Mehedi Hasan" />
+<meta property="og:description" content="NBR VAT compliance in Odoo for Bangladesh — Mushak forms, BIN setup, tax configuration, and month-end VAT reconciliation. A practitioner's field guide." />
+<meta property="og:url" content="https://mhasan.me/lab/0003-nbr-vat-compliance-odoo-bangladesh" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://mhasan.me/assets/og-default.jpg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:site_name" content="Mehedi Hasan | Odoo Consultant" />
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="NBR VAT Compliance Odoo Bangladesh | ERP Accounting Setup | Mehedi Hasan" />
+<meta name="twitter:description" content="NBR VAT compliance in Odoo for Bangladesh — Mushak forms, BIN setup, tax configuration, and month-end VAT reconciliation. A practitioner's field guide." />
+<meta name="twitter:image" content="https://mhasan.me/assets/og-default.jpg" />
+<!-- JSON-LD: Article + BreadcrumbList + FAQPage -->
+<script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "NBR VAT Compliance in Odoo — A Bangladesh Practitioner's Guide",
+    "description": "NBR VAT compliance in Odoo for Bangladesh — Mushak forms, BIN setup, tax configuration, and month-end VAT reconciliation.",
+    "datePublished": "2025-09-01T08:00:00+06:00",
+    "dateModified": "2026-05-04T08:00:00+06:00",
+    "author": {
+      "@type": "Person",
+      "name": "Mehedi Hasan",
+      "url": "https://mhasan.me",
+      "sameAs": "https://www.linkedin.com/in/mehedi-hasan-consultant/"
+    },
+    "publisher": { "@type": "Person", "name": "Mehedi Hasan", "url": "https://mhasan.me" },
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://mhasan.me/lab/0003-nbr-vat-compliance-odoo-bangladesh" }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://mhasan.me" },
+      { "@type": "ListItem", "position": 2, "name": "Lab", "item": "https://mhasan.me/#lab" },
+      { "@type": "ListItem", "position": 3, "name": "NBR VAT Compliance Odoo Bangladesh", "item": "https://mhasan.me/lab/0003-nbr-vat-compliance-odoo-bangladesh" }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How do I set up VAT in Odoo for Bangladesh?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Configure your company BIN number in Settings, create tax groups for Output VAT (15%) and Input VAT (15%), set up fiscal positions for VAT-exempt and zero-rated supplies, and map your chart of accounts to NBR-required VAT liability and receivable accounts." }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the Mushak-6.3 form in Odoo?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Mushak-6.3 is the NBR-standard VAT invoice format. In Odoo, this maps to the customer invoice report. You must customise the invoice template to include your BIN, challan number sequence, and the prescribed Mushak layout before issuing any taxable supply." }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the standard VAT rate in Bangladesh?",
+        "acceptedAnswer": { "@type": "Answer", "text": "The standard VAT rate in Bangladesh is 15% under the VAT and SD Act 2012. Reduced rates (5%, 7.5%, 10%) apply to specific sectors. Export sales are zero-rated. Certain goods and services are VAT-exempt under Schedule 1 of the Act." }
+      }
+    ]
+  }
+]
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap">
+<link rel="stylesheet" href="_styles.css">
+<style>
+  .pull{
+    font-family:var(--serif);font-style:italic;
+    font-size:clamp(28px,3.4vw,42px);line-height:1.2;color:var(--text);
+    margin:48px 0;padding:0;border:none;
+    max-width:18ch;letter-spacing:-0.01em;
+  }
+  .pull::before{content:"";display:block;width:36px;height:1px;background:var(--accent);margin-bottom:18px}
+
+  .kv{display:grid;grid-template-columns:200px 1fr;gap:8px 18px;margin:18px 0;padding:18px 22px;border:1px solid var(--border);border-radius:10px;background:var(--surface);font-family:var(--mono);font-size:13px}
+  .kv .k{color:var(--text-3);letter-spacing:0.08em;text-transform:uppercase;font-size:10.5px;align-self:start;padding-top:2px}
+  .kv .v{color:var(--text)}
+
+  .mushak-table{width:100%;border-collapse:collapse;margin:24px 0;font-size:13.5px}
+  .mushak-table th{text-align:left;padding:10px 14px;font-family:var(--mono);font-size:10.5px;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-3);border-bottom:1px solid var(--border);font-weight:400}
+  .mushak-table td{padding:11px 14px;border-bottom:1px solid var(--border);color:var(--text-2);vertical-align:top;line-height:1.5}
+  .mushak-table td:first-child{font-family:var(--mono);font-size:12.5px;color:var(--accent);white-space:nowrap}
+  .mushak-table td strong{color:var(--text);font-weight:500}
+  .mushak-table tr:last-child td{border-bottom:none}
+
+  .trap-list{list-style:none;margin:24px 0;padding:0;display:flex;flex-direction:column;gap:12px}
+  .trap-list li{display:flex;gap:14px;padding:16px 20px;background:var(--surface);border:1px solid var(--border);border-radius:10px;align-items:flex-start}
+  .trap-list li .trap-n{font-family:var(--mono);font-size:10.5px;letter-spacing:0.1em;color:#C76A6A;flex:none;margin-top:2px}
+  .trap-list li .trap-body{font-size:14px;line-height:1.65;color:var(--text-2)}
+  .trap-list li .trap-body strong{color:var(--text);font-weight:500}
+</style>
+</head>
+<body>
+<div class="grid-bg"></div>
+
+<header class="nav">
+  <div class="shell">
+    <div class="nav-inner">
+      <a class="brand" href="../index.html">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span class="brand-name"><b>Mehedi Hasan</b><em>ERP · Business Analyst</em></span>
+      </a>
+      <a class="back-link" href="../index.html#lab">← Back to Lab</a>
+    </div>
+  </div>
+</header>
+
+<section class="post-head">
+  <div class="shell">
+    <span class="eyebrow">Technical Lab · 0003</span>
+    <h1>NBR VAT compliance in Odoo: a Bangladesh <span class="serif">practitioner's</span> guide.</h1>
+    <p class="lede">Mushak forms, BIN configuration, tax group setup, and month-end reconciliation — the compliance layer that most Odoo implementations in Bangladesh get wrong in the first six months.</p>
+    <div class="post-meta">
+      <span class="chip accent">Guide</span>
+      <span class="chip">VAT</span>
+      <span class="chip">Bangladesh compliance</span>
+    </div>
+    <div class="byline">
+      <span>Published<b>September 2025</b></span>
+      <span>Read time<b>11 minutes</b></span>
+      <span>Form<b>Technical Guide</b></span>
+      <span>Drawn from<b>3 Bangladesh VAT setups</b></span>
+    </div>
+  </div>
+</section>
+
+<article class="post">
+  <aside class="toc">
+    <div class="toc-k">In this guide</div>
+    <ol>
+      <li><a href="#nbr">What NBR requires from your ERP</a></li>
+      <li><a href="#setup">Setting up VAT in Odoo</a></li>
+      <li><a href="#mushak">Mushak forms — the mapping</a></li>
+      <li><a href="#traps">Five misconfiguration traps</a></li>
+      <li><a href="#monthend">Month-end reconciliation workflow</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ol>
+  </aside>
+
+  <div class="body">
+    <h2 id="nbr">What NBR requires from your ERP</h2>
+    <p>The <strong>VAT and Supplementary Duty Act 2012</strong> (effective June 2019) replaced Bangladesh's older VAT law and introduced a significant compliance layer for registered businesses. If your annual turnover exceeds BDT 50 lakh, you are likely VAT-registered and must:</p>
+    <ul>
+      <li>Issue tax invoices in the <strong>Mushak-6.3</strong> format for every taxable supply</li>
+      <li>Maintain a purchase register (<strong>Mushak-6.1</strong>) and a sales register (<strong>Mushak-6.2</strong>)</li>
+      <li>File a monthly <strong>Mushak-9.1</strong> VAT return by the 15th of the following month</li>
+      <li>Display your <strong>BIN</strong> (Business Identification Number) on all issued invoices</li>
+      <li>Retain input tax credit documentation for a minimum of five years</li>
+    </ul>
+    <p>None of this is impossible to configure in Odoo. But it requires deliberate setup — it doesn't work out of the box with the generic localization.</p>
+
+    <p class="pull">Out of the box, Odoo is not NBR-compliant. Two weeks of configuration makes it so.</p>
+
+    <h2 id="setup">Setting up VAT in Odoo</h2>
+    <p>This is the configuration sequence that produces a compliant setup. Do it in this order — skipping steps creates dependencies that are painful to unwind later.</p>
+
+    <div class="kv">
+      <span class="k">Step 1</span><span class="v">Settings → Company → add your BIN to the company record (Tax ID field). This appears on all printed invoices automatically.</span>
+      <span class="k">Step 2</span><span class="v">Accounting → Configuration → Taxes. Create two tax records: "Output VAT 15%" (type: Sale, scope: Taxable Goods/Services) and "Input VAT 15%" (type: Purchase). Set both to Tax Group "VAT 15%".</span>
+      <span class="k">Step 3</span><span class="v">Create a Tax Group called "VAT 15%". Map it to two accounts: VAT Payable (output) and VAT Receivable (input) — both separate from your standard payables/receivables.</span>
+      <span class="k">Step 4</span><span class="v">Fiscal Positions: create "VAT Exempt" (for Schedule 1 supplies) and "Zero-Rated Export" (for export sales). Map each to override the default 15% tax with 0% or exempt.</span>
+      <span class="k">Step 5</span><span class="v">Invoice sequences: set a dedicated sequence for Mushak-6.3 invoices. NBR requires a continuous, unbroken numeric sequence — do not share with non-VAT invoices.</span>
+      <span class="k">Step 6</span><span class="v">Customise the invoice report template to match the Mushak-6.3 layout: BIN, challan number, VAT amount in a separate line, and the prescribed footer text.</span>
+    </div>
+
+    <div class="callout">
+      <span class="tag">Note</span>
+      <p>Reduced VAT rates (5%, 7.5%, 10%) apply to specific sectors — services, construction, certain goods. If your business operates across VAT-rate categories, create separate tax records per rate and map them to the correct product categories via fiscal positions.</p>
+    </div>
+
+    <h2 id="mushak">Mushak forms — the mapping to Odoo</h2>
+    <p>The Mushak form system is NBR's prescribed format for VAT documentation. Here is how each form maps to Odoo's standard documents:</p>
+
+    <table class="mushak-table">
+      <thead>
+        <tr>
+          <th>Mushak Form</th>
+          <th>Purpose</th>
+          <th>Odoo Equivalent</th>
+          <th>Notes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Mushak-6.3</td>
+          <td><strong>VAT invoice</strong> — issued at every taxable sale</td>
+          <td>Customer Invoice (customised template)</td>
+          <td>Must show BIN, challan no., and 15% VAT separately</td>
+        </tr>
+        <tr>
+          <td>Mushak-6.1</td>
+          <td><strong>Purchase register</strong> — all taxable purchases with input VAT</td>
+          <td>Vendor Bills report + Tax Report (Purchase)</td>
+          <td>Run monthly; verify against vendor-issued invoices</td>
+        </tr>
+        <tr>
+          <td>Mushak-6.2</td>
+          <td><strong>Sales register</strong> — all taxable sales with output VAT</td>
+          <td>Customer Invoices report + Tax Report (Sale)</td>
+          <td>Run monthly; feeds directly into Mushak-9.1</td>
+        </tr>
+        <tr>
+          <td>Mushak-6.7</td>
+          <td><strong>Credit note</strong> — for returns and adjustments</td>
+          <td>Credit Note (Customer)</td>
+          <td>Must reference original Mushak-6.3 challan number</td>
+        </tr>
+        <tr>
+          <td>Mushak-9.1</td>
+          <td><strong>Monthly VAT return</strong> — filed with NBR by 15th</td>
+          <td>Generic Tax Report → export to NBR format</td>
+          <td>Requires custom report or manual transfer; not auto-generated</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2 id="traps">Five misconfiguration traps</h2>
+    <p>These are the VAT setup errors I have encountered across multiple Bangladesh implementations. All of them are correctable — but two of them cause reconciliation nightmares if caught after month-end.</p>
+
+    <ul class="trap-list">
+      <li>
+        <span class="trap-n">TRAP 01</span>
+        <span class="trap-body"><strong>Single VAT account for input and output.</strong> Using the same GL account for both means your VAT liability and VAT receivable net against each other in the balance sheet — which is wrong and confusing. Always create two separate accounts.</span>
+      </li>
+      <li>
+        <span class="trap-n">TRAP 02</span>
+        <span class="trap-body"><strong>Not setting fiscal positions on export customers.</strong> If you sell to export customers without a "Zero-Rated Export" fiscal position, Odoo will apply 15% VAT to their invoices by default. You'll have exported and incorrectly charged output VAT — and then filed it.</span>
+      </li>
+      <li>
+        <span class="trap-n">TRAP 03</span>
+        <span class="trap-body"><strong>Shared invoice sequence with non-VAT documents.</strong> NBR requires a continuous, unbroken Mushak-6.3 sequence. If your regular invoices and VAT invoices share a sequence, gaps appear in the challan numbers — a red flag during any NBR audit.</span>
+      </li>
+      <li>
+        <span class="trap-n">TRAP 04</span>
+        <span class="trap-body"><strong>Claiming input VAT on exempt purchases.</strong> Some categories are VAT-exempt on the supply side but still generate VAT on the purchase side. Verify the exemption status at purchase, not just at sale. If uncertain, consult your tax advisor — the penalty for wrongful input credit claims is 2× the tax claimed.</span>
+      </li>
+      <li>
+        <span class="trap-n">TRAP 05</span>
+        <span class="trap-body"><strong>Not locking periods before filing.</strong> If a user posts a backdated invoice after the monthly return has been filed, the Mushak-6.2 register and the submitted Mushak-9.1 will diverge. Always lock the accounting period in Odoo the day after filing.</span>
+      </li>
+    </ul>
+
+    <h2 id="monthend">Month-end VAT reconciliation workflow</h2>
+    <p>This is the 5-step sequence I walk accountants through in every Bangladesh deployment:</p>
+    <ol>
+      <li><strong>Generate the Tax Report</strong> in Odoo for the month — verify output VAT total and input VAT total. Compare against the Mushak-6.2 and Mushak-6.1 registers.</li>
+      <li><strong>Reconcile the VAT accounts</strong> in the GL: VAT Payable balance should equal output VAT on the tax report. VAT Receivable should equal input VAT. Any discrepancy means a mis-posted journal entry.</li>
+      <li><strong>Calculate the net VAT payable</strong> (Output VAT − Input VAT). This is the amount to remit to NBR. If input exceeds output, carry the credit forward — do not claim a refund without formal application.</li>
+      <li><strong>Post the VAT payment journal entry</strong> after the bank transfer: debit VAT Payable, credit bank account. This closes the period's VAT liability.</li>
+      <li><strong>Lock the accounting period</strong> in Odoo (Accounting → Accounting → Lock Dates). Set the lock date to the last day of the filed month. This prevents backdated entries from contaminating the next period's return.</li>
+    </ol>
+
+    <p>For the underlying data migration — including chart of accounts setup that feeds into this VAT structure — the <a href="0008-excel-odoo-migration-checklist.html" style="color:var(--accent)">Excel → Odoo migration checklist</a> covers the master data steps. And if you're setting up from scratch and haven't yet mapped your accounting structure, start with <a href="0002-discovery-session-business-process-mapping.html" style="color:var(--accent)">the discovery session guide</a> — the VAT configuration is only as correct as the chart of accounts it maps to.</p>
+
+    <div class="callout">
+      <span class="tag">PS</span>
+      <p>NBR compliance configuration is included in all my <a href="../services/odoo-partner-consultant/index.html" style="color:var(--accent)">Odoo consulting engagements</a>. If your current Odoo setup isn't producing compliant Mushak-6.3 invoices, <a href="../index.html#contact" style="color:var(--accent)">let's fix it →</a></p>
+    </div>
+
+    <h2 id="faq">FAQ</h2>
+
+    <h3>How do I set up VAT in Odoo for Bangladesh?</h3>
+    <p>Configure your company BIN number in Settings, create tax groups for Output VAT (15%) and Input VAT (15%), set up fiscal positions for VAT-exempt and zero-rated export supplies, and map your chart of accounts to separate NBR-required VAT liability and receivable accounts. Customise the invoice template to produce Mushak-6.3 format output.</p>
+
+    <h3>What is the Mushak-6.3 form in Odoo?</h3>
+    <p>Mushak-6.3 is the NBR-standard VAT invoice format required for every taxable sale in Bangladesh. In Odoo, it maps to a customised customer invoice report template that includes your BIN, a continuous challan number sequence, and the 15% VAT amount shown as a separate line item in the NBR-prescribed layout.</p>
+
+    <h3>What is the standard VAT rate in Bangladesh?</h3>
+    <p>The standard VAT rate in Bangladesh is <strong>15%</strong> under the VAT and SD Act 2012. Reduced rates of 5%, 7.5%, and 10% apply to specific sectors including certain services and construction. Export sales are zero-rated. Some goods and services are VAT-exempt under Schedule 1 of the Act.</p>
+  </div>
+</article>
+
+<footer>
+  <div class="shell">
+    <div class="post-foot">
+      <span class="eyebrow">Continue exploring</span>
+      <div class="next">
+        <a class="next-card" href="0004-odoo-vs-sap-vs-tally-bangladesh.html">
+          <span class="dir">Newer · 0004</span>
+          <h4>Odoo vs SAP vs Tally for Bangladesh SMEs</h4>
+          <p>An honest comparison from someone who has recommended all three.</p>
+          <span class="arrow">→</span>
+        </a>
+        <a class="next-card" href="0002-discovery-session-business-process-mapping.html">
+          <span class="dir">Older · 0002</span>
+          <h4>The discovery session</h4>
+          <p>Map your business processes before you configure a single screen in Odoo.</p>
+          <span class="arrow">→</span>
+        </a>
+      </div>
+    </div>
+    <div class="foot">
+      <span>© 2026 Mehedi Hasan · Lab / 0003</span>
+      <span><a href="../index.html#lab">↑ Back to lab index</a></span>
+    </div>
+  </div>
+</footer>
+<script src="_toc.js" defer></script>
+</body>
+</html>

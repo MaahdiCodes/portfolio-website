@@ -1,0 +1,300 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="The real cost of a failed ERP go-live in Bangladesh manufacturing — parallel ops, rework, and adoption debt. Field notes from 5 deployments." />
+<meta name="robots" content="index, follow" />
+<title>ERP Go-Live Cost Bangladesh | Manufacturing Field Report | Mehedi Hasan</title>
+<link rel="canonical" href="https://mhasan.me/lab/0005-erp-go-live-cost-manufacturing-bangladesh" />
+<!-- Open Graph -->
+<meta property="og:title" content="ERP Go-Live Cost Bangladesh | Manufacturing Field Report | Mehedi Hasan" />
+<meta property="og:description" content="The real cost of a failed ERP go-live in Bangladesh manufacturing — parallel ops, rework, and adoption debt. Field notes from 5 deployments." />
+<meta property="og:url" content="https://mhasan.me/lab/0005-erp-go-live-cost-manufacturing-bangladesh" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://mhasan.me/assets/og-default.jpg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:site_name" content="Mehedi Hasan | Odoo Consultant" />
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="ERP Go-Live Cost Bangladesh | Manufacturing Field Report | Mehedi Hasan" />
+<meta name="twitter:description" content="The real cost of a failed ERP go-live in Bangladesh manufacturing — parallel ops, rework, and adoption debt. Field notes from 5 deployments." />
+<meta name="twitter:image" content="https://mhasan.me/assets/og-default.jpg" />
+<!-- JSON-LD: Article + BreadcrumbList -->
+<script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "The Real Cost of Going Live Wrong — A Manufacturing ERP Field Report",
+    "description": "The real cost of a failed ERP go-live in Bangladesh manufacturing — parallel ops, rework, and adoption debt. Field notes from 5 deployments.",
+    "datePublished": "2025-10-15T08:00:00+06:00",
+    "dateModified": "2026-05-04T08:00:00+06:00",
+    "author": {
+      "@type": "Person",
+      "name": "Mehedi Hasan",
+      "url": "https://mhasan.me",
+      "sameAs": "https://www.linkedin.com/in/mehedi-hasan-consultant/"
+    },
+    "publisher": { "@type": "Person", "name": "Mehedi Hasan", "url": "https://mhasan.me" },
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://mhasan.me/lab/0005-erp-go-live-cost-manufacturing-bangladesh" }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://mhasan.me" },
+      { "@type": "ListItem", "position": 2, "name": "Lab", "item": "https://mhasan.me/#lab" },
+      { "@type": "ListItem", "position": 3, "name": "ERP Go-Live Cost Manufacturing Bangladesh", "item": "https://mhasan.me/lab/0005-erp-go-live-cost-manufacturing-bangladesh" }
+    ]
+  }
+]
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap">
+<link rel="stylesheet" href="_styles.css">
+<style>
+  .pull{
+    font-family:var(--serif);font-style:italic;
+    font-size:clamp(28px,3.4vw,42px);line-height:1.2;color:var(--text);
+    margin:48px 0;padding:0;border:none;
+    max-width:18ch;letter-spacing:-0.01em;
+  }
+  .pull::before{content:"";display:block;width:36px;height:1px;background:var(--accent);margin-bottom:18px}
+
+  .field-note{
+    margin:28px 0;border:1px solid var(--border);border-radius:12px;overflow:hidden;
+    background:var(--surface);
+  }
+  .fn-hd{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:12px 18px;border-bottom:1px solid var(--border);
+    font-family:var(--mono);font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-3);
+  }
+  .fn-hd .when{color:var(--accent)}
+  .fn-body{padding:18px 22px;font-size:15px;line-height:1.65;color:var(--text-2)}
+  .fn-body strong{color:var(--text);font-weight:500}
+
+  .cost-table{width:100%;border-collapse:collapse;margin:24px 0;font-size:13.5px}
+  .cost-table th{text-align:left;padding:10px 14px;font-family:var(--mono);font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-3);border-bottom:2px solid var(--border);font-weight:400;background:var(--surface)}
+  .cost-table td{padding:11px 14px;border-bottom:1px solid var(--border);color:var(--text-2);line-height:1.5;vertical-align:top}
+  .cost-table td:first-child{color:var(--text);font-weight:500}
+  .cost-table td:last-child{font-family:var(--mono);font-size:13px;white-space:nowrap}
+  .cost-table tr:last-child td{border-bottom:none;color:var(--text);font-weight:600}
+  .cost-table .hi td:last-child{color:var(--accent)}
+  .cost-table .lo td:last-child{color:#C76A6A}
+
+  .three-up{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:28px 0}
+  .three-up .card{border:1px solid var(--border);border-radius:10px;padding:18px;background:var(--surface);display:flex;flex-direction:column;gap:10px}
+  .three-up .card .num{font-family:var(--mono);font-size:11px;color:var(--accent);letter-spacing:0.14em}
+  .three-up .card h4{margin:0;font-size:15px;font-weight:600;letter-spacing:-0.01em}
+  .three-up .card p{margin:0;font-size:13.5px;color:var(--text-2);line-height:1.55}
+  @media(max-width:680px){.three-up{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="grid-bg"></div>
+
+<header class="nav">
+  <div class="shell">
+    <div class="nav-inner">
+      <a class="brand" href="../index.html">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span class="brand-name"><b>Mehedi Hasan</b><em>ERP · Business Analyst</em></span>
+      </a>
+      <a class="back-link" href="../index.html#lab">← Back to Lab</a>
+    </div>
+  </div>
+</header>
+
+<section class="post-head">
+  <div class="shell">
+    <span class="eyebrow">Technical Lab · 0005</span>
+    <h1>The real cost of going live <span class="serif">wrong</span>: a manufacturing field report.</h1>
+    <p class="lede">The invoice your vendor hands you is not the cost of the ERP. It is the down payment. Here is where the rest of the money actually goes — and how to budget for it before you sign anything.</p>
+    <div class="post-meta">
+      <span class="chip accent">Essay</span>
+      <span class="chip">Go-live</span>
+      <span class="chip">Manufacturing</span>
+    </div>
+    <div class="byline">
+      <span>Published<b>October 2025</b></span>
+      <span>Read time<b>9 minutes</b></span>
+      <span>Form<b>Essay · Field notes</b></span>
+      <span>Drawn from<b>5 manufacturing go-lives</b></span>
+    </div>
+  </div>
+</section>
+
+<article class="post">
+  <aside class="toc">
+    <div class="toc-k">In this essay</div>
+    <ol>
+      <li><a href="#invoice">The invoice they didn't see coming</a></li>
+      <li><a href="#patterns">Three go-live failure patterns</a></li>
+      <li><a href="#parallel">The parallel-operation trap</a></li>
+      <li><a href="#budget">How to budget for the real cost</a></li>
+      <li><a href="#clean">What a clean go-live looks like</a></li>
+    </ol>
+  </aside>
+
+  <div class="body">
+    <h2 id="invoice">The invoice they didn't see coming</h2>
+    <p>A garment factory — 180 staff, three production lines — went live on Odoo in October. The implementation vendor charged BDT 8 lakh. By March, the finance director was telling me the ERP had cost them closer to BDT 28 lakh.</p>
+
+    <p>The vendor's BDT 8 lakh invoice was real. The remaining BDT 20 lakh was invisible — it was never billed, never budgeted, and never appeared in any line item. It appeared instead as: two months of parallel operations (the old Tally system and Odoo running simultaneously, both needing maintenance and reconciliation), four weeks of overtime for the accounts team to reconcile diverging inventory values, a three-week production halt when the BOM configuration produced incorrect material requirements, and the cost of a second consultant brought in to fix what the first one had missed.</p>
+
+    <p>I tell this story not to alarm, but to reframe the question. The right question is not "how much does ERP cost?" — it is <strong>"how much does a poorly-scoped ERP cost, and how do I avoid paying that?"</strong></p>
+
+    <p class="pull">The vendor invoice is the down payment. The real cost comes in the quarters after go-live.</p>
+
+    <h2 id="patterns">Three go-live failure patterns</h2>
+    <p>Across five manufacturing deployments, the failures that generated unexpected cost clustered into three patterns:</p>
+
+    <div class="three-up">
+      <div class="card">
+        <span class="num">PATTERN 01</span>
+        <h4>Data migration failure</h4>
+        <p>Opening balances are wrong. Item master has duplicate SKUs. BOM structures weren't reviewed before import. On day one of live operations, stock valuations don't reconcile — and the accounts team runs the old system in parallel while the issue is diagnosed and corrected. This takes weeks, not hours.</p>
+      </div>
+      <div class="card">
+        <span class="num">PATTERN 02</span>
+        <h4>Training gap go-live</h4>
+        <p>Users were trained once, during configuration. By go-live, the system has changed. The training was screen-based, not task-based. No floor-level operator can complete their actual Tuesday job in the system without asking for help. Productivity drops 40–60% for the first month.</p>
+      </div>
+      <div class="card">
+        <span class="num">PATTERN 03</span>
+        <h4>Scope creep discovery</h4>
+        <p>Three weeks after go-live, a production supervisor discovers that the system doesn't handle the split-lot tracking they use every morning. It wasn't scoped. The vendor says it's a customisation. There's no budget for it. Operations reverts to manual tracking while the commercial discussion happens.</p>
+      </div>
+    </div>
+
+    <div class="field-note">
+      <div class="fn-hd"><span>Note · Textile factory · 4 production sites</span><span class="when">Month 2 post-go-live</span></div>
+      <div class="fn-body">
+        Stock movement had been configured to auto-validate. Nobody had tested what happened when a batch transfer was partially done and abandoned mid-shift due to a machine stoppage. The system was creating phantom inventory. The warehouse manager noticed the discrepancy 47 days after go-live. The reconciliation exercise took 11 working days. <strong>The root cause: a UAT case that was on the checklist, marked "to test," never tested, and waved through on the go-live sign-off call.</strong>
+      </div>
+    </div>
+
+    <h2 id="parallel">The parallel-operation trap</h2>
+    <p>Every business runs parallel operations after a go-live. That is normal and prudent — you want a fallback if something is catastrophically wrong in the first week. The trap is when "parallel" becomes the permanent state.</p>
+
+    <p>Parallel operations in manufacturing typically cost:</p>
+    <ul>
+      <li>The salary time of the person maintaining the old system (often 30–50% of one accountant's working week)</li>
+      <li>Month-end reconciliation between the two systems — typically 3–5 days of accountant time per month</li>
+      <li>The cognitive overhead of management running on two data sources that say different things</li>
+      <li>Delayed decision-making because nobody knows which system to believe</li>
+    </ul>
+
+    <p>In a 150-person factory, <strong>two months of parallel operations costs roughly BDT 3–6 lakh</strong> in productive time before the accounting starts. I have seen parallel operations persist for six months. At that point, the business has quietly paid for the ERP twice.</p>
+
+    <h2 id="budget">How to budget for the real cost</h2>
+    <p>A realistic budget for a mid-size Bangladesh manufacturing ERP deployment looks like this:</p>
+
+    <table class="cost-table">
+      <thead>
+        <tr>
+          <th>Cost item</th>
+          <th>What most clients budget</th>
+          <th>What it actually costs</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Software license (Odoo Enterprise, 20 users)</td>
+          <td>BDT 4–6L/year</td>
+          <td>BDT 4–6L/year</td>
+        </tr>
+        <tr>
+          <td>Vendor implementation fee</td>
+          <td>BDT 5–15L</td>
+          <td>BDT 5–15L</td>
+        </tr>
+        <tr>
+          <td>Data migration (audit + clean + import)</td>
+          <td>BDT 0 (included in above)</td>
+          <td>BDT 1–4L (dedicated resource + time)</td>
+        </tr>
+        <tr>
+          <td>Change management &amp; training</td>
+          <td>BDT 0 (one training day included)</td>
+          <td>BDT 1–3L (floor walks, refreshers, champions)</td>
+        </tr>
+        <tr class="lo">
+          <td>Parallel operations (if go-live fails)</td>
+          <td>BDT 0 (not anticipated)</td>
+          <td>BDT 3–10L (2–4 months of dual-system operation)</td>
+        </tr>
+        <tr class="lo">
+          <td>Rework &amp; fix engagements</td>
+          <td>BDT 0 (not anticipated)</td>
+          <td>BDT 2–8L (common in under-scoped projects)</td>
+        </tr>
+        <tr>
+          <td>90-day hypercare support</td>
+          <td>BDT 0 (assumed included)</td>
+          <td>BDT 1–3L (explicit post-go-live commitment)</td>
+        </tr>
+        <tr class="hi">
+          <td><strong>Total (well-scoped project)</strong></td>
+          <td>—</td>
+          <td><strong>BDT 12–31L</strong></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="callout">
+      <span class="tag">The rule</span>
+      <p>A well-scoped ERP project costs more upfront than a poorly-scoped one. It also costs significantly less in total. The difference is all the work that gets priced into the contract instead of absorbed by your operations team over six months.</p>
+    </div>
+
+    <h2 id="clean">What a clean go-live looks like</h2>
+    <p>In five go-lives, two were clean. Both had identical characteristics: a dedicated internal champion who knew the business and the system, a data migration that finished two weeks before go-live (not two days), a UAT period that lasted three weeks with real users running real Monday-to-Friday operations, and an explicit 90-day hypercare clause in the vendor contract.</p>
+
+    <p>The hypercare clause is the one I tell every client to fight for. It changes the vendor's incentive structure. When a vendor knows they are on-site for 90 days after go-live at no extra charge, they configure more carefully during implementation. Every shortcut they take in discovery becomes a cost they pay later.</p>
+
+    <p>The change management side of a clean go-live — the floor walks, the named champions, the repeated training — is covered in detail in <a href="0007-change-management-isnt-a-memo.html" style="color:var(--accent)">Change management isn't a memo</a>. The root causes of why go-lives fail structurally are in <a href="0001-why-erp-fails-bangladesh.html" style="color:var(--accent)">Why ERP implementations fail in Bangladesh</a>. Read both before signing a contract.</p>
+
+    <blockquote>
+      The question is not "can we afford a good implementation?" The question is "can we afford to run a bad one twice?"
+    </blockquote>
+
+    <div class="callout">
+      <span class="tag">PS</span>
+      <p>If you're in the scoping phase for a manufacturing ERP, I offer a structured discovery engagement that produces a scoped cost estimate before any implementation starts. <a href="../index.html#contact" style="color:var(--accent)">Let's talk →</a></p>
+    </div>
+  </div>
+</article>
+
+<footer>
+  <div class="shell">
+    <div class="post-foot">
+      <span class="eyebrow">Continue exploring</span>
+      <div class="next">
+        <a class="next-card" href="0006-odoo-multi-company-setup-guide.html">
+          <span class="dir">Newer · 0006</span>
+          <h4>Odoo multi-company setup guide</h4>
+          <p>When it genuinely helps, when it makes everything worse, and how to configure it right.</p>
+          <span class="arrow">→</span>
+        </a>
+        <a class="next-card" href="0004-odoo-vs-sap-vs-tally-bangladesh.html">
+          <span class="dir">Older · 0004</span>
+          <h4>Odoo vs SAP vs Tally for Bangladesh SMEs</h4>
+          <p>An honest comparison from someone who has recommended all three.</p>
+          <span class="arrow">→</span>
+        </a>
+      </div>
+    </div>
+    <div class="foot">
+      <span>© 2026 Mehedi Hasan · Lab / 0005</span>
+      <span><a href="../index.html#lab">↑ Back to lab index</a></span>
+    </div>
+  </div>
+</footer>
+<script src="_toc.js" defer></script>
+</body>
+</html>

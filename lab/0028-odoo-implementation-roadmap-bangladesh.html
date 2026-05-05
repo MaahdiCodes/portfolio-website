@@ -1,0 +1,974 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description"
+    content="Odoo implementation roadmap Bangladesh — the complete 12-week plan: RACI matrix, phase milestones, data cutover, and go-live criteria for SMEs. Start here →" />
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="Mehedi Hasan" />
+  <title>Odoo Implementation Roadmap Bangladesh | Mehedi Hasan</title>
+  <link rel="canonical" href="https://mhasan.me/lab/0028-odoo-implementation-roadmap-bangladesh" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png" />
+  <!-- Open Graph -->
+  <meta property="og:title" content="Odoo Implementation Roadmap Bangladesh | Mehedi Hasan" />
+  <meta property="og:description"
+    content="The complete 12-week Odoo implementation roadmap for Bangladesh SMEs — RACI matrix, week-by-week task lists, phase milestones, and go-live criteria drawn from real deployments." />
+  <meta property="og:url" content="https://mhasan.me/lab/0028-odoo-implementation-roadmap-bangladesh" />
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="https://mhasan.me/assets/og-default.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:site_name" content="Mehedi Hasan | Odoo ERP Consultant" />
+  <meta property="article:author" content="https://www.linkedin.com/in/mehedi-hasan-consultant/" />
+  <meta property="article:published_time" content="2026-05-05T12:00:00+06:00" />
+  <meta property="article:modified_time" content="2026-05-05T12:00:00+06:00" />
+  <meta property="article:section" content="Odoo ERP Bangladesh" />
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Odoo Implementation Roadmap Bangladesh | 12-Week Guide" />
+  <meta name="twitter:description"
+    content="12-week Odoo implementation roadmap for Bangladesh SMEs — RACI matrix, phase milestones, go-live criteria, and Bangladesh-specific planning considerations." />
+  <meta name="twitter:image" content="https://mhasan.me/assets/og-default.jpg" />
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "The 12-Week Odoo Implementation Roadmap for Bangladesh SMEs",
+    "description": "A complete, week-by-week Odoo implementation roadmap designed for Bangladesh manufacturing and trading SMEs. Covers project team structure (RACI), five implementation phases, go/no-go milestones, data cutover sequence, and Bangladesh-specific planning considerations including NBR fiscal year alignment and Eid holiday windows.",
+    "datePublished": "2026-05-05T12:00:00+06:00",
+    "dateModified": "2026-05-05T12:00:00+06:00",
+    "author": {
+      "@type": "Person",
+      "name": "Mehedi Hasan",
+      "url": "https://mhasan.me",
+      "jobTitle": "Odoo ERP Consultant & Business Analyst",
+      "sameAs": "https://www.linkedin.com/in/mehedi-hasan-consultant/"
+    },
+    "publisher": { "@type": "Person", "name": "Mehedi Hasan", "url": "https://mhasan.me" },
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://mhasan.me/lab/0028-odoo-implementation-roadmap-bangladesh" }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://mhasan.me" },
+      { "@type": "ListItem", "position": 2, "name": "Lab", "item": "https://mhasan.me/lab/" },
+      { "@type": "ListItem", "position": 3, "name": "Odoo Implementation Roadmap Bangladesh", "item": "https://mhasan.me/lab/0028-odoo-implementation-roadmap-bangladesh" }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How long does Odoo implementation take in Bangladesh?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "For a Bangladesh SME with 25–100 users implementing core Odoo modules (accounting, inventory, purchase, sales), a realistic timeline is 10–14 weeks. The 12-week roadmap in this guide is the target for a well-resourced, focused project. Complex manufacturing deployments (with production scheduling, quality control, custom Bangladesh compliance) typically run 16–24 weeks. Projects that extend beyond 20 weeks usually do so because of data quality issues, scope creep, or inadequate client-side resource allocation — not because Odoo is difficult to configure."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the best time of year to go live with Odoo in Bangladesh?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "For Bangladesh businesses, the ideal go-live windows are: (1) August–September — after the NBR fiscal year start (July 1) and before the Eid-ul-Adha preparation period; (2) November–December — post-Puja and before the year-end close rush. Avoid: Ramadan (reduced working hours, low staff energy for training), Eid-ul-Fitr and Eid-ul-Adha windows (skeleton staff), March–June (NBR fiscal year-end rush for accounting teams), and any week immediately before or after a major factory shipment deadline. The single worst go-live timing I have seen: the week before Eid-ul-Fitr with 30% of the accounts team on advance leave."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Who should be on the Odoo implementation project team in Bangladesh?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A standard Bangladesh SME Odoo project team requires: (1) Project Sponsor — the MD, CFO, or COO who owns the budget and makes go/no-go decisions; (2) Client Project Manager — a mid-level manager who coordinates internally and is the primary contact for the consultant; (3) Key Users / Module Champions — one person per major module (accounts, warehouse, procurement, HR) who knows the current process deeply and will become the internal expert; (4) IT / System Admin — responsible for server, network, and user access; (5) Odoo Consultant — the external implementation team (1–3 consultants depending on scope). The most common gap in Bangladesh projects: a Client Project Manager who has authority to approve decisions without escalating every item to the MD."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What are the most common Odoo implementation failures in Bangladesh?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Based on projects across Bangladesh manufacturing and trading companies, the top five implementation failure modes are: (1) Data not cleaned before migration — dirty data from Tally or legacy systems imported directly into Odoo, causing reconciliation problems at go-live; (2) Scope creep accepted without timeline extension — adding new requirements in week 6 without adjusting the go-live date; (3) Key users not allocated time — module champions who attend configuration workshops but have no time protected for testing; (4) Training deferred to go-live week — users who see Odoo for the first time on go-live day; (5) No parallel run — switching off the old system the day Odoo goes live with no fallback period. Each of these failure modes is avoidable with the 12-week roadmap structure described in this article."
+        }
+      }
+    ]
+  }
+]
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap">
+  <link rel="stylesheet" href="_styles.css">
+  <style>
+    /* phase timeline */
+    .phase-timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      margin: 32px 0;
+    }
+    .phase-block {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      border: 1px solid var(--border);
+      border-bottom: none;
+      overflow: hidden;
+    }
+    .phase-block:first-child { border-radius: 10px 10px 0 0; }
+    .phase-block:last-child { border-bottom: 1px solid var(--border); border-radius: 0 0 10px 10px; }
+    .phase-label {
+      background: var(--surface);
+      border-right: 1px solid var(--border);
+      padding: 16px 14px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .phase-num {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-3);
+      margin-bottom: 4px;
+    }
+    .phase-title {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text);
+      line-height: 1.3;
+    }
+    .phase-weeks {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--accent);
+      margin-top: 5px;
+    }
+    .phase-tasks {
+      padding: 16px 20px;
+    }
+    .phase-tasks ul {
+      margin: 0;
+      padding: 0 0 0 16px;
+      font-size: 13px;
+      color: var(--text-2);
+      line-height: 1.9;
+    }
+    .phase-deliverable {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--text-3);
+      margin-top: 8px;
+      letter-spacing: 0.04em;
+    }
+
+    /* week detail cards */
+    .week-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin: 24px 0;
+    }
+    .week-card {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .week-head {
+      padding: 11px 16px;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+    }
+    .week-num {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-3);
+    }
+    .week-name {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text);
+    }
+    .week-body {
+      padding: 14px 16px;
+      font-size: 13px;
+      color: var(--text-2);
+      line-height: 1.8;
+    }
+    .week-body ul {
+      margin: 0;
+      padding: 0 0 0 14px;
+    }
+    .week-deliverable {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: oklch(0.80 0.17 155);
+      margin-top: 10px;
+      display: block;
+      letter-spacing: 0.04em;
+    }
+    @media(max-width:640px) {
+      .week-grid { grid-template-columns: 1fr; }
+      .phase-block { grid-template-columns: 1fr; }
+      .phase-label { border-right: none; border-bottom: 1px solid var(--border); }
+    }
+
+    /* RACI table */
+    .raci-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 12.5px;
+      margin: 24px 0;
+    }
+    .raci-table th {
+      padding: 10px 12px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-3);
+      text-align: left;
+    }
+    .raci-table th:not(:first-child) { text-align: center; }
+    .raci-table td {
+      padding: 10px 12px;
+      border: 1px solid var(--border);
+      color: var(--text-2);
+      vertical-align: middle;
+    }
+    .raci-table td:not(:first-child) { text-align: center; }
+    .raci-table td .task { font-weight: 500; color: var(--text); }
+    .r { color: oklch(0.80 0.17 155); font-weight: 700; font-family: var(--mono); }
+    .a { color: oklch(0.75 0.18 50); font-weight: 700; font-family: var(--mono); }
+    .c { color: oklch(0.70 0.12 260); font-weight: 700; font-family: var(--mono); }
+    .i { color: var(--text-3); font-family: var(--mono); }
+
+    /* go-no-go table */
+    .gng-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+      margin: 24px 0;
+    }
+    .gng-table th {
+      padding: 10px 14px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-3);
+      text-align: left;
+    }
+    .gng-table td {
+      padding: 10px 14px;
+      border: 1px solid var(--border);
+      color: var(--text-2);
+      vertical-align: top;
+      line-height: 1.6;
+    }
+    .gng-table td:first-child { font-weight: 500; color: var(--text); width: 30%; }
+    .go { color: oklch(0.80 0.17 155); font-weight: 600; }
+    .nogo { color: oklch(0.60 0.20 30); font-weight: 600; }
+
+    .pull {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: clamp(20px, 2.8vw, 30px);
+      line-height: 1.3;
+      color: var(--text);
+      margin: 48px 0;
+      max-width: 24ch;
+      letter-spacing: -0.01em;
+    }
+    .pull::before {
+      content: "";
+      display: block;
+      width: 36px;
+      height: 1px;
+      background: var(--accent);
+      margin-bottom: 18px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="grid-bg"></div>
+
+  <header class="nav">
+    <div class="shell">
+      <div class="nav-inner">
+        <a class="brand" href="../index.html">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span class="brand-name"><b>Mehedi Hasan</b><em>ERP · Business Analyst</em></span>
+        </a>
+        <a class="back-link" href="../index.html#lab">← Back to Lab</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="post-head">
+    <div class="shell">
+      <span class="eyebrow">Technical Lab · 0028</span>
+      <h1>The 12-Week Odoo Implementation Roadmap — <span class="serif">for Bangladesh SMEs.</span></h1>
+      <p class="lede">Every Odoo implementation that fails does so for a predictable reason: the project team did not have a shared understanding of what happens in which week, who is responsible for which decision, and what "done" looks like at each milestone. This roadmap fixes that.</p>
+      <div class="post-meta">
+        <span class="chip accent">Guide</span>
+        <span class="chip">Implementation</span>
+        <span class="chip">Project Management</span>
+        <span class="chip">Bangladesh SME</span>
+      </div>
+      <div class="byline">
+        <span>By<b><a href="https://www.linkedin.com/in/mehedi-hasan-consultant/" style="color:var(--accent)" rel="author">Mehedi Hasan</a></b></span>
+        <span>Published<b>May 2026</b></span>
+        <span>Read time<b>16 minutes</b></span>
+        <span>Form<b>Implementation Guide</b></span>
+        <span>Scope<b>Bangladesh SMEs · 25–150 users</b></span>
+      </div>
+    </div>
+  </section>
+
+  <article class="post">
+    <aside class="toc">
+      <div class="toc-k">In this guide</div>
+      <ol>
+        <li><a href="#project-team">Project team & RACI</a></li>
+        <li><a href="#phase-overview">5-phase overview</a></li>
+        <li><a href="#phase1">Phase 1 — Discovery (Weeks 1–2)</a></li>
+        <li><a href="#phase2">Phase 2 — Configuration (Weeks 3–6)</a></li>
+        <li><a href="#phase3">Phase 3 — Data & UAT (Weeks 7–9)</a></li>
+        <li><a href="#phase4">Phase 4 — Training (Weeks 10–11)</a></li>
+        <li><a href="#phase5">Phase 5 — Go-Live (Week 12)</a></li>
+        <li><a href="#gng">Go / no-go criteria</a></li>
+        <li><a href="#bangladesh-calendar">Bangladesh calendar rules</a></li>
+        <li><a href="#failure-modes">Common failure modes</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ol>
+    </aside>
+
+    <div class="body">
+      <p>Twelve weeks is the target for a focused, well-resourced Odoo implementation at a Bangladesh SME covering core modules: accounting, inventory, purchase, sales, and either manufacturing or HR/payroll. This timeline is achievable. I have delivered it. I have also seen projects drag to 30 weeks — not because Odoo is complex, but because the project lacked structure.</p>
+
+      <p>This roadmap is based on what I have learned across multiple Bangladesh manufacturing and trading implementations: what must happen in which sequence, where projects lose weeks, and what the specific Bangladesh context (Tally migrations, NBR fiscal calendar, Eid scheduling) changes about the standard playbook. Use it as a live planning document — share it with your project team on day one.</p>
+
+      <p class="pull">The week you skip discovery shortcuts will cost you three weeks in UAT. The projects that finished on time were the ones that were most thorough in weeks one and two.</p>
+
+      <h2 id="project-team">Project team & RACI matrix</h2>
+
+      <p>Before week one begins, every role in the table below must be named with a real person. An empty cell in a RACI matrix is a gap that will surface as a crisis in week seven. The most common gap in Bangladesh implementations: a client-side Project Manager who has authority to approve configuration decisions without escalating every item to the Managing Director.</p>
+
+      <table class="raci-table">
+        <thead>
+          <tr>
+            <th style="width:34%">Activity</th>
+            <th>Sponsor<br>(MD/CFO)</th>
+            <th>Client PM</th>
+            <th>Odoo<br>Consultant</th>
+            <th>Key Users<br>(Dept Heads)</th>
+            <th>IT Admin</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="task">Scope sign-off</span></td>
+            <td><span class="a">A</span></td>
+            <td><span class="r">R</span></td>
+            <td><span class="c">C</span></td>
+            <td><span class="c">C</span></td>
+            <td><span class="i">I</span></td>
+          </tr>
+          <tr>
+            <td><span class="task">Business process documentation</span></td>
+            <td><span class="i">I</span></td>
+            <td><span class="a">A</span></td>
+            <td><span class="r">R</span></td>
+            <td><span class="r">R</span></td>
+            <td><span class="i">I</span></td>
+          </tr>
+          <tr>
+            <td><span class="task">Odoo configuration decisions</span></td>
+            <td><span class="i">I</span></td>
+            <td><span class="a">A</span></td>
+            <td><span class="r">R</span></td>
+            <td><span class="c">C</span></td>
+            <td><span class="i">I</span></td>
+          </tr>
+          <tr>
+            <td><span class="task">Server setup & user provisioning</span></td>
+            <td><span class="i">I</span></td>
+            <td><span class="a">A</span></td>
+            <td><span class="c">C</span></td>
+            <td><span class="i">I</span></td>
+            <td><span class="r">R</span></td>
+          </tr>
+          <tr>
+            <td><span class="task">Data extraction from legacy system</span></td>
+            <td><span class="i">I</span></td>
+            <td><span class="a">A</span></td>
+            <td><span class="c">C</span></td>
+            <td><span class="r">R</span></td>
+            <td><span class="r">R</span></td>
+          </tr>
+          <tr>
+            <td><span class="task">Data cleaning & validation</span></td>
+            <td><span class="i">I</span></td>
+            <td><span class="a">A</span></td>
+            <td><span class="r">R</span></td>
+            <td><span class="r">R</span></td>
+            <td><span class="i">I</span></td>
+          </tr>
+          <tr>
+            <td><span class="task">UAT test execution</span></td>
+            <td><span class="i">I</span></td>
+            <td><span class="a">A</span></td>
+            <td><span class="c">C</span></td>
+            <td><span class="r">R</span></td>
+            <td><span class="i">I</span></td>
+          </tr>
+          <tr>
+            <td><span class="task">Training delivery</span></td>
+            <td><span class="i">I</span></td>
+            <td><span class="a">A</span></td>
+            <td><span class="r">R</span></td>
+            <td><span class="r">R</span></td>
+            <td><span class="i">I</span></td>
+          </tr>
+          <tr>
+            <td><span class="task">Go-live decision</span></td>
+            <td><span class="a">A</span></td>
+            <td><span class="r">R</span></td>
+            <td><span class="c">C</span></td>
+            <td><span class="c">C</span></td>
+            <td><span class="c">C</span></td>
+          </tr>
+          <tr>
+            <td><span class="task">Hypercare issue escalation</span></td>
+            <td><span class="i">I</span></td>
+            <td><span class="a">A</span></td>
+            <td><span class="r">R</span></td>
+            <td><span class="r">R</span></td>
+            <td><span class="c">C</span></td>
+          </tr>
+        </tbody>
+      </table>
+      <p style="font-size:12px;color:var(--text-3);margin-top:-8px;font-family:var(--mono);">R = Responsible · A = Accountable · C = Consulted · I = Informed</p>
+
+      <h2 id="phase-overview">5-phase overview</h2>
+
+      <div class="phase-timeline">
+        <div class="phase-block">
+          <div class="phase-label">
+            <div class="phase-num">Phase 1</div>
+            <div class="phase-title">Discovery & Setup</div>
+            <div class="phase-weeks">Weeks 1–2</div>
+          </div>
+          <div class="phase-tasks">
+            <ul>
+              <li>Project kickoff, team roles confirmed, communication plan agreed</li>
+              <li>AS-IS business process workshops (all modules in scope)</li>
+              <li>Gap analysis: what current processes Odoo handles natively vs. what needs customization</li>
+              <li>Server provisioned, Odoo installed, development instance created</li>
+              <li>Data audit: review legacy system exports, identify data quality issues</li>
+            </ul>
+            <div class="phase-deliverable">DELIVERABLE → Scope document, signed-off process maps, gap analysis register, data audit report</div>
+          </div>
+        </div>
+        <div class="phase-block">
+          <div class="phase-label">
+            <div class="phase-num">Phase 2</div>
+            <div class="phase-title">Core Configuration</div>
+            <div class="phase-weeks">Weeks 3–6</div>
+          </div>
+          <div class="phase-tasks">
+            <ul>
+              <li>Company setup: fiscal year (July 1 for BD companies), currency, tax positions</li>
+              <li>Chart of accounts aligned to Bangladesh accounting standards</li>
+              <li>Module-by-module configuration: inventory → purchase → sales → accounting</li>
+              <li>Manufacturing/HR modules (if in scope) configured and tested internally</li>
+              <li>Bangladesh compliance configuration: Mushak tax positions, TDS withholding, payroll rules</li>
+              <li>Custom reports and print templates (invoices, delivery notes, Mushak 6.3)</li>
+            </ul>
+            <div class="phase-deliverable">DELIVERABLE → Configured Odoo UAT environment, configuration workbook, custom template proofs</div>
+          </div>
+        </div>
+        <div class="phase-block">
+          <div class="phase-label">
+            <div class="phase-num">Phase 3</div>
+            <div class="phase-title">Data Migration & UAT</div>
+            <div class="phase-weeks">Weeks 7–9</div>
+          </div>
+          <div class="phase-tasks">
+            <ul>
+              <li>Master data cleaned and validated (customers, vendors, products, employees, chart of accounts)</li>
+              <li>Opening balances calculated and agreed with accounts team</li>
+              <li>Test import run: identify import errors, resolve, re-import</li>
+              <li>UAT test scripts executed by key users for every module in scope</li>
+              <li>Defect log maintained; critical defects fixed and re-tested before UAT sign-off</li>
+            </ul>
+            <div class="phase-deliverable">DELIVERABLE → Signed UAT sign-off document, defect-free production data set, import scripts validated</div>
+          </div>
+        </div>
+        <div class="phase-block">
+          <div class="phase-label">
+            <div class="phase-num">Phase 4</div>
+            <div class="phase-title">Training</div>
+            <div class="phase-weeks">Weeks 10–11</div>
+          </div>
+          <div class="phase-tasks">
+            <ul>
+              <li>Super-user training: key users trained to train and support their teams</li>
+              <li>Role-based end-user training: warehouse, accounts, procurement, management</li>
+              <li>Training on Odoo in Bangladesh context: Mushak printing, payroll approval workflows</li>
+              <li>Practice exercises in UAT environment using real company scenarios</li>
+              <li>Training assessment and sign-off: each user confirms core tasks</li>
+            </ul>
+            <div class="phase-deliverable">DELIVERABLE → Signed training attendance sheets, completed assessment checklists per role</div>
+          </div>
+        </div>
+        <div class="phase-block">
+          <div class="phase-label">
+            <div class="phase-num">Phase 5</div>
+            <div class="phase-title">Go-Live & Hypercare</div>
+            <div class="phase-weeks">Week 12+</div>
+          </div>
+          <div class="phase-tasks">
+            <ul>
+              <li>Go/no-go meeting: all checklist items reviewed, decision documented</li>
+              <li>Production data cutover: final import of opening balances and master data</li>
+              <li>Day 1 on-site support: consultant present for all operational hours</li>
+              <li>Daily defect review and priority triage for first two weeks</li>
+              <li>Handover to post-go-live support structure (L1/L2/L3)</li>
+            </ul>
+            <div class="phase-deliverable">DELIVERABLE → Live production system, hypercare issue log, support handover document</div>
+          </div>
+        </div>
+      </div>
+
+      <h2 id="phase1">Phase 1 — Discovery & Setup (Weeks 1–2)</h2>
+
+      <div class="week-grid">
+        <div class="week-card">
+          <div class="week-head">
+            <span class="week-num">Week 1</span>
+            <span class="week-name">Project Kickoff & Process Workshops</span>
+          </div>
+          <div class="week-body">
+            <ul>
+              <li>Hold kickoff meeting: confirm scope, timeline, team, escalation path</li>
+              <li>Distribute and agree the RACI matrix — every role named</li>
+              <li>Set up shared project tracker (Excel or shared document)</li>
+              <li>Run AS-IS workshop for each module: observe current workflow, document steps</li>
+              <li>Identify integration points: what connects to what (payroll ↔ HR, purchase ↔ accounts)</li>
+              <li>Request data exports from legacy system (Tally, SAP, custom software)</li>
+            </ul>
+            <span class="week-deliverable">→ RACI signed · kickoff minutes · workshop notes</span>
+          </div>
+        </div>
+        <div class="week-card">
+          <div class="week-head">
+            <span class="week-num">Week 2</span>
+            <span class="week-name">Gap Analysis & Infrastructure</span>
+          </div>
+          <div class="week-body">
+            <ul>
+              <li>Document TO-BE processes in Odoo — walk key users through Odoo demo</li>
+              <li>Build gap analysis register: for each gap, decide configure / customize / defer</li>
+              <li>Agree customization scope and log in change register</li>
+              <li>Server provisioned: on-premise (Ubuntu 22.04 + PostgreSQL) or cloud (Odoo.sh / VPS)</li>
+              <li>Odoo installed, development database initialized, module list activated</li>
+              <li>Data audit: review exported legacy data for duplicates, missing fields, naming inconsistencies</li>
+            </ul>
+            <span class="week-deliverable">→ Gap register · scope document signed · dev server live</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="callout">
+        <span class="tag">Bangladesh context</span>
+        <p>Most Bangladesh SMEs migrate from Tally Prime or Tally ERP9. Tally exports are available as XML or Excel via the Tally ODBC bridge. The most common data issue: Tally ledger names use inconsistent formatting (vendor names spelled differently across transactions), which must be deduped before import. Budget 3–5 working days for data audit if Tally is the source system. For custom-built legacy software, extract raw SQL dumps early — week 2 data audit often reveals the legacy system lacks structured master data entirely.</p>
+      </div>
+
+      <h2 id="phase2">Phase 2 — Core Configuration (Weeks 3–6)</h2>
+
+      <div class="week-grid">
+        <div class="week-card">
+          <div class="week-head">
+            <span class="week-num">Week 3</span>
+            <span class="week-name">Company & Accounting Foundation</span>
+          </div>
+          <div class="week-body">
+            <ul>
+              <li>Company information: BIN number, trade license, legal address, fiscal year (July 1 – June 30)</li>
+              <li>Chart of accounts: map from existing CoA or build from Bangladesh standard</li>
+              <li>Tax configuration: VAT 15% (standard), VAT 0% (export), TDS rates by vendor category</li>
+              <li>Fiscal positions: local taxable, export (zero-rated), EPZ (exempt)</li>
+              <li>Currency setup: BDT (primary) + USD/EUR for export companies</li>
+              <li>Payment terms, bank accounts, journal configuration</li>
+            </ul>
+            <span class="week-deliverable">→ CoA signed off by accounts team · tax matrix approved</span>
+          </div>
+        </div>
+        <div class="week-card">
+          <div class="week-head">
+            <span class="week-num">Week 4</span>
+            <span class="week-name">Inventory, Purchase & Sales</span>
+          </div>
+          <div class="week-body">
+            <ul>
+              <li>Warehouses and storage locations configured (include bonded/EPZ if applicable)</li>
+              <li>Product categories and costing method (AVCO vs FIFO) decided and configured</li>
+              <li>Units of measure: set up local units (pcs, dzn, kg, yards, bales) with conversion factors</li>
+              <li>Purchase workflow: 3-way match (PO → receipt → bill) or 2-way configured per policy</li>
+              <li>Sales pricelist and discount structure configured</li>
+              <li>Vendor and customer payment terms configured per company policy</li>
+            </ul>
+            <span class="week-deliverable">→ Inventory test transactions pass · PO cycle end-to-end verified</span>
+          </div>
+        </div>
+        <div class="week-card">
+          <div class="week-head">
+            <span class="week-num">Week 5</span>
+            <span class="week-name">Manufacturing or HR/Payroll</span>
+          </div>
+          <div class="week-body">
+            <ul>
+              <li><strong>Manufacturing:</strong> Work centers, routing, BOM structure for top 20 products</li>
+              <li>Production order workflow: plan → confirm → produce → post inventory</li>
+              <li>Quality control points configured (incoming, in-process, final)</li>
+              <li><strong>HR/Payroll:</strong> Employee structure, departments, job positions</li>
+              <li>Salary structure: basic, house rent, medical, transport per Bangladesh Labour Act</li>
+              <li>PF (10% employer), gratuity calculation rule, income tax slab configuration</li>
+            </ul>
+            <span class="week-deliverable">→ Sample production order completed · sample payslip generated</span>
+          </div>
+        </div>
+        <div class="week-card">
+          <div class="week-head">
+            <span class="week-num">Week 6</span>
+            <span class="week-name">Compliance & Custom Templates</span>
+          </div>
+          <div class="week-body">
+            <ul>
+              <li>Mushak 6.3 sales invoice template: BIN, challan number, Mushak report format</li>
+              <li>TDS deduction on vendor bills: withholding tax lines, TDS certificate template</li>
+              <li>Custom print templates: purchase order (company letterhead), delivery note, payslip</li>
+              <li>Bank reconciliation workflow tested with sample statement</li>
+              <li>Access rights reviewed: who can confirm/validate/cancel each document type</li>
+              <li>Internal review: consultant walks key users through configured system end-to-end</li>
+            </ul>
+            <span class="week-deliverable">→ Mushak 6.3 output approved · all print templates signed off</span>
+          </div>
+        </div>
+      </div>
+
+      <h2 id="phase3">Phase 3 — Data Migration & UAT (Weeks 7–9)</h2>
+
+      <div class="week-grid">
+        <div class="week-card">
+          <div class="week-head">
+            <span class="week-num">Week 7</span>
+            <span class="week-name">Data Cleaning & Test Import</span>
+          </div>
+          <div class="week-body">
+            <ul>
+              <li>Customer master: deduplicate, standardize names, add BIN/TIN where applicable</li>
+              <li>Vendor master: verify TIN for TDS classification, complete bank account details</li>
+              <li>Product master: ensure all products have category, UoM, cost price, internal reference</li>
+              <li>Employee master: NID number, joining date, department, designation</li>
+              <li>Opening stock: physical count reconciled to legacy system balances</li>
+              <li>Test import run → review errors → fix source data → re-import</li>
+            </ul>
+            <span class="week-deliverable">→ Test import completed with &lt;1% error rate · data sign-off sheet</span>
+          </div>
+        </div>
+        <div class="week-card">
+          <div class="week-head">
+            <span class="week-num">Week 8</span>
+            <span class="week-name">Opening Balances & UAT Start</span>
+          </div>
+          <div class="week-body">
+            <ul>
+              <li>Opening balances imported: trial balance, AR aging, AP aging, inventory valuation</li>
+              <li>Accounts team reconciles Odoo trial balance vs legacy system trial balance</li>
+              <li>UAT begins: key users execute test scripts for their module</li>
+              <li>Defects logged: severity 1 (blocker) vs severity 2 (workaround available)</li>
+              <li>Severity 1 defects fixed within 48 hours; re-tested before UAT continues</li>
+            </ul>
+            <span class="week-deliverable">→ Opening balances reconciled · UAT >50% complete · defect log live</span>
+          </div>
+        </div>
+        <div class="week-card">
+          <div class="week-head">
+            <span class="week-num">Week 9</span>
+            <span class="week-name">UAT Sign-Off</span>
+          </div>
+          <div class="week-body">
+            <ul>
+              <li>Remaining UAT test cases executed and signed off by each module owner</li>
+              <li>Zero open severity 1 defects — confirmed by client PM and consultant</li>
+              <li>Severity 2 defects: either fixed or formally deferred to post-go-live backlog</li>
+              <li>Performance test: concurrent user load on target server</li>
+              <li>Production server commissioned: separate from development, full backup configured</li>
+              <li>Cutover plan documented: exact sequence and timing for go-live weekend</li>
+            </ul>
+            <span class="week-deliverable">→ UAT sign-off document signed · cutover plan finalized</span>
+          </div>
+        </div>
+        <div class="week-card">
+          <div class="week-head">
+            <span class="week-num">UAT Tip</span>
+            <span class="week-name">What makes UAT fail in Bangladesh</span>
+          </div>
+          <div class="week-body">
+            <ul>
+              <li>Key users not given protected time — they run UAT between regular duties and rush it</li>
+              <li>Test scripts not written — users test randomly, missing coverage</li>
+              <li>Opening balances not reconciled before UAT — accounts team spends UAT time on reconciliation</li>
+              <li>No defect log — verbal "it doesn't work" without written evidence to track or fix</li>
+            </ul>
+            <span class="week-deliverable">→ See our <a href="0009-uat-script-200-users-ago.html" style="color:var(--accent)">UAT script template built from 200+ users of experience</a></span>
+          </div>
+        </div>
+      </div>
+
+      <h2 id="phase4">Phase 4 — Training (Weeks 10–11)</h2>
+
+      <div class="week-grid">
+        <div class="week-card">
+          <div class="week-head">
+            <span class="week-num">Week 10</span>
+            <span class="week-name">Super-User Training</span>
+          </div>
+          <div class="week-body">
+            <ul>
+              <li>Key users (one per module) trained to full depth: configuration options, override procedures, period-close tasks</li>
+              <li>Super-users can: approve/reject workflows, correct posting errors, reset passwords</li>
+              <li>Bangladesh-specific tasks trained: monthly Mushak report extraction, payroll batch processing, TDS certificate generation</li>
+              <li>Super-users practice training delivery — they will train their own teams in week 11</li>
+            </ul>
+            <span class="week-deliverable">→ Super-user assessment completed · each module has a named internal expert</span>
+          </div>
+        </div>
+        <div class="week-card">
+          <div class="week-head">
+            <span class="week-num">Week 11</span>
+            <span class="week-name">End-User Training</span>
+          </div>
+          <div class="week-body">
+            <ul>
+              <li>Role-based sessions: warehouse (GRN, goods issue, stock count), accounts (AP/AR, bank reconciliation), procurement (PO creation, vendor bill), management (reports, dashboards)</li>
+              <li>Training in UAT environment using real company scenarios</li>
+              <li>Each user completes a minimum 3 end-to-end transactions in their role before sign-off</li>
+              <li>Sign-off sheet signed by user and supervisor — no user goes live unsigned</li>
+            </ul>
+            <span class="week-deliverable">→ All user sign-off sheets collected · attendance register complete</span>
+          </div>
+        </div>
+      </div>
+
+      <h2 id="phase5">Phase 5 — Go-Live & Hypercare (Week 12+)</h2>
+
+      <div class="week-grid">
+        <div class="week-card">
+          <div class="week-head">
+            <span class="week-num">Day −2</span>
+            <span class="week-name">Go/No-Go Meeting</span>
+          </div>
+          <div class="week-body">
+            <ul>
+              <li>All checklist items reviewed (see go/no-go table below)</li>
+              <li>Decision documented — Sponsor confirms go-live approved</li>
+              <li>Legacy system freeze announced: no new transactions from cutover date</li>
+              <li>IT Admin confirms: production server backed up, firewall rules set, SSL active</li>
+            </ul>
+          </div>
+        </div>
+        <div class="week-card">
+          <div class="week-head">
+            <span class="week-num">Day −1</span>
+            <span class="week-name">Data Cutover</span>
+          </div>
+          <div class="week-body">
+            <ul>
+              <li>Final data export from legacy system (closing balances as of cutover date)</li>
+              <li>Production import: master data → opening balances → opening stock</li>
+              <li>Trial balance check: Odoo vs legacy — must match to BDT 1</li>
+              <li>User accounts activated in production — passwords distributed</li>
+              <li>Consultant on-call all night until import confirmed clean</li>
+            </ul>
+          </div>
+        </div>
+        <div class="week-card">
+          <div class="week-head">
+            <span class="week-num">Day 1</span>
+            <span class="week-name">Go-Live Day</span>
+          </div>
+          <div class="week-body">
+            <ul>
+              <li>Consultant physically present at client site from opening of business</li>
+              <li>First transactions: opening PO confirmed, first sales order, first GRN</li>
+              <li>Issue log opened: every user concern logged with severity rating</li>
+              <li>Escalation: consultant resolves severity 1 in real time; severity 2 by end of day</li>
+              <li>End-of-day review: what worked, what needs urgent fix tonight</li>
+            </ul>
+          </div>
+        </div>
+        <div class="week-card">
+          <div class="week-head">
+            <span class="week-num">Weeks 13–14</span>
+            <span class="week-name">Hypercare Period</span>
+          </div>
+          <div class="week-body">
+            <ul>
+              <li>Consultant available daily (remote) for 2 weeks post go-live</li>
+              <li>Issue log reviewed in daily 15-minute standup with client PM</li>
+              <li>First month-end close supported by consultant</li>
+              <li>First payroll run (if HR module) supported by consultant</li>
+              <li>Transition to BAU support at end of week 14 when no new severity 1 issues for 5 consecutive days</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <h2 id="gng">Go / no-go criteria</h2>
+
+      <p>The go-live decision is binary. Every item below must be green. An amber item requires documented mitigation. A red item is a go-live blocker — the date moves, not the standard.</p>
+
+      <table class="gng-table">
+        <thead>
+          <tr>
+            <th>Criteria</th>
+            <th style="width:35%">GO condition</th>
+            <th style="width:35%">NO-GO condition</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>UAT sign-off</td>
+            <td><span class="go">All severity 1 defects resolved and re-tested. Sign-off sheet signed by all key users.</span></td>
+            <td><span class="nogo">Any open severity 1 defect. Key user sign-off missing for any module in scope.</span></td>
+          </tr>
+          <tr>
+            <td>Opening balances</td>
+            <td><span class="go">Odoo trial balance matches legacy system trial balance to BDT 1. Accounts team confirms in writing.</span></td>
+            <td><span class="nogo">Any unexplained variance in trial balance. Opening AR/AP aging not reconciled.</span></td>
+          </tr>
+          <tr>
+            <td>Data migration</td>
+            <td><span class="go">Master data import completed. Error rate below 1%. Product, customer, vendor records verified by key users.</span></td>
+            <td><span class="nogo">Import errors above 1%. Opening stock quantities not confirmed by warehouse team.</span></td>
+          </tr>
+          <tr>
+            <td>User training</td>
+            <td><span class="go">All users attending go-live have signed training sign-off sheet. Super-users confirmed for each module.</span></td>
+            <td><span class="nogo">More than 20% of go-live users unsigned. No identified super-user for any in-scope module.</span></td>
+          </tr>
+          <tr>
+            <td>Infrastructure</td>
+            <td><span class="go">Production server live, daily backup configured and tested, UPS power cover confirmed, internet redundancy confirmed.</span></td>
+            <td><span class="nogo">Production server on the same machine as development. No backup restoration test completed. No UPS on server.</span></td>
+          </tr>
+          <tr>
+            <td>Access rights</td>
+            <td><span class="go">Every user can log in with correct role. Sensitive access (account confirmation, inventory valuation) restricted to authorized users only.</span></td>
+            <td><span class="nogo">Admin credentials distributed to all users. Access rights not reviewed and signed off by client PM.</span></td>
+          </tr>
+          <tr>
+            <td>Legacy system freeze</td>
+            <td><span class="go">Legacy system freeze communicated to all staff. Final closing balances exported and confirmed.</span></td>
+            <td><span class="nogo">Transactions still running in legacy system. Cutover date not communicated to all departments.</span></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2 id="bangladesh-calendar">Bangladesh calendar planning rules</h2>
+
+      <p>The Bangladesh business calendar has specific windows that significantly affect implementation scheduling. Ignoring these has derailed otherwise well-run projects.</p>
+
+      <ul>
+        <li><strong>NBR fiscal year starts July 1.</strong> For accounting-heavy companies, a September–October go-live means the first full year of Odoo runs on a clean year. Going live in March–June means your first year-end close in Odoo is only months away — a high-risk situation for an accounts team still learning the system.</li>
+        <li><strong>Eid-ul-Fitr and Eid-ul-Adha:</strong> Do not schedule go-live within 3 weeks of either Eid. Staff are on staggered leave starting 2 weeks before, and the support team will be at skeleton capacity exactly when you need them most.</li>
+        <li><strong>Ramadan:</strong> Working hours are reduced, energy is low, and evening training sessions (common for factory floor staff) are not possible. Defer training-heavy phases to after Ramadan.</li>
+        <li><strong>Week starts Sunday:</strong> The Bangladesh work week is Sunday–Thursday. When aligning with international Odoo partners, confirm that support SLAs account for the Bangladesh week — Friday and Saturday are weekend days here, not Saturday and Sunday.</li>
+        <li><strong>Year-end close pressure:</strong> June is financial year-end for NBR. Accounts teams are fully occupied. Do not schedule configuration workshops or UAT sessions in May–June for any module touching accounts.</li>
+      </ul>
+
+      <h2 id="failure-modes">Common failure modes by phase</h2>
+
+      <p>Understanding <a href="0001-why-erp-fails-bangladesh.html" style="color:var(--accent)">why ERP implementations fail in Bangladesh</a> is essential context for every project team member. These are the phase-specific failure modes I observe most frequently:</p>
+
+      <ul>
+        <li><strong>Phase 1:</strong> Discovery workshops attended by department heads but documented by the consultant alone. Process maps are approved without being read. Result: configuration doesn't match how the team actually works.</li>
+        <li><strong>Phase 2:</strong> Scope creep accepted informally — a key user asks for a new feature in week 4 and the consultant builds it without logging it. The timeline extends invisibly until it visibly blows up in week 9.</li>
+        <li><strong>Phase 3:</strong> Opening balances treated as a week-8 task instead of a weeks-3-through-8 ongoing activity. The accounts team surfaces a 3-year-old unclaimed receivable in the legacy system in week 8 and debates whether to migrate it. UAT is blocked while this is resolved.</li>
+        <li><strong>Phase 4:</strong> Training scheduled for the two days before go-live. Users see Odoo for the first time on the day they are supposed to be using it in production.</li>
+        <li><strong>Phase 5:</strong> No on-site support on day one. The consultant "is available by phone." Warehouse staff cannot figure out how to confirm a delivery order and revert to paper. Within 48 hours, there is a discrepancy between Odoo inventory and physical stock that takes two weeks to reconcile.</li>
+      </ul>
+
+      <div class="callout">
+        <span class="tag">Bottom line</span>
+        <p>This roadmap works when three things are true: the client PM has real authority, key users have protected time, and the go-live date is treated as earned (not given). Projects that fail do so because one of these three was missing. Before signing a contract with any Odoo implementer in Bangladesh, confirm that they have a week-by-week plan they can hand you on day one. If they don't — that is information. <a href="../index.html#contact" style="color:var(--accent)">Planning an Odoo implementation? Let's review your roadmap together →</a></p>
+      </div>
+
+      <h2 id="faq">Frequently asked questions</h2>
+
+      <h3>How long does Odoo implementation take in Bangladesh?</h3>
+      <p>For a Bangladesh SME with 25–100 users implementing core modules (accounting, inventory, purchase, sales), a realistic timeline is 10–14 weeks. The 12-week roadmap in this guide is the target for a well-resourced project. Complex manufacturing deployments (production scheduling, quality control, custom compliance) typically run 16–24 weeks. Projects that extend beyond 20 weeks usually do so because of data quality issues, scope creep, or inadequate client-side resource allocation — not because Odoo is difficult to configure.</p>
+
+      <h3>What is the best time of year to go live with Odoo in Bangladesh?</h3>
+      <p>The ideal go-live windows for Bangladesh companies are: August–September (after NBR fiscal year start, before Eid-ul-Adha preparation) and November–December (post-Puja, before year-end close rush). Avoid Ramadan (reduced working hours), the 3 weeks around each Eid, and May–June (NBR fiscal year-end when accounts teams are fully occupied).</p>
+
+      <h3>Who should be on the Odoo implementation project team in Bangladesh?</h3>
+      <p>A standard Bangladesh SME team requires: Project Sponsor (MD/CFO) who owns budget and go/no-go decisions; Client Project Manager with authority to approve configuration decisions; Key Users / Module Champions (one per major module: accounts, warehouse, procurement, HR); IT / System Admin for server and access management; and the Odoo Consultant (1–3 people depending on scope). The most common gap: a Client PM who must escalate every decision to the MD, adding 2–3 days to every configuration approval.</p>
+
+      <h3>What are the most common Odoo implementation failures in Bangladesh?</h3>
+      <p>Based on projects across Bangladesh manufacturing and trading companies: (1) data not cleaned before migration — dirty Tally exports imported directly into Odoo; (2) scope creep accepted without timeline adjustment; (3) key users not given protected time for testing; (4) training deferred to go-live week; (5) no parallel run or on-site support on day one. Each failure mode is avoidable with the structure described in this guide.</p>
+    </div>
+  </article>
+
+  <footer>
+    <div class="shell">
+      <div class="post-foot">
+        <span class="eyebrow">Continue exploring</span>
+        <div class="next">
+          <a class="next-card" href="0029-odoo-rfp-template-bangladesh.html">
+            <span class="dir">Next · 0029</span>
+            <h4>Odoo RFP Template Bangladesh</h4>
+            <p>How to write an Odoo RFP that attracts qualified vendors — full template with scoring matrix.</p>
+            <span class="arrow">→</span>
+          </a>
+          <a class="next-card" href="0001-why-erp-fails-bangladesh.html">
+            <span class="dir">Related · 0001</span>
+            <h4>Why ERP Fails in Bangladesh</h4>
+            <p>The root causes behind failed ERP projects in Bangladesh — what the project team does wrong before configuration begins.</p>
+            <span class="arrow">→</span>
+          </a>
+        </div>
+      </div>
+      <div class="foot">
+        <span>© 2026 Mehedi Hasan · Lab / 0028</span>
+        <span><a href="../index.html#lab">↑ Back to lab index</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="_toc.js" defer></script>
+</body>
+
+</html>

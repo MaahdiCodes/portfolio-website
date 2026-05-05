@@ -1,0 +1,719 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description"
+    content="Data migration Odoo Bangladesh go-live checklist — 10 steps: master data, open balances, BIN fields, inventory count, and cutover sequence. Get it right →" />
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="Mehedi Hasan" />
+  <title>Data Migration Checklist Odoo Bangladesh | Mehedi Hasan</title>
+  <link rel="canonical" href="https://mhasan.me/lab/0030-data-migration-checklist-odoo-bangladesh" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png" />
+  <!-- Open Graph -->
+  <meta property="og:title" content="Data Migration Checklist Odoo Bangladesh | Mehedi Hasan" />
+  <meta property="og:description"
+    content="The complete data migration checklist for Odoo Bangladesh go-live — 10 steps covering customer master, vendor master, opening balances, inventory, and cutover sequence." />
+  <meta property="og:url" content="https://mhasan.me/lab/0030-data-migration-checklist-odoo-bangladesh" />
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="https://mhasan.me/assets/og-default.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:site_name" content="Mehedi Hasan | Odoo ERP Consultant" />
+  <meta property="article:author" content="https://www.linkedin.com/in/mehedi-hasan-consultant/" />
+  <meta property="article:published_time" content="2026-05-05T13:00:00+06:00" />
+  <meta property="article:modified_time" content="2026-05-05T13:00:00+06:00" />
+  <meta property="article:section" content="Odoo ERP Bangladesh" />
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Data Migration Checklist Odoo Bangladesh | 10-Point Guide" />
+  <meta name="twitter:description"
+    content="10-point data migration checklist for Odoo go-live in Bangladesh — master data, opening balances, Bangladesh-specific fields, and the exact cutover day sequence." />
+  <meta name="twitter:image" content="https://mhasan.me/assets/og-default.jpg" />
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Data Cleaning Before Odoo Go-Live: The 10-Point Checklist for Bangladesh",
+    "description": "A complete 10-point data migration and cleaning checklist for Bangladesh companies preparing for Odoo go-live. Covers customer master deduplication, vendor TIN classification for TDS, product master standardization, chart of accounts validation, opening AR/AP balances, physical inventory count, employee master for payroll, fixed assets, open transactions, and the exact cutover day sequence. Includes Bangladesh-specific data challenges and Excel validation techniques.",
+    "datePublished": "2026-05-05T13:00:00+06:00",
+    "dateModified": "2026-05-05T13:00:00+06:00",
+    "author": {
+      "@type": "Person",
+      "name": "Mehedi Hasan",
+      "url": "https://mhasan.me",
+      "jobTitle": "Odoo ERP Consultant & Business Analyst",
+      "sameAs": "https://www.linkedin.com/in/mehedi-hasan-consultant/"
+    },
+    "publisher": { "@type": "Person", "name": "Mehedi Hasan", "url": "https://mhasan.me" },
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://mhasan.me/lab/0030-data-migration-checklist-odoo-bangladesh" }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://mhasan.me" },
+      { "@type": "ListItem", "position": 2, "name": "Lab", "item": "https://mhasan.me/lab/" },
+      { "@type": "ListItem", "position": 3, "name": "Data Migration Checklist Odoo Bangladesh", "item": "https://mhasan.me/lab/0030-data-migration-checklist-odoo-bangladesh" }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How long does data migration take for Odoo in Bangladesh?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Data migration for a Bangladesh SME Odoo implementation typically takes 3–5 weeks of elapsed time, though the active working time is shorter. The timeline breaks down as: Week 1 of the migration phase — data extraction from legacy system (Tally, SAP, custom software) and initial audit to identify issues; Weeks 2–3 — data cleaning, deduplication, and standardization (the most time-consuming step); Week 4 — test import run, review errors, fix source data, re-import; Week 5 — final import validation, opening balance reconciliation. The most common delay: the accounts team is not available to confirm opening balances because they are busy with regular bookkeeping. Budget their time explicitly into the project plan."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What data needs to be migrated to Odoo from Tally in Bangladesh?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "When migrating from Tally Prime or Tally ERP9 to Odoo in Bangladesh, the required data categories are: (1) Master data — customers (party ledgers), vendors (supplier ledgers), products (stock items with categories and UoM), chart of accounts (ledger groups mapped to Odoo account types), employees (for HR/payroll); (2) Opening balances — trial balance as of cutover date, AR aging (customer outstanding bills), AP aging (vendor outstanding bills); (3) Opening stock — quantity and valuation per product per warehouse location as of cutover date; (4) Open transactions — purchase orders not yet received, sales orders not yet delivered (if continuing open transactions). Fixed assets register is migrated separately if Odoo Fixed Assets module is in scope."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the most common data migration problem in Bangladesh ERP projects?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The most common data migration problem in Bangladesh ERP (including Odoo) projects is duplicate and inconsistent master data from legacy systems. In Tally, a customer named 'ABC Garments Ltd' may appear as 'ABC Garments', 'ABC Gmt Ltd', 'A.B.C Garments Ltd', and 'ABC Garments Limited' — all as separate ledger entries. When these are imported into Odoo without deduplication, you get four separate customer records with split AR balances. Reconciling this after go-live is significantly harder than cleaning the data before migration. The deduplication step for customer and vendor master data alone typically takes 1–2 full working days for a company with 200–500 active counterparties."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What Bangladesh-specific data fields are required in Odoo?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Bangladesh-specific data fields required in Odoo for compliance purposes: (1) Customer/Vendor BIN (Business Identification Number) — required for Mushak invoice printing and VAT returns. Format: 9-digit number (older) or 17-character BIN (newer NBR format). (2) Vendor TIN (Tax Identification Number) — required for TDS (AIT) classification. Vendors with valid TIN are subject to standard TDS rates; those without TIN have higher withholding rates. (3) Employee NID (National Identity Card) number — required for payroll compliance and PF fund submission. (4) Employee joining date, designation, and department — required for gratuity calculation under Bangladesh Labour Act (5-year service threshold). These fields must be present in the import templates — missing them means going live without compliance capability."
+        }
+      }
+    ]
+  }
+]
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap">
+  <link rel="stylesheet" href="_styles.css">
+  <style>
+    /* checklist items */
+    .checklist {
+      list-style: none;
+      padding: 0;
+      margin: 24px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .cl-item {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .cl-head {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 13px 18px;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+    }
+    .cl-num {
+      font-family: var(--mono);
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: 0.06em;
+      min-width: 28px;
+    }
+    .cl-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text);
+    }
+    .cl-tag {
+      margin-left: auto;
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 3px 8px;
+      border-radius: 4px;
+      border: 1px solid var(--border);
+      color: var(--text-3);
+    }
+    .cl-body {
+      padding: 14px 18px;
+      font-size: 13px;
+      color: var(--text-2);
+      line-height: 1.8;
+    }
+    .cl-body ul {
+      margin: 8px 0;
+      padding: 0 0 0 16px;
+    }
+    .cl-body p { margin: 0 0 8px; }
+    .cl-warn {
+      background: oklch(0.18 0.04 30);
+      border: 1px solid oklch(0.35 0.12 30);
+      border-radius: 6px;
+      padding: 10px 14px;
+      font-size: 12px;
+      color: oklch(0.75 0.12 30);
+      margin-top: 10px;
+      font-family: var(--mono);
+    }
+    .cl-formula {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 10px 14px;
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--text-2);
+      margin-top: 10px;
+    }
+    .cl-formula .formula-label {
+      font-size: 10px;
+      color: var(--text-3);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+
+    /* cutover sequence */
+    .cutover-seq {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      margin: 24px 0;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .co-row {
+      display: grid;
+      grid-template-columns: 100px 80px 1fr;
+      border-bottom: 1px solid var(--border);
+    }
+    .co-row:last-child { border-bottom: none; }
+    .co-when {
+      padding: 12px 14px;
+      background: var(--surface);
+      border-right: 1px solid var(--border);
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--accent);
+      display: flex;
+      align-items: center;
+    }
+    .co-who {
+      padding: 12px 14px;
+      background: var(--surface);
+      border-right: 1px solid var(--border);
+      font-family: var(--mono);
+      font-size: 10px;
+      color: var(--text-3);
+      display: flex;
+      align-items: center;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+    .co-what {
+      padding: 12px 16px;
+      font-size: 13px;
+      color: var(--text-2);
+      display: flex;
+      align-items: center;
+      line-height: 1.5;
+    }
+
+    /* data audit summary */
+    .audit-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin: 24px 0;
+    }
+    .audit-card {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px 16px;
+    }
+    .audit-label {
+      font-family: var(--mono);
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-3);
+      margin-bottom: 6px;
+    }
+    .audit-stat {
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--text);
+      font-family: var(--mono);
+    }
+    .audit-desc {
+      font-size: 12px;
+      color: var(--text-2);
+      margin-top: 4px;
+      line-height: 1.5;
+    }
+    @media(max-width:600px) {
+      .audit-grid { grid-template-columns: 1fr 1fr; }
+      .co-row { grid-template-columns: 1fr; }
+      .co-when, .co-who { border-right: none; border-bottom: 1px solid var(--border); }
+    }
+
+    .pull {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: clamp(20px, 2.8vw, 30px);
+      line-height: 1.3;
+      color: var(--text);
+      margin: 48px 0;
+      max-width: 24ch;
+      letter-spacing: -0.01em;
+    }
+    .pull::before {
+      content: "";
+      display: block;
+      width: 36px;
+      height: 1px;
+      background: var(--accent);
+      margin-bottom: 18px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="grid-bg"></div>
+
+  <header class="nav">
+    <div class="shell">
+      <div class="nav-inner">
+        <a class="brand" href="../index.html">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span class="brand-name"><b>Mehedi Hasan</b><em>ERP · Business Analyst</em></span>
+        </a>
+        <a class="back-link" href="../index.html#lab">← Back to Lab</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="post-head">
+    <div class="shell">
+      <span class="eyebrow">Technical Lab · 0030</span>
+      <h1>Data Cleaning Before Odoo Go-Live — <span class="serif">the 10-point checklist.</span></h1>
+      <p class="lede">Data migration is the phase that most Bangladesh ERP projects underestimate and most implementations regret. The week-eight discovery that your Tally vendor master has 400 duplicates — and your opening AP balance doesn't reconcile — is avoidable. Every item on this checklist is something that has actually blocked a go-live.</p>
+      <div class="post-meta">
+        <span class="chip accent">Checklist</span>
+        <span class="chip">Data Migration</span>
+        <span class="chip">Go-Live</span>
+        <span class="chip">Tally to Odoo</span>
+      </div>
+      <div class="byline">
+        <span>By<b><a href="https://www.linkedin.com/in/mehedi-hasan-consultant/" style="color:var(--accent)" rel="author">Mehedi Hasan</a></b></span>
+        <span>Published<b>May 2026</b></span>
+        <span>Read time<b>13 minutes</b></span>
+        <span>Form<b>Practical Checklist</b></span>
+        <span>Scope<b>Bangladesh SMEs · Tally / legacy → Odoo</b></span>
+      </div>
+    </div>
+  </section>
+
+  <article class="post">
+    <aside class="toc">
+      <div class="toc-k">In this guide</div>
+      <ol>
+        <li><a href="#why-data-matters">Why data quality determines go-live</a></li>
+        <li><a href="#data-audit">Conduct your data audit first</a></li>
+        <li><a href="#checklist">The 10-point checklist</a></li>
+        <li><a href="#bangladesh-specifics">Bangladesh-specific data fields</a></li>
+        <li><a href="#cutover">Cutover day sequence</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ol>
+    </aside>
+
+    <div class="body">
+      <p>I have seen Odoo implementations where the system was correctly configured, the team was trained, and the go-live date arrived — but the launch was delayed by three weeks because the opening inventory didn't match the physical stock count, and the accounts team had only just discovered that two of their major customers had been entered in Tally under four different names. The configuration was ready. The data was not.</p>
+
+      <p>Data migration is not an IT task. It is a business task that requires active participation from accounts, warehouse, procurement, and HR. The Odoo consultant cannot clean your data for you — they don't know which of the four "ABC Garments" entries is the correct one. You do. This checklist tells you where to look and exactly what to fix.</p>
+
+      <p class="pull">Dirty data imported into a clean system doesn't get cleaner. It creates reconciliation debt that compounds daily after go-live.</p>
+
+      <h2 id="why-data-matters">Why data quality determines go-live success</h2>
+
+      <p>Every data problem that exists in your legacy system at the time of migration will exist in Odoo after go-live — at scale, with new transactions layered on top. Problems that were manageable in a familiar legacy system become critical incidents in a new system where the team is still learning. Specifically:</p>
+
+      <ul>
+        <li><strong>Duplicate customers create split AR balances.</strong> Payment from "ABC Garments Limited" may apply to the wrong record, leaving a phantom outstanding balance that triggers unnecessary follow-up calls.</li>
+        <li><strong>Missing vendor TINs prevent correct TDS deduction.</strong> In Bangladesh, TDS (AIT) rates differ depending on whether a vendor has a valid TIN. Importing vendor records without TIN classification means TDS is either over-deducted (vendor complaints) or under-deducted (NBR compliance risk).</li>
+        <li><strong>Wrong opening stock quantities corrupt inventory valuation from day one.</strong> A warehouse team that inherited opening stock from a month-old Tally count will spend the first three months doing manual adjustments to reconcile physical vs system inventory.</li>
+        <li><strong>Unreconciled opening AR/AP balances mean the trial balance is wrong on day one.</strong> An accounts team chasing why Odoo's trial balance doesn't match the legacy system is not processing invoices — they are debugging history.</li>
+      </ul>
+
+      <h2 id="data-audit">Conduct your data audit first</h2>
+
+      <p>Before starting any cleanup, generate these counts from your legacy system. These numbers tell you how much cleaning work is ahead and where to focus effort.</p>
+
+      <div class="audit-grid">
+        <div class="audit-card">
+          <div class="audit-label">Customer records</div>
+          <div class="audit-stat">?</div>
+          <div class="audit-desc">Count unique customer/party ledgers. Expect 15–30% to be duplicates or inactive in a Tally system older than 3 years.</div>
+        </div>
+        <div class="audit-card">
+          <div class="audit-label">Vendor records</div>
+          <div class="audit-stat">?</div>
+          <div class="audit-desc">Count unique supplier ledgers. Flag all vendors without TIN — these need classification before import for correct TDS treatment.</div>
+        </div>
+        <div class="audit-card">
+          <div class="audit-label">Product / SKU records</div>
+          <div class="audit-stat">?</div>
+          <div class="audit-desc">Count stock items. Common issues: items without UoM, items without category, duplicate items with different names.</div>
+        </div>
+        <div class="audit-card">
+          <div class="audit-label">Open AR invoices</div>
+          <div class="audit-stat">?</div>
+          <div class="audit-desc">Outstanding customer invoices to migrate as opening receivables. Confirm aging with the accounts team before migration.</div>
+        </div>
+        <div class="audit-card">
+          <div class="audit-label">Open AP bills</div>
+          <div class="audit-stat">?</div>
+          <div class="audit-desc">Outstanding vendor bills to migrate as opening payables. Confirm against vendor statements before migration.</div>
+        </div>
+        <div class="audit-card">
+          <div class="audit-label">Stock locations</div>
+          <div class="audit-stat">?</div>
+          <div class="audit-desc">Number of distinct storage locations (warehouses, transit locations). Map each to Odoo location structure before import.</div>
+        </div>
+      </div>
+
+      <h2 id="checklist">The 10-point checklist</h2>
+
+      <ul class="checklist">
+        <li class="cl-item">
+          <div class="cl-head">
+            <span class="cl-num">01</span>
+            <span class="cl-title">Customer master — deduplicate and enrich</span>
+            <span class="cl-tag">Accounts team</span>
+          </div>
+          <div class="cl-body">
+            <p>Export all customer/party ledgers from the legacy system. Run a duplicate detection pass:</p>
+            <ul>
+              <li>Normalize names: remove Ltd/Limited variation, standardize punctuation, remove extra spaces</li>
+              <li>Sort alphabetically — similar names cluster together and are easy to spot</li>
+              <li>Merge duplicates: consolidate all outstanding balances to the master record before migration</li>
+              <li>Flag inactive customers (no transaction in 2+ years) — decide whether to migrate or archive</li>
+              <li>Add missing fields: BIN number (for Mushak invoicing), email, phone, payment terms</li>
+            </ul>
+            <div class="cl-formula">
+              <div class="formula-label">Excel duplicate detection</div>
+              =IF(COUNTIF($A$2:$A2,A2)&gt;1,"DUPLICATE","OK")<br>
+              <span style="color:var(--text-3);font-size:11px;">Paste this in column B alongside your customer name column to flag duplicates</span>
+            </div>
+            <div class="cl-warn">BLOCKER: If a customer appears in both AR and as a vendor in AP (intercompany), flag these before import. Odoo handles them as a contact with both customer and vendor roles — do not create two separate records.</div>
+          </div>
+        </li>
+
+        <li class="cl-item">
+          <div class="cl-head">
+            <span class="cl-num">02</span>
+            <span class="cl-title">Vendor master — TIN classification for TDS</span>
+            <span class="cl-tag">Accounts team</span>
+          </div>
+          <div class="cl-body">
+            <p>Export all vendor/supplier ledgers. Beyond deduplication (same process as customers), the Bangladesh-specific requirement is TIN classification:</p>
+            <ul>
+              <li>Column: TIN (12-digit) — collect from vendor's trade license or NBR registration</li>
+              <li>Column: TDS category — NBR Section (e.g., 52A for services, 52Q for imports, 52T for supply of goods) determines the AIT rate</li>
+              <li>Column: TDS rate — depends on TIN status: with TIN (1–10% depending on category), without TIN (double rate applies)</li>
+              <li>Column: Bank account — account number and routing number for electronic payment setup</li>
+            </ul>
+            <p>In Odoo, the TDS rate is configured on the vendor record as a default withholding tax. Incorrect TDS classification means every vendor bill will require manual correction of the tax line.</p>
+            <div class="cl-warn">COMPLIANCE RISK: Vendors without TIN must be taxed at the higher "without TIN" rate under NBR rules. Missing this classification is an NBR audit exposure, not just a data quality issue.</div>
+          </div>
+        </li>
+
+        <li class="cl-item">
+          <div class="cl-head">
+            <span class="cl-num">03</span>
+            <span class="cl-title">Product master — standardize and categorize</span>
+            <span class="cl-tag">Warehouse + Procurement</span>
+          </div>
+          <div class="cl-body">
+            <p>Product master is typically the most time-consuming migration task for manufacturing companies. Every product record needs:</p>
+            <ul>
+              <li><strong>Internal Reference:</strong> A consistent SKU or item code. If the legacy system has no codes, create them now — do not import products without internal references</li>
+              <li><strong>Product Category:</strong> Required for costing and accounting journal mapping. Agree the category hierarchy before import (e.g., Raw Material → Fabric, Raw Material → Yarn)</li>
+              <li><strong>Unit of Measure:</strong> Confirm primary UoM for each product. For Bangladesh garments: pcs, dzn, kg, yards. Check that Tally UoM names map correctly to Odoo UoM names</li>
+              <li><strong>Cost Price:</strong> Required for inventory valuation at go-live. Use weighted average cost as of cutover date from legacy system</li>
+              <li><strong>Product Type:</strong> Storable product (tracked in inventory) vs consumable vs service. This drives accounting journal behavior</li>
+              <li><strong>VAT applicability:</strong> Standard rated (15%), zero-rated (export), exempt — flag each product correctly</li>
+            </ul>
+            <div class="cl-formula">
+              <div class="formula-label">Missing field check (paste in Excel)</div>
+              =COUNTIF(B2:F2,"")&nbsp;&nbsp;<span style="color:var(--text-3);">→ count of empty cells in this row's required fields. Any row &gt;0 needs attention before import.</span>
+            </div>
+          </div>
+        </li>
+
+        <li class="cl-item">
+          <div class="cl-head">
+            <span class="cl-num">04</span>
+            <span class="cl-title">Chart of accounts — map and validate</span>
+            <span class="cl-tag">Accounts team</span>
+          </div>
+          <div class="cl-body">
+            <p>The chart of accounts (CoA) must be agreed before any other financial data is migrated. In Odoo, every financial transaction posts to accounts — the CoA is the backbone of the entire accounting configuration.</p>
+            <ul>
+              <li>Export all ledger accounts from the legacy system</li>
+              <li>Map each legacy account to an Odoo account type (receivable, payable, bank, income, expense, equity, etc.)</li>
+              <li>Identify accounts that should be consolidated — e.g., 12 separate "office expense" ledgers in Tally can often map to 2–3 Odoo accounts</li>
+              <li>Identify Bangladesh-specific accounts: VAT payable, AIT (TDS) payable, PF payable, gratuity provision</li>
+              <li>Accounts team signs off on the CoA before any configuration begins — changing account types after transactions are posted is a painful migration</li>
+            </ul>
+            <div class="cl-warn">BLOCKER: Do not begin Odoo configuration until the CoA mapping is signed off by the CFO or senior accounts manager. The CoA is the most expensive thing to change after go-live.</div>
+          </div>
+        </li>
+
+        <li class="cl-item">
+          <div class="cl-head">
+            <span class="cl-num">05</span>
+            <span class="cl-title">Opening AR balances — reconcile before import</span>
+            <span class="cl-tag">Accounts team</span>
+          </div>
+          <div class="cl-body">
+            <p>Opening accounts receivable (AR) is the outstanding amount customers owe you as of the cutover date. Import this as individual invoices (preferred) or as a journal entry opening balance.</p>
+            <ul>
+              <li>Export AR aging from legacy system: list of open customer invoices with invoice number, date, customer, amount (BDT), due date</li>
+              <li>Reconcile against customer statements for top 20 customers by outstanding balance — confirm the amounts match their records</li>
+              <li>Identify and resolve disputed invoices before import — do not migrate disputed amounts as uncontested receivables</li>
+              <li>Identify invoices older than 180 days — discuss with CFO whether to migrate as bad debt provision or as active AR</li>
+              <li>Total AR in Odoo after import must match AR in legacy system trial balance as of cutover date to BDT 1</li>
+            </ul>
+          </div>
+        </li>
+
+        <li class="cl-item">
+          <div class="cl-head">
+            <span class="cl-num">06</span>
+            <span class="cl-title">Opening AP balances — confirm against vendor statements</span>
+            <span class="cl-tag">Accounts team + Procurement</span>
+          </div>
+          <div class="cl-body">
+            <p>Opening accounts payable (AP) is what you owe vendors as of the cutover date. This is often messier than AR because vendors may have invoiced amounts that are in dispute or pending approval.</p>
+            <ul>
+              <li>Export AP aging from legacy system: list of open vendor bills with bill number, date, vendor, amount, due date</li>
+              <li>Send statement of accounts to top 20 vendors by outstanding balance — request confirmation of the balance they have on their books</li>
+              <li>Resolve any discrepancies: if your Tally shows BDT 8 lakh owed to a vendor and their statement shows BDT 9.5 lakh, one of you is wrong — resolve before import</li>
+              <li>Advance payments to vendors: ensure advance payments are correctly reflected as debit balances and will offset against future bills</li>
+            </ul>
+            <div class="cl-warn">COMMON ISSUE: In Tally, some Bangladesh companies book vendor payments without first booking the vendor bill (direct debit to vendor ledger). This creates AP records that don't match actual bills. Odoo requires bills to match payments — clean up unbilled payments before import.</div>
+          </div>
+        </li>
+
+        <li class="cl-item">
+          <div class="cl-head">
+            <span class="cl-num">07</span>
+            <span class="cl-title">Opening stock — physical count, not system count</span>
+            <span class="cl-tag">Warehouse team</span>
+          </div>
+          <div class="cl-body">
+            <p>This is the checklist item most frequently skipped and most regretted. The opening inventory in Odoo must come from a physical count — not from the legacy system's stock report. Legacy system stock quantities are almost always wrong: physical count discrepancies accumulate over years and are rarely reconciled.</p>
+            <ul>
+              <li>Schedule a physical stock count on or immediately before cutover weekend. Count everything.</li>
+              <li>Record quantity and unit cost per product per storage location</li>
+              <li>Compare physical count to legacy system report — investigate and document all discrepancies</li>
+              <li>Get CFO/Finance approval to write off counted discrepancies in the legacy system before migration</li>
+              <li>Import into Odoo using inventory adjustment — quantity × unit cost = inventory valuation that must match the financial opening balance</li>
+              <li>Confirm: Odoo inventory valuation account balance = physical count value = legacy system closing stock value (after write-off)</li>
+            </ul>
+            <div class="cl-warn">BLOCKER: Do not import the legacy system's stock report without a physical count. If your legacy system says you have 5,000 pcs of Product A and the physical count shows 4,200, you have 800 pcs of invisible inventory debt that will surface within 30 days of go-live.</div>
+          </div>
+        </li>
+
+        <li class="cl-item">
+          <div class="cl-head">
+            <span class="cl-num">08</span>
+            <span class="cl-title">Employee master — payroll compliance fields</span>
+            <span class="cl-tag">HR team</span>
+          </div>
+          <div class="cl-body">
+            <p>If Odoo HR & Payroll is in scope, the employee master requires Bangladesh-specific compliance fields that are often missing from legacy systems:</p>
+            <ul>
+              <li><strong>NID number:</strong> National Identity Card — required for PF fund submission and payroll audit</li>
+              <li><strong>Joining date:</strong> Must be accurate — gratuity calculation under Bangladesh Labour Act uses service years from joining date (5-year threshold)</li>
+              <li><strong>Department and designation:</strong> Used for organizational hierarchy and leave approval workflows</li>
+              <li><strong>Basic salary breakdown:</strong> Odoo salary structure requires: basic, house rent allowance, medical allowance, transport allowance (standard BD components)</li>
+              <li><strong>PF enrollment date:</strong> Some employees are PF-exempt (under 5 years or by grade) — flag status in the import file</li>
+              <li><strong>Bank account:</strong> Account number and bank routing for electronic salary transfer</li>
+            </ul>
+          </div>
+        </li>
+
+        <li class="cl-item">
+          <div class="cl-head">
+            <span class="cl-num">09</span>
+            <span class="cl-title">Fixed assets register — value and depreciation</span>
+            <span class="cl-tag">Accounts team</span>
+          </div>
+          <div class="cl-body">
+            <p>If Odoo Fixed Assets module is in scope, each fixed asset requires:</p>
+            <ul>
+              <li><strong>Asset name and category:</strong> Land, building, machinery, vehicles, furniture, IT equipment</li>
+              <li><strong>Acquisition date and original cost:</strong> The date purchased and full purchase price in BDT</li>
+              <li><strong>Accumulated depreciation to date:</strong> Total depreciation charged in the legacy system up to cutover date</li>
+              <li><strong>Net book value:</strong> Cost minus accumulated depreciation — Odoo will import this as the opening value</li>
+              <li><strong>Depreciation method and rate:</strong> Straight-line or declining balance; rate per annum per asset category per company policy</li>
+              <li><strong>Remaining useful life:</strong> How many more months/years of depreciation to charge</li>
+            </ul>
+            <p>The fixed assets register is typically maintained in Excel by the accounts team. Extract it, validate net book values against the legacy system fixed assets account balance, and import before first month-end close in Odoo.</p>
+          </div>
+        </li>
+
+        <li class="cl-item">
+          <div class="cl-head">
+            <span class="cl-num">10</span>
+            <span class="cl-title">Open purchase orders and sales orders</span>
+            <span class="cl-tag">Procurement + Sales</span>
+          </div>
+          <div class="cl-body">
+            <p>Open transactions — purchase orders where goods have not yet arrived, or sales orders not yet shipped — need a decision: migrate or not.</p>
+            <ul>
+              <li><strong>Recommended approach (most Bangladesh SMEs):</strong> Do not migrate open POs and SOs. Instead, re-enter open orders manually in Odoo on day one. This avoids import complexity and lets the team practice their first real transactions in the live system.</li>
+              <li><strong>If migrating open orders:</strong> Export from legacy system. Only include POs with outstanding quantity (partial receipts need the received quantity adjusted). Link POs to vendors and products that have already been migrated.</li>
+              <li><strong>Open LC (Letter of Credit):</strong> If LC management is in scope, document all outstanding LCs and map to the Odoo LC workflow before cutover.</li>
+            </ul>
+            <div class="cl-warn">DECISION REQUIRED: The choice to migrate or re-enter open transactions must be agreed by the procurement and sales managers before the cutover plan is finalized. There is no default correct answer — it depends on volume (low volume → re-enter; high volume → migrate).</div>
+          </div>
+        </li>
+      </ul>
+
+      <h2 id="bangladesh-specifics">Bangladesh-specific data fields — the ones projects miss</h2>
+
+      <p>These fields are specific to Bangladesh compliance requirements and are not present in standard Odoo out-of-the-box import templates. Confirm your implementation vendor has included them in the import templates before data cleaning begins:</p>
+
+      <ul>
+        <li><strong>BIN (Business Identification Number):</strong> Required on customer and vendor records for Mushak invoice printing. The NBR currently issues two formats — 9-digit (old BIN) and 17-character BIN (new format post-2019 VAT Act). Both must be stored.</li>
+        <li><strong>TIN (Tax Identification Number):</strong> Required on vendor records for TDS (AIT) classification. 12-digit number. Vendors without TIN are subject to higher withholding rates.</li>
+        <li><strong>Trade License Number:</strong> Useful for vendor KYC records. Not required for tax compliance but commonly captured by procurement teams.</li>
+        <li><strong>BGMEA/BKMEA membership number:</strong> For RMG companies tracking buyer/supplier garments association memberships.</li>
+        <li><strong>NID number:</strong> On employee records for PF fund and government payroll compliance reporting.</li>
+        <li><strong>Bank routing number (BEFTN code):</strong> Bangladesh Electronic Funds Transfer Network routing number — required for electronic salary disbursement and vendor payment file generation.</li>
+      </ul>
+
+      <p>For more on migrating data from Excel-based systems and Tally, see our <a href="0008-excel-odoo-migration-checklist.html" style="color:var(--accent)">Excel to Odoo migration checklist</a> with detailed field mapping templates.</p>
+
+      <h2 id="cutover">Cutover day sequence</h2>
+
+      <p>The cutover sequence below is for a Friday evening → Sunday morning go-live window (Bangladesh weekend). Adjust for your specific dates. Every step has a named owner and a verification checkpoint before the next step begins.</p>
+
+      <div class="cutover-seq">
+        <div class="co-row">
+          <div class="co-when">Thu 17:00</div>
+          <div class="co-who">IT Admin</div>
+          <div class="co-what">Final backup of legacy system database. Confirm production Odoo server is accessible and backup schedule is active.</div>
+        </div>
+        <div class="co-row">
+          <div class="co-when">Thu 18:00</div>
+          <div class="co-who">Accounts</div>
+          <div class="co-what">Legacy system freeze — no new transactions entered after this time. Communicate freeze to all staff. Extract final trial balance, AR aging, AP aging.</div>
+        </div>
+        <div class="co-row">
+          <div class="co-when">Fri 09:00</div>
+          <div class="co-who">Warehouse</div>
+          <div class="co-what">Physical stock count — final count of all items in all storage locations. Count sheets signed by warehouse manager.</div>
+        </div>
+        <div class="co-row">
+          <div class="co-when">Fri 14:00</div>
+          <div class="co-who">Consultant</div>
+          <div class="co-what">Import master data into production Odoo: customers → vendors → products → chart of accounts → employees. Verify record counts match import file row counts.</div>
+        </div>
+        <div class="co-row">
+          <div class="co-when">Fri 17:00</div>
+          <div class="co-who">Consultant + Accounts</div>
+          <div class="co-what">Import opening balances: AR (individual invoices) → AP (individual bills) → other journal entries (bank balances, equity). Trial balance check #1.</div>
+        </div>
+        <div class="co-row">
+          <div class="co-when">Fri 20:00</div>
+          <div class="co-who">Consultant + Warehouse</div>
+          <div class="co-what">Import opening inventory using physical count quantities and weighted average unit costs. Inventory valuation check against financial opening balance.</div>
+        </div>
+        <div class="co-row">
+          <div class="co-when">Sat 09:00</div>
+          <div class="co-who">Accounts</div>
+          <div class="co-what">Final trial balance reconciliation: Odoo trial balance vs legacy system closing trial balance. Resolve any variance before Sunday go-live. Sign-off form completed.</div>
+        </div>
+        <div class="co-row">
+          <div class="co-when">Sun 08:30</div>
+          <div class="co-who">All teams</div>
+          <div class="co-what">Go-live. First live transactions begin. Consultant on-site. Issue log open. Legacy system read-only for reference for first 30 days.</div>
+        </div>
+      </div>
+
+      <div class="callout">
+        <span class="tag">Bottom line</span>
+        <p>Data migration is where good projects separate from mediocre ones. The 10 items in this checklist are not optional — each one represents a category of problem that has delayed or derailed a real Bangladesh ERP go-live. For the full implementation context around your data migration phase, see the <a href="0028-odoo-implementation-roadmap-bangladesh.html" style="color:var(--accent)">12-week Odoo implementation roadmap</a> — data migration maps to Phases 3 and 4 in that plan. <a href="../index.html#contact" style="color:var(--accent)">Need help structuring your data migration? Let's talk →</a></p>
+      </div>
+
+      <h2 id="faq">Frequently asked questions</h2>
+
+      <h3>How long does data migration take for Odoo in Bangladesh?</h3>
+      <p>For a Bangladesh SME, data migration typically takes 3–5 weeks of elapsed time. Week 1: data extraction and audit. Weeks 2–3: cleaning and deduplication (most time-consuming). Week 4: test import and error resolution. Week 5: final import and opening balance reconciliation. The most common delay is accounts team unavailability — explicitly block their time in the project plan for the reconciliation steps.</p>
+
+      <h3>What data needs to be migrated to Odoo from Tally in Bangladesh?</h3>
+      <p>Required data categories from Tally: master data (customer ledgers, vendor ledgers, stock items, chart of accounts, employees); opening balances (trial balance as of cutover date, AR aging, AP aging); opening stock (quantity and cost per product per warehouse from physical count); and open transactions (purchase orders not yet received, sales orders not yet shipped — recommended to re-enter manually rather than migrate for most SMEs).</p>
+
+      <h3>What is the most common data migration problem in Bangladesh ERP projects?</h3>
+      <p>Duplicate and inconsistent master data from Tally. A single customer may appear as 4–6 different ledger entries with slightly different name spellings. When migrated without deduplication, this creates split AR balances that cause incorrect customer statements and payment matching problems. The deduplication step for a company with 200–500 active counterparties typically takes 1–2 full working days.</p>
+
+      <h3>What Bangladesh-specific data fields are required in Odoo?</h3>
+      <p>Required for compliance: BIN number on customer/vendor records (for Mushak invoice printing), TIN on vendor records (for TDS rate classification), NID on employee records (for PF and payroll compliance), bank routing numbers (BEFTN code) for electronic payment files. These fields are not in standard Odoo import templates — confirm your vendor has included them before data cleaning begins.</p>
+    </div>
+  </article>
+
+  <footer>
+    <div class="shell">
+      <div class="post-foot">
+        <span class="eyebrow">Continue exploring</span>
+        <div class="next">
+          <a class="next-card" href="0031-odoo-training-plan-template.html">
+            <span class="dir">Next · 0031</span>
+            <h4>Odoo Training Plan Template</h4>
+            <p>Role-based training matrix, schedule, and sign-off criteria for Bangladesh ERP go-live.</p>
+            <span class="arrow">→</span>
+          </a>
+          <a class="next-card" href="0008-excel-odoo-migration-checklist.html">
+            <span class="dir">Related · 0008</span>
+            <h4>Excel to Odoo Migration Checklist</h4>
+            <p>Detailed field mapping and migration checklist for companies moving from Excel-based systems to Odoo.</p>
+            <span class="arrow">→</span>
+          </a>
+        </div>
+      </div>
+      <div class="foot">
+        <span>© 2026 Mehedi Hasan · Lab / 0030</span>
+        <span><a href="../index.html#lab">↑ Back to lab index</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="_toc.js" defer></script>
+</body>
+
+</html>

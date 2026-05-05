@@ -33,6 +33,46 @@
     <priority>0.9</priority>
   </url>
 
+  <!-- Target: odoo post go live support, odoo hypercare bangladesh, l1 l2 l3 erp support -->
+  <url>
+    <loc>https://mhasan.me/lab/0032-odoo-post-go-live-hypercare-bangladesh</loc>
+    <lastmod>2026-05-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Target: odoo training plan template, odoo user training bangladesh, erp training sign off -->
+  <url>
+    <loc>https://mhasan.me/lab/0031-odoo-training-plan-template</loc>
+    <lastmod>2026-05-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Target: data migration odoo bangladesh, odoo go live data checklist, tally to odoo migration -->
+  <url>
+    <loc>https://mhasan.me/lab/0030-data-migration-checklist-odoo-bangladesh</loc>
+    <lastmod>2026-05-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Target: odoo rfp template bangladesh, odoo vendor selection bangladesh, erp rfp bangladesh -->
+  <url>
+    <loc>https://mhasan.me/lab/0029-odoo-rfp-template-bangladesh</loc>
+    <lastmod>2026-05-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Target: odoo implementation roadmap bangladesh, odoo project plan bangladesh, 12 week odoo implementation -->
+  <url>
+    <loc>https://mhasan.me/lab/0028-odoo-implementation-roadmap-bangladesh</loc>
+    <lastmod>2026-05-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
   <!-- Target: sap b1 vs odoo bangladesh, sap business one vs odoo bangladesh, erp comparison bangladesh -->
   <url>
     <loc>https://mhasan.me/lab/0027-sap-b1-vs-odoo-bangladesh</loc>

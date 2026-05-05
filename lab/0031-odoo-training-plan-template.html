@@ -1,0 +1,862 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description"
+    content="Odoo training plan template — role-based training matrix, schedule, and sign-off criteria for Bangladesh ERP go-live. Covers warehouse, accounting, management →" />
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="Mehedi Hasan" />
+  <title>Odoo Training Plan Template | Sign-Off Matrix | Mehedi Hasan</title>
+  <link rel="canonical" href="https://mhasan.me/lab/0031-odoo-training-plan-template" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png" />
+  <!-- Open Graph -->
+  <meta property="og:title" content="Odoo Training Plan Template | Sign-Off Matrix | Mehedi Hasan" />
+  <meta property="og:description"
+    content="Complete Odoo training plan template for Bangladesh implementations — role identification, training matrix, 2-week schedule, assessment design, and user sign-off sheet." />
+  <meta property="og:url" content="https://mhasan.me/lab/0031-odoo-training-plan-template" />
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="https://mhasan.me/assets/og-default.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:site_name" content="Mehedi Hasan | Odoo ERP Consultant" />
+  <meta property="article:author" content="https://www.linkedin.com/in/mehedi-hasan-consultant/" />
+  <meta property="article:published_time" content="2026-05-05T13:30:00+06:00" />
+  <meta property="article:modified_time" content="2026-05-05T13:30:00+06:00" />
+  <meta property="article:section" content="Odoo ERP Bangladesh" />
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Odoo Training Plan Template | Roles & Sign-Off Matrix" />
+  <meta name="twitter:description"
+    content="Odoo training plan template for Bangladesh ERP implementations — role matrix, 2-week schedule, assessment criteria, and sign-off sheet ready to use." />
+  <meta name="twitter:image" content="https://mhasan.me/assets/og-default.jpg" />
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Odoo Training Plan Template: Roles, Modules & Sign-Off Matrix",
+    "description": "A complete Odoo training plan template for Bangladesh ERP implementations. Covers training philosophy (role-based vs module-based), step-by-step role identification, training matrix mapping roles to modules and training depth, 2-week training schedule, assessment design per role, sign-off criteria, and Bangladesh-specific training considerations including language, literacy levels, and time-of-day scheduling for factory floor staff.",
+    "datePublished": "2026-05-05T13:30:00+06:00",
+    "dateModified": "2026-05-05T13:30:00+06:00",
+    "author": {
+      "@type": "Person",
+      "name": "Mehedi Hasan",
+      "url": "https://mhasan.me",
+      "jobTitle": "Odoo ERP Consultant & Business Analyst",
+      "sameAs": "https://www.linkedin.com/in/mehedi-hasan-consultant/"
+    },
+    "publisher": { "@type": "Person", "name": "Mehedi Hasan", "url": "https://mhasan.me" },
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://mhasan.me/lab/0031-odoo-training-plan-template" }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://mhasan.me" },
+      { "@type": "ListItem", "position": 2, "name": "Lab", "item": "https://mhasan.me/lab/" },
+      { "@type": "ListItem", "position": 3, "name": "Odoo Training Plan Template", "item": "https://mhasan.me/lab/0031-odoo-training-plan-template" }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How long should Odoo training take for Bangladesh users?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Odoo training for a Bangladesh SME implementation should be structured across two weeks: Week 1 for super-user/key-user training (the module champions who will train and support others), and Week 2 for role-based end-user training. Super-user training runs 6–8 hours per module — typically 2 full days per major module (Accounting, Inventory, Manufacturing, HR). End-user training runs 2–4 hours per role group, covering only the transactions relevant to that role. Do not train warehouse staff on accounting functions or accounts staff on manufacturing routing — role-based training ensures no one is overwhelmed and everyone is competent in their specific tasks."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Who should be trained first in an Odoo implementation?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Train super-users (key users / module champions) first — before any end-user training begins. Super-users are typically department heads or senior staff who participated in the configuration phase and understand both the old process and the new Odoo workflow. They are trained to depth (full module functionality, override procedures, period-close tasks) in Week 10 of the implementation. In Week 11, end-users are trained — ideally by their own super-user who speaks their language and understands their day-to-day context, supported by the consultant. This train-the-trainer approach creates internal capability that persists after the consultant leaves the project."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you train Odoo users who are not computer-literate in Bangladesh?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "For Bangladesh factory floor staff and warehouse operators with limited computer experience, effective Odoo training requires: (1) Hands-on practice, not lecture — every session must include the user doing transactions themselves, not watching; (2) Bengali language support — if your consultant cannot conduct training in Bengali for floor staff, their super-user must co-train in Bengali; (3) Visual job aids — laminated cheat sheets with step-by-step screenshots posted at workstations (GRN process, goods issue, barcode scanning); (4) Reduced session length — 90-minute sessions with breaks rather than 4-hour blocks; (5) Assessment by doing — ask them to do the transaction themselves, not answer questions about it. Most computer-literacy gaps in Bangladesh ERP training are actually UI familiarity gaps that resolve within 2–3 practice sessions."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is a training sign-off sheet for Odoo?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A training sign-off sheet is a document that records that each user has been trained on the specific Odoo transactions required for their role and has demonstrated competence in completing them. It is signed by both the user and their supervisor (or the trainer). The sign-off serves two purposes: (1) Go/no-go gate — no user goes live in Odoo without a signed training sign-off; (2) Accountability record — if a user makes an error post-go-live that was covered in training, the sign-off confirms they were trained. The sign-off sheet should list specific transactions (e.g., 'Create and validate a Goods Receipt Note', 'Print Mushak 6.3 invoice') rather than generic 'trained on Odoo' language."
+        }
+      }
+    ]
+  }
+]
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap">
+  <link rel="stylesheet" href="_styles.css">
+  <style>
+    /* training matrix table */
+    .matrix-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 12px;
+      margin: 24px 0;
+    }
+    .matrix-table th {
+      padding: 10px 10px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: var(--text-3);
+      text-align: center;
+    }
+    .matrix-table th:first-child { text-align: left; }
+    .matrix-table td {
+      padding: 9px 10px;
+      border: 1px solid var(--border);
+      text-align: center;
+      vertical-align: middle;
+    }
+    .matrix-table td:first-child {
+      text-align: left;
+      color: var(--text);
+      font-weight: 500;
+      font-size: 13px;
+    }
+    .matrix-table .role-row td {
+      background: var(--surface);
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-3);
+      padding: 7px 10px;
+      text-align: left;
+    }
+    .t-deep { color: oklch(0.80 0.17 155); font-weight: 700; font-family: var(--mono); font-size: 11px; }
+    .t-basic { color: oklch(0.75 0.12 60); font-family: var(--mono); font-size: 11px; }
+    .t-view { color: var(--text-3); font-family: var(--mono); font-size: 11px; }
+    .t-none { color: var(--border); font-family: var(--mono); font-size: 11px; }
+
+    /* schedule */
+    .schedule-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin: 24px 0;
+    }
+    .sch-day {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .sch-head {
+      padding: 10px 16px;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+    }
+    .sch-day-num {
+      font-family: var(--mono);
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-3);
+    }
+    .sch-day-name {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text);
+    }
+    .sch-sessions {
+      padding: 12px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .sch-slot {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 12.5px;
+    }
+    .sch-time {
+      font-family: var(--mono);
+      font-size: 10.5px;
+      color: var(--accent);
+      min-width: 72px;
+      margin-top: 2px;
+      letter-spacing: 0.04em;
+    }
+    .sch-desc {
+      color: var(--text-2);
+      line-height: 1.5;
+    }
+
+    /* sign-off sheet */
+    .signoff-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 12.5px;
+      margin: 24px 0;
+    }
+    .signoff-table th {
+      padding: 10px 14px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-3);
+      text-align: left;
+    }
+    .signoff-table td {
+      padding: 10px 14px;
+      border: 1px solid var(--border);
+      color: var(--text-2);
+      line-height: 1.5;
+    }
+    .signoff-table td:first-child { font-weight: 500; color: var(--text); }
+    .signoff-table .task-done { color: oklch(0.80 0.17 155); font-family: var(--mono); font-size: 11px; text-align: center; }
+    .signoff-table .task-sign { border-bottom: 1px solid var(--text-3); min-width: 80px; display: inline-block; height: 16px; }
+
+    /* role cards */
+    .role-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin: 24px 0;
+    }
+    .role-card {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .role-card-head {
+      padding: 11px 14px;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text);
+    }
+    .role-card-body {
+      padding: 12px 14px;
+      font-size: 12px;
+      color: var(--text-2);
+      line-height: 1.7;
+    }
+    .role-card-body ul {
+      margin: 0;
+      padding: 0 0 0 14px;
+    }
+
+    .pull {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: clamp(20px, 2.8vw, 30px);
+      line-height: 1.3;
+      color: var(--text);
+      margin: 48px 0;
+      max-width: 24ch;
+      letter-spacing: -0.01em;
+    }
+    .pull::before {
+      content: "";
+      display: block;
+      width: 36px;
+      height: 1px;
+      background: var(--accent);
+      margin-bottom: 18px;
+    }
+
+    @media(max-width:700px) {
+      .role-grid { grid-template-columns: 1fr 1fr; }
+      .schedule-grid { grid-template-columns: 1fr; }
+    }
+    @media(max-width:480px) {
+      .role-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="grid-bg"></div>
+
+  <header class="nav">
+    <div class="shell">
+      <div class="nav-inner">
+        <a class="brand" href="../index.html">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span class="brand-name"><b>Mehedi Hasan</b><em>ERP · Business Analyst</em></span>
+        </a>
+        <a class="back-link" href="../index.html#lab">← Back to Lab</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="post-head">
+    <div class="shell">
+      <span class="eyebrow">Technical Lab · 0031</span>
+      <h1>Odoo Training Plan Template — <span class="serif">roles, modules & sign-off matrix.</span></h1>
+      <p class="lede">Training is the phase that separates ERP implementations that stick from ones that quietly revert to WhatsApp and Excel within 90 days. A user who sees Odoo for the first time on go-live day is not trained — they are surprised. This template ensures no one is surprised.</p>
+      <div class="post-meta">
+        <span class="chip accent">Template</span>
+        <span class="chip">Training</span>
+        <span class="chip">Change Management</span>
+        <span class="chip">Bangladesh ERP</span>
+      </div>
+      <div class="byline">
+        <span>By<b><a href="https://www.linkedin.com/in/mehedi-hasan-consultant/" style="color:var(--accent)" rel="author">Mehedi Hasan</a></b></span>
+        <span>Published<b>May 2026</b></span>
+        <span>Read time<b>13 minutes</b></span>
+        <span>Form<b>Template + Guide</b></span>
+        <span>Scope<b>Bangladesh SMEs · all industries</b></span>
+      </div>
+    </div>
+  </section>
+
+  <article class="post">
+    <aside class="toc">
+      <div class="toc-k">In this guide</div>
+      <ol>
+        <li><a href="#philosophy">Training philosophy</a></li>
+        <li><a href="#roles">Step 1 — Identify roles</a></li>
+        <li><a href="#matrix">Step 2 — Build the training matrix</a></li>
+        <li><a href="#schedule">Step 3 — Set the training schedule</a></li>
+        <li><a href="#assessment">Step 4 — Design assessments</a></li>
+        <li><a href="#signoff">Step 5 — Sign-off sheet template</a></li>
+        <li><a href="#bangladesh">Bangladesh-specific considerations</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ol>
+    </aside>
+
+    <div class="body">
+      <p>I have trained over 200 users on Odoo across Bangladesh manufacturing, trading, and service companies. The consistent pattern: organizations that invest in structured, role-based training have a productive go-live. Organizations that do not have three months of clean-up operations and a support call volume that overwhelms the consultant and the client PM simultaneously.</p>
+
+      <p>The template in this guide is the one I use. It is designed for a Bangladesh SME with 25–150 users implementing Odoo across 4–6 modules. Adapt it to your specific role count and module scope before week ten of your implementation.</p>
+
+      <p>For the broader context of where training fits in the implementation timeline, see the <a href="0028-odoo-implementation-roadmap-bangladesh.html" style="color:var(--accent)">12-week Odoo implementation roadmap for Bangladesh SMEs</a> — training occupies weeks 10 and 11 in that plan.</p>
+
+      <p class="pull">Train by role, not by module. A warehouse staff member who is trained on the full inventory module knows too much about the wrong things and too little about the right ones.</p>
+
+      <h2 id="philosophy">Training philosophy — role-based, not module-based</h2>
+
+      <p>The most common training mistake in Bangladesh ERP implementations: scheduling module-based training sessions — "Inventory Module Training on Tuesday, Accounting Module Training on Wednesday" — and inviting everyone to attend everything. The result: warehouse staff sitting through chart-of-accounts configuration, and accountants watching purchase order routing discussions. Everyone is bored. Nobody is focused.</p>
+
+      <p><strong>Role-based training</strong> inverts this. You train each person on exactly the transactions they will perform in their job — not on the module as a whole. A warehouse GRN operator needs to know how to confirm a goods receipt, do a quality check, and print a delivery note. They do not need to know how to configure a reordering rule or run an inventory valuation report. Role-based training is shorter, more focused, and more effective.</p>
+
+      <p>The second principle: <strong>train-the-trainer first.</strong> Super-users (key users / module champions) are trained by the consultant to full depth in week 10. They then co-train their teams in week 11, using their own process knowledge and language. A warehouse manager explaining Odoo GRN to their team in Bengali, using the company's own product names, is more effective than a consultant explaining it in formal English with generic examples.</p>
+
+      <h2 id="roles">Step 1 — Identify your training roles</h2>
+
+      <p>Before building the training matrix, identify all distinct roles that will use Odoo. A role is a group of users who perform the same set of transactions — not a job title. The warehouse manager and the warehouse operator may have different titles but perform the same GRN transactions, so they share a training role.</p>
+
+      <p>Standard roles for a Bangladesh manufacturing or trading SME:</p>
+
+      <div class="role-grid">
+        <div class="role-card">
+          <div class="role-card-head">Accounts Payable</div>
+          <div class="role-card-body">
+            <ul>
+              <li>Vendor bill entry and validation</li>
+              <li>TDS deduction and certificate</li>
+              <li>Vendor payment processing</li>
+              <li>AP aging report</li>
+            </ul>
+          </div>
+        </div>
+        <div class="role-card">
+          <div class="role-card-head">Accounts Receivable</div>
+          <div class="role-card-body">
+            <ul>
+              <li>Customer invoice creation</li>
+              <li>Mushak 6.3 printing</li>
+              <li>Payment receipt and matching</li>
+              <li>AR aging and follow-up</li>
+            </ul>
+          </div>
+        </div>
+        <div class="role-card">
+          <div class="role-card-head">Senior Accountant / CFO</div>
+          <div class="role-card-body">
+            <ul>
+              <li>Journal entries and reversals</li>
+              <li>Bank reconciliation</li>
+              <li>Month-end close checklist</li>
+              <li>Trial balance and P&L reporting</li>
+            </ul>
+          </div>
+        </div>
+        <div class="role-card">
+          <div class="role-card-head">Warehouse Operator</div>
+          <div class="role-card-body">
+            <ul>
+              <li>Goods receipt (GRN) confirmation</li>
+              <li>Goods issue / delivery order</li>
+              <li>Stock transfer between locations</li>
+              <li>Physical inventory count entry</li>
+            </ul>
+          </div>
+        </div>
+        <div class="role-card">
+          <div class="role-card-head">Procurement Officer</div>
+          <div class="role-card-body">
+            <ul>
+              <li>Purchase order creation and approval</li>
+              <li>Vendor price list management</li>
+              <li>3-way match review (PO/GRN/Bill)</li>
+              <li>Reorder alert management</li>
+            </ul>
+          </div>
+        </div>
+        <div class="role-card">
+          <div class="role-card-head">Sales / CSR</div>
+          <div class="role-card-body">
+            <ul>
+              <li>Quotation and sales order creation</li>
+              <li>Delivery order generation</li>
+              <li>Customer statement inquiry</li>
+              <li>CRM pipeline management</li>
+            </ul>
+          </div>
+        </div>
+        <div class="role-card">
+          <div class="role-card-head">Production Supervisor</div>
+          <div class="role-card-body">
+            <ul>
+              <li>Manufacturing order creation</li>
+              <li>Work order confirmation</li>
+              <li>Component consumption recording</li>
+              <li>Production output posting</li>
+            </ul>
+          </div>
+        </div>
+        <div class="role-card">
+          <div class="role-card-head">HR / Payroll Officer</div>
+          <div class="role-card-body">
+            <ul>
+              <li>Attendance entry and approval</li>
+              <li>Leave request processing</li>
+              <li>Monthly payroll batch run</li>
+              <li>Payslip generation and approval</li>
+            </ul>
+          </div>
+        </div>
+        <div class="role-card">
+          <div class="role-card-head">Management / Reporting</div>
+          <div class="role-card-body">
+            <ul>
+              <li>Executive dashboards and KPIs</li>
+              <li>Trial balance and financial reports</li>
+              <li>Inventory valuation report</li>
+              <li>Approval workflows (PO, payment)</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <h2 id="matrix">Step 2 — Build the training matrix</h2>
+
+      <p>The training matrix maps each role to each module and specifies the training depth required. Three levels:</p>
+      <ul>
+        <li><span class="t-deep">DEEP</span> — Full training: all transactions in scope for this role, plus configuration options, workflow management, and period-close tasks. Typically super-users only.</li>
+        <li><span class="t-basic">BASIC</span> — Transaction training: the specific transactions this role performs day-to-day. No configuration or admin access.</li>
+        <li><span class="t-view">VIEW</span> — Report-only access: how to run and interpret relevant reports. No transaction training.</li>
+        <li><span class="t-none">—</span> — Not in scope for this role. Do not train, do not give access.</li>
+      </ul>
+
+      <table class="matrix-table">
+        <thead>
+          <tr>
+            <th style="width:22%">Role</th>
+            <th>Accounting</th>
+            <th>Inventory</th>
+            <th>Purchase</th>
+            <th>Sales</th>
+            <th>Manufacturing</th>
+            <th>HR / Payroll</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="role-row"><td colspan="7">Finance & Accounting</td></tr>
+          <tr>
+            <td>AP Accountant</td>
+            <td><span class="t-deep">DEEP</span></td>
+            <td><span class="t-view">VIEW</span></td>
+            <td><span class="t-basic">BASIC</span></td>
+            <td><span class="t-none">—</span></td>
+            <td><span class="t-none">—</span></td>
+            <td><span class="t-none">—</span></td>
+          </tr>
+          <tr>
+            <td>AR Accountant</td>
+            <td><span class="t-deep">DEEP</span></td>
+            <td><span class="t-view">VIEW</span></td>
+            <td><span class="t-none">—</span></td>
+            <td><span class="t-basic">BASIC</span></td>
+            <td><span class="t-none">—</span></td>
+            <td><span class="t-none">—</span></td>
+          </tr>
+          <tr>
+            <td>Senior Accountant / CFO</td>
+            <td><span class="t-deep">DEEP</span></td>
+            <td><span class="t-view">VIEW</span></td>
+            <td><span class="t-view">VIEW</span></td>
+            <td><span class="t-view">VIEW</span></td>
+            <td><span class="t-view">VIEW</span></td>
+            <td><span class="t-view">VIEW</span></td>
+          </tr>
+          <tr class="role-row"><td colspan="7">Warehouse & Inventory</td></tr>
+          <tr>
+            <td>Warehouse Operator</td>
+            <td><span class="t-none">—</span></td>
+            <td><span class="t-basic">BASIC</span></td>
+            <td><span class="t-none">—</span></td>
+            <td><span class="t-none">—</span></td>
+            <td><span class="t-none">—</span></td>
+            <td><span class="t-none">—</span></td>
+          </tr>
+          <tr>
+            <td>Warehouse Manager</td>
+            <td><span class="t-none">—</span></td>
+            <td><span class="t-deep">DEEP</span></td>
+            <td><span class="t-basic">BASIC</span></td>
+            <td><span class="t-basic">BASIC</span></td>
+            <td><span class="t-view">VIEW</span></td>
+            <td><span class="t-none">—</span></td>
+          </tr>
+          <tr class="role-row"><td colspan="7">Procurement</td></tr>
+          <tr>
+            <td>Procurement Officer</td>
+            <td><span class="t-basic">BASIC</span></td>
+            <td><span class="t-basic">BASIC</span></td>
+            <td><span class="t-deep">DEEP</span></td>
+            <td><span class="t-none">—</span></td>
+            <td><span class="t-view">VIEW</span></td>
+            <td><span class="t-none">—</span></td>
+          </tr>
+          <tr class="role-row"><td colspan="7">Sales</td></tr>
+          <tr>
+            <td>Sales / CSR</td>
+            <td><span class="t-none">—</span></td>
+            <td><span class="t-view">VIEW</span></td>
+            <td><span class="t-none">—</span></td>
+            <td><span class="t-deep">DEEP</span></td>
+            <td><span class="t-none">—</span></td>
+            <td><span class="t-none">—</span></td>
+          </tr>
+          <tr class="role-row"><td colspan="7">Production</td></tr>
+          <tr>
+            <td>Production Supervisor</td>
+            <td><span class="t-none">—</span></td>
+            <td><span class="t-basic">BASIC</span></td>
+            <td><span class="t-none">—</span></td>
+            <td><span class="t-none">—</span></td>
+            <td><span class="t-deep">DEEP</span></td>
+            <td><span class="t-none">—</span></td>
+          </tr>
+          <tr class="role-row"><td colspan="7">HR & Administration</td></tr>
+          <tr>
+            <td>HR / Payroll Officer</td>
+            <td><span class="t-basic">BASIC</span></td>
+            <td><span class="t-none">—</span></td>
+            <td><span class="t-none">—</span></td>
+            <td><span class="t-none">—</span></td>
+            <td><span class="t-none">—</span></td>
+            <td><span class="t-deep">DEEP</span></td>
+          </tr>
+          <tr class="role-row"><td colspan="7">Management</td></tr>
+          <tr>
+            <td>MD / Director</td>
+            <td><span class="t-view">VIEW</span></td>
+            <td><span class="t-view">VIEW</span></td>
+            <td><span class="t-view">VIEW</span></td>
+            <td><span class="t-view">VIEW</span></td>
+            <td><span class="t-view">VIEW</span></td>
+            <td><span class="t-view">VIEW</span></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2 id="schedule">Step 3 — Set the training schedule</h2>
+
+      <p>Training runs over two weeks: week 10 (super-users) and week 11 (end-users). Sessions are scheduled by role group — never mixed-role sessions for end-user training.</p>
+
+      <div class="schedule-grid">
+        <div class="sch-day">
+          <div class="sch-head">
+            <span class="sch-day-num">Week 10 · Day 1</span>
+            <span class="sch-day-name">Accounting Super-Users</span>
+          </div>
+          <div class="sch-sessions">
+            <div class="sch-slot">
+              <span class="sch-time">09:00–12:30</span>
+              <span class="sch-desc">Accounts Payable deep dive: vendor bills, TDS withholding, payment, bank reconciliation, AP aging</span>
+            </div>
+            <div class="sch-slot">
+              <span class="sch-time">13:30–17:00</span>
+              <span class="sch-desc">Accounts Receivable deep dive: invoicing, Mushak 6.3 print, payment receipt, AR aging, customer statements</span>
+            </div>
+          </div>
+        </div>
+        <div class="sch-day">
+          <div class="sch-head">
+            <span class="sch-day-num">Week 10 · Day 2</span>
+            <span class="sch-day-name">Accounting Close & Reporting</span>
+          </div>
+          <div class="sch-sessions">
+            <div class="sch-slot">
+              <span class="sch-time">09:00–12:30</span>
+              <span class="sch-desc">General ledger: manual journal entries, bank reconciliation, month-end close checklist (fiscal year alignment July 1)</span>
+            </div>
+            <div class="sch-slot">
+              <span class="sch-time">13:30–17:00</span>
+              <span class="sch-desc">Financial reporting: trial balance, P&L, balance sheet, cash flow. Dashboard and KPI setup for MD/CFO view</span>
+            </div>
+          </div>
+        </div>
+        <div class="sch-day">
+          <div class="sch-head">
+            <span class="sch-day-num">Week 10 · Day 3</span>
+            <span class="sch-day-name">Inventory & Purchase Super-Users</span>
+          </div>
+          <div class="sch-sessions">
+            <div class="sch-slot">
+              <span class="sch-time">09:00–12:30</span>
+              <span class="sch-desc">Inventory super-user: GRN, goods issue, stock transfer, inventory adjustment, stock valuation report, physical count</span>
+            </div>
+            <div class="sch-slot">
+              <span class="sch-time">13:30–17:00</span>
+              <span class="sch-desc">Purchase super-user: PO workflow, 3-way match, vendor management, reorder rules, landed costs</span>
+            </div>
+          </div>
+        </div>
+        <div class="sch-day">
+          <div class="sch-head">
+            <span class="sch-day-num">Week 10 · Day 4</span>
+            <span class="sch-day-name">Manufacturing & HR Super-Users</span>
+          </div>
+          <div class="sch-sessions">
+            <div class="sch-slot">
+              <span class="sch-time">09:00–12:30</span>
+              <span class="sch-desc">Manufacturing super-user: production order lifecycle, BOM, routing, work order confirmation, finished goods posting, scrap</span>
+            </div>
+            <div class="sch-slot">
+              <span class="sch-time">13:30–17:00</span>
+              <span class="sch-desc">HR/Payroll super-user: attendance, leave management, monthly payroll batch, payslip approval, PF deduction, income tax</span>
+            </div>
+          </div>
+        </div>
+        <div class="sch-day">
+          <div class="sch-head">
+            <span class="sch-day-num">Week 10 · Day 5</span>
+            <span class="sch-day-name">Super-User Assessment Day</span>
+          </div>
+          <div class="sch-sessions">
+            <div class="sch-slot">
+              <span class="sch-time">09:00–12:00</span>
+              <span class="sch-desc">End-to-end scenario exercise: process a full order cycle (PO → GRN → Vendor Bill → Payment) and a full sales cycle (SO → Delivery → Invoice → Receipt) without consultant assistance</span>
+            </div>
+            <div class="sch-slot">
+              <span class="sch-time">13:00–17:00</span>
+              <span class="sch-desc">Sign-off interviews: each super-user demonstrates 3 core transactions in their module. Sign-off sheet completed. Gaps identified for additional coaching before week 11.</span>
+            </div>
+          </div>
+        </div>
+        <div class="sch-day">
+          <div class="sch-head">
+            <span class="sch-day-num">Week 11 · Days 1–4</span>
+            <span class="sch-day-name">End-User Role Sessions</span>
+          </div>
+          <div class="sch-sessions">
+            <div class="sch-slot">
+              <span class="sch-time">Day 1 AM</span>
+              <span class="sch-desc">Warehouse operators: GRN confirmation, goods issue, barcode scanning, stock transfer (2-hour session × 2 groups)</span>
+            </div>
+            <div class="sch-slot">
+              <span class="sch-time">Day 1 PM</span>
+              <span class="sch-desc">Procurement officers: PO creation, approval workflow, receiving against PO, vendor invoice matching</span>
+            </div>
+            <div class="sch-slot">
+              <span class="sch-time">Day 2 AM/PM</span>
+              <span class="sch-desc">Sales / CSR: quotation, sales order, delivery order, invoice, Mushak 6.3 print, customer inquiry</span>
+            </div>
+            <div class="sch-slot">
+              <span class="sch-time">Day 3 AM/PM</span>
+              <span class="sch-desc">AP/AR accountants: repeat of super-user content at basic level, focus on daily transaction flow</span>
+            </div>
+            <div class="sch-slot">
+              <span class="sch-time">Day 4 AM/PM</span>
+              <span class="sch-desc">Production supervisors (AM) + HR officers (PM): role-specific transaction training</span>
+            </div>
+          </div>
+        </div>
+        <div class="sch-day">
+          <div class="sch-head">
+            <span class="sch-day-num">Week 11 · Day 5</span>
+            <span class="sch-day-name">End-User Assessment & Sign-Off</span>
+          </div>
+          <div class="sch-sessions">
+            <div class="sch-slot">
+              <span class="sch-time">Full day</span>
+              <span class="sch-desc">Each user completes a minimum 3 end-to-end practice transactions in UAT environment under observation. Sign-off sheet signed by user and supervisor. Unsigned users identified for additional 30-minute coaching before go-live.</span>
+            </div>
+          </div>
+        </div>
+        <div class="sch-day">
+          <div class="sch-head">
+            <span class="sch-day-num">Management</span>
+            <span class="sch-day-name">Dashboard & Reporting Session</span>
+          </div>
+          <div class="sch-sessions">
+            <div class="sch-slot">
+              <span class="sch-time">1.5 hrs</span>
+              <span class="sch-desc">MD, Directors, and Managers: Odoo dashboard navigation, key report access (P&L, inventory valuation, AR aging, production efficiency). Approval workflow for PO and payment. No transaction entry training needed.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <h2 id="assessment">Step 4 — Assessment design per role</h2>
+
+      <p>Assessment is not a written test. It is observation of the user completing specific transactions in the UAT environment. The assessor (consultant or super-user) watches, does not help, and marks the transaction as passed or failed. Examples:</p>
+
+      <ul>
+        <li><strong>Warehouse Operator:</strong> (1) Receive goods against PO number POXXX — confirm the GRN; (2) Issue materials to production order MOXXX; (3) Transfer 50 units of Product A from Main Warehouse to Dispatch location.</li>
+        <li><strong>AP Accountant:</strong> (1) Enter vendor bill VB-001 against PO POXXX with correct TDS deduction; (2) Process payment of BDT 1,50,000 to Vendor A and reconcile against bill; (3) Run AP aging report and export to Excel.</li>
+        <li><strong>AR Accountant:</strong> (1) Create sales invoice INV-001 for Customer B with Mushak details and print Mushak 6.3; (2) Record payment receipt from Customer B and match against invoice; (3) Run customer statement for Customer C for the current month.</li>
+        <li><strong>Production Supervisor:</strong> (1) Create and confirm manufacturing order for 100 units of Product D; (2) Record work order completion for Work Center WC-01; (3) Post finished goods to inventory and check component consumption.</li>
+        <li><strong>Payroll Officer:</strong> (1) Enter attendance for 5 employees for week 1; (2) Process payroll batch for current month and review payslip for Employee E; (3) Generate payslip PDF and review PF deduction and income tax calculation.</li>
+      </ul>
+
+      <h2 id="signoff">Step 5 — Sign-off sheet template</h2>
+
+      <p>Every user who will use Odoo on go-live day must have a completed sign-off sheet on file before the go-live date. No exceptions. This is a go/no-go criterion.</p>
+
+      <table class="signoff-table">
+        <thead>
+          <tr>
+            <th style="width:20%">Transaction</th>
+            <th style="width:25%">Description</th>
+            <th style="width:15%">Assessed by</th>
+            <th style="width:15%">Result</th>
+            <th style="width:25%">User signature</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>[Transaction 1]</td>
+            <td>e.g., Create and validate a Goods Receipt Note</td>
+            <td>[Assessor name]</td>
+            <td><span class="task-done">PASS / FAIL</span></td>
+            <td><span class="task-sign">&nbsp;</span></td>
+          </tr>
+          <tr>
+            <td>[Transaction 2]</td>
+            <td>e.g., Issue goods to Production Order</td>
+            <td>[Assessor name]</td>
+            <td><span class="task-done">PASS / FAIL</span></td>
+            <td><span class="task-sign">&nbsp;</span></td>
+          </tr>
+          <tr>
+            <td>[Transaction 3]</td>
+            <td>e.g., Run and interpret stock valuation report</td>
+            <td>[Assessor name]</td>
+            <td><span class="task-done">PASS / FAIL</span></td>
+            <td><span class="task-sign">&nbsp;</span></td>
+          </tr>
+          <tr>
+            <td colspan="5" style="font-size:12px;color:var(--text-3);font-family:var(--mono);padding-top:14px;">
+              User name: __________________ &nbsp;&nbsp; Role: __________________ &nbsp;&nbsp; Department: __________________<br>
+              Training date(s): __________________ &nbsp;&nbsp; Supervisor sign-off: __________________ &nbsp;&nbsp; Date: __________________<br><br>
+              I confirm I have been trained on the above transactions and can perform them in Odoo without assistance.
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2 id="bangladesh">Bangladesh-specific training considerations</h2>
+
+      <p>Training a Bangladesh manufacturing team requires specific adjustments that international implementation guides don't cover. The user population is different, and the approach must reflect that.</p>
+
+      <ul>
+        <li><strong>Language:</strong> Management users are typically comfortable with English-language Odoo interface. Factory floor staff and warehouse operators are typically more comfortable with Bengali. Either: (1) deploy Odoo in Bengali for these users (Odoo has a Bengali language pack — quality is adequate for standard transactions); or (2) have the super-user conduct end-user training in Bengali with printed cheat sheets in Bengali. Do not assume all staff can navigate an English UI confidently.</li>
+        <li><strong>Computer literacy gap:</strong> Many factory floor operators in Bangladesh may be using a computer for the first time. Training must begin with basics: mouse usage, keyboard, how to open a browser, how to type in the search bar. Budget an additional 30 minutes in the first session for teams where this gap exists. It is not unusual and resolves quickly.</li>
+        <li><strong>Visual job aids:</strong> Print laminated step-by-step cheat sheets with screenshots and post them at the warehouse workstation, at the accounts desk, at the procurement officer's desk. These are not a sign of poor training — they are a sign of good training. Seeing a familiar visual reference reduces support calls by 30–40% in the first two weeks post go-live.</li>
+        <li><strong>Shift workers:</strong> If your factory runs shifts, schedule separate training sessions for each shift — do not train only the day shift and expect the night shift supervisor to brief the team. This gap shows up as a wave of support calls at 2am on go-live day.</li>
+        <li><strong>Ramadan and prayer time scheduling:</strong> During Ramadan, schedule training sessions to end before Iftar. Morning sessions (09:00–12:30) are more productive than afternoon sessions when energy is low. Respect prayer breaks in any session crossing prayer times.</li>
+      </ul>
+
+      <p>For the broader change management context — why users resist ERP systems and how to address that resistance — see our guide on <a href="0007-change-management-isnt-a-memo.html" style="color:var(--accent)">change management in ERP implementations</a>. Training without change management is preparing people for a system they don't want to use. For the sign-off evaluation criteria that complement training, see our <a href="0009-uat-script-200-users-ago.html" style="color:var(--accent)">UAT script template</a>.</p>
+
+      <div class="callout">
+        <span class="tag">Bottom line</span>
+        <p>A training plan is not a schedule of sessions. It is a system that guarantees every user can perform their role in Odoo on day one of go-live. The matrix, the schedule, the assessment, and the sign-off sheet are the components of that system. The sign-off sheet is the most important — it is the last gate before go-live and the record that confirms your team is ready. <a href="../index.html#contact" style="color:var(--accent)">Need help designing your training plan? Let's talk →</a></p>
+      </div>
+
+      <h2 id="faq">Frequently asked questions</h2>
+
+      <h3>How long should Odoo training take for Bangladesh users?</h3>
+      <p>Structure training across two weeks: Week 10 for super-user/key-user training (6–8 hours per module, 4–5 full days total for a standard 4–6 module implementation), and Week 11 for role-based end-user training (2–4 hours per role group). Super-users are trained to full depth; end-users are trained on their specific transactions only. Do not compress both into a single week — users need time between super-user training and end-user training for the super-users to prepare their team sessions.</p>
+
+      <h3>Who should be trained first in an Odoo implementation?</h3>
+      <p>Train super-users (key users / module champions) first — before any end-user training begins. Super-users are typically department heads or senior staff who participated in the configuration phase. They are trained to full depth in week 10, then co-train their end-users in week 11 using a train-the-trainer approach. This creates internal capability that persists after the consultant leaves the project.</p>
+
+      <h3>How do you train Odoo users who are not computer-literate in Bangladesh?</h3>
+      <p>For factory floor and warehouse staff with limited computer experience: (1) start with 30 minutes on basic computer and browser usage; (2) train in Bengali language or with a Bengali-speaking co-trainer; (3) use printed visual cheat sheets with screenshots posted at workstations; (4) keep sessions to 90-minute blocks; (5) assess by having the user complete the transaction themselves — not by asking questions. Most computer-literacy gaps resolve within 2–3 practice sessions.</p>
+
+      <h3>What is a training sign-off sheet for Odoo?</h3>
+      <p>A document that records each user has been trained on their specific Odoo transactions and demonstrated competence in them. Signed by the user and their supervisor. It is a go/no-go criterion — no user goes live unsigned. The sign-off lists specific transactions (e.g., "Create and validate a GRN", "Print Mushak 6.3 invoice") rather than generic "trained on Odoo" language, making it both a training record and an accountability document.</p>
+    </div>
+  </article>
+
+  <footer>
+    <div class="shell">
+      <div class="post-foot">
+        <span class="eyebrow">Continue exploring</span>
+        <div class="next">
+          <a class="next-card" href="0032-odoo-post-go-live-hypercare-bangladesh.html">
+            <span class="dir">Next · 0032</span>
+            <h4>Odoo Post Go-Live Hypercare Bangladesh</h4>
+            <p>L1/L2/L3 support structure, escalation matrix, and 90-day KPIs for Bangladesh ERP teams after go-live.</p>
+            <span class="arrow">→</span>
+          </a>
+          <a class="next-card" href="0009-uat-script-200-users-ago.html">
+            <span class="dir">Related · 0009</span>
+            <h4>UAT Script — 200 Users of Experience</h4>
+            <p>The UAT test script template that complements your training plan — ensuring users can verify the system before go-live.</p>
+            <span class="arrow">→</span>
+          </a>
+        </div>
+      </div>
+      <div class="foot">
+        <span>© 2026 Mehedi Hasan · Lab / 0031</span>
+        <span><a href="../index.html#lab">↑ Back to lab index</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="_toc.js" defer></script>
+</body>
+
+</html>

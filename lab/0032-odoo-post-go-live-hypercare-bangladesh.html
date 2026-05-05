@@ -1,0 +1,743 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description"
+    content="Odoo post go-live support — L1/L2/L3 escalation structure, hypercare KPIs, and first-90-days playbook for Bangladesh ERP teams. Set it up right →" />
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="Mehedi Hasan" />
+  <title>Odoo Post Go-Live Hypercare Bangladesh | Mehedi Hasan</title>
+  <link rel="canonical" href="https://mhasan.me/lab/0032-odoo-post-go-live-hypercare-bangladesh" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png" />
+  <!-- Open Graph -->
+  <meta property="og:title" content="Odoo Post Go-Live Hypercare Bangladesh | Mehedi Hasan" />
+  <meta property="og:description"
+    content="L1/L2/L3 support structure, escalation matrix, issue severity classification, and 30-60-90 day KPIs for Bangladesh Odoo teams in the post go-live hypercare period." />
+  <meta property="og:url" content="https://mhasan.me/lab/0032-odoo-post-go-live-hypercare-bangladesh" />
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="https://mhasan.me/assets/og-default.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:site_name" content="Mehedi Hasan | Odoo ERP Consultant" />
+  <meta property="article:author" content="https://www.linkedin.com/in/mehedi-hasan-consultant/" />
+  <meta property="article:published_time" content="2026-05-05T14:00:00+06:00" />
+  <meta property="article:modified_time" content="2026-05-05T14:00:00+06:00" />
+  <meta property="article:section" content="Odoo ERP Bangladesh" />
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Odoo Post Go-Live Hypercare Bangladesh | L1/L2/L3 Guide" />
+  <meta name="twitter:description"
+    content="L1/L2/L3 support tiers, escalation matrix, 30-60-90 day KPIs, and exit criteria for Bangladesh Odoo hypercare — the full post go-live playbook." />
+  <meta name="twitter:image" content="https://mhasan.me/assets/og-default.jpg" />
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Post Go-Live Hypercare: L1/L2/L3 Support Structure for Bangladesh Odoo Teams",
+    "description": "A complete guide to structuring post go-live hypercare support for Odoo implementations in Bangladesh. Covers hypercare definition, L1/L2/L3 support tier definitions with responsibilities, escalation matrix, issue severity classification (S1/S2/S3/S4), SLA targets, 30-60-90 day KPI framework, first month-end close checklist, exit criteria from hypercare to BAU support, and Bangladesh-specific considerations including weekend support coverage and escalation during Eid periods.",
+    "datePublished": "2026-05-05T14:00:00+06:00",
+    "dateModified": "2026-05-05T14:00:00+06:00",
+    "author": {
+      "@type": "Person",
+      "name": "Mehedi Hasan",
+      "url": "https://mhasan.me",
+      "jobTitle": "Odoo ERP Consultant & Business Analyst",
+      "sameAs": "https://www.linkedin.com/in/mehedi-hasan-consultant/"
+    },
+    "publisher": { "@type": "Person", "name": "Mehedi Hasan", "url": "https://mhasan.me" },
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://mhasan.me/lab/0032-odoo-post-go-live-hypercare-bangladesh" }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://mhasan.me" },
+      { "@type": "ListItem", "position": 2, "name": "Lab", "item": "https://mhasan.me/lab/" },
+      { "@type": "ListItem", "position": 3, "name": "Odoo Post Go-Live Hypercare Bangladesh", "item": "https://mhasan.me/lab/0032-odoo-post-go-live-hypercare-bangladesh" }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is hypercare in ERP implementation?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Hypercare is the intensive post go-live support period that begins on the first day of live operations and continues until the system is stable and the internal team can manage independently. For an Odoo implementation in Bangladesh, hypercare typically runs 2–4 weeks. During hypercare, the consultant remains closely available (on-site for the first 3–5 days, then daily remote availability), issues are logged and triaged daily, the first key business processes (month-end close, payroll run, first LC cycle) are supported directly by the consultant, and the transition to the permanent BAU support structure is completed. Hypercare is distinct from the ongoing post-go-live support retainer that follows it."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is L1/L2/L3 support in Odoo?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "L1/L2/L3 refers to three tiers of support, each handling different issue complexity: L1 (Level 1) — first-line support, handled by internal super-users. Covers user questions, how-to guidance, forgotten passwords, basic process clarification. Response within 30 minutes during business hours. L2 (Level 2) — functional support, handled by the client project manager or a senior key user. Covers process errors, workflow configuration questions, data correction, report interpretation. Response within 4 hours. L3 (Level 3) — technical support, handled by the Odoo consultant or implementation vendor. Covers system defects, custom code fixes, configuration changes, server issues. Response within 1 business day for standard issues, within 2 hours for severity-1 blockers. Issues are always attempted at L1 first; only escalated to L2/L3 when L1 cannot resolve."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How long does Odoo hypercare last in Bangladesh?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Odoo hypercare for a Bangladesh SME implementation typically lasts 2–4 weeks of active support. The minimum hypercare period should cover: the first full operational week (all transaction types have been processed at least once), the first payroll run (if HR module is live), and the first month-end close (if go-live occurs mid-month or early month, the close is 2–4 weeks away). Extended hypercare (4–8 weeks) is appropriate when: the implementation was complex (multi-company, custom manufacturing, EPZ compliance), the internal team has low technical confidence, or go-live issues were more numerous than expected. Exit from hypercare to BAU support happens when no severity-1 issues have occurred for 5 consecutive business days and the internal L1/L2 team is handling all standard queries without consultant intervention."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What should happen in the first month after Odoo go-live in Bangladesh?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Critical activities in the first 30 days after Odoo go-live in Bangladesh: (1) Days 1–5: On-site or high-availability consultant support. All transaction types tested in live production. Issue log established and reviewed daily. (2) Week 2: First week of full operations — verify all departments are processing normally. Accounts reconcile first week's bank transactions. Warehouse confirms stock movements match physical. (3) Week 3–4: First month-end close preparation — consultant supports the accounts team through the month-end checklist in Odoo for the first time: bank reconciliation, journal entries, VAT return period close, depreciation run. (4) If HR module is live: first payroll batch run supported by consultant — salary structure validation, PF deduction verification, payslip approval workflow. (5) Transition plan from hypercare to BAU support confirmed and communicated."
+        }
+      }
+    ]
+  }
+]
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap">
+  <link rel="stylesheet" href="_styles.css">
+  <style>
+    /* L1/L2/L3 tier cards */
+    .tier-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin: 28px 0;
+    }
+    .tier-card {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .tier-head {
+      padding: 14px 18px;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+    }
+    .tier-level {
+      font-family: var(--mono);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--accent);
+      margin-bottom: 4px;
+    }
+    .tier-name {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text);
+    }
+    .tier-body {
+      padding: 14px 18px;
+      font-size: 13px;
+      color: var(--text-2);
+      line-height: 1.8;
+    }
+    .tier-body ul {
+      margin: 0;
+      padding: 0 0 0 14px;
+    }
+    .tier-sla {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: oklch(0.80 0.17 155);
+      margin-top: 10px;
+      display: block;
+      letter-spacing: 0.04em;
+    }
+
+    /* escalation matrix */
+    .esc-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 12.5px;
+      margin: 24px 0;
+    }
+    .esc-table th {
+      padding: 10px 14px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-3);
+      text-align: left;
+    }
+    .esc-table td {
+      padding: 10px 14px;
+      border: 1px solid var(--border);
+      color: var(--text-2);
+      vertical-align: top;
+      line-height: 1.6;
+    }
+    .esc-table td:first-child { font-weight: 500; color: var(--text); }
+    .s1 { color: oklch(0.60 0.20 30); font-weight: 700; font-family: var(--mono); }
+    .s2 { color: oklch(0.70 0.18 50); font-weight: 700; font-family: var(--mono); }
+    .s3 { color: oklch(0.75 0.12 60); font-family: var(--mono); }
+    .s4 { color: var(--text-3); font-family: var(--mono); }
+
+    /* KPI blocks */
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin: 24px 0;
+    }
+    .kpi-period {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .kpi-head {
+      padding: 11px 16px;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text);
+    }
+    .kpi-body {
+      padding: 13px 16px;
+    }
+    .kpi-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin-bottom: 10px;
+      font-size: 12.5px;
+      color: var(--text-2);
+      line-height: 1.5;
+    }
+    .kpi-item:last-child { margin-bottom: 0; }
+    .kpi-metric {
+      font-family: var(--mono);
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--accent);
+      min-width: 60px;
+      margin-top: 2px;
+    }
+
+    /* issue log */
+    .issue-log {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+      margin: 24px 0;
+    }
+    .issue-log table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 12.5px;
+    }
+    .issue-log th {
+      padding: 10px 12px;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      border-right: 1px solid var(--border);
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: var(--text-3);
+      text-align: left;
+    }
+    .issue-log th:last-child { border-right: none; }
+    .issue-log td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      border-right: 1px solid var(--border);
+      color: var(--text-2);
+    }
+    .issue-log td:last-child { border-right: none; }
+    .issue-log tr:last-child td { border-bottom: none; }
+
+    /* exit criteria */
+    .exit-list {
+      list-style: none;
+      padding: 0;
+      margin: 20px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .exit-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 12px 16px;
+      font-size: 13px;
+      color: var(--text-2);
+      line-height: 1.6;
+    }
+    .exit-icon {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: oklch(0.80 0.17 155);
+      font-weight: 700;
+      margin-top: 2px;
+      min-width: 20px;
+    }
+
+    .pull {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: clamp(20px, 2.8vw, 30px);
+      line-height: 1.3;
+      color: var(--text);
+      margin: 48px 0;
+      max-width: 24ch;
+      letter-spacing: -0.01em;
+    }
+    .pull::before {
+      content: "";
+      display: block;
+      width: 36px;
+      height: 1px;
+      background: var(--accent);
+      margin-bottom: 18px;
+    }
+
+    @media(max-width:700px) {
+      .tier-grid { grid-template-columns: 1fr; }
+      .kpi-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="grid-bg"></div>
+
+  <header class="nav">
+    <div class="shell">
+      <div class="nav-inner">
+        <a class="brand" href="../index.html">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span class="brand-name"><b>Mehedi Hasan</b><em>ERP · Business Analyst</em></span>
+        </a>
+        <a class="back-link" href="../index.html#lab">← Back to Lab</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="post-head">
+    <div class="shell">
+      <span class="eyebrow">Technical Lab · 0032</span>
+      <h1>Post Go-Live Hypercare — <span class="serif">L1/L2/L3 support for Bangladesh Odoo teams.</span></h1>
+      <p class="lede">Go-live is not the finish line. It is the moment when all the work of the past twelve weeks meets operational reality — with real transactions, real stress, and real users who may be using a new system for the first time. The two weeks after go-live determine whether Odoo succeeds or silently fails.</p>
+      <div class="post-meta">
+        <span class="chip accent">Guide</span>
+        <span class="chip">Post Go-Live</span>
+        <span class="chip">Support Structure</span>
+        <span class="chip">Hypercare</span>
+      </div>
+      <div class="byline">
+        <span>By<b><a href="https://www.linkedin.com/in/mehedi-hasan-consultant/" style="color:var(--accent)" rel="author">Mehedi Hasan</a></b></span>
+        <span>Published<b>May 2026</b></span>
+        <span>Read time<b>12 minutes</b></span>
+        <span>Form<b>Implementation Guide</b></span>
+        <span>Scope<b>Bangladesh SMEs · post go-live</b></span>
+      </div>
+    </div>
+  </section>
+
+  <article class="post">
+    <aside class="toc">
+      <div class="toc-k">In this guide</div>
+      <ol>
+        <li><a href="#what-hypercare">What is hypercare</a></li>
+        <li><a href="#l1l2l3">L1/L2/L3 support tiers</a></li>
+        <li><a href="#severity">Issue severity classification</a></li>
+        <li><a href="#issue-log">Issue log template</a></li>
+        <li><a href="#kpis">30-60-90 day KPIs</a></li>
+        <li><a href="#month-end">First month-end close checklist</a></li>
+        <li><a href="#exit">Exit criteria — hypercare to BAU</a></li>
+        <li><a href="#bangladesh">Bangladesh-specific considerations</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ol>
+    </aside>
+
+    <div class="body">
+      <p>The most common go-live failure I observe in Bangladesh ERP implementations is not a technical failure — it is a support failure. The consultant hands over the system and reduces availability. A severity-1 issue surfaces on day three. Nobody knows who to call. The warehouse team reverts to manual records while waiting for a resolution. By the time the issue is fixed, two weeks of inventory data needs reconciliation and three people have quietly decided they prefer the old way.</p>
+
+      <p>Hypercare prevents this. It is a structured, time-bounded intensive support period that ensures every issue is logged, every critical defect is resolved fast, and the internal team builds confidence to operate independently. This guide gives you the structure to run it correctly.</p>
+
+      <p>For context on where hypercare fits in the implementation lifecycle, see the <a href="0028-odoo-implementation-roadmap-bangladesh.html" style="color:var(--accent)">12-week Odoo implementation roadmap for Bangladesh SMEs</a> — hypercare occupies weeks 13–14 in that plan.</p>
+
+      <p class="pull">The go-live is where implementation ends. Hypercare is where adoption begins. These are not the same thing.</p>
+
+      <h2 id="what-hypercare">What is hypercare — and what it is not</h2>
+
+      <p><strong>Hypercare is:</strong> an intensive, time-bounded support period typically lasting 2–4 weeks after go-live, during which the consultant maintains elevated availability, all issues are formally logged and triaged daily, and the first critical business processes (month-end close, payroll) are supported directly. It is distinct from and precedes the permanent BAU support arrangement.</p>
+
+      <p><strong>Hypercare is not:</strong> ongoing software maintenance, an open-ended support retainer, or a substitute for training. Users who use hypercare as a training catch-up are a sign that the training phase (weeks 10–11) did not achieve its objectives. Issues raised during hypercare should be genuine operational issues — not "how do I do this?" questions that training should have answered. If training was completed properly (see the <a href="0031-odoo-training-plan-template.html" style="color:var(--accent)">Odoo training plan template</a>), the hypercare issue log should contain defects and edge cases — not basic usage questions.</p>
+
+      <p><strong>Typical hypercare duration by implementation size:</strong></p>
+      <ul>
+        <li><strong>Standard implementation (25–50 users, core modules):</strong> 2 weeks of hypercare. Consultant on-site days 1–3, remote high-availability for weeks 1–2.</li>
+        <li><strong>Complex implementation (50–150 users, manufacturing + compliance):</strong> 3–4 weeks of hypercare. Consultant on-site days 1–5, remote high-availability for week 2, reduced availability for weeks 3–4.</li>
+        <li><strong>Multi-company or multi-location:</strong> 4–6 weeks. Each location may have different go-live dates staggered by 1–2 weeks.</li>
+      </ul>
+
+      <h2 id="l1l2l3">L1/L2/L3 support tiers</h2>
+
+      <p>Before go-live, every issue that could arise must have a clear path to resolution. The L1/L2/L3 structure assigns that path by issue type and complexity. Every person in each tier must be named before go-live day.</p>
+
+      <div class="tier-grid">
+        <div class="tier-card">
+          <div class="tier-head">
+            <div class="tier-level">Level 1</div>
+            <div class="tier-name">First-Line Support</div>
+          </div>
+          <div class="tier-body">
+            <p><strong>Handled by:</strong> Internal super-users (module champions) — the key users trained in week 10.</p>
+            <ul>
+              <li>User how-to questions</li>
+              <li>Forgotten passwords (reset in Odoo admin)</li>
+              <li>Basic process clarification</li>
+              <li>Report interpretation help</li>
+              <li>User error recovery (cancel a draft, reverse a wrong entry)</li>
+            </ul>
+            <span class="tier-sla">→ Response: within 30 min · Business hours · Via WhatsApp or phone</span>
+          </div>
+        </div>
+        <div class="tier-card">
+          <div class="tier-head">
+            <div class="tier-level">Level 2</div>
+            <div class="tier-name">Functional Support</div>
+          </div>
+          <div class="tier-body">
+            <p><strong>Handled by:</strong> Client project manager + senior super-users. Escalate from L1 when issue cannot be resolved within 1 hour.</p>
+            <ul>
+              <li>Process errors requiring configuration review</li>
+              <li>Workflow issues (stuck approvals, blocked orders)</li>
+              <li>Data correction (wrong amounts posted, wrong vendor)</li>
+              <li>Report and filter configuration</li>
+              <li>Access rights issues (user cannot see a menu)</li>
+            </ul>
+            <span class="tier-sla">→ Response: within 4 hours · Business hours · Via ticket or WhatsApp group</span>
+          </div>
+        </div>
+        <div class="tier-card">
+          <div class="tier-head">
+            <div class="tier-level">Level 3</div>
+            <div class="tier-name">Technical Support</div>
+          </div>
+          <div class="tier-body">
+            <p><strong>Handled by:</strong> Odoo consultant / implementation vendor. Escalate from L2 when functional resolution is insufficient.</p>
+            <ul>
+              <li>System defects and custom code bugs</li>
+              <li>Configuration changes requiring developer access</li>
+              <li>Server performance issues and errors</li>
+              <li>Data integrity issues requiring SQL-level fix</li>
+              <li>Integration failures (bank feed, biometric)</li>
+            </ul>
+            <span class="tier-sla">→ S1: 2-hour response · S2: same-day · S3/S4: next business day</span>
+          </div>
+        </div>
+      </div>
+
+      <h2 id="severity">Issue severity classification</h2>
+
+      <p>All issues logged during hypercare must be classified by severity. Severity determines response time and who handles the issue. Classify conservatively — an issue that stops business is S1 even if only one user is affected, if that user is the only one who can process a critical transaction.</p>
+
+      <table class="esc-table">
+        <thead>
+          <tr>
+            <th style="width:10%">Severity</th>
+            <th style="width:25%">Definition</th>
+            <th style="width:30%">Examples (Bangladesh context)</th>
+            <th style="width:15%">Response SLA</th>
+            <th style="width:20%">Resolution SLA</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="s1">S1 — Critical</span></td>
+            <td>Business operations stopped. No workaround available.</td>
+            <td>Cannot create any vendor bills (tax configuration broken); cannot post GRN (inventory journal misconfigured); Odoo server down; cannot generate Mushak invoice at all</td>
+            <td>Within 2 hours (any time)</td>
+            <td>Within 4 hours</td>
+          </tr>
+          <tr>
+            <td><span class="s2">S2 — High</span></td>
+            <td>Major function impaired. Workaround exists but is slow or error-prone.</td>
+            <td>TDS not calculating correctly on vendor bills (manual workaround possible); payroll batch generates wrong salary for one employee type; bank reconciliation import failing for one bank</td>
+            <td>Within 4 hours</td>
+            <td>Same business day</td>
+          </tr>
+          <tr>
+            <td><span class="s3">S3 — Medium</span></td>
+            <td>Minor function impaired. Workaround available without significant overhead.</td>
+            <td>Report missing a column; print template alignment issue (Mushak prints but formatting slightly off); dashboard KPI showing wrong period filter default</td>
+            <td>Next business day</td>
+            <td>Within 3 business days</td>
+          </tr>
+          <tr>
+            <td><span class="s4">S4 — Low</span></td>
+            <td>Cosmetic or enhancement request. No operational impact.</td>
+            <td>UI label in Bengali requested; column order on a report; a convenience feature that was not in the original scope</td>
+            <td>Next business day</td>
+            <td>Scheduled in post-hypercare backlog</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2 id="issue-log">Issue log template</h2>
+
+      <p>Every issue raised during hypercare — by any user, through any channel — must be entered into the issue log. Do not manage issues through WhatsApp conversations alone. If it is not in the log, it does not exist for tracking and reporting purposes.</p>
+
+      <div class="issue-log">
+        <table>
+          <thead>
+            <tr>
+              <th style="width:8%">Issue #</th>
+              <th style="width:12%">Date</th>
+              <th style="width:10%">Module</th>
+              <th style="width:8%">Severity</th>
+              <th style="width:28%">Description</th>
+              <th style="width:10%">Reported by</th>
+              <th style="width:10%">Assigned to</th>
+              <th style="width:7%">Status</th>
+              <th style="width:7%">Resolved</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>HC-001</td>
+              <td>Day 1 10:23</td>
+              <td>Purchase</td>
+              <td><span class="s2">S2</span></td>
+              <td>TDS line not appearing on vendor bills for vendors in category "Service Provider — no TIN". Expected 15% AIT, showing 0%.</td>
+              <td>AP Team</td>
+              <td>L3 Consultant</td>
+              <td>Resolved</td>
+              <td>Day 1 15:00</td>
+            </tr>
+            <tr>
+              <td>HC-002</td>
+              <td>Day 2 09:15</td>
+              <td>Inventory</td>
+              <td><span class="s3">S3</span></td>
+              <td>GRN print template: product internal reference not showing in "Item Code" column. Company letterhead correct.</td>
+              <td>Warehouse</td>
+              <td>L3 Consultant</td>
+              <td>Resolved</td>
+              <td>Day 3 11:00</td>
+            </tr>
+            <tr>
+              <td>HC-003</td>
+              <td>Day 3</td>
+              <td>HR</td>
+              <td><span class="s2">S2</span></td>
+              <td>Leave balance for employees hired before July 1 showing 0 days instead of pro-rated leave entitlement for the current year.</td>
+              <td>HR Team</td>
+              <td>L3 Consultant</td>
+              <td>In Progress</td>
+              <td>—</td>
+            </tr>
+            <tr>
+              <td style="color:var(--text-3);font-family:var(--mono);font-size:11px;" colspan="9">Add rows for each issue. Review log in daily standup. Close resolved issues promptly to maintain an accurate open issue count.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>The issue log is reviewed every business day during hypercare in a 15-minute standup between the client PM and the consultant. Any issue without an owner or resolution date is assigned in that call. Any S1 or S2 issue open for more than 24 hours without a resolution plan is escalated to the Sponsor immediately.</p>
+
+      <h2 id="kpis">30-60-90 day KPIs</h2>
+
+      <p>Track these KPIs to measure system stability and adoption after go-live. Share with the Sponsor and department heads monthly. Declining KPIs in month 2 or 3 signal adoption regression — users reverting to old habits — which requires intervention, not just patience.</p>
+
+      <div class="kpi-grid">
+        <div class="kpi-period">
+          <div class="kpi-head">Days 1–30</div>
+          <div class="kpi-body">
+            <div class="kpi-item">
+              <span class="kpi-metric">Defects</span>
+              <span>Open S1+S2 issues trending to zero. Target: zero open S1/S2 by end of day 14.</span>
+            </div>
+            <div class="kpi-item">
+              <span class="kpi-metric">Transactions</span>
+              <span>% of daily transactions entered directly in Odoo (vs workaround). Target: 90%+ by day 7.</span>
+            </div>
+            <div class="kpi-item">
+              <span class="kpi-metric">L1 rate</span>
+              <span>% of support queries resolved at L1 (super-user) without L3 escalation. Target: 70%+ by end of month 1.</span>
+            </div>
+            <div class="kpi-item">
+              <span class="kpi-metric">Month-end</span>
+              <span>First month-end close completed in Odoo. Target: within 5 working days of month-end.</span>
+            </div>
+          </div>
+        </div>
+        <div class="kpi-period">
+          <div class="kpi-head">Days 31–60</div>
+          <div class="kpi-body">
+            <div class="kpi-item">
+              <span class="kpi-metric">Defects</span>
+              <span>Zero open S1. S2 issues resolved within SLA 95%+ of the time.</span>
+            </div>
+            <div class="kpi-item">
+              <span class="kpi-metric">Self-serve</span>
+              <span>Super-users resolving 85%+ of queries without consultant involvement.</span>
+            </div>
+            <div class="kpi-item">
+              <span class="kpi-metric">Payroll</span>
+              <span>First payroll batch processed without consultant assistance (if HR module live).</span>
+            </div>
+            <div class="kpi-item">
+              <span class="kpi-metric">Inventory</span>
+              <span>Monthly inventory valuation report generated and reviewed by accounts team.</span>
+            </div>
+          </div>
+        </div>
+        <div class="kpi-period">
+          <div class="kpi-head">Days 61–90</div>
+          <div class="kpi-body">
+            <div class="kpi-item">
+              <span class="kpi-metric">Stability</span>
+              <span>Zero S1 incidents in the last 30 days. S2 count below 2 per week.</span>
+            </div>
+            <div class="kpi-item">
+              <span class="kpi-metric">Adoption</span>
+              <span>100% of in-scope transactions processed in Odoo. No parallel legacy system in use.</span>
+            </div>
+            <div class="kpi-item">
+              <span class="kpi-metric">BAU ready</span>
+              <span>L1/L2 team operating independently. Consultant engaged only for BAU retainer queries.</span>
+            </div>
+            <div class="kpi-item">
+              <span class="kpi-metric">Value</span>
+              <span>At least one management report (inventory turn, AP aging, sales pipeline) used in a business decision.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <h2 id="month-end">First month-end close checklist</h2>
+
+      <p>The first month-end close in Odoo is the highest-risk activity in the hypercare period. Many Bangladesh accounts teams have never done a formal month-end close — in Tally, they simply keep booking transactions. Odoo's period locking and formal close process is a new discipline. Support it directly.</p>
+
+      <ul>
+        <li><strong>Bank reconciliation:</strong> Match all Odoo bank statement lines to physical bank statements. Post interest, bank charges, and any direct deposits not entered via transactions. Target: reconciled within 3 working days of month-end.</li>
+        <li><strong>AP/AR cut-off:</strong> Confirm all invoices and bills for the period have been entered and posted. No draft invoices for the closing month should remain at period close.</li>
+        <li><strong>Inventory valuation:</strong> Run the stock valuation report. Confirm the total inventory value matches the inventory asset account on the balance sheet. Any variance requires investigation before closing.</li>
+        <li><strong>Depreciation run:</strong> If Fixed Assets module is active, run the monthly depreciation from Accounting → Accounting → Assets. Confirm depreciation expense posted correctly.</li>
+        <li><strong>Accruals and provisions:</strong> Review recurring accruals (gratuity provision, leave encashment provision) with the accounts team. Post manual journal entries if needed.</li>
+        <li><strong>VAT return period:</strong> If Bangladesh VAT period closes monthly, run the tax report for the period. Confirm total output VAT, input VAT, and net VAT payable matches expectations.</li>
+        <li><strong>Period lock:</strong> Once all entries are confirmed, lock the period in Odoo (Settings → Technical → Periods). This prevents backdating transactions into the closed period.</li>
+        <li><strong>Management reporting:</strong> Generate and share P&L and balance sheet with the Sponsor or CFO. This is often the first time they see Odoo-generated financials — make sure they understand the reports.</li>
+      </ul>
+
+      <h2 id="exit">Exit criteria — from hypercare to BAU support</h2>
+
+      <p>The transition from hypercare to Business As Usual (BAU) support is a formal event — not a gradual reduction in availability that the consultant makes unilaterally. The client PM and consultant agree that all of the following exit criteria are met before transitioning:</p>
+
+      <ul class="exit-list">
+        <li>
+          <span class="exit-icon">✓</span>
+          <div>No S1 or S2 issues have been open for more than 24 hours in the last 5 consecutive business days.</div>
+        </li>
+        <li>
+          <span class="exit-icon">✓</span>
+          <div>The internal L1 team (super-users) is resolving 80%+ of all support queries without L3 involvement for at least 5 consecutive business days.</div>
+        </li>
+        <li>
+          <span class="exit-icon">✓</span>
+          <div>The first month-end close has been completed in Odoo and the accounts team has confirmed the financials are correct.</div>
+        </li>
+        <li>
+          <span class="exit-icon">✓</span>
+          <div>If HR module is live: the first full payroll batch has been processed and payslips have been approved and distributed without consultant involvement.</div>
+        </li>
+        <li>
+          <span class="exit-icon">✓</span>
+          <div>100% of in-scope daily transactions are being processed in Odoo. No department is maintaining a parallel record in Tally, Excel, or any other system for the same data.</div>
+        </li>
+        <li>
+          <span class="exit-icon">✓</span>
+          <div>The BAU support contract (if applicable) has been signed and the BAU support process has been communicated to all users — who to call, how to raise a ticket, what response times to expect.</div>
+        </li>
+        <li>
+          <span class="exit-icon">✓</span>
+          <div>The outstanding S3/S4 issue backlog has been reviewed by the client PM and prioritized. Items will be addressed in the BAU retainer or scheduled for the next Odoo version upgrade cycle.</div>
+        </li>
+      </ul>
+
+      <h2 id="bangladesh">Bangladesh-specific hypercare considerations</h2>
+
+      <ul>
+        <li><strong>Weekend coverage:</strong> Bangladesh business week runs Sunday–Thursday. If your consultant is based internationally or observes Saturday–Sunday weekends, confirm their Bangladesh-week support schedule in writing before go-live. A critical S1 issue on Sunday morning with a consultant who is not available until Monday is a planning failure, not a surprise.</li>
+        <li><strong>WhatsApp as primary support channel:</strong> In Bangladesh, WhatsApp is the de facto support channel for operational teams. Accept this. Create a dedicated WhatsApp group for hypercare issues — client PM, super-users, and consultant. Set the rule: every issue in the group must also be logged in the issue tracker. WhatsApp for speed, issue tracker for accountability.</li>
+        <li><strong>Prayer time during support calls:</strong> Support calls scheduled across prayer times in Bangladesh (especially Zuhr at midday and Asr in the afternoon) will be interrupted. Schedule support windows to respect prayer times or account for breaks in the call.</li>
+        <li><strong>Eid holiday hypercare:</strong> If your go-live occurs close to an Eid period, negotiate extended hypercare explicitly in the contract. The first 2 weeks post go-live are already hypercare — if Eid falls within those 2 weeks, you need hypercare to cover the real first 2 operational weeks (after Eid), not the Eid-week skeleton operation. This is a common gap in Bangladesh implementation contracts.</li>
+        <li><strong>Power and internet stability:</strong> On-premise server deployments in Bangladesh are subject to power outages and internet disruption. If the server is on UPS and the internet drops, ensure users know the UPS duration and have a fallback process (paper-based recording of transactions to enter later). Document this in the hypercare plan.</li>
+      </ul>
+
+      <div class="callout">
+        <span class="tag">Bottom line</span>
+        <p>The go-live is a milestone, not an ending. Hypercare is the bridge between implementation and sustainable operations. A properly structured L1/L2/L3 support model, a functioning issue log, and clear exit criteria are the difference between a project that sticks and one that quietly unravels over 90 days. The 12-week implementation plan and the 4-week hypercare plan together represent 16 weeks of professional work. Protect the investment by treating the last 4 weeks as seriously as the first 12. <a href="../index.html#contact" style="color:var(--accent)">Need help structuring your post go-live support plan? Get in touch →</a></p>
+      </div>
+
+      <h2 id="faq">Frequently asked questions</h2>
+
+      <h3>What is hypercare in ERP implementation?</h3>
+      <p>Hypercare is an intensive, time-bounded support period (typically 2–4 weeks) that begins on go-live day. During hypercare, the consultant maintains elevated availability, all issues are formally logged and triaged daily, and the first critical business processes (month-end close, payroll) are supported directly. It ends when the internal team can operate independently and specific exit criteria are met. It is distinct from the ongoing BAU support retainer that follows it.</p>
+
+      <h3>What is L1/L2/L3 support in Odoo?</h3>
+      <p>Three support tiers: L1 (internal super-users) handles how-to questions, password resets, and basic process clarification — response within 30 minutes. L2 (client project manager / senior key users) handles process errors, workflow issues, and data corrections — response within 4 hours. L3 (Odoo consultant / vendor) handles system defects, configuration changes, and server issues — S1 response within 2 hours, S2 same-day, S3/S4 next business day. Issues are attempted at L1 first and escalated only when L1 cannot resolve.</p>
+
+      <h3>How long does Odoo hypercare last in Bangladesh?</h3>
+      <p>For a standard Bangladesh SME implementation (25–50 users, core modules), hypercare runs 2 weeks. Complex implementations (50–150 users, manufacturing + compliance) run 3–4 weeks. Extended hypercare (4–6 weeks) is appropriate for multi-company or multi-location deployments. Exit from hypercare happens when: no S1/S2 issues for 5 consecutive business days, internal L1 resolving 80%+ of queries independently, first month-end close completed, and first payroll run completed (if applicable).</p>
+
+      <h3>What should happen in the first month after Odoo go-live in Bangladesh?</h3>
+      <p>Days 1–5: consultant on-site, all transaction types tested in live production, issue log established. Week 2: full operational verification across all departments, first week bank reconciliation. Weeks 3–4: first month-end close supported by consultant — bank reconciliation, journal entries, VAT period close, depreciation run. If HR module is live: first payroll batch processed and reviewed. By day 30: L1 team operating at 70%+ self-resolution rate, transition to BAU support initiated.</p>
+    </div>
+  </article>
+
+  <footer>
+    <div class="shell">
+      <div class="post-foot">
+        <span class="eyebrow">Continue exploring</span>
+        <div class="next">
+          <a class="next-card" href="0028-odoo-implementation-roadmap-bangladesh.html">
+            <span class="dir">Related · 0028</span>
+            <h4>12-Week Odoo Implementation Roadmap</h4>
+            <p>The full implementation roadmap that leads up to go-live — hypercare is week 13–14 of that plan.</p>
+            <span class="arrow">→</span>
+          </a>
+          <a class="next-card" href="0031-odoo-training-plan-template.html">
+            <span class="dir">Related · 0031</span>
+            <h4>Odoo Training Plan Template</h4>
+            <p>Role-based training matrix and sign-off criteria — the prerequisite to a successful go-live and hypercare period.</p>
+            <span class="arrow">→</span>
+          </a>
+        </div>
+      </div>
+      <div class="foot">
+        <span>© 2026 Mehedi Hasan · Lab / 0032</span>
+        <span><a href="../index.html#lab">↑ Back to lab index</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="_toc.js" defer></script>
+</body>
+
+</html>

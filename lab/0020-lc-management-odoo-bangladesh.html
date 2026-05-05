@@ -1,0 +1,652 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description"
+    content="LC management in Odoo for Bangladesh exporters — proforma invoice, shipment documents, LC compliance checking & payment reconciliation. Set it up right →" />
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="Mehedi Hasan" />
+  <title>LC Workflow Odoo Bangladesh | Export Finance | Mehedi Hasan</title>
+  <link rel="canonical" href="https://mhasan.me/lab/0020-lc-management-odoo-bangladesh" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png" />
+  <!-- Open Graph -->
+  <meta property="og:title" content="LC Workflow Odoo Bangladesh | Export Finance | Mehedi Hasan" />
+  <meta property="og:description"
+    content="Letter of Credit lifecycle in Odoo for Bangladesh exporters — from proforma invoice generation to shipment document assembly, LC term compliance checking, and payment reconciliation." />
+  <meta property="og:url" content="https://mhasan.me/lab/0020-lc-management-odoo-bangladesh" />
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="https://mhasan.me/assets/og-default.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:site_name" content="Mehedi Hasan | Odoo ERP Consultant" />
+  <meta property="article:author" content="https://www.linkedin.com/in/mehedi-hasan-consultant/" />
+  <meta property="article:published_time" content="2026-05-05T11:00:00+06:00" />
+  <meta property="article:modified_time" content="2026-05-05T11:00:00+06:00" />
+  <meta property="article:section" content="Odoo ERP Bangladesh" />
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="LC Workflow Odoo Bangladesh | Export Finance" />
+  <meta name="twitter:description"
+    content="Letter of Credit workflow in Odoo for Bangladesh exporters — proforma invoice, shipment docs, compliance checking, and payment reconciliation." />
+  <meta name="twitter:image" content="https://mhasan.me/assets/og-default.jpg" />
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Letter of Credit (LC) Workflow in Odoo: Bangladesh Exporter's Guide",
+    "description": "A practitioner's guide to managing the Letter of Credit (LC) lifecycle in Odoo for Bangladesh exporters — from proforma invoice generation and LC registration to shipment document assembly, LC compliance verification, and bank payment reconciliation in Odoo Accounting.",
+    "datePublished": "2026-05-05T11:00:00+06:00",
+    "dateModified": "2026-05-05T11:00:00+06:00",
+    "author": {
+      "@type": "Person",
+      "name": "Mehedi Hasan",
+      "url": "https://mhasan.me",
+      "jobTitle": "Odoo ERP Consultant & Business Analyst",
+      "sameAs": "https://www.linkedin.com/in/mehedi-hasan-consultant/"
+    },
+    "publisher": { "@type": "Person", "name": "Mehedi Hasan", "url": "https://mhasan.me" },
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://mhasan.me/lab/0020-lc-management-odoo-bangladesh" }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://mhasan.me" },
+      { "@type": "ListItem", "position": 2, "name": "Lab", "item": "https://mhasan.me/lab/" },
+      { "@type": "ListItem", "position": 3, "name": "LC Workflow Odoo Bangladesh", "item": "https://mhasan.me/lab/0020-lc-management-odoo-bangladesh" }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is a Letter of Credit (LC) and how does it work for Bangladesh exporters?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A Letter of Credit (LC) is a bank guarantee issued by the buyer's bank promising payment to the exporter, provided the exporter presents compliant shipping documents within the LC's terms and expiry date. For Bangladesh exporters, the flow is: (1) Buyer applies for LC at their bank; (2) LC arrives at Bangladesh's advising bank (usually a local commercial bank); (3) Exporter reviews LC terms against their Sales Order; (4) Goods are produced and shipped; (5) Shipping documents (commercial invoice, packing list, bill of lading, certificate of origin) are presented to the advising bank; (6) Bank negotiates documents and pays the exporter. LC payment is the most secure form of export payment — safer than TT in advance for large orders."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can Odoo track LC numbers and expiry dates against Sales Orders?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Odoo does not have a dedicated LC management module out of the box. The standard approach is to use the Sales Order's 'Notes' or 'Customer Reference' field to record the LC number, or to use Odoo's chatter (message thread) to log the LC details as an internal note with attachments. A cleaner approach used by many Bangladesh exporters is to create a custom field on the Sales Order for LC Number, LC Expiry Date, and Advising Bank — a development task that takes 1-2 hours. This allows filtering orders by LC expiry date, which is critical for production scheduling."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I reconcile LC payment receipts in Odoo Accounting?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "When the LC proceeds are credited to your bank account, record it in Odoo as a payment against the customer invoice. Go to Accounting → Customers → Invoices → find the invoice → Register Payment → select the bank account, enter the amount in the invoice currency, and enter the actual exchange rate on the payment date. Odoo automatically calculates and posts the currency exchange gain or loss to your configured gain/loss accounts. For LC proceeds where the bank deducts discrepancy charges or handling fees before crediting, post the charges as a separate journal entry to a 'Bank Charges' expense account."
+        }
+      }
+    ]
+  }
+]
+</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap">
+  <link rel="stylesheet" href="_styles.css">
+  <style>
+    .pull {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: clamp(24px, 3vw, 36px);
+      line-height: 1.25;
+      color: var(--text);
+      margin: 48px 0;
+      padding: 0;
+      border: none;
+      max-width: 22ch;
+      letter-spacing: -0.01em;
+    }
+    .pull::before {
+      content: "";
+      display: block;
+      width: 36px;
+      height: 1px;
+      background: var(--accent);
+      margin-bottom: 18px;
+    }
+
+    /* LC lifecycle */
+    .lc-flow {
+      margin: 32px 0;
+      position: relative;
+    }
+    .lc-stage {
+      display: grid;
+      grid-template-columns: 140px 1fr;
+      gap: 0;
+      margin-bottom: 0;
+      position: relative;
+    }
+    .lc-stage:not(:last-child) .ls-line::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 100%;
+      width: 2px;
+      height: 24px;
+      background: var(--border);
+      transform: translateX(-50%);
+    }
+    .ls-tag {
+      padding: 18px 0 42px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      position: relative;
+    }
+    .ls-line {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .ls-dot {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 2px solid var(--border);
+      background: var(--bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--mono);
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-3);
+      flex-shrink: 0;
+    }
+    .lc-stage.active .ls-dot {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: oklch(0.80 0.17 155 / 0.08);
+    }
+    .ls-actor {
+      font-family: var(--mono);
+      font-size: 9px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-3);
+      text-align: center;
+    }
+    .lc-stage.active .ls-actor { color: var(--accent); }
+    .ls-body {
+      padding: 16px 0 40px 24px;
+    }
+    .ls-body h4 {
+      margin: 0 0 6px;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text);
+    }
+    .ls-body p {
+      margin: 0;
+      font-size: 13.5px;
+      color: var(--text-2);
+      line-height: 1.6;
+    }
+    .ls-body .odoo-tag {
+      display: inline-block;
+      margin-top: 8px;
+      padding: 2px 8px;
+      border-radius: 4px;
+      background: oklch(0.80 0.17 155 / 0.1);
+      color: var(--accent);
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.06em;
+    }
+
+    /* document checklist */
+    .doc-check {
+      margin: 24px 0;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .dc-row {
+      display: grid;
+      grid-template-columns: 200px 1fr 100px;
+      border-bottom: 1px solid var(--border);
+      align-items: start;
+      font-size: 13.5px;
+    }
+    .dc-row:last-child { border-bottom: none; }
+    .dc-row .dc-name {
+      padding: 14px 16px;
+      font-weight: 600;
+      color: var(--text);
+      border-right: 1px solid var(--border);
+      background: var(--surface);
+    }
+    .dc-row .dc-desc {
+      padding: 14px 18px;
+      color: var(--text-2);
+      line-height: 1.55;
+    }
+    .dc-row .dc-source {
+      padding: 14px 14px;
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--text-3);
+      border-left: 1px solid var(--border);
+      text-align: right;
+    }
+    .dc-row .dc-source.odoo { color: var(--accent); }
+    .dc-head {
+      display: grid;
+      grid-template-columns: 200px 1fr 100px;
+      padding: 10px 0;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+    }
+    .dc-head span {
+      padding: 0 16px;
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-3);
+    }
+    @media(max-width:680px) {
+      .dc-row, .dc-head { grid-template-columns: 1fr; }
+      .dc-row .dc-name { border-right: none; border-bottom: 1px solid var(--border); }
+      .dc-row .dc-source { border-left: none; border-top: 1px solid var(--border); text-align: left; }
+    }
+
+    /* payment table */
+    .pay-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+      font-size: 13px;
+    }
+    .pay-table th {
+      text-align: left;
+      padding: 10px 14px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-3);
+    }
+    .pay-table td {
+      padding: 12px 14px;
+      border: 1px solid var(--border);
+      color: var(--text-2);
+      line-height: 1.5;
+    }
+    .pay-table td strong { color: var(--text); }
+    .pay-table td code {
+      font-family: var(--mono);
+      font-size: 11px;
+      background: oklch(0.80 0.17 155 / 0.08);
+      color: var(--accent);
+      padding: 1px 5px;
+      border-radius: 3px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="grid-bg"></div>
+
+  <header class="nav">
+    <div class="shell">
+      <div class="nav-inner">
+        <a class="brand" href="../index.html">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span class="brand-name"><b>Mehedi Hasan</b><em>ERP · Business Analyst</em></span>
+        </a>
+        <a class="back-link" href="../index.html#lab">← Back to Lab</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="post-head">
+    <div class="shell">
+      <span class="eyebrow">Technical Lab · 0020</span>
+      <h1>Letter of Credit workflow in Odoo — <span class="serif">the Bangladesh exporter's complete guide.</span></h1>
+      <p class="lede">The full LC lifecycle managed through Odoo — from issuing the proforma invoice to trigger LC opening, recording LC details against the Sales Order, assembling compliant shipment documents, and reconciling LC proceeds in Odoo Accounting. Built from garment, cycle, and textile export deployments.</p>
+      <div class="post-meta">
+        <span class="chip accent">Compliance Guide</span>
+        <span class="chip">Letter of Credit · LC</span>
+        <span class="chip">Export Finance</span>
+        <span class="chip">Bangladesh Exporters</span>
+      </div>
+      <div class="byline">
+        <span>By<b><a href="https://www.linkedin.com/in/mehedi-hasan-consultant/" style="color:var(--accent)" rel="author">Mehedi Hasan</a></b></span>
+        <span>Published<b>May 2026</b></span>
+        <span>Read time<b>13 minutes</b></span>
+        <span>Form<b>Setup Guide</b></span>
+        <span>Scope<b>Export manufacturers & trading companies</b></span>
+      </div>
+    </div>
+  </section>
+
+  <article class="post">
+    <aside class="toc">
+      <div class="toc-k">In this guide</div>
+      <ol>
+        <li><a href="#lc-lifecycle">The LC lifecycle for Bangladesh exporters</a></li>
+        <li><a href="#proforma">Proforma invoice from Odoo</a></li>
+        <li><a href="#lc-registration">Recording LC details in Odoo</a></li>
+        <li><a href="#lc-compliance">LC compliance checklist</a></li>
+        <li><a href="#shipment-docs">Shipment documents from Odoo</a></li>
+        <li><a href="#payment">Payment reconciliation in Odoo</a></li>
+        <li><a href="#lc-types">Sight LC vs Usance LC</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ol>
+    </aside>
+
+    <div class="body">
+      <p>The Letter of Credit is the backbone of Bangladesh's export economy. In RMG alone, the majority of exports are settled through LC — and for good reason. An LC from a major European or US bank is as close to guaranteed payment as an exporter can get, provided the shipment documents are compliant.</p>
+
+      <p>The problem is that LC compliance is detail-intensive. A single discrepancy — a product description that doesn't exactly match the LC wording, a shipment date one day past the LC deadline, or a document missing a mandatory clause — can result in the bank refusing to pay without the buyer's waiver. Odoo won't eliminate these risks entirely, but it can dramatically reduce them by creating a disciplined, document-first workflow.</p>
+
+      <p class="pull">Document discrepancies in LC settlements are rarely random. They're almost always the result of a process gap — information that existed somewhere but didn't make it onto the right document.</p>
+
+      <h2 id="lc-lifecycle">The LC lifecycle for Bangladesh exporters</h2>
+
+      <div class="lc-flow">
+        <div class="lc-stage active">
+          <div class="ls-tag">
+            <div class="ls-line">
+              <div class="ls-dot">1</div>
+            </div>
+            <div class="ls-actor">Exporter</div>
+          </div>
+          <div class="ls-body">
+            <h4>Proforma Invoice issued</h4>
+            <p>Exporter sends a proforma invoice to the buyer — product description, quantity, unit price, total value, currency, Incoterm, and shipment terms. The buyer uses this to apply for an LC at their bank.</p>
+            <span class="odoo-tag">Generated in Odoo Sales</span>
+          </div>
+        </div>
+        <div class="lc-stage">
+          <div class="ls-tag">
+            <div class="ls-line">
+              <div class="ls-dot">2</div>
+            </div>
+            <div class="ls-actor">Buyer's Bank</div>
+          </div>
+          <div class="ls-body">
+            <h4>LC opened by buyer's bank</h4>
+            <p>The buyer's issuing bank opens the LC and transmits it via SWIFT to the advising bank in Bangladesh. The LC specifies: amount, currency, expiry date, latest shipment date, required documents, and all terms the exporter must comply with.</p>
+          </div>
+        </div>
+        <div class="lc-stage active">
+          <div class="ls-tag">
+            <div class="ls-line">
+              <div class="ls-dot">3</div>
+            </div>
+            <div class="ls-actor">Exporter</div>
+          </div>
+          <div class="ls-body">
+            <h4>LC reviewed against Sales Order</h4>
+            <p>Exporter receives the LC from the advising bank and checks every term against the Odoo Sales Order. Product description, quantity, price, Incoterm, and currency must all match. If there are discrepancies, request LC amendment before shipment — not after.</p>
+            <span class="odoo-tag">Cross-check against Odoo SO</span>
+          </div>
+        </div>
+        <div class="lc-stage">
+          <div class="ls-tag">
+            <div class="ls-line">
+              <div class="ls-dot">4</div>
+            </div>
+            <div class="ls-actor">Factory</div>
+          </div>
+          <div class="ls-body">
+            <h4>Production & shipment</h4>
+            <p>Goods are produced (Manufacturing Order in Odoo if using MTO), quality checked, and shipped. The shipment date in Odoo must be on or before the LC's "Latest Date of Shipment." This is the most common discrepancy in Bangladesh export — shipment one day late means the LC is expired.</p>
+          </div>
+        </div>
+        <div class="lc-stage active">
+          <div class="ls-tag">
+            <div class="ls-line">
+              <div class="ls-dot">5</div>
+            </div>
+            <div class="ls-actor">Exporter</div>
+          </div>
+          <div class="ls-body">
+            <h4>Shipment documents compiled</h4>
+            <p>After the vessel loads, assemble all required documents. Commercial invoice and packing list are generated from Odoo. Bill of lading comes from the shipping line. Certificate of origin from BGMEA/EPB. All documents must comply with LC terms exactly — no variations in spelling, product description, or amounts.</p>
+            <span class="odoo-tag">Commercial invoice + packing list from Odoo</span>
+          </div>
+        </div>
+        <div class="lc-stage">
+          <div class="ls-tag">
+            <div class="ls-line">
+              <div class="ls-dot">6</div>
+            </div>
+            <div class="ls-actor">Advising Bank</div>
+          </div>
+          <div class="ls-body">
+            <h4>Documents presented and negotiated</h4>
+            <p>Documents are presented to the advising bank within the LC's presentation period (usually 21 days from shipment). The bank checks for discrepancies. If clean, the bank negotiates (pays) the exporter against the LC. If discrepant, the bank holds until the buyer waives the discrepancies.</p>
+          </div>
+        </div>
+        <div class="lc-stage active">
+          <div class="ls-tag">
+            <div class="ls-line">
+              <div class="ls-dot">7</div>
+            </div>
+            <div class="ls-actor">Exporter</div>
+          </div>
+          <div class="ls-body">
+            <h4>LC proceeds received & reconciled</h4>
+            <p>Bank credits the LC proceeds (net of bank charges) to the exporter's EFCA (Exporters' Foreign Currency Account). The exporter records the payment in Odoo against the customer invoice, with the actual exchange rate on the payment date. Odoo calculates and posts the currency exchange gain or loss automatically.</p>
+            <span class="odoo-tag">Reconciled in Odoo Accounting</span>
+          </div>
+        </div>
+      </div>
+
+      <h2 id="proforma">Proforma invoice from Odoo</h2>
+
+      <p>Enable proforma invoices in Odoo: <strong>Settings → Sales → Invoicing → tick "Proforma Invoices"</strong>. From any confirmed Sales Order (or even a quotation), click <strong>"Send Pro Forma Invoice"</strong>. Odoo generates a PDF with:</p>
+
+      <ul>
+        <li>Your company letterhead (name, address, registration, bank details)</li>
+        <li>Buyer name and address exactly as it should appear on the LC</li>
+        <li>Product description (this must match the product name in Odoo exactly)</li>
+        <li>Quantity and unit (pcs, dozens, cartons — set on the product or sales order line)</li>
+        <li>Unit price and total value in the invoice currency (USD, EUR, etc.)</li>
+        <li>Incoterm and port of loading/destination</li>
+        <li>Payment terms (LC at Sight, LC 90 Days, etc.)</li>
+      </ul>
+
+      <div class="callout">
+        <span class="tag">Critical detail</span>
+        <p>The product description on the proforma invoice must be <em>exactly</em> what you want on the LC — and therefore exactly what will appear on your commercial invoice and bill of lading. Bangladesh banks reject documents where the description on the commercial invoice differs from the LC even in punctuation. If your product in Odoo is called "100% Cotton T-shirt" but the LC says "Knitted T-shirt of Cotton," you have a discrepancy. Fix the product name or the proforma before the buyer applies for the LC — not after it arrives.</p>
+      </div>
+
+      <h2 id="lc-registration">Recording LC details in Odoo</h2>
+
+      <p>Odoo Community and Enterprise don't have a built-in LC register. The options for Bangladesh exporters:</p>
+
+      <p><strong>Option 1 — Sales Order chatter (no development, works immediately):</strong> When the LC arrives, open the Sales Order → click the chatter icon → Log a note: "LC No. [number], Issuing Bank: [bank], Expiry: [date], Latest Shipment: [date], Advising Bank: [bank], Amount: USD [amount]". Attach a scan of the LC. This creates a permanent, timestamped record linked to the order.</p>
+
+      <p><strong>Option 2 — Custom SO fields (recommended for high-volume exporters):</strong> Add custom fields to the Sales Order model: LC Number, LC Expiry Date, Latest Shipment Date, Advising Bank, LC Amount. This enables filtering and reporting by LC expiry — critical for production scheduling. A skilled Odoo developer can add these fields in 2–3 hours.</p>
+
+      <p><strong>Option 3 — Customer Reference field:</strong> A quick workaround — enter the LC number in the "Customer Reference" field on the Sales Order. This prints on invoices and delivery orders, and allows filtering by LC number in order lists.</p>
+
+      <h2 id="lc-compliance">LC compliance checklist — before shipment</h2>
+
+      <p>Before instructing the factory to load the container, cross-check these items between the LC and the Odoo Sales Order/documents:</p>
+
+      <div class="doc-check">
+        <div class="dc-head">
+          <span>LC requirement</span>
+          <span>What to check in Odoo</span>
+          <span>Source</span>
+        </div>
+        <div class="dc-row">
+          <div class="dc-name">Beneficiary name & address</div>
+          <div class="dc-desc">Must match your Odoo company name and address exactly — including punctuation, comma vs. period, full vs. abbreviated name.</div>
+          <div class="dc-source odoo">Company Settings</div>
+        </div>
+        <div class="dc-row">
+          <div class="dc-name">LC Currency & Amount</div>
+          <div class="dc-desc">The Sales Order total in the agreed currency must be ≤ the LC amount. If the order is split across multiple shipments, each partial shipment must be within the LC amount.</div>
+          <div class="dc-source odoo">Sales Order total</div>
+        </div>
+        <div class="dc-row">
+          <div class="dc-name">Product description</div>
+          <div class="dc-desc">Commercial invoice product description must match the LC wording exactly. Check character by character — "T-Shirts" vs "T-shirts" vs "Tee Shirts" are all different to a bank.</div>
+          <div class="dc-source odoo">Product name on SO line</div>
+        </div>
+        <div class="dc-row">
+          <div class="dc-name">Quantity & unit of measure</div>
+          <div class="dc-desc">Quantity on commercial invoice must match quantity on bill of lading (same unit — pcs, dozens, kg). Odoo delivery order quantity must equal LC quantity for full shipment.</div>
+          <div class="dc-source odoo">Delivery order qty</div>
+        </div>
+        <div class="dc-row">
+          <div class="dc-name">Latest shipment date</div>
+          <div class="dc-desc">The on-board date of the bill of lading must be on or before this date. If you're shipping late, request LC amendment — don't sail past the deadline and hope the buyer waives.</div>
+          <div class="dc-source">Bill of Lading date</div>
+        </div>
+        <div class="dc-row">
+          <div class="dc-name">Port of loading</div>
+          <div class="dc-desc">Usually "Chittagong, Bangladesh" (now officially "Chattogram"). Must match LC exactly. Some LCs specify "any Bangladesh port" — check whether this allows Dhaka ICD or Mongla.</div>
+          <div class="dc-source">Delivery order / SO</div>
+        </div>
+        <div class="dc-row">
+          <div class="dc-name">Incoterm</div>
+          <div class="dc-desc">FOB, CIF, CFR, FCA — must match both the Odoo Sales Order and the commercial invoice. The Incoterm determines who pays freight and who is responsible during transit — never guess this from the LC.</div>
+          <div class="dc-source odoo">SO Other Info tab</div>
+        </div>
+        <div class="dc-row">
+          <div class="dc-name">Required documents list</div>
+          <div class="dc-desc">LC may require: commercial invoice (signed original), full set of clean on-board bills of lading, packing list, certificate of origin, inspection certificate, beneficiary certificate. Confirm you can produce every document the LC requires before shipment.</div>
+          <div class="dc-source">LC terms</div>
+        </div>
+      </div>
+
+      <h2 id="shipment-docs">Shipment documents generated from Odoo</h2>
+
+      <p>Two of the required LC documents come directly from Odoo:</p>
+
+      <ul>
+        <li><strong>Commercial Invoice</strong> — generated from Accounting → Customers → Invoices. This is the primary LC document. It must show: invoice number and date, proforma invoice reference (optional but helps), buyer and seller details, product description, quantity, unit price, total, currency, Incoterm, and bank details for remittance.</li>
+        <li><strong>Packing List</strong> — generated from the Delivery Order. It shows carton count, gross weight, net weight, dimensions, and product quantities per carton. Requires that product weight (kg) is correctly set on each product record in Odoo.</li>
+      </ul>
+
+      <p>The remaining documents are sourced externally but should be stored in Odoo (attached to the Sales Order or invoice via the chatter):</p>
+
+      <ul>
+        <li><strong>Bill of Lading</strong> — issued by the shipping line. Scan and attach to the SO.</li>
+        <li><strong>Certificate of Origin</strong> — from BGMEA (garments) or EPB. Attach to SO.</li>
+        <li><strong>Inspection Certificate</strong> — from buyer's nominated inspection agency (SGS, Bureau Veritas, Intertek). Attach to SO when received.</li>
+      </ul>
+
+      <h2 id="payment">Payment reconciliation in Odoo Accounting</h2>
+
+      <p>When the LC proceeds are credited to your account (net of bank negotiation charges and bank commission), record the payment in Odoo:</p>
+
+      <table class="pay-table">
+        <thead>
+          <tr><th>Step</th><th>Odoo action</th><th>Notes for Bangladesh LC</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>1. Find the invoice</strong></td>
+            <td>Accounting → Customers → Invoices → open the relevant invoice</td>
+            <td>The invoice should have been created from the Sales Order when the goods were shipped. Status should be "Posted."</td>
+          </tr>
+          <tr>
+            <td><strong>2. Register payment</strong></td>
+            <td>Click "Register Payment" → select EFCA bank account → enter amount → enter exchange rate</td>
+            <td>Enter the <strong>actual exchange rate on the payment date</strong>, not the invoice date rate. The BDT equivalent posted to your EFCA account is what the bank credits. Odoo calculates the FX gain/loss automatically.</td>
+          </tr>
+          <tr>
+            <td><strong>3. Record bank charges</strong></td>
+            <td>If the bank deducted charges before crediting, post a journal entry: Debit <code>Bank Charges</code>, Credit <code>EFCA account</code></td>
+            <td>Common LC charges: negotiation commission (0.1–0.25%), courier charges for documents, SWIFT charges. These are P&L expenses — not to be netted against the customer invoice amount.</td>
+          </tr>
+          <tr>
+            <td><strong>4. Repatriation</strong></td>
+            <td>When funds are converted from EFCA to BDT account, post: Debit <code>BDT current account</code>, Credit <code>EFCA account</code></td>
+            <td>Bangladesh BB regulations require export proceeds to be repatriated within 120 days of shipment. Track repatriation dates against each LC to avoid BB reporting violations.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2 id="lc-types">Sight LC vs Usance LC — Odoo implications</h2>
+
+      <p>Understanding LC types is essential for cash flow planning in Odoo:</p>
+
+      <ul>
+        <li><strong>Sight LC (LC at Sight):</strong> Bank pays as soon as compliant documents are presented and verified — typically 5–7 banking days after document presentation. This is the fastest LC payment. In Odoo, set the invoice payment term to "Immediate Payment" or "Net 7 Days" for accurate cash flow forecasting.</li>
+        <li><strong>Usance / DP LC (Deferred Payment):</strong> Bank pays after a specified period — 30, 60, 90, or 120 days from bill of lading date or from document presentation. Common for European buyers. In Odoo, set the payment term to match: "Net 90 Days from Invoice Date" or "Net 90 Days from Delivery Date". This drives the Aged Receivables report and cash flow forecast accurately.</li>
+        <li><strong>Red Clause LC:</strong> Allows advance payment before shipment, secured by the LC. Rare but used for fabric procurement financing. Record the advance as an advance payment against the Sales Order in Odoo and offset it against the final invoice.</li>
+      </ul>
+
+      <div class="callout">
+        <span class="tag">Linked reading</span>
+        <p>LC management is inseparable from your vendor procurement process — especially for factories that import raw materials under the same LC arrangement (Back-to-Back LC). The purchase side of this — vendor LC tracking and landed costs for imported raw materials — is covered in the <a href="0015-odoo-purchase-vendor-management-bangladesh.html" style="color:var(--accent)">Odoo Purchase & Vendor Management guide for Bangladesh SMEs</a>. For the HS code requirements that make your customs documents LC-compliant, see the <a href="0019-hs-code-customs-odoo-bangladesh.html" style="color:var(--accent)">HS Code and Customs Management guide</a>.</p>
+      </div>
+
+      <p>If your current LC process involves a spreadsheet, WhatsApp messages, and hope — that's the norm for most Bangladesh exporters I work with. Bringing it into Odoo doesn't require custom development to start. The chatter-based LC registration and standard commercial invoice/packing list from Odoo will immediately reduce document errors and give you a full audit trail per order. <a href="../index.html#contact" style="color:var(--accent)">Get in touch if you want a scoping call for LC process digitisation →</a></p>
+
+      <h2 id="faq">Frequently asked questions</h2>
+
+      <h3>What is a Letter of Credit (LC) and how does it work for Bangladesh exporters?</h3>
+      <p>An LC is a bank guarantee from the buyer's bank promising payment if the exporter presents compliant shipping documents. The flow: buyer applies for LC → issuing bank opens LC → advising bank in Bangladesh receives it → exporter ships goods before the LC's latest shipment date → exporter presents documents (commercial invoice, packing list, bill of lading, certificate of origin) → advising bank checks compliance and pays. LC is the most secure payment method for Bangladesh exporters and is used for the majority of RMG, textile, and cycle export transactions.</p>
+
+      <h3>Can Odoo track LC numbers and expiry dates against Sales Orders?</h3>
+      <p>Not out of the box — but there are practical workarounds. The simplest is to log the LC number, expiry date, and latest shipment date as an internal note in the Sales Order chatter (with a scan of the LC attached). For exporters with high order volumes, a small development to add custom fields on the Sales Order (LC Number, Expiry Date, Latest Shipment Date) enables filtering and alerts — typically 2–4 hours of developer time. Either way, the discipline of recording LC details in Odoo the day you receive the LC is what prevents missed shipment dates.</p>
+
+      <h3>How do I reconcile LC payment receipts in Odoo Accounting?</h3>
+      <p>Open the customer invoice → Register Payment → select your EFCA bank account → enter the payment amount and the actual exchange rate on the payment date. Odoo automatically computes and posts the FX gain or loss to your exchange gain/loss accounts. If the bank deducted charges before crediting, post those separately as bank charge expenses — do not net them against the invoice amount, as this understates your revenue and overstates bank charges on a net basis.</p>
+
+      <h3>What documents does Odoo generate for LC presentation?</h3>
+      <p>Odoo generates: (1) Commercial Invoice — from Accounting → Customers → Invoices; (2) Packing List — from the Delivery Order (requires product weights to be set). All other LC documents (Bill of Lading from shipping line, Certificate of Origin from BGMEA/EPB, Inspection Certificate from the buyer's agent) are sourced externally. Attach all documents to the Odoo Sales Order via the chatter — this creates a complete, searchable document archive per export order.</p>
+    </div>
+  </article>
+
+  <footer>
+    <div class="shell">
+      <div class="post-foot">
+        <span class="eyebrow">Continue exploring</span>
+        <div class="next">
+          <a class="next-card" href="0019-hs-code-customs-odoo-bangladesh.html">
+            <span class="dir">Older · 0019</span>
+            <h4>HS Code & Customs in Odoo Bangladesh</h4>
+            <p>Product HS code setup, customs fiscal positions, and export documents for Bangladesh exporters.</p>
+            <span class="arrow">→</span>
+          </a>
+          <a class="next-card" href="0021-epz-sez-compliance-odoo-bangladesh.html">
+            <span class="dir">Newer · 0021</span>
+            <h4>EPZ & SEZ Compliance in Odoo</h4>
+            <p>Bonded warehouse, duty-free raw material tracking, and BEPZA reporting in Odoo for Bangladesh export zones.</p>
+            <span class="arrow">→</span>
+          </a>
+        </div>
+      </div>
+      <div class="foot">
+        <span>© 2026 Mehedi Hasan · Lab / 0020</span>
+        <span><a href="../index.html#lab">↑ Back to lab index</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="_toc.js" defer></script>
+</body>
+
+</html>

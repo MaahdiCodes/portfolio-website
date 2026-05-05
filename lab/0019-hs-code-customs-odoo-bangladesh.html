@@ -1,0 +1,570 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description"
+    content="HS code management in Odoo for Bangladesh exporters — product classification, customs fiscal positions, and zero-VAT exports. Set it up right →" />
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="Mehedi Hasan" />
+  <title>HS Code Odoo Bangladesh | Customs Management | Mehedi Hasan</title>
+  <link rel="canonical" href="https://mhasan.me/lab/0019-hs-code-customs-odoo-bangladesh" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png" />
+  <!-- Open Graph -->
+  <meta property="og:title" content="HS Code Odoo Bangladesh | Customs Management | Mehedi Hasan" />
+  <meta property="og:description"
+    content="How to set up HS codes and customs management in Odoo for Bangladesh exporters — product classification, fiscal position mapping, export declarations, and customs duty handling." />
+  <meta property="og:url" content="https://mhasan.me/lab/0019-hs-code-customs-odoo-bangladesh" />
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="https://mhasan.me/assets/og-default.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:site_name" content="Mehedi Hasan | Odoo ERP Consultant" />
+  <meta property="article:author" content="https://www.linkedin.com/in/mehedi-hasan-consultant/" />
+  <meta property="article:published_time" content="2026-05-05T10:00:00+06:00" />
+  <meta property="article:modified_time" content="2026-05-05T10:00:00+06:00" />
+  <meta property="article:section" content="Odoo ERP Bangladesh" />
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="HS Code Odoo Bangladesh | Customs Management" />
+  <meta name="twitter:description"
+    content="Set up HS codes and customs management in Odoo for Bangladesh exporters — product classification, fiscal positions, and export declarations." />
+  <meta name="twitter:image" content="https://mhasan.me/assets/og-default.jpg" />
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Customs & HS Code Management in Odoo for Bangladesh Exporters",
+    "description": "A complete guide to setting up HS codes and customs management in Odoo for Bangladesh exporters — product classification using the HS system, fiscal position mapping for duty-free and zero-VAT treatment, export documentation from Odoo, and how Odoo data connects to Bangladesh customs declarations.",
+    "datePublished": "2026-05-05T10:00:00+06:00",
+    "dateModified": "2026-05-05T10:00:00+06:00",
+    "author": {
+      "@type": "Person",
+      "name": "Mehedi Hasan",
+      "url": "https://mhasan.me",
+      "jobTitle": "Odoo ERP Consultant & Business Analyst",
+      "sameAs": "https://www.linkedin.com/in/mehedi-hasan-consultant/"
+    },
+    "publisher": { "@type": "Person", "name": "Mehedi Hasan", "url": "https://mhasan.me" },
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://mhasan.me/lab/0019-hs-code-customs-odoo-bangladesh" }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://mhasan.me" },
+      { "@type": "ListItem", "position": 2, "name": "Lab", "item": "https://mhasan.me/lab/" },
+      { "@type": "ListItem", "position": 3, "name": "HS Code Odoo Bangladesh", "item": "https://mhasan.me/lab/0019-hs-code-customs-odoo-bangladesh" }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where do I enter HS codes for products in Odoo?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "In Odoo, HS codes are entered on the product form: go to Inventory → Products → select the product → General Information tab → HS Code field. You must enable the Inventory module and have the Intrastat or Customs features active (Settings → Inventory → Customs). The HS code field accepts the full 8-digit Bangladesh HS code. Once set, the HS code appears on delivery orders, customs documents, and is used by fiscal positions for duty determination."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What HS codes do Bangladesh garment exporters use?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Bangladesh RMG (Ready-Made Garment) exports fall primarily under two chapters: Chapter 61 for knitted or crocheted clothing and accessories (e.g., 6109.10 for T-shirts of cotton), and Chapter 62 for woven garments (e.g., 6203.42 for men's trousers of cotton). The full 8-digit Bangladesh HS code adds two country-specific digits to the HS6 international code. Always verify the current classification with your C&F agent or the Bangladesh Customs Tariff Schedule, as classifications can change with tariff revisions."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does Odoo automatically generate a customs export declaration for Bangladesh?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Odoo does not generate a Bangladesh Customs Export General Manifest (EGM) or Bill of Export automatically — these are submitted through Bangladesh Customs ASYCUDA++ or the NBR electronic filing system. However, Odoo can generate the commercial invoice, packing list, and certificate of quantity (from the delivery order) — all required documents that the C&F agent uses to prepare the customs export declaration. Accurate HS codes and product details in Odoo directly feed these documents."
+        }
+      }
+    ]
+  }
+]
+</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap">
+  <link rel="stylesheet" href="_styles.css">
+  <style>
+    .pull {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: clamp(24px, 3vw, 36px);
+      line-height: 1.25;
+      color: var(--text);
+      margin: 48px 0;
+      padding: 0;
+      border: none;
+      max-width: 22ch;
+      letter-spacing: -0.01em;
+    }
+    .pull::before {
+      content: "";
+      display: block;
+      width: 36px;
+      height: 1px;
+      background: var(--accent);
+      margin-bottom: 18px;
+    }
+
+    /* HS code structure diagram */
+    .hs-structure {
+      margin: 28px 0;
+      display: flex;
+      gap: 3px;
+      align-items: stretch;
+      flex-wrap: wrap;
+    }
+    .hs-seg {
+      border: 2px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 14px;
+      min-width: 80px;
+      flex: 1;
+    }
+    .hs-seg.active { border-color: var(--accent); background: oklch(0.80 0.17 155 / 0.05); }
+    .hs-seg .seg-digits {
+      font-family: var(--mono);
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: 0.08em;
+      margin-bottom: 6px;
+    }
+    .hs-seg.active .seg-digits { color: var(--accent); }
+    .hs-seg .seg-label {
+      font-size: 11px;
+      color: var(--text-3);
+      line-height: 1.4;
+    }
+    .hs-seg .seg-name {
+      font-size: 12px;
+      color: var(--text-2);
+      font-weight: 500;
+      margin-bottom: 4px;
+    }
+
+    /* product hs table */
+    .hs-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 24px 0;
+      font-size: 13px;
+    }
+    .hs-table th {
+      text-align: left;
+      padding: 10px 14px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-3);
+    }
+    .hs-table td {
+      padding: 12px 14px;
+      border: 1px solid var(--border);
+      color: var(--text-2);
+      vertical-align: top;
+      line-height: 1.5;
+    }
+    .hs-table td:first-child {
+      font-family: var(--mono);
+      font-size: 13px;
+      color: var(--accent);
+      white-space: nowrap;
+    }
+    .hs-table td strong { color: var(--text); }
+    .hs-table tr:nth-child(even) td { background: oklch(0.98 0.005 155); }
+
+    /* document flow */
+    .doc-flow {
+      margin: 24px 0;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 12px;
+    }
+    .doc-card {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 16px;
+      background: var(--surface);
+    }
+    .doc-card.odoo { border-color: oklch(0.80 0.17 155 / 0.4); }
+    .doc-card .dc-label {
+      font-family: var(--mono);
+      font-size: 9px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-3);
+      margin-bottom: 8px;
+    }
+    .doc-card.odoo .dc-label { color: var(--accent); }
+    .doc-card .dc-name {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+    .doc-card .dc-desc {
+      font-size: 12px;
+      color: var(--text-2);
+      line-height: 1.5;
+    }
+
+    /* fiscal position table */
+    .fp-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 24px 0;
+      font-size: 13px;
+    }
+    .fp-table th {
+      text-align: left;
+      padding: 10px 14px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-3);
+    }
+    .fp-table td {
+      padding: 12px 14px;
+      border: 1px solid var(--border);
+      color: var(--text-2);
+      vertical-align: top;
+      line-height: 1.5;
+    }
+    .fp-table td strong { color: var(--text); }
+  </style>
+</head>
+
+<body>
+  <div class="grid-bg"></div>
+
+  <header class="nav">
+    <div class="shell">
+      <div class="nav-inner">
+        <a class="brand" href="../index.html">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span class="brand-name"><b>Mehedi Hasan</b><em>ERP · Business Analyst</em></span>
+        </a>
+        <a class="back-link" href="../index.html#lab">← Back to Lab</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="post-head">
+    <div class="shell">
+      <span class="eyebrow">Technical Lab · 0019</span>
+      <h1>HS code & customs management in Odoo — <span class="serif">the Bangladesh exporter's configuration guide.</span></h1>
+      <p class="lede">How to classify products with the correct 8-digit Bangladesh HS codes in Odoo, map fiscal positions for duty-free and zero-VAT treatment, generate export documents that your C&F agent can actually use, and handle customs duty on imported raw materials. Built from RMG, cycle export, and textile deployments.</p>
+      <div class="post-meta">
+        <span class="chip accent">Compliance Guide</span>
+        <span class="chip">HS Codes · Customs</span>
+        <span class="chip">Bangladesh Exporters</span>
+        <span class="chip">Export Documentation</span>
+      </div>
+      <div class="byline">
+        <span>By<b><a href="https://www.linkedin.com/in/mehedi-hasan-consultant/" style="color:var(--accent)" rel="author">Mehedi Hasan</a></b></span>
+        <span>Published<b>May 2026</b></span>
+        <span>Read time<b>11 minutes</b></span>
+        <span>Form<b>Setup Guide</b></span>
+        <span>Scope<b>Export Manufacturing & Trading Companies</b></span>
+      </div>
+    </div>
+  </section>
+
+  <article class="post">
+    <aside class="toc">
+      <div class="toc-k">In this guide</div>
+      <ol>
+        <li><a href="#hs-system">The HS code system in Bangladesh</a></li>
+        <li><a href="#common-hs">Common HS codes by industry</a></li>
+        <li><a href="#odoo-setup">Setting HS codes in Odoo</a></li>
+        <li><a href="#fiscal-positions">Fiscal positions for customs duty</a></li>
+        <li><a href="#export-docs">Export documents from Odoo</a></li>
+        <li><a href="#import-duty">Import duty on raw materials</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ol>
+    </aside>
+
+    <div class="body">
+      <p>Every product crossing Bangladesh's border needs an HS code — and the wrong HS code is one of the most common causes of customs delays, additional duty assessments, and failed bonded warehouse reconciliations I've seen at export factories. Customs officers at Chittagong Port will hold a shipment if the HS code on the export declaration doesn't match the product's physical description.</p>
+
+      <p>Odoo is the place to enforce correct HS code discipline. When the code lives on the product record, it flows into every sales order, delivery, commercial invoice, and packing list — automatically. This guide covers the full setup for Bangladesh exporters.</p>
+
+      <p class="pull">Wrong HS codes don't just cause customs delays. They create duty liability that auditors can recover years later.</p>
+
+      <h2 id="hs-system">The HS code system in Bangladesh</h2>
+
+      <p>The Harmonized System (HS) is an international standard for classifying traded goods. Bangladesh uses <strong>8-digit HS codes</strong> — the standard international 6-digit HS code plus 2 country-specific digits defined by Bangladesh Customs.</p>
+
+      <div class="hs-structure">
+        <div class="hs-seg active">
+          <div class="seg-digits">61</div>
+          <div class="seg-name">Chapter</div>
+          <div class="seg-label">Broad product category (e.g., knit garments)</div>
+        </div>
+        <div class="hs-seg active">
+          <div class="seg-digits">09</div>
+          <div class="seg-name">Heading</div>
+          <div class="seg-label">Product group within chapter (e.g., T-shirts)</div>
+        </div>
+        <div class="hs-seg active">
+          <div class="seg-digits">10</div>
+          <div class="seg-name">Subheading</div>
+          <div class="seg-label">Material or construction (e.g., of cotton)</div>
+        </div>
+        <div class="hs-seg">
+          <div class="seg-digits">10</div>
+          <div class="seg-name">BD digits</div>
+          <div class="seg-label">Bangladesh-specific further split</div>
+        </div>
+      </div>
+
+      <p>The first 6 digits (61.09.10) are international and consistent across all WCO member countries. The last 2 digits (10 in this example) are Bangladesh-specific and determined by the Bangladesh Customs Tariff Schedule, published by NBR. Always use the 8-digit code for Bangladesh — a 6-digit HS code from an international source may not match exactly in the Bangladesh Tariff.</p>
+
+      <p>The Bangladesh Customs Tariff is available on the NBR website and is updated periodically. Confirm the current 8-digit code with your <strong>C&F (Clearing and Forwarding) agent</strong> before entering it in Odoo — they deal with customs daily and know the practical classification for your specific products.</p>
+
+      <h2 id="common-hs">Common HS codes for Bangladesh export industries</h2>
+
+      <table class="hs-table">
+        <thead>
+          <tr><th>HS Code (8-digit)</th><th>Product description</th><th>Industry</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>6109.10.10</td>
+            <td><strong>T-shirts, singlets and other vests of cotton, knitted</strong> — the most exported Bangladesh product</td>
+            <td>RMG / Knitwear</td>
+          </tr>
+          <tr>
+            <td>6203.42.10</td>
+            <td><strong>Men's or boys' trousers of cotton, woven</strong> — denim and woven bottom wear</td>
+            <td>RMG / Woven</td>
+          </tr>
+          <tr>
+            <td>6204.62.10</td>
+            <td><strong>Women's or girls' trousers of cotton, woven</strong> — ladies bottomwear</td>
+            <td>RMG / Woven</td>
+          </tr>
+          <tr>
+            <td>8712.00.10</td>
+            <td><strong>Bicycles (not motorised)</strong> — complete bicycle export</td>
+            <td>Cycle Export</td>
+          </tr>
+          <tr>
+            <td>8714.99.90</td>
+            <td><strong>Parts and accessories for bicycles</strong> — cycle components and parts</td>
+            <td>Cycle Export</td>
+          </tr>
+          <tr>
+            <td>5209.41.00</td>
+            <td><strong>Denim woven fabric of cotton (≥85%, >200g/m²)</strong> — grey or dyed denim fabric</td>
+            <td>Textile</td>
+          </tr>
+          <tr>
+            <td>5205.11.00</td>
+            <td><strong>Cotton yarn (single, uncombed, ≥85% cotton)</strong> — spinning mill output</td>
+            <td>Spinning</td>
+          </tr>
+          <tr>
+            <td>5208.21.00</td>
+            <td><strong>Plain woven cotton fabric (≥85%, ≤100g/m²)</strong> — voile, poplin</td>
+            <td>Weaving</td>
+          </tr>
+          <tr>
+            <td>2933.59.00</td>
+            <td><strong>Pharmaceutical compounds (heterocyclic)</strong> — API or finished medicines</td>
+            <td>Pharma</td>
+          </tr>
+          <tr>
+            <td>6116.10.10</td>
+            <td><strong>Knitted gloves, mittens and mitts of cotton</strong> — work gloves export</td>
+            <td>Accessories</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="callout">
+        <span class="tag">Important</span>
+        <p>The HS codes above are illustrative. Bangladesh Customs tariff headings and subheadings are revised periodically. Always confirm the exact 8-digit code for your specific product with your C&F agent or the current NBR tariff schedule. Misclassification — even unintentional — can result in duty reassessment, penalties, and shipment holds.</p>
+      </div>
+
+      <h2 id="odoo-setup">Setting HS codes on Odoo products</h2>
+
+      <p>First, enable the HS code field in Odoo: <strong>Settings → Inventory → Customs → tick "Customs"</strong>. This adds the HS Code field to all product records.</p>
+
+      <p>Then, for each exported product: <strong>Inventory → Products → [select product] → General Information tab → HS Code field</strong>. Enter the full 8-digit Bangladesh HS code (e.g., <code>6109101000</code> — some systems prefer no dots, others use dots. Odoo accepts both formats).</p>
+
+      <p>Key points for HS code data management in Odoo:</p>
+
+      <ul>
+        <li><strong>Set on the product, not the product variant</strong> — for RMG with colour/size variants, the HS code is usually the same across all variants of the same style. Set it once on the product template.</li>
+        <li><strong>Use product categories for HS grouping</strong> — create product categories aligned with HS chapters (e.g., "Knitwear — Chapter 61"). This makes bulk HS code assignment easier and supports reporting by HS chapter.</li>
+        <li><strong>Audit HS codes quarterly</strong> — when you add new products or styles, the HS code must be set before the first shipment. Build a product creation checklist that includes HS code sign-off by your C&F agent.</li>
+        <li><strong>Country of Origin</strong> — also set this field on the product (same location). For Bangladesh exports under BGMEA certification, this is always "Bangladesh" — required for EU GSP and US duty preference applications.</li>
+      </ul>
+
+      <h2 id="fiscal-positions">Fiscal positions for customs duty on imports</h2>
+
+      <p>Bangladesh imports attract customs duty at rates defined by the HS code. When you import raw materials (yarn, fabric, accessories, bicycle parts), the landed cost in Odoo should reflect the actual import cost including customs duty. There are two main scenarios:</p>
+
+      <table class="fp-table">
+        <thead>
+          <tr><th>Import type</th><th>Customs duty treatment</th><th>Odoo approach</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>General import (non-bonded)</strong></td>
+            <td>Full customs duty, VAT, and advance income tax (AIT) payable at time of import</td>
+            <td>Use <strong>Landed Costs</strong> to add customs duty, VAT, and AIT to the product cost. These are posted to inventory valuation via the landed costs feature.</td>
+          </tr>
+          <tr>
+            <td><strong>Bonded warehouse / EPZ import</strong></td>
+            <td>Duty-free import of raw materials for 100% export production. Duty is suspended, not exempted — must be consumed in production and export evidenced.</td>
+            <td>Create a fiscal position "Bonded Import — Duty Suspended". Map import duties to a <strong>Duty Suspended</strong> liability account instead of expensing. Clear it when export proof is submitted.</td>
+          </tr>
+          <tr>
+            <td><strong>SRO/duty concession import</strong></td>
+            <td>Reduced duty rate under a Statutory Regulatory Order (SRO) for specific industries or products</td>
+            <td>Create a specific purchase tax at the concessionary rate and assign a fiscal position to the relevant vendor type. Document the SRO number for audit reference.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="callout">
+        <span class="tag">Linked reading</span>
+        <p>Fiscal positions for customs duty work alongside your NBR VAT configuration. If you haven't set up tax groups and output/input VAT accounts yet, read the <a href="0003-nbr-vat-compliance-odoo-bangladesh.html" style="color:var(--accent)">NBR VAT compliance guide for Odoo</a> first — the fiscal position framework there applies equally to customs duty mapping.</p>
+      </div>
+
+      <h2 id="export-docs">Export documents generated from Odoo</h2>
+
+      <p>When a Sales Order is confirmed and goods are shipped, Odoo generates the core export documents. Each one relies on correct product data — especially HS codes — to be usable by your C&F agent.</p>
+
+      <div class="doc-flow">
+        <div class="doc-card odoo">
+          <div class="dc-label">From Odoo</div>
+          <div class="dc-name">Commercial Invoice</div>
+          <div class="dc-desc">Sales → Orders → Invoice. Shows buyer, seller, products, quantities, unit price, total value, currency, Incoterm. HS code prints if added to the invoice template.</div>
+        </div>
+        <div class="doc-card odoo">
+          <div class="dc-label">From Odoo</div>
+          <div class="dc-name">Packing List</div>
+          <div class="dc-desc">Delivery Order → Print. Shows carton count, gross/net weight, dimensions. Requires product weight to be set on each product record (kg).</div>
+        </div>
+        <div class="doc-card odoo">
+          <div class="dc-label">From Odoo</div>
+          <div class="dc-name">Delivery Order</div>
+          <div class="dc-desc">Inventory → Delivery Orders. Contains all lot/serial numbers, quantities shipped. Used for garment shipment count verification.</div>
+        </div>
+        <div class="doc-card">
+          <div class="dc-label">External (C&F agent)</div>
+          <div class="dc-name">Bill of Export</div>
+          <div class="dc-desc">Filed in NBR ASYCUDA++ by your C&F agent. Uses HS codes, values, and quantities from Odoo commercial invoice.</div>
+        </div>
+        <div class="doc-card">
+          <div class="dc-label">External (C&F agent)</div>
+          <div class="dc-name">Export General Manifest</div>
+          <div class="dc-desc">Submitted to Bangladesh Customs upon vessel loading. References the Bill of Export. Not generated by Odoo.</div>
+        </div>
+        <div class="doc-card">
+          <div class="dc-label">External (BGMEA/EPB)</div>
+          <div class="dc-name">Certificate of Origin</div>
+          <div class="dc-desc">Issued by BGMEA (garments) or EPB. Required for GSP preferential duty access to EU, UK, Canada. Data sourced from Odoo invoice.</div>
+        </div>
+      </div>
+
+      <p>The quality of your Odoo product data directly determines the quality of your export documents. A product with missing weight means a blank packing list. A missing HS code means the C&F agent has to call your factory every shipment. Build a product data quality standard and enforce it before the first shipment — not after.</p>
+
+      <h2 id="import-duty">Handling import duty on raw materials in Odoo</h2>
+
+      <p>When you import yarn, fabric, accessories, or components, the actual cost to your business includes the CIF value plus import duties, supplementary duty (SD), regulatory duty (RD), VAT, advance income tax (AIT), and C&F charges. Odoo's <strong>Landed Costs</strong> feature handles this.</p>
+
+      <p>Go to <strong>Inventory → Operations → Landed Costs → New</strong>:</p>
+
+      <ol>
+        <li><strong>Link the purchase receipt</strong> — select the incoming shipment that received the imported goods</li>
+        <li><strong>Add cost lines</strong> — one line per import charge type:
+          <ul>
+            <li>Customs Duty (by product value — split method: "By Current Cost")</li>
+            <li>Supplementary Duty (if applicable)</li>
+            <li>VAT on Import (note: this may be claimable as input VAT — check with your tax advisor)</li>
+            <li>AIT — Advance Income Tax (a deductible tax credit, posted separately)</li>
+            <li>C&F Charges (freight, handling, agency fees)</li>
+          </ul>
+        </li>
+        <li><strong>Validate</strong> — Odoo calculates the additional cost per product unit and adds it to the inventory valuation. Your raw material cost now reflects the true landed cost.</li>
+      </ol>
+
+      <div class="callout">
+        <span class="tag">Sales CRM connection</span>
+        <p>Accurate landed costs feed into product cost reporting which ultimately informs your export pricing. When I set up the <a href="0017-odoo-sales-crm-bangladesh.html" style="color:var(--accent)">Odoo Sales & CRM for Bangladesh exporters</a>, the starting point is always: are your product costs accurate? If raw material landed costs are wrong, your margin analysis on Sales Orders is meaningless. HS code accuracy and landed costs are foundational to any Bangladesh export business running on Odoo.</p>
+      </div>
+
+      <p>For bonded warehouse factories (EPZ or bonded under BGMEA), the duty treatment is different — covered in detail in the EPZ compliance article. The short version: import duty is suspended (not paid), tracked as a liability, and extinguished when you provide proof of export within the bonded quota period.</p>
+
+      <h2 id="faq">Frequently asked questions</h2>
+
+      <h3>Where do I enter HS codes for products in Odoo?</h3>
+      <p>Go to Settings → Inventory → enable "Customs". Then open any product record: Inventory → Products → [product] → General Information tab → HS Code field. Enter the full 8-digit Bangladesh HS code. Once set, the code is available on delivery orders, customs reports, and can be added to your commercial invoice PDF template. Set HS codes before the first shipment of any product — changing them retroactively doesn't update historical documents.</p>
+
+      <h3>What HS codes do Bangladesh garment exporters use?</h3>
+      <p>RMG exports primarily fall under Chapter 61 (knitted garments — T-shirts, polo shirts, sweatshirts, sportswear) and Chapter 62 (woven garments — trousers, shirts, jackets). The specific 8-digit code depends on the material (cotton, synthetic, blended), construction (knitted vs woven), and gender category. Always confirm with your C&F agent — they can check the current Bangladesh tariff classification and advise on the correct code for each style.</p>
+
+      <h3>Does Odoo automatically generate a Bangladesh customs export declaration?</h3>
+      <p>No. Bangladesh customs export declarations (Bill of Export) are filed by the C&F agent through ASYCUDA++ or the NBR electronic system — not through Odoo. Odoo generates the commercial invoice, packing list, and delivery documentation that the C&F agent uses as source documents for the customs filing. Ensure your Odoo commercial invoice prints clearly with product description, HS code, quantity, unit price, and Incoterm — these are the fields the C&F agent needs.</p>
+
+      <h3>How does Odoo handle customs duty on imported raw materials?</h3>
+      <p>Use the Landed Costs feature (Inventory → Operations → Landed Costs). Link the import receipt and add cost lines for each import charge: customs duty, supplementary duty, VAT on import, AIT, and C&F fees. Odoo distributes these costs across the imported products and adds them to inventory valuation. This gives you an accurate landed cost per unit, which flows into your cost of goods sold and margin analysis on export sales orders.</p>
+    </div>
+  </article>
+
+  <footer>
+    <div class="shell">
+      <div class="post-foot">
+        <span class="eyebrow">Continue exploring</span>
+        <div class="next">
+          <a class="next-card" href="0018-mushak-63-odoo-bangladesh.html">
+            <span class="dir">Older · 0018</span>
+            <h4>Mushak 6.3 in Odoo Bangladesh</h4>
+            <p>Configure NBR VAT tax groups, fiscal positions, and the monthly Tax Report for Mushak 6.3 compliance.</p>
+            <span class="arrow">→</span>
+          </a>
+          <a class="next-card" href="0020-lc-management-odoo-bangladesh.html">
+            <span class="dir">Newer · 0020</span>
+            <h4>LC Workflow in Odoo Bangladesh</h4>
+            <p>Letter of Credit lifecycle in Odoo — from proforma invoice to shipment documents to payment reconciliation.</p>
+            <span class="arrow">→</span>
+          </a>
+        </div>
+      </div>
+      <div class="foot">
+        <span>© 2026 Mehedi Hasan · Lab / 0019</span>
+        <span><a href="../index.html#lab">↑ Back to lab index</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="_toc.js" defer></script>
+</body>
+
+</html>

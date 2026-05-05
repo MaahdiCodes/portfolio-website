@@ -1,0 +1,647 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description"
+    content="EPZ & SEZ compliance in Odoo for Bangladesh export zones — bonded warehouse, duty-free inputs, fiscal positions & BEPZA reporting. Configure it right →" />
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="Mehedi Hasan" />
+  <title>EPZ Compliance Odoo Bangladesh | SEZ Setup | Mehedi Hasan</title>
+  <link rel="canonical" href="https://mhasan.me/lab/0021-epz-sez-compliance-odoo-bangladesh" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png" />
+  <!-- Open Graph -->
+  <meta property="og:title" content="EPZ Compliance Odoo Bangladesh | SEZ Setup | Mehedi Hasan" />
+  <meta property="og:description"
+    content="How to configure Odoo for Bangladesh EPZ and SEZ compliance — bonded warehouse setup, duty-free raw material procurement, BEPZA fiscal positions, and export consumption tracking." />
+  <meta property="og:url" content="https://mhasan.me/lab/0021-epz-sez-compliance-odoo-bangladesh" />
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="https://mhasan.me/assets/og-default.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:site_name" content="Mehedi Hasan | Odoo ERP Consultant" />
+  <meta property="article:author" content="https://www.linkedin.com/in/mehedi-hasan-consultant/" />
+  <meta property="article:published_time" content="2026-05-05T12:00:00+06:00" />
+  <meta property="article:modified_time" content="2026-05-05T12:00:00+06:00" />
+  <meta property="article:section" content="Odoo ERP Bangladesh" />
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="EPZ Compliance Odoo Bangladesh | SEZ Setup" />
+  <meta name="twitter:description"
+    content="Configure Odoo for EPZ and SEZ compliance in Bangladesh — bonded warehouse, duty-free inputs, BEPZA fiscal positions, and consumption tracking." />
+  <meta name="twitter:image" content="https://mhasan.me/assets/og-default.jpg" />
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "EPZ & SEZ Compliance in Odoo: Setup for Bangladesh Export Zones",
+    "description": "A practitioner's guide to configuring Odoo for Bangladesh Export Processing Zone (EPZ) and Special Economic Zone (SEZ) compliance — covering bonded warehouse configuration, duty-free raw material procurement and tracking, BEPZA fiscal position setup, consumption recording for export proof, and producing BEPZA Monthly Progress Report data from Odoo.",
+    "datePublished": "2026-05-05T12:00:00+06:00",
+    "dateModified": "2026-05-05T12:00:00+06:00",
+    "author": {
+      "@type": "Person",
+      "name": "Mehedi Hasan",
+      "url": "https://mhasan.me",
+      "jobTitle": "Odoo ERP Consultant & Business Analyst",
+      "sameAs": "https://www.linkedin.com/in/mehedi-hasan-consultant/"
+    },
+    "publisher": { "@type": "Person", "name": "Mehedi Hasan", "url": "https://mhasan.me" },
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://mhasan.me/lab/0021-epz-sez-compliance-odoo-bangladesh" }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://mhasan.me" },
+      { "@type": "ListItem", "position": 2, "name": "Lab", "item": "https://mhasan.me/lab/" },
+      { "@type": "ListItem", "position": 3, "name": "EPZ Compliance Odoo Bangladesh", "item": "https://mhasan.me/lab/0021-epz-sez-compliance-odoo-bangladesh" }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What are the EPZ compliance requirements for factories in Bangladesh?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Bangladesh EPZ factories (licensed by BEPZA — Bangladesh Export Processing Zone Authority) must: (1) be 100% export-oriented — all production must be exported; (2) import raw materials duty-free and VAT-free — but only the approved raw material list; (3) track consumption of raw materials per export shipment — the quantity consumed must be reconcilable to the quantity exported; (4) submit monthly progress reports (MPR) to BEPZA showing: raw material opening stock, imports, consumption, closing stock, and finished goods exported; (5) have raw materials cleared within the bonded quota and exported within the stipulated period. Non-compliance results in duty recovery and license suspension."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How does bonded warehouse work in Odoo for EPZ factories?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "In Odoo, EPZ/bonded warehouse is modelled using a dedicated warehouse or storage location tagged as 'Bonded' — separate from any domestic stock. Raw materials imported duty-free go into the bonded location. When a Manufacturing Order consumes raw materials, Odoo moves them from the bonded location into the work-in-process (WIP) location. When the finished goods are shipped and the export delivery order is confirmed, Odoo records the consumption against the production order. The bonded stock report (inventory → location filter: Bonded) shows your running bonded balance — which is what BEPZA audits during their inspection."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does Odoo support the BEPZA Monthly Progress Report (MPR)?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Odoo does not have a built-in BEPZA MPR report template. However, all the data needed for the MPR is in Odoo if you set up the bonded warehouse location correctly. You can export: opening stock (inventory valuation at start of month), imports (purchase receipts into bonded location for the month), consumption (manufacturing orders' raw material usage), and closing stock (inventory valuation at end of month). Export shipments (delivery orders) provide the finished goods export quantity. This data, exported from Odoo's inventory reports, is transferred to the BEPZA MPR format. A custom Odoo MPR report module can automate this for high-volume EPZ factories."
+        }
+      }
+    ]
+  }
+]
+</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap">
+  <link rel="stylesheet" href="_styles.css">
+  <style>
+    .pull {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: clamp(24px, 3vw, 36px);
+      line-height: 1.25;
+      color: var(--text);
+      margin: 48px 0;
+      padding: 0;
+      border: none;
+      max-width: 22ch;
+      letter-spacing: -0.01em;
+    }
+    .pull::before {
+      content: "";
+      display: block;
+      width: 36px;
+      height: 1px;
+      background: var(--accent);
+      margin-bottom: 18px;
+    }
+
+    /* zone comparison */
+    .zone-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin: 28px 0;
+    }
+    .zone-card {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .zone-card.epz { border-color: oklch(0.80 0.17 155 / 0.5); }
+    .zone-head {
+      padding: 14px 16px;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+    }
+    .zone-card.epz .zone-head { background: oklch(0.80 0.17 155 / 0.06); }
+    .zone-head .zh-type {
+      font-family: var(--mono);
+      font-size: 9px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-3);
+      margin-bottom: 4px;
+    }
+    .zone-card.epz .zone-head .zh-type { color: var(--accent); }
+    .zone-head h4 { margin: 0; font-size: 14px; font-weight: 600; color: var(--text); }
+    .zone-body {
+      padding: 14px 16px;
+    }
+    .zone-body ul {
+      margin: 0;
+      padding: 0 0 0 14px;
+    }
+    .zone-body ul li {
+      font-size: 12.5px;
+      color: var(--text-2);
+      margin-bottom: 6px;
+      line-height: 1.5;
+    }
+    @media(max-width:700px) {
+      .zone-grid { grid-template-columns: 1fr; }
+    }
+
+    /* warehouse setup steps */
+    .step-flow {
+      margin: 28px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      counter-reset: step-counter;
+    }
+    .step {
+      display: grid;
+      grid-template-columns: 56px 1fr;
+      gap: 0;
+      position: relative;
+    }
+    .step:not(:last-child)::before {
+      content: "";
+      position: absolute;
+      left: 27px;
+      top: 52px;
+      bottom: 0;
+      width: 2px;
+      background: var(--border);
+    }
+    .step-num {
+      width: 56px;
+      padding-top: 4px;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .step-num span {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: 2px solid var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--mono);
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--accent);
+      background: var(--bg);
+      flex-shrink: 0;
+      z-index: 1;
+      position: relative;
+    }
+    .step-body {
+      padding: 0 0 36px 16px;
+    }
+    .step-body h4 {
+      margin: 6px 0 8px;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text);
+    }
+    .step-body p { margin: 0 0 8px; font-size: 13.5px; color: var(--text-2); line-height: 1.6; }
+    .step-body code {
+      font-family: var(--mono);
+      font-size: 12px;
+      background: oklch(0.80 0.17 155 / 0.08);
+      color: var(--accent);
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+
+    /* stock flow diagram */
+    .stock-flow {
+      margin: 28px 0;
+      display: flex;
+      align-items: center;
+      gap: 0;
+      flex-wrap: wrap;
+    }
+    .sf-node {
+      flex: 1;
+      min-width: 100px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px 12px;
+      text-align: center;
+      background: var(--surface);
+    }
+    .sf-node.bonded {
+      border-color: oklch(0.80 0.17 155 / 0.5);
+      background: oklch(0.80 0.17 155 / 0.05);
+    }
+    .sf-node .sn-label {
+      font-family: var(--mono);
+      font-size: 9px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-3);
+      margin-bottom: 6px;
+    }
+    .sf-node.bonded .sn-label { color: var(--accent); }
+    .sf-node .sn-name {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text);
+    }
+    .sf-arrow {
+      padding: 0 6px;
+      color: var(--text-3);
+      font-size: 20px;
+      flex-shrink: 0;
+    }
+    @media(max-width:600px) {
+      .stock-flow { flex-direction: column; }
+      .sf-arrow { transform: rotate(90deg); }
+    }
+
+    /* compliance table */
+    .comp-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 24px 0;
+      font-size: 13px;
+    }
+    .comp-table th {
+      text-align: left;
+      padding: 10px 14px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-3);
+    }
+    .comp-table td {
+      padding: 12px 14px;
+      border: 1px solid var(--border);
+      color: var(--text-2);
+      vertical-align: top;
+      line-height: 1.5;
+    }
+    .comp-table td strong { color: var(--text); }
+  </style>
+</head>
+
+<body>
+  <div class="grid-bg"></div>
+
+  <header class="nav">
+    <div class="shell">
+      <div class="nav-inner">
+        <a class="brand" href="../index.html">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span class="brand-name"><b>Mehedi Hasan</b><em>ERP · Business Analyst</em></span>
+        </a>
+        <a class="back-link" href="../index.html#lab">← Back to Lab</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="post-head">
+    <div class="shell">
+      <span class="eyebrow">Technical Lab · 0021</span>
+      <h1>EPZ & SEZ compliance in Odoo — <span class="serif">bonded warehouse setup for Bangladesh export zones.</span></h1>
+      <p class="lede">How to configure Odoo for BEPZA compliance — bonded warehouse location setup, duty-free raw material procurement, fiscal position mapping for EPZ imports, manufacturing consumption tracking, and producing the data needed for the BEPZA Monthly Progress Report (MPR). Built from EPZ knitwear and woven garment factory deployments.</p>
+      <div class="post-meta">
+        <span class="chip accent">Compliance Guide</span>
+        <span class="chip">EPZ · SEZ · BEPZA</span>
+        <span class="chip">Bonded Warehouse</span>
+        <span class="chip">Export Zones Bangladesh</span>
+      </div>
+      <div class="byline">
+        <span>By<b><a href="https://www.linkedin.com/in/mehedi-hasan-consultant/" style="color:var(--accent)" rel="author">Mehedi Hasan</a></b></span>
+        <span>Published<b>May 2026</b></span>
+        <span>Read time<b>13 minutes</b></span>
+        <span>Form<b>Setup Guide</b></span>
+        <span>Scope<b>EPZ & bonded warehouse factories</b></span>
+      </div>
+    </div>
+  </section>
+
+  <article class="post">
+    <aside class="toc">
+      <div class="toc-k">In this guide</div>
+      <ol>
+        <li><a href="#epz-vs-sez">EPZ vs SEZ vs bonded warehouse</a></li>
+        <li><a href="#compliance-obligations">BEPZA compliance obligations</a></li>
+        <li><a href="#warehouse-setup">Bonded warehouse in Odoo</a></li>
+        <li><a href="#procurement">Duty-free raw material procurement</a></li>
+        <li><a href="#manufacturing">Manufacturing consumption tracking</a></li>
+        <li><a href="#mpr">BEPZA MPR data from Odoo</a></li>
+        <li><a href="#fiscal-position">Fiscal position configuration</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ol>
+    </aside>
+
+    <div class="body">
+      <p>Bangladesh has eight Export Processing Zones managed by BEPZA, plus a growing number of Special Economic Zones under BEZA. For factories inside these zones, the duty-free import privilege is their most significant cost advantage — but it comes with strict tracking obligations. BEPZA auditors can arrive unannounced and demand a reconciliation of every kilogram of raw material imported, consumed, and exported.</p>
+
+      <p>Most EPZ factories I've worked with track this in Excel. When I ask for the reconciliation between bonded raw material imports and finished good exports for the past six months, the answer is usually three days of manual calculation. Odoo can produce that answer in three minutes — if it's configured correctly from day one.</p>
+
+      <p class="pull">BEPZA compliance isn't about paperwork. It's about having a live, reconcilable record of every gram of bonded raw material from port arrival to export vessel.</p>
+
+      <h2 id="epz-vs-sez">EPZ vs SEZ vs bonded warehouse — key differences</h2>
+
+      <div class="zone-grid">
+        <div class="zone-card epz">
+          <div class="zone-head">
+            <div class="zh-type">Managed by BEPZA</div>
+            <h4>EPZ (Export Processing Zone)</h4>
+          </div>
+          <div class="zone-body">
+            <ul>
+              <li>8 zones: Chittagong, Dhaka, Mongla, Comilla, Ishwardi, Uttara, Adamjee, Karnaphuli</li>
+              <li>100% export-oriented — cannot sell to local market without permission</li>
+              <li>Duty-free import of raw materials, machinery, spare parts</li>
+              <li>No VAT on imports consumed in production</li>
+              <li>Monthly Progress Report (MPR) to BEPZA</li>
+              <li>Annual utilisation declaration</li>
+              <li>Strong physical infrastructure — dedicated customs posts on-zone</li>
+            </ul>
+          </div>
+        </div>
+        <div class="zone-card">
+          <div class="zone-head">
+            <div class="zh-type">Managed by BEZA</div>
+            <h4>SEZ (Special Economic Zone)</h4>
+          </div>
+          <div class="zone-body">
+            <ul>
+              <li>Newer framework — expanding across Bangladesh</li>
+              <li>Can accommodate both export and (limited) domestic-oriented industries</li>
+              <li>Similar duty concessions to EPZ but governed by BEZA Act 2010</li>
+              <li>More flexible zone governance — private SEZ developers possible</li>
+              <li>Compliance reporting to BEZA rather than BEPZA</li>
+              <li>Income tax holiday periods on investment</li>
+            </ul>
+          </div>
+        </div>
+        <div class="zone-card">
+          <div class="zone-head">
+            <div class="zh-type">NBR-licensed</div>
+            <h4>Bonded Warehouse (Off-Zone)</h4>
+          </div>
+          <div class="zone-body">
+            <ul>
+              <li>Available to 100% export-oriented factories located outside EPZ/SEZ</li>
+              <li>Licensed by NBR Customs Bonding Commissionerate</li>
+              <li>Duty-free import under bonded warehouse license</li>
+              <li>Quarterly reconciliation statement to Customs</li>
+              <li>On-site customs inspection for export clearance</li>
+              <li>Available to RMG, textile, footwear, and other export sectors</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <p>The Odoo configuration principles in this guide apply to all three frameworks. The specific reporting format (BEPZA MPR vs BEZA vs NBR Customs bond reconciliation) differs, but the underlying inventory tracking logic in Odoo is identical.</p>
+
+      <h2 id="compliance-obligations">BEPZA compliance obligations</h2>
+
+      <p>Every EPZ factory must maintain and report:</p>
+
+      <table class="comp-table">
+        <thead>
+          <tr><th>Obligation</th><th>Frequency</th><th>What BEPZA requires</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Monthly Progress Report (MPR)</strong></td>
+            <td>Monthly (by 10th)</td>
+            <td>For each raw material: opening stock, imports during month, consumption during month, closing stock. For finished goods: production quantity, export quantity, closing stock.</td>
+          </tr>
+          <tr>
+            <td><strong>Annual Utilisation Declaration</strong></td>
+            <td>Annually (after financial year close)</td>
+            <td>Full-year reconciliation of all duty-free imports against finished goods exported. Surplus raw material (unused) requires explanation or duty payment.</td>
+          </tr>
+          <tr>
+            <td><strong>BEPZA Inspection</strong></td>
+            <td>On demand (unannounced)</td>
+            <td>Physical stock count of bonded raw materials, in-process goods, and finished goods awaiting export. Stock must match the bonded ledger.</td>
+          </tr>
+          <tr>
+            <td><strong>Export proof submission</strong></td>
+            <td>Per shipment</td>
+            <td>Bill of Export and Bill of Lading copies submitted to BEPZA to discharge the bonded liability for each shipment's raw material consumption.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2 id="warehouse-setup">Bonded warehouse setup in Odoo</h2>
+
+      <div class="step-flow">
+        <div class="step">
+          <div class="step-num"><span>1</span></div>
+          <div class="step-body">
+            <h4>Create a dedicated bonded warehouse (or location)</h4>
+            <p>Go to <strong>Inventory → Configuration → Warehouses → New</strong>. Name it: <code>EPZ Bonded Warehouse</code> or <code>Bonded Store</code>. If you operate one physical facility but want to segregate bonded from domestic stock, create a child location instead: Inventory → Configuration → Locations → [your main warehouse] → New Child: <code>Bonded Raw Material Store</code>.</p>
+            <p>Mark the location with a custom note or use Odoo's location type. The key constraint: <strong>all duty-free imports go to this location</strong>. Nothing else should enter the bonded location without a customs-cleared purchase receipt.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num"><span>2</span></div>
+          <div class="step-body">
+            <h4>Tag raw material products as "Bonded"</h4>
+            <p>Create a product category called <code>Bonded Raw Materials</code> and assign it to all products that are imported duty-free. This makes it easy to filter inventory reports, landed cost allocations, and valuation reports by bonded status. Also enables future custom reporting for the MPR.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num"><span>3</span></div>
+          <div class="step-body">
+            <h4>Configure two-step receipts for bonded imports</h4>
+            <p>Enable multi-step receipts in the bonded warehouse: <strong>Inventory → Configuration → Warehouses → [Bonded WH] → Incoming Shipments: Receive + Quality Check (2 steps)</strong>. This creates a quarantine step where bonded imports are held pending quantity and quality verification before entering the bonded stock. Customs officers often verify quantities at this stage — the Odoo quarantine location maps to this inspection area.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num"><span>4</span></div>
+          <div class="step-body">
+            <h4>Enable lot/serial tracking for bonded materials</h4>
+            <p>Turn on lot tracking for bonded raw materials: on the product record → Inventory tab → Tracking: <code>By Lot</code>. Assign each import consignment a lot number matching the LC number or Bill of Lading number. This provides a per-consignment audit trail — critical for BEPZA inspections where they may check a specific shipment's utilisation.</p>
+          </div>
+        </div>
+      </div>
+
+      <h2 id="procurement">Duty-free raw material procurement</h2>
+
+      <p>The bonded raw material flow from import to bonded stock:</p>
+
+      <div class="stock-flow">
+        <div class="sf-node">
+          <div class="sn-label">Origin</div>
+          <div class="sn-name">Overseas Supplier</div>
+        </div>
+        <div class="sf-arrow">→</div>
+        <div class="sf-node">
+          <div class="sn-label">Transit</div>
+          <div class="sn-name">Chittagong Port / C&F</div>
+        </div>
+        <div class="sf-arrow">→</div>
+        <div class="sf-node bonded">
+          <div class="sn-label">Odoo: Bonded Receipt</div>
+          <div class="sn-name">Bonded Raw Material Store</div>
+        </div>
+        <div class="sf-arrow">→</div>
+        <div class="sf-node">
+          <div class="sn-label">Odoo: MO Consumption</div>
+          <div class="sn-name">Production / WIP</div>
+        </div>
+        <div class="sf-arrow">→</div>
+        <div class="sf-node">
+          <div class="sn-label">Odoo: DO</div>
+          <div class="sn-name">Export Shipment</div>
+        </div>
+      </div>
+
+      <p>In Odoo, when creating the Purchase Order for bonded raw materials:</p>
+
+      <ol>
+        <li><strong>Set the delivery location</strong> to the Bonded Raw Material Store — not the general warehouse. On the PO → "Deliver To" field or the receipt operation type destination location.</li>
+        <li><strong>Apply the "EPZ Bonded Import" fiscal position</strong> to the vendor (see fiscal position section below). This maps import taxes to a suspended duty account rather than expensing them immediately.</li>
+        <li><strong>Record landed costs</strong> for C&F charges, port fees, and freight — but NOT for customs duty (which is suspended under the bonded license). Only the freight and handling components of the landed cost apply. Post landed costs to the bonded stock to get accurate cost-per-unit of bonded raw material.</li>
+        <li><strong>Assign a lot number</strong> matching the LC or Bill of Lading number when validating the receipt. This is the consignment reference that BEPZA will ask about during inspection.</li>
+      </ol>
+
+      <h2 id="manufacturing">Manufacturing consumption tracking</h2>
+
+      <p>The Manufacturing Order (MO) is where bonded raw material consumption is recorded in Odoo. This is the most critical data point for BEPZA compliance — it links the bonded input to the finished goods output.</p>
+
+      <ul>
+        <li><strong>Bill of Materials (BOM)</strong> — configure the BOM for each product with the bonded raw materials as components. Specify the quantities per unit (e.g., 1.2 kg cotton yarn per kg knitted fabric, allowing for standard wastage). The BOM-based quantity is what BEPZA's utilisation norm allows.</li>
+        <li><strong>Source location on MO</strong> — when creating the Manufacturing Order, set the raw material source location to <code>Bonded Raw Material Store</code>. This ensures that consumption posts from the bonded location, not general stock — keeping your bonded inventory balance accurate.</li>
+        <li><strong>Wastage tracking</strong> — BEPZA allows a wastage norm per product type (e.g., 3–5% yarn wastage for knitwear, negotiated with BEPZA). Configure wastage in the BOM as a "component" with a scrap route, or use Odoo's scrap order to record actual production waste and post it to a "Bonded Wastage" location. Document the norm in your BEPZA license — don't exceed it without prior approval.</li>
+        <li><strong>Backflush vs real-time consumption</strong> — for high-volume EPZ knitwear factories, backflushing (recording consumption when MO is completed, not in real-time) is more practical. Validate this is acceptable with your operations team and BEPZA auditor before implementing.</li>
+      </ul>
+
+      <h2 id="mpr">BEPZA Monthly Progress Report (MPR) data from Odoo</h2>
+
+      <p>The MPR requires the following data for each raw material (yarn, fabric, accessories, etc.):</p>
+
+      <table class="comp-table">
+        <thead>
+          <tr><th>MPR field</th><th>Odoo report / source</th><th>How to extract</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Opening Stock (1st of month)</strong></td>
+            <td>Inventory Valuation Report</td>
+            <td>Inventory → Reporting → Inventory Valuation → filter: location = Bonded Store, date = first day of month</td>
+          </tr>
+          <tr>
+            <td><strong>Imports during month</strong></td>
+            <td>Purchase Receipts</td>
+            <td>Inventory → Reporting → Moves → filter: location_dest = Bonded Store, date range = month. Group by product.</td>
+          </tr>
+          <tr>
+            <td><strong>Consumption during month</strong></td>
+            <td>Manufacturing Orders</td>
+            <td>Manufacturing → Reporting → Production Analysis → filter: source location = Bonded Store, date range = month. Raw material consumed per product.</td>
+          </tr>
+          <tr>
+            <td><strong>Closing Stock (last day)</strong></td>
+            <td>Inventory Valuation Report</td>
+            <td>Same as opening stock filter but with last day of month as date.</td>
+          </tr>
+          <tr>
+            <td><strong>Finished goods exported</strong></td>
+            <td>Delivery Orders</td>
+            <td>Inventory → Reporting → Moves → filter: operation type = Export Delivery, date range = month. Group by product.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>Odoo does not generate a formatted BEPZA MPR PDF. The standard workflow is: pull the above data from Odoo's reporting → paste into the BEPZA MPR Excel template (available from BEPZA) → submit. For factories with 20+ raw material SKUs, this is a significant monthly effort — a custom Odoo MPR module can automate the data extraction and formatting, reducing the process from 4 hours to 15 minutes.</p>
+
+      <h2 id="fiscal-position">Fiscal position for EPZ/bonded imports</h2>
+
+      <p>For EPZ and bonded warehouse factories, customs duty on raw material imports is suspended — not waived. It remains a contingent liability until you provide export proof. The fiscal position in Odoo models this correctly:</p>
+
+      <p>Create a fiscal position: <strong>EPZ Bonded Import — Duty Suspended</strong></p>
+
+      <p>Tax mapping in this fiscal position:</p>
+      <ul>
+        <li>Customs Duty 25% → map to a 0% tax with account = <code>Suspended Customs Duty (Liability)</code></li>
+        <li>Supplementary Duty → map to 0% with account = <code>Suspended SD (Liability)</code></li>
+        <li>VAT on Import 15% → map to 0% (VAT is also suspended on bonded imports)</li>
+      </ul>
+
+      <p>Assign this fiscal position to all bonded warehouse vendors. When a bonded import bill is posted, the suspended duty amount is recorded as a liability — a reminder that this duty will be owed if the goods are not exported within the stipulated period. When export proof is confirmed, post a journal entry to reverse the suspended duty liability (debit the suspended duty account, credit a "Duty Discharged" income account).</p>
+
+      <div class="callout">
+        <span class="tag">Linked reading</span>
+        <p>EPZ compliance is built on the foundation of correct VAT configuration. If you haven't set up NBR VAT tax groups and fiscal positions yet, the <a href="0003-nbr-vat-compliance-odoo-bangladesh.html" style="color:var(--accent)">NBR VAT compliance guide for Odoo Bangladesh</a> provides the base framework. The Mushak 6.3 configuration in the <a href="0018-mushak-63-odoo-bangladesh.html" style="color:var(--accent)">Mushak 6.3 Odoo setup guide</a> is also relevant — EPZ factories are exempt from VAT on production inputs, but this exemption must be correctly modelled in Odoo so that export invoices (zero-rated) appear correctly in the Tax Report. Need help with your EPZ Odoo setup? <a href="../index.html#contact" style="color:var(--accent)">Book a scoping call and I'll review your configuration →</a></p>
+      </div>
+
+      <h2 id="faq">Frequently asked questions</h2>
+
+      <h3>What are the EPZ compliance requirements for factories in Bangladesh?</h3>
+      <p>BEPZA-licensed EPZ factories must be 100% export-oriented and import raw materials duty-free under their approved raw material list. They must track consumption of every bonded raw material per manufacturing order, submit a Monthly Progress Report (MPR) to BEPZA by the 10th of each month, submit annual utilisation declarations, and maintain physical stock that reconciles to the bonded ledger at all times. BEPZA inspectors can arrive unannounced — your Odoo bonded stock balance must match physical count.</p>
+
+      <h3>How does bonded warehouse work in Odoo for EPZ factories?</h3>
+      <p>Set up a dedicated storage location tagged as "Bonded Raw Material Store" — separate from general warehouse stock. All duty-free imports are received into this location (Purchase Receipts set destination = Bonded Store). Manufacturing Orders source raw materials from the Bonded Store — the consumption is recorded when the MO is completed or during production. Delivery Orders for export shipments record finished goods leaving the plant. The bonded stock balance at any point = opening stock + imports − consumption − wastage. This is your BEPZA reconcilable balance.</p>
+
+      <h3>Does Odoo support the BEPZA Monthly Progress Report (MPR)?</h3>
+      <p>Not as a built-in formatted report. But all the source data is in Odoo: opening/closing stock from Inventory Valuation, imports from Purchase Receipts filtered to the Bonded location, consumption from Manufacturing Order analysis, exports from Delivery Orders. The monthly process is: pull these four data sets from Odoo → populate the BEPZA MPR Excel template → submit. For high-volume factories (20+ raw material SKUs, 100+ MOs per month), a custom Odoo MPR report module can automate this data extraction and cut the process from hours to minutes.</p>
+
+      <h3>What happens if EPZ raw materials are not fully consumed and exported?</h3>
+      <p>Unused bonded raw materials that cannot be exported within the stipulated period (typically 12–18 months from import, depending on BEPZA license terms) are subject to duty recovery — you must pay the full import duties that were suspended. You may also apply for BEPZA permission to sell unused raw materials domestically (rare and restricted) or re-export them. In Odoo, the suspended customs duty liability account tracks this exposure — the balance shows what you'd owe NBR if the remaining bonded stock can't be utilised.</p>
+    </div>
+  </article>
+
+  <footer>
+    <div class="shell">
+      <div class="post-foot">
+        <span class="eyebrow">Continue exploring</span>
+        <div class="next">
+          <a class="next-card" href="0020-lc-management-odoo-bangladesh.html">
+            <span class="dir">Older · 0020</span>
+            <h4>LC Workflow in Odoo Bangladesh</h4>
+            <p>Letter of Credit lifecycle — proforma invoice to payment reconciliation for Bangladesh exporters.</p>
+            <span class="arrow">→</span>
+          </a>
+          <a class="next-card" href="0022-bgmea-wage-board-odoo-payroll.html">
+            <span class="dir">Newer · 0022</span>
+            <h4>BGMEA Wage Board in Odoo Payroll</h4>
+            <p>8th Wage Board grade setup, minimum wage compliance, and RMG payroll configuration in Odoo.</p>
+            <span class="arrow">→</span>
+          </a>
+        </div>
+      </div>
+      <div class="foot">
+        <span>© 2026 Mehedi Hasan · Lab / 0021</span>
+        <span><a href="../index.html#lab">↑ Back to lab index</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="_toc.js" defer></script>
+</body>
+
+</html>

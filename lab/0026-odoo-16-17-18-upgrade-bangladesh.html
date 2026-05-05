@@ -1,0 +1,635 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description"
+    content="Odoo 16 vs 17 vs 18 — what Bangladesh companies need to know before upgrading. Key differences, migration risk, and which version to target in 2026. →" />
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="Mehedi Hasan" />
+  <title>Odoo 16 vs 17 vs 18 Bangladesh Upgrade | Mehedi Hasan</title>
+  <link rel="canonical" href="https://mhasan.me/lab/0026-odoo-16-17-18-upgrade-bangladesh" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png" />
+  <!-- Open Graph -->
+  <meta property="og:title" content="Odoo 16 vs 17 vs 18 Bangladesh Upgrade | Mehedi Hasan" />
+  <meta property="og:description"
+    content="Odoo 16 vs 17 vs 18 upgrade guide for Bangladesh companies — feature differences, upgrade path, migration risk for custom modules, and version recommendation for 2026." />
+  <meta property="og:url" content="https://mhasan.me/lab/0026-odoo-16-17-18-upgrade-bangladesh" />
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="https://mhasan.me/assets/og-default.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:site_name" content="Mehedi Hasan | Odoo ERP Consultant" />
+  <meta property="article:author" content="https://www.linkedin.com/in/mehedi-hasan-consultant/" />
+  <meta property="article:published_time" content="2026-05-05T10:30:00+06:00" />
+  <meta property="article:modified_time" content="2026-05-05T10:30:00+06:00" />
+  <meta property="article:section" content="Odoo ERP Bangladesh" />
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Odoo 16 vs 17 vs 18 Bangladesh | Upgrade Guide 2026" />
+  <meta name="twitter:description"
+    content="Key differences between Odoo 16, 17, and 18 for Bangladesh companies — what changed, upgrade risks, and the recommended version for new deployments in 2026." />
+  <meta name="twitter:image" content="https://mhasan.me/assets/og-default.jpg" />
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Odoo 16 vs 17 vs 18: What Bangladesh Companies Need to Know",
+    "description": "A practical version comparison guide for Bangladesh Odoo users — covering the key functional differences between Odoo 16, 17, and 18, upgrade path complexity, custom module migration risk, and which version Bangladesh companies should target for new deployments or upgrades in 2026.",
+    "datePublished": "2026-05-05T10:30:00+06:00",
+    "dateModified": "2026-05-05T10:30:00+06:00",
+    "author": {
+      "@type": "Person",
+      "name": "Mehedi Hasan",
+      "url": "https://mhasan.me",
+      "jobTitle": "Odoo ERP Consultant & Business Analyst",
+      "sameAs": "https://www.linkedin.com/in/mehedi-hasan-consultant/"
+    },
+    "publisher": { "@type": "Person", "name": "Mehedi Hasan", "url": "https://mhasan.me" },
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://mhasan.me/lab/0026-odoo-16-17-18-upgrade-bangladesh" }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://mhasan.me" },
+      { "@type": "ListItem", "position": 2, "name": "Lab", "item": "https://mhasan.me/lab/" },
+      { "@type": "ListItem", "position": 3, "name": "Odoo 16 vs 17 vs 18 Bangladesh Upgrade", "item": "https://mhasan.me/lab/0026-odoo-16-17-18-upgrade-bangladesh" }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Should Bangladesh companies upgrade to Odoo 18 in 2026?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "For existing deployments on Odoo 16, upgrading directly to Odoo 18 in 2026 is high-risk due to two major version jumps and the custom module migration effort involved. The recommended path is 16 → 17 first, stabilize, then plan 17 → 18. For new deployments starting in 2026, Odoo 17 is the safer target — it is production-stable, well-documented, and has a larger pool of Bangladesh Odoo partners with 17 experience. Odoo 18 was released in October 2024 and is maturing; its AI features are interesting but not yet critical for Bangladesh manufacturing operations."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the biggest change from Odoo 16 to Odoo 17?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The biggest change from Odoo 16 to Odoo 17 is the user interface overhaul. Odoo 17 introduced a completely redesigned UI with a new navigation structure, updated kanban and list views, improved form layout, and a dark mode option. For Bangladesh factory workers accustomed to Odoo 16, this UI change requires retraining — plan for 1–2 days of refresher training per user group. Functionally, Odoo 17 added: improved spreadsheet integration (Odoo Spreadsheet), new purchase approval workflow, project milestone billing, and significant manufacturing scheduling improvements."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How much does an Odoo 16 to 17 upgrade cost in Bangladesh?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The cost of upgrading from Odoo 16 to Odoo 17 in Bangladesh depends primarily on the number and complexity of custom modules installed. A standard Community installation with no custom modules: BDT 30,000–60,000 (server migration, testing, cutover). An installation with 3–5 Bangladesh-specific custom modules (Mushak, BGMEA payroll, LC tracking): BDT 1.5–4 lakh (custom module rewrite/adaptation to Odoo 17 API changes + testing). An installation with 10+ custom modules: BDT 5–12 lakh. The Odoo database migration itself (via Odoo's upgrade service for Enterprise, or manually for Community) is typically 1–3 days of technical work."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does Odoo 18 support AI features for Bangladesh businesses?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Odoo 18 introduced AI-assisted features including: AI-suggested accounting entries (auto-matching vendor bills to purchase orders), AI email composition suggestions in CRM and helpdesk, and AI-based lead scoring in CRM. These features use Odoo AI (powered by a combination of Odoo's own models and OpenAI). For Bangladesh manufacturing companies, the accounting AI for vendor bill matching is the most immediately useful — it reduces manual reconciliation time for accounts payable teams processing high volumes of vendor bills. The AI features are Enterprise-only and require an internet connection for the AI calls."
+        }
+      }
+    ]
+  }
+]
+</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap">
+  <link rel="stylesheet" href="_styles.css">
+  <style>
+    /* version timeline */
+    .version-timeline {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 16px;
+      margin: 28px 0;
+    }
+    .version-card {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .version-card.current { border-color: oklch(0.80 0.17 155 / 0.5); }
+    .version-head {
+      padding: 14px 18px;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+    }
+    .version-card.current .version-head { background: oklch(0.80 0.17 155 / 0.06); }
+    .vh-number {
+      font-family: var(--mono);
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: -0.02em;
+    }
+    .version-card.current .vh-number { color: oklch(0.80 0.17 155); }
+    .vh-date {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--text-3);
+      letter-spacing: 0.06em;
+      margin-top: 2px;
+    }
+    .vh-status {
+      display: inline-block;
+      font-size: 10px;
+      font-family: var(--mono);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 2px 7px;
+      border-radius: 3px;
+      margin-top: 6px;
+    }
+    .status-lts { background: oklch(0.80 0.17 155 / 0.12); color: oklch(0.80 0.17 155); }
+    .status-stable { background: oklch(0.65 0.14 260 / 0.12); color: oklch(0.65 0.14 260); }
+    .status-new { background: oklch(0.75 0.12 60 / 0.15); color: oklch(0.75 0.12 60); }
+    .version-body {
+      padding: 14px 18px;
+      font-size: 13px;
+      color: var(--text-2);
+      line-height: 1.65;
+    }
+    .version-body ul {
+      margin: 8px 0 0;
+      padding: 0 0 0 16px;
+    }
+    .version-body li { margin-bottom: 4px; }
+    @media(max-width:680px) {
+      .version-timeline { grid-template-columns: 1fr; }
+    }
+
+    /* comparison table */
+    .comp-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 24px 0;
+      font-size: 13px;
+    }
+    .comp-table th {
+      text-align: left;
+      padding: 11px 14px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      font-family: var(--mono);
+      font-size: 10.5px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-3);
+    }
+    .comp-table th:not(:first-child) { text-align: center; }
+    .comp-table td {
+      padding: 12px 14px;
+      border: 1px solid var(--border);
+      color: var(--text-2);
+      vertical-align: middle;
+      line-height: 1.5;
+    }
+    .comp-table td:not(:first-child) { text-align: center; font-size: 13px; }
+    .comp-table .feat { color: var(--text); font-weight: 500; }
+    .comp-table .cat-row td {
+      background: var(--surface);
+      color: var(--text-3);
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 8px 14px;
+    }
+    .tick { color: oklch(0.80 0.17 155); }
+    .cross { color: oklch(0.55 0.18 30); }
+    .improved { color: oklch(0.80 0.17 155); font-weight: 600; font-size: 12px; }
+    .same { color: var(--text-3); }
+    .new-feat { color: oklch(0.75 0.12 60); font-weight: 600; font-size: 12px; }
+
+    .upgrade-path {
+      margin: 28px 0;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .up-node {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 10px 18px;
+      font-family: var(--mono);
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text);
+      background: var(--surface);
+    }
+    .up-node.active { border-color: oklch(0.80 0.17 155 / 0.6); color: oklch(0.80 0.17 155); background: oklch(0.80 0.17 155 / 0.06); }
+    .up-arrow {
+      font-size: 18px;
+      color: var(--text-3);
+    }
+    .up-note {
+      font-size: 11.5px;
+      color: var(--text-3);
+      font-family: var(--mono);
+      margin-top: 4px;
+    }
+    .up-step { display: flex; flex-direction: column; align-items: center; }
+
+    .pull {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: clamp(22px, 3vw, 34px);
+      line-height: 1.25;
+      color: var(--text);
+      margin: 48px 0;
+      border: none;
+      padding: 0;
+      max-width: 22ch;
+      letter-spacing: -0.01em;
+    }
+    .pull::before {
+      content: "";
+      display: block;
+      width: 36px;
+      height: 1px;
+      background: var(--accent);
+      margin-bottom: 18px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="grid-bg"></div>
+
+  <header class="nav">
+    <div class="shell">
+      <div class="nav-inner">
+        <a class="brand" href="../index.html">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span class="brand-name"><b>Mehedi Hasan</b><em>ERP · Business Analyst</em></span>
+        </a>
+        <a class="back-link" href="../index.html#lab">← Back to Lab</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="post-head">
+    <div class="shell">
+      <span class="eyebrow">Technical Lab · 0026</span>
+      <h1>Odoo 16 vs 17 vs 18 — <span class="serif">what Bangladesh companies need to know.</span></h1>
+      <p class="lede">Most Bangladesh Odoo deployments are running version 16 or 17 in 2026. Odoo 18 is out. Before you upgrade — or start a new deployment — here is a plain-language breakdown of what changed, what the migration risk is, and which version makes sense for your situation.</p>
+      <div class="post-meta">
+        <span class="chip accent">Version Guide</span>
+        <span class="chip">Odoo 16 · 17 · 18</span>
+        <span class="chip">Upgrade Path</span>
+        <span class="chip">Bangladesh 2026</span>
+      </div>
+      <div class="byline">
+        <span>By<b><a href="https://www.linkedin.com/in/mehedi-hasan-consultant/" style="color:var(--accent)" rel="author">Mehedi Hasan</a></b></span>
+        <span>Published<b>May 2026</b></span>
+        <span>Read time<b>11 minutes</b></span>
+        <span>Form<b>Comparison Guide</b></span>
+        <span>Scope<b>Bangladesh companies on Odoo 16/17/18</b></span>
+      </div>
+    </div>
+  </section>
+
+  <article class="post">
+    <aside class="toc">
+      <div class="toc-k">In this guide</div>
+      <ol>
+        <li><a href="#version-overview">Version overview &amp; timeline</a></li>
+        <li><a href="#what-changed-17">What changed in Odoo 17</a></li>
+        <li><a href="#what-changed-18">What's new in Odoo 18</a></li>
+        <li><a href="#feature-comparison">Feature comparison table</a></li>
+        <li><a href="#upgrade-path">Upgrade path &amp; risk</a></li>
+        <li><a href="#bangladesh-context">Bangladesh-specific context</a></li>
+        <li><a href="#recommendation">Version recommendation</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ol>
+    </aside>
+
+    <div class="body">
+      <p>Odoo follows an annual release cycle. Each new major version is not a patch — it is a full platform upgrade with new features, UI changes, API differences, and database schema changes. For Bangladesh companies running custom modules (Bangladesh VAT rules, BGMEA payroll, LC tracking, EPZ fiscal positions), each upgrade requires migrating those modules to the new API — which is developer work, not a one-click update.</p>
+
+      <p>Understanding what each version actually adds — versus what is just cosmetic change — is essential before committing to an upgrade budget.</p>
+
+      <p class="pull">Every Odoo upgrade that breaks a custom module costs more than the upgrade itself. Plan for it.</p>
+
+      <h2 id="version-overview">Version overview and timeline</h2>
+
+      <div class="version-timeline">
+        <div class="version-card">
+          <div class="version-head">
+            <div class="vh-number">16</div>
+            <div class="vh-date">Released: October 2022</div>
+            <div><span class="vh-status status-lts">LTS — supported to 2027</span></div>
+          </div>
+          <div class="version-body">
+            Most common version in Bangladesh as of early 2026. Stable, well-documented, large community of local partners with deployment experience.
+            <ul>
+              <li>Introduced Odoo Discuss overhaul</li>
+              <li>New website builder</li>
+              <li>Improved accounting SEPA</li>
+              <li>Spreadsheet improvements</li>
+            </ul>
+          </div>
+        </div>
+        <div class="version-card current">
+          <div class="version-head">
+            <div class="vh-number">17</div>
+            <div class="vh-date">Released: November 2023</div>
+            <div><span class="vh-status status-stable">Stable — recommended</span></div>
+          </div>
+          <div class="version-body">
+            Complete UI overhaul — new navigation, improved kanban, dark mode. Largest visible change for users since Odoo 14.
+            <ul>
+              <li>New UI/UX design system</li>
+              <li>Purchase approval workflow</li>
+              <li>Project milestone billing</li>
+              <li>Manufacturing scheduling Gantt</li>
+              <li>Improved Odoo Spreadsheet</li>
+            </ul>
+          </div>
+        </div>
+        <div class="version-card">
+          <div class="version-head">
+            <div class="vh-number">18</div>
+            <div class="vh-date">Released: October 2024</div>
+            <div><span class="vh-status status-new">Maturing — 2026 deployments</span></div>
+          </div>
+          <div class="version-body">
+            First version with native AI features (Enterprise). Improved mobile app. Manufacturing scheduling refinements.
+            <ul>
+              <li>AI-assisted accounting entries</li>
+              <li>AI email suggestions (CRM/Helpdesk)</li>
+              <li>New mobile app interface</li>
+              <li>Improved manufacturing planning</li>
+              <li>Enhanced spreadsheet functions</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <h2 id="what-changed-17">What changed in Odoo 17 — details that matter</h2>
+
+      <h3>UI overhaul (the biggest operational impact)</h3>
+      <p>Odoo 17 introduced a completely redesigned user interface. The navigation was restructured, list and kanban views were redesigned, form layouts were updated. For Bangladesh factory workers who learned Odoo 16 over months, this is a meaningful retraining event — plan for 1–2 days of refresher training per user group (warehouse, accounting, HR, production floor). The new UI is genuinely better — faster to navigate, cleaner layout — but the transition has a real productivity dip.</p>
+
+      <h3>Manufacturing scheduling Gantt</h3>
+      <p>Odoo 17 added a Gantt-based production planning view for manufacturing orders. Production managers can drag and drop manufacturing orders across work centers and time slots. For Bangladesh factories managing multiple work centers (cutting, sewing, finishing, packing), this is a significant operational improvement over the list-based planning in Odoo 16. You can visualize capacity conflicts before they cause production delays.</p>
+
+      <h3>Purchase approval workflow</h3>
+      <p>A configurable multi-level purchase approval workflow was added in Odoo 17, allowing purchase order approval routing based on amount thresholds, product categories, or departments. Bangladesh factories with a management-approved purchasing process (requiring MD or GM sign-off on purchases above BDT 50,000) can configure this without custom code in Odoo 17.</p>
+
+      <h3>Odoo Spreadsheet integration</h3>
+      <p>Odoo 17 significantly improved the Spreadsheet module — a Google Sheets-style spreadsheet built into Odoo that can pull live data from any Odoo model. Finance teams can build management reports (P&amp;L, budget vs actual, cash flow) that update automatically with live Odoo data. This reduces the "export to Excel and manipulate" workflow that most Bangladesh accounting teams rely on.</p>
+
+      <h2 id="what-changed-18">What's new in Odoo 18</h2>
+
+      <h3>AI features (Enterprise only)</h3>
+      <p>Odoo 18 is the first version with native AI integration throughout the platform:</p>
+      <ul>
+        <li><strong>AI accounting suggestions:</strong> When posting a vendor bill, Odoo 18 suggests the correct accounting journal entry based on historical patterns. For high-volume accounts payable operations (100+ vendor bills/month), this reduces manual coding time.</li>
+        <li><strong>AI email suggestions in CRM:</strong> When composing an email to a lead or customer, Odoo 18 suggests email content based on the context of the deal. Useful for export sales teams managing multiple buyer relationships.</li>
+        <li><strong>AI lead scoring:</strong> CRM leads are automatically scored based on engagement patterns and historical conversion data.</li>
+      </ul>
+      <p>These AI features require an internet connection and are Enterprise-only. For Bangladesh manufacturing companies focused on production operations rather than CRM, the AI features are interesting but not a compelling upgrade reason alone.</p>
+
+      <h3>Manufacturing planning improvements</h3>
+      <p>Odoo 18 refined the manufacturing scheduling introduced in Odoo 17, adding better capacity planning, improved overlap detection, and enhanced subcontracting workflow. For factories with complex production planning challenges (multi-shift operations, shared work centers, subcontracted operations), Odoo 18 manufacturing is meaningfully better than Odoo 17.</p>
+
+      <h3>New mobile app interface</h3>
+      <p>The iOS and Android apps were redesigned in Odoo 18 with a mobile-first layout optimized for field operations (delivery, service, manufacturing floor checks). For Bangladesh sales teams and warehouse supervisors using mobile ERP access, the improved app is a usability gain.</p>
+
+      <h2 id="feature-comparison">Feature comparison table</h2>
+
+      <table class="comp-table">
+        <thead>
+          <tr>
+            <th style="width:40%">Feature area</th>
+            <th style="width:20%">Odoo 16</th>
+            <th style="width:20%">Odoo 17</th>
+            <th style="width:20%">Odoo 18</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="cat-row"><td colspan="4">User Experience</td></tr>
+          <tr>
+            <td class="feat">UI design system</td>
+            <td class="same">V16 design</td>
+            <td class="improved">↑ Full redesign</td>
+            <td class="same">Incremental</td>
+          </tr>
+          <tr>
+            <td class="feat">Dark mode</td>
+            <td class="cross">✗</td>
+            <td class="tick">✓</td>
+            <td class="tick">✓</td>
+          </tr>
+          <tr>
+            <td class="feat">Mobile apps (Enterprise)</td>
+            <td class="tick">✓ V16</td>
+            <td class="improved">↑ Improved</td>
+            <td class="improved">↑ Redesigned</td>
+          </tr>
+          <tr class="cat-row"><td colspan="4">Manufacturing</td></tr>
+          <tr>
+            <td class="feat">Manufacturing Gantt scheduling</td>
+            <td class="cross">✗</td>
+            <td class="tick">✓ Added</td>
+            <td class="improved">↑ Enhanced</td>
+          </tr>
+          <tr>
+            <td class="feat">Capacity planning</td>
+            <td class="same">Basic</td>
+            <td class="same">Basic</td>
+            <td class="improved">↑ Improved</td>
+          </tr>
+          <tr>
+            <td class="feat">Subcontracting workflow</td>
+            <td class="tick">✓</td>
+            <td class="tick">✓</td>
+            <td class="improved">↑ Refined</td>
+          </tr>
+          <tr>
+            <td class="feat">Quality module</td>
+            <td class="tick">✓</td>
+            <td class="tick">✓</td>
+            <td class="tick">✓</td>
+          </tr>
+          <tr class="cat-row"><td colspan="4">Accounting &amp; Finance</td></tr>
+          <tr>
+            <td class="feat">AI accounting suggestions</td>
+            <td class="cross">✗</td>
+            <td class="cross">✗</td>
+            <td class="new-feat">New</td>
+          </tr>
+          <tr>
+            <td class="feat">Bank reconciliation</td>
+            <td class="tick">✓</td>
+            <td class="improved">↑ Improved matching</td>
+            <td class="same">Same</td>
+          </tr>
+          <tr>
+            <td class="feat">Odoo Spreadsheet (BI reporting)</td>
+            <td class="same">Basic</td>
+            <td class="improved">↑ Major upgrade</td>
+            <td class="improved">↑ More functions</td>
+          </tr>
+          <tr class="cat-row"><td colspan="4">Purchase &amp; Supply Chain</td></tr>
+          <tr>
+            <td class="feat">Purchase approval workflow</td>
+            <td class="cross">✗ (requires custom)</td>
+            <td class="tick">✓ Native</td>
+            <td class="tick">✓</td>
+          </tr>
+          <tr>
+            <td class="feat">Reordering rules &amp; MTO</td>
+            <td class="tick">✓</td>
+            <td class="tick">✓</td>
+            <td class="tick">✓</td>
+          </tr>
+          <tr class="cat-row"><td colspan="4">CRM &amp; Sales</td></tr>
+          <tr>
+            <td class="feat">AI lead scoring</td>
+            <td class="cross">✗</td>
+            <td class="cross">✗</td>
+            <td class="new-feat">New</td>
+          </tr>
+          <tr>
+            <td class="feat">AI email suggestions</td>
+            <td class="cross">✗</td>
+            <td class="cross">✗</td>
+            <td class="new-feat">New</td>
+          </tr>
+          <tr>
+            <td class="feat">Project milestone billing</td>
+            <td class="cross">✗</td>
+            <td class="tick">✓ Added</td>
+            <td class="tick">✓</td>
+          </tr>
+          <tr class="cat-row"><td colspan="4">Platform</td></tr>
+          <tr>
+            <td class="feat">LTS (Long-Term Support)</td>
+            <td class="tick">✓ Until ~2027</td>
+            <td class="cross">✗ Standard</td>
+            <td class="cross">✗ Standard</td>
+          </tr>
+          <tr>
+            <td class="feat">Community support maturity</td>
+            <td class="tick">High (3 years)</td>
+            <td class="improved">High (2 years)</td>
+            <td class="same">Growing (1 year)</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2 id="upgrade-path">Upgrade path and migration risk</h2>
+
+      <p>Odoo does not support skipping versions for database migrations. The path is sequential:</p>
+
+      <div class="upgrade-path">
+        <div class="up-step">
+          <div class="up-node">Odoo 16</div>
+          <div class="up-note">Current for most BD</div>
+        </div>
+        <div class="up-arrow">→</div>
+        <div class="up-step">
+          <div class="up-node active">Odoo 17</div>
+          <div class="up-note">Recommended target</div>
+        </div>
+        <div class="up-arrow">→</div>
+        <div class="up-step">
+          <div class="up-node">Odoo 18</div>
+          <div class="up-note">After 17 is stable</div>
+        </div>
+      </div>
+
+      <p>The migration effort for each step:</p>
+
+      <ul>
+        <li><strong>Standard modules only (no custom code):</strong> Each version migration is mostly automated via Odoo's upgrade scripts. A Bangladesh company with a standard Odoo 16 installation (no custom addons, no overrides) can migrate to 17 in 1–2 days of testing and cutover.</li>
+        <li><strong>Bangladesh-specific custom modules:</strong> Each custom module must be manually updated to the new Odoo API. Key changes between Odoo 16 and 17 include field API changes, view XML syntax changes, and ORM method updates. A typical Bangladesh custom module (e.g., Mushak 6.3 report, BGMEA payroll rules, LC tracking) requires 1–3 days of developer work per module to migrate. Budget BDT 8,000–25,000 per custom module for the migration.</li>
+        <li><strong>Third-party apps from Odoo Apps Store:</strong> You depend on the app author to release a Odoo 17/18 compatible version. Popular apps usually update within 3–6 months of a new Odoo release. Less popular Bangladesh-specific apps may not be updated — contact the author before committing to an upgrade timeline.</li>
+      </ul>
+
+      <h2 id="bangladesh-context">Bangladesh-specific context</h2>
+
+      <p>These are the version-specific considerations most relevant to Bangladesh Odoo deployments:</p>
+
+      <ul>
+        <li><strong>Mushak / NBR custom modules:</strong> All Bangladesh NBR compliance modules need to be tested after each version migration. The Mushak 6.3 report logic and tax configuration approach did not change fundamentally between 16 and 17 — but the report template XML syntax changed, requiring an update to the report module.</li>
+        <li><strong>BGMEA payroll rules:</strong> Salary rule Python logic is stable across versions. The main migration effort is view XML updates and Python API changes in the salary structure model. A BGMEA payroll custom module typically requires 1 day to migrate per version.</li>
+        <li><strong>Multi-company users:</strong> If you run a multi-company Odoo setup (holding company + subsidiaries), test inter-company transaction flows carefully after migration. Odoo 17 made changes to the inter-company rules configuration that can break existing setups. See our <a href="0006-odoo-multi-company-setup-guide.html" style="color:var(--accent)">Odoo multi-company setup guide</a> for the configuration reference.</li>
+        <li><strong>Training impact of Odoo 17 UI:</strong> The most underestimated migration cost is retraining. Budget for 2 days of refresher training sessions for each user group after migrating to Odoo 17. For a 100-user factory, this is 8–10 group training sessions and represents a real productivity impact during the first 2–4 weeks post-migration.</li>
+        <li><strong>Deployment hosting:</strong> For factories using the on-premise hosting approach discussed in <a href="0025-odoo-on-premise-vs-cloud-bangladesh.html" style="color:var(--accent)">on-premise vs cloud Odoo Bangladesh</a>, version migration requires a server-side upgrade (Ubuntu/PostgreSQL compatibility check included). Plan 1 extra day for server-level preparation.</li>
+      </ul>
+
+      <h2 id="recommendation">Version recommendation for Bangladesh companies</h2>
+
+      <p><strong>New deployments starting in 2026:</strong> Target <strong>Odoo 17</strong>. It is production-stable with 2+ years of real-world deployments, has a growing pool of Bangladesh partners with Odoo 17 experience, and the new UI and manufacturing scheduling Gantt are genuinely useful. Odoo 18 is maturing and will be the better choice for new deployments starting in late 2026 or 2027.</p>
+
+      <p><strong>Currently on Odoo 16, planning to upgrade:</strong> Upgrade to <strong>Odoo 17</strong> in 2026. Odoo 16 LTS support runs to approximately 2027, so there is no immediate urgency — but planning the 16 → 17 migration now (budgeting for custom module migration, setting a UAT schedule) is sensible. Do not jump directly to Odoo 18 — the double-version migration doubles your custom module rewrite cost and testing effort.</p>
+
+      <p><strong>Currently on Odoo 17, considering Odoo 18:</strong> Wait unless you have a specific compelling reason (AI accounting features, improved manufacturing scheduling). Odoo 18 is solid but the migration cost from 17 to 18 should be weighed against the marginal feature gain for Bangladesh manufacturing operations specifically.</p>
+
+      <div class="callout">
+        <span class="tag">Version migration assessment</span>
+        <p>Before committing to an upgrade timeline, audit your custom module list and get migration effort estimates from your Odoo partner. The custom module migration is typically 60–70% of total upgrade cost. <a href="../index.html#contact" style="color:var(--accent)">Need help planning an Odoo version migration? Get in touch →</a></p>
+      </div>
+
+      <h2 id="faq">Frequently asked questions</h2>
+
+      <h3>Should Bangladesh companies upgrade to Odoo 18 in 2026?</h3>
+      <p>For existing deployments on Odoo 16, upgrading directly to Odoo 18 is high-risk — two major version jumps doubles the custom module migration effort. The recommended path is 16 → 17 first, stabilize, then plan 17 → 18. For new deployments in 2026, Odoo 17 is the safer target — it is production-stable with more Bangladesh partner experience. Odoo 18 makes sense for new deployments starting late 2026 or for companies with a specific need for AI features or improved manufacturing scheduling.</p>
+
+      <h3>What is the biggest change from Odoo 16 to Odoo 17?</h3>
+      <p>The biggest operational change is the complete UI/UX redesign. Navigation was restructured, kanban and list views redesigned, and a dark mode added. For Bangladesh factory workers trained on Odoo 16, plan 1–2 days of refresher training per user group. Functionally, Odoo 17 added: manufacturing Gantt scheduling, native purchase approval workflow, project milestone billing, and significantly improved Odoo Spreadsheet for management reporting.</p>
+
+      <h3>How much does an Odoo 16 to 17 upgrade cost in Bangladesh?</h3>
+      <p>Cost depends on custom module complexity: standard installation (no custom modules) costs BDT 30,000–60,000. Installations with 3–5 Bangladesh-specific custom modules (Mushak, BGMEA payroll, LC tracking) cost BDT 1.5–4 lakh. Installations with 10+ custom modules cost BDT 5–12 lakh. Custom module migration (rewriting to the Odoo 17 API) is typically 60–70% of total upgrade cost.</p>
+
+      <h3>Does Odoo 18 support AI features for Bangladesh businesses?</h3>
+      <p>Yes — Odoo 18 (Enterprise only) includes AI-assisted accounting entry suggestions, AI email composition in CRM/Helpdesk, and AI lead scoring. The most useful for Bangladesh manufacturing is the accounting AI for vendor bill matching — it reduces manual reconciliation time for accounts payable teams. AI features require internet connectivity and are powered by Odoo's cloud AI service.</p>
+    </div>
+  </article>
+
+  <footer>
+    <div class="shell">
+      <div class="post-foot">
+        <span class="eyebrow">Continue exploring</span>
+        <div class="next">
+          <a class="next-card" href="0027-sap-b1-vs-odoo-bangladesh.html">
+            <span class="dir">Next · 0027</span>
+            <h4>SAP Business One vs Odoo Bangladesh</h4>
+            <p>A real cost comparison — licensing, implementation, and TCO for Bangladesh manufacturing companies.</p>
+            <span class="arrow">→</span>
+          </a>
+          <a class="next-card" href="0025-odoo-on-premise-vs-cloud-bangladesh.html">
+            <span class="dir">Older · 0025</span>
+            <h4>On-Premise vs Cloud Odoo Bangladesh</h4>
+            <p>Infrastructure decision guide — Bangladesh power, internet, and data control realities.</p>
+            <span class="arrow">→</span>
+          </a>
+        </div>
+      </div>
+      <div class="foot">
+        <span>© 2026 Mehedi Hasan · Lab / 0026</span>
+        <span><a href="../index.html#lab">↑ Back to lab index</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="_toc.js" defer></script>
+</body>
+
+</html>

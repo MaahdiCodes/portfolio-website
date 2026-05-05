@@ -1,0 +1,701 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description"
+    content="BGMEA & BKMEA wage board in Odoo payroll — grade setup, minimum wage compliance, overtime & RMG payroll for Bangladesh. Set it up right →" />
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="Mehedi Hasan" />
+  <title>BGMEA Wage Board Odoo | Payroll Bangladesh | Mehedi Hasan</title>
+  <link rel="canonical" href="https://mhasan.me/lab/0022-bgmea-wage-board-odoo-payroll" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png" />
+  <!-- Open Graph -->
+  <meta property="og:title" content="BGMEA Wage Board Odoo | Payroll Bangladesh | Mehedi Hasan" />
+  <meta property="og:description"
+    content="How to configure the BGMEA 8th Wage Board (2023) grade structure in Odoo Payroll — salary rules, minimum wage compliance, overtime, and Bangladesh RMG payslip setup." />
+  <meta property="og:url" content="https://mhasan.me/lab/0022-bgmea-wage-board-odoo-payroll" />
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="https://mhasan.me/assets/og-default.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:site_name" content="Mehedi Hasan | Odoo ERP Consultant" />
+  <meta property="article:author" content="https://www.linkedin.com/in/mehedi-hasan-consultant/" />
+  <meta property="article:published_time" content="2026-05-05T13:00:00+06:00" />
+  <meta property="article:modified_time" content="2026-05-05T13:00:00+06:00" />
+  <meta property="article:section" content="Odoo ERP Bangladesh" />
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="BGMEA Wage Board Odoo | Payroll Bangladesh" />
+  <meta name="twitter:description"
+    content="Configure BGMEA 8th Wage Board grades, minimum wage, and RMG payroll compliance rules in Odoo Payroll for Bangladesh garment factories." />
+  <meta name="twitter:image" content="https://mhasan.me/assets/og-default.jpg" />
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Odoo Payroll Compliance: BGMEA/BKMEA Wage Board Setup for Bangladesh RMG",
+    "description": "A practitioner's guide to configuring the BGMEA 8th Wage Board (2023) in Odoo Payroll for Bangladesh garment factories — covering the 7-grade salary structure, salary rule coding for basic, house rent, medical and transport allowances, overtime rules, PF deduction, income tax, and generating BGMEA-compliant monthly payslips.",
+    "datePublished": "2026-05-05T13:00:00+06:00",
+    "dateModified": "2026-05-05T13:00:00+06:00",
+    "author": {
+      "@type": "Person",
+      "name": "Mehedi Hasan",
+      "url": "https://mhasan.me",
+      "jobTitle": "Odoo ERP Consultant & Business Analyst",
+      "sameAs": "https://www.linkedin.com/in/mehedi-hasan-consultant/"
+    },
+    "publisher": { "@type": "Person", "name": "Mehedi Hasan", "url": "https://mhasan.me" },
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://mhasan.me/lab/0022-bgmea-wage-board-odoo-payroll" }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://mhasan.me" },
+      { "@type": "ListItem", "position": 2, "name": "Lab", "item": "https://mhasan.me/lab/" },
+      { "@type": "ListItem", "position": 3, "name": "BGMEA Wage Board Odoo Bangladesh", "item": "https://mhasan.me/lab/0022-bgmea-wage-board-odoo-payroll" }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is the BGMEA 8th Wage Board minimum wage in Bangladesh?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The 8th Wage Board for the RMG sector, effective December 1, 2023, set the minimum wage for Grade 7 (unskilled helper) at BDT 12,500 per month. The wage board has 7 grades, with Grade 7 being the lowest (entry-level workers) and Grade 1 being the highest (senior operators, supervisors). The minimum wages range from BDT 12,500 (Grade 7) to BDT 20,393 (Grade 1). All RMG factories affiliated with BGMEA or BKMEA are required to comply with these minimum wages. Factories that pay below the minimum wage face BGMEA affiliation suspension and legal action under the Bangladesh Labour Act 2006."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I set up BGMEA wage grades in Odoo Payroll?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "In Odoo Payroll, create one Salary Structure for the RMG sector (e.g., 'RMG Wage Board Structure'). Within it, add salary rules for: Basic Salary, House Rent Allowance (40% of basic), Medical Allowance (fixed BDT 750 or as per wage board), Transport Allowance (fixed BDT 500 or as per wage board), and any other factory-specific allowances. For each grade, set the Contract Wage to the gross minimum wage for that grade. The salary rules calculate components as percentages of the Basic Salary or as fixed amounts, matching the wage board breakdown. Assign employees to contracts with the correct wage grade and Odoo computes the payslip automatically."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How is overtime calculated in Bangladesh RMG under the Labour Act?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Under the Bangladesh Labour Act 2006, overtime for RMG workers is paid at twice the basic hourly rate. The calculation: Basic Monthly Salary ÷ 208 hours (26 working days × 8 hours) = Basic Hourly Rate. Overtime Rate = Basic Hourly Rate × 2. Maximum overtime is 2 hours per day and 12 hours per week under the Labour Act, though the RMG sector routinely applies for special overtime permissions during peak seasons. In Odoo, overtime is configured as a salary rule: OT Hours (from attendance) × (Basic / 208) × 2. This requires Odoo Attendance integration or manual OT input on the payslip input lines."
+        }
+      }
+    ]
+  }
+]
+</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap">
+  <link rel="stylesheet" href="_styles.css">
+  <style>
+    .pull {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: clamp(24px, 3vw, 36px);
+      line-height: 1.25;
+      color: var(--text);
+      margin: 48px 0;
+      padding: 0;
+      border: none;
+      max-width: 22ch;
+      letter-spacing: -0.01em;
+    }
+    .pull::before {
+      content: "";
+      display: block;
+      width: 36px;
+      height: 1px;
+      background: var(--accent);
+      margin-bottom: 18px;
+    }
+
+    /* wage grade table */
+    .wage-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 24px 0;
+      font-size: 13px;
+    }
+    .wage-table th {
+      text-align: left;
+      padding: 10px 14px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-3);
+    }
+    .wage-table td {
+      padding: 12px 14px;
+      border: 1px solid var(--border);
+      color: var(--text-2);
+      vertical-align: middle;
+      line-height: 1.5;
+    }
+    .wage-table td strong { color: var(--text); }
+    .wage-table tr.grade-7 td { background: oklch(0.80 0.17 155 / 0.04); }
+    .wage-table td.grade-num {
+      font-family: var(--mono);
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--accent);
+      text-align: center;
+    }
+    .wage-table td.wage-amt {
+      font-family: var(--mono);
+      font-size: 13px;
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    /* salary rule list */
+    .rule-list {
+      margin: 24px 0;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .rule-row {
+      display: grid;
+      grid-template-columns: 200px 120px 1fr;
+      border-bottom: 1px solid var(--border);
+      align-items: start;
+      font-size: 13px;
+    }
+    .rule-row:last-child { border-bottom: none; }
+    .rule-row .rr-name {
+      padding: 14px 16px;
+      font-weight: 600;
+      color: var(--text);
+      border-right: 1px solid var(--border);
+      background: var(--surface);
+    }
+    .rule-row .rr-code {
+      padding: 14px 14px;
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--accent);
+      border-right: 1px solid var(--border);
+      background: oklch(0.80 0.17 155 / 0.03);
+    }
+    .rule-row .rr-formula {
+      padding: 14px 16px;
+      color: var(--text-2);
+      line-height: 1.55;
+    }
+    .rule-row .rr-formula code {
+      font-family: var(--mono);
+      font-size: 11.5px;
+      background: oklch(0.80 0.17 155 / 0.1);
+      color: var(--accent);
+      padding: 2px 5px;
+      border-radius: 3px;
+    }
+    .rule-head {
+      display: grid;
+      grid-template-columns: 200px 120px 1fr;
+      padding: 10px 0;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+    }
+    .rule-head span {
+      padding: 0 16px;
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-3);
+    }
+    @media(max-width:680px) {
+      .rule-row, .rule-head { grid-template-columns: 1fr; }
+      .rule-row .rr-name { border-right: none; border-bottom: 1px solid var(--border); }
+      .rule-row .rr-code { border-right: none; border-bottom: 1px solid var(--border); }
+    }
+
+    /* step flow */
+    .step-flow {
+      margin: 28px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+    .step {
+      display: grid;
+      grid-template-columns: 56px 1fr;
+      gap: 0;
+      position: relative;
+    }
+    .step:not(:last-child)::before {
+      content: "";
+      position: absolute;
+      left: 27px;
+      top: 52px;
+      bottom: 0;
+      width: 2px;
+      background: var(--border);
+    }
+    .step-num {
+      width: 56px;
+      padding-top: 4px;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .step-num span {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: 2px solid var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--mono);
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--accent);
+      background: var(--bg);
+      flex-shrink: 0;
+      z-index: 1;
+      position: relative;
+    }
+    .step-body {
+      padding: 0 0 36px 16px;
+    }
+    .step-body h4 {
+      margin: 6px 0 8px;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text);
+    }
+    .step-body p { margin: 0 0 8px; font-size: 13.5px; color: var(--text-2); line-height: 1.6; }
+    .step-body code {
+      font-family: var(--mono);
+      font-size: 12px;
+      background: oklch(0.80 0.17 155 / 0.08);
+      color: var(--accent);
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+
+    /* payslip sample */
+    .payslip {
+      margin: 28px 0;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+      font-size: 13px;
+    }
+    .payslip-head {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 14px 18px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .payslip-head .ph-title {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-3);
+    }
+    .payslip-head .ph-grade {
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--accent);
+      font-weight: 600;
+    }
+    .payslip-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 18px;
+      border-bottom: 1px solid var(--border);
+      color: var(--text-2);
+    }
+    .payslip-row:last-child { border-bottom: none; }
+    .payslip-row.deduction { color: oklch(0.55 0.18 30); }
+    .payslip-row.total {
+      background: var(--surface);
+      font-weight: 600;
+      color: var(--text);
+      border-top: 2px solid var(--border);
+    }
+    .payslip-row .pr-label { }
+    .payslip-row .pr-amount {
+      font-family: var(--mono);
+      font-size: 13px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="grid-bg"></div>
+
+  <header class="nav">
+    <div class="shell">
+      <div class="nav-inner">
+        <a class="brand" href="../index.html">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span class="brand-name"><b>Mehedi Hasan</b><em>ERP · Business Analyst</em></span>
+        </a>
+        <a class="back-link" href="../index.html#lab">← Back to Lab</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="post-head">
+    <div class="shell">
+      <span class="eyebrow">Technical Lab · 0022</span>
+      <h1>BGMEA wage board in Odoo payroll — <span class="serif">configuring Bangladesh RMG compliance.</span></h1>
+      <p class="lede">How to configure Odoo Payroll for the BGMEA 8th Wage Board (2023) — the 7-grade salary structure, salary rules for basic, house rent, medical and transport, overtime under the Bangladesh Labour Act, PF deductions, and generating compliant monthly payslips for RMG factory workers. Built from BGMEA and BKMEA factory deployments across Dhaka and Chittagong.</p>
+      <div class="post-meta">
+        <span class="chip accent">Compliance Guide</span>
+        <span class="chip">BGMEA · Wage Board</span>
+        <span class="chip">RMG Payroll</span>
+        <span class="chip">Bangladesh Labour Act</span>
+      </div>
+      <div class="byline">
+        <span>By<b><a href="https://www.linkedin.com/in/mehedi-hasan-consultant/" style="color:var(--accent)" rel="author">Mehedi Hasan</a></b></span>
+        <span>Published<b>May 2026</b></span>
+        <span>Read time<b>14 minutes</b></span>
+        <span>Form<b>Setup Guide</b></span>
+        <span>Scope<b>RMG factories — BGMEA & BKMEA members</b></span>
+      </div>
+    </div>
+  </section>
+
+  <article class="post">
+    <aside class="toc">
+      <div class="toc-k">In this guide</div>
+      <ol>
+        <li><a href="#wage-board">8th Wage Board grade structure</a></li>
+        <li><a href="#salary-structure">Odoo salary structure setup</a></li>
+        <li><a href="#salary-rules">Salary rules: basic, HRA, medical</a></li>
+        <li><a href="#overtime">Overtime configuration</a></li>
+        <li><a href="#deductions">PF, income tax & other deductions</a></li>
+        <li><a href="#payslip-sample">Sample payslip — Grade 7</a></li>
+        <li><a href="#compliance-checks">Minimum wage compliance checks</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ol>
+    </aside>
+
+    <div class="body">
+      <p>Bangladesh's RMG sector employs over 4 million workers, the majority in garment factories affiliated with BGMEA (Bangladesh Garment Manufacturers and Exporters Association) or BKMEA (Bangladesh Knitwear Manufacturers and Exporters Association). Every factory must pay at or above the wage board minimum — and every audit, whether by a buyer's code of conduct team, BGMEA, or the Department of Inspection for Factories and Establishments (DIFE), will check payroll records.</p>
+
+      <p>Configuring Odoo Payroll correctly for the BGMEA wage structure means: the right salary components, the right calculation rules, and minimum wage enforcement that prevents an employee ever being paid below the board rate. This guide covers the full configuration for the 8th Wage Board, effective December 1, 2023.</p>
+
+      <p class="pull">A garment factory that can't produce a compliant payslip in 60 seconds for any worker on demand has a payroll problem — not a records problem.</p>
+
+      <h2 id="wage-board">BGMEA 8th Wage Board — grade structure (2023)</h2>
+
+      <p>The 8th Wage Board for the RMG sector was declared effective December 1, 2023. It establishes 7 grades with the following minimum monthly wages. Factories may pay more than the minimum but cannot pay less:</p>
+
+      <table class="wage-table">
+        <thead>
+          <tr><th>Grade</th><th>Category</th><th>Min. Gross Wage (BDT/month)</th><th>Typical roles</th></tr>
+        </thead>
+        <tbody>
+          <tr class="grade-7">
+            <td class="grade-num">7</td>
+            <td>Unskilled / Helper</td>
+            <td class="wage-amt">12,500</td>
+            <td>Floor helpers, cleaning, material movers, trainee workers</td>
+          </tr>
+          <tr>
+            <td class="grade-num">6</td>
+            <td>Semi-skilled</td>
+            <td class="wage-amt">13,175</td>
+            <td>Assistant operators, fabric checkers, new machinists</td>
+          </tr>
+          <tr>
+            <td class="grade-num">5</td>
+            <td>Skilled (junior)</td>
+            <td class="wage-amt">13,510</td>
+            <td>Machine operators (sewing, cutting), quality checkers</td>
+          </tr>
+          <tr>
+            <td class="grade-num">4</td>
+            <td>Skilled (mid)</td>
+            <td class="wage-amt">14,230</td>
+            <td>Senior machine operators, lead checkers, sample operators</td>
+          </tr>
+          <tr>
+            <td class="grade-num">3</td>
+            <td>Highly skilled</td>
+            <td class="wage-amt">15,416</td>
+            <td>Senior quality controllers, pattern makers, technical operators</td>
+          </tr>
+          <tr>
+            <td class="grade-num">2</td>
+            <td>Technician / Supervisor (junior)</td>
+            <td class="wage-amt">17,510</td>
+            <td>Line supervisors, junior technicians, maintenance staff</td>
+          </tr>
+          <tr>
+            <td class="grade-num">1</td>
+            <td>Supervisor / Senior Technician</td>
+            <td class="wage-amt">20,393</td>
+            <td>Senior supervisors, production in-charges, senior technicians</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="callout">
+        <span class="tag">Compliance note</span>
+        <p>The figures above are the <strong>minimum wages</strong> as declared by the 8th Wage Board. Always verify the latest figures with the BGMEA circular or the Bangladesh Gazette notification, as the wage board declaration is the legally binding reference. Some buyer compliance programs (especially EU and US brands) require wages above the minimum as part of their supplier code of conduct. These above-minimum wages are negotiated per factory and must also be reflected correctly in Odoo payroll.</p>
+      </div>
+
+      <h2 id="salary-structure">Setting up the salary structure in Odoo</h2>
+
+      <div class="step-flow">
+        <div class="step">
+          <div class="step-num"><span>1</span></div>
+          <div class="step-body">
+            <h4>Create the salary structure type</h4>
+            <p>Go to <strong>Payroll → Configuration → Salary Structure Types → New</strong>. Name it <code>RMG — Bangladesh Labour Act</code>. Country: Bangladesh. Default schedule: Monthly. This structure type groups all salary structures for workers under the Bangladesh Labour Act — both wage board workers and salaried staff can use this type.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num"><span>2</span></div>
+          <div class="step-body">
+            <h4>Create the wage board salary structure</h4>
+            <p>Under the structure type, create: <strong>Payroll → Configuration → Salary Structures → New</strong>. Name: <code>BGMEA Wage Board — 8th (2023)</code>. Type: RMG — Bangladesh Labour Act. This is the structure that will be assigned to all wage board worker contracts. Salaried management staff get a separate structure (e.g., "Management — Bangladesh Monthly").</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num"><span>3</span></div>
+          <div class="step-body">
+            <h4>Create wage board contracts per grade</h4>
+            <p>Each grade requires a contract template (or you create individual contracts). For each employee, their contract specifies: <code>Salary Structure</code> = BGMEA Wage Board 8th, <code>Wage</code> = the gross monthly wage for their grade (or above — but never below). The wage field on the contract is the gross wage that the salary rules use as the calculation base.</p>
+          </div>
+        </div>
+      </div>
+
+      <h2 id="salary-rules">Salary rules — basic, HRA, medical, transport</h2>
+
+      <p>The BGMEA wage structure breaks the total wage into components. The wage board specifies approximate proportions; exact breakdown varies by factory (confirmed with BGMEA during wage board declaration):</p>
+
+      <div class="rule-list">
+        <div class="rule-head">
+          <span>Component</span>
+          <span>Odoo code</span>
+          <span>Formula / rule</span>
+        </div>
+        <div class="rule-row">
+          <div class="rr-name">Basic Salary</div>
+          <div class="rr-code">BASIC</div>
+          <div class="rr-formula">Typically 56–60% of gross. Formula: <code>contract.wage * 0.57</code>. This percentage should match your factory's registered wage structure — confirm with BGMEA at the time of wage board registration. Basic is the reference for PF, gratuity, and overtime calculation.</div>
+        </div>
+        <div class="rule-row">
+          <div class="rr-name">House Rent Allowance</div>
+          <div class="rr-code">HRA</div>
+          <div class="rr-formula">40% of Basic Salary per Labour Act. Formula: <code>result_rules['BASIC'][0].total * 0.40</code>. This references the Basic salary rule result to compute HRA — ensuring HRA automatically adjusts when basic changes.</div>
+        </div>
+        <div class="rule-row">
+          <div class="rr-name">Medical Allowance</div>
+          <div class="rr-code">MED</div>
+          <div class="rr-formula">Fixed BDT 750/month per 8th Wage Board (or as updated by the board). Formula: <code>750.0</code>. Do not make this a percentage — the wage board specifies a fixed amount. Update when the wage board changes.</div>
+        </div>
+        <div class="rule-row">
+          <div class="rr-name">Transport Allowance</div>
+          <div class="rr-code">TRANS</div>
+          <div class="rr-formula">Fixed BDT 500/month per 8th Wage Board or factory policy. Formula: <code>500.0</code>. Some factories pay higher transport for remote shifts or night shift workers — configure as a separate rule if differentiated.</div>
+        </div>
+        <div class="rule-row">
+          <div class="rr-name">Attendance Bonus</div>
+          <div class="rr-code">ATT_BONUS</div>
+          <div class="rr-formula">Many RMG factories pay a monthly attendance incentive (BDT 200–500) for workers with zero absent days. Formula: <code>inputs.ATT_BONUS.amount</code> — driven by an input line on the payslip (set to the bonus amount if employee had perfect attendance, 0 otherwise).</div>
+        </div>
+        <div class="rule-row">
+          <div class="rr-name">Overtime Pay</div>
+          <div class="rr-code">OT</div>
+          <div class="rr-formula">OT Rate = Basic ÷ 208 × 2 × OT hours. Formula: <code>(result_rules['BASIC'][0].total / 208) * 2 * inputs.OT_HOURS.amount</code>. OT_HOURS is a payslip input line for the month's total overtime hours. Must be ≥ 0 and validated against attendance records.</div>
+        </div>
+        <div class="rule-row">
+          <div class="rr-name">Gross Salary</div>
+          <div class="rr-code">GROSS</div>
+          <div class="rr-formula">Total of all earnings before deductions. Category: Earnings. Formula: Basic + HRA + Medical + Transport + Attendance Bonus + OT. This is the line that appears as "Gross" on the payslip and is used for PF and income tax calculations.</div>
+        </div>
+      </div>
+
+      <h2 id="overtime">Overtime — Bangladesh Labour Act rules</h2>
+
+      <p>Under the <strong>Bangladesh Labour Act, 2006 (Section 108)</strong>, overtime rules for manufacturing workers:</p>
+
+      <ul>
+        <li><strong>Normal working hours:</strong> 8 hours/day, 48 hours/week (6 days)</li>
+        <li><strong>Maximum overtime:</strong> 2 hours/day, not exceeding 12 hours/week under normal circumstances</li>
+        <li><strong>OT rate:</strong> Twice the basic hourly rate (not twice the gross hourly rate)</li>
+        <li><strong>Basic hourly rate:</strong> Monthly Basic ÷ 208 hours (26 days × 8 hours)</li>
+        <li><strong>OT payment date:</strong> Must be paid with the monthly salary — cannot be deferred</li>
+        <li><strong>Record keeping:</strong> Overtime register (Form 21 under the Labour Act) must be maintained and available for DIFE inspection</li>
+      </ul>
+
+      <p>In Odoo, overtime hours are typically entered as a payslip input (manual entry by the HR team from the overtime register) or, if Odoo Attendance is integrated with a biometric machine, calculated automatically from clock-in/clock-out data. For factories with 500+ workers, the biometric-to-Odoo integration is highly recommended — manual OT entry at that scale is error-prone and a compliance risk.</p>
+
+      <h2 id="deductions">Deductions — PF, income tax, and other</h2>
+
+      <table class="wage-table">
+        <thead>
+          <tr><th>Deduction</th><th>Rate / Rule</th><th>Odoo salary rule code</th><th>Applies to</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Provident Fund (PF) — Employee</strong></td>
+            <td>5% of Basic (or company policy — often 5–10%)</td>
+            <td><code>PF_EMP</code></td>
+            <td>Workers with PF membership. PF is not mandatory for all workers under Bangladesh law but is common in BGMEA factories and required by many buyer CoC programs.</td>
+          </tr>
+          <tr>
+            <td><strong>Provident Fund (PF) — Employer</strong></td>
+            <td>Matching 5% of Basic (employer contribution)</td>
+            <td><code>PF_EMP_CONTRIB</code></td>
+            <td>Employer PF contribution — this is a payroll cost (shown on payslip as a note or separate employer cost line, not a deduction from employee gross).</td>
+          </tr>
+          <tr>
+            <td><strong>Income Tax (Withholding)</strong></td>
+            <td>As per NBR annual tax slabs (first BDT 3.5 lakh/year exempt for male; BDT 4 lakh for female & third gender, as of 2024-25)</td>
+            <td><code>INCOME_TAX</code></td>
+            <td>Only workers earning above the tax-free threshold. For Grade 7 workers at BDT 12,500/month (BDT 1.5 lakh/year), no income tax applies — they are below the exemption threshold.</td>
+          </tr>
+          <tr>
+            <td><strong>Worker Welfare Fund</strong></td>
+            <td>0.5% of net profit per the Bangladesh Labour Welfare Foundation Act (employer obligation, not employee deduction)</td>
+            <td>N/A — journal entry, not payslip</td>
+            <td>Employer statutory contribution — handled in accounting, not in individual payslips.</td>
+          </tr>
+          <tr>
+            <td><strong>Absent deduction</strong></td>
+            <td>Daily rate × absent days. Daily rate = Gross ÷ 26 working days</td>
+            <td><code>ABSENT_DED</code></td>
+            <td>Workers who were absent without approved leave. Formula: <code>-(contract.wage / 26) * inputs.ABSENT_DAYS.amount</code></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2 id="payslip-sample">Sample payslip — Grade 7 worker (minimum wage)</h2>
+
+      <p>What a Grade 7 worker's payslip looks like in Odoo at the 8th Wage Board minimum (BDT 12,500 gross, 0 absent days, 20 OT hours, PF member):</p>
+
+      <div class="payslip">
+        <div class="payslip-head">
+          <div class="ph-title">Monthly Payslip — Grade 7 Helper</div>
+          <div class="ph-grade">Grade 7 · BDT 12,500 Gross</div>
+        </div>
+        <div class="payslip-row">
+          <span class="pr-label">Basic Salary (57% of gross)</span>
+          <span class="pr-amount">7,125</span>
+        </div>
+        <div class="payslip-row">
+          <span class="pr-label">House Rent Allowance (40% of basic)</span>
+          <span class="pr-amount">2,850</span>
+        </div>
+        <div class="payslip-row">
+          <span class="pr-label">Medical Allowance</span>
+          <span class="pr-amount">750</span>
+        </div>
+        <div class="payslip-row">
+          <span class="pr-label">Transport Allowance</span>
+          <span class="pr-amount">500</span>
+        </div>
+        <div class="payslip-row">
+          <span class="pr-label">Overtime Pay (20 hrs × 7,125/208 × 2)</span>
+          <span class="pr-amount">1,369</span>
+        </div>
+        <div class="payslip-row total">
+          <span class="pr-label">Gross Earnings</span>
+          <span class="pr-amount">12,594</span>
+        </div>
+        <div class="payslip-row deduction">
+          <span class="pr-label">PF — Employee Contribution (5% of basic)</span>
+          <span class="pr-amount">−356</span>
+        </div>
+        <div class="payslip-row deduction">
+          <span class="pr-label">Income Tax</span>
+          <span class="pr-amount">Nil</span>
+        </div>
+        <div class="payslip-row total">
+          <span class="pr-label">Net Pay</span>
+          <span class="pr-amount">12,238</span>
+        </div>
+      </div>
+
+      <p>Note: The gross in this example exceeds BDT 12,500 because it includes overtime. The minimum wage (12,500) applies to the base monthly wage before overtime. Overtime is always additional. The basic salary split (57%) in the example is illustrative — your factory's registered split should match BGMEA records for your grade structure.</p>
+
+      <h2 id="compliance-checks">Minimum wage compliance checks in Odoo</h2>
+
+      <p>Odoo doesn't automatically enforce wage board minimums as a hard constraint. These checks should be built into your HR workflow:</p>
+
+      <ul>
+        <li><strong>Contract minimum check:</strong> When creating a contract, add a note in the Notes field or use Odoo's contract approval workflow to require HR manager sign-off for any contract below the grade's minimum wage. The wage grade field on the contract (custom or via job position) should trigger a validation rule — configurable by an Odoo developer in 1–2 hours.</li>
+        <li><strong>Monthly payroll audit:</strong> Before confirming payslips, export the payroll report (Payroll → Reporting → Payslip Analysis) and filter by employees whose net salary is less than their grade minimum. Investigate any records — this can indicate attendance deductions that have brought the net below minimum wage (which is not legally permitted — attendance deductions cannot reduce pay below the legal minimum).</li>
+        <li><strong>BGMEA salary statement:</strong> BGMEA factories must submit a monthly salary statement to BGMEA showing total wage payment for the month. This is generated from Odoo's payroll summary report. The aggregated figures must match the bank transfer records for wage payment.</li>
+      </ul>
+
+      <div class="callout">
+        <span class="tag">Linked reading</span>
+        <p>BGMEA payroll compliance is tightly connected to the HR module's leave management, which controls how absent days flow into payroll deductions. For the full HR and payroll configuration — including leave policies, PF, and gratuity — see the <a href="0016-odoo-hr-payroll-bangladesh.html" style="color:var(--accent)">Odoo HR & Payroll Bangladesh setup guide</a>. For RMG factories navigating a wage board change — which involves updating contracts, recalculating arrears, and communicating changes to workers — the change management approach in <a href="0007-change-management-isnt-a-memo.html" style="color:var(--accent)">Change management isn't a memo</a> is directly applicable. <a href="../index.html#contact" style="color:var(--accent)">Need help setting up BGMEA-compliant payroll in Odoo? Get in touch →</a></p>
+      </div>
+
+      <h2 id="faq">Frequently asked questions</h2>
+
+      <h3>What is the BGMEA 8th Wage Board minimum wage in Bangladesh?</h3>
+      <p>The 8th Wage Board, effective December 1, 2023, sets the minimum monthly wage for Grade 7 (unskilled helper) at BDT 12,500. The full 7-grade scale ranges from BDT 12,500 (Grade 7) to BDT 20,393 (Grade 1). All RMG factories affiliated with BGMEA or BKMEA must pay at or above these minimums. Paying below the minimum wage violates the Bangladesh Labour Act 2006 and BGMEA affiliation terms, and can result in buyer audit failures, export restrictions, and legal action from DIFE.</p>
+
+      <h3>How do I set up BGMEA wage grades in Odoo Payroll?</h3>
+      <p>Create one Salary Structure named "BGMEA Wage Board 8th (2023)" under a structure type "RMG — Bangladesh Labour Act". Add salary rules for: Basic Salary (57% of contract wage), House Rent (40% of basic), Medical (fixed BDT 750), Transport (fixed BDT 500), Overtime (basic/208 × 2 × OT hours input), and deductions (PF 5% of basic, absent deduction per day). Each employee gets a contract with their grade's minimum gross wage (or above) and this salary structure. Odoo computes the payslip automatically using these rules.</p>
+
+      <h3>How is overtime calculated in Bangladesh RMG under the Labour Act?</h3>
+      <p>Overtime rate = Basic Salary ÷ 208 hours × 2. Normal hours are 208/month (26 days × 8 hours). Maximum overtime under the Labour Act is 2 hours/day (12 hours/week), paid at double the basic hourly rate — not double the gross hourly rate. The OT hours for the month are entered as a payslip input (from the overtime register or from biometric data in Odoo Attendance). OT must be paid with the monthly salary — it cannot be carried forward to next month.</p>
+
+      <h3>Is PF (Provident Fund) mandatory for garment workers in Bangladesh?</h3>
+      <p>PF is not universally mandatory under Bangladesh labour law for all private sector workers — it is required if your factory has 100+ workers and has been in operation for 5+ years, per the Bangladesh Labour Act provisions. However, many BGMEA-affiliated factories implement PF voluntarily as a worker welfare measure, and many buyer code of conduct programs require it as a minimum standard. If your factory operates a PF scheme, both the employee (minimum 5% of basic) and employer (matching contribution) must participate. Configure both as salary rules in Odoo — employee PF as a deduction, employer PF as a payroll cost posted to the PF liability account.</p>
+    </div>
+  </article>
+
+  <footer>
+    <div class="shell">
+      <div class="post-foot">
+        <span class="eyebrow">Continue exploring</span>
+        <div class="next">
+          <a class="next-card" href="0021-epz-sez-compliance-odoo-bangladesh.html">
+            <span class="dir">Older · 0021</span>
+            <h4>EPZ & SEZ Compliance in Odoo</h4>
+            <p>Bonded warehouse, duty-free raw material tracking, and BEPZA reporting for Bangladesh export zones.</p>
+            <span class="arrow">→</span>
+          </a>
+          <a class="next-card" href="../index.html#lab">
+            <span class="dir">All articles</span>
+            <h4>Browse the full Lab</h4>
+            <p>22 guides, essays, and templates on Odoo ERP and business analysis in Bangladesh.</p>
+            <span class="arrow">→</span>
+          </a>
+        </div>
+      </div>
+      <div class="foot">
+        <span>© 2026 Mehedi Hasan · Lab / 0022</span>
+        <span><a href="../index.html#lab">↑ Back to lab index</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="_toc.js" defer></script>
+</body>
+
+</html>

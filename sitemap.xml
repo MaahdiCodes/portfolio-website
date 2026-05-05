@@ -33,6 +33,46 @@
     <priority>0.9</priority>
   </url>
 
+  <!-- Target: bgmea wage board odoo, bgmea payroll bangladesh, rmg payroll odoo -->
+  <url>
+    <loc>https://mhasan.me/lab/0022-bgmea-wage-board-odoo-payroll</loc>
+    <lastmod>2026-05-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Target: epz compliance odoo bangladesh, sez odoo bangladesh, bonded warehouse odoo -->
+  <url>
+    <loc>https://mhasan.me/lab/0021-epz-sez-compliance-odoo-bangladesh</loc>
+    <lastmod>2026-05-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Target: lc management odoo bangladesh, letter of credit odoo, lc workflow bangladesh -->
+  <url>
+    <loc>https://mhasan.me/lab/0020-lc-management-odoo-bangladesh</loc>
+    <lastmod>2026-05-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Target: hs code odoo bangladesh, customs management odoo bangladesh, hs code export bangladesh -->
+  <url>
+    <loc>https://mhasan.me/lab/0019-hs-code-customs-odoo-bangladesh</loc>
+    <lastmod>2026-05-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Target: mushak 6.3 odoo, mushak vat odoo bangladesh, nbr mushak odoo -->
+  <url>
+    <loc>https://mhasan.me/lab/0018-mushak-63-odoo-bangladesh</loc>
+    <lastmod>2026-05-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
   <!-- Target: odoo crm bangladesh, odoo sales bangladesh exporters -->
   <url>
     <loc>https://mhasan.me/lab/0017-odoo-sales-crm-bangladesh</loc>

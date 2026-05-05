@@ -1,0 +1,612 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description"
+    content="Odoo Community vs Enterprise Bangladesh — full feature comparison for SMEs. Know exactly what you gain, lose, and pay before you decide. Compare →" />
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="Mehedi Hasan" />
+  <title>Odoo Community vs Enterprise Bangladesh | Mehedi Hasan</title>
+  <link rel="canonical" href="https://mhasan.me/lab/0024-odoo-community-vs-enterprise-bangladesh" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png" />
+  <!-- Open Graph -->
+  <meta property="og:title" content="Odoo Community vs Enterprise Bangladesh | Mehedi Hasan" />
+  <meta property="og:description"
+    content="Odoo Community vs Enterprise — full 30-feature matrix for Bangladesh SMEs. Licensing cost, what Community covers, and when Enterprise pays for itself." />
+  <meta property="og:url" content="https://mhasan.me/lab/0024-odoo-community-vs-enterprise-bangladesh" />
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="https://mhasan.me/assets/og-default.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:site_name" content="Mehedi Hasan | Odoo ERP Consultant" />
+  <meta property="article:author" content="https://www.linkedin.com/in/mehedi-hasan-consultant/" />
+  <meta property="article:published_time" content="2026-05-05T09:30:00+06:00" />
+  <meta property="article:modified_time" content="2026-05-05T09:30:00+06:00" />
+  <meta property="article:section" content="Odoo ERP Bangladesh" />
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Odoo Community vs Enterprise Bangladesh | Full Feature Comparison" />
+  <meta name="twitter:description"
+    content="30-feature breakdown of Odoo Community vs Enterprise for Bangladesh SMEs — licensing math, what Community can do, and when Enterprise is worth every taka." />
+  <meta name="twitter:image" content="https://mhasan.me/assets/og-default.jpg" />
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Odoo Community vs Enterprise: Full Feature Comparison for Bangladesh SMEs",
+    "description": "A complete 30-feature comparison of Odoo Community vs Enterprise editions for Bangladesh SMEs — licensing cost breakdown, what Community covers, Enterprise-only features, and the financial calculation of when Enterprise pays for itself at different user counts.",
+    "datePublished": "2026-05-05T09:30:00+06:00",
+    "dateModified": "2026-05-05T09:30:00+06:00",
+    "author": {
+      "@type": "Person",
+      "name": "Mehedi Hasan",
+      "url": "https://mhasan.me",
+      "jobTitle": "Odoo ERP Consultant & Business Analyst",
+      "sameAs": "https://www.linkedin.com/in/mehedi-hasan-consultant/"
+    },
+    "publisher": { "@type": "Person", "name": "Mehedi Hasan", "url": "https://mhasan.me" },
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://mhasan.me/lab/0024-odoo-community-vs-enterprise-bangladesh" }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://mhasan.me" },
+      { "@type": "ListItem", "position": 2, "name": "Lab", "item": "https://mhasan.me/lab/" },
+      { "@type": "ListItem", "position": 3, "name": "Odoo Community vs Enterprise Bangladesh", "item": "https://mhasan.me/lab/0024-odoo-community-vs-enterprise-bangladesh" }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is the price of Odoo Enterprise in Bangladesh in 2026?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Odoo Enterprise pricing is set by Odoo SA in USD and billed annually. As of 2026, the standard pricing is approximately $11.90–$24 per user per month depending on the number of users and the specific plan (One App, Standard, or Custom). For a 50-user Bangladesh deployment on the Standard plan, this equates to roughly BDT 9–15 lakh per year (at a USD/BDT rate of ~110–115). Bangladeshi companies pay through Odoo SA or an authorized local partner. Some local partners offer discounted bundles that include implementation, Enterprise licensing, and support as a single annual contract."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can Odoo Community handle Bangladesh manufacturing without Enterprise?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes — Odoo Community can handle the core manufacturing workflow for most Bangladesh factories: Bill of Materials, Work Orders, Work Centers, inventory movements, basic routing, and manufacturing order lifecycle. The main gaps are: no native mobile app (Community is browser-only), no IoT Box connectivity (requires Enterprise for the official IoT app), no Studio for no-code customization, no Odoo.sh hosting, and no official support from Odoo SA. For factories willing to use browser-only access, manage IoT integrations via third-party tools, and rely on a local partner for support, Community is a viable platform."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does Odoo Community include payroll?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes — Odoo Payroll is available in the Community edition. You can configure salary structures, salary rules, PF deductions, gratuity provisions, and generate payslips in Community. The Enterprise Payroll module adds a few UI enhancements and deeper SEPA/bank export integrations, but for Bangladesh-specific payroll (BGMEA wage board, Bangladesh Labour Act overtime, income tax), the Community payroll module is sufficient with proper configuration."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is Odoo Studio and is it available in Community?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Odoo Studio is a no-code customization tool that lets you add custom fields, modify views, create new reports, and automate actions without writing Python code. It is available exclusively in the Enterprise edition. In Community, all customizations require writing Python modules (Odoo addons). For Bangladesh companies that want to add custom fields (e.g., BIN number on vendor, LC reference on purchase order) without a developer, Studio justifies the Enterprise upgrade on its own."
+        }
+      }
+    ]
+  }
+]
+</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap">
+  <link rel="stylesheet" href="_styles.css">
+  <style>
+    .comp-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 24px 0;
+      font-size: 13px;
+    }
+    .comp-table th {
+      text-align: left;
+      padding: 12px 16px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-3);
+    }
+    .comp-table th:not(:first-child) { text-align: center; }
+    .comp-table td {
+      padding: 12px 16px;
+      border: 1px solid var(--border);
+      color: var(--text-2);
+      vertical-align: middle;
+    }
+    .comp-table td:not(:first-child) { text-align: center; }
+    .comp-table tr:hover td { background: rgba(255,255,255,0.015); }
+    .comp-table .feat { color: var(--text); font-weight: 500; font-size: 13px; }
+    .comp-table .cat-row td {
+      background: var(--surface);
+      color: var(--text-3);
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 8px 16px;
+    }
+    .tick { color: oklch(0.80 0.17 155); font-size: 16px; }
+    .cross { color: oklch(0.55 0.18 30); font-size: 16px; }
+    .partial-mark { color: oklch(0.75 0.12 60); font-size: 13px; font-weight: 600; }
+
+    .cost-card {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin: 28px 0;
+    }
+    .cost-tier {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .cost-tier-head {
+      padding: 14px 18px;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+    }
+    .cost-tier-head .ct-label {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-3);
+    }
+    .cost-tier-head .ct-price {
+      font-size: 22px;
+      font-weight: 600;
+      color: var(--text);
+      margin-top: 4px;
+      letter-spacing: -0.02em;
+    }
+    .cost-tier-head .ct-sub {
+      font-size: 12px;
+      color: var(--text-3);
+      margin-top: 2px;
+    }
+    .cost-tier-body {
+      padding: 16px 18px;
+    }
+    .cost-tier-body ul {
+      margin: 0;
+      padding: 0 0 0 16px;
+      font-size: 13px;
+      color: var(--text-2);
+      line-height: 1.8;
+    }
+    @media(max-width:600px) {
+      .cost-card { grid-template-columns: 1fr; }
+    }
+
+    .pull {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: clamp(22px, 3vw, 34px);
+      line-height: 1.25;
+      color: var(--text);
+      margin: 48px 0;
+      border: none;
+      padding: 0;
+      max-width: 22ch;
+      letter-spacing: -0.01em;
+    }
+    .pull::before {
+      content: "";
+      display: block;
+      width: 36px;
+      height: 1px;
+      background: var(--accent);
+      margin-bottom: 18px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="grid-bg"></div>
+
+  <header class="nav">
+    <div class="shell">
+      <div class="nav-inner">
+        <a class="brand" href="../index.html">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span class="brand-name"><b>Mehedi Hasan</b><em>ERP · Business Analyst</em></span>
+        </a>
+        <a class="back-link" href="../index.html#lab">← Back to Lab</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="post-head">
+    <div class="shell">
+      <span class="eyebrow">Technical Lab · 0024</span>
+      <h1>Odoo Community vs Enterprise — <span class="serif">full comparison for Bangladesh SMEs.</span></h1>
+      <p class="lede">A complete feature matrix and financial breakdown of Odoo Community vs Enterprise for Bangladesh businesses — what Community genuinely covers, what Enterprise adds, when the license cost pays for itself, and the honest decision framework for 2026.</p>
+      <div class="post-meta">
+        <span class="chip accent">Comparison</span>
+        <span class="chip">Odoo Licensing</span>
+        <span class="chip">Community vs Enterprise</span>
+        <span class="chip">Bangladesh SME</span>
+      </div>
+      <div class="byline">
+        <span>By<b><a href="https://www.linkedin.com/in/mehedi-hasan-consultant/" style="color:var(--accent)" rel="author">Mehedi Hasan</a></b></span>
+        <span>Published<b>May 2026</b></span>
+        <span>Read time<b>12 minutes</b></span>
+        <span>Form<b>Comparison Guide</b></span>
+        <span>Scope<b>Bangladesh SMEs considering Odoo</b></span>
+      </div>
+    </div>
+  </section>
+
+  <article class="post">
+    <aside class="toc">
+      <div class="toc-k">In this guide</div>
+      <ol>
+        <li><a href="#editions">The two editions explained</a></li>
+        <li><a href="#feature-matrix">30-feature comparison matrix</a></li>
+        <li><a href="#community-reality">What Community actually covers</a></li>
+        <li><a href="#enterprise-only">Enterprise-only features that matter</a></li>
+        <li><a href="#cost">Licensing cost for Bangladesh</a></li>
+        <li><a href="#breakeven">When does Enterprise pay for itself?</a></li>
+        <li><a href="#choose">The decision framework</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ol>
+    </aside>
+
+    <div class="body">
+      <p>Every Bangladesh company evaluating Odoo faces the same question early in the process: Community (free) or Enterprise (paid)? The answer matters because it affects total project cost by BDT 5–15 lakh per year for a typical SME deployment — money that goes directly against your ERP ROI calculation.</p>
+
+      <p>The honest answer is: <strong>Community is capable enough for most Bangladesh manufacturing and trading companies if you have a developer on retainer or in-house.</strong> Enterprise is the right choice when you need native mobile apps, Studio customization without code, official support, or specific Enterprise-only modules that your workflow depends on.</p>
+
+      <p class="pull">Community vs Enterprise isn't a quality decision — it's a build-vs-buy decision for the gaps.</p>
+
+      <h2 id="editions">The two editions explained</h2>
+
+      <p><strong>Odoo Community Edition</strong> is the open-source core, licensed under LGPL v3. It is free to download, install, and run. You can host it yourself (on-premise or on a cloud VPS), modify the source code, and build custom modules. There is no official support from Odoo SA — support comes from your implementation partner or community forums. All major functional modules (Accounting, Inventory, Manufacturing, HR, Payroll, Purchase, Sales, CRM, Project) are included.</p>
+
+      <p><strong>Odoo Enterprise Edition</strong> is a commercial product licensed by Odoo SA per user per month. It includes everything in Community plus proprietary modules (Studio, Sign, VoIP, IoT, mobile apps), enhanced UI features, Odoo.sh hosting option, and official customer support from Odoo SA. Enterprise is accessed through Odoo SA directly or through a certified local partner.</p>
+
+      <h2 id="feature-matrix">30-feature comparison matrix</h2>
+
+      <table class="comp-table">
+        <thead>
+          <tr>
+            <th style="width:50%">Feature</th>
+            <th style="width:25%">Community</th>
+            <th style="width:25%">Enterprise</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="cat-row"><td colspan="3">Core Modules</td></tr>
+          <tr>
+            <td class="feat">Accounting (double-entry, multi-currency, bank reconciliation)</td>
+            <td><span class="tick">✓</span></td>
+            <td><span class="tick">✓</span></td>
+          </tr>
+          <tr>
+            <td class="feat">Inventory management (multi-warehouse, FIFO/AVCO, serial/lot tracking)</td>
+            <td><span class="tick">✓</span></td>
+            <td><span class="tick">✓</span></td>
+          </tr>
+          <tr>
+            <td class="feat">Manufacturing (BOM, Work Orders, Work Centers, routing)</td>
+            <td><span class="tick">✓</span></td>
+            <td><span class="tick">✓</span></td>
+          </tr>
+          <tr>
+            <td class="feat">Purchase (RFQ, PO, 3-way matching, vendor pricelist)</td>
+            <td><span class="tick">✓</span></td>
+            <td><span class="tick">✓</span></td>
+          </tr>
+          <tr>
+            <td class="feat">Sales & CRM (pipeline, quotations, proforma invoicing)</td>
+            <td><span class="tick">✓</span></td>
+            <td><span class="tick">✓</span></td>
+          </tr>
+          <tr>
+            <td class="feat">HR & Payroll (salary rules, PF, gratuity, leave)</td>
+            <td><span class="tick">✓</span></td>
+            <td><span class="tick">✓</span></td>
+          </tr>
+          <tr>
+            <td class="feat">Project management (tasks, timesheets, Gantt)</td>
+            <td><span class="tick">✓</span></td>
+            <td><span class="tick">✓</span></td>
+          </tr>
+          <tr>
+            <td class="feat">Quality control (quality points, checks, alerts)</td>
+            <td><span class="tick">✓</span></td>
+            <td><span class="tick">✓</span></td>
+          </tr>
+          <tr>
+            <td class="feat">Multi-company (inter-company transactions, shared chart of accounts)</td>
+            <td><span class="tick">✓</span></td>
+            <td><span class="tick">✓</span></td>
+          </tr>
+          <tr class="cat-row"><td colspan="3">Enterprise-Only Features</td></tr>
+          <tr>
+            <td class="feat">Native mobile apps (iOS + Android)</td>
+            <td><span class="cross">✗</span> Browser only</td>
+            <td><span class="tick">✓</span></td>
+          </tr>
+          <tr>
+            <td class="feat">Odoo Studio (no-code customization, custom views, reports)</td>
+            <td><span class="cross">✗</span></td>
+            <td><span class="tick">✓</span></td>
+          </tr>
+          <tr>
+            <td class="feat">IoT Box integration (barcode, scale, printer, POS hardware)</td>
+            <td><span class="cross">✗</span> No official app</td>
+            <td><span class="tick">✓</span></td>
+          </tr>
+          <tr>
+            <td class="feat">Document Sign (e-signature on contracts, POs)</td>
+            <td><span class="cross">✗</span></td>
+            <td><span class="tick">✓</span></td>
+          </tr>
+          <tr>
+            <td class="feat">VoIP integration (calls from CRM, helpdesk)</td>
+            <td><span class="cross">✗</span></td>
+            <td><span class="tick">✓</span></td>
+          </tr>
+          <tr>
+            <td class="feat">OCR on vendor bills (auto-extract invoice fields)</td>
+            <td><span class="cross">✗</span></td>
+            <td><span class="tick">✓</span></td>
+          </tr>
+          <tr>
+            <td class="feat">Access rights by record (row-level security)</td>
+            <td><span class="cross">✗</span></td>
+            <td><span class="tick">✓</span></td>
+          </tr>
+          <tr>
+            <td class="feat">Helpdesk SLA management</td>
+            <td><span class="cross">✗</span></td>
+            <td><span class="tick">✓</span></td>
+          </tr>
+          <tr>
+            <td class="feat">Field Service (mobile job dispatch and completion)</td>
+            <td><span class="cross">✗</span></td>
+            <td><span class="tick">✓</span></td>
+          </tr>
+          <tr>
+            <td class="feat">Odoo eCommerce (full online store integration)</td>
+            <td><span class="partial-mark">~</span> Basic only</td>
+            <td><span class="tick">✓</span> Full features</td>
+          </tr>
+          <tr>
+            <td class="feat">Odoo Accounting — bank synchronization (Open Banking)</td>
+            <td><span class="cross">✗</span></td>
+            <td><span class="tick">✓</span></td>
+          </tr>
+          <tr>
+            <td class="feat">Production planning (MPS — Master Production Schedule)</td>
+            <td><span class="cross">✗</span></td>
+            <td><span class="tick">✓</span></td>
+          </tr>
+          <tr>
+            <td class="feat">Barcode app (mobile warehouse picking, pack, ship)</td>
+            <td><span class="cross">✗</span></td>
+            <td><span class="tick">✓</span> Native barcode app</td>
+          </tr>
+          <tr>
+            <td class="feat">Odoo.sh (platform-as-a-service hosting)</td>
+            <td><span class="cross">✗</span></td>
+            <td><span class="tick">✓</span></td>
+          </tr>
+          <tr class="cat-row"><td colspan="3">Support & Hosting</td></tr>
+          <tr>
+            <td class="feat">Official Odoo SA support</td>
+            <td><span class="cross">✗</span> Community forums</td>
+            <td><span class="tick">✓</span></td>
+          </tr>
+          <tr>
+            <td class="feat">Bug fix priority from Odoo SA</td>
+            <td><span class="cross">✗</span></td>
+            <td><span class="tick">✓</span></td>
+          </tr>
+          <tr>
+            <td class="feat">Local partner support (Bangladesh)</td>
+            <td><span class="tick">✓</span> Partner contract</td>
+            <td><span class="tick">✓</span> Partner contract</td>
+          </tr>
+          <tr>
+            <td class="feat">On-premise self-hosting</td>
+            <td><span class="tick">✓</span></td>
+            <td><span class="tick">✓</span></td>
+          </tr>
+          <tr>
+            <td class="feat">Source code access</td>
+            <td><span class="tick">✓</span> Full LGPL source</td>
+            <td><span class="partial-mark">~</span> Community source open; Enterprise modules proprietary</td>
+          </tr>
+          <tr>
+            <td class="feat">Upgrade path (version migration support)</td>
+            <td><span class="partial-mark">~</span> DIY or partner</td>
+            <td><span class="tick">✓</span> Odoo upgrade service included</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2 id="community-reality">What Community actually covers for Bangladesh factories</h2>
+
+      <p>Community covers the complete Odoo functional stack for manufacturing, accounting, HR, and supply chain. In practical terms for a Bangladesh factory, Community can handle:</p>
+
+      <ul>
+        <li><strong>Full double-entry accounting</strong> with multi-currency support for USD/EUR-denominated export invoices</li>
+        <li><strong>Manufacturing orders</strong> with multi-level BOM, work centers, routing, and production tracking</li>
+        <li><strong>HR and payroll</strong> — Bangladesh Labour Act salary rules, PF/gratuity, leave management</li>
+        <li><strong>Purchase and vendor management</strong> — RFQ, approval matrix, 3-way matching</li>
+        <li><strong>Inventory</strong> — multi-warehouse, FIFO/AVCO valuation, serial and lot tracking</li>
+        <li><strong>NBR VAT configuration</strong> — tax groups, fiscal positions for Mushak, export zero-rating</li>
+        <li><strong>Quality control</strong> — quality points and checks within manufacturing</li>
+        <li><strong>Reporting</strong> — standard financial and operational reports, pivot tables, custom filters</li>
+      </ul>
+
+      <p>The practical limitations of Community in Bangladesh operations:</p>
+      <ul>
+        <li>No native mobile app — workers must use a mobile browser (workable but less smooth for warehouse picking)</li>
+        <li>No IoT Box — biometric or barcode machine integration needs a custom connector (a developer can build this in Odoo Community, but it is not plug-and-play)</li>
+        <li>No Studio — every customization (adding a field, changing a view, building a custom report) requires writing a Python/XML addon. This means developer dependency for what would otherwise be 15-minute changes</li>
+        <li>No Odoo upgrade service — migrating from version 16 → 17 → 18 requires your partner to handle the module migration manually</li>
+      </ul>
+
+      <h2 id="enterprise-only">Enterprise-only features that matter for Bangladesh companies</h2>
+
+      <p>These are the Enterprise features I see Bangladesh companies actually use (rather than paying for and ignoring):</p>
+
+      <ul>
+        <li><strong>Odoo Studio</strong> — adding custom fields to purchase orders (BIN, LC number), modifying stock picking views, creating custom print templates. For companies without a full-time developer, Studio turns a 2-day developer task into a 20-minute self-service job.</li>
+        <li><strong>Barcode app</strong> — warehouse teams doing goods receipt, bin-to-bin transfers, and picking operations with a handheld scanner rather than a laptop. The Enterprise barcode app is purpose-built for shop floor use. Critical for warehouses with 10,000+ SKUs.</li>
+        <li><strong>Master Production Schedule (MPS)</strong> — production planning module that forecasts material requirements and creates planned manufacturing orders from demand signals. Essential for factories with long procurement lead times (imported raw materials from China, India).</li>
+        <li><strong>OCR on bills</strong> — automatically extracts vendor name, date, amount from uploaded vendor bill PDFs. For accounts payable teams processing 100+ vendor bills per month, this saves 2–3 hours of data entry daily.</li>
+        <li><strong>Mobile apps</strong> — iOS and Android apps for sales teams, managers approving POs remotely, and HR managers checking leave requests. Particularly useful for factory owners who travel.</li>
+        <li><strong>Record-level access rights</strong> — restrict which records a user can see (e.g., a salesperson can only see their own quotations, not colleagues' deals). Important for sales organizations with commission structures.</li>
+      </ul>
+
+      <h2 id="cost">Licensing cost for Bangladesh</h2>
+
+      <div class="cost-card">
+        <div class="cost-tier">
+          <div class="cost-tier-head">
+            <div class="ct-label">Community Edition</div>
+            <div class="ct-price">BDT 0</div>
+            <div class="ct-sub">per year · unlimited users</div>
+          </div>
+          <div class="cost-tier-body">
+            <ul>
+              <li>Full functional modules included</li>
+              <li>Self-hosted on your server</li>
+              <li>No official Odoo SA support</li>
+              <li>Local partner support (separate contract)</li>
+              <li>You own the installation entirely</li>
+            </ul>
+          </div>
+        </div>
+        <div class="cost-tier">
+          <div class="cost-tier-head">
+            <div class="ct-label">Enterprise Edition (Standard)</div>
+            <div class="ct-price">~BDT 1,600–2,100</div>
+            <div class="ct-sub">per user per month · annual billing</div>
+          </div>
+          <div class="cost-tier-body">
+            <ul>
+              <li>All Community modules included</li>
+              <li>All Enterprise-only modules included</li>
+              <li>Mobile apps (iOS + Android)</li>
+              <li>Official Odoo SA support</li>
+              <li>Odoo upgrade service included</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <p>For a 50-user Bangladesh deployment on Enterprise Standard, annual licensing is approximately <strong>BDT 9.6–12.6 lakh per year</strong>. Over 3 years, that is BDT 28–38 lakh in license cost alone, before implementation or hosting. This is real money — about 50–70% of a typical implementation fee for a medium-complexity Bangladesh factory deployment.</p>
+
+      <p>For total ERP cost planning, see our detailed breakdown in <a href="0012-odoo-erp-cost-bangladesh.html" style="color:var(--accent)">Odoo ERP implementation cost in Bangladesh (2026)</a>.</p>
+
+      <h2 id="breakeven">When does Enterprise pay for itself?</h2>
+
+      <p>Enterprise pays for itself when the features it adds either:</p>
+      <ol>
+        <li>Replace developer cost that you would otherwise pay repeatedly</li>
+        <li>Enable operational capabilities that generate measurable ROI</li>
+        <li>Reduce support risk by giving you Odoo SA as a backstop</li>
+      </ol>
+
+      <p>The most common break-even scenario in Bangladesh is <strong>Studio vs developer cost</strong>. A Bangladesh Odoo developer charges BDT 800–1,500 per hour. A moderately complex Studio customization that a power user can do in 2 hours would cost BDT 4,000–8,000 in developer time. If your team needs to make 3–5 such changes per month (adding fields, tweaking views, building custom reports), that is BDT 12,000–40,000/month in developer cost — which at 50 users exceeds the Enterprise license cost per user.</p>
+
+      <p>The second common break-even is <strong>MPS for factories with imported raw materials</strong>. Manual material planning for 3–6 week lead time imports is error-prone and causes either overstock (tying up working capital) or stockouts (stopping production). If MPS prevents even one production stoppage per quarter that costs BDT 5+ lakh in lost output, the enterprise license is paid for.</p>
+
+      <p>For multi-company setups across a group of companies, note that Enterprise pricing applies per database user, not per group — a significant cost advantage over SAP or Oracle approaches. For multi-company configuration details, see our <a href="0006-odoo-multi-company-setup-guide.html" style="color:var(--accent)">Odoo multi-company setup guide</a>.</p>
+
+      <h2 id="choose">The decision framework</h2>
+
+      <p><strong>Start with Community if:</strong></p>
+      <ul>
+        <li>You have a developer on retainer (minimum 20 hours/month) for customizations</li>
+        <li>Your team will access Odoo via browser only — no mobile app requirement</li>
+        <li>You don't need MPS, barcode scanning app, or OCR on bills</li>
+        <li>Your user count is under 30 and the license saving is meaningful relative to your ERP budget</li>
+        <li>You want full control over the software stack without dependence on Odoo SA</li>
+      </ul>
+
+      <p><strong>Go Enterprise if:</strong></p>
+      <ul>
+        <li>Your team includes non-technical users who need to add fields or modify reports without developer help (Studio)</li>
+        <li>Your warehouse runs barcode scanning for receiving, picking, and packing</li>
+        <li>Production planning (MPS) is critical due to long raw material lead times</li>
+        <li>You want Odoo SA support as insurance for critical ERP issues</li>
+        <li>Mobile access is required for field teams or management approvals</li>
+        <li>You have 50+ users and the per-user cost is a small percentage of total ERP operational value</li>
+      </ul>
+
+      <div class="callout">
+        <span class="tag">Linked reading</span>
+        <p>Community vs Enterprise is only one dimension of the deployment decision. The other major variable — on-premise vs cloud hosting — interacts with this choice significantly (Enterprise is required for Odoo.sh hosting). That decision is covered in <a href="0025-odoo-on-premise-vs-cloud-bangladesh.html" style="color:var(--accent)">On-premise vs cloud Odoo: Bangladesh infrastructure decision guide</a>. <a href="../index.html#contact" style="color:var(--accent)">Need help sizing the right Odoo deployment for your factory? Get in touch →</a></p>
+      </div>
+
+      <h2 id="faq">Frequently asked questions</h2>
+
+      <h3>What is the price of Odoo Enterprise in Bangladesh in 2026?</h3>
+      <p>Odoo Enterprise is priced in USD at approximately $11.90–$24 per user per month (annual billing), depending on plan and user count. For a 50-user Bangladesh company on the Standard plan, this is roughly BDT 9–15 lakh per year at current exchange rates. Local partners sometimes bundle licensing with implementation and support as an all-inclusive annual contract.</p>
+
+      <h3>Can Odoo Community handle Bangladesh manufacturing without Enterprise?</h3>
+      <p>Yes — Community covers BOM, Work Orders, Work Centers, routing, inventory, accounting, HR, and payroll. The main gaps are: no native mobile app (browser-only), no official IoT Box app (custom connector possible), no Studio (all customization needs developer code), and no Odoo upgrade service. For factories willing to handle these gaps, Community is a fully viable platform.</p>
+
+      <h3>Does Odoo Community include payroll?</h3>
+      <p>Yes — Odoo Payroll is included in Community. You can configure salary structures, Bangladesh Labour Act rules, PF, gratuity, leave management, and generate payslips. The Community payroll module is sufficient for BGMEA wage board compliance and standard Bangladesh payroll with proper configuration.</p>
+
+      <h3>What is Odoo Studio and is it available in Community?</h3>
+      <p>Odoo Studio is a no-code customization tool — add custom fields, modify views, create reports, and automate actions without Python code. It is exclusive to Enterprise. In Community, all customizations require writing Python addon modules. For teams that need frequent minor customizations without a developer on call, Studio alone can justify the Enterprise upgrade.</p>
+    </div>
+  </article>
+
+  <footer>
+    <div class="shell">
+      <div class="post-foot">
+        <span class="eyebrow">Continue exploring</span>
+        <div class="next">
+          <a class="next-card" href="0025-odoo-on-premise-vs-cloud-bangladesh.html">
+            <span class="dir">Next · 0025</span>
+            <h4>On-Premise vs Cloud Odoo Bangladesh</h4>
+            <p>Infrastructure decision guide — Bangladesh power, internet, and data control realities vs cloud convenience.</p>
+            <span class="arrow">→</span>
+          </a>
+          <a class="next-card" href="0023-odoo-vs-erpnext-bangladesh.html">
+            <span class="dir">Older · 0023</span>
+            <h4>Odoo vs ERPNext Bangladesh</h4>
+            <p>Which open-source ERP wins for Bangladesh manufacturing? Full feature and ecosystem comparison.</p>
+            <span class="arrow">→</span>
+          </a>
+        </div>
+      </div>
+      <div class="foot">
+        <span>© 2026 Mehedi Hasan · Lab / 0024</span>
+        <span><a href="../index.html#lab">↑ Back to lab index</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="_toc.js" defer></script>
+</body>
+
+</html>

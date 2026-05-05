@@ -1,0 +1,563 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description"
+    content="Odoo vs ERPNext Bangladesh for manufacturing — real comparison of features, cost, local support, and ecosystem for SMEs in 2026. Choose right →" />
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="Mehedi Hasan" />
+  <title>Odoo vs ERPNext Bangladesh | Manufacturing | Mehedi Hasan</title>
+  <link rel="canonical" href="https://mhasan.me/lab/0023-odoo-vs-erpnext-bangladesh" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png" />
+  <!-- Open Graph -->
+  <meta property="og:title" content="Odoo vs ERPNext Bangladesh | Manufacturing | Mehedi Hasan" />
+  <meta property="og:description"
+    content="Odoo vs ERPNext for Bangladesh manufacturing — honest comparison of modules, total cost, local implementation ecosystem, and compliance support in 2026." />
+  <meta property="og:url" content="https://mhasan.me/lab/0023-odoo-vs-erpnext-bangladesh" />
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="https://mhasan.me/assets/og-default.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:site_name" content="Mehedi Hasan | Odoo ERP Consultant" />
+  <meta property="article:author" content="https://www.linkedin.com/in/mehedi-hasan-consultant/" />
+  <meta property="article:published_time" content="2026-05-05T09:00:00+06:00" />
+  <meta property="article:modified_time" content="2026-05-05T09:00:00+06:00" />
+  <meta property="article:section" content="Odoo ERP Bangladesh" />
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Odoo vs ERPNext Bangladesh | Manufacturing ERP 2026" />
+  <meta name="twitter:description"
+    content="Odoo vs ERPNext Bangladesh — features, cost, ecosystem, and manufacturing module depth. Which open-source ERP wins for Bangladesh SMEs?" />
+  <meta name="twitter:image" content="https://mhasan.me/assets/og-default.jpg" />
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Odoo vs ERPNext Bangladesh: Which One for Manufacturing?",
+    "description": "A hands-on comparison of Odoo and ERPNext for Bangladesh manufacturing companies — covering modules, total cost of ownership, local implementation partners, Bangladesh compliance support, and which platform wins for RMG, textile, and cycle export factories.",
+    "datePublished": "2026-05-05T09:00:00+06:00",
+    "dateModified": "2026-05-05T09:00:00+06:00",
+    "author": {
+      "@type": "Person",
+      "name": "Mehedi Hasan",
+      "url": "https://mhasan.me",
+      "jobTitle": "Odoo ERP Consultant & Business Analyst",
+      "sameAs": "https://www.linkedin.com/in/mehedi-hasan-consultant/"
+    },
+    "publisher": { "@type": "Person", "name": "Mehedi Hasan", "url": "https://mhasan.me" },
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://mhasan.me/lab/0023-odoo-vs-erpnext-bangladesh" }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://mhasan.me" },
+      { "@type": "ListItem", "position": 2, "name": "Lab", "item": "https://mhasan.me/lab/" },
+      { "@type": "ListItem", "position": 3, "name": "Odoo vs ERPNext Bangladesh", "item": "https://mhasan.me/lab/0023-odoo-vs-erpnext-bangladesh" }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Is ERPNext free for Bangladesh businesses?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "ERPNext Community Edition is completely free and open-source under the GNU GPL v3 license. There are no per-user license fees. You pay for hosting (a server costs BDT 3,000–8,000/month on a local cloud provider or BDT 40,000–150,000 one-time for an on-premise server) and for implementation/customization work by a developer or consultant. Frappe Cloud (managed hosting by Frappe) starts at $25/month. The total cost is typically lower than Odoo Enterprise but higher than Odoo Community once you factor in the same hosting and implementation costs."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Which ERP has better manufacturing support — Odoo or ERPNext?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Odoo's Manufacturing module is more mature and feature-rich for complex production environments. It supports multi-level Bills of Materials, work center routing, production scheduling, real-time WIP tracking, quality control integration, and IoT Box connectivity for shop floor data capture. ERPNext's manufacturing module covers BOM, Work Orders, and Job Cards but lacks the depth of Odoo's routing engine, scrap management, and quality module integration. For Bangladesh RMG and textile factories with complex production flows — multiple work centers, sub-contracted operations, quality holds — Odoo is the stronger choice."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does ERPNext support Bangladesh VAT (Mushak) and NBR compliance?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "ERPNext has a generic tax configuration framework that can be adapted for Bangladesh VAT (Mushak 6.3). However, there is no out-of-the-box Bangladesh localization for Mushak forms, NBR BIN, or EPZ fiscal positions in the official ERPNext distribution. You would need a Bangladesh-specific customization (app or custom frappe app) to generate Mushak 6.3 reports. Odoo similarly requires configuration for Mushak compliance, but there is a larger pool of Bangladesh Odoo consultants who have done this configuration repeatedly across multiple factories."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How many Odoo vs ERPNext implementation partners are there in Bangladesh?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "As of 2026, there are approximately 8–12 active Odoo implementation firms in Bangladesh (Dhaka and Chittagong), ranging from small boutique consultancies to mid-sized IT companies. ERPNext has a smaller ecosystem — roughly 3–5 firms with demonstrated ERPNext deployments in Bangladesh, mostly in Dhaka. This means Odoo offers more competitive pricing, more reference sites to visit, and a deeper talent pool for custom development. ERPNext's Bangladesh community is growing, driven by the Indian ERPNext ecosystem spillover, but it is still significantly smaller."
+        }
+      }
+    ]
+  }
+]
+</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap">
+  <link rel="stylesheet" href="_styles.css">
+  <style>
+    /* comparison table */
+    .comp-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 24px 0;
+      font-size: 13px;
+    }
+    .comp-table th {
+      text-align: left;
+      padding: 12px 16px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-3);
+    }
+    .comp-table th:not(:first-child) { text-align: center; }
+    .comp-table td {
+      padding: 13px 16px;
+      border: 1px solid var(--border);
+      color: var(--text-2);
+      vertical-align: middle;
+      line-height: 1.5;
+    }
+    .comp-table td:not(:first-child) { text-align: center; }
+    .comp-table tr:hover td { background: rgba(255,255,255,0.015); }
+    .comp-table .feat { color: var(--text); font-weight: 500; }
+    .comp-table .win { color: oklch(0.80 0.17 155); font-weight: 600; }
+    .comp-table .lose { color: oklch(0.55 0.18 30); }
+    .comp-table .draw { color: oklch(0.75 0.12 60); }
+    .comp-table th.col-odoo { color: oklch(0.80 0.17 155); }
+    .comp-table th.col-erp { color: oklch(0.65 0.14 260); }
+
+    /* verdict card */
+    .verdict {
+      margin: 32px 0;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    .verdict-head {
+      padding: 12px 20px;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-3);
+    }
+    .verdict-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+    .verdict-col {
+      padding: 20px 24px;
+      border-right: 1px solid var(--border);
+    }
+    .verdict-col:last-child { border-right: none; }
+    .verdict-col h4 {
+      margin: 0 0 10px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text);
+    }
+    .verdict-col h4 .badge {
+      display: inline-block;
+      font-size: 10px;
+      font-family: var(--mono);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 2px 7px;
+      border-radius: 4px;
+      margin-left: 6px;
+      vertical-align: middle;
+    }
+    .badge-odoo { background: oklch(0.80 0.17 155 / 0.15); color: oklch(0.80 0.17 155); }
+    .badge-erp { background: oklch(0.65 0.14 260 / 0.15); color: oklch(0.65 0.14 260); }
+    .verdict-col ul {
+      margin: 0;
+      padding: 0 0 0 16px;
+      color: var(--text-2);
+      font-size: 13px;
+      line-height: 1.8;
+    }
+    @media(max-width:640px) {
+      .verdict-grid { grid-template-columns: 1fr; }
+      .verdict-col { border-right: none; border-bottom: 1px solid var(--border); }
+      .verdict-col:last-child { border-bottom: none; }
+    }
+
+    .pull {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: clamp(22px, 3vw, 34px);
+      line-height: 1.25;
+      color: var(--text);
+      margin: 48px 0;
+      padding: 0;
+      border: none;
+      max-width: 22ch;
+      letter-spacing: -0.01em;
+    }
+    .pull::before {
+      content: "";
+      display: block;
+      width: 36px;
+      height: 1px;
+      background: var(--accent);
+      margin-bottom: 18px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="grid-bg"></div>
+
+  <header class="nav">
+    <div class="shell">
+      <div class="nav-inner">
+        <a class="brand" href="../index.html">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span class="brand-name"><b>Mehedi Hasan</b><em>ERP · Business Analyst</em></span>
+        </a>
+        <a class="back-link" href="../index.html#lab">← Back to Lab</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="post-head">
+    <div class="shell">
+      <span class="eyebrow">Technical Lab · 0023</span>
+      <h1>Odoo vs ERPNext Bangladesh — <span class="serif">which one for manufacturing?</span></h1>
+      <p class="lede">A practitioner's comparison of Odoo and ERPNext for Bangladesh manufacturing companies in 2026 — covering module depth, total cost, local implementation ecosystem, Bangladesh compliance support, and the honest verdict for RMG, textile, and export factories.</p>
+      <div class="post-meta">
+        <span class="chip accent">Comparison</span>
+        <span class="chip">Odoo vs ERPNext</span>
+        <span class="chip">Manufacturing ERP</span>
+        <span class="chip">Bangladesh 2026</span>
+      </div>
+      <div class="byline">
+        <span>By<b><a href="https://www.linkedin.com/in/mehedi-hasan-consultant/" style="color:var(--accent)" rel="author">Mehedi Hasan</a></b></span>
+        <span>Published<b>May 2026</b></span>
+        <span>Read time<b>13 minutes</b></span>
+        <span>Form<b>Comparison Guide</b></span>
+        <span>Scope<b>Bangladesh manufacturing SMEs</b></span>
+      </div>
+    </div>
+  </section>
+
+  <article class="post">
+    <aside class="toc">
+      <div class="toc-k">In this guide</div>
+      <ol>
+        <li><a href="#background">Company background</a></li>
+        <li><a href="#quick-verdict">Quick verdict</a></li>
+        <li><a href="#feature-comparison">Full feature comparison</a></li>
+        <li><a href="#manufacturing">Manufacturing module depth</a></li>
+        <li><a href="#bangladesh-compliance">Bangladesh compliance support</a></li>
+        <li><a href="#ecosystem">Local ecosystem</a></li>
+        <li><a href="#cost">Total cost comparison</a></li>
+        <li><a href="#choose">Which to choose</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ol>
+    </aside>
+
+    <div class="body">
+      <p>Bangladesh's SME market now has two credible open-source ERP options: <strong>Odoo</strong> (Belgian, 12 million+ users globally) and <strong>ERPNext</strong> (Indian-origin, built on the Frappe framework, widely deployed in South Asia). Both are free to download. Both cover accounting, inventory, manufacturing, HR, and sales. But they are not interchangeable — and choosing the wrong one for a Bangladesh factory creates a 3–5 year headache that is expensive to undo.</p>
+
+      <p>This comparison is based on direct deployment experience across Bangladesh RMG, textile, and cycle export factories — not spec sheets.</p>
+
+      <p class="pull">The right ERP question isn't "which is more powerful?" — it's "which one will your team still be using in year three?"</p>
+
+      <h2 id="background">Company background</h2>
+
+      <p><strong>Odoo SA</strong> was founded in Belgium in 2005 (originally as TinyERP). It is now a privately held company headquartered in Louvain-la-Neuve, Belgium, with offices globally. Odoo has a dual licensing model: the Community Edition (LGPL) is free and open-source; the Enterprise Edition is commercial. As of 2026, Odoo has over 12 million users, 5,000+ apps in the marketplace, and a global partner network of 2,000+ firms.</p>
+
+      <p><strong>Frappe Technologies</strong> (India) developed ERPNext in 2008, originally as a Python/Frappe framework application. ERPNext is fully open-source (GNU GPL v3), with no commercial licensing tier — all features are available to everyone. Frappe offers hosted and support services. ERPNext is particularly strong in the Indian, Middle Eastern, and East African markets. Its Bangladesh presence is a spillover from the Indian SME ecosystem.</p>
+
+      <h2 id="quick-verdict">Quick verdict</h2>
+
+      <div class="verdict">
+        <div class="verdict-head">Who wins — at a glance</div>
+        <div class="verdict-grid">
+          <div class="verdict-col">
+            <h4>Choose Odoo <span class="badge badge-odoo">recommended</span></h4>
+            <ul>
+              <li>Complex manufacturing (multi-level BOM, routing, WIP)</li>
+              <li>Factories with 50–500+ users needing structured deployment</li>
+              <li>NBR VAT, Mushak, EPZ, and LC compliance requirements</li>
+              <li>Budget for Enterprise licensing ($11.90+/user/month)</li>
+              <li>Need local partner accountability and SLA</li>
+              <li>Planning to use IoT Box, barcode scanning, or POS</li>
+            </ul>
+          </div>
+          <div class="verdict-col">
+            <h4>Consider ERPNext <span class="badge badge-erp">situational</span></h4>
+            <ul>
+              <li>Small teams (under 25 users) with a strong in-house developer</li>
+              <li>Strict zero-license-cost budget with available IT talent</li>
+              <li>Simple production: BOM and basic work orders only</li>
+              <li>Familiar with Python/Frappe framework for customization</li>
+              <li>Not required to generate NBR-specific compliance reports</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <h2 id="feature-comparison">Full feature comparison</h2>
+
+      <table class="comp-table">
+        <thead>
+          <tr>
+            <th style="width:35%">Area</th>
+            <th class="col-odoo" style="width:32.5%">Odoo 17/18</th>
+            <th class="col-erp" style="width:32.5%">ERPNext v15</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="feat">Manufacturing module</td>
+            <td class="win">Full MRP — routing, WIP, scrap, quality integration</td>
+            <td class="draw">BOM, Work Orders, Job Cards — no routing engine</td>
+          </tr>
+          <tr>
+            <td class="feat">Inventory valuation</td>
+            <td class="win">FIFO, AVCO, Standard — configurable per product category</td>
+            <td class="draw">FIFO, AVCO — less granular category control</td>
+          </tr>
+          <tr>
+            <td class="feat">Accounting module</td>
+            <td class="win">Full double-entry, multi-currency, bank reconciliation, IFRS</td>
+            <td class="win">Full double-entry, multi-currency — comparable depth</td>
+          </tr>
+          <tr>
+            <td class="feat">HR & Payroll</td>
+            <td class="win">Salary rules, PF, gratuity, leave, attendance integration</td>
+            <td class="draw">HR and Payroll available but less configurable salary rules</td>
+          </tr>
+          <tr>
+            <td class="feat">Purchase management</td>
+            <td class="win">RFQ, 3-way match, approval matrix, vendor pricelist</td>
+            <td class="draw">Purchase Orders, basic approval — no tiered matrix</td>
+          </tr>
+          <tr>
+            <td class="feat">Project management</td>
+            <td class="win">Gantt, tasks, timesheets, milestone billing</td>
+            <td class="draw">Project module available, Gantt limited</td>
+          </tr>
+          <tr>
+            <td class="feat">CRM & Sales</td>
+            <td class="win">Pipeline, quotation, proforma invoice, multi-currency</td>
+            <td class="draw">CRM and Sales available — less export-workflow focus</td>
+          </tr>
+          <tr>
+            <td class="feat">Quality control</td>
+            <td class="win">Quality points, alerts, checks per manufacturing stage</td>
+            <td class="lose">No dedicated quality module — requires custom build</td>
+          </tr>
+          <tr>
+            <td class="feat">IoT Box / barcode</td>
+            <td class="win">Native IoT Box, barcode scanner integration, kiosk mode</td>
+            <td class="lose">No native IoT — requires third-party integration</td>
+          </tr>
+          <tr>
+            <td class="feat">Mobile app</td>
+            <td class="win">Native iOS + Android apps (Enterprise)</td>
+            <td class="draw">Mobile responsive web — no native app</td>
+          </tr>
+          <tr>
+            <td class="feat">App marketplace</td>
+            <td class="win">5,000+ apps on Odoo Apps Store</td>
+            <td class="draw">Frappe marketplace — smaller, growing</td>
+          </tr>
+          <tr>
+            <td class="feat">Customization language</td>
+            <td class="draw">Python (ORM), XML (views), JavaScript (frontend)</td>
+            <td class="draw">Python (Frappe framework), Jinja templates, JavaScript</td>
+          </tr>
+          <tr>
+            <td class="feat">Bangladesh VAT / Mushak</td>
+            <td class="draw">Configurable — no out-of-box Mushak template (requires setup)</td>
+            <td class="lose">No Bangladesh localization in core — requires custom app</td>
+          </tr>
+          <tr>
+            <td class="feat">Multi-company</td>
+            <td class="win">Native multi-company with inter-company transactions</td>
+            <td class="draw">Multi-company available but less mature</td>
+          </tr>
+          <tr>
+            <td class="feat">Reporting & BI</td>
+            <td class="win">Built-in pivot, graph, spreadsheet integration, custom reports</td>
+            <td class="draw">Report Builder, Query Report — less visual BI</td>
+          </tr>
+          <tr>
+            <td class="feat">License cost</td>
+            <td class="lose">Community: free · Enterprise: $11.90–24/user/month</td>
+            <td class="win">Completely free (GPL v3) — no per-user fee</td>
+          </tr>
+          <tr>
+            <td class="feat">Bangladesh partners</td>
+            <td class="win">8–12 active implementation firms</td>
+            <td class="lose">3–5 active implementation firms</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2 id="manufacturing">Manufacturing module depth</h2>
+
+      <p>This is where the comparison is most decisive for Bangladesh factories. Odoo's Manufacturing module is built for complex production environments:</p>
+
+      <ul>
+        <li><strong>Multi-level Bill of Materials:</strong> Phantom BOMs, sub-assemblies, kit products — all supported natively. For a garment factory with grey fabric → cutting → sewing → finishing as a multi-stage BOM, Odoo handles this correctly.</li>
+        <li><strong>Work Center routing:</strong> Define specific operations (e.g., "Cutting", "Sewing", "Finishing") that run sequentially or in parallel on defined work centers. Each step has time standards, capacity, and cost. ERPNext has Job Cards but lacks the routing engine — you cannot enforce operation sequence or plan capacity across work centers.</li>
+        <li><strong>Production scheduling:</strong> Odoo 17/18 includes a Gantt-based planning view for manufacturing orders, with drag-and-drop scheduling across work centers. ERPNext has no equivalent.</li>
+        <li><strong>Real-time WIP:</strong> Odoo tracks work-in-progress inventory by work center. When partially completed, components consumed and output produced are tracked live. ERPNext's work order doesn't have the same granularity.</li>
+        <li><strong>Quality integration:</strong> Odoo's Quality module integrates directly into manufacturing — quality checks can be triggered at any production stage. This is required for ISO-certified factories and buyer compliance programs. ERPNext requires a fully custom build for comparable quality functionality.</li>
+        <li><strong>Subcontracting:</strong> Odoo handles subcontracted operations (e.g., sending fabric to an external embroidery unit and receiving finished goods back) as a native workflow. ERPNext supports subcontracting but with fewer controls around partial deliveries and costing.</li>
+      </ul>
+
+      <p>For a Bangladesh cycle or RMG factory with 10–30 work centers, a real BOM structure, and buyer-required quality records, Odoo's manufacturing module is the clear choice. ERPNext is adequate for simple assembly — one-step BOM, one work order, done. Not for production complexity.</p>
+
+      <h2 id="bangladesh-compliance">Bangladesh compliance support</h2>
+
+      <p>Both platforms require configuration to support Bangladesh-specific compliance. Neither ships with pre-built Mushak forms:</p>
+
+      <ul>
+        <li><strong>NBR VAT (Mushak 6.3):</strong> Odoo's Tax Report can be configured to generate the data needed for Mushak 6.3 filing with proper chart-of-accounts setup. Multiple Bangladesh Odoo consultants have done this in production environments. ERPNext requires a custom Frappe app or significant configuration from scratch — fewer local experts have done it.</li>
+        <li><strong>EPZ / bonded warehouse:</strong> Odoo's inventory locations and fiscal positions handle EPZ bonded warehouse logic. ERPNext requires custom development.</li>
+        <li><strong>Letter of Credit:</strong> Odoo's Sales + Purchase modules with multi-currency can manage an LC workflow. ERPNext is weaker here — LC-specific document tracking requires customization on both platforms, but Odoo has a better base.</li>
+        <li><strong>BGMEA payroll:</strong> Odoo's salary rule engine handles wage board grade structures natively. ERPNext's payroll is simpler and requires more custom Python code for Bangladesh Labour Act overtime and PF rules.</li>
+      </ul>
+
+      <h2 id="ecosystem">Local ecosystem in Bangladesh</h2>
+
+      <p>Ecosystem matters enormously for an ERP decision. You are not just buying software — you are buying a community of people who can implement, support, and fix it in your local timezone and language.</p>
+
+      <ul>
+        <li><strong>Odoo Bangladesh ecosystem:</strong> Approximately 8–12 active firms as of 2026, ranging from small boutique consultancies to mid-sized IT firms. There are reference sites across RMG, textile, cycle export, pharmaceutical, and trading sectors. You can visit a running Odoo installation at a similar factory before signing a contract — this is invaluable.</li>
+        <li><strong>ERPNext Bangladesh ecosystem:</strong> Roughly 3–5 firms with demonstrated ERPNext deployments. Mostly Dhaka-based. The community is growing, benefiting from knowledge spillover from the large ERPNext India ecosystem, but it remains significantly smaller. Reference sites in manufacturing are limited.</li>
+        <li><strong>Talent pool:</strong> More Odoo developers available in Bangladesh for custom module development and bug fixes. ERPNext (Frappe) developers exist but in smaller numbers.</li>
+        <li><strong>Training:</strong> Odoo's global documentation and YouTube library is extensive in English. ERPNext has good documentation but less Bangladesh-specific content.</li>
+      </ul>
+
+      <h2 id="cost">Total cost comparison</h2>
+
+      <p>The licensing cost difference between Odoo Community (free) and ERPNext (free) is zero. The real cost is implementation, hosting, and ongoing support. Using Odoo Enterprise changes the calculation significantly:</p>
+
+      <table class="comp-table">
+        <thead>
+          <tr>
+            <th>Cost element</th>
+            <th class="col-odoo">Odoo Enterprise (50 users)</th>
+            <th class="col-erp">ERPNext (50 users)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="feat">Annual license fee</td>
+            <td>~BDT 9–15 lakh/year ($11.90–18/user/month)</td>
+            <td class="win">BDT 0 (GPL, no fee)</td>
+          </tr>
+          <tr>
+            <td class="feat">Hosting (on-premise server)</td>
+            <td>BDT 60,000–150,000 one-time (server hardware)</td>
+            <td>BDT 60,000–150,000 one-time (same hardware)</td>
+          </tr>
+          <tr>
+            <td class="feat">Implementation (manufacturing setup)</td>
+            <td>BDT 10–45 lakh (scope-dependent)</td>
+            <td>BDT 8–30 lakh (fewer specialists = higher hourly risk)</td>
+          </tr>
+          <tr>
+            <td class="feat">Annual support contract</td>
+            <td>BDT 3–8 lakh/year</td>
+            <td>BDT 2–5 lakh/year (if you can find a support partner)</td>
+          </tr>
+          <tr>
+            <td class="feat">Custom development (Bangladesh compliance)</td>
+            <td class="win">Lower — more reusable modules exist</td>
+            <td>Higher — more bespoke work needed</td>
+          </tr>
+          <tr>
+            <td class="feat">3-year TCO estimate (50 users)</td>
+            <td>BDT 55–90 lakh</td>
+            <td class="draw">BDT 35–60 lakh (if implementation goes well)</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>ERPNext's lower 3-year TCO is real but comes with a caveat: the "if implementation goes well" qualifier is a meaningful risk given the smaller local ecosystem. A difficult ERPNext implementation that stalls and requires re-work can easily exceed Odoo Enterprise TCO. For the cost analysis of a Bangladesh ERP go-live, see the detailed breakdown in our <a href="0005-erp-go-live-cost-manufacturing-bangladesh.html" style="color:var(--accent)">ERP go-live cost for Bangladesh manufacturing</a> article.</p>
+
+      <h2 id="choose">Which to choose</h2>
+
+      <p><strong>Choose Odoo if:</strong> you have a manufacturing environment with complexity (multi-level BOM, routing, quality, WIP), more than 25 users, Bangladesh compliance requirements (Mushak, EPZ, BGMEA payroll), and a budget that can accommodate Enterprise licensing or a well-resourced Community deployment. The larger local ecosystem reduces project risk — you can get references, competitive quotes, and capable support.</p>
+
+      <p><strong>Consider ERPNext if:</strong> you have a technical team in-house that knows Python/Frappe, your production is simple (one-step BOM, basic work orders), your user count is small, and zero license cost is a hard constraint. ERPNext is genuinely good software — it powers large deployments globally. The risk in Bangladesh specifically is the thin local ecosystem, which means less competitive pricing and fewer qualified implementers to choose from.</p>
+
+      <p><strong>What I recommend in practice:</strong> For Bangladesh manufacturing companies in the 25–500 user range, Odoo is the more de-risked choice in 2026. The wider local ecosystem, deeper manufacturing module, and better compliance tooling outweigh the license cost advantage of ERPNext for all but the most cost-constrained deployments. For a broader ERP comparison including SAP and Tally, see our <a href="0004-odoo-vs-sap-vs-tally-bangladesh.html" style="color:var(--accent)">Odoo vs SAP vs Tally comparison for Bangladesh SMEs</a>.</p>
+
+      <div class="callout">
+        <span class="tag">Need help deciding?</span>
+        <p>The right ERP platform decision depends on your specific factory floor complexity, user count, compliance requirements, and team capabilities. <a href="../index.html#contact" style="color:var(--accent)">Get in touch for a no-obligation 30-minute assessment →</a></p>
+      </div>
+
+      <h2 id="faq">Frequently asked questions</h2>
+
+      <h3>Is ERPNext free for Bangladesh businesses?</h3>
+      <p>ERPNext Community Edition is completely free under GNU GPL v3 — no per-user license fees ever. You pay for hosting (BDT 3,000–8,000/month on a cloud VPS or BDT 40,000–150,000 one-time for an on-premise server) and for implementation work. Frappe Cloud managed hosting starts at $25/month. Total cost over 3 years is typically lower than Odoo Enterprise but comparable to Odoo Community once implementation and support are included.</p>
+
+      <h3>Which ERP has better manufacturing support — Odoo or ERPNext?</h3>
+      <p>Odoo's Manufacturing module is substantially more mature for complex production. It supports multi-level BOM, work center routing, production scheduling, real-time WIP, quality integration, and IoT Box connectivity. ERPNext handles BOM and basic Work Orders but lacks a routing engine, quality module, and production scheduling Gantt. For Bangladesh RMG and textile factories with multiple production stages, Odoo is the clear choice.</p>
+
+      <h3>Does ERPNext support Bangladesh VAT (Mushak) and NBR compliance?</h3>
+      <p>ERPNext can be configured for Bangladesh VAT but has no out-of-box Bangladesh localization (no Mushak 6.3 template, no NBR BIN field, no EPZ fiscal positions). You need a custom Frappe app. Odoo similarly requires configuration for Mushak, but there is a larger pool of Bangladesh Odoo consultants who have already built this configuration for production factories — reducing your setup time and risk.</p>
+
+      <h3>How many Odoo vs ERPNext implementation partners are there in Bangladesh?</h3>
+      <p>As of 2026, approximately 8–12 active Odoo implementation firms operate in Bangladesh. ERPNext has roughly 3–5 firms with demonstrated deployments. The larger Odoo ecosystem means more competitive pricing, more reference sites to visit before signing, and a deeper developer talent pool for customizations and long-term support.</p>
+    </div>
+  </article>
+
+  <footer>
+    <div class="shell">
+      <div class="post-foot">
+        <span class="eyebrow">Continue exploring</span>
+        <div class="next">
+          <a class="next-card" href="0024-odoo-community-vs-enterprise-bangladesh.html">
+            <span class="dir">Next · 0024</span>
+            <h4>Odoo Community vs Enterprise Bangladesh</h4>
+            <p>Full feature matrix and cost analysis — exactly what you gain and lose moving from Community to Enterprise.</p>
+            <span class="arrow">→</span>
+          </a>
+          <a class="next-card" href="0022-bgmea-wage-board-odoo-payroll.html">
+            <span class="dir">Older · 0022</span>
+            <h4>BGMEA Wage Board in Odoo Payroll</h4>
+            <p>Configure Bangladesh RMG payroll — 8th Wage Board grades, overtime, PF, and compliant payslips.</p>
+            <span class="arrow">→</span>
+          </a>
+        </div>
+      </div>
+      <div class="foot">
+        <span>© 2026 Mehedi Hasan · Lab / 0023</span>
+        <span><a href="../index.html#lab">↑ Back to lab index</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="_toc.js" defer></script>
+</body>
+
+</html>

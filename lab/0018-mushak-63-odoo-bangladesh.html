@@ -1,0 +1,629 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description"
+    content="Mushak 6.3 in Odoo — configure NBR VAT compliance for Bangladesh. Tax groups, fiscal positions & monthly return data. Configure it right →" />
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="Mehedi Hasan" />
+  <title>Mushak 6.3 Odoo Bangladesh | VAT Setup | Mehedi Hasan</title>
+  <link rel="canonical" href="https://mhasan.me/lab/0018-mushak-63-odoo-bangladesh" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png" />
+  <!-- Open Graph -->
+  <meta property="og:title" content="Mushak 6.3 Odoo Bangladesh | VAT Setup | Mehedi Hasan" />
+  <meta property="og:description"
+    content="Step-by-step guide to configuring Mushak 6.3 VAT returns in Odoo for Bangladesh — tax group setup, fiscal positions, output/input VAT accounts, and generating Mushak data from the Tax Report." />
+  <meta property="og:url" content="https://mhasan.me/lab/0018-mushak-63-odoo-bangladesh" />
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="https://mhasan.me/assets/og-default.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:site_name" content="Mehedi Hasan | Odoo ERP Consultant" />
+  <meta property="article:author" content="https://www.linkedin.com/in/mehedi-hasan-consultant/" />
+  <meta property="article:published_time" content="2026-05-05T09:00:00+06:00" />
+  <meta property="article:modified_time" content="2026-05-05T09:00:00+06:00" />
+  <meta property="article:section" content="Odoo ERP Bangladesh" />
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Mushak 6.3 Odoo Bangladesh | VAT Setup" />
+  <meta name="twitter:description"
+    content="Configure Mushak 6.3 monthly VAT returns in Odoo for Bangladesh — tax groups, fiscal positions, and NBR-compliant output/input VAT accounts." />
+  <meta name="twitter:image" content="https://mhasan.me/assets/og-default.jpg" />
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Mushak 6.3 in Odoo: Step-by-Step Configuration for Bangladesh VAT Compliance",
+    "description": "A practitioner's guide to configuring Mushak 6.3 (monthly VAT return) in Odoo for Bangladesh — covering NBR tax group setup, output and input VAT accounts, fiscal positions for exports, and generating Mushak 6.3 data from Odoo's Tax Report.",
+    "datePublished": "2026-05-05T09:00:00+06:00",
+    "dateModified": "2026-05-05T09:00:00+06:00",
+    "author": {
+      "@type": "Person",
+      "name": "Mehedi Hasan",
+      "url": "https://mhasan.me",
+      "jobTitle": "Odoo ERP Consultant & Business Analyst",
+      "sameAs": "https://www.linkedin.com/in/mehedi-hasan-consultant/"
+    },
+    "publisher": { "@type": "Person", "name": "Mehedi Hasan", "url": "https://mhasan.me" },
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://mhasan.me/lab/0018-mushak-63-odoo-bangladesh" }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://mhasan.me" },
+      { "@type": "ListItem", "position": 2, "name": "Lab", "item": "https://mhasan.me/lab/" },
+      { "@type": "ListItem", "position": 3, "name": "Mushak 6.3 Odoo Bangladesh", "item": "https://mhasan.me/lab/0018-mushak-63-odoo-bangladesh" }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is Mushak 6.3 in Bangladesh?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Mushak 6.3 is the monthly VAT return form required under the Value Added Tax and Supplementary Duty Act, 2012 of Bangladesh. Every VAT-registered business must submit it to the NBR (National Board of Revenue) by the 15th of the following month. It summarises: total output VAT collected on sales, total input VAT paid on eligible purchases, and the net VAT payable or credit carried forward. In Odoo, this data is generated through the Tax Report (Accounting → Reporting → Tax Report)."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does Odoo have a built-in Mushak 6.3 report for Bangladesh?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Odoo does not ship a pre-built Mushak 6.3 PDF template out of the box for Bangladesh. However, if your taxes are correctly configured with the right tax groups and accounts, the Odoo Tax Report generates all the figures you need to manually complete Mushak 6.3. Some Bangladesh Odoo partners offer a custom Mushak 6.3 report module that generates the NBR-formatted PDF directly from Odoo. For most SMEs, exporting the Tax Report data and transferring it to the Mushak form is sufficient."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I configure zero-VAT for export sales in Odoo for Bangladesh?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Create a separate tax called 'VAT 0% (Export)' with a 0% rate and map it to the 'Export Sales' revenue account. Then create a Fiscal Position called 'Export — Zero VAT' and add a tax mapping rule: whenever the system tries to apply 'VAT 15%', replace it with 'VAT 0% (Export)'. Assign this fiscal position to every foreign customer in their Contact record. All invoices for that customer will then automatically apply 0% VAT — no manual override needed per invoice."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What accounts do I need in the chart of accounts for Mushak compliance?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "For NBR Mushak compliance in Odoo, you need at minimum: (1) Output VAT Payable — a current liability account where VAT collected on sales is credited; (2) Input VAT Recoverable — a current asset account where VAT paid on purchases is debited; (3) VAT Payable to NBR — a liability account used for the net VAT payment journal entry. These should match the account codes in your NBR-approved chart of accounts. Assign Output VAT to the tax's 'Tax Account' field and Input VAT to the purchase tax's tax account."
+        }
+      }
+    ]
+  }
+]
+</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap">
+  <link rel="stylesheet" href="_styles.css">
+  <style>
+    .pull {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: clamp(24px, 3vw, 36px);
+      line-height: 1.25;
+      color: var(--text);
+      margin: 48px 0;
+      padding: 0;
+      border: none;
+      max-width: 22ch;
+      letter-spacing: -0.01em;
+    }
+    .pull::before {
+      content: "";
+      display: block;
+      width: 36px;
+      height: 1px;
+      background: var(--accent);
+      margin-bottom: 18px;
+    }
+
+    /* step flow */
+    .step-flow {
+      margin: 28px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      counter-reset: step-counter;
+    }
+    .step {
+      display: grid;
+      grid-template-columns: 56px 1fr;
+      gap: 0;
+      position: relative;
+    }
+    .step:not(:last-child)::before {
+      content: "";
+      position: absolute;
+      left: 27px;
+      top: 52px;
+      bottom: 0;
+      width: 2px;
+      background: var(--border);
+    }
+    .step-num {
+      width: 56px;
+      padding-top: 4px;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .step-num span {
+      counter-increment: step-counter;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: 2px solid var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--mono);
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--accent);
+      background: var(--bg);
+      flex-shrink: 0;
+      z-index: 1;
+      position: relative;
+    }
+    .step-body {
+      padding: 0 0 36px 16px;
+    }
+    .step-body h4 {
+      margin: 6px 0 8px;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text);
+    }
+    .step-body p { margin: 0 0 8px; font-size: 13.5px; color: var(--text-2); line-height: 1.6; }
+    .step-body code {
+      font-family: var(--mono);
+      font-size: 12px;
+      background: oklch(0.80 0.17 155 / 0.08);
+      color: var(--accent);
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+
+    /* tax account table */
+    .tax-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 24px 0;
+      font-size: 13px;
+    }
+    .tax-table th {
+      text-align: left;
+      padding: 10px 14px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-3);
+      font-weight: 500;
+    }
+    .tax-table td {
+      padding: 12px 14px;
+      border: 1px solid var(--border);
+      color: var(--text-2);
+      vertical-align: top;
+      line-height: 1.5;
+    }
+    .tax-table td strong { color: var(--text); }
+    .tax-table td code {
+      font-family: var(--mono);
+      font-size: 11px;
+      background: oklch(0.80 0.17 155 / 0.08);
+      color: var(--accent);
+      padding: 1px 5px;
+      border-radius: 3px;
+    }
+    .tax-table tr:nth-child(even) td { background: oklch(0.98 0.005 155); }
+
+    /* fiscal position mapping */
+    .fp-map {
+      margin: 24px 0;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .fp-row {
+      display: grid;
+      grid-template-columns: 1fr 40px 1fr;
+      align-items: center;
+      padding: 14px 20px;
+      border-bottom: 1px solid var(--border);
+      gap: 12px;
+      font-size: 13px;
+    }
+    .fp-row:last-child { border-bottom: none; }
+    .fp-row .from { color: var(--text-2); }
+    .fp-row .arrow { text-align: center; color: var(--text-3); font-size: 16px; }
+    .fp-row .to { color: var(--accent); font-weight: 500; }
+    .fp-head {
+      display: grid;
+      grid-template-columns: 1fr 40px 1fr;
+      padding: 10px 20px;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-3);
+    }
+    @media(max-width:600px) {
+      .fp-row, .fp-head { grid-template-columns: 1fr; }
+      .fp-row .arrow { display: none; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="grid-bg"></div>
+
+  <header class="nav">
+    <div class="shell">
+      <div class="nav-inner">
+        <a class="brand" href="../index.html">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span class="brand-name"><b>Mehedi Hasan</b><em>ERP · Business Analyst</em></span>
+        </a>
+        <a class="back-link" href="../index.html#lab">← Back to Lab</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="post-head">
+    <div class="shell">
+      <span class="eyebrow">Technical Lab · 0018</span>
+      <h1>Mushak 6.3 in Odoo — <span class="serif">step-by-step NBR VAT configuration.</span></h1>
+      <p class="lede">How to configure Odoo so the Tax Report produces correct Mushak 6.3 data every month — tax groups, output/input VAT accounts, fiscal positions for zero-rated exports, and how to handle the monthly submission. Built from VAT audit experience across multiple Bangladesh manufacturing clients.</p>
+      <div class="post-meta">
+        <span class="chip accent">Compliance Guide</span>
+        <span class="chip">VAT · Mushak</span>
+        <span class="chip">NBR Bangladesh</span>
+        <span class="chip">Tax Configuration</span>
+      </div>
+      <div class="byline">
+        <span>By<b><a href="https://www.linkedin.com/in/mehedi-hasan-consultant/" style="color:var(--accent)" rel="author">Mehedi Hasan</a></b></span>
+        <span>Published<b>May 2026</b></span>
+        <span>Read time<b>12 minutes</b></span>
+        <span>Form<b>Setup Guide</b></span>
+        <span>Scope<b>VAT-registered Bangladesh businesses</b></span>
+      </div>
+    </div>
+  </section>
+
+  <article class="post">
+    <aside class="toc">
+      <div class="toc-k">In this guide</div>
+      <ol>
+        <li><a href="#what-is-mushak">What is Mushak 6.3</a></li>
+        <li><a href="#tax-groups">Tax group configuration</a></li>
+        <li><a href="#coa">Chart of accounts for VAT</a></li>
+        <li><a href="#tax-setup">Tax setup: 15%, SD & zero-rated</a></li>
+        <li><a href="#fiscal-positions">Fiscal positions for exports</a></li>
+        <li><a href="#tax-report">Running the Tax Report</a></li>
+        <li><a href="#common-errors">Common errors</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ol>
+    </aside>
+
+    <div class="body">
+      <p>Every VAT-registered business in Bangladesh must submit Mushak 6.3 by the 15th of the following month. The form shows NBR how much output VAT you collected, how much input VAT you can claim, and what you owe. Get it wrong and you face penalties, audit exposure, or — worse — pay more VAT than you legally owe because your input credits aren't being claimed.</p>
+
+      <p>Odoo doesn't ship a pre-built Mushak 6.3 report for Bangladesh. But if you configure taxes correctly, the Tax Report generates every number you need. This guide covers exactly that configuration — from tax group setup to fiscal positions to the monthly close process.</p>
+
+      <p class="pull">A misconfigured tax account means every invoice for the past 12 months has posted to the wrong place. The fix is worse than the original setup.</p>
+
+      <h2 id="what-is-mushak">What is Mushak 6.3 and what does it require?</h2>
+
+      <p>Mushak (মূসক) is the Bengali acronym for VAT — Mūlya Sanjojan Kar. Bangladesh's VAT law is the <strong>Value Added Tax and Supplementary Duty Act, 2012</strong>, administered by the National Board of Revenue (NBR). Under this law, VAT-registered businesses must:</p>
+
+      <ul>
+        <li>Collect <strong>15% VAT</strong> on taxable domestic sales (output VAT)</li>
+        <li>Pay VAT on eligible purchases — raw materials, services (input VAT)</li>
+        <li>Claim the difference: output VAT − input VAT = net VAT payable</li>
+        <li>Submit <strong>Mushak 6.3</strong> monthly by the 15th of the following month</li>
+        <li>Make the VAT payment to the NBR-designated bank account by the same date</li>
+      </ul>
+
+      <p>Mushak 6.3 requires the following data, which Odoo must be able to produce:</p>
+
+      <table class="tax-table">
+        <thead>
+          <tr><th>Mushak 6.3 Line</th><th>What it captures</th><th>Odoo source</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Output VAT (Sales)</strong></td>
+            <td>Total VAT collected on taxable sales during the month</td>
+            <td>Tax Report → Output VAT group</td>
+          </tr>
+          <tr>
+            <td><strong>Input VAT (Purchases)</strong></td>
+            <td>VAT paid on eligible purchases — claimable as credit</td>
+            <td>Tax Report → Input VAT group</td>
+          </tr>
+          <tr>
+            <td><strong>Supplementary Duty (SD)</strong></td>
+            <td>Additional duty on specified goods (not universally applicable)</td>
+            <td>Tax Report → SD group (if applicable)</td>
+          </tr>
+          <tr>
+            <td><strong>Net VAT Payable</strong></td>
+            <td>Output VAT minus Input VAT credit. Paid to NBR.</td>
+            <td>Calculated from the above</td>
+          </tr>
+          <tr>
+            <td><strong>Zero-rated / Exempt Sales</strong></td>
+            <td>Export sales (zero-rated) — shown separately, no output VAT</td>
+            <td>0% VAT tax on export invoices</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2 id="tax-groups">Tax group configuration</h2>
+
+      <p>Tax groups in Odoo control how taxes appear on the Tax Report. For Bangladesh, you need at minimum three tax groups — these are the buckets the report uses to aggregate your tax data:</p>
+
+      <p>Go to <strong>Accounting → Configuration → Tax Groups</strong> and create:</p>
+
+      <div class="step-flow">
+        <div class="step">
+          <div class="step-num"><span></span></div>
+          <div class="step-body">
+            <h4>Output VAT (Sales)</h4>
+            <p>Name: <code>Output VAT 15%</code> · This group collects all VAT charged on domestic sales. The Tax Report will show the total credit balance of the Output VAT Payable account under this group — that's your Mushak 6.3 output VAT figure.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num"><span></span></div>
+          <div class="step-body">
+            <h4>Input VAT (Purchases)</h4>
+            <p>Name: <code>Input VAT 15%</code> · This group collects VAT paid on eligible purchases — raw materials, consumables, and services used in making taxable supplies. The debit balance here is your claimable input VAT credit on Mushak 6.3.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num"><span></span></div>
+          <div class="step-body">
+            <h4>Zero-Rated (Export)</h4>
+            <p>Name: <code>VAT 0% Export</code> · This group collects your zero-rated export sales. These don't appear as output VAT, but Bangladesh law requires them to be declared separately in Mushak 6.3. Keeping them in their own group lets you pull the export sales value cleanly.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num"><span></span></div>
+          <div class="step-body">
+            <h4>Supplementary Duty (if applicable)</h4>
+            <p>Name: <code>Supplementary Duty</code> · Only needed if your products attract SD (e.g., cigarettes, petroleum, certain beverages). Most manufacturing and export businesses don't use this. Create it only if needed — don't add unnecessary complexity to your tax report.</p>
+          </div>
+        </div>
+      </div>
+
+      <h2 id="coa">Chart of accounts for VAT</h2>
+
+      <p>Three accounts are essential for Mushak compliance. These must exist in your chart of accounts before you configure taxes — the taxes reference these accounts for every journal entry:</p>
+
+      <table class="tax-table">
+        <thead>
+          <tr><th>Account name</th><th>Type</th><th>Suggested code</th><th>Purpose</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Output VAT Payable</strong></td>
+            <td>Current Liability</td>
+            <td><code>2110</code></td>
+            <td>Credited when you invoice a customer with 15% VAT. Balance = VAT you owe NBR from sales.</td>
+          </tr>
+          <tr>
+            <td><strong>Input VAT Recoverable</strong></td>
+            <td>Current Asset</td>
+            <td><code>1210</code></td>
+            <td>Debited when you receive a vendor bill with 15% VAT. Balance = VAT credit claimable against output VAT.</td>
+          </tr>
+          <tr>
+            <td><strong>VAT Payable to NBR</strong></td>
+            <td>Current Liability</td>
+            <td><code>2115</code></td>
+            <td>Used in the monthly journal entry that transfers the net VAT from the above two accounts before the NBR payment. Optional but recommended for clean closing.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="callout">
+        <span class="tag">Account codes</span>
+        <p>The account codes above are suggestions. Match them to your NBR-approved chart of accounts if you've already received one from your VAT Circle Office. Many Bangladesh manufacturing companies receive a prescribed chart from their auditor when registering for VAT — always align Odoo to that, not the other way around.</p>
+      </div>
+
+      <h2 id="tax-setup">Tax setup: 15% VAT, and zero-rated export</h2>
+
+      <p>Go to <strong>Accounting → Configuration → Taxes</strong>. You need two taxes for the basic setup:</p>
+
+      <div class="step-flow">
+        <div class="step">
+          <div class="step-num"><span></span></div>
+          <div class="step-body">
+            <h4>VAT 15% — Domestic Sales (Output)</h4>
+            <p>Tax Type: <code>Sales</code> · Computation: <code>Percentage of Price</code> · Amount: <code>15%</code> · Tax Group: <code>Output VAT 15%</code></p>
+            <p>In the <strong>Definition</strong> tab, add a distribution line: Account = <code>Output VAT Payable (2110)</code>, percentage 100%. This ensures every domestic sales invoice credits the correct liability account for Mushak.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num"><span></span></div>
+          <div class="step-body">
+            <h4>VAT 15% — Purchases (Input)</h4>
+            <p>Tax Type: <code>Purchase</code> · Computation: <code>Percentage of Price</code> · Amount: <code>15%</code> · Tax Group: <code>Input VAT 15%</code></p>
+            <p>Distribution line: Account = <code>Input VAT Recoverable (1210)</code>, percentage 100%. This ensures every vendor bill with VAT debits your recoverable account — building up the input credit you claim on Mushak 6.3.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num"><span></span></div>
+          <div class="step-body">
+            <h4>VAT 0% — Export Sales (Zero-Rated Output)</h4>
+            <p>Tax Type: <code>Sales</code> · Computation: <code>Percentage of Price</code> · Amount: <code>0%</code> · Tax Group: <code>VAT 0% Export</code></p>
+            <p>No distribution line needed (0% generates no monetary posting). This tax exists so export sales appear on the Tax Report in the zero-rated group — required for Mushak 6.3 disclosure. It is applied automatically via the Export Fiscal Position (see next section).</p>
+          </div>
+        </div>
+      </div>
+
+      <p>For most products, the default sales tax should be set to <strong>VAT 15%</strong> on the product record (or product category). This ensures 15% is applied automatically on all domestic invoices without manual selection per line.</p>
+
+      <h2 id="fiscal-positions">Fiscal positions for export sales</h2>
+
+      <p>Fiscal positions in Odoo automatically remap taxes based on the customer's country or explicit assignment. For Bangladesh exporters, you need one fiscal position that replaces 15% VAT with 0% on all export invoices.</p>
+
+      <p>Go to <strong>Accounting → Configuration → Fiscal Positions</strong> → New:</p>
+
+      <ul>
+        <li><strong>Name:</strong> Export — Zero VAT</li>
+        <li><strong>Auto-detect:</strong> optionally set Country = all countries except Bangladesh (so any foreign customer gets this automatically)</li>
+        <li><strong>Tax Mapping tab:</strong> add the following rule:</li>
+      </ul>
+
+      <div class="fp-map">
+        <div class="fp-head">
+          <span>Tax on invoice (from)</span>
+          <span></span>
+          <span>Mapped to (to)</span>
+        </div>
+        <div class="fp-row">
+          <div class="from">VAT 15% (Domestic Sales)</div>
+          <div class="arrow">→</div>
+          <div class="to">VAT 0% (Export Sales)</div>
+        </div>
+        <div class="fp-row">
+          <div class="from">VAT 15% (Purchases)</div>
+          <div class="arrow">→</div>
+          <div class="to"><em>no mapping — input VAT on purchase stays 15%</em></div>
+        </div>
+      </div>
+
+      <p>Assign this fiscal position to every foreign buyer in their <strong>Contact → Sales & Purchase tab → Fiscal Position</strong>. From that point on, every invoice for that buyer will automatically show 0% VAT — and the export sales value will flow into the zero-rated group on the Tax Report for Mushak 6.3 disclosure.</p>
+
+      <div class="callout">
+        <span class="tag">Linked reading</span>
+        <p>Fiscal positions interact directly with the <a href="0014-odoo-accounting-setup-bangladesh.html" style="color:var(--accent)">Odoo Accounting setup for Bangladesh</a> — specifically the chart of accounts and revenue account mapping. If your fiscal position maps accounts (not just taxes), also add the account mapping: Domestic Sales revenue → Export Sales revenue. This keeps your P&L segment reporting clean by separating domestic and export revenue without manual journal corrections.</p>
+      </div>
+
+      <h2 id="tax-report">Running the Tax Report to get Mushak 6.3 data</h2>
+
+      <p>Go to <strong>Accounting → Reporting → Tax Report</strong>. Set the date range to the reporting month (1st to last day). The report shows:</p>
+
+      <ul>
+        <li><strong>Output VAT 15% group</strong> → credit total = your total output VAT for the month</li>
+        <li><strong>Input VAT 15% group</strong> → debit total = your total input VAT credit for the month</li>
+        <li><strong>VAT 0% Export group</strong> → total export sales value (for Mushak 6.3 disclosure)</li>
+        <li><strong>Net balance</strong> = output VAT minus input VAT = net payable to NBR</li>
+      </ul>
+
+      <p>Transfer these figures to your Mushak 6.3 form. The NBR-prescribed format for the form is available on the NBR website — your VAT Circle Office can also provide the latest version.</p>
+
+      <p>After the Tax Report is confirmed and the Mushak form is submitted, pass the closing journal entry in Odoo:</p>
+
+      <ol>
+        <li>Debit: <strong>Output VAT Payable (2110)</strong> — the full output VAT amount</li>
+        <li>Credit: <strong>Input VAT Recoverable (1210)</strong> — the input VAT credit amount</li>
+        <li>Credit: <strong>VAT Payable to NBR (2115)</strong> — the net payable amount</li>
+      </ol>
+
+      <p>When the bank payment to NBR is made, debit <strong>VAT Payable to NBR (2115)</strong> and credit your <strong>Bank account</strong>. Both accounts will be zeroed out for the month.</p>
+
+      <h2 id="common-errors">Common errors — and how to fix them</h2>
+
+      <table class="tax-table">
+        <thead>
+          <tr><th>Error</th><th>Cause</th><th>Fix</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Tax Report shows wrong output VAT figure</strong></td>
+            <td>Some invoices have the wrong tax applied (or no tax), or the tax account is incorrect</td>
+            <td>Run Accounting → Reporting → General Ledger filtered to the Output VAT Payable account. Every credit should be a customer invoice VAT line. Investigate any unexpected entries.</td>
+          </tr>
+          <tr>
+            <td><strong>Export invoices show 15% VAT instead of 0%</strong></td>
+            <td>Fiscal position not assigned to the customer, or auto-detection not triggered</td>
+            <td>Check the customer Contact record → Sales & Purchase tab → Fiscal Position. If blank, assign "Export — Zero VAT" and re-confirm the invoice.</td>
+          </tr>
+          <tr>
+            <td><strong>Input VAT not appearing on Tax Report</strong></td>
+            <td>Vendor bills posted with no purchase tax, or tax posted to wrong account</td>
+            <td>For each vendor bill, verify the tax field on each product line. Many users post vendor bills without selecting the purchase tax — this is the most common gap in Bangladesh Odoo deployments.</td>
+          </tr>
+          <tr>
+            <td><strong>Tax Report doesn't match general ledger balances</strong></td>
+            <td>Manual journal entries bypassed the tax engine and posted directly to VAT accounts</td>
+            <td>Avoid posting directly to VAT accounts in manual journal entries. All VAT postings should flow through customer invoices and vendor bills. Investigate any manual entries to these accounts.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="callout">
+        <span class="tag">NBR compliance note</span>
+        <p>Bangladesh NBR VAT audits are increasingly data-driven. Auditors cross-check your Mushak 6.3 submission against your VAT registration data, bank statements, and sometimes your customers' Mushak 6.1 (purchase declarations). Having a clean Odoo Tax Report that matches your Mushak submission exactly is your best defence. If you need help setting up VAT compliance in Odoo from scratch, <a href="../index.html#contact" style="color:var(--accent)">get in touch and I'll review your tax configuration →</a></p>
+      </div>
+
+      <h2 id="faq">Frequently asked questions</h2>
+
+      <h3>What is Mushak 6.3 in Bangladesh?</h3>
+      <p>Mushak 6.3 is the monthly VAT return form under the VAT and Supplementary Duty Act, 2012. Every VAT-registered business submits it to NBR by the 15th of the following month. It shows output VAT collected on sales, input VAT paid on purchases (eligible for credit), and the net VAT payable. In Odoo, the data is produced by the Tax Report (Accounting → Reporting → Tax Report) — provided taxes are correctly configured with the right groups and accounts.</p>
+
+      <h3>Does Odoo have a built-in Mushak 6.3 report for Bangladesh?</h3>
+      <p>No — Odoo does not ship a pre-formatted Mushak 6.3 PDF. The Tax Report provides all the figures you need to complete the NBR form manually. Some Odoo partners in Bangladesh offer a custom Mushak 6.3 module that generates the NBR-formatted PDF directly; ask your implementation partner or search the Odoo App Store. For most SMEs, the manual approach (Tax Report → transfer to Mushak form) is sufficient and more auditable.</p>
+
+      <h3>How do I configure zero-VAT for export sales in Odoo?</h3>
+      <p>Create a 'VAT 0% Export' tax with 0% rate and assign it to the 'VAT 0% Export' tax group. Then create a Fiscal Position called 'Export — Zero VAT' with a tax mapping rule: VAT 15% → VAT 0% Export. Assign this fiscal position to every foreign buyer in their contact record. Odoo will then automatically apply 0% VAT on all invoices for those buyers — your export sales will appear in the zero-rated section of the Tax Report for Mushak 6.3 disclosure.</p>
+
+      <h3>What accounts do I need in the chart of accounts for Mushak compliance?</h3>
+      <p>At minimum: (1) Output VAT Payable — current liability, credited on every sales VAT posting; (2) Input VAT Recoverable — current asset, debited on every purchase VAT posting; (3) VAT Payable to NBR — optional intermediate liability for the monthly closing entry before paying NBR. Match these codes to your NBR-approved chart of accounts — don't invent new codes if your VAT Circle Office has prescribed a chart.</p>
+
+      <h3>Can I claim input VAT on all purchases in Bangladesh?</h3>
+      <p>No. Bangladesh VAT law restricts input tax credit. You can claim input VAT on purchases directly used to make taxable supplies (raw materials, production consumables, directly related services). You <em>cannot</em> claim input VAT on: staff meals, entertainment, personal use items, motor vehicles (in most cases), and purchases used to make exempt supplies. Odoo doesn't enforce these restrictions automatically — you must apply the correct tax or no tax on restricted purchase lines at the time of bill entry.</p>
+    </div>
+  </article>
+
+  <footer>
+    <div class="shell">
+      <div class="post-foot">
+        <span class="eyebrow">Continue exploring</span>
+        <div class="next">
+          <a class="next-card" href="0017-odoo-sales-crm-bangladesh.html">
+            <span class="dir">Older · 0017</span>
+            <h4>Odoo Sales & CRM Bangladesh</h4>
+            <p>B2B pipeline stages, proforma invoices for LC, and multi-currency configuration for Bangladesh exporters.</p>
+            <span class="arrow">→</span>
+          </a>
+          <a class="next-card" href="0019-hs-code-customs-odoo-bangladesh.html">
+            <span class="dir">Newer · 0019</span>
+            <h4>HS Code & Customs Management in Odoo</h4>
+            <p>Product HS code setup, customs fiscal positions, and export declarations for Bangladesh exporters.</p>
+            <span class="arrow">→</span>
+          </a>
+        </div>
+      </div>
+      <div class="foot">
+        <span>© 2026 Mehedi Hasan · Lab / 0018</span>
+        <span><a href="../index.html#lab">↑ Back to lab index</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="_toc.js" defer></script>
+</body>
+
+</html>

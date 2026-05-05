@@ -33,6 +33,46 @@
     <priority>0.9</priority>
   </url>
 
+  <!-- Target: sap b1 vs odoo bangladesh, sap business one vs odoo bangladesh, erp comparison bangladesh -->
+  <url>
+    <loc>https://mhasan.me/lab/0027-sap-b1-vs-odoo-bangladesh</loc>
+    <lastmod>2026-05-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Target: odoo 17 vs 18 upgrade bangladesh, odoo 16 vs 17 bangladesh, odoo version upgrade bangladesh -->
+  <url>
+    <loc>https://mhasan.me/lab/0026-odoo-16-17-18-upgrade-bangladesh</loc>
+    <lastmod>2026-05-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Target: odoo cloud vs on premise bangladesh, odoo hosting bangladesh, on premise odoo bangladesh -->
+  <url>
+    <loc>https://mhasan.me/lab/0025-odoo-on-premise-vs-cloud-bangladesh</loc>
+    <lastmod>2026-05-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Target: odoo community vs enterprise bangladesh, odoo enterprise price bangladesh -->
+  <url>
+    <loc>https://mhasan.me/lab/0024-odoo-community-vs-enterprise-bangladesh</loc>
+    <lastmod>2026-05-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Target: odoo vs erpnext bangladesh, erpnext vs odoo manufacturing bangladesh -->
+  <url>
+    <loc>https://mhasan.me/lab/0023-odoo-vs-erpnext-bangladesh</loc>
+    <lastmod>2026-05-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
   <!-- Target: bgmea wage board odoo, bgmea payroll bangladesh, rmg payroll odoo -->
   <url>
     <loc>https://mhasan.me/lab/0022-bgmea-wage-board-odoo-payroll</loc>

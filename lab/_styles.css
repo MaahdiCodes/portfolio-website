@@ -311,3 +311,4 @@ html[data-theme="light"] .callout{background:linear-gradient(180deg,rgba(255,255
 html[data-theme="light"] .next-card{background:linear-gradient(180deg,rgba(255,255,255,0.9),rgba(237,240,244,0.9))}
 html[data-theme="light"] .task-list li{background:var(--surface)}
 html[data-theme="light"] .post pre{background:var(--elev)}
+html[data-theme="light"] .post .body blockquote{background:rgba(0,0,0,0.04)}

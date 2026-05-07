@@ -40,19 +40,19 @@
     '.lc-btn:hover{opacity:.88;transform:translateY(-1px)}',
     '.lc-next-link{font-family:var(--mono,monospace);font-size:12px;color:oklch(0.80 0.17 155);letter-spacing:0.04em;padding:10px 16px;border:1px solid oklch(0.80 0.17 155 / 0.4);border-radius:8px;white-space:nowrap;transition:background .15s}',
     '.lc-next-link:hover{background:oklch(0.80 0.17 155 / 0.08)}',
-    '.lc-undo-btn{background:none;border:none;cursor:pointer;font-family:var(--mono,monospace);font-size:11px;color:var(--text-3,#5D6470);letter-spacing:0.06em;padding:0;transition:color .15s}',
+    '.lc-undo-btn{background:none;border:none;cursor:pointer;font-family:var(--mono,monospace);font-size:11px;color:var(--text-3,#7E8694);letter-spacing:0.06em;padding:0;transition:color .15s}',
     '.lc-undo-btn:hover{color:var(--text-2,#9BA1AA)}',
     /* index page */
-    '.lp-meta{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;font-family:var(--mono,monospace);font-size:11px;color:var(--text-3,#5D6470);letter-spacing:0.06em}',
+    '.lp-meta{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;font-family:var(--mono,monospace);font-size:11px;color:var(--text-3,#7E8694);letter-spacing:0.06em}',
     '.lp-bar-track{height:3px;background:rgba(255,255,255,0.06);border-radius:4px;overflow:hidden;margin-bottom:20px}',
     '.lp-bar-fill{height:100%;background:oklch(0.80 0.17 155);border-radius:4px;transition:width .35s ease}',
     '.lesson-item.lesson-done .lesson-title{color:var(--text-2,#9BA1AA)}',
     '.lc-ico-btn{font-size:16px;flex:none;width:24px;height:24px;display:inline-flex;align-items:center;justify-content:center;border-radius:50%;cursor:pointer;border:none;background:none;padding:0;transition:transform .15s,opacity .15s;line-height:1}',
     '.lc-ico-btn:hover{transform:scale(1.25);opacity:.8}',
     '.lc-ico-btn[data-done="true"]{color:oklch(0.80 0.17 155)}',
-    '.lc-ico-btn[data-done="false"]{color:var(--text-3,#5D6470)}',
+    '.lc-ico-btn[data-done="false"]{color:var(--text-3,#7E8694)}',
     '.continue-badge{font-family:var(--mono,monospace);font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:oklch(0.80 0.17 155);border:1px solid oklch(0.80 0.17 155 / 0.4);border-radius:4px;padding:2px 7px;margin-left:10px;vertical-align:middle;white-space:nowrap}',
-    '.lc-progress-count{font-family:var(--mono,monospace);font-size:11px;color:var(--text-3,#5D6470);letter-spacing:0.06em;margin-left:auto}',
+    '.lc-progress-count{font-family:var(--mono,monospace);font-size:11px;color:var(--text-3,#7E8694);letter-spacing:0.06em;margin-left:auto}',
   ].join('');
   document.head.appendChild(css);
 
@@ -100,7 +100,7 @@
             '<span class="lc-label">Finished reading this lesson?</span>' +
             '<div class="lc-actions">' +
               '<button class="lc-btn" id="lc-mark-btn">Mark as Complete</button>' +
-              '<a href="' + nextHref + '" style="font-family:var(--mono,monospace);font-size:11.5px;color:var(--text-3,#5D6470);letter-spacing:0.04em;white-space:nowrap">Skip → ' + nextLabel + '</a>' +
+              '<a href="' + nextHref + '" style="font-family:var(--mono,monospace);font-size:11.5px;color:var(--text-3,#7E8694);letter-spacing:0.04em;white-space:nowrap">Skip → ' + nextLabel + '</a>' +
             '</div>' +
           '</div>';
         document.getElementById('lc-mark-btn').addEventListener('click', function () {

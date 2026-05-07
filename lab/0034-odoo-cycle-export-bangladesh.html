@@ -262,11 +262,11 @@
   <header class="nav">
     <div class="shell">
       <div class="nav-inner">
-        <a class="brand" href="../index.html">
+        <a class="brand" href="../">
           <span class="brand-mark" aria-hidden="true"></span>
           <span class="brand-name"><b>Mehedi Hasan</b><em>ERP · Business Analyst</em></span>
         </a>
-        <a class="back-link" href="../index.html#lab">← Back to Lab</a>
+        <a class="back-link" href="../#lab">← Back to Lab</a>
       </div>
     </div>
   </header>
@@ -313,7 +313,7 @@
 
       <p>Most cycle factories I have worked with are running procurement in Excel, production records in handwritten registers, and have no ability to quickly answer the question a duty drawback officer always asks: "Show me which imported components — with which import entry numbers — went into the bicycles on this export invoice." Odoo can answer that question in three clicks. This guide shows you how to set it up.</p>
 
-      <p>For the underlying manufacturing module setup, see the <a href="0013-odoo-manufacturing-module-bangladesh.html" style="color:var(--accent)">Odoo manufacturing module guide for Bangladesh factories</a>. For customs and HS code management more broadly, see the <a href="0019-hs-code-customs-odoo-bangladesh.html" style="color:var(--accent)">HS code and customs management guide</a>.</p>
+      <p>For the underlying manufacturing module setup, see the <a href="0013-odoo-manufacturing-module-bangladesh" style="color:var(--accent)">Odoo manufacturing module guide for Bangladesh factories</a>. For customs and HS code management more broadly, see the <a href="0019-hs-code-customs-odoo-bangladesh" style="color:var(--accent)">HS code and customs management guide</a>.</p>
 
       <p class="pull">A bicycle has over 100 components. Each one is a procurement decision, a quality check, and a traceability requirement. ERP that cannot see all 100 is not ERP — it is expensive data entry.</p>
 
@@ -606,7 +606,7 @@
       <h2 id="bangladesh">Bangladesh cycle export — specific considerations</h2>
 
       <ul>
-        <li><strong>EPZ operations:</strong> Many large cycle exporters (Meghna, Atlas, Phoenix) operate inside Bangladesh Export Processing Zones (EPZ). EPZ factories have different VAT and duty treatment — they operate under BEPZA rules with bonded warehouse status. In Odoo, configure EPZ facilities as separate warehouses with "bonded" stock locations. Transfers between bonded and non-bonded locations trigger duty events that need to be tracked. See the <a href="0021-epz-sez-compliance-odoo-bangladesh.html" style="color:var(--accent)" target="_blank">EPZ compliance guide</a> for the full setup.</li>
+        <li><strong>EPZ operations:</strong> Many large cycle exporters (Meghna, Atlas, Phoenix) operate inside Bangladesh Export Processing Zones (EPZ). EPZ factories have different VAT and duty treatment — they operate under BEPZA rules with bonded warehouse status. In Odoo, configure EPZ facilities as separate warehouses with "bonded" stock locations. Transfers between bonded and non-bonded locations trigger duty events that need to be tracked. See the <a href="0021-epz-sez-compliance-odoo-bangladesh" style="color:var(--accent)" target="_blank">EPZ compliance guide</a> for the full setup.</li>
         <li><strong>EU GSP+ and EUSR requirements:</strong> Bangladesh benefits from EU GSP+ preferences for bicycle exports (reduced import duty in the EU). This requires a REX (Registered Exporter) statement of origin on the commercial invoice or a Form A certificate. The origin declaration language must appear on the export invoice — include it in your Odoo commercial invoice QWeb template as a fixed text block.</li>
         <li><strong>Component quality and supplier management:</strong> Chinese components vary significantly in quality across suppliers and batches. In Odoo, use the Quality module to set up incoming quality checks (IQC) for high-value imported components — derailleurs, hubs, brakes. Failed IQC items are rejected at the receipt stage and returned to the supplier via a Return operation on the receipt. This keeps your inventory clean and prevents defective components from reaching production.</li>
         <li><strong>Model changeover planning:</strong> European buyers issue seasonal orders with specific model changes (colour, component upgrades, geometry changes). Each model change requires a BOM revision in Odoo. Use Odoo's BOM versioning (create a new BOM version rather than modifying the existing one) so historical production orders retain their original BOM and do not pick up the new component specifications retroactively.</li>
@@ -614,7 +614,7 @@
 
       <div class="callout">
         <span class="tag">Bottom line</span>
-        <p>The two configurations that deliver the most value for a Bangladesh cycle exporter are: (1) multi-level BOM with sub-assemblies, so you have production planning and traceability at every level; and (2) lot tracking on all imported components, so you can generate the duty drawback claim with confidence. Both require upfront configuration discipline — but the return is measurable in both operational visibility and recovered duty. <a href="../index.html#contact" style="color:var(--accent)">Need help setting up Odoo for your cycle factory? Get in touch →</a></p>
+        <p>The two configurations that deliver the most value for a Bangladesh cycle exporter are: (1) multi-level BOM with sub-assemblies, so you have production planning and traceability at every level; and (2) lot tracking on all imported components, so you can generate the duty drawback claim with confidence. Both require upfront configuration discipline — but the return is measurable in both operational visibility and recovered duty. <a href="../#contact" style="color:var(--accent)">Need help setting up Odoo for your cycle factory? Get in touch →</a></p>
       </div>
 
       <h2 id="faq">Frequently asked questions</h2>
@@ -638,13 +638,13 @@
       <div class="post-foot">
         <span class="eyebrow">Continue exploring</span>
         <div class="next">
-          <a class="next-card" href="0033-odoo-rmg-garments-bangladesh.html">
+          <a class="next-card" href="0033-odoo-rmg-garments-bangladesh">
             <span class="dir">Older · 0033</span>
             <h4>Odoo for RMG Bangladesh</h4>
             <p>Sample-to-shipment workflow, size-colour BOM, BGMEA wage compliance — full configuration guide for garments factories.</p>
             <span class="arrow">→</span>
           </a>
-          <a class="next-card" href="0035-odoo-pharma-bangladesh.html">
+          <a class="next-card" href="0035-odoo-pharma-bangladesh">
             <span class="dir">Newer · 0035</span>
             <h4>Odoo for Pharmaceutical Bangladesh</h4>
             <p>Lot tracking, expiry management, DGDA batch compliance, and pharma manufacturing workflow in Odoo.</p>
@@ -654,7 +654,7 @@
       </div>
       <div class="foot">
         <span>© 2026 Mehedi Hasan · Lab / 0034</span>
-        <span><a href="../index.html#lab">↑ Back to lab index</a></span>
+        <span><a href="../#lab">↑ Back to lab index</a></span>
       </div>
     </div>
   </footer>

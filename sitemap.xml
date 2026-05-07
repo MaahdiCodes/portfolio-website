@@ -17,6 +17,14 @@
     <priority>0.8</priority>
   </url>
 
+  <!-- Target: odoo certified functional consultant bangladesh, odoo functional certification, odoo 18 certification -->
+  <url>
+    <loc>https://mhasan.me/lab/odoo-18-functional-certification-bangladesh</loc>
+    <lastmod>2026-05-07</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
   <!-- Target: Odoo Partner Bangladesh, Odoo consultant bangladesh -->
   <url>
     <loc>https://mhasan.me/services/odoo-partner-consultant</loc>

@@ -1,0 +1,307 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description"
+    content="Configure Odoo manufacturing routing for Bangladesh factories — work centers, operations, machine capacity, and production time tracking. Set it up right →" />
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="Mehedi Hasan" />
+  <title>Odoo Manufacturing Routing | Time Tracking | Mehedi Hasan</title>
+  <link rel="canonical" href="https://mhasan.me/lab/0038-odoo-manufacturing-routing-bangladesh" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png" />
+  <!-- Open Graph -->
+  <meta property="og:title" content="Odoo Manufacturing Routing | Time Tracking | Mehedi Hasan" />
+  <meta property="og:description"
+    content="Configure Odoo manufacturing routing for Bangladesh factories — work centers, operations, machine capacity, and production time tracking." />
+  <meta property="og:url" content="https://mhasan.me/lab/0038-odoo-manufacturing-routing-bangladesh" />
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="https://mhasan.me/assets/og-default.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:site_name" content="Mehedi Hasan | Odoo ERP Consultant" />
+  <meta property="article:author" content="https://www.linkedin.com/in/mehedi-hasan-consultant/" />
+  <meta property="article:published_time" content="2026-05-08T12:00:00+06:00" />
+  <meta property="article:modified_time" content="2026-05-08T12:00:00+06:00" />
+  <meta property="article:section" content="Odoo ERP Bangladesh" />
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Odoo Manufacturing Routing | Time Tracking | Mehedi Hasan" />
+  <meta name="twitter:description"
+    content="Configure Odoo manufacturing routing for Bangladesh factories — work centers, operations, machine capacity, and production time tracking." />
+  <meta name="twitter:image" content="https://mhasan.me/assets/og-default.jpg" />
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Manufacturing Routing in Odoo: Work Centers, Operations & Time Tracking",
+    "description": "Configure Odoo manufacturing routing for Bangladesh factories — work centers, operations, machine capacity, and production time tracking.",
+    "datePublished": "2026-05-08T12:00:00+06:00",
+    "dateModified": "2026-05-08T12:00:00+06:00",
+    "author": {
+      "@type": "Person",
+      "name": "Mehedi Hasan",
+      "url": "https://mhasan.me",
+      "jobTitle": "Odoo ERP Consultant & Business Analyst",
+      "sameAs": "https://www.linkedin.com/in/mehedi-hasan-consultant/"
+    },
+    "publisher": { "@type": "Person", "name": "Mehedi Hasan", "url": "https://mhasan.me" },
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://mhasan.me/lab/0038-odoo-manufacturing-routing-bangladesh" }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://mhasan.me" },
+      { "@type": "ListItem", "position": 2, "name": "Lab", "item": "https://mhasan.me/lab/" },
+      { "@type": "ListItem", "position": 3, "name": "Odoo Manufacturing Routing Bangladesh", "item": "https://mhasan.me/lab/0038-odoo-manufacturing-routing-bangladesh" }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How do you configure Work Centers in Odoo?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "In Odoo, a Work Center represents a physical location, machine, or group of machines where production operations occur. You configure them with working hours, capacity (number of items produced in parallel), and cost per hour. Cost per hour is crucial as it rolls up into the final product cost alongside raw materials."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between a BOM and a Routing in Odoo?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A Bill of Materials (BOM) defines WHAT components are needed to make a product. A Routing defines HOW it is made — the specific sequence of operations across different work centers, including the estimated time for each operation."
+        }
+      }
+    ]
+  }
+]
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap">
+  <link rel="stylesheet" href="_styles.css">
+  <style>
+    .flow-card {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+      margin: 20px 0;
+    }
+    .flow-row {
+      display: grid;
+      grid-template-columns: 140px 1fr 180px;
+      border-bottom: 1px solid var(--border);
+      align-items: stretch;
+    }
+    .flow-row:last-child { border-bottom: none; }
+    .flow-stage {
+      padding: 14px 16px;
+      background: var(--surface);
+      border-right: 1px solid var(--border);
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+    }
+    .flow-desc {
+      padding: 14px 16px;
+      font-size: 12.5px;
+      color: var(--text-2);
+      line-height: 1.7;
+    }
+    .flow-odoo {
+      padding: 14px 16px;
+      border-left: 1px solid var(--border);
+      font-family: var(--mono);
+      font-size: 10.5px;
+      color: var(--accent);
+      line-height: 1.7;
+      display: flex;
+      align-items: center;
+    }
+    .pull {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: clamp(20px, 2.8vw, 30px);
+      line-height: 1.3;
+      color: var(--text);
+      margin: 48px 0;
+      max-width: 26ch;
+      letter-spacing: -0.01em;
+    }
+    .pull::before {
+      content: "";
+      display: block;
+      width: 36px;
+      height: 1px;
+      background: var(--accent);
+      margin-bottom: 18px;
+    }
+    @media(max-width:800px){
+      .flow-row { grid-template-columns: 1fr; }
+      .flow-stage { border-right: none; border-bottom: 1px solid var(--border); }
+      .flow-odoo { border-left: none; border-top: 1px solid var(--border); }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="grid-bg"></div>
+
+  <header class="nav">
+    <div class="shell">
+      <div class="nav-inner">
+        <a class="brand" href="../index.html">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span class="brand-name"><b>Mehedi Hasan</b><em>ERP · Business Analyst</em></span>
+        </a>
+        <a class="back-link" href="../index.html#lab">← Back to Lab</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="post-head">
+    <div class="shell">
+      <span class="eyebrow">Technical Lab · 0038</span>
+      <h1>Odoo Manufacturing Routing — <span class="serif">work centers, operations, time tracking.</span></h1>
+      <p class="lede">A BOM tells you what you need to build a product, but a Routing tells you how. For Bangladesh factories, correctly mapping the sequence of operations and tracking the actual time taken at each work center is the key to accurate production costing and realistic scheduling.</p>
+      <div class="post-meta">
+        <span class="chip accent">Configuration Guide</span>
+        <span class="chip">Manufacturing</span>
+        <span class="chip">Work Centers</span>
+        <span class="chip">Routing</span>
+      </div>
+      <div class="byline">
+        <span>By<b><a href="https://www.linkedin.com/in/mehedi-hasan-consultant/" style="color:var(--accent)" rel="author">Mehedi Hasan</a></b></span>
+        <span>Published<b>May 2026</b></span>
+        <span>Read time<b>8 minutes</b></span>
+        <span>Form<b>Technical Guide</b></span>
+        <span>Scope<b>Manufacturing · Costing · Operations</b></span>
+      </div>
+    </div>
+  </section>
+
+  <article class="post">
+    <aside class="toc">
+      <div class="toc-k">In this guide</div>
+      <ol>
+        <li><a href="#work-centers">Defining Work Centers</a></li>
+        <li><a href="#operations">Operations &amp; Sequences</a></li>
+        <li><a href="#capacity">Machine Capacity &amp; OEE</a></li>
+        <li><a href="#time-tracking">Time Tracking on Shop Floor</a></li>
+        <li><a href="#overhead">Overhead Cost Allocation</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ol>
+    </aside>
+
+    <div class="body">
+      <p>In many basic ERP implementations, consultants map the Bill of Materials (BOM) perfectly but ignore the Routing. They simply configure a "consume materials and produce finished good" button. This is a missed opportunity. To understand your true manufacturing costs—and to schedule production accurately—you need to map the journey of the product across your factory floor.</p>
+
+      <p>This builds on the foundations laid out in the <a href="0013-odoo-manufacturing-module-bangladesh.html" style="color:var(--accent)">Odoo Manufacturing Module Setup</a> guide. For specific industry examples like textile, refer to the <a href="0037-odoo-spinning-mill-bangladesh.html" style="color:var(--accent)">Odoo Spinning Mill Configuration</a>.</p>
+
+      <p class="pull">Routing isn't just about telling workers what to do next. It's the engine that allocates overhead costs to your products based on actual machine time.</p>
+
+      <h2 id="work-centers">Defining Work Centers</h2>
+      <p>A Work Center in Odoo represents a physical location where production takes place. This could be a single machine (e.g., "CNC Lathe #3"), a group of identical machines (e.g., "Sewing Line A"), or a manual assembly station.</p>
+      
+      <p>When setting up a Work Center, you must define:</p>
+      <ul>
+        <li><strong>Working Hours:</strong> The schedule this center operates on (e.g., standard 8-hour shift vs 24/7 operation).</li>
+        <li><strong>Capacity:</strong> How many items can be processed in parallel.</li>
+        <li><strong>OEE Target:</strong> Overall Equipment Effectiveness target percentage.</li>
+        <li><strong>Cost per hour:</strong> This is critical. It includes the depreciation of the machine, electricity costs, floor space rent, and operator wages. If an operation takes 2 hours at a center with a $50/hr cost, $100 is added to the finished product's valuation.</li>
+      </ul>
+
+      <h2 id="operations">Operations &amp; Sequences</h2>
+      <p>A Routing is simply a sequence of Operations. Each Operation is tied to a Work Center and has an expected duration.</p>
+
+      <div class="flow-card">
+        <div class="flow-row">
+          <div class="flow-stage">Op 1: Cutting</div>
+          <div class="flow-desc">Raw material is cut to size. The operation defines the exact Work Center to use and standard setup time.</div>
+          <div class="flow-odoo">WC: Cutting Room<br>Duration: 15 mins</div>
+        </div>
+        <div class="flow-row">
+          <div class="flow-stage">Op 2: Assembly</div>
+          <div class="flow-desc">Parts are joined together. You can attach PDF instructions or images to this operation for workers to view on their tablets.</div>
+          <div class="flow-odoo">WC: Assembly Line B<br>Duration: 45 mins</div>
+        </div>
+        <div class="flow-row">
+          <div class="flow-stage">Op 3: Quality Check</div>
+          <div class="flow-desc">Final inspection before moving to finished goods. Quality points can be enforced here.</div>
+          <div class="flow-odoo">WC: QC Station<br>Duration: 10 mins</div>
+        </div>
+      </div>
+
+      <h2 id="capacity">Machine Capacity &amp; OEE</h2>
+      <p>Capacity planning in Odoo relies heavily on accurate Work Center configurations. If you receive a large order, Odoo's Master Production Schedule (MPS) will look at the routings to determine if you have the machine hours available to meet the deadline.</p>
+      
+      <p>Odoo also tracks <strong>Overall Equipment Effectiveness (OEE)</strong>. If a machine is stopped due to material shortage or breakdown, operators can log this. OEE metrics help management identify bottlenecks—are we losing time to machine maintenance or supply chain delays?</p>
+
+      <h2 id="time-tracking">Time Tracking on Shop Floor</h2>
+      <p>The Odoo Shop Floor app allows operators to scan a barcode, see their next operation, and click "Start". When they finish, they click "Done".</p>
+      
+      <p>This real-time tracking gives you actual durations vs expected durations. If your routing estimated 45 minutes for assembly but it consistently takes 60 minutes, your costs are wrong and your schedules will always be delayed. The Shop Floor app forces reality into the ERP.</p>
+
+      <h2 id="overhead">Overhead Cost Allocation</h2>
+      <p>Why go through the trouble of routings? <strong>Accurate Costing.</strong></p>
+      <p>Without routings, all you have is material cost. By assigning a BDT/hour rate to each Work Center and tracking the time spent, Odoo automatically adds the overhead cost to the inventory value of the finished good. This ensures your margins are calculated accurately, factoring in the actual machine time and labor used to produce that specific batch.</p>
+
+      <div class="callout">
+        <span class="tag">Bottom line</span>
+        <p>Start simple. Map your Work Centers broadly (e.g., "Cutting", "Sewing", "Finishing") rather than mapping 50 individual machines. Get the supervisors used to tracking time at a macro level, refine your BDT/hour rates, and then drill down into specific machine scheduling once the culture of real-time data entry is established. <a href="../index.html#contact" style="color:var(--accent)">Need help mapping your factory floor? Get in touch →</a></p>
+      </div>
+
+      <h2 id="faq">Frequently asked questions</h2>
+
+      <h3>How do you configure Work Centers in Odoo?</h3>
+      <p>Navigate to Manufacturing → Configuration → Work Centers. Define the name, working schedule, capacity, and most importantly, the Cost per Hour. This cost rate is used to calculate the overhead absorbed by products passing through the center.</p>
+
+      <h3>What is the difference between a BOM and a Routing in Odoo?</h3>
+      <p>A Bill of Materials (BOM) lists the components needed. A Routing defines the operational steps (Work Orders) across various Work Centers, dictating how those components are transformed into the finished product.</p>
+
+    </div>
+  </article>
+
+  <footer>
+    <div class="shell">
+      <div class="post-foot">
+        <span class="eyebrow">Continue exploring</span>
+        <div class="next">
+          <a class="next-card" href="0037-odoo-spinning-mill-bangladesh.html">
+            <span class="dir">Older · 0037</span>
+            <h4>Odoo for Spinning Mills Bangladesh</h4>
+            <p>Yarn inventory management, loom routing, and quality control for the textile sector.</p>
+            <span class="arrow">→</span>
+          </a>
+          <a class="next-card" href="0039-odoo-reordering-rules-mto-bangladesh.html">
+            <span class="dir">Newer · 0039</span>
+            <h4>Odoo Reordering Rules vs MTO</h4>
+            <p>Automate your procurement logic and learn when to use Reordering Rules vs Make to Order.</p>
+            <span class="arrow">→</span>
+          </a>
+        </div>
+      </div>
+      <div class="foot">
+        <span>© 2026 Mehedi Hasan · Lab / 0038</span>
+        <span><a href="../index.html#lab">↑ Back to lab index</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="_toc.js" defer></script>
+</body>
+
+</html>

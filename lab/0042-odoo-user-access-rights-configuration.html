@@ -1,0 +1,301 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description"
+    content="Secure your Odoo ERP by configuring precise user access rights and roles. A complete guide for SMEs to manage permissions. The full playbook →" />
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="Mehedi Hasan" />
+  <title>Odoo User Access Rights | Configuration Guide | Mehedi Hasan</title>
+  <link rel="canonical" href="https://mhasan.me/lab/0042-odoo-user-access-rights-configuration" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png" />
+  <!-- Open Graph -->
+  <meta property="og:title" content="Odoo User Access Rights | Configuration Guide | Mehedi Hasan" />
+  <meta property="og:description"
+    content="Secure your Odoo ERP by configuring precise user access rights and roles. A complete guide for SMEs to manage permissions." />
+  <meta property="og:url" content="https://mhasan.me/lab/0042-odoo-user-access-rights-configuration" />
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="https://mhasan.me/assets/og-default.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:site_name" content="Mehedi Hasan | Odoo ERP Consultant" />
+  <meta property="article:author" content="https://www.linkedin.com/in/mehedi-hasan-consultant/" />
+  <meta property="article:published_time" content="2026-05-08T12:00:00+06:00" />
+  <meta property="article:modified_time" content="2026-05-08T12:00:00+06:00" />
+  <meta property="article:section" content="Odoo ERP Bangladesh" />
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Odoo User Access Rights | Configuration Guide | Mehedi Hasan" />
+  <meta name="twitter:description"
+    content="Secure your Odoo ERP by configuring precise user access rights and roles. A complete guide for SMEs to manage permissions." />
+  <meta name="twitter:image" content="https://mhasan.me/assets/og-default.jpg" />
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Odoo User Roles & Access Rights: Configuration Guide for SMEs",
+    "description": "Secure your Odoo ERP by configuring precise user access rights and roles. A complete guide for SMEs to manage permissions.",
+    "datePublished": "2026-05-08T12:00:00+06:00",
+    "dateModified": "2026-05-08T12:00:00+06:00",
+    "author": {
+      "@type": "Person",
+      "name": "Mehedi Hasan",
+      "url": "https://mhasan.me",
+      "jobTitle": "Odoo ERP Consultant & Business Analyst",
+      "sameAs": "https://www.linkedin.com/in/mehedi-hasan-consultant/"
+    },
+    "publisher": { "@type": "Person", "name": "Mehedi Hasan", "url": "https://mhasan.me" },
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://mhasan.me/lab/0042-odoo-user-access-rights-configuration" }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://mhasan.me" },
+      { "@type": "ListItem", "position": 2, "name": "Lab", "item": "https://mhasan.me/lab/" },
+      { "@type": "ListItem", "position": 3, "name": "Odoo User Access Rights Configuration", "item": "https://mhasan.me/lab/0042-odoo-user-access-rights-configuration" }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How does Odoo handle user permissions?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Odoo uses a combination of Application Roles (e.g., Sales: User vs Manager), Groups (which define what menus and fields a user sees), and Record Rules (which restrict which specific database rows a user can access, like 'only see my own sales orders')."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is Developer Mode in Odoo?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Developer Mode is a special setting that unlocks technical menus, allowing administrators to configure advanced access rights, record rules, and automated actions. It should only be used by trained administrators."
+        }
+      }
+    ]
+  }
+]
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap">
+  <link rel="stylesheet" href="_styles.css">
+  <style>
+    .flow-card {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+      margin: 20px 0;
+    }
+    .flow-row {
+      display: grid;
+      grid-template-columns: 140px 1fr 180px;
+      border-bottom: 1px solid var(--border);
+      align-items: stretch;
+    }
+    .flow-row:last-child { border-bottom: none; }
+    .flow-stage {
+      padding: 14px 16px;
+      background: var(--surface);
+      border-right: 1px solid var(--border);
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+    }
+    .flow-desc {
+      padding: 14px 16px;
+      font-size: 12.5px;
+      color: var(--text-2);
+      line-height: 1.7;
+    }
+    .flow-odoo {
+      padding: 14px 16px;
+      border-left: 1px solid var(--border);
+      font-family: var(--mono);
+      font-size: 10.5px;
+      color: var(--accent);
+      line-height: 1.7;
+      display: flex;
+      align-items: center;
+    }
+    .pull {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: clamp(20px, 2.8vw, 30px);
+      line-height: 1.3;
+      color: var(--text);
+      margin: 48px 0;
+      max-width: 26ch;
+      letter-spacing: -0.01em;
+    }
+    .pull::before {
+      content: "";
+      display: block;
+      width: 36px;
+      height: 1px;
+      background: var(--accent);
+      margin-bottom: 18px;
+    }
+    @media(max-width:800px){
+      .flow-row { grid-template-columns: 1fr; }
+      .flow-stage { border-right: none; border-bottom: 1px solid var(--border); }
+      .flow-odoo { border-left: none; border-top: 1px solid var(--border); }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="grid-bg"></div>
+
+  <header class="nav">
+    <div class="shell">
+      <div class="nav-inner">
+        <a class="brand" href="../index.html">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span class="brand-name"><b>Mehedi Hasan</b><em>ERP · Business Analyst</em></span>
+        </a>
+        <a class="back-link" href="../index.html#lab">← Back to Lab</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="post-head">
+    <div class="shell">
+      <span class="eyebrow">Technical Lab · 0042</span>
+      <h1>Odoo User Access Rights — <span class="serif">configuration guide for SMEs.</span></h1>
+      <p class="lede">A new ERP system is powerful, but giving every employee full access is a recipe for disaster. Designing precise user roles and access rights ensures data security and prevents accidental (or malicious) changes to your financial and operational records.</p>
+      <div class="post-meta">
+        <span class="chip accent">Configuration Guide</span>
+        <span class="chip">Security</span>
+        <span class="chip">Access Rights</span>
+        <span class="chip">Administration</span>
+      </div>
+      <div class="byline">
+        <span>By<b><a href="https://www.linkedin.com/in/mehedi-hasan-consultant/" style="color:var(--accent)" rel="author">Mehedi Hasan</a></b></span>
+        <span>Published<b>May 2026</b></span>
+        <span>Read time<b>8 minutes</b></span>
+        <span>Form<b>Technical Guide</b></span>
+        <span>Scope<b>System Admin · Security</b></span>
+      </div>
+    </div>
+  </section>
+
+  <article class="post">
+    <aside class="toc">
+      <div class="toc-k">In this guide</div>
+      <ol>
+        <li><a href="#groups">Understanding Groups</a></li>
+        <li><a href="#record-rules">Record Rules Explained</a></li>
+        <li><a href="#developer-mode">Developer Mode Configurations</a></li>
+        <li><a href="#multi-company">Multi-Company Security</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ol>
+    </aside>
+
+    <div class="body">
+      <p>When you first install Odoo, the administrator account has access to everything. As you add employees, you must assign them to specific roles. Odoo's permission system is robust but can be confusing. It operates on three layers: Application Access (Can they open the Sales app?), Access Control Lists (Can they create a sales order or just read it?), and Record Rules (Can they see all sales orders or just their own?).</p>
+
+      <p>This guide is essential reading for system administrators and should be reviewed as part of your <a href="0032-odoo-post-go-live-hypercare-bangladesh.html" style="color:var(--accent)">Post-Go-Live Hypercare</a> and <a href="0006-odoo-multi-company-setup-guide.html" style="color:var(--accent)">Multi-Company Setup</a>.</p>
+
+      <p class="pull">Never give an employee more access than they need to do their job. 'Administrator' rights should be restricted to IT and top management.</p>
+
+      <h2 id="groups">Understanding Groups</h2>
+      <p>In Odoo, permissions are tied to <strong>Groups</strong>, not directly to users. When you look at a User Profile, the dropdowns (e.g., Sales: "User: Own Documents Only", "User: All Documents", "Administrator") are actually assigning the user to different Groups under the hood.</p>
+      
+      <p>Groups define what a user can see and do:</p>
+      <ul>
+        <li><strong>Menu Visibility:</strong> Does the "Configuration" menu appear for them?</li>
+        <li><strong>Field Visibility:</strong> Can they see the "Cost" field on a product, or only the "Sales Price"?</li>
+        <li><strong>Access Control Lists (ACL):</strong> The fundamental Read, Write, Create, and Delete permissions on database objects. A warehouse worker might have Read/Write access to inventory transfers but no Create/Delete access for new products.</li>
+      </ul>
+
+      <h2 id="record-rules">Record Rules Explained</h2>
+      <p>While ACLs define if a user can see a <em>type</em> of record, <strong>Record Rules</strong> define <em>which specific records</em> they can see.</p>
+
+      <div class="flow-card">
+        <div class="flow-row">
+          <div class="flow-stage">Scenario</div>
+          <div class="flow-desc">You have 10 sales reps. You want them to use the Sales app, but they should only see their own customers and their own orders.</div>
+          <div class="flow-odoo">Sales User: Own Documents</div>
+        </div>
+        <div class="flow-row">
+          <div class="flow-stage">The Record Rule</div>
+          <div class="flow-desc">A rule is applied to the Sales Order model: <code>['user_id', '=', user.id]</code>. This filter is silently applied to every database query the user makes.</div>
+          <div class="flow-odoo">Record Rule Filter</div>
+        </div>
+        <div class="flow-row">
+          <div class="flow-stage">The Result</div>
+          <div class="flow-desc">Sales Rep A opens the Sales app and sees 50 orders. Sales Rep B opens the app and sees 30 different orders. The Sales Manager (who lacks this restricting rule) sees all 80 orders.</div>
+          <div class="flow-odoo">Secure Data Access</div>
+        </div>
+      </div>
+
+      <h2 id="developer-mode">Developer Mode Configurations</h2>
+      <p>To truly customize access rights, you must activate <strong>Developer Mode</strong> (Settings → General Settings → Activate the developer mode). This reveals the "Technical" menu under Settings.</p>
+      
+      <p>Here you can create custom Groups. For example, if you want a "Junior Accountant" role that can create invoices but cannot post them, you would duplicate the standard Accountant group, modify the access rights on the Invoice model, and hide the "Post" button using an inherited view tied to your new group.</p>
+
+      <h2 id="multi-company">Multi-Company Security</h2>
+      <p>If you run multiple companies in a single Odoo database, security becomes critical. Odoo handles this automatically if configured correctly.</p>
+      
+      <p>Every record in Odoo (Products, Sales Orders, Invoices) has a `company_id` field. Users also have an "Allowed Companies" setting. A global record rule enforces that users can only see records where the `company_id` matches their currently active allowed companies. If a user is only allowed to see "Company A", they will never see "Company B's" invoices, even if they have full Accountant permissions.</p>
+
+      <div class="callout">
+        <span class="tag">Bottom line</span>
+        <p>Before go-live, create "Test Users" for each major role (Test Salesperson, Test Warehouse Worker, Test Manager). Log in as these users and try to break the system or access forbidden data. This is the only way to guarantee your security model works. <a href="../index.html#contact" style="color:var(--accent)">Need help auditing your system security? Get in touch →</a></p>
+      </div>
+
+      <h2 id="faq">Frequently asked questions</h2>
+
+      <h3>How does Odoo handle user permissions?</h3>
+      <p>Odoo uses a combination of Application Roles (e.g., Sales: User vs Manager), Groups (which define what menus and fields a user sees), and Record Rules (which restrict which specific database rows a user can access, like 'only see my own sales orders').</p>
+
+      <h3>What is Developer Mode in Odoo?</h3>
+      <p>Developer Mode is a special setting that unlocks technical menus, allowing administrators to configure advanced access rights, record rules, and automated actions. It should only be used by trained administrators.</p>
+
+    </div>
+  </article>
+
+  <footer>
+    <div class="shell">
+      <div class="post-foot">
+        <span class="eyebrow">Continue exploring</span>
+        <div class="next">
+          <a class="next-card" href="0041-odoo-landed-costs-duty-drawback-bangladesh.html">
+            <span class="dir">Older · 0041</span>
+            <h4>Odoo Landed Costs &amp; Duty Drawback</h4>
+            <p>Calculate true inventory costs by including freight, insurance, and import duties.</p>
+            <span class="arrow">→</span>
+          </a>
+          <a class="next-card" href="../index.html#lab">
+            <span class="dir">All articles</span>
+            <h4>Back to Lab Index</h4>
+            <p>Browse all guides on Odoo ERP, manufacturing operations, and business analysis in Bangladesh.</p>
+            <span class="arrow">→</span>
+          </a>
+        </div>
+      </div>
+      <div class="foot">
+        <span>© 2026 Mehedi Hasan · Lab / 0042</span>
+        <span><a href="../index.html#lab">↑ Back to lab index</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="_toc.js" defer></script>
+</body>
+
+</html>

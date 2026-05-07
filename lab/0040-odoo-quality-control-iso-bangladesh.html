@@ -1,0 +1,334 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description"
+    content="Configure Odoo quality control for ISO-certified Bangladesh factories. Setup quality checks, alerts, and acceptable tolerances. Read the guide →" />
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="Mehedi Hasan" />
+  <title>Odoo Quality Control | ISO Certified Factory | Mehedi Hasan</title>
+  <link rel="canonical" href="https://mhasan.me/lab/0040-odoo-quality-control-iso-bangladesh" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png" />
+  <!-- Open Graph -->
+  <meta property="og:title" content="Odoo Quality Control | ISO Certified Factory | Mehedi Hasan" />
+  <meta property="og:description"
+    content="Configure Odoo quality control for ISO-certified Bangladesh factories. Setup quality checks, alerts, and acceptable tolerances." />
+  <meta property="og:url" content="https://mhasan.me/lab/0040-odoo-quality-control-iso-bangladesh" />
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="https://mhasan.me/assets/og-default.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:site_name" content="Mehedi Hasan | Odoo ERP Consultant" />
+  <meta property="article:author" content="https://www.linkedin.com/in/mehedi-hasan-consultant/" />
+  <meta property="article:published_time" content="2026-05-08T12:00:00+06:00" />
+  <meta property="article:modified_time" content="2026-05-08T12:00:00+06:00" />
+  <meta property="article:section" content="Odoo ERP Bangladesh" />
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Odoo Quality Control | ISO Certified Factory | Mehedi Hasan" />
+  <meta name="twitter:description"
+    content="Configure Odoo quality control for ISO-certified Bangladesh factories. Setup quality checks, alerts, and acceptable tolerances." />
+  <meta name="twitter:image" content="https://mhasan.me/assets/og-default.jpg" />
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Odoo Quality Control for ISO-Certified Bangladesh Factories",
+    "description": "Configure Odoo quality control for ISO-certified Bangladesh factories. Setup quality checks, alerts, and acceptable tolerances.",
+    "datePublished": "2026-05-08T12:00:00+06:00",
+    "dateModified": "2026-05-08T12:00:00+06:00",
+    "author": {
+      "@type": "Person",
+      "name": "Mehedi Hasan",
+      "url": "https://mhasan.me",
+      "jobTitle": "Odoo ERP Consultant & Business Analyst",
+      "sameAs": "https://www.linkedin.com/in/mehedi-hasan-consultant/"
+    },
+    "publisher": { "@type": "Person", "name": "Mehedi Hasan", "url": "https://mhasan.me" },
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://mhasan.me/lab/0040-odoo-quality-control-iso-bangladesh" }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://mhasan.me" },
+      { "@type": "ListItem", "position": 2, "name": "Lab", "item": "https://mhasan.me/lab/" },
+      { "@type": "ListItem", "position": 3, "name": "Odoo Quality Control ISO Bangladesh", "item": "https://mhasan.me/lab/0040-odoo-quality-control-iso-bangladesh" }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How do you enforce quality checks in Odoo?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Quality checks are enforced by creating Quality Control Points. These points are attached to specific operations (like Receiving, Manufacturing, or Delivery). When an operator reaches that step, Odoo blocks them from completing the operation until the quality check is passed."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can Odoo handle ISO 9001 quality requirements?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Odoo supports the core requirements of ISO 9001 compliance through traceable lots, documented quality control points, corrective action workflows (Quality Alerts), and statistical process control parameters."
+        }
+      }
+    ]
+  }
+]
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap">
+  <link rel="stylesheet" href="_styles.css">
+  <style>
+    .qc-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin: 24px 0;
+    }
+    .qc-card {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .qc-head {
+      padding: 11px 14px;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text);
+    }
+    .qc-point {
+      font-family: var(--mono);
+      font-size: 9.5px;
+      text-transform: uppercase;
+      letter-spacing: 0.09em;
+      color: var(--accent);
+      margin-bottom: 4px;
+    }
+    .qc-body {
+      padding: 12px 14px;
+    }
+    .qc-item {
+      display: flex;
+      gap: 8px;
+      font-size: 12px;
+      color: var(--text-2);
+      margin-bottom: 7px;
+      line-height: 1.5;
+    }
+    .qc-item:last-child { margin-bottom: 0; }
+    .qc-param {
+      font-family: var(--mono);
+      font-size: 10px;
+      color: var(--text-3);
+      min-width: 52px;
+      margin-top: 1px;
+    }
+    .pull {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: clamp(20px, 2.8vw, 30px);
+      line-height: 1.3;
+      color: var(--text);
+      margin: 48px 0;
+      max-width: 26ch;
+      letter-spacing: -0.01em;
+    }
+    .pull::before {
+      content: "";
+      display: block;
+      width: 36px;
+      height: 1px;
+      background: var(--accent);
+      margin-bottom: 18px;
+    }
+    @media(max-width:700px){
+      .qc-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="grid-bg"></div>
+
+  <header class="nav">
+    <div class="shell">
+      <div class="nav-inner">
+        <a class="brand" href="../index.html">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span class="brand-name"><b>Mehedi Hasan</b><em>ERP · Business Analyst</em></span>
+        </a>
+        <a class="back-link" href="../index.html#lab">← Back to Lab</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="post-head">
+    <div class="shell">
+      <span class="eyebrow">Technical Lab · 0040</span>
+      <h1>Odoo Quality Control — <span class="serif">ISO compliance for factories.</span></h1>
+      <p class="lede">For export-oriented factories in Bangladesh, ISO 9001 compliance is non-negotiable. Odoo's Quality module digitizes your QA process, enforcing strict tolerances, tracking corrective actions, and ensuring defective goods never leave your warehouse.</p>
+      <div class="post-meta">
+        <span class="chip accent">Configuration Guide</span>
+        <span class="chip">Quality Control</span>
+        <span class="chip">ISO 9001</span>
+        <span class="chip">Manufacturing</span>
+      </div>
+      <div class="byline">
+        <span>By<b><a href="https://www.linkedin.com/in/mehedi-hasan-consultant/" style="color:var(--accent)" rel="author">Mehedi Hasan</a></b></span>
+        <span>Published<b>May 2026</b></span>
+        <span>Read time<b>8 minutes</b></span>
+        <span>Form<b>Technical Guide</b></span>
+        <span>Scope<b>Compliance · Quality Assurance</b></span>
+      </div>
+    </div>
+  </section>
+
+  <article class="post">
+    <aside class="toc">
+      <div class="toc-k">In this guide</div>
+      <ol>
+        <li><a href="#control-points">Quality Control Points</a></li>
+        <li><a href="#check-types">Types of Quality Checks</a></li>
+        <li><a href="#alerts">Quality Alerts &amp; Corrective Actions</a></li>
+        <li><a href="#iso-compliance">Meeting ISO 9001 Requirements</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ol>
+    </aside>
+
+    <div class="body">
+      <p>Quality Control is often tracked in siloed Excel sheets, completely divorced from the ERP system managing inventory and production. This creates a severe risk: a batch of goods fails QC, but the warehouse team, looking at their ERP dashboard, sees it as "available stock" and ships it.</p>
+
+      <p>By integrating Quality Control directly into Odoo's routing and inventory flows, you establish hard physical stops. A product cannot be moved to Finished Goods if it hasn't passed its mandatory checks.</p>
+
+      <p>Before implementing Quality, ensure your basic manufacturing workflows are solid. See the <a href="0013-odoo-manufacturing-module-bangladesh.html" style="color:var(--accent)">Odoo Manufacturing Module Setup</a> and the <a href="0038-odoo-manufacturing-routing-bangladesh.html" style="color:var(--accent)">Odoo Manufacturing Routing</a> guide.</p>
+
+      <p class="pull">True quality control is not about inspecting products after they are made; it's about embedding checks into the process itself.</p>
+
+      <h2 id="control-points">Quality Control Points</h2>
+      <p>A Quality Control Point (QCP) is a rule that triggers a quality check. You can configure QCPs to trigger based on specific operations. For a typical manufacturing plant, you need three distinct control points:</p>
+
+      <div class="qc-grid">
+        <div class="qc-card">
+          <div class="qc-head">
+            <div class="qc-point">Inbound Check</div>
+            Raw Material Receipt
+          </div>
+          <div class="qc-body">
+            <div class="qc-item"><span class="qc-param">Trigger</span><span>When goods arrive at the Receiving Dock.</span></div>
+            <div class="qc-item"><span class="qc-param">Action</span><span>Inspect against supplier specifications before moving to Raw Material Storage.</span></div>
+          </div>
+        </div>
+        <div class="qc-card">
+          <div class="qc-head">
+            <div class="qc-point">In-Process Check</div>
+            Manufacturing Operations
+          </div>
+          <div class="qc-body">
+            <div class="qc-item"><span class="qc-param">Trigger</span><span>During specific Work Orders (e.g., after Welding, before Painting).</span></div>
+            <div class="qc-item"><span class="qc-param">Action</span><span>Operator on the shop floor takes measurements and logs them in Odoo.</span></div>
+          </div>
+        </div>
+        <div class="qc-card">
+          <div class="qc-head">
+            <div class="qc-point">Outbound Check</div>
+            Final Inspection / Delivery
+          </div>
+          <div class="qc-body">
+            <div class="qc-item"><span class="qc-param">Trigger</span><span>Before goods are packed for shipping.</span></div>
+            <div class="qc-item"><span class="qc-param">Action</span><span>Final QA sign-off to ensure product meets customer expectations.</span></div>
+          </div>
+        </div>
+      </div>
+
+      <h2 id="check-types">Types of Quality Checks</h2>
+      <p>Odoo supports multiple types of checks depending on the rigor required:</p>
+
+      <ul>
+        <li><strong>Pass/Fail:</strong> A simple binary check. "Is the product scratched? Yes/No."</li>
+        <li><strong>Measure:</strong> The operator must input a numeric value. You define the acceptable tolerance (e.g., Target: 50mm, Tolerance: 48mm - 52mm). If the entered value is outside the tolerance, the check fails automatically.</li>
+        <li><strong>Take a Picture:</strong> The operator uses a tablet to photograph the product. This is excellent for documenting visual quality and maintaining audit trails.</li>
+        <li><strong>Instructions:</strong> Displays a PDF or text block instructing the worker on how to perform the operation.</li>
+      </ul>
+
+      <h2 id="alerts">Quality Alerts &amp; Corrective Actions</h2>
+      <p>When a quality check fails, Odoo immediately creates a <strong>Quality Alert</strong>. This alert is routed to the Quality Assurance team.</p>
+
+      <p>The QA team reviews the alert and decides on the action:</p>
+      <ul>
+        <li><strong>Rework:</strong> Send the product back to a previous operation to be fixed.</li>
+        <li><strong>Scrap:</strong> The product cannot be saved. It is removed from inventory, and the cost is written off.</li>
+        <li><strong>Accept under Deviation:</strong> The product failed the strict tolerance but is still acceptable for a specific customer or use case.</li>
+      </ul>
+      
+      <p>Every alert allows you to track the <strong>Root Cause</strong> and document <strong>Corrective Actions (CAPA)</strong>, which is a core requirement of ISO standards.</p>
+
+      <h2 id="iso-compliance">Meeting ISO 9001 Requirements</h2>
+      <p>ISO 9001 auditors look for systemic, documented control over your production processes. Odoo's Quality module provides this out of the box:</p>
+
+      <ul>
+        <li><strong>Document Control:</strong> Attaching inspection PDFs and work instructions directly to the operations ensures operators are always using the latest approved version.</li>
+        <li><strong>Traceability:</strong> By linking Quality Checks to Lot/Serial numbers, you have a complete history. If a customer complains about Lot #1042, you can instantly pull up the exact measurements taken during its production, who took them, and what raw materials were used.</li>
+        <li><strong>Continuous Improvement:</strong> The Quality Alerts dashboard shows which products or work centers generate the most defects, allowing management to target improvements effectively.</li>
+      </ul>
+
+      <div class="callout">
+        <span class="tag">Bottom line</span>
+        <p>Start with your most critical checks—usually inbound raw materials and final outbound inspections. Once those are digitized and enforced by Odoo, slowly roll out in-process checks on the shop floor. Forcing too many checks at once will frustrate workers and slow down production. <a href="../index.html#contact" style="color:var(--accent)">Need help designing your QA workflows? Get in touch →</a></p>
+      </div>
+
+      <h2 id="faq">Frequently asked questions</h2>
+
+      <h3>How do you enforce quality checks in Odoo?</h3>
+      <p>Quality checks are enforced by creating Quality Control Points. These points are attached to specific operations (like Receiving, Manufacturing, or Delivery). When an operator reaches that step, Odoo blocks them from completing the operation until the quality check is passed.</p>
+
+      <h3>Can Odoo handle ISO 9001 quality requirements?</h3>
+      <p>Yes. Odoo supports the core requirements of ISO 9001 compliance through traceable lots, documented quality control points, corrective action workflows (Quality Alerts), and statistical process control parameters.</p>
+
+    </div>
+  </article>
+
+  <footer>
+    <div class="shell">
+      <div class="post-foot">
+        <span class="eyebrow">Continue exploring</span>
+        <div class="next">
+          <a class="next-card" href="0039-odoo-reordering-rules-mto-bangladesh.html">
+            <span class="dir">Older · 0039</span>
+            <h4>Odoo Reordering Rules vs MTO</h4>
+            <p>Automate your procurement logic and learn when to use Reordering Rules vs Make to Order.</p>
+            <span class="arrow">→</span>
+          </a>
+          <a class="next-card" href="0041-odoo-landed-costs-duty-drawback-bangladesh.html">
+            <span class="dir">Newer · 0041</span>
+            <h4>Odoo Landed Costs &amp; Duty Drawback</h4>
+            <p>Calculate true inventory costs by including freight, insurance, and import duties.</p>
+            <span class="arrow">→</span>
+          </a>
+        </div>
+      </div>
+      <div class="foot">
+        <span>© 2026 Mehedi Hasan · Lab / 0040</span>
+        <span><a href="../index.html#lab">↑ Back to lab index</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="_toc.js" defer></script>
+</body>
+
+</html>

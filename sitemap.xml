@@ -385,4 +385,44 @@
     <priority>0.8</priority>
   </url>
 
+  <!-- Target: as-is to-be process mapping erp -->
+  <url>
+    <loc>https://mhasan.me/lab/0043-as-is-to-be-process-mapping-erp</loc>
+    <lastmod>2026-05-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Target: erp business case bangladesh -->
+  <url>
+    <loc>https://mhasan.me/lab/0044-erp-business-case-bangladesh</loc>
+    <lastmod>2026-05-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Target: erp requirements document template -->
+  <url>
+    <loc>https://mhasan.me/lab/0045-erp-requirements-document-template</loc>
+    <lastmod>2026-05-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Target: scope creep erp project management -->
+  <url>
+    <loc>https://mhasan.me/lab/0046-scope-creep-erp-project-management</loc>
+    <lastmod>2026-05-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Target: odoo project charter template -->
+  <url>
+    <loc>https://mhasan.me/lab/0047-odoo-project-charter-template</loc>
+    <lastmod>2026-05-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
 </urlset>

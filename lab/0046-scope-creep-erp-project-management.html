@@ -1,0 +1,276 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description"
+    content="Manage scope creep in ERP projects effectively. Real examples from Bangladesh Odoo implementations on controlling unauthorized feature requests. Read the guide →" />
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="Mehedi Hasan" />
+  <title>Scope Creep in ERP Project Management | Mehedi Hasan</title>
+  <link rel="canonical" href="https://mhasan.me/lab/0046-scope-creep-erp-project-management" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png" />
+  <!-- Open Graph -->
+  <meta property="og:title" content="Scope Creep in ERP Project Management | Mehedi Hasan" />
+  <meta property="og:description"
+    content="Manage scope creep in ERP projects effectively. Real examples from Bangladesh Odoo implementations on controlling unauthorized feature requests." />
+  <meta property="og:url" content="https://mhasan.me/lab/0046-scope-creep-erp-project-management" />
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="https://mhasan.me/assets/og-default.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:site_name" content="Mehedi Hasan | Odoo ERP Consultant" />
+  <meta property="article:author" content="https://www.linkedin.com/in/mehedi-hasan-consultant/" />
+  <meta property="article:published_time" content="2026-05-08T12:00:00+06:00" />
+  <meta property="article:modified_time" content="2026-05-08T12:00:00+06:00" />
+  <meta property="article:section" content="Odoo ERP Bangladesh" />
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Scope Creep in ERP Project Management | Mehedi Hasan" />
+  <meta name="twitter:description"
+    content="Manage scope creep in ERP projects effectively. Real examples from Bangladesh Odoo implementations on controlling unauthorized feature requests." />
+  <meta name="twitter:image" content="https://mhasan.me/assets/og-default.jpg" />
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Managing Scope Creep in Odoo Projects: Real Bangladesh Examples",
+    "description": "Manage scope creep in ERP projects effectively. Real examples from Bangladesh Odoo implementations on controlling unauthorized feature requests.",
+    "datePublished": "2026-05-08T12:00:00+06:00",
+    "dateModified": "2026-05-08T12:00:00+06:00",
+    "author": {
+      "@type": "Person",
+      "name": "Mehedi Hasan",
+      "url": "https://mhasan.me",
+      "jobTitle": "Odoo ERP Consultant & Business Analyst",
+      "sameAs": "https://www.linkedin.com/in/mehedi-hasan-consultant/"
+    },
+    "publisher": { "@type": "Person", "name": "Mehedi Hasan", "url": "https://mhasan.me" },
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://mhasan.me/lab/0046-scope-creep-erp-project-management" }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://mhasan.me" },
+      { "@type": "ListItem", "position": 2, "name": "Lab", "item": "https://mhasan.me/lab/" },
+      { "@type": "ListItem", "position": 3, "name": "Scope Creep ERP Project Management", "item": "https://mhasan.me/lab/0046-scope-creep-erp-project-management" }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is scope creep in an ERP project?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Scope creep refers to the continuous, unapproved addition of new features, reports, or requirements to an ERP project after the initial contract has been signed and development has begun. It is the primary cause of budget overruns and delayed go-lives."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you prevent scope creep?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Preventing scope creep requires a highly detailed Business Requirements Document (BRD) upfront, a signed Project Charter that explicitly lists what is OUT of scope, and a strict Change Request (CR) process where any new feature must be estimated for cost and time before approval by the steering committee."
+        }
+      }
+    ]
+  }
+]
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap">
+  <link rel="stylesheet" href="_styles.css">
+  <style>
+    .pull {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: clamp(20px, 2.8vw, 30px);
+      line-height: 1.3;
+      color: var(--text);
+      margin: 48px 0;
+      max-width: 26ch;
+      letter-spacing: -0.01em;
+    }
+    .pull::before {
+      content: "";
+      display: block;
+      width: 36px;
+      height: 1px;
+      background: var(--accent);
+      margin-bottom: 18px;
+    }
+    .case-box {
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--accent);
+      padding: 24px;
+      margin: 32px 0;
+      background: var(--surface);
+      border-radius: 4px 12px 12px 4px;
+    }
+    .case-box h4 {
+      margin-top: 0;
+      color: var(--text);
+      font-size: 16px;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      margin-bottom: 12px;
+    }
+    .case-box .meta {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--text-3);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 16px;
+      display: block;
+    }
+    .case-box p:last-child { margin-bottom: 0; }
+  </style>
+</head>
+
+<body>
+  <div class="grid-bg"></div>
+
+  <header class="nav">
+    <div class="shell">
+      <div class="nav-inner">
+        <a class="brand" href="../index.html">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span class="brand-name"><b>Mehedi Hasan</b><em>ERP · Business Analyst</em></span>
+        </a>
+        <a class="back-link" href="../index.html#lab">← Back to Lab</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="post-head">
+    <div class="shell">
+      <span class="eyebrow">Technical Lab · 0046</span>
+      <h1>Scope Creep in ERP Projects — <span class="serif">the silent budget killer.</span></h1>
+      <p class="lede">It always starts with "Can we just add this one tiny button?" Six months later, your implementation is over budget, delayed, and the original business goals are forgotten. Here is how to control scope creep in your Odoo project.</p>
+      <div class="post-meta">
+        <span class="chip accent">Essay</span>
+        <span class="chip">Project Management</span>
+        <span class="chip">Budget Control</span>
+        <span class="chip">Implementation</span>
+      </div>
+      <div class="byline">
+        <span>By<b><a href="https://www.linkedin.com/in/mehedi-hasan-consultant/" style="color:var(--accent)" rel="author">Mehedi Hasan</a></b></span>
+        <span>Published<b>May 2026</b></span>
+        <span>Read time<b>7 minutes</b></span>
+        <span>Form<b>Essay</b></span>
+        <span>Scope<b>Project Management</b></span>
+      </div>
+    </div>
+  </section>
+
+  <article class="post">
+    <aside class="toc">
+      <div class="toc-k">In this guide</div>
+      <ol>
+        <li><a href="#anatomy">The Anatomy of Creep</a></li>
+        <li><a href="#real-examples">Real Bangladesh Examples</a></li>
+        <li><a href="#defenses">The Three Defenses</a></li>
+        <li><a href="#change-requests">Handling Change Requests</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ol>
+    </aside>
+
+    <div class="body">
+      <p>Scope creep is the continuous, unauthorized, or undocumented growth of a project's requirements after the initial plans have been established. In the world of ERP implementation, it is the number one reason projects blow past their budgets and go-live dates.</p>
+
+      <p>As we discussed in <a href="0007-change-management-isnt-a-memo.html" style="color:var(--accent)">Change Management Isn't a Memo</a>, users naturally resist learning a new system. When faced with Odoo, their instinct is often to say, "Can we make Odoo look and behave exactly like our old system?" This is the genesis of scope creep.</p>
+
+      <p class="pull">"Can we just..." are the three most dangerous words in an ERP project.</p>
+
+      <h2 id="anatomy">The Anatomy of Creep</h2>
+      <p>Scope creep rarely happens via a massive, malicious demand. It happens via a death by a thousand papercuts. A warehouse manager asks the developer to add a custom column to a report. The HR manager asks for a "small tweak" to the leave approval workflow. The developer, wanting to be helpful, says "Sure, that takes five minutes."</p>
+
+      <p>But that five-minute UI change requires updating the database schema, modifying access rights, rewriting automated tests, and updating training manuals. Five minutes of coding creates five hours of technical debt.</p>
+
+      <h2 id="real-examples">Real Bangladesh Examples</h2>
+
+      <div class="case-box">
+        <span class="meta">Case Study 1: The Infinite Dashboard</span>
+        <h4>The "I want to see everything" MD</h4>
+        <p>In a textile implementation, the Managing Director requested a custom dashboard. Initially scoped as 5 key metrics. During weekly demos, the MD kept saying, "This is great, but can we just add a chart for daily yarn waste? And another for worker absenteeism?" After 4 weeks, the dashboard had 32 custom charts, loading the system down so heavily it caused timeouts. The project was delayed by 3 weeks just to optimize a dashboard that was never in the original scope.</p>
+      </div>
+
+      <div class="case-box">
+        <span class="meta">Case Study 2: The Excel Enthusiast</span>
+        <h4>Rebuilding Excel in Odoo</h4>
+        <p>An accounting manager insisted that the Odoo invoice printout must look <em>exactly</em> pixel-for-pixel like their legacy Excel template, right down to the specific border weights and merged cells. Native Odoo reports are HTML/PDF based. The partner spent 40 billable hours hacking QWeb reports just to satisfy an aesthetic preference that added zero business value.</p>
+      </div>
+
+      <h2 id="defenses">The Three Defenses</h2>
+      
+      <p>To protect your <a href="0028-odoo-implementation-roadmap-bangladesh.html" style="color:var(--accent)">Implementation Roadmap</a>, you must build three walls of defense:</p>
+
+      <ol>
+        <li><strong>A bulletproof Requirements Document:</strong> If it is not in the <a href="0045-erp-requirements-document-template.html" style="color:var(--accent)">BRD</a>, it is not in scope. Period.</li>
+        <li><strong>A definitive Project Charter:</strong> A charter doesn't just say what you <em>will</em> do; it explicitly lists what you <em>will not</em> do (e.g., "Phase 1 will NOT include HR payroll integration").</li>
+        <li><strong>A strict Change Request (CR) Process:</strong> You do not say "No" to scope creep. You say, "Yes, please fill out this Change Request form."</li>
+      </ol>
+
+      <h2 id="change-requests">Handling Change Requests</h2>
+      <p>When a user asks for a new feature, the Project Manager must pause the work and initiate the CR process:</p>
+      <ul>
+        <li>What is the business justification for this change?</li>
+        <li>How many additional hours will this take to build, test, and deploy?</li>
+        <li>What is the cost impact?</li>
+        <li>Does this push back the Go-Live date?</li>
+      </ul>
+      <p>Once the Steering Committee sees that a "tiny button" costs BDT 25,000 and delays go-live by 3 days, 90% of scope creep miraculously disappears. The remaining 10% are usually valid, critical changes that are officially approved and budgeted for.</p>
+
+      <h2 id="faq">Frequently asked questions</h2>
+
+      <h3>What is scope creep in an ERP project?</h3>
+      <p>Scope creep refers to the continuous, unapproved addition of new features, reports, or requirements to an ERP project after the initial contract has been signed and development has begun. It is the primary cause of budget overruns and delayed go-lives.</p>
+
+      <h3>How do you prevent scope creep?</h3>
+      <p>Preventing scope creep requires a highly detailed Business Requirements Document (BRD) upfront, a signed Project Charter that explicitly lists what is OUT of scope, and a strict Change Request (CR) process where any new feature must be estimated for cost and time before approval by the steering committee.</p>
+
+    </div>
+  </article>
+
+  <footer>
+    <div class="shell">
+      <div class="post-foot">
+        <span class="eyebrow">Continue exploring</span>
+        <div class="next">
+          <a class="next-card" href="0045-erp-requirements-document-template.html">
+            <span class="dir">Older · 0045</span>
+            <h4>ERP Requirements Document Template</h4>
+            <p>100+ line items for Bangladesh SMEs.</p>
+            <span class="arrow">→</span>
+          </a>
+          <a class="next-card" href="0047-odoo-project-charter-template.html">
+            <span class="dir">Newer · 0047</span>
+            <h4>Odoo Project Charter Template</h4>
+            <p>Define your scope, roles, and go/no-go criteria before kicking off development.</p>
+            <span class="arrow">→</span>
+          </a>
+        </div>
+      </div>
+      <div class="foot">
+        <span>© 2026 Mehedi Hasan · Lab / 0046</span>
+        <span><a href="../index.html#lab">↑ Back to lab index</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="_toc.js" defer></script>
+</body>
+
+</html>

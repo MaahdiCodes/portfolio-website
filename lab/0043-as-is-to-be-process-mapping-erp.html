@@ -1,0 +1,352 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description"
+    content="Master AS-IS vs TO-BE process mapping for ERP implementation. A guide to document current states and design future workflows in Bangladesh. Read the guide →" />
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="Mehedi Hasan" />
+  <title>AS-IS vs TO-BE Process Mapping | ERP | Mehedi Hasan</title>
+  <link rel="canonical" href="https://mhasan.me/lab/0043-as-is-to-be-process-mapping-erp" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png" />
+  <!-- Open Graph -->
+  <meta property="og:title" content="AS-IS vs TO-BE Process Mapping | ERP | Mehedi Hasan" />
+  <meta property="og:description"
+    content="Master AS-IS vs TO-BE process mapping for ERP implementation. A guide to document current states and design future workflows in Bangladesh." />
+  <meta property="og:url" content="https://mhasan.me/lab/0043-as-is-to-be-process-mapping-erp" />
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="https://mhasan.me/assets/og-default.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:site_name" content="Mehedi Hasan | Odoo ERP Consultant" />
+  <meta property="article:author" content="https://www.linkedin.com/in/mehedi-hasan-consultant/" />
+  <meta property="article:published_time" content="2026-05-08T12:00:00+06:00" />
+  <meta property="article:modified_time" content="2026-05-08T12:00:00+06:00" />
+  <meta property="article:section" content="Odoo ERP Bangladesh" />
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="AS-IS vs TO-BE Process Mapping | ERP | Mehedi Hasan" />
+  <meta name="twitter:description"
+    content="Master AS-IS vs TO-BE process mapping for ERP implementation. A guide to document current states and design future workflows in Bangladesh." />
+  <meta name="twitter:image" content="https://mhasan.me/assets/og-default.jpg" />
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "AS-IS vs TO-BE Process Mapping: A Bangladesh ERP Practitioner's Guide",
+    "description": "Master AS-IS vs TO-BE process mapping for ERP implementation. A guide to document current states and design future workflows in Bangladesh.",
+    "datePublished": "2026-05-08T12:00:00+06:00",
+    "dateModified": "2026-05-08T12:00:00+06:00",
+    "author": {
+      "@type": "Person",
+      "name": "Mehedi Hasan",
+      "url": "https://mhasan.me",
+      "jobTitle": "Odoo ERP Consultant & Business Analyst",
+      "sameAs": "https://www.linkedin.com/in/mehedi-hasan-consultant/"
+    },
+    "publisher": { "@type": "Person", "name": "Mehedi Hasan", "url": "https://mhasan.me" },
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://mhasan.me/lab/0043-as-is-to-be-process-mapping-erp" }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://mhasan.me" },
+      { "@type": "ListItem", "position": 2, "name": "Lab", "item": "https://mhasan.me/lab/" },
+      { "@type": "ListItem", "position": 3, "name": "AS-IS vs TO-BE Process Mapping", "item": "https://mhasan.me/lab/0043-as-is-to-be-process-mapping-erp" }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is the difference between AS-IS and TO-BE process mapping?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "AS-IS process mapping documents exactly how a business operates today, including all inefficiencies and manual steps. TO-BE mapping designs the future workflow, showing how the business will operate once the new ERP system is implemented, optimizing out those inefficiencies."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why is process mapping important for ERP implementation?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Skipping process mapping is the leading cause of ERP failure. Without knowing your AS-IS, you cannot accurately identify the gaps the ERP needs to fill. Without a TO-BE, your implementation team will simply rebuild your old, broken processes in a new, expensive software."
+        }
+      }
+    ]
+  }
+]
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap">
+  <link rel="stylesheet" href="_styles.css">
+  <style>
+    .flow-card {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+      margin: 20px 0;
+    }
+    .flow-row {
+      display: grid;
+      grid-template-columns: 140px 1fr 180px;
+      border-bottom: 1px solid var(--border);
+      align-items: stretch;
+    }
+    .flow-row:last-child { border-bottom: none; }
+    .flow-stage {
+      padding: 14px 16px;
+      background: var(--surface);
+      border-right: 1px solid var(--border);
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+    }
+    .flow-desc {
+      padding: 14px 16px;
+      font-size: 12.5px;
+      color: var(--text-2);
+      line-height: 1.7;
+    }
+    .flow-odoo {
+      padding: 14px 16px;
+      border-left: 1px solid var(--border);
+      font-family: var(--mono);
+      font-size: 10.5px;
+      color: var(--accent);
+      line-height: 1.7;
+      display: flex;
+      align-items: center;
+    }
+    .pull {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: clamp(20px, 2.8vw, 30px);
+      line-height: 1.3;
+      color: var(--text);
+      margin: 48px 0;
+      max-width: 26ch;
+      letter-spacing: -0.01em;
+    }
+    .pull::before {
+      content: "";
+      display: block;
+      width: 36px;
+      height: 1px;
+      background: var(--accent);
+      margin-bottom: 18px;
+    }
+    .split-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin: 32px 0;
+    }
+    .col-box {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 24px;
+      background: var(--surface);
+    }
+    .col-box h4 {
+      margin-top: 0;
+      color: var(--accent);
+      font-family: var(--mono);
+      font-size: 13px;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 12px;
+      margin-bottom: 16px;
+    }
+    @media(max-width:800px){
+      .flow-row { grid-template-columns: 1fr; }
+      .flow-stage { border-right: none; border-bottom: 1px solid var(--border); }
+      .flow-odoo { border-left: none; border-top: 1px solid var(--border); }
+      .split-col { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="grid-bg"></div>
+
+  <header class="nav">
+    <div class="shell">
+      <div class="nav-inner">
+        <a class="brand" href="../index.html">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span class="brand-name"><b>Mehedi Hasan</b><em>ERP · Business Analyst</em></span>
+        </a>
+        <a class="back-link" href="../index.html#lab">← Back to Lab</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="post-head">
+    <div class="shell">
+      <span class="eyebrow">Technical Lab · 0043</span>
+      <h1>AS-IS vs TO-BE Process Mapping — <span class="serif">a practitioner's guide.</span></h1>
+      <p class="lede">Implementing an ERP system without mapping your current and future processes is like building a house without a blueprint. Here is how Bangladesh's leading manufacturers use AS-IS and TO-BE mapping to guarantee ERP success.</p>
+      <div class="post-meta">
+        <span class="chip accent">Methodology</span>
+        <span class="chip">Business Analysis</span>
+        <span class="chip">Process Mapping</span>
+        <span class="chip">Change Management</span>
+      </div>
+      <div class="byline">
+        <span>By<b><a href="https://www.linkedin.com/in/mehedi-hasan-consultant/" style="color:var(--accent)" rel="author">Mehedi Hasan</a></b></span>
+        <span>Published<b>May 2026</b></span>
+        <span>Read time<b>10 minutes</b></span>
+        <span>Form<b>Guide</b></span>
+        <span>Scope<b>Project Planning</b></span>
+      </div>
+    </div>
+  </section>
+
+  <article class="post">
+    <aside class="toc">
+      <div class="toc-k">In this guide</div>
+      <ol>
+        <li><a href="#definition">Defining the States</a></li>
+        <li><a href="#why-it-matters">Why Mapping Matters</a></li>
+        <li><a href="#as-is-phase">Phase 1: The AS-IS Discovery</a></li>
+        <li><a href="#to-be-phase">Phase 2: Designing the TO-BE</a></li>
+        <li><a href="#gap-analysis">Bridging the Gap</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ol>
+    </aside>
+
+    <div class="body">
+      <p>A fatal mistake many companies make during ERP implementation is jumping straight into software configuration. They assume the software will magically fix their operational bottlenecks. But if you digitize a broken process, you just get a faster broken process.</p>
+
+      <p>As a Business Analyst specializing in Odoo, my first step with any new client—before we even log into the system—is mapping the <strong>AS-IS</strong> (current state) and designing the <strong>TO-BE</strong> (future state). This is the foundation of the <a href="0002-discovery-session-business-process-mapping.html" style="color:var(--accent)">Discovery Session</a>.</p>
+
+      <p class="pull">If you don't know exactly how you work today, you cannot accurately design how you should work tomorrow.</p>
+
+      <h2 id="definition">Defining the States</h2>
+      
+      <div class="split-col">
+        <div class="col-box">
+          <h4>The AS-IS State</h4>
+          <p>The unfiltered, brutally honest reality of how your business operates right now. It includes every manual Excel sheet, every verbal approval on WhatsApp, every shadow IT system, and every bottleneck.</p>
+          <p><strong>Goal:</strong> To understand the pain points and uncover "hidden" steps that employees take to keep the business running.</p>
+        </div>
+        <div class="col-box">
+          <h4>The TO-BE State</h4>
+          <p>The optimized future state where your operations are supported by the new ERP system. Redundancies are eliminated, manual data entry is automated, and approvals are streamlined.</p>
+          <p><strong>Goal:</strong> To create the blueprint for system configuration and define exactly how the business will operate post go-live.</p>
+        </div>
+      </div>
+
+      <h2 id="why-it-matters">Why Process Mapping Matters</h2>
+      <p>Why spend weeks mapping processes when you could just start installing modules? Here are the three primary reasons:</p>
+      
+      <ul>
+        <li><strong>Preventing Scope Creep:</strong> A clear TO-BE map acts as the definitive contract of what will be built. If a feature isn't in the TO-BE map, it is out of scope.</li>
+        <li><strong>Identifying Gaps Early:</strong> If your AS-IS process requires a unique 5-level approval for international LCs, and the ERP only natively supports 2 levels, you identify this gap on day one, not during UAT.</li>
+        <li><strong>Change Management:</strong> Showing end-users a visual map of how their daily work will change from "AS-IS" to "TO-BE" reduces anxiety and accelerates adoption. We discussed this heavily in <a href="0010-bpmn-templates-manufacturing-discovery.html" style="color:var(--accent)">BPMN Templates for Manufacturing</a>.</li>
+      </ul>
+
+      <h2 id="as-is-phase">Phase 1: The AS-IS Discovery</h2>
+      <p>Mapping the AS-IS state requires interviewing the actual people doing the work, not just the managers. Managers know how the process is <em>supposed</em> to work; floor workers know how it <em>actually</em> works.</p>
+
+      <div class="flow-card">
+        <div class="flow-row">
+          <div class="flow-stage">1. Gemba Walk</div>
+          <div class="flow-desc">Physically walk the factory floor or office. Follow a single order from the moment a customer calls to the moment the invoice is paid.</div>
+          <div class="flow-odoo">Observation</div>
+        </div>
+        <div class="flow-row">
+          <div class="flow-stage">2. Document Artifacts</div>
+          <div class="flow-desc">Collect every piece of paper, every Excel template, and every register book used in the process. Ask: "Where do you get this data?" and "Who do you give this to?"</div>
+          <div class="flow-odoo">Data Gathering</div>
+        </div>
+        <div class="flow-row">
+          <div class="flow-stage">3. Draft the Map</div>
+          <div class="flow-desc">Use BPMN tools (like Draw.io or Lucidchart) to visually map the flow. Highlight areas with high manual intervention in red.</div>
+          <div class="flow-odoo">Visualization</div>
+        </div>
+      </div>
+
+      <h2 id="to-be-phase">Phase 2: Designing the TO-BE</h2>
+      <p>Once the AS-IS is documented and approved by the stakeholders, the Business Analyst puts on their architect hat. The TO-BE state should not just replicate the AS-IS state in Odoo; it should eliminate waste.</p>
+
+      <p>Ask these critical questions:</p>
+      <ul>
+        <li>Why does this step exist? Is it required for compliance, or is it just "how we've always done it"?</li>
+        <li>Can Odoo automate this step entirely? (e.g., Automatic reordering rules instead of manual stock checks).</li>
+        <li>Can we consolidate approvals to reduce bottlenecks without sacrificing control?</li>
+      </ul>
+
+      <h2 id="gap-analysis">Bridging the Gap: The Gap Analysis Document</h2>
+      <p>The difference between your TO-BE design and the native capabilities of Odoo is your "Gap." The Gap Analysis Document details exactly how you will handle these differences. You have three choices for every gap:</p>
+      
+      <ol>
+        <li><strong>Change the Business (Recommended):</strong> Adapt your business process to match Odoo's native workflow. This is cheapest and easiest to maintain.</li>
+        <li><strong>Workaround:</strong> Find a creative way to use native features to achieve the goal without custom code.</li>
+        <li><strong>Customize:</strong> Write custom Python modules to force Odoo to behave exactly like your TO-BE design. (Use sparingly, as it increases maintenance costs).</li>
+      </ol>
+
+      <div class="callout">
+        <span class="tag">Bottom line</span>
+        <p>A rigorous AS-IS and TO-BE mapping phase is the hallmark of a mature, successful ERP implementation. It turns chaos into clarity and sets the foundation for a measurable ROI. <a href="../index.html#contact" style="color:var(--accent)">Need an expert Business Analyst to map your processes? Let's talk →</a></p>
+      </div>
+
+      <h2 id="faq">Frequently asked questions</h2>
+
+      <h3>What is the difference between AS-IS and TO-BE process mapping?</h3>
+      <p>AS-IS process mapping documents exactly how a business operates today, including all inefficiencies and manual steps. TO-BE mapping designs the future workflow, showing how the business will operate once the new ERP system is implemented, optimizing out those inefficiencies.</p>
+
+      <h3>Why is process mapping important for ERP implementation?</h3>
+      <p>Skipping process mapping is the leading cause of ERP failure. Without knowing your AS-IS, you cannot accurately identify the gaps the ERP needs to fill. Without a TO-BE, your implementation team will simply rebuild your old, broken processes in a new, expensive software.</p>
+      
+      <h3>What tools are best for process mapping?</h3>
+      <p>Standard BPMN 2.0 (Business Process Model and Notation) is the industry standard. Tools like Draw.io, Lucidchart, or Microsoft Visio are excellent for creating these visual diagrams. The focus should be on clarity and standard notation.</p>
+
+    </div>
+  </article>
+
+  <footer>
+    <div class="shell">
+      <div class="post-foot">
+        <span class="eyebrow">Continue exploring</span>
+        <div class="next">
+          <a class="next-card" href="0042-odoo-user-access-rights-configuration.html">
+            <span class="dir">Older · 0042</span>
+            <h4>Odoo User Access Rights Configuration</h4>
+            <p>Secure your Odoo ERP by configuring precise user access rights and roles.</p>
+            <span class="arrow">→</span>
+          </a>
+          <a class="next-card" href="0044-erp-business-case-bangladesh.html">
+            <span class="dir">Newer · 0044</span>
+            <h4>How to Build a Business Case for ERP</h4>
+            <p>Learn how to calculate ROI and justify the investment in an ERP system.</p>
+            <span class="arrow">→</span>
+          </a>
+        </div>
+      </div>
+      <div class="foot">
+        <span>© 2026 Mehedi Hasan · Lab / 0043</span>
+        <span><a href="../index.html#lab">↑ Back to lab index</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="_toc.js" defer></script>
+</body>
+
+</html>

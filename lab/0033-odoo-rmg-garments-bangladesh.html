@@ -1,0 +1,712 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description"
+    content="Odoo for RMG Bangladesh — configure garments production from sample approval to shipment, BGMEA wages, size-colour BOM, and LC documentation. The full guide →" />
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="Mehedi Hasan" />
+  <title>Odoo for RMG Bangladesh | Garments ERP Guide | Mehedi Hasan</title>
+  <link rel="canonical" href="https://mhasan.me/lab/0033-odoo-rmg-garments-bangladesh" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png" />
+  <!-- Open Graph -->
+  <meta property="og:title" content="Odoo for RMG Bangladesh | Garments ERP Guide | Mehedi Hasan" />
+  <meta property="og:description"
+    content="How to configure Odoo for RMG and garments factories in Bangladesh — sample-to-shipment workflow, size-colour BOM, BGMEA wage compliance, LC documentation, and production reporting." />
+  <meta property="og:url" content="https://mhasan.me/lab/0033-odoo-rmg-garments-bangladesh" />
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="https://mhasan.me/assets/og-default.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:site_name" content="Mehedi Hasan | Odoo ERP Consultant" />
+  <meta property="article:author" content="https://www.linkedin.com/in/mehedi-hasan-consultant/" />
+  <meta property="article:published_time" content="2026-05-07T10:00:00+06:00" />
+  <meta property="article:modified_time" content="2026-05-07T10:00:00+06:00" />
+  <meta property="article:section" content="Odoo ERP Bangladesh" />
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Odoo for RMG Bangladesh | Garments ERP Guide" />
+  <meta name="twitter:description"
+    content="Configure Odoo for RMG factories in Bangladesh — sample-to-shipment workflow, size-colour BOM, BGMEA wage compliance, and export LC documentation." />
+  <meta name="twitter:image" content="https://mhasan.me/assets/og-default.jpg" />
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Odoo for RMG & Garments Bangladesh: From Sample to Shipment",
+    "description": "A complete guide to configuring Odoo ERP for ready-made garments (RMG) factories in Bangladesh. Covers the full sample-to-shipment workflow, size-colour Bill of Materials, work centre setup for cutting/sewing/finishing/packing, BGMEA wage board compliance, attendance integration, LC documentation, production reporting, and Bangladesh-specific RMG ERP considerations.",
+    "datePublished": "2026-05-07T10:00:00+06:00",
+    "dateModified": "2026-05-07T10:00:00+06:00",
+    "author": {
+      "@type": "Person",
+      "name": "Mehedi Hasan",
+      "url": "https://mhasan.me",
+      "jobTitle": "Odoo ERP Consultant & Business Analyst",
+      "sameAs": "https://www.linkedin.com/in/mehedi-hasan-consultant/"
+    },
+    "publisher": { "@type": "Person", "name": "Mehedi Hasan", "url": "https://mhasan.me" },
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://mhasan.me/lab/0033-odoo-rmg-garments-bangladesh" }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://mhasan.me" },
+      { "@type": "ListItem", "position": 2, "name": "Lab", "item": "https://mhasan.me/lab/" },
+      { "@type": "ListItem", "position": 3, "name": "Odoo for RMG Bangladesh", "item": "https://mhasan.me/lab/0033-odoo-rmg-garments-bangladesh" }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How do I set up Odoo for an RMG factory in Bangladesh?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Setting up Odoo for an RMG factory in Bangladesh requires configuring: (1) Manufacturing module with work centres for cutting, sewing, finishing, packing, and QC; (2) Bill of Materials using product variants for size-colour combinations — use Odoo's attribute system so one BOM covers all sizes/colours of a style; (3) HR and Payroll with BGMEA wage board salary structures, PF/gratuity, and attendance integration (biometric or manual); (4) Inventory with lot tracking for fabric rolls and trims; (5) Sales for buyer purchase order management and LC-linked delivery; (6) Accounting configured for Bangladesh VAT, TDS, and export rebate. The critical configuration that most RMG implementations get wrong is the BOM structure — using separate BOMs for each size/colour creates an unmanageable product catalogue. Use Odoo variants correctly from the start."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does Odoo handle BGMEA wage board compliance?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Odoo's HR and Payroll module can be configured for BGMEA/BKMEA wage board compliance. You configure salary structures with grade-based basic salary (Grade 1–7 for workers), attendance-linked allowances (food, transport, house rent as fixed percentages of basic), PF deduction (worker 5%, employer 5% of basic), and gratuity provision accrual. Overtime calculation follows the Bangladesh Labour Act (1.5× to 2× rate depending on hours). The payslip approval workflow, bank disbursement report, and salary register can all be generated from Odoo. The challenge in RMG payroll is handling daily attendance from a biometric system — Odoo's attendance module connects to most biometric devices via HTTP or CSV import, and attendance-linked salary deduction for absent days follows a per-working-day calculation (basic ÷ 26 × absent days for monthly-rated workers)."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I handle size and colour variants in Odoo garments BOM?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The correct approach in Odoo for garments is to use Product Variants, not separate products. Create one product (e.g., 'Men's Polo Shirt — Style A') with two attributes: Size (S, M, L, XL, XXL) and Colour (White, Navy, Red). This creates 15 product variants automatically. Your Bill of Materials is then set at the product template level with variant-specific component lines for size-dependent fabric consumption (an XL requires more fabric than an S — use BOM component variants to specify fabric quantity per size). Trim items that are common across all variants (buttons, threads, labels) are set without variant restrictions. This approach means one style = one product template = one BOM = one set of production orders, regardless of how many size-colour combinations exist. Avoid the common mistake of creating separate products for each size/colour — at 50 active styles with 15 variants each, you have 750 products that are nearly impossible to manage."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How does Odoo manage production tracking for garments?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "In Odoo Manufacturing, each buyer purchase order line (style, quantity, delivery date) becomes a Manufacturing Order. The MO flows through work centres: Cutting → Sewing → Finishing → Packing → QC → Dispatch. At each stage, operators (or supervisors) record the completed quantity using the Work Orders tab in Odoo Manufacturing. This gives you real-time production output by work centre, daily efficiency, and Work In Progress (WIP) by stage. For RMG, the critical report is the daily production board — how many pieces completed at sewing vs how many are needed to meet the shipment date. Odoo's manufacturing dashboard shows this natively. Rejection rates are tracked via scrap orders at the QC stage. The shipment date is linked to the Sales Order delivery date, and the system warns you if production is behind schedule relative to the committed date."
+        }
+      }
+    ]
+  }
+]
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap">
+  <link rel="stylesheet" href="_styles.css">
+  <style>
+    .workflow-steps {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      margin: 28px 0;
+      position: relative;
+    }
+    .wf-step {
+      display: grid;
+      grid-template-columns: 48px 1fr;
+      gap: 0 20px;
+      align-items: stretch;
+    }
+    .wf-left {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .wf-dot {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--surface);
+      border: 2px solid var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--mono);
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--accent);
+      flex-shrink: 0;
+      margin-top: 4px;
+    }
+    .wf-line {
+      width: 2px;
+      background: var(--border);
+      flex: 1;
+      margin: 4px 0;
+    }
+    .wf-step:last-child .wf-line { display: none; }
+    .wf-body {
+      padding: 4px 0 28px;
+    }
+    .wf-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+    .wf-desc {
+      font-size: 13px;
+      color: var(--text-2);
+      line-height: 1.75;
+    }
+    .wf-odoo {
+      display: inline-block;
+      margin-top: 8px;
+      font-family: var(--mono);
+      font-size: 10.5px;
+      color: var(--accent);
+      letter-spacing: 0.04em;
+    }
+
+    .bom-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 12.5px;
+      margin: 24px 0;
+    }
+    .bom-table th {
+      padding: 10px 14px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-3);
+      text-align: left;
+    }
+    .bom-table td {
+      padding: 10px 14px;
+      border: 1px solid var(--border);
+      color: var(--text-2);
+      vertical-align: top;
+    }
+    .bom-table td:first-child { font-weight: 500; color: var(--text); }
+    .bom-table tr.section-head td {
+      background: var(--surface);
+      color: var(--text-3);
+      font-family: var(--mono);
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .wc-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin: 24px 0;
+    }
+    .wc-card {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 16px;
+    }
+    .wc-num {
+      font-family: var(--mono);
+      font-size: 10px;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 6px;
+    }
+    .wc-name {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+    .wc-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      font-size: 12.5px;
+      color: var(--text-2);
+      line-height: 1.75;
+    }
+    .wc-kpi {
+      margin-top: 10px;
+      font-family: var(--mono);
+      font-size: 10.5px;
+      color: var(--text-3);
+      border-top: 1px solid var(--border);
+      padding-top: 10px;
+    }
+
+    .pull {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: clamp(20px, 2.8vw, 30px);
+      line-height: 1.3;
+      color: var(--text);
+      margin: 48px 0;
+      max-width: 26ch;
+      letter-spacing: -0.01em;
+    }
+    .pull::before {
+      content: "";
+      display: block;
+      width: 36px;
+      height: 1px;
+      background: var(--accent);
+      margin-bottom: 18px;
+    }
+
+    @media(max-width:700px){
+      .wc-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="grid-bg"></div>
+
+  <header class="nav">
+    <div class="shell">
+      <div class="nav-inner">
+        <a class="brand" href="../index.html">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span class="brand-name"><b>Mehedi Hasan</b><em>ERP · Business Analyst</em></span>
+        </a>
+        <a class="back-link" href="../index.html#lab">← Back to Lab</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="post-head">
+    <div class="shell">
+      <span class="eyebrow">Technical Lab · 0033</span>
+      <h1>Odoo for RMG Bangladesh — <span class="serif">from sample approval to shipment.</span></h1>
+      <p class="lede">Bangladesh's RMG sector ships $40 billion in garments annually. The factories that manage that volume on spreadsheets and WhatsApp are leaving traceability, yield, and compliance on the table. This guide covers how to configure Odoo to match the actual RMG production workflow — not a generic manufacturing template.</p>
+      <div class="post-meta">
+        <span class="chip accent">Industry Guide</span>
+        <span class="chip">RMG / Garments</span>
+        <span class="chip">Bangladesh</span>
+        <span class="chip">Manufacturing</span>
+      </div>
+      <div class="byline">
+        <span>By<b><a href="https://www.linkedin.com/in/mehedi-hasan-consultant/" style="color:var(--accent)" rel="author">Mehedi Hasan</a></b></span>
+        <span>Published<b>May 2026</b></span>
+        <span>Read time<b>14 minutes</b></span>
+        <span>Form<b>Industry Configuration Guide</b></span>
+        <span>Scope<b>RMG · Bangladesh factories</b></span>
+      </div>
+    </div>
+  </section>
+
+  <article class="post">
+    <aside class="toc">
+      <div class="toc-k">In this guide</div>
+      <ol>
+        <li><a href="#rmg-erp-challenge">Why RMG needs different ERP</a></li>
+        <li><a href="#workflow">Sample-to-shipment workflow</a></li>
+        <li><a href="#bom">Bill of Materials for garments</a></li>
+        <li><a href="#work-centres">Work centre setup</a></li>
+        <li><a href="#bgmea">BGMEA wage compliance</a></li>
+        <li><a href="#lc-export">LC & export documentation</a></li>
+        <li><a href="#reporting">Production reporting</a></li>
+        <li><a href="#bangladesh">Bangladesh-specific notes</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ol>
+    </aside>
+
+    <div class="body">
+      <p>I have worked with RMG factories ranging from 200-machine operations running a single buyer's programme to 2,000-machine multi-floor setups managing 12 buyers simultaneously. The ERP failure pattern is the same across both ends of the scale: the factory buys a generic manufacturing system, maps their process to the system's assumptions rather than the other way around, and within six months is running parallel records in Excel because the system "doesn't work for garments."</p>
+
+      <p>Odoo works well for RMG — but only when it is configured to reflect how garments are actually made. That means understanding the sample approval cycle, the size-colour BOM structure, the work centre flow from cutting through packing, and the BGMEA-compliant payroll that makes up the largest operating cost in most factories. This guide covers all of it.</p>
+
+      <p>For the foundational manufacturing module configuration that applies across all industries, see the <a href="0013-odoo-manufacturing-module-bangladesh.html" style="color:var(--accent)">Odoo manufacturing module setup guide for Bangladesh factories</a>. This article builds on that with RMG-specific configuration.</p>
+
+      <p class="pull">The factories that struggle with ERP are not the ones with complex products. They're the ones with simple products and complex workflows — which describes every RMG factory in Bangladesh.</p>
+
+      <h2 id="rmg-erp-challenge">Why RMG needs different ERP configuration</h2>
+
+      <p>Standard manufacturing ERP assumes: one product → one BOM → one production order → one finished goods unit. RMG breaks every one of these assumptions:</p>
+
+      <ul>
+        <li><strong>One style has 15–30 variants.</strong> A men's polo shirt in 5 sizes and 6 colours is 30 product variants. Each variant has slightly different fabric consumption. A factory running 50 active styles has 1,500+ variants. Generic ERP creates a product per variant — 1,500 products, 1,500 BOMs, impossible to manage.</li>
+        <li><strong>Production is not by unit — it's by line and day.</strong> The KPI that matters in RMG is pieces per line per day by size. A production order for 5,000 pieces of Style A is spread across 3 sewing lines over 8 days. ERP needs to track daily output per line, not just total completion.</li>
+        <li><strong>Material consumption is by cut — not by MO.</strong> Fabric is consumed when the fabric is cut, not when the finished garment is completed. A cutting lot may feed 3 different production orders. Fabric yield (the ratio of actual fabric consumed to the standard BOM quantity) is the most important cost control metric in cutting — generic ERP ignores it.</li>
+        <li><strong>Buyer requirements vary by purchase order.</strong> The same style may have different label specifications, packing requirements, or carton marks for different buyers. The ERP needs to track buyer PO-level instructions, not just style-level configurations.</li>
+        <li><strong>BGMEA wage compliance is non-negotiable.</strong> Labour law in Bangladesh mandates attendance-linked salary, overtime records, PF deduction, and gratuity provision. Payroll that is not compliant with the 2018 BGMEA wage board notification creates legal and audit risk.</li>
+      </ul>
+
+      <p>Each of these challenges has a correct solution in Odoo — but requires deliberate configuration. Let's walk through each.</p>
+
+      <h2 id="workflow">Sample-to-shipment workflow in Odoo</h2>
+
+      <p>The RMG production cycle starts months before the first fabric roll arrives on the cutting table. Here is how each stage maps to Odoo:</p>
+
+      <div class="workflow-steps">
+        <div class="wf-step">
+          <div class="wf-left"><div class="wf-dot">01</div><div class="wf-line"></div></div>
+          <div class="wf-body">
+            <div class="wf-title">Sample Development & Approval</div>
+            <div class="wf-desc">Buyer sends tech pack. Factory produces proto, fit sample, pre-production (PP) sample. Approvals are tracked against the Sales Order using Odoo's <strong>chatter</strong> (attach tech packs, record approval status in comments). Some factories use a separate project task per sample type. The PP sample approval triggers fabric booking.</div>
+            <span class="wf-odoo">→ Odoo: Sales Order (quote stage) + Chatter attachments + Project tasks</span>
+          </div>
+        </div>
+        <div class="wf-step">
+          <div class="wf-left"><div class="wf-dot">02</div><div class="wf-line"></div></div>
+          <div class="wf-body">
+            <div class="wf-title">Fabric & Trim Procurement</div>
+            <div class="wf-desc">Once PP is approved, Purchase Orders are raised for fabric, thread, buttons, labels, hangtags, and cartons. Fabric is purchased by the metre or kg. The BOM drives the procurement requirement — Odoo's <strong>replenishment</strong> calculates how much fabric to order based on the production MO quantity and the BOM consumption per style per size.</div>
+            <span class="wf-odoo">→ Odoo: Purchase Orders + Reordering rules + Vendor lead times</span>
+          </div>
+        </div>
+        <div class="wf-step">
+          <div class="wf-left"><div class="wf-dot">03</div><div class="wf-line"></div></div>
+          <div class="wf-body">
+            <div class="wf-title">Fabric Receipt & Inspection</div>
+            <div class="wf-desc">Fabric arrives in rolls. Each roll is received against the PO with its lot number (for traceability), actual metres/kg, and a quality inspection result (GSM, shade variation, shrinkage test). Substandard rolls are returned directly in Odoo via a <strong>Return</strong> operation on the receipt. Accepted rolls are stored in the fabric store with their lot numbers for cutting traceability.</div>
+            <span class="wf-odoo">→ Odoo: Lot/serial tracking on receipts + Quality checks at receipt</span>
+          </div>
+        </div>
+        <div class="wf-step">
+          <div class="wf-left"><div class="wf-dot">04</div><div class="wf-line"></div></div>
+          <div class="wf-body">
+            <div class="wf-title">Cutting</div>
+            <div class="wf-desc">The cutting plan specifies how many layers of fabric, the lay length, and the marker efficiency. In Odoo, cutting is the first work order in the Manufacturing Order. The fabric consumed from the cutting work order is recorded against the specific fabric lot numbers used — this gives you fabric yield per style. Cut panels are counted and transferred to the sewing floor.</div>
+            <span class="wf-odoo">→ Odoo: Work Orders (Cutting WC) + Component lot consumption</span>
+          </div>
+        </div>
+        <div class="wf-step">
+          <div class="wf-left"><div class="wf-dot">05</div><div class="wf-line"></div></div>
+          <div class="wf-body">
+            <div class="wf-title">Sewing (Line Operations)</div>
+            <div class="wf-desc">Sewing is the core production stage. In Odoo, each sewing line is a work centre. The MO work order for sewing records daily output quantity per line. The supervisor enters daily production using a tablet or phone via the Odoo Manufacturing app. This populates the production board in real time.</div>
+            <span class="wf-odoo">→ Odoo: Multiple Work Centres (Line 1, Line 2…) + Daily production entry</span>
+          </div>
+        </div>
+        <div class="wf-step">
+          <div class="wf-left"><div class="wf-dot">06</div><div class="wf-line"></div></div>
+          <div class="wf-body">
+            <div class="wf-title">Finishing, QC & Packing</div>
+            <div class="wf-desc">Finishing (ironing, spot cleaning) and inline QC happen before packing. Rejected pieces are scrapped in Odoo (triggering a scrap order and a loss entry). Passed pieces go to packing, where they are packed per buyer's carton specification. Packing lists are generated from the Sales Order delivery document.</div>
+            <span class="wf-odoo">→ Odoo: Scrap orders (QC rejections) + Delivery Order + Packing list report</span>
+          </div>
+        </div>
+        <div class="wf-step">
+          <div class="wf-left"><div class="wf-dot">07</div><div class="wf-line"></div></div>
+          <div class="wf-body">
+            <div class="wf-title">Inspection & Shipment</div>
+            <div class="wf-desc">Third-party inspection (SGS, Bureau Veritas, Intertek) results are attached to the Delivery Order in the chatter. Once passed, the shipment is dispatched. The Delivery Order generates the packing list and can feed customs and export documentation. Invoice is raised against the confirmed Sales Order.</div>
+            <span class="wf-odoo">→ Odoo: Delivery Validation + Invoice generation + Export documents</span>
+          </div>
+        </div>
+      </div>
+
+      <h2 id="bom">Bill of Materials for garments — the size-colour approach</h2>
+
+      <p>The most consequential configuration decision in an RMG Odoo setup is how you structure the Bill of Materials. Get this wrong and you will be managing thousands of products and BOMs. Get it right and the system scales to any number of styles.</p>
+
+      <p><strong>The correct approach: Product Variants with one BOM per style (template level).</strong></p>
+
+      <p>Configure each style as a product with two attributes: <strong>Size</strong> (XS, S, M, L, XL, XXL) and <strong>Colour</strong> (White, Navy, Red, etc.). Odoo automatically creates variants. The BOM is defined at the product template level and uses <strong>Apply on Variants</strong> to specify size-dependent quantities:</p>
+
+      <table class="bom-table">
+        <thead>
+          <tr>
+            <th>Component</th>
+            <th>Unit</th>
+            <th>Qty (S)</th>
+            <th>Qty (M)</th>
+            <th>Qty (L)</th>
+            <th>Qty (XL)</th>
+            <th>Apply on Variants</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="section-head">
+            <td colspan="7">Fabric</td>
+          </tr>
+          <tr>
+            <td>100% Cotton Jersey 160GSM — White</td>
+            <td>Metre</td>
+            <td>1.40</td>
+            <td>1.52</td>
+            <td>1.65</td>
+            <td>1.78</td>
+            <td>Colour = White</td>
+          </tr>
+          <tr>
+            <td>100% Cotton Jersey 160GSM — Navy</td>
+            <td>Metre</td>
+            <td>1.40</td>
+            <td>1.52</td>
+            <td>1.65</td>
+            <td>1.78</td>
+            <td>Colour = Navy</td>
+          </tr>
+          <tr class="section-head">
+            <td colspan="7">Trims (size-independent)</td>
+          </tr>
+          <tr>
+            <td>Sewing Thread — White 40/2</td>
+            <td>Cone</td>
+            <td>0.08</td>
+            <td>0.08</td>
+            <td>0.09</td>
+            <td>0.10</td>
+            <td>All variants</td>
+          </tr>
+          <tr>
+            <td>Collar Rib — White</td>
+            <td>Metre</td>
+            <td>0.35</td>
+            <td>0.38</td>
+            <td>0.42</td>
+            <td>0.46</td>
+            <td>Colour = White</td>
+          </tr>
+          <tr>
+            <td>Main Label — woven</td>
+            <td>Pcs</td>
+            <td>1</td>
+            <td>1</td>
+            <td>1</td>
+            <td>1</td>
+            <td>All variants</td>
+          </tr>
+          <tr>
+            <td>Size Label (S/M/L/XL)</td>
+            <td>Pcs</td>
+            <td>1</td>
+            <td>1</td>
+            <td>1</td>
+            <td>1</td>
+            <td>Size-specific variant</td>
+          </tr>
+          <tr>
+            <td>Hangtag + Barcode sticker</td>
+            <td>Set</td>
+            <td>1</td>
+            <td>1</td>
+            <td>1</td>
+            <td>1</td>
+            <td>All variants</td>
+          </tr>
+          <tr class="section-head">
+            <td colspan="7">Packaging</td>
+          </tr>
+          <tr>
+            <td>Poly bag — size S/M</td>
+            <td>Pcs</td>
+            <td>1</td>
+            <td>1</td>
+            <td>—</td>
+            <td>—</td>
+            <td>Size = S or M</td>
+          </tr>
+          <tr>
+            <td>Poly bag — size L/XL</td>
+            <td>Pcs</td>
+            <td>—</td>
+            <td>—</td>
+            <td>1</td>
+            <td>1</td>
+            <td>Size = L or XL</td>
+          </tr>
+          <tr>
+            <td>Export carton (12 pcs/ctn)</td>
+            <td>Pcs</td>
+            <td>0.083</td>
+            <td>0.083</td>
+            <td>0.083</td>
+            <td>0.083</td>
+            <td>All variants</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>This structure gives you correct fabric and trim quantities per production order, regardless of the size ratio in the buyer's order (the assortment mix). When the buyer places an order for 3,000 pieces of Style A in a 1:2:3:2:1 size ratio (XS:S:M:L:XL:XXL), Odoo generates one MO with the correct aggregate component requirements across all sizes.</p>
+
+      <h2 id="work-centres">Work centre setup for RMG</h2>
+
+      <p>Configure the following work centres in Odoo Manufacturing → Configuration → Work Centres. Each work centre has a capacity (machines or operators), a cost rate (BDT/hour for overhead absorption), and efficiency factors.</p>
+
+      <div class="wc-grid">
+        <div class="wc-card">
+          <div class="wc-num">WC-01</div>
+          <div class="wc-name">Cutting</div>
+          <ul class="wc-list">
+            <li>Spreading &amp; laying fabric</li>
+            <li>Marker placement &amp; cutting</li>
+            <li>Numbering &amp; bundling</li>
+            <li>Fusing (interlining)</li>
+          </ul>
+          <div class="wc-kpi">KPI: pieces cut per shift · fabric yield % vs BOM</div>
+        </div>
+        <div class="wc-card">
+          <div class="wc-num">WC-02 to WC-0N</div>
+          <div class="wc-name">Sewing Lines</div>
+          <ul class="wc-list">
+            <li>One work centre per line</li>
+            <li>Tracks daily output per line</li>
+            <li>Efficiency = actual vs target pcs</li>
+            <li>SMV-based standard time</li>
+          </ul>
+          <div class="wc-kpi">KPI: pcs/line/day · OB% efficiency · WIP vs plan</div>
+        </div>
+        <div class="wc-card">
+          <div class="wc-num">WC-FN</div>
+          <div class="wc-name">Finishing</div>
+          <ul class="wc-list">
+            <li>Ironing &amp; pressing</li>
+            <li>Spot cleaning</li>
+            <li>Final thread trimming</li>
+            <li>Measurement check</li>
+          </ul>
+          <div class="wc-kpi">KPI: pieces finished per day · rework count</div>
+        </div>
+        <div class="wc-card">
+          <div class="wc-num">WC-QC</div>
+          <div class="wc-name">Quality Control</div>
+          <ul class="wc-list">
+            <li>AQL inspection (2.5 or 4.0)</li>
+            <li>Reject classification by defect</li>
+            <li>Scrap vs rework decision</li>
+            <li>Final audit pass-rate logging</li>
+          </ul>
+          <div class="wc-kpi">KPI: rejection rate % · defect Pareto · AQL pass rate</div>
+        </div>
+        <div class="wc-card">
+          <div class="wc-num">WC-PK</div>
+          <div class="wc-name">Packing</div>
+          <ul class="wc-list">
+            <li>Folding &amp; poly-bagging</li>
+            <li>Hangtag &amp; barcode placement</li>
+            <li>Carton packing to buyer spec</li>
+            <li>Carton sealing &amp; marking</li>
+          </ul>
+          <div class="wc-kpi">KPI: cartons packed per day · packing accuracy</div>
+        </div>
+        <div class="wc-card">
+          <div class="wc-num">WC-EM</div>
+          <div class="wc-name">Embroidery / Print</div>
+          <ul class="wc-list">
+            <li>Embroidery (internal or subcontract)</li>
+            <li>Screen / digital print</li>
+            <li>Heat transfer application</li>
+            <li>Subcontract PO if outsourced</li>
+          </ul>
+          <div class="wc-kpi">KPI: pieces per hour · subcontract yield</div>
+        </div>
+      </div>
+
+      <p>For subcontracted processes (embroidery, washing, printing), use Odoo's <strong>Subcontracting BOM type</strong>. The cut panels are sent to the sub-contractor via a subcontracting PO, and the finished panels arrive back as receipts. Odoo handles the material tracking and cost accounting automatically.</p>
+
+      <h2 id="bgmea">BGMEA wage board compliance in Odoo</h2>
+
+      <p>RMG workers in Bangladesh are covered by the 2018 BGMEA/BKMEA wage board notification, which sets minimum wages by grade (Grade 1–7). Odoo's payroll module must be configured to match these requirements exactly — a payroll audit by BGMEA or the Department of Inspection for Factories and Establishments (DIFE) will check payslips against this structure.</p>
+
+      <p>For the full payroll configuration including PF, gratuity, and leave policy, see the <a href="0022-bgmea-wage-board-odoo-payroll.html" style="color:var(--accent)">BGMEA wage board setup guide in Odoo</a>. Key points for RMG specifically:</p>
+
+      <ul>
+        <li><strong>Grade-based salary structures:</strong> Create one salary structure per grade (Grade 1 through Grade 7). Each structure contains: Basic (as per wage board minimum), House Rent (40% of Basic), Medical (minimum BDT 600), Transport (minimum BDT 450), Food (minimum BDT 900 for Grade 7). Configure these as salary rules with their correct computation types (fixed or percentage of basic).</li>
+        <li><strong>Attendance integration:</strong> Biometric devices (ZKTeco, Suprema, etc.) export attendance logs as CSV or push them via API. Odoo's attendance module imports these, and the payroll module uses the attendance record to calculate per-day deductions for absent days (Basic ÷ 26 × absent days for monthly-rated workers).</li>
+        <li><strong>Overtime:</strong> Under the Bangladesh Labour Act, overtime is paid at 2× the basic hourly rate. Configure an overtime salary rule: (Basic ÷ 208) × 2 × overtime hours. The input for overtime hours comes from the attendance log — hours beyond 8 per day or 48 per week are overtime.</li>
+        <li><strong>PF contribution:</strong> Worker contributes 5% of Basic, employer contributes 5% of Basic. Configure as two payroll rules — one deduction (employee PF) and one in the employer contribution category (employer PF). The employer PF appears on the payslip for transparency but does not reduce the employee's net salary.</li>
+        <li><strong>Gratuity provision:</strong> Not deducted from salary — it is a monthly provision accrual. Configure a manual journal entry rule that debits Gratuity Expense and credits Gratuity Provision liability, computed as (Basic × 1/12 × years of service factor). In practice, many factories run this as a monthly provision journal rather than through the payroll engine.</li>
+        <li><strong>Annual Leave Encashment:</strong> Employees earn annual leave at 1 day per 18 days worked (for factory workers). If leave is encashed at year-end or on separation, the payment is Basic ÷ 26 × number of leave days. Configure as a separate one-time salary rule applied only in the encashment month.</li>
+      </ul>
+
+      <h2 id="lc-export">LC and export documentation in Odoo</h2>
+
+      <p>RMG exports in Bangladesh are almost entirely LC-based (Letter of Credit). The LC sets the payment terms, the shipment deadline, and the document requirements. Odoo's sale and accounting modules need to be configured to support LC-linked export documentation.</p>
+
+      <ul>
+        <li><strong>Sales Order as the LC anchor:</strong> When a buyer LC is received, create the Sales Order in Odoo and record the LC number, LC value, expiry date, and shipment deadline in the order's Notes or a custom field. All downstream operations (purchasing, production, delivery) trace back to this Sales Order.</li>
+        <li><strong>Shipment deadline alert:</strong> Use Odoo's scheduled date on the Delivery Order. Set it to the LC shipment date minus 2 days (buffer for customs processing). The Manufacturing Order completion date should be set 5 days before the shipment date. Odoo's activity reminders alert the responsible person when deadlines approach.</li>
+        <li><strong>Export invoice:</strong> The invoice is raised in USD (or the LC currency). Configure the USD currency in Odoo and use the pricelist for the buyer in USD. The invoice references the LC number in the "Customer Reference" field. This reference appears on all export documents.</li>
+        <li><strong>Packing list:</strong> The Delivery Order in Odoo generates a packing list. Configure a custom QWeb report template that shows: style, colour, size breakdown, carton numbers, gross and net weight, measurement, and total pieces. This is the primary export document besides the commercial invoice.</li>
+        <li><strong>Export accounting:</strong> Export sales in Bangladesh are zero-rated for VAT (0% output VAT). Configure a separate tax group "Export — 0%" in Odoo's fiscal positions. Apply this fiscal position to all export buyers. The tax report will show export turnover separately from domestic turnover, which is required for the monthly VAT return (9.1) under the Mushak system.</li>
+      </ul>
+
+      <h2 id="reporting">Production reporting in Odoo RMG</h2>
+
+      <p>The reports that RMG factory management uses daily are not all built into Odoo by default, but can be configured or extracted:</p>
+
+      <ul>
+        <li><strong>Daily production board:</strong> Manufacturing → Reporting → Production Analysis. Filter by date = today, group by Work Centre. This shows pieces produced per work centre per day. Export to Excel for the morning production meeting if needed.</li>
+        <li><strong>WIP (Work in Progress) by stage:</strong> The difference between cutting output and sewing completion gives you WIP at the cutting-to-sewing stage. Configure an Odoo pivot view on Manufacturing Orders filtered to "In Progress" status, grouped by routing step. This gives you WIP by production stage in real time.</li>
+        <li><strong>Shipment readiness by order:</strong> Sales → Reporting → Sales Analysis. Filter by Delivery Date (this week / this month). This shows which buyer POs are due for shipment and what percentage has been delivered.</li>
+        <li><strong>Fabric yield:</strong> Compare actual component consumption (from Work Orders) to BOM standard consumption for completed MOs. The variance is fabric yield loss. This requires a custom report or a scheduled Odoo filter on Manufacturing Orders comparing component_qty_done vs product_qty × BOM component qty.</li>
+        <li><strong>Quality rejection rate:</strong> Scrap Analysis report in Manufacturing → Reporting → Scrap. Filter by product and period. Total scrap ÷ total production = rejection rate %. Group by scrap reason to see your defect Pareto.</li>
+      </ul>
+
+      <h2 id="bangladesh">Bangladesh RMG — configuration notes specific to the local context</h2>
+
+      <ul>
+        <li><strong>Subcontracting is the norm, not the exception.</strong> Most RMG factories subcontract washing, embroidery, and printing. Use Odoo's subcontracting BOM type for each subcontracted process — do not use stock transfers and manual POs. Subcontracting BOMs handle material flow, costing, and finished goods receipt correctly and automatically.</li>
+        <li><strong>Multiple buyers, multiple compliance requirements.</strong> Buyers from H&M, Inditex, PVH, and Li & Fung each have different label specifications, testing requirements, and packing standards. Store buyer-specific requirements as Sales Order notes and attach the buyer's compliance checklist PDF to each order via the chatter. Do not try to encode all buyer-specific requirements in the product master — keep the product master clean and use the order-level documentation for buyer specifics.</li>
+        <li><strong>Power outage contingency.</strong> On-premise Odoo deployments in factories with unstable power need a UPS that covers the server and at least the shop floor terminals. Configure Odoo's offline mode or use the Odoo mobile app for sewing floor production entry — the app caches entries locally if the server is briefly unreachable and syncs when connectivity is restored.</li>
+        <li><strong>Friday/Saturday weekend.</strong> Configure Odoo's work schedules to reflect the Bangladesh factory calendar: Sunday through Thursday as standard working days, Friday and Saturday as weekend (or Friday half-day + Saturday off depending on factory policy). This affects attendance calculation, overtime threshold, and delivery date scheduling.</li>
+        <li><strong>Compliance audit trail.</strong> BGMEA, buyer CSR audits, and DIFE inspections will request payroll records, attendance records, and overtime logs. Odoo generates all of these natively. Ensure the HR module data is complete and accurate — incomplete attendance records are the most common finding in factory compliance audits.</li>
+      </ul>
+
+      <div class="callout">
+        <span class="tag">Bottom line</span>
+        <p>Odoo for RMG is not a plug-and-play deployment. The BOM structure, work centre configuration, payroll compliance, and LC documentation all require deliberate design decisions before go-live. Factories that invest 2–3 weeks in proper configuration get a system that tracks from sample to shipment with full traceability. Those that rush the setup get a system that runs parallel to Excel within 90 days. <a href="../index.html#contact" style="color:var(--accent)">Need help configuring Odoo for your RMG factory? Get in touch →</a></p>
+      </div>
+
+      <h2 id="faq">Frequently asked questions</h2>
+
+      <h3>How do I set up Odoo for an RMG factory in Bangladesh?</h3>
+      <p>Set up Odoo for RMG by configuring: Manufacturing with work centres (Cutting, Sewing lines, Finishing, QC, Packing); BOM using product variants for size-colour (one BOM per style template, not per variant); HR/Payroll with BGMEA grade-based salary structures and biometric attendance integration; Inventory with lot tracking for fabric rolls; Sales for buyer PO management with LC reference tracking; Accounting for export zero-rated VAT and TDS. The BOM structure is the most critical decision — get it right before entering any products.</p>
+
+      <h3>Does Odoo handle BGMEA wage board compliance?</h3>
+      <p>Yes. Configure salary structures per BGMEA grade (1–7) with Basic per wage board minimums, House Rent (40% of Basic), Medical (BDT 600+), Transport (BDT 450+), Food (BDT 900+ for Grade 7), PF deductions (5%/5% worker/employer), overtime at 2× basic hourly rate, and gratuity provision accrual. Attendance from biometric devices feeds into payroll for per-day deduction calculations. Odoo generates payslips, salary registers, and PF schedules that satisfy BGMEA and DIFE audit requirements.</p>
+
+      <h3>How do I handle size and colour variants in Odoo garments BOM?</h3>
+      <p>Use Odoo Product Variants: create one product per style with Size and Colour as attributes. Define the BOM at the product template level. Use "Apply on Variants" for size-dependent components (fabric, collar rib, poly bags) and leave colour-dependent components (fabric colour, thread colour) applied to the relevant colour variants. This keeps your product catalogue to one entry per style rather than one per size-colour combination — essential when you have 50+ active styles.</p>
+
+      <h3>How does Odoo manage production tracking for garments?</h3>
+      <p>Each buyer PO line becomes a Manufacturing Order in Odoo. The MO has work orders for each stage (Cutting → Sewing → Finishing → QC → Packing). Supervisors record daily output per work centre using the Manufacturing tablet view. Odoo shows real-time WIP by stage, daily output vs plan, and cumulative completion vs shipment date. Rejections are recorded as scrap orders, which deduct from inventory and post a scrap cost entry. The production dashboard gives management visibility of all active orders and their completion status against shipment deadlines.</p>
+    </div>
+  </article>
+
+  <footer>
+    <div class="shell">
+      <div class="post-foot">
+        <span class="eyebrow">Continue exploring</span>
+        <div class="next">
+          <a class="next-card" href="0032-odoo-post-go-live-hypercare-bangladesh.html">
+            <span class="dir">Older · 0032</span>
+            <h4>Odoo Post Go-Live Hypercare</h4>
+            <p>L1/L2/L3 support structure, escalation matrix, and 30-60-90 day KPIs for Bangladesh Odoo teams after go-live.</p>
+            <span class="arrow">→</span>
+          </a>
+          <a class="next-card" href="0034-odoo-cycle-export-bangladesh.html">
+            <span class="dir">Newer · 0034</span>
+            <h4>Odoo for Cycle Export Bangladesh</h4>
+            <p>BOM structure, component procurement, production routing, and customs documentation for bicycle manufacturers.</p>
+            <span class="arrow">→</span>
+          </a>
+        </div>
+      </div>
+      <div class="foot">
+        <span>© 2026 Mehedi Hasan · Lab / 0033</span>
+        <span><a href="../index.html#lab">↑ Back to lab index</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="_toc.js" defer></script>
+</body>
+
+</html>

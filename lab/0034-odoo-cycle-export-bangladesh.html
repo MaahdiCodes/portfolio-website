@@ -1,0 +1,665 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description"
+    content="Odoo cycle export Bangladesh — BOM structure for bicycle assembly, imported component procurement, production routing, and HS code export documentation. Set it up →" />
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="Mehedi Hasan" />
+  <title>Odoo Cycle Export Bangladesh | BOM to Customs | Mehedi Hasan</title>
+  <link rel="canonical" href="https://mhasan.me/lab/0034-odoo-cycle-export-bangladesh" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png" />
+  <!-- Open Graph -->
+  <meta property="og:title" content="Odoo Cycle Export Bangladesh | BOM to Customs | Mehedi Hasan" />
+  <meta property="og:description"
+    content="How to configure Odoo for Bangladesh bicycle export manufacturers — BOM for bicycle assembly, imported component procurement, production routing, HS code classification, and export documentation." />
+  <meta property="og:url" content="https://mhasan.me/lab/0034-odoo-cycle-export-bangladesh" />
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="https://mhasan.me/assets/og-default.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:site_name" content="Mehedi Hasan | Odoo ERP Consultant" />
+  <meta property="article:author" content="https://www.linkedin.com/in/mehedi-hasan-consultant/" />
+  <meta property="article:published_time" content="2026-05-07T10:30:00+06:00" />
+  <meta property="article:modified_time" content="2026-05-07T10:30:00+06:00" />
+  <meta property="article:section" content="Odoo ERP Bangladesh" />
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Odoo Cycle Export Bangladesh | BOM to Customs Guide" />
+  <meta name="twitter:description"
+    content="Configure Odoo for Bangladesh bicycle export — BOM structure, imported component procurement, loom routing, HS code customs documentation." />
+  <meta name="twitter:image" content="https://mhasan.me/assets/og-default.jpg" />
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Odoo for Cycle & Bicycle Export Bangladesh: BOM to Customs",
+    "description": "A complete configuration guide for Odoo ERP in Bangladesh bicycle and cycle export manufacturing. Covers multi-level BOM for bicycle assembly, imported component procurement with HS codes and LC management, production routing from frame welding through final assembly and QC, export documentation including commercial invoice and packing list, and Bangladesh-specific cycle export considerations including duty drawback and EPZ operations.",
+    "datePublished": "2026-05-07T10:30:00+06:00",
+    "dateModified": "2026-05-07T10:30:00+06:00",
+    "author": {
+      "@type": "Person",
+      "name": "Mehedi Hasan",
+      "url": "https://mhasan.me",
+      "jobTitle": "Odoo ERP Consultant & Business Analyst",
+      "sameAs": "https://www.linkedin.com/in/mehedi-hasan-consultant/"
+    },
+    "publisher": { "@type": "Person", "name": "Mehedi Hasan", "url": "https://mhasan.me" },
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://mhasan.me/lab/0034-odoo-cycle-export-bangladesh" }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://mhasan.me" },
+      { "@type": "ListItem", "position": 2, "name": "Lab", "item": "https://mhasan.me/lab/" },
+      { "@type": "ListItem", "position": 3, "name": "Odoo Cycle Export Bangladesh", "item": "https://mhasan.me/lab/0034-odoo-cycle-export-bangladesh" }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How to configure Odoo BOM for bicycle manufacturing in Bangladesh?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Bicycle BOM in Odoo should be structured as a multi-level BOM (also called phantom BOM or kit BOM). The top-level product is the finished bicycle. Sub-assemblies are defined as separate products with their own BOMs: Frame Assembly (frame + fork + headset), Wheel Assembly (rim + hub + spokes + tyre + tube), Drivetrain Assembly (crankset + chain + sprocket + derailleur), and so on. The top-level bicycle BOM references these sub-assemblies as components. In Odoo, set the sub-assembly BOM type to 'Manufactured' — this creates separate Manufacturing Orders for each sub-assembly, giving you traceability and production planning at the component level. Imported components (bearings, derailleurs, tyres) are received against Purchase Orders with their HS codes recorded in the product's customs code field. This enables correct customs documentation for both import and export."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How does Odoo handle imported components for cycle export in Bangladesh?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Imported components for cycle manufacturing in Bangladesh involve: (1) Purchase Orders in the supplier's currency (usually USD or CNY for Chinese components), with the HS code of the imported item recorded in the product master; (2) LC management — create the LC as a note/reference on the PO, with the LC expiry date as a scheduled activity reminder; (3) Goods Receipt — when components arrive, receive them against the PO. Odoo records the import quantity, lot/serial number if applicable, and triggers the landed cost entry for duty, freight, and clearing charges; (4) Duty drawback tracking — if you are claiming duty drawback on re-exported goods (import duty paid on components that go into exported bicycles), Odoo's lot tracking gives you the traceability chain from imported component lot → production order → export delivery → commercial invoice needed for the drawback claim with Customs. This is the core value of Odoo for cycle export manufacturers — the ability to prove which imported materials went into which exported bicycles."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What HS codes apply to bicycle export from Bangladesh?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Key HS codes for Bangladesh cycle exports and component imports: Finished bicycles (two-wheeled, not motorised): HS 8712.00 — specifically 8712.0010 (children's bicycles), 8712.0020 (mountain/road bicycles), 8712.0090 (other). Bicycle frames: HS 8714.91. Forks: HS 8714.91. Wheels (complete): HS 8714.92. Tyres (rubber): HS 4011.50. Inner tubes: HS 4013.20. Chains: HS 7315.11 or 7315.12. Brakes: HS 8714.94. Derailleurs/gear mechanisms: HS 8714.99. Saddles: HS 8714.95. In Odoo, enter the HS code in the product's 'Customs HS Code' field (available in Inventory → Products → product form → General Information tab). This code appears on export documentation including the commercial invoice and packing list, and is used for customs clearance at Chittagong port."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I track duty drawback for bicycle exports in Odoo?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Duty drawback for bicycle exports in Bangladesh requires proving that: (1) specific imported components (with import duty paid) were used in the manufacture of (2) specific finished bicycles that were (3) exported under a specific export invoice. Odoo enables this through lot/serial number tracing: enable lot tracking on all imported components at receipt. When manufacturing orders consume these components, Odoo records which lot numbers were used. When the finished bicycle is exported, the delivery and invoice trace back to the manufacturing order and thus to the input component lots. To generate the duty drawback claim, filter Manufacturing Orders by the export delivery reference, then trace component consumption by lot number — this gives you the import entry numbers, quantities, and duty paid amounts needed for the Customs drawback application. This traceability chain is what makes Odoo significantly more powerful than Tally or spreadsheets for cycle export manufacturers."
+        }
+      }
+    ]
+  }
+]
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap">
+  <link rel="stylesheet" href="_styles.css">
+  <style>
+    .bom-tree {
+      margin: 28px 0;
+      font-size: 13px;
+    }
+    .bom-node {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+      margin-bottom: 12px;
+    }
+    .bom-head {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 18px;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+    }
+    .bom-level {
+      font-family: var(--mono);
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--accent);
+      min-width: 64px;
+    }
+    .bom-product {
+      font-weight: 600;
+      color: var(--text);
+    }
+    .bom-type {
+      margin-left: auto;
+      font-family: var(--mono);
+      font-size: 10px;
+      color: var(--text-3);
+      background: var(--elev);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 2px 8px;
+    }
+    .bom-components {
+      padding: 12px 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .bom-comp {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      color: var(--text-2);
+      line-height: 1.6;
+    }
+    .bom-comp-name { flex: 1; }
+    .bom-comp-qty {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--text-3);
+      min-width: 60px;
+      text-align: right;
+    }
+    .bom-comp-src {
+      font-family: var(--mono);
+      font-size: 10px;
+      color: oklch(0.80 0.17 155);
+      min-width: 72px;
+      text-align: right;
+    }
+
+    .routing-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 12.5px;
+      margin: 24px 0;
+    }
+    .routing-table th {
+      padding: 10px 14px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-3);
+      text-align: left;
+    }
+    .routing-table td {
+      padding: 10px 14px;
+      border: 1px solid var(--border);
+      color: var(--text-2);
+      vertical-align: top;
+      line-height: 1.6;
+    }
+    .routing-table td:first-child { font-weight: 500; color: var(--text); }
+
+    .hs-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      margin: 24px 0;
+    }
+    .hs-item {
+      display: flex;
+      gap: 12px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 12px 14px;
+      align-items: flex-start;
+    }
+    .hs-code {
+      font-family: var(--mono);
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--accent);
+      min-width: 80px;
+      margin-top: 1px;
+    }
+    .hs-desc {
+      font-size: 12.5px;
+      color: var(--text-2);
+      line-height: 1.6;
+    }
+
+    .pull {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: clamp(20px, 2.8vw, 30px);
+      line-height: 1.3;
+      color: var(--text);
+      margin: 48px 0;
+      max-width: 26ch;
+      letter-spacing: -0.01em;
+    }
+    .pull::before {
+      content: "";
+      display: block;
+      width: 36px;
+      height: 1px;
+      background: var(--accent);
+      margin-bottom: 18px;
+    }
+
+    @media(max-width:700px){
+      .hs-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="grid-bg"></div>
+
+  <header class="nav">
+    <div class="shell">
+      <div class="nav-inner">
+        <a class="brand" href="../index.html">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span class="brand-name"><b>Mehedi Hasan</b><em>ERP · Business Analyst</em></span>
+        </a>
+        <a class="back-link" href="../index.html#lab">← Back to Lab</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="post-head">
+    <div class="shell">
+      <span class="eyebrow">Technical Lab · 0034</span>
+      <h1>Odoo for Cycle Export Bangladesh — <span class="serif">BOM to customs, fully configured.</span></h1>
+      <p class="lede">Bangladesh is the world's third-largest bicycle exporter. The factories that ship hundreds of thousands of units annually to Europe and the Americas manage complex multi-level BOMs, imported components from China and Taiwan, and duty drawback claims that require lot-level traceability. This guide covers how to configure Odoo to handle all of it.</p>
+      <div class="post-meta">
+        <span class="chip accent">Industry Guide</span>
+        <span class="chip">Cycle / Bicycle</span>
+        <span class="chip">Export</span>
+        <span class="chip">Bangladesh</span>
+      </div>
+      <div class="byline">
+        <span>By<b><a href="https://www.linkedin.com/in/mehedi-hasan-consultant/" style="color:var(--accent)" rel="author">Mehedi Hasan</a></b></span>
+        <span>Published<b>May 2026</b></span>
+        <span>Read time<b>13 minutes</b></span>
+        <span>Form<b>Industry Configuration Guide</b></span>
+        <span>Scope<b>Bicycle export · Bangladesh manufacturers</b></span>
+      </div>
+    </div>
+  </section>
+
+  <article class="post">
+    <aside class="toc">
+      <div class="toc-k">In this guide</div>
+      <ol>
+        <li><a href="#industry">Bangladesh cycle export context</a></li>
+        <li><a href="#bom">Multi-level BOM structure</a></li>
+        <li><a href="#procurement">Imported component procurement</a></li>
+        <li><a href="#routing">Production routing</a></li>
+        <li><a href="#hs-codes">HS code classification</a></li>
+        <li><a href="#export-docs">Export documentation</a></li>
+        <li><a href="#drawback">Duty drawback traceability</a></li>
+        <li><a href="#bangladesh">Bangladesh-specific notes</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ol>
+    </aside>
+
+    <div class="body">
+      <p>Bangladesh exports over 2 million bicycles annually, primarily to the European Union, USA, and Japan. The major exporters — including companies like Meghna Group and Atlas Bangladesh — operate EPZ factories that import 60–80% of components and assemble finished bicycles for re-export. The duty drawback system, the HS code complexity of bicycle components, and the lot-level traceability required for duty claims make this one of the most ERP-intensive manufacturing categories in Bangladesh.</p>
+
+      <p>Most cycle factories I have worked with are running procurement in Excel, production records in handwritten registers, and have no ability to quickly answer the question a duty drawback officer always asks: "Show me which imported components — with which import entry numbers — went into the bicycles on this export invoice." Odoo can answer that question in three clicks. This guide shows you how to set it up.</p>
+
+      <p>For the underlying manufacturing module setup, see the <a href="0013-odoo-manufacturing-module-bangladesh.html" style="color:var(--accent)">Odoo manufacturing module guide for Bangladesh factories</a>. For customs and HS code management more broadly, see the <a href="0019-hs-code-customs-odoo-bangladesh.html" style="color:var(--accent)">HS code and customs management guide</a>.</p>
+
+      <p class="pull">A bicycle has over 100 components. Each one is a procurement decision, a quality check, and a traceability requirement. ERP that cannot see all 100 is not ERP — it is expensive data entry.</p>
+
+      <h2 id="industry">Bangladesh cycle export: the ERP context</h2>
+
+      <p>Bangladesh cycle manufacturers face a specific combination of challenges that makes ERP configuration non-trivial:</p>
+
+      <ul>
+        <li><strong>Component import dependency:</strong> Frames and some components are locally produced. Derailleurs, hubs, bottom brackets, tyres, and many precision parts are imported — primarily from China and Taiwan. Each import shipment has a Bill of Entry, import duty, and AIT/VAT. The duty on these components is what creates the duty drawback claim at export.</li>
+        <li><strong>Multi-level assembly:</strong> A bicycle is not a simple assembled product. It has sub-assemblies (wheel assembly, frame assembly, drivetrain assembly) that may be produced in different departments or subcontracted. The BOM is 3–4 levels deep, not flat.</li>
+        <li><strong>Model proliferation:</strong> A typical cycle exporter has 30–80 active models (mountain bikes, road bikes, children's bikes, e-bikes). Each model has a distinct BOM. Managing 80 BOMs manually is unscalable.</li>
+        <li><strong>Buyer-specific requirements:</strong> European buyers under EUDR and Green Deal requirements are increasingly asking for component traceability documentation. EPZ-based exporters have additional compliance requirements from BEPZA.</li>
+        <li><strong>Duty drawback value:</strong> Import duty on bicycle components can represent 8–25% of the CIF import value, depending on the component. For a factory importing $2M of components annually, the drawback claim is $160,000–$500,000. Losing this due to poor traceability records is a significant cost.</li>
+      </ul>
+
+      <h2 id="bom">Multi-level BOM structure in Odoo</h2>
+
+      <p>A bicycle BOM in Odoo should be structured as a multi-level BOM with sub-assemblies. This gives you production planning and traceability at the sub-assembly level, not just the finished bicycle level.</p>
+
+      <div class="bom-tree">
+        <div class="bom-node">
+          <div class="bom-head">
+            <span class="bom-level">Level 0</span>
+            <span class="bom-product">26" Mountain Bicycle — Model MTB-X1</span>
+            <span class="bom-type">Manufacture</span>
+          </div>
+          <div class="bom-components">
+            <div class="bom-comp">
+              <span class="bom-comp-name">Frame Assembly — MTB-X1 (sub-assembly)</span>
+              <span class="bom-comp-qty">1 pcs</span>
+              <span class="bom-comp-src">Local MFG</span>
+            </div>
+            <div class="bom-comp">
+              <span class="bom-comp-name">Front Wheel Assembly — 26" (sub-assembly)</span>
+              <span class="bom-comp-qty">1 pcs</span>
+              <span class="bom-comp-src">Local MFG</span>
+            </div>
+            <div class="bom-comp">
+              <span class="bom-comp-name">Rear Wheel Assembly — 26" (sub-assembly)</span>
+              <span class="bom-comp-qty">1 pcs</span>
+              <span class="bom-comp-src">Local MFG</span>
+            </div>
+            <div class="bom-comp">
+              <span class="bom-comp-name">Drivetrain Assembly — 21-speed (sub-assembly)</span>
+              <span class="bom-comp-qty">1 pcs</span>
+              <span class="bom-comp-src">Local MFG</span>
+            </div>
+            <div class="bom-comp">
+              <span class="bom-comp-name">Handlebar + Stem + Grips (sub-assembly)</span>
+              <span class="bom-comp-qty">1 set</span>
+              <span class="bom-comp-src">Local MFG</span>
+            </div>
+            <div class="bom-comp">
+              <span class="bom-comp-name">Saddle + Seatpost</span>
+              <span class="bom-comp-qty">1 set</span>
+              <span class="bom-comp-src">Import CN</span>
+            </div>
+            <div class="bom-comp">
+              <span class="bom-comp-name">V-Brake Set (front + rear) — Shimano</span>
+              <span class="bom-comp-qty">1 set</span>
+              <span class="bom-comp-src">Import TW</span>
+            </div>
+            <div class="bom-comp">
+              <span class="bom-comp-name">Pedals — alloy platform</span>
+              <span class="bom-comp-qty">1 pair</span>
+              <span class="bom-comp-src">Import CN</span>
+            </div>
+            <div class="bom-comp">
+              <span class="bom-comp-name">Carton box + foam padding + cable ties</span>
+              <span class="bom-comp-qty">1 set</span>
+              <span class="bom-comp-src">Local</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="bom-node">
+          <div class="bom-head">
+            <span class="bom-level">Level 1</span>
+            <span class="bom-product">Frame Assembly — MTB-X1</span>
+            <span class="bom-type">Manufacture</span>
+          </div>
+          <div class="bom-components">
+            <div class="bom-comp">
+              <span class="bom-comp-name">Hi-Ten Steel Frame — MTB-X1 (welded, painted)</span>
+              <span class="bom-comp-qty">1 pcs</span>
+              <span class="bom-comp-src">Local MFG</span>
+            </div>
+            <div class="bom-comp">
+              <span class="bom-comp-name">Front Fork — Hi-Ten steel</span>
+              <span class="bom-comp-qty">1 pcs</span>
+              <span class="bom-comp-src">Import CN</span>
+            </div>
+            <div class="bom-comp">
+              <span class="bom-comp-name">Headset — 1-1/8" threaded</span>
+              <span class="bom-comp-qty">1 set</span>
+              <span class="bom-comp-src">Import CN</span>
+            </div>
+            <div class="bom-comp">
+              <span class="bom-comp-name">Bottom Bracket — 68mm BSA</span>
+              <span class="bom-comp-qty">1 pcs</span>
+              <span class="bom-comp-src">Import CN</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="bom-node">
+          <div class="bom-head">
+            <span class="bom-level">Level 1</span>
+            <span class="bom-product">Rear Wheel Assembly — 26"</span>
+            <span class="bom-type">Manufacture</span>
+          </div>
+          <div class="bom-components">
+            <div class="bom-comp">
+              <span class="bom-comp-name">26" Alloy Rim — double-wall</span>
+              <span class="bom-comp-qty">1 pcs</span>
+              <span class="bom-comp-src">Import CN</span>
+            </div>
+            <div class="bom-comp">
+              <span class="bom-comp-name">Rear Hub — 7-speed freewheel</span>
+              <span class="bom-comp-qty">1 pcs</span>
+              <span class="bom-comp-src">Import TW</span>
+            </div>
+            <div class="bom-comp">
+              <span class="bom-comp-name">Spoke — 14G stainless, 260mm</span>
+              <span class="bom-comp-qty">36 pcs</span>
+              <span class="bom-comp-src">Import CN</span>
+            </div>
+            <div class="bom-comp">
+              <span class="bom-comp-name">Nipple — alloy</span>
+              <span class="bom-comp-qty">36 pcs</span>
+              <span class="bom-comp-src">Import CN</span>
+            </div>
+            <div class="bom-comp">
+              <span class="bom-comp-name">26" x 2.125" MTB Tyre — Kenda</span>
+              <span class="bom-comp-qty">1 pcs</span>
+              <span class="bom-comp-src">Import CN</span>
+            </div>
+            <div class="bom-comp">
+              <span class="bom-comp-name">26" Inner Tube — Schrader valve</span>
+              <span class="bom-comp-qty">1 pcs</span>
+              <span class="bom-comp-src">Import CN</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <p>In Odoo, set all sub-assembly BOMs (Level 1) with <strong>BOM Type = Manufacture</strong>. This means Odoo creates a separate Manufacturing Order for each sub-assembly — you get separate production tracking for frame assembly, wheel building, and drivetrain assembly. The top-level bicycle MO consumes these sub-assemblies as components.</p>
+
+      <p>If you want sub-assemblies to be produced inside the same MO as the finished bicycle (not separately planned), use <strong>BOM Type = Kit</strong> for the sub-assemblies. Use Kit when the sub-assembly is never stored separately; use Manufacture when it is produced in batches, inspected independently, or shared across multiple bicycle models.</p>
+
+      <h2 id="procurement">Imported component procurement</h2>
+
+      <p>Most high-value components in Bangladesh cycle manufacturing are imported from China (Tianjin, Wuxi) and Taiwan. Here is how to configure the procurement workflow in Odoo:</p>
+
+      <ul>
+        <li><strong>Vendor configuration:</strong> Create vendors with their country (China/Taiwan), currency (CNY/USD), payment terms, and lead time. Set the pricelist currency per vendor. Purchase Orders are automatically generated in the vendor's currency.</li>
+        <li><strong>HS codes on product:</strong> Enter the import HS code on each component's product master (Inventory → Products → product form → General Information → HS Code field). This is used in the purchase receipt documentation and for the duty drawback claim.</li>
+        <li><strong>LC-linked procurement:</strong> When sourcing under an LC, record the LC number as an external reference on the Purchase Order. Set a scheduled activity reminder for the LC expiry date. This ensures no LC expires without the shipment being tracked.</li>
+        <li><strong>Bill of Entry (B/E) recording:</strong> When the shipment clears Chittagong Customs, the Bill of Entry number is the key reference for the duty drawback claim. Record the B/E number and import duty amount as a note on the Purchase receipt, or use a custom field. Some factories create a separate "Import Shipment" record using Odoo's Lot/Serial Number notes to store B/E data per import lot.</li>
+        <li><strong>Landed costs:</strong> Import duty, C&F charges, port handling, customs broker fees, and freight (if not included in CIF price) are landed costs. In Odoo, go to Inventory → Operations → Landed Costs, link the receipt, and distribute the costs across components by quantity or value. This gives you the true landed cost per unit for each imported component — critical for accurate BOM costing and margin analysis.</li>
+      </ul>
+
+      <h2 id="routing">Production routing in Odoo</h2>
+
+      <table class="routing-table">
+        <thead>
+          <tr>
+            <th style="width:15%">Operation</th>
+            <th style="width:20%">Work Centre</th>
+            <th style="width:30%">What happens</th>
+            <th style="width:15%">Duration (est.)</th>
+            <th style="width:20%">Odoo tracking</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Frame Cutting</td>
+            <td>Tube Cutting WC</td>
+            <td>Steel tubes cut to length for frame, fork, and stays per model specifications</td>
+            <td>0.5 hrs/unit</td>
+            <td>Work Order — Tube Cutting</td>
+          </tr>
+          <tr>
+            <td>Frame Welding</td>
+            <td>Welding WC</td>
+            <td>TIG/MIG welding of frame joints. Jig fixtures ensure geometry consistency. Post-weld inspection (visual, weld quality)</td>
+            <td>1.5 hrs/unit</td>
+            <td>Work Order — Welding</td>
+          </tr>
+          <tr>
+            <td>Frame Painting</td>
+            <td>Paint WC</td>
+            <td>Powder coating or wet paint. Colour as per buyer colour code. Oven curing. Visual inspection for runs/chips</td>
+            <td>0.75 hrs/unit</td>
+            <td>Work Order — Painting</td>
+          </tr>
+          <tr>
+            <td>Wheel Building</td>
+            <td>Wheel Assembly WC</td>
+            <td>Lacing spokes to rim and hub. Truing on tensioning machine. Tyre and tube mounting</td>
+            <td>0.6 hrs/pair</td>
+            <td>Work Order — Wheel Assembly (separate MO)</td>
+          </tr>
+          <tr>
+            <td>Final Assembly</td>
+            <td>Assembly Line WC</td>
+            <td>Install fork, headset, wheels, drivetrain, brakes, handlebars, saddle, pedals. Gear and brake cable adjustment</td>
+            <td>1.0 hrs/unit</td>
+            <td>Work Order — Final Assembly</td>
+          </tr>
+          <tr>
+            <td>QC &amp; PDI</td>
+            <td>QC WC</td>
+            <td>Pre-delivery inspection: gear shifting, brake pull, wheel true, paint defects. AQL sampling per buyer spec</td>
+            <td>0.3 hrs/unit</td>
+            <td>Quality Check + Scrap Order (rejects)</td>
+          </tr>
+          <tr>
+            <td>Packing &amp; Cartonning</td>
+            <td>Packing WC</td>
+            <td>Semi-knock-down (SKD) packing per buyer spec (handlebar loose, pedals loose, partially assembled). Carton label, buyer barcode sticker</td>
+            <td>0.4 hrs/unit</td>
+            <td>Work Order — Packing</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2 id="hs-codes">HS code classification for bicycle components</h2>
+
+      <div class="hs-grid">
+        <div class="hs-item">
+          <span class="hs-code">8712.00</span>
+          <span class="hs-desc">Finished bicycles (two-wheeled, non-motorised) — the export product HS code. Subcodes: 8712.0010 (children's), 8712.0020 (mountain/road), 8712.0090 (other).</span>
+        </div>
+        <div class="hs-item">
+          <span class="hs-code">8714.91</span>
+          <span class="hs-desc">Frames and forks for cycles. Used for imported steel frames and fork sets.</span>
+        </div>
+        <div class="hs-item">
+          <span class="hs-code">8714.92</span>
+          <span class="hs-desc">Wheel rims and spokes. Alloy rims and stainless spokes imported from China.</span>
+        </div>
+        <div class="hs-item">
+          <span class="hs-code">8714.94</span>
+          <span class="hs-desc">Brakes and brake parts. Shimano V-brakes, cantilever brakes, caliper brakes.</span>
+        </div>
+        <div class="hs-item">
+          <span class="hs-code">8714.95</span>
+          <span class="hs-desc">Saddles. Imported vinyl, leather, or padded bicycle saddles.</span>
+        </div>
+        <div class="hs-item">
+          <span class="hs-code">8714.99</span>
+          <span class="hs-desc">Other cycle parts — derailleurs, gear shifters, cranksets, bottom brackets, pedals, hubs.</span>
+        </div>
+        <div class="hs-item">
+          <span class="hs-code">4011.50</span>
+          <span class="hs-desc">Pneumatic rubber tyres for cycles. Kenda, Cheng Shin, and generic imported tyres.</span>
+        </div>
+        <div class="hs-item">
+          <span class="hs-code">7315.11</span>
+          <span class="hs-desc">Roller chains for cycles. KMC and SRAM chains imported from Taiwan/China.</span>
+        </div>
+      </div>
+
+      <p>In Odoo, enter each HS code in the product's <strong>HS Code</strong> field. When you generate a commercial invoice or packing list from a Delivery Order, the HS code is available for the customs declaration. For the duty drawback claim, you need the HS code of the imported component (input) and the HS code of the exported bicycle (output) to demonstrate eligible input-output relationship under the Customs Duty Drawback Rules.</p>
+
+      <h2 id="export-docs">Export documentation from Odoo</h2>
+
+      <p>A standard bicycle export shipment from Bangladesh requires these documents, all of which Odoo can generate or support:</p>
+
+      <ul>
+        <li><strong>Commercial Invoice:</strong> Generated from the Odoo Sales Order invoice. Shows: exporter details, importer details, LC number, country of origin (Bangladesh), quantity (pieces and cartons), HS code (8712.00XX), unit price, total FOB/CIF value in USD. Configure a custom QWeb report template to include the certificate of origin declaration and the LC reference.</li>
+        <li><strong>Packing List:</strong> Generated from the Delivery Order. Shows: carton numbers (sequentially numbered), pieces per carton, gross/net weight per carton, dimensions, total cartons, total pieces. For SKD packing, list the loose components per carton separately from the assembled bicycle.</li>
+        <li><strong>Certificate of Origin (CO):</strong> Applied for from the Bangladesh Export Promotion Bureau (EPB) or Chamber of Commerce. The CO references the commercial invoice number and verifies Bangladesh origin. In Odoo, store the CO reference number as a note on the Delivery Order for record-keeping.</li>
+        <li><strong>EXP Form:</strong> The Bangladesh Bank EXP (Export) form is required for all export shipments. The EXP number is issued by the bank and references the LC and the export invoice. Store the EXP number on the Sales Order or invoice for traceability.</li>
+        <li><strong>Bill of Lading:</strong> Issued by the shipping line after cargo is loaded. Attach the B/L PDF to the Delivery Order in Odoo's chatter. The B/L number is required for the duty drawback claim.</li>
+      </ul>
+
+      <h2 id="drawback">Duty drawback traceability in Odoo</h2>
+
+      <p>The duty drawback claim in Bangladesh requires you to prove, for each export shipment, which imported materials were used and what import duty was paid on them. Odoo enables this through lot-level traceability:</p>
+
+      <ol>
+        <li><strong>Enable lot tracking on all imported components:</strong> In the product master, set Tracking = "By Lot" for all imported components (derailleurs, hubs, tyres, rims, etc.). When you receive these components against a PO, assign lot numbers that correspond to the import shipment batch (e.g., LOT-2026-CN-042 for the 42nd China import shipment of 2026). Record the Bill of Entry (B/E) number and duty amount in the lot notes.</li>
+        <li><strong>Record component lot consumption in production:</strong> In the Manufacturing Order work order, when components are consumed, Odoo records which specific lots were used. This is the key step — it links imported component lots to specific finished bicycle MOs.</li>
+        <li><strong>Trace from export delivery to import lot:</strong> After a shipment is exported, go to Inventory → Traceability → select the finished bicycle product and the export delivery date range. Odoo's traceability report shows the chain: Export Delivery → Manufacturing Order → Component Lots → Purchase Receipts. From the Purchase Receipts, you have the import shipment details, the B/E numbers, and the duty paid amounts needed for the drawback claim.</li>
+        <li><strong>Generate drawback claim data:</strong> Export the traceability data to Excel. The drawback application to Bangladesh Customs requires: export invoice number + date, FOB value, imported component description + HS code + quantity + B/E number + duty paid. All of this is in Odoo's traceability data.</li>
+      </ol>
+
+      <h2 id="bangladesh">Bangladesh cycle export — specific considerations</h2>
+
+      <ul>
+        <li><strong>EPZ operations:</strong> Many large cycle exporters (Meghna, Atlas, Phoenix) operate inside Bangladesh Export Processing Zones (EPZ). EPZ factories have different VAT and duty treatment — they operate under BEPZA rules with bonded warehouse status. In Odoo, configure EPZ facilities as separate warehouses with "bonded" stock locations. Transfers between bonded and non-bonded locations trigger duty events that need to be tracked. See the <a href="0021-epz-sez-compliance-odoo-bangladesh.html" style="color:var(--accent)" target="_blank">EPZ compliance guide</a> for the full setup.</li>
+        <li><strong>EU GSP+ and EUSR requirements:</strong> Bangladesh benefits from EU GSP+ preferences for bicycle exports (reduced import duty in the EU). This requires a REX (Registered Exporter) statement of origin on the commercial invoice or a Form A certificate. The origin declaration language must appear on the export invoice — include it in your Odoo commercial invoice QWeb template as a fixed text block.</li>
+        <li><strong>Component quality and supplier management:</strong> Chinese components vary significantly in quality across suppliers and batches. In Odoo, use the Quality module to set up incoming quality checks (IQC) for high-value imported components — derailleurs, hubs, brakes. Failed IQC items are rejected at the receipt stage and returned to the supplier via a Return operation on the receipt. This keeps your inventory clean and prevents defective components from reaching production.</li>
+        <li><strong>Model changeover planning:</strong> European buyers issue seasonal orders with specific model changes (colour, component upgrades, geometry changes). Each model change requires a BOM revision in Odoo. Use Odoo's BOM versioning (create a new BOM version rather than modifying the existing one) so historical production orders retain their original BOM and do not pick up the new component specifications retroactively.</li>
+      </ul>
+
+      <div class="callout">
+        <span class="tag">Bottom line</span>
+        <p>The two configurations that deliver the most value for a Bangladesh cycle exporter are: (1) multi-level BOM with sub-assemblies, so you have production planning and traceability at every level; and (2) lot tracking on all imported components, so you can generate the duty drawback claim with confidence. Both require upfront configuration discipline — but the return is measurable in both operational visibility and recovered duty. <a href="../index.html#contact" style="color:var(--accent)">Need help setting up Odoo for your cycle factory? Get in touch →</a></p>
+      </div>
+
+      <h2 id="faq">Frequently asked questions</h2>
+
+      <h3>How to configure Odoo BOM for bicycle manufacturing in Bangladesh?</h3>
+      <p>Use a multi-level BOM structure: the finished bicycle (Level 0) references sub-assemblies (Frame Assembly, Wheel Assembly, Drivetrain Assembly) as Level 1 BOMs. Set sub-assembly BOMs to type "Manufacture" if they are produced separately and inspected independently, or "Kit" if they are assembled inline with the finished bicycle. Imported components are set with their HS codes and lot tracking enabled. This gives you separate production orders per sub-assembly, full traceability from finished bike to imported component lot, and correct cost accounting at every BOM level.</p>
+
+      <h3>How does Odoo handle imported components for cycle export in Bangladesh?</h3>
+      <p>Imported components are received against Purchase Orders with HS codes recorded on the product. Enable lot tracking on all imported items — the lot number corresponds to your import shipment batch, and you record the Bill of Entry number in the lot notes. Landed costs (import duty, freight, clearing charges) are applied to receipts and distributed across components. When production consumes these lots, Odoo records the chain from finished bicycle → MO → component lots → import receipts — enabling the duty drawback traceability claim.</p>
+
+      <h3>What HS codes apply to bicycle export from Bangladesh?</h3>
+      <p>Finished bicycles export under HS 8712.00 (subcodes 8712.0010 children's, 8712.0020 mountain/road, 8712.0090 other). Key import component codes: frames/forks (8714.91), rims/spokes (8714.92), brakes (8714.94), saddles (8714.95), derailleurs/hubs/pedals (8714.99), tyres (4011.50), chains (7315.11). Enter HS codes in Odoo's product HS Code field — they appear on commercial invoices and packing lists for customs clearance at both import and export stages.</p>
+
+      <h3>How do I track duty drawback for bicycle exports in Odoo?</h3>
+      <p>Enable lot tracking on all imported components. Assign lot numbers that map to import shipment batches, and record the Bill of Entry number and duty amount in the lot notes. When production MOs consume these lots, Odoo records which import lots went into which bicycle MOs. After export, use Odoo's Traceability report (Inventory → Traceability) to trace from the export delivery back to the input component lots and their import receipts. This gives you the B/E numbers, duty amounts, and component HS codes needed for the Customs duty drawback application.</p>
+    </div>
+  </article>
+
+  <footer>
+    <div class="shell">
+      <div class="post-foot">
+        <span class="eyebrow">Continue exploring</span>
+        <div class="next">
+          <a class="next-card" href="0033-odoo-rmg-garments-bangladesh.html">
+            <span class="dir">Older · 0033</span>
+            <h4>Odoo for RMG Bangladesh</h4>
+            <p>Sample-to-shipment workflow, size-colour BOM, BGMEA wage compliance — full configuration guide for garments factories.</p>
+            <span class="arrow">→</span>
+          </a>
+          <a class="next-card" href="0035-odoo-pharma-bangladesh.html">
+            <span class="dir">Newer · 0035</span>
+            <h4>Odoo for Pharmaceutical Bangladesh</h4>
+            <p>Lot tracking, expiry management, DGDA batch compliance, and pharma manufacturing workflow in Odoo.</p>
+            <span class="arrow">→</span>
+          </a>
+        </div>
+      </div>
+      <div class="foot">
+        <span>© 2026 Mehedi Hasan · Lab / 0034</span>
+        <span><a href="../index.html#lab">↑ Back to lab index</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="_toc.js" defer></script>
+</body>
+
+</html>

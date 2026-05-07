@@ -1,0 +1,567 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description"
+    content="Odoo pharma Bangladesh — lot tracking, expiry management, DGDA batch compliance, and pharmaceutical manufacturing workflow. Configure it right →" />
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="Mehedi Hasan" />
+  <title>Odoo Pharma Bangladesh | Batch Tracking | Mehedi Hasan</title>
+  <link rel="canonical" href="https://mhasan.me/lab/0035-odoo-pharma-bangladesh" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png" />
+  <!-- Open Graph -->
+  <meta property="og:title" content="Odoo Pharma Bangladesh | Batch Tracking | Mehedi Hasan" />
+  <meta property="og:description"
+    content="How to configure Odoo for pharmaceutical manufacturing in Bangladesh — lot tracking, expiry date management, DGDA batch compliance, and manufacturing workflow from granulation to packaging." />
+  <meta property="og:url" content="https://mhasan.me/lab/0035-odoo-pharma-bangladesh" />
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="https://mhasan.me/assets/og-default.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:site_name" content="Mehedi Hasan | Odoo ERP Consultant" />
+  <meta property="article:author" content="https://www.linkedin.com/in/mehedi-hasan-consultant/" />
+  <meta property="article:published_time" content="2026-05-07T11:00:00+06:00" />
+  <meta property="article:modified_time" content="2026-05-07T11:00:00+06:00" />
+  <meta property="article:section" content="Odoo ERP Bangladesh" />
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Odoo Pharma Bangladesh | Batch Tracking & Compliance Guide" />
+  <meta name="twitter:description"
+    content="Configure Odoo for pharma manufacturing in Bangladesh — lot tracking, expiry management, DGDA batch compliance, and full production workflow." />
+  <meta name="twitter:image" content="https://mhasan.me/assets/og-default.jpg" />
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Odoo for Pharmaceutical Bangladesh: Batch Tracking & Compliance",
+    "description": "A complete guide to configuring Odoo ERP for pharmaceutical manufacturing in Bangladesh. Covers lot and batch tracking setup, expiry date management, shelf life configuration, DGDA batch manufacturing record requirements, pharmaceutical production workflow (granulation → compression → coating → packaging), quality control and batch release, temperature-sensitive storage, and recall traceability.",
+    "datePublished": "2026-05-07T11:00:00+06:00",
+    "dateModified": "2026-05-07T11:00:00+06:00",
+    "author": {
+      "@type": "Person",
+      "name": "Mehedi Hasan",
+      "url": "https://mhasan.me",
+      "jobTitle": "Odoo ERP Consultant & Business Analyst",
+      "sameAs": "https://www.linkedin.com/in/mehedi-hasan-consultant/"
+    },
+    "publisher": { "@type": "Person", "name": "Mehedi Hasan", "url": "https://mhasan.me" },
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://mhasan.me/lab/0035-odoo-pharma-bangladesh" }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://mhasan.me" },
+      { "@type": "ListItem", "position": 2, "name": "Lab", "item": "https://mhasan.me/lab/" },
+      { "@type": "ListItem", "position": 3, "name": "Odoo Pharma Bangladesh", "item": "https://mhasan.me/lab/0035-odoo-pharma-bangladesh" }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How to enable lot and batch tracking in Odoo for pharmaceuticals?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "In Odoo, enable lot tracking by going to Inventory → Configuration → Settings and turning on 'Lots & Serial Numbers'. Then, on each pharmaceutical product (finished goods and raw materials/APIs), set Tracking = 'By Lot'. When you create a purchase order and receive raw materials, you assign a lot number (which corresponds to the supplier's certificate of analysis batch number). When you create a manufacturing order for a finished product, Odoo assigns a production lot number (your internal batch number). All material movements — receipt, production consumption, finished goods creation, sales delivery — are recorded against their lot numbers. This creates a complete audit trail: from supplier API lot → internal production batch → customer delivery, with full forward and backward traceability. For DGDA compliance, this traceability is the core requirement of the Batch Manufacturing Record (BMR)."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How does Odoo manage expiry dates for pharmaceutical products?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Odoo manages pharmaceutical expiry dates through lot-level date tracking. When you enable lot tracking and set 'Use Expiration Dates' on the product, each lot has: Expiration Date (the shelf-life end date), Best Before Date, Removal Date (the date at which stock should be removed from sale — typically 3 months before expiry), and Use Time (the number of days from manufacture to expiry). When receiving raw materials, enter the supplier's expiry date per lot. For finished goods, Odoo calculates the expiry date automatically as Manufacturing Date + Use Time (shelf life in days). The system warns when stock is approaching its removal date and can be configured to block sales of expired or near-expiry lots using the Removal Date field. For FEFO (First Expired First Out) rotation, configure the product's removal strategy to 'First Expiry First Out' — Odoo will automatically suggest the shortest-dated lot when fulfilling sales orders."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can Odoo handle DGDA batch manufacturing record requirements in Bangladesh?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Odoo can satisfy the core data requirements of a DGDA Batch Manufacturing Record (BMR), though a dedicated pharmaceutical ERP (like Odoo with a pharma add-on module, or a specialized system) provides more structured BMR templates. The core BMR data Odoo captures: (1) Product name, batch number, batch size, manufacturing date, expiry date; (2) Raw material names, lot numbers, quantities weighed/used, and the analyst who verified (recorded in MO work order notes); (3) In-process quality checks (configured as Odoo Quality Checks at each manufacturing step); (4) Equipment used (recorded via work centres); (5) Finished goods yield (quantity produced vs theoretical yield); (6) QC release sign-off (Odoo's MO approval workflow with user accountability). What Odoo does not provide out-of-the-box is the formal BMR print template — you need a custom QWeb report that formats all MO data, quality check results, and lot information into the structured BMR format required by DGDA. This is a one-time development effort but is essential for regulatory compliance."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I set up pharmaceutical manufacturing workflow in Odoo?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Configure pharmaceutical manufacturing in Odoo with multi-step routing. For a tablet product: (1) Work Order 1 — Dispensing: raw materials (API and excipients) are weighed and dispensed from the dispensary. Record actual quantities dispensed as component consumption in the MO. (2) Work Order 2 — Granulation: wet or dry granulation of the dispensed materials. Record granulation parameters in work order notes or quality checks (mixing time, granule moisture). (3) Work Order 3 — Compression: granules compressed into tablets. Record compression parameters (hardness, friability, weight variation) as quality checks. (4) Work Order 4 — Coating (if applicable): film or sugar coating applied. Record coating weight gain and appearance checks. (5) Work Order 5 — Packaging: blistering or bottling, carton packing, labelling. Record batch number on label, expiry date, and pack count. (6) QC Release: quality department releases the batch after reviewing all in-process checks, retain sample storage, and final product testing. In Odoo, the MO is moved to 'Done' only after QC release — configure a responsible person approval at the final QC step."
+        }
+      }
+    ]
+  }
+]
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap">
+  <link rel="stylesheet" href="_styles.css">
+  <style>
+    .pharma-steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin: 28px 0;
+    }
+    .pharma-step {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .ps-head {
+      padding: 12px 16px;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+    }
+    .ps-stage {
+      font-family: var(--mono);
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--accent);
+      margin-bottom: 4px;
+    }
+    .ps-name {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text);
+    }
+    .ps-body {
+      padding: 12px 16px;
+      font-size: 12.5px;
+      color: var(--text-2);
+      line-height: 1.75;
+    }
+    .ps-qc {
+      margin-top: 10px;
+      padding-top: 10px;
+      border-top: 1px solid var(--border);
+      font-family: var(--mono);
+      font-size: 10px;
+      color: oklch(0.80 0.17 155);
+    }
+
+    .lot-config {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+      margin: 24px 0;
+    }
+    .lot-config table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 12.5px;
+    }
+    .lot-config th {
+      padding: 10px 14px;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      border-right: 1px solid var(--border);
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: var(--text-3);
+      text-align: left;
+    }
+    .lot-config th:last-child { border-right: none; }
+    .lot-config td {
+      padding: 10px 14px;
+      border-bottom: 1px solid var(--border);
+      border-right: 1px solid var(--border);
+      color: var(--text-2);
+      vertical-align: top;
+      line-height: 1.6;
+    }
+    .lot-config td:first-child { font-weight: 500; color: var(--text); }
+    .lot-config td:last-child { border-right: none; }
+    .lot-config tr:last-child td { border-bottom: none; }
+
+    .recall-steps {
+      counter-reset: recall;
+      list-style: none;
+      padding: 0;
+      margin: 20px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .recall-steps li {
+      counter-increment: recall;
+      display: flex;
+      gap: 14px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px 16px;
+      font-size: 13px;
+      color: var(--text-2);
+      line-height: 1.65;
+    }
+    .recall-steps li::before {
+      content: counter(recall);
+      font-family: var(--mono);
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--accent);
+      min-width: 20px;
+      margin-top: 2px;
+    }
+
+    .pull {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: clamp(20px, 2.8vw, 30px);
+      line-height: 1.3;
+      color: var(--text);
+      margin: 48px 0;
+      max-width: 26ch;
+      letter-spacing: -0.01em;
+    }
+    .pull::before {
+      content: "";
+      display: block;
+      width: 36px;
+      height: 1px;
+      background: var(--accent);
+      margin-bottom: 18px;
+    }
+
+    @media(max-width:700px){
+      .pharma-steps { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="grid-bg"></div>
+
+  <header class="nav">
+    <div class="shell">
+      <div class="nav-inner">
+        <a class="brand" href="../index.html">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span class="brand-name"><b>Mehedi Hasan</b><em>ERP · Business Analyst</em></span>
+        </a>
+        <a class="back-link" href="../index.html#lab">← Back to Lab</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="post-head">
+    <div class="shell">
+      <span class="eyebrow">Technical Lab · 0035</span>
+      <h1>Odoo for Pharma Bangladesh — <span class="serif">batch tracking, expiry, DGDA compliance.</span></h1>
+      <p class="lede">Bangladesh has over 300 licensed pharmaceutical manufacturers. The ones operating under WHO-GMP or EU-GMP certification run ERP with full batch traceability. The ones still on Tally and spreadsheets are one DGDA audit finding away from a recall with no paper trail. This guide covers how to configure Odoo for pharmaceutical manufacturing compliance.</p>
+      <div class="post-meta">
+        <span class="chip accent">Industry Guide</span>
+        <span class="chip">Pharmaceutical</span>
+        <span class="chip">Bangladesh</span>
+        <span class="chip">GMP Compliance</span>
+      </div>
+      <div class="byline">
+        <span>By<b><a href="https://www.linkedin.com/in/mehedi-hasan-consultant/" style="color:var(--accent)" rel="author">Mehedi Hasan</a></b></span>
+        <span>Published<b>May 2026</b></span>
+        <span>Read time<b>13 minutes</b></span>
+        <span>Form<b>Industry Configuration Guide</b></span>
+        <span>Scope<b>Pharma · Bangladesh GMP manufacturers</b></span>
+      </div>
+    </div>
+  </section>
+
+  <article class="post">
+    <aside class="toc">
+      <div class="toc-k">In this guide</div>
+      <ol>
+        <li><a href="#pharma-erp">Why pharma needs different ERP</a></li>
+        <li><a href="#lot-tracking">Lot & batch tracking setup</a></li>
+        <li><a href="#expiry">Expiry date management</a></li>
+        <li><a href="#manufacturing">Pharma manufacturing workflow</a></li>
+        <li><a href="#qc-release">QC & batch release</a></li>
+        <li><a href="#dgda">DGDA compliance data</a></li>
+        <li><a href="#recall">Recall traceability</a></li>
+        <li><a href="#storage">Temperature-sensitive storage</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ol>
+    </aside>
+
+    <div class="body">
+      <p>Pharmaceutical ERP is not a separate category from general manufacturing ERP — it is the same system with a much higher traceability requirement. Every raw material that enters a pharma production facility must be traceable to the finished dosage form it contributed to, and every finished dosage form must be traceable back to its input raw material lots. This is not optional: it is the foundation of product recall capability, which is required under DGDA licensing, WHO-GMP, and any export market regulatory approval.</p>
+
+      <p>Odoo handles this correctly when configured correctly. The core capability — lot-based traceability from receipt through production to delivery — is built into the standard Odoo Inventory and Manufacturing modules. What pharma requires is that this capability be turned on for every product, consistently enforced at every transaction point, and augmented with expiry date tracking and quality check integration.</p>
+
+      <p>For EPZ-based pharma exporters, see also the <a href="0021-epz-sez-compliance-odoo-bangladesh.html" style="color:var(--accent)">EPZ compliance configuration guide</a>. For inventory valuation that applies to API and excipient stock, the <a href="0011-odoo-inventory-valuation-cheatsheet.html" style="color:var(--accent)">Odoo inventory valuation cheatsheet</a> covers the relevant costing methods.</p>
+
+      <p class="pull">In pharmaceuticals, the ERP is not an operational convenience — it is the primary evidence that your manufacturing process was controlled. A recall without ERP traceability is a crisis. A recall with ERP traceability is a manageable event.</p>
+
+      <h2 id="pharma-erp">Why pharmaceutical manufacturing needs different ERP configuration</h2>
+
+      <p>Standard manufacturing ERP assumptions that pharma breaks:</p>
+
+      <ul>
+        <li><strong>Every batch is unique:</strong> A production batch of 100,000 tablets is not interchangeable with another batch of the same product. Each batch has its own identity (batch number), its own input material lots, its own in-process test results, and its own release status. ERP must track batches, not just products.</li>
+        <li><strong>Raw materials are traceable to finished goods:</strong> If a quality problem is discovered in a supplier's API lot, you must be able to identify every production batch that used that API lot, and every customer who received product from those batches. This requires complete forward and backward traceability — not just lot numbers, but the full movement chain.</li>
+        <li><strong>Expiry dates are mandatory:</strong> Every pharmaceutical product and raw material has an expiry date. Stock must be managed using FEFO (First Expired First Out), not FIFO or LIFO. Expired stock must never be sold — the system must enforce this, not depend on operator vigilance.</li>
+        <li><strong>Quality release is a control step:</strong> Unlike most manufacturing, pharma products cannot be sold until QC releases the batch. The ERP must enforce this: finished goods produced by manufacturing must enter a "quarantine" status and only move to "released" stock after QC approval. Sales orders cannot deliver from quarantine stock.</li>
+        <li><strong>Manufacturing records are regulatory documents:</strong> The Batch Manufacturing Record (BMR) is a regulatory requirement under DGDA, WHO-GMP, and all major pharmacopoeias. It must record every step of production, every material used with its lot number and quantity, every in-process test result, and every deviation. ERP must capture this data in a structured format.</li>
+      </ul>
+
+      <h2 id="lot-tracking">Lot and batch tracking setup in Odoo</h2>
+
+      <p>Enable lot tracking as follows:</p>
+
+      <ol>
+        <li><strong>System setting:</strong> Inventory → Configuration → Settings → Traceability → enable "Lots & Serial Numbers" and "Expiration Dates".</li>
+        <li><strong>Product tracking:</strong> On every pharmaceutical product (finished goods, APIs, excipients, packaging materials), set <strong>Tracking = By Lot</strong>. Do not skip packaging materials — primary packaging (blisters, bottles) must be lot-tracked for print batch number verification.</li>
+        <li><strong>Lot number format:</strong> Standardize your lot number format. A common Bangladesh pharma format: <code>BN-YYYYMM-NNN</code> (e.g., BN-202605-001 = Batch 001 manufactured in May 2026). Configure this as a convention in your SOP — Odoo accepts any string as a lot number but your lot numbers should be systematic.</li>
+      </ol>
+
+      <div class="lot-config">
+        <table>
+          <thead>
+            <tr>
+              <th>Product Category</th>
+              <th>Tracking Setting</th>
+              <th>Expiry Dates</th>
+              <th>Lot number source</th>
+              <th>FEFO required?</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>APIs (Active Pharmaceutical Ingredients)</td>
+              <td>By Lot</td>
+              <td>Yes — from supplier CoA</td>
+              <td>Supplier batch number</td>
+              <td>Yes</td>
+            </tr>
+            <tr>
+              <td>Excipients (fillers, binders, lubricants)</td>
+              <td>By Lot</td>
+              <td>Yes — from supplier CoA</td>
+              <td>Supplier batch number</td>
+              <td>Yes</td>
+            </tr>
+            <tr>
+              <td>Primary packaging (blisters, bottles, vials)</td>
+              <td>By Lot</td>
+              <td>Typically no expiry</td>
+              <td>Supplier batch or internal code</td>
+              <td>No (FIFO)</td>
+            </tr>
+            <tr>
+              <td>Secondary packaging (cartons, inserts)</td>
+              <td>By Lot (for printed material with batch/expiry)</td>
+              <td>No</td>
+              <td>Print run reference</td>
+              <td>No</td>
+            </tr>
+            <tr>
+              <td>Finished pharmaceutical products</td>
+              <td>By Lot</td>
+              <td>Yes — calculated from manufacture date + shelf life</td>
+              <td>Internal batch number (BN-YYYYMM-NNN)</td>
+              <td>Yes — mandatory</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 id="expiry">Expiry date management in Odoo</h2>
+
+      <p>When "Use Expiration Dates" is enabled on a product, each lot has four date fields in Odoo:</p>
+
+      <ul>
+        <li><strong>Expiration Date:</strong> The date after which the product must not be used or sold. For APIs, this comes from the supplier's CoA. For finished products, this is set automatically as Manufacturing Date + Use Time (configured on the product in days).</li>
+        <li><strong>Best Before Date:</strong> The date until which the product is expected to remain at full potency. For most pharma products, this equals the Expiration Date.</li>
+        <li><strong>Removal Date:</strong> The date at which stock should be quarantined or removed from availability for sale — typically set to 3 months before expiry to allow for distribution and use before expiry. Configure this as the trigger date for Odoo's expiry alerts.</li>
+        <li><strong>Use Time (days):</strong> Set on the product master. Odoo uses this to calculate expiry date automatically when you create a manufacturing order — Manufacturing Date + Use Time = Expiry Date on the finished goods lot.</li>
+      </ul>
+
+      <p><strong>FEFO enforcement:</strong> Go to Inventory → Configuration → Settings → Storage Locations → enable "Storage Locations" if not already on. Then in the product's inventory tab, set Removal Strategy = "First Expiry First Out (FEFO)". When a picking is generated for a sales order or a transfer, Odoo automatically suggests the lot with the earliest expiry date. For a wholesale/hospital sales context, this is essential — it prevents near-expiry stock from accumulating in the warehouse.</p>
+
+      <p><strong>Expiry alerts:</strong> Configure Odoo's scheduled action "Generate Expiry Alerts" (Settings → Technical → Automation → Scheduled Actions) to run daily. Lots reaching their Removal Date generate an activity alert for the QC or warehouse manager. You can also create a custom report: Inventory → Products → Lots/Serial Numbers, filter by Expiration Date ≤ today + 90 days, to see all near-expiry stock.</p>
+
+      <h2 id="manufacturing">Pharmaceutical manufacturing workflow in Odoo</h2>
+
+      <p>Configure the manufacturing routing with one work order per major production stage. Each stage has its own work centre, time estimate, quality checks, and responsible operator.</p>
+
+      <div class="pharma-steps">
+        <div class="pharma-step">
+          <div class="ps-head">
+            <div class="ps-stage">Stage 1</div>
+            <div class="ps-name">Dispensing</div>
+          </div>
+          <div class="ps-body">
+            Raw materials (API + excipients) are weighed to the exact quantities specified in the BOM. Each component's lot number and actual quantity dispensed is recorded in the MO work order. A second person checks each weighing (double verification — a GMP requirement).
+            <div class="ps-qc">QC check: identity test per component · weight verification · dispensary cleanliness log</div>
+          </div>
+        </div>
+        <div class="pharma-step">
+          <div class="ps-head">
+            <div class="ps-stage">Stage 2</div>
+            <div class="ps-name">Granulation</div>
+          </div>
+          <div class="ps-body">
+            Wet or dry granulation. APIs and excipients are blended and granulated. Process parameters (mixing speed, time, binder volume for wet granulation) are recorded in quality checks. Granule moisture content is tested (LOD test) before proceeding.
+            <div class="ps-qc">QC check: LOD % · granule size distribution · blending time record</div>
+          </div>
+        </div>
+        <div class="pharma-step">
+          <div class="ps-head">
+            <div class="ps-stage">Stage 3</div>
+            <div class="ps-name">Compression</div>
+          </div>
+          <div class="ps-body">
+            Granules compressed into tablets on a rotary tablet press. In-process checks performed every 30 minutes: tablet weight variation, hardness, friability, disintegration time. Defective tablets are rejected and weighed — actual yield = theoretical yield minus rejects.
+            <div class="ps-qc">QC check: weight variation · hardness (kP) · friability % · disintegration time · yield %</div>
+          </div>
+        </div>
+        <div class="pharma-step">
+          <div class="ps-head">
+            <div class="ps-stage">Stage 4</div>
+            <div class="ps-name">Coating</div>
+          </div>
+          <div class="ps-body">
+            Film or sugar coating applied in a coating pan. Coating weight gain target is specified in the BOM. Visual inspection for uniform coating, colour consistency, chipping. Not all products require coating — this stage is skipped for uncoated tablets.
+            <div class="ps-qc">QC check: weight gain % · appearance · coating uniformity</div>
+          </div>
+        </div>
+        <div class="pharma-step">
+          <div class="ps-head">
+            <div class="ps-stage">Stage 5</div>
+            <div class="ps-name">Primary Packaging</div>
+          </div>
+          <div class="ps-body">
+            Tablets blistered or bottled. Blister foil lot number recorded. Batch number, manufacturing date, and expiry date printed on each blister/label — verify print against approved artwork. Defective blisters are rejected.
+            <div class="ps-qc">QC check: print legibility · batch/expiry print accuracy · seal integrity · tablet count per blister</div>
+          </div>
+        </div>
+        <div class="pharma-step">
+          <div class="ps-head">
+            <div class="ps-stage">Stage 6</div>
+            <div class="ps-name">Secondary Packaging</div>
+          </div>
+          <div class="ps-body">
+            Blisters packed into cartons with package insert. Cartons into shipper cases. Batch number and expiry on carton label. Shipper cases palletised and moved to QC quarantine storage to await batch release.
+            <div class="ps-qc">QC check: carton count per case · batch/expiry on carton · insert presence · shipper case integrity</div>
+          </div>
+        </div>
+      </div>
+
+      <h2 id="qc-release">QC and batch release in Odoo</h2>
+
+      <p>In pharmaceutical manufacturing, the quality department must release each batch before it can be sold. Odoo implements this through a two-location stock structure:</p>
+
+      <ul>
+        <li><strong>Quarantine location:</strong> Create a stock location called "QC Quarantine" under your main warehouse. Set its usage type to Internal. When a Manufacturing Order is completed, the finished goods are transferred to QC Quarantine — not to the main finished goods location.</li>
+        <li><strong>Released stock location:</strong> Your main finished goods location (e.g., "Finished Goods / Released").</li>
+        <li><strong>Release process:</strong> After QC completes all final product testing (potency assay, dissolution, microbiological), a QC officer creates an internal transfer from QC Quarantine → Finished Goods / Released for the specific lot number. This transfer is the "batch release" transaction. Only after this transfer can the lot be allocated to sales orders.</li>
+        <li><strong>Blocking expired or unreleased lots:</strong> Configure the Finished Goods product with a putaway rule that routes new arrivals to QC Quarantine by default. Sales order picking uses only the Released location. This prevents unreleased or expired stock from being shipped accidentally.</li>
+        <li><strong>QC reject and destruction:</strong> If a batch fails release testing, the lot is transferred from QC Quarantine to a "Rejected/Destroyed" location via a scrap order. The scrap entry records the reason (assay failure, contamination, etc.) and triggers a write-off in the accounting. The lot is locked from further use.</li>
+      </ul>
+
+      <h2 id="dgda">DGDA compliance data in Odoo</h2>
+
+      <p>The Directorate General of Drug Administration (DGDA) requires pharmaceutical manufacturers to maintain Batch Manufacturing Records and Batch Packing Records for every production batch. Odoo captures the underlying data; you need a custom report to format it as a BMR.</p>
+
+      <p>Data that Odoo captures in the Manufacturing Order (which feeds the BMR):</p>
+
+      <ul>
+        <li>Product name, batch number, batch size (quantity)</li>
+        <li>Manufacturing date, expiry date</li>
+        <li>Raw material components: name, specification, lot number, quantity dispensed (from work order component consumption)</li>
+        <li>In-process quality check results (from Odoo Quality module checks attached to work orders)</li>
+        <li>Work centre used at each stage (operator can be recorded via time tracking)</li>
+        <li>Final yield (quantity produced vs quantity started)</li>
+        <li>QC release transfer record and responsible person</li>
+      </ul>
+
+      <p>Develop a custom QWeb report that pulls all this data from the Manufacturing Order and formats it into your DGDA-approved BMR template. This is a one-time development effort (typically 3–5 days of Odoo development time) but is mandatory for regulatory compliance. The BMR is the document a DGDA inspector will request during a factory inspection.</p>
+
+      <h2 id="recall">Recall traceability in Odoo</h2>
+
+      <p>The recall scenario: a supplier notifies you that an API lot (e.g., Metformin HCl, Lot MF-2025-CN-019) has failed potency testing. You must identify every finished product batch that used this API lot and every customer who received product from those batches.</p>
+
+      <ol class="recall-steps">
+        <li><strong>Forward trace from raw material lot:</strong> Inventory → Reporting → Traceability → search for the API lot number (MF-2025-CN-019). Odoo shows all Manufacturing Orders that consumed this lot. Note all internal batch numbers (e.g., BN-202601-005, BN-202601-012).</li>
+        <li><strong>Forward trace from finished goods batch:</strong> For each finished goods batch identified, run Traceability again on the finished goods lot. This shows all Sales Order deliveries that included this lot — with customer names, delivery dates, and quantities.</li>
+        <li><strong>Recall affected customers:</strong> Export the customer list from the Odoo traceability report. Your quality department contacts each customer with the recall notification and return instructions.</li>
+        <li><strong>Block remaining stock:</strong> For any quantity of the affected lots still in your warehouse (Released or QC Quarantine), create an internal transfer to move them to a "Recall Hold" location. This prevents accidental shipment of the recalled product while the recall is underway.</li>
+        <li><strong>Regulatory reporting:</strong> Report the recall to DGDA with: product name, batch numbers affected, lot number of the defective raw material, reason for recall, quantity in market, and corrective action. All this data is available from Odoo's traceability report and MO records.</li>
+      </ol>
+
+      <p>The entire forward trace from API lot to customer list can be completed in under 10 minutes in Odoo. Without ERP lot tracking, the same exercise requires days of manual reconciliation across paper records — during which more defective product may continue to ship.</p>
+
+      <h2 id="storage">Temperature-sensitive storage management</h2>
+
+      <p>Many pharmaceutical products require controlled storage: 2–8°C (refrigerated), 15–25°C (controlled room temperature), or protected from light. Odoo can support temperature zone management through storage location configuration:</p>
+
+      <ul>
+        <li><strong>Create location zones:</strong> In Inventory, create sub-locations corresponding to storage zones: "Cold Room (2–8°C)", "CRT Storage (15–25°C)", "Ambient Storage". Label each with its storage condition in the location name.</li>
+        <li><strong>Putaway rules per product category:</strong> Create putaway rules that route incoming receipts of refrigerated products automatically to the Cold Room location. This eliminates the manual decision of where to put products during receipt.</li>
+        <li><strong>Cold chain documentation:</strong> For cold chain products received from suppliers, record the temperature log during transit as an attachment on the purchase receipt (supplier provides a temperature data logger report). This is a GMP requirement for vaccine and biologic products.</li>
+        <li><strong>Temperature excursion handling:</strong> If a cold chain product is found to have been stored outside its required temperature range, transfer the affected lots to a "Quarantine — Temperature Excursion" location in Odoo and initiate a quality investigation. Do not release the lot until QC determines it meets specifications despite the excursion.</li>
+      </ul>
+
+      <div class="callout">
+        <span class="tag">Bottom line</span>
+        <p>Odoo for pharma in Bangladesh requires three non-negotiable configurations: (1) lot tracking on every product without exception; (2) FEFO enforcement and expiry date management on all pharmaceutical stock; and (3) a QC quarantine location that prevents unreleased batches from being sold. Beyond these, the BMR custom report and the recall traceability capability are what turn Odoo from a stock management tool into a genuine GMP-compliant pharmaceutical ERP. <a href="../index.html#contact" style="color:var(--accent)">Need help configuring Odoo for your pharmaceutical company? Get in touch →</a></p>
+      </div>
+
+      <h2 id="faq">Frequently asked questions</h2>
+
+      <h3>How to enable lot and batch tracking in Odoo for pharmaceuticals?</h3>
+      <p>Go to Inventory → Configuration → Settings, enable "Lots & Serial Numbers" and "Expiration Dates". Then set Tracking = "By Lot" on every pharmaceutical product (APIs, excipients, primary/secondary packaging, and finished goods). Assign lot numbers at receipt (from supplier CoA batch numbers for raw materials) and at manufacturing (your internal batch number format for finished goods). Odoo will then record every movement of every lot, creating the traceability chain required for GMP compliance and product recall.</p>
+
+      <h3>How does Odoo manage expiry dates for pharmaceutical products?</h3>
+      <p>Enable "Use Expiration Dates" on pharmaceutical products. Each lot has an Expiration Date, Removal Date, and Best Before Date. For finished goods, set "Use Time" (shelf life in days) on the product — Odoo calculates expiry automatically as manufacturing date + use time. Set Removal Strategy = FEFO on pharma products to ensure oldest-expiry stock is always shipped first. Run the scheduled expiry alert action daily so near-expiry lots trigger activities for the QC team. Block sales of expired stock by ensuring the sales order picking only draws from the Released stock location (not QC Quarantine where new production lands first).</p>
+
+      <h3>Can Odoo handle DGDA batch manufacturing record requirements in Bangladesh?</h3>
+      <p>Odoo captures all the data required for a DGDA BMR: product/batch identity, manufacturing and expiry dates, raw material lot numbers and quantities, in-process quality check results, work centre and operator records, final yield, and QC release sign-off. What Odoo does not provide out-of-the-box is a formatted BMR print template — you need a custom QWeb report that renders all Manufacturing Order data in the DGDA-approved BMR format. This is a one-time development (3–5 days) that is mandatory for regulatory compliance. The same data also supports WHO-GMP inspection requirements.</p>
+
+      <h3>How do I set up pharmaceutical manufacturing workflow in Odoo?</h3>
+      <p>Configure multi-step routing in Manufacturing: Work Orders for Dispensing → Granulation → Compression → Coating → Primary Packaging → Secondary Packaging, each with its own Work Centre and quality checks. Finished goods from the last work order go to a QC Quarantine location, not directly to Released stock. QC conducts final product testing and, if the batch passes, creates an internal transfer from QC Quarantine to Released stock — this is the batch release event. Only released lots can be allocated to sales orders. Rejected batches are moved to a Destroyed location via a scrap order, which writes off the inventory value and locks the lot.</p>
+    </div>
+  </article>
+
+  <footer>
+    <div class="shell">
+      <div class="post-foot">
+        <span class="eyebrow">Continue exploring</span>
+        <div class="next">
+          <a class="next-card" href="0034-odoo-cycle-export-bangladesh.html">
+            <span class="dir">Older · 0034</span>
+            <h4>Odoo for Cycle Export Bangladesh</h4>
+            <p>Multi-level BOM, imported component procurement, and duty drawback traceability for bicycle manufacturers.</p>
+            <span class="arrow">→</span>
+          </a>
+          <a class="next-card" href="0036-odoo-trading-company-bangladesh.html">
+            <span class="dir">Newer · 0036</span>
+            <h4>Odoo for Trading Companies Bangladesh</h4>
+            <p>Multi-warehouse setup, procurement workflow, landed costs, and customer pricing for wholesale distributors.</p>
+            <span class="arrow">→</span>
+          </a>
+        </div>
+      </div>
+      <div class="foot">
+        <span>© 2026 Mehedi Hasan · Lab / 0035</span>
+        <span><a href="../index.html#lab">↑ Back to lab index</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="_toc.js" defer></script>
+</body>
+
+</html>

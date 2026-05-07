@@ -1,0 +1,611 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description"
+    content="Odoo trading Bangladesh — multi-warehouse setup, import procurement, landed costs, customer pricing, and stock replenishment for wholesale distributors. Set it up →" />
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="Mehedi Hasan" />
+  <title>Odoo Trading Bangladesh | Multi-Warehouse ERP | Mehedi Hasan</title>
+  <link rel="canonical" href="https://mhasan.me/lab/0036-odoo-trading-company-bangladesh" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png" />
+  <!-- Open Graph -->
+  <meta property="og:title" content="Odoo Trading Bangladesh | Multi-Warehouse ERP | Mehedi Hasan" />
+  <meta property="og:description"
+    content="How to configure Odoo for trading companies in Bangladesh — multi-warehouse setup, import procurement with landed costs, customer pricing strategy, and stock replenishment." />
+  <meta property="og:url" content="https://mhasan.me/lab/0036-odoo-trading-company-bangladesh" />
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="https://mhasan.me/assets/og-default.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:site_name" content="Mehedi Hasan | Odoo ERP Consultant" />
+  <meta property="article:author" content="https://www.linkedin.com/in/mehedi-hasan-consultant/" />
+  <meta property="article:published_time" content="2026-05-07T11:30:00+06:00" />
+  <meta property="article:modified_time" content="2026-05-07T11:30:00+06:00" />
+  <meta property="article:section" content="Odoo ERP Bangladesh" />
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Odoo Trading Bangladesh | Multi-Warehouse ERP Guide" />
+  <meta name="twitter:description"
+    content="Configure Odoo for trading companies in Bangladesh — multi-warehouse, import procurement, landed costs, and customer pricing for wholesale distributors." />
+  <meta name="twitter:image" content="https://mhasan.me/assets/og-default.jpg" />
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Odoo for Trading Companies Bangladesh: Multi-Warehouse & Procurement",
+    "description": "A complete guide to configuring Odoo ERP for trading and wholesale distribution companies in Bangladesh. Covers multi-warehouse configuration, import procurement workflow with LC management and landed costs, customer pricing and margin management using pricelists, automatic stock replenishment, Bangladesh VAT and TDS compliance for trading, and inter-warehouse stock transfers.",
+    "datePublished": "2026-05-07T11:30:00+06:00",
+    "dateModified": "2026-05-07T11:30:00+06:00",
+    "author": {
+      "@type": "Person",
+      "name": "Mehedi Hasan",
+      "url": "https://mhasan.me",
+      "jobTitle": "Odoo ERP Consultant & Business Analyst",
+      "sameAs": "https://www.linkedin.com/in/mehedi-hasan-consultant/"
+    },
+    "publisher": { "@type": "Person", "name": "Mehedi Hasan", "url": "https://mhasan.me" },
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://mhasan.me/lab/0036-odoo-trading-company-bangladesh" }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://mhasan.me" },
+      { "@type": "ListItem", "position": 2, "name": "Lab", "item": "https://mhasan.me/lab/" },
+      { "@type": "ListItem", "position": 3, "name": "Odoo Trading Company Bangladesh", "item": "https://mhasan.me/lab/0036-odoo-trading-company-bangladesh" }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What Odoo modules does a trading company in Bangladesh need?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A Bangladesh trading company (importer/wholesaler/distributor) needs these Odoo modules: (1) Inventory — for multi-warehouse stock management, stock moves, and reordering; (2) Purchase — for vendor management, purchase orders, goods receipt, and import documentation; (3) Sales — for customer management, sales orders, pricelists, and delivery; (4) Accounting — for Bangladesh VAT (Mushak), TDS/AIT on purchases, bank reconciliation, AP/AR management, and financial reporting; (5) Contacts — for customer and vendor master data. Optional but valuable: CRM (for sales pipeline and customer follow-up), Expenses (for sales rep expenses), and Analytics (for margin and profitability reporting by product category or customer segment). The Manufacturing module is not needed for a pure trading company — if you do light assembly or repackaging, add Manufacturing. The total number of required modules is smaller than a manufacturer but the procurement and pricing configuration is more complex."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How to set up multiple warehouses in Odoo for a Bangladesh trading company?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "In Odoo, go to Inventory → Configuration → Settings → enable 'Storage Locations' and 'Multi-Step Routes'. Then go to Inventory → Configuration → Warehouses → New. Create one warehouse per physical location. For a Dhaka head office + Chittagong branch trading company: Warehouse 1 = 'Dhaka Central Warehouse' (short name: DHK), Warehouse 2 = 'Chittagong Branch' (CTG). Each warehouse automatically gets its own Input, Quality Control, Stock, Packing, and Output locations, plus its own receipt and delivery order sequences. To transfer stock between warehouses, use Inventory → Operations → Transfers → create an internal transfer from DHK/Stock to CTG/Stock. Odoo generates a two-step transfer: the goods are dispatched from Dhaka and received in Chittagong, with the in-transit quantity tracked as a separate journal entry. Sales orders and purchase orders can be assigned to specific warehouses, so Dhaka customers are served from DHK stock and Chittagong customers from CTG stock."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How to apply landed costs to imports in Odoo Bangladesh?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Landed costs in Odoo distribute import-related charges (customs duty, freight, insurance, port handling, clearing agent fees) across the items in a purchase receipt, increasing the product cost to reflect the true landed price. To apply: (1) Go to Inventory → Operations → Landed Costs → New; (2) Select the purchase receipt(s) to which the cost applies; (3) Add each cost as a line: freight USD 1,200 (convert to BDT), customs duty BDT 45,000, clearing agent fee BDT 8,000; (4) Choose a splitting method: 'By Value' distributes costs proportionally to the product value, 'By Quantity' distributes equally per unit, 'By Volume' or 'By Weight' if you have dimension data; (5) Click Validate — Odoo posts journal entries adjusting each product's stock value by its share of the landed cost. For AVCO or Standard Price valuation, this updates the average cost or creates a price variance entry. For FIFO, it updates the cost of the specific incoming lot. The result is that your Odoo product cost reflects what you actually paid to get the goods to your warehouse — not just the invoice price."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How to manage customer pricing for a trading company in Odoo?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Odoo's Pricelists handle customer pricing for trading companies. Go to Sales → Configuration → Settings → enable 'Pricelists'. Create pricelists for each customer tier: (1) Retail Pricelist — full retail price; (2) Distributor Pricelist — 15% below retail; (3) Key Account Pricelist — 22% below retail; (4) Export Pricelist — in USD, for export customers. Assign the relevant pricelist to each customer in their Contact record. When a sales order is created for that customer, the pricelist automatically applies the correct pricing without manual entry. For import trading companies, the critical metric is gross margin per product — the difference between the selling price and the landed cost. Set up an Odoo product category with standard margin targets (e.g., FMCG category: 25% margin, Industrial goods: 18% margin) and use the Margin report in Sales → Reporting to monitor actual margins vs targets. Flag any sales order line where the margin falls below the category threshold."
+        }
+      }
+    ]
+  }
+]
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap">
+  <link rel="stylesheet" href="_styles.css">
+  <style>
+    .module-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin: 24px 0;
+    }
+    .mod-card {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 16px;
+    }
+    .mod-icon {
+      font-family: var(--mono);
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--accent);
+      margin-bottom: 6px;
+    }
+    .mod-name {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+    .mod-use {
+      font-size: 12.5px;
+      color: var(--text-2);
+      line-height: 1.7;
+    }
+
+    .proc-flow {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 0;
+      margin: 28px 0;
+      position: relative;
+    }
+    .proc-step {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      position: relative;
+    }
+    .proc-step:not(:last-child)::after {
+      content: "→";
+      position: absolute;
+      right: -12px;
+      top: 18px;
+      font-size: 16px;
+      color: var(--accent);
+      z-index: 1;
+    }
+    .proc-bubble {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--surface);
+      border: 2px solid var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--mono);
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 10px;
+      flex-shrink: 0;
+    }
+    .proc-label {
+      font-size: 11.5px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+    .proc-sub {
+      font-size: 10.5px;
+      color: var(--text-3);
+      line-height: 1.5;
+      padding: 0 4px;
+    }
+
+    .lc-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 12.5px;
+      margin: 24px 0;
+    }
+    .lc-table th {
+      padding: 10px 14px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-3);
+      text-align: left;
+    }
+    .lc-table td {
+      padding: 10px 14px;
+      border: 1px solid var(--border);
+      color: var(--text-2);
+      vertical-align: top;
+      line-height: 1.6;
+    }
+    .lc-table td:first-child { font-weight: 500; color: var(--text); }
+
+    .pricing-tiers {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      margin: 24px 0;
+    }
+    .pt-card {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+      text-align: center;
+    }
+    .pt-tier {
+      padding: 12px 10px 8px;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text);
+    }
+    .pt-disc {
+      padding: 10px;
+      font-family: var(--mono);
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .pt-note {
+      padding: 0 10px 12px;
+      font-size: 11px;
+      color: var(--text-3);
+      line-height: 1.5;
+    }
+
+    .pull {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: clamp(20px, 2.8vw, 30px);
+      line-height: 1.3;
+      color: var(--text);
+      margin: 48px 0;
+      max-width: 28ch;
+      letter-spacing: -0.01em;
+    }
+    .pull::before {
+      content: "";
+      display: block;
+      width: 36px;
+      height: 1px;
+      background: var(--accent);
+      margin-bottom: 18px;
+    }
+
+    @media(max-width:900px){
+      .proc-flow { grid-template-columns: repeat(3, 1fr); gap: 20px; }
+      .proc-step:not(:last-child)::after { display: none; }
+      .pricing-tiers { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media(max-width:700px){
+      .module-grid { grid-template-columns: 1fr; }
+      .proc-flow { grid-template-columns: 1fr; }
+      .pricing-tiers { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="grid-bg"></div>
+
+  <header class="nav">
+    <div class="shell">
+      <div class="nav-inner">
+        <a class="brand" href="../index.html">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span class="brand-name"><b>Mehedi Hasan</b><em>ERP · Business Analyst</em></span>
+        </a>
+        <a class="back-link" href="../index.html#lab">← Back to Lab</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="post-head">
+    <div class="shell">
+      <span class="eyebrow">Technical Lab · 0036</span>
+      <h1>Odoo for Trading Companies Bangladesh — <span class="serif">multi-warehouse, procurement, pricing.</span></h1>
+      <p class="lede">Bangladesh has tens of thousands of import trading and wholesale distribution businesses — from commodity importers to FMCG distributors to industrial goods dealers. The ERP configuration for trading is distinct from manufacturing: simpler BOMs, more complex pricing, and a procurement process built around LCs and landed costs. This guide covers the full configuration.</p>
+      <div class="post-meta">
+        <span class="chip accent">Industry Guide</span>
+        <span class="chip">Trading / Distribution</span>
+        <span class="chip">Multi-Warehouse</span>
+        <span class="chip">Bangladesh</span>
+      </div>
+      <div class="byline">
+        <span>By<b><a href="https://www.linkedin.com/in/mehedi-hasan-consultant/" style="color:var(--accent)" rel="author">Mehedi Hasan</a></b></span>
+        <span>Published<b>May 2026</b></span>
+        <span>Read time<b>12 minutes</b></span>
+        <span>Form<b>Industry Configuration Guide</b></span>
+        <span>Scope<b>Import trading · Wholesale distribution · Bangladesh</b></span>
+      </div>
+    </div>
+  </section>
+
+  <article class="post">
+    <aside class="toc">
+      <div class="toc-k">In this guide</div>
+      <ol>
+        <li><a href="#trading-vs-mfg">Trading vs manufacturing ERP</a></li>
+        <li><a href="#modules">Modules needed</a></li>
+        <li><a href="#warehouses">Multi-warehouse setup</a></li>
+        <li><a href="#procurement">Import procurement workflow</a></li>
+        <li><a href="#landed-costs">Landed costs</a></li>
+        <li><a href="#pricing">Customer pricing & margins</a></li>
+        <li><a href="#replenishment">Stock replenishment</a></li>
+        <li><a href="#bangladesh">Bangladesh-specific notes</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ol>
+    </aside>
+
+    <div class="body">
+      <p>Trading company ERP has a reputation for being simpler than manufacturing ERP. That is partially true — there are no BOMs, no production orders, no work centres. But trading ERP has its own complexity that is consistently underestimated: multi-currency procurement from multiple countries, import duty and landed cost allocation, multi-tier customer pricing across hundreds of SKUs, multi-location stock management, and the cash flow discipline of LC-based import financing.</p>
+
+      <p>Bangladesh trading companies that I have worked with often come to Odoo from two different starting points: either they are coming from Tally (and need real inventory management and credit control), or they are coming from a custom-built system (and need scalability and process standardization). Either way, the same Odoo configuration applies. This guide covers it from scratch.</p>
+
+      <p>For the purchase module configuration that applies across all industries, see the <a href="0015-odoo-purchase-vendor-management-bangladesh.html" style="color:var(--accent)">Odoo purchase and vendor management guide</a>. For multi-company or multi-branch setups, see the <a href="0006-odoo-multi-company-setup-guide.html" style="color:var(--accent)">Odoo multi-company setup guide</a>.</p>
+
+      <p class="pull">A trading company lives on margin and cash flow. ERP that cannot tell you your gross margin on every sales order and your AP outstanding by supplier is not ERP — it is a digital ledger.</p>
+
+      <h2 id="trading-vs-mfg">Trading vs manufacturing ERP: what's different</h2>
+
+      <p>Understanding the difference helps you configure Odoo correctly rather than carrying over assumptions from manufacturing implementations:</p>
+
+      <ul>
+        <li><strong>No Manufacturing module:</strong> Trading companies buy finished goods and sell them. No BOMs, no production orders, no work centres. Odoo's Manufacturing module is not installed. This simplifies the setup significantly.</li>
+        <li><strong>Import procurement is the most complex workflow:</strong> The equivalent of "manufacturing" complexity in a trading company is the import procurement cycle — supplier negotiation, LC application, shipment tracking, Bill of Entry, landed cost allocation, and goods receipt. This is where most configuration effort goes.</li>
+        <li><strong>Pricing is by customer tier, not by product cost:</strong> Trading companies set prices by customer type (retail vs distributor vs key account vs export) and often change prices seasonally or when landed costs change. Odoo's pricelist system is essential and must be configured carefully.</li>
+        <li><strong>Inventory is the primary asset:</strong> For a trading company, inventory turns and stock aging are the most important operational metrics. Slow-moving stock is a capital problem. Odoo's inventory aging report and stock turn analysis are primary reports, not secondary.</li>
+        <li><strong>Credit management is critical:</strong> Trading companies extend credit to distributors and retailers. Odoo's credit limit enforcement and AR aging report must be configured and actively used — not as an afterthought.</li>
+      </ul>
+
+      <h2 id="modules">Odoo modules for a Bangladesh trading company</h2>
+
+      <div class="module-grid">
+        <div class="mod-card">
+          <div class="mod-icon">Core</div>
+          <div class="mod-name">Inventory</div>
+          <div class="mod-use">Multi-warehouse stock management. Receipts, deliveries, internal transfers, stock adjustments, and product moves. Reordering rules for automatic replenishment.</div>
+        </div>
+        <div class="mod-card">
+          <div class="mod-icon">Core</div>
+          <div class="mod-name">Purchase</div>
+          <div class="mod-use">Vendor management, RFQ and PO workflow, goods receipt (GRN), landed costs, vendor pricelist, and import documentation tracking.</div>
+        </div>
+        <div class="mod-card">
+          <div class="mod-icon">Core</div>
+          <div class="mod-name">Sales</div>
+          <div class="mod-use">Customer management, sales orders, multi-tier pricelists, credit limit enforcement, delivery order generation, and margin reporting.</div>
+        </div>
+        <div class="mod-card">
+          <div class="mod-icon">Core</div>
+          <div class="mod-name">Accounting</div>
+          <div class="mod-use">Bangladesh VAT (Mushak), TDS/AIT on purchases, multi-currency (USD/CNY/EUR), bank reconciliation, AP/AR aging, and financial statements.</div>
+        </div>
+        <div class="mod-card">
+          <div class="mod-icon">Add-on</div>
+          <div class="mod-name">CRM</div>
+          <div class="mod-use">Sales pipeline for key accounts and distributor onboarding. Follow-up activities, visit logs, and lead conversion tracking for the sales team.</div>
+        </div>
+        <div class="mod-card">
+          <div class="mod-icon">Add-on</div>
+          <div class="mod-name">Expenses</div>
+          <div class="mod-use">Sales representative travel, entertainment, and product demonstration expenses. Links to the accounting cost centre for the sales department budget.</div>
+        </div>
+      </div>
+
+      <h2 id="warehouses">Multi-warehouse setup</h2>
+
+      <p>Enable multi-warehouse in Inventory → Configuration → Settings → enable "Storage Locations" and "Multi-Step Routes". Then create one Odoo Warehouse per physical storage location:</p>
+
+      <ul>
+        <li><strong>Central Warehouse (e.g., Dhaka):</strong> The main receiving warehouse. Most import shipments are received here. Products are dispatched to branches from this warehouse or directly to Dhaka customers.</li>
+        <li><strong>Regional branches (Chittagong, Sylhet, Rajshahi):</strong> Each branch is a separate Odoo warehouse. Stock is transferred from the central warehouse based on branch replenishment requests or automatic reordering rules.</li>
+        <li><strong>Transit location:</strong> When stock is being transferred from the central warehouse to a branch, it moves through a virtual "In Transit" location. This represents the period when goods are in a delivery truck en route. Odoo creates the in-transit location automatically for inter-warehouse transfers.</li>
+      </ul>
+
+      <p>For each warehouse, configure:</p>
+      <ul>
+        <li><strong>Incoming shipments:</strong> 2-step receiving (Receive → Quality Check/Validate into Stock) for import goods that need inspection. 1-step for trusted local suppliers.</li>
+        <li><strong>Outgoing deliveries:</strong> 2-step dispatch (Pick from Stock → Deliver to Customer) for large warehouses with separate picking and dispatch teams. 1-step for branch deliveries.</li>
+        <li><strong>Responsible person:</strong> Assign a warehouse manager as the responsible user. This person receives activity notifications for transfers, low-stock alerts, and expiry warnings for that warehouse.</li>
+      </ul>
+
+      <h2 id="procurement">Import procurement workflow</h2>
+
+      <div class="proc-flow">
+        <div class="proc-step">
+          <div class="proc-bubble">01</div>
+          <div class="proc-label">RFQ</div>
+          <div class="proc-sub">Request quotation from supplier. Compare multiple vendor quotes.</div>
+        </div>
+        <div class="proc-step">
+          <div class="proc-bubble">02</div>
+          <div class="proc-label">Purchase Order</div>
+          <div class="proc-sub">Confirm PO. Record LC number and shipment date.</div>
+        </div>
+        <div class="proc-step">
+          <div class="proc-bubble">03</div>
+          <div class="proc-label">LC &amp; Shipment</div>
+          <div class="proc-sub">Bank issues LC. Supplier ships. B/L received.</div>
+        </div>
+        <div class="proc-step">
+          <div class="proc-bubble">04</div>
+          <div class="proc-label">GRN</div>
+          <div class="proc-sub">Goods received in Odoo. Lot numbers assigned if tracked.</div>
+        </div>
+        <div class="proc-step">
+          <div class="proc-bubble">05</div>
+          <div class="proc-label">Landed Costs</div>
+          <div class="proc-sub">Duty, freight, clearing costs applied to GRN.</div>
+        </div>
+      </div>
+
+      <p>Managing the LC lifecycle in Odoo: record the LC number, issuing bank, LC amount, and expiry date on the Purchase Order using the "Customer Reference" field and scheduled activities. Create a recurring activity reminder 30 days before LC expiry to check shipment status. If the shipment is delayed and the LC needs amendment, record the amendment as a chatter message on the PO with the revised expiry date.</p>
+
+      <table class="lc-table">
+        <thead>
+          <tr>
+            <th>LC Stage</th>
+            <th>What happens</th>
+            <th>In Odoo</th>
+            <th>Key date to track</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>LC Application</td>
+            <td>Company applies to bank for import LC in favour of supplier</td>
+            <td>Purchase Order confirmed. LC number added to PO reference field.</td>
+            <td>LC issue date</td>
+          </tr>
+          <tr>
+            <td>Shipment</td>
+            <td>Supplier ships goods before LC shipment deadline. Bills of Lading sent to buyer's bank.</td>
+            <td>Record expected arrival date on PO. Set activity reminder for arrival date − 3 days.</td>
+            <td>LC latest shipment date</td>
+          </tr>
+          <tr>
+            <td>Document Presentation</td>
+            <td>Supplier's bank presents shipping documents to buyer's bank within the document presentation period (usually 21 days from B/L date).</td>
+            <td>Attach B/L and commercial invoice PDF to PO chatter.</td>
+            <td>Document presentation deadline</td>
+          </tr>
+          <tr>
+            <td>Goods Arrival &amp; Clearance</td>
+            <td>Goods arrive at Chittagong port. Customs broker files Bill of Entry. Duty assessed and paid.</td>
+            <td>Record B/E number and duty amount as notes on the PO.</td>
+            <td>B/E date (for duty drawback if applicable)</td>
+          </tr>
+          <tr>
+            <td>GRN in Odoo</td>
+            <td>Goods physically received in warehouse. Inspection done. GRN validated in Odoo.</td>
+            <td>Validate Purchase Receipt in Odoo. Landed costs applied after.</td>
+            <td>GRN date = inventory valuation date</td>
+          </tr>
+          <tr>
+            <td>Bank Payment</td>
+            <td>LC retires — payment made to supplier's bank from company's account.</td>
+            <td>Vendor bill posted in Odoo. Payment registered against the bill.</td>
+            <td>LC maturity / payment due date</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2 id="landed-costs">Landed costs configuration</h2>
+
+      <p>Landed costs are the single most important configuration for a trading company's inventory valuation accuracy. Without landed costs applied correctly, your product costs in Odoo reflect only the CIF invoice price — not what you actually paid to land the goods in your warehouse. This means your margin calculations are wrong.</p>
+
+      <p>Enable landed costs: Inventory → Configuration → Settings → Valuation → enable "Landed Costs". Also ensure your product category's costing method is set to "Average Cost (AVCO)" or "First In First Out (FIFO)" — Standard Price does not reflect landed cost adjustments accurately for imported goods.</p>
+
+      <p>Typical landed cost items for a Bangladesh importer:</p>
+
+      <ul>
+        <li><strong>Customs Duty:</strong> Assessed on the assessable value (generally CIF value). Rate varies by HS code — 0% to 25% for most goods, up to 150% for some consumer goods. Record the duty in BDT as a landed cost line.</li>
+        <li><strong>Supplementary Duty (SD):</strong> Applies to certain categories (luxury goods, tobacco, etc.). Add as a separate landed cost line if applicable.</li>
+        <li><strong>Advance Income Tax (AIT):</strong> Collected at import stage (typically 5% of assessable value for registered importers). This is an advance payment of corporate income tax — it is NOT a cost to be included in product landed cost. Post it as a debit to "AIT Receivable" or "Tax Asset" account instead, not as a landed cost against inventory.</li>
+        <li><strong>C&F Charges:</strong> If goods are purchased on FOB terms (supplier cost excludes freight), add international freight and insurance as a landed cost. If purchased on CIF, these are already in the invoice price.</li>
+        <li><strong>Local Freight:</strong> Trucking from Chittagong port to Dhaka warehouse. Typically BDT 15,000–40,000 per 20-foot container depending on route and carrier.</li>
+        <li><strong>Customs Broker/Clearing Agent:</strong> C&F agent fees for handling the Bill of Entry, port documentation, and delivery order. Typically BDT 8,000–20,000 per shipment.</li>
+        <li><strong>Port and Handling Charges:</strong> THC, container demurrage (if customs clearance is delayed), and port delivery order fees.</li>
+      </ul>
+
+      <h2 id="pricing">Customer pricing and margin management</h2>
+
+      <p>Enable pricelists in Sales → Configuration → Settings → Pricing → enable "Pricelists" and "Discount" if you want to show both list price and discount on the invoice.</p>
+
+      <div class="pricing-tiers">
+        <div class="pt-card">
+          <div class="pt-tier">Retail</div>
+          <div class="pt-disc">RRP</div>
+          <div class="pt-note">Recommended retail price. Walk-in and small order customers.</div>
+        </div>
+        <div class="pt-card">
+          <div class="pt-tier">Distributor</div>
+          <div class="pt-disc">−15%</div>
+          <div class="pt-note">Registered distributors with minimum monthly purchase commitment.</div>
+        </div>
+        <div class="pt-card">
+          <div class="pt-tier">Key Account</div>
+          <div class="pt-disc">−22%</div>
+          <div class="pt-note">Large accounts with volume commitment. Individually negotiated discounts possible.</div>
+        </div>
+        <div class="pt-card">
+          <div class="pt-tier">Export</div>
+          <div class="pt-disc">USD</div>
+          <div class="pt-note">Export customers invoiced in USD. Pricelist set in USD currency.</div>
+        </div>
+      </div>
+
+      <p>Configure margin monitoring: Sales → Configuration → Settings → enable "Margins". This adds a "Margin" column to every sales order and the sales analysis report. Set a company-wide minimum margin alert: go to Sales → Products and set a "Cost" on each product (this should match or be pulled from the product's average landed cost). When a salesperson tries to sell below the minimum margin, Odoo shows the margin in red as a warning.</p>
+
+      <p><strong>Credit limit enforcement:</strong> In the customer's Accounting tab, set a Credit Limit (e.g., BDT 500,000). In Accounting → Configuration → Settings, enable "Lock" customer sales when credit is exceeded. When a customer's outstanding AR balance exceeds their credit limit, Odoo blocks new deliveries for that customer until the outstanding balance is reduced. This prevents the common Bangladesh trading company problem of unlimited credit accumulation with distributors.</p>
+
+      <h2 id="replenishment">Stock replenishment</h2>
+
+      <p>Configure automatic replenishment using Odoo's reordering rules to avoid both stockouts (lost sales) and overstock (working capital trap):</p>
+
+      <ul>
+        <li><strong>Min/Max reordering rules:</strong> For fast-moving SKUs, set Minimum Qty (the stockout trigger level) and Maximum Qty (the target stock level after replenishment). When stock drops below Minimum, Odoo generates a draft PO or internal transfer automatically in the daily replenishment scheduler run.</li>
+        <li><strong>Reorder point = average daily sales × lead time + safety stock:</strong> For an item that sells 50 units/day and has a 30-day import lead time, the reorder point should be 50 × 30 = 1,500 units, plus safety stock (e.g., 15 days = 750 units), for a minimum of 2,250 units. The maximum order quantity depends on your cash flow and storage capacity.</li>
+        <li><strong>Vendor lead times:</strong> Set vendor lead times on each product's vendor pricelist entry. Odoo uses this to calculate the expected delivery date on the draft PO and to alert if current stock will be insufficient before the replenishment arrives.</li>
+        <li><strong>Make-to-Order (MTO) for slow-moving items:</strong> For slow-moving or expensive items that you do not want to hold in stock speculatively, use the MTO route. When a customer sales order is confirmed, MTO automatically generates a draft PO to order the item — it is not purchased until there is a confirmed customer order. This eliminates slow-moving stock risk for low-velocity items.</li>
+      </ul>
+
+      <h2 id="bangladesh">Bangladesh trading company — specific configuration notes</h2>
+
+      <ul>
+        <li><strong>TDS on purchases (AIT Section 52):</strong> Under Bangladesh Income Tax law, companies are required to deduct TDS (Tax Deducted at Source, also called Withholding Tax) on payments to suppliers for certain categories: goods supply (up to 3–7% depending on supplier registration status), services (10–15%). In Odoo, configure TDS as a tax with "Tax Group = TDS" and a negative amount (it reduces the payment to the supplier). When the vendor bill is posted, TDS appears as a deduction. The company remits the TDS to NBR within 15 days of the following month. Odoo's tax report for the TDS tax group gives you the monthly TDS payable amount.</li>
+        <li><strong>Mushak (Bangladesh VAT) on domestic sales:</strong> Domestic sales of most trading goods attract 15% VAT. Configure a 15% output VAT tax in Odoo's Tax configuration. Each sales invoice must show the Mushak invoice number (BIN number, customer BIN, HS code). Configure a custom invoice QWeb report that includes these fields. For VAT-exempt goods (certain essential commodities), configure a 0% tax with tax group "VAT Exempt" — this keeps the transaction recorded without charging VAT, and it appears correctly on the VAT return.</li>
+        <li><strong>Multi-currency management:</strong> Import trading companies deal in multiple currencies: USD for most imports, CNY for China-sourced goods, EUR for European imports, and BDT for domestic costs. Enable multi-currency in Accounting → Configuration → Settings → Currencies. Set a currency rate update schedule (daily for USD/BDT from Bangladesh Bank's official rate). When you post a USD vendor bill and pay in BDT, Odoo automatically calculates the exchange difference (gain or loss) based on the rate difference between invoice date and payment date, and posts it to a Foreign Exchange Gain/Loss account.</li>
+        <li><strong>Distributor management:</strong> Many Bangladesh trading companies manage a distributor network with performance incentives (quarterly rebates, volume bonuses). Configure these as manual credit notes issued at the end of each quarter, rather than trying to build automatic rebate calculations into the pricelist. Keep pricing simple and manage incentives through manual entries with clear descriptions.</li>
+      </ul>
+
+      <div class="callout">
+        <span class="tag">Bottom line</span>
+        <p>The highest-value configurations for a Bangladesh trading company in Odoo are: landed cost allocation (so your margin is real, not based on CIF price alone), multi-tier pricelists (so pricing is consistent and margin-monitored), and credit limit enforcement (so AR aging does not spiral out of control). These three configurations directly address the three most common financial management failures in Bangladesh wholesale businesses. <a href="../index.html#contact" style="color:var(--accent)">Need help configuring Odoo for your trading business? Get in touch →</a></p>
+      </div>
+
+      <h2 id="faq">Frequently asked questions</h2>
+
+      <h3>What Odoo modules does a trading company in Bangladesh need?</h3>
+      <p>Core modules: Inventory (multi-warehouse stock), Purchase (vendor management, GRN, landed costs), Sales (customer orders, pricelists, credit control), Accounting (Bangladesh VAT, TDS, multi-currency, financial statements). Optional: CRM for sales pipeline, Expenses for sales team costs. Manufacturing is not needed for pure trading. Total initial setup is simpler than a manufacturer but pricing and procurement configurations are more complex — plan for 4–6 weeks of configuration and training for a mid-size trading company (5–15 users, 3 warehouses, 500+ SKUs).</p>
+
+      <h3>How to set up multiple warehouses in Odoo for a Bangladesh trading company?</h3>
+      <p>Enable "Storage Locations" and "Multi-Step Routes" in Inventory settings. Create one Odoo Warehouse per physical location (Dhaka head office, Chittagong branch, etc.). Each warehouse gets its own receipt, dispatch, and transfer sequences. Configure incoming shipments as 2-step for imported goods needing inspection, 1-step for trusted local suppliers. Inter-warehouse stock transfers create an "In Transit" movement that shows in-transit quantity separately from on-hand stock at either warehouse. Assign a responsible manager per warehouse for alert notifications.</p>
+
+      <h3>How to apply landed costs to imports in Odoo Bangladesh?</h3>
+      <p>Go to Inventory → Operations → Landed Costs → New. Select the purchase receipt, add cost lines for customs duty, local freight, and clearing agent fees. Choose splitting method (By Value recommended for most goods). Validate — Odoo adjusts the product's average cost to include these charges. AIT at import is NOT a landed cost — post it to an AIT Receivable (tax asset) account instead. Ensure your product category uses AVCO or FIFO costing (not Standard Price) for landed costs to update the product cost correctly.</p>
+
+      <h3>How to manage customer pricing for a trading company in Odoo?</h3>
+      <p>Enable Pricelists in Sales settings. Create pricelists for each tier: Retail (full price), Distributor (−15%), Key Account (−22%), Export (USD pricing). Assign pricelist to the customer's Contact record — it applies automatically on all sales orders for that customer. Enable Margins in Sales settings and set product costs from landed cost data. Monitor margin per sales order and use the Margin Analysis report to identify low-margin products or customers. Configure credit limits per customer in their Accounting tab to enforce payment discipline.</p>
+    </div>
+  </article>
+
+  <footer>
+    <div class="shell">
+      <div class="post-foot">
+        <span class="eyebrow">Continue exploring</span>
+        <div class="next">
+          <a class="next-card" href="0035-odoo-pharma-bangladesh.html">
+            <span class="dir">Older · 0035</span>
+            <h4>Odoo for Pharmaceutical Bangladesh</h4>
+            <p>Lot tracking, expiry management, DGDA batch compliance, and pharma manufacturing workflow in Odoo.</p>
+            <span class="arrow">→</span>
+          </a>
+          <a class="next-card" href="0037-odoo-spinning-mill-bangladesh.html">
+            <span class="dir">Newer · 0037</span>
+            <h4>Odoo for Spinning & Weaving Mills</h4>
+            <p>Yarn stock by count, loom work centre routing, grey fabric QC, and finished goods tracking for textile mills.</p>
+            <span class="arrow">→</span>
+          </a>
+        </div>
+      </div>
+      <div class="foot">
+        <span>© 2026 Mehedi Hasan · Lab / 0036</span>
+        <span><a href="../index.html#lab">↑ Back to lab index</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="_toc.js" defer></script>
+</body>
+
+</html>

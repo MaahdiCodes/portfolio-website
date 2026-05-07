@@ -1,0 +1,596 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description"
+    content="Odoo spinning mill Bangladesh — yarn inventory by count, loom work centre routing, grey fabric QC, and finished goods stock tracking for textile mills. Set it up →" />
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="Mehedi Hasan" />
+  <title>Odoo Spinning Mill Bangladesh | Yarn & Loom | Mehedi Hasan</title>
+  <link rel="canonical" href="https://mhasan.me/lab/0037-odoo-spinning-mill-bangladesh" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png" />
+  <!-- Open Graph -->
+  <meta property="og:title" content="Odoo Spinning Mill Bangladesh | Yarn & Loom | Mehedi Hasan" />
+  <meta property="og:description"
+    content="How to configure Odoo for spinning and weaving mills in Bangladesh — yarn inventory by count and composition, loom routing, grey fabric QC, and finished goods stock tracking." />
+  <meta property="og:url" content="https://mhasan.me/lab/0037-odoo-spinning-mill-bangladesh" />
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="https://mhasan.me/assets/og-default.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:site_name" content="Mehedi Hasan | Odoo ERP Consultant" />
+  <meta property="article:author" content="https://www.linkedin.com/in/mehedi-hasan-consultant/" />
+  <meta property="article:published_time" content="2026-05-07T12:00:00+06:00" />
+  <meta property="article:modified_time" content="2026-05-07T12:00:00+06:00" />
+  <meta property="article:section" content="Odoo ERP Bangladesh" />
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Odoo Spinning Mill Bangladesh | Yarn & Loom ERP Guide" />
+  <meta name="twitter:description"
+    content="Configure Odoo for spinning and weaving mills in Bangladesh — yarn stock by count, loom routing, grey fabric QC, and finished goods tracking." />
+  <meta name="twitter:image" content="https://mhasan.me/assets/og-default.jpg" />
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Odoo for Spinning & Weaving Mills: Yarn Stock, Loom Routing & QC",
+    "description": "A complete guide to configuring Odoo ERP for spinning and weaving mills in Bangladesh. Covers yarn inventory management by count and composition, BOM structure for yarn and fabric production, loom and work centre routing configuration, grey fabric to finished fabric tracking, quality control (GSM, count, twist, shrinkage), inventory valuation for yarn stock, and Bangladesh spinning mill specific ERP considerations.",
+    "datePublished": "2026-05-07T12:00:00+06:00",
+    "dateModified": "2026-05-07T12:00:00+06:00",
+    "author": {
+      "@type": "Person",
+      "name": "Mehedi Hasan",
+      "url": "https://mhasan.me",
+      "jobTitle": "Odoo ERP Consultant & Business Analyst",
+      "sameAs": "https://www.linkedin.com/in/mehedi-hasan-consultant/"
+    },
+    "publisher": { "@type": "Person", "name": "Mehedi Hasan", "url": "https://mhasan.me" },
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://mhasan.me/lab/0037-odoo-spinning-mill-bangladesh" }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://mhasan.me" },
+      { "@type": "ListItem", "position": 2, "name": "Lab", "item": "https://mhasan.me/lab/" },
+      { "@type": "ListItem", "position": 3, "name": "Odoo Spinning Mill Bangladesh", "item": "https://mhasan.me/lab/0037-odoo-spinning-mill-bangladesh" }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How to manage yarn inventory in Odoo for a spinning mill?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yarn inventory in Odoo for a spinning mill requires careful product master setup because yarn has multiple defining attributes: count (20s, 30s, 40s — refers to yarn fineness), composition (100% cotton, 80/20 cotton-polyester, 65/35 polyester-cotton), twist (S-twist or Z-twist), and ply (single or double). In Odoo, create each yarn type as a product with variants using the Product Variants system: one product template per composition type (e.g., '100% Carded Cotton Yarn') with Count as the attribute (20s, 30s, 40s). This keeps your product list manageable — 5 composition types × 6 counts = 30 yarn variants instead of 30 separate products. Units of measure for yarn: standard unit is 'Cone' for finished yarn or 'Kg' for weight-based transactions. Configure the UoM category 'Textile Weight' with Cone as the base if your transactions are in cones, and set a cone weight reference for kg conversion. Yarn is received by weight (kg) and consumed in production also by weight — use Kg as the primary UoM for internal consistency, and create a secondary UoM 'Cone' with a conversion factor (1 cone = 1.5 kg or 2.0 kg depending on cone size)."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How to set up loom routing in Odoo for a weaving mill?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "In Odoo Manufacturing, loom routing is configured through Work Centres and Operations. Each loom or loom type is a Work Centre: Rapier Loom (high-speed, for plain and simple weaves), Jacquard Loom (for patterned fabric), Shuttle Loom (older technology, for certain fabric types), Air-jet Loom. Create one Work Centre per loom group, not per individual loom — unless you track output per individual machine, in which case create one Work Centre per loom. The Routing defines the sequence of operations: Beam Preparation (warping) → Drawing-in (threading heddles and reed) → Weaving (loom operation) → Grey Fabric Inspection → Grey Folding/Rolling. Each operation is assigned to a work centre with a standard time in hours per metre or metres per hour. When a Manufacturing Order is created for a specific fabric style, Odoo schedules the work orders across the configured looms based on availability and capacity. The daily production target is set as the loom capacity (metres/loom/day) × number of active looms for that fabric."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How to track grey fabric to finished fabric in Odoo?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The grey fabric to finished fabric flow in Odoo involves two Manufacturing Orders connected by a sub-assembly relationship. First MO: Yarn → Grey Fabric. The grey fabric BOM takes yarn (by weight) and produces grey fabric (by metre or kg). This MO covers the weaving process (beam preparation, drawing-in, weaving). Second MO: Grey Fabric → Finished Fabric. The finished fabric BOM takes grey fabric and produces finished fabric (after dyeing/bleaching/finishing). This MO covers the wet processing route (scouring, bleaching, dyeing, finishing). If you outsource wet processing, use Odoo's Subcontracting BOM type for the second MO — grey fabric goes to the dye house as a component of a subcontracting PO, and finished fabric comes back as the received product. Each MO produces a lot number: the grey fabric lot (batch of grey from a specific weaving run) and the finished fabric lot (dye lot). This lot structure enables fabric traceability from yarn lot → grey fabric lot → finished fabric dye lot → customer delivery."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What quality checks should be configured in Odoo for a spinning mill?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Quality checks for a Bangladesh spinning mill in Odoo should be configured at three points: (1) Raw material (cotton fibre) receipt: HVI (High Volume Instrument) parameters — micronaire, staple length, strength (GPT), uniformity index, trash content. Reject lots outside specification. (2) In-process yarn QC: count deviation (actual count vs nominal count — allowable tolerance ±3%), single yarn strength (CSP — count strength product), elongation at break, twist per metre (TPM). Check frequency: one bobbin per frame per shift. (3) Finished yarn/fabric QC at delivery: yarn count (Lea Count test), evenness (Uster %), imperfections (thick/thin places per km), neps per gram. For fabric: GSM (grams per square metre), width, weave construction confirmation, shade consistency (L*a*b* colour values). In Odoo, configure these as Quality Check Point templates attached to the Manufacturing Order at the relevant work order stage. Each check has pass/fail criteria. Failed checks trigger a quality alert assigned to the QC manager, and the production lot cannot be moved to finished goods until the alert is resolved or the lot is scrapped."
+        }
+      }
+    ]
+  }
+]
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap">
+  <link rel="stylesheet" href="_styles.css">
+  <style>
+    .yarn-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 12.5px;
+      margin: 24px 0;
+    }
+    .yarn-table th {
+      padding: 10px 14px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-3);
+      text-align: left;
+    }
+    .yarn-table td {
+      padding: 10px 14px;
+      border: 1px solid var(--border);
+      color: var(--text-2);
+      vertical-align: top;
+      line-height: 1.6;
+    }
+    .yarn-table td:first-child { font-weight: 500; color: var(--text); }
+
+    .flow-card {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+      margin: 20px 0;
+    }
+    .flow-row {
+      display: grid;
+      grid-template-columns: 140px 1fr 180px;
+      border-bottom: 1px solid var(--border);
+      align-items: stretch;
+    }
+    .flow-row:last-child { border-bottom: none; }
+    .flow-stage {
+      padding: 14px 16px;
+      background: var(--surface);
+      border-right: 1px solid var(--border);
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+    }
+    .flow-desc {
+      padding: 14px 16px;
+      font-size: 12.5px;
+      color: var(--text-2);
+      line-height: 1.7;
+    }
+    .flow-odoo {
+      padding: 14px 16px;
+      border-left: 1px solid var(--border);
+      font-family: var(--mono);
+      font-size: 10.5px;
+      color: var(--accent);
+      line-height: 1.7;
+      display: flex;
+      align-items: center;
+    }
+
+    .qc-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin: 24px 0;
+    }
+    .qc-card {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .qc-head {
+      padding: 11px 14px;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text);
+    }
+    .qc-point {
+      font-family: var(--mono);
+      font-size: 9.5px;
+      text-transform: uppercase;
+      letter-spacing: 0.09em;
+      color: var(--accent);
+      margin-bottom: 4px;
+    }
+    .qc-body {
+      padding: 12px 14px;
+    }
+    .qc-item {
+      display: flex;
+      gap: 8px;
+      font-size: 12px;
+      color: var(--text-2);
+      margin-bottom: 7px;
+      line-height: 1.5;
+    }
+    .qc-item:last-child { margin-bottom: 0; }
+    .qc-param {
+      font-family: var(--mono);
+      font-size: 10px;
+      color: var(--text-3);
+      min-width: 52px;
+      margin-top: 1px;
+    }
+
+    .pull {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: clamp(20px, 2.8vw, 30px);
+      line-height: 1.3;
+      color: var(--text);
+      margin: 48px 0;
+      max-width: 26ch;
+      letter-spacing: -0.01em;
+    }
+    .pull::before {
+      content: "";
+      display: block;
+      width: 36px;
+      height: 1px;
+      background: var(--accent);
+      margin-bottom: 18px;
+    }
+
+    @media(max-width:800px){
+      .flow-row { grid-template-columns: 1fr; }
+      .flow-stage { border-right: none; border-bottom: 1px solid var(--border); }
+      .flow-odoo { border-left: none; border-top: 1px solid var(--border); }
+    }
+    @media(max-width:700px){
+      .qc-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="grid-bg"></div>
+
+  <header class="nav">
+    <div class="shell">
+      <div class="nav-inner">
+        <a class="brand" href="../index.html">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span class="brand-name"><b>Mehedi Hasan</b><em>ERP · Business Analyst</em></span>
+        </a>
+        <a class="back-link" href="../index.html#lab">← Back to Lab</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="post-head">
+    <div class="shell">
+      <span class="eyebrow">Technical Lab · 0037</span>
+      <h1>Odoo for Spinning Mills Bangladesh — <span class="serif">yarn stock, loom routing, grey fabric QC.</span></h1>
+      <p class="lede">Bangladesh's spinning and weaving sector produces billions of metres of yarn and fabric annually for the domestic RMG industry and for direct export. Yarn inventory management — by count, composition, and grade — and loom production routing are the core ERP challenges. This guide covers how to configure Odoo for the full spinning-to-fabric workflow.</p>
+      <div class="post-meta">
+        <span class="chip accent">Industry Guide</span>
+        <span class="chip">Spinning Mill</span>
+        <span class="chip">Weaving</span>
+        <span class="chip">Bangladesh Textile</span>
+      </div>
+      <div class="byline">
+        <span>By<b><a href="https://www.linkedin.com/in/mehedi-hasan-consultant/" style="color:var(--accent)" rel="author">Mehedi Hasan</a></b></span>
+        <span>Published<b>May 2026</b></span>
+        <span>Read time<b>13 minutes</b></span>
+        <span>Form<b>Industry Configuration Guide</b></span>
+        <span>Scope<b>Spinning · Weaving · Bangladesh textile mills</b></span>
+      </div>
+    </div>
+  </section>
+
+  <article class="post">
+    <aside class="toc">
+      <div class="toc-k">In this guide</div>
+      <ol>
+        <li><a href="#mill-erp">Spinning mill ERP challenges</a></li>
+        <li><a href="#yarn-inventory">Yarn inventory setup</a></li>
+        <li><a href="#bom">BOM for yarn and fabric</a></li>
+        <li><a href="#routing">Loom routing configuration</a></li>
+        <li><a href="#grey-to-finished">Grey to finished fabric tracking</a></li>
+        <li><a href="#qc">Quality control setup</a></li>
+        <li><a href="#valuation">Yarn inventory valuation</a></li>
+        <li><a href="#bangladesh">Bangladesh spinning mill notes</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ol>
+    </aside>
+
+    <div class="body">
+      <p>Spinning and weaving mills present a specific ERP configuration challenge: the raw material (cotton fibre), intermediate products (sliver, roving, yarn), and finished products (grey fabric, finished fabric) are all measured in different units, and the production yield at each stage is never exactly 100%. Processing waste (noil, fibre loss, yarn breakage, loom waste) means that 1,000 kg of cotton fibre does not produce 1,000 kg of yarn, and 1,000 kg of yarn does not produce 1,000 metres of grey fabric at the expected weight.</p>
+
+      <p>ERP that tracks quantities without tracking yields is a liability in textile manufacturing. It gives you numbers that slowly drift from physical reality — until the annual physical stock count reveals that the system says you have 45,000 kg of 30s count yarn and the warehouse has 38,000 kg. Odoo handles this correctly when configured with accurate BOM yield percentages and consistent production quantity recording. This guide shows you how.</p>
+
+      <p>For the manufacturing module foundation, see the <a href="0013-odoo-manufacturing-module-bangladesh.html" style="color:var(--accent)">Odoo manufacturing module setup guide for Bangladesh factories</a>. For inventory valuation methods that apply to yarn stock, see the <a href="0011-odoo-inventory-valuation-cheatsheet.html" style="color:var(--accent)">Odoo inventory valuation cheatsheet</a>.</p>
+
+      <p class="pull">In a textile mill, the gap between theoretical yield and actual yield is not a rounding error — it is the difference between a profitable mill and a loss-making one. ERP must measure it precisely.</p>
+
+      <h2 id="mill-erp">Spinning mill ERP challenges</h2>
+
+      <ul>
+        <li><strong>Units of measure complexity:</strong> Cotton is purchased by bale (170–220 kg per bale). Yarn is produced by kg and sold by cone or by kg. Fabric is sold by metre, sometimes by kg for weight-based fabric. The ERP must handle all these UoMs and their conversions within a single production flow.</li>
+        <li><strong>Yarn count as a product attribute:</strong> A spinning mill produces yarn in multiple counts (10s, 16s, 20s, 30s, 40s). Higher count = finer yarn = different machine settings, speed, and yield. The same cotton fibre produces different count yarns at different output rates. Each count must be tracked separately in inventory but the raw material is the same.</li>
+        <li><strong>Processing waste at every stage:</strong> From cotton to finished yarn, typical waste levels: blowroom/carding (3–5%), combing (12–18% for combed yarn), drawframe/roving (0.5–1%), ring spinning (1.5–3%), winding/cone winding (0.5–1%). The BOM yield factor must reflect these stage losses. If the BOM assumes 100% yield when actual yield is 85%, your system cost per kg is understated and your inventory balance drifts upward from reality.</li>
+        <li><strong>Production orders span multiple days:</strong> A spinning frame producing 30s count yarn may run for 5–7 days to complete a production batch of 5,000 kg. Production orders in Odoo span this period, with daily production quantities recorded each shift.</li>
+        <li><strong>Multiple semi-finished products:</strong> The intermediate stages (sliver, roving, drawn sliver) are rarely tracked in ERP by smaller mills — they are produced and consumed within the day or week. Odoo handles this correctly through the BOM structure: if you do not track sliver separately, include it in the spinning BOM as a "phantom" sub-assembly consumed directly in the ring spinning MO.</li>
+      </ul>
+
+      <h2 id="yarn-inventory">Yarn inventory setup in Odoo</h2>
+
+      <p>Product master setup for yarn:</p>
+
+      <table class="yarn-table">
+        <thead>
+          <tr>
+            <th>Configuration</th>
+            <th>Setting</th>
+            <th>Why</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Product template name</td>
+            <td>"100% Carded Cotton Yarn" (one template per composition)</td>
+            <td>Group all counts of the same composition under one template using variants</td>
+          </tr>
+          <tr>
+            <td>Product variant attribute</td>
+            <td>Count: 10s, 16s, 20s, 24s, 30s, 40s</td>
+            <td>Each count is a separate variant but managed under one product template</td>
+          </tr>
+          <tr>
+            <td>Unit of measure</td>
+            <td>Kg (for internal production), Cone (for sales to garment factories)</td>
+            <td>Internal production is weight-based; customers buy by cone — set up both UoMs with conversion factor</td>
+          </tr>
+          <tr>
+            <td>Tracking</td>
+            <td>By Lot (for traceable production batches)</td>
+            <td>Lot = production batch. Enables cotton → yarn → fabric traceability and quality recall if count deviation found post-shipment</td>
+          </tr>
+          <tr>
+            <td>Costing method</td>
+            <td>Average Cost (AVCO)</td>
+            <td>Yarn cost varies by cotton quality season, energy costs, and count. AVCO smooths cost across production runs. FIFO for export if lot-specific cost is needed.</td>
+          </tr>
+          <tr>
+            <td>Route</td>
+            <td>Manufacture (for internally produced yarn)</td>
+            <td>Production orders are generated from manufacturing demand. Reordering rules trigger when yarn stock drops below the minimum for each count.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>Set up separate product templates for each composition family:</p>
+      <ul>
+        <li>100% Carded Cotton Yarn (variants: counts 10s–40s)</li>
+        <li>100% Combed Cotton Yarn (variants: counts 20s–80s)</li>
+        <li>PC Yarn (Polyester-Cotton 65/35) (variants: counts 20s–40s)</li>
+        <li>CVC Yarn (Cotton-rich Polyester 60/40) (variants: counts 20s–40s)</li>
+        <li>100% Polyester Yarn (variants: counts 20s–150 denier)</li>
+      </ul>
+
+      <h2 id="bom">BOM for yarn production</h2>
+
+      <p>The spinning BOM takes cotton fibre (or cotton + polyester for blended yarn) and produces yarn at the relevant count. The critical configuration is the yield factor — the ratio of output (yarn) to input (fibre). A typical BOM for 1 kg of 30s carded cotton yarn:</p>
+
+      <table class="yarn-table">
+        <thead>
+          <tr>
+            <th>Component</th>
+            <th>UoM</th>
+            <th>Qty per 1 kg yarn</th>
+            <th>Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Cotton Fibre — Shankar-6 (31mm staple)</td>
+            <td>Kg</td>
+            <td>1.095</td>
+            <td>9.5% waste — blowroom + carding + drafting loss combined</td>
+          </tr>
+          <tr>
+            <td>Cone (plastic, 150g)</td>
+            <td>Pcs</td>
+            <td>0.5</td>
+            <td>1 cone holds ~2 kg of 30s yarn (2 kg/cone = 0.5 cones/kg)</td>
+          </tr>
+          <tr>
+            <td>Carton (12 cone)</td>
+            <td>Pcs</td>
+            <td>0.042</td>
+            <td>1 carton / 24 kg (12 cones × 2 kg) = 0.042 cartons per kg</td>
+          </tr>
+          <tr>
+            <td>Packing material (wrapper, tape)</td>
+            <td>Set</td>
+            <td>0.042</td>
+            <td>One set per carton</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>For combed yarn, add a separate line for comber noil (waste that is sold separately as a by-product). In Odoo, comber noil can be configured as a by-product in the BOM (Manufacturing → Configuration → Settings → enable "By-Products"). The by-product line specifies that 0.12 kg of comber noil is produced for every 1 kg of combed yarn. Noil is received into stock (as a low-value by-product) and sold to papermaking and wadding industries.</p>
+
+      <p>For blended yarn (PC or CVC), the BOM has two fibre inputs:</p>
+      <ul>
+        <li>PC 65/35 yarn: 0.67 kg polyester staple + 0.37 kg cotton fibre per 1 kg yarn (accounting for blend ratio + waste)</li>
+        <li>CVC 60/40 yarn: 0.62 kg cotton fibre + 0.43 kg polyester staple per 1 kg yarn</li>
+      </ul>
+
+      <h2 id="routing">Loom routing configuration for weaving mills</h2>
+
+      <p>For weaving mills (or spinning mills with integrated weaving), configure the manufacturing routing in Odoo Manufacturing → Configuration → Routings. Create one routing per fabric construction type:</p>
+
+      <div class="flow-card">
+        <div class="flow-row">
+          <div class="flow-stage">Beam Preparation (Warping)</div>
+          <div class="flow-desc">Warp yarns wound onto a beam at the specified warp count and width. The beam preparation machine (direct warper or sectional warper) is configured as Work Centre "Warping". Time: 2–4 hours per beam depending on width and speed. Records: actual warp length, warp tension, breakage count.</div>
+          <div class="flow-odoo">WC: Warping<br>Qty tracked: beam length (m)</div>
+        </div>
+        <div class="flow-row">
+          <div class="flow-stage">Drawing-in (Drafting)</div>
+          <div class="flow-desc">Warp ends threaded through heddles and reed per the fabric construction design. This is a labour-intensive manual operation (or auto-drawing for modern mills). Time: 4–8 hours per beam per loom depending on reed count and width. Done once per new beam or when weave pattern changes.</div>
+          <div class="flow-odoo">WC: Drawing-in<br>Qty tracked: beams drawn</div>
+        </div>
+        <div class="flow-row">
+          <div class="flow-stage">Weaving</div>
+          <div class="flow-desc">Core production stage. Loom runs continuously inserting weft yarn to create grey fabric. Each loom is a separate work centre (or grouped by loom type). Daily output: metres woven per loom per day. Loom efficiency = actual metres / theoretical metres (based on speed × running time × picks per metre).</div>
+          <div class="flow-odoo">WC: Rapier / Jacquard / Air-Jet<br>Qty tracked: metres/shift</div>
+        </div>
+        <div class="flow-row">
+          <div class="flow-stage">Grey Fabric Inspection</div>
+          <div class="flow-desc">100% grey fabric inspection on a fabric inspection machine. Defects marked (warp break, weft break, reed mark, hole, oil stain). Fabric graded: A-grade (≤4 defect points per 100m), B-grade (4–8 points), C-grade (>8 points). B and C grade are sold at discount or cut out.</div>
+          <div class="flow-odoo">WC: Inspection<br>QC check: grade + defect points</div>
+        </div>
+        <div class="flow-row">
+          <div class="flow-stage">Grey Folding / Rolling</div>
+          <div class="flow-desc">Inspected grey fabric folded into bales or rolled onto tubes per customer specification. Lot number, construction (EPI × PPI × width), and weight marked on each roll. Transfer to grey fabric store or directly to finishing/dyeing department.</div>
+          <div class="flow-odoo">WC: Folding<br>Finished goods: Grey Fabric lot created</div>
+        </div>
+      </div>
+
+      <h2 id="grey-to-finished">Grey to finished fabric tracking</h2>
+
+      <p>The grey fabric to finished fabric flow in Odoo involves two Manufacturing Orders:</p>
+
+      <p><strong>MO 1: Yarn → Grey Fabric</strong><br>
+      Input: warp yarn (by kg) + weft yarn (by kg) + sizing starch (for warp sizing, if applicable). Output: grey fabric (by metre, with weight-per-metre GSM specification). This MO covers warping, sizing, drawing-in, and weaving. The grey fabric produced is assigned a lot number (e.g., GF-2026-05-001 = Grey Fabric batch 001, May 2026).</p>
+
+      <p><strong>MO 2: Grey Fabric → Finished Fabric</strong><br>
+      Input: grey fabric (by metre) + dyeing chemicals/dyes + finishing chemicals. Output: finished fabric (by metre). This MO covers scouring, bleaching, dyeing, finishing (stenter, sanforizing). The finished fabric lot (dye lot) is assigned here.</p>
+
+      <p>If wet processing is outsourced to a dye house:</p>
+      <ul>
+        <li>Configure the Grey → Finished BOM as a <strong>Subcontracting BOM</strong></li>
+        <li>Create a subcontracting PO to the dye house: grey fabric sent as the component, finished fabric received as the product</li>
+        <li>Odoo tracks grey fabric quantity sent, finished fabric received, and the processing loss (typically 3–6% for woven fabric)</li>
+        <li>The dye house invoice is the cost of the subcontracting operation — post it against the subcontracting PO in Odoo</li>
+      </ul>
+
+      <h2 id="qc">Quality control setup for spinning mills</h2>
+
+      <div class="qc-grid">
+        <div class="qc-card">
+          <div class="qc-head">
+            <div class="qc-point">QC Point 1</div>
+            Cotton Fibre Receipt
+          </div>
+          <div class="qc-body">
+            <div class="qc-item"><span class="qc-param">Micronaire</span><span>Target 3.8–4.8 μg/inch. Coarser fibre (>4.9) produces harsh yarn; finer (&lt;3.7) causes processing difficulty.</span></div>
+            <div class="qc-item"><span class="qc-param">Staple</span><span>Staple length in mm. Record UHML (upper half mean length). Compare to PO specification.</span></div>
+            <div class="qc-item"><span class="qc-param">Strength</span><span>Bundle strength in g/tex. Minimum 28 g/tex for medium count yarn production.</span></div>
+            <div class="qc-item"><span class="qc-param">Trash</span><span>% trash content by weight. >4% increases waste at carding stage and affects yarn cleanliness.</span></div>
+          </div>
+        </div>
+        <div class="qc-card">
+          <div class="qc-head">
+            <div class="qc-point">QC Point 2</div>
+            In-Process Yarn (Ring Frame)
+          </div>
+          <div class="qc-body">
+            <div class="qc-item"><span class="qc-param">Count</span><span>Actual count vs nominal count. Allowable deviation: ±2% for standard, ±1% for export quality.</span></div>
+            <div class="qc-item"><span class="qc-param">CSP</span><span>Count Strength Product — single yarn strength × count. Minimum CSP varies by count (e.g., 30s minimum 2,100).</span></div>
+            <div class="qc-item"><span class="qc-param">TPI</span><span>Twists per inch. Verify against production specification (twist multiplier × √count). ±5% tolerance.</span></div>
+            <div class="qc-item"><span class="qc-param">Elongation</span><span>% elongation at break. Minimum 4.5% for weaving application. Low elongation = warp breakage on loom.</span></div>
+          </div>
+        </div>
+        <div class="qc-card">
+          <div class="qc-head">
+            <div class="qc-point">QC Point 3</div>
+            Finished Yarn / Grey Fabric Delivery
+          </div>
+          <div class="qc-body">
+            <div class="qc-item"><span class="qc-param">Lea Count</span><span>Official Lea count test on winding samples. Document result per production lot before delivery.</span></div>
+            <div class="qc-item"><span class="qc-param">Uster %</span><span>Yarn evenness (CVm%). Target &lt;12% for standard, &lt;9% for combed. Higher = more imperfections in fabric.</span></div>
+            <div class="qc-item"><span class="qc-param">GSM</span><span>Fabric weight in grams per square metre. ±5% of specified GSM acceptable. Record per roll.</span></div>
+            <div class="qc-item"><span class="qc-param">Width</span><span>Finished fabric width in cm after finishing. Must meet buyer specification (e.g., 150cm ±1cm).</span></div>
+          </div>
+        </div>
+      </div>
+
+      <p>In Odoo, configure these as Quality Check Points in the Quality module (Manufacturing → Quality → Control Points). Attach each check point to the relevant work order in the routing: cotton checks attach to the "Receipt" operation, in-process yarn checks attach to the "Ring Spinning" work order, finished yarn checks attach to the "Winding" or "Packing" work order. Failed checks create a Quality Alert assigned to the QC manager, and the production lot is blocked from moving to the next stage until the alert is resolved.</p>
+
+      <h2 id="valuation">Yarn inventory valuation</h2>
+
+      <p>Use <strong>Average Cost (AVCO)</strong> for yarn inventory valuation in most spinning mill setups. AVCO is appropriate because:</p>
+
+      <ul>
+        <li>Cotton prices fluctuate significantly by season (pre-harvest, post-harvest) and by quality. AVCO smooths the cost impact across the cotton inventory on hand.</li>
+        <li>Production batches vary in actual yield. AVCO absorbs yield variation into the average cost over time rather than creating large cost variances per batch.</li>
+        <li>Most domestic yarn sales in Bangladesh are not lot-specific — customers buy 30s count yarn, not specifically Lot-001 or Lot-002. AVCO matches this commercial reality.</li>
+      </ul>
+
+      <p>For export yarn sales where lot-specific cost is required for duty drawback or international customer documentation, use <strong>FIFO</strong> instead. FIFO tracks the cost of specific lots, which enables accurate cost reporting per export consignment.</p>
+
+      <p>For detailed inventory valuation configuration and journal entry structure, see the <a href="0011-odoo-inventory-valuation-cheatsheet.html" style="color:var(--accent)">Odoo inventory valuation cheatsheet</a> — it covers AVCO vs FIFO, landed cost accounting, and the stock journal entry flow that applies directly to yarn and fabric inventory.</p>
+
+      <h2 id="bangladesh">Bangladesh spinning mill — specific configuration notes</h2>
+
+      <ul>
+        <li><strong>Cotton import under bond:</strong> Many Bangladesh spinning mills import cotton under a bonded warehouse arrangement (similar to EPZ) to defer import duty until the yarn is sold domestically (duty applicable) or exported (duty exempt under drawback). Configure bonded cotton stock as a separate Odoo location ("Bonded Cotton Store") and non-bonded as "Regular Cotton Store". Transfers from bonded to production trigger duty liability tracking. Odoo's location-based stock allows this separation without a complex configuration.</li>
+        <li><strong>By-product sale (comber noil, cotton waste):</strong> Combing waste (noil) is a valuable by-product sold to the nonwoven, paper, and mattress industries. Carding waste (fly, droppings) is sold as low-grade filler. In Odoo, configure these as by-products in the spinning BOM. When the MO is completed, the by-product quantity is received into a "Waste Products" stock location and can be sold via a separate sales order. This ensures by-product revenue is captured and the main product cost is correctly calculated (by-product value offsets main product cost in AVCO calculations).</li>
+        <li><strong>Power cost as a major production cost:</strong> Spinning mills are energy-intensive — electricity accounts for 30–40% of yarn production cost. While Odoo does not have a built-in energy cost tracking module, you can approximate this by including electricity as a work centre cost rate in the manufacturing routing (set a BDT/hour rate on each work centre that reflects the electricity cost per operating hour). This feeds into the manufacturing overhead absorbed into product cost.</li>
+        <li><strong>Seasonal cotton procurement:</strong> In Bangladesh, cotton is primarily available for purchase during the post-harvest period (November–February for Indian Shankar varieties, January–April for US/Australian cotton arrivals). Mills that buy all their annual requirement during the harvest season carry large cotton inventory on their balance sheets for much of the year. Odoo's AVCO costing and the stock valuation report are essential for monitoring the cotton inventory value throughout the procurement cycle.</li>
+        <li><strong>Customer yarn specification as sales order attributes:</strong> Yarn customers (primarily RMG factories) specify their requirements precisely: "30s/1 carded cotton, cone winding, 2 kg cone, Uster &lt;12%". Record these specifications in the sales order line notes and ensure the production order is created to match them. If you produce multiple quality grades, the sales order must clearly specify the grade to avoid wrong-grade delivery.</li>
+      </ul>
+
+      <div class="callout">
+        <span class="tag">Bottom line</span>
+        <p>The three configurations that matter most for a Bangladesh spinning mill in Odoo are: (1) accurate BOM yield factors that reflect actual fibre-to-yarn conversion losses at each stage; (2) yarn count variant management that keeps your product master clean and manageable across multiple counts and compositions; and (3) quality check integration at ring frame and final winding stages to catch count deviation before shipment rather than after customer complaint. These three directly address the most common operational and financial measurement failures in spinning mill ERP. <a href="../index.html#contact" style="color:var(--accent)">Need help configuring Odoo for your textile mill? Get in touch →</a></p>
+      </div>
+
+      <h2 id="faq">Frequently asked questions</h2>
+
+      <h3>How to manage yarn inventory in Odoo for a spinning mill?</h3>
+      <p>Use Product Variants with Count as the attribute (10s, 16s, 20s, 30s, 40s) under one product template per composition (e.g., "100% Carded Cotton Yarn"). Set UoM to Kg for internal production; add Cone as a secondary UoM with a conversion factor for sales to garment factories. Enable lot tracking per production batch. Set AVCO costing to handle seasonal cotton price variation. Configure minimum reordering rules per count to trigger production MOs when yarn stock drops below the safety threshold for each count variant.</p>
+
+      <h3>How to set up loom routing in Odoo for a weaving mill?</h3>
+      <p>Create Work Centres for each major loom group (Rapier, Jacquard, Air-Jet, Shuttle) with their capacity (looms × running speed in m/hour) and cost rate (BDT/hour). Define a Routing with work orders: Warping → Drawing-in → Weaving → Grey Inspection → Folding. Attach quality checks to the Weaving and Inspection work orders. Each Manufacturing Order for a fabric style follows this routing, generating separate work orders per stage. Daily production entry: supervisor records metres woven per loom per shift in the MO's work order. This gives you loom efficiency (actual vs theoretical metres/day) in real time.</p>
+
+      <h3>How to track grey fabric to finished fabric in Odoo?</h3>
+      <p>Use two linked Manufacturing Orders: MO1 (Yarn → Grey Fabric) covers warping, weaving, and inspection. MO2 (Grey Fabric → Finished Fabric) covers wet processing (scouring, dyeing, finishing). If wet processing is outsourced, set MO2 as a Subcontracting BOM — grey fabric is the component sent to the dye house, finished fabric is what comes back. Each MO produces a lot number: grey fabric lot tracks the weaving batch, finished fabric lot tracks the dye lot. Full traceability from yarn lot → grey lot → finished lot → customer delivery is available in Odoo's Traceability report.</p>
+
+      <h3>What quality checks should be configured in Odoo for a spinning mill?</h3>
+      <p>Three QC points: (1) Cotton receipt — micronaire, staple length, fibre strength, trash content. Reject out-of-spec bales at receipt stage. (2) Ring frame in-process — actual count vs nominal (±2% tolerance), CSP (count-strength product), TPI (twists per inch), elongation at break. Check one sample per frame per shift. (3) Finished yarn before delivery — Lea count test, Uster % evenness, imperfections per km. For fabric: GSM, width, defect grade. Configure these as Odoo Quality Check Points attached to the relevant work order in the manufacturing routing. Failed checks create alerts that block the lot from moving forward until resolved.</p>
+    </div>
+  </article>
+
+  <footer>
+    <div class="shell">
+      <div class="post-foot">
+        <span class="eyebrow">Continue exploring</span>
+        <div class="next">
+          <a class="next-card" href="0036-odoo-trading-company-bangladesh.html">
+            <span class="dir">Older · 0036</span>
+            <h4>Odoo for Trading Companies Bangladesh</h4>
+            <p>Multi-warehouse setup, import procurement, landed costs, and customer pricing for wholesale distributors.</p>
+            <span class="arrow">→</span>
+          </a>
+          <a class="next-card" href="../index.html#lab">
+            <span class="dir">All articles</span>
+            <h4>Back to Lab Index</h4>
+            <p>Browse all guides on Odoo ERP, manufacturing operations, and business analysis in Bangladesh.</p>
+            <span class="arrow">→</span>
+          </a>
+        </div>
+      </div>
+      <div class="foot">
+        <span>© 2026 Mehedi Hasan · Lab / 0037</span>
+        <span><a href="../index.html#lab">↑ Back to lab index</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="_toc.js" defer></script>
+</body>
+
+</html>

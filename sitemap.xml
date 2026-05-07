@@ -41,6 +41,46 @@
     <priority>0.9</priority>
   </url>
 
+  <!-- Target: odoo spinning mill bangladesh, odoo weaving mill bangladesh, yarn inventory odoo -->
+  <url>
+    <loc>https://mhasan.me/lab/0037-odoo-spinning-mill-bangladesh</loc>
+    <lastmod>2026-05-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Target: odoo trading company bangladesh, odoo multi warehouse bangladesh, odoo wholesale distributor -->
+  <url>
+    <loc>https://mhasan.me/lab/0036-odoo-trading-company-bangladesh</loc>
+    <lastmod>2026-05-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Target: odoo pharma bangladesh, odoo pharmaceutical batch tracking, odoo dgda compliance -->
+  <url>
+    <loc>https://mhasan.me/lab/0035-odoo-pharma-bangladesh</loc>
+    <lastmod>2026-05-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Target: odoo cycle export bangladesh, odoo bicycle manufacturing bangladesh, bom to customs odoo -->
+  <url>
+    <loc>https://mhasan.me/lab/0034-odoo-cycle-export-bangladesh</loc>
+    <lastmod>2026-05-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Target: odoo rmg bangladesh, odoo garments bangladesh, odoo rmg erp bangladesh -->
+  <url>
+    <loc>https://mhasan.me/lab/0033-odoo-rmg-garments-bangladesh</loc>
+    <lastmod>2026-05-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
   <!-- Target: odoo post go live support, odoo hypercare bangladesh, l1 l2 l3 erp support -->
   <url>
     <loc>https://mhasan.me/lab/0032-odoo-post-go-live-hypercare-bangladesh</loc>

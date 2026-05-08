@@ -262,6 +262,8 @@ footer{padding:32px 0 48px}
 @media(max-width:1000px){
   .post{gap:0}
   .post .body{grid-column:1 / -1;max-width:none;margin-top:24px}
+  /* article.post (lab pages) has no .shell wrapper; course pages use div.post inside div.shell so this won't double-pad them */
+  article.post{padding-left:var(--gutter);padding-right:var(--gutter)}
 }
 @media(max-width:680px){
   .post-foot .next{grid-template-columns:1fr}
@@ -270,6 +272,14 @@ footer{padding:32px 0 48px}
   .post .body h2{font-size:22px;margin:36px 0 10px}
   .post .body p,.post .body ul,.post .body ol{font-size:15px}
   .post .body blockquote{font-size:18px;padding:16px 18px}
+  .post table{display:block;overflow-x:auto;-webkit-overflow-scrolling:touch;max-width:100%}
+}
+@media(max-width:500px){
+  .post-head .byline{flex-wrap:wrap;gap:8px 14px}
+}
+@media(max-width:380px){
+  .post-head h1{font-size:32px}
+  .post-head .lede{font-size:16px}
 }
 
 /* Theme toggle button (injected by _toc.js into lab/course navs) */

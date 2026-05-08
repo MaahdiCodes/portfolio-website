@@ -5,17 +5,17 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description"
-    content="Master AS-IS vs TO-BE process mapping for ERP implementation. A guide to document current states and design future workflows in Bangladesh. Read the guide →" />
+    content="The complete AS-IS to TO-BE process mapping guide for ERP practitioners. Full methodology, Bangladesh case examples, gap analysis templates, BPMN basics, interview techniques, and the 8 mistakes that derail projects." />
   <meta name="robots" content="index, follow" />
   <meta name="author" content="Mehedi Hasan" />
-  <title>AS-IS vs TO-BE Process Mapping | ERP | Mehedi Hasan</title>
+  <title>AS-IS to TO-BE Process Mapping: The Complete ERP Practitioner's Guide | Mehedi Hasan</title>
   <link rel="canonical" href="https://mhasan.me/lab/0043-as-is-to-be-process-mapping-erp" />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png" />
   <!-- Open Graph -->
-  <meta property="og:title" content="AS-IS vs TO-BE Process Mapping | ERP | Mehedi Hasan" />
+  <meta property="og:title" content="AS-IS to TO-BE Process Mapping: The Complete ERP Practitioner's Guide | Mehedi Hasan" />
   <meta property="og:description"
-    content="Master AS-IS vs TO-BE process mapping for ERP implementation. A guide to document current states and design future workflows in Bangladesh." />
+    content="The complete AS-IS to TO-BE process mapping guide for ERP practitioners. Full methodology, Bangladesh case examples, gap analysis templates, BPMN basics, interview techniques, and the 8 mistakes that derail projects." />
   <meta property="og:url" content="https://mhasan.me/lab/0043-as-is-to-be-process-mapping-erp" />
   <meta property="og:type" content="article" />
   <meta property="og:image" content="https://mhasan.me/assets/og-default.jpg" />
@@ -26,12 +26,12 @@
   <meta property="article:author" content="https://www.linkedin.com/in/mehedi-hasan-consultant/" />
   <meta property="article:published_time" content="2026-05-08T12:00:00+06:00" />
   <meta property="article:modified_time" content="2026-05-08T12:00:00+06:00" />
-  <meta property="article:section" content="Odoo ERP Bangladesh" />
+  <meta property="article:section" content="Business Analysis Methodology" />
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="AS-IS vs TO-BE Process Mapping | ERP | Mehedi Hasan" />
+  <meta name="twitter:title" content="AS-IS to TO-BE Process Mapping: The Complete ERP Practitioner's Guide" />
   <meta name="twitter:description"
-    content="Master AS-IS vs TO-BE process mapping for ERP implementation. A guide to document current states and design future workflows in Bangladesh." />
+    content="The complete AS-IS to TO-BE process mapping guide for ERP practitioners. Full methodology, Bangladesh case examples, gap analysis templates, and the 8 mistakes that derail projects." />
   <meta name="twitter:image" content="https://mhasan.me/assets/og-default.jpg" />
   <!-- JSON-LD -->
   <script type="application/ld+json">
@@ -39,8 +39,8 @@
   {
     "@context": "https://schema.org",
     "@type": "Article",
-    "headline": "AS-IS vs TO-BE Process Mapping: A Bangladesh ERP Practitioner's Guide",
-    "description": "Master AS-IS vs TO-BE process mapping for ERP implementation. A guide to document current states and design future workflows in Bangladesh.",
+    "headline": "AS-IS to TO-BE Process Mapping: The Complete ERP Practitioner's Guide",
+    "description": "The complete AS-IS to TO-BE process mapping guide for ERP practitioners. Full methodology, Bangladesh case examples, gap analysis templates, BPMN basics, interview techniques, and the 8 mistakes that derail projects.",
     "datePublished": "2026-05-08T12:00:00+06:00",
     "dateModified": "2026-05-08T12:00:00+06:00",
     "author": {
@@ -59,7 +59,7 @@
     "itemListElement": [
       { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://mhasan.me" },
       { "@type": "ListItem", "position": 2, "name": "Lab", "item": "https://mhasan.me/lab/" },
-      { "@type": "ListItem", "position": 3, "name": "AS-IS vs TO-BE Process Mapping", "item": "https://mhasan.me/lab/0043-as-is-to-be-process-mapping-erp" }
+      { "@type": "ListItem", "position": 3, "name": "AS-IS to TO-BE Process Mapping", "item": "https://mhasan.me/lab/0043-as-is-to-be-process-mapping-erp" }
     ]
   },
   {
@@ -68,10 +68,50 @@
     "mainEntity": [
       {
         "@type": "Question",
+        "name": "What is AS-IS process mapping?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "AS-IS process mapping is the act of documenting exactly how a business operates today — including every manual step, workaround, exception, and unofficial approval. It is not an idealized description of the intended process, but an honest capture of the actual process as performed by the people doing the work."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is TO-BE process mapping?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "TO-BE process mapping designs how the business will operate after the ERP is implemented. It is not a description of how the ERP works by default — it is a blueprint of how YOUR business will run inside the ERP, with waste eliminated, approvals streamlined, and integration points defined."
+        }
+      },
+      {
+        "@type": "Question",
         "name": "What is the difference between AS-IS and TO-BE process mapping?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "AS-IS process mapping documents exactly how a business operates today, including all inefficiencies and manual steps. TO-BE mapping designs the future workflow, showing how the business will operate once the new ERP system is implemented, optimizing out those inefficiencies."
+          "text": "AS-IS documents the current reality (how things work today, including inefficiencies). TO-BE designs the future state (how things should work after ERP implementation). The gap between them defines the project scope. Every item in the gap analysis is a configuration task, a business change, or a development requirement."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How long does AS-IS to TO-BE process mapping take?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "For a mid-size Bangladesh company with 5–8 departments, expect 3–5 weeks: 2 weeks for AS-IS discovery and validation, 1 week for TO-BE design workshops, and 1–2 weeks for gap analysis documentation and stakeholder sign-off. Rushing this phase is the single most expensive shortcut in ERP implementation."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What tools are used for process mapping?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Draw.io (free, browser-based) is the most accessible tool for BPMN process maps and is recommended for most Bangladesh projects. Lucidchart and Microsoft Visio are alternatives with more polish but higher cost. For documentation, Confluence, Notion, or even structured Excel workbooks work well for the gap register and requirements log."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is a gap analysis in ERP implementation?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A gap analysis identifies every difference between your TO-BE process design and what the ERP can do natively. Each gap is then categorized as: (1) solvable by changing the business process, (2) solvable with a workaround using native features, or (3) requiring custom development. This categorization directly drives the implementation budget and timeline."
         }
       },
       {
@@ -79,7 +119,15 @@
         "name": "Why is process mapping important for ERP implementation?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Skipping process mapping is the leading cause of ERP failure. Without knowing your AS-IS, you cannot accurately identify the gaps the ERP needs to fill. Without a TO-BE, your implementation team will simply rebuild your old, broken processes in a new, expensive software."
+          "text": "Without AS-IS mapping, you cannot identify what needs to change. Without TO-BE mapping, your implementor will rebuild your current broken processes in the new system. Without gap analysis, you cannot accurately scope or budget the project. Skipping any of these three steps is the most common reason ERP projects fail or massively overrun their budgets."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is BPMN and do I need it for process mapping?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "BPMN (Business Process Model and Notation) is the international standard for drawing process flows. You do not need to master every BPMN symbol, but you should understand the five core elements: Events (circles), Tasks (rectangles), Gateways (diamonds), Sequence Flows (arrows), and Swim Lanes (horizontal bands per department or role). Using consistent notation prevents ambiguity in your process maps."
         }
       }
     ]
@@ -92,53 +140,15 @@
     href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap">
   <link rel="stylesheet" href="_styles.css">
   <style>
-    .flow-card {
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      overflow: hidden;
-      margin: 20px 0;
-    }
-    .flow-row {
-      display: grid;
-      grid-template-columns: 140px 1fr 180px;
-      border-bottom: 1px solid var(--border);
-      align-items: stretch;
-    }
-    .flow-row:last-child { border-bottom: none; }
-    .flow-stage {
-      padding: 14px 16px;
-      background: var(--surface);
-      border-right: 1px solid var(--border);
-      font-size: 12px;
-      font-weight: 600;
-      color: var(--text);
-      display: flex;
-      align-items: center;
-    }
-    .flow-desc {
-      padding: 14px 16px;
-      font-size: 12.5px;
-      color: var(--text-2);
-      line-height: 1.7;
-    }
-    .flow-odoo {
-      padding: 14px 16px;
-      border-left: 1px solid var(--border);
-      font-family: var(--mono);
-      font-size: 10.5px;
-      color: var(--accent);
-      line-height: 1.7;
-      display: flex;
-      align-items: center;
-    }
+    /* ── Pull quote ── */
     .pull {
       font-family: var(--serif);
       font-style: italic;
-      font-size: clamp(20px, 2.8vw, 30px);
-      line-height: 1.3;
+      font-size: clamp(22px, 3vw, 34px);
+      line-height: 1.25;
       color: var(--text);
-      margin: 48px 0;
-      max-width: 26ch;
+      margin: 52px 0;
+      max-width: 24ch;
       letter-spacing: -0.01em;
     }
     .pull::before {
@@ -149,34 +159,337 @@
       background: var(--accent);
       margin-bottom: 18px;
     }
+
+    /* ── Two-column comparison ── */
     .split-col {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 24px;
+      gap: 20px;
       margin: 32px 0;
     }
     .col-box {
       border: 1px solid var(--border);
-      border-radius: 8px;
+      border-radius: 10px;
       padding: 24px;
       background: var(--surface);
     }
     .col-box h4 {
-      margin-top: 0;
+      margin: 0 0 14px;
       color: var(--accent);
       font-family: var(--mono);
-      font-size: 13px;
-      letter-spacing: 0.05em;
+      font-size: 11px;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
       border-bottom: 1px solid var(--border);
-      padding-bottom: 12px;
-      margin-bottom: 16px;
+      padding-bottom: 10px;
     }
-    @media(max-width:800px){
+    .col-box ul { margin: 0; padding-left: 18px; }
+    .col-box li { font-size: 13.5px; color: var(--text-2); line-height: 1.75; margin-bottom: 4px; }
+
+    /* ── Flow / step cards ── */
+    .flow-card {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+      margin: 24px 0;
+    }
+    .flow-row {
+      display: grid;
+      grid-template-columns: 160px 1fr 190px;
+      border-bottom: 1px solid var(--border);
+      align-items: stretch;
+    }
+    .flow-row:last-child { border-bottom: none; }
+    .flow-stage {
+      padding: 16px 18px;
+      background: var(--surface);
+      border-right: 1px solid var(--border);
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      line-height: 1.4;
+    }
+    .flow-desc {
+      padding: 16px 18px;
+      font-size: 13px;
+      color: var(--text-2);
+      line-height: 1.75;
+    }
+    .flow-note {
+      padding: 16px 18px;
+      border-left: 1px solid var(--border);
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--accent);
+      line-height: 1.7;
+      display: flex;
+      align-items: center;
+    }
+
+    /* ── KV grid (metadata rows) ── */
+    .kv {
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      gap: 10px 20px;
+      margin: 20px 0;
+      padding: 20px 24px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: var(--surface);
+      font-size: 13px;
+    }
+    .kv .k {
+      color: var(--text-3);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-size: 10.5px;
+      align-self: start;
+      padding-top: 2px;
+      font-family: var(--mono);
+    }
+    .kv .v { color: var(--text); line-height: 1.6; }
+
+    /* ── Case pair (bad vs good) ── */
+    .case-pair {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin: 28px 0;
+    }
+    .case-pair > div {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 20px;
+      background: var(--surface);
+    }
+    .case-pair h4 {
+      margin: 0 0 12px;
+      font-family: var(--mono);
+      font-size: 10.5px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+    .case-pair .bad h4 { color: #C76A6A; }
+    .case-pair .good h4 { color: var(--accent); }
+    .case-pair p { font-size: 13.5px; line-height: 1.7; color: var(--text-2); margin: 0; }
+
+    /* ── Three-column card grid ── */
+    .tri-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin: 28px 0;
+    }
+    .tri-card {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 20px;
+      background: var(--surface);
+    }
+    .tri-card .num {
+      font-family: var(--mono);
+      font-size: 10.5px;
+      color: var(--accent);
+      letter-spacing: 0.12em;
+      margin-bottom: 8px;
+    }
+    .tri-card h4 { margin: 0 0 8px; font-size: 14px; font-weight: 600; }
+    .tri-card p { margin: 0; font-size: 13px; color: var(--text-2); line-height: 1.65; }
+
+    /* ── Mistake cards ── */
+    .mistake-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin: 28px 0;
+    }
+    .mistake-card {
+      display: grid;
+      grid-template-columns: 52px 1fr;
+      gap: 0;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .mistake-num {
+      background: var(--surface);
+      border-right: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--mono);
+      font-size: 11px;
+      color: #C76A6A;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+    }
+    .mistake-body {
+      padding: 18px 20px;
+    }
+    .mistake-body h4 {
+      margin: 0 0 6px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text);
+    }
+    .mistake-body p {
+      margin: 0;
+      font-size: 13px;
+      color: var(--text-2);
+      line-height: 1.7;
+    }
+
+    /* ── Table ── */
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 24px 0;
+      font-size: 13px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .data-table th {
+      background: var(--surface);
+      padding: 12px 16px;
+      text-align: left;
+      font-family: var(--mono);
+      font-size: 10.5px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-3);
+      border-bottom: 1px solid var(--border);
+    }
+    .data-table td {
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--border);
+      color: var(--text-2);
+      vertical-align: top;
+      line-height: 1.6;
+    }
+    .data-table tr:last-child td { border-bottom: none; }
+    .data-table tr:nth-child(even) td { background: var(--surface); }
+    .data-table .label {
+      font-weight: 500;
+      color: var(--text);
+      font-size: 12px;
+    }
+    .data-table .tag-std { color: #6AB5C7; font-family: var(--mono); font-size: 11px; }
+    .data-table .tag-cfg { color: var(--accent); font-family: var(--mono); font-size: 11px; }
+    .data-table .tag-dev { color: #C76A6A; font-family: var(--mono); font-size: 11px; }
+    .data-table .tag-chg { color: #B07FE0; font-family: var(--mono); font-size: 11px; }
+
+    /* ── BPMN notation legend ── */
+    .bpmn-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 12px;
+      margin: 24px 0;
+    }
+    .bpmn-item {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 12px;
+      background: var(--surface);
+      text-align: center;
+    }
+    .bpmn-symbol {
+      font-size: 28px;
+      line-height: 1;
+      margin-bottom: 8px;
+      color: var(--text);
+    }
+    .bpmn-name {
+      font-family: var(--mono);
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--accent);
+      margin-bottom: 4px;
+    }
+    .bpmn-desc {
+      font-size: 11.5px;
+      color: var(--text-3);
+      line-height: 1.5;
+    }
+
+    /* ── Section divider ── */
+    .section-marker {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin: 60px 0 32px;
+      color: var(--text-3);
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+    .section-marker::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    /* ── Interview question block ── */
+    .q-block {
+      margin: 20px 0;
+      border-left: 2px solid var(--accent);
+      padding: 0 0 0 20px;
+    }
+    .q-block .q {
+      font-weight: 600;
+      font-size: 14px;
+      color: var(--text);
+      margin: 0 0 4px;
+    }
+    .q-block .why {
+      font-size: 12.5px;
+      color: var(--text-3);
+      font-family: var(--mono);
+      margin: 0;
+    }
+
+    /* ── Case study header ── */
+    .case-head {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 20px 24px;
+      margin: 28px 0 20px;
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+    }
+    .case-label {
+      font-family: var(--mono);
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--accent);
+      white-space: nowrap;
+      padding-top: 3px;
+    }
+    .case-head h4 { margin: 0 0 4px; font-size: 16px; }
+    .case-head p { margin: 0; font-size: 13px; color: var(--text-2); line-height: 1.6; }
+
+    /* ── Responsive ── */
+    @media (max-width: 800px) {
       .flow-row { grid-template-columns: 1fr; }
       .flow-stage { border-right: none; border-bottom: 1px solid var(--border); }
-      .flow-odoo { border-left: none; border-top: 1px solid var(--border); }
-      .split-col { grid-template-columns: 1fr; }
+      .flow-note { border-left: none; border-top: 1px solid var(--border); }
+      .split-col, .case-pair, .tri-grid { grid-template-columns: 1fr; }
+      .bpmn-grid { grid-template-columns: repeat(3, 1fr); }
+      .kv { grid-template-columns: 130px 1fr; }
+      .mistake-card { grid-template-columns: 44px 1fr; }
+    }
+    @media (max-width: 520px) {
+      .bpmn-grid { grid-template-columns: repeat(2, 1fr); }
     }
   </style>
 </head>
@@ -199,20 +512,21 @@
   <section class="post-head">
     <div class="shell">
       <span class="eyebrow">Technical Lab · 0043</span>
-      <h1>AS-IS vs TO-BE Process Mapping — <span class="serif">a practitioner's guide.</span></h1>
-      <p class="lede">Implementing an ERP system without mapping your current and future processes is like building a house without a blueprint. Here is how Bangladesh's leading manufacturers use AS-IS and TO-BE mapping to guarantee ERP success.</p>
+      <h1>AS-IS to TO-BE process mapping — <span class="serif">the complete practitioner's guide.</span></h1>
+      <p class="lede">The single most misunderstood phase of every ERP project. What it actually means, how to execute it step by step, how to build the gap analysis that drives your scope, and every mistake I have seen kill Bangladesh implementations. A guide you can apply to your next project tomorrow.</p>
       <div class="post-meta">
         <span class="chip accent">Methodology</span>
         <span class="chip">Business Analysis</span>
         <span class="chip">Process Mapping</span>
-        <span class="chip">Change Management</span>
+        <span class="chip">Gap Analysis</span>
+        <span class="chip">BPMN</span>
       </div>
       <div class="byline">
         <span>By<b><a href="https://www.linkedin.com/in/mehedi-hasan-consultant/" style="color:var(--accent)" rel="author">Mehedi Hasan</a></b></span>
         <span>Published<b>May 2026</b></span>
-        <span>Read time<b>10 minutes</b></span>
-        <span>Form<b>Guide</b></span>
-        <span>Scope<b>Project Planning</b></span>
+        <span>Read time<b>35 minutes</b></span>
+        <span>Form<b>Complete Guide</b></span>
+        <span>Scope<b>Full Methodology</b></span>
       </div>
     </div>
   </section>
@@ -221,101 +535,786 @@
     <aside class="toc">
       <div class="toc-k">In this guide</div>
       <ol>
-        <li><a href="#definition">Defining the States</a></li>
-        <li><a href="#why-it-matters">Why Mapping Matters</a></li>
-        <li><a href="#as-is-phase">Phase 1: The AS-IS Discovery</a></li>
-        <li><a href="#to-be-phase">Phase 2: Designing the TO-BE</a></li>
-        <li><a href="#gap-analysis">Bridging the Gap</a></li>
+        <li><a href="#why-this-guide">Why This Guide Exists</a></li>
+        <li><a href="#framework">The Conceptual Framework</a></li>
+        <li><a href="#preparation">Preparation: Before You Start</a></li>
+        <li><a href="#as-is">Phase 1: The AS-IS Discovery</a>
+          <ol>
+            <li><a href="#gemba">The Gemba Walk</a></li>
+            <li><a href="#interview">Interview Methodology</a></li>
+            <li><a href="#questions">The 7 Discovery Questions</a></li>
+            <li><a href="#artifacts">Artifact Collection</a></li>
+            <li><a href="#bpmn">BPMN Basics</a></li>
+            <li><a href="#as-is-signoff">AS-IS Sign-Off</a></li>
+          </ol>
+        </li>
+        <li><a href="#to-be">Phase 2: Designing the TO-BE</a>
+          <ol>
+            <li><a href="#lean">Lean Principles Applied</a></li>
+            <li><a href="#workshop">The TO-BE Workshop</a></li>
+            <li><a href="#to-be-areas">TO-BE by Process Area</a></li>
+            <li><a href="#what-not">What TO-BE Is NOT</a></li>
+          </ol>
+        </li>
+        <li><a href="#gap">The Gap Analysis</a>
+          <ol>
+            <li><a href="#gap-register">Building the Gap Register</a></li>
+            <li><a href="#categories">Gap Categories</a></li>
+            <li><a href="#decisions">The 3 Decisions per Gap</a></li>
+          </ol>
+        </li>
+        <li><a href="#cases">Bangladesh Case Examples</a></li>
+        <li><a href="#mistakes">8 Mistakes That Derail Projects</a></li>
+        <li><a href="#tools">Tools</a></li>
+        <li><a href="#connecting">Connecting to the Broader Project</a></li>
         <li><a href="#faq">FAQ</a></li>
       </ol>
     </aside>
 
     <div class="body">
-      <p>A fatal mistake many companies make during ERP implementation is jumping straight into software configuration. They assume the software will magically fix their operational bottlenecks. But if you digitize a broken process, you just get a faster broken process.</p>
 
-      <p>As a Business Analyst specializing in Odoo, my first step with any new client—before we even log into the system—is mapping the <strong>AS-IS</strong> (current state) and designing the <strong>TO-BE</strong> (future state). This is the foundation of the <a href="0002-discovery-session-business-process-mapping" style="color:var(--accent)">Discovery Session</a>.</p>
+      <!-- ═══════════════════════════════════ WHY THIS GUIDE ══ -->
+      <h2 id="why-this-guide">Why This Guide Exists</h2>
 
-      <p class="pull">If you don't know exactly how you work today, you cannot accurately design how you should work tomorrow.</p>
+      <p>Every consulting firm and ERP vendor will tell you that process mapping is important. Almost none of them will tell you <em>how</em> to do it, in detail, with the specificity that lets you actually run the sessions, build the documents, and defend the scope to a skeptical Managing Director.</p>
 
-      <h2 id="definition">Defining the States</h2>
-      
+      <p>This guide is the one I wish I had at the start of my first ERP engagement. It covers the full methodology — not just the theory. It includes the exact questions I ask in discovery interviews, the gap register structure I use on every project, real examples drawn from Bangladesh manufacturing and trading companies, and a full account of the mistakes I have personally seen derail implementations.</p>
+
+      <p>By the end, you will be able to run an AS-IS to TO-BE mapping engagement from first session to signed gap analysis document. This is not a 10-minute overview. It is a complete practitioner's reference.</p>
+
+      <div class="callout">
+        <span class="tag">Prerequisites</span>
+        <p>This guide assumes you understand what an ERP is and why companies implement them. If you're new to the <a href="0002-discovery-session-business-process-mapping" style="color:var(--accent)">ERP discovery process</a>, read that article first. If you want BPMN diagram templates for Bangladesh manufacturing contexts, see <a href="0010-bpmn-templates-manufacturing-discovery" style="color:var(--accent)">Lab 0010</a>.</p>
+      </div>
+
+      <!-- ═══════════════════════════════════ FRAMEWORK ══ -->
+      <div class="section-marker">01 — The Conceptual Framework</div>
+      <h2 id="framework">What AS-IS and TO-BE Really Mean</h2>
+
+      <p>The terms are simple. The concepts are not. Most failed projects fail not because the team didn't know the terms, but because they applied them incorrectly. Let me be precise.</p>
+
       <div class="split-col">
         <div class="col-box">
           <h4>The AS-IS State</h4>
-          <p>The unfiltered, brutally honest reality of how your business operates right now. It includes every manual Excel sheet, every verbal approval on WhatsApp, every shadow IT system, and every bottleneck.</p>
-          <p><strong>Goal:</strong> To understand the pain points and uncover "hidden" steps that employees take to keep the business running.</p>
+          <p style="font-size:13.5px;color:var(--text-2);line-height:1.75;margin:0 0 12px">The AS-IS is the <strong>unfiltered, honest, ground-level reality</strong> of how your business operates today. Not how management thinks it operates. Not how the SOP manual says it should operate. How it <em>actually</em> operates — the WhatsApp approvals, the Excel workarounds, the paper registers, the verbal agreements, and the shadow systems that exist because the official process breaks down.</p>
+          <ul>
+            <li>Includes every manual step and workaround</li>
+            <li>Includes exceptions as well as the standard path</li>
+            <li>Includes unofficial tools and communication channels</li>
+            <li>Includes pain points, delays, and error-prone handoffs</li>
+            <li>Sourced from operators, not managers</li>
+          </ul>
         </div>
         <div class="col-box">
           <h4>The TO-BE State</h4>
-          <p>The optimized future state where your operations are supported by the new ERP system. Redundancies are eliminated, manual data entry is automated, and approvals are streamlined.</p>
-          <p><strong>Goal:</strong> To create the blueprint for system configuration and define exactly how the business will operate post go-live.</p>
+          <p style="font-size:13.5px;color:var(--text-2);line-height:1.75;margin:0 0 12px">The TO-BE is <strong>your designed future workflow</strong> — how the business will operate inside the ERP after go-live. It is not a screenshot of Odoo's default behavior. It is a deliberate design that maps your business logic onto the ERP's capabilities, eliminating identified waste and automating identified manual steps.</p>
+          <ul>
+            <li>Eliminates waste identified in the AS-IS</li>
+            <li>Maps your business rules onto ERP capabilities</li>
+            <li>Accounts for your industry's specific compliance needs</li>
+            <li>Is achievable within the ERP (native, configured, or customized)</li>
+            <li>Approved by process owners, not just management</li>
+          </ul>
         </div>
       </div>
 
-      <h2 id="why-it-matters">Why Process Mapping Matters</h2>
-      <p>Why spend weeks mapping processes when you could just start installing modules? Here are the three primary reasons:</p>
-      
-      <ul>
-        <li><strong>Preventing Scope Creep:</strong> A clear TO-BE map acts as the definitive contract of what will be built. If a feature isn't in the TO-BE map, it is out of scope.</li>
-        <li><strong>Identifying Gaps Early:</strong> If your AS-IS process requires a unique 5-level approval for international LCs, and the ERP only natively supports 2 levels, you identify this gap on day one, not during UAT.</li>
-        <li><strong>Change Management:</strong> Showing end-users a visual map of how their daily work will change from "AS-IS" to "TO-BE" reduces anxiety and accelerates adoption. We discussed this heavily in <a href="0010-bpmn-templates-manufacturing-discovery" style="color:var(--accent)">BPMN Templates for Manufacturing</a>.</li>
-      </ul>
+      <p>The relationship between the two states is where the real insight lives. The <strong>delta between AS-IS and TO-BE is the project scope.</strong> Every item in that delta is a task: a configuration to build, a process to change, or a custom module to develop. If your gap analysis is complete, your statement of work is complete. If it is not, your statement of work is a guess.</p>
 
-      <h2 id="as-is-phase">Phase 1: The AS-IS Discovery</h2>
-      <p>Mapping the AS-IS state requires interviewing the actual people doing the work, not just the managers. Managers know how the process is <em>supposed</em> to work; floor workers know how it <em>actually</em> works.</p>
+      <p class="pull">The gap between AS-IS and TO-BE is not a problem to minimize. It is the project.</p>
+
+      <p>A second common mistake: treating TO-BE as "the Odoo standard." Odoo has default workflows. But "default" was designed for a generic business. Your business is not generic. A Bangladesh RMG company with a 5-tier approval structure for overseas LCs cannot simply adopt Odoo's out-of-the-box purchase approval. The TO-BE must be <em>your</em> process, designed by you, enabled by Odoo — not the other way around.</p>
+
+      <!-- ═══════════════════════════════════ PREPARATION ══ -->
+      <div class="section-marker">02 — Preparation</div>
+      <h2 id="preparation">Before Phase 1: Setting Up for Success</h2>
+
+      <p>A discovery engagement that starts without preparation produces bad data. You show up to the first interview and the department head has no idea what you need. You ask for documents and spend a week chasing them. The session produces wish lists instead of process descriptions. Protect against this with a structured preparation week.</p>
+
+      <h3>Assemble the Right Team</h3>
+      <p>Process mapping is a team sport. You need:</p>
+      <div class="kv">
+        <span class="k">Business Analyst (you)</span><span class="v">Designs and runs the sessions, draws the maps, identifies gaps, owns the output documentation.</span>
+        <span class="k">Project Sponsor</span><span class="v">The senior stakeholder who has made the ERP decision. Their involvement is critical for gaining access, securing meeting time, and making "change the business" decisions later.</span>
+        <span class="k">Department Leads</span><span class="v">One per functional area (Procurement, Sales, Production, Finance, etc.). They know the intended process and the exceptions that management tolerates.</span>
+        <span class="k">Floor Operators</span><span class="v">At least one per department. They know what actually happens. Do not skip this — it is the most important group.</span>
+        <span class="k">IT / Systems Lead</span><span class="v">Knows what other systems are in use and what integrations currently exist. Often overlooked and always critical.</span>
+      </div>
+
+      <h3>Document Request List</h3>
+      <p>Send this list at least one week before discovery starts. Receiving the documents in advance — even partially — dramatically improves session quality because you can ask informed questions instead of starting from zero.</p>
+      <div class="kv">
+        <span class="k">Process documents</span><span class="v">Any existing SOPs, process manuals, workflow diagrams — even if outdated. Outdated SOPs are useful: they tell you what management <em>intended</em> the process to be.</span>
+        <span class="k">Forms and templates</span><span class="v">Every paper form, Excel template, or printed register used in the process. Purchase requisitions, delivery challans, goods received notes, production job cards, inspection checklists.</span>
+        <span class="k">Current system access</span><span class="v">Read-only access to the current system (Tally, SAP, legacy ERP, or custom software). Walk through it — don't just ask about it.</span>
+        <span class="k">Org chart</span><span class="v">Who reports to whom. This reveals approval hierarchies that might not match the described process.</span>
+        <span class="k">Volume data</span><span class="v">Number of purchase orders per month, number of sales invoices, number of production orders, number of employees by department. Critical for understanding complexity and sizing the implementation.</span>
+        <span class="k">Exception log</span><span class="v">Any recent audit findings, escalation emails, or "this always breaks" conversations. Gold.</span>
+      </div>
+
+      <h3>Stakeholder Briefing</h3>
+      <p>Before the first session, brief the project sponsor and all department leads on what discovery <em>is</em> and what it <em>is not.</em> Left unbriefed, department heads will treat the session as a product demo request and produce wish lists. Set these expectations explicitly:</p>
+      <div class="case-pair">
+        <div class="bad">
+          <h4>What discovery is NOT</h4>
+          <p>It is not a feature request session. It is not a demo of the new system. It is not a chance to redesign the entire company. It is not the place to debate whether you should have bought the software.</p>
+        </div>
+        <div class="good">
+          <h4>What discovery IS</h4>
+          <p>It is a structured interview to understand how work currently flows through your department — step by step, including every exception, workaround, and approval. The output is a process map, not a feature list.</p>
+        </div>
+      </div>
+
+      <!-- ═══════════════════════════════════ AS-IS ══ -->
+      <div class="section-marker">03 — Phase 1</div>
+      <h2 id="as-is">Phase 1: The AS-IS Discovery</h2>
+
+      <p>This is the most important phase of the project. The fidelity of your AS-IS map determines the quality of everything that follows: the TO-BE design, the gap analysis, the configuration spec, and the UAT script. Compress it, and the project pays the cost downstream — at UAT, at go-live, or both.</p>
+
+      <h3 id="gemba">Step 1: The Gemba Walk</h3>
+      <p>"Gemba" is a Japanese manufacturing term for "the actual place." A Gemba Walk means physically walking the process — following a single transaction from start to finish, in real life, on the factory floor or in the office, watching it happen.</p>
+
+      <p>This is not optional. It is the single most effective discovery technique I know. Every interview I have ever conducted was improved by the Gemba walk I did before it. Here is why: people describe the process they <em>think</em> they run. Walking the floor shows you the process they <em>actually</em> run — and the gap between the two is often enormous.</p>
+
+      <div class="callout">
+        <span class="tag">Bangladesh Context</span>
+        <p>In Bangladesh manufacturing, the Gemba walk often reveals critical hidden steps: delivery challans being counter-signed by a store manager who is not in the org chart, production job cards being maintained in a physical register that no one mentioned, or LC documents being processed through a WhatsApp group that includes three external parties. None of these will appear in an interview unless you saw them first.</p>
+      </div>
+
+      <p>Pick a single representative transaction for each major process area and follow it end-to-end. For procurement, start with a purchase requisition and follow it until the supplier invoice is posted. For production, start with a sales order and follow it until the finished goods are dispatched. Note every handoff, every document created or received, every system touched, every person involved.</p>
+
+      <h3 id="interview">Step 2: The Discovery Interview — Format and Facilitation</h3>
+      <p>The interview session is where the map is built. Run one session per department. Do not combine departments — the dynamics change and cross-departmental tensions produce politically edited answers, not honest ones.</p>
+
+      <div class="kv">
+        <span class="k">Session length</span><span class="v">90 minutes per department. Two hours maximum — concentration drops and answers become vague.</span>
+        <span class="k">Attendees</span><span class="v">You (BA) + department head + one floor-level operator. Maximum 4 people in the room. More and it becomes a committee meeting.</span>
+        <span class="k">Room setup</span><span class="v">Whiteboard or large paper on the wall. Draw the process in real time, in front of the attendees. This keeps them engaged and surfaces corrections immediately.</span>
+        <span class="k">No demos</span><span class="v">Do not show Odoo during discovery. The moment you show the system, the session becomes a feature evaluation, not a process interview. Screen stays closed.</span>
+        <span class="k">Recording</span><span class="v">Ask permission, then record audio. You cannot write, draw, and listen simultaneously. Transcript review fills gaps you miss in the session.</span>
+        <span class="k">Total sessions</span><span class="v">One per department. For a 5–8 department company, 5–8 sessions across 1.5–2 weeks.</span>
+      </div>
+
+      <p>The floor-level operator is the most important person in the room. Every department head will describe the <em>intended</em> process. The operator will describe the <em>actual</em> one. Direct the questions to the operator when you need to understand exceptions and workarounds. Direct them to the department head when you need to understand approval authority and business rules.</p>
+
+      <h3 id="questions">Step 3: The 7 Discovery Questions</h3>
+      <p>These questions work across every function — procurement, sales, production, finance, HR. Ask them in sequence for each major process step. The follow-ups are as important as the questions themselves.</p>
+
+      <div class="q-block">
+        <p class="q">Q1: "Walk me through what happens when [trigger event] occurs. What is the very first step?"</p>
+        <p class="why">Why: Gets the process started. Forces specificity. "We process the order" is not an answer. "The sales executive receives the email and enters it in the register" is.</p>
+      </div>
+      <div class="q-block">
+        <p class="q">Q2: "Who does this step? What is their exact role and title? Who else can do it?"</p>
+        <p class="why">Why: Maps role-to-task. Reveals single points of failure (only one person can approve). Critical for access rights configuration later.</p>
+      </div>
+      <div class="q-block">
+        <p class="q">Q3: "What information do you need to complete this step? Where does that information come from?"</p>
+        <p class="why">Why: Identifies data inputs and their sources. Reveals hidden dependencies between departments. Uncovers shadow systems (WhatsApp messages, phone calls, separate spreadsheets).</p>
+      </div>
+      <div class="q-block">
+        <p class="q">Q4: "What do you produce at the end of this step? A document? A record? A notification? Who receives it?"</p>
+        <p class="why">Why: Identifies outputs and handoffs. Every handoff is a potential automation point in the ERP. Every paper document is a data entry burden to eliminate.</p>
+      </div>
+      <div class="q-block">
+        <p class="q">Q5: "How long does this step normally take? What causes it to take longer?"</p>
+        <p class="why">Why: Quantifies the pain. A step that "normally takes 2 days but sometimes 2 weeks" is a critical gap candidate. Volume and duration data also drives ROI calculations later.</p>
+      </div>
+      <div class="q-block">
+        <p class="q">Q6: "What goes wrong here? What are the most common errors or exceptions?"</p>
+        <p class="why">Why: Exceptions are not footnotes — they are where the real process lives. Every exception is a business rule that must be captured in the TO-BE design. The standard path is easy; exceptions are where ERP implementations collapse during UAT.</p>
+      </div>
+      <div class="q-block">
+        <p class="q">Q7: "Is there anything in this process that you think is unnecessary, broken, or just done 'because we've always done it'?"</p>
+        <p class="why">Why: Opens the door to process improvement. Sometimes operators know exactly which steps are waste but have never been asked. This seeds the TO-BE workshop.</p>
+      </div>
+
+      <div class="callout">
+        <span class="tag">Rule</span>
+        <p>Never accept a vague answer and move on. "We get approval from management" is not specific enough. Who? Which level? How long does it take? What happens if they are traveling? What is the minimum amount that requires approval vs the amount that doesn't? Every vague answer is a gap that will surface during UAT at the worst possible time.</p>
+      </div>
+
+      <h3 id="artifacts">Step 4: Document Artifact Collection</h3>
+      <p>After each session, collect every physical artifact associated with the process. Walk to the person's desk and ask them to show you. This step is routinely skipped and routinely regretted.</p>
 
       <div class="flow-card">
         <div class="flow-row">
-          <div class="flow-stage">1. Gemba Walk</div>
-          <div class="flow-desc">Physically walk the factory floor or office. Follow a single order from the moment a customer calls to the moment the invoice is paid.</div>
-          <div class="flow-odoo">Observation</div>
+          <div class="flow-stage">Paper Forms</div>
+          <div class="flow-desc">Purchase requisitions, delivery challans, gate passes, production job cards, inspection reports, quality check sheets. Photograph or scan each one. Note the fields — they tell you what data the business actually tracks (vs. what the system should track).</div>
+          <div class="flow-note">Map to ERP fields</div>
         </div>
         <div class="flow-row">
-          <div class="flow-stage">2. Document Artifacts</div>
-          <div class="flow-desc">Collect every piece of paper, every Excel template, and every register book used in the process. Ask: "Where do you get this data?" and "Who do you give this to?"</div>
-          <div class="flow-odoo">Data Gathering</div>
+          <div class="flow-stage">Excel Templates</div>
+          <div class="flow-desc">The master production planning sheet. The stock reconciliation workbook. The daily dispatches register. Each Excel file is a future ERP report or automation. Understand the calculation logic — not just the output.</div>
+          <div class="flow-note">Map to ERP reports</div>
         </div>
         <div class="flow-row">
-          <div class="flow-stage">3. Draft the Map</div>
-          <div class="flow-desc">Use BPMN tools (like Draw.io or Lucidchart) to visually map the flow. Highlight areas with high manual intervention in red.</div>
-          <div class="flow-odoo">Visualization</div>
+          <div class="flow-stage">Registers &amp; Books</div>
+          <div class="flow-desc">Physical registers (store register, vehicle log, inward register) are common in Bangladesh factories. These must be captured — if the ERP doesn't replace them, they become a parallel data source and a compliance risk.</div>
+          <div class="flow-note">Digitization scope</div>
+        </div>
+        <div class="flow-row">
+          <div class="flow-stage">WhatsApp / Email Trails</div>
+          <div class="flow-desc">Ask to see how approvals actually happen. In most Bangladesh SMEs, the procurement manager sends a screenshot to the MD's WhatsApp for approval on any order above a threshold. This is a real approval step and must be replicated (or replaced) in the ERP.</div>
+          <div class="flow-note">Approval workflow</div>
+        </div>
+        <div class="flow-row">
+          <div class="flow-stage">Current System Screens</div>
+          <div class="flow-desc">Ask the operator to show you the current system (Tally, legacy ERP, custom software) in action. Screenshot every relevant screen. The field names and data entry flow often contain process logic that isn't in any document.</div>
+          <div class="flow-note">Data migration source</div>
         </div>
       </div>
 
-      <h2 id="to-be-phase">Phase 2: Designing the TO-BE</h2>
-      <p>Once the AS-IS is documented and approved by the stakeholders, the Business Analyst puts on their architect hat. The TO-BE state should not just replicate the AS-IS state in Odoo; it should eliminate waste.</p>
+      <h3 id="bpmn">Step 5: Drawing the AS-IS Map — BPMN Basics</h3>
+      <p>Your AS-IS process map must be a formal diagram, not a handwritten sketch. It needs to be readable by your client, your configuration team, and a third-party auditor. The industry standard for this is <strong>BPMN 2.0</strong> (Business Process Model and Notation). You do not need to master every BPMN symbol. You need the five core elements:</p>
 
-      <p>Ask these critical questions:</p>
+      <div class="bpmn-grid">
+        <div class="bpmn-item">
+          <div class="bpmn-symbol">◯</div>
+          <div class="bpmn-name">Event</div>
+          <div class="bpmn-desc">Start or end of a process. A trigger (PO received) or outcome (invoice posted).</div>
+        </div>
+        <div class="bpmn-item">
+          <div class="bpmn-symbol">▭</div>
+          <div class="bpmn-name">Task</div>
+          <div class="bpmn-desc">A discrete unit of work. One action, one actor, one output. Keep each task atomic.</div>
+        </div>
+        <div class="bpmn-item">
+          <div class="bpmn-symbol">◇</div>
+          <div class="bpmn-name">Gateway</div>
+          <div class="bpmn-desc">A decision point. Yes/No branches, parallel splits, conditions. Gateways capture exceptions.</div>
+        </div>
+        <div class="bpmn-item">
+          <div class="bpmn-symbol">→</div>
+          <div class="bpmn-name">Sequence Flow</div>
+          <div class="bpmn-desc">Arrows showing order. One direction only. Loops are valid (approval rejected → revise → resubmit).</div>
+        </div>
+        <div class="bpmn-item">
+          <div class="bpmn-symbol">☰</div>
+          <div class="bpmn-name">Swim Lane</div>
+          <div class="bpmn-desc">A horizontal band for each role or department. Tasks sit inside the lane of who performs them.</div>
+        </div>
+      </div>
+
+      <p>Use swim lanes religiously. The swim lane view instantly makes visible every handoff across department boundaries — and handoffs are where delays, errors, and duplicate work accumulate. In a typical Bangladesh manufacturing procurement process, you will find 6–9 handoffs between Purchase, Accounts, Store, and Management. Each one is a candidate for automation.</p>
+
+      <p>Recommended tool: <strong>Draw.io</strong> (diagrams.net). It is free, browser-based, requires no installation, has BPMN shape libraries built in, and produces files that can be shared without a paid license. For most Bangladesh projects, this is the right choice. If the client has a Lucidchart or Microsoft Visio license, use those instead — the principle is the same.</p>
+
+      <p>Draw the map collaboratively. Project it on a screen during the interview session and draw in real time. When participants see the map taking shape, they immediately correct errors and add detail. A map drawn after the meeting from notes alone misses 20–30% of the nuance.</p>
+
+      <h3 id="as-is-signoff">Step 6: AS-IS Validation and Sign-Off</h3>
+      <p>Once the AS-IS maps are drafted, run a dedicated validation session with each department. Show them the map and ask one question: <em>"Is this accurate?"</em> Do not ask if they are happy with the process. Do not ask if they want to change it. Ask if the map reflects reality.</p>
+
+      <p>Common corrections at validation:</p>
       <ul>
-        <li>Why does this step exist? Is it required for compliance, or is it just "how we've always done it"?</li>
-        <li>Can Odoo automate this step entirely? (e.g., Automatic reordering rules instead of manual stock checks).</li>
-        <li>Can we consolidate approvals to reduce bottlenecks without sacrificing control?</li>
+        <li>A step that was described as sequential turns out to happen in parallel</li>
+        <li>A role that was named is actually split between two people on different shifts</li>
+        <li>An exception that was mentioned briefly is actually the majority of cases</li>
+        <li>An approval step that exists on paper does not happen in practice</li>
       </ul>
 
-      <h2 id="gap-analysis">Bridging the Gap: The Gap Analysis Document</h2>
-      <p>The difference between your TO-BE design and the native capabilities of Odoo is your "Gap." The Gap Analysis Document details exactly how you will handle these differences. You have three choices for every gap:</p>
-      
-      <ol>
-        <li><strong>Change the Business (Recommended):</strong> Adapt your business process to match Odoo's native workflow. This is cheapest and easiest to maintain.</li>
-        <li><strong>Workaround:</strong> Find a creative way to use native features to achieve the goal without custom code.</li>
-        <li><strong>Customize:</strong> Write custom Python modules to force Odoo to behave exactly like your TO-BE design. (Use sparingly, as it increases maintenance costs).</li>
-      </ol>
+      <p>After all departments have validated their maps, get formal written sign-off (even an email) from the department head and the project sponsor. This is the AS-IS baseline. Any future claim that "the process has always worked this way" can be measured against it. The AS-IS sign-off also freezes the scope of what is being changed — without it, the discovery phase never truly ends.</p>
 
-      <div class="callout">
-        <span class="tag">Bottom line</span>
-        <p>A rigorous AS-IS and TO-BE mapping phase is the hallmark of a mature, successful ERP implementation. It turns chaos into clarity and sets the foundation for a measurable ROI. <a href="../#contact" style="color:var(--accent)">Need an expert Business Analyst to map your processes? Let's talk →</a></p>
+      <!-- ═══════════════════════════════════ TO-BE ══ -->
+      <div class="section-marker">04 — Phase 2</div>
+      <h2 id="to-be">Phase 2: Designing the TO-BE State</h2>
+
+      <p>The TO-BE design phase is where the Business Analyst shifts from recorder to architect. You are no longer just documenting — you are designing. The discipline required is different: you must challenge assumptions, eliminate waste, and hold your ground when people want to rebuild the old process in a new system.</p>
+
+      <h3 id="lean">Lean Principles Applied to Office and Factory Processes</h3>
+      <p>Lean manufacturing identifies seven forms of waste (Muda). Every one of them applies to office and administrative processes — not just the factory floor. Use this framework to evaluate every step in your AS-IS map:</p>
+
+      <div class="tri-grid">
+        <div class="tri-card">
+          <div class="num">WASTE 01</div>
+          <h4>Overproduction</h4>
+          <p>Generating reports nobody reads. Printing documents that go straight into a drawer. Creating purchase orders for items already in stock.</p>
+        </div>
+        <div class="tri-card">
+          <div class="num">WASTE 02</div>
+          <h4>Waiting</h4>
+          <p>A purchase order sitting in an inbox waiting for approval. An invoice on hold because the GRN isn't done yet. A production order delayed because the BOM hasn't been updated.</p>
+        </div>
+        <div class="tri-card">
+          <div class="num">WASTE 03</div>
+          <h4>Transport</h4>
+          <p>Walking a paper form from one desk to another. Emailing a file for someone to print, sign, scan, and email back. Physical handoffs that add no value.</p>
+        </div>
+        <div class="tri-card">
+          <div class="num">WASTE 04</div>
+          <h4>Over-processing</h4>
+          <p>Five-layer approval for a $50 purchase order. Three copies of the delivery challan when one would suffice. Data entered in three separate systems.</p>
+        </div>
+        <div class="tri-card">
+          <div class="num">WASTE 05</div>
+          <h4>Inventory</h4>
+          <p>In process terms: information queued up and waiting. Unprocessed purchase requests. Unreviewed expense claims. Unposted journal entries. WIP that doesn't move.</p>
+        </div>
+        <div class="tri-card">
+          <div class="num">WASTE 06</div>
+          <h4>Motion</h4>
+          <p>Searching for information that should be centrally available. Re-entering data that already exists in another system. Looking up customer credit terms that should surface automatically.</p>
+        </div>
+        <div class="tri-card">
+          <div class="num">WASTE 07</div>
+          <h4>Defects</h4>
+          <p>Manual data entry errors. Invoices posted with wrong amounts. Stock adjustments covering counting mistakes. Every defect has a cost — find them in the AS-IS before they migrate to the TO-BE.</p>
+        </div>
       </div>
 
+      <p>For each AS-IS step, ask: which waste category does this step exhibit? Steps with no waste are kept. Steps with waste are redesigned in the TO-BE — either automated, eliminated, simplified, or consolidated.</p>
+
+      <h3 id="workshop">The TO-BE Design Workshop</h3>
+      <p>Do not design the TO-BE alone. Run a structured workshop with the department leads, the project sponsor, and the lead configurator (the Odoo consultant who will build the system). The BA facilitates; the others contribute.</p>
+
+      <div class="kv">
+        <span class="k">Session format</span><span class="v">Half-day workshop per process area. Full-day for complex areas like Finance or Manufacturing.</span>
+        <span class="k">Input material</span><span class="v">The validated AS-IS map for the area. The waste analysis. A summary of Odoo's native capabilities in this area (from the lead configurator).</span>
+        <span class="k">Method</span><span class="v">Start with the AS-IS map on screen. Walk through each step. For each step, ask: does this step survive into the TO-BE? If yes, how? If no, what replaces it?</span>
+        <span class="k">Decision authority</span><span class="v">Process owners decide on business changes. The lead configurator decides on system capability. The BA decides on scope and documentation. The project sponsor resolves deadlocks.</span>
+        <span class="k">Output</span><span class="v">A TO-BE process map (BPMN format) for each process area, with a list of decisions made and outstanding questions flagged.</span>
+      </div>
+
+      <p>The most important facilitation skill is pushing back on "we need it to work exactly like it does today." This phrase will appear in every session. It is sometimes legitimate (a compliance requirement with no flexibility) and sometimes pure inertia ("it's how we've always done it"). Your job is to tell the difference.</p>
+
+      <p>When someone says the process must stay as-is, ask: <em>"If we didn't have this step, what would break?"</em> If they can name a specific consequence — a regulatory requirement, a contractual obligation, an audit finding — keep the step. If they cannot name a consequence, the step is a candidate for elimination or redesign.</p>
+
+      <h3 id="to-be-areas">TO-BE Design by Process Area</h3>
+      <p>The specific design questions vary by function. Here are the key questions for each major area in a typical Bangladesh manufacturing or trading company:</p>
+
+      <div class="flow-card">
+        <div class="flow-row">
+          <div class="flow-stage">Procurement (Purchase-to-Pay)</div>
+          <div class="flow-desc">Can purchase requests be raised directly in Odoo rather than on paper or in Excel? What approval levels should survive, and at what BDT/USD thresholds? Can 3-way matching (PO → GRN → Invoice) replace manual reconciliation? How should partial deliveries be handled? What happens to open POs at financial year-end?</div>
+          <div class="flow-note">Odoo: Purchase → Inventory → Accounting</div>
+        </div>
+        <div class="flow-row">
+          <div class="flow-stage">Sales (Order-to-Cash)</div>
+          <div class="flow-desc">Who can create a quotation? At what point does it become a confirmed order? Is credit limit enforcement required before order confirmation? How are partial shipments handled — one invoice or multiple? How are export orders (with LC) handled differently from domestic orders?</div>
+          <div class="flow-note">Odoo: Sales → Inventory → Invoicing</div>
+        </div>
+        <div class="flow-row">
+          <div class="flow-stage">Manufacturing (Plan-to-Produce)</div>
+          <div class="flow-desc">Is production driven by sales orders (MTO) or by a forecast/MPS (MTS)? Are Bills of Materials stable or frequently revised? Are work centers tracked individually or by batch? Is scrap and rework tracked at the operation level? How is quality inspection integrated — before or after production?</div>
+          <div class="flow-note">Odoo: Manufacturing → Inventory → QC</div>
+        </div>
+        <div class="flow-row">
+          <div class="flow-stage">Inventory (Receive-to-Issue)</div>
+          <div class="flow-desc">How many warehouses and locations must be tracked? Are lot or serial numbers required for traceability? What triggers a replenishment — min/max rules, reorder points, or MRP? How are physical counts conducted and reconciled? Is landed cost allocation required on incoming shipments?</div>
+          <div class="flow-note">Odoo: Inventory → Purchase/Manufacturing</div>
+        </div>
+        <div class="flow-row">
+          <div class="flow-stage">Finance (Record-to-Report)</div>
+          <div class="flow-desc">What is the chart of accounts structure? Are multiple currencies used and at which exchange rate (PO date, invoice date, or payment date)? Is Mushak VAT tracking required? How are bank reconciliations done currently? What reports does the MD review monthly and at what frequency?</div>
+          <div class="flow-note">Odoo: Accounting → Reporting</div>
+        </div>
+      </div>
+
+      <h3 id="what-not">What TO-BE Is NOT</h3>
+      <p>Three specific things that will corrupt a TO-BE design if left unchecked:</p>
+      <ul>
+        <li><strong>A wish list.</strong> "It would be nice if the system could automatically send WhatsApp messages to customers" is not a TO-BE requirement unless someone is willing to scope, budget, and test it. Every addition to the TO-BE is a scope item. Treat it accordingly.</li>
+        <li><strong>A copy of the AS-IS.</strong> If your TO-BE map is identical to the AS-IS map with the word "Odoo" inserted, you have not designed anything — you have digitized a broken process. Every AS-IS step must be re-evaluated against the waste framework. The default answer should be "can we improve this?" not "can we replicate this?"</li>
+        <li><strong>Odoo's default behavior.</strong> If your TO-BE design is just a walkthrough of Odoo's standard modules, you have not adapted the system to the business — you have adapted the business to the system's defaults. Sometimes this is the right call. It should be a conscious decision, not an accident of shallow TO-BE design.</li>
+      </ul>
+
+      <!-- ═══════════════════════════════════ GAP ANALYSIS ══ -->
+      <div class="section-marker">05 — The Gap Analysis</div>
+      <h2 id="gap">The Gap Analysis: Turning Mapping Into Scope</h2>
+
+      <p>The gap analysis is the document where discovery meets execution. It is the formal record of every difference between the TO-BE design and the ERP's native capabilities, along with a decision on how each gap will be closed. Without it, scope is undefined. Without defined scope, the project has no boundary, and scope creep is inevitable.</p>
+
+      <h3 id="gap-register">Building the Gap Register</h3>
+      <p>The gap register is a structured spreadsheet. Every gap identified during TO-BE design is logged as a row. The columns capture everything needed to understand, decide, and track the gap through implementation.</p>
+
+      <p>Minimum columns for a usable gap register:</p>
+
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Column</th>
+            <th>What to Capture</th>
+            <th>Example</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="label">Gap ID</td>
+            <td>Sequential reference (G-001, G-002). Used for tracking and cross-referencing with configuration specs.</td>
+            <td>G-017</td>
+          </tr>
+          <tr>
+            <td class="label">Process Area</td>
+            <td>Which functional area the gap belongs to.</td>
+            <td>Procurement</td>
+          </tr>
+          <tr>
+            <td class="label">AS-IS Description</td>
+            <td>How the business does it today. Concrete and specific.</td>
+            <td>LC documents tracked in a separate Excel workbook maintained by the Accounts team</td>
+          </tr>
+          <tr>
+            <td class="label">TO-BE Requirement</td>
+            <td>What the ERP needs to do. Written as a requirement, not a feature request.</td>
+            <td>All LC documents must be attached to the corresponding purchase order and tracked with expiry date alerts</td>
+          </tr>
+          <tr>
+            <td class="label">Odoo Capability</td>
+            <td>What Odoo can do natively in this area.</td>
+            <td>Document attachment on PO is native. LC-specific fields and expiry alerts are not.</td>
+          </tr>
+          <tr>
+            <td class="label">Gap Type</td>
+            <td>Category of the gap (see below).</td>
+            <td><span class="tag-cfg">Configuration</span> + <span class="tag-dev">Development</span></td>
+          </tr>
+          <tr>
+            <td class="label">Decision</td>
+            <td>How the gap will be closed: change business / workaround / develop.</td>
+            <td>Develop: add LC tracking fields on PO + email alert for expiry &lt;30 days</td>
+          </tr>
+          <tr>
+            <td class="label">Effort Estimate</td>
+            <td>Development hours, configuration effort, or business change effort.</td>
+            <td>8–12 dev hours</td>
+          </tr>
+          <tr>
+            <td class="label">Priority</td>
+            <td>Must-have for go-live / Nice-to-have / Future phase.</td>
+            <td>Must-have</td>
+          </tr>
+          <tr>
+            <td class="label">Owner</td>
+            <td>Who is responsible for resolving this gap — client or consultant.</td>
+            <td>Consultant (development)</td>
+          </tr>
+          <tr>
+            <td class="label">Status</td>
+            <td>Open / In progress / Resolved / Deferred.</td>
+            <td>Open</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3 id="categories">Gap Categories</h3>
+      <p>Every gap falls into one of four categories. The category determines the type of work required to close it — and different categories carry very different risks and costs:</p>
+
+      <div class="tri-grid" style="grid-template-columns: repeat(2,1fr)">
+        <div class="tri-card">
+          <div class="num" style="color:#6AB5C7">STANDARD GAP</div>
+          <h4>Odoo can do this natively — if configured</h4>
+          <p>The feature exists in Odoo but has not been enabled or is set to a different default. Three-way matching, multi-currency, approval workflows, reordering rules — these are all standard capabilities. Configuration gaps are the lowest risk and lowest cost to close. They require no code, only correct settings.</p>
+        </div>
+        <div class="tri-card">
+          <div class="num" style="color:var(--accent)">CONFIGURATION GAP</div>
+          <h4>Odoo can do this with significant setup work</h4>
+          <p>Not just enabling a feature — requires setting up complex chart of accounts, building approval rule trees, configuring multi-company intercompany flows, or creating elaborate pricing structures. The capability is native; the implementation effort is non-trivial. Underestimating configuration gaps is a common cause of project overruns.</p>
+        </div>
+        <div class="tri-card">
+          <div class="num" style="color:#C76A6A">DEVELOPMENT GAP</div>
+          <h4>Odoo cannot do this natively — custom code required</h4>
+          <p>The requirement cannot be met with any combination of standard features and configuration. A custom Python module or XML view override is required. Development gaps carry the highest risk: custom code must be tested, maintained, and upgraded with every Odoo version. Never accept a development gap without fully understanding the ongoing maintenance implication.</p>
+        </div>
+        <div class="tri-card">
+          <div class="num" style="color:#B07FE0">BUSINESS CHANGE GAP</div>
+          <h4>Odoo can do this — but the business process must change</h4>
+          <p>The ERP has a good native way to handle this, but the current business process is incompatible with it. Instead of forcing custom code, the business should adapt its process to the ERP standard. This is almost always the cheapest, most maintainable solution — but it requires change management and often the most political resistance. This is where your relationship with the project sponsor matters most.</p>
+        </div>
+      </div>
+
+      <h3 id="decisions">The 3 Decisions for Every Gap</h3>
+      <p>When you present a gap to the project team, you must also present a recommended resolution. There are three choices — and they are always the same three choices, regardless of the gap:</p>
+
+      <div class="flow-card">
+        <div class="flow-row">
+          <div class="flow-stage">Decision A<br/><span style="font-size:11px;font-weight:400;color:var(--accent)">Recommended first</span></div>
+          <div class="flow-desc"><strong>Change the Business.</strong> Adapt the business process to work within Odoo's native capability. This is the cheapest option to implement and the cheapest to maintain long-term. It eliminates custom code that must be updated with every Odoo version. It is often resisted by stakeholders but is frequently the correct answer — especially when the AS-IS process is demonstrably inefficient.</div>
+          <div class="flow-note">Cost: Low<br/>Risk: Low<br/>Effort: Change mgmt</div>
+        </div>
+        <div class="flow-row">
+          <div class="flow-stage">Decision B</div>
+          <div class="flow-desc"><strong>Workaround.</strong> Use a creative combination of native Odoo features to achieve the TO-BE requirement without writing custom code. For example: using the "notes" field and a custom stage in a kanban view to simulate a lightweight LC tracking system, rather than developing a full custom module. Workarounds are faster and cheaper than development but require more user discipline and are more fragile.</div>
+          <div class="flow-note">Cost: Medium<br/>Risk: Medium<br/>Effort: Design</div>
+        </div>
+        <div class="flow-row">
+          <div class="flow-stage">Decision C<br/><span style="font-size:11px;font-weight:400;color:#C76A6A">Last resort</span></div>
+          <div class="flow-desc"><strong>Develop.</strong> Write a custom Python module to force Odoo to meet the TO-BE requirement exactly. This is appropriate when the requirement is genuinely non-negotiable (regulatory compliance, contractual obligation) and no workaround is adequate. Always document: who will maintain this code? What happens when Odoo 19 is released? Every custom module is a long-term liability that must be factored into the total cost of ownership.</div>
+          <div class="flow-note">Cost: High<br/>Risk: High<br/>Effort: Dev + QA</div>
+        </div>
+      </div>
+
+      <p class="pull">Custom code is a long-term debt. Only take it on when the business requirement is genuinely non-negotiable.</p>
+
+      <!-- ═══════════════════════════════════ CASE EXAMPLES ══ -->
+      <div class="section-marker">06 — Bangladesh Case Examples</div>
+      <h2 id="cases">Real Bangladesh Examples: AS-IS to TO-BE in Practice</h2>
+
+      <p>Theory solidifies through examples. Here are three complete AS-IS to TO-BE transformations drawn from real Bangladesh implementations, with the key gaps and decisions for each.</p>
+
+      <!-- Case 1 -->
+      <div class="case-head">
+        <span class="case-label">Case 01</span>
+        <div>
+          <h4>RMG Company — Purchase-to-Pay Process</h4>
+          <p>A ready-made garments manufacturer with 1,800 workers, 3 buyers, and a procurement spend of approximately BDT 40 crore/year. Pre-implementation process was almost entirely paper-based.</p>
+        </div>
+      </div>
+
+      <p><strong>AS-IS (how it actually worked):</strong></p>
+      <div class="flow-card">
+        <div class="flow-row">
+          <div class="flow-stage">Requisition</div>
+          <div class="flow-desc">Production supervisor writes a requisition slip by hand. Gives it to the store manager. Store manager checks physical register to see if it is in stock. If not, writes a purchase memo on a preprinted form.</div>
+          <div class="flow-note">Paper register<br/>No system</div>
+        </div>
+        <div class="flow-row">
+          <div class="flow-stage">Approval</div>
+          <div class="flow-desc">Purchase memo sent to MD via the Manager. MD approves via WhatsApp message ("ok") for amounts under BDT 50,000. For larger amounts, MD must physically sign the form — which can take 3–5 days if MD is traveling.</div>
+          <div class="flow-note">WhatsApp approval<br/>No audit trail</div>
+        </div>
+        <div class="flow-row">
+          <div class="flow-stage">Ordering</div>
+          <div class="flow-desc">Procurement manager calls 2–3 suppliers verbally for rates. Selects supplier. Raises a handwritten purchase order or WhatsApp message. No formal PO number system — suppliers reference by date.</div>
+          <div class="flow-note">No PO system<br/>Verbal rate comparison</div>
+        </div>
+        <div class="flow-row">
+          <div class="flow-stage">Receiving</div>
+          <div class="flow-desc">Supplier delivers with a DC (delivery challan). Store manager checks quantity manually. Enters into physical stock register. Forwards DC to Accounts. Accounts has no visibility of what was ordered — no matching is done.</div>
+          <div class="flow-note">No 3-way match<br/>Manual entry</div>
+        </div>
+        <div class="flow-row">
+          <div class="flow-stage">Payment</div>
+          <div class="flow-desc">Supplier sends invoice (often a week or more after delivery). Accounts matches against the DC physically. Raises payment voucher. MD signs cheque. No payment terms enforced — suppliers are paid when the MD has time to sign.</div>
+          <div class="flow-note">No payment terms<br/>Manual matching</div>
+        </div>
+      </div>
+
+      <p><strong>Key gaps identified:</strong></p>
+      <ul>
+        <li><strong>G-001:</strong> No formal PO system → TO-BE requires Odoo Purchase module with PO number generation, supplier assignment, and email confirmation. <span style="font-family:var(--mono);font-size:11px;color:#6AB5C7">Standard</span></li>
+        <li><strong>G-002:</strong> Approval via WhatsApp → TO-BE requires Odoo's purchase approval workflow with threshold-based routing (≤50k: direct approval; &gt;50k: MD approval queue with email notification). <span style="font-family:var(--mono);font-size:11px;color:var(--accent)">Configuration</span></li>
+        <li><strong>G-003:</strong> No 3-way match → TO-BE requires Purchase-to-Inventory-to-Invoice matching (Odoo native, requires configuration). <span style="font-family:var(--mono);font-size:11px;color:#6AB5C7">Standard</span></li>
+        <li><strong>G-004:</strong> No payment terms → TO-BE requires supplier payment terms defined on each vendor record. <span style="font-family:var(--mono);font-size:11px;color:#6AB5C7">Standard</span></li>
+        <li><strong>G-005:</strong> Paper stock register → TO-BE: eliminated. Odoo Inventory replaces entirely. <span style="font-family:var(--mono);font-size:11px;color:#B07FE0">Business Change</span></li>
+      </ul>
+
+      <!-- Case 2 -->
+      <div class="case-head">
+        <span class="case-label">Case 02</span>
+        <div>
+          <h4>Bicycle Manufacturer — Production Order Flow</h4>
+          <p>A bicycle and cycle parts manufacturer exporting to Europe and the Middle East. Multi-level BOMs, component imports with LC, and a complex quality inspection regime.</p>
+        </div>
+      </div>
+
+      <p><strong>Most complex AS-IS gap found:</strong> The production schedule was maintained in a large Excel workbook shared via Google Drive. The production manager updated it daily. Every department (Purchase, Store, Assembly, QC, Dispatch) maintained their own copy, leading to version conflicts and production stops when component availability data was stale.</p>
+
+      <p><strong>TO-BE design:</strong> A single source of truth in Odoo Manufacturing. Material Requirements Planning (MRP) drives purchase orders automatically from confirmed production orders. All departments see live stock positions in Odoo. The Excel workbook is eliminated entirely.</p>
+
+      <p><strong>Critical gap — multi-level BOM:</strong> The bicycle has assemblies within assemblies (frame sub-assembly, wheel sub-assembly, gear sub-assembly, final assembly). Odoo Manufacturing supports multi-level BOMs natively. The gap was not the software — it was the data. The existing BOMs had not been formally maintained for 3 years and contained obsolete components. The gap was a <em>business change</em> gap: the client needed to clean and validate all BOMs before go-live. This became a 6-week data migration workstream that had not been anticipated in the original project plan — precisely because the AS-IS phase had been rushed.</p>
+
+      <!-- Case 3 -->
+      <div class="case-head">
+        <span class="case-label">Case 03</span>
+        <div>
+          <h4>Trading Company — Multi-Warehouse Inventory</h4>
+          <p>An importer and distributor of industrial goods with 3 warehouses across Dhaka and Chattogram. Inventory valuation disputes between the MD and Accounts were the primary driver of the ERP decision.</p>
+        </div>
+      </div>
+
+      <p><strong>AS-IS finding:</strong> The root cause of the valuation disputes was discovered during the Gemba walk. Each warehouse was maintaining inventory in a separate Excel file at a different cost basis. Dhaka warehouse used last-purchase cost. Chattogram warehouse used average cost. The head office rolled them up manually once a month — with adjustments made "by judgment" when the numbers looked wrong. There was no single, consistent inventory valuation method in the company.</p>
+
+      <p><strong>TO-BE decision:</strong> Enforce Average Cost (AVCO) valuation across all three warehouses in Odoo, configured as a single company with multiple warehouse locations. This was a <em>business change</em> gap — the decision required the MD to accept AVCO as the standard, which changed the reported gross margin on certain product lines. The gap analysis made this explicit. It was debated and resolved before configuration started, not during UAT.</p>
+
+      <div class="callout">
+        <span class="tag">Lesson</span>
+        <p>In all three cases, the most valuable output of the AS-IS phase was not the process map — it was the question it forced. The RMG company had never asked whether WhatsApp approvals created an audit risk. The bicycle manufacturer had never asked who owned the BOM data. The trading company had never asked why their inventory valuation was inconsistent. A rigorous AS-IS phase surfaces questions that no demo, no RFP, and no vendor presentation will ever ask.</p>
+      </div>
+
+      <!-- ═══════════════════════════════════ MISTAKES ══ -->
+      <div class="section-marker">07 — Anti-Patterns</div>
+      <h2 id="mistakes">8 Mistakes That Derail AS-IS to TO-BE Mapping Projects</h2>
+
+      <p>These are not hypothetical. Each one is drawn from a real implementation that ran into serious difficulty — some of which I was called in to rescue after the fact.</p>
+
+      <div class="mistake-list">
+        <div class="mistake-card">
+          <div class="mistake-num">M01</div>
+          <div class="mistake-body">
+            <h4>Interviewing only managers</h4>
+            <p>Department heads describe the process as it should work. Floor operators describe it as it does work. When you only interview managers, your AS-IS map documents the intended process — which is often dramatically different from the actual one. The most valuable 20 minutes of any discovery session is spent with the person at the lowest level who touches the process daily.</p>
+          </div>
+        </div>
+        <div class="mistake-card">
+          <div class="mistake-num">M02</div>
+          <div class="mistake-body">
+            <h4>Starting configuration before AS-IS sign-off</h4>
+            <p>Vendor pressure to "show progress" leads to configuration starting while discovery is still underway. The result: the configuration team makes assumptions that contradict the AS-IS findings. Rework is expensive — a configuration built on wrong assumptions costs 3–5x the original effort to fix, because you are now fixing a running system rather than a blank one.</p>
+          </div>
+        </div>
+        <div class="mistake-card">
+          <div class="mistake-num">M03</div>
+          <div class="mistake-body">
+            <h4>Designing TO-BE as "Odoo standard"</h4>
+            <p>The TO-BE is presented as a walkthrough of Odoo's default workflows without any adaptation to the client's business. The client approves because they don't know what they're approving. Then UAT arrives and every tester says "this is not how we work." A TO-BE must be the client's process inside the ERP, not the ERP's process imposed on the client.</p>
+          </div>
+        </div>
+        <div class="mistake-card">
+          <div class="mistake-num">M04</div>
+          <div class="mistake-body">
+            <h4>Skipping the exception paths</h4>
+            <p>The standard process is easy to map. The exception paths are where implementations fail. What happens when a supplier delivers 80% of the order? What happens when the MD rejects a purchase approval at midnight before a critical production run? What happens when a customer returns half of a fully-invoiced order? Every exception is a test case waiting to fail during UAT. Map them in the AS-IS. Design them in the TO-BE.</p>
+          </div>
+        </div>
+        <div class="mistake-card">
+          <div class="mistake-num">M05</div>
+          <div class="mistake-body">
+            <h4>No formal gap register</h4>
+            <p>Gaps are discussed in meetings and noted verbally. The project proceeds. By UAT, nobody can agree on what was in scope. The client insists that a feature was promised; the consultant insists it was never scoped. Without a written, signed gap register, both parties are guessing. The gap register is the contract. It must be formal, written, and signed before configuration starts.</p>
+          </div>
+        </div>
+        <div class="mistake-card">
+          <div class="mistake-num">M06</div>
+          <div class="mistake-body">
+            <h4>Treating every gap as a development requirement</h4>
+            <p>Some consultants — especially those without strong Odoo configuration depth — default to custom development for gaps that could be solved with configuration or business change. Custom code is expensive to build, expensive to test, and most expensive of all to maintain across Odoo version upgrades. Every development gap should be challenged with the question: "Can we change the business process instead?"</p>
+          </div>
+        </div>
+        <div class="mistake-card">
+          <div class="mistake-num">M07</div>
+          <div class="mistake-body">
+            <h4>No stakeholder sign-off at each phase</h4>
+            <p>The AS-IS is completed but never formally approved. The TO-BE is designed but never formally validated. The gap analysis is shared but never signed. Without formal sign-off at each phase, every subsequent decision is contested. Get written approval (even email) at: AS-IS completion, TO-BE validation, and gap analysis freeze. These three sign-offs protect both sides.</p>
+          </div>
+        </div>
+        <div class="mistake-card">
+          <div class="mistake-num">M08</div>
+          <div class="mistake-body">
+            <h4>Confusing data migration with process migration</h4>
+            <p>The AS-IS mapping reveals process complexity. It also reveals data complexity — but they are not the same problem. Process migration (changing how people work) is addressed by the TO-BE design. Data migration (moving historical records into the new system) is a separate workstream with its own timeline, data owner, and quality gate. Conflating them in the gap analysis creates confusion about what is a process gap and what is a data gap. Track them separately.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ═══════════════════════════════════ TOOLS ══ -->
+      <div class="section-marker">08 — Tools</div>
+      <h2 id="tools">Tools for Process Mapping</h2>
+
+      <p>The tool matters less than the discipline. A well-facilitated session captured in Draw.io will produce better output than a poorly facilitated session captured in the most expensive enterprise process mapping software. That said, here are the tools I recommend and when to use each:</p>
+
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Tool</th>
+            <th>Best For</th>
+            <th>Cost</th>
+            <th>Bangladesh Fit</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="label">Draw.io (diagrams.net)</td>
+            <td>BPMN process maps, AS-IS and TO-BE diagrams. Browser-based, no install, exports to PNG/PDF/XML. BPMN shape library built in.</td>
+            <td>Free</td>
+            <td>Excellent — no license cost, works on any browser, files sharable without tool access.</td>
+          </tr>
+          <tr>
+            <td class="label">Lucidchart</td>
+            <td>BPMN and flowcharts with more polish. Better for client-facing deliverables where presentation quality matters.</td>
+            <td>$9–15/user/month</td>
+            <td>Good — but adds cost for the client team if they need to edit.</td>
+          </tr>
+          <tr>
+            <td class="label">Microsoft Visio</td>
+            <td>Enterprise-grade process documentation. Full BPMN 2.0 support. Standard in larger corporates.</td>
+            <td>$5–15/user/month</td>
+            <td>Good for clients already in the Microsoft ecosystem.</td>
+          </tr>
+          <tr>
+            <td class="label">Miro / FigJam</td>
+            <td>Collaborative workshop tools. Real-time co-editing. Ideal for the TO-BE design workshop where multiple people need to contribute simultaneously on a virtual whiteboard.</td>
+            <td>Free–$10/month</td>
+            <td>Good for remote workshops. Less ideal for formal BPMN output.</td>
+          </tr>
+          <tr>
+            <td class="label">Microsoft Excel</td>
+            <td>The gap register. A well-structured Excel workbook with consistent columns and dropdown validation is more usable than many dedicated tools for this purpose.</td>
+            <td>M365 subscription</td>
+            <td>Excellent — universally understood, no learning curve, easy to share and filter.</td>
+          </tr>
+          <tr>
+            <td class="label">Notion / Confluence</td>
+            <td>Living documentation of the gap analysis, decision log, and project assumptions. Best when the consultant and client are collaborating on the same platform.</td>
+            <td>Free–$8/user/month</td>
+            <td>Growing adoption in Dhaka corporate sector. Requires client buy-in.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- ═══════════════════════════════════ CONNECTING ══ -->
+      <div class="section-marker">09 — The Bigger Picture</div>
+      <h2 id="connecting">Connecting AS-IS/TO-BE to the Broader Implementation</h2>
+
+      <p>Process mapping is not a standalone phase. It is the foundation that every subsequent project phase builds on. If the foundation is weak, every downstream phase is more expensive to execute:</p>
+
+      <div class="flow-card">
+        <div class="flow-row">
+          <div class="flow-stage">→ Configuration</div>
+          <div class="flow-desc">The gap register is the configuration team's primary input. Each <span style="font-family:var(--mono);font-size:11px;color:#6AB5C7">Standard</span> and <span style="font-family:var(--mono);font-size:11px;color:var(--accent)">Configuration</span> gap becomes a configuration task. The TO-BE map is the reference for every setup decision. Without a complete TO-BE, configurators make assumptions — and assumption-based configuration fails at UAT.</div>
+          <div class="flow-note">Input: Gap register<br/>Output: Configured system</div>
+        </div>
+        <div class="flow-row">
+          <div class="flow-stage">→ Data Migration</div>
+          <div class="flow-desc">The AS-IS artifact collection identifies every master data source: the supplier list in Tally, the product list in Excel, the customer database in the legacy CRM. The data migration plan starts here. The AS-IS also reveals data quality issues — duplicate suppliers, inconsistent product codes, missing pricing — that must be resolved before migration.</div>
+          <div class="flow-note">Input: AS-IS artifacts<br/>Output: Migration plan</div>
+        </div>
+        <div class="flow-row">
+          <div class="flow-stage">→ UAT Scripts</div>
+          <div class="flow-desc">Each TO-BE process flow becomes a UAT test scenario. Each exception path becomes a UAT edge case. A well-written TO-BE map produces a UAT script almost automatically. For a detailed guide on UAT scripting, see <a href="0009-uat-script-200-users-ago" style="color:var(--accent)">Lab 0009</a>.</div>
+          <div class="flow-note">Input: TO-BE maps<br/>Output: UAT scripts</div>
+        </div>
+        <div class="flow-row">
+          <div class="flow-stage">→ Training</div>
+          <div class="flow-desc">The TO-BE process maps are the training material. Instead of training users on "Odoo" generically, you train them on "how to raise a purchase request in Odoo" — which means showing them the TO-BE flow they helped design, in the system they helped configure. Role-specific training maps directly to the swim lanes in the TO-BE diagram.</div>
+          <div class="flow-note">Input: TO-BE by role<br/>Output: Training plan</div>
+        </div>
+        <div class="flow-row">
+          <div class="flow-stage">→ Change Management</div>
+          <div class="flow-desc">The delta between AS-IS and TO-BE is the change that end users must absorb. The bigger the delta, the larger the change management effort. Visualizing the change with side-by-side AS-IS and TO-BE maps during town halls and department briefings reduces anxiety and makes the upcoming change concrete rather than abstract. See <a href="0007-change-management-isnt-a-memo" style="color:var(--accent)">Lab 0007</a> for the change management framework.</div>
+          <div class="flow-note">Input: AS-IS + TO-BE delta<br/>Output: Change plan</div>
+        </div>
+      </div>
+
+      <div class="callout">
+        <span class="tag">The Bottom Line</span>
+        <p>AS-IS to TO-BE process mapping is not a deliverable you produce to satisfy a project manager's checklist. It is the intellectual work of understanding a business and designing its future. Done well, it makes every phase that follows faster, cheaper, and more predictable. Done poorly — or skipped — it guarantees the most expensive kind of project failure: the kind that is discovered at go-live, in front of 200 waiting users. <a href="../#contact" style="color:var(--accent)">Need a BA to run this for your next ERP project? Let's talk →</a></p>
+      </div>
+
+      <!-- ═══════════════════════════════════ FAQ ══ -->
       <h2 id="faq">Frequently asked questions</h2>
 
-      <h3>What is the difference between AS-IS and TO-BE process mapping?</h3>
-      <p>AS-IS process mapping documents exactly how a business operates today, including all inefficiencies and manual steps. TO-BE mapping designs the future workflow, showing how the business will operate once the new ERP system is implemented, optimizing out those inefficiencies.</p>
+      <h3>What is AS-IS process mapping?</h3>
+      <p>AS-IS process mapping is the act of documenting exactly how a business operates today — including every manual step, workaround, exception, and unofficial approval. It is not an idealized description of the intended process. It is an honest capture of the actual process as performed by the people doing the work. The key distinction: managers describe the process they intend; operators describe the process they execute. A good AS-IS map reflects the operator's reality, verified and signed off by the manager.</p>
 
-      <h3>Why is process mapping important for ERP implementation?</h3>
-      <p>Skipping process mapping is the leading cause of ERP failure. Without knowing your AS-IS, you cannot accurately identify the gaps the ERP needs to fill. Without a TO-BE, your implementation team will simply rebuild your old, broken processes in a new, expensive software.</p>
-      
-      <h3>What tools are best for process mapping?</h3>
-      <p>Standard BPMN 2.0 (Business Process Model and Notation) is the industry standard. Tools like Draw.io, Lucidchart, or Microsoft Visio are excellent for creating these visual diagrams. The focus should be on clarity and standard notation.</p>
+      <h3>What is TO-BE process mapping?</h3>
+      <p>TO-BE process mapping designs how the business will operate after the ERP is implemented. It is not a description of how the ERP works by default. It is a blueprint of how your business will run <em>inside</em> the ERP, with waste eliminated, approvals streamlined, and integration points explicitly designed. The TO-BE is authored by the Business Analyst and process owners together — not delivered by the software vendor as a product demo.</p>
+
+      <h3>How long does AS-IS to TO-BE process mapping take?</h3>
+      <p>For a mid-size Bangladesh company with 5–8 departments, expect 3–5 weeks: 2 weeks for AS-IS discovery and validation, 1 week for TO-BE design workshops, and 1–2 weeks for gap analysis documentation and sign-off. For a larger or more complex company (15+ departments, multi-site, multiple entities), plan 6–10 weeks. Rushing this phase is the single most expensive shortcut in ERP implementation — every week saved in discovery typically costs 3–5 weeks in UAT rework.</p>
+
+      <h3>What is a gap analysis in ERP implementation?</h3>
+      <p>A gap analysis identifies every difference between your TO-BE process design and what the ERP can do natively. Each gap is then categorized — Standard, Configuration, Development, or Business Change — and a decision is made on how to close it: adapt the business process, build a workaround, or write custom code. The gap analysis directly produces the configuration scope, the development backlog, and the change management agenda. It is the document that turns a process design into a project plan.</p>
+
+      <h3>Do I need BPMN to map processes? Can I use simple flowcharts?</h3>
+      <p>You do not need to master BPMN to map processes effectively — a clear, consistent flowchart with swim lanes serves most purposes. However, BPMN notation is worth learning for two reasons: (1) it is internationally standardized, so any BA or configurator on the team can read it without a key; and (2) its specific symbols for gateways, events, and parallel flows capture nuance that generic flowcharts miss. The minimum set to learn: circles for start/end events, rectangles for tasks, diamonds for decisions/gateways, and horizontal swim lanes per role. That covers 90% of what you need on a real project.</p>
+
+      <h3>What tools are used for process mapping?</h3>
+      <p>Draw.io (diagrams.net) is the best starting point — it is free, browser-based, and has a full BPMN shape library. For workshops, Miro or FigJam allow real-time collaborative editing when multiple people need to contribute simultaneously. For the gap register, a well-structured Excel workbook remains the most universally accessible format. For documentation, Confluence or Notion work well if both sides are willing to adopt a shared platform. The tool is secondary to the discipline; a great map in Paint is more valuable than a mediocre map in Visio.</p>
+
+      <h3>What is the biggest mistake in AS-IS to TO-BE process mapping?</h3>
+      <p>The most consistently damaging mistake is interviewing only managers and not floor-level operators. Managers describe the process as it should work. Operators describe it as it does work. These two descriptions diverge significantly in every organization — and the gap between them is exactly where ERP implementations run into trouble during UAT. The second-biggest mistake is starting ERP configuration before the AS-IS is formally validated and the gap analysis is signed off. Both mistakes have the same consequence: expensive rework discovered too late in the project lifecycle.</p>
+
+      <h3>When should I recommend custom development for a gap vs changing the business process?</h3>
+      <p>Recommend custom development only when: (1) the requirement is genuinely non-negotiable — a regulatory compliance requirement, a contractual obligation, or a technical constraint with no workaround; and (2) no native configuration or creative workaround can meet the requirement adequately. Before recommending development, ask the client: "If you had to choose between changing this process to work with Odoo natively, or paying for development and maintenance of a custom module, which would you prefer?" Often, framing it as an ongoing cost changes the preference. Custom code should be treated as a liability on the project balance sheet — taken on only when the value unambiguously exceeds the long-term cost.</p>
 
     </div>
   </article>

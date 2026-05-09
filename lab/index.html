@@ -198,6 +198,67 @@
     .lab-date{display:none}
   }
 
+  /* toolbar (view toggle + per-page) */
+  .lab-toolbar{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;gap:12px;flex-wrap:wrap}
+  .lab-view-toggle{display:flex;gap:2px;background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:3px;flex:none}
+  .view-btn{
+    display:flex;align-items:center;justify-content:center;
+    width:32px;height:32px;border:none;border-radius:6px;
+    background:transparent;color:var(--text-3);cursor:pointer;transition:all .15s ease;
+  }
+  .view-btn.active{background:var(--border-2);color:var(--text)}
+  .view-btn:hover:not(.active){color:var(--text-2)}
+  .lab-per-page{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+  .per-page-label{font-family:var(--mono);font-size:11.5px;color:var(--text-3);letter-spacing:0.06em;margin-right:4px}
+  .per-page-btn{
+    padding:5px 10px;border:1px solid var(--border);border-radius:6px;
+    background:transparent;color:var(--text-3);
+    font-family:var(--mono);font-size:11.5px;letter-spacing:0.06em;
+    cursor:pointer;transition:all .15s ease;
+  }
+  .per-page-btn.active{background:var(--accent);border-color:var(--accent);color:#000}
+  .per-page-btn:hover:not(.active){border-color:var(--border-2);color:var(--text)}
+
+  /* pagination */
+  .lab-pagination{display:flex;align-items:center;justify-content:center;gap:16px;padding:24px 0}
+  .page-nav-btn{
+    padding:8px 18px;border:1px solid var(--border);border-radius:8px;
+    background:transparent;color:var(--text-2);
+    font-family:var(--mono);font-size:12px;letter-spacing:0.06em;
+    cursor:pointer;transition:all .15s ease;
+  }
+  .page-nav-btn:hover:not(:disabled){border-color:var(--border-2);color:var(--text)}
+  .page-nav-btn:disabled{opacity:0.3;cursor:default}
+  .page-info{font-family:var(--mono);font-size:12px;color:var(--text-3);letter-spacing:0.06em;min-width:100px;text-align:center}
+
+  /* grid view */
+  .lab.lab-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;background:transparent;border:none;border-radius:0;overflow:visible}
+  .lab.lab-grid .lab-head{display:none}
+  .lab.lab-grid .lab-row{
+    display:grid;
+    grid-template-areas:"num num" "title title" "kind date";
+    grid-template-columns:1fr auto;
+    grid-template-rows:auto 1fr auto;
+    padding:20px;border:1px solid var(--border);border-radius:12px;
+    background:var(--surface);min-height:156px;align-items:start;gap:0;
+    border-bottom:1px solid var(--border);
+  }
+  .lab.lab-grid .lab-row:hover{border-color:var(--border-2);background:rgba(255,255,255,0.025)}
+  html[data-theme="light"] .lab.lab-grid .lab-row:hover{background:rgba(0,0,0,0.025)}
+  .lab.lab-grid .lab-num{grid-area:num;margin-bottom:8px}
+  .lab.lab-grid .lab-title{grid-area:title;font-size:15px}
+  .lab.lab-grid .lab-title .sub{display:none}
+  .lab.lab-grid .lab-kind{grid-area:kind;margin-top:10px;align-self:end}
+  .lab.lab-grid .lab-date{grid-area:date;margin-top:10px;align-self:end;text-align:right}
+  .lab.lab-grid .lab-arrow{display:none}
+  @media(max-width:900px){
+    .lab.lab-grid{grid-template-columns:repeat(2,1fr)}
+  }
+  @media(max-width:500px){
+    .lab.lab-grid{grid-template-columns:1fr;gap:8px}
+    .lab-toolbar{flex-direction:column;align-items:flex-start}
+  }
+
   /* footer */
   footer{padding:40px 0 48px;border-top:1px solid var(--border);margin-top:64px}
   .foot{display:flex;justify-content:space-between;align-items:center;font-family:var(--mono);font-size:11.5px;color:var(--text-3);letter-spacing:0.06em;text-transform:uppercase}
@@ -251,6 +312,24 @@
   </div>
 
   <div class="lab-search-count" id="lab-count">Showing all 48 articles</div>
+
+  <div class="lab-toolbar">
+    <div class="lab-view-toggle" role="group" aria-label="View mode">
+      <button class="view-btn" id="btn-list-view" data-view="list" title="List view" aria-pressed="true">
+        <svg width="15" height="15" viewBox="0 0 15 15" fill="none" aria-hidden="true"><rect x="1" y="2" width="13" height="2" rx="1" fill="currentColor"/><rect x="1" y="6.5" width="13" height="2" rx="1" fill="currentColor"/><rect x="1" y="11" width="13" height="2" rx="1" fill="currentColor"/></svg>
+      </button>
+      <button class="view-btn" id="btn-grid-view" data-view="grid" title="Grid view" aria-pressed="false">
+        <svg width="15" height="15" viewBox="0 0 15 15" fill="none" aria-hidden="true"><rect x="1" y="1" width="5.5" height="5.5" rx="1" fill="currentColor"/><rect x="8.5" y="1" width="5.5" height="5.5" rx="1" fill="currentColor"/><rect x="1" y="8.5" width="5.5" height="5.5" rx="1" fill="currentColor"/><rect x="8.5" y="8.5" width="5.5" height="5.5" rx="1" fill="currentColor"/></svg>
+      </button>
+    </div>
+    <div class="lab-per-page" role="group" aria-label="Articles per page">
+      <span class="per-page-label">Show</span>
+      <button class="per-page-btn" data-n="10">10</button>
+      <button class="per-page-btn" data-n="25">25</button>
+      <button class="per-page-btn" data-n="50">50</button>
+      <button class="per-page-btn" data-n="all">All</button>
+    </div>
+  </div>
 
   <div class="lab" id="lab-table">
     <div class="lab-head" aria-hidden="true">
@@ -883,6 +962,12 @@
     </a>
   </div>
 
+  <div class="lab-pagination" id="lab-pagination" hidden>
+    <button class="page-nav-btn" id="lab-prev">← Prev</button>
+    <span class="page-info" id="lab-page-info">Page 1 of 5</span>
+    <button class="page-nav-btn" id="lab-next">Next →</button>
+  </div>
+
   <div class="lab-no-results" id="lab-no-results">No articles match your search.</div>
 </div>
 
@@ -913,33 +998,141 @@
     });
   })();
 
-  // live search
+  // lab controller: search + pagination + view toggle
   (function(){
-    const input = document.getElementById('lab-search');
-    const countEl = document.getElementById('lab-count');
-    const noResults = document.getElementById('lab-no-results');
-    const rows = Array.from(document.querySelectorAll('#lab-table .lab-row'));
-    const total = rows.length;
+    const STORAGE_VIEW = 'mh-lab-view';
+    const STORAGE_PER  = 'mh-lab-per-page';
+
+    const input      = document.getElementById('lab-search');
+    const countEl    = document.getElementById('lab-count');
+    const noResults  = document.getElementById('lab-no-results');
+    const table      = document.getElementById('lab-table');
+    const pagination = document.getElementById('lab-pagination');
+    const prevBtn    = document.getElementById('lab-prev');
+    const nextBtn    = document.getElementById('lab-next');
+    const pageInfo   = document.getElementById('lab-page-info');
+
+    const allRows = Array.from(table.querySelectorAll('.lab-row'));
+    const total   = allRows.length;
+
+    const storedPer = localStorage.getItem(STORAGE_PER);
+    let perPage = [10,25,50].includes(Number(storedPer)) ? Number(storedPer) : storedPer === 'all' ? 'all' : 10;
+
+    const state = {
+      query:   '',
+      perPage: perPage,
+      page:    1,
+      view:    localStorage.getItem(STORAGE_VIEW) === 'grid' ? 'grid' : 'list',
+    };
+
+    function getFiltered() {
+      if (!state.query) return allRows;
+      const q = state.query.toLowerCase();
+      return allRows.filter(row =>
+        (row.dataset.title || '').toLowerCase().includes(q) ||
+        (row.dataset.sub  || '').toLowerCase().includes(q)
+      );
+    }
+
+    function render() {
+      const filtered   = getFiltered();
+      const n          = filtered.length;
+      const showAll    = state.perPage === 'all';
+      const totalPages = showAll ? 1 : Math.ceil(n / state.perPage);
+
+      if (state.page > totalPages) state.page = Math.max(1, totalPages);
+
+      const start = showAll ? 0 : (state.page - 1) * state.perPage;
+      const end   = showAll ? n : Math.min(start + state.perPage, n);
+
+      allRows.forEach(row => { row.hidden = true; });
+      filtered.slice(start, end).forEach(row => { row.hidden = false; });
+
+      if (n === 0) {
+        countEl.textContent = 'No results';
+      } else if (showAll && !state.query) {
+        countEl.textContent = 'Showing all ' + total + ' articles';
+      } else if (showAll) {
+        countEl.textContent = 'Showing ' + n + ' of ' + total + ' articles';
+      } else {
+        const s = start + 1, e = Math.min(end, n);
+        countEl.textContent = state.query
+          ? 'Showing ' + s + '–' + e + ' of ' + n + ' matching articles'
+          : 'Showing ' + s + '–' + e + ' of ' + total + ' articles';
+      }
+
+      noResults.classList.toggle('visible', n === 0 && !!state.query);
+
+      if (showAll || totalPages <= 1) {
+        pagination.hidden = true;
+      } else {
+        pagination.hidden = false;
+        pageInfo.textContent = 'Page ' + state.page + ' of ' + totalPages;
+        prevBtn.disabled = state.page <= 1;
+        nextBtn.disabled = state.page >= totalPages;
+      }
+    }
+
+    function applyView() {
+      table.classList.toggle('lab-grid', state.view === 'grid');
+      document.querySelectorAll('.view-btn').forEach(btn => {
+        const active = btn.dataset.view === state.view;
+        btn.classList.toggle('active', active);
+        btn.setAttribute('aria-pressed', active);
+      });
+    }
+
+    function applyPerPage() {
+      document.querySelectorAll('.per-page-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.n === String(state.perPage));
+      });
+    }
 
     input.addEventListener('input', () => {
-      const q = input.value.trim().toLowerCase();
-      let visible = 0;
-      rows.forEach(row => {
-        const title = (row.dataset.title || '').toLowerCase();
-        const sub = (row.dataset.sub || '').toLowerCase();
-        const match = !q || title.includes(q) || sub.includes(q);
-        row.hidden = !match;
-        if (match) visible++;
-      });
-      if (!q) {
-        countEl.textContent = 'Showing all ' + total + ' articles';
-      } else if (visible === 0) {
-        countEl.textContent = 'No results';
-      } else {
-        countEl.textContent = 'Showing ' + visible + ' of ' + total + ' articles';
-      }
-      noResults.classList.toggle('visible', visible === 0 && !!q);
+      state.query = input.value.trim();
+      state.page  = 1;
+      render();
     });
+
+    document.querySelectorAll('.per-page-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const val = btn.dataset.n;
+        state.perPage = val === 'all' ? 'all' : Number(val);
+        state.page = 1;
+        localStorage.setItem(STORAGE_PER, val);
+        applyPerPage();
+        render();
+      });
+    });
+
+    document.querySelectorAll('.view-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        state.view = btn.dataset.view;
+        localStorage.setItem(STORAGE_VIEW, state.view);
+        applyView();
+      });
+    });
+
+    prevBtn.addEventListener('click', () => {
+      if (state.page > 1) {
+        state.page--;
+        render();
+        document.getElementById('lab-search').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+
+    nextBtn.addEventListener('click', () => {
+      const totalPages = Math.ceil(getFiltered().length / state.perPage);
+      if (state.page < totalPages) {
+        state.page++;
+        render();
+        document.getElementById('lab-search').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+
+    applyView();
+    applyPerPage();
+    render();
   })();
 
   // sticky nav shadow

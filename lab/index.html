@@ -184,7 +184,7 @@
   html[data-theme="light"] .lab-row:hover{background:rgba(0,0,0,0.02)}
   .lab-row:hover .lab-title{color:var(--accent)}
   .lab-row:hover .lab-arrow{transform:translate(4px,-4px);color:var(--accent)}
-  .lab-row[hidden]{display:none}
+  .lab-row[hidden]{display:none !important}
   .lab-num{font-family:var(--mono);font-size:12px;color:var(--text-3);letter-spacing:0.05em}
   .lab-title{font-size:17px;letter-spacing:-0.01em;color:var(--text);transition:color .2s ease}
   .lab-title .sub{display:block;font-size:13px;color:var(--text-2);margin-top:4px;letter-spacing:0}
@@ -240,14 +240,17 @@
     grid-template-columns:1fr auto;
     grid-template-rows:auto 1fr auto;
     padding:20px;border:1px solid var(--border);border-radius:12px;
-    background:var(--surface);min-height:156px;align-items:start;gap:0;
+    background:var(--surface);min-height:180px;align-items:start;gap:0;
     border-bottom:1px solid var(--border);
   }
   .lab.lab-grid .lab-row:hover{border-color:var(--border-2);background:rgba(255,255,255,0.025)}
   html[data-theme="light"] .lab.lab-grid .lab-row:hover{background:rgba(0,0,0,0.025)}
   .lab.lab-grid .lab-num{grid-area:num;margin-bottom:8px}
-  .lab.lab-grid .lab-title{grid-area:title;font-size:15px}
-  .lab.lab-grid .lab-title .sub{display:none}
+  .lab.lab-grid .lab-title{grid-area:title;font-size:15px;line-height:1.4}
+  .lab.lab-grid .lab-title .sub{
+    display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;
+    overflow:hidden;font-size:12px;color:var(--text-3);margin-top:6px;letter-spacing:0;
+  }
   .lab.lab-grid .lab-kind{grid-area:kind;margin-top:10px;align-self:end}
   .lab.lab-grid .lab-date{grid-area:date;margin-top:10px;align-self:end;text-align:right}
   .lab.lab-grid .lab-arrow{display:none}

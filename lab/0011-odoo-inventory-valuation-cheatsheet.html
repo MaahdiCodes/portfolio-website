@@ -52,6 +52,26 @@
       { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://mhasan.me" },
       { "@type": "ListItem", "position": 2, "name": "Lab", "item": "https://mhasan.me/#lab" },
       { "@type": "ListItem", "position": 3, "name": "Odoo Inventory Valuation Cheatsheet", "item": "https://mhasan.me/lab/0011-odoo-inventory-valuation-cheatsheet" }
+    ]  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What inventory valuation methods are available in Odoo?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Odoo supports three inventory valuation methods: Standard Price (fixed cost per unit, simple but inaccurate for variable-cost goods), Average Cost (AVCO — weighted average updated on each receipt, best for most Bangladesh manufacturers), and FIFO (tracks each batch individually, required for pharmaceutical and food companies with expiry tracking)." }
+      },
+      {
+        "@type": "Question",
+        "name": "When should a Bangladesh manufacturer use AVCO vs FIFO in Odoo?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Use AVCO for raw materials with stable prices and no expiry tracking requirements — it is simpler to manage and suitable for most textile, cycle, and general manufacturing companies in Bangladesh. Use FIFO when you need lot/serial tracking for compliance (pharma, food, medical devices) or when accurately tracking import cost fluctuations for duty drawback." }
+      },
+      {
+        "@type": "Question",
+        "name": "How does Odoo handle inventory valuation for imported goods?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Odoo's Landed Costs feature lets you add import-related costs — freight, customs duty, port handling, insurance — to the unit cost of received goods. These landed costs update the product's average cost (AVCO) or specific lot cost (FIFO), giving you the true delivered cost for accurate inventory valuation and costing." }
+      }
     ]
   }
 ]

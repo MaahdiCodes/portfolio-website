@@ -17,6 +17,22 @@
     <priority>0.8</priority>
   </url>
 
+  <!-- Resources hub — free templates, checklists, cheatsheets -->
+  <url>
+    <loc>https://mhasan.me/resources/</loc>
+    <lastmod>2026-05-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Start Here — guided learning paths for ERP journey -->
+  <url>
+    <loc>https://mhasan.me/start-here/</loc>
+    <lastmod>2026-05-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
   <!-- Target: odoo certified functional consultant bangladesh, odoo functional certification, odoo 18 certification -->
   <url>
     <loc>https://mhasan.me/lab/odoo-18-functional-certification-bangladesh</loc>

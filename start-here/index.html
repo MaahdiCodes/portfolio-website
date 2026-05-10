@@ -1,0 +1,724 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="icon" href="/favicon.ico" sizes="any" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon.png" />
+<link rel="apple-touch-icon" href="/favicon.png" />
+<meta name="description" content="New to Odoo ERP in Bangladesh? Start here — three guided reading paths based on where you are in your ERP journey: evaluating, implementing, or post go-live." />
+<meta name="robots" content="index, follow" />
+<title>Start Here — Odoo ERP Guide for Bangladesh | Mehedi Hasan</title>
+<link rel="canonical" href="https://mhasan.me/start-here/" />
+<meta property="og:title" content="Start Here — Odoo ERP Guide for Bangladesh | Mehedi Hasan" />
+<meta property="og:description" content="Three guided reading paths for your ERP journey: evaluating Odoo, implementing it, or optimising post go-live." />
+<meta property="og:url" content="https://mhasan.me/start-here/" />
+<meta property="og:type" content="website" />
+<meta property="og:image" content="https://mhasan.me/assets/og-default.jpg" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:site_name" content="Mehedi Hasan | Odoo Consultant" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Start Here — Odoo ERP Guide for Bangladesh" />
+<meta name="twitter:description" content="Three guided reading paths for your ERP journey: evaluating Odoo, implementing it, or optimising post go-live." />
+<meta name="twitter:image" content="https://mhasan.me/assets/og-default.jpg" />
+<script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Start Here — Odoo ERP Guide for Bangladesh",
+    "description": "Three guided reading paths for your ERP journey: evaluating Odoo, implementing it, or optimising post go-live.",
+    "url": "https://mhasan.me/start-here/",
+    "author": { "@type": "Person", "name": "Mehedi Hasan", "url": "https://mhasan.me" }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://mhasan.me" },
+      { "@type": "ListItem", "position": 2, "name": "Start Here", "item": "https://mhasan.me/start-here/" }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How do I start learning about Odoo ERP implementation in Bangladesh?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Start by reading about why ERP implementations fail in Bangladesh (0001), then compare your options: Odoo vs SAP vs Tally (0004). Once you know Odoo is the right fit, follow the evaluating path: understand total cost (0012), then the implementation roadmap (0028), and finally the project charter template (0047) to structure your engagement." }
+      },
+      {
+        "@type": "Question",
+        "name": "What should I read first if I am already implementing Odoo?",
+        "acceptedAnswer": { "@type": "Answer", "text": "If your Odoo project is already underway, start with the discovery session guide (0002) to validate your process mapping approach, then review the data migration checklist (0008, 0030) and the UAT script template (0009). Cap it with the post go-live hypercare plan (0032) so you are ready for cut-over." }
+      },
+      {
+        "@type": "Question",
+        "name": "What should I read if Odoo is already live at my company?",
+        "acceptedAnswer": { "@type": "Answer", "text": "For a live Odoo system, focus on: user access rights configuration (0042) to lock down permissions, inventory valuation cheatsheet (0011) to validate your costing method, and NBR VAT compliance (0003) for your accounting setup. If adoption is low, start with the change management essay (0007)." }
+      }
+    ]
+  }
+]
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap">
+<style>
+  :root{
+    --bg:#0A0B0D;--bg-1:#0E1013;--surface:#111317;--elev:#15181D;
+    --border:#1E2228;--border-2:#2A2F38;--hair:rgba(255,255,255,0.06);
+    --text:#EDEEF0;--text-2:#9BA1AA;--text-3:#7E8694;
+    --accent:oklch(0.80 0.17 155);--accent-dim:oklch(0.80 0.17 155 / 0.14);
+    --accent-glow:oklch(0.80 0.17 155 / 0.35);
+    --sans:'Geist',ui-sans-serif,system-ui,-apple-system,Segoe UI,sans-serif;
+    --mono:'Geist Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
+    --serif:'Instrument Serif',ui-serif,Georgia,serif;
+    --max:1280px;--gutter:24px;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;overflow-x:hidden;background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+  body{
+    background:
+      radial-gradient(900px 600px at 80% -10%,rgba(80,230,160,0.07),transparent 60%),
+      radial-gradient(700px 500px at 10% 10%,rgba(40,60,90,0.15),transparent 70%),
+      var(--bg);
+    min-height:100vh;
+  }
+  a{color:inherit;text-decoration:none}
+  ::selection{background:var(--accent);color:#000}
+
+  html[data-theme="light"]{
+    --bg:#F5F7FA;--bg-1:#EEF1F5;--surface:#FFFFFF;--elev:#EDF0F4;
+    --border:#E2E6EC;--border-2:#CBD0D9;--hair:rgba(0,0,0,0.05);
+    --text:#0E1013;--text-2:#4A5265;--text-3:#8A909E;
+  }
+  html[data-theme="light"] body{
+    background:radial-gradient(900px 600px at 80% -10%,rgba(80,230,160,0.05),transparent 60%),var(--bg);
+  }
+
+  .grid-bg{position:fixed;inset:0;pointer-events:none;z-index:0;
+    background-image:linear-gradient(to right,rgba(255,255,255,0.022) 1px,transparent 1px),linear-gradient(to bottom,rgba(255,255,255,0.022) 1px,transparent 1px);
+    background-size:80px 80px;mask-image:radial-gradient(1200px 800px at 50% 20%,#000 40%,transparent 85%);
+  }
+  html[data-theme="light"] .grid-bg{
+    background-image:linear-gradient(to right,rgba(0,0,0,0.04) 1px,transparent 1px),linear-gradient(to bottom,rgba(0,0,0,0.04) 1px,transparent 1px);
+  }
+
+  .shell{max-width:var(--max);margin:0 auto;padding:0 var(--gutter);position:relative;z-index:1}
+
+  /* Nav */
+  .nav{position:sticky;top:0;z-index:50;padding:16px 0}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;padding:10px 14px;border:1px solid var(--hair);background:rgba(14,16,19,0.6);backdrop-filter:blur(16px) saturate(140%);-webkit-backdrop-filter:blur(16px) saturate(140%);border-radius:999px}
+  html[data-theme="light"] .nav-inner{background:rgba(245,247,250,0.9)}
+  .brand{display:flex;align-items:center;gap:12px;font-weight:500;letter-spacing:-0.01em}
+  .brand-mark{width:30px;height:30px;border-radius:8px;background:linear-gradient(135deg,var(--accent) 0%,oklch(0.55 0.14 170) 100%);display:grid;place-items:center;font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:0.04em;color:#04140B;box-shadow:0 0 0 1px rgba(0,0,0,.35),inset 0 0 0 1px rgba(255,255,255,.18)}
+  .brand-mark::after{content:"MH"}
+  .brand-name{display:flex;flex-direction:column;line-height:1.1}
+  .brand-name b{font-weight:500;font-size:14px;color:var(--text)}
+  .brand-name em{font-style:normal;font-family:var(--mono);font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-3);margin-top:2px}
+  .back-link{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:12px;color:var(--text-2);padding:8px 14px;border-radius:999px;letter-spacing:0.04em}
+  .back-link:hover{color:var(--text);background:var(--hair)}
+  .theme-toggle{appearance:none;border:1px solid var(--border);background:var(--elev);color:var(--text-2);width:34px;height:34px;border-radius:10px;cursor:pointer;display:grid;place-items:center;transition:all .2s ease;flex:none;padding:0}
+  .theme-toggle:hover{color:var(--text);border-color:var(--border-2)}
+  .theme-toggle svg{display:block;pointer-events:none}
+  .theme-toggle .icon-sun{display:block}
+  .theme-toggle .icon-moon{display:none}
+  html[data-theme="light"] .theme-toggle .icon-sun{display:none}
+  html[data-theme="light"] .theme-toggle .icon-moon{display:block}
+
+  /* Hero */
+  .hero{padding:72px 0 60px;border-bottom:1px solid var(--border)}
+  .eyebrow{font-family:var(--mono);font-size:11.5px;letter-spacing:0.14em;color:var(--text-3);text-transform:uppercase;display:inline-flex;align-items:center;gap:10px}
+  .eyebrow::before{content:"";width:18px;height:1px;background:var(--border-2)}
+  .hero h1{font-size:clamp(40px,5.5vw,72px);font-weight:500;letter-spacing:-0.03em;line-height:1.0;margin:22px 0 0;max-width:14ch}
+  .hero h1 em{font-family:var(--serif);font-style:italic;font-weight:400}
+  .hero .lede{font-size:18px;line-height:1.55;color:var(--text-2);margin-top:22px;max-width:56ch}
+
+  /* Path selector */
+  .path-selector{padding:64px 0 24px}
+  .selector-label{font-family:var(--mono);font-size:10.5px;letter-spacing:0.18em;text-transform:uppercase;color:var(--text-3);margin-bottom:20px}
+  .path-tabs{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:56px}
+  .path-tab{
+    padding:10px 20px;border-radius:999px;
+    font-family:var(--mono);font-size:12px;letter-spacing:0.08em;
+    border:1px solid var(--border);background:transparent;
+    color:var(--text-2);cursor:pointer;transition:all .18s ease;
+  }
+  .path-tab:hover{color:var(--text);border-color:var(--border-2);background:rgba(255,255,255,0.04)}
+  .path-tab.active{color:var(--accent);border-color:oklch(0.80 0.17 155 / 0.5);background:oklch(0.80 0.17 155 / 0.08)}
+
+  /* Path panels */
+  .path-panel{display:none}
+  .path-panel.active{display:block}
+
+  .path-hero{
+    border:1px solid var(--border);border-radius:16px;padding:32px;
+    background:linear-gradient(135deg,rgba(21,24,29,0.7),rgba(14,16,19,0.7));
+    margin-bottom:36px;
+  }
+  html[data-theme="light"] .path-hero{background:linear-gradient(135deg,rgba(255,255,255,0.9),rgba(237,240,244,0.9))}
+  .path-icon{font-size:32px;margin-bottom:16px}
+  .path-hero h2{font-size:28px;font-weight:500;letter-spacing:-0.02em;margin:0 0 10px}
+  .path-hero p{font-size:16px;line-height:1.6;color:var(--text-2);margin:0;max-width:60ch}
+  .path-hero .who{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:10.5px;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-3);margin-top:18px;background:var(--elev);border:1px solid var(--border);padding:6px 12px;border-radius:6px}
+
+  /* Step list */
+  .step-list{display:flex;flex-direction:column;gap:14px;margin-bottom:48px}
+  .step{
+    display:grid;grid-template-columns:48px 1fr auto;gap:16px;align-items:center;
+    border:1px solid var(--border);border-radius:12px;padding:18px 20px;
+    background:linear-gradient(180deg,rgba(21,24,29,0.5),rgba(14,16,19,0.5));
+    transition:all .2s ease;text-decoration:none;color:inherit;
+  }
+  .step:hover{border-color:var(--border-2);transform:translateY(-1px);background:linear-gradient(180deg,rgba(21,24,29,0.8),rgba(14,16,19,0.8))}
+  html[data-theme="light"] .step{background:linear-gradient(180deg,rgba(255,255,255,0.85),rgba(237,240,244,0.85))}
+  html[data-theme="light"] .step:hover{background:rgba(255,255,255,0.95)}
+  .step-num{
+    width:44px;height:44px;border-radius:10px;
+    display:grid;place-items:center;flex:none;
+    font-family:var(--mono);font-size:13px;font-weight:500;color:var(--accent);
+    background:oklch(0.80 0.17 155 / 0.10);border:1px solid oklch(0.80 0.17 155 / 0.25);
+  }
+  .step-body{min-width:0}
+  .step-body h3{font-size:15px;font-weight:500;letter-spacing:-0.01em;margin:0 0 4px;line-height:1.3;color:var(--text)}
+  .step-body p{font-size:13px;line-height:1.5;color:var(--text-2);margin:0}
+  .step-meta{display:flex;flex-direction:column;align-items:flex-end;gap:4px;flex:none}
+  .step-kind{font-family:var(--mono);font-size:9.5px;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-3)}
+  .step-num-label{font-family:var(--mono);font-size:10px;color:var(--text-3);letter-spacing:0.04em}
+  .step-arrow{font-size:14px;color:var(--text-3);transition:color .18s ease,transform .18s ease;margin-top:4px}
+  .step:hover .step-arrow{color:var(--accent);transform:translateX(3px)}
+
+  /* Section divider inside panel */
+  .panel-divider{font-family:var(--mono);font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:var(--text-3);display:flex;align-items:center;gap:12px;margin:32px 0 20px}
+  .panel-divider::after{content:"";flex:1;height:1px;background:var(--border)}
+
+  /* CTA */
+  .path-cta{
+    border:1px solid var(--border);border-radius:12px;padding:28px 32px;
+    background:linear-gradient(180deg,rgba(21,24,29,0.4),rgba(14,16,19,0.4));
+    display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;
+  }
+  html[data-theme="light"] .path-cta{background:rgba(255,255,255,0.7)}
+  .path-cta p{font-size:15px;color:var(--text-2);margin:0;line-height:1.5;max-width:48ch}
+  .path-cta p strong{color:var(--text);font-weight:500}
+  .cta-btn{display:inline-flex;align-items:center;gap:8px;padding:11px 22px;border-radius:999px;background:var(--accent);color:#04140B;font-family:var(--mono);font-size:12px;font-weight:600;letter-spacing:0.08em;transition:opacity .18s ease;white-space:nowrap}
+  .cta-btn:hover{opacity:0.88}
+
+  /* Footer */
+  footer{padding:32px 0 48px}
+  .foot{display:flex;justify-content:space-between;align-items:center;font-family:var(--mono);font-size:11.5px;color:var(--text-3);letter-spacing:0.06em;text-transform:uppercase;border-top:1px solid var(--border);padding-top:24px}
+
+  @media(max-width:800px){
+    .step{grid-template-columns:44px 1fr;grid-template-rows:auto auto}
+    .step-meta{flex-direction:row;align-items:center;grid-column:1/-1;padding-top:8px;border-top:1px solid var(--border);margin-top:4px}
+    .step-arrow{margin-top:0;margin-left:auto}
+  }
+  @media(max-width:560px){
+    .path-hero{padding:24px}
+    .path-cta{flex-direction:column;align-items:flex-start}
+    .hero h1{font-size:38px}
+  }
+</style>
+</head>
+<body>
+<div class="grid-bg" aria-hidden="true"></div>
+
+<nav class="nav">
+  <div class="shell">
+    <div class="nav-inner">
+      <a class="brand" href="/">
+        <div class="brand-mark" aria-hidden="true"></div>
+        <div class="brand-name"><b>Mehedi Hasan</b><em>Odoo Consultant</em></div>
+      </a>
+      <a class="back-link" href="/">← Home</a>
+    </div>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="shell">
+    <span class="eyebrow">Start Here</span>
+    <h1>Pick your <em>learning path</em></h1>
+    <p class="lede">Three curated reading sequences based on where you are in your Odoo journey. Each path links directly to the articles, templates, and field guides that matter most right now.</p>
+  </div>
+</section>
+
+<div class="path-selector">
+  <div class="shell">
+    <div class="selector-label">I am currently…</div>
+    <div class="path-tabs" role="tablist">
+      <button class="path-tab active" role="tab" aria-selected="true" aria-controls="panel-evaluating" id="tab-evaluating">Evaluating ERP options</button>
+      <button class="path-tab" role="tab" aria-selected="false" aria-controls="panel-implementing" id="tab-implementing">Running an Odoo project</button>
+      <button class="path-tab" role="tab" aria-selected="false" aria-controls="panel-postlive" id="tab-postlive">Managing a live Odoo system</button>
+    </div>
+
+    <!-- PATH 1: EVALUATING -->
+    <div class="path-panel active" id="panel-evaluating" role="tabpanel" aria-labelledby="tab-evaluating">
+      <div class="path-hero">
+        <div class="path-icon">🔍</div>
+        <h2>Evaluating ERP Options</h2>
+        <p>You are a business owner, finance director, or operations head trying to decide whether Odoo is the right ERP — and what it will actually cost and require. Read these in order.</p>
+        <div class="who">Best for: Decision-makers &amp; budget holders</div>
+      </div>
+
+      <div class="step-list">
+        <a class="step" href="/lab/0001-why-erp-fails-bangladesh">
+          <div class="step-num">01</div>
+          <div class="step-body">
+            <h3>Why ERP Implementations Fail in Bangladesh</h3>
+            <p>The 5 root causes from real deployments. Start here before committing to any ERP project.</p>
+          </div>
+          <div class="step-meta">
+            <span class="step-kind">Essay</span>
+            <span class="step-num-label">0001</span>
+            <span class="step-arrow">→</span>
+          </div>
+        </a>
+
+        <a class="step" href="/lab/0004-odoo-vs-sap-vs-tally-bangladesh">
+          <div class="step-num">02</div>
+          <div class="step-body">
+            <h3>Odoo vs SAP vs Tally — The Honest Comparison</h3>
+            <p>An ERP consultant's unvarnished take on all three platforms for Bangladesh SMEs and manufacturers.</p>
+          </div>
+          <div class="step-meta">
+            <span class="step-kind">Guide</span>
+            <span class="step-num-label">0004</span>
+            <span class="step-arrow">→</span>
+          </div>
+        </a>
+
+        <a class="step" href="/lab/0023-odoo-vs-erpnext-bangladesh">
+          <div class="step-num">03</div>
+          <div class="step-body">
+            <h3>Odoo vs ERPNext — Which Open-Source ERP Wins?</h3>
+            <p>If you are comparing open-source options, this is the definitive Bangladesh-specific breakdown.</p>
+          </div>
+          <div class="step-meta">
+            <span class="step-kind">Guide</span>
+            <span class="step-num-label">0023</span>
+            <span class="step-arrow">→</span>
+          </div>
+        </a>
+
+        <a class="step" href="/lab/0024-odoo-community-vs-enterprise-bangladesh">
+          <div class="step-num">04</div>
+          <div class="step-body">
+            <h3>Odoo Community vs Enterprise — Which to Choose?</h3>
+            <p>The licensing decision most teams get wrong. Understand what you actually need before spending.</p>
+          </div>
+          <div class="step-meta">
+            <span class="step-kind">Guide</span>
+            <span class="step-num-label">0024</span>
+            <span class="step-arrow">→</span>
+          </div>
+        </a>
+
+        <a class="step" href="/lab/0025-odoo-on-premise-vs-cloud-bangladesh">
+          <div class="step-num">05</div>
+          <div class="step-body">
+            <h3>Odoo On-Premise vs Cloud in Bangladesh</h3>
+            <p>Infrastructure decision guide — security, cost, and connectivity trade-offs for Bangladesh operations.</p>
+          </div>
+          <div class="step-meta">
+            <span class="step-kind">Guide</span>
+            <span class="step-num-label">0025</span>
+            <span class="step-arrow">→</span>
+          </div>
+        </a>
+
+        <a class="step" href="/lab/0012-odoo-erp-cost-bangladesh">
+          <div class="step-num">06</div>
+          <div class="step-body">
+            <h3>Odoo ERP Implementation Cost in Bangladesh</h3>
+            <p>Real cost breakdown — licensing, consulting, migration, training — so your budget is grounded in reality.</p>
+          </div>
+          <div class="step-meta">
+            <span class="step-kind">Guide</span>
+            <span class="step-num-label">0012</span>
+            <span class="step-arrow">→</span>
+          </div>
+        </a>
+
+        <a class="step" href="/lab/0044-erp-business-case-bangladesh">
+          <div class="step-num">07</div>
+          <div class="step-body">
+            <h3>How to Build the ERP Business Case</h3>
+            <p>ROI framework and executive presentation template to get budget approval from your board or owners.</p>
+          </div>
+          <div class="step-meta">
+            <span class="step-kind">Template</span>
+            <span class="step-num-label">0044</span>
+            <span class="step-arrow">→</span>
+          </div>
+        </a>
+      </div>
+
+      <div class="path-cta">
+        <p><strong>Ready to move forward?</strong> Once you have decided on Odoo, switch to the Implementing path — or talk to me directly about your specific situation.</p>
+        <a class="cta-btn" href="/#contact">Talk to Mehedi →</a>
+      </div>
+    </div>
+
+    <!-- PATH 2: IMPLEMENTING -->
+    <div class="path-panel" id="panel-implementing" role="tabpanel" aria-labelledby="tab-implementing">
+      <div class="path-hero">
+        <div class="path-icon">⚙️</div>
+        <h2>Running an Odoo Project</h2>
+        <p>You have committed to Odoo and are in the middle of an implementation — or about to start. Follow this sequence to avoid the most common project failures.</p>
+        <div class="who">Best for: Project managers, IT leads &amp; consultants</div>
+      </div>
+
+      <div class="panel-divider">Phase 1 — Before You Configure</div>
+      <div class="step-list">
+        <a class="step" href="/lab/0002-discovery-session-business-process-mapping">
+          <div class="step-num">01</div>
+          <div class="step-body">
+            <h3>The Discovery Session — Mapping Business Processes First</h3>
+            <p>The phase that prevents scope creep, bad data, and failed implementations. Do not skip this.</p>
+          </div>
+          <div class="step-meta">
+            <span class="step-kind">Guide</span>
+            <span class="step-num-label">0002</span>
+            <span class="step-arrow">→</span>
+          </div>
+        </a>
+
+        <a class="step" href="/lab/0010-bpmn-templates-manufacturing-discovery">
+          <div class="step-num">02</div>
+          <div class="step-body">
+            <h3>BPMN Process Map Templates for Manufacturing</h3>
+            <p>Ready-to-use process diagrams to map your operations before configuring a single screen.</p>
+          </div>
+          <div class="step-meta">
+            <span class="step-kind">Tool</span>
+            <span class="step-num-label">0010</span>
+            <span class="step-arrow">→</span>
+          </div>
+        </a>
+
+        <a class="step" href="/lab/0045-erp-requirements-document-template">
+          <div class="step-num">03</div>
+          <div class="step-body">
+            <h3>ERP Requirements Document Template</h3>
+            <p>Structured format for capturing functional and non-functional requirements with stakeholder sign-off.</p>
+          </div>
+          <div class="step-meta">
+            <span class="step-kind">Template</span>
+            <span class="step-num-label">0045</span>
+            <span class="step-arrow">→</span>
+          </div>
+        </a>
+
+        <a class="step" href="/lab/0029-odoo-rfp-template-bangladesh">
+          <div class="step-num">04</div>
+          <div class="step-body">
+            <h3>Odoo RFP Template &amp; Vendor Scoring Matrix</h3>
+            <p>Evaluate and select your implementation partner with structured scoring, not gut feel.</p>
+          </div>
+          <div class="step-meta">
+            <span class="step-kind">Template</span>
+            <span class="step-num-label">0029</span>
+            <span class="step-arrow">→</span>
+          </div>
+        </a>
+      </div>
+
+      <div class="panel-divider">Phase 2 — During the Project</div>
+      <div class="step-list">
+        <a class="step" href="/lab/0028-odoo-implementation-roadmap-bangladesh">
+          <div class="step-num">05</div>
+          <div class="step-body">
+            <h3>Odoo Implementation Roadmap</h3>
+            <p>Phase-by-phase roadmap from discovery to hypercare — with stakeholder milestones and task breakdown.</p>
+          </div>
+          <div class="step-meta">
+            <span class="step-kind">Guide</span>
+            <span class="step-num-label">0028</span>
+            <span class="step-arrow">→</span>
+          </div>
+        </a>
+
+        <a class="step" href="/lab/0008-excel-odoo-migration-checklist">
+          <div class="step-num">06</div>
+          <div class="step-body">
+            <h3>Excel → Odoo Migration Checklist (40 Items)</h3>
+            <p>Field-tested checklist covering data cleaning, mapping, import order, and cutover validation.</p>
+          </div>
+          <div class="step-meta">
+            <span class="step-kind">Checklist</span>
+            <span class="step-num-label">0008</span>
+            <span class="step-arrow">→</span>
+          </div>
+        </a>
+
+        <a class="step" href="/lab/0003-nbr-vat-compliance-odoo-bangladesh">
+          <div class="step-num">07</div>
+          <div class="step-body">
+            <h3>NBR VAT Compliance in Odoo — Bangladesh Guide</h3>
+            <p>BIN setup, Mushak forms, tax configuration, and month-end VAT reconciliation for Bangladesh companies.</p>
+          </div>
+          <div class="step-meta">
+            <span class="step-kind">Guide</span>
+            <span class="step-num-label">0003</span>
+            <span class="step-arrow">→</span>
+          </div>
+        </a>
+
+        <a class="step" href="/lab/0007-change-management-isnt-a-memo">
+          <div class="step-num">08</div>
+          <div class="step-body">
+            <h3>Change Management Isn't a Memo</h3>
+            <p>Why most ERP projects get adoption wrong — and how to build genuine behaviour change at your organisation.</p>
+          </div>
+          <div class="step-meta">
+            <span class="step-kind">Essay</span>
+            <span class="step-num-label">0007</span>
+            <span class="step-arrow">→</span>
+          </div>
+        </a>
+      </div>
+
+      <div class="panel-divider">Phase 3 — Go-Live Preparation</div>
+      <div class="step-list">
+        <a class="step" href="/lab/0031-odoo-training-plan-template">
+          <div class="step-num">09</div>
+          <div class="step-body">
+            <h3>Odoo Training Plan Template</h3>
+            <p>Role-based training schedule with session structure, trainer notes, and assessment criteria.</p>
+          </div>
+          <div class="step-meta">
+            <span class="step-kind">Template</span>
+            <span class="step-num-label">0031</span>
+            <span class="step-arrow">→</span>
+          </div>
+        </a>
+
+        <a class="step" href="/lab/0009-uat-script-200-users-ago">
+          <div class="step-num">10</div>
+          <div class="step-body">
+            <h3>UAT Test Script Template</h3>
+            <p>The UAT structure used across 200+ trained users. Pass/fail criteria, tester instructions, defect logging.</p>
+          </div>
+          <div class="step-meta">
+            <span class="step-kind">Template</span>
+            <span class="step-num-label">0009</span>
+            <span class="step-arrow">→</span>
+          </div>
+        </a>
+
+        <a class="step" href="/lab/0047-odoo-project-charter-template">
+          <div class="step-num">11</div>
+          <div class="step-body">
+            <h3>Odoo Project Charter Template</h3>
+            <p>Opens any ERP engagement on the right foot — scope, stakeholders, timeline, budget, and sign-off in one document.</p>
+          </div>
+          <div class="step-meta">
+            <span class="step-kind">Template</span>
+            <span class="step-num-label">0047</span>
+            <span class="step-arrow">→</span>
+          </div>
+        </a>
+      </div>
+
+      <div class="path-cta">
+        <p><strong>Going live soon?</strong> Switch to the Post Go-Live path to prepare your hypercare plan before cutover day.</p>
+        <button class="cta-btn" onclick="switchPath('postlive')">Post Go-Live path →</button>
+      </div>
+    </div>
+
+    <!-- PATH 3: POST GO-LIVE -->
+    <div class="path-panel" id="panel-postlive" role="tabpanel" aria-labelledby="tab-postlive">
+      <div class="path-hero">
+        <div class="path-icon">🚀</div>
+        <h2>Managing a Live Odoo System</h2>
+        <p>Odoo is live at your organisation. Now the real work begins — adoption, access control, compliance, and continuous improvement. Start with the hypercare plan, then work through the rest.</p>
+        <div class="who">Best for: System admins, finance teams &amp; operations managers</div>
+      </div>
+
+      <div class="panel-divider">Stabilise First</div>
+      <div class="step-list">
+        <a class="step" href="/lab/0032-odoo-post-go-live-hypercare-bangladesh">
+          <div class="step-num">01</div>
+          <div class="step-body">
+            <h3>Post Go-Live Hypercare Plan</h3>
+            <p>30-day hypercare checklist with daily/weekly support cadence, triage criteria, and sign-off milestones.</p>
+          </div>
+          <div class="step-meta">
+            <span class="step-kind">Checklist</span>
+            <span class="step-num-label">0032</span>
+            <span class="step-arrow">→</span>
+          </div>
+        </a>
+
+        <a class="step" href="/lab/0042-odoo-user-access-rights-configuration">
+          <div class="step-num">02</div>
+          <div class="step-body">
+            <h3>Odoo User Access Rights Configuration</h3>
+            <p>Lock down user groups, access rules, and record rules — the most overlooked post-go-live task.</p>
+          </div>
+          <div class="step-meta">
+            <span class="step-kind">Guide</span>
+            <span class="step-num-label">0042</span>
+            <span class="step-arrow">→</span>
+          </div>
+        </a>
+
+        <a class="step" href="/lab/0046-scope-creep-erp-project-management">
+          <div class="step-num">03</div>
+          <div class="step-body">
+            <h3>Managing Scope Creep After Go-Live</h3>
+            <p>How to handle the wave of "can Odoo also do…?" requests without derailing your stabilisation phase.</p>
+          </div>
+          <div class="step-meta">
+            <span class="step-kind">Guide</span>
+            <span class="step-num-label">0046</span>
+            <span class="step-arrow">→</span>
+          </div>
+        </a>
+      </div>
+
+      <div class="panel-divider">Optimise Your Configuration</div>
+      <div class="step-list">
+        <a class="step" href="/lab/0011-odoo-inventory-valuation-cheatsheet">
+          <div class="step-num">04</div>
+          <div class="step-body">
+            <h3>Odoo Inventory Valuation Cheatsheet</h3>
+            <p>Validate your AVCO/FIFO/Standard Price setup — and understand what your stock reports are actually saying.</p>
+          </div>
+          <div class="step-meta">
+            <span class="step-kind">Cheatsheet</span>
+            <span class="step-num-label">0011</span>
+            <span class="step-arrow">→</span>
+          </div>
+        </a>
+
+        <a class="step" href="/lab/0003-nbr-vat-compliance-odoo-bangladesh">
+          <div class="step-num">05</div>
+          <div class="step-body">
+            <h3>NBR VAT Compliance in Odoo</h3>
+            <p>Audit your tax configuration, Mushak invoice setup, and month-end VAT reconciliation process.</p>
+          </div>
+          <div class="step-meta">
+            <span class="step-kind">Guide</span>
+            <span class="step-num-label">0003</span>
+            <span class="step-arrow">→</span>
+          </div>
+        </a>
+
+        <a class="step" href="/lab/0006-odoo-multi-company-setup-guide">
+          <div class="step-num">06</div>
+          <div class="step-body">
+            <h3>Odoo Multi-Company Setup Guide</h3>
+            <p>If you are expanding to a second entity or site, this is the definitive guide to multi-company configuration.</p>
+          </div>
+          <div class="step-meta">
+            <span class="step-kind">Guide</span>
+            <span class="step-num-label">0006</span>
+            <span class="step-arrow">→</span>
+          </div>
+        </a>
+      </div>
+
+      <div class="panel-divider">Plan What's Next</div>
+      <div class="step-list">
+        <a class="step" href="/lab/0026-odoo-16-17-18-upgrade-bangladesh">
+          <div class="step-num">07</div>
+          <div class="step-body">
+            <h3>Odoo 16 → 17 → 18 Upgrade Guide for Bangladesh</h3>
+            <p>When and how to upgrade — version comparison, upgrade timeline, and what to test before cutting over.</p>
+          </div>
+          <div class="step-meta">
+            <span class="step-kind">Guide</span>
+            <span class="step-num-label">0026</span>
+            <span class="step-arrow">→</span>
+          </div>
+        </a>
+
+        <a class="step" href="/lab/0043-as-is-to-be-process-mapping-erp">
+          <div class="step-num">08</div>
+          <div class="step-body">
+            <h3>As-Is / To-Be Process Mapping for Continuous Improvement</h3>
+            <p>Use the same discovery methodology to identify optimisation opportunities in your existing Odoo setup.</p>
+          </div>
+          <div class="step-meta">
+            <span class="step-kind">Guide</span>
+            <span class="step-num-label">0043</span>
+            <span class="step-arrow">→</span>
+          </div>
+        </a>
+      </div>
+
+      <div class="path-cta">
+        <p><strong>Need expert support?</strong> Whether you are fighting adoption issues, planning an upgrade, or expanding to a new site, I consult directly with Bangladesh teams.</p>
+        <a class="cta-btn" href="/#contact">Talk to Mehedi →</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<footer>
+  <div class="shell">
+    <div class="foot">
+      <span>© 2026 Mehedi Hasan · Start Here</span>
+      <span><a href="/lab/">↑ Back to lab</a></span>
+    </div>
+  </div>
+</footer>
+
+<script src="/whatsapp.js" defer></script>
+<script src="/scroll-top.js" defer></script>
+<script>
+  // Theme persistence
+  (function(){
+    if(localStorage.getItem('mh-theme')==='light')
+      document.documentElement.setAttribute('data-theme','light');
+  })();
+
+  // Theme toggle
+  (function(){
+    function init(){
+      var navInner = document.querySelector('.nav-inner');
+      if(!navInner) return;
+      var btn = document.createElement('button');
+      btn.className = 'theme-toggle';
+      btn.setAttribute('aria-label','Toggle light/dark theme');
+      btn.innerHTML =
+        '<svg class="icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>' +
+        '<svg class="icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
+      var backLink = navInner.querySelector('.back-link');
+      if(backLink) navInner.insertBefore(btn, backLink);
+      else navInner.appendChild(btn);
+      btn.addEventListener('click', function(){
+        var isLight = document.documentElement.getAttribute('data-theme')==='light';
+        if(isLight){ document.documentElement.removeAttribute('data-theme'); localStorage.setItem('mh-theme','dark'); }
+        else { document.documentElement.setAttribute('data-theme','light'); localStorage.setItem('mh-theme','light'); }
+      });
+    }
+    if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',init);
+    else init();
+  })();
+
+  // Tab switching
+  function switchPath(id){
+    document.querySelectorAll('.path-tab').forEach(function(t){ t.classList.remove('active'); t.setAttribute('aria-selected','false'); });
+    document.querySelectorAll('.path-panel').forEach(function(p){ p.classList.remove('active'); });
+    var tab = document.getElementById('tab-' + id);
+    var panel = document.getElementById('panel-' + id);
+    if(tab){ tab.classList.add('active'); tab.setAttribute('aria-selected','true'); }
+    if(panel){ panel.classList.add('active'); }
+  }
+
+  document.querySelectorAll('.path-tab').forEach(function(tab){
+    tab.addEventListener('click', function(){
+      var target = tab.getAttribute('aria-controls').replace('panel-','');
+      switchPath(target);
+    });
+  });
+</script>
+</body>
+</html>

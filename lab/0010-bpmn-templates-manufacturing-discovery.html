@@ -52,6 +52,26 @@
       { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://mhasan.me" },
       { "@type": "ListItem", "position": 2, "name": "Lab", "item": "https://mhasan.me/#lab" },
       { "@type": "ListItem", "position": 3, "name": "BPMN Templates for Manufacturing Discovery", "item": "https://mhasan.me/lab/0010-bpmn-templates-manufacturing-discovery" }
+    ]  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is BPMN and why does it matter for ERP implementation?",
+        "acceptedAnswer": { "@type": "Answer", "text": "BPMN (Business Process Model and Notation) is a standardised diagram language for mapping business workflows. In ERP implementation it creates a shared visual language between business users and technical consultants, replacing ambiguous written requirements with precise process maps showing sequence flows, decision points, and system boundaries." }
+      },
+      {
+        "@type": "Question",
+        "name": "Which manufacturing processes should be mapped in BPMN before Odoo implementation?",
+        "acceptedAnswer": { "@type": "Answer", "text": "At minimum, map: procure-to-pay (purchase requisition to vendor payment), order-to-cash (customer order to receipt), plan-to-produce (MO creation to finished goods), and record-to-report (month-end close). For Bangladesh manufacturers, also map LC management, Mushak invoice flow, and any industry-specific compliance processes." }
+      },
+      {
+        "@type": "Question",
+        "name": "What tools can I use to create BPMN diagrams for Odoo configuration?",
+        "acceptedAnswer": { "@type": "Answer", "text": "draw.io (free, browser-based) is the most practical tool for Bangladesh ERP teams — it supports BPMN 2.0 notation, exports to PDF/PNG, and allows collaborative editing. Lucidchart and Bizagi Modeler are strong alternatives. Avoid PowerPoint flowcharts — they lack standardised notation and create ambiguity during configuration." }
+      }
     ]
   }
 ]
@@ -438,6 +458,7 @@
     </div>
   </div>
 </footer>
+<script src="_utils.js" defer></script>
 <script src="_toc.js" defer></script>
 <script src="/whatsapp.js" defer></script>
 <script src="/scroll-top.js" defer></script>

@@ -1,0 +1,390 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="icon" href="/favicon.ico" sizes="any" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon.png" />
+<link rel="apple-touch-icon" href="/favicon.png" />
+<meta name="description" content="Free Odoo ERP templates, checklists, cheatsheets, and planning tools for Bangladesh manufacturers and SMEs — from project charter to UAT scripts." />
+<meta name="robots" content="index, follow" />
+<title>Free Odoo ERP Resources — Templates, Checklists & Tools | Mehedi Hasan</title>
+<link rel="canonical" href="https://mhasan.me/resources/" />
+<meta property="og:title" content="Free Odoo ERP Resources — Templates, Checklists & Tools | Mehedi Hasan" />
+<meta property="og:description" content="Free Odoo ERP templates, checklists, cheatsheets, and planning tools for Bangladesh manufacturers and SMEs." />
+<meta property="og:url" content="https://mhasan.me/resources/" />
+<meta property="og:type" content="website" />
+<meta property="og:image" content="https://mhasan.me/assets/og-default.jpg" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:site_name" content="Mehedi Hasan | Odoo Consultant" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Free Odoo ERP Resources — Templates, Checklists & Tools" />
+<meta name="twitter:description" content="Free Odoo ERP templates, checklists, cheatsheets, and planning tools for Bangladesh manufacturers and SMEs." />
+<meta name="twitter:image" content="https://mhasan.me/assets/og-default.jpg" />
+<script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "Free Odoo ERP Resources",
+    "description": "Free Odoo ERP templates, checklists, cheatsheets, and planning tools for Bangladesh manufacturers and SMEs.",
+    "url": "https://mhasan.me/resources/",
+    "author": { "@type": "Person", "name": "Mehedi Hasan", "url": "https://mhasan.me" }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://mhasan.me" },
+      { "@type": "ListItem", "position": 2, "name": "Resources", "item": "https://mhasan.me/resources/" }
+    ]
+  }
+]
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap">
+<style>
+  :root{
+    --bg:#0A0B0D;--bg-1:#0E1013;--surface:#111317;--elev:#15181D;
+    --border:#1E2228;--border-2:#2A2F38;--hair:rgba(255,255,255,0.06);
+    --text:#EDEEF0;--text-2:#9BA1AA;--text-3:#7E8694;
+    --accent:oklch(0.80 0.17 155);--accent-dim:oklch(0.80 0.17 155 / 0.14);
+    --sans:'Geist',ui-sans-serif,system-ui,-apple-system,Segoe UI,sans-serif;
+    --mono:'Geist Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
+    --serif:'Instrument Serif',ui-serif,Georgia,serif;
+    --max:1280px;--gutter:24px;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;overflow-x:hidden;background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+  body{
+    background:
+      radial-gradient(900px 600px at 80% -10%,rgba(80,230,160,0.07),transparent 60%),
+      radial-gradient(700px 500px at 10% 10%,rgba(40,60,90,0.15),transparent 70%),
+      var(--bg);
+    min-height:100vh;
+  }
+  a{color:inherit;text-decoration:none}
+  ::selection{background:var(--accent);color:#000}
+
+  html[data-theme="light"]{
+    --bg:#F5F7FA;--bg-1:#EEF1F5;--surface:#FFFFFF;--elev:#EDF0F4;
+    --border:#E2E6EC;--border-2:#CBD0D9;--hair:rgba(0,0,0,0.05);
+    --text:#0E1013;--text-2:#4A5265;--text-3:#8A909E;
+  }
+  html[data-theme="light"] body{
+    background:radial-gradient(900px 600px at 80% -10%,rgba(80,230,160,0.05),transparent 60%),var(--bg);
+  }
+
+  .grid-bg{position:fixed;inset:0;pointer-events:none;z-index:0;
+    background-image:linear-gradient(to right,rgba(255,255,255,0.022) 1px,transparent 1px),linear-gradient(to bottom,rgba(255,255,255,0.022) 1px,transparent 1px);
+    background-size:80px 80px;mask-image:radial-gradient(1200px 800px at 50% 20%,#000 40%,transparent 85%);
+  }
+  html[data-theme="light"] .grid-bg{
+    background-image:linear-gradient(to right,rgba(0,0,0,0.04) 1px,transparent 1px),linear-gradient(to bottom,rgba(0,0,0,0.04) 1px,transparent 1px);
+  }
+
+  .shell{max-width:var(--max);margin:0 auto;padding:0 var(--gutter);position:relative;z-index:1}
+
+  /* Nav */
+  .nav{position:sticky;top:0;z-index:50;padding:16px 0}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;padding:10px 14px;border:1px solid var(--hair);background:rgba(14,16,19,0.6);backdrop-filter:blur(16px) saturate(140%);-webkit-backdrop-filter:blur(16px) saturate(140%);border-radius:999px}
+  html[data-theme="light"] .nav-inner{background:rgba(245,247,250,0.9)}
+  .brand{display:flex;align-items:center;gap:12px;font-weight:500;letter-spacing:-0.01em}
+  .brand-mark{width:30px;height:30px;border-radius:8px;background:linear-gradient(135deg,var(--accent) 0%,oklch(0.55 0.14 170) 100%);display:grid;place-items:center;font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:0.04em;color:#04140B;box-shadow:0 0 0 1px rgba(0,0,0,.35),inset 0 0 0 1px rgba(255,255,255,.18)}
+  .brand-mark::after{content:"MH"}
+  .brand-name{display:flex;flex-direction:column;line-height:1.1}
+  .brand-name b{font-weight:500;font-size:14px;color:var(--text)}
+  .brand-name em{font-style:normal;font-family:var(--mono);font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-3);margin-top:2px}
+  .back-link{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:12px;color:var(--text-2);padding:8px 14px;border-radius:999px;letter-spacing:0.04em}
+  .back-link:hover{color:var(--text);background:var(--hair)}
+
+  /* Theme toggle */
+  .theme-toggle{appearance:none;border:1px solid var(--border);background:var(--elev);color:var(--text-2);width:34px;height:34px;border-radius:10px;cursor:pointer;display:grid;place-items:center;transition:all .2s ease;flex:none;padding:0}
+  .theme-toggle:hover{color:var(--text);border-color:var(--border-2)}
+  .theme-toggle svg{display:block;pointer-events:none}
+  .theme-toggle .icon-sun{display:block}
+  .theme-toggle .icon-moon{display:none}
+  html[data-theme="light"] .theme-toggle .icon-sun{display:none}
+  html[data-theme="light"] .theme-toggle .icon-moon{display:block}
+
+  /* Hero */
+  .hero{padding:72px 0 56px;border-bottom:1px solid var(--border)}
+  .eyebrow{font-family:var(--mono);font-size:11.5px;letter-spacing:0.14em;color:var(--text-3);text-transform:uppercase;display:inline-flex;align-items:center;gap:10px}
+  .eyebrow::before{content:"";width:18px;height:1px;background:var(--border-2)}
+  .hero h1{font-size:clamp(40px,5.5vw,72px);font-weight:500;letter-spacing:-0.03em;line-height:1.0;margin:22px 0 0;max-width:16ch}
+  .hero h1 em{font-family:var(--serif);font-style:italic;font-weight:400}
+  .hero .lede{font-size:18px;line-height:1.55;color:var(--text-2);margin-top:22px;max-width:60ch}
+  .hero-stats{display:flex;gap:32px;margin-top:36px;flex-wrap:wrap}
+  .stat{display:flex;flex-direction:column;gap:4px}
+  .stat b{font-size:28px;font-weight:500;letter-spacing:-0.03em;color:var(--accent);font-family:var(--mono)}
+  .stat span{font-family:var(--mono);font-size:10.5px;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-3)}
+
+  /* Categories */
+  .categories{padding:64px 0 96px}
+  .section-label{font-family:var(--mono);font-size:10.5px;letter-spacing:0.18em;text-transform:uppercase;color:var(--text-3);display:flex;align-items:center;gap:12px;margin-bottom:28px}
+  .section-label::after{content:"";flex:1;height:1px;background:var(--border)}
+  .category{margin-bottom:56px}
+  .category-head{display:flex;align-items:baseline;gap:16px;margin-bottom:20px}
+  .category-head h2{font-size:20px;font-weight:500;letter-spacing:-0.02em;margin:0}
+  .category-head .count{font-family:var(--mono);font-size:11px;color:var(--text-3);letter-spacing:0.06em}
+  .resource-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  .resource-card{
+    border:1px solid var(--border);border-radius:12px;padding:22px;
+    background:linear-gradient(180deg,rgba(21,24,29,0.6),rgba(14,16,19,0.6));
+    display:flex;flex-direction:column;gap:10px;
+    transition:all .2s ease;
+  }
+  .resource-card:hover{border-color:var(--border-2);transform:translateY(-2px);background:linear-gradient(180deg,rgba(21,24,29,0.8),rgba(14,16,19,0.8))}
+  html[data-theme="light"] .resource-card{background:linear-gradient(180deg,rgba(255,255,255,0.9),rgba(237,240,244,0.9))}
+  html[data-theme="light"] .resource-card:hover{background:rgba(255,255,255,0.95)}
+  .resource-kind{font-family:var(--mono);font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:var(--accent);background:oklch(0.80 0.17 155 / 0.10);border:1px solid oklch(0.80 0.17 155 / 0.25);border-radius:4px;padding:3px 7px;align-self:flex-start}
+  .resource-card h3{font-size:16px;font-weight:500;letter-spacing:-0.015em;margin:0;line-height:1.3;color:var(--text)}
+  .resource-card p{font-size:13.5px;line-height:1.55;color:var(--text-2);margin:0;flex:1}
+  .resource-card .meta{font-family:var(--mono);font-size:11px;color:var(--text-3);letter-spacing:0.04em}
+  .resource-card .arrow{margin-top:4px;font-family:var(--mono);font-size:12px;color:var(--text-3);transition:color .18s ease, transform .18s ease;display:inline-block}
+  .resource-card:hover .arrow{color:var(--accent);transform:translateX(3px)}
+
+  /* Footer */
+  footer{padding:32px 0 48px}
+  .foot{display:flex;justify-content:space-between;align-items:center;font-family:var(--mono);font-size:11.5px;color:var(--text-3);letter-spacing:0.06em;text-transform:uppercase;border-top:1px solid var(--border);padding-top:24px}
+
+  @media(max-width:900px){.resource-grid{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:560px){
+    .resource-grid{grid-template-columns:1fr}
+    .hero-stats{gap:20px}
+    .hero h1{font-size:38px}
+  }
+</style>
+</head>
+<body>
+<div class="grid-bg" aria-hidden="true"></div>
+
+<nav class="nav">
+  <div class="shell">
+    <div class="nav-inner">
+      <a class="brand" href="/">
+        <div class="brand-mark" aria-hidden="true"></div>
+        <div class="brand-name"><b>Mehedi Hasan</b><em>Odoo Consultant</em></div>
+      </a>
+      <a class="back-link" href="/">← Home</a>
+    </div>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="shell">
+    <span class="eyebrow">Resources</span>
+    <h1>Free <em>ERP tools</em> &amp; templates</h1>
+    <p class="lede">Practical templates, checklists, and reference sheets built from real Odoo deployments in Bangladesh. Download, adapt, and use on your next project.</p>
+    <div class="hero-stats">
+      <div class="stat"><b>14</b><span>Resources</span></div>
+      <div class="stat"><b>4</b><span>Categories</span></div>
+      <div class="stat"><b>Free</b><span>Always</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="categories">
+  <div class="shell">
+
+    <!-- TEMPLATES -->
+    <div class="category">
+      <div class="section-label">Templates</div>
+      <div class="resource-grid">
+
+        <a class="resource-card" href="/lab/0047-odoo-project-charter-template">
+          <span class="resource-kind">Template</span>
+          <h3>Odoo Project Charter</h3>
+          <p>Full project charter covering scope, stakeholders, timeline, budget, and sign-off. Opens any ERP engagement on the right foot.</p>
+          <span class="meta">0047 · Guide</span>
+          <span class="arrow">→</span>
+        </a>
+
+        <a class="resource-card" href="/lab/0045-erp-requirements-document-template">
+          <span class="resource-kind">Template</span>
+          <h3>ERP Requirements Document</h3>
+          <p>Structured requirements document template with functional/non-functional sections, priority scoring, and stakeholder sign-off.</p>
+          <span class="meta">0045 · Template</span>
+          <span class="arrow">→</span>
+        </a>
+
+        <a class="resource-card" href="/lab/0031-odoo-training-plan-template">
+          <span class="resource-kind">Template</span>
+          <h3>Odoo Training Plan</h3>
+          <p>Role-based training schedule with session structure, trainer notes, and assessment criteria for end-user onboarding.</p>
+          <span class="meta">0031 · Template</span>
+          <span class="arrow">→</span>
+        </a>
+
+        <a class="resource-card" href="/lab/0029-odoo-rfp-template-bangladesh">
+          <span class="resource-kind">Template</span>
+          <h3>Odoo RFP + Vendor Scoring Matrix</h3>
+          <p>Complete request-for-proposal structure with weighted evaluation criteria and a red-flag checklist to pick the right partner.</p>
+          <span class="meta">0029 · Template</span>
+          <span class="arrow">→</span>
+        </a>
+
+        <a class="resource-card" href="/lab/0044-erp-business-case-bangladesh">
+          <span class="resource-kind">Template</span>
+          <h3>ERP Business Case</h3>
+          <p>ROI framework and executive presentation template to get budget approval for an Odoo implementation in Bangladesh.</p>
+          <span class="meta">0044 · Guide</span>
+          <span class="arrow">→</span>
+        </a>
+
+        <a class="resource-card" href="/lab/0010-bpmn-templates-manufacturing-discovery">
+          <span class="resource-kind">Template</span>
+          <h3>BPMN Process Maps — Manufacturing</h3>
+          <p>Ready-to-edit BPMN diagrams for procurement, production, quality, and dispatch — mapped to Odoo module boundaries.</p>
+          <span class="meta">0010 · Tool</span>
+          <span class="arrow">→</span>
+        </a>
+
+      </div>
+    </div>
+
+    <!-- CHECKLISTS -->
+    <div class="category">
+      <div class="section-label">Checklists</div>
+      <div class="resource-grid">
+
+        <a class="resource-card" href="/lab/0008-excel-odoo-migration-checklist">
+          <span class="resource-kind">Checklist</span>
+          <h3>Excel → Odoo Migration Checklist</h3>
+          <p>40-item checklist field-tested across 5 manufacturing go-lives. Covers data cleaning, mapping, import order, and validation.</p>
+          <span class="meta">0008 · Checklist</span>
+          <span class="arrow">→</span>
+        </a>
+
+        <a class="resource-card" href="/lab/0030-data-migration-checklist-odoo-bangladesh">
+          <span class="resource-kind">Checklist</span>
+          <h3>Data Migration Checklist</h3>
+          <p>Full pre/post migration checklist covering master data, opening balances, historical orders, and go/no-go criteria.</p>
+          <span class="meta">0030 · Checklist</span>
+          <span class="arrow">→</span>
+        </a>
+
+        <a class="resource-card" href="/lab/0032-odoo-post-go-live-hypercare-bangladesh">
+          <span class="resource-kind">Checklist</span>
+          <h3>Post Go-Live Hypercare Plan</h3>
+          <p>30-day hypercare checklist with daily/weekly support cadence, issue triage criteria, and sign-off milestones.</p>
+          <span class="meta">0032 · Checklist</span>
+          <span class="arrow">→</span>
+        </a>
+
+        <a class="resource-card" href="/lab/0009-uat-script-200-users-ago">
+          <span class="resource-kind">Checklist</span>
+          <h3>UAT Test Script Template</h3>
+          <p>Battle-tested user acceptance testing script with pass/fail criteria, tester instructions, and defect logging format.</p>
+          <span class="meta">0009 · Template</span>
+          <span class="arrow">→</span>
+        </a>
+
+      </div>
+    </div>
+
+    <!-- CHEATSHEETS -->
+    <div class="category">
+      <div class="section-label">Cheatsheets</div>
+      <div class="resource-grid">
+
+        <a class="resource-card" href="/lab/0011-odoo-inventory-valuation-cheatsheet">
+          <span class="resource-kind">Cheatsheet</span>
+          <h3>Odoo Inventory Valuation</h3>
+          <p>Side-by-side comparison of AVCO, FIFO, and standard price — when to use each, journal entries, and landed cost treatment.</p>
+          <span class="meta">0011 · Cheatsheet</span>
+          <span class="arrow">→</span>
+        </a>
+
+        <a class="resource-card" href="/lab/0018-mushak-63-odoo-bangladesh">
+          <span class="resource-kind">Cheatsheet</span>
+          <h3>Mushak 6.3 in Odoo — Field Map</h3>
+          <p>Every Mushak 6.3 field mapped to its Odoo source: invoice lines, tax groups, BIN fields, and challan sequence setup.</p>
+          <span class="meta">0018 · Cheatsheet</span>
+          <span class="arrow">→</span>
+        </a>
+
+        <a class="resource-card" href="/lab/0042-odoo-user-access-rights-configuration">
+          <span class="resource-kind">Cheatsheet</span>
+          <h3>Odoo User Access Rights</h3>
+          <p>Quick-reference guide for user groups, access rules, record rules, and multi-company access in Odoo 17/18.</p>
+          <span class="meta">0042 · Guide</span>
+          <span class="arrow">→</span>
+        </a>
+
+      </div>
+    </div>
+
+    <!-- GUIDES -->
+    <div class="category">
+      <div class="section-label">Planning Guides</div>
+      <div class="resource-grid">
+
+        <a class="resource-card" href="/lab/0028-odoo-implementation-roadmap-bangladesh">
+          <span class="resource-kind">Guide</span>
+          <h3>Odoo Implementation Roadmap</h3>
+          <p>Phase-by-phase roadmap from discovery to hypercare — with week-by-week task breakdown and stakeholder milestones.</p>
+          <span class="meta">0028 · Guide</span>
+          <span class="arrow">→</span>
+        </a>
+
+        <a class="resource-card" href="/lab/0043-as-is-to-be-process-mapping-erp">
+          <span class="resource-kind">Guide</span>
+          <h3>As-Is / To-Be Process Mapping</h3>
+          <p>How to document current-state processes and design the future-state configuration before a single screen is touched.</p>
+          <span class="meta">0043 · Guide</span>
+          <span class="arrow">→</span>
+        </a>
+
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<footer>
+  <div class="shell">
+    <div class="foot">
+      <span>© 2026 Mehedi Hasan · Resources</span>
+      <span><a href="/lab/">↑ Back to lab</a></span>
+    </div>
+  </div>
+</footer>
+
+<script src="/whatsapp.js" defer></script>
+<script src="/scroll-top.js" defer></script>
+<script>
+  // Theme persistence
+  (function(){
+    if(localStorage.getItem('mh-theme')==='light')
+      document.documentElement.setAttribute('data-theme','light');
+  })();
+
+  // Theme toggle
+  (function(){
+    function init(){
+      var navInner = document.querySelector('.nav-inner');
+      if(!navInner) return;
+      var btn = document.createElement('button');
+      btn.className = 'theme-toggle';
+      btn.setAttribute('aria-label','Toggle light/dark theme');
+      btn.innerHTML =
+        '<svg class="icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>' +
+        '<svg class="icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
+      var backLink = navInner.querySelector('.back-link');
+      if(backLink) navInner.insertBefore(btn, backLink);
+      else navInner.appendChild(btn);
+      btn.addEventListener('click', function(){
+        var isLight = document.documentElement.getAttribute('data-theme')==='light';
+        if(isLight){ document.documentElement.removeAttribute('data-theme'); localStorage.setItem('mh-theme','dark'); }
+        else { document.documentElement.setAttribute('data-theme','light'); localStorage.setItem('mh-theme','light'); }
+      });
+    }
+    if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',init);
+    else init();
+  })();
+</script>
+</body>
+</html>

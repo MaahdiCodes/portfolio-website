@@ -52,6 +52,26 @@
       { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://mhasan.me" },
       { "@type": "ListItem", "position": 2, "name": "Lab", "item": "https://mhasan.me/#lab" },
       { "@type": "ListItem", "position": 3, "name": "Odoo UAT Script Guide", "item": "https://mhasan.me/lab/0009-uat-script-200-users-ago" }
+    ]  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What should be included in an Odoo UAT test script?",
+        "acceptedAnswer": { "@type": "Answer", "text": "An effective Odoo UAT script should cover: test case ID, module being tested, prerequisite setup steps, step-by-step instructions for the tester, expected result, actual result field, pass/fail status, and defect reference. Organise test cases by business process — not by Odoo menu — so non-technical users can follow along without ERP knowledge." }
+      },
+      {
+        "@type": "Question",
+        "name": "How many test cases do you need for Odoo UAT?",
+        "acceptedAnswer": { "@type": "Answer", "text": "A typical Odoo UAT for a Bangladesh manufacturer with 4-6 modules requires 80-150 test cases covering core happy paths plus 20-30% edge cases. Each module should have at least one end-to-end scenario (e.g., purchase order to vendor payment). A test coverage matrix ensures no critical business process is missed." }
+      },
+      {
+        "@type": "Question",
+        "name": "Who should perform UAT testing in an Odoo project?",
+        "acceptedAnswer": { "@type": "Answer", "text": "UAT must be performed by actual end users — the people who will use the system daily — not by the implementation consultant or IT team. The consultant's role during UAT is to observe, answer questions, and log defects, not to execute the test cases." }
+      }
     ]
   }
 ]
@@ -235,6 +255,7 @@
     </div>
   </div>
 </footer>
+<script src="_utils.js" defer></script>
 <script src="_toc.js" defer></script>
 <script src="/whatsapp.js" defer></script>
 <script src="/scroll-top.js" defer></script>

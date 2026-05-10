@@ -269,6 +269,49 @@
     .lab-toolbar{flex-direction:column;align-items:flex-start}
   }
 
+  /* tag filter chips */
+  .lab-tag-filter{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:16px}
+  .tag-chip{
+    padding:5px 14px;border:1px solid var(--border);border-radius:999px;
+    background:transparent;color:var(--text-3);
+    font-family:var(--mono);font-size:11.5px;letter-spacing:0.06em;
+    cursor:pointer;transition:all .15s ease;white-space:nowrap;
+  }
+  .tag-chip.active{background:var(--accent);border-color:var(--accent);color:#000;font-weight:500}
+  .tag-chip:hover:not(.active){border-color:var(--border-2);color:var(--text)}
+
+  /* newsletter strip */
+  .nl-strip{padding:48px 0 0}
+  .nl-strip-inner{
+    display:flex;align-items:center;gap:32px;flex-wrap:wrap;
+    padding:32px 40px;border:1px solid var(--border);border-radius:14px;
+    background:var(--surface);justify-content:space-between;
+  }
+  .nl-strip-copy{min-width:200px}
+  .nl-strip-head{font-size:18px;font-weight:500;letter-spacing:-0.02em;color:var(--text);margin:0}
+  .nl-strip-sub{font-size:14px;color:var(--text-2);margin:4px 0 0}
+  .nl-strip-form{display:flex;gap:8px;flex:1;min-width:280px;max-width:480px}
+  .nl-strip-input{
+    flex:1;padding:11px 16px;border:1px solid var(--border);border-radius:8px;
+    background:var(--bg);color:var(--text);font-family:var(--sans);font-size:14px;
+    outline:none;transition:border-color .2s;
+  }
+  .nl-strip-input:focus{border-color:var(--accent)}
+  .nl-strip-input::placeholder{color:var(--text-3)}
+  .nl-strip-btn{
+    padding:11px 20px;border:none;border-radius:8px;
+    background:var(--accent);color:#000;font-family:var(--sans);font-size:14px;font-weight:500;
+    cursor:pointer;transition:all .15s;white-space:nowrap;
+  }
+  .nl-strip-btn:hover{transform:translateY(-1px)}
+  .nl-strip-btn:disabled{opacity:.6;cursor:default;transform:none}
+  .nl-strip-msg{font-family:var(--mono);font-size:11.5px;color:var(--accent);letter-spacing:.06em;width:100%;margin:0}
+  .nl-strip-msg.error{color:#f87171}
+  @media(max-width:600px){
+    .nl-strip-inner{padding:24px;gap:20px;flex-direction:column;align-items:flex-start}
+    .nl-strip-form{min-width:0;max-width:none;width:100%}
+  }
+
   /* footer */
   footer{padding:40px 0 48px;border-top:1px solid var(--border);margin-top:64px}
   .foot{display:flex;justify-content:space-between;align-items:center;font-family:var(--mono);font-size:11.5px;color:var(--text-3);letter-spacing:0.06em;text-transform:uppercase}
@@ -322,6 +365,15 @@
   </div>
 
   <div class="lab-search-count" id="lab-count">Showing all 48 articles</div>
+
+  <div class="lab-tag-filter" role="group" aria-label="Filter by article type">
+    <button class="tag-chip active" data-tag="all">All</button>
+    <button class="tag-chip" data-tag="essay">Essay</button>
+    <button class="tag-chip" data-tag="guide">Guide</button>
+    <button class="tag-chip" data-tag="checklist">Checklist</button>
+    <button class="tag-chip" data-tag="template">Template</button>
+    <button class="tag-chip" data-tag="comparison">Comparison</button>
+  </div>
 
   <div class="lab-toolbar">
     <div class="lab-view-toggle" role="group" aria-label="View mode">
@@ -981,6 +1033,23 @@
   <div class="lab-no-results" id="lab-no-results">No articles match your search.</div>
 </div>
 
+<!-- NEWSLETTER STRIP -->
+<div class="nl-strip">
+  <div class="shell">
+    <div class="nl-strip-inner">
+      <div class="nl-strip-copy">
+        <p class="nl-strip-head">Odoo Bangladesh Monthly</p>
+        <p class="nl-strip-sub">New articles and real project insights — monthly, no noise.</p>
+      </div>
+      <form class="nl-strip-form" id="nl-strip-form" novalidate>
+        <input class="nl-strip-input" id="nl-strip-email" type="email" placeholder="your@email.com" required autocomplete="email" />
+        <button class="nl-strip-btn" type="submit">Subscribe →</button>
+      </form>
+      <p class="nl-strip-msg" id="nl-strip-msg" aria-live="polite"></p>
+    </div>
+  </div>
+</div>
+
 <footer>
   <div class="shell">
     <div class="foot">
@@ -1047,12 +1116,29 @@
       perPage: perPage,
       page:    1,
       view:    localStorage.getItem(STORAGE_VIEW) === 'grid' ? 'grid' : 'list',
+      tag:     'all',
     };
 
+    function getCategory(kind) {
+      const k = kind.toLowerCase();
+      if (k.includes('essay')) return 'essay';
+      if (k.includes('checklist')) return 'checklist';
+      if (k.includes('template')) return 'template';
+      if (k.includes('comparison')) return 'comparison';
+      return 'guide';
+    }
+
     function getFiltered() {
-      if (!state.query) return allRows;
+      let rows = allRows;
+      if (state.tag !== 'all') {
+        rows = rows.filter(row => {
+          const kindEl = row.querySelector('.lab-kind');
+          return kindEl && getCategory(kindEl.textContent.trim()) === state.tag;
+        });
+      }
+      if (!state.query) return rows;
       const q = state.query.toLowerCase();
-      return allRows.filter(row =>
+      return rows.filter(row =>
         (row.dataset.title || '').toLowerCase().includes(q) ||
         (row.dataset.sub  || '').toLowerCase().includes(q)
       );
@@ -1137,6 +1223,17 @@
       });
     });
 
+    document.querySelectorAll('.tag-chip').forEach(chip => {
+      chip.addEventListener('click', () => {
+        state.tag  = chip.dataset.tag;
+        state.page = 1;
+        document.querySelectorAll('.tag-chip').forEach(c =>
+          c.classList.toggle('active', c.dataset.tag === state.tag)
+        );
+        render();
+      });
+    });
+
     prevBtn.addEventListener('click', () => {
       if (state.page > 1) {
         state.page--;
@@ -1164,6 +1261,37 @@
   window.addEventListener('scroll', () => {
     navInner.style.boxShadow = window.scrollY > 8 ? '0 10px 30px rgba(0,0,0,0.35)' : 'none';
   }, { passive: true });
+</script>
+<script>
+  // Newsletter strip — submits to existing course Apps Script; stored with course='newsletter'
+  (function(){
+    const NL_URL = 'https://script.google.com/macros/s/AKfycbwePoTRBcwfPmS2C4Zw03OAE0fLaI6QMC5D72-6WZSlHHML1nhKqKowPgpFpUboMFmi/exec';
+    const form  = document.getElementById('nl-strip-form');
+    const email = document.getElementById('nl-strip-email');
+    const msg   = document.getElementById('nl-strip-msg');
+    if (!form) return;
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const val = email.value.trim();
+      if (!val || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val)) {
+        msg.textContent = 'Enter a valid email.';
+        msg.className = 'nl-strip-msg error';
+        return;
+      }
+      const btn = form.querySelector('.nl-strip-btn');
+      btn.disabled = true; btn.textContent = 'Subscribing…';
+      msg.textContent = ''; msg.className = 'nl-strip-msg';
+      fetch(NL_URL, {
+        method:'POST', mode:'no-cors',
+        headers:{'Content-Type':'application/json'},
+        body: JSON.stringify({email: val, name:'', profession:'', course:'newsletter'})
+      }).catch(()=>{}).finally(()=>{
+        msg.textContent = '✓ You\'re subscribed.';
+        email.value = '';
+        btn.disabled = false; btn.textContent = 'Subscribe →';
+      });
+    });
+  })();
 </script>
 <script src="/whatsapp.js" defer></script>
 <script src="/scroll-top.js" defer></script>

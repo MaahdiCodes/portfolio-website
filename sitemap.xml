@@ -4,7 +4,7 @@
   <!-- Target: Odoo ERP Consultant Bangladesh, Odoo consultant Bangladesh -->
   <url>
     <loc>https://mhasan.me/</loc>
-    <lastmod>2026-05-08</lastmod>
+    <lastmod>2026-05-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -29,6 +29,14 @@
   <url>
     <loc>https://mhasan.me/start-here/</loc>
     <lastmod>2026-05-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Testimonials — client reviews + AggregateRating schema -->
+  <url>
+    <loc>https://mhasan.me/testimonials/</loc>
+    <lastmod>2026-05-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>

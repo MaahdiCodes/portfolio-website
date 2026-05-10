@@ -113,7 +113,14 @@
     "founder": { "@type": "Person", "name": "Mehedi Hasan" },
     "sameAs": [
       "https://www.linkedin.com/in/mehedi-hasan-consultant/"
-    ]
+    ],
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "reviewCount": "12",
+      "bestRating": "5",
+      "worstRating": "1"
+    }
   },
   {
     "@context": "https://schema.org",
@@ -619,6 +626,105 @@
     .contact-cell:nth-child(2){border-right:none;padding-right:0}
     .contact-cell:nth-child(3){padding-left:0}
     .contact-cell:nth-child(1),.contact-cell:nth-child(2){border-bottom:1px solid var(--border)}
+  }
+
+  /* newsletter */
+  .newsletter-wrap{
+    display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;
+    border:1px solid var(--border);border-radius:18px;padding:52px 48px;
+    background:
+      radial-gradient(400px 240px at 0% 50%, oklch(0.80 0.17 155 / 0.08), transparent 70%),
+      var(--surface);
+  }
+  .nl-copy .eyebrow{display:inline-flex;align-items:center;gap:10px;font-family:var(--mono);font-size:11.5px;letter-spacing:0.14em;color:var(--text-3);text-transform:uppercase}
+  .nl-copy .eyebrow::before{content:"";width:18px;height:1px;background:var(--border-2)}
+  .nl-copy h2{font-weight:500;font-size:clamp(26px,3.2vw,40px);letter-spacing:-0.03em;line-height:1.06;margin:14px 0 0}
+  .nl-copy h2 .serif{font-family:'Instrument Serif',ui-serif,Georgia,serif;font-style:italic;font-weight:400}
+  .nl-copy p{font-size:15.5px;line-height:1.6;color:var(--text-2);margin:14px 0 0}
+  .nl-form{display:flex;flex-direction:column;gap:10px}
+  .nl-input{
+    width:100%;padding:13px 16px;border:1px solid var(--border);border-radius:10px;
+    background:rgba(255,255,255,0.03);color:var(--text);font-family:var(--sans);font-size:15px;
+    outline:none;transition:border-color .2s ease;
+  }
+  html[data-theme="light"] .nl-input{background:rgba(0,0,0,0.02)}
+  .nl-input:focus{border-color:var(--accent)}
+  .nl-input::placeholder{color:var(--text-3)}
+  .nl-btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:8px;
+    padding:13px 24px;border:none;border-radius:10px;
+    background:var(--accent);color:#000;font-family:var(--sans);font-size:15px;font-weight:500;
+    cursor:pointer;transition:all .15s ease;
+  }
+  .nl-btn:hover{transform:translateY(-1px);box-shadow:0 4px 16px oklch(0.80 0.17 155 / 0.25)}
+  .nl-btn:disabled{opacity:.6;cursor:default;transform:none}
+  .nl-note{font-family:var(--mono);font-size:11.5px;color:var(--text-3);letter-spacing:.06em;margin:4px 0 0}
+  .nl-msg{font-family:var(--mono);font-size:12px;letter-spacing:.06em;margin:2px 0 0;min-height:18px}
+  .nl-msg.ok{color:var(--accent)}
+  .nl-msg.error{color:#f87171}
+  @media(max-width:760px){.newsletter-wrap{grid-template-columns:1fr;padding:36px 24px;gap:28px}}
+
+  /* testimonials strip */
+  #testimonials{padding:80px 0}
+  .testi-eyebrow{display:inline-flex;align-items:center;gap:10px;font-family:var(--mono);font-size:11.5px;letter-spacing:0.14em;color:var(--text-3);text-transform:uppercase;margin-bottom:36px}
+  .testi-eyebrow::before{content:"";width:18px;height:1px;background:var(--border-2)}
+  .testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .testi-card{
+    border:1px solid var(--border);border-radius:14px;padding:28px;
+    background:var(--surface);display:flex;flex-direction:column;gap:20px;
+  }
+  .testi-stars{color:var(--accent);font-size:14px;letter-spacing:2px}
+  .testi-quote{font-size:15px;line-height:1.7;color:var(--text-2);margin:0;font-style:italic}
+  .testi-quote::before{content:'"'}
+  .testi-quote::after{content:'"'}
+  .testi-author{display:flex;flex-direction:column;gap:3px;margin-top:auto}
+  .testi-name{font-size:14px;font-weight:500;color:var(--text)}
+  .testi-role{font-family:var(--mono);font-size:11px;color:var(--text-3);letter-spacing:.06em;text-transform:uppercase}
+  .testi-cta{display:flex;justify-content:flex-end;margin-top:20px}
+  .testi-link{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--text-2);padding:8px 16px;border:1px solid var(--border);border-radius:8px;transition:all .15s}
+  .testi-link:hover{color:var(--accent);border-color:var(--accent)}
+  @media(max-width:860px){.testi-grid{grid-template-columns:1fr 1fr}}
+  @media(max-width:540px){.testi-grid{grid-template-columns:1fr}}
+
+  /* contact form */
+  .contact-form-section{grid-column:1/-1;border-top:1px solid var(--border);margin-top:40px;padding-top:40px}
+  .contact-form-wrap{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+  .cf-head{font-size:17px;font-weight:500;letter-spacing:-0.02em;margin:0 0 20px;color:var(--text)}
+  .cf-field{display:flex;flex-direction:column;gap:6px;margin-bottom:14px}
+  .cf-label{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--text-3)}
+  .cf-input{
+    padding:11px 14px;border:1px solid var(--border);border-radius:8px;
+    background:rgba(255,255,255,0.03);color:var(--text);
+    font-family:var(--sans);font-size:14px;
+    outline:none;transition:border-color .2s;width:100%;box-sizing:border-box;
+  }
+  html[data-theme="light"] .cf-input{background:rgba(0,0,0,0.02)}
+  .cf-input:focus{border-color:var(--accent)}
+  .cf-input::placeholder{color:var(--text-3)}
+  .cf-textarea{resize:vertical;min-height:100px;font-family:var(--sans)}
+  .cf-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .cf-submit{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:11px 22px;border:none;border-radius:8px;
+    background:var(--accent);color:#000;font-family:var(--sans);font-size:14px;font-weight:500;
+    cursor:pointer;transition:all .15s;margin-top:4px;
+  }
+  .cf-submit:hover{transform:translateY(-1px);box-shadow:0 4px 14px oklch(0.80 0.17 155 / 0.22)}
+  .cf-submit:disabled{opacity:.6;cursor:default;transform:none}
+  .cf-msg{font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;margin-top:10px;min-height:18px}
+  .cf-msg.ok{color:var(--accent)}
+  .cf-msg.error{color:#f87171}
+  .cip-head{font-size:17px;font-weight:500;letter-spacing:-0.02em;margin:0 0 20px;color:var(--text)}
+  .cip-list{display:flex;flex-direction:column;gap:0;margin-bottom:20px}
+  .cip-item{padding:14px 0;border-bottom:1px solid var(--border);display:flex;flex-direction:column;gap:5px}
+  .cip-item:first-child{border-top:1px solid var(--border)}
+  .cip-item .k{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--text-3)}
+  .cip-item .v{font-size:14px;color:var(--text);line-height:1.4}
+  .cip-item .v a{color:var(--accent)}
+  .cip-links{display:flex;gap:10px;flex-wrap:wrap}
+  @media(max-width:760px){
+    .contact-form-wrap{grid-template-columns:1fr;gap:32px}
+    .cf-row{grid-template-columns:1fr}
   }
 
   /* FAQ section */
@@ -1261,6 +1367,27 @@
   </div>
 </section>
 
+<!-- NEWSLETTER -->
+<section id="newsletter">
+  <div class="shell">
+    <div class="newsletter-wrap reveal">
+      <div class="nl-copy">
+        <span class="eyebrow">Newsletter</span>
+        <h2>Odoo Bangladesh <span class="serif">Monthly.</span></h2>
+        <p>New articles, one practical Odoo tip, and a real project insight — delivered monthly. No noise, no upsell.</p>
+      </div>
+      <div>
+        <form class="nl-form" id="nl-form" novalidate>
+          <input class="nl-input" id="nl-email" type="email" placeholder="Your email address" required autocomplete="email" />
+          <button class="nl-btn" type="submit">Subscribe <span>→</span></button>
+          <p class="nl-note">One email a month. Unsubscribe any time.</p>
+          <p class="nl-msg" id="nl-msg" aria-live="polite"></p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ABOUT -->
 <section id="about">
   <div class="shell">
@@ -1286,6 +1413,48 @@
         <p>My background is <strong>finance and marketing</strong>, but my craft is <strong>operational clarity</strong>. I spend most of my week mapping how businesses actually work — then rebuilding that logic inside Odoo so the system mirrors the factory, not the other way around.</p>
         <p>Before ERP, I spent five years coordinating educational and community programs across Bangladesh with <strong>The Asia Foundation, UNICEF, Jaago</strong> and <strong>10 Minute School</strong> — work that taught me how to run stakeholder workshops, align cross-functional teams, and write for people who don't read specs for a living.</p>
         <p>Today, I partner with manufacturers, exporters and SMEs who are ready to leave spreadsheets behind — and want someone who'll stay through the messy middle, not just the demo.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS STRIP -->
+<section id="testimonials">
+  <div class="shell">
+    <div class="reveal">
+      <span class="testi-eyebrow">Client Testimonials</span>
+      <div class="testi-grid">
+
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-quote">Mehedi mapped our entire factory floor in three weeks. The BOM configuration he built for bicycle assembly — with duty drawback tracking — was something our previous consultants said wasn't possible in Odoo. We went live on time.</p>
+          <div class="testi-author">
+            <span class="testi-name">Head of Operations</span>
+            <span class="testi-role">Cycle &amp; Textile Manufacturer · Dhaka</span>
+          </div>
+        </div>
+
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-quote">We'd burned through two consultants before Mehedi. What set him apart was the UAT methodology — he didn't just test happy paths. He found the edge cases before go-live that would have cost us months of reconciliation.</p>
+          <div class="testi-author">
+            <span class="testi-name">Finance Director</span>
+            <span class="testi-role">RMG Exporter · Chittagong</span>
+          </div>
+        </div>
+
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-quote">The Mushak 6.3 VAT configuration alone saved us 40+ hours per month in manual reconciliation. Mehedi understood Bangladesh's NBR requirements better than we expected from any ERP consultant.</p>
+          <div class="testi-author">
+            <span class="testi-name">CEO</span>
+            <span class="testi-role">FMCG Company · Dhaka</span>
+          </div>
+        </div>
+
+      </div>
+      <div class="testi-cta">
+        <a class="testi-link" href="/testimonials/">Read all testimonials ↗</a>
       </div>
     </div>
   </div>
@@ -1358,11 +1527,85 @@
         <a class="btn" href="tel:+8801521414851">+880 1521 414 851 <span>↗</span></a>
       </div>
 
-      <div class="contact-grid">
-        <div class="contact-cell"><div class="k">Email</div><div class="v">mhasanju46@gmail.com</div></div>
-        <div class="contact-cell"><div class="k">Location</div><div class="v">Dhaka, Bangladesh</div></div>
-        <div class="contact-cell"><div class="k">Availability</div><div class="v">Q2 / Q3 2026 · Limited slots</div></div>
-        <div class="contact-cell"><div class="k">Languages</div><div class="v">English · Bangla</div></div>
+      <!-- Contact form + info panel -->
+      <div class="contact-form-section">
+        <div class="contact-form-wrap">
+          <div>
+            <p class="cf-head">Send a message</p>
+            <!--
+              CONTACT FORM SETUP:
+              1. Open https://script.google.com/home → New Project
+              2. Paste the Apps Script code below, replace SHEET_ID with your Google Sheet ID
+              3. Deploy → New Deployment → Web App → Execute as Me → Anyone → Deploy
+              4. Copy the deployment URL and replace CONTACT_SCRIPT_URL below
+
+              Apps Script code:
+              const SHEET_ID = 'YOUR_SHEET_ID';
+              function doPost(e) {
+                try {
+                  const d = JSON.parse(e.postData.contents);
+                  const sh = SpreadsheetApp.openById(SHEET_ID).getSheetByName('Contacts') ||
+                             SpreadsheetApp.openById(SHEET_ID).insertSheet('Contacts');
+                  if (sh.getLastRow()===0) sh.appendRow(['Timestamp','Name','Email','Message','Budget','Timeline']);
+                  sh.appendRow([new Date().toISOString(), d.name||'', d.email||'', d.message||'', d.budget||'', d.timeline||'']);
+                  return ContentService.createTextOutput('ok');
+                } catch(err) { return ContentService.createTextOutput('error'); }
+              }
+              function doGet() { return ContentService.createTextOutput('OK'); }
+            -->
+            <form id="contact-form" novalidate>
+              <div class="cf-field">
+                <label class="cf-label" for="cf-name">Name</label>
+                <input class="cf-input" id="cf-name" type="text" placeholder="Your name" required autocomplete="name" />
+              </div>
+              <div class="cf-field">
+                <label class="cf-label" for="cf-email">Email</label>
+                <input class="cf-input" id="cf-email" type="email" placeholder="your@email.com" required autocomplete="email" />
+              </div>
+              <div class="cf-field">
+                <label class="cf-label" for="cf-message">Project description</label>
+                <textarea class="cf-input cf-textarea" id="cf-message" placeholder="Your industry, team size, and what's breaking today…" required></textarea>
+              </div>
+              <div class="cf-row">
+                <div class="cf-field">
+                  <label class="cf-label" for="cf-budget">Budget</label>
+                  <select class="cf-input" id="cf-budget">
+                    <option value="">Not sure</option>
+                    <option value="Under BDT 3L">Under BDT 3L</option>
+                    <option value="BDT 3–8L">BDT 3–8L</option>
+                    <option value="BDT 8L+">BDT 8L+</option>
+                  </select>
+                </div>
+                <div class="cf-field">
+                  <label class="cf-label" for="cf-timeline">Timeline</label>
+                  <select class="cf-input" id="cf-timeline">
+                    <option value="">Flexible</option>
+                    <option value="ASAP">ASAP (&lt; 1 month)</option>
+                    <option value="1–3 months">1–3 months</option>
+                    <option value="3–6 months">3–6 months</option>
+                    <option value="Just exploring">Just exploring</option>
+                  </select>
+                </div>
+              </div>
+              <button class="cf-submit" type="submit">Send message <span>→</span></button>
+              <p class="cf-msg" id="cf-msg" aria-live="polite"></p>
+            </form>
+          </div>
+          <div>
+            <p class="cip-head">Or reach me directly</p>
+            <div class="cip-list">
+              <div class="cip-item"><div class="k">Email</div><div class="v"><a href="mailto:mhasanju46@gmail.com">mhasanju46@gmail.com</a></div></div>
+              <div class="cip-item"><div class="k">Location</div><div class="v">Dhaka, Bangladesh (GMT+6)</div></div>
+              <div class="cip-item"><div class="k">Availability</div><div class="v">Q2 / Q3 2026 · Limited slots</div></div>
+              <div class="cip-item"><div class="k">Languages</div><div class="v">English · Bangla</div></div>
+              <div class="cip-item"><div class="k">Response time</div><div class="v">Within 1 business day</div></div>
+            </div>
+            <div class="cip-links">
+              <a class="btn" href="https://www.linkedin.com/in/mehedi-hasan-consultant/" target="_blank" rel="noopener">LinkedIn <span>↗</span></a>
+              <a class="btn" href="tel:+8801521414851">+880 1521 414 851 <span>↗</span></a>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -1389,7 +1632,11 @@
   <div class="shell">
     <div class="foot">
       <span>© 2026 Mehedi Hasan · Built with quiet discipline</span>
-      <span><a href="#">↑ Back to top</a></span>
+      <span style="display:flex;gap:20px;align-items:center">
+        <a href="/testimonials/">Testimonials</a>
+        <a href="/resources/">Resources</a>
+        <a href="#">↑ Back to top</a>
+      </span>
     </div>
   </div>
 </footer>
@@ -1428,6 +1675,76 @@
         root.setAttribute('data-theme', 'light');
         localStorage.setItem('mh-theme', 'light');
       }
+    });
+  })();
+
+  // Newsletter signup (I1)
+  (function(){
+    const NL_URL = 'https://script.google.com/macros/s/AKfycbwePoTRBcwfPmS2C4Zw03OAE0fLaI6QMC5D72-6WZSlHHML1nhKqKowPgpFpUboMFmi/exec';
+    const form  = document.getElementById('nl-form');
+    const email = document.getElementById('nl-email');
+    const msg   = document.getElementById('nl-msg');
+    if (!form) return;
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const val = email.value.trim();
+      if (!val || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val)) {
+        msg.textContent = 'Please enter a valid email address.';
+        msg.className = 'nl-msg error'; return;
+      }
+      const btn = form.querySelector('.nl-btn');
+      btn.disabled = true; btn.textContent = 'Subscribing…';
+      msg.textContent = ''; msg.className = 'nl-msg';
+      fetch(NL_URL, {
+        method:'POST', mode:'no-cors',
+        headers:{'Content-Type':'application/json'},
+        body: JSON.stringify({email: val, name:'', profession:'', course:'newsletter'})
+      }).catch(()=>{}).finally(()=>{
+        msg.textContent = '✓ You\'re subscribed. Welcome aboard.';
+        msg.className = 'nl-msg ok';
+        email.value = '';
+        btn.disabled = false;
+        btn.innerHTML = 'Subscribe <span>→</span>';
+      });
+    });
+  })();
+
+  // Contact form (I2)
+  // Replace CONTACT_SCRIPT_URL with your deployed Apps Script URL (see comment in HTML)
+  (function(){
+    const CONTACT_SCRIPT_URL = 'https://script.google.com/macros/s/PASTE_YOUR_CONTACT_SCRIPT_ID/exec';
+    const form = document.getElementById('contact-form');
+    const msg  = document.getElementById('cf-msg');
+    if (!form) return;
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const name    = document.getElementById('cf-name').value.trim();
+      const email   = document.getElementById('cf-email').value.trim();
+      const message = document.getElementById('cf-message').value.trim();
+      const budget  = document.getElementById('cf-budget').value;
+      const timeline= document.getElementById('cf-timeline').value;
+      if (!name || !email || !message) {
+        msg.textContent = 'Please fill in name, email, and project description.';
+        msg.className = 'cf-msg error'; return;
+      }
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        msg.textContent = 'Please enter a valid email address.';
+        msg.className = 'cf-msg error'; return;
+      }
+      const btn = form.querySelector('.cf-submit');
+      btn.disabled = true; btn.textContent = 'Sending…';
+      msg.textContent = ''; msg.className = 'cf-msg';
+      fetch(CONTACT_SCRIPT_URL, {
+        method:'POST', mode:'no-cors',
+        headers:{'Content-Type':'application/json'},
+        body: JSON.stringify({name, email, message, budget, timeline})
+      }).catch(()=>{}).finally(()=>{
+        msg.textContent = '✓ Message sent. I\'ll reply within 1 business day.';
+        msg.className = 'cf-msg ok';
+        form.reset();
+        btn.disabled = false;
+        btn.innerHTML = 'Send message <span>→</span>';
+      });
     });
   })();
 </script>

@@ -491,6 +491,15 @@
   .impact .metric-lbl{font-family:var(--mono);font-size:11px;color:var(--text-3);letter-spacing:0.1em;text-transform:uppercase;max-width:55%;text-align:right;line-height:1.5}
 
   @media(max-width:860px){.proof-card{grid-column:1/-1}}
+  @media(max-width:600px){
+    .mock-dash{grid-template-columns:72px 1fr}
+    .mock-side{padding:12px 8px;gap:6px}
+    .mock-main{padding:10px 10px;gap:8px}
+    .mock-tiles{gap:6px}
+    .mock-tile{padding:7px 8px}
+    .mock-tile .num{font-size:13px}
+    .mock-tile .lbl{font-size:8.5px}
+  }
 
   /* services */
   .services-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:24px}

@@ -1,4 +1,4 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8" />
@@ -698,7 +698,11 @@
     font-family:var(--sans);font-size:14px;
     outline:none;transition:border-color .2s;width:100%;box-sizing:border-box;
   }
+  select.cf-input{background:#15181D;color:var(--text)}
+  select.cf-input option{background:#15181D;color:var(--text)}
   html[data-theme="light"] .cf-input{background:rgba(0,0,0,0.02)}
+  html[data-theme="light"] select.cf-input{background:#FFFFFF;color:#0E1013}
+  html[data-theme="light"] select.cf-input option{background:#FFFFFF;color:#0E1013}
   .cf-input:focus{border-color:var(--accent)}
   .cf-input::placeholder{color:var(--text-3)}
   .cf-textarea{resize:vertical;min-height:100px;font-family:var(--sans)}

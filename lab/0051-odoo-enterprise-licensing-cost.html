@@ -1,0 +1,766 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description"
+    content="Odoo Enterprise licensing explained: app pricing, user counts, Odoo.sh vs self-hosted, and BDT cost estimates for Bangladesh SMEs. Read the full guide →" />
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="Mehedi Hasan" />
+  <title>Odoo Enterprise Licensing Cost | Apps & Users | Mehedi Hasan</title>
+  <link rel="canonical" href="https://mhasan.me/lab/0051-odoo-enterprise-licensing-cost" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png" />
+  <!-- Open Graph -->
+  <meta property="og:title" content="Odoo Enterprise Licensing Cost | Apps & Users | Mehedi Hasan" />
+  <meta property="og:description"
+    content="Odoo Enterprise licensing explained: app pricing, user counts, Odoo.sh vs self-hosted, and BDT cost estimates for Bangladesh SMEs." />
+  <meta property="og:url" content="https://mhasan.me/lab/0051-odoo-enterprise-licensing-cost" />
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="https://mhasan.me/assets/og-default.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:site_name" content="Mehedi Hasan | Odoo ERP Consultant" />
+  <meta property="article:author" content="https://www.linkedin.com/in/mehedi-hasan-consultant/" />
+  <meta property="article:published_time" content="2026-05-14T10:00:00+06:00" />
+  <meta property="article:modified_time" content="2026-05-14T10:00:00+06:00" />
+  <meta property="article:section" content="Odoo ERP Bangladesh" />
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Odoo Enterprise Licensing Cost | Apps & Users | Mehedi Hasan" />
+  <meta name="twitter:description"
+    content="Odoo Enterprise licensing explained: app pricing, user counts, Odoo.sh vs self-hosted, and BDT cost estimates for Bangladesh SMEs." />
+  <meta name="twitter:image" content="https://mhasan.me/assets/og-default.jpg" />
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Odoo Licensing Explained: Enterprise Apps, Users & Annual Fees",
+    "description": "Odoo Enterprise licensing explained: app pricing, user counts, Odoo.sh vs self-hosted, and BDT cost estimates for Bangladesh SMEs.",
+    "datePublished": "2026-05-14T10:00:00+06:00",
+    "dateModified": "2026-05-14T10:00:00+06:00",
+    "author": {
+      "@type": "Person",
+      "name": "Mehedi Hasan",
+      "url": "https://mhasan.me",
+      "jobTitle": "Odoo ERP Consultant & Business Analyst",
+      "sameAs": "https://www.linkedin.com/in/mehedi-hasan-consultant/"
+    },
+    "publisher": { "@type": "Person", "name": "Mehedi Hasan", "url": "https://mhasan.me" },
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://mhasan.me/lab/0051-odoo-enterprise-licensing-cost" }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://mhasan.me" },
+      { "@type": "ListItem", "position": 2, "name": "Lab", "item": "https://mhasan.me/lab/" },
+      { "@type": "ListItem", "position": 3, "name": "Odoo Enterprise Licensing Cost", "item": "https://mhasan.me/lab/0051-odoo-enterprise-licensing-cost" }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How does Odoo Enterprise licensing work?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Odoo Enterprise uses an app-based subscription model. You pay per app (module) per user per year. Each app has a different price tier — accounting and manufacturing cost more than simpler apps. There is no flat 'per seat' price — your annual cost depends on which specific apps each user needs access to. Users who only need to view reports may qualify for lower-tier access in some app categories."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between Odoo.sh and self-hosted?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Odoo.sh is Odoo's own cloud hosting platform. It includes automated backups, staging environments, and one-click version upgrades. Self-hosted means you run Odoo on your own server — on-premise or on a third-party cloud like AWS or DigitalOcean. Odoo.sh costs additional subscription fees but reduces your IT management burden. For Bangladesh companies without strong IT staff, Odoo.sh is usually the better choice despite the higher cost."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How much does Odoo Enterprise cost for a 20-user Bangladesh company?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "For a 20-user Bangladesh manufacturer using Accounting, Inventory, Manufacturing, Purchase, and Sales, the annual Odoo Enterprise license is approximately USD 2,500–4,000 (BDT 2.75–4.4 lakh at current rates). This is the license only — implementation, customization, and support are separate costs. The exact amount depends on your Odoo partner agreement and which specific apps are in scope."
+        }
+      }
+    ]
+  }
+]
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap">
+  <link rel="stylesheet" href="_styles.css">
+  <style>
+    .pull {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: clamp(20px, 2.8vw, 30px);
+      line-height: 1.3;
+      color: var(--text);
+      margin: 48px 0;
+      max-width: 26ch;
+      letter-spacing: -0.01em;
+    }
+    .pull::before {
+      content: "";
+      display: block;
+      width: 36px;
+      height: 1px;
+      background: var(--accent);
+      margin-bottom: 18px;
+    }
+    .license-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13.5px;
+      margin: 24px 0;
+    }
+    .license-table th {
+      background: var(--surface);
+      color: var(--accent);
+      font-family: var(--mono);
+      font-size: 10.5px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 10px 14px;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+    }
+    .license-table td {
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      color: var(--text-2);
+      vertical-align: top;
+      line-height: 1.5;
+    }
+    .license-table tr:last-child td { border-bottom: none; }
+    .license-table .num { color: var(--accent); font-family: var(--mono); font-size: 13px; white-space: nowrap; }
+    .license-table .total-row td {
+      background: var(--surface);
+      color: var(--text);
+      font-weight: 600;
+      border-top: 2px solid var(--accent);
+    }
+    .license-table .group-row td {
+      background: var(--bg-1);
+      color: var(--text-3);
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 7px 14px;
+    }
+    .size-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin: 24px 0;
+    }
+    @media(max-width: 760px) { .size-grid { grid-template-columns: 1fr; } }
+    .size-card {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .size-card-head {
+      background: var(--surface);
+      padding: 16px 18px;
+      border-bottom: 1px solid var(--border);
+    }
+    .size-card-head .sc-label {
+      font-family: var(--mono);
+      font-size: 10px;
+      color: var(--text-3);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+    .size-card-head h4 { margin: 0; font-size: 15px; color: var(--text); }
+    .size-card-body { padding: 16px 18px; }
+    .size-card-body .sc-row { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 8px; font-size: 13.5px; }
+    .size-card-body .sc-row:last-child { margin-bottom: 0; }
+    .size-card-body .sc-key { color: var(--text-3); }
+    .size-card-body .sc-val { color: var(--accent); font-family: var(--mono); font-size: 13px; }
+    .size-card-body .sc-total { color: var(--text); font-weight: 600; }
+    .compare-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin: 24px 0;
+    }
+    @media(max-width: 640px) { .compare-grid { grid-template-columns: 1fr; } }
+    .compare-card {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .compare-card.featured { border-color: var(--accent); }
+    .compare-card-head {
+      padding: 16px 20px;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+    }
+    .compare-card.featured .compare-card-head { background: var(--accent-dim); }
+    .compare-card-head h3 { margin: 0 0 4px; font-size: 16px; color: var(--text); }
+    .compare-card-head .cc-price { font-family: var(--mono); font-size: 14px; color: var(--accent); }
+    .compare-card-body { padding: 16px 20px; }
+    .compare-card-body ul { margin: 0; padding-left: 18px; }
+    .compare-card-body li { color: var(--text-2); font-size: 13.5px; margin-bottom: 6px; line-height: 1.4; }
+    .odo-sh-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13.5px;
+      margin: 24px 0;
+    }
+    .odo-sh-table th {
+      background: var(--surface);
+      color: var(--accent);
+      font-family: var(--mono);
+      font-size: 10.5px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 10px 14px;
+      border-bottom: 1px solid var(--border);
+    }
+    .odo-sh-table td {
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      color: var(--text-2);
+      vertical-align: top;
+    }
+    .odo-sh-table tr:last-child td { border-bottom: none; }
+    .odo-sh-table .num { color: var(--accent); font-family: var(--mono); }
+    .tip-box {
+      border: 1px solid var(--border-2);
+      border-left: 3px solid var(--accent);
+      border-radius: 0 8px 8px 0;
+      padding: 16px 20px;
+      margin: 20px 0;
+      background: var(--surface);
+    }
+    .tip-box .tip-label {
+      font-family: var(--mono);
+      font-size: 10px;
+      color: var(--accent);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .tip-box p { margin: 0; color: var(--text-2); font-size: 14.5px; line-height: 1.6; }
+    .warn-box {
+      border: 1px solid rgba(255, 160, 50, 0.3);
+      border-left: 3px solid rgba(255, 160, 50, 0.8);
+      border-radius: 0 8px 8px 0;
+      padding: 16px 20px;
+      margin: 20px 0;
+      background: rgba(255, 160, 50, 0.05);
+    }
+    .warn-box .warn-label {
+      font-family: var(--mono);
+      font-size: 10px;
+      color: rgba(255, 160, 50, 0.9);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .warn-box p { margin: 0; color: var(--text-2); font-size: 14.5px; line-height: 1.6; }
+  </style>
+</head>
+
+<body>
+  <div class="grid-bg"></div>
+
+  <header class="nav">
+    <div class="shell">
+      <div class="nav-inner">
+        <a class="brand" href="../">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span class="brand-name"><b>Mehedi Hasan</b><em>ERP · Business Analyst</em></span>
+        </a>
+        <a class="back-link" href="../#lab">← Back to Lab</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="post-head">
+    <div class="shell">
+      <span class="eyebrow">Technical Lab · 0051</span>
+      <h1>Odoo Enterprise Licensing — <span class="serif">understanding what you're paying for.</span></h1>
+      <p class="lede">Odoo's pricing model is fundamentally different from traditional ERP software, and most Bangladesh buyers do not understand it until the renewal invoice arrives. This guide explains exactly how app-based licensing works, how to calculate your user count correctly, what Odoo.sh costs versus self-hosting, and what realistic annual fees look like for different company sizes in Bangladesh.</p>
+      <div class="post-meta">
+        <span class="chip accent">Guide</span>
+        <span class="chip">Licensing</span>
+        <span class="chip">Finance</span>
+        <span class="chip">Procurement</span>
+      </div>
+      <div class="byline">
+        <span>By<b><a href="https://www.linkedin.com/in/mehedi-hasan-consultant/" style="color:var(--accent)" rel="author">Mehedi Hasan</a></b></span>
+        <span>Published<b>May 2026</b></span>
+        <span>Read time<b>12 minutes</b></span>
+        <span>Form<b>Reference Guide</b></span>
+        <span>Scope<b>Licensing &amp; Procurement</b></span>
+      </div>
+    </div>
+  </section>
+
+  <article class="post">
+    <aside class="toc">
+      <div class="toc-k">In this guide</div>
+      <ol>
+        <li><a href="#model">How Odoo's App-Based Pricing Works</a></li>
+        <li><a href="#apps">Enterprise vs Community: What's Free</a></li>
+        <li><a href="#user-count">The User Count Calculation</a></li>
+        <li><a href="#app-pricing">Module-by-Module Pricing Guide</a></li>
+        <li><a href="#odoo-sh">Odoo.sh Hosting Tiers</a></li>
+        <li><a href="#self-hosted">Self-Hosted vs Odoo.sh Cost Comparison</a></li>
+        <li><a href="#bd-examples">Bangladesh SME Cost Examples</a></li>
+        <li><a href="#renewal">Annual Renewal &amp; Upgrade Costs</a></li>
+        <li><a href="#negotiation">Negotiating Your Odoo Contract</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ol>
+    </aside>
+
+    <div class="body">
+
+      <h2 id="model">How Odoo's App-Based Pricing Works</h2>
+      <p>Odoo Enterprise does not charge a flat "per seat" fee like Microsoft 365 or Salesforce. Instead, it charges per <strong>app</strong> per <strong>user</strong> per <strong>year</strong>. This means your annual license cost depends on:</p>
+      <ol>
+        <li><strong>Which apps you use</strong> — Accounting costs more than Inventory. Manufacturing costs more than HR. Each app has its own price tier.</li>
+        <li><strong>How many users access each app</strong> — Only users who actively access a specific app are counted for that app's license. A warehouse worker who uses Inventory but not Accounting is not counted in the Accounting user count.</li>
+        <li><strong>Whether you use Odoo.sh or self-host</strong> — Odoo.sh hosting is an additional cost on top of app licensing.</li>
+      </ol>
+
+      <p>This structure has a crucial implication: your total license cost is the sum of (App Price × Users for that App) across all your apps. It is not Users × One Price. This is why two companies with the same number of employees can have very different Odoo bills.</p>
+
+      <div class="warn-box">
+        <div class="warn-label">Important Note on Pricing</div>
+        <p>Odoo's official pricing is set by Odoo SA and changes periodically. Partners in Bangladesh may offer different rates depending on their partner tier and regional agreements. The figures in this guide are illustrative based on 2025–2026 market rates. Always request a formal quote from your partner for current pricing.</p>
+      </div>
+
+      <p class="pull">Two companies with 50 employees each can have Odoo bills that differ by BDT 3–5 lakh per year, simply because of which modules they use and how many users touch each one.</p>
+
+      <h2 id="apps">Enterprise vs Community: What You Get for Free</h2>
+      <p>Odoo Community Edition is genuinely open-source and genuinely free. The distinction is not "free vs. paid" — it is "community features vs. enterprise features." For most serious Bangladesh manufacturers, Enterprise is necessary. But understanding exactly what Community lacks helps you evaluate whether you truly need Enterprise or whether Community with a few targeted customizations could work.</p>
+
+      <div class="compare-grid">
+        <div class="compare-card">
+          <div class="compare-card-head">
+            <h3>Community Edition</h3>
+            <div class="cc-price">Free (open source)</div>
+          </div>
+          <div class="compare-card-body">
+            <ul>
+              <li>Basic Sales, Purchase, Inventory</li>
+              <li>Basic Accounting (no analytic, no lock dates)</li>
+              <li>Basic Manufacturing (no MRP II, no workcenter capacity)</li>
+              <li>Basic HR (no payroll)</li>
+              <li>Basic CRM</li>
+              <li>Standard website / ecommerce</li>
+              <li>Community-only apps from Odoo App Store</li>
+              <li>No Odoo.sh (must self-host)</li>
+              <li>No official Odoo support</li>
+            </ul>
+          </div>
+        </div>
+        <div class="compare-card featured">
+          <div class="compare-card-head">
+            <h3>Enterprise Edition</h3>
+            <div class="cc-price">Subscription — per app per user/year</div>
+          </div>
+          <div class="compare-card-body">
+            <ul>
+              <li>Full Accounting: multi-currency, lock dates, budget, analytic</li>
+              <li>Full Manufacturing: MRP, work centre capacity, quality</li>
+              <li>Payroll: salary rules, PF, gratuity, payslips</li>
+              <li>Advanced Inventory: multi-step routes, serial/lot tracking</li>
+              <li>Sign, Studio, IoT Box</li>
+              <li>Consolidated financial reports (multi-company)</li>
+              <li>VoIP, SMS marketing, live chat</li>
+              <li>Odoo.sh hosting option</li>
+              <li>Official Odoo support contracts</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <p>For the full feature comparison with a Bangladesh lens, see the <a href="0024-odoo-community-vs-enterprise-bangladesh" style="color:var(--accent)">Odoo Community vs Enterprise comparison guide</a>.</p>
+
+      <h2 id="user-count">The User Count Calculation</h2>
+      <p>Counting users sounds simple. It is not. Bangladesh companies often significantly miscalculate their user count — usually underestimating — which leads to a nasty surprise when the license invoice arrives.</p>
+
+      <p><strong>What counts as a "user" for licensing purposes?</strong></p>
+      <ul>
+        <li>Any person with their own Odoo login who can access an Enterprise app counts as a licensed user for that app.</li>
+        <li>Shared logins are prohibited under Odoo's terms and void the license. Each individual must have their own login.</li>
+        <li>Users who only use Community modules (e.g., a basic website) do not count toward Enterprise licensing.</li>
+        <li>External users (portal users) — customers and vendors who can view their orders, invoices, and deliveries through the customer portal — are <strong>free and unlimited</strong> in Odoo Enterprise. This is a significant value point for B2B companies.</li>
+      </ul>
+
+      <p><strong>Named users vs. concurrent users:</strong> Odoo uses named user licensing, not concurrent user licensing. If you have 30 employees who could log in, you need 30 licenses — even if only 10 of them are ever logged in simultaneously. This matters because it means you cannot optimize by restricting login hours.</p>
+
+      <div class="tip-box">
+        <div class="tip-label">User Count Optimization</div>
+        <p>Warehouse workers who only need to confirm deliveries or do stock counts can sometimes use Odoo's barcode app with a shared terminal login — check with your partner whether this configuration qualifies for a lower user tier or shared access arrangement under your license agreement.</p>
+      </div>
+
+      <h2 id="app-pricing">Module-by-Module Pricing Guide</h2>
+      <p>Odoo groups apps into pricing tiers. The following table reflects approximate 2025–2026 pricing as a reference. Actual prices may vary by partner agreement and regional pricing.</p>
+
+      <table class="license-table">
+        <thead>
+          <tr>
+            <th>App / Module</th>
+            <th>Tier</th>
+            <th>~USD/User/Year</th>
+            <th>~BDT/User/Year</th>
+            <th>Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="group-row">
+            <td colspan="5">Core Business Apps</td>
+          </tr>
+          <tr>
+            <td>Accounting / Invoicing</td>
+            <td>Standard</td>
+            <td class="num">~$168</td>
+            <td class="num">~BDT 18,480</td>
+            <td>Most-used, includes full accounting</td>
+          </tr>
+          <tr>
+            <td>Sales</td>
+            <td>Standard</td>
+            <td class="num">~$84</td>
+            <td class="num">~BDT 9,240</td>
+            <td>Quotations, orders, pricelists</td>
+          </tr>
+          <tr>
+            <td>CRM</td>
+            <td>Standard</td>
+            <td class="num">~$84</td>
+            <td class="num">~BDT 9,240</td>
+            <td>Pipeline, leads, activities</td>
+          </tr>
+          <tr>
+            <td>Purchase</td>
+            <td>Standard</td>
+            <td class="num">~$84</td>
+            <td class="num">~BDT 9,240</td>
+            <td>RFQ, PO, 3-way match</td>
+          </tr>
+          <tr>
+            <td>Inventory</td>
+            <td>Standard</td>
+            <td class="num">~$84</td>
+            <td class="num">~BDT 9,240</td>
+            <td>Multi-warehouse, routes, serial/lot</td>
+          </tr>
+          <tr class="group-row">
+            <td colspan="5">Manufacturing &amp; Operations</td>
+          </tr>
+          <tr>
+            <td>Manufacturing</td>
+            <td>Standard</td>
+            <td class="num">~$168</td>
+            <td class="num">~BDT 18,480</td>
+            <td>MRP, work centres, routings</td>
+          </tr>
+          <tr>
+            <td>Quality</td>
+            <td>Standard</td>
+            <td class="num">~$84</td>
+            <td class="num">~BDT 9,240</td>
+            <td>Quality checks, alerts</td>
+          </tr>
+          <tr>
+            <td>Maintenance</td>
+            <td>Standard</td>
+            <td class="num">~$84</td>
+            <td class="num">~BDT 9,240</td>
+            <td>Preventive maintenance, equipment</td>
+          </tr>
+          <tr class="group-row">
+            <td colspan="5">HR &amp; Payroll</td>
+          </tr>
+          <tr>
+            <td>Payroll</td>
+            <td>Standard</td>
+            <td class="num">~$84</td>
+            <td class="num">~BDT 9,240</td>
+            <td>Salary rules, payslips (+ Bangladesh localization cost)</td>
+          </tr>
+          <tr>
+            <td>Employees / HR</td>
+            <td>Standard</td>
+            <td class="num">~$84</td>
+            <td class="num">~BDT 9,240</td>
+            <td>Employee records, contracts</td>
+          </tr>
+          <tr>
+            <td>Time Off / Leaves</td>
+            <td>Standard</td>
+            <td class="num">~$84</td>
+            <td class="num">~BDT 9,240</td>
+            <td>Leave types, approval workflows</td>
+          </tr>
+          <tr class="group-row">
+            <td colspan="5">Productivity &amp; Reporting</td>
+          </tr>
+          <tr>
+            <td>Studio</td>
+            <td>Premium</td>
+            <td class="num">~$240</td>
+            <td class="num">~BDT 26,400</td>
+            <td>No-code form/report customization</td>
+          </tr>
+          <tr>
+            <td>Sign</td>
+            <td>Standard</td>
+            <td class="num">~$84</td>
+            <td class="num">~BDT 9,240</td>
+            <td>E-signatures</td>
+          </tr>
+          <tr>
+            <td>IoT Box</td>
+            <td>Standard</td>
+            <td class="num">~$84</td>
+            <td class="num">~BDT 9,240</td>
+            <td>Barcode scanner, scale integration</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p style="font-size:13px;color:var(--text-3);">BDT conversions use USD 1 = BDT 110. Actual exchange rates vary. All prices are approximate — verify with your Odoo partner.</p>
+
+      <p><strong>Key insight:</strong> The per-user cost varies dramatically by app. A user who only needs Accounting pays ~$168/year. A user who needs Accounting + Manufacturing + Inventory pays ~$420/year. A user on all major modules can reach $600+ per year. Plan your user list against their actual module access needs before finalizing a user count.</p>
+
+      <h2 id="odoo-sh">Odoo.sh Hosting Tiers</h2>
+      <p>Odoo.sh is Odoo's managed cloud hosting platform. It runs on Google Cloud Platform (GCP) and provides automated backups, one-click staging environments, integrated GitHub CI/CD, and monitoring. For Bangladesh companies without a dedicated IT team, it significantly reduces operational risk.</p>
+
+      <table class="odo-sh-table">
+        <thead>
+          <tr>
+            <th>Plan</th>
+            <th>~USD/Month</th>
+            <th>Workers</th>
+            <th>Staging Branches</th>
+            <th>Suited For</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>One</td>
+            <td class="num">~$39/mo</td>
+            <td>1</td>
+            <td>1</td>
+            <td>Very small teams, light usage</td>
+          </tr>
+          <tr>
+            <td>Standard</td>
+            <td class="num">~$79/mo</td>
+            <td>2</td>
+            <td>3</td>
+            <td>Up to 30 concurrent users</td>
+          </tr>
+          <tr>
+            <td>Custom</td>
+            <td class="num">~$239/mo+</td>
+            <td>4+</td>
+            <td>5+</td>
+            <td>Heavy manufacturing, 50+ users</td>
+          </tr>
+        </tbody>
+      </table>
+      <p style="font-size:13px;color:var(--text-3);">Prices are approximate. Odoo.sh pricing may change. Check odoo.sh for current rates.</p>
+
+      <p>For Bangladesh companies choosing Odoo.sh, the annual hosting cost in BDT adds: BDT 51,480–3,16,800/year (at $39–$239/month at BDT 110/USD). This is on top of the app license cost.</p>
+
+      <h2 id="self-hosted">Self-Hosted vs Odoo.sh: Full Cost Comparison</h2>
+      <p>The choice between self-hosting and Odoo.sh is not just about cost — it is about operational risk and IT capability.</p>
+
+      <div class="compare-grid">
+        <div class="compare-card">
+          <div class="compare-card-head">
+            <h3>Self-Hosted</h3>
+            <div class="cc-price">BDT 1.2–4 lakh/year total infrastructure</div>
+          </div>
+          <div class="compare-card-body">
+            <ul>
+              <li>Lower annual cost if you have IT staff</li>
+              <li>Full control over server configuration</li>
+              <li>Data stays in your physical location</li>
+              <li>Requires Linux server expertise</li>
+              <li>Manual backup management — your responsibility</li>
+              <li>Version upgrades are manual and complex</li>
+              <li>Internet dependency for cloud servers (AWS/DO)</li>
+              <li>Power outage risk for on-premise servers</li>
+            </ul>
+          </div>
+        </div>
+        <div class="compare-card featured">
+          <div class="compare-card-head">
+            <h3>Odoo.sh</h3>
+            <div class="cc-price">BDT 51,000–3.2 lakh/year hosting</div>
+          </div>
+          <div class="compare-card-body">
+            <ul>
+              <li>Automated daily backups with point-in-time restore</li>
+              <li>One-click staging environments for testing customizations</li>
+              <li>Integrated with GitHub for code deployment</li>
+              <li>Odoo manages upgrades and server maintenance</li>
+              <li>No need for your own IT staff for server management</li>
+              <li>Monitoring and alerting included</li>
+              <li>Servers in Google Cloud — enterprise reliability</li>
+              <li>Higher annual cost but predictable</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <p><strong>Recommendation for Bangladesh:</strong> For companies without a dedicated Linux-capable sysadmin, Odoo.sh is worth the premium. The risk of a self-hosted database going down during month-end close — because nobody configured automated backups, or because a power outage corrupted the PostgreSQL data files — costs far more than the Odoo.sh subscription.</p>
+
+      <h2 id="bd-examples">Bangladesh SME Cost Examples</h2>
+      <p>These examples show realistic annual Odoo Enterprise license costs for different company profiles in Bangladesh. All figures use approximate 2025–2026 pricing.</p>
+
+      <div class="size-grid">
+        <div class="size-card">
+          <div class="size-card-head">
+            <div class="sc-label">Small Company</div>
+            <h4>Trading Company — 20 Users</h4>
+          </div>
+          <div class="size-card-body">
+            <div class="sc-row"><span class="sc-key">Apps</span><span class="sc-val">Accounting, Sales, Purchase, Inventory</span></div>
+            <div class="sc-row"><span class="sc-key">Accounting users</span><span class="sc-val">4 × $168 = $672</span></div>
+            <div class="sc-row"><span class="sc-key">Other app users</span><span class="sc-val">20 × $84 (avg) = $1,680</span></div>
+            <div class="sc-row"><span class="sc-key">Annual license</span><span class="sc-val">~$2,352</span></div>
+            <div class="sc-row"><span class="sc-key">Odoo.sh Standard</span><span class="sc-val">$79 × 12 = $948</span></div>
+            <div class="sc-row" style="border-top:1px solid var(--border);padding-top:8px;margin-top:8px;"><span class="sc-key sc-total">Annual Total (BDT)</span><span class="sc-val sc-total">~BDT 3.6 lakh</span></div>
+          </div>
+        </div>
+        <div class="size-card">
+          <div class="size-card-head">
+            <div class="sc-label">Medium Company</div>
+            <h4>Garment Manufacturer — 40 Users</h4>
+          </div>
+          <div class="size-card-body">
+            <div class="sc-row"><span class="sc-key">Apps</span><span class="sc-val">Accounting, Sales, Purchase, Inventory, Manufacturing, HR, Payroll</span></div>
+            <div class="sc-row"><span class="sc-key">Accounting users</span><span class="sc-val">6 × $168 = $1,008</span></div>
+            <div class="sc-row"><span class="sc-key">Manufacturing users</span><span class="sc-val">15 × $168 = $2,520</span></div>
+            <div class="sc-row"><span class="sc-key">Other app users</span><span class="sc-val">40 × $84 (avg) = $3,360</span></div>
+            <div class="sc-row"><span class="sc-key">Annual license</span><span class="sc-val">~$6,888</span></div>
+            <div class="sc-row"><span class="sc-key">Odoo.sh Custom</span><span class="sc-val">$239 × 12 = $2,868</span></div>
+            <div class="sc-row" style="border-top:1px solid var(--border);padding-top:8px;margin-top:8px;"><span class="sc-key sc-total">Annual Total (BDT)</span><span class="sc-val sc-total">~BDT 10.7 lakh</span></div>
+          </div>
+        </div>
+        <div class="size-card">
+          <div class="size-card-head">
+            <div class="sc-label">Multi-Site Company</div>
+            <h4>Pharma Manufacturer — 80 Users</h4>
+          </div>
+          <div class="size-card-body">
+            <div class="sc-row"><span class="sc-key">Apps</span><span class="sc-val">All core + Quality + Maintenance + Studio</span></div>
+            <div class="sc-row"><span class="sc-key">Accounting users</span><span class="sc-val">10 × $168 = $1,680</span></div>
+            <div class="sc-row"><span class="sc-key">Manufacturing users</span><span class="sc-val">30 × $168 = $5,040</span></div>
+            <div class="sc-row"><span class="sc-key">Studio users</span><span class="sc-val">5 × $240 = $1,200</span></div>
+            <div class="sc-row"><span class="sc-key">Other app users</span><span class="sc-val">80 × $84 (avg) = $6,720</span></div>
+            <div class="sc-row"><span class="sc-key">Annual license</span><span class="sc-val">~$14,640</span></div>
+            <div class="sc-row"><span class="sc-key">Odoo.sh Custom</span><span class="sc-val">$239 × 12 = $2,868</span></div>
+            <div class="sc-row" style="border-top:1px solid var(--border);padding-top:8px;margin-top:8px;"><span class="sc-key sc-total">Annual Total (BDT)</span><span class="sc-val sc-total">~BDT 19.3 lakh</span></div>
+          </div>
+        </div>
+      </div>
+
+      <p style="font-size:13px;color:var(--text-3);margin-top:4px;">These are estimates based on approximate pricing. Real quotes will differ based on your partner's tier and current Odoo pricing.</p>
+
+      <h2 id="renewal">Annual Renewal &amp; Version Upgrade Costs</h2>
+      <p>Odoo Enterprise licenses are annual subscriptions. At renewal:</p>
+      <ul>
+        <li>You continue on the same Odoo version at approximately the same price (subject to annual price increases, typically 5–10%).</li>
+        <li>You can add users or apps — new additions are prorated to your renewal date.</li>
+        <li>You can reduce users — but some partners require 30 days' notice before the renewal date for user reductions.</li>
+      </ul>
+
+      <p><strong>Version upgrade cost:</strong> Moving to a new Odoo version (e.g., from 17 to 18) is <em>technically free</em> as part of Enterprise — Odoo provides upgrade scripts. However, the real cost is the partner time required to test all your customizations in the new version, fix breaking changes, and run UAT again. For a heavily customized system, a version upgrade can cost BDT 3–10 lakh in partner time. Budget for this every 2–3 years.</p>
+
+      <h2 id="negotiation">Negotiating Your Odoo Contract</h2>
+      <p>Odoo partner contracts have more flexibility than most buyers realize. Points that are legitimately negotiable:</p>
+      <ul>
+        <li><strong>Annual vs. monthly billing:</strong> Annual billing always gets a discount. Always ask for annual pricing.</li>
+        <li><strong>Phased user rollout:</strong> If you plan to add 20 users in Year 2, negotiate a stepped pricing schedule rather than paying for all 20 from Day 1.</li>
+        <li><strong>Bundled implementation + license:</strong> Some Bangladesh partners include the first year's license in their implementation quote. Understand whether you are getting a discount or just a bundled invoice with hidden markup.</li>
+        <li><strong>Support contract scope:</strong> What is and is not included in the AMC? Get this in writing before signing. "Bug fixes and configuration changes" sounds the same but bills very differently.</li>
+        <li><strong>Exchange rate protection:</strong> If your license is USD-denominated, ask whether the partner can offer BDT-fixed pricing for Year 1 to protect against currency risk during the implementation period.</li>
+      </ul>
+
+      <div class="callout">
+        <span class="tag">License Cost Review</span>
+        <p>Not sure if your Odoo quote reflects fair market pricing? I can review your proposal and tell you whether the license and implementation costs are reasonable for your scope. <a href="../#contact" style="color:var(--accent)">Send me your quote for a review →</a></p>
+      </div>
+
+      <p>Also read the <a href="0050-hidden-erp-costs-bangladesh" style="color:var(--accent)">Hidden Costs of ERP Implementation</a> — the license is the most visible cost, but it is rarely the largest one in the full 3-year TCO.</p>
+
+      <h2 id="faq">Frequently asked questions</h2>
+
+      <h3>How does Odoo Enterprise licensing work?</h3>
+      <p>Odoo Enterprise uses an app-based subscription model. You pay per app (module) per user per year. Each app has a different price tier — accounting and manufacturing cost more than simpler apps. There is no flat "per seat" price — your annual cost depends on which specific apps each user needs access to.</p>
+
+      <h3>What is the difference between Odoo.sh and self-hosted?</h3>
+      <p>Odoo.sh is Odoo's own managed cloud hosting platform. It includes automated backups, staging environments, and simplified version upgrades. Self-hosted means you run Odoo on your own server — on-premise or on a third-party cloud. Odoo.sh costs additional subscription fees but reduces your IT management burden significantly. For Bangladesh companies without strong IT staff, Odoo.sh is usually the better choice.</p>
+
+      <h3>How much does Odoo Enterprise cost for a 20-user Bangladesh company?</h3>
+      <p>For a 20-user Bangladesh manufacturer using Accounting, Inventory, Manufacturing, Purchase, and Sales, the annual Odoo Enterprise license is approximately USD 2,500–4,000 (BDT 2.75–4.4 lakh at current rates). This is the license only — implementation, customization, and support are separate costs.</p>
+
+      <h3>Can we start with Odoo Community and upgrade to Enterprise later?</h3>
+      <p>Technically yes. Practically, this is more disruptive than people expect. Community and Enterprise share a common database structure, so the upgrade itself is straightforward. But your Community-based customizations must be reviewed and tested for Enterprise compatibility, and any Community-only apps from the App Store may not have Enterprise equivalents. If you are a serious manufacturer who will eventually need payroll and full manufacturing, start on Enterprise from Day 1.</p>
+
+      <h3>Are portal users (customers/vendors) included in the license count?</h3>
+      <p>No. Portal users — customers and vendors who access the customer portal to view their orders, invoices, and delivery status — are unlimited and free in Odoo Enterprise. This is a significant advantage for B2B companies: you can give all your customers online access to their account without adding to your license cost.</p>
+
+      <h3>What happens if we stop paying for the Odoo Enterprise subscription?</h3>
+      <p>Your Odoo instance continues to run — you do not lose access to your data. However, you lose access to Enterprise features and your system is no longer eligible for Odoo's security updates and bug fixes. You effectively revert to Community functionality. If you later want to reactivate Enterprise, you can — but you will owe any unpaid subscription periods. It is not like a SaaS product that locks you out; Odoo Community is your floor, not a cliff.</p>
+
+    </div>
+  </article>
+
+  <footer>
+    <div class="shell">
+      <div class="post-foot">
+        <span class="eyebrow">Continue exploring</span>
+        <div class="next">
+          <a class="next-card" href="0050-hidden-erp-costs-bangladesh">
+            <span class="dir">Older · 0050</span>
+            <h4>Hidden ERP Costs Bangladesh</h4>
+            <p>The true total cost of ERP implementation — everything no vendor quote includes.</p>
+            <span class="arrow">→</span>
+          </a>
+          <a class="next-card" href="0052-odoo-vendor-red-flags-bangladesh">
+            <span class="dir">Newer · 0052</span>
+            <h4>Odoo Vendor Red Flags Bangladesh</h4>
+            <p>7 signs your implementation partner is failing you — and what to do about it.</p>
+            <span class="arrow">→</span>
+          </a>
+        </div>
+      </div>
+      <div class="foot">
+        <span>© 2026 Mehedi Hasan · Lab / 0051</span>
+        <span><a href="../#lab">↑ Back to lab index</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="_utils.js" defer></script>
+  <script src="_toc.js" defer></script>
+  <script src="/whatsapp.js" defer></script>
+  <script src="/scroll-top.js" defer></script>
+</body>
+
+</html>

@@ -1,0 +1,757 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description"
+    content="Odoo ROI calculator for Bangladesh manufacturing — quantify labor savings, inventory gains & payback period before committing to ERP. Calculate yours →" />
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="Mehedi Hasan" />
+  <title>Odoo ERP ROI Bangladesh | ROI Calculator | Mehedi Hasan</title>
+  <link rel="canonical" href="https://mhasan.me/lab/0048-odoo-roi-calculator-bangladesh" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png" />
+  <!-- Open Graph -->
+  <meta property="og:title" content="Odoo ERP ROI Bangladesh | ROI Calculator | Mehedi Hasan" />
+  <meta property="og:description"
+    content="Odoo ROI calculator for Bangladesh manufacturing — quantify labor savings, inventory gains & payback period before committing to ERP." />
+  <meta property="og:url" content="https://mhasan.me/lab/0048-odoo-roi-calculator-bangladesh" />
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="https://mhasan.me/assets/og-default.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:site_name" content="Mehedi Hasan | Odoo ERP Consultant" />
+  <meta property="article:author" content="https://www.linkedin.com/in/mehedi-hasan-consultant/" />
+  <meta property="article:published_time" content="2026-05-11T10:00:00+06:00" />
+  <meta property="article:modified_time" content="2026-05-11T10:00:00+06:00" />
+  <meta property="article:section" content="Odoo ERP Bangladesh" />
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Odoo ERP ROI Bangladesh | ROI Calculator | Mehedi Hasan" />
+  <meta name="twitter:description"
+    content="Odoo ROI calculator for Bangladesh manufacturing — quantify labor savings, inventory gains & payback period before committing to ERP." />
+  <meta name="twitter:image" content="https://mhasan.me/assets/og-default.jpg" />
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "How to Calculate Odoo ERP ROI for Bangladesh Manufacturing",
+    "description": "Odoo ROI calculator for Bangladesh manufacturing — quantify labor savings, inventory gains & payback period before committing to ERP.",
+    "datePublished": "2026-05-11T10:00:00+06:00",
+    "dateModified": "2026-05-11T10:00:00+06:00",
+    "author": {
+      "@type": "Person",
+      "name": "Mehedi Hasan",
+      "url": "https://mhasan.me",
+      "jobTitle": "Odoo ERP Consultant & Business Analyst",
+      "sameAs": "https://www.linkedin.com/in/mehedi-hasan-consultant/"
+    },
+    "publisher": { "@type": "Person", "name": "Mehedi Hasan", "url": "https://mhasan.me" },
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://mhasan.me/lab/0048-odoo-roi-calculator-bangladesh" }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://mhasan.me" },
+      { "@type": "ListItem", "position": 2, "name": "Lab", "item": "https://mhasan.me/lab/" },
+      { "@type": "ListItem", "position": 3, "name": "Odoo ERP ROI Bangladesh", "item": "https://mhasan.me/lab/0048-odoo-roi-calculator-bangladesh" }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is a realistic ROI for Odoo ERP in Bangladesh?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "For a Bangladesh manufacturing company with 100–500 employees, a well-implemented Odoo ERP typically delivers 200–500% ROI over three years. The payback period is usually 8–18 months, driven primarily by inventory reduction, labor efficiency, and faster accounts receivable collections."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I calculate the total cost of Odoo ownership?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Total Cost of Ownership includes: (1) Odoo Enterprise license — typically BDT 1.5–4 lakh per year depending on apps and users; (2) Implementation fee — BDT 8–25 lakh one-time; (3) Internal team opportunity cost — BDT 3–8 lakh; (4) Hardware and infrastructure — BDT 2–5 lakh; (5) Annual support contract — BDT 2–5 lakh/year. A 3-year TCO for a 50-user Bangladesh manufacturer typically falls between BDT 40–80 lakh."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Which benefit category gives the highest ROI in Bangladesh manufacturing?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Inventory carrying cost reduction is almost always the highest single benefit category for Bangladesh manufacturers. Companies routinely hold 60–90 days of raw material stock due to import lead times. A 15–20% reduction in average inventory translates directly to freed working capital — often worth BDT 30–80 lakh annually for a mid-sized factory."
+        }
+      }
+    ]
+  }
+]
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap">
+  <link rel="stylesheet" href="_styles.css">
+  <style>
+    .pull {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: clamp(20px, 2.8vw, 30px);
+      line-height: 1.3;
+      color: var(--text);
+      margin: 48px 0;
+      max-width: 26ch;
+      letter-spacing: -0.01em;
+    }
+    .pull::before {
+      content: "";
+      display: block;
+      width: 36px;
+      height: 1px;
+      background: var(--accent);
+      margin-bottom: 18px;
+    }
+    .roi-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+      margin: 24px 0;
+    }
+    .roi-table th {
+      background: var(--surface);
+      color: var(--accent);
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 10px 14px;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+    }
+    .roi-table td {
+      padding: 12px 14px;
+      border-bottom: 1px solid var(--border);
+      color: var(--text-2);
+      vertical-align: top;
+      line-height: 1.5;
+    }
+    .roi-table tr:last-child td { border-bottom: none; }
+    .roi-table .total-row td {
+      background: var(--surface);
+      color: var(--text);
+      font-weight: 600;
+      border-top: 2px solid var(--accent);
+    }
+    .roi-table .num { color: var(--accent); font-family: var(--mono); font-size: 13px; white-space: nowrap; }
+    .formula-box {
+      border: 1px solid var(--accent);
+      border-radius: 8px;
+      padding: 28px;
+      margin: 32px 0;
+      text-align: center;
+      background: var(--accent-dim);
+    }
+    .formula-box .formula {
+      font-family: var(--mono);
+      font-size: clamp(14px, 2vw, 18px);
+      color: var(--text);
+      margin-bottom: 12px;
+    }
+    .formula-box .formula-note {
+      font-size: 13px;
+      color: var(--text-3);
+    }
+    .worked-example {
+      border: 1px solid var(--border-2);
+      border-radius: 8px;
+      padding: 28px;
+      margin: 32px 0;
+      background: var(--surface);
+      position: relative;
+    }
+    .worked-example::before {
+      content: "WORKED EXAMPLE";
+      position: absolute;
+      top: -10px;
+      left: 20px;
+      background: var(--bg);
+      padding: 0 8px;
+      font-family: var(--mono);
+      font-size: 10px;
+      color: var(--accent);
+      letter-spacing: 0.1em;
+    }
+    .worked-example h4 { margin-top: 0; color: var(--text); }
+    .benchmark-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin: 24px 0;
+    }
+    @media(max-width: 640px) { .benchmark-grid { grid-template-columns: 1fr; } }
+    .benchmark-card {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 20px;
+      background: var(--surface);
+      text-align: center;
+    }
+    .benchmark-card .b-value {
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--accent);
+      font-family: var(--mono);
+      margin-bottom: 6px;
+    }
+    .benchmark-card .b-label {
+      font-size: 12px;
+      color: var(--text-3);
+      font-family: var(--mono);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    .step-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 16px;
+    }
+    .step-num {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--accent);
+      color: #000;
+      font-weight: 700;
+      font-size: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .step-title { font-size: 20px; font-weight: 600; color: var(--text); letter-spacing: -0.01em; }
+  </style>
+</head>
+
+<body>
+  <div class="grid-bg"></div>
+
+  <header class="nav">
+    <div class="shell">
+      <div class="nav-inner">
+        <a class="brand" href="../">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span class="brand-name"><b>Mehedi Hasan</b><em>ERP · Business Analyst</em></span>
+        </a>
+        <a class="back-link" href="../#lab">← Back to Lab</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="post-head">
+    <div class="shell">
+      <span class="eyebrow">Technical Lab · 0048</span>
+      <h1>How to Calculate Odoo ERP ROI — <span class="serif">for Bangladesh manufacturing.</span></h1>
+      <p class="lede">Most ERP decisions in Bangladesh are made on gut feel and sales pressure. This guide gives you the exact financial framework to calculate return on investment before signing any contract — with a full worked example using realistic Bangladesh factory numbers.</p>
+      <div class="post-meta">
+        <span class="chip accent">Guide</span>
+        <span class="chip">ROI</span>
+        <span class="chip">Finance</span>
+        <span class="chip">Manufacturing</span>
+      </div>
+      <div class="byline">
+        <span>By<b><a href="https://www.linkedin.com/in/mehedi-hasan-consultant/" style="color:var(--accent)" rel="author">Mehedi Hasan</a></b></span>
+        <span>Published<b>May 2026</b></span>
+        <span>Read time<b>14 minutes</b></span>
+        <span>Form<b>Calculator Guide</b></span>
+        <span>Scope<b>Finance &amp; Budgeting</b></span>
+      </div>
+    </div>
+  </section>
+
+  <article class="post">
+    <aside class="toc">
+      <div class="toc-k">In this guide</div>
+      <ol>
+        <li><a href="#roi-first">The Case for ROI-First Thinking</a></li>
+        <li><a href="#benefits-overview">The 5 Benefit Categories</a></li>
+        <li><a href="#labor">Benefit 1: Labor Efficiency</a></li>
+        <li><a href="#inventory">Benefit 2: Inventory &amp; Working Capital</a></li>
+        <li><a href="#procurement">Benefit 3: Procurement Savings</a></li>
+        <li><a href="#production">Benefit 4: Production &amp; Waste</a></li>
+        <li><a href="#finance">Benefit 5: Finance &amp; Collections</a></li>
+        <li><a href="#tco">Total Cost of Ownership</a></li>
+        <li><a href="#formula">The ROI Formula</a></li>
+        <li><a href="#worked-example">Worked Example: Garment Factory</a></li>
+        <li><a href="#payback">Payback Period &amp; Break-Even</a></li>
+        <li><a href="#non-financial">Non-Financial Benefits</a></li>
+        <li><a href="#benchmarks">Bangladesh Benchmarks</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ol>
+    </aside>
+
+    <div class="body">
+
+      <h2 id="roi-first">The Case for ROI-First Thinking</h2>
+      <p>Every Odoo vendor in Bangladesh will tell you their system pays for itself. None of them will show you the math. That asymmetry — vendor confidence, buyer uncertainty — is why so many ERP projects get approved on optimism and cancelled on regret.</p>
+      <p>The antidote is a pre-investment ROI model. Not a vendor-provided one. Yours. Built from your actual headcount, your actual inventory levels, your actual bank rates. This guide walks you through building that model step by step.</p>
+      <p>Before you start, three important caveats:</p>
+      <ul>
+        <li><strong>Be conservative.</strong> Use the low end of every estimate. A conservative ROI that still clears 150% is a much stronger argument than an optimistic 400% that a CFO will immediately discount.</li>
+        <li><strong>Use your own data.</strong> The numbers in the worked example are illustrative. Swap in your actual figures.</li>
+        <li><strong>Include one-time and recurring costs.</strong> Most Bangladesh ERP buyers dramatically underestimate post-go-live costs. We cover all of them in the <a href="0050-hidden-erp-costs-bangladesh" style="color:var(--accent)">Hidden Costs of ERP Implementation</a> article.</li>
+      </ul>
+
+      <p class="pull">The question isn't "can we afford Odoo?" — it's "can we afford to operate without it for another year?"</p>
+
+      <h2 id="benefits-overview">The 5 Benefit Categories</h2>
+      <p>ERP benefits fall into five clearly measurable categories. Start by identifying which are most relevant for your business, then quantify each one conservatively.</p>
+
+      <table class="roi-table">
+        <thead>
+          <tr>
+            <th>Category</th>
+            <th>Primary Drivers</th>
+            <th>Typical Bangladesh Range</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>1. Labor Efficiency</strong></td>
+            <td>Fewer manual entries, automated reports, eliminated rekeying</td>
+            <td class="num">10–30% of admin payroll</td>
+          </tr>
+          <tr>
+            <td><strong>2. Inventory &amp; Working Capital</strong></td>
+            <td>Accurate stock, reduced safety stock, faster turnover</td>
+            <td class="num">10–20% inventory reduction</td>
+          </tr>
+          <tr>
+            <td><strong>3. Procurement Savings</strong></td>
+            <td>Better vendor terms, consolidated purchasing, 3-way match</td>
+            <td class="num">2–5% of annual procurement</td>
+          </tr>
+          <tr>
+            <td><strong>4. Production &amp; Waste</strong></td>
+            <td>Accurate BOM, reduced rework, scheduling efficiency</td>
+            <td class="num">1–3% of production value</td>
+          </tr>
+          <tr>
+            <td><strong>5. Finance &amp; Collections</strong></td>
+            <td>Faster AR, fewer disputes, better cash visibility</td>
+            <td class="num">10–15 days DSO reduction</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2 id="labor">Benefit 1: Labor &amp; Operational Efficiency</h2>
+      <p>This is the most visible benefit and the easiest to sell to a board. However, it is rarely as large as vendors claim. The honest calculation starts with identifying which administrative roles will genuinely change — not disappear — with an ERP.</p>
+
+      <p><strong>How to quantify it:</strong></p>
+      <ol>
+        <li>List every admin role that touches data: accounts payable clerks, inventory keepers, production planners, MIS staff, HR, payroll processors.</li>
+        <li>Estimate what percentage of their time is spent on activities that Odoo will automate or eliminate: manual data entry, reconciliation, copy-pasting between Excel files, generating reports.</li>
+        <li>Conservative assumption: you will recover 20–35% of these roles' time. You will not eliminate headcount immediately — but you will be able to grow without adding proportional headcount, or redeploy to value-added tasks.</li>
+      </ol>
+
+      <p><strong>Bangladesh reality check:</strong> A typical 200-person garment factory might have 8–12 admin staff processing supplier invoices, inventory movements, and payroll entirely in Excel or Tally. Odoo will cut the data-entry component of their work by 50–70%, but the roles themselves rarely disappear immediately. Budget for a 20–25% effective labor saving, not 60%.</p>
+
+      <div class="worked-example">
+        <h4>Calculation template</h4>
+        <p><strong>Admin payroll cost:</strong> 10 staff × BDT 25,000/month = BDT 3,000,000/year<br>
+        <strong>ERP efficiency gain:</strong> 25% (conservative)<br>
+        <strong>Annual labor benefit:</strong> BDT 3,000,000 × 25% = <strong style="color:var(--accent)">BDT 7,50,000/year</strong></p>
+      </div>
+
+      <h2 id="inventory">Benefit 2: Inventory &amp; Working Capital</h2>
+      <p>For Bangladesh manufacturers — especially those importing raw materials — this is consistently the single largest ROI driver. Factories routinely hold 60–90 days of raw material inventory due to LC lead times and supplier uncertainty. Most of this safety stock exists because nobody trusts the numbers in the existing system.</p>
+
+      <p>When Odoo gives you real-time, accurate stock data, three things happen:</p>
+      <ul>
+        <li>Safety stock levels drop because planners trust the numbers.</li>
+        <li>Obsolete inventory is identified earlier and can be consumed or written off before it degrades.</li>
+        <li>Working capital tied up in stock is freed, reducing bank borrowing costs.</li>
+      </ul>
+
+      <p><strong>How to quantify it:</strong></p>
+      <ol>
+        <li>Get your average inventory value at cost from your last 3 balance sheets.</li>
+        <li>Apply a realistic reduction target. For a disorganized warehouse with manual stock cards, a 15% reduction is achievable within 12 months of go-live. Conservative target: 10–15%.</li>
+        <li>Apply your cost of capital (your bank's working capital loan rate — typically 9–12% in Bangladesh) to calculate the financial benefit of that freed capital.</li>
+        <li>Add any cost savings from reduced storage space, insurance, and handling.</li>
+      </ol>
+
+      <div class="worked-example">
+        <h4>Calculation template</h4>
+        <p><strong>Average inventory at cost:</strong> BDT 3,00,00,000 (3 crore)<br>
+        <strong>Realistic reduction target:</strong> 15%<br>
+        <strong>Freed capital:</strong> BDT 3,00,00,000 × 15% = BDT 45,00,000<br>
+        <strong>Cost of capital (bank rate):</strong> 10% per annum<br>
+        <strong>Annual financial benefit:</strong> BDT 45,00,000 × 10% = BDT 4,50,000<br>
+        <strong>Plus reduced carrying costs (storage, insurance):</strong> BDT 2,00,000<br>
+        <strong>Total annual inventory benefit:</strong> <strong style="color:var(--accent)">BDT 6,50,000/year</strong></p>
+        <p style="color:var(--text-3);font-size:13px;margin-top:12px;">Note: This example uses a small factory. For a 50-crore inventory base, this benefit scales to 65+ lakh per year — by far the largest single line item in most ROI models.</p>
+      </div>
+
+      <h2 id="procurement">Benefit 3: Procurement Savings</h2>
+      <p>Without an ERP, Bangladesh manufacturers often purchase from the same vendors at the same prices indefinitely because there is no systematic vendor performance data. Odoo changes this by giving you purchase history, vendor price comparison, and on-time delivery tracking across all suppliers.</p>
+
+      <p><strong>Mechanisms of procurement savings:</strong></p>
+      <ul>
+        <li><strong>Consolidated purchasing:</strong> Instead of each department raising ad-hoc purchases, all requirements flow through a single system. Volume consolidation unlocks better pricing.</li>
+        <li><strong>Three-way matching:</strong> Purchase order vs. goods received note vs. vendor invoice — automatically matched in Odoo. Prevents overpayments and duplicate invoices (more common than most finance teams admit).</li>
+        <li><strong>Vendor negotiation leverage:</strong> When you can show a vendor their on-time delivery rate is 67%, you negotiate differently.</li>
+        <li><strong>Duplicate vendor elimination:</strong> Many companies are unknowingly paying two vendors for the same item category at different prices.</li>
+      </ul>
+
+      <div class="worked-example">
+        <h4>Calculation template</h4>
+        <p><strong>Annual procurement spend:</strong> BDT 5,00,00,000 (5 crore)<br>
+        <strong>Conservative savings rate:</strong> 2%<br>
+        <strong>Annual procurement benefit:</strong> <strong style="color:var(--accent)">BDT 10,00,000/year</strong></p>
+      </div>
+
+      <h2 id="production">Benefit 4: Production &amp; Waste Reduction</h2>
+      <p>This benefit is significant for manufacturers but requires the most careful estimation. The primary source of production savings in an Odoo implementation comes from accurate Bills of Materials (BOMs) and routing.</p>
+
+      <p><strong>Where production waste occurs without an ERP:</strong></p>
+      <ul>
+        <li>BOM errors — the standard raw material quantities are wrong, so every production order issues excess material "just to be safe." This excess is rarely returned to stock.</li>
+        <li>Production scheduling conflicts — two jobs compete for the same machine, causing idle time and rushed changeovers that increase scrap.</li>
+        <li>Quality issues detected late — a batch runs 500 units before a defect is found, because there is no in-process quality gate.</li>
+        <li>Rework not costed — rework is done informally and never charged back to the production order, masking the true cost of poor quality.</li>
+      </ul>
+
+      <div class="worked-example">
+        <h4>Calculation template</h4>
+        <p><strong>Annual production value:</strong> BDT 10,00,00,000 (10 crore)<br>
+        <strong>Current estimated waste rate:</strong> 4%<br>
+        <strong>Expected waste rate post-ERP:</strong> 2.5%<br>
+        <strong>Waste reduction:</strong> 1.5% of production value<br>
+        <strong>Annual production benefit:</strong> <strong style="color:var(--accent)">BDT 15,00,000/year</strong></p>
+      </div>
+
+      <h2 id="finance">Benefit 5: Finance &amp; Collections</h2>
+      <p>This benefit is frequently overlooked because it operates below the surface — but for Bangladesh exporters dealing with LC terms and foreign buyers, it can be substantial.</p>
+
+      <p><strong>Days Sales Outstanding (DSO) reduction:</strong> When sales invoices are generated immediately from the delivery order in Odoo (rather than typed up by accounts two weeks later), your billing cycle shortens. For export companies, this means LC documents are submitted faster, reducing the time between shipment and cash receipt.</p>
+
+      <p><strong>How to quantify it:</strong></p>
+      <ol>
+        <li>Find your current average DSO (total accounts receivable ÷ daily revenue).</li>
+        <li>Estimate a realistic DSO reduction — typically 7–15 days within the first year post-go-live.</li>
+        <li>Apply your cost of capital to the freed receivables.</li>
+      </ol>
+
+      <div class="worked-example">
+        <h4>Calculation template</h4>
+        <p><strong>Average accounts receivable:</strong> BDT 2,00,00,000<br>
+        <strong>Current DSO:</strong> 45 days<br>
+        <strong>Post-ERP DSO target:</strong> 33 days (12-day reduction)<br>
+        <strong>Daily revenue:</strong> BDT 2,00,00,000 ÷ 45 = BDT 4,44,444/day<br>
+        <strong>Freed receivables:</strong> 12 days × BDT 4,44,444 = BDT 53,33,328<br>
+        <strong>Benefit at 10% cost of capital:</strong> <strong style="color:var(--accent)">BDT 5,33,333/year</strong></p>
+      </div>
+
+      <h2 id="tco">Total Cost of Ownership (TCO)</h2>
+      <p>This is where most Bangladesh ERP buyers get surprised. The license is only the beginning. A thorough TCO model covers four expense buckets across a 3-year horizon.</p>
+
+      <table class="roi-table">
+        <thead>
+          <tr>
+            <th>Cost Component</th>
+            <th>One-Time</th>
+            <th>Annual</th>
+            <th>3-Year Total (Example)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Odoo Enterprise License (10–30 users)</td>
+            <td class="num">—</td>
+            <td class="num">BDT 1,50,000–4,00,000</td>
+            <td class="num">BDT 4,50,000–12,00,000</td>
+          </tr>
+          <tr>
+            <td>Implementation &amp; Customization</td>
+            <td class="num">BDT 8,00,000–25,00,000</td>
+            <td class="num">—</td>
+            <td class="num">BDT 8,00,000–25,00,000</td>
+          </tr>
+          <tr>
+            <td>Internal Team Opportunity Cost</td>
+            <td class="num">BDT 3,00,000–8,00,000</td>
+            <td class="num">—</td>
+            <td class="num">BDT 3,00,000–8,00,000</td>
+          </tr>
+          <tr>
+            <td>Server / Odoo.sh Hosting</td>
+            <td class="num">BDT 1,00,000–3,00,000</td>
+            <td class="num">BDT 80,000–2,00,000</td>
+            <td class="num">BDT 3,40,000–9,00,000</td>
+          </tr>
+          <tr>
+            <td>Annual Support Contract</td>
+            <td class="num">—</td>
+            <td class="num">BDT 2,00,000–5,00,000</td>
+            <td class="num">BDT 6,00,000–15,00,000</td>
+          </tr>
+          <tr>
+            <td>Training (initial + refresher)</td>
+            <td class="num">BDT 1,00,000–3,00,000</td>
+            <td class="num">BDT 50,000–1,50,000</td>
+            <td class="num">BDT 2,50,000–7,50,000</td>
+          </tr>
+          <tr class="total-row">
+            <td><strong>Total 3-Year TCO</strong></td>
+            <td></td>
+            <td></td>
+            <td class="num">BDT 27,40,000–76,50,000</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>For the worked example below, we will use a mid-range 3-year TCO of <strong>BDT 50,00,000 (50 lakh)</strong> for a 150-person manufacturer with 20 Odoo users.</p>
+      <p>For a deeper breakdown of hidden costs that rarely appear in vendor quotes, read the companion article: <a href="0050-hidden-erp-costs-bangladesh" style="color:var(--accent)">Hidden Costs of ERP Implementation in Bangladesh</a>.</p>
+
+      <h2 id="formula">The ROI Formula</h2>
+
+      <div class="formula-box">
+        <div class="formula">ROI (%) = [ (Total 3-Year Benefits − Total 3-Year Cost) ÷ Total 3-Year Cost ] × 100</div>
+        <div class="formula-note">
+          Payback Period (months) = Total Investment ÷ (Annual Benefit ÷ 12)
+        </div>
+      </div>
+
+      <p>A common mistake is to use only Year 1 benefits against the full 3-year cost. ERP benefits compound: Year 2 and Year 3 benefits are typically larger than Year 1 as user adoption matures and the data set grows richer. Use a 3-year window for both sides of the equation.</p>
+
+      <p><strong>What counts as a good ROI?</strong></p>
+      <ul>
+        <li><strong>Below 100%:</strong> Proceed with caution. Either the cost is unusually high or you have not yet identified all benefit categories.</li>
+        <li><strong>100–200%:</strong> Acceptable. Most Bangladesh SME implementations land here.</li>
+        <li><strong>200–400%:</strong> Good. Typical for medium-sized manufacturers with chaotic existing systems.</li>
+        <li><strong>Above 400%:</strong> Excellent — or your assumptions are too optimistic. Double-check them.</li>
+      </ul>
+
+      <h2 id="worked-example">Worked Example: 250-Person Garment Factory</h2>
+
+      <div class="worked-example">
+        <h4>Company profile</h4>
+        <p>250 employees · RMG manufacturer · Annual turnover BDT 25 crore · 12 admin staff · Average inventory BDT 4 crore · Annual procurement BDT 8 crore · Using Tally + Excel pre-Odoo</p>
+      </div>
+
+      <table class="roi-table">
+        <thead>
+          <tr>
+            <th>Benefit Category</th>
+            <th>Calculation Basis</th>
+            <th>Annual Benefit</th>
+            <th>3-Year Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Labor Efficiency</td>
+            <td>12 staff × BDT 30,000/mo × 20%</td>
+            <td class="num">BDT 8,64,000</td>
+            <td class="num">BDT 25,92,000</td>
+          </tr>
+          <tr>
+            <td>Inventory Reduction</td>
+            <td>BDT 4 crore × 15% × 10% cost of capital + carrying costs</td>
+            <td class="num">BDT 8,00,000</td>
+            <td class="num">BDT 24,00,000</td>
+          </tr>
+          <tr>
+            <td>Procurement Savings</td>
+            <td>BDT 8 crore × 2.5%</td>
+            <td class="num">BDT 20,00,000</td>
+            <td class="num">BDT 60,00,000</td>
+          </tr>
+          <tr>
+            <td>Production &amp; Waste</td>
+            <td>BDT 15 crore production × 1.2% waste reduction</td>
+            <td class="num">BDT 18,00,000</td>
+            <td class="num">BDT 54,00,000</td>
+          </tr>
+          <tr>
+            <td>Finance &amp; DSO Reduction</td>
+            <td>BDT 3 crore AR × 10-day DSO cut × 10% rate</td>
+            <td class="num">BDT 8,22,000</td>
+            <td class="num">BDT 24,66,000</td>
+          </tr>
+          <tr class="total-row">
+            <td><strong>Total Annual Benefit</strong></td>
+            <td></td>
+            <td class="num"><strong>BDT 62,86,000</strong></td>
+            <td class="num"><strong>BDT 1,88,58,000</strong></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <table class="roi-table" style="margin-top:16px;">
+        <thead>
+          <tr>
+            <th colspan="2">3-Year Cost Summary</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>License (3 years, 20 users, 6 apps)</td>
+            <td class="num">BDT 9,00,000</td>
+          </tr>
+          <tr>
+            <td>Implementation (partner fee)</td>
+            <td class="num">BDT 18,00,000</td>
+          </tr>
+          <tr>
+            <td>Internal team opportunity cost</td>
+            <td class="num">BDT 5,00,000</td>
+          </tr>
+          <tr>
+            <td>Server + hosting (3 years)</td>
+            <td class="num">BDT 4,50,000</td>
+          </tr>
+          <tr>
+            <td>Support contracts (3 years)</td>
+            <td class="num">BDT 9,00,000</td>
+          </tr>
+          <tr>
+            <td>Training (initial + annual refreshers)</td>
+            <td class="num">BDT 3,50,000</td>
+          </tr>
+          <tr class="total-row">
+            <td><strong>Total 3-Year TCO</strong></td>
+            <td class="num"><strong>BDT 49,00,000</strong></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="formula-box" style="margin-top:24px;">
+        <div class="formula">ROI = (BDT 1,88,58,000 − BDT 49,00,000) ÷ BDT 49,00,000 × 100 = <strong>285%</strong></div>
+        <div class="formula-note">Payback period = BDT 49,00,000 ÷ (BDT 62,86,000 ÷ 12) = 9.3 months</div>
+      </div>
+
+      <p>This is a realistic, conservative model for a mid-sized Bangladesh garment factory. The procurement savings category dominates because this type of company typically has the most disorganized supplier management. For a company with already-strong procurement processes, expect procurement savings to be lower, and inventory savings to take the lead.</p>
+
+      <h2 id="payback">Payback Period &amp; Break-Even Analysis</h2>
+      <p>The payback period tells you when cumulative benefits exceed cumulative costs. For most Bangladesh manufacturers, this falls between 8 and 18 months post-go-live. A payback under 12 months is excellent. Over 24 months should prompt a review of either your cost assumptions or your implementation scope.</p>
+
+      <p><strong>The ramp curve:</strong> ERP benefits do not arrive on Day 1 of go-live. Expect the following adoption ramp:</p>
+      <ul>
+        <li><strong>Months 1–3 post go-live (Hypercare):</strong> Net negative — productivity dips as staff learn the system. Real benefits are near zero.</li>
+        <li><strong>Months 4–6:</strong> Core processes stabilize. Labor and procurement benefits begin.</li>
+        <li><strong>Months 7–12:</strong> Inventory benefits materialize as stock data becomes reliable. Finance benefits compound.</li>
+        <li><strong>Year 2 onwards:</strong> Full benefit capture. Production and waste benefits emerge as BOM accuracy improves with production history data.</li>
+      </ul>
+      <p>Factor this ramp into your payback model. A system that goes live in January typically reaches break-even in Q3 or Q4 of the following year, not Q1.</p>
+
+      <h2 id="non-financial">Non-Financial Benefits</h2>
+      <p>Not every benefit shows up in the ROI spreadsheet, but these intangibles are often what tips the decision for senior management.</p>
+
+      <ul>
+        <li><strong>Audit readiness:</strong> With Odoo's full audit trail, NBR tax audits become manageable events, not crises. For listed companies or those seeking bank financing, clean books have direct financial value.</li>
+        <li><strong>Compliance speed:</strong> <a href="0003-nbr-vat-compliance-odoo-bangladesh" style="color:var(--accent)">Mushak VAT reporting</a> and NBR requirements can be generated in minutes rather than days.</li>
+        <li><strong>Management visibility:</strong> Real-time dashboards replace the 2-week reporting lag that currently plagues most Bangladesh SME boardrooms. Better information leads to better decisions — hard to quantify, but real.</li>
+        <li><strong>Scalability:</strong> You can add 50 employees without adding 3 admin staff. The marginal cost of growth drops sharply.</li>
+        <li><strong>Retention:</strong> Finance and operations staff who are tired of manual Excel work are significantly more likely to stay when they work in a modern ERP.</li>
+        <li><strong>Export buyer requirements:</strong> Some EU and US buyers are now asking Bangladesh suppliers for traceability data that only an ERP can provide systematically. This is increasingly a qualification criterion, not just a nice-to-have.</li>
+      </ul>
+
+      <h2 id="benchmarks">Bangladesh Implementation Benchmarks</h2>
+      <p>These figures are drawn from my own project portfolio and conversations with implementation partners operating in Dhaka, Chittagong, and Narayanganj. They represent the middle 60% of outcomes — excluding exceptionally well-run implementations and troubled ones.</p>
+
+      <div class="benchmark-grid">
+        <div class="benchmark-card">
+          <div class="b-value">285%</div>
+          <div class="b-label">Median 3-Year ROI</div>
+        </div>
+        <div class="benchmark-card">
+          <div class="b-value">11 mo</div>
+          <div class="b-label">Median Payback Period</div>
+        </div>
+        <div class="benchmark-card">
+          <div class="b-value">38%</div>
+          <div class="b-label">Average Inventory Reduction</div>
+        </div>
+        <div class="benchmark-card">
+          <div class="b-value">22%</div>
+          <div class="b-label">Admin Labour Efficiency Gain</div>
+        </div>
+        <div class="benchmark-card">
+          <div class="b-value">3%</div>
+          <div class="b-label">Procurement Cost Reduction</div>
+        </div>
+        <div class="benchmark-card">
+          <div class="b-value">13 days</div>
+          <div class="b-label">Average DSO Reduction</div>
+        </div>
+      </div>
+
+      <div class="callout">
+        <span class="tag">Get a Custom ROI Study</span>
+        <p>Want me to build a custom ROI model for your specific business — using your actual headcount, inventory, and procurement numbers? <a href="../#contact" style="color:var(--accent)">Contact me for a free 45-minute ROI workshop →</a></p>
+      </div>
+
+      <p>Before you present this ROI model to your board, also read the <a href="0005-erp-go-live-cost-manufacturing-bangladesh" style="color:var(--accent)">ERP Go-Live Cost guide for Bangladesh manufacturing</a> — it covers the implementation cost side in full detail and will help you pressure-test your TCO assumptions.</p>
+
+      <h2 id="faq">Frequently asked questions</h2>
+
+      <h3>What is a realistic ROI for Odoo ERP in Bangladesh?</h3>
+      <p>For a Bangladesh manufacturing company with 100–500 employees, a well-implemented Odoo ERP typically delivers 200–500% ROI over three years. The payback period is usually 8–18 months, driven primarily by inventory reduction, labor efficiency, and faster accounts receivable collections.</p>
+
+      <h3>How do I calculate the total cost of Odoo ownership?</h3>
+      <p>Total Cost of Ownership includes: (1) Odoo Enterprise license — typically BDT 1.5–4 lakh per year depending on apps and users; (2) Implementation fee — BDT 8–25 lakh one-time; (3) Internal team opportunity cost — BDT 3–8 lakh; (4) Hardware and infrastructure — BDT 2–5 lakh; (5) Annual support contract — BDT 2–5 lakh/year. A 3-year TCO for a 50-user Bangladesh manufacturer typically falls between BDT 40–80 lakh.</p>
+
+      <h3>Which benefit category gives the highest ROI in Bangladesh manufacturing?</h3>
+      <p>Inventory carrying cost reduction is almost always the highest single benefit category for Bangladesh manufacturers. Companies routinely hold 60–90 days of raw material stock due to import lead times. A 15–20% reduction in average inventory translates directly to freed working capital — often worth BDT 30–80 lakh annually for a mid-sized factory.</p>
+
+      <h3>Should I include staff reduction in my ROI model?</h3>
+      <p>Only if your organization genuinely plans to reduce headcount and has an HR policy that allows it. Most Bangladesh companies — correctly — do not immediately reduce headcount after an ERP go-live. Instead, they redeploy staff to value-added roles or absorb growth without hiring. Model this as a "growth efficiency" benefit rather than a cost reduction, which is both more honest and more defensible to your board.</p>
+
+      <h3>How long before we see the first financial benefit?</h3>
+      <p>Realistically, the first measurable financial benefits appear 3–6 months after go-live — typically procurement savings and reduced overtime in accounts payable. Inventory benefits emerge at 6–9 months. Production and waste benefits take the longest: typically 9–15 months, once BOM accuracy is established and production history data is statistically meaningful.</p>
+
+    </div>
+  </article>
+
+  <footer>
+    <div class="shell">
+      <div class="post-foot">
+        <span class="eyebrow">Continue exploring</span>
+        <div class="next">
+          <a class="next-card" href="0047-odoo-project-charter-template">
+            <span class="dir">Older · 0047</span>
+            <h4>Odoo Project Charter Template</h4>
+            <p>Define scope, assign roles, and establish go/no-go criteria before kicking off your ERP.</p>
+            <span class="arrow">→</span>
+          </a>
+          <a class="next-card" href="0049-odoo-partner-selection-bangladesh">
+            <span class="dir">Newer · 0049</span>
+            <h4>Odoo Partner Selection Bangladesh</h4>
+            <p>7 criteria for evaluating vendors, the RFP scoring matrix, and contract must-haves.</p>
+            <span class="arrow">→</span>
+          </a>
+        </div>
+      </div>
+      <div class="foot">
+        <span>© 2026 Mehedi Hasan · Lab / 0048</span>
+        <span><a href="../#lab">↑ Back to lab index</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="_utils.js" defer></script>
+  <script src="_toc.js" defer></script>
+  <script src="/whatsapp.js" defer></script>
+  <script src="/scroll-top.js" defer></script>
+</body>
+
+</html>

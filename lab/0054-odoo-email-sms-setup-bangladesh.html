@@ -1,0 +1,634 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description"
+    content="Odoo email and SMS setup Bangladesh: configure SMTP, email aliases, SSL Wireless SMS, and notification templates step by step. Configure it right →" />
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="Mehedi Hasan" />
+  <title>Odoo Email & SMS Setup Bangladesh | SMTP | Mehedi Hasan</title>
+  <link rel="canonical" href="https://mhasan.me/lab/0054-odoo-email-sms-setup-bangladesh" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png" />
+  <!-- Open Graph -->
+  <meta property="og:title" content="Odoo Email & SMS Setup Bangladesh | SMTP | Mehedi Hasan" />
+  <meta property="og:description"
+    content="Configure Odoo outgoing SMTP, incoming email aliases, SSL Wireless SMS gateway, and notification templates for Bangladesh operations. Step-by-step guide." />
+  <meta property="og:url" content="https://mhasan.me/lab/0054-odoo-email-sms-setup-bangladesh" />
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="https://mhasan.me/assets/og-default.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:site_name" content="Mehedi Hasan | Odoo ERP Consultant" />
+  <meta property="article:author" content="https://www.linkedin.com/in/mehedi-hasan-consultant/" />
+  <meta property="article:published_time" content="2026-05-12T10:30:00+06:00" />
+  <meta property="article:modified_time" content="2026-05-12T10:30:00+06:00" />
+  <meta property="article:section" content="Odoo ERP Bangladesh" />
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Odoo Email & SMS Setup Bangladesh | SMTP | Mehedi Hasan" />
+  <meta name="twitter:description"
+    content="Configure Odoo SMTP, email aliases, SSL Wireless SMS gateway, and notification templates for Bangladesh operations. Step-by-step guide." />
+  <meta name="twitter:image" content="https://mhasan.me/assets/og-default.jpg" />
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Odoo Email & SMS Setup Bangladesh: SMTP, Aliases & Notifications",
+    "description": "Configure Odoo outgoing SMTP, incoming email aliases, SSL Wireless SMS gateway, and Bangladesh-specific notification templates. Complete setup guide.",
+    "datePublished": "2026-05-12T10:30:00+06:00",
+    "dateModified": "2026-05-12T10:30:00+06:00",
+    "author": {
+      "@type": "Person",
+      "name": "Mehedi Hasan",
+      "url": "https://mhasan.me",
+      "jobTitle": "Odoo ERP Consultant & Business Analyst",
+      "sameAs": "https://www.linkedin.com/in/mehedi-hasan-consultant/"
+    },
+    "publisher": { "@type": "Person", "name": "Mehedi Hasan", "url": "https://mhasan.me" },
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://mhasan.me/lab/0054-odoo-email-sms-setup-bangladesh" }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://mhasan.me" },
+      { "@type": "ListItem", "position": 2, "name": "Lab", "item": "https://mhasan.me/lab/" },
+      { "@type": "ListItem", "position": 3, "name": "Odoo Email & SMS Setup Bangladesh", "item": "https://mhasan.me/lab/0054-odoo-email-sms-setup-bangladesh" }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Which SMTP server is best for Odoo in Bangladesh?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "For most Bangladesh businesses, Zoho Mail SMTP is the best balance of reliability, price, and deliverability. It supports up to 250,000 emails per day on paid plans, has good deliverability to Bangladeshi ISP email addresses, and the SMTP credentials are straightforward to configure in Odoo. Google Workspace (Gmail SMTP) is also excellent but limits outgoing volume to 2,000 messages per day from a single account. For high-volume transactional email (10,000+/day), use a dedicated transactional service like Mailgun or SendGrid with their SMTP relay."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Which SMS gateway works best with Odoo in Bangladesh?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "SSL Wireless is the most reliable SMS gateway for Bangladesh with the widest network coverage across Grameenphone, Robi, Banglalink, Teletalk, and Airtel. For Odoo integration, use their REST API with JSON payload. MiCom is the second-best option with competitive pricing. Both require a registered business account and a sender ID (masking) approval from BTRC, which takes 5-7 working days. Non-masked SMS (showing the gateway number) is available immediately without approval."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why are Odoo emails going to spam for Bangladesh recipients?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The most common causes: (1) missing or misconfigured SPF record for your sending domain — add your SMTP provider's SPF include to your domain's DNS TXT records; (2) no DKIM signature — enable DKIM in your email provider and add the DKIM TXT record to your domain DNS; (3) no DMARC policy — add a DMARC TXT record (_dmarc.yourdomain.com) with at least p=none to start; (4) sending from a shared IP with poor reputation — use a dedicated SMTP relay like Mailgun or SendGrid which manage IP reputation. SPF + DKIM + DMARC together resolve 90% of deliverability issues."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can Odoo send WhatsApp messages to Bangladesh customers?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, via WhatsApp Business API. Odoo 16+ has a native WhatsApp integration module (available in Enterprise). It requires a WhatsApp Business Account through Meta Business Suite, a verified business phone number, and approved message templates. For non-Enterprise Odoo, use a WhatsApp Business API provider like Twilio, 360dialog, or local Bangladesh providers (some offer BSP services) and build a custom integration via Odoo's discuss.channel model or a webhook-based notification module."
+        }
+      }
+    ]
+  }
+]
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap">
+  <link rel="stylesheet" href="_styles.css">
+  <style>
+    .pull {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: clamp(20px, 2.8vw, 28px);
+      line-height: 1.3;
+      color: var(--text);
+      margin: 48px 0;
+      max-width: 28ch;
+      letter-spacing: -0.01em;
+    }
+    .pull::before {
+      content: "";
+      display: block;
+      width: 36px;
+      height: 1px;
+      background: var(--accent);
+      margin-bottom: 18px;
+    }
+    .config-block {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      margin: 26px 0;
+      overflow: hidden;
+    }
+    .config-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 15px 20px;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+    }
+    .config-badge {
+      font-family: var(--mono);
+      font-size: 10px;
+      font-weight: 600;
+      padding: 3px 9px;
+      border-radius: 4px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      flex-shrink: 0;
+    }
+    .config-badge.recommended { background: var(--accent-dim); color: var(--accent); border: 1px solid rgba(80,230,160,0.3); }
+    .config-badge.alternative { background: rgba(120,140,200,0.12); color: #8899CC; border: 1px solid rgba(120,140,200,0.25); }
+    .config-badge.advanced { background: rgba(200,140,80,0.12); color: #E0B84A; border: 1px solid rgba(200,140,80,0.25); }
+    .config-badge.sms { background: rgba(180,100,200,0.12); color: #C070E0; border: 1px solid rgba(180,100,200,0.25); }
+    .config-header h3 { margin: 0; font-size: 15px; color: var(--text); letter-spacing: -0.01em; }
+    .config-body { padding: 20px; }
+    .config-body p { color: var(--text-2); font-size: 14.5px; line-height: 1.65; margin: 0 0 12px; }
+    .config-body p:last-child { margin-bottom: 0; }
+    .config-body ul, .config-body ol { color: var(--text-2); font-size: 14px; padding-left: 20px; margin: 10px 0 12px; }
+    .config-body li { margin-bottom: 6px; line-height: 1.5; }
+    .code-box {
+      background: #0D1117;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 14px 18px;
+      margin: 14px 0;
+      overflow-x: auto;
+    }
+    .code-box pre { margin: 0; font-family: var(--mono); font-size: 12.5px; color: #C9D1D9; line-height: 1.6; white-space: pre; }
+    .code-label { font-family: var(--mono); font-size: 10px; color: var(--text-3); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 6px; }
+    .settings-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0;
+      font-size: 13.5px;
+    }
+    .settings-table th {
+      text-align: left;
+      padding: 10px 14px;
+      background: var(--surface);
+      color: var(--text-2);
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      border-bottom: 1px solid var(--border);
+    }
+    .settings-table td {
+      padding: 10px 14px;
+      border-bottom: 1px solid var(--border);
+      color: var(--text-2);
+      vertical-align: top;
+    }
+    .settings-table td:first-child { color: var(--text); font-family: var(--mono); font-size: 12.5px; }
+    .settings-table tr:last-child td { border-bottom: none; }
+    .warn-box {
+      background: rgba(200,140,60,0.08);
+      border-left: 3px solid rgba(200,140,60,0.6);
+      border-radius: 0 6px 6px 0;
+      padding: 14px 18px;
+      margin: 18px 0;
+    }
+    .warn-box .wlabel { font-family: var(--mono); font-size: 10px; color: rgba(220,160,70,0.9); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 6px; }
+    .warn-box p { margin: 0; font-size: 14px; color: var(--text-2); line-height: 1.55; }
+    .tip-box {
+      background: var(--accent-dim);
+      border-left: 3px solid var(--accent);
+      border-radius: 0 6px 6px 0;
+      padding: 14px 18px;
+      margin: 18px 0;
+    }
+    .tip-box .tlabel { font-family: var(--mono); font-size: 10px; color: var(--accent); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 6px; }
+    .tip-box p { margin: 0; font-size: 14px; color: var(--text-2); line-height: 1.55; }
+    .provider-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 12px;
+      margin: 20px 0;
+    }
+    @media(max-width:700px) { .provider-grid { grid-template-columns: 1fr 1fr; } }
+    @media(max-width:480px) { .provider-grid { grid-template-columns: 1fr; } }
+    .provider-card {
+      border: 1px solid var(--border);
+      border-radius: 7px;
+      padding: 15px;
+      background: var(--surface);
+    }
+    .provider-card .pname { font-weight: 600; font-size: 13.5px; color: var(--text); margin-bottom: 6px; }
+    .provider-card .psub { font-size: 12.5px; color: var(--text-2); line-height: 1.45; }
+  </style>
+</head>
+
+<body>
+  <div class="grid-bg"></div>
+
+  <header class="nav">
+    <div class="shell">
+      <div class="nav-inner">
+        <a class="brand" href="../">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span class="brand-name"><b>Mehedi Hasan</b><em>ERP · Business Analyst</em></span>
+        </a>
+        <a class="back-link" href="../#lab">← Back to Lab</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="post-head">
+    <div class="shell">
+      <span class="eyebrow">Technical Lab · 0054</span>
+      <h1>Odoo Email & SMS Setup Bangladesh — <span class="serif">SMTP, aliases, gateways, and notifications that actually work.</span></h1>
+      <p class="lede">Email and SMS are how Odoo communicates with your customers, vendors, and internal team — sale order confirmations, purchase approvals, delivery alerts, payment reminders. Yet in most Bangladesh implementations I review, these are either not configured at all (the system emails nobody) or configured badly (emails land in spam, SMS credentials are expired, notifications fire to the wrong people). This guide fixes all of it.</p>
+      <div class="post-meta">
+        <span class="chip accent">Guide</span>
+        <span class="chip">Email & SMS</span>
+        <span class="chip">Configuration</span>
+        <span class="chip">Bangladesh</span>
+      </div>
+      <div class="byline">
+        <span>By<b><a href="https://www.linkedin.com/in/mehedi-hasan-consultant/" style="color:var(--accent)" rel="author">Mehedi Hasan</a></b></span>
+        <span>Published<b>May 2026</b></span>
+        <span>Read time<b>15 minutes</b></span>
+        <span>Form<b>Guide</b></span>
+        <span>Scope<b>System Configuration</b></span>
+      </div>
+    </div>
+  </section>
+
+  <article class="post">
+    <aside class="toc">
+      <div class="toc-k">In this guide</div>
+      <ol>
+        <li><a href="#why-it-fails">Why Email Setup Fails in Bangladesh</a></li>
+        <li><a href="#outgoing-smtp">Outgoing Email: SMTP Configuration</a></li>
+        <li><a href="#smtp-providers">SMTP Provider Comparison</a></li>
+        <li><a href="#deliverability">Deliverability: SPF, DKIM, DMARC</a></li>
+        <li><a href="#incoming-email">Incoming Email: Aliases</a></li>
+        <li><a href="#sms-gateways">Bangladesh SMS Gateways</a></li>
+        <li><a href="#sms-odoo">Connecting SMS to Odoo</a></li>
+        <li><a href="#whatsapp">WhatsApp Business Integration</a></li>
+        <li><a href="#notification-templates">Notification Templates</a></li>
+        <li><a href="#troubleshooting">Troubleshooting</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ol>
+    </aside>
+
+    <div class="body">
+
+      <h2 id="why-it-fails">Why Email & SMS Setup Gets Ignored in Bangladesh Implementations</h2>
+      <p>There are two reasons. First, implementation vendors often treat email and SMS as "configuration items" — things to set up quickly at the end of the project, not core functionality. Second, the person configuring Odoo typically has access to the company Gmail account but not the domain's DNS settings, which means they cannot complete the SPF/DKIM setup that determines whether emails land in the inbox or spam.</p>
+      <p>The result: Odoo sends emails from a generic Gmail address (not the company domain), deliverability is poor, customer-facing confirmations look unprofessional, and SMS either never gets configured or uses a cheap non-masked gateway that shows a random number to recipients — damaging brand trust.</p>
+      <p>This guide takes a different approach. It covers the full stack: SMTP server, DNS configuration, incoming aliases, SMS gateway selection, and notification template customisation — in the order you should configure them.</p>
+
+      <p class="pull">An ERP that cannot send a professional order confirmation email is not a business system — it is a database with a UI.</p>
+
+      <h2 id="outgoing-smtp">Outgoing Email: SMTP Configuration in Odoo</h2>
+      <p>Odoo sends all outgoing email through Settings → Technical → Email → Outgoing Mail Servers. You need at least one configured server before Odoo can send anything. Here is what each field means and what to enter.</p>
+
+      <div class="config-block">
+        <div class="config-header">
+          <span class="config-badge recommended">Recommended</span>
+          <h3>Zoho Mail SMTP — Best for Most Bangladesh Businesses</h3>
+        </div>
+        <div class="config-body">
+          <table class="settings-table">
+            <thead><tr><th>Field</th><th>Value</th></tr></thead>
+            <tbody>
+              <tr><td>Description</td><td>Zoho Outgoing SMTP</td></tr>
+              <tr><td>SMTP Server</td><td>smtp.zoho.com</td></tr>
+              <tr><td>SMTP Port</td><td>587 (STARTTLS) or 465 (SSL)</td></tr>
+              <tr><td>Connection Security</td><td>TLS (STARTTLS) — preferred</td></tr>
+              <tr><td>Username</td><td>noreply@yourdomain.com (your Zoho email)</td></tr>
+              <tr><td>Password</td><td>App-specific password (generate in Zoho account security)</td></tr>
+              <tr><td>From Filter</td><td>yourdomain.com</td></tr>
+              <tr><td>Priority</td><td>10</td></tr>
+            </tbody>
+          </table>
+          <p><strong>Why Zoho:</strong> Affordable (free up to 5 users on custom domain), Bangladesh businesses can get a custom domain email setup in 30 minutes, excellent deliverability, and no 2,000/day limit like Gmail. For the company address (info@, sales@, noreply@), Zoho is the right default.</p>
+          <div class="tip-box">
+            <div class="tlabel">Important Step</div>
+            <p>In Zoho, you must generate an App Password (not your account password) for SMTP authentication. Go to Zoho Account → Security → App Passwords → Generate New Password. Use this app password in Odoo — your main Zoho password will not work for SMTP.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="config-block">
+        <div class="config-header">
+          <span class="config-badge alternative">Alternative</span>
+          <h3>Google Workspace (Gmail) SMTP</h3>
+        </div>
+        <div class="config-body">
+          <table class="settings-table">
+            <thead><tr><th>Field</th><th>Value</th></tr></thead>
+            <tbody>
+              <tr><td>SMTP Server</td><td>smtp.gmail.com</td></tr>
+              <tr><td>SMTP Port</td><td>587</td></tr>
+              <tr><td>Connection Security</td><td>TLS (STARTTLS)</td></tr>
+              <tr><td>Username</td><td>your-google-workspace-email@yourdomain.com</td></tr>
+              <tr><td>Password</td><td>App Password (generated from Google Account → Security → 2-Step → App Passwords)</td></tr>
+            </tbody>
+          </table>
+          <p><strong>Limitation:</strong> Google Workspace limits outgoing SMTP to 2,000 messages per day per user. For Bangladesh companies sending high-volume transactional emails (order confirmations, invoices at scale), this limit is hit quickly. Split across multiple Gmail accounts or use Mailgun/SendGrid for high-volume sends.</p>
+          <div class="warn-box">
+            <div class="wlabel">Critical Note</div>
+            <p>Do not use a personal @gmail.com account for Odoo SMTP. Use only Google Workspace (paid, on your own domain). Personal Gmail accounts are blocked from SMTP relay and cannot be used as business sender addresses without significant deliverability issues.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="config-block">
+        <div class="config-header">
+          <span class="config-badge advanced">High Volume</span>
+          <h3>Mailgun or SendGrid — For 10,000+ Emails Per Day</h3>
+        </div>
+        <div class="config-body">
+          <p>If your Bangladesh business sends high-volume transactional email — invoice batches, customer notifications at scale, supplier reminders — use a dedicated transactional email service. Both Mailgun and SendGrid provide SMTP relay credentials that work identically in Odoo's outgoing mail server configuration.</p>
+          <table class="settings-table">
+            <thead><tr><th>Provider</th><th>Free Tier</th><th>SMTP Host</th></tr></thead>
+            <tbody>
+              <tr><td>Mailgun</td><td>100 emails/day</td><td>smtp.mailgun.org</td></tr>
+              <tr><td>SendGrid</td><td>100 emails/day</td><td>smtp.sendgrid.net</td></tr>
+              <tr><td>Brevo (Sendinblue)</td><td>300 emails/day</td><td>smtp-relay.brevo.com</td></tr>
+            </tbody>
+          </table>
+          <p>Payment from Bangladesh: Mailgun and SendGrid accept international Visa/Mastercard. Brevo sometimes accepts bKash via resellers. Budget approximately $15–35/month for the volume tier most mid-size Bangladesh companies need.</p>
+        </div>
+      </div>
+
+      <h2 id="smtp-providers">SMTP Provider Decision Matrix for Bangladesh</h2>
+
+      <div class="provider-grid">
+        <div class="provider-card">
+          <div class="pname">Zoho Mail</div>
+          <div class="psub">Best default. Custom domain. Free plan available. Good deliverability. 250k/day on paid plans.</div>
+        </div>
+        <div class="provider-card">
+          <div class="pname">Google Workspace</div>
+          <div class="psub">Excellent deliverability. 2k/day limit per user. Best if team already uses Gmail.</div>
+        </div>
+        <div class="provider-card">
+          <div class="pname">Mailgun</div>
+          <div class="psub">High volume transactional. Pay-as-you-go. Excellent API and analytics.</div>
+        </div>
+        <div class="provider-card">
+          <div class="pname">cPanel SMTP</div>
+          <div class="psub">If your Bangladesh hosting has cPanel — use hosting SMTP. Inconsistent deliverability. Only for low volume.</div>
+        </div>
+        <div class="provider-card">
+          <div class="pname">Microsoft 365</div>
+          <div class="psub">Good if company uses Microsoft 365. SMTP relay through smtp.office365.com port 587.</div>
+        </div>
+        <div class="provider-card">
+          <div class="pname">Brevo</div>
+          <div class="psub">Best free tier (300/day). Good for small Bangladesh teams under 10,000 emails/month.</div>
+        </div>
+      </div>
+
+      <h2 id="deliverability">Deliverability: SPF, DKIM, and DMARC</h2>
+      <p>This is the section most Bangladesh implementations skip — and the reason Odoo emails end up in spam. SPF, DKIM, and DMARC are DNS records that tell email providers worldwide that your domain is authorised to send email and that nobody is spoofing it. Without them, emails from your Odoo system may work perfectly in testing but land in spam for 40–60% of recipients.</p>
+
+      <div class="config-block">
+        <div class="config-header">
+          <span class="config-badge recommended">Required</span>
+          <h3>SPF Record — Tell the World Which Servers Send Your Email</h3>
+        </div>
+        <div class="config-body">
+          <p>Add a TXT record to your domain DNS (wherever your domain is registered — often GoDaddy, Namecheap, or a Bangladesh registrar like BDCOM, Fiber@Home). The record name is <code>@</code> (root of your domain) and the value includes your SMTP provider's SPF include.</p>
+          <div class="code-label">SPF record for Zoho + any other server</div>
+          <div class="code-box"><pre>v=spf1 include:zoho.com include:mailgun.org ip4:YOUR_ODOO_SERVER_IP ~all</pre></div>
+          <p>If using Google Workspace: replace <code>include:zoho.com</code> with <code>include:_spf.google.com</code>. The <code>~all</code> at the end means "soft fail" — emails from unlisted sources are marked suspicious but not outright rejected. Use <code>-all</code> (hard fail) only once you are confident your SPF record is complete.</p>
+          <div class="warn-box">
+            <div class="wlabel">Common Mistake</div>
+            <p>Your domain can only have ONE SPF TXT record. If you add multiple v=spf1 records, they conflict and break deliverability entirely. Combine all your sending sources into a single SPF record on one line.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="config-block">
+        <div class="config-header">
+          <span class="config-badge recommended">Required</span>
+          <h3>DKIM — Digital Signature for Each Email</h3>
+        </div>
+        <div class="config-body">
+          <p>DKIM adds a cryptographic signature to every email, proving it has not been tampered with in transit. Each SMTP provider generates a unique DKIM TXT record that you add to your domain DNS. The record name looks like: <code>zoho._domainkey.yourdomain.com</code> (prefix varies by provider).</p>
+          <p><strong>Zoho DKIM:</strong> Zoho Admin Console → Domains → SPF/DKIM → Generate DKIM Key → copy the TXT record to your domain DNS.<br>
+          <strong>Google Workspace DKIM:</strong> Admin Console → Apps → Google Workspace → Gmail → Authenticate Email → Generate New Record → add to DNS.<br>
+          <strong>Mailgun DKIM:</strong> Auto-generated when you verify your domain in Mailgun. Copy the two TXT records provided.</p>
+          <p>DKIM propagation takes 24–48 hours. Verify with: <code>nslookup -type=TXT zoho._domainkey.yourdomain.com</code></p>
+        </div>
+      </div>
+
+      <div class="config-block">
+        <div class="config-header">
+          <span class="config-badge alternative">Add After SPF & DKIM</span>
+          <h3>DMARC — Policy for How Recipients Handle Failed Checks</h3>
+        </div>
+        <div class="config-body">
+          <p>DMARC tells receiving mail servers what to do if SPF or DKIM checks fail. Start with a monitoring-only policy (<code>p=none</code>) and review the reports before moving to quarantine or reject.</p>
+          <div class="code-label">Starter DMARC record (add as TXT record at _dmarc.yourdomain.com)</div>
+          <div class="code-box"><pre>v=DMARC1; p=none; rua=mailto:dmarc-reports@yourdomain.com; pct=100</pre></div>
+          <p>After 30 days with no legitimate email failures in your reports, upgrade to <code>p=quarantine</code>. After another 30 clean days, upgrade to <code>p=reject</code>. This progressive approach ensures you do not accidentally block legitimate email while tightening security.</p>
+        </div>
+      </div>
+
+      <h2 id="incoming-email">Incoming Email: Aliases for Bangladesh Operations</h2>
+      <p>Odoo's incoming email aliases turn email addresses into action triggers. Email to <code>sales@yourdomain.com</code> creates a CRM lead. Email to <code>support@yourdomain.com</code> creates a helpdesk ticket. Email to <code>purchase@yourdomain.com</code> routes to the purchase module. This is configured in Settings → Technical → Email → Aliases.</p>
+
+      <p>To receive incoming email, you need a catchall alias configured and an incoming mail server. The two options for Bangladesh:</p>
+
+      <p><strong>Option 1 — IMAP polling (simpler):</strong> Odoo connects to your email server via IMAP every 5 minutes and processes new emails. Configure at Settings → Technical → Email → Incoming Mail Servers. Works with any email provider that supports IMAP (Zoho, Gmail, cPanel). Downside: 5-minute delay between email received and Odoo action.</p>
+
+      <p><strong>Option 2 — Postfix relay (faster, server-required):</strong> Run Postfix on your Odoo server to receive email in real-time and relay to Odoo's built-in MTA. Requires MX records pointing to your server. Faster but requires Linux server administration knowledge.</p>
+
+      <div class="tip-box">
+        <div class="tlabel">Bangladesh Recommendation</div>
+        <p>For most Bangladesh SMEs, IMAP polling is the right choice. It is simpler to configure, works with existing email providers, and the 5-minute delay is acceptable for most internal workflows. Only implement Postfix relay if you need real-time email-to-ticket creation (e.g., customer support operations with SLA requirements).</p>
+      </div>
+
+      <h2 id="sms-gateways">Bangladesh SMS Gateways: Selection and Comparison</h2>
+      <p>SMS is uniquely important in Bangladesh business operations. WhatsApp penetration is high but not universal; SMS reaches everyone with a mobile phone. For Odoo, SMS is used for payment reminders, delivery notifications, OTPs, and approval alerts to managers.</p>
+
+      <div class="config-block">
+        <div class="config-header">
+          <span class="config-badge recommended">Market Leader</span>
+          <h3>SSL Wireless — Best Coverage, Most Reliable</h3>
+        </div>
+        <div class="config-body">
+          <p>SSL Wireless (SSL EZY) is Bangladesh's largest bulk SMS provider, with connections to all 5 operators: Grameenphone, Robi, Banglalink, Teletalk, and Airtel Bangladesh. Features:</p>
+          <ul>
+            <li><strong>Masking (Sender ID):</strong> Send SMS from your company name (e.g., "ACME-BD") instead of a random number. Requires BTRC approval — 5–7 working days, company trade license required.</li>
+            <li><strong>Non-masking:</strong> Available immediately. SMS shows a numeric sender ID. No approval required.</li>
+            <li><strong>API:</strong> REST API with JSON payload. Straightforward documentation. Authentication via username + password or API key.</li>
+            <li><strong>Pricing:</strong> Negotiated per business. Approximately BDT 0.35–0.55 per SMS on standard plans. Bulk purchase reduces cost.</li>
+            <li><strong>Reliability:</strong> 98%+ delivery rate on Grameenphone. Slightly lower on Teletalk.</li>
+          </ul>
+          <p>Contact: sslwireless.com — sales team in Dhaka for business accounts.</p>
+        </div>
+      </div>
+
+      <div class="config-block">
+        <div class="config-header">
+          <span class="config-badge alternative">Strong Alternative</span>
+          <h3>MiCom — Competitive Pricing, Good for Volume</h3>
+        </div>
+        <div class="config-body">
+          <p>MiCom is the second-largest Bangladesh bulk SMS provider. REST API similar to SSL Wireless. Pricing is slightly more competitive for high-volume senders (1 million+ SMS/month). Good for manufacturing companies sending daily shift notifications or large-scale customer alerts.</p>
+          <p><strong>ADN SMS</strong> and <strong>BulkSMSBD</strong> are also available options for smaller budgets. ADN is particularly popular with NGOs and educational institutions. BulkSMSBD has no frills but the cheapest pricing for non-masked volume sends.</p>
+        </div>
+      </div>
+
+      <h2 id="sms-odoo">Connecting Bangladesh SMS to Odoo</h2>
+      <p>Odoo has a built-in SMS module that works with IAP (Odoo's own SMS credit service) or a custom SMS provider. For Bangladesh, you almost always want a custom SMS provider — IAP credits are expensive and not optimised for Bangladesh operator routes.</p>
+
+      <div class="config-block">
+        <div class="config-header">
+          <span class="config-badge recommended">Custom Module</span>
+          <h3>SSL Wireless REST API Integration with Odoo</h3>
+        </div>
+        <div class="config-body">
+          <p>The integration overrides Odoo's <code>sms.sms</code> model's send method to route through SSL Wireless instead of IAP. The module structure:</p>
+          <div class="code-label">SSL Wireless API call (Python — inside Odoo module)</div>
+          <div class="code-box"><pre>import requests
+
+def send_sms_ssl_wireless(to_number, message):
+    """Send SMS via SSL Wireless REST API."""
+    # Normalise Bangladesh number to international format
+    number = to_number.strip().replace(" ", "").replace("-", "")
+    if number.startswith("0"):
+        number = "88" + number  # Add Bangladesh country code
+
+    url = "https://sms.sslwireless.com/pushapi/dynamic/server.php"
+    payload = {
+        "api_token": "YOUR_SSL_API_TOKEN",
+        "sid": "YOUR_SENDER_ID",
+        "sms": message,
+        "msisdn": number,
+        "csmsid": str(hash(f"{number}{message}"))[:15]  # unique message ID
+    }
+    response = requests.post(url, data=payload, timeout=10)
+    return response.json()</pre></div>
+          <p>Store <code>api_token</code> and <code>sid</code> in Odoo System Parameters, not hardcoded. The number normalisation step is important — Bangladesh mobile numbers in Odoo are often stored as <code>01XXXXXXXXX</code> but SSL Wireless requires <code>8801XXXXXXXXX</code> format.</p>
+          <div class="warn-box">
+            <div class="wlabel">DND Compliance</div>
+            <p>Bangladesh BTRC enforces Do Not Disturb (DND) rules. Users registered on the national DND registry cannot receive promotional SMS. Masked sender IDs are not exempt. However, transactional SMS (order confirmations, payment alerts, OTPs) are generally exempt from DND restrictions. Structure your SMS content as transactional, not promotional, to maintain delivery rates.</p>
+          </div>
+        </div>
+      </div>
+
+      <h2 id="whatsapp">WhatsApp Business Integration</h2>
+      <p>WhatsApp is the dominant messaging platform in Bangladesh business. Every sales rep, vendor, and customer communicates on WhatsApp. Integrating WhatsApp with Odoo gives you a unified communication log and automated notifications.</p>
+
+      <p><strong>Odoo 16+ Enterprise:</strong> Has a native WhatsApp module. Go to Settings → WhatsApp → Connect Account. Requires a WhatsApp Business Account linked to Meta Business Suite, a dedicated phone number (cannot be your personal WhatsApp number), and approved message templates. Setup takes approximately 2–3 business days including Meta verification.</p>
+
+      <p><strong>Odoo Community / Older Versions:</strong> Use a WhatsApp Business API provider as middleware. Bangladesh options:</p>
+      <ul>
+        <li><strong>Twilio WhatsApp API:</strong> International provider, excellent documentation, accepts international cards. Monthly cost from $15 plus per-message fees.</li>
+        <li><strong>360dialog:</strong> European WhatsApp BSP (Business Solution Provider). Good pricing for high volume. Requires Meta Business verification.</li>
+        <li><strong>Local BSPs:</strong> Some Bangladesh IT firms resell WhatsApp Business API access — check with your implementation partner.</li>
+      </ul>
+
+      <div class="tip-box">
+        <div class="tlabel">Practical Tip</div>
+        <p>WhatsApp message templates must be pre-approved by Meta. Template approval takes 24–72 hours. Common Bangladesh use cases requiring templates: order confirmation, payment received, delivery dispatch, meeting reminder. Write your templates in plain English (no promotional language) for faster approval.</p>
+      </div>
+
+      <h2 id="notification-templates">Notification Templates: Customising for Bangladesh Operations</h2>
+      <p>Odoo's default email templates are in English and written for a generic global audience. Bangladesh businesses should customise them to reflect local business context, proper formatting, and the company's communication style.</p>
+
+      <p>Access templates at Settings → Technical → Email → Templates. Key templates to customise for Bangladesh operations:</p>
+
+      <ul>
+        <li><strong>Sale Order Confirmation:</strong> Add company trade license number, TIN, and bank account details. Include LC terms if applicable for export customers.</li>
+        <li><strong>Invoice:</strong> Add Mushak registration number, ensure VAT breakdown is visible, add "Pay within [X] days" text per your credit terms.</li>
+        <li><strong>Purchase Order:</strong> Add your company's standard terms and conditions in Bangla or English. Include delivery location and contact person.</li>
+        <li><strong>Payment Reminder:</strong> Customise to reflect Bangladesh business culture — respectful but firm tone. Include bKash/bank transfer details for easy payment.</li>
+        <li><strong>Delivery Slip:</strong> Add driver name, vehicle number, and Pathao/Steadfast tracking number if applicable.</li>
+      </ul>
+
+      <p>For the user notification settings that control who receives which Odoo notifications, see the <a href="0042-odoo-user-access-rights-configuration" style="color:var(--accent)">Odoo User Access Rights guide</a> — it covers how to limit notification flood to only relevant users per role. And for post-go-live communication management, the <a href="0032-odoo-post-go-live-hypercare-bangladesh" style="color:var(--accent)">Post Go-Live Hypercare guide</a> includes how to manage notification overload in the first 30 days after launch.</p>
+
+      <h2 id="troubleshooting">Troubleshooting Common Email & SMS Issues</h2>
+
+      <p><strong>Emails sending from Odoo but landing in spam</strong><br>
+      Check SPF, DKIM, DMARC as described above. Also check that the From address in Odoo templates matches the SMTP sending domain. Mismatched From vs. sender domain is a major spam trigger.</p>
+
+      <p><strong>"SMTP Authentication Failed" error in Odoo</strong><br>
+      Almost always one of: (a) you entered your main account password instead of an App Password — generate an App Password in Zoho/Google security settings; (b) 2FA is enabled on the email account but you are not using an App Password; (c) your SMTP provider requires "Less Secure Apps" to be enabled (Gmail legacy accounts only — not applicable to Workspace).</p>
+
+      <p><strong>SSL certificate error on SMTP connection</strong><br>
+      Your Odoo server cannot verify the SMTP provider's SSL certificate. Ensure the <code>ca-certificates</code> package is installed and updated on your server (<code>sudo apt-get update && sudo apt-get install ca-certificates</code>). Also verify the server clock is NTP-synced.</p>
+
+      <p><strong>SMS API returning "Invalid Number" for Bangladesh mobile numbers</strong><br>
+      Format issue. Bangladesh numbers must be <code>8801XXXXXXXXX</code> for SSL Wireless (9 digits after 880). Numbers stored in Odoo as <code>01XXXXXXXXX</code> need the country code prepended. Add a normalisation step in your SMS module as shown in the code example above.</p>
+
+      <p><strong>SMS delivered but marked as "Failed" in Odoo</strong><br>
+      The SMS module is checking the API response but the response format from SSL Wireless does not match what Odoo expects. Parse the SSL Wireless response JSON explicitly — check for their <code>status</code> field value (<code>"success"</code> or error codes) rather than relying on HTTP status codes alone.</p>
+
+      <div class="callout">
+        <span class="tag">Email & SMS Configuration Review</span>
+        <p>If your Odoo installation's email setup is broken, spam-filtered, or never configured, I can audit and fix the SMTP, DNS records, SMS gateway, and template configuration in a single remote session. <a href="../#contact" style="color:var(--accent)">Book a configuration review →</a></p>
+      </div>
+
+      <h2 id="faq">Frequently asked questions</h2>
+
+      <h3>Which SMTP server is best for Odoo in Bangladesh?</h3>
+      <p>For most Bangladesh businesses, Zoho Mail SMTP is the best balance of reliability, price, and deliverability. It supports custom domain email, has no problematic sending limits for typical SME volumes, and the SMTP credentials are simple to configure. Google Workspace is excellent but limits outgoing SMTP to 2,000 messages per day per user. For high-volume transactional email (10,000+/day), use Mailgun or SendGrid with SMTP relay.</p>
+
+      <h3>Which SMS gateway works best with Odoo in Bangladesh?</h3>
+      <p>SSL Wireless is the most reliable with widest network coverage across all five Bangladesh operators. For Odoo integration, use their REST API with JSON payload. MiCom is a strong second option with competitive pricing for high-volume sends. Both require a business account. Masking (sender ID showing your company name) requires BTRC approval and takes 5–7 working days.</p>
+
+      <h3>Why are Odoo emails going to spam for Bangladesh recipients?</h3>
+      <p>Most common causes: missing SPF record (add your SMTP provider's SPF include to your domain DNS), no DKIM signature (enable and add DKIM TXT record), or no DMARC policy. SPF + DKIM + DMARC together resolve 90% of deliverability issues. Also check that the From address domain matches your sending domain — mismatches trigger spam filters aggressively.</p>
+
+      <h3>Can Odoo send WhatsApp messages to Bangladesh customers?</h3>
+      <p>Yes, via WhatsApp Business API. Odoo 16+ Enterprise has a native WhatsApp module requiring a WhatsApp Business Account, a dedicated phone number, and approved message templates. For Community or older versions, use a WhatsApp Business API provider (Twilio, 360dialog) as middleware. Setup takes 2–5 business days including Meta business verification.</p>
+
+    </div>
+  </article>
+
+  <footer>
+    <div class="shell">
+      <div class="post-foot">
+        <span class="eyebrow">Continue exploring</span>
+        <div class="next">
+          <a class="next-card" href="0053-odoo-api-integration-bangladesh">
+            <span class="dir">Older · 0053</span>
+            <h4>Odoo API Integration Bangladesh</h4>
+            <p>Connect bKash, bank feeds, SSLCommerz, and shipping APIs to your Odoo system.</p>
+            <span class="arrow">→</span>
+          </a>
+          <a class="next-card" href="0055-odoo-dashboards-kpi-bangladesh">
+            <span class="dir">Newer · 0055</span>
+            <h4>Odoo Dashboards & KPIs Bangladesh</h4>
+            <p>Track sales pipeline, inventory turns, cash flow, and manufacturing OEE from one screen.</p>
+            <span class="arrow">→</span>
+          </a>
+        </div>
+      </div>
+      <div class="foot">
+        <span>© 2026 Mehedi Hasan · Lab / 0054</span>
+        <span><a href="../#lab">↑ Back to lab index</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="_utils.js" defer></script>
+  <script src="_toc.js" defer></script>
+  <script src="/whatsapp.js" defer></script>
+  <script src="/scroll-top.js" defer></script>
+</body>
+
+</html>

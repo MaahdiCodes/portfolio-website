@@ -1,0 +1,727 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description"
+    content="Odoo API integration Bangladesh: connect bKash, bank feeds, SSLCommerz, and shipping APIs to your Odoo system. IT manager's step-by-step guide. Read the guide →" />
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="Mehedi Hasan" />
+  <title>Odoo API Integration Bangladesh | Guide | Mehedi Hasan</title>
+  <link rel="canonical" href="https://mhasan.me/lab/0053-odoo-api-integration-bangladesh" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png" />
+  <!-- Open Graph -->
+  <meta property="og:title" content="Odoo API Integration Bangladesh | Guide | Mehedi Hasan" />
+  <meta property="og:description"
+    content="Connect bKash, Nagad, SSLCommerz, bank feeds, and shipping APIs (Pathao, Steadfast) to your Odoo system. Practical integration guide for Bangladesh IT managers." />
+  <meta property="og:url" content="https://mhasan.me/lab/0053-odoo-api-integration-bangladesh" />
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="https://mhasan.me/assets/og-default.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:site_name" content="Mehedi Hasan | Odoo ERP Consultant" />
+  <meta property="article:author" content="https://www.linkedin.com/in/mehedi-hasan-consultant/" />
+  <meta property="article:published_time" content="2026-05-12T10:00:00+06:00" />
+  <meta property="article:modified_time" content="2026-05-12T10:00:00+06:00" />
+  <meta property="article:section" content="Odoo ERP Bangladesh" />
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Odoo API Integration Bangladesh | Guide | Mehedi Hasan" />
+  <meta name="twitter:description"
+    content="Connect bKash, Nagad, SSLCommerz, bank feeds, and shipping APIs to your Odoo system. Practical guide for Bangladesh IT managers." />
+  <meta name="twitter:image" content="https://mhasan.me/assets/og-default.jpg" />
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Odoo API Integration: Connecting Banks & Third-Party Tools in Bangladesh",
+    "description": "Connect bKash, Nagad, SSLCommerz, bank feeds, and shipping APIs (Pathao, Steadfast, Redx) to your Odoo system. Practical integration guide for Bangladesh IT managers and CTOs.",
+    "datePublished": "2026-05-12T10:00:00+06:00",
+    "dateModified": "2026-05-12T10:00:00+06:00",
+    "author": {
+      "@type": "Person",
+      "name": "Mehedi Hasan",
+      "url": "https://mhasan.me",
+      "jobTitle": "Odoo ERP Consultant & Business Analyst",
+      "sameAs": "https://www.linkedin.com/in/mehedi-hasan-consultant/"
+    },
+    "publisher": { "@type": "Person", "name": "Mehedi Hasan", "url": "https://mhasan.me" },
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://mhasan.me/lab/0053-odoo-api-integration-bangladesh" }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://mhasan.me" },
+      { "@type": "ListItem", "position": 2, "name": "Lab", "item": "https://mhasan.me/lab/" },
+      { "@type": "ListItem", "position": 3, "name": "Odoo API Integration Bangladesh", "item": "https://mhasan.me/lab/0053-odoo-api-integration-bangladesh" }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Does Odoo have a REST API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Odoo 16 and later expose a native REST API at /web/dataset/call_kw and a dedicated /api endpoint for certain objects. Earlier versions use XML-RPC or JSON-RPC. The JSON-RPC interface at /web/dataset/call_kw is the most commonly used method for Bangladesh integrations because it works with any HTTP client and does not require a special SDK."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can bKash be integrated directly with Odoo?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, but not with a native Odoo module. bKash merchant API (REST, OAuth 2.0) must be connected via a custom payment provider module or through a middleware like n8n or Zapier-style webhook relay. The bKash merchant API requires a registered business account, IP whitelisting, and sandbox credentials from bKash before production integration. Most Bangladesh Odoo partners build this as a custom module that extends Odoo's payment.provider model."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Which shipping APIs work with Odoo in Bangladesh?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Pathao Courier, Steadfast Courier, Redx, and eCourier are the main Bangladesh delivery APIs. None have official Odoo modules on the Odoo App Store as of 2026. Integration requires a custom delivery carrier module that extends Odoo's stock.picking and delivery.carrier models, calling the courier's REST API for shipment creation, tracking, and status updates. Steadfast has the simplest API (flat REST with API key auth) and is the easiest starting point for custom development."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the safest way to store API keys in Odoo?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Never store API keys in Python source code or configuration files that are committed to version control. In Odoo, use the ir.config.parameter (System Parameters) model to store keys, accessible via Settings → Technical → Parameters → System Parameters. For production environments, use environment variables loaded via odoo.conf rather than database parameters. Restrict access to System Parameters to the Administrator role only via the access rights configuration."
+        }
+      }
+    ]
+  }
+]
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap">
+  <link rel="stylesheet" href="_styles.css">
+  <style>
+    .api-block {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      margin: 28px 0;
+      overflow: hidden;
+    }
+    .api-block-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 16px 20px;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+    }
+    .api-badge {
+      font-family: var(--mono);
+      font-size: 11px;
+      font-weight: 600;
+      padding: 3px 10px;
+      border-radius: 4px;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      flex-shrink: 0;
+    }
+    .api-badge.get { background: rgba(80,200,120,0.15); color: #5EC87A; border: 1px solid rgba(80,200,120,0.3); }
+    .api-badge.post { background: rgba(100,160,255,0.15); color: #7AABFF; border: 1px solid rgba(100,160,255,0.3); }
+    .api-badge.native { background: var(--accent-dim); color: var(--accent); border: 1px solid rgba(80,230,160,0.3); }
+    .api-badge.custom { background: rgba(200,160,80,0.15); color: #E0B84A; border: 1px solid rgba(200,160,80,0.3); }
+    .api-block-header h3 { margin: 0; font-size: 15px; color: var(--text); letter-spacing: -0.01em; }
+    .api-block-body { padding: 20px; }
+    .api-block-body p { color: var(--text-2); font-size: 14.5px; line-height: 1.65; margin: 0 0 12px; }
+    .api-block-body p:last-child { margin-bottom: 0; }
+    .api-block-body ul { color: var(--text-2); font-size: 14px; padding-left: 20px; margin: 10px 0 12px; }
+    .api-block-body li { margin-bottom: 6px; line-height: 1.5; }
+    .code-box {
+      background: #0D1117;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 16px 20px;
+      margin: 16px 0;
+      overflow-x: auto;
+    }
+    .code-box pre {
+      margin: 0;
+      font-family: var(--mono);
+      font-size: 12.5px;
+      color: #C9D1D9;
+      line-height: 1.6;
+      white-space: pre;
+    }
+    .code-label {
+      font-family: var(--mono);
+      font-size: 10px;
+      color: var(--text-3);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .integration-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin: 24px 0;
+    }
+    @media(max-width:640px) { .integration-grid { grid-template-columns: 1fr; } }
+    .integration-card {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 18px;
+      background: var(--surface);
+    }
+    .integration-card .ic-head {
+      font-weight: 600;
+      font-size: 14px;
+      color: var(--text);
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .integration-card .ic-tag {
+      font-family: var(--mono);
+      font-size: 10px;
+      padding: 2px 8px;
+      border-radius: 3px;
+      background: var(--accent-dim);
+      color: var(--accent);
+    }
+    .integration-card p { color: var(--text-2); font-size: 13.5px; line-height: 1.5; margin: 0; }
+    .warn-box {
+      background: rgba(200,140,60,0.08);
+      border-left: 3px solid rgba(200,140,60,0.6);
+      border-radius: 0 6px 6px 0;
+      padding: 14px 18px;
+      margin: 18px 0;
+    }
+    .warn-box .wlabel {
+      font-family: var(--mono);
+      font-size: 10px;
+      color: rgba(220,160,70,0.9);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+    .warn-box p { margin: 0; font-size: 14px; color: var(--text-2); line-height: 1.55; }
+    .step-list {
+      counter-reset: step;
+      list-style: none;
+      padding: 0;
+      margin: 20px 0;
+    }
+    .step-list li {
+      counter-increment: step;
+      display: flex;
+      gap: 16px;
+      padding: 16px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .step-list li:last-child { border-bottom: none; }
+    .step-list li::before {
+      content: counter(step);
+      width: 26px; height: 26px;
+      border-radius: 50%;
+      background: var(--accent-dim);
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      font-family: var(--mono);
+      font-size: 11px;
+      font-weight: 600;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .step-list li .sc { }
+    .step-list li .sc strong { font-size: 14.5px; color: var(--text); display: block; margin-bottom: 4px; }
+    .step-list li .sc span { font-size: 13.5px; color: var(--text-2); line-height: 1.5; }
+    .pull {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: clamp(20px, 2.8vw, 28px);
+      line-height: 1.3;
+      color: var(--text);
+      margin: 48px 0;
+      max-width: 28ch;
+      letter-spacing: -0.01em;
+    }
+    .pull::before {
+      content: "";
+      display: block;
+      width: 36px;
+      height: 1px;
+      background: var(--accent);
+      margin-bottom: 18px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="grid-bg"></div>
+
+  <header class="nav">
+    <div class="shell">
+      <div class="nav-inner">
+        <a class="brand" href="../">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span class="brand-name"><b>Mehedi Hasan</b><em>ERP · Business Analyst</em></span>
+        </a>
+        <a class="back-link" href="../#lab">← Back to Lab</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="post-head">
+    <div class="shell">
+      <span class="eyebrow">Technical Lab · 0053</span>
+      <h1>Odoo API Integration — <span class="serif">connecting Bangladesh's payment, banking, and shipping ecosystem.</span></h1>
+      <p class="lede">Most Bangladesh ERP implementations treat Odoo as an isolated island. Your bKash merchant account, your BRAC Bank corporate feed, your Pathao Courier dispatch — none of it talks to your ERP automatically. This guide explains exactly how Odoo's API works, which Bangladesh systems can be connected, what level of development each requires, and where to start if you want to stop copying data between tabs.</p>
+      <div class="post-meta">
+        <span class="chip accent">Guide</span>
+        <span class="chip">API Integration</span>
+        <span class="chip">IT &amp; CTO</span>
+        <span class="chip">Bangladesh</span>
+      </div>
+      <div class="byline">
+        <span>By<b><a href="https://www.linkedin.com/in/mehedi-hasan-consultant/" style="color:var(--accent)" rel="author">Mehedi Hasan</a></b></span>
+        <span>Published<b>May 2026</b></span>
+        <span>Read time<b>18 minutes</b></span>
+        <span>Form<b>Guide</b></span>
+        <span>Scope<b>IT &amp; Integration</b></span>
+      </div>
+    </div>
+  </section>
+
+  <article class="post">
+    <aside class="toc">
+      <div class="toc-k">In this guide</div>
+      <ol>
+        <li><a href="#api-landscape">The Bangladesh API Landscape</a></li>
+        <li><a href="#odoo-api-fundamentals">Odoo API Fundamentals</a></li>
+        <li><a href="#authentication">Authentication & Security</a></li>
+        <li><a href="#payment-gateways">Payment Gateway Integration</a></li>
+        <li><a href="#bank-feeds">Bank Feed Integration</a></li>
+        <li><a href="#shipping-apis">Shipping & Delivery APIs</a></li>
+        <li><a href="#nbr-integration">NBR & Tax System Connections</a></li>
+        <li><a href="#integration-patterns">Common Integration Patterns</a></li>
+        <li><a href="#troubleshooting">Troubleshooting API Issues</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ol>
+    </aside>
+
+    <div class="body">
+
+      <h2 id="api-landscape">The Bangladesh API Landscape: What Can and Cannot Connect</h2>
+      <p>Before writing a single line of integration code, you need to understand a fundamental truth about Bangladesh's digital ecosystem: API quality varies enormously, from well-documented REST APIs (bKash, SSLCommerz) to barely-documented SOAP services (some bank corporate portals) to systems with no API at all (NBR's iBAS++ requires browser automation, not API calls).</p>
+      <p>Here is a practical map of what Bangladesh businesses typically want to connect to Odoo and the realistic integration level for each:</p>
+
+      <div class="integration-grid">
+        <div class="integration-card">
+          <div class="ic-head">bKash Merchant API <span class="ic-tag">REST + OAuth 2.0</span></div>
+          <p>Well-documented REST API. Supports payment initiation, status check, refund. Requires IP whitelisting and sandbox testing. Custom Odoo module required.</p>
+        </div>
+        <div class="integration-card">
+          <div class="ic-head">Nagad Merchant API <span class="ic-tag">REST + RSA encryption</span></div>
+          <p>Documented but uses RSA key-pair encryption on each request. More complex than bKash. Bangladesh-registered business required. Custom module required.</p>
+        </div>
+        <div class="integration-card">
+          <div class="ic-head">SSLCommerz <span class="ic-tag">REST, well-documented</span></div>
+          <p>Bangladesh's most developer-friendly payment gateway. Supports bKash, cards, mobile banking in one gateway. PHP/Python SDKs available. Easiest integration point for Odoo e-commerce.</p>
+        </div>
+        <div class="integration-card">
+          <div class="ic-head">Pathao Courier API <span class="ic-tag">REST + API key</span></div>
+          <p>REST API with API key auth. Supports order creation, tracking, webhook callbacks on status change. Documentation available on request from Pathao merchant team.</p>
+        </div>
+        <div class="integration-card">
+          <div class="ic-head">Steadfast Courier API <span class="ic-tag">REST, simplest</span></div>
+          <p>Flat REST API with API key in header. Create order, get tracking. The simplest Bangladesh courier API — good starting point for custom delivery carrier modules.</p>
+        </div>
+        <div class="integration-card">
+          <div class="ic-head">Bangladesh Bank Feeds <span class="ic-tag">CSV/MT940 only</span></div>
+          <p>BRAC, Dutch-Bangla, City, Eastern: most provide only CSV or MT940 file exports — no live API. IBBL and some new banks offer limited API. Use Odoo bank statement import, not live sync.</p>
+        </div>
+        <div class="integration-card">
+          <div class="ic-head">NBR iBAS++ <span class="ic-tag">No public API</span></div>
+          <p>The NBR tax return system has no public API. Data must be submitted via web interface. Odoo can export the required formats (Mushak 6.3 reports) but cannot submit directly.</p>
+        </div>
+        <div class="integration-card">
+          <div class="ic-head">ShurjoPay <span class="ic-tag">REST, Bangladesh cards</span></div>
+          <p>Newer gateway covering Bangladeshi cards + mobile banking. REST API with JWT auth. Gaining adoption in mid-market. Suitable for companies with in-house development capacity.</p>
+        </div>
+      </div>
+
+      <p class="pull">The Bangladesh fintech ecosystem is growing fast, but API quality still lags behind the ambition. Know what tier of integration you are building before you budget for it.</p>
+
+      <h2 id="odoo-api-fundamentals">Odoo API Fundamentals: XML-RPC, JSON-RPC, and REST</h2>
+      <p>Odoo exposes three API interfaces. Understanding which to use for which purpose is the first decision your integration team needs to make.</p>
+
+      <div class="api-block">
+        <div class="api-block-header">
+          <span class="api-badge native">Native</span>
+          <h3>JSON-RPC — The Standard Choice for Bangladesh Integrations</h3>
+        </div>
+        <div class="api-block-body">
+          <p>Odoo's JSON-RPC interface at <code>/web/dataset/call_kw</code> is available in all Odoo versions and is the most widely used integration method. Every Odoo model and its methods are accessible — read, write, create, unlink, and any custom method you define. This is what most Bangladesh integration developers use because it requires no extra setup and works with any HTTP client.</p>
+          <div class="code-label">Example: Authenticate and read sale orders (Python)</div>
+          <div class="code-box"><pre>import requests, json
+
+url = "https://your-odoo.com"
+
+# Step 1: Authenticate
+auth = requests.post(f"{url}/web/dataset/call_kw", json={
+    "jsonrpc": "2.0", "method": "call", "id": 1,
+    "params": {
+        "model": "res.users",
+        "method": "authenticate",
+        "args": ["your-db", "user@company.com", "password", {}],
+        "kwargs": {}
+    }
+}).json()
+
+uid = auth["result"]
+
+# Step 2: Read confirmed sale orders
+orders = requests.post(f"{url}/web/dataset/call_kw", json={
+    "jsonrpc": "2.0", "method": "call", "id": 2,
+    "params": {
+        "model": "sale.order",
+        "method": "search_read",
+        "args": [[["state", "=", "sale"]]],
+        "kwargs": {"fields": ["name", "partner_id", "amount_total"], "limit": 50}
+    }
+}).json()
+
+print(orders["result"])</pre></div>
+        </div>
+      </div>
+
+      <div class="api-block">
+        <div class="api-block-header">
+          <span class="api-badge native">Native</span>
+          <h3>XML-RPC — Legacy but Stable, Available in All Versions</h3>
+        </div>
+        <div class="api-block-body">
+          <p>XML-RPC is Odoo's older interface, available since Odoo 8. It works through two endpoints: <code>/xmlrpc/2/common</code> (for authentication) and <code>/xmlrpc/2/object</code> (for all model operations). It is slightly more verbose than JSON-RPC but is perfectly stable and used in many long-running Bangladesh integrations.</p>
+          <p>Use XML-RPC when: working with older Odoo versions (12, 13, 14), or when using Odoo's official <code>odoorpc</code> Python library which wraps XML-RPC cleanly.</p>
+        </div>
+      </div>
+
+      <div class="api-block">
+        <div class="api-block-header">
+          <span class="api-badge post">Odoo 16+</span>
+          <h3>REST API — New in Odoo 16, Cleaner for Modern Integrations</h3>
+        </div>
+        <div class="api-block-body">
+          <p>Odoo 16 introduced a proper REST API at <code>/api/</code> endpoints for specific models. It uses API key authentication (no session management) and returns clean JSON. As of Odoo 18, the REST API covers the most common objects: <code>/api/sale.order</code>, <code>/api/res.partner</code>, <code>/api/stock.picking</code>, etc.</p>
+          <p>The REST API is the right choice for new integrations on Odoo 16+ because it does not require session cookie management and is easier to secure. Generate an API key from Settings → Users → Your User → API Keys tab.</p>
+          <div class="code-label">Example: Get sale orders via REST API (Odoo 16+)</div>
+          <div class="code-box"><pre>curl -H "Authorization: Bearer YOUR_API_KEY" \
+     https://your-odoo.com/api/sale.order?domain=[["state","=","sale"]]</pre></div>
+        </div>
+      </div>
+
+      <h2 id="authentication">Authentication & API Security</h2>
+      <p>Authentication is where Bangladesh integrations most often fail — not because the code is wrong, but because the security configuration is not thought through. There are three patterns to choose from:</p>
+
+      <ol class="step-list">
+        <li>
+          <div class="sc">
+            <strong>API Key Authentication (Recommended for Odoo 16+)</strong>
+            <span>Generate a dedicated API key for each external system. Settings → Technical → API Keys (or per-user API Keys tab). Store the key as an environment variable on the integration server — never in source code. Rotate keys every 90 days. Use one key per integration so you can revoke without affecting others.</span>
+          </div>
+        </li>
+        <li>
+          <div class="sc">
+            <strong>Dedicated Integration User (All Versions)</strong>
+            <span>Create a dedicated Odoo user (e.g., api-integration@company.com) with the minimum permissions required for the integration's function. Do not use an admin account. If the key is compromised, a minimal-permission user limits blast radius. See the <a href="0042-odoo-user-access-rights-configuration" style="color:var(--accent)">Odoo User Access Rights guide</a> for configuring a restricted user role.</span>
+          </div>
+        </li>
+        <li>
+          <div class="sc">
+            <strong>IP Whitelisting via Nginx/Server Config</strong>
+            <span>If your integration server has a static IP (recommended for Bangladesh office servers and cloud VMs), restrict API access at the web server level. Nginx allow/deny rules ensure that even with a leaked credential, the API cannot be accessed from arbitrary IPs.</span>
+          </div>
+        </li>
+        <li>
+          <div class="sc">
+            <strong>Store Keys in System Parameters</strong>
+            <span>For third-party API keys that Odoo itself needs to call (e.g., bKash API key, courier API key), use Settings → Technical → System Parameters to store them. Name them clearly: <code>bkash.app_key</code>, <code>steadfast.api_key</code>. Restrict access to System Parameters to admin only.</span>
+          </div>
+        </li>
+      </ol>
+
+      <div class="warn-box">
+        <div class="wlabel">Security Warning</div>
+        <p>Never commit API keys or Odoo credentials to Git repositories. Bangladesh development teams frequently push API keys to GitHub in config files — this is a critical security vulnerability. Use environment variables or encrypted secret stores (AWS Secrets Manager, HashiCorp Vault, or even a .env file that is git-ignored).</p>
+      </div>
+
+      <h2 id="payment-gateways">Payment Gateway Integration</h2>
+      <p>Bangladesh businesses — especially e-commerce, B2C SaaS, and export billing — need payment gateways connected to Odoo's invoicing and accounting modules. Here is how each major gateway integrates.</p>
+
+      <div class="api-block">
+        <div class="api-block-header">
+          <span class="api-badge custom">Custom Module</span>
+          <h3>bKash Merchant API Integration</h3>
+        </div>
+        <div class="api-block-body">
+          <p><strong>Integration type:</strong> Custom Odoo payment provider module extending <code>payment.provider</code> and <code>payment.transaction</code> models. bKash uses OAuth 2.0 — you first obtain a token (POST to <code>/tokenized/checkout/token/grant</code>), then use the token to create a payment (POST to <code>/tokenized/checkout/create</code>), then redirect the user to bKash's payment page, then capture the callback on your webhook URL.</p>
+          <p><strong>Bangladesh-specific requirements:</strong></p>
+          <ul>
+            <li>You must have an active bKash merchant account with a registered business (trade license + TIN).</li>
+            <li>Production credentials require IP whitelisting — your Odoo server's public IP must be registered with bKash.</li>
+            <li>bKash requires a callback URL that is accessible over HTTPS. Self-signed certificates are not accepted in production.</li>
+            <li>Test using the sandbox at <code>tokenized.sandbox.bka.sh</code> before requesting production credentials.</li>
+          </ul>
+          <p><strong>What the Odoo module does:</strong> When a Bangladesh customer pays a Odoo invoice via bKash, the payment form redirects to bKash, completes payment, returns to Odoo's callback URL, and the module automatically marks the invoice as paid and creates the journal entry in the bKash bank journal.</p>
+        </div>
+      </div>
+
+      <div class="api-block">
+        <div class="api-block-header">
+          <span class="api-badge post">Easiest for B2C</span>
+          <h3>SSLCommerz Integration</h3>
+        </div>
+        <div class="api-block-body">
+          <p>SSLCommerz is the right choice when you want to accept multiple payment methods (bKash, Nagad, Rocket, cards, internet banking) through a single gateway without building separate integrations for each. SSLCommerz handles the complexity and splits funds to your settlement account.</p>
+          <p>SSLCommerz provides a Python SDK on GitHub. The Odoo integration pattern is: create an SSLCommerz session (POST to <code>/gwprocess/v4/api.php</code>) on invoice payment click, redirect to SSLCommerz hosted checkout, receive IPN (Instant Payment Notification) at your Odoo webhook, validate the hash signature, and auto-reconcile the payment.</p>
+          <div class="code-label">SSLCommerz IPN validation (Python)</div>
+          <div class="code-box"><pre>import hashlib
+
+def validate_sslcommerz_ipn(data, store_passwd):
+    """Verify SSLCommerz IPN hash before marking payment as received."""
+    received_hash = data.get("verify_sign")
+    data_without_sign = {k: v for k, v in data.items()
+                         if k not in ("verify_sign", "verify_key")}
+    # Sort keys and concat with store password
+    sorted_data = dict(sorted(data_without_sign.items()))
+    sorted_data["store_passwd"] = hashlib.md5(
+        store_passwd.encode()).hexdigest()
+    hash_str = "&".join(f"{k}={v}" for k, v in sorted_data.items())
+    expected = hashlib.md5(hash_str.encode()).hexdigest()
+    return received_hash == expected</pre></div>
+          <p>Never mark a payment as received without validating this hash. Skipping validation is the #1 SSLCommerz security mistake Bangladesh developers make.</p>
+        </div>
+      </div>
+
+      <h2 id="bank-feeds">Bank Feed Integration: The Bangladesh Reality</h2>
+      <p>Bangladesh corporate banking APIs are significantly less mature than payment gateway APIs. Here is the honest state of bank connectivity for Bangladesh Odoo implementations.</p>
+
+      <div class="api-block">
+        <div class="api-block-header">
+          <span class="api-badge get">File Import</span>
+          <h3>BRAC Bank, Dutch-Bangla, City Bank, Eastern Bank: CSV/MT940 Import</h3>
+        </div>
+        <div class="api-block-body">
+          <p>As of 2026, Bangladesh's major commercial banks — BRAC, Dutch-Bangla, City Bank, Eastern Bank, Mutual Trust Bank — do not offer a live corporate banking API accessible to business customers. What they do provide:</p>
+          <ul>
+            <li><strong>CSV statement export:</strong> Available from internet banking portals. Download daily or weekly, import into Odoo via Accounting → Bank Statements → Import.</li>
+            <li><strong>MT940 format:</strong> Some banks (particularly those with SWIFT connectivity) offer MT940 format exports. Odoo natively supports MT940 import.</li>
+            <li><strong>OFX format:</strong> Rare but available in some portals. Also natively supported by Odoo.</li>
+          </ul>
+          <p><strong>Practical recommendation:</strong> Automate the CSV download via a scheduled script (using Selenium or Playwright to log in to the bank portal and download the statement) and then push the file to Odoo's bank statement import API. This gives you near-automated bank reconciliation without a live API.</p>
+          <div class="warn-box">
+            <div class="wlabel">Important</div>
+            <p>Automated browser login to bank portals may violate your bank's terms of service. Check with your relationship manager before implementing browser automation against your corporate internet banking portal. Some banks offer OTP-based access that makes automation impractical anyway — human-assisted daily import may be the only option.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="api-block">
+        <div class="api-block-header">
+          <span class="api-badge native">API Available</span>
+          <h3>IDLC Finance, IPDC: Corporate Finance APIs (Limited)</h3>
+        </div>
+        <div class="api-block-body">
+          <p>A small number of Bangladesh NBFIs and newer digital banks are beginning to offer corporate API access. If your company banks with an institution that offers corporate API access, use Odoo's <code>account.bank.statement.line</code> model to import transactions programmatically rather than via file upload. This is the approach to take if and when your bank offers it.</p>
+        </div>
+      </div>
+
+      <h2 id="shipping-apis">Shipping & Delivery API Integration</h2>
+      <p>For Bangladesh e-commerce and B2B fulfilment companies, courier API integration is often the highest-ROI integration to build. Automating shipment creation, label printing, and tracking status sync saves hours of manual data entry per day at any meaningful order volume.</p>
+
+      <div class="api-block">
+        <div class="api-block-header">
+          <span class="api-badge post">Recommended First Build</span>
+          <h3>Steadfast Courier API — Simplest Bangladesh Courier Integration</h3>
+        </div>
+        <div class="api-block-body">
+          <p>Steadfast's API is the simplest in the Bangladesh courier market. API key authentication (pass <code>Api-Key</code> and <code>Secret-Key</code> in headers), flat REST endpoints, straightforward response structure. The integration extends Odoo's <code>stock.delivery.carrier</code> model.</p>
+          <div class="code-label">Steadfast: Create a shipment (Python)</div>
+          <div class="code-box"><pre>import requests
+
+STEADFAST_BASE = "https://portal.packzy.com/api/v1"
+headers = {
+    "Api-Key": "YOUR_API_KEY",
+    "Secret-Key": "YOUR_SECRET_KEY",
+    "Content-Type": "application/json"
+}
+
+def create_steadfast_order(invoice, customer, address, cod_amount):
+    payload = {
+        "invoice": invoice,         # Your order reference
+        "recipient_name": customer,
+        "recipient_phone": address["phone"],
+        "recipient_address": address["street"],
+        "cod_amount": cod_amount    # 0 for prepaid
+    }
+    resp = requests.post(
+        f"{STEADFAST_BASE}/create_order",
+        json=payload, headers=headers
+    )
+    data = resp.json()
+    return data.get("consignment", {}).get("tracking_code")</pre></div>
+          <p>Store the returned <code>tracking_code</code> on the Odoo stock.picking record. Use a scheduled action to poll Steadfast's status endpoint and update the delivery status in Odoo automatically.</p>
+        </div>
+      </div>
+
+      <div class="api-block">
+        <div class="api-block-header">
+          <span class="api-badge custom">Webhook Support</span>
+          <h3>Pathao Courier API — Webhook-Based Status Updates</h3>
+        </div>
+        <div class="api-block-body">
+          <p>Pathao's courier API supports webhook callbacks — Pathao pushes status updates to your Odoo server when a shipment status changes (picked, in-transit, delivered, returned). This is more efficient than polling. Register your Odoo controller URL as the webhook endpoint in Pathao's merchant portal, then write an Odoo controller that receives POST requests and updates the corresponding stock.picking record.</p>
+          <p>Pathao also requires merchant onboarding and credentials available through their logistics business team. Contact via Pathao for Business portal.</p>
+        </div>
+      </div>
+
+      <div class="api-block">
+        <div class="api-block-header">
+          <span class="api-badge custom">Also Available</span>
+          <h3>Redx &amp; eCourier</h3>
+        </div>
+        <div class="api-block-body">
+          <p>Both Redx and eCourier offer REST APIs with API key authentication. Redx documentation is available via their merchant portal. eCourier API is slightly more complex with zone-based pricing calculations. The integration pattern is identical to Steadfast — create order on picking validation, store tracking code, poll or receive webhook for status updates.</p>
+        </div>
+      </div>
+
+      <h2 id="nbr-integration">NBR & Tax System: What is Actually Possible</h2>
+      <p>Many Bangladesh businesses ask whether Odoo can submit Mushak reports or VAT returns directly to NBR. The honest answer: not directly — but Odoo can generate the data in exactly the format NBR requires.</p>
+
+      <p>The NBR iBAS++ system (where government tax is submitted) and the Mushak online portal (VAT returns) require manual submission through a browser interface as of 2026. There is no public REST API for automated submission.</p>
+
+      <p>What Odoo <em>can</em> do:</p>
+      <ul>
+        <li>Generate Mushak 6.3 (sales VAT register), 6.4 (purchase VAT register), and 6.5 (credit note register) as PDF or CSV exports — exactly the format required for NBR filing.</li>
+        <li>Calculate TDS (Tax Deducted at Source) on vendor payments and generate 108 and 108A certificates.</li>
+        <li>Track VAT payable/receivable for monthly reconciliation before filing.</li>
+        <li>Export VAT return data in the Excel format required for upload to the VAT Online portal.</li>
+      </ul>
+
+      <p>The integration gap is the final submission step — which still requires a human to log in to the NBR portal and upload or enter the data. Odoo bridges everything up to that point.</p>
+
+      <h2 id="integration-patterns">Common Integration Patterns for Bangladesh Businesses</h2>
+
+      <div class="api-block">
+        <div class="api-block-header">
+          <span class="api-badge native">Pattern 1</span>
+          <h3>E-Commerce Sync: WooCommerce / Custom Website → Odoo</h3>
+        </div>
+        <div class="api-block-body">
+          <p>Bangladesh online retailers with separate WooCommerce stores need orders, customers, and inventory synced to Odoo. The standard pattern: WooCommerce webhook (on order.created) calls an Odoo JSON-RPC endpoint to create a sale.order, confirm it, and trigger stock reservation. Inventory levels sync back to WooCommerce on a schedule (every 15 minutes) via a cron job querying Odoo's <code>product.product</code> model.</p>
+          <p>Available tools: Odoo Connector for WooCommerce (OCA project on GitHub), or build a lightweight webhook handler using Python FastAPI/Flask as middleware between WooCommerce and Odoo's API.</p>
+        </div>
+      </div>
+
+      <div class="api-block">
+        <div class="api-block-header">
+          <span class="api-badge native">Pattern 2</span>
+          <h3>No-Code Middleware: n8n for Simple Bangladesh Integrations</h3>
+        </div>
+        <div class="api-block-body">
+          <p>For Bangladesh businesses that want integration without custom development, n8n (open-source workflow automation) is an excellent middle layer. n8n has native Odoo nodes and can be self-hosted on a BDT 1,500/month cloud VM. Common use cases: Google Forms → Odoo lead, email → Odoo support ticket, Excel/Google Sheets import → Odoo product/customer records.</p>
+          <p>n8n is not suitable for high-volume, real-time integrations (like SSLCommerz IPN callbacks at 100+ transactions/minute). For those, a proper Odoo custom module is the right answer.</p>
+        </div>
+      </div>
+
+      <div class="api-block">
+        <div class="api-block-header">
+          <span class="api-badge native">Pattern 3</span>
+          <h3>Pushing Data Out: Odoo → External BI / Reporting Tools</h3>
+        </div>
+        <div class="api-block-body">
+          <p>Some Bangladesh companies want to push Odoo data to Power BI, Google Looker Studio, or a custom dashboard for the CEO. The pattern: a scheduled Python script queries Odoo's API (search_read on relevant models), transforms the data, and writes to a PostgreSQL database or Google Sheets, which Power BI or Looker Studio connects to.</p>
+          <p>Alternatively, connect Power BI directly to Odoo's PostgreSQL database (if self-hosted) using the read-only reporting user. This is the simplest approach for Odoo on-premise deployments in Bangladesh.</p>
+        </div>
+      </div>
+
+      <h2 id="troubleshooting">Troubleshooting API Connectivity Issues</h2>
+
+      <p><strong>Problem: "odoo.exceptions.AccessDenied" on every API call</strong><br>
+      The integration user either has the wrong password or is not in the correct database. Verify: the database name matches exactly (case-sensitive), the user is active (not archived), and the password has not expired. If using Odoo 17+, check whether 2FA is enabled on the user — API key auth bypasses 2FA; session-based auth does not.</p>
+
+      <p><strong>Problem: API works in testing but fails from Bangladesh production server</strong><br>
+      Most likely cause: the Bangladesh server's IP is blocked by the external API provider (bKash, SSLCommerz, etc.). Check IP whitelisting. If your Bangladesh server uses a shared/dynamic IP (common with ISPs like BTCL, Grameenphone home plans), you need a static IP — available from your ISP on request, or use a cloud VM with a fixed public IP.</p>
+
+      <p><strong>Problem: SSL certificate errors from Bangladesh server</strong><br>
+      Bangladesh servers often have outdated CA certificate bundles. Run <code>sudo update-ca-certificates</code> on Ubuntu/Debian or install the <code>ca-certificates</code> package. Also verify your server's clock is accurate (NTP-synced) — certificate validation fails if the server clock is more than 5 minutes off, which is surprisingly common on misconfigured Bangladesh VMs.</p>
+
+      <p><strong>Problem: Webhook callbacks from bKash/SSLCommerz not reaching Odoo</strong><br>
+      Check that your Odoo server is accessible on port 443 (HTTPS) from the internet. Many Bangladesh on-premise servers are behind a NAT router without port forwarding configured. Use a service like ngrok for development/testing. For production, ensure your firewall and router forward port 443 to your Odoo server and that you have a valid SSL certificate (Let's Encrypt works perfectly).</p>
+
+      <p>For the access rights configuration that underpins all integration security, the <a href="0042-odoo-user-access-rights-configuration" style="color:var(--accent)">Odoo User Roles & Access Rights guide</a> covers how to create minimal-permission integration users correctly. And for the multi-company setups where API integration becomes more complex, the <a href="0006-odoo-multi-company-setup-guide" style="color:var(--accent)">Odoo Multi-Company Setup guide</a> explains the database architecture that determines which company's data your API calls will see.</p>
+
+      <div class="callout">
+        <span class="tag">Integration Assessment</span>
+        <p>If your Bangladesh business needs Odoo connected to bKash, a courier API, a banking system, or a custom third-party tool, I can assess the scope and advise on build vs. buy vs. middleware. <a href="../#contact" style="color:var(--accent)">Contact me for an integration scoping call →</a></p>
+      </div>
+
+      <h2 id="faq">Frequently asked questions</h2>
+
+      <h3>Does Odoo have a REST API?</h3>
+      <p>Yes. Odoo 16 and later expose a native REST API at <code>/api/</code> endpoints for specific objects. Earlier versions use XML-RPC or JSON-RPC at <code>/web/dataset/call_kw</code>. The JSON-RPC interface is the most commonly used method for Bangladesh integrations because it works with any HTTP client and does not require a special SDK.</p>
+
+      <h3>Can bKash be integrated directly with Odoo?</h3>
+      <p>Yes, but not with a native Odoo module. bKash merchant API (REST, OAuth 2.0) must be connected via a custom payment provider module. The bKash merchant API requires a registered business account, IP whitelisting, and sandbox credentials from bKash before production integration. Most Bangladesh Odoo partners build this as a custom module that extends Odoo's <code>payment.provider</code> model.</p>
+
+      <h3>Which shipping APIs work with Odoo in Bangladesh?</h3>
+      <p>Pathao Courier, Steadfast Courier, Redx, and eCourier are the main Bangladesh delivery APIs. None have official Odoo modules on the App Store as of 2026. Integration requires a custom delivery carrier module. Steadfast has the simplest API (flat REST with API key auth) and is the easiest starting point for custom development.</p>
+
+      <h3>What is the safest way to store API keys in Odoo?</h3>
+      <p>Use Settings → Technical → System Parameters to store third-party API keys in the database. For Odoo's own API keys granted to external systems, generate dedicated API keys per integration from the user's API Keys tab. Never commit API keys to Git. Restrict System Parameters access to Administrator role only via access rights configuration.</p>
+
+    </div>
+  </article>
+
+  <footer>
+    <div class="shell">
+      <div class="post-foot">
+        <span class="eyebrow">Continue exploring</span>
+        <div class="next">
+          <a class="next-card" href="0052-odoo-vendor-red-flags-bangladesh">
+            <span class="dir">Older · 0052</span>
+            <h4>When to Fire Your Odoo Vendor</h4>
+            <p>7 red flags that your Bangladesh implementation partner is failing — and exactly what to do.</p>
+            <span class="arrow">→</span>
+          </a>
+          <a class="next-card" href="0054-odoo-email-sms-setup-bangladesh">
+            <span class="dir">Newer · 0054</span>
+            <h4>Odoo Email & SMS Setup Bangladesh</h4>
+            <p>Configure SMTP, email aliases, SSL Wireless SMS, and notification templates step by step.</p>
+            <span class="arrow">→</span>
+          </a>
+        </div>
+      </div>
+      <div class="foot">
+        <span>© 2026 Mehedi Hasan · Lab / 0053</span>
+        <span><a href="../#lab">↑ Back to lab index</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="_utils.js" defer></script>
+  <script src="_toc.js" defer></script>
+  <script src="/whatsapp.js" defer></script>
+  <script src="/scroll-top.js" defer></script>
+</body>
+
+</html>

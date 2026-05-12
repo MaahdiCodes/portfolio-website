@@ -1,0 +1,652 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description"
+    content="Odoo dashboard and KPI guide for Bangladesh: track sales pipeline, inventory turns, cash flow, and manufacturing OEE. Includes setup steps. Read the guide →" />
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="Mehedi Hasan" />
+  <title>Odoo Dashboards & KPIs Bangladesh | Mehedi Hasan</title>
+  <link rel="canonical" href="https://mhasan.me/lab/0055-odoo-dashboards-kpi-bangladesh" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png" />
+  <!-- Open Graph -->
+  <meta property="og:title" content="Odoo Dashboards & KPIs Bangladesh | Mehedi Hasan" />
+  <meta property="og:description"
+    content="Build CEO dashboards in Odoo: track sales pipeline, inventory turnover, cash flow, manufacturing OEE, and VAT compliance for Bangladesh businesses." />
+  <meta property="og:url" content="https://mhasan.me/lab/0055-odoo-dashboards-kpi-bangladesh" />
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="https://mhasan.me/assets/og-default.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:site_name" content="Mehedi Hasan | Odoo ERP Consultant" />
+  <meta property="article:author" content="https://www.linkedin.com/in/mehedi-hasan-consultant/" />
+  <meta property="article:published_time" content="2026-05-12T11:00:00+06:00" />
+  <meta property="article:modified_time" content="2026-05-12T11:00:00+06:00" />
+  <meta property="article:section" content="Odoo ERP Bangladesh" />
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Odoo Dashboards & KPIs Bangladesh | Mehedi Hasan" />
+  <meta name="twitter:description"
+    content="Build CEO dashboards in Odoo: sales pipeline, inventory turnover, cash flow, manufacturing OEE, and VAT compliance KPIs for Bangladesh businesses." />
+  <meta name="twitter:image" content="https://mhasan.me/assets/og-default.jpg" />
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Odoo Dashboards & KPIs: What Every Bangladesh Business Owner Should Track",
+    "description": "Build CEO dashboards in Odoo: track sales pipeline, inventory turnover, cash flow, manufacturing OEE, and VAT compliance for Bangladesh SMEs and factories.",
+    "datePublished": "2026-05-12T11:00:00+06:00",
+    "dateModified": "2026-05-12T11:00:00+06:00",
+    "author": {
+      "@type": "Person",
+      "name": "Mehedi Hasan",
+      "url": "https://mhasan.me",
+      "jobTitle": "Odoo ERP Consultant & Business Analyst",
+      "sameAs": "https://www.linkedin.com/in/mehedi-hasan-consultant/"
+    },
+    "publisher": { "@type": "Person", "name": "Mehedi Hasan", "url": "https://mhasan.me" },
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://mhasan.me/lab/0055-odoo-dashboards-kpi-bangladesh" }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://mhasan.me" },
+      { "@type": "ListItem", "position": 2, "name": "Lab", "item": "https://mhasan.me/lab/" },
+      { "@type": "ListItem", "position": 3, "name": "Odoo Dashboards & KPIs Bangladesh", "item": "https://mhasan.me/lab/0055-odoo-dashboards-kpi-bangladesh" }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How do I create a custom dashboard in Odoo?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "In Odoo, go to any list or graph view and click the star icon (☆) to add it to your dashboard. Alternatively, use the Spreadsheet feature (Reporting → Spreadsheet) to build a custom KPI dashboard with pivot tables, charts, and formulas. For advanced custom dashboards, Odoo Studio (Enterprise) lets you design layouts with live data widgets without writing code. The Dashboard app (standard Odoo) shows all your starred views on a single page accessible from the main menu."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What KPIs should a Bangladesh manufacturing CEO track in Odoo?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The five most critical KPIs for a Bangladesh manufacturing CEO: (1) On-Time Delivery Rate — % of manufacturing orders completed by promised date; (2) Overall Equipment Effectiveness (OEE) — availability × performance × quality for each work centre; (3) Cash Conversion Cycle — days from raw material purchase to customer payment collection; (4) Inventory Turnover — cost of goods sold ÷ average inventory value, by category; (5) VAT Payable vs Collected — monthly Mushak reconciliation to avoid NBR penalties. All five are available natively in Odoo without customisation."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can Odoo connect to Power BI for Bangladesh business reporting?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. For on-premise Odoo, connect Power BI directly to the PostgreSQL database using a read-only reporting user. For Odoo.sh or cloud-hosted Odoo, use the JSON-RPC API to pull data into Power BI via a Python script or the Power BI REST connector. Alternatively, export Odoo pivot views to Excel and import into Power BI on a schedule. The direct PostgreSQL connection is the most powerful option for Bangladesh IT teams with database access."
+        }
+      }
+    ]
+  }
+]
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap">
+  <link rel="stylesheet" href="_styles.css">
+  <style>
+    .pull {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: clamp(20px, 2.8vw, 28px);
+      line-height: 1.3;
+      color: var(--text);
+      margin: 48px 0;
+      max-width: 28ch;
+      letter-spacing: -0.01em;
+    }
+    .pull::before {
+      content: "";
+      display: block;
+      width: 36px;
+      height: 1px;
+      background: var(--accent);
+      margin-bottom: 18px;
+    }
+    .kpi-section {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      margin: 26px 0;
+      overflow: hidden;
+    }
+    .kpi-section-header {
+      padding: 16px 20px;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .kpi-dept {
+      font-family: var(--mono);
+      font-size: 10px;
+      font-weight: 600;
+      padding: 3px 10px;
+      border-radius: 4px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      flex-shrink: 0;
+    }
+    .kpi-dept.finance { background: rgba(80,160,255,0.12); color: #6AABFF; border: 1px solid rgba(80,160,255,0.25); }
+    .kpi-dept.mfg { background: rgba(200,140,80,0.12); color: #E0B84A; border: 1px solid rgba(200,140,80,0.25); }
+    .kpi-dept.sales { background: var(--accent-dim); color: var(--accent); border: 1px solid rgba(80,230,160,0.25); }
+    .kpi-dept.inventory { background: rgba(180,100,200,0.12); color: #C070E0; border: 1px solid rgba(180,100,200,0.25); }
+    .kpi-dept.compliance { background: rgba(255,100,100,0.1); color: #FF8080; border: 1px solid rgba(255,100,100,0.2); }
+    .kpi-section-header h3 { margin: 0; font-size: 15px; color: var(--text); letter-spacing: -0.01em; }
+    .kpi-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13.5px;
+    }
+    .kpi-table th {
+      text-align: left;
+      padding: 10px 16px;
+      background: var(--surface);
+      color: var(--text-3);
+      font-family: var(--mono);
+      font-size: 10.5px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      border-bottom: 1px solid var(--border);
+    }
+    .kpi-table td {
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--border);
+      color: var(--text-2);
+      vertical-align: top;
+      line-height: 1.5;
+    }
+    .kpi-table td:first-child { color: var(--text); font-weight: 500; }
+    .kpi-table tr:last-child td { border-bottom: none; }
+    .kpi-table .odoo-path { font-family: var(--mono); font-size: 11.5px; color: var(--text-3); }
+    .tip-box {
+      background: var(--accent-dim);
+      border-left: 3px solid var(--accent);
+      border-radius: 0 6px 6px 0;
+      padding: 14px 18px;
+      margin: 18px 0;
+    }
+    .tip-box .tlabel { font-family: var(--mono); font-size: 10px; color: var(--accent); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 6px; }
+    .tip-box p { margin: 0; font-size: 14px; color: var(--text-2); line-height: 1.55; }
+    .warn-box {
+      background: rgba(200,140,60,0.08);
+      border-left: 3px solid rgba(200,140,60,0.6);
+      border-radius: 0 6px 6px 0;
+      padding: 14px 18px;
+      margin: 18px 0;
+    }
+    .warn-box .wlabel { font-family: var(--mono); font-size: 10px; color: rgba(220,160,70,0.9); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 6px; }
+    .warn-box p { margin: 0; font-size: 14px; color: var(--text-2); line-height: 1.55; }
+    .dashboard-type-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 13px;
+      margin: 22px 0;
+    }
+    @media(max-width:680px) { .dashboard-type-grid { grid-template-columns: 1fr; } }
+    .dt-card {
+      border: 1px solid var(--border);
+      border-radius: 7px;
+      padding: 16px;
+      background: var(--surface);
+    }
+    .dt-card .dt-name { font-weight: 600; font-size: 14px; color: var(--text); margin-bottom: 7px; }
+    .dt-card .dt-use { font-size: 12.5px; color: var(--text-2); line-height: 1.5; margin-bottom: 8px; }
+    .dt-card .dt-tag { font-family: var(--mono); font-size: 10px; color: var(--text-3); letter-spacing: 0.04em; }
+  </style>
+</head>
+
+<body>
+  <div class="grid-bg"></div>
+
+  <header class="nav">
+    <div class="shell">
+      <div class="nav-inner">
+        <a class="brand" href="../">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span class="brand-name"><b>Mehedi Hasan</b><em>ERP · Business Analyst</em></span>
+        </a>
+        <a class="back-link" href="../#lab">← Back to Lab</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="post-head">
+    <div class="shell">
+      <span class="eyebrow">Technical Lab · 0055</span>
+      <h1>Odoo Dashboards & KPIs Bangladesh — <span class="serif">what to track, where to find it, and how to make it visible to the right people.</span></h1>
+      <p class="lede">Most Bangladesh businesses go live on Odoo and then continue managing by WhatsApp group chat and Excel because nobody set up the dashboards. The data is all in Odoo — it always was — but no one trained the CEO on where to look. This guide covers the specific KPIs that matter for Bangladesh manufacturing, trading, and service businesses, exactly where to find them in Odoo, and how to build a CEO-level visibility layer that replaces the Monday morning data collection email.</p>
+      <div class="post-meta">
+        <span class="chip accent">Guide</span>
+        <span class="chip">Dashboards</span>
+        <span class="chip">KPIs</span>
+        <span class="chip">Bangladesh</span>
+      </div>
+      <div class="byline">
+        <span>By<b><a href="https://www.linkedin.com/in/mehedi-hasan-consultant/" style="color:var(--accent)" rel="author">Mehedi Hasan</a></b></span>
+        <span>Published<b>May 2026</b></span>
+        <span>Read time<b>16 minutes</b></span>
+        <span>Form<b>Guide</b></span>
+        <span>Scope<b>Business Intelligence</b></span>
+      </div>
+    </div>
+  </section>
+
+  <article class="post">
+    <aside class="toc">
+      <div class="toc-k">In this guide</div>
+      <ol>
+        <li><a href="#kpi-gap">The KPI Gap in Bangladesh ERP</a></li>
+        <li><a href="#dashboard-types">Odoo Dashboard Types</a></li>
+        <li><a href="#finance-kpis">Finance KPIs</a></li>
+        <li><a href="#manufacturing-kpis">Manufacturing KPIs</a></li>
+        <li><a href="#sales-kpis">Sales & Export KPIs</a></li>
+        <li><a href="#inventory-kpis">Inventory KPIs</a></li>
+        <li><a href="#compliance-kpis">VAT & Compliance KPIs</a></li>
+        <li><a href="#ceo-dashboard">Building a CEO Dashboard</a></li>
+        <li><a href="#access-control">Dashboard Access Control</a></li>
+        <li><a href="#powerbi">Connecting to Power BI</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ol>
+    </aside>
+
+    <div class="body">
+
+      <h2 id="kpi-gap">The KPI Gap in Bangladesh ERP Implementations</h2>
+      <p>I have reviewed Odoo installations at Bangladesh companies where the system had been live for 18 months and the owner was still getting a daily Excel email from the accounts manager with yesterday's sales, cash balance, and pending receivables. The data was in Odoo. The dashboards were never set up.</p>
+      <p>This is almost universal in Bangladesh ERP implementations. Implementation vendors configure the operational modules — inventory, accounting, sales — but dashboard and reporting configuration is treated as optional or "Phase 2." Phase 2 never happens. The result is an ERP that is used for data entry but not for decision-making, which means the ERP's primary value proposition — management visibility — is lost entirely.</p>
+      <p>This guide is about reclaiming that value.</p>
+
+      <p class="pull">An ERP that captures data but provides no visibility is a filing cabinet, not a management tool.</p>
+
+      <h2 id="dashboard-types">Odoo Dashboard Types: What to Use When</h2>
+
+      <div class="dashboard-type-grid">
+        <div class="dt-card">
+          <div class="dt-name">Starred Views</div>
+          <div class="dt-use">Pin any filtered list, pivot, or graph view to your personal dashboard. Quickest setup — one click. Good for individual role dashboards.</div>
+          <div class="dt-tag">All Odoo versions · No configuration needed</div>
+        </div>
+        <div class="dt-card">
+          <div class="dt-name">Odoo Spreadsheet</div>
+          <div class="dt-use">Build cross-module KPI dashboards with live Odoo data using pivot tables and charts. Share with management team. Best for CEO dashboards.</div>
+          <div class="dt-tag">Odoo 16+ Community &amp; Enterprise</div>
+        </div>
+        <div class="dt-card">
+          <div class="dt-name">Odoo Studio Dashboards</div>
+          <div class="dt-use">Design custom dashboard layouts with live data widgets, filters, and KPI cards. No code required. Best for polished department dashboards.</div>
+          <div class="dt-tag">Enterprise only · Requires Studio app</div>
+        </div>
+      </div>
+
+      <div class="tip-box">
+        <div class="tlabel">Where to Start</div>
+        <p>If you are on Odoo Community, start with Starred Views and Spreadsheets. They cover 80% of dashboard needs with no extra cost. If you are on Enterprise and have Odoo Studio, use it for department-specific dashboards with company branding. Do not invest in Studio dashboards until your team is consistently using the base Odoo reporting views first.</p>
+      </div>
+
+      <h2 id="finance-kpis">Finance KPIs for Bangladesh Businesses</h2>
+
+      <div class="kpi-section">
+        <div class="kpi-section-header">
+          <span class="kpi-dept finance">Finance</span>
+          <h3>Critical Financial KPIs — Where to Find Them in Odoo</h3>
+        </div>
+        <table class="kpi-table">
+          <thead>
+            <tr>
+              <th>KPI</th>
+              <th>What It Measures</th>
+              <th>Odoo Location</th>
+              <th>Bangladesh-Specific Note</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Cash Balance (BDT)</td>
+              <td>Current cash + bank position across all accounts</td>
+              <td class="odoo-path">Accounting → Dashboard (Bank section)</td>
+              <td>Track BDT and USD/EUR accounts separately if you hold export proceeds in foreign currency</td>
+            </tr>
+            <tr>
+              <td>Accounts Receivable Aging</td>
+              <td>Outstanding customer invoices by age bucket (0–30, 31–60, 61–90, 90+ days)</td>
+              <td class="odoo-path">Accounting → Reports → Aged Receivable</td>
+              <td>For export companies: LC payment terms (90–180 day sight) inflate 61–90 day buckets — filter by customer type to see actual overdue vs. expected LC payments</td>
+            </tr>
+            <tr>
+              <td>Accounts Payable Aging</td>
+              <td>Outstanding vendor bills by age — what you owe and when</td>
+              <td class="odoo-path">Accounting → Reports → Aged Payable</td>
+              <td>Track advance payments to local suppliers separately — common in Bangladesh raw material purchasing</td>
+            </tr>
+            <tr>
+              <td>Cash Conversion Cycle (CCC)</td>
+              <td>Days from raw material payment to customer cash collection. Lower is better.</td>
+              <td class="odoo-path">Calculate: DIO + DSO – DPO from inventory and accounting reports</td>
+              <td>Bangladesh manufacturing average CCC is 45–75 days. Export companies with LC terms often see 90–120 days. This is the single most important financial efficiency metric for Bangladesh factories.</td>
+            </tr>
+            <tr>
+              <td>Days Sales Outstanding (DSO)</td>
+              <td>Average days to collect payment after invoice</td>
+              <td class="odoo-path">Accounting → Reports → Aged Receivable → calculate</td>
+              <td>Domestic customers: target &lt;45 days. Export LC customers: DSO naturally 90–180 days — normal, not a collection problem</td>
+            </tr>
+            <tr>
+              <td>Gross Margin %</td>
+              <td>(Revenue – Cost of Goods Sold) ÷ Revenue</td>
+              <td class="odoo-path">Accounting → Reports → Profit &amp; Loss</td>
+              <td>Separate domestic vs. export margin — export often has lower margin but higher volume. RMG export CM is typically 12–18% of FOB value</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 id="manufacturing-kpis">Manufacturing KPIs for Bangladesh Factories</h2>
+
+      <div class="kpi-section">
+        <div class="kpi-section-header">
+          <span class="kpi-dept mfg">Manufacturing</span>
+          <h3>Factory Floor KPIs — Operations & Efficiency</h3>
+        </div>
+        <table class="kpi-table">
+          <thead>
+            <tr>
+              <th>KPI</th>
+              <th>Formula / What It Measures</th>
+              <th>Odoo Location</th>
+              <th>Target / Benchmark</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Overall Equipment Effectiveness (OEE)</td>
+              <td>Availability × Performance × Quality. The gold standard factory efficiency metric.</td>
+              <td class="odoo-path">Manufacturing → Reporting → OEE (requires Work Centers with time tracking configured)</td>
+              <td>World class: 85%+. Bangladesh factory average: 55–70%. Set realistic targets before comparing to global benchmarks.</td>
+            </tr>
+            <tr>
+              <td>Manufacturing Order Cycle Time</td>
+              <td>Avg time from MO creation to MO completion by product category</td>
+              <td class="odoo-path">Manufacturing → Manufacturing Orders → Group by Product → add Scheduled Date / Effective Date columns</td>
+              <td>Compare against your BOM planned duration. Gap between planned and actual is your hidden inefficiency.</td>
+            </tr>
+            <tr>
+              <td>Scrap Rate</td>
+              <td>Qty scrapped ÷ Qty produced × 100%</td>
+              <td class="odoo-path">Manufacturing → Reporting → Scrap Analysis</td>
+              <td>Textile/garments: &lt;2% acceptable. Cycle parts: &lt;0.5%. Track by work center to isolate which operation causes most scrap.</td>
+            </tr>
+            <tr>
+              <td>On-Time Delivery Rate</td>
+              <td>% of MOs completed by scheduled date</td>
+              <td class="odoo-path">Manufacturing → Manufacturing Orders → filter by Scheduled Date &lt; today, State = Done. Count vs. late.</td>
+              <td>Target 90%+ for domestic orders. Export must be 98%+ — missed shipment dates trigger LC penalties and buyer chargebacks.</td>
+            </tr>
+            <tr>
+              <td>Work-in-Progress (WIP) Value</td>
+              <td>BDT value of materials in active MOs not yet completed</td>
+              <td class="odoo-path">Inventory → Reporting → Inventory Valuation (filter by location = WIP locations)</td>
+              <td>High WIP indicates production bottlenecks. Rising WIP with flat output = efficiency problem in a specific work center.</td>
+            </tr>
+            <tr>
+              <td>Downtime by Work Center</td>
+              <td>Hours of planned vs. unplanned downtime per machine or work center</td>
+              <td class="odoo-path">Manufacturing → Work Centers → Workcenter Efficiency view (requires IoT or manual time entry)</td>
+              <td>Critical for capital-intensive Bangladesh factories (spinning mills, dyeing, printing). Track to justify maintenance investment.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="warn-box">
+        <div class="wlabel">Setup Prerequisite</div>
+        <p>Manufacturing KPIs in Odoo require work centres to be configured with capacity, operating hours, and time tracking enabled. Without this, MO completion and OEE data are unavailable. If your work centres are set up as pass-through (no time tracking), manufacturing KPI reporting will be empty. Configure this during implementation — retrofitting time data after go-live requires manual entry for historical orders.</p>
+      </div>
+
+      <h2 id="sales-kpis">Sales & Export KPIs for Bangladesh Exporters</h2>
+
+      <div class="kpi-section">
+        <div class="kpi-section-header">
+          <span class="kpi-dept sales">Sales & Export</span>
+          <h3>Revenue Pipeline & Export Performance KPIs</h3>
+        </div>
+        <table class="kpi-table">
+          <thead>
+            <tr>
+              <th>KPI</th>
+              <th>What It Measures</th>
+              <th>Odoo Location</th>
+              <th>Bangladesh-Specific Note</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Sales Pipeline Value (BDT)</td>
+              <td>Total expected revenue from all active CRM opportunities by stage</td>
+              <td class="odoo-path">CRM → Reporting → Pipeline Analysis → Group by Stage</td>
+              <td>For B2B exporters: pipeline value in USD (convert at current rate). Track separately by buyer country.</td>
+            </tr>
+            <tr>
+              <td>Lead-to-Order Conversion Rate</td>
+              <td>% of CRM leads that become confirmed sale orders</td>
+              <td class="odoo-path">CRM → Reporting → Activities → compare Won vs. Lost opportunities</td>
+              <td>Bangladesh B2B typical: 15–30%. Export buyer conversion much lower (5–10%) — more effort per deal, higher value.</td>
+            </tr>
+            <tr>
+              <td>Order Fulfillment Rate</td>
+              <td>% of confirmed orders delivered complete and on time</td>
+              <td class="odoo-path">Inventory → Reporting → Delivery Analysis</td>
+              <td>Partial deliveries are common in Bangladesh due to raw material availability. Track partial vs. complete delivery separately.</td>
+            </tr>
+            <tr>
+              <td>LC Utilization Rate</td>
+              <td>% of available LC value drawn against (for export businesses)</td>
+              <td class="odoo-path">Accounting → Reports → Account Balance (LC liability account) — requires LC tracking via journal entries</td>
+              <td>Under-utilised LCs mean you have buyer commitment but cannot ship. Over-utilised means you shipped more than the LC allows — a bank compliance problem.</td>
+            </tr>
+            <tr>
+              <td>Top 10 Customers by Revenue</td>
+              <td>Revenue concentration risk — dependence on key buyers</td>
+              <td class="odoo-path">Accounting → Reporting → Sales by Customer → Group by Customer</td>
+              <td>Bangladesh RMG companies often have 60–70% revenue from 2–3 buyers. High concentration = high risk. Monitor trend monthly.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 id="inventory-kpis">Inventory KPIs for Bangladesh Warehouses</h2>
+
+      <div class="kpi-section">
+        <div class="kpi-section-header">
+          <span class="kpi-dept inventory">Inventory</span>
+          <h3>Stock Efficiency & Working Capital KPIs</h3>
+        </div>
+        <table class="kpi-table">
+          <thead>
+            <tr>
+              <th>KPI</th>
+              <th>Formula</th>
+              <th>Odoo Location</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Inventory Turnover</td>
+              <td>COGS ÷ Average Inventory Value. Higher = better cash efficiency.</td>
+              <td class="odoo-path">Calculate from Accounting P&L (COGS) and Inventory Valuation reports. Typically tracked monthly.</td>
+            </tr>
+            <tr>
+              <td>Dead Stock Value</td>
+              <td>Value of stock with zero movement in last 90/180 days</td>
+              <td class="odoo-path">Inventory → Reporting → Product Moves → filter by no movement in date range. Requires custom filter.</td>
+            </tr>
+            <tr>
+              <td>Stock-Out Frequency</td>
+              <td>How often reorder rules fail to prevent zero stock on active products</td>
+              <td class="odoo-path">Inventory → Products → filter Qty on Hand = 0, Reordering Rule exists. Review weekly.</td>
+            </tr>
+            <tr>
+              <td>Reorder Compliance Rate</td>
+              <td>% of reorder rules that triggered on time (vs. products that hit zero before reorder fired)</td>
+              <td class="odoo-path">Inventory → Replenishment → review triggered vs. late reorder rules</td>
+            </tr>
+            <tr>
+              <td>Warehouse Utilization %</td>
+              <td>Stock on hand value as % of warehouse capacity (for multi-location setups)</td>
+              <td class="odoo-path">Inventory → Reporting → Location Summary (Odoo 17+ Enterprise)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>The <a href="0011-odoo-inventory-valuation-cheatsheet" style="color:var(--accent)">Odoo Inventory Valuation cheatsheet</a> explains how Odoo calculates AVCO, FIFO, and standard cost — the method you choose directly affects your inventory value KPIs.</p>
+
+      <h2 id="compliance-kpis">VAT & Compliance KPIs — Bangladesh-Specific</h2>
+
+      <div class="kpi-section">
+        <div class="kpi-section-header">
+          <span class="kpi-dept compliance">Compliance</span>
+          <h3>NBR VAT & TDS Tracking KPIs</h3>
+        </div>
+        <table class="kpi-table">
+          <thead>
+            <tr>
+              <th>KPI</th>
+              <th>What It Tracks</th>
+              <th>Odoo Location</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>VAT Payable (Net)</td>
+              <td>Output VAT collected from customers minus Input VAT paid to vendors = net payable to NBR this month</td>
+              <td class="odoo-path">Accounting → Reports → Tax Report (filter by month)</td>
+            </tr>
+            <tr>
+              <td>Mushak 6.3 Outstanding</td>
+              <td>Sales transactions with VAT that need to be included in next Mushak 6.3 submission</td>
+              <td class="odoo-path">Accounting → Reports → Tax Report → Sales Tax lines → export for Mushak</td>
+            </tr>
+            <tr>
+              <td>TDS Withheld (Vendor Payments)</td>
+              <td>Total TDS withheld from vendor payments this month — must be deposited to government within 7 days of deduction</td>
+              <td class="odoo-path">Accounting → Vendors → Journal Items → filter by TDS tax account</td>
+            </tr>
+            <tr>
+              <td>Advance Tax Paid</td>
+              <td>AIT (Advance Income Tax) paid on imports — treated as advance payment against annual corporate tax</td>
+              <td class="odoo-path">Track via dedicated AIT asset account in chart of accounts. Balance = prepaid tax credit.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>For the full accounting configuration that makes these compliance KPIs possible, the <a href="0014-odoo-accounting-setup-bangladesh" style="color:var(--accent)">Odoo Accounting Setup Bangladesh guide</a> covers chart of accounts, fiscal positions, and tax configuration including Mushak VAT and TDS accounts.</p>
+
+      <h2 id="ceo-dashboard">Building a CEO Dashboard in Odoo Spreadsheet</h2>
+      <p>Odoo's Spreadsheet feature (Reporting → Spreadsheet → New) lets you build a single-page CEO dashboard pulling live data from any Odoo model. Here is the recommended structure for a Bangladesh manufacturing company.</p>
+
+      <p><strong>Row 1: Cash & Financial Health</strong><br>
+      Use a pivot table pulling from <code>account.move.line</code> filtered to the bank/cash accounts. Show: Today's cash position (BDT), Last month end position, Change. Add a trend chart (line graph, 12-month history).</p>
+
+      <p><strong>Row 2: Sales Performance</strong><br>
+      Pivot from <code>sale.order</code>: This month confirmed revenue vs. same month last year. Active pipeline value. Top 5 customers this month.</p>
+
+      <p><strong>Row 3: Manufacturing</strong><br>
+      Pivot from <code>mrp.production</code>: MOs in progress, MOs overdue, This week's planned completions. Scrap qty this month.</p>
+
+      <p><strong>Row 4: Working Capital</strong><br>
+      Pivot from <code>account.move.line</code>: Total AR outstanding, Total AP outstanding, Inventory value. Calculate net working capital position.</p>
+
+      <p><strong>Row 5: Compliance Signals</strong><br>
+      Manual cells updated monthly: VAT payable (from Tax Report), TDS pending, any overdue audit items.</p>
+
+      <div class="tip-box">
+        <div class="tlabel">Sharing the Dashboard</div>
+        <p>In Odoo Spreadsheet, use the Share button to send the dashboard URL to your management team. They can view it without any special technical knowledge — it looks like a Google Sheets document and updates in real time from the Odoo database. Set a weekly reminder for the relevant manager to review it every Monday morning rather than collecting data manually.</p>
+      </div>
+
+      <h2 id="access-control">Dashboard Access Control</h2>
+      <p>Not every dashboard should be visible to every user. The CEO dashboard showing cash position and full P&L should be restricted to senior management. Department dashboards (sales pipeline, manufacturing OEE) should be accessible to the relevant department heads.</p>
+      <p>In Odoo Spreadsheet, access is controlled by sharing settings — you can share with specific users or groups. For the Starred Views approach, access is personal by default (each user configures their own dashboard). For Studio-designed dashboards, use the access rights configuration to assign visibility by user group.</p>
+      <p>Configure this access hierarchy at go-live — do not leave all dashboards world-readable inside your organisation. Bangladesh companies often have sensitive cash position and customer concentration data that should not be visible to all staff.</p>
+
+      <h2 id="powerbi">Connecting Odoo to Power BI for Bangladesh Reporting</h2>
+      <p>For Bangladesh businesses with a finance or IT team that already uses Power BI, connecting Power BI directly to Odoo provides significantly more flexible reporting than Odoo's built-in dashboards.</p>
+
+      <p><strong>Method 1 — Direct PostgreSQL connection (on-premise Odoo only):</strong><br>
+      In Power BI Desktop, use Data → Get Data → PostgreSQL Database. Enter your Odoo server IP, port 5432, database name. Create a read-only reporting user in PostgreSQL (<code>GRANT SELECT ON ALL TABLES IN SCHEMA public TO reporting_user;</code>). This gives Power BI full access to all Odoo tables for any report you want to build.</p>
+
+      <p><strong>Method 2 — JSON-RPC API + Python script (any Odoo hosting):</strong><br>
+      Write a Python script that queries Odoo's API and writes results to a PostgreSQL or SQL Server database that Power BI connects to. Schedule the script as a cron job (every hour or daily). This works for Odoo.sh and other cloud-hosted Odoo instances where direct database access is not available.</p>
+
+      <p><strong>Method 3 — Odoo Excel Export → Power BI:</strong><br>
+      The simplest approach. Export Odoo pivot views to Excel, import to Power BI. Manual, but requires no technical setup. Good for monthly board reports that do not need real-time data.</p>
+
+      <div class="callout">
+        <span class="tag">Dashboard Setup Service</span>
+        <p>If your Odoo implementation is live but your management team still relies on Excel reports, I can set up a CEO dashboard, department KPI views, and a Power BI connection in a structured remote session. <a href="../#contact" style="color:var(--accent)">Contact me to get started →</a></p>
+      </div>
+
+      <h2 id="faq">Frequently asked questions</h2>
+
+      <h3>How do I create a custom dashboard in Odoo?</h3>
+      <p>Go to any list, pivot, or graph view and click the star icon (☆) to add it to your personal dashboard. Alternatively, use Reporting → Spreadsheet to build a cross-module KPI dashboard with pivot tables, charts, and formulas pulling live Odoo data. For polished department dashboards, Odoo Studio (Enterprise) lets you design custom layouts with live data widgets without writing code.</p>
+
+      <h3>What KPIs should a Bangladesh manufacturing CEO track in Odoo?</h3>
+      <p>The five most critical: (1) Cash position across all bank accounts; (2) On-Time Delivery Rate for manufacturing orders; (3) Cash Conversion Cycle — days from material payment to customer collection; (4) Inventory Turnover by category; (5) VAT Payable vs. Collected for monthly NBR compliance. All five are available natively in Odoo without customisation, but work centre configuration is required for manufacturing KPIs.</p>
+
+      <h3>Can Odoo connect to Power BI for Bangladesh business reporting?</h3>
+      <p>Yes. For on-premise Odoo, connect Power BI directly to the PostgreSQL database using a read-only reporting user — this is the most powerful option. For cloud-hosted Odoo (Odoo.sh), use a Python script via the JSON-RPC API to push data to a SQL database that Power BI connects to. For simple monthly reports, export Odoo pivot views to Excel and import to Power BI manually.</p>
+
+    </div>
+  </article>
+
+  <footer>
+    <div class="shell">
+      <div class="post-foot">
+        <span class="eyebrow">Continue exploring</span>
+        <div class="next">
+          <a class="next-card" href="0054-odoo-email-sms-setup-bangladesh">
+            <span class="dir">Older · 0054</span>
+            <h4>Odoo Email & SMS Setup Bangladesh</h4>
+            <p>Configure SMTP, email aliases, SSL Wireless SMS, and notification templates step by step.</p>
+            <span class="arrow">→</span>
+          </a>
+          <a class="next-card" href="0056-odoo-iot-box-bangladesh">
+            <span class="dir">Newer · 0056</span>
+            <h4>Odoo IoT Box for Bangladesh Factories</h4>
+            <p>Connect barcode scanners, weighing scales, and POS printers to your manufacturing workflow.</p>
+            <span class="arrow">→</span>
+          </a>
+        </div>
+      </div>
+      <div class="foot">
+        <span>© 2026 Mehedi Hasan · Lab / 0055</span>
+        <span><a href="../#lab">↑ Back to lab index</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="_utils.js" defer></script>
+  <script src="_toc.js" defer></script>
+  <script src="/whatsapp.js" defer></script>
+  <script src="/scroll-top.js" defer></script>
+</body>
+
+</html>

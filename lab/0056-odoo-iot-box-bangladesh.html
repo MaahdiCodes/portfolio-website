@@ -1,0 +1,575 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description"
+    content="Odoo IoT Box for Bangladesh factories: connect barcode scanners, weighing scales, and POS printers to your manufacturing workflow. Set it up right →" />
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="Mehedi Hasan" />
+  <title>Odoo IoT Box Bangladesh | Barcode & Scale | Mehedi Hasan</title>
+  <link rel="canonical" href="https://mhasan.me/lab/0056-odoo-iot-box-bangladesh" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png" />
+  <!-- Open Graph -->
+  <meta property="og:title" content="Odoo IoT Box Bangladesh | Barcode & Scale | Mehedi Hasan" />
+  <meta property="og:description"
+    content="Connect barcode scanners, weighing scales, and POS printers to Odoo in Bangladesh factories. Setup guide covering hardware sourcing, network config, and troubleshooting." />
+  <meta property="og:url" content="https://mhasan.me/lab/0056-odoo-iot-box-bangladesh" />
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="https://mhasan.me/assets/og-default.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:site_name" content="Mehedi Hasan | Odoo ERP Consultant" />
+  <meta property="article:author" content="https://www.linkedin.com/in/mehedi-hasan-consultant/" />
+  <meta property="article:published_time" content="2026-05-12T11:30:00+06:00" />
+  <meta property="article:modified_time" content="2026-05-12T11:30:00+06:00" />
+  <meta property="article:section" content="Odoo ERP Bangladesh" />
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Odoo IoT Box Bangladesh | Barcode & Scale | Mehedi Hasan" />
+  <meta name="twitter:description"
+    content="Connect barcode scanners, weighing scales, and POS printers to Odoo in Bangladesh factories. Hardware sourcing, setup, and troubleshooting guide." />
+  <meta name="twitter:image" content="https://mhasan.me/assets/og-default.jpg" />
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Odoo IoT Box for Bangladesh Factories: Barcode, Scale & POS Integration",
+    "description": "Connect barcode scanners, weighing scales, and POS printers to Odoo in Bangladesh factories. Hardware sourcing, network setup, configuration, and troubleshooting for manufacturing operations.",
+    "datePublished": "2026-05-12T11:30:00+06:00",
+    "dateModified": "2026-05-12T11:30:00+06:00",
+    "author": {
+      "@type": "Person",
+      "name": "Mehedi Hasan",
+      "url": "https://mhasan.me",
+      "jobTitle": "Odoo ERP Consultant & Business Analyst",
+      "sameAs": "https://www.linkedin.com/in/mehedi-hasan-consultant/"
+    },
+    "publisher": { "@type": "Person", "name": "Mehedi Hasan", "url": "https://mhasan.me" },
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://mhasan.me/lab/0056-odoo-iot-box-bangladesh" }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://mhasan.me" },
+      { "@type": "ListItem", "position": 2, "name": "Lab", "item": "https://mhasan.me/lab/" },
+      { "@type": "ListItem", "position": 3, "name": "Odoo IoT Box Bangladesh", "item": "https://mhasan.me/lab/0056-odoo-iot-box-bangladesh" }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where can I buy a barcode scanner for Odoo IoT Box in Bangladesh?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Barcode scanners compatible with Odoo IoT Box are available at computer hardware shops in Dhaka's Elephant Road (IDB Bhaban and Multiplan Centre), Chittagong's Agrabad IT market, and online via Daraz Bangladesh. Recommended brands: Honeywell Voyager (USB, 1D/2D, BDT 3,500–6,000), Zebra DS2208 (USB, BDT 5,000–8,000), and local-brand generic USB scanners (BDT 1,200–2,500 — adequate for basic 1D barcode scanning). For wireless Bluetooth scanning in warehouses, the Honeywell Granit 1911i or Zebra DS3608 are reliable choices available through IT distributors."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I use a Raspberry Pi instead of the official Odoo IoT Box in Bangladesh?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. The official Odoo IoT Box is a Raspberry Pi 4 running a pre-configured Odoo IoT image. You can replicate this by flashing the Odoo IoT image (available from odoo.com downloads) onto any Raspberry Pi 4 Model B (4GB or 8GB RAM recommended). Raspberry Pi 4 is available in Bangladesh from Robu.in local distributors or via Daraz (BDT 7,000–12,000 depending on RAM). This is significantly cheaper than importing an official IoT Box through official Odoo channels, and functionally identical."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Which weighing scales work with Odoo IoT Box in Bangladesh?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Scales must connect via USB or RS-232 (serial) and support a standard data output protocol. In Bangladesh, the most common compatible scales are: Ohaus (available through authorized distributors in Dhaka), A&D Weighing (imported through lab equipment suppliers), and locally-available generic platform scales with RS-232 output and Mettler-Toledo protocol support. Avoid WiFi-only scales — the IoT Box communicates with scales via USB or serial, not WiFi. Budget BDT 15,000–35,000 for an industrial platform scale compatible with Odoo IoT."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does Odoo IoT Box require internet to work?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The IoT Box itself requires a local network connection to communicate with the Odoo server. If your Odoo is hosted on-premise (same local network), the IoT Box works without internet — it communicates over the LAN. If your Odoo is cloud-hosted (Odoo.sh or another cloud server), the IoT Box requires internet to reach the server. For Bangladesh factories where internet reliability is inconsistent, on-premise Odoo with local IoT Box communication is more resilient — shop floor operations continue even during internet outages."
+        }
+      }
+    ]
+  }
+]
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap">
+  <link rel="stylesheet" href="_styles.css">
+  <style>
+    .pull {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: clamp(20px, 2.8vw, 28px);
+      line-height: 1.3;
+      color: var(--text);
+      margin: 48px 0;
+      max-width: 28ch;
+      letter-spacing: -0.01em;
+    }
+    .pull::before {
+      content: "";
+      display: block;
+      width: 36px;
+      height: 1px;
+      background: var(--accent);
+      margin-bottom: 18px;
+    }
+    .device-block {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      margin: 26px 0;
+      overflow: hidden;
+    }
+    .device-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 16px 20px;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+    }
+    .device-badge {
+      font-family: var(--mono);
+      font-size: 10px;
+      font-weight: 600;
+      padding: 3px 10px;
+      border-radius: 4px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      flex-shrink: 0;
+    }
+    .device-badge.usb { background: var(--accent-dim); color: var(--accent); border: 1px solid rgba(80,230,160,0.3); }
+    .device-badge.serial { background: rgba(200,140,80,0.12); color: #E0B84A; border: 1px solid rgba(200,140,80,0.25); }
+    .device-badge.bt { background: rgba(100,140,255,0.12); color: #7AABFF; border: 1px solid rgba(100,140,255,0.25); }
+    .device-badge.network { background: rgba(180,100,200,0.12); color: #C070E0; border: 1px solid rgba(180,100,200,0.25); }
+    .device-header h3 { margin: 0; font-size: 15px; color: var(--text); letter-spacing: -0.01em; }
+    .device-body { padding: 20px; }
+    .device-body p { color: var(--text-2); font-size: 14.5px; line-height: 1.65; margin: 0 0 12px; }
+    .device-body p:last-child { margin-bottom: 0; }
+    .device-body ul { color: var(--text-2); font-size: 14px; padding-left: 20px; margin: 10px 0 12px; }
+    .device-body li { margin-bottom: 6px; line-height: 1.5; }
+    .hw-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+      margin: 14px 0;
+    }
+    .hw-table th {
+      text-align: left;
+      padding: 9px 14px;
+      background: var(--surface);
+      color: var(--text-3);
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      border-bottom: 1px solid var(--border);
+    }
+    .hw-table td {
+      padding: 10px 14px;
+      border-bottom: 1px solid var(--border);
+      color: var(--text-2);
+      vertical-align: top;
+    }
+    .hw-table td:first-child { color: var(--text); font-weight: 500; }
+    .hw-table tr:last-child td { border-bottom: none; }
+    .tip-box {
+      background: var(--accent-dim);
+      border-left: 3px solid var(--accent);
+      border-radius: 0 6px 6px 0;
+      padding: 14px 18px;
+      margin: 18px 0;
+    }
+    .tip-box .tlabel { font-family: var(--mono); font-size: 10px; color: var(--accent); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 6px; }
+    .tip-box p { margin: 0; font-size: 14px; color: var(--text-2); line-height: 1.55; }
+    .warn-box {
+      background: rgba(200,140,60,0.08);
+      border-left: 3px solid rgba(200,140,60,0.6);
+      border-radius: 0 6px 6px 0;
+      padding: 14px 18px;
+      margin: 18px 0;
+    }
+    .warn-box .wlabel { font-family: var(--mono); font-size: 10px; color: rgba(220,160,70,0.9); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 6px; }
+    .warn-box p { margin: 0; font-size: 14px; color: var(--text-2); line-height: 1.55; }
+    .step-list {
+      counter-reset: step;
+      list-style: none;
+      padding: 0;
+      margin: 20px 0;
+    }
+    .step-list li {
+      counter-increment: step;
+      display: flex;
+      gap: 16px;
+      padding: 15px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .step-list li:last-child { border-bottom: none; }
+    .step-list li::before {
+      content: counter(step);
+      width: 26px; height: 26px;
+      border-radius: 50%;
+      background: var(--accent-dim);
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      font-family: var(--mono);
+      font-size: 11px;
+      font-weight: 600;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .step-list li .sc strong { font-size: 14px; color: var(--text); display: block; margin-bottom: 4px; }
+    .step-list li .sc span { font-size: 13.5px; color: var(--text-2); line-height: 1.5; }
+    .use-case-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 13px;
+      margin: 20px 0;
+    }
+    @media(max-width:600px) { .use-case-grid { grid-template-columns: 1fr; } }
+    .uc-card {
+      border: 1px solid var(--border);
+      border-radius: 7px;
+      padding: 16px;
+      background: var(--surface);
+    }
+    .uc-card .uc-head { font-weight: 600; font-size: 14px; color: var(--text); margin-bottom: 8px; }
+    .uc-card p { color: var(--text-2); font-size: 13px; line-height: 1.5; margin: 0; }
+  </style>
+</head>
+
+<body>
+  <div class="grid-bg"></div>
+
+  <header class="nav">
+    <div class="shell">
+      <div class="nav-inner">
+        <a class="brand" href="../">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span class="brand-name"><b>Mehedi Hasan</b><em>ERP · Business Analyst</em></span>
+        </a>
+        <a class="back-link" href="../#lab">← Back to Lab</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="post-head">
+    <div class="shell">
+      <span class="eyebrow">Technical Lab · 0056</span>
+      <h1>Odoo IoT Box for Bangladesh Factories — <span class="serif">barcode scanners, weighing scales, and shop floor printers, configured properly.</span></h1>
+      <p class="lede">Manual data entry at the factory floor is the largest source of ERP data error in Bangladesh manufacturing. Workers write counts on paper, supervisors enter them into Odoo hours later — with transcription errors, timing gaps, and no real-time visibility. The Odoo IoT Box eliminates most of this by connecting physical hardware directly to Odoo: scan a barcode and the system records it instantly; weigh a batch and Odoo captures the exact figure. This guide covers hardware selection, sourcing in Bangladesh, setup, and the factory floor use cases that deliver the most value.</p>
+      <div class="post-meta">
+        <span class="chip accent">Guide</span>
+        <span class="chip">IoT Integration</span>
+        <span class="chip">Manufacturing</span>
+        <span class="chip">Bangladesh</span>
+      </div>
+      <div class="byline">
+        <span>By<b><a href="https://www.linkedin.com/in/mehedi-hasan-consultant/" style="color:var(--accent)" rel="author">Mehedi Hasan</a></b></span>
+        <span>Published<b>May 2026</b></span>
+        <span>Read time<b>15 minutes</b></span>
+        <span>Form<b>Guide</b></span>
+        <span>Scope<b>Factory &amp; Hardware</b></span>
+      </div>
+    </div>
+  </section>
+
+  <article class="post">
+    <aside class="toc">
+      <div class="toc-k">In this guide</div>
+      <ol>
+        <li><a href="#what-is-iot">What Is the Odoo IoT Box</a></li>
+        <li><a href="#bd-use-cases">Bangladesh Factory Use Cases</a></li>
+        <li><a href="#hardware">Hardware Sourcing in Bangladesh</a></li>
+        <li><a href="#power-network">Power & Network Setup</a></li>
+        <li><a href="#barcode-setup">Barcode Scanner Setup</a></li>
+        <li><a href="#scale-setup">Weighing Scale Integration</a></li>
+        <li><a href="#printer-setup">POS Printer for Job Cards</a></li>
+        <li><a href="#odoo-config">Odoo IoT Configuration</a></li>
+        <li><a href="#raspberry-pi">Budget Option: Raspberry Pi 4</a></li>
+        <li><a href="#troubleshooting">Troubleshooting</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ol>
+    </aside>
+
+    <div class="body">
+
+      <h2 id="what-is-iot">What Is the Odoo IoT Box and What Does It Actually Do</h2>
+      <p>The Odoo IoT Box is a Raspberry Pi 4 running a specialised Odoo operating system image. It acts as a bridge between physical hardware (scanners, scales, printers) and the Odoo application. You plug hardware into the IoT Box via USB or serial cable, connect the IoT Box to your network, and Odoo instantly recognises the connected devices.</p>
+      <p>Once connected, the hardware becomes a direct input device for Odoo: a barcode scan triggers an action in Odoo (record a picking, confirm a work order, identify a product). A weight reading from a scale is automatically entered into a quantity field. A receipt from a thermal printer is triggered by Odoo without opening a separate driver application.</p>
+      <p>The key point for Bangladesh factory managers: this removes the human step of manually entering the data after the physical operation. The ERP record is created at the moment the physical event happens — not an hour later when someone remembers to log it.</p>
+
+      <p class="pull">Every hour of delay between physical event and ERP entry is an hour of management blindness. IoT Box closes that gap at the factory floor.</p>
+
+      <h2 id="bd-use-cases">Bangladesh Factory Use Cases: Where IoT Box Pays Off</h2>
+
+      <div class="use-case-grid">
+        <div class="uc-card">
+          <div class="uc-head">RMG & Garments — Roll Barcode Scanning</div>
+          <p>Scan fabric roll barcodes on receipt from textile mills. Odoo auto-creates the stock move, records the roll number, and updates inventory instantly. No manual entry, no discrepancy between physical and system stock at month-end.</p>
+        </div>
+        <div class="uc-card">
+          <div class="uc-head">Raw Material Weighing — Yarn & Fibre</div>
+          <p>Spinning mills and weaving units weigh yarn cones before issuing to production. IoT scale integration records the exact weight in the manufacturing order material consumption — eliminating the manual recording that causes yarn variance discrepancies.</p>
+        </div>
+        <div class="uc-card">
+          <div class="uc-head">Cycle & Bicycle Export — Parts Picking</div>
+          <p>Warehouse pickers scan part barcodes during order picking. Odoo validates each scan against the picking list, flags wrong items in real time, and updates the stock location automatically on confirmation — eliminating mis-picks that cause export packing errors.</p>
+        </div>
+        <div class="uc-card">
+          <div class="uc-head">Finished Goods — Packing Scan at QC</div>
+          <p>QC staff scan finished product barcodes after inspection. Odoo records which items passed QC, who inspected them, and moves them to the finished goods location — creating a complete quality and traceability record without paper logs.</p>
+        </div>
+        <div class="uc-card">
+          <div class="uc-head">Job Card Printing — Work Order Dispatch</div>
+          <p>When a manufacturing work order is confirmed in Odoo, the IoT-connected printer automatically prints the job card for the floor supervisor. Eliminates the manual "print and deliver to floor" step that delays production starts.</p>
+        </div>
+        <div class="uc-card">
+          <div class="uc-head">POS for Factory Canteen or Store</div>
+          <p>Small factories with on-site canteens or staff stores can use Odoo POS with IoT receipt printer and barcode scanner. Staff purchases are recorded in Odoo and deducted from salary via payroll integration.</p>
+        </div>
+      </div>
+
+      <h2 id="hardware">Hardware Sourcing in Bangladesh</h2>
+      <p>You do not need to import hardware from outside Bangladesh for an Odoo IoT setup. Most compatible hardware is available locally, and local sourcing is significantly cheaper than international import (avoiding customs duty, shipping costs, and lead times).</p>
+
+      <div class="device-block">
+        <div class="device-header">
+          <span class="device-badge usb">USB</span>
+          <h3>Barcode Scanners — Locally Available, BDT 1,200–8,000</h3>
+        </div>
+        <div class="device-body">
+          <table class="hw-table">
+            <thead><tr><th>Model</th><th>Type</th><th>Approx. BDT Price</th><th>Best For</th></tr></thead>
+            <tbody>
+              <tr><td>Generic USB 1D Scanner</td><td>Wired USB, 1D barcode</td><td>1,200–2,000</td><td>Simple inventory, basic product scanning. Available in Elephant Road, IDB Bhaban.</td></tr>
+              <tr><td>Honeywell Voyager 1202g</td><td>Wireless USB, 1D</td><td>3,500–5,500</td><td>Warehouse picking where scanner needs to move around. Long-range, durable.</td></tr>
+              <tr><td>Zebra DS2208</td><td>Wired USB, 1D + 2D (QR)</td><td>5,000–8,000</td><td>When you need QR code scanning (packaging, serial numbers). Available via IT distributors.</td></tr>
+              <tr><td>Honeywell Granit 1911i</td><td>Industrial wireless, 1D + 2D</td><td>12,000–18,000</td><td>Heavy factory environments. Drop-resistant, dust/splash-proof. Import via distributors.</td></tr>
+            </tbody>
+          </table>
+          <p><strong>Where to buy in Bangladesh:</strong> IDB Bhaban (Agargaon), Multiplan Centre (Elephant Road), BCS Computer City (Agargaon) — all have multiple shops stocking barcode hardware. For Honeywell and Zebra branded units, contact authorised IT distributors — search for "Zebra Bangladesh distributor" or "Honeywell barcode scanner Bangladesh."</p>
+        </div>
+      </div>
+
+      <div class="device-block">
+        <div class="device-header">
+          <span class="device-badge serial">RS-232 / USB</span>
+          <h3>Weighing Scales — Industrial Scales with Data Output</h3>
+        </div>
+        <div class="device-body">
+          <p>Not all weighing scales work with Odoo IoT. The scale must output data via USB (acting as a serial device) or RS-232 serial port, and must use a standard data protocol (Mettler-Toledo or similar). WiFi-only and Bluetooth-only scales are not natively supported by Odoo IoT Box.</p>
+          <table class="hw-table">
+            <thead><tr><th>Scale Type</th><th>Connection</th><th>Approx. BDT Price</th><th>Use Case</th></tr></thead>
+            <tbody>
+              <tr><td>Ohaus Ranger 3000 (Bench Scale)</td><td>USB / RS-232</td><td>25,000–45,000</td><td>Yarn, thread, small parts. Ohaus distributor in Dhaka.</td></tr>
+              <tr><td>A&D FX-i series</td><td>USB / RS-232</td><td>20,000–38,000</td><td>Lab and production quality measurement. Available through A&D Bangladesh.</td></tr>
+              <tr><td>Platform scale with Mettler-Toledo protocol</td><td>RS-232</td><td>15,000–30,000</td><td>Fabric rolls, bulk yarn. Check RS-232 port and protocol support before purchase.</td></tr>
+              <tr><td>Local brand with serial output</td><td>RS-232</td><td>8,000–15,000</td><td>Budget option. Verify Mettler-Toledo or similar protocol support. Request data sheet.</td></tr>
+            </tbody>
+          </table>
+          <div class="warn-box">
+            <div class="wlabel">Before Buying a Scale</div>
+            <p>Always ask the supplier for the scale's communication protocol documentation before purchasing. The scale must support Mettler-Toledo continuous output, or at minimum, send a data string when a key is pressed (manual request mode). A scale that only displays on an LED screen with no data output port cannot be connected to Odoo IoT Box, regardless of price.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="device-block">
+        <div class="device-header">
+          <span class="device-badge usb">USB</span>
+          <h3>Thermal Printers — For Job Cards & Receipts</h3>
+        </div>
+        <div class="device-body">
+          <p>For job card printing at work centres and receipts in POS, Odoo IoT supports ESC/POS thermal printers. These are widely available in Bangladesh.</p>
+          <table class="hw-table">
+            <thead><tr><th>Brand</th><th>Type</th><th>Approx. BDT</th><th>Notes</th></tr></thead>
+            <tbody>
+              <tr><td>Epson TM-T82</td><td>80mm thermal, USB</td><td>8,000–12,000</td><td>Most common POS printer in Bangladesh. Excellent Odoo compatibility. Available everywhere.</td></tr>
+              <tr><td>TSC TE210</td><td>Label printer, USB</td><td>12,000–18,000</td><td>For barcode label printing. TSC brand is very popular and affordable in Bangladesh.</td></tr>
+              <tr><td>Xprinter XP-58</td><td>58mm thermal, USB</td><td>2,500–4,000</td><td>Budget receipt printer. Works with ESC/POS. Available on Daraz Bangladesh.</td></tr>
+              <tr><td>Zebra ZD420</td><td>Label printer, USB/Bluetooth</td><td>35,000–50,000</td><td>Industrial label printing for barcodes on products, boxes. Very durable. Imported.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <h2 id="power-network">Power & Network Setup: Bangladesh-Specific Considerations</h2>
+      <p>Bangladesh factory environments create two challenges that do not exist in office environments: power instability and network coverage across large floor areas.</p>
+
+      <p><strong>Power — Always Use a UPS:</strong> Bangladesh experiences frequent voltage fluctuations and load shedding, even in industrial areas of Dhaka and Chittagong. The Raspberry Pi 4 (IoT Box) is sensitive to power fluctuations — voltage spikes can corrupt the SD card and render the IoT Box unusable. Always power the IoT Box through a UPS or at minimum a quality voltage stabiliser. A small 650VA UPS (BDT 4,000–7,000) provides sufficient protection and 15–30 minutes of runtime during short load shedding.</p>
+
+      <p><strong>Network — Use Wired Ethernet Where Possible:</strong> Factory floors are electrically noisy environments. Variable frequency drives, motors, and fluorescent lighting create RF interference that degrades WiFi reliability. For IoT Box installations on the factory floor, run a Cat6 ethernet cable from the nearest switch to the IoT Box location. If wired is impossible, use a WiFi access point positioned close to the IoT Box rather than relying on the main office WiFi signal.</p>
+
+      <p><strong>Static IP for IoT Box:</strong> Assign a static IP to the IoT Box via DHCP reservation on your router (using the IoT Box's MAC address). This ensures the IoT Box always gets the same IP and Odoo can always reach it. Dynamic IP assignment causes IoT Box disconnections whenever the lease renews.</p>
+
+      <h2 id="barcode-setup">Barcode Scanner Setup in Odoo</h2>
+
+      <ol class="step-list">
+        <li>
+          <div class="sc">
+            <strong>Enable IoT App in Odoo</strong>
+            <span>Settings → Apps → search "IoT" → Install. Also install "Barcode" app (for inventory barcode operations) and "Manufacturing" app if using for work orders.</span>
+          </div>
+        </li>
+        <li>
+          <div class="sc">
+            <strong>Connect IoT Box to Network & Register in Odoo</strong>
+            <span>Power on IoT Box, connect via ethernet. It displays its IP on screen (if you attached an HDMI monitor) or find it via your router's DHCP table. In Odoo: IoT → IoT Boxes → Connect. Enter the IoT Box IP and click Pair. Odoo and IoT Box exchange tokens for authenticated communication.</span>
+          </div>
+        </li>
+        <li>
+          <div class="sc">
+            <strong>Connect Barcode Scanner to IoT Box via USB</strong>
+            <span>Plug the USB scanner into any USB port on the IoT Box. Within 30 seconds, it appears in Odoo's IoT Devices list (IoT → Devices). It will show as "Barcode Scanner" with the device name. No driver installation required.</span>
+          </div>
+        </li>
+        <li>
+          <div class="sc">
+            <strong>Assign Scanner to Work Centre (for Manufacturing)</strong>
+            <span>Manufacturing → Configuration → Work Centers → select work centre → IoT tab → assign the barcode scanner to this work centre. Now when a worker opens a work order on this work centre, scanning a barcode automatically advances the operation.</span>
+          </div>
+        </li>
+        <li>
+          <div class="sc">
+            <strong>Test in Inventory Barcode Operations</strong>
+            <span>Inventory → Barcode → Scan a product barcode. If the product has a barcode configured (Inventory → Products → product → Barcode field), the scan identifies it and populates the quantity field. If no barcode shows, the product barcode is not configured — add it to the product form.</span>
+          </div>
+        </li>
+      </ol>
+
+      <div class="tip-box">
+        <div class="tlabel">Bangladesh Barcode Format Note</div>
+        <p>Most Bangladesh manufactured goods use EAN-13 barcodes (the standard 13-digit format visible on retail products). Locally manufactured or semi-finished goods often have no barcode at all — you need to generate and print barcodes for them. In Odoo, go to any product and enter a unique code in the Barcode field. Then print barcode labels using Odoo's barcode label report or a label printer connected to IoT Box. TSC label printers with Odoo IoT are the most popular setup for Bangladesh factories generating their own labels.</p>
+      </div>
+
+      <h2 id="scale-setup">Weighing Scale Integration</h2>
+      <p>Scale integration is more complex than barcode scanners because scales use serial communication protocols rather than standard USB HID (Human Interface Device). The IoT Box handles this via a USB-to-serial adapter or direct RS-232 if you have an older Raspberry Pi with a serial GPIO HAT.</p>
+
+      <p><strong>Hardware connection:</strong> Connect scale RS-232 output to a USB-to-RS232 adapter (available at Elephant Road for BDT 200–500), then plug the adapter into the IoT Box USB port. The scale must be powered and outputting data.</p>
+
+      <p><strong>Protocol configuration:</strong> In the IoT Box admin panel (browse to the IoT Box IP in your browser → Devices → your scale), configure the baud rate, data bits, parity, and stop bits to match your scale's settings. Common settings: 9600 baud, 8N1 (8 data bits, no parity, 1 stop bit). Refer to your scale's user manual for the correct communication parameters.</p>
+
+      <p><strong>Using scale in Odoo:</strong> Once connected and configured, the scale appears in Odoo IoT Devices. In Manufacturing → Work Orders, open an operation that requires weighing. The current scale reading appears in the Quantity field automatically. Press the scale's "Send" button (or configure continuous output) to capture the weight.</p>
+
+      <h2 id="printer-setup">POS Printer for Shop Floor Job Cards</h2>
+      <p>Connecting an Epson TM-T82 or compatible ESC/POS printer to Odoo IoT Box for automatic job card printing is one of the most immediately useful IoT deployments for Bangladesh factories. When a supervisor confirms a manufacturing work order, the job card prints automatically at the relevant work centre without any additional action.</p>
+
+      <p>Setup: plug printer USB cable into IoT Box → it appears in Odoo IoT Devices as "Printer" → assign it to a Work Centre in Manufacturing → Configuration → Work Centers → IoT tab → Printer field. Set triggers in the work centre settings for when printing occurs (on work order start, on confirmation).</p>
+
+      <p>For label printing (product labels with barcode), assign the label printer to the Inventory module instead: Settings → Technical → Printers → assign to the label-printing action in inventory operations.</p>
+
+      <h2 id="odoo-config">Odoo IoT Configuration Checklist</h2>
+      <p>Before going live with IoT Box in a Bangladesh factory environment, verify these configurations:</p>
+
+      <ul>
+        <li><strong>IoT module installed</strong> — Settings → Apps → IoT. Also install Barcode, Manufacturing, and any other modules you need hardware for.</li>
+        <li><strong>IoT Box registered</strong> — IoT → IoT Boxes shows your box with "Connected" status (green dot).</li>
+        <li><strong>All devices showing</strong> — IoT → Devices lists every connected USB device. Missing devices indicate a connection or driver issue.</li>
+        <li><strong>Work Centres configured</strong> — Each work centre with hardware has the correct IoT device assigned (scanner and/or printer).</li>
+        <li><strong>Product barcodes assigned</strong> — Every product that will be scanned has a barcode value in its Barcode field. Generate and print labels for products without existing barcodes.</li>
+        <li><strong>UPS connected</strong> — IoT Box is on UPS or voltage stabiliser.</li>
+        <li><strong>Static IP assigned</strong> — IoT Box IP is reserved in router DHCP, not randomly assigned.</li>
+        <li><strong>Network tested</strong> — Scan a barcode from the factory floor location and verify the response time in Odoo is &lt;2 seconds.</li>
+      </ul>
+
+      <h2 id="raspberry-pi">Budget Option: Raspberry Pi 4 as IoT Box</h2>
+      <p>The official Odoo IoT Box purchased through Odoo.com is a Raspberry Pi 4 with the Odoo IoT image pre-installed. You can achieve the same result at lower cost by purchasing a Raspberry Pi 4 locally and flashing the Odoo IoT image yourself.</p>
+
+      <p><strong>Bangladesh sourcing:</strong> Raspberry Pi 4 (4GB) is available in Bangladesh through electronics distributors. Check BDShop.com, Techshop BD, or authorised distributors on Daraz for current pricing (approximately BDT 8,000–12,000 depending on availability — Pi availability fluctuates globally). You also need a 32GB+ microSD card (SanDisk or Samsung, BDT 500–800) and a 5V/3A USB-C power supply (BDT 600–1,200).</p>
+
+      <p><strong>Setup steps:</strong></p>
+      <ol>
+        <li>Download the Odoo IoT image from odoo.com/page/iot-box (available for the Odoo version you are running).</li>
+        <li>Flash the image to the microSD card using Raspberry Pi Imager or Balena Etcher.</li>
+        <li>Insert SD card into Raspberry Pi 4, connect ethernet, power on.</li>
+        <li>Find the Pi's IP via your router DHCP table. Browse to the IP — you see the IoT Box admin interface.</li>
+        <li>Follow the Odoo IoT Box pairing process from the Odoo backend.</li>
+      </ol>
+
+      <p>The resulting setup is functionally identical to the official IoT Box at roughly 40% lower cost — with the trade-off that you manage the SD card image and updates yourself rather than having Odoo's managed hardware support.</p>
+
+      <h2 id="troubleshooting">Troubleshooting Common IoT Issues in Bangladesh</h2>
+
+      <p><strong>IoT Box shows "Disconnected" in Odoo</strong><br>
+      Most common cause in Bangladesh: IoT Box got a different IP after a DHCP lease renewal. Fix: assign a static IP via DHCP reservation. Secondary cause: load shedding restarted both the router and IoT Box but the IoT Box started before the router finished booting. Add a 30-second boot delay by editing the IoT Box config, or simply wait 60 seconds after power restoration and the IoT Box will reconnect automatically.</p>
+
+      <p><strong>Barcode scan not recognised in Odoo</strong><br>
+      The barcode value scanned does not match any product barcode in Odoo. Check: (1) the product has a Barcode field value that exactly matches what the scanner reads; (2) the scanner is set to the correct barcode type (if scanning QR but scanner is in 1D-only mode, it will not read). Configure scanner to auto-detect mode via the scanner's manual programming barcodes.</p>
+
+      <p><strong>Scale reading not appearing in Odoo</strong><br>
+      Check serial port parameters — mismatch in baud rate or parity between scale and IoT Box config is the most common cause. Also verify the USB-to-RS232 adapter is recognised (should appear as a device in the IoT Box admin panel under serial ports). Some cheap USB-RS232 adapters use unsigned drivers that the IoT Box Linux OS does not recognise — use a Prolific PL2303 or FTDI FT232 chipset adapter for maximum compatibility.</p>
+
+      <p><strong>Printer printing blank pages</strong><br>
+      The printer is connected but the wrong driver or paper size is configured. In Odoo IoT Devices → Printer → check the print options match your paper size (80mm for standard POS rolls). For ESC/POS printers, ensure the IoT Box has detected it as ESC/POS, not as a plain text printer.</p>
+
+      <p>For the manufacturing module configuration that IoT Box plugs into, see the <a href="0013-odoo-manufacturing-module-bangladesh" style="color:var(--accent)">Odoo Manufacturing Module Setup guide</a>. For work centre routing and time tracking that IoT data feeds into, see the <a href="0038-odoo-manufacturing-routing-bangladesh" style="color:var(--accent)">Manufacturing Routing guide</a>.</p>
+
+      <div class="callout">
+        <span class="tag">IoT Box Setup Service</span>
+        <p>If your Bangladesh factory needs Odoo IoT Box configured — barcode scanning, scale integration, job card printing — I can design the hardware setup and configure the Odoo side in a structured engagement. <a href="../#contact" style="color:var(--accent)">Contact me to discuss your factory's requirements →</a></p>
+      </div>
+
+      <h2 id="faq">Frequently asked questions</h2>
+
+      <h3>Where can I buy a barcode scanner for Odoo IoT Box in Bangladesh?</h3>
+      <p>Barcode scanners are available at IDB Bhaban and Multiplan Centre on Elephant Road (Dhaka), Agrabad IT market (Chittagong), and via Daraz Bangladesh. Generic USB 1D scanners cost BDT 1,200–2,000. Honeywell and Zebra branded scanners (BDT 3,500–8,000) are more durable and recommended for factory floor use. For 2D/QR scanning, look for a Zebra DS2208 or equivalent at IT distributors.</p>
+
+      <h3>Can I use a Raspberry Pi instead of the official Odoo IoT Box in Bangladesh?</h3>
+      <p>Yes. The official IoT Box is a Raspberry Pi 4 with a pre-flashed Odoo IoT image. You can buy a Raspberry Pi 4 locally (BDT 8,000–12,000) and flash the Odoo IoT image from odoo.com yourself. The result is functionally identical. You manage updates yourself rather than having Odoo's managed hardware support, but it is the most cost-effective approach for Bangladesh factories.</p>
+
+      <h3>Which weighing scales work with Odoo IoT Box in Bangladesh?</h3>
+      <p>Scales must connect via USB (acting as serial device) or RS-232 and support a standard protocol (Mettler-Toledo preferred). Ohaus Ranger 3000 and A&D FX-i series are reliably compatible. Local-brand scales with RS-232 and Mettler-Toledo protocol can work — request the data sheet before purchasing. Avoid WiFi-only or Bluetooth-only scales. Budget BDT 15,000–35,000 for an industrial platform scale with data output.</p>
+
+      <h3>Does Odoo IoT Box require internet to work?</h3>
+      <p>If your Odoo is on-premise (same local network as the IoT Box), no internet is required — communication is over LAN. If Odoo is cloud-hosted (Odoo.sh or another cloud server), the IoT Box needs internet to reach the server. For Bangladesh factories where internet reliability is inconsistent, on-premise Odoo with local IoT Box communication is more resilient — shop floor scanning continues even during internet outages.</p>
+
+    </div>
+  </article>
+
+  <footer>
+    <div class="shell">
+      <div class="post-foot">
+        <span class="eyebrow">Continue exploring</span>
+        <div class="next">
+          <a class="next-card" href="0055-odoo-dashboards-kpi-bangladesh">
+            <span class="dir">Older · 0055</span>
+            <h4>Odoo Dashboards & KPIs Bangladesh</h4>
+            <p>Track sales pipeline, inventory turns, cash flow, and manufacturing OEE from one screen.</p>
+            <span class="arrow">→</span>
+          </a>
+          <a class="next-card" href="0057-odoo-backup-restore-bangladesh">
+            <span class="dir">Newer · 0057</span>
+            <h4>Odoo Backup & Disaster Recovery Bangladesh</h4>
+            <p>PostgreSQL backup, filestore, off-site storage, and recovery drills for Bangladesh businesses.</p>
+            <span class="arrow">→</span>
+          </a>
+        </div>
+      </div>
+      <div class="foot">
+        <span>© 2026 Mehedi Hasan · Lab / 0056</span>
+        <span><a href="../#lab">↑ Back to lab index</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="_utils.js" defer></script>
+  <script src="_toc.js" defer></script>
+  <script src="/whatsapp.js" defer></script>
+  <script src="/scroll-top.js" defer></script>
+</body>
+
+</html>

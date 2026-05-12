@@ -12,7 +12,7 @@
   <!-- Lab index page -->
   <url>
     <loc>https://mhasan.me/lab/</loc>
-    <lastmod>2026-05-08</lastmod>
+    <lastmod>2026-05-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -444,7 +444,87 @@
   <!-- Target: odoo project charter template -->
   <url>
     <loc>https://mhasan.me/lab/0047-odoo-project-charter-template</loc>
-    <lastmod>2026-05-08</lastmod>
+    <lastmod>2026-05-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Target: odoo roi calculator bangladesh, odoo erp roi bangladesh -->
+  <url>
+    <loc>https://mhasan.me/lab/0048-odoo-roi-calculator-bangladesh</loc>
+    <lastmod>2026-05-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Target: odoo partner selection bangladesh, odoo vendor evaluation bangladesh -->
+  <url>
+    <loc>https://mhasan.me/lab/0049-odoo-partner-selection-bangladesh</loc>
+    <lastmod>2026-05-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Target: hidden erp costs bangladesh, erp implementation cost bangladesh -->
+  <url>
+    <loc>https://mhasan.me/lab/0050-hidden-erp-costs-bangladesh</loc>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Target: odoo enterprise licensing cost, odoo license price bangladesh -->
+  <url>
+    <loc>https://mhasan.me/lab/0051-odoo-enterprise-licensing-cost</loc>
+    <lastmod>2026-05-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Target: odoo vendor red flags, when to fire odoo partner bangladesh -->
+  <url>
+    <loc>https://mhasan.me/lab/0052-odoo-vendor-red-flags-bangladesh</loc>
+    <lastmod>2026-05-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Target: odoo api integration bangladesh, bkash odoo integration, sslcommerz odoo -->
+  <url>
+    <loc>https://mhasan.me/lab/0053-odoo-api-integration-bangladesh</loc>
+    <lastmod>2026-05-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Target: odoo email setup bangladesh, odoo sms gateway bangladesh, ssl wireless odoo -->
+  <url>
+    <loc>https://mhasan.me/lab/0054-odoo-email-sms-setup-bangladesh</loc>
+    <lastmod>2026-05-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Target: odoo dashboard kpi bangladesh, odoo reporting bangladesh -->
+  <url>
+    <loc>https://mhasan.me/lab/0055-odoo-dashboards-kpi-bangladesh</loc>
+    <lastmod>2026-05-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Target: odoo iot box barcode bangladesh, odoo factory barcode scanner -->
+  <url>
+    <loc>https://mhasan.me/lab/0056-odoo-iot-box-bangladesh</loc>
+    <lastmod>2026-05-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Target: odoo backup restore bangladesh, odoo disaster recovery bangladesh -->
+  <url>
+    <loc>https://mhasan.me/lab/0057-odoo-backup-restore-bangladesh</loc>
+    <lastmod>2026-05-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>

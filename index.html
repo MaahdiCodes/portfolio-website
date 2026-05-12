@@ -1523,6 +1523,11 @@
       .course-card {
         grid-column: span 6
       }
+
+      /* 3rd course card alone on its row → center it in the 12-col grid */
+      .course-card:nth-child(3):last-child {
+        grid-column: 4 / span 6
+      }
     }
 
     @media(max-width:640px) {
@@ -2082,7 +2087,7 @@
       border-color: var(--accent)
     }
 
-    @media(max-width:860px) {
+    @media(max-width:980px) {
       .testi-grid {
         grid-template-columns: 1fr 1fr
       }
@@ -2497,6 +2502,49 @@
       .sig-meta span:nth-child(3),
       .sig-foot span:nth-child(2) {
         display: none
+      }
+    }
+
+    /* ── Small desktop / mid-range (12–15″ laptops, 720p, 1080p@150%) ── */
+
+    /* Tighten nav link touch-targets before they get crowded in the pill */
+    @media(max-width:960px) {
+      .nav-links a {
+        padding: 8px 10px;
+        font-size: 13px;
+      }
+    }
+
+    /* Reduce section vertical breathing room so pages feel proportionate
+       on 768px-tall laptop screens — hero and #testimonials keep their own padding */
+    @media(max-width:1280px) {
+      section {
+        padding: 80px 0
+      }
+    }
+
+    @media(max-width:1100px) {
+      section {
+        padding: 72px 0
+      }
+
+      .section-head {
+        margin-bottom: 36px
+      }
+    }
+
+    /* Pull in contact & newsletter horizontal padding at mid-sizes.
+       min-width guards prevent overriding the tighter mobile rules below 861px / 761px */
+    @media(min-width:861px) and (max-width:1100px) {
+      .contact-wrap {
+        padding: 44px 36px
+      }
+    }
+
+    @media(min-width:761px) and (max-width:1100px) {
+      .newsletter-wrap {
+        padding: 36px 36px;
+        gap: 36px
       }
     }
 

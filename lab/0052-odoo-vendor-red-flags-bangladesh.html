@@ -262,6 +262,13 @@
     .severity-card.critical .sev-header { color: #ff7070; }
     .severity-card ul { margin: 0; padding-left: 18px; }
     .severity-card li { color: var(--text-2); font-size: 13.5px; margin-bottom: 5px; line-height: 1.4; }
+    /* Beat global .post .body ol li / ::before specificity (0,2,3) */
+    .post .body .escalation-steps li {
+      padding-left: 0;
+    }
+    .post .body .escalation-steps li::before {
+      position: static;
+    }
   </style>
 </head>
 

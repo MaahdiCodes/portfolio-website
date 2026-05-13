@@ -1,0 +1,537 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description"
+    content="Odoo maintenance module Bangladesh factories: set up equipment, preventive schedules, work orders, and maintenance KPIs. Step-by-step factory setup guide →" />
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="Mehedi Hasan" />
+  <title>Odoo Preventive Maintenance Bangladesh | Factory Setup | Mehedi Hasan</title>
+  <link rel="canonical" href="https://mhasan.me/lab/0061-odoo-preventive-maintenance-bangladesh" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png" />
+  <!-- Open Graph -->
+  <meta property="og:title" content="Odoo Preventive Maintenance Bangladesh | Factory Setup | Mehedi Hasan" />
+  <meta property="og:description"
+    content="Configure Odoo Maintenance for Bangladesh factories: equipment setup, preventive schedules, work orders, spare parts, and maintenance cost tracking." />
+  <meta property="og:url" content="https://mhasan.me/lab/0061-odoo-preventive-maintenance-bangladesh" />
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="https://mhasan.me/assets/og-default.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:site_name" content="Mehedi Hasan | Odoo ERP Consultant" />
+  <meta property="article:author" content="https://www.linkedin.com/in/mehedi-hasan-consultant/" />
+  <meta property="article:published_time" content="2026-05-13T11:30:00+06:00" />
+  <meta property="article:modified_time" content="2026-05-13T11:30:00+06:00" />
+  <meta property="article:section" content="Odoo ERP Bangladesh" />
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Odoo Preventive Maintenance Bangladesh | Factory Setup | Mehedi Hasan" />
+  <meta name="twitter:description"
+    content="Odoo maintenance module for Bangladesh factories: equipment catalog, preventive maintenance schedules, work orders, and maintenance KPI dashboards." />
+  <meta name="twitter:image" content="https://mhasan.me/assets/og-default.jpg" />
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Odoo Preventive Maintenance for Bangladesh Factories: Setup & Scheduling",
+    "description": "A complete configuration guide for Odoo's Maintenance module in Bangladesh factories — equipment catalog, maintenance team setup, preventive maintenance scheduling, work order workflows, spare parts management, maintenance cost tracking, and KPI dashboards.",
+    "datePublished": "2026-05-13T11:30:00+06:00",
+    "dateModified": "2026-05-13T11:30:00+06:00",
+    "author": {
+      "@type": "Person",
+      "name": "Mehedi Hasan",
+      "url": "https://mhasan.me",
+      "jobTitle": "Odoo ERP Consultant & Business Analyst",
+      "sameAs": "https://www.linkedin.com/in/mehedi-hasan-consultant/"
+    },
+    "publisher": { "@type": "Person", "name": "Mehedi Hasan", "url": "https://mhasan.me" },
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://mhasan.me/lab/0061-odoo-preventive-maintenance-bangladesh" }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://mhasan.me" },
+      { "@type": "ListItem", "position": 2, "name": "Lab", "item": "https://mhasan.me/lab/" },
+      { "@type": "ListItem", "position": 3, "name": "Odoo Preventive Maintenance Bangladesh", "item": "https://mhasan.me/lab/0061-odoo-preventive-maintenance-bangladesh" }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is the difference between corrective and preventive maintenance in Odoo?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "In Odoo Maintenance: Corrective maintenance is reactive — a machine breaks down, someone creates a maintenance request to report the breakdown and schedule repair. Preventive maintenance is proactive — Odoo automatically generates maintenance requests on a schedule (every 30 days, every 500 machine-hours, etc.) before breakdown occurs. Both use the same Maintenance Request form and Work Order flow in Odoo, but preventive requests are created automatically by the system rather than manually by a user. The Maintenance module tracks both types separately in reporting so you can see your ratio of reactive to proactive maintenance — a key indicator of maintenance program maturity."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can Odoo maintenance module integrate with IoT sensors in Bangladesh factories?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, with Odoo IoT Box. The Odoo IoT Box (a Raspberry Pi-based device) connects physical sensors to Odoo. For maintenance purposes: vibration sensors can trigger a maintenance request when a machine exceeds a defined vibration threshold; temperature sensors can alert when motors overheat; cycle counters can trigger maintenance based on actual machine cycles rather than elapsed time. The IoT Box is available from Odoo S.A. and select partners — approximately BDT 15,000–25,000 per unit. Sensor compatibility and wiring must be assessed per machine. For Bangladesh factories with older machinery without sensor ports, an experienced electrician or instrumentation engineer is needed to add sensors. This is a worthwhile investment for high-value, high-utilization machines where a single breakdown costs more than the IoT setup cost."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I track maintenance costs in Odoo?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Odoo Maintenance tracks costs at the maintenance request level: (1) Labor cost — the technician's time is logged against the work order; the hourly cost is pulled from the maintenance team member's work center or employee record; (2) Spare parts cost — spare parts consumed during maintenance are recorded by adding products to the maintenance request's 'Parts Used' tab; Odoo deducts these from inventory and records the cost; (3) External service cost — vendor bills for external maintenance services can be linked to the maintenance request; (4) Downtime cost — calculated as machine downtime (hours) × machine's production rate value (configured in the Work Center record in Manufacturing). Total maintenance cost per machine, per category, or per month is available in Maintenance Reporting → Maintenance Costs. This data is essential for making the rebuild vs. replace decision on aging machinery — a frequent question for Bangladesh factories with machines more than 10 years old."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does Odoo maintenance work for ISO 9001 certified Bangladesh factories?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes — Odoo Maintenance generates the audit-ready documentation required for ISO 9001 maintenance records: maintenance request history per machine, work order completion records with technician sign-off, spare parts records per maintenance activity, and periodic maintenance schedule compliance reports. For ISO 9001 Clause 7.1.3 (Infrastructure), Odoo Maintenance provides: (1) equipment register (all machines with model, serial, location, and purchase date); (2) maintenance records with dates, technician, work performed, and outcome; (3) planned vs. actual maintenance comparison. Export the maintenance history report to PDF before ISO audits. Many ISO-certified Bangladesh factories (RMG, pharma, food processing) use Odoo Maintenance specifically because it produces the record format auditors expect."
+        }
+      }
+    ]
+  }
+]
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap">
+  <link rel="stylesheet" href="_styles.css">
+  <style>
+    .pull {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: clamp(20px, 2.8vw, 28px);
+      line-height: 1.3;
+      color: var(--text);
+      margin: 48px 0;
+      max-width: 28ch;
+      letter-spacing: -0.01em;
+    }
+    .pull::before {
+      content: "";
+      display: block;
+      width: 36px;
+      height: 1px;
+      background: var(--accent);
+      margin-bottom: 18px;
+    }
+    .config-block {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      margin: 22px 0;
+      overflow: hidden;
+    }
+    .config-head {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 13px 20px;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+    }
+    .cfg-num {
+      width: 24px; height: 24px;
+      border-radius: 50%;
+      background: var(--accent-dim);
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      font-family: var(--mono);
+      font-size: 11px;
+      font-weight: 700;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .config-head h3 { margin: 0; font-size: 14.5px; color: var(--text); letter-spacing: -0.01em; }
+    .config-body { padding: 18px 20px; }
+    .config-body p { color: var(--text-2); font-size: 14.5px; line-height: 1.65; margin: 0 0 10px; }
+    .config-body p:last-child { margin-bottom: 0; }
+    .config-body ul, .config-body ol { color: var(--text-2); font-size: 14px; padding-left: 20px; margin: 10px 0; }
+    .config-body li { margin-bottom: 6px; line-height: 1.5; }
+    .tip-box {
+      background: var(--accent-dim);
+      border-left: 3px solid var(--accent);
+      border-radius: 0 6px 6px 0;
+      padding: 14px 18px;
+      margin: 18px 0;
+    }
+    .tip-box .tlabel { font-family: var(--mono); font-size: 10px; color: var(--accent); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 6px; }
+    .tip-box p { margin: 0; font-size: 14px; color: var(--text-2); line-height: 1.55; }
+    .warn-box {
+      background: rgba(200,140,60,0.08);
+      border-left: 3px solid rgba(200,140,60,0.6);
+      border-radius: 0 6px 6px 0;
+      padding: 14px 18px;
+      margin: 18px 0;
+    }
+    .warn-box .wlabel { font-family: var(--mono); font-size: 10px; color: rgba(220,160,70,0.9); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 6px; }
+    .warn-box p { margin: 0; font-size: 14px; color: var(--text-2); line-height: 1.55; }
+    .schedule-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13.5px;
+      margin: 16px 0;
+    }
+    .schedule-table th {
+      text-align: left;
+      padding: 10px 14px;
+      background: var(--surface);
+      color: var(--text-3);
+      font-family: var(--mono);
+      font-size: 10.5px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      border-bottom: 1px solid var(--border);
+    }
+    .schedule-table td {
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      color: var(--text-2);
+      vertical-align: top;
+    }
+    .schedule-table td:first-child { color: var(--text); font-weight: 500; }
+    .schedule-table tr:last-child td { border-bottom: none; }
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 13px;
+      margin: 20px 0;
+    }
+    @media(max-width:600px) { .kpi-grid { grid-template-columns: 1fr; } }
+    .kpi-card {
+      border: 1px solid var(--border);
+      border-radius: 7px;
+      padding: 16px;
+      background: var(--surface);
+    }
+    .kpi-card .kc-name { font-family: var(--mono); font-size: 10px; color: var(--text-3); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 6px; }
+    .kpi-card .kc-metric { font-size: 22px; font-weight: 700; color: var(--accent); letter-spacing: -0.02em; margin-bottom: 4px; }
+    .kpi-card .kc-desc { color: var(--text-2); font-size: 12.5px; line-height: 1.45; }
+  </style>
+</head>
+
+<body>
+  <div class="grid-bg"></div>
+
+  <header class="nav">
+    <div class="shell">
+      <div class="nav-inner">
+        <a class="brand" href="../">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span class="brand-name"><b>Mehedi Hasan</b><em>ERP · Business Analyst</em></span>
+        </a>
+        <a class="back-link" href="../#lab">← Back to Lab</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="post-head">
+    <div class="shell">
+      <span class="eyebrow">Technical Lab · 0061</span>
+      <h1>Odoo Preventive Maintenance for Bangladesh Factories: <span class="serif">setup, schedules & KPIs.</span></h1>
+      <p class="lede">Unplanned machine breakdown is one of the most expensive events in a Bangladesh factory. The cost is not just repair — it is halted production, missed export commitments, idle labor, and the chaos of an emergency procurement run for spare parts at 9 PM. Odoo's Maintenance module does not eliminate breakdowns. But configured correctly, it dramatically reduces their frequency and eliminates the information vacuum that makes breakdown management so costly. This is the configuration guide.</p>
+      <div class="post-meta">
+        <span class="chip accent">Guide</span>
+        <span class="chip">Maintenance</span>
+        <span class="chip">Manufacturing</span>
+        <span class="chip">Bangladesh</span>
+      </div>
+      <div class="byline">
+        <span>By<b><a href="https://www.linkedin.com/in/mehedi-hasan-consultant/" style="color:var(--accent)" rel="author">Mehedi Hasan</a></b></span>
+        <span>Published<b>May 2026</b></span>
+        <span>Read time<b>19 minutes</b></span>
+        <span>Form<b>Guide</b></span>
+        <span>Scope<b>Manufacturing</b></span>
+      </div>
+    </div>
+  </section>
+
+  <article class="post">
+    <aside class="toc">
+      <div class="toc-k">In this guide</div>
+      <ol>
+        <li><a href="#why-maintenance">Why Maintenance Management Matters in Bangladesh</a></li>
+        <li><a href="#module-overview">Odoo Maintenance Module Overview</a></li>
+        <li><a href="#equipment-setup">Step 1: Equipment Catalog Setup</a></li>
+        <li><a href="#maintenance-teams">Step 2: Maintenance Teams & Technicians</a></li>
+        <li><a href="#corrective">Step 3: Corrective Maintenance Requests</a></li>
+        <li><a href="#preventive">Step 4: Preventive Maintenance Schedules</a></li>
+        <li><a href="#spare-parts">Step 5: Spare Parts Inventory Integration</a></li>
+        <li><a href="#work-orders">Step 6: Maintenance Work Orders</a></li>
+        <li><a href="#cost-tracking">Maintenance Cost Tracking</a></li>
+        <li><a href="#kpis">KPIs & Reporting</a></li>
+        <li><a href="#bangladesh-context">Bangladesh-Specific Considerations</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ol>
+    </aside>
+
+    <div class="body">
+
+      <h2 id="why-maintenance">Why Maintenance Management Matters in Bangladesh</h2>
+      <p>Bangladesh's manufacturing sector runs on machinery that spans multiple decades. A Gazipur garments factory might have Japanese sewing machines from 2010 alongside Chinese cutting machines from 2018 and German finishing equipment from 2005. Each has different maintenance intervals, different spare parts suppliers, and different failure modes. Managing this heterogeneous fleet from a spreadsheet or a maintenance notebook is how companies end up with 4-hour breakdowns on the day before a shipment deadline.</p>
+      <p>The specific challenges that make maintenance management critical in Bangladesh:</p>
+      <ul>
+        <li><strong>Power quality:</strong> Load shedding, voltage fluctuations, and sudden power cuts cause motor burnouts and electronic component failures at higher rates than in stable-grid environments. Preventive checks on electrical components become essential, not optional.</li>
+        <li><strong>Humidity and heat:</strong> Bangladesh's tropical climate accelerates corrosion, belt degradation, and lubricant breakdown. Maintenance intervals derived from manufacturer specifications (often written for European or Japanese climates) must be shortened by 15–30% in Dhaka's conditions.</li>
+        <li><strong>Spare parts lead times:</strong> For specialized machinery, spare parts must often be imported — 2–6 weeks from China, 4–8 weeks from Europe. A planned maintenance approach with parts pre-ordered is the only way to avoid catastrophic delays.</li>
+        <li><strong>Skilled technician shortage:</strong> Experienced maintenance technicians are scarce and expensive. Tracking their work in Odoo — which machines they maintain, what was done, how long it took — makes their expertise institutional rather than personal.</li>
+      </ul>
+
+      <p class="pull">Every unplanned breakdown is a planned maintenance that did not happen. The economics of prevention versus cure in Bangladesh manufacturing are not even close.</p>
+
+      <h2 id="module-overview">Odoo Maintenance Module Overview</h2>
+      <p>Odoo's Maintenance module (available in both Community and Enterprise, though Enterprise adds additional features) covers:</p>
+      <ul>
+        <li><strong>Equipment catalog:</strong> Register every machine with make, model, serial number, location, work center assignment, and purchase details.</li>
+        <li><strong>Maintenance requests:</strong> Corrective requests (breakdown reports) and preventive requests (auto-generated on schedule).</li>
+        <li><strong>Maintenance teams:</strong> Assign technicians to teams; route requests to the appropriate team by equipment category or location.</li>
+        <li><strong>Work orders:</strong> Convert maintenance requests to work orders with time tracking, parts used, and completion sign-off.</li>
+        <li><strong>Preventive maintenance schedules:</strong> Time-based (every 30 days) or meter-based (every 500 machine-hours) automatic request generation.</li>
+        <li><strong>Reporting:</strong> MTBF (Mean Time Between Failures), MTTR (Mean Time To Repair), maintenance cost per machine, and maintenance schedule compliance.</li>
+      </ul>
+      <p>Navigate to the Maintenance module from your Odoo main menu. If it is not visible, install it from Settings → Apps → search "Maintenance."</p>
+
+      <h2 id="equipment-setup">Step 1: Equipment Catalog Setup</h2>
+
+      <div class="config-block">
+        <div class="config-head">
+          <span class="cfg-num">1</span>
+          <h3>Equipment → Create</h3>
+        </div>
+        <div class="config-body">
+          <p>Go to Maintenance → Equipments → New. For each machine, fill in:</p>
+          <ul>
+            <li><strong>Name:</strong> Use a consistent naming convention — "Sewing Machine · Brother S-7200C · Line 3 · Pos 12". Vague names like "Machine 1" make it impossible to identify equipment on a maintenance request.</li>
+            <li><strong>Equipment Categories:</strong> Create categories that match your maintenance team structure. For a garments factory: Sewing Machines, Cutting Machines, Finishing Equipment, Generators, Air Compressors, HVAC. Categories allow reporting by equipment type and routing to the correct team.</li>
+            <li><strong>Maintenance Team:</strong> Assign the team responsible for this equipment. This auto-routes corrective requests to the correct team without a dispatcher step.</li>
+            <li><strong>Technician:</strong> Optionally assign a primary technician responsible for this machine. Useful for specialized equipment that only certain technicians handle.</li>
+            <li><strong>Work Center:</strong> Link to the corresponding Manufacturing work center — this connects maintenance downtime to production impact. When a machine is down, the associated work center shows as unavailable in manufacturing planning.</li>
+            <li><strong>Technical Details tab:</strong> Model number, serial number, manufacturer, vendor, warranty expiry date. These are critical for spare parts sourcing and warranty claims.</li>
+            <li><strong>Maintenance tab:</strong> Maintenance duration (expected hours for a standard maintenance activity), maintenance frequency (how often preventive maintenance is scheduled).</li>
+          </ul>
+          <div class="tip-box">
+            <div class="tlabel">Equipment Naming Convention</div>
+            <p>Establish and document a naming convention before data entry begins. Once equipment is named and attached to maintenance requests, renaming is cumbersome. Recommended Bangladesh factory format: "[Category Short Code] · [Make] · [Model] · [Location/Line] · [Position/ID]" — for example: "SEW · Brother · S-7200C · L3 · P12"</p>
+          </div>
+        </div>
+      </div>
+
+      <h2 id="maintenance-teams">Step 2: Maintenance Teams & Technicians</h2>
+
+      <div class="config-block">
+        <div class="config-head">
+          <span class="cfg-num">2</span>
+          <h3>Configuration → Maintenance Teams</h3>
+        </div>
+        <div class="config-body">
+          <p>Go to Maintenance → Configuration → Maintenance Teams → New. Create teams that match your maintenance organization:</p>
+          <ul>
+            <li><strong>Mechanical Team:</strong> Handles sewing machines, mechanical systems, belts, bearings, gearboxes</li>
+            <li><strong>Electrical Team:</strong> Handles motors, control panels, lighting, power distribution</li>
+            <li><strong>Infrastructure Team:</strong> Handles generators, HVAC, compressors, building systems</li>
+            <li><strong>External Vendor:</strong> A team for maintenance activities handled by outside specialists — boiler maintenance, elevator servicing, fire suppression</li>
+          </ul>
+          <p>Each team has a Team Leader and Team Members. The team leader receives email notifications for new maintenance requests assigned to their team. Add all maintenance technicians as members of their respective teams — they will see their assigned requests in their Odoo to-do queue.</p>
+          <p><strong>Working Hours:</strong> Configure the team's working hours (6 AM – 6 PM for a standard Bangladesh factory shift, or 8 AM – 8 PM for extended shifts). This affects maintenance scheduling — preventive requests will not be scheduled outside working hours.</p>
+        </div>
+      </div>
+
+      <h2 id="corrective">Step 3: Corrective Maintenance Requests</h2>
+      <p>Corrective maintenance requests are how operators and supervisors report machine breakdowns. The workflow is simple: machine fails → operator creates a request → team leader sees it → assigns a technician → work is done → request is closed with notes.</p>
+      <p><strong>Creating a corrective request:</strong> Maintenance → Maintenance Requests → New. Select the equipment (this auto-fills the maintenance team), describe the problem in the Request Name and Description fields, set Priority (1–3 stars), and save. The assigned team receives a notification.</p>
+      <p><strong>Configuring the request stages:</strong> The default Kanban stages for maintenance requests are: New → In Progress → Repaired → Scrap. Customize these to match your workflow. A Bangladesh factory with a standard maintenance flow might use: Reported → Assessed → Parts Ordered → In Repair → Completed → Verified by Supervisor.</p>
+      <div class="warn-box">
+        <div class="wlabel">Operator Adoption</div>
+        <p>The biggest failure mode for corrective maintenance management is that operators do not create requests — they call the technician on WhatsApp instead. All informal reporting bypasses Odoo and leaves no record. Solve this by making mobile Odoo request creation part of operator induction training, and by placing QR codes on each machine that link directly to the new maintenance request form pre-filled with that machine's equipment ID. Print and laminate the QR codes.</p>
+      </div>
+
+      <h2 id="preventive">Step 4: Preventive Maintenance Schedules</h2>
+
+      <div class="config-block">
+        <div class="config-head">
+          <span class="cfg-num">4</span>
+          <h3>Equipment Record → Preventive Maintenance Tab</h3>
+        </div>
+        <div class="config-body">
+          <p>On each equipment record, go to the Maintenance tab and configure:</p>
+          <ul>
+            <li><strong>Maintenance Duration:</strong> Expected time to complete the preventive maintenance activity (e.g., 2 hours for a standard sewing machine service)</li>
+            <li><strong>Maintenance Frequency:</strong> How often preventive maintenance should occur — in days (30 for monthly, 90 for quarterly) or in machine hours (if you have an hour meter)</li>
+            <li><strong>Next Maintenance Date:</strong> When the first preventive maintenance is scheduled. Odoo will auto-generate a maintenance request on this date, and automatically schedule the next one after completion.</li>
+          </ul>
+          <p>When the preventive maintenance date arrives, Odoo automatically creates a maintenance request of type "Preventive" and assigns it to the equipment's maintenance team. The team leader is notified and assigns a technician.</p>
+          <p><strong>Standard preventive maintenance schedule for a Bangladesh RMG factory:</strong></p>
+        </div>
+      </div>
+
+      <table class="schedule-table">
+        <thead>
+          <tr>
+            <th>Equipment Type</th>
+            <th>Frequency</th>
+            <th>Key Activities</th>
+            <th>Bangladesh Adjustment</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Industrial Sewing Machines</td>
+            <td>Monthly</td>
+            <td>Oil, tension check, needle bar timing, belt inspection</td>
+            <td>Shorter interval due to high utilization (2-shift operation)</td>
+          </tr>
+          <tr>
+            <td>Cutting Machines</td>
+            <td>Monthly</td>
+            <td>Blade condition, motor brushes, handle grip, cooling fan</td>
+            <td>Check cooling fan quarterly in hot months (March–October)</td>
+          </tr>
+          <tr>
+            <td>Air Compressors</td>
+            <td>Quarterly (300 hrs)</td>
+            <td>Air filter, oil level, belt tension, safety valve test</td>
+            <td>More frequent oil checks — heat accelerates oil degradation</td>
+          </tr>
+          <tr>
+            <td>Generators</td>
+            <td>250 running hours</td>
+            <td>Oil change, air filter, fuel filter, coolant level, battery</td>
+            <td>Generators run significantly more in Bangladesh — budget 2× EU maintenance frequency</td>
+          </tr>
+          <tr>
+            <td>HVAC Units</td>
+            <td>Quarterly</td>
+            <td>Filter clean, coil clean, refrigerant check, drain clear</td>
+            <td>Clean drain lines monthly during monsoon season (June–September)</td>
+          </tr>
+          <tr>
+            <td>Overhead Cranes / Hoists</td>
+            <td>Monthly</td>
+            <td>Load test, wire rope inspection, brake check, limit switches</td>
+            <td>Safety-critical — log results for DIFE compliance</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2 id="spare-parts">Step 5: Spare Parts Inventory Integration</h2>
+      <p>One of Odoo's most valuable maintenance features is the integration between maintenance requests and inventory. When a technician needs a spare part to complete a maintenance work order, they can request it from inventory directly within the maintenance request. This enables spare parts stock tracking, reorder triggers, and cost allocation to specific machines.</p>
+      <p><strong>Configuration:</strong> In each Equipment record, the "Spare Parts" tab allows you to list the standard spare parts for that machine. When a preventive maintenance request is created, these parts can be automatically included as materials to be consumed. For parts that must be pre-ordered (imported components with 4–6 week lead times), Odoo can trigger a purchase order when parts stock falls below reorder minimum.</p>
+      <p><strong>Spare parts warehouse location:</strong> Create a dedicated inventory location for spare parts: Inventory → Configuration → Locations → Create "SPR" (Spare Parts) as a child of your main warehouse. This keeps maintenance materials separate from production materials in stock reporting.</p>
+
+      <div class="tip-box">
+        <div class="tlabel">Import Spare Parts Planning</div>
+        <p>For Bangladesh factories importing spare parts from Germany, Japan, or China, the 4–8 week lead time means the reorder trigger must be set at 6–10 weeks of expected consumption, not 2–4 weeks. In Odoo: set the supplier lead time on the spare part product record to match reality (42–56 days for import parts). The reorder rule will then generate a purchase order in time to avoid stockout. A preventive maintenance request that cannot start because the part is on order defeats the purpose of preventive scheduling.</p>
+      </div>
+
+      <h2 id="work-orders">Step 6: Maintenance Work Orders</h2>
+      <p>In Odoo Enterprise, maintenance requests can be converted to Work Orders with detailed time tracking and multi-technician assignment. Go to a maintenance request → Convert to Work Order → assign start time, duration, and technicians. Technicians log their time directly in the work order, which feeds into maintenance cost calculation.</p>
+      <p>The work order view shows the technician everything they need: equipment details, maintenance history (previous activities on this machine), parts to use, and checklist items. In Odoo 17 and 18, maintenance work orders can include a configurable checklist — useful for standardizing what "monthly sewing machine service" means across your maintenance team, regardless of which technician is doing it.</p>
+
+      <h2 id="cost-tracking">Maintenance Cost Tracking</h2>
+      <p>Maintenance cost per machine, per category, and per period is calculated from three sources in Odoo:</p>
+      <ul>
+        <li><strong>Labor:</strong> Technician time on work orders × their hourly cost rate</li>
+        <li><strong>Materials:</strong> Spare parts consumed from inventory × inventory cost</li>
+        <li><strong>External services:</strong> Vendor bills linked to the maintenance request</li>
+      </ul>
+      <p>Access the cost report at Maintenance → Reporting → Maintenance Costs. Filter by date range, equipment, or maintenance team. This data is essential for the rebuild vs. replace decision: when a machine's annual maintenance cost exceeds 30–40% of its replacement cost, replacement is typically the better investment.</p>
+
+      <h2 id="kpis">KPIs & Reporting</h2>
+
+      <div class="kpi-grid">
+        <div class="kpi-card">
+          <div class="kc-name">MTBF</div>
+          <div class="kc-metric">Days</div>
+          <div class="kc-desc">Mean Time Between Failures — average time between corrective maintenance requests. Rising MTBF indicates improving machine reliability.</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kc-name">MTTR</div>
+          <div class="kc-metric">Hours</div>
+          <div class="kc-desc">Mean Time To Repair — average duration from request creation to completion. Tracks repair efficiency and team response speed.</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kc-name">Schedule Compliance</div>
+          <div class="kc-metric">%</div>
+          <div class="kc-desc">Percentage of preventive maintenance activities completed on schedule (within ±3 days of due date). Target: >90% for a mature maintenance program.</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kc-name">Corrective/Preventive Ratio</div>
+          <div class="kc-metric">Ratio</div>
+          <div class="kc-desc">Proportion of corrective vs. preventive requests. A ratio above 60% corrective indicates an underperforming preventive program.</div>
+        </div>
+      </div>
+
+      <p>Access all these KPIs at Maintenance → Reporting. The MTBF and MTTR statistics are calculated automatically from your maintenance request data. Review these monthly in the factory management meeting — they tell you whether your maintenance program is actually working or just generating paperwork.</p>
+
+      <h2 id="bangladesh-context">Bangladesh-Specific Considerations</h2>
+      <p><strong>Coordination with DIFE and factory safety:</strong> The Department of Inspection for Factories and Establishments (DIFE) requires maintenance records for certain equipment categories — pressure vessels, hoists, elevators, fire suppression systems. Odoo maintenance records, when printed or exported, satisfy these documentation requirements. File the annual equipment inspection reports in the maintenance request attachment field for each relevant machine.</p>
+      <p><strong>Generator maintenance tracking:</strong> Bangladesh factories depend on generators far more than facilities in countries with reliable grid power. Generator maintenance must be tracked based on running hours, not calendar days, because running hours vary significantly with the load shedding schedule. If your generator has a digital hour meter, enter the reading manually in Odoo each month and update the preventive schedule accordingly. Enterprise users can automate this via IoT if the generator has a digital interface.</p>
+      <p><strong>Monsoon season protocol:</strong> Create a recurring maintenance request category for "Monsoon Preparation" scheduled each May — checking drainage, anti-rust treatment on exposed metal, HVAC drain lines, roofing integrity, and generator enclosure waterproofing. These activities are not on standard OEM maintenance schedules but are essential in Bangladesh's climate.</p>
+
+      <p>For the manufacturing work center configuration that connects maintenance downtime to production planning, see the <a href="0038-odoo-manufacturing-routing-bangladesh" style="color:var(--accent)">Odoo Manufacturing Routing guide for Bangladesh</a>. And for the broader manufacturing module setup that provides the foundation for maintenance integration, the <a href="0013-odoo-manufacturing-module-bangladesh" style="color:var(--accent)">Odoo Manufacturing Module Setup guide</a> covers the prerequisite configuration.</p>
+
+      <div class="callout">
+        <span class="tag">Maintenance Module Setup</span>
+        <p>If your Bangladesh factory needs help configuring Odoo Maintenance from scratch — equipment catalog, preventive schedules, spare parts inventory, and management KPIs — I offer a focused maintenance module implementation engagement. <a href="../#contact" style="color:var(--accent)">Contact me to discuss →</a></p>
+      </div>
+
+      <h2 id="faq">Frequently asked questions</h2>
+
+      <h3>What is the difference between corrective and preventive maintenance in Odoo?</h3>
+      <p>Corrective maintenance is reactive — a machine breaks down and someone creates a request to report it. Preventive maintenance is proactive — Odoo automatically generates requests on a calendar or hour-meter schedule before breakdown occurs. Both use the same Maintenance Request and Work Order flow. The module tracks them separately so you can see your corrective-to-preventive ratio — a key indicator of program maturity.</p>
+
+      <h3>Can Odoo maintenance module integrate with IoT sensors in Bangladesh factories?</h3>
+      <p>Yes, with an Odoo IoT Box (approximately BDT 15,000–25,000 per unit). Vibration sensors, temperature sensors, and cycle counters can trigger maintenance requests automatically when thresholds are exceeded. Most Bangladesh factories should implement conventional preventive scheduling first before adding IoT — the scheduling delivers 60–70% of the reliability benefit at a fraction of the cost.</p>
+
+      <h3>How do I track maintenance costs in Odoo?</h3>
+      <p>Costs are tracked at the maintenance request level from three sources: technician labor time logged against work orders, spare parts consumed from inventory (deducted automatically when the work order is completed), and vendor bills linked to external service requests. View totals at Maintenance → Reporting → Maintenance Costs. Use this for the rebuild vs. replace decision when annual maintenance costs approach 30–40% of machine replacement cost.</p>
+
+      <h3>Does Odoo maintenance work for ISO 9001 certified Bangladesh factories?</h3>
+      <p>Yes. Odoo Maintenance generates the documentation required for ISO 9001 Clause 7.1.3: equipment register with complete machine details, maintenance request history per machine with dates and technician records, and preventive maintenance schedule compliance reports. Export the maintenance history PDF before ISO audits. Many Bangladesh factories in RMG, pharma, and food processing use Odoo Maintenance specifically for ISO documentation compliance.</p>
+
+    </div>
+  </article>
+
+  <footer>
+    <div class="shell">
+      <div class="post-foot">
+        <span class="eyebrow">Continue exploring</span>
+        <div class="next">
+          <a class="next-card" href="0060-mature-odoo-implementation-bangladesh">
+            <span class="dir">Older · 0060</span>
+            <h4>5 Years After Go-Live: Mature Odoo in Bangladesh</h4>
+            <p>Data quality, upgrade cycles, ROI reality, and what to do differently from day one.</p>
+            <span class="arrow">→</span>
+          </a>
+          <a class="next-card" href="0062-erp-market-bangladesh-2026">
+            <span class="dir">Newer · 0062</span>
+            <h4>State of ERP in Bangladesh 2026</h4>
+            <p>Cloud adoption rates, top vendors, industry breakdown, SME spend, and where Odoo fits.</p>
+            <span class="arrow">→</span>
+          </a>
+        </div>
+      </div>
+      <div class="foot">
+        <span>© 2026 Mehedi Hasan · Lab / 0061</span>
+        <span><a href="../#lab">↑ Back to lab index</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="_utils.js" defer></script>
+  <script src="_toc.js" defer></script>
+  <script src="/whatsapp.js" defer></script>
+  <script src="/scroll-top.js" defer></script>
+</body>
+
+</html>

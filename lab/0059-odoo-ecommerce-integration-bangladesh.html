@@ -1,0 +1,552 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description"
+    content="Odoo eCommerce integration Bangladesh: sync WooCommerce, Shopify & Daraz with your ERP. Order flow, inventory sync & payment gateway setup. Full guide →" />
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="Mehedi Hasan" />
+  <title>Odoo eCommerce Integration Bangladesh | Mehedi Hasan</title>
+  <link rel="canonical" href="https://mhasan.me/lab/0059-odoo-ecommerce-integration-bangladesh" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png" />
+  <!-- Open Graph -->
+  <meta property="og:title" content="Odoo eCommerce Integration Bangladesh | Mehedi Hasan" />
+  <meta property="og:description"
+    content="Connect Odoo to WooCommerce, Shopify, and Daraz in Bangladesh. Real-time order sync, inventory management, SSLCommerz payment, and bKash integration." />
+  <meta property="og:url" content="https://mhasan.me/lab/0059-odoo-ecommerce-integration-bangladesh" />
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="https://mhasan.me/assets/og-default.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:site_name" content="Mehedi Hasan | Odoo ERP Consultant" />
+  <meta property="article:author" content="https://www.linkedin.com/in/mehedi-hasan-consultant/" />
+  <meta property="article:published_time" content="2026-05-13T10:30:00+06:00" />
+  <meta property="article:modified_time" content="2026-05-13T10:30:00+06:00" />
+  <meta property="article:section" content="Odoo ERP Bangladesh" />
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Odoo eCommerce Integration Bangladesh | Mehedi Hasan" />
+  <meta name="twitter:description"
+    content="Odoo eCommerce integration for Bangladesh exporters: WooCommerce, Shopify, Daraz, SSLCommerz, bKash. Complete setup guide with order flow diagrams." />
+  <meta name="twitter:image" content="https://mhasan.me/assets/og-default.jpg" />
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Odoo eCommerce Integration for Bangladesh Exporters: WooCommerce & Shopify",
+    "description": "A complete guide to integrating Odoo with WooCommerce, Shopify, and Daraz for Bangladesh exporters. Covers real-time order sync, inventory management, Bangladesh payment gateways (SSLCommerz, bKash, Nagad), and shipping API integration.",
+    "datePublished": "2026-05-13T10:30:00+06:00",
+    "dateModified": "2026-05-13T10:30:00+06:00",
+    "author": {
+      "@type": "Person",
+      "name": "Mehedi Hasan",
+      "url": "https://mhasan.me",
+      "jobTitle": "Odoo ERP Consultant & Business Analyst",
+      "sameAs": "https://www.linkedin.com/in/mehedi-hasan-consultant/"
+    },
+    "publisher": { "@type": "Person", "name": "Mehedi Hasan", "url": "https://mhasan.me" },
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://mhasan.me/lab/0059-odoo-ecommerce-integration-bangladesh" }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://mhasan.me" },
+      { "@type": "ListItem", "position": 2, "name": "Lab", "item": "https://mhasan.me/lab/" },
+      { "@type": "ListItem", "position": 3, "name": "Odoo eCommerce Integration Bangladesh", "item": "https://mhasan.me/lab/0059-odoo-ecommerce-integration-bangladesh" }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Can Odoo integrate with Daraz (Bangladesh marketplace)?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, but not natively. Odoo does not have a built-in Daraz connector. Integration requires either: (1) A third-party connector module from the Odoo App Store or a local developer — search for 'Daraz Odoo connector' on apps.odoo.com; (2) A custom API integration using Daraz Open Platform API (available to registered Daraz sellers) and Odoo's XML-RPC or JSON-RPC API; (3) A middleware tool like Zapier or Make (formerly Integromat) with Daraz and Odoo connections — less reliable for high-volume sync. The Daraz Open Platform API supports order retrieval, stock updates, and price sync. For a Bangladesh business selling on Daraz with 50+ daily orders, a custom Odoo-Daraz connector built by a local developer (cost: approximately BDT 80,000–150,000 one-time) delivers better reliability than third-party connectors."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How does Odoo sync inventory with WooCommerce?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Odoo syncs inventory with WooCommerce bidirectionally using the WooCommerce connector module (available on Odoo App Store, ~$200–400 one-time or subscription). The sync works as follows: (1) Products are mapped between Odoo and WooCommerce using SKU/internal reference; (2) When stock moves in Odoo (sale confirmed, manufacturing order completed, purchase received), the connector updates the WooCommerce stock quantity via WooCommerce REST API; (3) When an order is placed on WooCommerce, the connector creates a sale order in Odoo automatically; (4) Order status updates (confirmed, shipped, delivered) can be synced back to WooCommerce. Sync frequency is typically every 5–30 minutes (configurable) or triggered by specific Odoo events. Real-time sync requires a reliable connection between your Odoo server and WooCommerce site."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What payment gateways work with Odoo eCommerce in Bangladesh?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "For Odoo's native eCommerce module (not WooCommerce): SSLCommerz has an Odoo payment provider module available on the Odoo App Store — this enables card payments, bKash, Nagad, and Rocket through SSLCommerz's aggregator. bKash Direct (without SSLCommerz) requires a custom Odoo payment provider module or API integration. For WooCommerce connected to Odoo: WooCommerce has mature SSLCommerz, bKash, and Nagad payment plugins — set these up on the WooCommerce side; payment confirmation flows into Odoo via the connector as order status updates. For international sales (Shopify connected to Odoo): Shopify Payments is not available in Bangladesh, but Stripe, PayPal, and 2Checkout work with Shopify for international buyers; Odoo receives the confirmed order regardless of payment method."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do I need a developer to integrate Odoo with Shopify?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "For a standard Shopify-Odoo integration, you do not need a developer if you use a pre-built connector module. The most reliable approach: purchase a Shopify connector from the Odoo App Store (apps.odoo.com — search 'Shopify'). Leading options include modules from OdooTec, Cybrosys, and Syncoria, priced $200–500. Installation requires Odoo admin access and a Shopify API key — both are self-service. Configuration (product mapping, order sync rules, warehouse selection) can be done by an Odoo-knowledgeable user without coding. A developer is needed if: (1) you have complex product variants in Shopify that don't map cleanly to Odoo's attribute system; (2) you need custom fulfillment logic; (3) you want to sync customer loyalty points or gift cards between systems. For a Bangladesh exporter with a straightforward product catalog, a connector module with self-configuration is sufficient."
+        }
+      }
+    ]
+  }
+]
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap">
+  <link rel="stylesheet" href="_styles.css">
+  <style>
+    .pull {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: clamp(20px, 2.8vw, 28px);
+      line-height: 1.3;
+      color: var(--text);
+      margin: 48px 0;
+      max-width: 28ch;
+      letter-spacing: -0.01em;
+    }
+    .pull::before {
+      content: "";
+      display: block;
+      width: 36px;
+      height: 1px;
+      background: var(--accent);
+      margin-bottom: 18px;
+    }
+    .integration-block {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      margin: 24px 0;
+      overflow: hidden;
+    }
+    .integration-head {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 20px;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      flex-wrap: wrap;
+    }
+    .int-badge {
+      font-family: var(--mono);
+      font-size: 9.5px;
+      font-weight: 700;
+      padding: 3px 9px;
+      border-radius: 4px;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      flex-shrink: 0;
+    }
+    .int-badge.native { background: var(--accent-dim); color: var(--accent); border: 1px solid rgba(80,230,160,0.3); }
+    .int-badge.connector { background: rgba(100,160,255,0.1); color: #80B8FF; border: 1px solid rgba(100,160,255,0.25); }
+    .int-badge.custom { background: rgba(200,140,60,0.1); color: #DBA850; border: 1px solid rgba(200,140,60,0.25); }
+    .int-badge.middleware { background: rgba(180,100,240,0.1); color: #C080FF; border: 1px solid rgba(180,100,240,0.25); }
+    .integration-head h3 { margin: 0; font-size: 14.5px; color: var(--text); letter-spacing: -0.01em; }
+    .integration-body { padding: 18px 20px; }
+    .integration-body p { color: var(--text-2); font-size: 14.5px; line-height: 1.65; margin: 0 0 10px; }
+    .integration-body p:last-child { margin-bottom: 0; }
+    .integration-body ul, .integration-body ol { color: var(--text-2); font-size: 14px; padding-left: 20px; margin: 10px 0; }
+    .integration-body li { margin-bottom: 6px; line-height: 1.5; }
+    .tip-box {
+      background: var(--accent-dim);
+      border-left: 3px solid var(--accent);
+      border-radius: 0 6px 6px 0;
+      padding: 14px 18px;
+      margin: 18px 0;
+    }
+    .tip-box .tlabel { font-family: var(--mono); font-size: 10px; color: var(--accent); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 6px; }
+    .tip-box p { margin: 0; font-size: 14px; color: var(--text-2); line-height: 1.55; }
+    .warn-box {
+      background: rgba(200,140,60,0.08);
+      border-left: 3px solid rgba(200,140,60,0.6);
+      border-radius: 0 6px 6px 0;
+      padding: 14px 18px;
+      margin: 18px 0;
+    }
+    .warn-box .wlabel { font-family: var(--mono); font-size: 10px; color: rgba(220,160,70,0.9); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 6px; }
+    .warn-box p { margin: 0; font-size: 14px; color: var(--text-2); line-height: 1.55; }
+    .flow-diagram {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 22px 24px;
+      margin: 22px 0;
+      overflow-x: auto;
+    }
+    .flow-diagram .flow-title {
+      font-family: var(--mono);
+      font-size: 10.5px;
+      color: var(--text-3);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+    .flow-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 10px;
+    }
+    .flow-row:last-child { margin-bottom: 0; }
+    .flow-box {
+      background: var(--elev);
+      border: 1px solid var(--border-2);
+      border-radius: 6px;
+      padding: 8px 14px;
+      font-size: 12.5px;
+      color: var(--text);
+      white-space: nowrap;
+    }
+    .flow-box.highlight { border-color: var(--accent); color: var(--accent); background: var(--accent-dim); }
+    .flow-arrow { color: var(--text-3); font-size: 14px; flex-shrink: 0; }
+    .gateway-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13.5px;
+      margin: 16px 0;
+    }
+    .gateway-table th {
+      text-align: left;
+      padding: 10px 14px;
+      background: var(--surface);
+      color: var(--text-3);
+      font-family: var(--mono);
+      font-size: 10.5px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      border-bottom: 1px solid var(--border);
+    }
+    .gateway-table td {
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      color: var(--text-2);
+      vertical-align: top;
+    }
+    .gateway-table td:first-child { color: var(--text); font-weight: 500; }
+    .gateway-table tr:last-child td { border-bottom: none; }
+  </style>
+</head>
+
+<body>
+  <div class="grid-bg"></div>
+
+  <header class="nav">
+    <div class="shell">
+      <div class="nav-inner">
+        <a class="brand" href="../">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span class="brand-name"><b>Mehedi Hasan</b><em>ERP · Business Analyst</em></span>
+        </a>
+        <a class="back-link" href="../#lab">← Back to Lab</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="post-head">
+    <div class="shell">
+      <span class="eyebrow">Technical Lab · 0059</span>
+      <h1>Odoo eCommerce Integration for Bangladesh Exporters: <span class="serif">WooCommerce, Shopify & Daraz.</span></h1>
+      <p class="lede">Bangladesh businesses selling online face a fragmentation problem: orders come from Daraz, a WooCommerce site, a Shopify export store, and direct WhatsApp inquiries — each managed in a separate spreadsheet or app. This guide explains how to connect these channels to Odoo so that every order — regardless of source — flows into one inventory, one accounts receivable ledger, and one fulfillment queue.</p>
+      <div class="post-meta">
+        <span class="chip accent">Guide</span>
+        <span class="chip">eCommerce</span>
+        <span class="chip">Integration</span>
+        <span class="chip">Bangladesh</span>
+      </div>
+      <div class="byline">
+        <span>By<b><a href="https://www.linkedin.com/in/mehedi-hasan-consultant/" style="color:var(--accent)" rel="author">Mehedi Hasan</a></b></span>
+        <span>Published<b>May 2026</b></span>
+        <span>Read time<b>19 minutes</b></span>
+        <span>Form<b>Guide</b></span>
+        <span>Scope<b>eCommerce &amp; Integration</b></span>
+      </div>
+    </div>
+  </section>
+
+  <article class="post">
+    <aside class="toc">
+      <div class="toc-k">In this guide</div>
+      <ol>
+        <li><a href="#why-integrate">Why Bangladesh Businesses Need ERP-eCommerce Integration</a></li>
+        <li><a href="#odoo-native">Odoo Native eCommerce Module</a></li>
+        <li><a href="#woocommerce">WooCommerce Integration</a></li>
+        <li><a href="#shopify">Shopify Integration for Export</a></li>
+        <li><a href="#daraz">Daraz Marketplace Integration</a></li>
+        <li><a href="#order-flow">The Unified Order Flow</a></li>
+        <li><a href="#inventory-sync">Inventory Sync & Overselling Prevention</a></li>
+        <li><a href="#payment-gateways">Bangladesh Payment Gateways</a></li>
+        <li><a href="#shipping-apis">Shipping API Integration</a></li>
+        <li><a href="#common-pitfalls">Common Integration Pitfalls</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ol>
+    </aside>
+
+    <div class="body">
+
+      <h2 id="why-integrate">Why Bangladesh Businesses Need ERP-eCommerce Integration</h2>
+      <p>The typical Bangladesh online seller manages their business across four or five disconnected systems. Daraz Seller Center shows orders. A WooCommerce dashboard shows website orders. WhatsApp shows inquiries that become informal sales. A spreadsheet tracks dispatch. Tally or separate accounting software handles invoices. Odoo handles (theoretically) inventory.</p>
+      <p>The result is predictable: inventory overselling, delayed order confirmation, wrong stock counts, missed VAT on digital channels, and customer support chaos when orders placed on one channel cannot be tracked in another. I have seen this pattern in Dhaka electronics retailers, Chittagong export traders, and Dhaka fashion brands simultaneously.</p>
+      <p>Integration solves this by making Odoo the single source of truth for products, pricing, stock, and orders — with each sales channel as a synchronized outpost that pushes and pulls from that central system.</p>
+
+      <p class="pull">The goal of eCommerce integration is not to have a fancy tech stack. It is to sell from one inventory, fulfill from one queue, and report from one place.</p>
+
+      <h2 id="odoo-native">Option 1: Odoo's Native eCommerce Module</h2>
+
+      <div class="integration-block">
+        <div class="integration-head">
+          <span class="int-badge native">Native — No Sync Required</span>
+          <h3>Odoo eCommerce — Built on Top of Odoo Website</h3>
+        </div>
+        <div class="integration-body">
+          <p>Odoo's eCommerce module is a full online store built directly into your Odoo instance. Products, prices, stock levels, and orders live natively in Odoo — there is no "sync" because the website and the ERP are the same database. This eliminates the integration problem entirely for the website channel.</p>
+          <p><strong>What it includes:</strong></p>
+          <ul>
+            <li>Product pages with variants (color, size, etc.) pulled from Odoo product catalog</li>
+            <li>Real-time stock display (shows "Only 3 left" based on actual Odoo inventory)</li>
+            <li>Cart, checkout, payment, and order confirmation — all native</li>
+            <li>Automatic sale order creation in Odoo on each purchase</li>
+            <li>Shipping calculation using Odoo's delivery methods</li>
+            <li>Customer portal for order tracking</li>
+            <li>Multi-currency support for international buyers</li>
+          </ul>
+          <p><strong>Bangladesh-specific consideration:</strong> Odoo Website/eCommerce gives you a new domain-hosted website on your Odoo server. If you already have an established WooCommerce site with SEO history, customer accounts, and customized design, switching to Odoo native eCommerce means rebuilding all of that. For a new online store starting fresh, Odoo native eCommerce is the simplest path. For an existing store with SEO equity, WooCommerce integration is better than migration.</p>
+          <p><strong>Payment in Bangladesh:</strong> Install the SSLCommerz payment provider module from the Odoo App Store to accept bKash, Nagad, Rocket, and card payments through SSLCommerz's aggregator. This is the standard path for Bangladesh-facing Odoo eCommerce stores.</p>
+        </div>
+      </div>
+
+      <h2 id="woocommerce">Option 2: WooCommerce + Odoo Integration</h2>
+
+      <div class="integration-block">
+        <div class="integration-head">
+          <span class="int-badge connector">Connector Module — Bidirectional Sync</span>
+          <h3>WooCommerce Connector for Odoo</h3>
+        </div>
+        <div class="integration-body">
+          <p>If your Bangladesh business already has a WooCommerce website with SEO rankings, customer base, and customized theme, migrating to Odoo native eCommerce may cost more than the integration it avoids. The better path is a WooCommerce-Odoo connector that syncs both systems bidirectionally.</p>
+          <p><strong>How the sync works:</strong></p>
+          <ol>
+            <li><strong>Products:</strong> Products created in Odoo (with variants, pricing, and images) are exported to WooCommerce. Changes in Odoo (price update, new variant) sync to WooCommerce automatically.</li>
+            <li><strong>Inventory:</strong> When stock moves in Odoo (sale confirmed, purchase received), WooCommerce stock quantities are updated. This prevents overselling — a critical issue for Bangladesh sellers on multiple channels.</li>
+            <li><strong>Orders:</strong> When a WooCommerce order is placed, a sale order is created in Odoo automatically. The connector maps WooCommerce customer data to Odoo customer records (creating new records or matching existing ones by email).</li>
+            <li><strong>Order status:</strong> When the Odoo sale order is confirmed and delivery is validated (shipped), the WooCommerce order status updates to "Processing" or "Completed."</li>
+          </ol>
+          <p><strong>Connector options for Bangladesh:</strong> Several connector modules are available on the Odoo App Store. OdooTec's WooCommerce connector and Cybrosys's integration are widely used. Pricing: one-time $200–400 or annual subscription. Installation requires: WooCommerce REST API credentials (Consumer Key and Secret from WooCommerce → Settings → Advanced → REST API) and Odoo admin access.</p>
+          <div class="warn-box">
+            <div class="wlabel">Sync Conflict Warning</div>
+            <p>Do not manage products or pricing directly in WooCommerce once you enable the connector. All product data should flow from Odoo → WooCommerce. If you update prices in both systems independently, the sync will overwrite one with the other, causing pricing inconsistencies. Establish Odoo as the single master for product data from day one of the integration.</p>
+          </div>
+        </div>
+      </div>
+
+      <h2 id="shopify">Option 3: Shopify + Odoo for Bangladesh Export Sellers</h2>
+
+      <div class="integration-block">
+        <div class="integration-head">
+          <span class="int-badge connector">Connector Module — Best for Export Channels</span>
+          <h3>Shopify-Odoo Connector — International Buyer Channel</h3>
+        </div>
+        <div class="integration-body">
+          <p>Many Bangladesh exporters — particularly in RMG samples, handicrafts, and cycle accessories — use Shopify because of its international reach, Shopify Payments' global payment acceptance, and its export-friendly features. Shopify is not available as a payment processor in Bangladesh (you cannot receive Shopify Payments to a Bangladesh bank account), but you can use Stripe, PayPal, or 2Checkout to accept international payments through Shopify.</p>
+          <p><strong>The integration use case:</strong> A Bangladesh RMG exporter takes sample orders from international buyers on a Shopify store. These orders need to flow into Odoo manufacturing as production orders (or sale orders linked to available stock), generate export documentation (commercial invoice, packing list), and update Odoo's export accounts receivable in USD or EUR.</p>
+          <p><strong>Connector setup:</strong> Shopify connectors for Odoo are available from OdooTec, Syncoria, and several other vendors on apps.odoo.com. The integration uses Shopify's Admin API (REST). Key configuration: (1) map Shopify product SKUs to Odoo internal references; (2) set the receiving warehouse for Shopify orders; (3) configure currency handling (Shopify multi-currency vs. Odoo pricelist).</p>
+          <p><strong>What to sync:</strong> Orders (Shopify → Odoo) and inventory availability (Odoo → Shopify). Do not sync customers back to Shopify from Odoo — let Shopify maintain its own customer records and pull customer data into Odoo on order creation.</p>
+        </div>
+      </div>
+
+      <h2 id="daraz">Option 4: Daraz Marketplace Integration</h2>
+
+      <div class="integration-block">
+        <div class="integration-head">
+          <span class="int-badge custom">Custom API — No Native Connector</span>
+          <h3>Daraz Open Platform + Odoo API</h3>
+        </div>
+        <div class="integration-body">
+          <p>Daraz is the dominant eCommerce marketplace in Bangladesh, Pakistan, and Sri Lanka. For Bangladesh businesses selling on Daraz, order volumes can be significant — 50–500+ orders per day for established sellers. Managing these manually alongside Odoo is unsustainable at any meaningful scale.</p>
+          <p><strong>Integration options in order of reliability:</strong></p>
+          <ol>
+            <li><strong>Custom Odoo module using Daraz Open Platform API:</strong> Daraz provides a Seller API (Open Platform) that allows registered sellers to retrieve orders, update stock quantities, and confirm shipments programmatically. A Bangladesh Odoo developer can build a custom connector module that calls this API on a schedule (every 5–15 minutes). One-time development cost: BDT 80,000–150,000 depending on complexity. This is the most reliable and maintainable long-term solution.</li>
+            <li><strong>Third-party Odoo-Daraz connector on apps.odoo.com:</strong> Search for "Daraz" on apps.odoo.com — available options vary. Verify the module was updated for your Odoo version and check reviews before purchasing.</li>
+            <li><strong>Middleware (Make / Zapier):</strong> If Daraz and Odoo both have supported connectors in Make or Zapier, you can build an order sync workflow without coding. Reliability is lower for high-volume sellers; Make handles up to 10,000 operations/month on mid-tier plans.</li>
+          </ol>
+          <p><strong>What must sync from Daraz to Odoo:</strong> Order details (product, quantity, buyer, delivery address), payment status (prepaid vs. COD), and tracking number once shipped. The inventory sync (Odoo stock → Daraz available quantity) is equally important — without it, you will oversell on Daraz when stock is depleted by other channels.</p>
+        </div>
+      </div>
+
+      <h2 id="order-flow">The Unified Order Flow</h2>
+
+      <div class="flow-diagram">
+        <div class="flow-title">Unified Order Flow — Multi-Channel to Odoo</div>
+        <div class="flow-row">
+          <div class="flow-box">Daraz Order</div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-box">WooCommerce Order</div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-box">Shopify Order</div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-box highlight">Odoo Sale Order</div>
+        </div>
+        <div class="flow-row">
+          <div class="flow-box highlight">Odoo Sale Order</div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-box">Delivery Order (WH)</div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-box">Validate & Ship</div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-box">Customer Invoice</div>
+        </div>
+        <div class="flow-row">
+          <div class="flow-box">Customer Invoice</div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-box">Accounts Receivable</div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-box">Mushak 6.1 / VAT</div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-box highlight">Financial Reporting</div>
+        </div>
+      </div>
+
+      <p>The key design principle: every order from every channel creates a sale order in Odoo. Inventory deduction, delivery, invoicing, and accounting all happen in Odoo regardless of order source. Channel-specific systems (Daraz Seller Center, WooCommerce admin, Shopify admin) become order intake points only — not systems of record.</p>
+
+      <h2 id="inventory-sync">Inventory Sync & Overselling Prevention</h2>
+      <p>Overselling — accepting an order for a product you do not have in stock — is the most damaging consequence of disconnected sales channels. In Bangladesh, where customer trust is harder to build and easier to lose (Daraz ratings, Facebook reviews), an overselling incident with a 7-day "sorry we're out" delay damages your seller score significantly.</p>
+      <p>The correct architecture:</p>
+      <ul>
+        <li><strong>One inventory location in Odoo</strong> — do not create separate virtual locations for "Daraz stock" and "website stock" unless you physically separate the goods. One location, one truth.</li>
+        <li><strong>Odoo pushes stock updates to all channels</strong> — every time stock moves in Odoo (any reason), all connected channels receive an updated quantity within the sync interval.</li>
+        <li><strong>Safety stock buffer</strong> — configure a virtual safety quantity buffer in your connector. If Odoo shows 10 units, push 8 to Daraz. This absorbs the sync delay between channels (orders placed in the 5-minute window between syncs).</li>
+        <li><strong>Reserve stock for priority channels</strong> — if your direct website is higher-margin than Daraz, set Daraz available quantity to Odoo quantity minus a reserved buffer for direct orders.</li>
+      </ul>
+
+      <h2 id="payment-gateways">Bangladesh Payment Gateways in the Integration Context</h2>
+
+      <table class="gateway-table">
+        <thead>
+          <tr>
+            <th>Gateway</th>
+            <th>Odoo Integration Method</th>
+            <th>Accepted Methods</th>
+            <th>Transaction Fee</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>SSLCommerz</td>
+            <td>Odoo App Store module (SSLCommerz Payment Provider)</td>
+            <td>bKash, Nagad, Rocket, Visa, Mastercard, DBBL Nexus</td>
+            <td>1.5–2.5% depending on method</td>
+          </tr>
+          <tr>
+            <td>bKash Direct</td>
+            <td>Custom Odoo payment provider module (developer required)</td>
+            <td>bKash wallet only</td>
+            <td>1.5–1.85% + BDT 2 per transaction</td>
+          </tr>
+          <tr>
+            <td>Nagad Direct</td>
+            <td>Custom Odoo payment provider module (developer required)</td>
+            <td>Nagad wallet only</td>
+            <td>1% (promotional), typically 1.5–2%</td>
+          </tr>
+          <tr>
+            <td>SSLC / WooCommerce</td>
+            <td>WooCommerce SSLCommerz plugin; orders flow to Odoo via connector</td>
+            <td>All SSLCommerz methods above</td>
+            <td>Same as SSLCommerz above</td>
+          </tr>
+          <tr>
+            <td>Stripe (Shopify)</td>
+            <td>Shopify-side; Odoo receives confirmed sale order</td>
+            <td>Visa, Mastercard, international cards</td>
+            <td>1.5% + $0.30 international</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="tip-box">
+        <div class="tlabel">VAT on Digital Sales</div>
+        <p>Under Bangladesh VAT law, sales made through your own website or Odoo eCommerce are subject to standard VAT (15% for taxable goods). Odoo's tax framework handles this automatically if your tax configuration is correct (see the NBR VAT compliance setup). Daraz and Shopify do not auto-generate NBR-compliant VAT invoices — you must generate these from Odoo using the sale order created by the connector. Do not treat marketplace orders as "off the books" — NBR is actively monitoring large sellers on Daraz.</p>
+      </div>
+
+      <h2 id="shipping-apis">Shipping API Integration</h2>
+      <p>Bangladesh's courier ecosystem has matured significantly. Pathao Courier, Steadfast Courier, Redx, and Paperfly all offer REST APIs for parcel booking, tracking, and status updates. Connecting these to Odoo enables automatic shipment booking when a delivery order is validated.</p>
+      <p><strong>How it works:</strong> When you validate a delivery order in Odoo (pick, pack, ship confirmed), the shipping API integration sends the parcel booking request to your courier API (parcel weight, delivery address, COD amount if applicable). The courier returns a tracking number, which is saved on the Odoo delivery order. This tracking number is then synced back to the sales channel (WooCommerce order status updated, Daraz tracking number submitted).</p>
+      <p><strong>Available integrations:</strong> Check apps.odoo.com for "Pathao", "Steadfast", or "Redx" — community developers have built connectors for each. Alternatively, for the API integration guide covering Odoo's connection to Bangladesh's broader ecosystem, the <a href="0053-odoo-api-integration-bangladesh" style="color:var(--accent)">Odoo API Integration guide for Bangladesh</a> covers the technical setup in detail.</p>
+
+      <h2 id="common-pitfalls">Common Integration Pitfalls (Bangladesh-Specific)</h2>
+      <p><strong>1. SKU mismatch between systems.</strong> The most common cause of failed product sync is inconsistent internal references. Odoo uses "Internal Reference" as the product identifier. WooCommerce uses SKU. Shopify uses SKU. Daraz uses Seller SKU. These must all match exactly for the connector to map products correctly. Audit and standardize your SKU system before enabling any integration.</p>
+      <p><strong>2. Currency confusion for export channels.</strong> If you sell in USD on Shopify and BDT domestically, configure Odoo's multi-currency and pricelist correctly before enabling the Shopify connector. Orders imported in USD must use the correct pricelist — otherwise Odoo will apply the BDT price to a USD order and create a financial reporting error.</p>
+      <p><strong>3. Duplicate customer records.</strong> If the same customer places an order on your WooCommerce site and later on Daraz, the connectors will create two separate Odoo customer records (different contact details, no email to match on). After 12 months, many Bangladesh businesses have hundreds of duplicate customer records that inflate customer counts and distort CRM reporting. Build a deduplication step into your integration from the start — use email as the matching key and merge duplicates quarterly.</p>
+      <p><strong>4. Tax mapping for marketplace orders.</strong> Daraz collects payment on behalf of sellers and remits it. The tax treatment of marketplace commissions versus sale revenue is a specific Bangladesh accounting consideration. Your Odoo chart of accounts and journal configuration must handle: (a) sale revenue recorded at full order value; (b) Daraz commission recorded as a sales expense; (c) net remittance from Daraz recorded as payment. This requires careful Odoo accounting configuration, not just a connector.</p>
+
+      <p>For the CRM and sales pipeline foundation that supports eCommerce order tracking, the <a href="0017-odoo-sales-crm-bangladesh" style="color:var(--accent)">Odoo Sales & CRM for Bangladesh Exporters guide</a> covers the upstream configuration.</p>
+
+      <div class="callout">
+        <span class="tag">eCommerce Integration Scoping</span>
+        <p>If you are a Bangladesh business considering multi-channel eCommerce integration with Odoo, I can help scope the connector requirements, identify the right modules, and plan the implementation in a way that avoids the pitfalls above. <a href="../#contact" style="color:var(--accent)">Contact me for a scoping call →</a></p>
+      </div>
+
+      <h2 id="faq">Frequently asked questions</h2>
+
+      <h3>Can Odoo integrate with Daraz (Bangladesh marketplace)?</h3>
+      <p>Yes, but not natively. Integration requires either a third-party connector from the Odoo App Store, a custom module built using Daraz's Open Platform Seller API, or a middleware tool like Make. For sellers with 50+ daily orders, a custom connector built by a Bangladesh developer (BDT 80,000–150,000) delivers better reliability than third-party options. Daraz's API supports order retrieval, stock updates, and shipment tracking confirmation.</p>
+
+      <h3>How does Odoo sync inventory with WooCommerce?</h3>
+      <p>Using a WooCommerce connector module, Odoo pushes stock updates to WooCommerce via the WooCommerce REST API whenever inventory changes in Odoo. WooCommerce orders are pulled into Odoo as sale orders. Sync frequency is typically 5–30 minutes. All product management should be done in Odoo and pushed to WooCommerce — not managed directly in WooCommerce once the connector is active.</p>
+
+      <h3>What payment gateways work with Odoo eCommerce in Bangladesh?</h3>
+      <p>For Odoo native eCommerce: install the SSLCommerz payment provider module from the Odoo App Store — this enables bKash, Nagad, Rocket, and card payments through SSLCommerz's aggregator. For WooCommerce integrated with Odoo: set up payment plugins on the WooCommerce side (SSLCommerz, bKash, Nagad) — payment confirmation flows into Odoo through the connector. For international Shopify sales: Stripe and PayPal are the most reliable options for Bangladesh-based exporters receiving USD payments.</p>
+
+      <h3>Do I need a developer to integrate Odoo with Shopify?</h3>
+      <p>Not for a standard integration. A pre-built Shopify connector from the Odoo App Store (OdooTec, Cybrosys, Syncoria — $200–500) can be configured by a knowledgeable Odoo user using Shopify Admin API credentials. A developer is needed for complex product variant mapping, custom fulfillment logic, or syncing non-standard data between systems. Start with the connector module and only commission custom development for specific gaps the module cannot handle.</p>
+
+    </div>
+  </article>
+
+  <footer>
+    <div class="shell">
+      <div class="post-foot">
+        <span class="eyebrow">Continue exploring</span>
+        <div class="next">
+          <a class="next-card" href="0058-odoo-ai-features-bangladesh">
+            <span class="dir">Older · 0058</span>
+            <h4>AI Features in Odoo 17 & 18: Bangladesh SME Guide</h4>
+            <p>OCR, predictive reordering, ChatGPT — what actually works vs. hype for Bangladesh businesses.</p>
+            <span class="arrow">→</span>
+          </a>
+          <a class="next-card" href="0060-mature-odoo-implementation-bangladesh">
+            <span class="dir">Newer · 0060</span>
+            <h4>5 Years After Go-Live: Mature Odoo in Bangladesh</h4>
+            <p>What ERP really looks like after 5 years — data quality, upgrade cycles, ROI, and honest lessons.</p>
+            <span class="arrow">→</span>
+          </a>
+        </div>
+      </div>
+      <div class="foot">
+        <span>© 2026 Mehedi Hasan · Lab / 0059</span>
+        <span><a href="../#lab">↑ Back to lab index</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="_utils.js" defer></script>
+  <script src="_toc.js" defer></script>
+  <script src="/whatsapp.js" defer></script>
+  <script src="/scroll-top.js" defer></script>
+</body>
+
+</html>

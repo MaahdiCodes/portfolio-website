@@ -524,7 +524,47 @@
   <!-- Target: odoo backup restore bangladesh, odoo disaster recovery bangladesh -->
   <url>
     <loc>https://mhasan.me/lab/0057-odoo-backup-restore-bangladesh</loc>
-    <lastmod>2026-05-12</lastmod>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Target: odoo ai features bangladesh, odoo 18 ai bangladesh, odoo predictive reordering -->
+  <url>
+    <loc>https://mhasan.me/lab/0058-odoo-ai-features-bangladesh</loc>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Target: odoo ecommerce integration bangladesh, odoo woocommerce bangladesh, odoo shopify bangladesh -->
+  <url>
+    <loc>https://mhasan.me/lab/0059-odoo-ecommerce-integration-bangladesh</loc>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Target: mature odoo implementation bangladesh, odoo 5 years post go live bangladesh -->
+  <url>
+    <loc>https://mhasan.me/lab/0060-mature-odoo-implementation-bangladesh</loc>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Target: odoo maintenance module bangladesh, odoo preventive maintenance factory bangladesh -->
+  <url>
+    <loc>https://mhasan.me/lab/0061-odoo-preventive-maintenance-bangladesh</loc>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Target: erp market bangladesh 2026, state of erp bangladesh, bangladesh erp adoption 2026 -->
+  <url>
+    <loc>https://mhasan.me/lab/0062-erp-market-bangladesh-2026</loc>
+    <lastmod>2026-05-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>

@@ -25,7 +25,7 @@
   <meta property="og:site_name" content="Mehedi Hasan | Odoo ERP Consultant" />
   <meta property="article:author" content="https://www.linkedin.com/in/mehedi-hasan-consultant/" />
   <meta property="article:published_time" content="2026-05-08T12:00:00+06:00" />
-  <meta property="article:modified_time" content="2026-05-08T12:00:00+06:00" />
+  <meta property="article:modified_time" content="2026-05-23T12:00:00+06:00" />
   <meta property="article:section" content="Odoo ERP Bangladesh" />
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
@@ -42,7 +42,7 @@
     "headline": "Odoo Reordering Rules vs MTO vs Min/Max: When to Use Which",
     "description": "Odoo Reordering Rules vs MTO vs Min/Max for Bangladesh supply chains. Learn when to use which automated procurement rule.",
     "datePublished": "2026-05-08T12:00:00+06:00",
-    "dateModified": "2026-05-08T12:00:00+06:00",
+    "dateModified": "2026-05-23T12:00:00+06:00",
     "author": {
       "@type": "Person",
       "name": "Mehedi Hasan",
@@ -80,6 +80,22 @@
         "acceptedAnswer": {
           "@type": "Answer",
           "text": "Reordering Rules trigger procurement when projected stock falls below a Minimum quantity. Odoo will automatically generate an RFQ or Manufacturing Order to bring the stock back up to the Maximum quantity. This is ideal for fast-moving consumables and standard raw materials."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I use both MTO and Reordering Rules on the same product?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, but it changes how Odoo behaves: a sales order still triggers MTO procurement for the exact quantity while the Reordering Rule independently maintains a buffer. The cleaner pattern for most Bangladesh setups is MTO on the finished good and Reordering Rules on its raw materials. Stacking both on one product without understanding route priorities usually causes duplicate purchase orders."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I set the Minimum quantity for an imported raw material in Odoo?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Calculate average daily consumption, then multiply it by the worst-case replenishment lead time — supplier production, LC processing, ocean freight, and customs clearance combined, often 45–60 days for imported items in Bangladesh. Set the Minimum slightly above that figure and the Maximum to cover the lead time plus a sensible review cycle."
         }
       }
     ]
@@ -135,6 +151,11 @@
       background: var(--accent);
       margin-bottom: 18px;
     }
+    .field-note{margin:28px 0;border:1px solid var(--border);border-radius:12px;overflow:hidden;background:var(--surface)}
+    .fn-hd{display:flex;align-items:center;justify-content:space-between;padding:12px 18px;border-bottom:1px solid var(--border);font-family:var(--mono);font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-3)}
+    .fn-hd .when{color:var(--accent)}
+    .fn-body{padding:18px 22px;font-size:15px;line-height:1.65;color:var(--text-2)}
+    .fn-body strong{color:var(--text);font-weight:500}
   </style>
 </head>
 
@@ -260,6 +281,13 @@
         <li><strong>Buffer LC lead times:</strong> When setting the Minimum quantity for imported items, calculate your daily consumption and multiply it by the worst-case lead time (including LC and port delays). Set the Minimum slightly above this number.</li>
       </ul>
 
+      <div class="field-note">
+        <div class="fn-hd"><span>Note · Electrical-goods assembler, Narayanganj</span><span class="when">First export order</span></div>
+        <div class="fn-body">
+          An assembler set its finished product to Make to Order, reasoning that it only built against confirmed orders. The logic was sound — until a buyer confirmed a sizeable order. Odoo dutifully created the Manufacturing Order, but the imported components inside it had a <strong>45–60 day LC-and-customs lead time</strong> and zero buffer stock, because MTO never triggers procurement of the underlying raw materials ahead of demand. The factory could not start building for nearly two months. We kept MTO on the finished good but moved every imported component onto Reordering Rules with a Minimum sized to the worst-case lead time. <strong>MTO is a demand signal for assembly, not a substitute for buffering the materials that assembly depends on.</strong>
+        </div>
+      </div>
+
       <div class="callout">
         <span class="tag">Bottom line</span>
         <p>Automation is only as good as the rules you set. Start by categorizing your inventory. High-volume standard items get Min/Max rules. Custom items get MTO. Never mix them on the same product without fully understanding Odoo's routing priorities. <a href="../#contact" style="color:var(--accent)">Need a procurement audit? Get in touch →</a></p>
@@ -272,6 +300,12 @@
 
       <h3>How do Reordering Rules (Min/Max) work in Odoo?</h3>
       <p>Reordering Rules trigger procurement when projected stock falls below a Minimum quantity. Odoo will automatically generate an RFQ or Manufacturing Order to bring the stock back up to the Maximum quantity. This is ideal for fast-moving consumables and standard raw materials.</p>
+
+      <h3>Can I use both MTO and Reordering Rules on the same product?</h3>
+      <p>Yes, but be careful — it changes how Odoo behaves. With both routes active, a sales order still triggers MTO procurement for that exact quantity, while the Reordering Rule independently maintains the buffer. For most Bangladesh setups the cleaner pattern is MTO on the finished good and Reordering Rules on its raw materials, rather than stacking both on one product. Stacking them on a single product without understanding Odoo's route priorities usually leads to duplicate purchase orders.</p>
+
+      <h3>How do I set the Minimum quantity for an imported raw material?</h3>
+      <p>Calculate average daily consumption, then multiply it by the worst-case replenishment lead time — supplier production, LC processing, ocean freight, and customs clearance combined. For many imported items in Bangladesh that total is 45–60 days. Set the Minimum slightly above that figure so a reorder is triggered with enough runway, and set the Maximum to cover the lead time plus a sensible review cycle.</p>
 
     </div>
   </article>

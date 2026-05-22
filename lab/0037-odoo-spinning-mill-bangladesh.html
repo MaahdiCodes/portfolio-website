@@ -25,7 +25,7 @@
   <meta property="og:site_name" content="Mehedi Hasan | Odoo ERP Consultant" />
   <meta property="article:author" content="https://www.linkedin.com/in/mehedi-hasan-consultant/" />
   <meta property="article:published_time" content="2026-05-07T12:00:00+06:00" />
-  <meta property="article:modified_time" content="2026-05-07T12:00:00+06:00" />
+  <meta property="article:modified_time" content="2026-05-23T12:00:00+06:00" />
   <meta property="article:section" content="Odoo ERP Bangladesh" />
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
@@ -42,7 +42,7 @@
     "headline": "Odoo for Spinning & Weaving Mills: Yarn Stock, Loom Routing & QC",
     "description": "A complete guide to configuring Odoo ERP for spinning and weaving mills in Bangladesh. Covers yarn inventory management by count and composition, BOM structure for yarn and fabric production, loom and work centre routing configuration, grey fabric to finished fabric tracking, quality control (GSM, count, twist, shrinkage), inventory valuation for yarn stock, and Bangladesh spinning mill specific ERP considerations.",
     "datePublished": "2026-05-07T12:00:00+06:00",
-    "dateModified": "2026-05-07T12:00:00+06:00",
+    "dateModified": "2026-05-23T12:00:00+06:00",
     "author": {
       "@type": "Person",
       "name": "Mehedi Hasan",
@@ -239,6 +239,12 @@
       background: var(--accent);
       margin-bottom: 18px;
     }
+
+    .field-note{margin:28px 0;border:1px solid var(--border);border-radius:12px;overflow:hidden;background:var(--surface)}
+    .fn-hd{display:flex;align-items:center;justify-content:space-between;padding:12px 18px;border-bottom:1px solid var(--border);font-family:var(--mono);font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-3)}
+    .fn-hd .when{color:var(--accent)}
+    .fn-body{padding:18px 22px;font-size:15px;line-height:1.65;color:var(--text-2)}
+    .fn-body strong{color:var(--text);font-weight:500}
 
     @media(max-width:800px){
       .flow-row { grid-template-columns: 1fr; }
@@ -518,6 +524,13 @@
       </div>
 
       <p>In Odoo, configure these as Quality Check Points in the Quality module (Manufacturing → Quality → Control Points). Attach each check point to the relevant work order in the routing: cotton checks attach to the "Receipt" operation, in-process yarn checks attach to the "Ring Spinning" work order, finished yarn checks attach to the "Winding" or "Packing" work order. Failed checks create a Quality Alert assigned to the QC manager, and the production lot is blocked from moving to the next stage until the alert is resolved.</p>
+
+      <div class="field-note">
+        <div class="fn-hd"><span>Note · Spinning mill, Narsingdi</span><span class="when">Customer complaint</span></div>
+        <div class="fn-body">
+          A mill shipped a large lot of 30s combed yarn to a knit-fabric customer who rejected it two weeks later — the actual count tested closer to 28s, outside tolerance, and the fabric came out at the wrong GSM on their machines. The mill <em>had</em> the data: a lab technician had recorded the count per frame. But it lived in a paper register the despatch team never saw. We moved the count check into Odoo as a quality control point on the winding work order with a hard pass/fail gate — an out-of-tolerance lot cannot move to finished goods until QC clears or scraps it. <strong>The mill was never missing the test. It was missing the gate that stops a failed test from reaching a customer.</strong>
+        </div>
+      </div>
 
       <h2 id="valuation">Yarn inventory valuation</h2>
 

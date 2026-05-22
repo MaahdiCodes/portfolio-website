@@ -26,7 +26,7 @@
   <meta property="og:site_name" content="Mehedi Hasan | Odoo ERP Consultant" />
   <meta property="article:author" content="https://www.linkedin.com/in/mehedi-hasan-consultant/" />
   <meta property="article:published_time" content="2026-05-05T12:00:00+06:00" />
-  <meta property="article:modified_time" content="2026-05-05T12:00:00+06:00" />
+  <meta property="article:modified_time" content="2026-05-23T12:00:00+06:00" />
   <meta property="article:section" content="Odoo ERP Bangladesh" />
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
@@ -43,7 +43,7 @@
     "headline": "The 12-Week Odoo Implementation Roadmap for Bangladesh SMEs",
     "description": "A complete, week-by-week Odoo implementation roadmap designed for Bangladesh manufacturing and trading SMEs. Covers project team structure (RACI), five implementation phases, go/no-go milestones, data cutover sequence, and Bangladesh-specific planning considerations including NBR fiscal year alignment and Eid holiday windows.",
     "datePublished": "2026-05-05T12:00:00+06:00",
-    "dateModified": "2026-05-05T12:00:00+06:00",
+    "dateModified": "2026-05-23T12:00:00+06:00",
     "author": {
       "@type": "Person",
       "name": "Mehedi Hasan",
@@ -306,6 +306,12 @@
       background: var(--accent);
       margin-bottom: 18px;
     }
+
+    .field-note{margin:28px 0;border:1px solid var(--border);border-radius:12px;overflow:hidden;background:var(--surface)}
+    .fn-hd{display:flex;align-items:center;justify-content:space-between;padding:12px 18px;border-bottom:1px solid var(--border);font-family:var(--mono);font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-3)}
+    .fn-hd .when{color:var(--accent)}
+    .fn-body{padding:18px 22px;font-size:15px;line-height:1.65;color:var(--text-2)}
+    .fn-body strong{color:var(--text);font-weight:500}
   </style>
 </head>
 
@@ -469,6 +475,13 @@
         </tbody>
       </table>
       <p style="font-size:12px;color:var(--text-3);margin-top:-8px;font-family:var(--mono);">R = Responsible · A = Accountable · C = Consulted · I = Informed</p>
+
+      <div class="field-note">
+        <div class="fn-hd"><span>Note · Trading company, Dhaka</span><span class="when">Weeks 1–9</span></div>
+        <div class="fn-body">
+          On one mid-size trading company implementation, every cell in the RACI was filled — but the named Client PM was a junior coordinator who had to forward each configuration decision to the Managing Director, who travelled often. A chart-of-accounts question raised in week 3 was not resolved until week 6. By week 9 the project was a month behind, and the delay traced almost entirely to decision latency, not configuration effort. <strong>The roadmap below assumes the person in the Client PM row can actually say yes. If they cannot, add two to three weeks to every estimate here.</strong>
+        </div>
+      </div>
 
       <h2 id="phase-overview">5-phase overview</h2>
 
@@ -924,7 +937,7 @@
 
       <div class="callout">
         <span class="tag">Bottom line</span>
-        <p>This roadmap works when three things are true: the client PM has real authority, key users have protected time, and the go-live date is treated as earned (not given). Projects that fail do so because one of these three was missing. Before signing a contract with any Odoo implementer in Bangladesh, confirm that they have a week-by-week plan they can hand you on day one. If they don't — that is information. <a href="../#contact" style="color:var(--accent)">Planning an Odoo implementation? Let's review your roadmap together →</a></p>
+        <p>This roadmap works when three things are true: the client PM has real authority, key users have protected time, and the go-live date is treated as earned (not given). Projects that fail do so because one of these three was missing. Before signing a contract with any Odoo implementer in Bangladesh, confirm that they have a week-by-week plan they can hand you on day one. If they don't — that is information. To pressure-test a vendor's budget against independent benchmarks before you negotiate, run your scope through the <a href="/tools/odoo-cost-estimator/" style="color:var(--accent)">Odoo cost estimator</a>. <a href="../#contact" style="color:var(--accent)">Planning an Odoo implementation? Let's review your roadmap together →</a></p>
       </div>
 
       <h2 id="faq">Frequently asked questions</h2>

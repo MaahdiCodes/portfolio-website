@@ -26,7 +26,7 @@
   <meta property="og:site_name" content="Mehedi Hasan | Odoo ERP Consultant" />
   <meta property="article:author" content="https://www.linkedin.com/in/mehedi-hasan-consultant/" />
   <meta property="article:published_time" content="2026-05-05T14:00:00+06:00" />
-  <meta property="article:modified_time" content="2026-05-05T14:00:00+06:00" />
+  <meta property="article:modified_time" content="2026-05-23T14:00:00+06:00" />
   <meta property="article:section" content="Odoo ERP Bangladesh" />
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
@@ -43,7 +43,7 @@
     "headline": "Post Go-Live Hypercare: L1/L2/L3 Support Structure for Bangladesh Odoo Teams",
     "description": "A complete guide to structuring post go-live hypercare support for Odoo implementations in Bangladesh. Covers hypercare definition, L1/L2/L3 support tier definitions with responsibilities, escalation matrix, issue severity classification (S1/S2/S3/S4), SLA targets, 30-60-90 day KPI framework, first month-end close checklist, exit criteria from hypercare to BAU support, and Bangladesh-specific considerations including weekend support coverage and escalation during Eid periods.",
     "datePublished": "2026-05-05T14:00:00+06:00",
-    "dateModified": "2026-05-05T14:00:00+06:00",
+    "dateModified": "2026-05-23T14:00:00+06:00",
     "author": {
       "@type": "Person",
       "name": "Mehedi Hasan",
@@ -318,6 +318,12 @@
       .tier-grid { grid-template-columns: 1fr; }
       .kpi-grid { grid-template-columns: 1fr; }
     }
+
+    .field-note{margin:28px 0;border:1px solid var(--border);border-radius:12px;overflow:hidden;background:var(--surface)}
+    .fn-hd{display:flex;align-items:center;justify-content:space-between;padding:12px 18px;border-bottom:1px solid var(--border);font-family:var(--mono);font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-3)}
+    .fn-hd .when{color:var(--accent)}
+    .fn-body{padding:18px 22px;font-size:15px;line-height:1.65;color:var(--text-2)}
+    .fn-body strong{color:var(--text);font-weight:500}
   </style>
 </head>
 
@@ -394,6 +400,13 @@
         <li><strong>Complex implementation (50–150 users, manufacturing + compliance):</strong> 3–4 weeks of hypercare. Consultant on-site days 1–5, remote high-availability for week 2, reduced availability for weeks 3–4.</li>
         <li><strong>Multi-company or multi-location:</strong> 4–6 weeks. Each location may have different go-live dates staggered by 1–2 weeks.</li>
       </ul>
+
+      <div class="field-note">
+        <div class="fn-hd"><span>Note · Manufacturer, Gazipur</span><span class="when">Day 3 of hypercare</span></div>
+        <div class="fn-body">
+          A manufacturer went live on a Sunday with an implementation partner who observed a Saturday–Sunday weekend. On the first Sunday of operations a tax-configuration fault blocked every vendor bill — a clear S1 — and the consultant was not reachable until Monday afternoon. The AP team lost a day and a half and recorded bills on paper to catch up later. <strong>The fault itself was minor and took twenty minutes to fix once someone looked at it. The damage came entirely from a support calendar that did not match the Bangladesh working week — something that belonged in the contract, not in a Day-3 discovery.</strong>
+        </div>
+      </div>
 
       <h2 id="l1l2l3">L1/L2/L3 support tiers</h2>
 

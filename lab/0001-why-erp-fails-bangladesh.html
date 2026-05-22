@@ -9,6 +9,7 @@
 <link rel="apple-touch-icon" href="/favicon.png" />
 <meta name="description" content="ERP implementation failure in Bangladesh: 5 root causes from real deployments. Why most Odoo projects miss the mark and what the successful ones do right." />
 <meta name="robots" content="index, follow" />
+<meta name="author" content="Mehedi Hasan" />
 <title>Why ERP Implementations Fail in Bangladesh | Mehedi Hasan</title>
 <link rel="canonical" href="https://mhasan.me/lab/0001-why-erp-fails-bangladesh" />
 <!-- Open Graph -->
@@ -21,6 +22,10 @@
 <meta property="og:image:height" content="630" />
 <meta property="og:locale" content="en_US" />
 <meta property="og:site_name" content="Mehedi Hasan | Odoo Consultant" />
+<meta property="article:author" content="https://www.linkedin.com/in/mehedi-hasan-consultant/" />
+<meta property="article:published_time" content="2025-07-01T08:00:00+06:00" />
+<meta property="article:modified_time" content="2026-05-22T08:00:00+06:00" />
+<meta property="article:section" content="Odoo ERP Bangladesh" />
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="Why ERP Implementations Fail in Bangladesh | Mehedi Hasan" />
@@ -35,7 +40,7 @@
     "headline": "Why ERP Implementations Fail in Bangladesh — 5 Root Causes",
     "description": "ERP implementation failure in Bangladesh: 5 root causes from real deployments. Why most Odoo projects miss the mark and what the successful ones do right.",
     "datePublished": "2025-07-01T08:00:00+06:00",
-    "dateModified": "2026-05-04T08:00:00+06:00",
+    "dateModified": "2026-05-22T08:00:00+06:00",
     "author": {
       "@type": "Person",
       "name": "Mehedi Hasan",
@@ -115,6 +120,12 @@
   .signal-grid .sg h4{margin:0 0 8px;font-size:13px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--accent);font-family:var(--mono)}
   .signal-grid .sg p{margin:0;font-size:13.5px;line-height:1.6;color:var(--text-2)}
   @media(max-width:680px){.signal-grid{grid-template-columns:1fr}}
+
+  .field-note{margin:28px 0;border:1px solid var(--border);border-radius:12px;overflow:hidden;background:var(--surface)}
+  .fn-hd{display:flex;align-items:center;justify-content:space-between;padding:12px 18px;border-bottom:1px solid var(--border);font-family:var(--mono);font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-3)}
+  .fn-hd .when{color:var(--accent)}
+  .fn-body{padding:18px 22px;font-size:15px;line-height:1.65;color:var(--text-2)}
+  .fn-body strong{color:var(--text);font-weight:500}
 </style>
 </head>
 <body>
@@ -143,6 +154,7 @@
       <span class="chip">Failure analysis</span>
     </div>
     <div class="byline">
+      <span>By<b><a href="https://www.linkedin.com/in/mehedi-hasan-consultant/" style="color:var(--accent)" rel="author">Mehedi Hasan</a></b></span>
       <span>Published<b>July 2025</b></span>
       <span>Read time<b>9 minutes</b></span>
       <span>Form<b>Essay</b></span>
@@ -166,7 +178,7 @@
 
   <div class="body">
     <h2 id="stat">The number nobody quotes twice</h2>
-    <p>Global research puts ERP implementation failure rates between 55% and 75%, depending on how you define failure. Most companies don't define it at all — they call a missed timeline a "delay," a budget overrun a "scope addition," and a system nobody uses three months after go-live a "training issue."</p>
+    <p>Independent ERP research — Panorama Consulting's annual ERP Report among the most frequently cited — has long put implementation failure rates between 55% and 75%, depending on how failure is defined. Most companies don't define it at all — they call a missed timeline a "delay," a budget overrun a "scope addition," and a system nobody uses three months after go-live a "training issue."</p>
 
     <p>In Bangladesh, the picture is worse. The local ERP ecosystem is thin on experienced functional consultants, thick with vendors who learned configuration from YouTube and price their engagements accordingly. Business owners — rightly skeptical of cost — compress timelines and budgets until the project is structurally incapable of delivering what was promised.</p>
 
@@ -220,6 +232,13 @@
       <p>If the implementation plan doesn't include a dedicated data audit week, a formal change management budget, and named internal champions per department — it's not an implementation plan. It's a configuration schedule.</p>
     </div>
 
+    <div class="field-note">
+      <div class="fn-hd"><span>Note · Cycle export factory · 3 quotes evaluated</span><span class="when">Month 4 post-contract</span></div>
+      <div class="fn-body">
+        The owner picked the lowest of three quotes — BDT 4.5 lakh against a median of BDT 11 lakh — and discovery was a single afternoon. Four months in, the bill of materials couldn't model their multi-level frame-and-component assembly. The vendor called it "out of scope." The project stalled, and a second consultant was brought in to re-scope from zero. <strong>The replacement engagement alone cost BDT 9 lakh — more than the median quote the owner had rejected to save money.</strong> Failure mode 02 and failure mode 05, in the same project.
+      </div>
+    </div>
+
     <h2 id="ecosystem">The consultant problem</h2>
     <p>Bangladesh has a small but growing base of Odoo consultants. It also has a much larger base of people who have configured Odoo once, watched some documentation, and now sell "ERP implementation" at any price point. The distinction matters because <strong>ERP consulting is a domain skill, not a software skill.</strong></p>
 
@@ -259,6 +278,11 @@
     <blockquote>
       ERP failure in Bangladesh is not a technology problem. It is a project management problem, a consultant quality problem, and a change management problem — in that order. Fix those three things and the software takes care of itself.
     </blockquote>
+
+    <div class="callout">
+      <span class="tag">Try the tool</span>
+      <p>Failure mode 02 starts with an under-scoped budget. The <a href="/tools/odoo-cost-estimator/" style="color:var(--accent)">free Odoo Cost Estimator</a> gives you a realistic, Bangladesh-specific cost range — including the hidden lines that under-quoted vendors leave out — in 60 seconds.</p>
+    </div>
 
     <div class="callout">
       <span class="tag">Related</span>

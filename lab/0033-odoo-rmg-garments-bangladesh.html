@@ -25,7 +25,7 @@
   <meta property="og:site_name" content="Mehedi Hasan | Odoo ERP Consultant" />
   <meta property="article:author" content="https://www.linkedin.com/in/mehedi-hasan-consultant/" />
   <meta property="article:published_time" content="2026-05-07T10:00:00+06:00" />
-  <meta property="article:modified_time" content="2026-05-07T10:00:00+06:00" />
+  <meta property="article:modified_time" content="2026-05-23T10:00:00+06:00" />
   <meta property="article:section" content="Odoo ERP Bangladesh" />
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
@@ -42,7 +42,7 @@
     "headline": "Odoo for RMG & Garments Bangladesh: From Sample to Shipment",
     "description": "A complete guide to configuring Odoo ERP for ready-made garments (RMG) factories in Bangladesh. Covers the full sample-to-shipment workflow, size-colour Bill of Materials, work centre setup for cutting/sewing/finishing/packing, BGMEA wage board compliance, attendance integration, LC documentation, production reporting, and Bangladesh-specific RMG ERP considerations.",
     "datePublished": "2026-05-07T10:00:00+06:00",
-    "dateModified": "2026-05-07T10:00:00+06:00",
+    "dateModified": "2026-05-23T10:00:00+06:00",
     "author": {
       "@type": "Person",
       "name": "Mehedi Hasan",
@@ -79,7 +79,7 @@
         "name": "Does Odoo handle BGMEA wage board compliance?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Yes. Odoo's HR and Payroll module can be configured for BGMEA/BKMEA wage board compliance. You configure salary structures with grade-based basic salary (Grade 1–7 for workers), attendance-linked allowances (food, transport, house rent as fixed percentages of basic), PF deduction (worker 5%, employer 5% of basic), and gratuity provision accrual. Overtime calculation follows the Bangladesh Labour Act (1.5× to 2× rate depending on hours). The payslip approval workflow, bank disbursement report, and salary register can all be generated from Odoo. The challenge in RMG payroll is handling daily attendance from a biometric system — Odoo's attendance module connects to most biometric devices via HTTP or CSV import, and attendance-linked salary deduction for absent days follows a per-working-day calculation (basic ÷ 26 × absent days for monthly-rated workers)."
+          "text": "Yes. Odoo's HR and Payroll module can be configured for BGMEA/BKMEA wage board compliance. You configure salary structures with grade-based basic salary set to the current gazetted wage-board minimum per worker grade, attendance-linked allowances (food, transport, house rent as fixed percentages of basic), PF deduction (worker 5%, employer 5% of basic), and gratuity provision accrual. Overtime calculation follows the Bangladesh Labour Act (1.5× to 2× rate depending on hours). The payslip approval workflow, bank disbursement report, and salary register can all be generated from Odoo. The challenge in RMG payroll is handling daily attendance from a biometric system — Odoo's attendance module connects to most biometric devices via HTTP or CSV import, and attendance-linked salary deduction for absent days follows a per-working-day calculation (basic ÷ 26 × absent days for monthly-rated workers)."
         }
       },
       {
@@ -266,6 +266,12 @@
       margin-bottom: 18px;
     }
 
+    .field-note{margin:28px 0;border:1px solid var(--border);border-radius:12px;overflow:hidden;background:var(--surface)}
+    .fn-hd{display:flex;align-items:center;justify-content:space-between;padding:12px 18px;border-bottom:1px solid var(--border);font-family:var(--mono);font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-3)}
+    .fn-hd .when{color:var(--accent)}
+    .fn-body{padding:18px 22px;font-size:15px;line-height:1.65;color:var(--text-2)}
+    .fn-body strong{color:var(--text);font-weight:500}
+
     @media(max-width:700px){
       .wc-grid { grid-template-columns: 1fr; }
     }
@@ -342,7 +348,7 @@
         <li><strong>Production is not by unit — it's by line and day.</strong> The KPI that matters in RMG is pieces per line per day by size. A production order for 5,000 pieces of Style A is spread across 3 sewing lines over 8 days. ERP needs to track daily output per line, not just total completion.</li>
         <li><strong>Material consumption is by cut — not by MO.</strong> Fabric is consumed when the fabric is cut, not when the finished garment is completed. A cutting lot may feed 3 different production orders. Fabric yield (the ratio of actual fabric consumed to the standard BOM quantity) is the most important cost control metric in cutting — generic ERP ignores it.</li>
         <li><strong>Buyer requirements vary by purchase order.</strong> The same style may have different label specifications, packing requirements, or carton marks for different buyers. The ERP needs to track buyer PO-level instructions, not just style-level configurations.</li>
-        <li><strong>BGMEA wage compliance is non-negotiable.</strong> Labour law in Bangladesh mandates attendance-linked salary, overtime records, PF deduction, and gratuity provision. Payroll that is not compliant with the 2018 BGMEA wage board notification creates legal and audit risk.</li>
+        <li><strong>BGMEA wage compliance is non-negotiable.</strong> Labour law in Bangladesh mandates attendance-linked salary, overtime records, PF deduction, and gratuity provision. Payroll that is not compliant with the prevailing BGMEA/BKMEA wage board notification creates legal and audit risk.</li>
       </ul>
 
       <p>Each of these challenges has a correct solution in Odoo — but requires deliberate configuration. Let's walk through each.</p>
@@ -413,6 +419,13 @@
       <h2 id="bom">Bill of Materials for garments — the size-colour approach</h2>
 
       <p>The most consequential configuration decision in an RMG Odoo setup is how you structure the Bill of Materials. Get this wrong and you will be managing thousands of products and BOMs. Get it right and the system scales to any number of styles.</p>
+
+      <div class="field-note">
+        <div class="fn-hd"><span>Note · RMG factory, Narayanganj</span><span class="when">First catalogue review</span></div>
+        <div class="fn-body">
+          A garments factory had built its Odoo product master before the BOM strategy was settled — every size-colour combination of every style was entered as a separate product. By the time we reviewed it there were over 1,400 products and 1,400 single-line BOMs, and the merchandising team had stopped trusting stock figures because the same fabric showed up under a dozen product names. We rebuilt the catalogue around product variants — one template, one BOM per style — and the 1,400 products collapsed to about 90. <strong>The variant-versus-separate-product decision is not a preference. It is the difference between a usable system and an abandoned one, and it has to be made before the first product is entered.</strong>
+        </div>
+      </div>
 
       <p><strong>The correct approach: Product Variants with one BOM per style (template level).</strong></p>
 
@@ -612,12 +625,12 @@
 
       <h2 id="bgmea">BGMEA wage board compliance in Odoo</h2>
 
-      <p>RMG workers in Bangladesh are covered by the 2018 BGMEA/BKMEA wage board notification, which sets minimum wages by grade (Grade 1–7). Odoo's payroll module must be configured to match these requirements exactly — a payroll audit by BGMEA or the Department of Inspection for Factories and Establishments (DIFE) will check payslips against this structure.</p>
+      <p>RMG workers in Bangladesh are covered by the BGMEA/BKMEA wage board notification, which sets minimum wages by worker grade. Odoo's payroll module must be configured to match these requirements exactly — a payroll audit by BGMEA or the Department of Inspection for Factories and Establishments (DIFE) will check payslips against this structure.</p>
 
-      <p>For the full payroll configuration including PF, gratuity, and leave policy, see the <a href="0022-bgmea-wage-board-odoo-payroll" style="color:var(--accent)">BGMEA wage board setup guide in Odoo</a>. Key points for RMG specifically:</p>
+      <p>For the full payroll configuration including the grade structure, PF, gratuity, and leave policy, see the <a href="0022-bgmea-wage-board-odoo-payroll" style="color:var(--accent)">BGMEA wage board setup guide in Odoo</a>. Key points for RMG specifically:</p>
 
       <ul>
-        <li><strong>Grade-based salary structures:</strong> Create one salary structure per grade (Grade 1 through Grade 7). Each structure contains: Basic (as per wage board minimum), House Rent (40% of Basic), Medical (minimum BDT 600), Transport (minimum BDT 450), Food (minimum BDT 900 for Grade 7). Configure these as salary rules with their correct computation types (fixed or percentage of basic).</li>
+        <li><strong>Grade-based salary structures:</strong> Create one salary structure per worker grade. Each structure contains Basic (as per the current gazetted wage-board minimum for that grade), House Rent, Medical, Transport, and Food allowances. Always configure these against the latest gazetted figures rather than hard-coding amounts — the wage board is periodically revised. Configure each as a salary rule with its correct computation type (fixed or percentage of basic).</li>
         <li><strong>Attendance integration:</strong> Biometric devices (ZKTeco, Suprema, etc.) export attendance logs as CSV or push them via API. Odoo's attendance module imports these, and the payroll module uses the attendance record to calculate per-day deductions for absent days (Basic ÷ 26 × absent days for monthly-rated workers).</li>
         <li><strong>Overtime:</strong> Under the Bangladesh Labour Act, overtime is paid at 2× the basic hourly rate. Configure an overtime salary rule: (Basic ÷ 208) × 2 × overtime hours. The input for overtime hours comes from the attendance log — hours beyond 8 per day or 48 per week are overtime.</li>
         <li><strong>PF contribution:</strong> Worker contributes 5% of Basic, employer contributes 5% of Basic. Configure as two payroll rules — one deduction (employee PF) and one in the employer contribution category (employer PF). The employer PF appears on the payslip for transparency but does not reduce the employee's net salary.</li>
@@ -661,7 +674,7 @@
 
       <div class="callout">
         <span class="tag">Bottom line</span>
-        <p>Odoo for RMG is not a plug-and-play deployment. The BOM structure, work centre configuration, payroll compliance, and LC documentation all require deliberate design decisions before go-live. Factories that invest 2–3 weeks in proper configuration get a system that tracks from sample to shipment with full traceability. Those that rush the setup get a system that runs parallel to Excel within 90 days. <a href="../#contact" style="color:var(--accent)">Need help configuring Odoo for your RMG factory? Get in touch →</a></p>
+        <p>Odoo for RMG is not a plug-and-play deployment. The BOM structure, work centre configuration, payroll compliance, and LC documentation all require deliberate design decisions before go-live. Factories that invest 2–3 weeks in proper configuration get a system that tracks from sample to shipment with full traceability. Those that rush the setup get a system that runs parallel to Excel within 90 days. To scope the licensing and implementation budget for your factory before you start, try the <a href="/tools/odoo-cost-estimator/" style="color:var(--accent)">Odoo cost estimator</a>. <a href="../#contact" style="color:var(--accent)">Need help configuring Odoo for your RMG factory? Get in touch →</a></p>
       </div>
 
       <h2 id="faq">Frequently asked questions</h2>
@@ -670,7 +683,7 @@
       <p>Set up Odoo for RMG by configuring: Manufacturing with work centres (Cutting, Sewing lines, Finishing, QC, Packing); BOM using product variants for size-colour (one BOM per style template, not per variant); HR/Payroll with BGMEA grade-based salary structures and biometric attendance integration; Inventory with lot tracking for fabric rolls; Sales for buyer PO management with LC reference tracking; Accounting for export zero-rated VAT and TDS. The BOM structure is the most critical decision — get it right before entering any products.</p>
 
       <h3>Does Odoo handle BGMEA wage board compliance?</h3>
-      <p>Yes. Configure salary structures per BGMEA grade (1–7) with Basic per wage board minimums, House Rent (40% of Basic), Medical (BDT 600+), Transport (BDT 450+), Food (BDT 900+ for Grade 7), PF deductions (5%/5% worker/employer), overtime at 2× basic hourly rate, and gratuity provision accrual. Attendance from biometric devices feeds into payroll for per-day deduction calculations. Odoo generates payslips, salary registers, and PF schedules that satisfy BGMEA and DIFE audit requirements.</p>
+      <p>Yes. Configure salary structures per BGMEA worker grade with Basic per the current gazetted wage-board minimums, plus House Rent, Medical, Transport, and Food allowances, PF deductions (5%/5% worker/employer), overtime at 2× basic hourly rate, and gratuity provision accrual. Attendance from biometric devices feeds into payroll for per-day deduction calculations. Odoo generates payslips, salary registers, and PF schedules that satisfy BGMEA and DIFE audit requirements.</p>
 
       <h3>How do I handle size and colour variants in Odoo garments BOM?</h3>
       <p>Use Odoo Product Variants: create one product per style with Size and Colour as attributes. Define the BOM at the product template level. Use "Apply on Variants" for size-dependent components (fabric, collar rib, poly bags) and leave colour-dependent components (fabric colour, thread colour) applied to the relevant colour variants. This keeps your product catalogue to one entry per style rather than one per size-colour combination — essential when you have 50+ active styles.</p>

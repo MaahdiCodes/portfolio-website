@@ -9,6 +9,7 @@
 <link rel="apple-touch-icon" href="/favicon.png" />
 <meta name="description" content="ERP UAT script guide — how to write Odoo user acceptance test cases that surface real edge cases, not happy paths. Field-tested across 200+ trained users in Bangladesh." />
 <meta name="robots" content="index, follow" />
+<meta name="author" content="Mehedi Hasan" />
 <title>Odoo UAT Script Guide | ERP User Acceptance Testing | Mehedi Hasan</title>
 <link rel="canonical" href="https://mhasan.me/lab/0009-uat-script-200-users-ago" />
 <!-- Open Graph -->
@@ -21,12 +22,16 @@
 <meta property="og:image:height" content="630" />
 <meta property="og:locale" content="en_US" />
 <meta property="og:site_name" content="Mehedi Hasan | Odoo Consultant" />
+<meta property="article:author" content="https://www.linkedin.com/in/mehedi-hasan-consultant/" />
+<meta property="article:published_time" content="2026-02-01T08:00:00+06:00" />
+<meta property="article:modified_time" content="2026-05-22T08:00:00+06:00" />
+<meta property="article:section" content="Odoo ERP Bangladesh" />
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="Odoo UAT Script Guide | ERP User Acceptance Testing | Mehedi Hasan" />
 <meta name="twitter:description" content="ERP UAT script guide — how to write Odoo user acceptance test cases that surface real edge cases, not happy paths. Field-tested across 200+ trained users in Bangladesh." />
 <meta name="twitter:image" content="https://mhasan.me/assets/og-default.jpg" />
-<!-- JSON-LD: Article + BreadcrumbList -->
+<!-- JSON-LD: Article + BreadcrumbList + FAQPage -->
 <script type="application/ld+json">
 [
   {
@@ -35,7 +40,7 @@
     "headline": "The UAT Script I Wish I Had 200 Users Ago",
     "description": "ERP UAT script guide — how to write Odoo user acceptance test cases that surface real edge cases, not happy paths. Field-tested across 200+ trained users in Bangladesh.",
     "datePublished": "2026-02-01T08:00:00+06:00",
-    "dateModified": "2026-04-30T08:00:00+06:00",
+    "dateModified": "2026-05-22T08:00:00+06:00",
     "author": {
       "@type": "Person",
       "name": "Mehedi Hasan",
@@ -89,6 +94,12 @@
   }
   .pull::before{content:"";display:block;width:36px;height:1px;background:var(--accent);margin-bottom:18px}
 
+  .field-note{margin:28px 0;border:1px solid var(--border);border-radius:12px;overflow:hidden;background:var(--surface)}
+  .fn-hd{display:flex;align-items:center;justify-content:space-between;padding:12px 18px;border-bottom:1px solid var(--border);font-family:var(--mono);font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-3)}
+  .fn-hd .when{color:var(--accent)}
+  .fn-body{padding:18px 22px;font-size:15px;line-height:1.65;color:var(--text-2)}
+  .fn-body strong{color:var(--text);font-weight:500}
+
   .case-pair{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:24px 0}
   .case-pair > div{
     border:1px solid var(--border);border-radius:10px;padding:18px;
@@ -132,6 +143,7 @@
       <span class="chip">Field notes</span>
     </div>
     <div class="byline">
+      <span>By<b><a href="https://www.linkedin.com/in/mehedi-hasan-consultant/" style="color:var(--accent)" rel="author">Mehedi Hasan</a></b></span>
       <span>Published<b>February 2026</b></span>
       <span>Read time<b>9 minutes</b></span>
       <span>Form<b>Essay</b></span>
@@ -149,6 +161,7 @@
       <li><a href="#shape">The shape of a useful script</a></li>
       <li><a href="#examples">Two cases, side by side</a></li>
       <li><a href="#close">What I do differently now</a></li>
+      <li><a href="#faq">FAQ</a></li>
     </ol>
   </aside>
 
@@ -196,6 +209,13 @@
       <p>If you can run a UAT case without ever asking an end user a question, the case is probably testing the software, not the business.</p>
     </div>
 
+    <div class="field-note">
+      <div class="fn-hd"><span>Note · Sales &amp; finance desk · Garment exporter</span><span class="when">Day 6 post-go-live</span></div>
+      <div class="fn-body">
+        UAT had a green check against "create a credit note." What it never tested: a credit note against an invoice that had already been <strong>paid and reconciled in a prior, now-locked accounting period</strong>. The first real customer return landed on day six. The system blocked the posting; the accountant had no documented path; the customer waited nine days for a corrected invoice. <strong>The test case existed. The Tuesday-afternoon version of it — the one with a locked period and an impatient buyer — did not.</strong>
+      </div>
+    </div>
+
     <h2>What goes in the script header</h2>
     <p>Every case I write now starts with the same six fields. They look bureaucratic. They aren't — they're the difference between a tester who knows what they're doing and a tester who's politely clicking through.</p>
 
@@ -221,11 +241,22 @@
       The script is not the test. The test is whether your operations team will, unprompted, reach for the system instead of the spreadsheet on Tuesday afternoon.
     </blockquote>
 
-    <p>If they do, you didn't pass UAT — you passed change management. The script just got you in the door.</p>
+    <p>If they do, you didn't pass UAT — you passed <a href="0007-change-management-isnt-a-memo" style="color:var(--accent)">change management</a>. The script just got you in the door.</p>
+
+    <h2 id="faq">FAQ</h2>
+
+    <h3>What should be included in an Odoo UAT test script?</h3>
+    <p>An effective Odoo UAT script should cover: test case ID, the module being tested, prerequisite setup steps, step-by-step instructions for the tester, expected result, an actual-result field, pass/fail status, and a defect reference. Organise test cases by business process — not by Odoo menu — so non-technical users can follow along without ERP knowledge.</p>
+
+    <h3>How many test cases do you need for Odoo UAT?</h3>
+    <p>A typical Odoo UAT for a Bangladesh manufacturer with 4–6 modules needs 80–150 test cases — core happy paths plus 20–30% edge cases. Each module should have at least one end-to-end scenario (e.g. purchase order to vendor payment). A coverage matrix ensures no critical business process is missed.</p>
+
+    <h3>Who should perform UAT testing in an Odoo project?</h3>
+    <p>UAT must be performed by actual end users — the people who will use the system daily — not by the implementation consultant or IT team. The consultant's role during UAT is to observe, answer questions, and log defects, not to execute the test cases.</p>
 
     <div class="callout">
       <span class="tag">PS</span>
-      <p>The companion utility for this piece is <a href="0008-excel-odoo-migration-checklist" style="color:var(--accent)">the migration checklist</a> — same philosophy, different artifact.</p>
+      <p>The companion utilities for this piece are <a href="0008-excel-odoo-migration-checklist" style="color:var(--accent)">the migration checklist</a> and the <a href="0010-bpmn-templates-manufacturing-discovery" style="color:var(--accent)">BPMN discovery templates</a> — same philosophy, different artifacts.</p>
     </div>
   </div>
 </article>

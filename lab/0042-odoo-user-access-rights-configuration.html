@@ -25,7 +25,7 @@
   <meta property="og:site_name" content="Mehedi Hasan | Odoo ERP Consultant" />
   <meta property="article:author" content="https://www.linkedin.com/in/mehedi-hasan-consultant/" />
   <meta property="article:published_time" content="2026-05-08T12:00:00+06:00" />
-  <meta property="article:modified_time" content="2026-05-08T12:00:00+06:00" />
+  <meta property="article:modified_time" content="2026-05-23T12:00:00+06:00" />
   <meta property="article:section" content="Odoo ERP Bangladesh" />
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
@@ -42,7 +42,7 @@
     "headline": "Odoo User Roles & Access Rights: Configuration Guide for SMEs",
     "description": "Secure your Odoo ERP by configuring precise user access rights and roles. A complete guide for SMEs to manage permissions.",
     "datePublished": "2026-05-08T12:00:00+06:00",
-    "dateModified": "2026-05-08T12:00:00+06:00",
+    "dateModified": "2026-05-23T12:00:00+06:00",
     "author": {
       "@type": "Person",
       "name": "Mehedi Hasan",
@@ -80,6 +80,22 @@
         "acceptedAnswer": {
           "@type": "Answer",
           "text": "Developer Mode is a special setting that unlocks technical menus, allowing administrators to configure advanced access rights, record rules, and automated actions. It should only be used by trained administrators."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the principle of least privilege in Odoo?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Least privilege means every user gets exactly the access their job requires and nothing more: most staff on 'User' roles rather than 'Manager' or 'Administrator', warehouse staff with inventory but not accounting access, and the Administrator role reserved for IT and top management. The risk of over-permissioning is rarely a dramatic breach — it is quiet accidental mistakes that surface later in the numbers."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I create a custom role like Junior Accountant in Odoo?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Activate Developer Mode, then under Settings → Technical → Groups duplicate the standard Accounting group. Adjust the Access Control Lists so the new group can create and read invoices but not post them, and use an inherited view tied to the group to hide the Post button. Assign staff to this group instead of the full Accountant role, and test it by logging in as a user with only the new group before go-live."
         }
       }
     ]
@@ -149,6 +165,11 @@
       background: var(--accent);
       margin-bottom: 18px;
     }
+    .field-note{margin:28px 0;border:1px solid var(--border);border-radius:12px;overflow:hidden;background:var(--surface)}
+    .fn-hd{display:flex;align-items:center;justify-content:space-between;padding:12px 18px;border-bottom:1px solid var(--border);font-family:var(--mono);font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-3)}
+    .fn-hd .when{color:var(--accent)}
+    .fn-body{padding:18px 22px;font-size:15px;line-height:1.65;color:var(--text-2)}
+    .fn-body strong{color:var(--text);font-weight:500}
     @media(max-width:800px){
       .flow-row { grid-template-columns: 1fr; }
       .flow-stage { border-right: none; border-bottom: 1px solid var(--border); }
@@ -253,6 +274,13 @@
       
       <p>Every record in Odoo (Products, Sales Orders, Invoices) has a `company_id` field. Users also have an "Allowed Companies" setting. A global record rule enforces that users can only see records where the `company_id` matches their currently active allowed companies. If a user is only allowed to see "Company A", they will never see "Company B's" invoices, even if they have full Accountant permissions.</p>
 
+      <div class="field-note">
+        <div class="fn-hd"><span>Note · Manufacturing SME, Savar</span><span class="when">Audit reconciliation</span></div>
+        <div class="fn-body">
+          To avoid "user can't do their job" tickets during a rushed go-live, the implementer gave every accounts staff member the full Accounting <em>Administrator</em> role. It worked smoothly — until a month-end reconciliation would not tie out. A junior staffer, who only ever needed to draft vendor bills, had used her Administrator access to post entries directly into a prior, already-closed period and had re-opened a bank reconciliation. None of it was malicious; she simply had buttons in front of her that her job never required. Untangling it took two days. We rebuilt her access as a custom <strong>"Junior Accounts"</strong> group — create and draft bills, but no posting rights and no period control. <strong>Over-permissioning rarely causes a dramatic breach; it causes quiet, expensive mistakes that surface months later in the numbers.</strong>
+        </div>
+      </div>
+
       <div class="callout">
         <span class="tag">Bottom line</span>
         <p>Before go-live, create "Test Users" for each major role (Test Salesperson, Test Warehouse Worker, Test Manager). Log in as these users and try to break the system or access forbidden data. This is the only way to guarantee your security model works. <a href="../#contact" style="color:var(--accent)">Need help auditing your system security? Get in touch →</a></p>
@@ -265,6 +293,12 @@
 
       <h3>What is Developer Mode in Odoo?</h3>
       <p>Developer Mode is a special setting that unlocks technical menus, allowing administrators to configure advanced access rights, record rules, and automated actions. It should only be used by trained administrators.</p>
+
+      <h3>What is the principle of least privilege in Odoo?</h3>
+      <p>Least privilege means every user gets exactly the access their job requires — and nothing more. In practice that means most staff sit on "User" roles rather than "Manager" or "Administrator", warehouse staff get inventory access but not accounting, and the Administrator role is reserved for IT and top management. The risk of over-permissioning is rarely a dramatic breach; it is quiet, accidental mistakes — a posted entry in a closed period, a changed cost price — that surface much later in the numbers.</p>
+
+      <h3>How do I create a custom role like "Junior Accountant" in Odoo?</h3>
+      <p>Activate Developer Mode, then under Settings → Technical → Groups duplicate the standard Accounting group as a starting point. Adjust the Access Control Lists so the new group can create and read invoices but not post them, and use an inherited view tied to the group to hide the "Post" button. Assign staff to this group instead of the full Accountant role. Always test it by logging in as a user with only the new group before go-live.</p>
 
     </div>
   </article>

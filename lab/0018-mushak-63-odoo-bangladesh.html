@@ -26,7 +26,7 @@
   <meta property="og:site_name" content="Mehedi Hasan | Odoo ERP Consultant" />
   <meta property="article:author" content="https://www.linkedin.com/in/mehedi-hasan-consultant/" />
   <meta property="article:published_time" content="2026-05-05T09:00:00+06:00" />
-  <meta property="article:modified_time" content="2026-05-05T09:00:00+06:00" />
+  <meta property="article:modified_time" content="2026-05-23T09:00:00+06:00" />
   <meta property="article:section" content="Odoo ERP Bangladesh" />
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
@@ -43,7 +43,7 @@
     "headline": "Mushak 6.3 in Odoo: Step-by-Step Configuration for Bangladesh VAT Compliance",
     "description": "A practitioner's guide to configuring Mushak 6.3 (monthly VAT return) in Odoo for Bangladesh — covering NBR tax group setup, output and input VAT accounts, fiscal positions for exports, and generating Mushak 6.3 data from Odoo's Tax Report.",
     "datePublished": "2026-05-05T09:00:00+06:00",
-    "dateModified": "2026-05-05T09:00:00+06:00",
+    "dateModified": "2026-05-23T09:00:00+06:00",
     "author": {
       "@type": "Person",
       "name": "Mehedi Hasan",
@@ -97,6 +97,14 @@
         "acceptedAnswer": {
           "@type": "Answer",
           "text": "For NBR Mushak compliance in Odoo, you need at minimum: (1) Output VAT Payable — a current liability account where VAT collected on sales is credited; (2) Input VAT Recoverable — a current asset account where VAT paid on purchases is debited; (3) VAT Payable to NBR — a liability account used for the net VAT payment journal entry. These should match the account codes in your NBR-approved chart of accounts. Assign Output VAT to the tax's 'Tax Account' field and Input VAT to the purchase tax's tax account."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I claim input VAT on all purchases in Bangladesh?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. Bangladesh VAT law restricts input tax credit. You can claim input VAT on purchases directly used to make taxable supplies — raw materials, production consumables, and directly related services. You cannot claim input VAT on staff meals, entertainment, personal-use items, motor vehicles (in most cases), and purchases used to make exempt supplies. Odoo does not enforce these restrictions automatically — you must apply the correct purchase tax, or no tax, on restricted purchase lines at the time of vendor bill entry."
         }
       }
     ]

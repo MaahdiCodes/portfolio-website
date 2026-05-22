@@ -9,6 +9,7 @@
 <link rel="apple-touch-icon" href="/favicon.png" />
 <meta name="description" content="Excel to Odoo migration checklist — 40 items field-tested across 5 manufacturing go-lives in Bangladesh. Download and use on your next ERP data migration project." />
 <meta name="robots" content="index, follow" />
+<meta name="author" content="Mehedi Hasan" />
 <title>Excel to Odoo Migration Checklist | ERP Data Migration | Mehedi Hasan</title>
 <link rel="canonical" href="https://mhasan.me/lab/0008-excel-odoo-migration-checklist" />
 <!-- Open Graph -->
@@ -21,12 +22,16 @@
 <meta property="og:image:height" content="630" />
 <meta property="og:locale" content="en_US" />
 <meta property="og:site_name" content="Mehedi Hasan | Odoo Consultant" />
+<meta property="article:author" content="https://www.linkedin.com/in/mehedi-hasan-consultant/" />
+<meta property="article:published_time" content="2026-01-01T08:00:00+06:00" />
+<meta property="article:modified_time" content="2026-05-22T08:00:00+06:00" />
+<meta property="article:section" content="Odoo ERP Bangladesh" />
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="Excel to Odoo Migration Checklist | ERP Data Migration | Mehedi Hasan" />
 <meta name="twitter:description" content="Excel to Odoo migration checklist — 40 items field-tested across 5 manufacturing go-lives in Bangladesh. Download and use on your next ERP data migration project." />
 <meta name="twitter:image" content="https://mhasan.me/assets/og-default.jpg" />
-<!-- JSON-LD: Article + BreadcrumbList -->
+<!-- JSON-LD: Article + BreadcrumbList + FAQPage -->
 <script type="application/ld+json">
 [
   {
@@ -35,7 +40,7 @@
     "headline": "Excel to Odoo Migration Checklist (v3)",
     "description": "Excel to Odoo migration checklist — 40 items field-tested across 5 manufacturing go-lives in Bangladesh.",
     "datePublished": "2026-01-01T08:00:00+06:00",
-    "dateModified": "2026-04-30T08:00:00+06:00",
+    "dateModified": "2026-05-22T08:00:00+06:00",
     "author": {
       "@type": "Person",
       "name": "Mehedi Hasan",
@@ -145,6 +150,12 @@
   html[data-theme="light"] .download-strip{background:linear-gradient(180deg,rgba(255,255,255,0.95),rgba(237,240,244,0.95))}
   html[data-theme="light"] .download-strip .file .icon{background:#E0E4EC}
   html[data-theme="light"] .check li:hover{background:rgba(0,0,0,0.025)}
+
+  .field-note{margin:28px 0;border:1px solid var(--border);border-radius:12px;overflow:hidden;background:var(--surface)}
+  .fn-hd{display:flex;align-items:center;justify-content:space-between;padding:12px 18px;border-bottom:1px solid var(--border);font-family:var(--mono);font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-3)}
+  .fn-hd .when{color:var(--accent)}
+  .fn-body{padding:18px 22px;font-size:15px;line-height:1.65;color:var(--text-2)}
+  .fn-body strong{color:var(--text);font-weight:500}
 </style>
 </head>
 <body>
@@ -174,6 +185,7 @@
       <span class="chip">v3 · April 2026</span>
     </div>
     <div class="byline">
+      <span>By<b><a href="https://www.linkedin.com/in/mehedi-hasan-consultant/" style="color:var(--accent)" rel="author">Mehedi Hasan</a></b></span>
       <span>Published<b>January 2026</b></span>
       <span>Items<b>40</b></span>
       <span>Phases<b>5</b></span>
@@ -192,11 +204,19 @@
       <li><a href="#phase-4">4 · Load &amp; reconcile</a></li>
       <li><a href="#phase-5">5 · Cutover &amp; sign-off</a></li>
       <li><a href="#download">Download MD</a></li>
+      <li><a href="#faq">FAQ</a></li>
     </ol>
   </aside>
 
   <div class="body">
-    <p>I've watched two go-lives slip a month because someone underestimated migration. The work is not glamorous. It is also, more than anything else, where ERP projects quietly fail. This is the list I run, in order, for every engagement.</p>
+    <p>I've watched two go-lives slip a month because someone underestimated migration. The work is not glamorous. It is also, more than anything else, where ERP projects quietly fail — and a slipped migration is one of the biggest hidden lines in the <a href="0005-erp-go-live-cost-manufacturing-bangladesh" style="color:var(--accent)">real cost of a go-live</a>. This is the list I run, in order, for every engagement.</p>
+
+    <div class="field-note">
+      <div class="fn-hd"><span>Note · Garment manufacturer · ~3 years of Excel history</span><span class="when">Pre-go-live, week −2</span></div>
+      <div class="fn-body">
+        Two weeks before cutover, the dry run reconciled to within BDT 40,000 on stock value — close enough that the team almost waved it through. It wasn't a rounding error. A single product had been maintained in two spreadsheets with <strong>different units of measure</strong> — one in pieces, one in dozens — and the transform script trusted both. Catching it meant re-running Phase 02 item 10 and Phase 03 item 22 for the whole product master. <strong>That is the month the go-live slipped. The checklist item existed; it had been ticked without being tested.</strong>
+      </div>
+    </div>
 
     <div class="summary-grid">
       <div class="summary-cell"><div class="k">Items</div><div class="v">40</div></div>
@@ -327,12 +347,25 @@
           <span class="meta">40 ITEMS · 5 PHASES · 14 KB</span>
         </span>
       </div>
-      <a class="btn-dl" href="#" onclick="event.preventDefault()">Download <span>↓</span></a>
+      <a class="btn-dl" href="excel-to-odoo-migration-checklist.v3.md" download>Download <span>↓</span></a>
     </div>
 
     <blockquote>
       A weekend cutover is just a Tuesday's worth of work, executed by people who slept the night before. Everything in this list exists to make that sentence true.
     </blockquote>
+
+    <p>Clean data is necessary but not sufficient. Once it lands, you still have to prove the workflows hold up — that is the job of a real <a href="0009-uat-script-200-users-ago" style="color:var(--accent)">UAT script</a> — and then get people to actually use the system, which is where <a href="0007-change-management-isnt-a-memo" style="color:var(--accent)">change management</a> earns its place in the budget.</p>
+
+    <h2 id="faq">FAQ</h2>
+
+    <h3>How long does Excel to Odoo data migration take?</h3>
+    <p>For a Bangladesh SME with 3–5 years of historical data, a clean Excel-to-Odoo migration takes 3–6 weeks: 1–2 weeks for data audit and cleaning, 1–2 weeks for mapping and template preparation, 1 week for test imports, and 3–5 days for final cutover. Poor data quality is the main variable that extends this timeline.</p>
+
+    <h3>What data should be migrated first in Odoo?</h3>
+    <p>Migrate master data first: chart of accounts, products, customers, vendors, and inventory locations. Then opening balances (accounting), then open transactions (purchase orders, sales orders). Historical transactions are usually not migrated — they stay in the legacy system for reference. Always validate each layer before moving to the next (see the load order in item 25).</p>
+
+    <h3>What are the most common data migration mistakes in Odoo projects?</h3>
+    <p>The most common mistakes are: migrating dirty data without cleaning first, the wrong import sequence (transactions before master data), skipping test imports, not reconciling opening balances after import, and migrating more historical data than the business actually needs.</p>
   </div>
 </article>
 
@@ -350,7 +383,7 @@
         <a class="next-card" href="0007-change-management-isnt-a-memo">
           <span class="dir">Older · 0007</span>
           <h4>Change management isn't a memo</h4>
-          <p>Field notes from training 100+ operators through a go-live.</p>
+          <p>Field notes from training 200+ operators through a go-live.</p>
           <span class="arrow">→</span>
         </a>
       </div>

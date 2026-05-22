@@ -26,7 +26,7 @@
   <meta property="og:site_name" content="Mehedi Hasan | Odoo ERP Consultant" />
   <meta property="article:author" content="https://www.linkedin.com/in/mehedi-hasan-consultant/" />
   <meta property="article:published_time" content="2026-05-05T11:00:00+06:00" />
-  <meta property="article:modified_time" content="2026-05-05T11:00:00+06:00" />
+  <meta property="article:modified_time" content="2026-05-23T11:00:00+06:00" />
   <meta property="article:section" content="Odoo ERP Bangladesh" />
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
@@ -43,7 +43,7 @@
     "headline": "Letter of Credit (LC) Workflow in Odoo: Bangladesh Exporter's Guide",
     "description": "A practitioner's guide to managing the Letter of Credit (LC) lifecycle in Odoo for Bangladesh exporters — from proforma invoice generation and LC registration to shipment document assembly, LC compliance verification, and bank payment reconciliation in Odoo Accounting.",
     "datePublished": "2026-05-05T11:00:00+06:00",
-    "dateModified": "2026-05-05T11:00:00+06:00",
+    "dateModified": "2026-05-23T11:00:00+06:00",
     "author": {
       "@type": "Person",
       "name": "Mehedi Hasan",
@@ -89,6 +89,14 @@
         "acceptedAnswer": {
           "@type": "Answer",
           "text": "When the LC proceeds are credited to your bank account, record it in Odoo as a payment against the customer invoice. Go to Accounting → Customers → Invoices → find the invoice → Register Payment → select the bank account, enter the amount in the invoice currency, and enter the actual exchange rate on the payment date. Odoo automatically calculates and posts the currency exchange gain or loss to your configured gain/loss accounts. For LC proceeds where the bank deducts discrepancy charges or handling fees before crediting, post the charges as a separate journal entry to a 'Bank Charges' expense account."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What documents does Odoo generate for LC presentation?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Odoo generates two of the documents required for LC presentation: the Commercial Invoice (from Accounting → Customers → Invoices) and the Packing List (from the Delivery Order, which requires product weights to be set on each product record). All other LC documents are sourced externally — the Bill of Lading from the shipping line, the Certificate of Origin from BGMEA or EPB, and the Inspection Certificate from the buyer's nominated agency. Attach every document to the Odoo Sales Order via the chatter so each export order has a complete, searchable document archive."
         }
       }
     ]
@@ -304,6 +312,13 @@
       padding: 1px 5px;
       border-radius: 3px;
     }
+
+    /* field note */
+    .field-note{margin:28px 0;border:1px solid var(--border);border-radius:12px;overflow:hidden;background:var(--surface)}
+    .fn-hd{display:flex;align-items:center;justify-content:space-between;padding:12px 18px;border-bottom:1px solid var(--border);font-family:var(--mono);font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-3)}
+    .fn-hd .when{color:var(--accent)}
+    .fn-body{padding:18px 22px;font-size:15px;line-height:1.65;color:var(--text-2)}
+    .fn-body strong{color:var(--text);font-weight:500}
   </style>
 </head>
 
@@ -486,6 +501,13 @@
       <p><strong>Option 2 — Custom SO fields (recommended for high-volume exporters):</strong> Add custom fields to the Sales Order model: LC Number, LC Expiry Date, Latest Shipment Date, Advising Bank, LC Amount. This enables filtering and reporting by LC expiry — critical for production scheduling. A skilled Odoo developer can add these fields in 2–3 hours.</p>
 
       <p><strong>Option 3 — Customer Reference field:</strong> A quick workaround — enter the LC number in the "Customer Reference" field on the Sales Order. This prints on invoices and delivery orders, and allows filtering by LC number in order lists.</p>
+
+      <div class="field-note">
+        <div class="fn-hd"><span>Note · Woven garment exporter, peak season</span><span class="when">Latest shipment date missed</span></div>
+        <div class="fn-body">
+          One factory scheduled its production floor by order value — the biggest orders ran first. The trouble was that the largest order in the queue had a comfortable LC expiry, while a smaller order's LC carried a tight latest-shipment date that lived only in a printed LC copy in a drawer. The small order shipped a day after its cut-off. The bank held the documents as discrepant; the buyer eventually waived, but the negotiation took three weeks and the relationship cooled. <strong>The fix cost nothing in Odoo: the latest-shipment date is logged in the Sales Order chatter the day the LC arrives, and the production planning view is sorted by that date — not by order value. The most urgent order is the one whose LC expires first, not the one worth the most.</strong>
+        </div>
+      </div>
 
       <h2 id="lc-compliance">LC compliance checklist — before shipment</h2>
 

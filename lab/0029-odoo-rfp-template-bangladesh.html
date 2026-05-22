@@ -26,7 +26,7 @@
   <meta property="og:site_name" content="Mehedi Hasan | Odoo ERP Consultant" />
   <meta property="article:author" content="https://www.linkedin.com/in/mehedi-hasan-consultant/" />
   <meta property="article:published_time" content="2026-05-05T12:30:00+06:00" />
-  <meta property="article:modified_time" content="2026-05-05T12:30:00+06:00" />
+  <meta property="article:modified_time" content="2026-05-23T12:30:00+06:00" />
   <meta property="article:section" content="Odoo ERP Bangladesh" />
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
@@ -43,7 +43,7 @@
     "headline": "How to Write an Odoo RFP in Bangladesh: Template + Scoring Matrix",
     "description": "A complete guide to writing an Odoo RFP (Request for Proposal) for Bangladesh companies — including the full 7-section RFP template, weighted vendor evaluation criteria covering technical, commercial, and Bangladesh-specific factors, a scoring matrix, reference check questions, and the red flags that disqualify a vendor before evaluation begins.",
     "datePublished": "2026-05-05T12:30:00+06:00",
-    "dateModified": "2026-05-05T12:30:00+06:00",
+    "dateModified": "2026-05-23T12:30:00+06:00",
     "author": {
       "@type": "Person",
       "name": "Mehedi Hasan",
@@ -298,6 +298,12 @@
       .rfp-tl-row { grid-template-columns: 1fr; }
       .rfp-tl-day { border-right: none; border-bottom: 1px solid var(--border); }
     }
+
+    .field-note{margin:28px 0;border:1px solid var(--border);border-radius:12px;overflow:hidden;background:var(--surface)}
+    .fn-hd{display:flex;align-items:center;justify-content:space-between;padding:12px 18px;border-bottom:1px solid var(--border);font-family:var(--mono);font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-3)}
+    .fn-hd .when{color:var(--accent)}
+    .fn-body{padding:18px 22px;font-size:15px;line-height:1.65;color:var(--text-2)}
+    .fn-body strong{color:var(--text);font-weight:500}
   </style>
 </head>
 
@@ -372,6 +378,13 @@
         <li>Their reference sites — companies you can call before signing</li>
       </ul>
 
+      <div class="field-note">
+        <div class="fn-hd"><span>Note · Accessories manufacturer, Narayanganj</span><span class="when">Vendor selection</span></div>
+        <div class="fn-body">
+          A company that asked me to review its ERP project after the fact had selected its vendor on the strength of a polished demo — animated dashboards, a slick mobile view. Nobody called the two reference sites the vendor had named. When I phoned one of those references later, they said plainly that their own go-live had slipped four months, and that the same junior consultant would now be staffed on this new project. <strong>The demo is the easiest thing for a vendor to perfect and the least predictive of delivery. The reference call is tedious — and it is the single most useful hour in the whole RFP process.</strong>
+        </div>
+      </div>
+
       <h2 id="pre-qualify">Pre-qualification criteria (before you send the RFP)</h2>
 
       <p>Do not send your RFP to every firm that says they do Odoo. Pre-qualify first. A vendor that fails any of these three criteria should not receive the RFP:</p>
@@ -400,7 +413,7 @@
             <li><strong>Decision timeline:</strong> We plan to select a vendor by [date] and begin implementation by [date] with a target go-live of [date]</li>
             <li><strong>Budget range:</strong> Our approved budget for implementation services is approximately [BDT X–Y lakh]. Proposals significantly outside this range will not be evaluated.</li>
           </ul>
-          <p class="rfp-hint">WHY: Vendors who know your budget range give more realistic proposals. Vendors who don't know the budget pad with optional items. The "secret budget" approach produces less useful proposals, not better pricing.</p>
+          <p class="rfp-hint">WHY: Vendors who know your budget range give more realistic proposals. Vendors who don't know the budget pad with optional items. The "secret budget" approach produces less useful proposals, not better pricing. To set a defensible range before you write this section, run your scope through the <a href="/tools/odoo-cost-estimator/" style="color:var(--accent)">Odoo cost estimator</a>.</p>
         </div>
       </div>
 
@@ -439,7 +452,7 @@
         </div>
         <div class="rfp-body">
           <ul>
-            <li><strong>Odoo version:</strong> We require Odoo [17 / 18] Enterprise. Proposals for Community edition will not be evaluated.</li>
+            <li><strong>Odoo version:</strong> We require Odoo [18 / 19] Enterprise. Proposals for Community edition will not be evaluated.</li>
             <li><strong>Concurrent users:</strong> We expect [X] concurrent users during peak hours. Vendor must demonstrate the proposed server can handle this load.</li>
             <li><strong>Uptime requirement:</strong> The system must be available during Bangladesh business hours (Sunday–Thursday, 09:00–18:00 +06:00) with maximum planned downtime of [4 hours/month].</li>
             <li><strong>Backup:</strong> Daily automated backup with minimum 30-day retention. Vendor must describe backup and restoration procedure.</li>
@@ -700,7 +713,7 @@
 
       <div class="callout">
         <span class="tag">See also</span>
-        <p>For the implementation phase after vendor selection, use the <a href="0028-odoo-implementation-roadmap-bangladesh" style="color:var(--accent)">12-week Odoo implementation roadmap for Bangladesh SMEs</a>. For cost benchmarks to validate vendor pricing, see the <a href="0012-odoo-erp-cost-bangladesh" style="color:var(--accent)">Odoo ERP implementation cost guide for Bangladesh</a>. <a href="../#contact" style="color:var(--accent)">Need an independent review of your vendor proposals? Get in touch →</a></p>
+        <p>For the implementation phase after vendor selection, use the <a href="0028-odoo-implementation-roadmap-bangladesh" style="color:var(--accent)">12-week Odoo implementation roadmap for Bangladesh SMEs</a>. For cost benchmarks to validate vendor pricing, see the <a href="0012-odoo-erp-cost-bangladesh" style="color:var(--accent)">Odoo ERP implementation cost guide for Bangladesh</a> or run your scope through the <a href="/tools/odoo-cost-estimator/" style="color:var(--accent)">Odoo cost estimator</a>. <a href="../#contact" style="color:var(--accent)">Need an independent review of your vendor proposals? Get in touch →</a></p>
       </div>
 
       <h2 id="faq">Frequently asked questions</h2>

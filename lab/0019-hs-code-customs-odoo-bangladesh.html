@@ -26,7 +26,7 @@
   <meta property="og:site_name" content="Mehedi Hasan | Odoo ERP Consultant" />
   <meta property="article:author" content="https://www.linkedin.com/in/mehedi-hasan-consultant/" />
   <meta property="article:published_time" content="2026-05-05T10:00:00+06:00" />
-  <meta property="article:modified_time" content="2026-05-05T10:00:00+06:00" />
+  <meta property="article:modified_time" content="2026-05-23T10:00:00+06:00" />
   <meta property="article:section" content="Odoo ERP Bangladesh" />
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
@@ -43,7 +43,7 @@
     "headline": "Customs & HS Code Management in Odoo for Bangladesh Exporters",
     "description": "A complete guide to setting up HS codes and customs management in Odoo for Bangladesh exporters — product classification using the HS system, fiscal position mapping for duty-free and zero-VAT treatment, export documentation from Odoo, and how Odoo data connects to Bangladesh customs declarations.",
     "datePublished": "2026-05-05T10:00:00+06:00",
-    "dateModified": "2026-05-05T10:00:00+06:00",
+    "dateModified": "2026-05-23T10:00:00+06:00",
     "author": {
       "@type": "Person",
       "name": "Mehedi Hasan",
@@ -89,6 +89,14 @@
         "acceptedAnswer": {
           "@type": "Answer",
           "text": "Odoo does not generate a Bangladesh Customs Export General Manifest (EGM) or Bill of Export automatically — these are submitted through Bangladesh Customs ASYCUDA++ or the NBR electronic filing system. However, Odoo can generate the commercial invoice, packing list, and certificate of quantity (from the delivery order) — all required documents that the C&F agent uses to prepare the customs export declaration. Accurate HS codes and product details in Odoo directly feed these documents."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How does Odoo handle customs duty on imported raw materials?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Use the Landed Costs feature (Inventory → Operations → Landed Costs). Link the import receipt and add cost lines for each import charge: customs duty, supplementary duty, VAT on import, advance income tax (AIT), and C&F fees. Odoo distributes these costs across the imported products and adds them to inventory valuation, giving an accurate landed cost per unit that flows into cost of goods sold and margin analysis on export sales orders. For bonded warehouse and EPZ factories, import duty is suspended rather than expensed — tracked as a liability and discharged when export proof is provided."
         }
       }
     ]
@@ -254,6 +262,13 @@
       line-height: 1.5;
     }
     .fp-table td strong { color: var(--text); }
+
+    /* field note */
+    .field-note{margin:28px 0;border:1px solid var(--border);border-radius:12px;overflow:hidden;background:var(--surface)}
+    .fn-hd{display:flex;align-items:center;justify-content:space-between;padding:12px 18px;border-bottom:1px solid var(--border);font-family:var(--mono);font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-3)}
+    .fn-hd .when{color:var(--accent)}
+    .fn-body{padding:18px 22px;font-size:15px;line-height:1.65;color:var(--text-2)}
+    .fn-body strong{color:var(--text);font-weight:500}
   </style>
 </head>
 
@@ -410,6 +425,13 @@
         <p>The HS codes above are illustrative. Bangladesh Customs tariff headings and subheadings are revised periodically. Always confirm the exact 8-digit code for your specific product with your C&F agent or the current NBR tariff schedule. Misclassification — even unintentional — can result in duty reassessment, penalties, and shipment holds.</p>
       </div>
 
+      <div class="field-note">
+        <div class="fn-hd"><span>Note · Knitwear exporter, new style introduction</span><span class="when">Customs hold at Chittagong</span></div>
+        <div class="fn-body">
+          A factory had added a new garment style to Odoo by duplicating an existing product record — and the duplicate carried over the <em>original</em> style's HS code. The two garments were classified under different subheadings. The export declaration the C&F agent filed used the inherited code; customs flagged the mismatch between the declared code and the physical goods, and the container sat at port for two days while the declaration was amended. The cost was not the duty — it was the demurrage and the delayed vessel. <strong>The fix was a product-creation rule: no exported product is marked sellable in Odoo until its HS code has a sign-off note in the chatter from the C&F agent. Duplicating a product record never carries a verified code — it carries a guess.</strong>
+        </div>
+      </div>
+
       <h2 id="odoo-setup">Setting HS codes on Odoo products</h2>
 
       <p>First, enable the HS code field in Odoo: <strong>Settings → Inventory → Customs → tick "Customs"</strong>. This adds the HS Code field to all product records.</p>
@@ -521,7 +543,7 @@
         <p>Accurate landed costs feed into product cost reporting which ultimately informs your export pricing. When I set up the <a href="0017-odoo-sales-crm-bangladesh" style="color:var(--accent)">Odoo Sales & CRM for Bangladesh exporters</a>, the starting point is always: are your product costs accurate? If raw material landed costs are wrong, your margin analysis on Sales Orders is meaningless. HS code accuracy and landed costs are foundational to any Bangladesh export business running on Odoo.</p>
       </div>
 
-      <p>For bonded warehouse factories (EPZ or bonded under BGMEA), the duty treatment is different — covered in detail in the EPZ compliance article. The short version: import duty is suspended (not paid), tracked as a liability, and extinguished when you provide proof of export within the bonded quota period.</p>
+      <p>For bonded warehouse factories (EPZ or bonded under BGMEA), the duty treatment is different — covered in detail in the <a href="0021-epz-sez-compliance-odoo-bangladesh" style="color:var(--accent)">EPZ &amp; SEZ compliance guide for Odoo</a>. The short version: import duty is suspended (not paid), tracked as a liability, and extinguished when you provide proof of export within the bonded quota period.</p>
 
       <h2 id="faq">Frequently asked questions</h2>
 

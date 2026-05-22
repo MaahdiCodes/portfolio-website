@@ -25,7 +25,7 @@
   <meta property="og:site_name" content="Mehedi Hasan | Odoo ERP Consultant" />
   <meta property="article:author" content="https://www.linkedin.com/in/mehedi-hasan-consultant/" />
   <meta property="article:published_time" content="2026-05-07T11:30:00+06:00" />
-  <meta property="article:modified_time" content="2026-05-07T11:30:00+06:00" />
+  <meta property="article:modified_time" content="2026-05-23T11:30:00+06:00" />
   <meta property="article:section" content="Odoo ERP Bangladesh" />
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
@@ -42,7 +42,7 @@
     "headline": "Odoo for Trading Companies Bangladesh: Multi-Warehouse & Procurement",
     "description": "A complete guide to configuring Odoo ERP for trading and wholesale distribution companies in Bangladesh. Covers multi-warehouse configuration, import procurement workflow with LC management and landed costs, customer pricing and margin management using pricelists, automatic stock replenishment, Bangladesh VAT and TDS compliance for trading, and inter-warehouse stock transfers.",
     "datePublished": "2026-05-07T11:30:00+06:00",
-    "dateModified": "2026-05-07T11:30:00+06:00",
+    "dateModified": "2026-05-23T11:30:00+06:00",
     "author": {
       "@type": "Person",
       "name": "Mehedi Hasan",
@@ -270,6 +270,12 @@
       margin-bottom: 18px;
     }
 
+    .field-note{margin:28px 0;border:1px solid var(--border);border-radius:12px;overflow:hidden;background:var(--surface)}
+    .fn-hd{display:flex;align-items:center;justify-content:space-between;padding:12px 18px;border-bottom:1px solid var(--border);font-family:var(--mono);font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-3)}
+    .fn-hd .when{color:var(--accent)}
+    .fn-body{padding:18px 22px;font-size:15px;line-height:1.65;color:var(--text-2)}
+    .fn-body strong{color:var(--text);font-weight:500}
+
     @media(max-width:900px){
       .proc-flow { grid-template-columns: repeat(3, 1fr); gap: 20px; }
       .proc-step:not(:last-child)::after { display: none; }
@@ -493,6 +499,13 @@
 
       <p>Landed costs are the single most important configuration for a trading company's inventory valuation accuracy. Without landed costs applied correctly, your product costs in Odoo reflect only the CIF invoice price — not what you actually paid to land the goods in your warehouse. This means your margin calculations are wrong.</p>
 
+      <div class="field-note">
+        <div class="fn-hd"><span>Note · Importer-distributor, Dhaka</span><span class="when">First margin report</span></div>
+        <div class="fn-body">
+          An import distributor moved from Tally to Odoo and, in the rush to go live, loaded product costs straight from the supplier's CIF invoice — no landed costs applied. The first month's margin report looked excellent. Then the accountant reconciled it against the bank: customs duty, C&amp;F freight, and clearing fees had quietly absorbed 9–14% of every shipment, and several fast-moving SKUs were being sold below true landed cost. We retrofitted landed costs on the open receipts and made it a mandatory step before any GRN is validated. <strong>For a trading company, a margin number that excludes landed cost is not optimistic — it is wrong, and it is wrong in the direction that loses money.</strong>
+        </div>
+      </div>
+
       <p>Enable landed costs: Inventory → Configuration → Settings → Valuation → enable "Landed Costs". Also ensure your product category's costing method is set to "Average Cost (AVCO)" or "First In First Out (FIFO)" — Standard Price does not reflect landed cost adjustments accurately for imported goods.</p>
 
       <p>Typical landed cost items for a Bangladesh importer:</p>
@@ -560,7 +573,7 @@
 
       <div class="callout">
         <span class="tag">Bottom line</span>
-        <p>The highest-value configurations for a Bangladesh trading company in Odoo are: landed cost allocation (so your margin is real, not based on CIF price alone), multi-tier pricelists (so pricing is consistent and margin-monitored), and credit limit enforcement (so AR aging does not spiral out of control). These three configurations directly address the three most common financial management failures in Bangladesh wholesale businesses. <a href="../#contact" style="color:var(--accent)">Need help configuring Odoo for your trading business? Get in touch →</a></p>
+        <p>The highest-value configurations for a Bangladesh trading company in Odoo are: landed cost allocation (so your margin is real, not based on CIF price alone), multi-tier pricelists (so pricing is consistent and margin-monitored), and credit limit enforcement (so AR aging does not spiral out of control). These three configurations directly address the three most common financial management failures in Bangladesh wholesale businesses. To budget the licensing and rollout for your business, try the <a href="/tools/odoo-cost-estimator/" style="color:var(--accent)">Odoo cost estimator</a>. <a href="../#contact" style="color:var(--accent)">Need help configuring Odoo for your trading business? Get in touch →</a></p>
       </div>
 
       <h2 id="faq">Frequently asked questions</h2>

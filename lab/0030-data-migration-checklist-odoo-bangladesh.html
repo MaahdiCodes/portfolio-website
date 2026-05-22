@@ -26,7 +26,7 @@
   <meta property="og:site_name" content="Mehedi Hasan | Odoo ERP Consultant" />
   <meta property="article:author" content="https://www.linkedin.com/in/mehedi-hasan-consultant/" />
   <meta property="article:published_time" content="2026-05-05T13:00:00+06:00" />
-  <meta property="article:modified_time" content="2026-05-05T13:00:00+06:00" />
+  <meta property="article:modified_time" content="2026-05-23T13:00:00+06:00" />
   <meta property="article:section" content="Odoo ERP Bangladesh" />
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
@@ -43,7 +43,7 @@
     "headline": "Data Cleaning Before Odoo Go-Live: The 10-Point Checklist for Bangladesh",
     "description": "A complete 10-point data migration and cleaning checklist for Bangladesh companies preparing for Odoo go-live. Covers customer master deduplication, vendor TIN classification for TDS, product master standardization, chart of accounts validation, opening AR/AP balances, physical inventory count, employee master for payroll, fixed assets, open transactions, and the exact cutover day sequence. Includes Bangladesh-specific data challenges and Excel validation techniques.",
     "datePublished": "2026-05-05T13:00:00+06:00",
-    "dateModified": "2026-05-05T13:00:00+06:00",
+    "dateModified": "2026-05-23T13:00:00+06:00",
     "author": {
       "@type": "Person",
       "name": "Mehedi Hasan",
@@ -297,6 +297,12 @@
       background: var(--accent);
       margin-bottom: 18px;
     }
+
+    .field-note{margin:28px 0;border:1px solid var(--border);border-radius:12px;overflow:hidden;background:var(--surface)}
+    .fn-hd{display:flex;align-items:center;justify-content:space-between;padding:12px 18px;border-bottom:1px solid var(--border);font-family:var(--mono);font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-3)}
+    .fn-hd .when{color:var(--accent)}
+    .fn-body{padding:18px 22px;font-size:15px;line-height:1.65;color:var(--text-2)}
+    .fn-body strong{color:var(--text);font-weight:500}
   </style>
 </head>
 
@@ -366,6 +372,13 @@
         <li><strong>Wrong opening stock quantities corrupt inventory valuation from day one.</strong> A warehouse team that inherited opening stock from a month-old Tally count will spend the first three months doing manual adjustments to reconcile physical vs system inventory.</li>
         <li><strong>Unreconciled opening AR/AP balances mean the trial balance is wrong on day one.</strong> An accounts team chasing why Odoo's trial balance doesn't match the legacy system is not processing invoices — they are debugging history.</li>
       </ul>
+
+      <div class="field-note">
+        <div class="fn-hd"><span>Note · Distribution business, Chattogram</span><span class="when">~6 weeks post-go-live</span></div>
+        <div class="fn-body">
+          A distributor went live with its Tally customer master imported as-is. One of its largest buyers existed in Tally under four spellings, and the outstanding balance had been split across all four records. After go-live, a BDT 7 lakh payment was matched against one of them while collections staff kept chasing a phantom "due" amount sitting on another. It took the accounts team most of a day to unpick — and the same pattern recurred for three more customers over the following month. <strong>None of this would have survived a deduplication pass before import. The cost of skipping that pass is not saved time — it is reconciliation work moved to after go-live, when the team is least able to absorb it.</strong>
+        </div>
+      </div>
 
       <h2 id="data-audit">Conduct your data audit first</h2>
 

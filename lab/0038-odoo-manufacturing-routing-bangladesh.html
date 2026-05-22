@@ -25,7 +25,7 @@
   <meta property="og:site_name" content="Mehedi Hasan | Odoo ERP Consultant" />
   <meta property="article:author" content="https://www.linkedin.com/in/mehedi-hasan-consultant/" />
   <meta property="article:published_time" content="2026-05-08T12:00:00+06:00" />
-  <meta property="article:modified_time" content="2026-05-08T12:00:00+06:00" />
+  <meta property="article:modified_time" content="2026-05-23T12:00:00+06:00" />
   <meta property="article:section" content="Odoo ERP Bangladesh" />
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
@@ -42,7 +42,7 @@
     "headline": "Manufacturing Routing in Odoo: Work Centers, Operations & Time Tracking",
     "description": "Configure Odoo manufacturing routing for Bangladesh factories — work centers, operations, machine capacity, and production time tracking.",
     "datePublished": "2026-05-08T12:00:00+06:00",
-    "dateModified": "2026-05-08T12:00:00+06:00",
+    "dateModified": "2026-05-23T12:00:00+06:00",
     "author": {
       "@type": "Person",
       "name": "Mehedi Hasan",
@@ -80,6 +80,22 @@
         "acceptedAnswer": {
           "@type": "Answer",
           "text": "A Bill of Materials (BOM) defines WHAT components are needed to make a product. A Routing defines HOW it is made — the specific sequence of operations across different work centers, including the estimated time for each operation."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How does Odoo calculate production cost from a routing?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "For each operation, Odoo multiplies the time spent at a Work Center by that center's Cost per Hour and adds the result to the finished product's valuation alongside raw-material cost. Without Work Order time tracking it uses the expected duration on the routing; with the Shop Floor app it uses the real logged duration. An inaccurate cost-per-hour rate or unrealistic expected duration distorts every margin report."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What happens if the real duration differs from the expected duration in Odoo?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Odoo records both. The expected duration drives capacity planning and delivery-date promises in the Master Production Schedule; the real duration captured in the Shop Floor app drives actual costing. A persistent gap between the two is a signal to re-measure that operation — ignoring it means slipped schedules and wrong product costs."
         }
       }
     ]
@@ -149,6 +165,11 @@
       background: var(--accent);
       margin-bottom: 18px;
     }
+    .field-note{margin:28px 0;border:1px solid var(--border);border-radius:12px;overflow:hidden;background:var(--surface)}
+    .fn-hd{display:flex;align-items:center;justify-content:space-between;padding:12px 18px;border-bottom:1px solid var(--border);font-family:var(--mono);font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-3)}
+    .fn-hd .when{color:var(--accent)}
+    .fn-body{padding:18px 22px;font-size:15px;line-height:1.65;color:var(--text-2)}
+    .fn-body strong{color:var(--text);font-weight:500}
     @media(max-width:800px){
       .flow-row { grid-template-columns: 1fr; }
       .flow-stage { border-right: none; border-bottom: 1px solid var(--border); }
@@ -221,7 +242,7 @@
         <li><strong>Working Hours:</strong> The schedule this center operates on (e.g., standard 8-hour shift vs 24/7 operation).</li>
         <li><strong>Capacity:</strong> How many items can be processed in parallel.</li>
         <li><strong>OEE Target:</strong> Overall Equipment Effectiveness target percentage.</li>
-        <li><strong>Cost per hour:</strong> This is critical. It includes the depreciation of the machine, electricity costs, floor space rent, and operator wages. If an operation takes 2 hours at a center with a $50/hr cost, $100 is added to the finished product's valuation.</li>
+        <li><strong>Cost per hour:</strong> This is critical. It includes the depreciation of the machine, electricity costs, floor space rent, and operator wages. If an operation takes 2 hours at a center with a BDT 6,000/hr cost, BDT 12,000 is added to the finished product's valuation.</li>
       </ul>
 
       <h2 id="operations">Operations &amp; Sequences</h2>
@@ -259,9 +280,16 @@
       <p>Why go through the trouble of routings? <strong>Accurate Costing.</strong></p>
       <p>Without routings, all you have is material cost. By assigning a BDT/hour rate to each Work Center and tracking the time spent, Odoo automatically adds the overhead cost to the inventory value of the finished good. This ensures your margins are calculated accurately, factoring in the actual machine time and labor used to produce that specific batch.</p>
 
+      <div class="field-note">
+        <div class="fn-hd"><span>Note · Light-engineering factory, Gazipur</span><span class="when">Costing review</span></div>
+        <div class="fn-body">
+          A workshop went live with routings, but the operation durations were copied straight from the demo data and never re-measured against the floor. Every routing said an assembly step took 30 minutes; the Shop Floor app showed it consistently running 50–55. Because the standard durations were too low, the MPS kept promising delivery dates the factory could not hit, and every finished good was carrying roughly <strong>40% too little machine overhead</strong> in its valuation — margins looked healthy on paper while the workshop was barely breaking even. We spent one shift logging real durations through the Shop Floor app, then updated each operation's expected time. <strong>A routing is only as honest as the durations behind it — set them once from demo data and your costs and your schedule are both fiction.</strong>
+        </div>
+      </div>
+
       <div class="callout">
         <span class="tag">Bottom line</span>
-        <p>Start simple. Map your Work Centers broadly (e.g., "Cutting", "Sewing", "Finishing") rather than mapping 50 individual machines. Get the supervisors used to tracking time at a macro level, refine your BDT/hour rates, and then drill down into specific machine scheduling once the culture of real-time data entry is established. <a href="../#contact" style="color:var(--accent)">Need help mapping your factory floor? Get in touch →</a></p>
+        <p>Start simple. Map your Work Centers broadly (e.g., "Cutting", "Sewing", "Finishing") rather than mapping 50 individual machines. Get the supervisors used to tracking time at a macro level, refine your BDT/hour rates, and then drill down into specific machine scheduling once the culture of real-time data entry is established. Want a ballpark on what the whole implementation costs before you start? Try the <a href="/tools/odoo-cost-estimator/" style="color:var(--accent)">Odoo cost estimator</a>. <a href="../#contact" style="color:var(--accent)">Need help mapping your factory floor? Get in touch →</a></p>
       </div>
 
       <h2 id="faq">Frequently asked questions</h2>
@@ -271,6 +299,12 @@
 
       <h3>What is the difference between a BOM and a Routing in Odoo?</h3>
       <p>A Bill of Materials (BOM) lists the components needed. A Routing defines the operational steps (Work Orders) across various Work Centers, dictating how those components are transformed into the finished product.</p>
+
+      <h3>How does Odoo calculate production cost from a routing?</h3>
+      <p>For each operation, Odoo multiplies the time spent at a Work Center by that center's Cost per Hour, then adds the result to the finished product's valuation alongside raw-material cost. If you have not enabled Work Order time tracking, Odoo uses the expected duration on the routing; with the Shop Floor app, it uses the real logged duration. This is why an inaccurate cost-per-hour rate or an unrealistic expected duration quietly distorts every margin report.</p>
+
+      <h3>What happens if the real duration differs from the expected duration in Odoo?</h3>
+      <p>Odoo records both. The expected duration drives capacity planning and delivery-date promises in the Master Production Schedule; the real duration (captured when an operator clicks Start and Done in the Shop Floor app) drives actual costing. A persistent gap between the two is a signal to re-measure that operation — if you ignore it, your schedules slip and your product costs stay wrong.</p>
 
     </div>
   </article>

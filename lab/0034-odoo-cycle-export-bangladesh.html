@@ -25,7 +25,7 @@
   <meta property="og:site_name" content="Mehedi Hasan | Odoo ERP Consultant" />
   <meta property="article:author" content="https://www.linkedin.com/in/mehedi-hasan-consultant/" />
   <meta property="article:published_time" content="2026-05-07T10:30:00+06:00" />
-  <meta property="article:modified_time" content="2026-05-07T10:30:00+06:00" />
+  <meta property="article:modified_time" content="2026-05-23T10:30:00+06:00" />
   <meta property="article:section" content="Odoo ERP Bangladesh" />
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
@@ -42,7 +42,7 @@
     "headline": "Odoo for Cycle & Bicycle Export Bangladesh: BOM to Customs",
     "description": "A complete configuration guide for Odoo ERP in Bangladesh bicycle and cycle export manufacturing. Covers multi-level BOM for bicycle assembly, imported component procurement with HS codes and LC management, production routing from frame welding through final assembly and QC, export documentation including commercial invoice and packing list, and Bangladesh-specific cycle export considerations including duty drawback and EPZ operations.",
     "datePublished": "2026-05-07T10:30:00+06:00",
-    "dateModified": "2026-05-07T10:30:00+06:00",
+    "dateModified": "2026-05-23T10:30:00+06:00",
     "author": {
       "@type": "Person",
       "name": "Mehedi Hasan",
@@ -250,6 +250,12 @@
       margin-bottom: 18px;
     }
 
+    .field-note{margin:28px 0;border:1px solid var(--border);border-radius:12px;overflow:hidden;background:var(--surface)}
+    .fn-hd{display:flex;align-items:center;justify-content:space-between;padding:12px 18px;border-bottom:1px solid var(--border);font-family:var(--mono);font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-3)}
+    .fn-hd .when{color:var(--accent)}
+    .fn-body{padding:18px 22px;font-size:15px;line-height:1.65;color:var(--text-2)}
+    .fn-body strong{color:var(--text);font-weight:500}
+
     @media(max-width:700px){
       .hs-grid { grid-template-columns: 1fr; }
     }
@@ -309,7 +315,7 @@
     </aside>
 
     <div class="body">
-      <p>Bangladesh exports over 2 million bicycles annually, primarily to the European Union, USA, and Japan. The major exporters — including companies like Meghna Group and Atlas Bangladesh — operate EPZ factories that import 60–80% of components and assemble finished bicycles for re-export. The duty drawback system, the HS code complexity of bicycle components, and the lot-level traceability required for duty claims make this one of the most ERP-intensive manufacturing categories in Bangladesh.</p>
+      <p>Bangladesh exports over 2 million bicycles annually, primarily to the European Union, USA, and Japan. The major exporters operate EPZ factories that import 60–80% of components and assemble finished bicycles for re-export. The duty drawback system, the HS code complexity of bicycle components, and the lot-level traceability required for duty claims make this one of the most ERP-intensive manufacturing categories in Bangladesh.</p>
 
       <p>Most cycle factories I have worked with are running procurement in Excel, production records in handwritten registers, and have no ability to quickly answer the question a duty drawback officer always asks: "Show me which imported components — with which import entry numbers — went into the bicycles on this export invoice." Odoo can answer that question in three clicks. This guide shows you how to set it up.</p>
 
@@ -596,6 +602,13 @@
 
       <p>The duty drawback claim in Bangladesh requires you to prove, for each export shipment, which imported materials were used and what import duty was paid on them. Odoo enables this through lot-level traceability:</p>
 
+      <div class="field-note">
+        <div class="fn-hd"><span>Note · Cycle exporter, Chattogram EPZ</span><span class="when">Duty drawback audit</span></div>
+        <div class="fn-body">
+          An EPZ-based bicycle exporter applied for a duty drawback claim covering a year of exports and could substantiate barely half of it. The components had been imported, the duty paid, and the bicycles genuinely exported — but receipts had been booked without lot numbers, so there was no way to prove which import shipment fed which export consignment. The drawback officer rejected every line that could not be tied to a Bill of Entry. We enabled lot tracking on all imported components and linked each lot to its B/E number; the next year's claim cleared in full. <strong>The traceability chain has to exist at the moment the import is received. It cannot be reconstructed at claim time.</strong>
+        </div>
+      </div>
+
       <ol>
         <li><strong>Enable lot tracking on all imported components:</strong> In the product master, set Tracking = "By Lot" for all imported components (derailleurs, hubs, tyres, rims, etc.). When you receive these components against a PO, assign lot numbers that correspond to the import shipment batch (e.g., LOT-2026-CN-042 for the 42nd China import shipment of 2026). Record the Bill of Entry (B/E) number and duty amount in the lot notes.</li>
         <li><strong>Record component lot consumption in production:</strong> In the Manufacturing Order work order, when components are consumed, Odoo records which specific lots were used. This is the key step — it links imported component lots to specific finished bicycle MOs.</li>
@@ -606,7 +619,7 @@
       <h2 id="bangladesh">Bangladesh cycle export — specific considerations</h2>
 
       <ul>
-        <li><strong>EPZ operations:</strong> Many large cycle exporters (Meghna, Atlas, Phoenix) operate inside Bangladesh Export Processing Zones (EPZ). EPZ factories have different VAT and duty treatment — they operate under BEPZA rules with bonded warehouse status. In Odoo, configure EPZ facilities as separate warehouses with "bonded" stock locations. Transfers between bonded and non-bonded locations trigger duty events that need to be tracked. See the <a href="0021-epz-sez-compliance-odoo-bangladesh" style="color:var(--accent)" target="_blank">EPZ compliance guide</a> for the full setup.</li>
+        <li><strong>EPZ operations:</strong> Many large cycle exporters operate inside Bangladesh Export Processing Zones (EPZ). EPZ factories have different VAT and duty treatment — they operate under BEPZA rules with bonded warehouse status. In Odoo, configure EPZ facilities as separate warehouses with "bonded" stock locations. Transfers between bonded and non-bonded locations trigger duty events that need to be tracked. See the <a href="0021-epz-sez-compliance-odoo-bangladesh" style="color:var(--accent)" target="_blank">EPZ compliance guide</a> for the full setup.</li>
         <li><strong>EU GSP+ and EUSR requirements:</strong> Bangladesh benefits from EU GSP+ preferences for bicycle exports (reduced import duty in the EU). This requires a REX (Registered Exporter) statement of origin on the commercial invoice or a Form A certificate. The origin declaration language must appear on the export invoice — include it in your Odoo commercial invoice QWeb template as a fixed text block.</li>
         <li><strong>Component quality and supplier management:</strong> Chinese components vary significantly in quality across suppliers and batches. In Odoo, use the Quality module to set up incoming quality checks (IQC) for high-value imported components — derailleurs, hubs, brakes. Failed IQC items are rejected at the receipt stage and returned to the supplier via a Return operation on the receipt. This keeps your inventory clean and prevents defective components from reaching production.</li>
         <li><strong>Model changeover planning:</strong> European buyers issue seasonal orders with specific model changes (colour, component upgrades, geometry changes). Each model change requires a BOM revision in Odoo. Use Odoo's BOM versioning (create a new BOM version rather than modifying the existing one) so historical production orders retain their original BOM and do not pick up the new component specifications retroactively.</li>

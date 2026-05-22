@@ -25,7 +25,7 @@
   <meta property="og:site_name" content="Mehedi Hasan | Odoo ERP Consultant" />
   <meta property="article:author" content="https://www.linkedin.com/in/mehedi-hasan-consultant/" />
   <meta property="article:published_time" content="2026-05-07T11:00:00+06:00" />
-  <meta property="article:modified_time" content="2026-05-07T11:00:00+06:00" />
+  <meta property="article:modified_time" content="2026-05-23T11:00:00+06:00" />
   <meta property="article:section" content="Odoo ERP Bangladesh" />
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
@@ -42,7 +42,7 @@
     "headline": "Odoo for Pharmaceutical Bangladesh: Batch Tracking & Compliance",
     "description": "A complete guide to configuring Odoo ERP for pharmaceutical manufacturing in Bangladesh. Covers lot and batch tracking setup, expiry date management, shelf life configuration, DGDA batch manufacturing record requirements, pharmaceutical production workflow (granulation → compression → coating → packaging), quality control and batch release, temperature-sensitive storage, and recall traceability.",
     "datePublished": "2026-05-07T11:00:00+06:00",
-    "dateModified": "2026-05-07T11:00:00+06:00",
+    "dateModified": "2026-05-23T11:00:00+06:00",
     "author": {
       "@type": "Person",
       "name": "Mehedi Hasan",
@@ -237,6 +237,12 @@
       margin-bottom: 18px;
     }
 
+    .field-note{margin:28px 0;border:1px solid var(--border);border-radius:12px;overflow:hidden;background:var(--surface)}
+    .fn-hd{display:flex;align-items:center;justify-content:space-between;padding:12px 18px;border-bottom:1px solid var(--border);font-family:var(--mono);font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-3)}
+    .fn-hd .when{color:var(--accent)}
+    .fn-body{padding:18px 22px;font-size:15px;line-height:1.65;color:var(--text-2)}
+    .fn-body strong{color:var(--text);font-weight:500}
+
     @media(max-width:700px){
       .pharma-steps { grid-template-columns: 1fr; }
     }
@@ -387,6 +393,13 @@
         <li><strong>Removal Date:</strong> The date at which stock should be quarantined or removed from availability for sale — typically set to 3 months before expiry to allow for distribution and use before expiry. Configure this as the trigger date for Odoo's expiry alerts.</li>
         <li><strong>Use Time (days):</strong> Set on the product master. Odoo uses this to calculate expiry date automatically when you create a manufacturing order — Manufacturing Date + Use Time = Expiry Date on the finished goods lot.</li>
       </ul>
+
+      <div class="field-note">
+        <div class="fn-hd"><span>Note · Pharma manufacturer, Tongi</span><span class="when">Stock write-off review</span></div>
+        <div class="fn-body">
+          A pharmaceutical company had lot tracking switched on but had never set a removal strategy, so pickers simply took whatever lot was nearest the door. At a quarter-end review the warehouse held several lakh taka of finished product within three months of expiry, while newer, longer-dated stock had already shipped. Distributors started returning the short-dated cartons. We set the removal strategy to FEFO on every pharmaceutical product and switched on the daily expiry alert — near-expiry stock now surfaces months before it can become a write-off. <strong>Lot tracking only records what happened. FEFO is what changes what happens; without it, the system simply watches the loss instead of preventing it.</strong>
+        </div>
+      </div>
 
       <p><strong>FEFO enforcement:</strong> Go to Inventory → Configuration → Settings → Storage Locations → enable "Storage Locations" if not already on. Then in the product's inventory tab, set Removal Strategy = "First Expiry First Out (FEFO)". When a picking is generated for a sales order or a transfer, Odoo automatically suggests the lot with the earliest expiry date. For a wholesale/hospital sales context, this is essential — it prevents near-expiry stock from accumulating in the warehouse.</p>
 

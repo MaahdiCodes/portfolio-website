@@ -26,7 +26,7 @@
   <meta property="og:site_name" content="Mehedi Hasan | Odoo ERP Consultant" />
   <meta property="article:author" content="https://www.linkedin.com/in/mehedi-hasan-consultant/" />
   <meta property="article:published_time" content="2026-05-04T12:00:00+06:00" />
-  <meta property="article:modified_time" content="2026-05-04T12:00:00+06:00" />
+  <meta property="article:modified_time" content="2026-05-22T12:00:00+06:00" />
   <meta property="article:section" content="Odoo ERP Bangladesh" />
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
@@ -43,7 +43,7 @@
     "headline": "Odoo HR & Payroll Bangladesh: PF, Gratuity & Leave Policy Setup (2026)",
     "description": "A practitioner's guide to configuring Odoo HR and Payroll for Bangladesh compliance — Provident Fund, Gratuity, leave types, salary structures, and income tax deduction at source.",
     "datePublished": "2026-05-04T12:00:00+06:00",
-    "dateModified": "2026-05-05T00:00:00+06:00",
+    "dateModified": "2026-05-22T00:00:00+06:00",
     "author": {
       "@type": "Person",
       "name": "Mehedi Hasan",
@@ -89,6 +89,14 @@
         "acceptedAnswer": {
           "@type": "Answer",
           "text": "Under the Bangladesh Labor Act 2006 (amended 2018), every worker is entitled to: 10 days Earned Leave (annual leave) for every 12 months of service; 14 days Sick Leave per year with full pay; 10 days Casual Leave per year. In addition: female employees are entitled to 16 weeks Maternity Leave (8 weeks before + 8 weeks after delivery). Employers may offer additional leave beyond these minimums. All leave balances must be tracked and any unutilised Earned Leave must be carried forward or encashed at the end of the year."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can Odoo handle income tax (TDS) on salary for Bangladesh?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, with a custom Python-based salary rule that implements the NBR's progressive income tax slabs. The rule annualises the monthly gross salary, applies the current-year tax table, divides by 12, and posts the monthly TDS to an Income Tax Payable account. It must be recalculated if an employee's salary changes mid-year — Odoo handles the recalculation automatically on the next payslip run. Salary TDS is remitted to the NBR by treasury challan by the 15th of the following month."
         }
       }
     ]
@@ -233,6 +241,12 @@
       background: var(--elev);
       border-bottom: 1px solid var(--border);
     }
+
+    .field-note{margin:28px 0;border:1px solid var(--border);border-radius:12px;overflow:hidden;background:var(--surface)}
+    .fn-hd{display:flex;align-items:center;justify-content:space-between;padding:12px 18px;border-bottom:1px solid var(--border);font-family:var(--mono);font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-3)}
+    .fn-hd .when{color:var(--accent)}
+    .fn-body{padding:18px 22px;font-size:15px;line-height:1.65;color:var(--text-2)}
+    .fn-body strong{color:var(--text);font-weight:500}
   </style>
 </head>
 
@@ -344,7 +358,7 @@
 
       <div class="callout">
         <span class="tag">Industry-specific</span>
-        <p>BGMEA/BKMEA member factories are additionally governed by the Minimum Wage Board gazette notification, which sets minimum wages by grade for RMG workers. If your factory is a BGMEA member, your Odoo salary structure must enforce these minimums. Underpaying by grade is a compliance failure — not just a payroll error. For the full BGMEA wage board configuration, see my upcoming article on that specific setup.</p>
+        <p>BGMEA/BKMEA member factories are additionally governed by the Minimum Wage Board gazette notification, which sets minimum wages by grade for RMG workers. If your factory is a BGMEA member, your Odoo salary structure must enforce these minimums. Underpaying by grade is a compliance failure — not just a payroll error. The practical setup: pull the current Minimum Wage Board gazette for your sector, create one Job Position per gazetted grade, record the gazetted floor wage on each, and review every contract's basic wage against its grade floor before confirming it. Treat any contract below the floor as a blocker, not a warning.</p>
       </div>
 
       <h2 id="employee">Employee master setup</h2>
@@ -528,6 +542,13 @@
 
       <p>Odoo does not have a native Gratuity provision module for Bangladesh. Implement this as either (a) a manual monthly journal entry, or (b) a salary rule marked as "Does not appear on payslip" with the appropriate account mapping — the rule calculates the provision per employee and posts the accrual automatically during payroll processing.</p>
 
+      <div class="field-note">
+        <div class="fn-hd"><span>Note · Manufacturing company, post-migration</span><span class="when">Year-end financial close</span></div>
+        <div class="fn-body">
+          One company I reviewed had run Odoo Payroll cleanly for a full year — payslips, PF, TDS all correct — but had never set up the Gratuity provision. Because Gratuity is a terminal benefit, nothing in the monthly cycle reminded anyone it was missing. The gap only surfaced at year-end, when the auditor asked where the accrued Gratuity liability was on the balance sheet. The answer was: nowhere. The company had to book a large retrospective provision in a single period, distorting that year's profit. <strong>Gratuity is invisible until someone resigns or an auditor asks — provision it from the first payroll run, not the first claim.</strong>
+        </div>
+      </div>
+
       <h2 id="tax">Income tax on salary</h2>
 
       <p>Income tax deduction at source (TDS on salary) must be applied monthly from the salary of every employee who earns above the tax-free threshold. For the 2025–26 tax year, the threshold is BDT 3,50,000 annual income (BDT 29,167/month gross).</p>
@@ -581,7 +602,7 @@
 
       <div class="callout">
         <span class="tag">Next step</span>
-        <p>Payroll configuration for Bangladesh compliance is one of the more technically involved parts of an Odoo implementation. If you're setting up for the first time or migrating from a legacy payroll system, <a href="../#contact" style="color:var(--accent)">reach out for a configuration review →</a></p>
+        <p>Payroll configuration for Bangladesh compliance is one of the more technically involved parts of an Odoo implementation. For a sense of where it sits in the overall project budget, try the <a href="../tools/odoo-cost-estimator/" style="color:var(--accent)">Odoo cost estimator</a>. If you're setting up for the first time or migrating from a legacy payroll system, <a href="../#contact" style="color:var(--accent)">reach out for a configuration review →</a></p>
       </div>
 
       <h2 id="faq">Frequently asked questions</h2>

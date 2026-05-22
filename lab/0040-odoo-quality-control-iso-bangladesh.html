@@ -25,7 +25,7 @@
   <meta property="og:site_name" content="Mehedi Hasan | Odoo ERP Consultant" />
   <meta property="article:author" content="https://www.linkedin.com/in/mehedi-hasan-consultant/" />
   <meta property="article:published_time" content="2026-05-08T12:00:00+06:00" />
-  <meta property="article:modified_time" content="2026-05-08T12:00:00+06:00" />
+  <meta property="article:modified_time" content="2026-05-23T12:00:00+06:00" />
   <meta property="article:section" content="Odoo ERP Bangladesh" />
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
@@ -42,7 +42,7 @@
     "headline": "Odoo Quality Control for ISO-Certified Bangladesh Factories",
     "description": "Configure Odoo quality control for ISO-certified Bangladesh factories. Setup quality checks, alerts, and acceptable tolerances.",
     "datePublished": "2026-05-08T12:00:00+06:00",
-    "dateModified": "2026-05-08T12:00:00+06:00",
+    "dateModified": "2026-05-23T12:00:00+06:00",
     "author": {
       "@type": "Person",
       "name": "Mehedi Hasan",
@@ -80,6 +80,22 @@
         "acceptedAnswer": {
           "@type": "Answer",
           "text": "Yes. Odoo supports the core requirements of ISO 9001 compliance through traceable lots, documented quality control points, corrective action workflows (Quality Alerts), and statistical process control parameters."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between a Quality Check and a Quality Alert in Odoo?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A Quality Check is the routine inspection an operator performs at a control point — a pass/fail, a measurement, or a photo logged against an operation. A Quality Alert is the corrective-action record that opens when something goes wrong: a failed check, a customer complaint, or a manually reported problem. The Alert is where you document the root cause, decide on rework, scrap, or deviation, and track the CAPA."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can Odoo block defective goods from being shipped?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. When a Quality Control Point is attached to an operation as a blocking check, Odoo prevents the operator from validating that operation until the check passes. A failed check quarantines the goods and raises a Quality Alert, so a batch that fails final inspection cannot be marked done and moved into shippable finished-goods stock."
         }
       }
     ]
@@ -156,6 +172,11 @@
       background: var(--accent);
       margin-bottom: 18px;
     }
+    .field-note{margin:28px 0;border:1px solid var(--border);border-radius:12px;overflow:hidden;background:var(--surface)}
+    .fn-hd{display:flex;align-items:center;justify-content:space-between;padding:12px 18px;border-bottom:1px solid var(--border);font-family:var(--mono);font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-3)}
+    .fn-hd .when{color:var(--accent)}
+    .fn-body{padding:18px 22px;font-size:15px;line-height:1.65;color:var(--text-2)}
+    .fn-body strong{color:var(--text);font-weight:500}
     @media(max-width:700px){
       .qc-grid { grid-template-columns: 1fr; }
     }
@@ -286,6 +307,13 @@
         <li><strong>Continuous Improvement:</strong> The Quality Alerts dashboard shows which products or work centers generate the most defects, allowing management to target improvements effectively.</li>
       </ul>
 
+      <div class="field-note">
+        <div class="fn-hd"><span>Note · Accessories exporter, Chattogram</span><span class="when">ISO surveillance audit</span></div>
+        <div class="fn-body">
+          A factory rolled out Odoo Quality but, under go-live time pressure, configured every Quality Control Point only at the <strong>outbound</strong> stage — final inspection before packing. There was no inbound check on raw materials. A consignment of off-spec trims passed straight from the receiving dock into production; the defect only surfaced at final QC, by which point it was stitched into nearly a full day's output and the whole batch had to be reworked. The ISO surveillance auditor flagged the same gap independently: no documented control over incoming material. We added an inbound QCP on the receipt operation with a blocking Measure check. <strong>Catching defects only at the exit is not quality control — it is expensive sorting.</strong>
+        </div>
+      </div>
+
       <div class="callout">
         <span class="tag">Bottom line</span>
         <p>Start with your most critical checks—usually inbound raw materials and final outbound inspections. Once those are digitized and enforced by Odoo, slowly roll out in-process checks on the shop floor. Forcing too many checks at once will frustrate workers and slow down production. <a href="../#contact" style="color:var(--accent)">Need help designing your QA workflows? Get in touch →</a></p>
@@ -298,6 +326,12 @@
 
       <h3>Can Odoo handle ISO 9001 quality requirements?</h3>
       <p>Yes. Odoo supports the core requirements of ISO 9001 compliance through traceable lots, documented quality control points, corrective action workflows (Quality Alerts), and statistical process control parameters.</p>
+
+      <h3>What is the difference between a Quality Check and a Quality Alert in Odoo?</h3>
+      <p>A Quality Check is the routine inspection an operator performs at a control point — a pass/fail, a measurement, or a photo logged against a specific operation. A Quality Alert is the corrective-action record that opens when something goes wrong: a failed check, a customer complaint, or a problem an operator reports manually. The Alert is where you document the root cause, decide on rework, scrap, or deviation, and track the CAPA — which is what an ISO auditor wants to see.</p>
+
+      <h3>Can Odoo block defective goods from being shipped?</h3>
+      <p>Yes. When a Quality Control Point is attached to an operation as a blocking check, Odoo prevents the operator from validating that operation until the check passes. A failed check leaves the goods quarantined and raises a Quality Alert, so a batch that fails its final inspection cannot be marked done and moved into shippable finished-goods stock. This is the hard stop that siloed Excel-based QC can never enforce.</p>
 
     </div>
   </article>

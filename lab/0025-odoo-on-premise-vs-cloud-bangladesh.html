@@ -26,7 +26,7 @@
   <meta property="og:site_name" content="Mehedi Hasan | Odoo ERP Consultant" />
   <meta property="article:author" content="https://www.linkedin.com/in/mehedi-hasan-consultant/" />
   <meta property="article:published_time" content="2026-05-05T10:00:00+06:00" />
-  <meta property="article:modified_time" content="2026-05-05T10:00:00+06:00" />
+  <meta property="article:modified_time" content="2026-05-23T10:00:00+06:00" />
   <meta property="article:section" content="Odoo ERP Bangladesh" />
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
@@ -43,7 +43,7 @@
     "headline": "On-Premise vs Cloud Odoo: Bangladesh Infrastructure Decision Guide",
     "description": "A practical guide for Bangladesh SMEs choosing between on-premise and cloud Odoo deployment — covering Bangladesh-specific infrastructure realities (power reliability, internet bandwidth, ISP redundancy), cost comparison across three hosting scenarios, data sovereignty considerations, and a clear decision framework.",
     "datePublished": "2026-05-05T10:00:00+06:00",
-    "dateModified": "2026-05-05T10:00:00+06:00",
+    "dateModified": "2026-05-23T10:00:00+06:00",
     "author": {
       "@type": "Person",
       "name": "Mehedi Hasan",
@@ -224,6 +224,12 @@
       background: var(--accent);
       margin-bottom: 18px;
     }
+
+    .field-note{margin:28px 0;border:1px solid var(--border);border-radius:12px;overflow:hidden;background:var(--surface)}
+    .fn-hd{display:flex;align-items:center;justify-content:space-between;padding:12px 18px;border-bottom:1px solid var(--border);font-family:var(--mono);font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-3)}
+    .fn-hd .when{color:var(--accent)}
+    .fn-body{padding:18px 22px;font-size:15px;line-height:1.65;color:var(--text-2)}
+    .fn-body strong{color:var(--text);font-weight:500}
   </style>
 </head>
 
@@ -342,6 +348,13 @@
 
       <p><strong>The combined effect:</strong> In a cloud-only deployment, an ISP outage or power cut that takes down the office router means zero ERP access. Production floor workers cannot record output, warehouse cannot confirm shipments, accounts cannot post vendor bills. In an on-premise deployment, those same events cause zero disruption if the server is on UPS and users are on LAN.</p>
 
+      <div class="field-note">
+        <div class="fn-hd"><span>Note · Garment factory, Chittagong EPZ</span><span class="when">First monsoon after go-live</span></div>
+        <div class="fn-body">
+          A factory that had gone live on a cloud-hosted Odoo lost its ISP link for most of a working morning during heavy monsoon weather — a routine event in that zone. Production kept running, but nothing could be <strong>recorded</strong>: no goods receipts, no manufacturing order confirmations, no shipment picks. By the time the line came back, the floor had a backlog of paper slips that took two days to reconcile, and one delivery had been confirmed against the wrong lot. After that quarter they moved the database to an on-premise server on the factory LAN. <strong>The cloud was never slow — it was simply absent at exactly the moment the floor needed it.</strong>
+        </div>
+      </div>
+
       <h3>Data sovereignty</h3>
       <p>For most Bangladesh factories, data sovereignty is a practical concern in two scenarios:</p>
       <ul>
@@ -407,7 +420,7 @@
         </tbody>
       </table>
 
-      <p>For total ERP cost planning including implementation and training, see our <a href="0012-odoo-erp-cost-bangladesh" style="color:var(--accent)">Odoo ERP implementation cost in Bangladesh</a> breakdown.</p>
+      <p>For total ERP cost planning including implementation and training, see our <a href="0012-odoo-erp-cost-bangladesh" style="color:var(--accent)">Odoo ERP implementation cost in Bangladesh</a> breakdown — or run your own numbers through the <a href="../tools/odoo-cost-estimator/" style="color:var(--accent)">Odoo cost estimator</a> for a quick deployment budget range.</p>
 
       <h2 id="data-control">Data control and security</h2>
 
@@ -535,7 +548,7 @@
           </a>
           <a class="next-card" href="0026-odoo-16-17-18-upgrade-bangladesh">
             <span class="dir">Newer · 0026</span>
-            <h4>Odoo 16 vs 17 vs 18 Bangladesh</h4>
+            <h4>Odoo 16/17/18/19 Bangladesh</h4>
             <p>What changed across versions and which one Bangladesh companies should target in 2026.</p>
             <span class="arrow">→</span>
           </a>

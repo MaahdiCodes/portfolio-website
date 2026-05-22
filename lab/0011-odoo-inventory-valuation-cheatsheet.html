@@ -9,6 +9,7 @@
 <link rel="apple-touch-icon" href="/favicon.png" />
 <meta name="description" content="Odoo inventory valuation cheatsheet — FIFO vs. weighted average cost for manufacturing ERP in Bangladesh. When each method makes sense on the factory floor." />
 <meta name="robots" content="index, follow" />
+<meta name="author" content="Mehedi Hasan" />
 <title>Odoo Inventory Valuation FIFO vs AVCO | Manufacturing ERP | Mehedi Hasan</title>
 <link rel="canonical" href="https://mhasan.me/lab/0011-odoo-inventory-valuation-cheatsheet" />
 <!-- Open Graph -->
@@ -21,12 +22,16 @@
 <meta property="og:image:height" content="630" />
 <meta property="og:locale" content="en_US" />
 <meta property="og:site_name" content="Mehedi Hasan | Odoo Consultant" />
+<meta property="article:author" content="https://www.linkedin.com/in/mehedi-hasan-consultant/" />
+<meta property="article:published_time" content="2026-04-01T08:00:00+06:00" />
+<meta property="article:modified_time" content="2026-05-22T08:00:00+06:00" />
+<meta property="article:section" content="Odoo ERP Bangladesh" />
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="Odoo Inventory Valuation FIFO vs AVCO | Manufacturing ERP | Mehedi Hasan" />
 <meta name="twitter:description" content="Odoo inventory valuation cheatsheet — FIFO vs. weighted average cost for manufacturing ERP in Bangladesh. When each method makes sense on the factory floor." />
 <meta name="twitter:image" content="https://mhasan.me/assets/og-default.jpg" />
-<!-- JSON-LD: Article + BreadcrumbList -->
+<!-- JSON-LD: Article + BreadcrumbList + FAQPage -->
 <script type="application/ld+json">
 [
   {
@@ -35,7 +40,7 @@
     "headline": "Odoo Inventory Valuation Cheatsheet — FIFO vs. Weighted Average",
     "description": "Odoo inventory valuation cheatsheet — FIFO vs. weighted average cost for manufacturing ERP in Bangladesh. When each method makes sense on the factory floor.",
     "datePublished": "2026-04-01T08:00:00+06:00",
-    "dateModified": "2026-04-30T08:00:00+06:00",
+    "dateModified": "2026-05-22T08:00:00+06:00",
     "author": {
       "@type": "Person",
       "name": "Mehedi Hasan",
@@ -370,6 +375,19 @@
   /* reveal */
   .reveal{opacity:0;transform:translateY(10px);transition:opacity .6s cubic-bezier(.2,.6,.2,1), transform .6s cubic-bezier(.2,.6,.2,1)}
   .reveal.in{opacity:1;transform:none}
+
+  /* article-to-article nav */
+  .lab-nav{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .lab-nav a{border:1px solid var(--border);border-radius:12px;padding:18px 20px;background:var(--surface);display:flex;flex-direction:column;gap:6px;transition:border-color .2s ease}
+  .lab-nav a:hover{border-color:var(--border-2)}
+  .lab-nav .dir{font-family:var(--mono);font-size:10.5px;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-3)}
+  .lab-nav h4{margin:0;font-size:15px;font-weight:500;color:var(--text);letter-spacing:-0.01em}
+  .lab-nav p{margin:0;font-size:13px;color:var(--text-2);line-height:1.5}
+  @media(max-width:600px){.lab-nav{grid-template-columns:1fr}}
+
+  /* faq block */
+  .faq-q{font-size:15px;font-weight:500;color:var(--text);letter-spacing:-0.01em;margin:20px 0 6px}
+  .faq-q:first-of-type{margin-top:0}
 </style>
 </head>
 <body>
@@ -812,6 +830,16 @@
         <p>The single most common valuation misconfiguration I see: the <strong>Stock Input account is set to an expense account instead of a liability/GRNI account</strong>. This causes double-booking of COGS — once on receipt, once on vendor bill. Always use a clearing (GRNI) account for Stock Input, never an expense account directly.</p>
       </div>
 
+      <div class="content-section">
+        <h3>Frequently asked questions</h3>
+        <p class="faq-q">What inventory valuation methods are available in Odoo?</p>
+        <p class="body">Odoo supports three methods: <strong>Standard Price</strong> (fixed cost per unit — simple, but inaccurate for variable-cost goods), <strong>Average Cost (AVCO)</strong> (weighted average updated on each receipt — best for most Bangladesh manufacturers), and <strong>FIFO</strong> (tracks each batch individually — required for pharmaceutical and food companies with expiry tracking). LIFO is not available and is not IFRS-compliant.</p>
+        <p class="faq-q">When should a Bangladesh manufacturer use AVCO vs FIFO in Odoo?</p>
+        <p class="body">Use AVCO for raw materials with stable prices and no expiry-tracking requirement — it is simpler to manage and suits most textile, cycle, and general manufacturing companies. Use FIFO when you need lot/serial tracking for compliance (pharma, food, medical devices) or to accurately trace import-cost fluctuations for duty drawback. The decision matrix in Section 04 walks through this factor by factor.</p>
+        <p class="faq-q">How does Odoo handle inventory valuation for imported goods?</p>
+        <p class="body">Odoo's <strong>Landed Costs</strong> feature lets you add import-related costs — freight, customs duty, port handling, insurance — to the unit cost of received goods. These landed costs update the product's average cost (AVCO) or specific lot cost (FIFO), giving the true delivered cost. For how those import costs flow into a full project budget, see <a href="0012-odoo-erp-cost-bangladesh" style="color:var(--accent)">Odoo ERP cost in Bangladesh</a>.</p>
+      </div>
+
       <div class="page-footer-nav">
         <button class="pf-btn prev" onclick="goToPage(4)"><span class="arr">←</span> Previous</button>
         <span class="pf-counter">5 / 5</span>
@@ -822,11 +850,28 @@
   </div><!-- /shell -->
 </div><!-- /doc-pages -->
 
+<!-- CONTINUE EXPLORING -->
+<div class="shell" style="margin-bottom:56px">
+  <div class="page-number" style="margin-bottom:16px">Continue exploring</div>
+  <div class="lab-nav">
+    <a href="0010-bpmn-templates-manufacturing-discovery">
+      <span class="dir">← Older · 0010</span>
+      <h4>BPMN templates for manufacturing discovery</h4>
+      <p>The starter process maps I use in Week 1 of every engagement.</p>
+    </a>
+    <a href="0012-odoo-erp-cost-bangladesh">
+      <span class="dir">Newer · 0012 →</span>
+      <h4>Odoo ERP cost in Bangladesh</h4>
+      <p>A real breakdown of what an Odoo implementation actually costs.</p>
+    </a>
+  </div>
+</div>
+
 <!-- DOC FOOTER -->
 <div class="doc-footer">
   <div class="shell">
     <div class="doc-footer-inner">
-      <span class="about-author">Written by Mehedi Hasan · ERP Consultant · Dhaka, Bangladesh</span>
+      <span class="about-author">Written by <a href="https://www.linkedin.com/in/mehedi-hasan-consultant/" rel="author" style="color:var(--accent)">Mehedi Hasan</a> · ERP Consultant · Dhaka, Bangladesh</span>
       <a class="back-btn" href="../#lab">← Back to Lab</a>
     </div>
   </div>

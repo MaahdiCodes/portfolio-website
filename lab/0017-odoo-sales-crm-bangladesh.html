@@ -26,7 +26,7 @@
   <meta property="og:site_name" content="Mehedi Hasan | Odoo ERP Consultant" />
   <meta property="article:author" content="https://www.linkedin.com/in/mehedi-hasan-consultant/" />
   <meta property="article:published_time" content="2026-05-04T13:00:00+06:00" />
-  <meta property="article:modified_time" content="2026-05-04T13:00:00+06:00" />
+  <meta property="article:modified_time" content="2026-05-22T13:00:00+06:00" />
   <meta property="article:section" content="Odoo ERP Bangladesh" />
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
@@ -43,7 +43,7 @@
     "headline": "Odoo Sales & CRM for Bangladesh Exporters: B2B Pipeline Setup (2026)",
     "description": "A practitioner's guide to configuring Odoo CRM and Sales for Bangladesh exporters — covering B2B pipeline stages, multi-currency quotations, proforma invoices for Letter of Credit, customer master setup with fiscal positions, and sales reporting.",
     "datePublished": "2026-05-04T13:00:00+06:00",
-    "dateModified": "2026-05-05T00:00:00+06:00",
+    "dateModified": "2026-05-22T00:00:00+06:00",
     "author": {
       "@type": "Person",
       "name": "Mehedi Hasan",
@@ -89,6 +89,14 @@
         "acceptedAnswer": {
           "@type": "Answer",
           "text": "Enable Settings → Accounting → Multi-Currencies. Set the company currency to BDT. Assign USD (or the relevant currency) to the customer record or the Sales Order. Odoo converts the foreign currency price to BDT on the invoice date using the exchange rate set in the system (updated from the Bangladesh Bank rate or manually). Exchange rate differences on payment collection are posted automatically to a Currency Exchange Gain/Loss account."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can Odoo track pipeline for fashion seasons and annual buyer calendars?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Use Odoo CRM's Tags feature to tag opportunities by season (SS2027, AW2027) and buyer category, and create custom pipeline stages that reflect your seasonal sales cycle. The Revenue Forecast report can be filtered by tag for a seasonal pipeline view. For factories working a buyer-style-season workflow, adding the style number and season as mandatory fields on the Opportunity form keeps the data clean for reporting."
         }
       }
     ]
@@ -231,6 +239,12 @@
     @media(max-width:640px) {
       .cust-list li { grid-template-columns: 1fr; gap: 4px; }
     }
+
+    .field-note{margin:28px 0;border:1px solid var(--border);border-radius:12px;overflow:hidden;background:var(--surface)}
+    .fn-hd{display:flex;align-items:center;justify-content:space-between;padding:12px 18px;border-bottom:1px solid var(--border);font-family:var(--mono);font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-3)}
+    .fn-hd .when{color:var(--accent)}
+    .fn-body{padding:18px 22px;font-size:15px;line-height:1.65;color:var(--text-2)}
+    .fn-body strong{color:var(--text);font-weight:500}
   </style>
 </head>
 
@@ -422,6 +436,13 @@
       <p>To enable proforma invoices in Odoo: Settings → Sales → Invoicing → tick "Proforma Invoice". After enabling, the Sales Order will have a "Send Pro Forma Invoice" button — click it to generate and email the proforma directly from the order.</p>
 
       <p>For LC compliance, the proforma invoice must match the LC terms exactly — product description, quantity, amount, and Incoterm must be identical to what the buyer declared to their bank. Any discrepancy will cause a document discrepancy when you present shipping documents for payment. Build a proforma review step into your sales process before sending to the buyer.</p>
+
+      <div class="field-note">
+        <div class="fn-hd"><span>Note · Export manufacturer, first Odoo shipment</span><span class="when">LC document presentation</span></div>
+        <div class="fn-body">
+          The riskiest moment in moving an exporter onto Odoo is not the first quotation — it is the first LC. On one deployment, the proforma invoice sent before go-live used a slightly different product description than the commercial invoice Odoo later generated from the Sales Order. The buyer's bank had opened the LC against the proforma wording; the mismatch became a document discrepancy at presentation, and payment stalled while the buyer waived it. Nobody had done anything wrong — two documents were simply authored at different times by different hands. <strong>The fix was a rule: the proforma and the commercial invoice both come from the same Sales Order, and the product description on that order is locked once the LC is opened.</strong>
+        </div>
+      </div>
 
       <div class="callout">
         <span class="tag">Multi-company note</span>

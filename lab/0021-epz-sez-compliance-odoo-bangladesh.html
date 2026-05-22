@@ -26,7 +26,7 @@
   <meta property="og:site_name" content="Mehedi Hasan | Odoo ERP Consultant" />
   <meta property="article:author" content="https://www.linkedin.com/in/mehedi-hasan-consultant/" />
   <meta property="article:published_time" content="2026-05-05T12:00:00+06:00" />
-  <meta property="article:modified_time" content="2026-05-05T12:00:00+06:00" />
+  <meta property="article:modified_time" content="2026-05-23T12:00:00+06:00" />
   <meta property="article:section" content="Odoo ERP Bangladesh" />
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
@@ -43,7 +43,7 @@
     "headline": "EPZ & SEZ Compliance in Odoo: Setup for Bangladesh Export Zones",
     "description": "A practitioner's guide to configuring Odoo for Bangladesh Export Processing Zone (EPZ) and Special Economic Zone (SEZ) compliance — covering bonded warehouse configuration, duty-free raw material procurement and tracking, BEPZA fiscal position setup, consumption recording for export proof, and producing BEPZA Monthly Progress Report data from Odoo.",
     "datePublished": "2026-05-05T12:00:00+06:00",
-    "dateModified": "2026-05-05T12:00:00+06:00",
+    "dateModified": "2026-05-23T12:00:00+06:00",
     "author": {
       "@type": "Person",
       "name": "Mehedi Hasan",
@@ -89,6 +89,14 @@
         "acceptedAnswer": {
           "@type": "Answer",
           "text": "Odoo does not have a built-in BEPZA MPR report template. However, all the data needed for the MPR is in Odoo if you set up the bonded warehouse location correctly. You can export: opening stock (inventory valuation at start of month), imports (purchase receipts into bonded location for the month), consumption (manufacturing orders' raw material usage), and closing stock (inventory valuation at end of month). Export shipments (delivery orders) provide the finished goods export quantity. This data, exported from Odoo's inventory reports, is transferred to the BEPZA MPR format. A custom Odoo MPR report module can automate this for high-volume EPZ factories."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What happens if EPZ raw materials are not fully consumed and exported?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Unused bonded raw materials that cannot be exported within the stipulated period (typically 12–18 months from import, depending on BEPZA licence terms) are subject to duty recovery — the factory must pay the full import duties that were suspended. A factory may also apply for BEPZA permission to sell unused raw materials domestically (rare and restricted) or to re-export them. In Odoo, the suspended customs duty liability account tracks this exposure: its balance shows what would be owed to NBR if the remaining bonded stock cannot be utilised."
         }
       }
     ]
@@ -307,6 +315,13 @@
       line-height: 1.5;
     }
     .comp-table td strong { color: var(--text); }
+
+    /* field note */
+    .field-note{margin:28px 0;border:1px solid var(--border);border-radius:12px;overflow:hidden;background:var(--surface)}
+    .fn-hd{display:flex;align-items:center;justify-content:space-between;padding:12px 18px;border-bottom:1px solid var(--border);font-family:var(--mono);font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-3)}
+    .fn-hd .when{color:var(--accent)}
+    .fn-body{padding:18px 22px;font-size:15px;line-height:1.65;color:var(--text-2)}
+    .fn-body strong{color:var(--text);font-weight:500}
   </style>
 </head>
 
@@ -541,6 +556,13 @@
         <li><strong>Backflush vs real-time consumption</strong> — for high-volume EPZ knitwear factories, backflushing (recording consumption when MO is completed, not in real-time) is more practical. Validate this is acceptable with your operations team and BEPZA auditor before implementing.</li>
       </ul>
 
+      <div class="field-note">
+        <div class="fn-hd"><span>Note · EPZ knitwear factory, first BEPZA inspection on Odoo</span><span class="when">Bonded ledger drift</span></div>
+        <div class="fn-body">
+          A factory had set up the bonded location correctly, but its Manufacturing Orders were being created with the default raw material source — the general warehouse — because no one had changed the operation type's source location for bonded BOMs. Consumption posted from general stock; the bonded location's balance kept climbing while the physical bonded store emptied. Nobody noticed until a BEPZA inspector compared the Odoo bonded report to a physical count and found a gap of several tonnes of yarn on paper. <strong>The fix was to make the bonded location the hard-wired source on the manufacturing operation type for every bonded product, and to add a monthly check: bonded location balance in Odoo must equal the physical store count before the MPR is filed. A bonded ledger that is never reconciled is not a record — it is a liability waiting for an auditor.</strong>
+        </div>
+      </div>
+
       <h2 id="mpr">BEPZA Monthly Progress Report (MPR) data from Odoo</h2>
 
       <p>The MPR requires the following data for each raw material (yarn, fabric, accessories, etc.):</p>
@@ -597,7 +619,7 @@
 
       <div class="callout">
         <span class="tag">Linked reading</span>
-        <p>EPZ compliance is built on the foundation of correct VAT configuration. If you haven't set up NBR VAT tax groups and fiscal positions yet, the <a href="0003-nbr-vat-compliance-odoo-bangladesh" style="color:var(--accent)">NBR VAT compliance guide for Odoo Bangladesh</a> provides the base framework. The Mushak 6.3 configuration in the <a href="0018-mushak-63-odoo-bangladesh" style="color:var(--accent)">Mushak 6.3 Odoo setup guide</a> is also relevant — EPZ factories are exempt from VAT on production inputs, but this exemption must be correctly modelled in Odoo so that export invoices (zero-rated) appear correctly in the Tax Report. Need help with your EPZ Odoo setup? <a href="../#contact" style="color:var(--accent)">Book a scoping call and I'll review your configuration →</a></p>
+        <p>EPZ compliance is built on the foundation of correct VAT configuration. If you haven't set up NBR VAT tax groups and fiscal positions yet, the <a href="0003-nbr-vat-compliance-odoo-bangladesh" style="color:var(--accent)">NBR VAT compliance guide for Odoo Bangladesh</a> provides the base framework. The Mushak 6.3 configuration in the <a href="0018-mushak-63-odoo-bangladesh" style="color:var(--accent)">Mushak 6.3 Odoo setup guide</a> is also relevant — EPZ factories are exempt from VAT on production inputs, but this exemption must be correctly modelled in Odoo so that export invoices (zero-rated) appear correctly in the Tax Report. To size the budget for a bonded-ready Odoo deployment — users, modules, and the custom MPR report — try the <a href="/tools/odoo-cost-estimator/" style="color:var(--accent)">Odoo cost estimator for Bangladesh</a>. Need help with your EPZ Odoo setup? <a href="../#contact" style="color:var(--accent)">Book a scoping call and I'll review your configuration →</a></p>
       </div>
 
       <h2 id="faq">Frequently asked questions</h2>

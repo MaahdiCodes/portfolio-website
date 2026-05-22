@@ -26,7 +26,7 @@
   <meta property="og:site_name" content="Mehedi Hasan | Odoo ERP Consultant" />
   <meta property="article:author" content="https://www.linkedin.com/in/mehedi-hasan-consultant/" />
   <meta property="article:published_time" content="2026-05-05T13:00:00+06:00" />
-  <meta property="article:modified_time" content="2026-05-05T13:00:00+06:00" />
+  <meta property="article:modified_time" content="2026-05-23T13:00:00+06:00" />
   <meta property="article:section" content="Odoo ERP Bangladesh" />
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
@@ -41,9 +41,9 @@
     "@context": "https://schema.org",
     "@type": "Article",
     "headline": "Odoo Payroll Compliance: BGMEA/BKMEA Wage Board Setup for Bangladesh RMG",
-    "description": "A practitioner's guide to configuring the BGMEA 8th Wage Board (2023) in Odoo Payroll for Bangladesh garment factories — covering the 7-grade salary structure, salary rule coding for basic, house rent, medical and transport allowances, overtime rules, PF deduction, income tax, and generating BGMEA-compliant monthly payslips.",
+    "description": "A practitioner's guide to configuring the BGMEA 8th Wage Board (2023) in Odoo Payroll for Bangladesh garment factories — covering the wage board grade salary structure, salary rule coding for basic, house rent, medical and transport allowances, overtime rules, PF deduction, income tax, and generating BGMEA-compliant monthly payslips.",
     "datePublished": "2026-05-05T13:00:00+06:00",
-    "dateModified": "2026-05-05T13:00:00+06:00",
+    "dateModified": "2026-05-23T13:00:00+06:00",
     "author": {
       "@type": "Person",
       "name": "Mehedi Hasan",
@@ -72,7 +72,7 @@
         "name": "What is the BGMEA 8th Wage Board minimum wage in Bangladesh?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "The 8th Wage Board for the RMG sector, effective December 1, 2023, set the minimum wage for Grade 7 (unskilled helper) at BDT 12,500 per month. The wage board has 7 grades, with Grade 7 being the lowest (entry-level workers) and Grade 1 being the highest (senior operators, supervisors). The minimum wages range from BDT 12,500 (Grade 7) to BDT 20,393 (Grade 1). All RMG factories affiliated with BGMEA or BKMEA are required to comply with these minimum wages. Factories that pay below the minimum wage face BGMEA affiliation suspension and legal action under the Bangladesh Labour Act 2006."
+          "text": "The 8th Wage Board for the RMG sector, effective December 1, 2023, set the gross minimum wage for the lowest grade — unskilled helpers and trainee workers — at BDT 12,500 per month. Higher grades for semi-skilled, skilled, and supervisory workers carry progressively higher minimum wages. The exact number of grades and the per-grade figures are defined by the official Minimum Wage Board declaration and the Bangladesh Gazette notification, so always confirm them against the current BGMEA circular before configuring payroll. All RMG factories affiliated with BGMEA or BKMEA must pay at or above the gazetted minimum; paying below it violates the Bangladesh Labour Act 2006 and BGMEA affiliation terms and can trigger affiliation suspension and legal action."
         }
       },
       {
@@ -89,6 +89,14 @@
         "acceptedAnswer": {
           "@type": "Answer",
           "text": "Under the Bangladesh Labour Act 2006, overtime for RMG workers is paid at twice the basic hourly rate. The calculation: Basic Monthly Salary ÷ 208 hours (26 working days × 8 hours) = Basic Hourly Rate. Overtime Rate = Basic Hourly Rate × 2. Maximum overtime is 2 hours per day and 12 hours per week under the Labour Act, though the RMG sector routinely applies for special overtime permissions during peak seasons. In Odoo, overtime is configured as a salary rule: OT Hours (from attendance) × (Basic / 208) × 2. This requires Odoo Attendance integration or manual OT input on the payslip input lines."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is PF (Provident Fund) mandatory for garment workers in Bangladesh?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Provident Fund is not universally mandatory under Bangladesh labour law for all private sector workers — it becomes required when a factory has 100 or more workers and has operated for at least five years, per the Bangladesh Labour Act provisions. Many BGMEA-affiliated factories implement PF voluntarily as a worker welfare measure, and many buyer code of conduct programs require it as a minimum standard. Where a PF scheme operates, both the employee (typically a minimum of 5% of basic) and the employer (a matching contribution) participate. In Odoo, configure employee PF as a deduction salary rule and employer PF as a payroll cost posted to the PF liability account."
         }
       }
     ]
@@ -364,7 +372,7 @@
     <div class="shell">
       <span class="eyebrow">Technical Lab · 0022</span>
       <h1>BGMEA wage board in Odoo payroll — <span class="serif">configuring Bangladesh RMG compliance.</span></h1>
-      <p class="lede">How to configure Odoo Payroll for the BGMEA 8th Wage Board (2023) — the 7-grade salary structure, salary rules for basic, house rent, medical and transport, overtime under the Bangladesh Labour Act, PF deductions, and generating compliant monthly payslips for RMG factory workers. Built from BGMEA and BKMEA factory deployments across Dhaka and Chittagong.</p>
+      <p class="lede">How to configure Odoo Payroll for the BGMEA 8th Wage Board (2023) — the wage board grade salary structure, salary rules for basic, house rent, medical and transport, overtime under the Bangladesh Labour Act, PF deductions, and generating compliant monthly payslips for RMG factory workers. Built from BGMEA and BKMEA factory deployments across Dhaka and Chittagong.</p>
       <div class="post-meta">
         <span class="chip accent">Compliance Guide</span>
         <span class="chip">BGMEA · Wage Board</span>
@@ -390,7 +398,7 @@
         <li><a href="#salary-rules">Salary rules: basic, HRA, medical</a></li>
         <li><a href="#overtime">Overtime configuration</a></li>
         <li><a href="#deductions">PF, income tax & other deductions</a></li>
-        <li><a href="#payslip-sample">Sample payslip — Grade 7</a></li>
+        <li><a href="#payslip-sample">Sample payslip — entry grade</a></li>
         <li><a href="#compliance-checks">Minimum wage compliance checks</a></li>
         <li><a href="#faq">FAQ</a></li>
       </ol>
@@ -405,61 +413,11 @@
 
       <h2 id="wage-board">BGMEA 8th Wage Board — grade structure (2023)</h2>
 
-      <p>The 8th Wage Board for the RMG sector was declared effective December 1, 2023. It establishes 7 grades with the following minimum monthly wages. Factories may pay more than the minimum but cannot pay less:</p>
-
-      <table class="wage-table">
-        <thead>
-          <tr><th>Grade</th><th>Category</th><th>Min. Gross Wage (BDT/month)</th><th>Typical roles</th></tr>
-        </thead>
-        <tbody>
-          <tr class="grade-7">
-            <td class="grade-num">7</td>
-            <td>Unskilled / Helper</td>
-            <td class="wage-amt">12,500</td>
-            <td>Floor helpers, cleaning, material movers, trainee workers</td>
-          </tr>
-          <tr>
-            <td class="grade-num">6</td>
-            <td>Semi-skilled</td>
-            <td class="wage-amt">13,175</td>
-            <td>Assistant operators, fabric checkers, new machinists</td>
-          </tr>
-          <tr>
-            <td class="grade-num">5</td>
-            <td>Skilled (junior)</td>
-            <td class="wage-amt">13,510</td>
-            <td>Machine operators (sewing, cutting), quality checkers</td>
-          </tr>
-          <tr>
-            <td class="grade-num">4</td>
-            <td>Skilled (mid)</td>
-            <td class="wage-amt">14,230</td>
-            <td>Senior machine operators, lead checkers, sample operators</td>
-          </tr>
-          <tr>
-            <td class="grade-num">3</td>
-            <td>Highly skilled</td>
-            <td class="wage-amt">15,416</td>
-            <td>Senior quality controllers, pattern makers, technical operators</td>
-          </tr>
-          <tr>
-            <td class="grade-num">2</td>
-            <td>Technician / Supervisor (junior)</td>
-            <td class="wage-amt">17,510</td>
-            <td>Line supervisors, junior technicians, maintenance staff</td>
-          </tr>
-          <tr>
-            <td class="grade-num">1</td>
-            <td>Supervisor / Senior Technician</td>
-            <td class="wage-amt">20,393</td>
-            <td>Senior supervisors, production in-charges, senior technicians</td>
-          </tr>
-        </tbody>
-      </table>
+      <p>The 8th Wage Board for the RMG sector was declared effective December 1, 2023. It sets a graded minimum wage structure: the lowest grade — unskilled helpers and trainee workers — has a gross minimum of <strong>BDT 12,500 per month</strong>, and the minimum rises through progressively higher grades for semi-skilled, skilled, highly skilled, and supervisory roles. A factory may pay above the minimum for any grade, but never below it.</p>
 
       <div class="callout">
-        <span class="tag">Compliance note</span>
-        <p>The figures above are the <strong>minimum wages</strong> as declared by the 8th Wage Board. Always verify the latest figures with the BGMEA circular or the Bangladesh Gazette notification, as the wage board declaration is the legally binding reference. Some buyer compliance programs (especially EU and US brands) require wages above the minimum as part of their supplier code of conduct. These above-minimum wages are negotiated per factory and must also be reflected correctly in Odoo payroll.</p>
+        <span class="tag">Use the gazetted figures — not secondary sources</span>
+        <p>The exact number of grades and the per-grade minimum wages are set by the official Minimum Wage Board declaration and the <strong>Bangladesh Gazette</strong> notification — and the 2023 declaration revised parts of the earlier grade scale. Before you build contracts in Odoo, take each grade's minimum wage directly from the current BGMEA circular or the Gazette, not from a blog or a forwarded spreadsheet. The lowest-grade gross minimum of BDT 12,500 is the figure most consistently cited; confirm every higher grade against the official schedule for your factory's registered grade structure. Some buyer compliance programs (especially EU and US brands) require wages above the legal minimum as part of their supplier code of conduct — these above-minimum wages are negotiated per factory and must also be reflected correctly in Odoo payroll.</p>
       </div>
 
       <h2 id="salary-structure">Setting up the salary structure in Odoo</h2>
@@ -573,7 +531,7 @@
             <td><strong>Income Tax (Withholding)</strong></td>
             <td>As per NBR annual tax slabs (first BDT 3.5 lakh/year exempt for male; BDT 4 lakh for female & third gender, as of 2024-25)</td>
             <td><code>INCOME_TAX</code></td>
-            <td>Only workers earning above the tax-free threshold. For Grade 7 workers at BDT 12,500/month (BDT 1.5 lakh/year), no income tax applies — they are below the exemption threshold.</td>
+            <td>Only workers earning above the tax-free threshold. For entry-grade workers at BDT 12,500/month (BDT 1.5 lakh/year), no income tax applies — they are below the exemption threshold.</td>
           </tr>
           <tr>
             <td><strong>Worker Welfare Fund</strong></td>
@@ -590,14 +548,14 @@
         </tbody>
       </table>
 
-      <h2 id="payslip-sample">Sample payslip — Grade 7 worker (minimum wage)</h2>
+      <h2 id="payslip-sample">Sample payslip — entry-grade worker (minimum wage)</h2>
 
-      <p>What a Grade 7 worker's payslip looks like in Odoo at the 8th Wage Board minimum (BDT 12,500 gross, 0 absent days, 20 OT hours, PF member):</p>
+      <p>What an entry-grade (helper) worker's payslip looks like in Odoo at the 8th Wage Board minimum (BDT 12,500 gross, 0 absent days, 20 OT hours, PF member):</p>
 
       <div class="payslip">
         <div class="payslip-head">
-          <div class="ph-title">Monthly Payslip — Grade 7 Helper</div>
-          <div class="ph-grade">Grade 7 · BDT 12,500 Gross</div>
+          <div class="ph-title">Monthly Payslip — Entry Grade (Helper)</div>
+          <div class="ph-grade">Entry Grade · BDT 12,500 Gross</div>
         </div>
         <div class="payslip-row">
           <span class="pr-label">Basic Salary (57% of gross)</span>
@@ -651,13 +609,13 @@
 
       <div class="callout">
         <span class="tag">Linked reading</span>
-        <p>BGMEA payroll compliance is tightly connected to the HR module's leave management, which controls how absent days flow into payroll deductions. For the full HR and payroll configuration — including leave policies, PF, and gratuity — see the <a href="0016-odoo-hr-payroll-bangladesh" style="color:var(--accent)">Odoo HR & Payroll Bangladesh setup guide</a>. For RMG factories navigating a wage board change — which involves updating contracts, recalculating arrears, and communicating changes to workers — the change management approach in <a href="0007-change-management-isnt-a-memo" style="color:var(--accent)">Change management isn't a memo</a> is directly applicable. <a href="../#contact" style="color:var(--accent)">Need help setting up BGMEA-compliant payroll in Odoo? Get in touch →</a></p>
+        <p>BGMEA payroll compliance is tightly connected to the HR module's leave management, which controls how absent days flow into payroll deductions. For the full HR and payroll configuration — including leave policies, PF, and gratuity — see the <a href="0016-odoo-hr-payroll-bangladesh" style="color:var(--accent)">Odoo HR & Payroll Bangladesh setup guide</a>. For RMG factories navigating a wage board change — which involves updating contracts, recalculating arrears, and communicating changes to workers — the change management approach in <a href="0007-change-management-isnt-a-memo" style="color:var(--accent)">Change management isn't a memo</a> is directly applicable. To budget a payroll-inclusive Odoo rollout — HR, Payroll, and Attendance modules plus user count — try the <a href="/tools/odoo-cost-estimator/" style="color:var(--accent)">Odoo cost estimator for Bangladesh</a>. <a href="../#contact" style="color:var(--accent)">Need help setting up BGMEA-compliant payroll in Odoo? Get in touch →</a></p>
       </div>
 
       <h2 id="faq">Frequently asked questions</h2>
 
       <h3>What is the BGMEA 8th Wage Board minimum wage in Bangladesh?</h3>
-      <p>The 8th Wage Board, effective December 1, 2023, sets the minimum monthly wage for Grade 7 (unskilled helper) at BDT 12,500. The full 7-grade scale ranges from BDT 12,500 (Grade 7) to BDT 20,393 (Grade 1). All RMG factories affiliated with BGMEA or BKMEA must pay at or above these minimums. Paying below the minimum wage violates the Bangladesh Labour Act 2006 and BGMEA affiliation terms, and can result in buyer audit failures, export restrictions, and legal action from DIFE.</p>
+      <p>The 8th Wage Board, effective December 1, 2023, sets the gross minimum monthly wage for the lowest grade — unskilled helpers and trainee workers — at BDT 12,500, with progressively higher minimums for semi-skilled, skilled, and supervisory grades. The exact number of grades and the per-grade figures are defined by the official Minimum Wage Board declaration and the Bangladesh Gazette notification — the legally binding reference — so confirm them against the current BGMEA circular before configuring contracts. All RMG factories affiliated with BGMEA or BKMEA must pay at or above the gazetted minimum. Paying below it violates the Bangladesh Labour Act 2006 and BGMEA affiliation terms, and can result in buyer audit failures, export restrictions, and legal action from DIFE.</p>
 
       <h3>How do I set up BGMEA wage grades in Odoo Payroll?</h3>
       <p>Create one Salary Structure named "BGMEA Wage Board 8th (2023)" under a structure type "RMG — Bangladesh Labour Act". Add salary rules for: Basic Salary (57% of contract wage), House Rent (40% of basic), Medical (fixed BDT 750), Transport (fixed BDT 500), Overtime (basic/208 × 2 × OT hours input), and deductions (PF 5% of basic, absent deduction per day). Each employee gets a contract with their grade's minimum gross wage (or above) and this salary structure. Odoo computes the payslip automatically using these rules.</p>

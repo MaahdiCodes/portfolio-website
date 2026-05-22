@@ -26,7 +26,7 @@
   <meta property="og:site_name" content="Mehedi Hasan | Odoo ERP Consultant" />
   <meta property="article:author" content="https://www.linkedin.com/in/mehedi-hasan-consultant/" />
   <meta property="article:published_time" content="2026-05-05T13:30:00+06:00" />
-  <meta property="article:modified_time" content="2026-05-05T13:30:00+06:00" />
+  <meta property="article:modified_time" content="2026-05-23T13:30:00+06:00" />
   <meta property="article:section" content="Odoo ERP Bangladesh" />
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
@@ -43,7 +43,7 @@
     "headline": "Odoo Training Plan Template: Roles, Modules & Sign-Off Matrix",
     "description": "A complete Odoo training plan template for Bangladesh ERP implementations. Covers training philosophy (role-based vs module-based), step-by-step role identification, training matrix mapping roles to modules and training depth, 2-week training schedule, assessment design per role, sign-off criteria, and Bangladesh-specific training considerations including language, literacy levels, and time-of-day scheduling for factory floor staff.",
     "datePublished": "2026-05-05T13:30:00+06:00",
-    "dateModified": "2026-05-05T13:30:00+06:00",
+    "dateModified": "2026-05-23T13:30:00+06:00",
     "author": {
       "@type": "Person",
       "name": "Mehedi Hasan",
@@ -297,6 +297,12 @@
     @media(max-width:480px) {
       .role-grid { grid-template-columns: 1fr; }
     }
+
+    .field-note{margin:28px 0;border:1px solid var(--border);border-radius:12px;overflow:hidden;background:var(--surface)}
+    .fn-hd{display:flex;align-items:center;justify-content:space-between;padding:12px 18px;border-bottom:1px solid var(--border);font-family:var(--mono);font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-3)}
+    .fn-hd .when{color:var(--accent)}
+    .fn-body{padding:18px 22px;font-size:15px;line-height:1.65;color:var(--text-2)}
+    .fn-body strong{color:var(--text);font-weight:500}
   </style>
 </head>
 
@@ -367,6 +373,13 @@
       <p><strong>Role-based training</strong> inverts this. You train each person on exactly the transactions they will perform in their job — not on the module as a whole. A warehouse GRN operator needs to know how to confirm a goods receipt, do a quality check, and print a delivery note. They do not need to know how to configure a reordering rule or run an inventory valuation report. Role-based training is shorter, more focused, and more effective.</p>
 
       <p>The second principle: <strong>train-the-trainer first.</strong> Super-users (key users / module champions) are trained by the consultant to full depth in week 10. They then co-train their teams in week 11, using their own process knowledge and language. A warehouse manager explaining Odoo GRN to their team in Bengali, using the company's own product names, is more effective than a consultant explaining it in formal English with generic examples.</p>
+
+      <div class="field-note">
+        <div class="fn-hd"><span>Note · Two-shift factory, Savar</span><span class="when">Go-live day</span></div>
+        <div class="fn-body">
+          A factory running a day and a night shift trained only the day shift, on the assumption that the night supervisor would brief their own team afterwards. On go-live night, the night-shift warehouse staff had never opened Odoo. They could not confirm a single goods receipt and fell back to paper slips — which the day team then had to enter the next morning, creating exactly the physical-vs-system gap a clean go-live is supposed to prevent. <strong>Every shift that touches a transaction needs its own training session and its own signed sign-off sheet. A second-hand briefing is not training.</strong>
+        </div>
+      </div>
 
       <h2 id="roles">Step 1 — Identify your training roles</h2>
 

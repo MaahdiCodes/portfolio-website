@@ -26,7 +26,7 @@
   <meta property="og:site_name" content="Mehedi Hasan | Odoo ERP Consultant" />
   <meta property="article:author" content="https://www.linkedin.com/in/mehedi-hasan-consultant/" />
   <meta property="article:published_time" content="2026-05-04T09:00:00+06:00" />
-  <meta property="article:modified_time" content="2026-05-04T09:00:00+06:00" />
+  <meta property="article:modified_time" content="2026-05-22T09:00:00+06:00" />
   <meta property="article:section" content="Odoo ERP Bangladesh" />
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
@@ -43,7 +43,7 @@
     "headline": "Odoo Manufacturing Module Setup for Bangladesh Factories (2026 Guide)",
     "description": "A step-by-step guide to setting up the Odoo Manufacturing module for Bangladesh factories — covering Bill of Materials, Work Centers, routing, Manufacturing Orders, and real-world pitfalls.",
     "datePublished": "2026-05-04T09:00:00+06:00",
-    "dateModified": "2026-05-05T00:00:00+06:00",
+    "dateModified": "2026-05-22T00:00:00+06:00",
     "author": {
       "@type": "Person",
       "name": "Mehedi Hasan",
@@ -89,6 +89,14 @@
         "acceptedAnswer": {
           "@type": "Answer",
           "text": "A Work Center is a physical resource — a machine, a production line, or a team of workers. An Operation is a task performed at that Work Center — cutting, stitching, finishing. A Routing links Operations to Work Centers in sequence, defining how a product flows through the factory floor. Work Centers have capacity (hours/day); Operations have standard duration per unit."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How does Odoo handle production variances?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "When you close a Manufacturing Order with a produced quantity different from the planned quantity, Odoo offers two options: create a backorder for the remaining quantity to be produced later, or close the shortfall immediately. Component consumption is proportionally adjusted to the actual quantity produced. Cost variances — actual consumption versus the BoM standard — are visible in the Production Variance report, which is essential for profitability tracking in Bangladesh manufacturing."
         }
       }
     ]
@@ -218,6 +226,12 @@
       .mo-step { grid-template-columns: 1fr; }
       .mo-step .ms-label { border-right: none; border-bottom: 1px solid var(--border); }
     }
+
+    .field-note{margin:28px 0;border:1px solid var(--border);border-radius:12px;overflow:hidden;background:var(--surface)}
+    .fn-hd{display:flex;align-items:center;justify-content:space-between;padding:12px 18px;border-bottom:1px solid var(--border);font-family:var(--mono);font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-3)}
+    .fn-hd .when{color:var(--accent)}
+    .fn-body{padding:18px 22px;font-size:15px;line-height:1.65;color:var(--text-2)}
+    .fn-body strong{color:var(--text);font-weight:500}
   </style>
 </head>
 
@@ -502,7 +516,14 @@
         </tbody>
       </table>
 
-      <p>For the cost implications of getting this wrong at go-live, see my notes on <a href="0005-erp-go-live-cost-manufacturing-bangladesh" style="color:var(--accent)">the real cost of a bad ERP go-live in Bangladesh manufacturing</a>. The pattern is consistent: good setup costs one week of consultant time; fixing a bad setup costs three months and a re-implementation.</p>
+      <div class="field-note">
+        <div class="fn-hd"><span>Note · RMG factory, Gazipur</span><span class="when">~3 months post-go-live</span></div>
+        <div class="fn-body">
+          A knit garment factory I supported kept reporting fabric stock the warehouse physically did not have. The cause was not theft — it was discipline. Operators confirmed Manufacturing Orders but never marked them Done; dozens of MOs sat "In Progress" for weeks, holding components in <strong>reserved</strong> rather than consuming them. The stock report showed availability that the floor had already cut and stitched. The fix was procedural, not technical: a daily end-of-shift rule that every MO must be Done or backorder-split. <strong>Within two weeks the inventory report matched the floor — no new module, just a closed loop.</strong>
+        </div>
+      </div>
+
+      <p>For the cost implications of getting this wrong at go-live, see my notes on <a href="0005-erp-go-live-cost-manufacturing-bangladesh" style="color:var(--accent)">the real cost of a bad ERP go-live in Bangladesh manufacturing</a>. The pattern is consistent: good setup costs one week of consultant time; fixing a bad setup costs three months and a re-implementation. If you're still scoping the budget, the <a href="../tools/odoo-cost-estimator/" style="color:var(--accent)">Odoo cost estimator</a> gives a quick range for a Bangladesh manufacturing deployment.</p>
 
       <div class="callout">
         <span class="tag">Next step</span>

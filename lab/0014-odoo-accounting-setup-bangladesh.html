@@ -26,7 +26,7 @@
   <meta property="og:site_name" content="Mehedi Hasan | Odoo ERP Consultant" />
   <meta property="article:author" content="https://www.linkedin.com/in/mehedi-hasan-consultant/" />
   <meta property="article:published_time" content="2026-05-04T10:00:00+06:00" />
-  <meta property="article:modified_time" content="2026-05-04T10:00:00+06:00" />
+  <meta property="article:modified_time" content="2026-05-22T10:00:00+06:00" />
   <meta property="article:section" content="Odoo ERP Bangladesh" />
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
@@ -43,7 +43,7 @@
     "headline": "Odoo Accounting Setup for Bangladesh: Chart of Accounts & Fiscal Positions (2026)",
     "description": "A practitioner's guide to configuring Odoo Accounting for Bangladesh businesses — covering the Chart of Accounts structure, fiscal positions, bank journal setup, payment terms, and NBR VAT compliance hooks.",
     "datePublished": "2026-05-04T10:00:00+06:00",
-    "dateModified": "2026-05-05T00:00:00+06:00",
+    "dateModified": "2026-05-22T00:00:00+06:00",
     "author": {
       "@type": "Person",
       "name": "Mehedi Hasan",
@@ -89,6 +89,14 @@
         "acceptedAnswer": {
           "@type": "Answer",
           "text": "Create at least three fiscal positions for Bangladesh: (1) Domestic — standard 15% VAT applies; (2) Export — zero-rated, Mushak 6.3 applies; (3) VAT-exempt — for transactions covered by NBR exemptions, such as agricultural inputs. Assign fiscal positions to customer and supplier records so Odoo applies the correct tax automatically on every transaction."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I handle AIT (Tax Deducted at Source) in Odoo for Bangladesh?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Configure AIT as Purchase withholding taxes at the rates applicable to your procurement categories — typically 3% for goods and 5% for services. On vendor bills, Odoo deducts the AIT and posts it to your TDS Payable account automatically. At month-end, remit the TDS Payable balance to the revenue authority. For income received with AIT already deducted by customers, create a separate AIT Receivable account and reconcile it against your tax certificates."
         }
       }
     ]
@@ -219,6 +227,12 @@
       padding-top: 2px;
     }
     .step-list li strong { color: var(--text); }
+
+    .field-note{margin:28px 0;border:1px solid var(--border);border-radius:12px;overflow:hidden;background:var(--surface)}
+    .fn-hd{display:flex;align-items:center;justify-content:space-between;padding:12px 18px;border-bottom:1px solid var(--border);font-family:var(--mono);font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-3)}
+    .fn-hd .when{color:var(--accent)}
+    .fn-body{padding:18px 22px;font-size:15px;line-height:1.65;color:var(--text-2)}
+    .fn-body strong{color:var(--text);font-weight:500}
   </style>
 </head>
 
@@ -459,6 +473,13 @@
 
       <p>Assign fiscal positions on the contact (customer/supplier) record — Accounting tab → Fiscal Position. Odoo applies the correct tax automatically on every invoice and purchase order for that partner. If a customer sometimes buys domestically and sometimes exports, create separate contact records or set the fiscal position per order.</p>
 
+      <div class="field-note">
+        <div class="fn-hd"><span>Note · Export-oriented trading company</span><span class="when">Discovered in a VAT review</span></div>
+        <div class="fn-body">
+          A trading company came to me after their accounts team noticed the VAT Payable balance climbing on sales that should have been zero-rated. The cause was a single missed step: foreign buyers had been created as contacts with no fiscal position assigned, so Odoo fell back to the default 15% domestic VAT on every export invoice. Nothing in the workflow flagged it — the invoices looked normal. <strong>Assigning the Export fiscal position is not optional cleanup; it is the control that keeps your VAT return reconcilable.</strong> We corrected the contacts, re-issued the affected invoices, and built a master-data checklist so no new buyer is saved without a fiscal position.
+        </div>
+      </div>
+
       <h2 id="journals">Bank &amp; cash journals</h2>
 
       <p>Accounting → Configuration → Journals. Create one journal per physical bank account. Bangladesh businesses typically have:</p>
@@ -530,7 +551,7 @@
         <li><strong>Reconcile open items</strong> — for Accounts Receivable and Payable, mark the individual open invoices and bills in Odoo (or import them as draft documents) and reconcile against the opening balance entry. This makes the Aged Receivables accurate from day one.</li>
       </ol>
 
-      <p>The opening balance step typically takes 3–5 days for a mid-size Bangladesh company. For the full cost and effort breakdown, see my <a href="0012-odoo-erp-cost-bangladesh" style="color:var(--accent)">Odoo ERP cost guide</a> — data migration and opening balances account for a larger share of the project budget than most clients expect.</p>
+      <p>The opening balance step typically takes 3–5 days for a mid-size Bangladesh company. For the full cost and effort breakdown, see my <a href="0012-odoo-erp-cost-bangladesh" style="color:var(--accent)">Odoo ERP cost guide</a> — data migration and opening balances account for a larger share of the project budget than most clients expect. To put a number on your own project, try the <a href="../tools/odoo-cost-estimator/" style="color:var(--accent)">Odoo cost estimator</a>.</p>
 
       <div class="callout">
         <span class="tag">Next step</span>

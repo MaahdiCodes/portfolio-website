@@ -1,4 +1,4 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8" />
@@ -7,7 +7,8 @@
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png" />
 <link rel="apple-touch-icon" href="/favicon.png" />
-<meta name="description" content="ERP discovery session guide — how to map business processes before configuring Odoo. The phase that prevents scope creep, bad data, and failed implementations." />
+<meta name="description" content="ERP discovery session guide — how to map business processes before configuring Odoo. Includes question banks, output templates, scope estimation, and Bangladesh-specific gotchas." />
+<meta name="keywords" content="ERP discovery session, business process mapping, Odoo implementation, ERP consulting Bangladesh, process mapping guide" />
 <meta name="robots" content="index, follow" />
 <meta name="author" content="Mehedi Hasan" />
 <title>ERP Discovery Session | Business Process Mapping Guide | Mehedi Hasan</title>
@@ -24,12 +25,17 @@
 <meta property="og:site_name" content="Mehedi Hasan | Odoo Consultant" />
 <meta property="article:author" content="https://www.linkedin.com/in/mehedi-hasan-consultant/" />
 <meta property="article:published_time" content="2025-08-01T08:00:00+06:00" />
-<meta property="article:modified_time" content="2026-05-22T08:00:00+06:00" />
+<meta property="article:modified_time" content="2026-05-27T08:00:00+06:00" />
 <meta property="article:section" content="Odoo ERP Bangladesh" />
+<meta property="article:tag" content="ERP" />
+<meta property="article:tag" content="Odoo" />
+<meta property="article:tag" content="Business Analysis" />
+<meta property="article:tag" content="Bangladesh" />
+<meta property="article:tag" content="Process Mapping" />
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="ERP Discovery Session | Business Process Mapping Guide | Mehedi Hasan" />
-<meta name="twitter:description" content="ERP discovery session guide — how to map business processes before configuring Odoo. The phase that prevents scope creep, bad data, and failed implementations." />
+<meta name="twitter:description" content="ERP discovery session guide — how to map business processes before configuring Odoo. Includes question banks, output templates, scope estimation, and Bangladesh-specific gotchas." />
 <meta name="twitter:image" content="https://mhasan.me/assets/og-default.jpg" />
 <!-- JSON-LD: Article + BreadcrumbList + FAQPage -->
 <script type="application/ld+json">
@@ -38,9 +44,9 @@
     "@context": "https://schema.org",
     "@type": "Article",
     "headline": "The Discovery Session — Mapping Business Processes Before You Configure Odoo",
-    "description": "ERP discovery session guide — how to map business processes before configuring Odoo. The phase that prevents scope creep, bad data, and failed implementations.",
+    "description": "ERP discovery session guide — how to map business processes before configuring Odoo. Includes question banks, output templates, scope estimation, and Bangladesh-specific gotchas.",
     "datePublished": "2025-08-01T08:00:00+06:00",
-    "dateModified": "2026-05-22T08:00:00+06:00",
+    "dateModified": "2026-05-27T08:00:00+06:00",
     "author": {
       "@type": "Person",
       "name": "Mehedi Hasan",
@@ -65,17 +71,42 @@
       {
         "@type": "Question",
         "name": "What is an ERP discovery session?",
-        "acceptedAnswer": { "@type": "Answer", "text": "An ERP discovery session is a structured workshop where the implementation team maps current business processes before any system configuration begins. It spans 2-5 days across every department that will use the ERP, producing a process inventory, gap list, and configuration blueprint." }
+        "acceptedAnswer": { "@type": "Answer", "text": "An ERP discovery session is a structured workshop where the implementation team maps current business processes before any system configuration begins. It spans 2–5 days across every department that will use the ERP, producing a process inventory, gap list, and configuration blueprint." }
       },
       {
         "@type": "Question",
         "name": "Who should attend an ERP discovery workshop?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Department heads and key users from every function the ERP will touch — finance, procurement, production, sales, HR, and IT. Executive sponsorship is essential to resolve cross-functional conflicts on the spot. Consultants facilitate; internal users provide process knowledge." }
+        "acceptedAnswer": { "@type": "Answer", "text": "Department heads and key users from every function the ERP will touch — finance, procurement, production, sales, HR, and IT — plus at least one floor-level operator per department. Executive sponsorship is essential to resolve cross-functional conflicts on the spot. Consultants facilitate; internal users provide process knowledge." }
       },
       {
         "@type": "Question",
         "name": "How long does business process mapping take before Odoo configuration?",
-        "acceptedAnswer": { "@type": "Answer", "text": "For a mid-size Bangladesh manufacturer deploying 4-6 Odoo modules, discovery and process mapping typically takes 2-4 weeks including workshops, documentation, and stakeholder sign-off. Skipping this phase is the single biggest cause of scope creep and failed implementations." }
+        "acceptedAnswer": { "@type": "Answer", "text": "For a mid-size Bangladesh manufacturer deploying 4–6 Odoo modules, discovery and process mapping typically takes 2–4 weeks including workshops, documentation, and stakeholder sign-off. Skipping this phase is the single biggest cause of scope creep and failed implementations." }
+      },
+      {
+        "@type": "Question",
+        "name": "Can ERP discovery be done remotely?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes, with caveats. Remote discovery works well for process interviews. It fails for floor-level observation, which is irreplaceable in manufacturing. A hybrid format — remote interviews plus one on-site day at the factory — is the minimum viable approach for manufacturing deployments." }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between a discovery session and a requirements workshop?",
+        "acceptedAnswer": { "@type": "Answer", "text": "A requirements workshop starts with what the client wants. A discovery session starts with how the business currently operates. Discovery produces a map of reality. Requirements workshops produce a wish list. You need the map before you can evaluate the wishes." }
+      },
+      {
+        "@type": "Question",
+        "name": "Should ERP discovery be a paid engagement?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes. Discovery bundled free into an implementation is always the first thing cut. A paid discovery creates accountability on both sides: the consultant must deliver documentation, and the client must show up. It also protects the consultant — if the client cancels after discovery, there is a documented deliverable, not a lost sales conversation." }
+      },
+      {
+        "@type": "Question",
+        "name": "What is a process gap in ERP terms?",
+        "acceptedAnswer": { "@type": "Answer", "text": "A gap is the difference between how the business currently operates and how the target ERP works out of the box. Gaps require one of three responses: configure the ERP to fit the process, adapt the process to fit the ERP, or build a custom extension. Discovery's job is to identify every gap before configuration starts." }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you handle conflicting process descriptions from different departments?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Document both versions, flag the conflict explicitly in the gap map, and escalate to the executive sponsor in the handoff session. Do not pick a version yourself — you don't own the business process. If the client cannot decide during discovery, that unresolved conflict becomes a scope risk." }
       }
     ]
   }
@@ -121,6 +152,47 @@
   .fn-hd .when{color:var(--accent)}
   .fn-body{padding:18px 22px;font-size:15px;line-height:1.65;color:var(--text-2)}
   .fn-body strong{color:var(--text);font-weight:500}
+
+  /* Styled tables */
+  .data-table{width:100%;border-collapse:collapse;margin:20px 0;font-size:13.5px}
+  .data-table thead tr{border-bottom:2px solid var(--border)}
+  .data-table thead th{padding:10px 14px;text-align:left;font-family:var(--mono);font-size:10.5px;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-3);font-weight:400}
+  .data-table tbody td{padding:10px 14px;border-bottom:1px solid var(--border);color:var(--text-2);line-height:1.55;vertical-align:top}
+  .data-table tbody tr:last-child td{border-bottom:none}
+  .data-table .label-col{color:var(--text);font-weight:500;font-size:13px}
+
+  /* Department question blocks */
+  .dept-block{margin:18px 0;border:1px solid var(--border);border-radius:10px;overflow:hidden;background:var(--surface)}
+  .dept-hd{display:flex;align-items:center;gap:12px;padding:11px 18px;border-bottom:1px solid var(--border);background:var(--bg)}
+  .dept-tag{font-family:var(--mono);font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;color:var(--accent)}
+  .dept-hd h4{margin:0;font-size:14px;font-weight:600;letter-spacing:-0.01em}
+  .dept-body{padding:16px 20px}
+  .dept-body ol{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:7px}
+  .dept-body li{font-size:14px;line-height:1.6;color:var(--text-2)}
+
+  /* Anti-pattern grid */
+  .anti-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin:28px 0}
+  .anti-card{border:1px solid var(--border);border-radius:10px;padding:20px;background:var(--surface);display:flex;flex-direction:column;gap:8px}
+  .anti-card .ap-num{font-family:var(--mono);font-size:10.5px;color:#C76A6A;letter-spacing:0.14em}
+  .anti-card h4{margin:0;font-size:15px;font-weight:600;letter-spacing:-0.01em}
+  .anti-card p{margin:0;font-size:13.5px;color:var(--text-2);line-height:1.6}
+  .anti-card .fix{font-size:13px;color:var(--accent);margin-top:6px;border-top:1px solid var(--border);padding-top:8px}
+  @media(max-width:680px){.anti-grid{grid-template-columns:1fr}}
+
+  /* Gap map template table */
+  .gap-wrap{overflow-x:auto;margin:20px 0;border:1px solid var(--border);border-radius:10px}
+  .gap-map{width:100%;border-collapse:collapse;font-size:13px;min-width:560px}
+  .gap-map thead tr{border-bottom:2px solid var(--border);background:var(--bg)}
+  .gap-map thead th{padding:9px 12px;text-align:left;font-family:var(--mono);font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-3);font-weight:400;white-space:nowrap}
+  .gap-map tbody td{padding:9px 12px;border-bottom:1px solid var(--border);color:var(--text-2);line-height:1.5;vertical-align:top}
+  .gap-map tbody tr:last-child td{border-bottom:none}
+  .p-high{color:#C76A6A;font-family:var(--mono);font-size:11px;font-weight:600}
+  .p-med{color:#c89a2a;font-family:var(--mono);font-size:11px;font-weight:600}
+  .p-low{color:var(--text-3);font-family:var(--mono);font-size:11px}
+
+  /* Coming-soon link style */
+  .soon{color:var(--text-3);cursor:default;pointer-events:none;text-decoration:none}
+  .soon::after{content:" (coming soon)";font-size:0.8em;opacity:0.55;font-style:italic}
 </style>
 </head>
 <body>
@@ -151,7 +223,8 @@
     <div class="byline">
       <span>By<b><a href="https://www.linkedin.com/in/mehedi-hasan-consultant/" style="color:var(--accent)" rel="author">Mehedi Hasan</a></b></span>
       <span>Published<b>August 2025</b></span>
-      <span>Read time<b>10 minutes</b></span>
+      <span>Updated<b>May 2026</b></span>
+      <span>Read time<b>12 minutes</b></span>
       <span>Form<b>Guide</b></span>
       <span>Drawn from<b>6 discovery engagements</b></span>
     </div>
@@ -163,10 +236,15 @@
     <div class="toc-k">In this guide</div>
     <ol>
       <li><a href="#skip">The phase everyone skips</a></li>
+      <li><a href="#before">Before you schedule</a></li>
       <li><a href="#four">Four things you're mapping</a></li>
       <li><a href="#run">How to run the sessions</a></li>
+      <li><a href="#questions">Question bank by department</a></li>
       <li><a href="#output">What good output looks like</a></li>
+      <li><a href="#scope">Estimating discovery scope</a></li>
       <li><a href="#handoff">The handoff to configuration</a></li>
+      <li><a href="#antipatterns">What goes wrong in discovery</a></li>
+      <li><a href="#bangladesh">Bangladesh-specific considerations</a></li>
       <li><a href="#faq">FAQ</a></li>
     </ol>
   </aside>
@@ -180,6 +258,37 @@
     <p>Discovery is the period — typically two to four weeks — before any configuration happens. Its only job is to understand how the business currently operates, how it wants to operate after the ERP, and what the gap between those two states looks like. That gap is the project scope.</p>
 
     <p class="pull">Open the business first. Open Odoo second.</p>
+
+    <h2 id="before">Before you schedule a session</h2>
+    <p>Most discovery failures happen before the first interview. The client isn't ready — no designated project owner, no documents, no executive cleared for two hours. A readiness check before Day 1 is not bureaucracy; it is risk management.</p>
+
+    <p><strong>Questions to ask the client before booking sessions:</strong></p>
+    <table class="data-table">
+      <thead><tr><th>Question</th><th>Why it matters</th></tr></thead>
+      <tbody>
+        <tr><td class="label-col">Do you have a designated project owner on your side?</td><td>If no — stop. Don't start. Without internal ownership, decisions stall and scope grows by default.</td></tr>
+        <tr><td class="label-col">Has executive leadership committed 2 hours for a discovery kick-off?</td><td>Without executive presence, departments sandbag and cross-functional conflicts go unresolved.</td></tr>
+        <tr><td class="label-col">How many legal entities, warehouses, or production sites?</td><td>Sets session count. Each site with distinct processes needs its own sessions.</td></tr>
+        <tr><td class="label-col">What software do you currently use — ERP, Excel, custom systems?</td><td>Maps data migration scope before a single question is asked.</td></tr>
+        <tr><td class="label-col">Do you have written SOPs for any process?</td><td>Confirms how much undocumented process you're walking into.</td></tr>
+        <tr><td class="label-col">Can you share a completed sales order and a vendor invoice from last month?</td><td>Real documents reveal what the verbal description hides — approvals, exceptions, fields.</td></tr>
+      </tbody>
+    </table>
+
+    <p><strong>Documents to collect before sessions begin:</strong></p>
+    <ul>
+      <li>Last 3 months of purchase orders (any format)</li>
+      <li>A completed sales order — from creation through invoice and payment</li>
+      <li>The most recent bank reconciliation worksheet</li>
+      <li>Org chart (even an informal one hand-drawn on a napkin)</li>
+      <li>Chart of accounts or a recent P&amp;L statement</li>
+      <li>Any existing IT system documentation or user manuals</li>
+    </ul>
+
+    <div class="callout">
+      <span class="tag">Rule</span>
+      <p>If the client can't provide a single completed document before Day 1, the process exists only in people's heads. Budget extra time — every session will require more probing and every sketch will need a second validation round.</p>
+    </div>
 
     <h2 id="four">Four things you're mapping</h2>
     <p>A complete discovery produces four artifacts. Miss any of them and you'll find the gap during UAT — which is the most expensive place to find it.</p>
@@ -233,8 +342,59 @@
       <p>Ask "what happens when it goes wrong?" for every step. Exceptions and edge cases are not footnotes — they are where the real process lives. If your discovery doesn't capture them, your UAT will.</p>
     </div>
 
+    <h2 id="questions">Question bank by department</h2>
+    <p>The most consistent gap in consultant-led discovery: the questions aren't sharp enough. Here are the questions that surface the most important process detail, by department. Use them as a starting baseline — every engagement will add more.</p>
+
+    <div class="dept-block">
+      <div class="dept-hd"><span class="dept-tag">Dept 01</span><h4>Procurement</h4></div>
+      <div class="dept-body"><ol>
+        <li>Walk me through your last purchase order from the moment you decided to buy something.</li>
+        <li>Who approves purchases — and what happens when they're unavailable or traveling?</li>
+        <li>Do you track partial deliveries? What happens when a vendor delivers 80% of an order?</li>
+        <li>How do you handle returns to vendors — is there a paper trail?</li>
+        <li>What's the average time between raising a PO and receiving goods?</li>
+        <li>Do you issue advance payments to vendors? How are they reconciled against the final invoice?</li>
+      </ol></div>
+    </div>
+
+    <div class="dept-block">
+      <div class="dept-hd"><span class="dept-tag">Dept 02</span><h4>Finance &amp; Accounts</h4></div>
+      <div class="dept-body"><ol>
+        <li>How do you currently match a vendor invoice to a purchase order and a goods receipt?</li>
+        <li>What is your month-end close process? How many working days does it take?</li>
+        <li>Do you operate in multiple currencies? At what point is the exchange rate fixed — PO, GRN, invoice, or payment?</li>
+        <li>How many bank accounts do you reconcile, and how often?</li>
+        <li>Do inter-company transactions exist between your entities? How are they currently settled?</li>
+        <li>How do you handle tax — VAT, AIT, withholding? Is it calculated manually or through software?</li>
+      </ol></div>
+    </div>
+
+    <div class="dept-block">
+      <div class="dept-hd"><span class="dept-tag">Dept 03</span><h4>Sales</h4></div>
+      <div class="dept-body"><ol>
+        <li>Walk me through a sale from first customer contact to invoice payment.</li>
+        <li>Are there approval steps for quotes, pricing exceptions, or discounts? Who approves?</li>
+        <li>How do you handle partial shipments — does the customer get a partial invoice?</li>
+        <li>Do customers have credit limits? Who monitors them and what happens when they're exceeded?</li>
+        <li>How are returns and credit notes processed today?</li>
+        <li>Do you manage customer-specific pricing or contract rates?</li>
+      </ol></div>
+    </div>
+
+    <div class="dept-block">
+      <div class="dept-hd"><span class="dept-tag">Dept 04</span><h4>Production &amp; Manufacturing</h4></div>
+      <div class="dept-body"><ol>
+        <li>How do you plan production — based on sales orders, a weekly schedule, or something else?</li>
+        <li>How are raw material requirements calculated? Is there a BOM? Is it written down?</li>
+        <li>What happens when a material is short during production — who decides how to proceed?</li>
+        <li>How do you record actual production vs. planned? Who enters it and when?</li>
+        <li>Who signs off a finished goods entry into the warehouse?</li>
+        <li>How do you track scrap, rework, and quality rejections?</li>
+      </ol></div>
+    </div>
+
     <h2 id="output">What good output looks like</h2>
-    <p>Bad discovery output is a bullet-pointed list of features the client wants. Good discovery output has three documents:</p>
+    <p>Bad discovery output is a bullet-pointed list of features the client wants. Good discovery output has three documents: <strong>(1) annotated as-is process flows</strong>, <strong>(2) a gap map</strong> that links each gap to a required Odoo configuration or customisation, and <strong>(3) a data migration inventory</strong> that records every master data entity, its current volume, quality, and target format. Miss any of the three and the configuration team is making assumptions.</p>
 
     <div class="case-pair">
       <div class="bad">
@@ -249,6 +409,39 @@
 
     <p>The gap map is the project scope. If the vendor's statement of work doesn't map back to a gap-by-gap list, you don't have a project — you have a verbal agreement that will be interpreted differently on both sides.</p>
 
+    <p>A useful gap map follows this structure. Here's a minimal working example from a procurement discovery:</p>
+    <div class="gap-wrap">
+      <table class="gap-map">
+        <thead><tr><th>Step</th><th>As-is</th><th>Exception</th><th>Odoo mapping</th><th>Gap</th><th>Priority</th></tr></thead>
+        <tbody>
+          <tr><td>PO creation</td><td>Excel, emailed to manager</td><td>Urgent orders verbal only</td><td>Purchase → RFQ → PO</td><td>No approval workflow today</td><td class="p-high">HIGH</td></tr>
+          <tr><td>GRN</td><td>Paper receipt, filed weekly</td><td>Partial deliveries not tracked</td><td>Purchase → Receipts</td><td>Partial GRN logic needed</td><td class="p-high">HIGH</td></tr>
+          <tr><td>Vendor invoice match</td><td>Manual comparison in Excel</td><td>Advances paid before invoice</td><td>Accounting → Vendor Bills</td><td>3-way match not done today; advance reconciliation needed</td><td class="p-high">HIGH</td></tr>
+          <tr><td>FX rate</td><td>Rate at payment date, manually entered</td><td>LC rate locked at opening</td><td>Multi-currency in Accounting</td><td>Rate locking at PO date required for LC orders</td><td class="p-med">MED</td></tr>
+          <tr><td>Vendor returns</td><td>Rarely happens, no formal process</td><td>—</td><td>Purchase → Returns</td><td>Process to design from scratch</td><td class="p-low">LOW</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2 id="scope">Estimating your discovery scope</h2>
+    <p>One of the first questions a client asks: <em>how long will discovery take?</em> A reliable heuristic: one 90-minute session per major department per Odoo functional area that department touches. A procurement department that touches Purchasing, Inventory, and Accounting needs three sessions, not one.</p>
+
+    <table class="data-table">
+      <thead><tr><th>Deployment size</th><th>Modules</th><th>Departments</th><th>Sessions needed</th><th>Discovery duration</th></tr></thead>
+      <tbody>
+        <tr><td class="label-col">Small</td><td>2–3</td><td>2–3</td><td>6–8</td><td>1 week</td></tr>
+        <tr><td class="label-col">Mid-size</td><td>4–6</td><td>4–6</td><td>12–16</td><td>2–3 weeks</td></tr>
+        <tr><td class="label-col">Large</td><td>7+</td><td>7+</td><td>18–24+</td><td>4–6 weeks</td></tr>
+      </tbody>
+    </table>
+
+    <p><strong>On pricing discovery as a standalone phase:</strong> discovery should be sold as a separate deliverable with its own invoice — not bundled into the implementation fee. When bundled, it is the first thing cut when a client tries to reduce scope. A separate engagement creates mutual accountability. The consultant must deliver complete documentation. The client must show up and provide access.</p>
+
+    <div class="callout">
+      <span class="tag">Warning</span>
+      <p>If a vendor offers "free discovery," ask what documentation they deliver at the end. Free discovery is almost always a sales demo with a statement of work attached. It produces a wish list, not a process map.</p>
+    </div>
+
     <h2 id="handoff">The handoff to configuration</h2>
     <p>Discovery ends with a formal handoff session where the BA walks the configuration team through every gap, every exception, and every data migration requirement — in writing. This session should take half a day. If it takes less, something wasn't captured.</p>
 
@@ -259,7 +452,53 @@
       <li><strong>UAT entry criteria defined.</strong> What does "ready for UAT" mean? Which flows must pass, at what fidelity, before end-users are invited to test? If this isn't defined upfront, UAT never ends.</li>
     </ol>
 
-    <p>For the <a href="0010-bpmn-templates-manufacturing-discovery" style="color:var(--accent)">BPMN templates I use during manufacturing discovery</a>, there's a starter pack in Lab 0010 — built for Week 1 of every engagement. The <a href="0009-uat-script-200-users-ago" style="color:var(--accent)">UAT scripting guide</a> picks up where discovery hands off.</p>
+    <p>For the BPMN templates I use during manufacturing discovery, there's a starter pack in <a class="soon" href="#">Lab 0010</a> — built for Week 1 of every engagement. The UAT scripting guide picks up where discovery hands off in <a class="soon" href="#">Lab 0009</a>.</p>
+
+    <h2 id="antipatterns">What goes wrong in discovery itself</h2>
+    <p>Discovery is not automatically good just because you scheduled it. The four most common ways consultants run discovery badly:</p>
+
+    <div class="anti-grid">
+      <div class="anti-card">
+        <span class="ap-num">ANTI-PATTERN 01</span>
+        <h4>Scoping to the demo</h4>
+        <p>The consultant opens Odoo and asks "can your process fit this screen?" instead of mapping the process first and then checking fit. This produces a scope that conforms to Odoo's defaults — not the client's business. Every customisation surfaces as a surprise in UAT.</p>
+        <div class="fix">Fix: No screens in the session. Map on paper. Check fit later.</div>
+      </div>
+      <div class="anti-card">
+        <span class="ap-num">ANTI-PATTERN 02</span>
+        <h4>The IT head speaks for everyone</h4>
+        <p>IT knows the systems. They don't know the process. In many businesses, the IT coordinator becomes the proxy for all departments "to save time." The result: a technically accurate system description with no operational reality attached to it.</p>
+        <div class="fix">Fix: One session per department. The IT head attends as observer, not respondent.</div>
+      </div>
+      <div class="anti-card">
+        <span class="ap-num">ANTI-PATTERN 03</span>
+        <h4>Not validating the sketch</h4>
+        <p>A session produces a process sketch. Nobody sends it back to the operator for confirmation. Two weeks later in configuration review, a key exception surfaces that the BA missed. The sketch felt complete in the room. It wasn't.</p>
+        <div class="fix">Fix: Send the annotated sketch back to all attendees within 48 hours for written sign-off.</div>
+      </div>
+      <div class="anti-card">
+        <span class="ap-num">ANTI-PATTERN 04</span>
+        <h4>Capturing the desired future state</h4>
+        <p>Clients instinctively describe how they <em>want</em> things to work, not how they currently work. Discovery that maps the desired state is requirements-gathering in disguise — it produces gaps against a fantasy, not against reality.</p>
+        <div class="fix">Fix: After every description, ask: "Is this how it works today, or how you'd like it to work after Odoo?"</div>
+      </div>
+    </div>
+
+    <h2 id="bangladesh">Bangladesh-specific considerations</h2>
+    <p>Bangladesh manufacturing and trading businesses have structural patterns that almost never appear in Western ERP methodology guides. Missing them during discovery means finding them during go-live.</p>
+
+    <h3>Shadow processes and paper registers</h3>
+    <p>In garment, ceramics, food processing, and trading businesses, the formal process described by management is often a skeleton. The operational reality lives in WhatsApp group approvals between managers, Excel sheets maintained by individual staff members rather than the company, paper registers at factory floor level reconciled weekly or never, and verbal sign-offs for urgent orders that bypass the official approval chain.</p>
+    <p>This is precisely why the floor-level operator rule is non-negotiable. A discovery that interviews only department heads will miss the majority of actual process paths. The question to ask every operator: <em>"Show me the last five times this happened. Walk me through each one."</em></p>
+
+    <h3>Multi-entity complexity</h3>
+    <p>Dhaka-based groups commonly have 3–8 legal entities: a trading company, one or more manufacturing units, an export company, and a holding entity. They often share staff, physical resources, and sometimes bank accounts. Discovery must explicitly establish: which entities go live in Phase 1, which inter-company flows must be automated from Day 1, and which can be handled manually through the transition period. Leaving this question open is the single fastest way to cause the go-live to slip.</p>
+
+    <h3>FX and LC-based procurement</h3>
+    <p>USD-BDT transactions, letter-of-credit procurement, and advance payments against imports introduce exchange-rate timing complexity that most ERP configurations ignore until UAT. Capture it explicitly during the finance discovery session: at what point is the rate locked — PO date, LC opening date, GRN date, invoice date, or payment date? Each business has a different answer, and each answer requires a different Odoo configuration.</p>
+
+    <h3>NBR compliance touchpoints</h3>
+    <p>VAT calculation under the NBR regime, Mushak forms, and AIT on vendor payments are not afterthoughts — they surface inside procurement, sales, and finance processes. Flag every step where a tax implication exists during discovery. It's far cheaper to map them to the right Odoo module during discovery than to retrofit them after go-live.</p>
 
     <h2 id="faq">FAQ</h2>
 
@@ -271,6 +510,21 @@
 
     <h3>How long does business process mapping take before Odoo configuration?</h3>
     <p>For a mid-size Bangladesh manufacturer deploying 4–6 Odoo modules, discovery and process mapping typically takes 2–4 weeks including workshops, documentation, and stakeholder sign-off. Skipping this phase is the single biggest cause of scope creep and failed implementations.</p>
+
+    <h3>Can discovery be done remotely?</h3>
+    <p>Yes, with caveats. Remote discovery works well for process interviews. It fails for floor-level observation — which is irreplaceable in manufacturing. A hybrid format (remote interviews + one on-site day at the factory) is the minimum viable approach for any manufacturing deployment. Fully remote discovery works only for service businesses with no physical operations.</p>
+
+    <h3>What's the difference between a discovery session and a requirements workshop?</h3>
+    <p>A requirements workshop starts with what the client <em>wants</em>. A discovery session starts with how the business <em>currently operates</em>. Discovery produces a map of reality. Requirements workshops produce a wish list. You need the map before you can evaluate the wishes — otherwise you're configuring against a fantasy.</p>
+
+    <h3>Should discovery be a paid engagement?</h3>
+    <p>Yes. Always. Discovery that is bundled free into implementation is always cut first. A paid discovery creates accountability on both sides: the consultant must deliver documentation; the client must show up. It also protects the consultant — if the client cancels after discovery, there is a documented deliverable, not a lost sales conversation.</p>
+
+    <h3>What is a process gap in ERP terms?</h3>
+    <p>A gap is the difference between how the business currently operates and how the target ERP system works out of the box. Gaps require one of three responses: configure the ERP to fit the process, adapt the process to fit the ERP, or build a custom extension. Discovery's job is to identify every gap so the project team can make those decisions — deliberately, before configuration starts, not reactively during UAT.</p>
+
+    <h3>How do you handle conflicting process descriptions from different departments?</h3>
+    <p>Document both versions, flag the conflict explicitly in the gap map, and escalate to the executive sponsor in the handoff session. Do not pick a version yourself as the consultant — you don't own the business process. The client must decide. If they can't decide during discovery, that unresolved conflict is a scope risk: write it down as such, with a timeline impact estimate attached.</p>
 
     <div class="callout">
       <span class="tag">PS</span>

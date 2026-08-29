@@ -17,6 +17,38 @@
     <priority>0.95</priority>
   </url>
 
+  <!-- Bangla homepage -->
+  <url>
+    <loc>https://mhasan.me/bn/</loc>
+    <lastmod>2026-08-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Bangla cost estimator -->
+  <url>
+    <loc>https://mhasan.me/bn/tools/odoo-cost-estimator/</loc>
+    <lastmod>2026-08-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <!-- Bangla: bangladesh erp implementation cost -->
+  <url>
+    <loc>https://mhasan.me/bn/lab/0012-odoo-erp-cost-bangladesh</loc>
+    <lastmod>2026-08-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Bangla: why erp fails bangladesh -->
+  <url>
+    <loc>https://mhasan.me/bn/lab/0001-why-erp-fails-bangladesh</loc>
+    <lastmod>2026-08-30</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
   <!-- Lab index page -->
   <url>
     <loc>https://mhasan.me/lab/</loc>

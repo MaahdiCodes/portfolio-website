@@ -1,0 +1,319 @@
+<!doctype html>
+<html lang="bn">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="icon" href="/favicon.ico" sizes="any" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon.png" />
+<link rel="apple-touch-icon" href="/favicon.png" />
+<meta name="description" content="বাংলাদেশে ERP বাস্তবায়নের ব্যর্থতা: বাস্তব প্রজেক্ট থেকে পাওয়া ৫টি মূল কারণ। কেন বেশিরভাগ Odoo প্রজেক্ট লক্ষ্য পূরণে ব্যর্থ হয় এবং সফল প্রজেক্টগুলো আসলে কী করে।" />
+<meta name="robots" content="index, follow" />
+<meta name="author" content="Mehedi Hasan" />
+<title>বাংলাদেশে কেন ERP বাস্তবায়ন ব্যর্থ হয় | মেহেদী হাসান</title>
+<link rel="canonical" href="https://mhasan.me/bn/lab/0001-why-erp-fails-bangladesh" />
+<link rel="alternate" hreflang="en" href="https://mhasan.me/lab/0001-why-erp-fails-bangladesh" />
+<link rel="alternate" hreflang="bn-BD" href="https://mhasan.me/bn/lab/0001-why-erp-fails-bangladesh" />
+<link rel="alternate" hreflang="x-default" href="https://mhasan.me/lab/0001-why-erp-fails-bangladesh" />
+<!-- Open Graph -->
+<meta property="og:title" content="বাংলাদেশে কেন ERP বাস্তবায়ন ব্যর্থ হয় | মেহেদী হাসান" />
+<meta property="og:description" content="বাংলাদেশে ERP বাস্তবায়নের ব্যর্থতা: বাস্তব প্রজেক্ট থেকে পাওয়া ৫টি মূল কারণ। কেন বেশিরভাগ Odoo প্রজেক্ট লক্ষ্য পূরণে ব্যর্থ হয় এবং সফল প্রজেক্টগুলো আসলে কী করে।" />
+<meta property="og:url" content="https://mhasan.me/bn/lab/0001-why-erp-fails-bangladesh" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://mhasan.me/assets/og-default.jpg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:locale" content="bn_BD" />
+<meta property="og:site_name" content="মেহেদী হাসান | Odoo কনসালট্যান্ট" />
+<meta property="article:author" content="https://www.linkedin.com/in/mehedi-hasan-consultant/" />
+<meta property="article:published_time" content="2025-07-01T08:00:00+06:00" />
+<meta property="article:modified_time" content="2026-05-22T08:00:00+06:00" />
+<meta property="article:section" content="Odoo ERP Bangladesh" />
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="বাংলাদেশে কেন ERP বাস্তবায়ন ব্যর্থ হয় | মেহেদী হাসান" />
+<meta name="twitter:description" content="বাংলাদেশে ERP বাস্তবায়নের ব্যর্থতা: বাস্তব প্রজেক্ট থেকে পাওয়া ৫টি মূল কারণ। কেন বেশিরভাগ Odoo প্রজেক্ট লক্ষ্য পূরণে ব্যর্থ হয় এবং সফল প্রজেক্টগুলো আসলে কী করে।" />
+<meta name="twitter:image" content="https://mhasan.me/assets/og-default.jpg" />
+<!-- JSON-LD: Article + BreadcrumbList -->
+<script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "বাংলাদেশে কেন বেশিরভাগ ERP বাস্তবায়ন ব্যর্থ হয় — ৫টি মূল কারণ",
+    "description": "বাংলাদেশে ERP বাস্তবায়নের ব্যর্থতা: বাস্তব প্রজেক্ট থেকে পাওয়া ৫টি মূল কারণ। কেন বেশিরভাগ Odoo প্রজেক্ট লক্ষ্য পূরণে ব্যর্থ হয় এবং সফল প্রজেক্টগুলো আসলে কী করে।",
+    "datePublished": "2025-07-01T08:00:00+06:00",
+    "dateModified": "2026-05-22T08:00:00+06:00",
+    "inLanguage": "bn",
+    "author": {
+      "@type": "Person",
+      "name": "Mehedi Hasan",
+      "url": "https://mhasan.me",
+      "sameAs": "https://www.linkedin.com/in/mehedi-hasan-consultant/"
+    },
+    "publisher": { "@type": "Person", "name": "Mehedi Hasan", "url": "https://mhasan.me" },
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://mhasan.me/bn/lab/0001-why-erp-fails-bangladesh" }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "হোম", "item": "https://mhasan.me/bn" },
+      { "@type": "ListItem", "position": 2, "name": "ল্যাব", "item": "https://mhasan.me/bn/#lab" },
+      { "@type": "ListItem", "position": 3, "name": "বাংলাদেশে কেন ERP বাস্তবায়ন ব্যর্থ হয়", "item": "https://mhasan.me/bn/lab/0001-why-erp-fails-bangladesh" }
+    ]
+  }
+]
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&family=Noto+Sans+Bengali:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap">
+<link rel="stylesheet" href="/lab/_styles.css">
+<style>
+  body{ font-family: 'Noto Sans Bengali', var(--sans); }
+  .pull{
+    font-family:var(--serif);font-style:italic;
+    font-size:clamp(28px,3.4vw,42px);line-height:1.2;color:var(--text);
+    margin:48px 0;padding:0;border:none;
+    max-width:18ch;letter-spacing:-0.01em;
+  }
+  .pull::before{content:"";display:block;width:36px;height:1px;background:var(--accent);margin-bottom:18px}
+
+  .failure-cards{display:grid;grid-template-columns:1fr;gap:14px;margin:28px 0}
+  .fc{
+    border:1px solid var(--border);border-radius:12px;overflow:hidden;
+    background:var(--surface);display:flex;align-items:stretch;
+  }
+  .fc-num{
+    flex:none;width:52px;display:flex;align-items:center;justify-content:center;
+    font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:0.1em;
+    color:var(--text-3);border-right:1px solid var(--border);
+    writing-mode:vertical-rl;text-orientation:mixed;
+  }
+  .fc-body{padding:18px 22px;flex:1}
+  .fc-body h4{margin:0 0 6px;font-size:15px;font-weight:600;letter-spacing:-0.01em}
+  .fc-body p{margin:0;font-size:14px;line-height:1.65;color:var(--text-2)}
+  .fc-body strong{color:var(--text);font-weight:500}
+  .fc.hi .fc-num{color:var(--accent);background:var(--accent-dim)}
+  .fc.hi{border-color:oklch(0.80 0.17 155 / 0.3)}
+
+  .signal-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin:28px 0}
+  .signal-grid .sg{
+    border:1px solid var(--border);border-radius:10px;padding:18px;background:var(--surface);
+  }
+  .signal-grid .sg h4{margin:0 0 8px;font-size:13px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--accent);font-family:var(--mono)}
+  .signal-grid .sg p{margin:0;font-size:13.5px;line-height:1.6;color:var(--text-2)}
+  @media(max-width:680px){.signal-grid{grid-template-columns:1fr}}
+
+  .field-note{margin:28px 0;border:1px solid var(--border);border-radius:12px;overflow:hidden;background:var(--surface)}
+  .fn-hd{display:flex;align-items:center;justify-content:space-between;padding:12px 18px;border-bottom:1px solid var(--border);font-family:var(--mono);font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-3)}
+  .fn-hd .when{color:var(--accent)}
+  .fn-body{padding:18px 22px;font-size:15px;line-height:1.65;color:var(--text-2)}
+  .fn-body strong{color:var(--text);font-weight:500}
+</style>
+</head>
+<body>
+<div class="grid-bg"></div>
+
+<header class="nav">
+  <div class="shell">
+    <div class="nav-inner">
+      <a class="brand" href="/bn/">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span class="brand-name"><b>Mehedi Hasan</b><em>ERP · বিজনেস অ্যানালিস্ট</em></span>
+      </a>
+      <a class="back-link" href="/bn/#lab">← ল্যাব-এ ফিরুন</a>
+    </div>
+  </div>
+</header>
+
+<section class="post-head">
+  <div class="shell">
+    <span class="eyebrow">টেকনিক্যাল ল্যাব · 0001</span>
+    <h1>বাংলাদেশে কেন বেশিরভাগ ERP বাস্তবায়ন <span class="serif">ব্যর্থ</span> হয়।</h1>
+    <p class="lede">পাঁচটি মূল কারণ, ফ্রিকোয়েন্সির ক্রম অনুযায়ী — RMG, টেক্সটাইল এবং ম্যানুফ্যাকচারিং খাতের বাস্তব ডেপ্লয়মেন্ট থেকে নেওয়া। এর একটিও সফটওয়্যার নিয়ে নয়।</p>
+    <div class="post-meta">
+      <span class="chip accent">প্রবন্ধ</span>
+      <span class="chip">কৌশল</span>
+      <span class="chip">ব্যর্থতা বিশ্লেষণ</span>
+    </div>
+    <div class="byline">
+      <span>লেখক<b><a href="https://www.linkedin.com/in/mehedi-hasan-consultant/" style="color:var(--accent)" rel="author">Mehedi Hasan</a></b></span>
+      <span>প্রকাশিত<b>জুলাই ২০২৫</b></span>
+      <span>পড়ার সময়<b>৯ মিনিট</b></span>
+      <span>ধরন<b>প্রবন্ধ</b></span>
+      <span>তথ্যসূত্র<b>৮+ ডেপ্লয়মেন্ট</b></span>
+    </div>
+  </div>
+</section>
+
+<article class="post">
+  <aside class="toc">
+    <div class="toc-k">এই প্রবন্ধে</div>
+    <ol>
+      <li><a href="#stat">যে সংখ্যাটি কেউ দ্বিতীয়বার বলে না</a></li>
+      <li><a href="#five">পাঁচটি ব্যর্থতার ধরন</a></li>
+      <li><a href="#ecosystem">কনসালট্যান্ট সমস্যা</a></li>
+      <li><a href="#thirty">যে ৩০% সঠিক করেছিল</a></li>
+      <li><a href="#question">প্রথমে যে প্রশ্নটি করা উচিত</a></li>
+      <li><a href="#faq">সচরাচর জিজ্ঞাসা</a></li>
+    </ol>
+  </aside>
+
+  <div class="body">
+    <h2 id="stat">যে সংখ্যাটি কেউ দ্বিতীয়বার বলে না</h2>
+    <p>স্বাধীন ERP গবেষণা — যার মধ্যে সবচেয়ে বেশি উদ্ধৃত হয় Panorama Consulting-এর বার্ষিক ERP Report — দীর্ঘদিন ধরে বাস্তবায়ন ব্যর্থতার হার ৫৫% থেকে ৭৫%-এর মধ্যে দেখিয়ে আসছে, যা নির্ভর করে ব্যর্থতাকে কীভাবে সংজ্ঞায়িত করা হচ্ছে তার ওপর। বেশিরভাগ কোম্পানি আসলে এটি সংজ্ঞায়িতই করে না — তারা মিস হওয়া টাইমলাইনকে বলে "ডিলে", বাজেট ছাড়িয়ে যাওয়াকে বলে "স্কোপ সংযোজন", আর গো-লাইভের তিন মাস পরও কেউ ব্যবহার না করা সিস্টেমকে বলে "ট্রেনিং সমস্যা"।</p>
+
+    <p>বাংলাদেশে চিত্রটা আরও খারাপ। স্থানীয় ERP ইকোসিস্টেমে অভিজ্ঞ ফাংশনাল কনসালট্যান্টের সংখ্যা কম, আর YouTube দেখে কনফিগারেশন শেখা ভেন্ডরের সংখ্যা বেশি — যারা সেই অনুযায়ী দাম ধরে। ব্যবসার মালিকরা — খরচ নিয়ে যৌক্তিকভাবে সন্দিহান — টাইমলাইন ও বাজেট এত সংকুচিত করে ফেলেন যে প্রজেক্টটি কাঠামোগতভাবেই প্রতিশ্রুত ফল দিতে অক্ষম হয়ে পড়ে।</p>
+
+    <p>ব্যর্থতা যখন আসে, তার দায় সবসময় সফটওয়্যারের ওপর চাপানো হয়। প্রায় ক্ষেত্রেই তা সঠিক নয়।</p>
+
+    <p class="pull">সফটওয়্যার কদাচিৎ ব্যর্থ হয়। এর চারপাশের প্রজেক্টটি প্রায় সবসময়ই ব্যর্থ হয়।</p>
+
+    <h2 id="five">পাঁচটি ব্যর্থতার ধরন, ফ্রিকোয়েন্সির ক্রম অনুযায়ী</h2>
+    <p>RMG, টেক্সটাইল, সাইকেল এক্সপোর্ট এবং ট্রেডিং খাতে আট-এর বেশি ডেপ্লয়মেন্টের পর, একই মূল কারণগুলো বারবার দেখা যায় — মোটামুটি এই ফ্রিকোয়েন্সি ক্রমে:</p>
+
+    <div class="failure-cards">
+      <div class="fc hi">
+        <div class="fc-num">01</div>
+        <div class="fc-body">
+          <h4>ডিসকভারি ফেজ এড়িয়ে যাওয়া</h4>
+          <p>ব্যবসা চুক্তি সই করে, ভেন্ডর একটি ডেমো এনভায়রনমেন্ট নিয়ে হাজির হয়, আর কনফিগারেশন শুরু হয়ে যায়। কেউ ম্যাপ করে না ব্যবসাটি আসলে কীভাবে চলে। <strong>"সফটওয়্যার কীভাবে কাজ করে" আর "আপনার ব্যবসা কীভাবে চলে" — এই দুইয়ের মধ্যকার ফাঁকেই প্রজেক্টগুলো মারা যায়।</strong> সঠিকভাবে করা ডিসকভারিতে দুই থেকে চার সপ্তাহ লাগে। বেশিরভাগ প্রজেক্ট এর জন্য একদিনও বাজেট রাখে না।</p>
+        </div>
+      </div>
+      <div class="fc hi">
+        <div class="fc-num">02</div>
+        <div class="fc-body">
+          <h4>শুধু দামের ভিত্তিতে ভেন্ডর নির্বাচন</h4>
+          <p>বাংলাদেশে ERP প্রকিউরমেন্ট চলে সবচেয়ে কম দামের নীতিতে। তিনটি ভেন্ডর প্রস্তাব দেয়; মাঝেরটি কাজ পায়। সবচেয়ে সস্তা ভেন্ডর টিকে থাকে আন্ডার-স্কোপিং করে: কম মডিউল, সংকুচিত ট্রেনিং, ডেটা মাইগ্রেশন সাপোর্ট নেই, গো-লাইভ পরবর্তী কোনো শর্ত নেই। <strong>"সাশ্রয় করা" ৳3 লাখ ছয় মাস পর রিওয়ার্কে গিয়ে দাঁড়ায় ৳15 লাখে।</strong> আমি এই প্যাটার্ন অন্তত চারবার দেখেছি।</p>
+        </div>
+      </div>
+      <div class="fc">
+        <div class="fc-num">03</div>
+        <div class="fc-body">
+          <h4>চেঞ্জ ম্যানেজমেন্টকে অবমূল্যায়ন করা</h4>
+          <p>একটি কোম্পানি তার স্টাফদের একবার ট্রেনিং দেয়, গো-লাইভের এক সপ্তাহ আগে, চার ঘণ্টার জন্য। এটাই তাদের চেঞ্জ ম্যানেজমেন্ট প্ল্যান। সিস্টেম গো-লাইভ হয়। তৃতীয় সপ্তাহের মধ্যেই পুরনো স্প্রেডশিট ফিরে আসে — প্রথমে সমান্তরালে ব্যবহৃত হয়, তারপর তার বদলে। ফ্লোর সুপারভাইজারদের কেউ কখনো <em>কেন</em> তা ব্যাখ্যা করেনি। স্টেক বাস্তব হওয়ার আগেই নতুন ওয়ার্কফ্লো কারও মাসল মেমোরিতে গড়ে ওঠেনি।</p>
+        </div>
+      </div>
+      <div class="fc">
+        <div class="fc-num">04</div>
+        <div class="fc-body">
+          <h4>অগোছালো ডেটা মাইগ্রেট করা</h4>
+          <p>আইটেম মাস্টারে ৪,০০০টি SKU আছে। আটশোটি ডুপ্লিকেট। তিনশোটির ইউনিট অফ মেজার ভুল। ইমপোর্টের আগে কেউ অডিট করেনি। লাইভ অপারেশনের প্রথম দিনেই <strong>স্টক ভ্যালুয়েশন ভুল হয়ে যায়, BOM মেলে না, এবং যেসব আইটেম আর নেই সেগুলোর জন্য পারচেজ অর্ডার তৈরি হতে থাকে।</strong> ডেটা মাইগ্রেশন কোনো টেকনিক্যাল কাজ নয়। এটি একটি বিজনেস প্রসেস — এবং এতে সময় লাগে সপ্তাহ, ঘণ্টা নয়।</p>
+        </div>
+      </div>
+      <div class="fc">
+        <div class="fc-num">05</div>
+        <div class="fc-body">
+          <h4>ভুল মডিউল নির্বাচন</h4>
+          <p>একটি ট্রেডিং কোম্পানি Manufacturing মডিউল কেনে কারণ ভেন্ডর বলেছিল এটি "ইনভেন্টরি" হ্যান্ডল করে। একটি সার্ভিস কোম্পানি পুরো স্যুট কেনে যখন তার দরকার ছিল শুধু Accounting আর CRM। আরও সাধারণ ঘটনা: একটি ব্যবসা সঠিক মডিউলই কেনে কিন্তু সবগুলো একসাথে চালু করে দেয়, যা টিমকে অভিভূত করে ফেলে এবং এত বড় একটি কনফিগারেশন সারফেস তৈরি করে যা ঠিকমতো টেস্ট করা সম্ভব হয় না।</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout">
+      <span class="tag">নিয়ম</span>
+      <p>যদি বাস্তবায়ন পরিকল্পনায় একটি নির্দিষ্ট ডেটা অডিট সপ্তাহ, একটি আনুষ্ঠানিক চেঞ্জ ম্যানেজমেন্ট বাজেট, এবং প্রতিটি বিভাগের জন্য নির্ধারিত অভ্যন্তরীণ চ্যাম্পিয়ন না থাকে — তাহলে সেটি কোনো বাস্তবায়ন পরিকল্পনা নয়। এটি একটি কনফিগারেশন শিডিউল মাত্র।</p>
+    </div>
+
+    <div class="field-note">
+      <div class="fn-hd"><span>নোট · সাইকেল এক্সপোর্ট ফ্যাক্টরি · ৩টি কোটেশন মূল্যায়িত</span><span class="when">চুক্তির ৪ মাস পর</span></div>
+      <div class="fn-body">
+        মালিক তিনটি কোটেশনের মধ্যে সবচেয়ে কমটি বেছে নিয়েছিলেন — ৳4.5 লাখ, যেখানে মিডিয়ান ছিল ৳11 লাখ — আর ডিসকভারি হয়েছিল মাত্র এক বিকেলে। চার মাস পর দেখা গেল, বিল অফ ম্যাটেরিয়ালস তাদের মাল্টি-লেভেল ফ্রেম-অ্যান্ড-কম্পোনেন্ট অ্যাসেম্বলি মডেল করতে পারছে না। ভেন্ডর একে বলল "আউট অফ স্কোপ"। প্রজেক্ট থমকে যায়, এবং শূন্য থেকে রি-স্কোপ করতে দ্বিতীয় একজন কনসালট্যান্ট আনা হয়। <strong>শুধু রিপ্লেসমেন্ট এনগেজমেন্টেই খরচ হয় ৳9 লাখ — যা মালিক টাকা বাঁচাতে গিয়ে যে মিডিয়ান কোটেশন প্রত্যাখ্যান করেছিলেন তার চেয়েও বেশি।</strong> একই প্রজেক্টে ব্যর্থতার ধরন ০২ এবং ০৫ — দুটোই।
+      </div>
+    </div>
+
+    <h2 id="ecosystem">কনসালট্যান্ট সমস্যা</h2>
+    <p>বাংলাদেশে Odoo কনসালট্যান্টের সংখ্যা ছোট কিন্তু ক্রমবর্ধমান। তবে এর চেয়ে অনেক বড় একটি দল আছে যারা একবার Odoo কনফিগার করেছে, কিছু ডকুমেন্টেশন দেখেছে, আর এখন যেকোনো দামে "ERP implementation" বিক্রি করছে। এই পার্থক্যটা গুরুত্বপূর্ণ, কারণ <strong>ERP কনসালটিং একটি ডোমেইন স্কিল, সফটওয়্যার স্কিল নয়।</strong></p>
+
+    <p>একজন ভালো ERP কনসালট্যান্ট সিস্টেম স্পর্শ করার আগেই আপনার ইন্ডাস্ট্রি সম্পর্কে জানেন। তারা জানেন একটি গার্মেন্টস ফ্যাক্টরির প্রোডাকশন অর্ডার ফ্লো কেমন দেখতে হয়, একজন সাইকেল এক্সপোর্টারের মাল্টি-কারেন্সি ল্যান্ডেড কস্ট ক্যালকুলেশন কী ফলাফল দেওয়া উচিত, একটি RMG অ্যাকাউন্টস ডিপার্টমেন্ট যখন "বুকিং" বলে তখন তার মানে কী। শুধু কনফিগারেশন-কেন্দ্রিক একজন কনসালট্যান্ট জানেন কোন বাটনে ক্লিক করতে হয়। এই দুটি একই কাজ নয়।</p>
+
+    <p>চেনার উপায়: সম্ভাব্য কনসালট্যান্টকে জিজ্ঞেস করুন তাদের ডিসকভারি ডেলিভারেবলস কী। যদি তারা আপনাকে একটি মডিউল লিস্ট ধরিয়ে দেয়, চলে যান। যদি তারা একটি প্রসেস ম্যাপ আর গ্যাপ অ্যানালাইসিস দেয়, থেকে যান।</p>
+
+    <h2 id="thirty">যে ৩০% সঠিক করেছিল</h2>
+    <p>যেসব বাস্তবায়ন সফল হয়, তাদের মধ্যে কয়েকটি বৈশিষ্ট্য মিলে যায়। এগুলো প্রযুক্তি নিয়ে নয়।</p>
+
+    <div class="signal-grid">
+      <div class="sg">
+        <h4>অভ্যন্তরীণ চ্যাম্পিয়ন</h4>
+        <p>ব্যবসার ভেতরের একজন ব্যক্তি ERP প্রজেক্টের মালিকানা নেয় — স্পনসর হিসেবে নয়, বরং দৈনন্দিন অপারেটর হিসেবে। তারা প্রতিটি সেশনে উপস্থিত থাকে, বাধাগুলো লিডারশিপের কাছে এস্কেলেট করে, এবং কনসালট্যান্ট ও ফ্লোরের মধ্যে অনুবাদকের কাজ করে।</p>
+      </div>
+      <div class="sg">
+        <h4>ধাপে ধাপে গো-লাইভ</h4>
+        <p>সফল প্রজেক্টগুলো প্রথমে একটি বিভাগ বা একটি মডিউল সেটে গো-লাইভ করে। ম্যানুফ্যাকচারিং-এর আগে সেলস আর ইনভয়েসিং। প্রোকিউরমেন্টের আগে ইনভেন্টরি। পুরো প্রোডাকশন ভলিউম হ্যান্ডল করার আগে টিম কম ঝুঁকিতে থেকে সিস্টেমটি শিখে নেয়।</p>
+      </div>
+      <div class="sg">
+        <h4>বাস্তবসম্মত টাইমলাইন</h4>
+        <p>ছয় সপ্তাহে পাঁচটি মডিউল কোনো টাইমলাইন নয়। এটি একটি কল্পনা মাত্র। আমি যত সফল প্রজেক্ট দেখেছি, প্রতিটি একটি মিড-সাইজ ডেপ্লয়মেন্টের জন্য অন্তত তিন মাস সময় রেখেছিল — এবং ডেটা মাইগ্রেশন ও UAT-এর জন্য স্পষ্ট বাফার রেখেছিল।</p>
+      </div>
+      <div class="sg">
+        <h4>গো-লাইভ পরবর্তী প্রতিশ্রুতি</h4>
+        <p>চুক্তিতে ৯০ দিনের হাইপারকেয়ার পিরিয়ড অন্তর্ভুক্ত থাকে। কনসালট্যান্ট যোগাযোগযোগ্য থাকেন, প্রথম দুই সপ্তাহ অনসাইটে থাকেন, এবং মাস শেষে রিকনসিলিয়েশন রিভিউর জন্য উপলব্ধ থাকেন। সিস্টেম গো-লাইভেই শেষ হয় না — সেখান থেকেই শুরু হয়।</p>
+      </div>
+    </div>
+
+    <h2 id="question">সই করার আগে যে প্রশ্নটি করা উচিত</h2>
+    <p>যেকোনো ERP এনগেজমেন্টের আগে, আমি ব্যবসার মালিককে একটি প্রশ্ন করি: <strong>"কনসালট্যান্ট চলে যাওয়ার পর এই সিস্টেমের মালিকানা কার হাতে থাকবে?"</strong></p>
+
+    <p>যদি উত্তর হয় "কনসালট্যান্ট", তাহলে প্রজেক্টটি ইতিমধ্যেই ব্যর্থ হওয়ার জন্য প্রস্তুত। রুটিন অপারেশনের জন্য একটি বাহ্যিক পক্ষের ওপর নির্ভরতা কোনো সুবিধা নয় — এটি একটি কাঠামোগত দুর্বলতা। একটি ভালো বাস্তবায়নের লক্ষ্য হলো ব্যবসাকে স্বনির্ভর করে তোলা: একজন নির্দিষ্ট অভ্যন্তরীণ মালিক, যিনি নতুন ইউজার কনফিগার করতে পারেন, মাস শেষের ক্লোজ চালাতে পারেন, এবং কাউকে ফোন না করেই একটি ওয়ার্কফ্লো এরর নির্ণয় করতে পারেন।</p>
+
+    <p>প্রজেক্ট শুরুর আগে যদি সেই ব্যক্তিকে চিহ্নিত করতে না পারেন, তাহলে এনগেজমেন্টের প্রথম দুই সপ্তাহ তাকে খুঁজে বের করা আর ট্রেনিং দেওয়ার পেছনে ব্যয় করুন। বাকি সবকিছু সেখান থেকেই অনুসরণ করবে।</p>
+
+    <blockquote>
+      বাংলাদেশে ERP ব্যর্থতা কোনো প্রযুক্তিগত সমস্যা নয়। এটি একটি প্রজেক্ট ম্যানেজমেন্ট সমস্যা, একটি কনসালট্যান্ট মানের সমস্যা, এবং একটি চেঞ্জ ম্যানেজমেন্ট সমস্যা — এই ক্রমে। এই তিনটি ঠিক করুন, সফটওয়্যার নিজের যত্ন নিজেই নেবে।
+    </blockquote>
+
+    <div class="callout">
+      <span class="tag">টুলটি ব্যবহার করুন</span>
+      <p>ব্যর্থতার ধরন ০২ শুরু হয় একটি আন্ডার-স্কোপড বাজেট দিয়ে। বিনামূল্যের <a href="/bn/tools/odoo-cost-estimator/" style="color:var(--accent)">Odoo Cost Estimator</a> আপনাকে একটি বাস্তবসম্মত, বাংলাদেশ-নির্দিষ্ট খরচের রেঞ্জ দেয় — লুকানো খরচগুলোসহ, যা কম দাম দেওয়া ভেন্ডররা বাদ দিয়ে যায় — মাত্র ৬০ সেকেন্ডে।</p>
+    </div>
+
+    <div class="callout">
+      <span class="tag">সম্পর্কিত</span>
+      <p>ব্যর্থতার ধরন #1 প্রতিরোধ করা ডিসকভারি ওয়ার্ক নিয়ে বিস্তারিত আলোচনা করা হয়েছে <a href="/lab/0002-discovery-session-business-process-mapping" style="color:var(--accent)">The Discovery Session</a>-এ (ইংরেজি)। চেঞ্জ ম্যানেজমেন্টের দিক নিয়ে পড়ুন <a href="/lab/0007-change-management-isnt-a-memo" style="color:var(--accent)">Change management isn't a memo</a> (ইংরেজি)। যদি কোনো এনগেজমেন্ট বিবেচনা করছেন, তাহলে <a href="/bn/#contact" style="color:var(--accent)">চলুন কথা বলি →</a></p>
+    </div>
+
+    <h2 id="faq">সচরাচর জিজ্ঞাসা</h2>
+
+    <h3>বাংলাদেশে কেন ERP বাস্তবায়ন ব্যর্থ হয়?</h3>
+    <p>সবচেয়ে সাধারণ পাঁচটি মূল কারণ হলো: ডিসকভারি ফেজ এড়িয়ে যাওয়া, শুধু দামের ভিত্তিতে ভেন্ডর বাছাই করা, চেঞ্জ ম্যানেজমেন্টকে অবমূল্যায়ন করা, অগোছালো ডেটা মাইগ্রেট করা, এবং ভুল মডিউল নির্বাচন করা। এগুলোর একটিও সফটওয়্যার নিয়ে নয় — এগুলো প্রজেক্টের কাঠামো ও বাস্তবায়ন নিয়ে।</p>
+
+    <h3>বাংলাদেশে ERP ব্যর্থতার হার কত?</h3>
+    <p>বৈশ্বিক গবেষণায় ERP ব্যর্থতার হার ৫৫–৭৫% দেখানো হয়েছে। বাংলাদেশে এই হার সম্ভবত আরও বেশি — সংকুচিত টাইমলাইন, আন্ডার-স্কোপড বাজেট, এবং ইন্ডাস্ট্রি-নির্দিষ্ট জ্ঞানসম্পন্ন অভিজ্ঞ ফাংশনাল কনসালট্যান্টের সীমিত সংখ্যার কারণে।</p>
+
+    <h3>বাংলাদেশে সঠিক ERP কনসালট্যান্ট কীভাবে বেছে নেবেন?</h3>
+    <p>এমন একজন কনসালট্যান্ট খুঁজুন যার একটি কাঠামোবদ্ধ <a href="/lab/0002-discovery-session-business-process-mapping" style="color:var(--accent)">ডিসকভারি মেথডোলজি</a> আছে, ম্যানুফ্যাকচারিং, RMG বা ট্রেডিং-এ ইন্ডাস্ট্রি-নির্দিষ্ট রেফারেন্স আছে, একটি সুনির্দিষ্ট UAT প্রসেস আছে, এবং গো-লাইভ পরবর্তী সাপোর্টের প্রতিশ্রুতি আছে। সবচেয়ে সস্তা কোটেশনই প্রায় সবসময় সবচেয়ে দামি ফলাফল বয়ে আনে।</p>
+  </div>
+</article>
+
+<footer>
+  <div class="shell">
+    <div class="post-foot">
+      <span class="eyebrow">আরও পড়ুন</span>
+      <div class="next">
+        <a class="next-card" href="/lab/0002-discovery-session-business-process-mapping">
+          <span class="dir">নতুন · 0002</span>
+          <h4>The Discovery Session (ইংরেজি)</h4>
+          <p>Odoo-তে একটি স্ক্রিনও কনফিগার করার আগে আপনার বিজনেস প্রসেস কীভাবে ম্যাপ করবেন।</p>
+          <span class="arrow">→</span>
+        </a>
+        <a class="next-card disabled" href="#">
+          <span class="dir">পুরনো · —</span>
+          <h4>প্রথম আর্টিকেল</h4>
+          <p>ল্যাব এখান থেকেই শুরু।</p>
+          <span class="arrow">→</span>
+        </a>
+      </div>
+    </div>
+    <div class="foot">
+      <span>© ২০২৬ Mehedi Hasan · Lab / 0001</span>
+      <span><a href="/bn/#lab">↑ ল্যাব ইনডেক্সে ফিরুন</a></span>
+    </div>
+  </div>
+</footer>
+<script src="/lab/_utils.js" defer></script>
+<script src="/lab/_toc.js" defer></script>
+<script src="/whatsapp.js" defer></script>
+<script src="/scroll-top.js" defer></script>
+</body>
+</html>

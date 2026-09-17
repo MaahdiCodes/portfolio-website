@@ -1,0 +1,600 @@
+<!doctype html>
+<html lang="bn">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description"
+    content="Odoo-তে Mushak 6.3 — বাংলাদেশের জন্য NBR VAT কমপ্লায়েন্স কনফিগার করুন। ট্যাক্স গ্রুপ, ফিসক্যাল পজিশন ও মাসিক রিটার্ন ডেটা। সঠিকভাবে কনফিগার করুন →" />
+  <meta name="robots" content="noindex, follow" />
+  <meta name="author" content="Mehedi Hasan" />
+  <title>Mushak 6.3 Odoo বাংলাদেশ | VAT সেটআপ | মেহেদী হাসান</title>
+  <link rel="canonical" href="https://mhasan.me/bn/lab/0018-mushak-63-odoo-bangladesh" />
+  <link rel="alternate" hreflang="en" href="https://mhasan.me/lab/0018-mushak-63-odoo-bangladesh" />
+  <link rel="alternate" hreflang="bn-BD" href="https://mhasan.me/bn/lab/0018-mushak-63-odoo-bangladesh" />
+  <link rel="alternate" hreflang="x-default" href="https://mhasan.me/lab/0018-mushak-63-odoo-bangladesh" />
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png" />
+  <!-- Open Graph -->
+  <meta property="og:title" content="Mushak 6.3 Odoo বাংলাদেশ | VAT সেটআপ | মেহেদী হাসান" />
+  <meta property="og:description"
+    content="বাংলাদেশের জন্য Odoo-তে Mushak 6.3 VAT রিটার্ন কনফিগার করার ধাপে ধাপে গাইড — ট্যাক্স গ্রুপ সেটআপ, ফিসক্যাল পজিশন, আউটপুট/ইনপুট VAT অ্যাকাউন্ট, এবং Tax Report থেকে Mushak ডেটা তৈরি করা।" />
+  <meta property="og:url" content="https://mhasan.me/bn/lab/0018-mushak-63-odoo-bangladesh" />
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="https://mhasan.me/assets/og-default.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale" content="bn_BD" />
+  <meta property="og:site_name" content="মেহেদী হাসান | Odoo ERP কনসালট্যান্ট" />
+  <meta property="article:author" content="https://www.linkedin.com/in/mehedi-hasan-consultant/" />
+  <meta property="article:published_time" content="2026-05-05T09:00:00+06:00" />
+  <meta property="article:modified_time" content="2026-05-23T09:00:00+06:00" />
+  <meta property="article:section" content="Odoo ERP Bangladesh" />
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Mushak 6.3 Odoo বাংলাদেশ | VAT সেটআপ" />
+  <meta name="twitter:description"
+    content="বাংলাদেশের জন্য Odoo-তে Mushak 6.3 মাসিক VAT রিটার্ন কনফিগার করুন — ট্যাক্স গ্রুপ, ফিসক্যাল পজিশন, এবং NBR-কমপ্লায়েন্ট আউটপুট/ইনপুট VAT অ্যাকাউন্ট।" />
+  <meta name="twitter:image" content="https://mhasan.me/assets/og-default.jpg" />
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Odoo-তে Mushak 6.3: বাংলাদেশ VAT কমপ্লায়েন্সের জন্য ধাপে ধাপে কনফিগারেশন",
+    "description": "বাংলাদেশের জন্য Odoo-তে Mushak 6.3 (মাসিক VAT রিটার্ন) কনফিগার করার একটি প্র্যাকটিশনার গাইড — NBR ট্যাক্স গ্রুপ সেটআপ, আউটপুট ও ইনপুট VAT অ্যাকাউন্ট, এক্সপোর্টের জন্য ফিসক্যাল পজিশন, এবং Odoo-র Tax Report থেকে Mushak 6.3 ডেটা তৈরি করাসহ।",
+    "datePublished": "2026-05-05T09:00:00+06:00",
+    "dateModified": "2026-05-23T09:00:00+06:00",
+    "inLanguage": "bn",
+    "author": {
+      "@type": "Person",
+      "name": "Mehedi Hasan",
+      "url": "https://mhasan.me",
+      "jobTitle": "Odoo ERP Consultant & Business Analyst",
+      "sameAs": "https://www.linkedin.com/in/mehedi-hasan-consultant/"
+    },
+    "publisher": { "@type": "Person", "name": "Mehedi Hasan", "url": "https://mhasan.me" },
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://mhasan.me/bn/lab/0018-mushak-63-odoo-bangladesh" }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "হোম", "item": "https://mhasan.me/bn" },
+      { "@type": "ListItem", "position": 2, "name": "ল্যাব", "item": "https://mhasan.me/bn/#lab" },
+      { "@type": "ListItem", "position": 3, "name": "Mushak 6.3 Odoo বাংলাদেশ", "item": "https://mhasan.me/bn/lab/0018-mushak-63-odoo-bangladesh" }
+    ]
+  }
+]
+</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&family=Noto+Sans+Bengali:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap">
+  <link rel="stylesheet" href="/lab/_styles.css">
+  <style>
+    body{ font-family: 'Noto Sans Bengali', var(--sans); }
+    .pull {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: clamp(24px, 3vw, 36px);
+      line-height: 1.25;
+      color: var(--text);
+      margin: 48px 0;
+      padding: 0;
+      border: none;
+      max-width: 22ch;
+      letter-spacing: -0.01em;
+    }
+    .pull::before {
+      content: "";
+      display: block;
+      width: 36px;
+      height: 1px;
+      background: var(--accent);
+      margin-bottom: 18px;
+    }
+
+    /* step flow */
+    .step-flow {
+      margin: 28px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      counter-reset: step-counter;
+    }
+    .step {
+      display: grid;
+      grid-template-columns: 56px 1fr;
+      gap: 0;
+      position: relative;
+    }
+    .step:not(:last-child)::before {
+      content: "";
+      position: absolute;
+      left: 27px;
+      top: 52px;
+      bottom: 0;
+      width: 2px;
+      background: var(--border);
+    }
+    .step-num {
+      width: 56px;
+      padding-top: 4px;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .step-num span {
+      counter-increment: step-counter;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: 2px solid var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--mono);
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--accent);
+      background: var(--bg);
+      flex-shrink: 0;
+      z-index: 1;
+      position: relative;
+    }
+    .step-body {
+      padding: 0 0 36px 16px;
+    }
+    .step-body h4 {
+      margin: 6px 0 8px;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text);
+    }
+    .step-body p { margin: 0 0 8px; font-size: 13.5px; color: var(--text-2); line-height: 1.6; }
+    .step-body code {
+      font-family: var(--mono);
+      font-size: 12px;
+      background: oklch(0.80 0.17 155 / 0.08);
+      color: var(--accent);
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+
+    /* tax account table */
+    .tax-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 24px 0;
+      font-size: 13px;
+    }
+    .tax-table th {
+      text-align: left;
+      padding: 10px 14px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-3);
+      font-weight: 500;
+    }
+    .tax-table td {
+      padding: 12px 14px;
+      border: 1px solid var(--border);
+      color: var(--text-2);
+      vertical-align: top;
+      line-height: 1.5;
+    }
+    .tax-table td strong { color: var(--text); }
+    .tax-table td code {
+      font-family: var(--mono);
+      font-size: 11px;
+      background: oklch(0.80 0.17 155 / 0.08);
+      color: var(--accent);
+      padding: 1px 5px;
+      border-radius: 3px;
+    }
+    .tax-table tr:nth-child(even) td { background: oklch(0.98 0.005 155); }
+
+    /* fiscal position mapping */
+    .fp-map {
+      margin: 24px 0;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .fp-row {
+      display: grid;
+      grid-template-columns: 1fr 40px 1fr;
+      align-items: center;
+      padding: 14px 20px;
+      border-bottom: 1px solid var(--border);
+      gap: 12px;
+      font-size: 13px;
+    }
+    .fp-row:last-child { border-bottom: none; }
+    .fp-row .from { color: var(--text-2); }
+    .fp-row .arrow { text-align: center; color: var(--text-3); font-size: 16px; }
+    .fp-row .to { color: var(--accent); font-weight: 500; }
+    .fp-head {
+      display: grid;
+      grid-template-columns: 1fr 40px 1fr;
+      padding: 10px 20px;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-3);
+    }
+    @media(max-width:600px) {
+      .fp-row, .fp-head { grid-template-columns: 1fr; }
+      .fp-row .arrow { display: none; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="grid-bg"></div>
+
+  <header class="nav">
+    <div class="shell">
+      <div class="nav-inner">
+        <a class="brand" href="/bn/">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span class="brand-name"><b>Mehedi Hasan</b><em>ERP · বিজনেস অ্যানালিস্ট</em></span>
+        </a>
+        <a class="back-link" href="/bn/#lab">← ল্যাব-এ ফিরুন</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="post-head">
+    <div class="shell">
+      <span class="eyebrow">টেকনিক্যাল ল্যাব · 0018</span>
+      <h1>Odoo-তে Mushak 6.3 — <span class="serif">ধাপে ধাপে NBR VAT কনফিগারেশন।</span></h1>
+      <p class="lede">Odoo কীভাবে কনফিগার করবেন যাতে Tax Report প্রতি মাসে সঠিক Mushak 6.3 ডেটা তৈরি করে — ট্যাক্স গ্রুপ, আউটপুট/ইনপুট VAT অ্যাকাউন্ট, জিরো-রেটেড এক্সপোর্টের জন্য ফিসক্যাল পজিশন, এবং মাসিক জমাদান কীভাবে হ্যান্ডল করবেন। একাধিক বাংলাদেশি ম্যানুফ্যাকচারিং ক্লায়েন্টের VAT অডিট অভিজ্ঞতা থেকে তৈরি।</p>
+      <div class="post-meta">
+        <span class="chip accent">কমপ্লায়েন্স গাইড</span>
+        <span class="chip">VAT · Mushak</span>
+        <span class="chip">NBR বাংলাদেশ</span>
+        <span class="chip">ট্যাক্স কনফিগারেশন</span>
+      </div>
+      <div class="byline">
+        <span>লেখক<b><a href="https://www.linkedin.com/in/mehedi-hasan-consultant/" style="color:var(--accent)" rel="author">Mehedi Hasan</a></b></span>
+        <span>প্রকাশিত<b>মে ২০২৬</b></span>
+        <span>পড়ার সময়<b>১২ মিনিট</b></span>
+        <span>ধরন<b>সেটআপ গাইড</b></span>
+        <span>পরিসর<b>VAT-নিবন্ধিত বাংলাদেশি ব্যবসা</b></span>
+      </div>
+    </div>
+  </section>
+
+  <article class="post">
+    <aside class="toc">
+      <div class="toc-k">এই গাইডে</div>
+      <ol>
+        <li><a href="#what-is-mushak">Mushak 6.3 কী</a></li>
+        <li><a href="#tax-groups">ট্যাক্স গ্রুপ কনফিগারেশন</a></li>
+        <li><a href="#coa">VAT-এর জন্য chart of accounts</a></li>
+        <li><a href="#tax-setup">ট্যাক্স সেটআপ: 15%, SD ও জিরো-রেটেড</a></li>
+        <li><a href="#fiscal-positions">এক্সপোর্টের জন্য ফিসক্যাল পজিশন</a></li>
+        <li><a href="#tax-report">Tax Report চালানো</a></li>
+        <li><a href="#common-errors">সাধারণ ভুল</a></li>
+        <li><a href="#faq">সচরাচর জিজ্ঞাসা</a></li>
+      </ol>
+    </aside>
+
+    <div class="body">
+      <p>বাংলাদেশের প্রতিটি VAT-নিবন্ধিত ব্যবসাকে পরের মাসের ১৫ তারিখের মধ্যে Mushak 6.3 জমা দিতে হয়। এই ফর্ম NBR-কে দেখায় আপনি কত আউটপুট VAT সংগ্রহ করেছেন, কত ইনপুট VAT দাবি করতে পারেন, আর কত বকেয়া আছে। এটি ভুল করলে জরিমানার মুখোমুখি হতে হয়, অডিট এক্সপোজার তৈরি হয়, অথবা — আরও খারাপ — আপনার ইনপুট ক্রেডিট দাবি না হওয়ায় আইনত যতটুকু দরকার তার চেয়ে বেশি VAT দিতে হয়।</p>
+
+      <p>Odoo বাংলাদেশের জন্য পূর্ব-নির্মিত কোনো Mushak 6.3 রিপোর্ট দেয় না। কিন্তু ট্যাক্স সঠিকভাবে কনফিগার করলে, Tax Report আপনার দরকারি প্রতিটি সংখ্যা তৈরি করে দেয়। এই গাইড ঠিক সেই কনফিগারেশন কভার করে — ট্যাক্স গ্রুপ সেটআপ থেকে ফিসক্যাল পজিশন হয়ে মাসিক ক্লোজ প্রসেস পর্যন্ত।</p>
+
+      <p class="pull">একটি ভুল কনফিগার করা ট্যাক্স অ্যাকাউন্ট মানে গত ১২ মাসের প্রতিটি ইনভয়েস ভুল জায়গায় পোস্ট হয়েছে। সমাধানটা মূল সেটআপের চেয়েও কঠিন।</p>
+
+      <h2 id="what-is-mushak">Mushak 6.3 কী আর এতে কী দরকার?</h2>
+
+      <p>মূসক (Mushak) হলো VAT-এর বাংলা সংক্ষিপ্ত রূপ — মূল্য সংযোজন কর। বাংলাদেশের VAT আইন হলো <strong>Value Added Tax and Supplementary Duty Act, 2012</strong>, যা National Board of Revenue (NBR) দ্বারা পরিচালিত। এই আইনের অধীনে, VAT-নিবন্ধিত ব্যবসাকে অবশ্যই:</p>
+
+      <ul>
+        <li>ট্যাক্সযোগ্য ডোমেস্টিক সেলসে <strong>১৫% VAT</strong> সংগ্রহ করতে হবে (আউটপুট VAT)</li>
+        <li>যোগ্য পারচেজে VAT পরিশোধ করতে হবে — কাঁচামাল, সার্ভিস (ইনপুট VAT)</li>
+        <li>পার্থক্য দাবি করতে হবে: আউটপুট VAT − ইনপুট VAT = নেট VAT পেয়েবল</li>
+        <li>পরের মাসের ১৫ তারিখের মধ্যে মাসিক <strong>Mushak 6.3</strong> জমা দিতে হবে</li>
+        <li>একই তারিখের মধ্যে NBR-নির্ধারিত ব্যাংক অ্যাকাউন্টে VAT পেমেন্ট করতে হবে</li>
+      </ul>
+
+      <p>Mushak 6.3-এ এই ডেটা দরকার, যা Odoo তৈরি করতে সক্ষম হতে হবে:</p>
+
+      <table class="tax-table">
+        <thead>
+          <tr><th>Mushak 6.3 লাইন</th><th>যা ক্যাপচার করে</th><th>Odoo সোর্স</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Output VAT (Sales)</strong></td>
+            <td>মাসে ট্যাক্সযোগ্য সেলসে সংগৃহীত মোট VAT</td>
+            <td>Tax Report → Output VAT গ্রুপ</td>
+          </tr>
+          <tr>
+            <td><strong>Input VAT (Purchases)</strong></td>
+            <td>যোগ্য পারচেজে পরিশোধিত VAT — ক্রেডিট হিসেবে দাবিযোগ্য</td>
+            <td>Tax Report → Input VAT গ্রুপ</td>
+          </tr>
+          <tr>
+            <td><strong>Supplementary Duty (SD)</strong></td>
+            <td>নির্দিষ্ট পণ্যে অতিরিক্ত ডিউটি (সার্বজনীনভাবে প্রযোজ্য নয়)</td>
+            <td>Tax Report → SD গ্রুপ (প্রযোজ্য হলে)</td>
+          </tr>
+          <tr>
+            <td><strong>Net VAT Payable</strong></td>
+            <td>আউটপুট VAT বিয়োগ ইনপুট VAT ক্রেডিট। NBR-কে পরিশোধিত।</td>
+            <td>উপরের থেকে হিসাব করা</td>
+          </tr>
+          <tr>
+            <td><strong>Zero-rated / Exempt Sales</strong></td>
+            <td>এক্সপোর্ট সেলস (জিরো-রেটেড) — আলাদাভাবে দেখানো হয়, কোনো আউটপুট VAT নেই</td>
+            <td>এক্সপোর্ট ইনভয়েসে ০% VAT ট্যাক্স</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2 id="tax-groups">ট্যাক্স গ্রুপ কনফিগারেশন</h2>
+
+      <p>Odoo-তে ট্যাক্স গ্রুপ নিয়ন্ত্রণ করে Tax Report-এ ট্যাক্স কীভাবে দেখা যায়। বাংলাদেশের জন্য, কমপক্ষে তিনটি ট্যাক্স গ্রুপ দরকার — এগুলোই সেই বাকেট যা রিপোর্ট আপনার ট্যাক্স ডেটা একত্র করতে ব্যবহার করে:</p>
+
+      <p>যান <strong>Accounting → Configuration → Tax Groups</strong>-এ আর তৈরি করুন:</p>
+
+      <div class="step-flow">
+        <div class="step">
+          <div class="step-num"><span></span></div>
+          <div class="step-body">
+            <h4>Output VAT (Sales)</h4>
+            <p>নাম: <code>Output VAT 15%</code> · এই গ্রুপ ডোমেস্টিক সেলসে চার্জ করা সব VAT সংগ্রহ করে। Tax Report এই গ্রুপের অধীনে Output VAT Payable অ্যাকাউন্টের মোট ক্রেডিট ব্যালেন্স দেখাবে — এটাই আপনার Mushak 6.3 আউটপুট VAT সংখ্যা।</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num"><span></span></div>
+          <div class="step-body">
+            <h4>Input VAT (Purchases)</h4>
+            <p>নাম: <code>Input VAT 15%</code> · এই গ্রুপ যোগ্য পারচেজে পরিশোধিত VAT সংগ্রহ করে — কাঁচামাল, কনজিউমেবল, আর ট্যাক্সযোগ্য সাপ্লাই তৈরিতে ব্যবহৃত সার্ভিস। এখানকার ডেবিট ব্যালেন্স Mushak 6.3-এ আপনার দাবিযোগ্য ইনপুট VAT ক্রেডিট।</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num"><span></span></div>
+          <div class="step-body">
+            <h4>Zero-Rated (Export)</h4>
+            <p>নাম: <code>VAT 0% Export</code> · এই গ্রুপ আপনার জিরো-রেটেড এক্সপোর্ট সেলস সংগ্রহ করে। এগুলো আউটপুট VAT হিসেবে দেখা যায় না, কিন্তু বাংলাদেশ আইন অনুযায়ী Mushak 6.3-এ আলাদাভাবে ঘোষণা করতে হয়। এগুলো নিজস্ব গ্রুপে রাখলে এক্সপোর্ট সেলস মূল্য পরিচ্ছন্নভাবে বের করা যায়।</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num"><span></span></div>
+          <div class="step-body">
+            <h4>Supplementary Duty (প্রযোজ্য হলে)</h4>
+            <p>নাম: <code>Supplementary Duty</code> · শুধু আপনার প্রোডাক্টে SD প্রযোজ্য হলে দরকার (যেমন, সিগারেট, পেট্রোলিয়াম, নির্দিষ্ট পানীয়)। বেশিরভাগ ম্যানুফ্যাকচারিং আর এক্সপোর্ট ব্যবসা এটি ব্যবহার করে না। শুধু দরকার হলেই তৈরি করুন — আপনার ট্যাক্স রিপোর্টে অপ্রয়োজনীয় জটিলতা যোগ করবেন না।</p>
+          </div>
+        </div>
+      </div>
+
+      <h2 id="coa">VAT-এর জন্য chart of accounts</h2>
+
+      <p>Mushak কমপ্লায়েন্সের জন্য তিনটি অ্যাকাউন্ট অপরিহার্য। ট্যাক্স কনফিগার করার আগে এগুলো আপনার chart of accounts-এ থাকতে হবে — প্রতিটি জার্নাল এন্ট্রির জন্য ট্যাক্সগুলো এই অ্যাকাউন্টগুলো রেফার করে:</p>
+
+      <table class="tax-table">
+        <thead>
+          <tr><th>অ্যাকাউন্ট নাম</th><th>টাইপ</th><th>সুপারিশকৃত কোড</th><th>উদ্দেশ্য</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Output VAT Payable</strong></td>
+            <td>Current Liability</td>
+            <td><code>2110</code></td>
+            <td>১৫% VAT দিয়ে একজন কাস্টমারকে ইনভয়েস করলে ক্রেডিট হয়। ব্যালেন্স = সেলস থেকে NBR-কে যে VAT বকেয়া।</td>
+          </tr>
+          <tr>
+            <td><strong>Input VAT Recoverable</strong></td>
+            <td>Current Asset</td>
+            <td><code>1210</code></td>
+            <td>১৫% VAT-সহ একটি ভেন্ডর বিল পেলে ডেবিট হয়। ব্যালেন্স = আউটপুট VAT-এর বিপরীতে দাবিযোগ্য VAT ক্রেডিট।</td>
+          </tr>
+          <tr>
+            <td><strong>VAT Payable to NBR</strong></td>
+            <td>Current Liability</td>
+            <td><code>2115</code></td>
+            <td>NBR পেমেন্টের আগে উপরের দুই অ্যাকাউন্ট থেকে নেট VAT ট্রান্সফার করা মাসিক জার্নাল এন্ট্রিতে ব্যবহৃত। পরিচ্ছন্ন ক্লোজিং-এর জন্য ঐচ্ছিক কিন্তু সুপারিশকৃত।</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="callout">
+        <span class="tag">অ্যাকাউন্ট কোড</span>
+        <p>উপরের অ্যাকাউন্ট কোডগুলো পরামর্শ মাত্র। আপনার VAT সার্কেল অফিস থেকে ইতিমধ্যে একটি NBR-অনুমোদিত chart of accounts পেয়ে থাকলে সেটার সাথে মিলিয়ে নিন। অনেক বাংলাদেশি ম্যানুফ্যাকচারিং কোম্পানি VAT নিবন্ধনের সময় তাদের অডিটরের কাছ থেকে একটি নির্ধারিত chart পায় — সবসময় Odoo-কে সেটার সাথে সামঞ্জস্য করুন, উল্টোটা নয়।</p>
+      </div>
+
+      <h2 id="tax-setup">ট্যাক্স সেটআপ: 15% VAT, এবং জিরো-রেটেড এক্সপোর্ট</h2>
+
+      <p>যান <strong>Accounting → Configuration → Taxes</strong>-এ। বেসিক সেটআপের জন্য দুটি ট্যাক্স দরকার:</p>
+
+      <div class="step-flow">
+        <div class="step">
+          <div class="step-num"><span></span></div>
+          <div class="step-body">
+            <h4>VAT 15% — Domestic Sales (Output)</h4>
+            <p>Tax Type: <code>Sales</code> · হিসাব: <code>Percentage of Price</code> · পরিমাণ: <code>15%</code> · Tax Group: <code>Output VAT 15%</code></p>
+            <p><strong>Definition</strong> ট্যাবে, একটি ডিস্ট্রিবিউশন লাইন যোগ করুন: Account = <code>Output VAT Payable (2110)</code>, পার্সেন্টেজ ১০০%। এটি নিশ্চিত করে প্রতিটি ডোমেস্টিক সেলস ইনভয়েস Mushak-এর জন্য সঠিক লায়াবিলিটি অ্যাকাউন্টে ক্রেডিট করে।</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num"><span></span></div>
+          <div class="step-body">
+            <h4>VAT 15% — Purchases (Input)</h4>
+            <p>Tax Type: <code>Purchase</code> · হিসাব: <code>Percentage of Price</code> · পরিমাণ: <code>15%</code> · Tax Group: <code>Input VAT 15%</code></p>
+            <p>ডিস্ট্রিবিউশন লাইন: Account = <code>Input VAT Recoverable (1210)</code>, পার্সেন্টেজ ১০০%। এটি নিশ্চিত করে VAT-সহ প্রতিটি ভেন্ডর বিল আপনার রিকভারেবল অ্যাকাউন্টে ডেবিট করে — Mushak 6.3-এ আপনি যে ইনপুট ক্রেডিট দাবি করেন তা তৈরি করে।</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num"><span></span></div>
+          <div class="step-body">
+            <h4>VAT 0% — Export Sales (Zero-Rated Output)</h4>
+            <p>Tax Type: <code>Sales</code> · হিসাব: <code>Percentage of Price</code> · পরিমাণ: <code>0%</code> · Tax Group: <code>VAT 0% Export</code></p>
+            <p>কোনো ডিস্ট্রিবিউশন লাইন দরকার নেই (০% কোনো আর্থিক পোস্টিং তৈরি করে না)। এই ট্যাক্স থাকার কারণ যাতে এক্সপোর্ট সেলস Tax Report-এ জিরো-রেটেড গ্রুপে দেখা যায় — Mushak 6.3 প্রকাশের জন্য প্রয়োজনীয়। এটি Export Fiscal Position-এর মাধ্যমে স্বয়ংক্রিয়ভাবে প্রয়োগ হয় (পরের সেকশন দেখুন)।</p>
+          </div>
+        </div>
+      </div>
+
+      <p>বেশিরভাগ প্রোডাক্টের জন্য, প্রোডাক্ট রেকর্ডে (বা প্রোডাক্ট ক্যাটাগরিতে) ডিফল্ট সেলস ট্যাক্স <strong>VAT 15%</strong>-এ সেট করা উচিত। এটি নিশ্চিত করে প্রতি লাইনে ম্যানুয়াল সিলেকশন ছাড়াই সব ডোমেস্টিক ইনভয়েসে স্বয়ংক্রিয়ভাবে ১৫% প্রয়োগ হয়।</p>
+
+      <h2 id="fiscal-positions">এক্সপোর্ট সেলসের জন্য ফিসক্যাল পজিশন</h2>
+
+      <p>Odoo-তে ফিসক্যাল পজিশন কাস্টমারের দেশ বা এক্সপ্লিসিট অ্যাসাইনমেন্টের ভিত্তিতে স্বয়ংক্রিয়ভাবে ট্যাক্স রিম্যাপ করে। বাংলাদেশি এক্সপোর্টারদের জন্য, একটি ফিসক্যাল পজিশন দরকার যা সব এক্সপোর্ট ইনভয়েসে ১৫% VAT-কে ০%-এ প্রতিস্থাপন করে।</p>
+
+      <p>যান <strong>Accounting → Configuration → Fiscal Positions</strong> → New-তে:</p>
+
+      <ul>
+        <li><strong>Name:</strong> Export — Zero VAT</li>
+        <li><strong>Auto-detect:</strong> ঐচ্ছিকভাবে Country = বাংলাদেশ ছাড়া সব দেশ সেট করুন (যাতে যেকোনো বিদেশি কাস্টমার স্বয়ংক্রিয়ভাবে এটি পায়)</li>
+        <li><strong>Tax Mapping ট্যাব:</strong> এই রুলটি যোগ করুন:</li>
+      </ul>
+
+      <div class="fp-map">
+        <div class="fp-head">
+          <span>ইনভয়েসে ট্যাক্স (থেকে)</span>
+          <span></span>
+          <span>ম্যাপ করা হবে (এতে)</span>
+        </div>
+        <div class="fp-row">
+          <div class="from">VAT 15% (Domestic Sales)</div>
+          <div class="arrow">→</div>
+          <div class="to">VAT 0% (Export Sales)</div>
+        </div>
+        <div class="fp-row">
+          <div class="from">VAT 15% (Purchases)</div>
+          <div class="arrow">→</div>
+          <div class="to"><em>কোনো ম্যাপিং নেই — পারচেজে ইনপুট VAT ১৫%-ই থাকে</em></div>
+        </div>
+      </div>
+
+      <p>প্রতিটি বিদেশি বায়ারের <strong>Contact → Sales & Purchase ট্যাব → Fiscal Position</strong>-এ এই ফিসক্যাল পজিশন অ্যাসাইন করুন। তারপর থেকে, সেই বায়ারের প্রতিটি ইনভয়েস স্বয়ংক্রিয়ভাবে ০% VAT দেখাবে — আর এক্সপোর্ট সেলস মূল্য Mushak 6.3 প্রকাশের জন্য Tax Report-এর জিরো-রেটেড গ্রুপে প্রবাহিত হবে।</p>
+
+      <div class="callout">
+        <span class="tag">সম্পর্কিত পাঠ</span>
+        <p>ফিসক্যাল পজিশন সরাসরি ইন্টারঅ্যাক্ট করে <a href="/bn/lab/0014-odoo-accounting-setup-bangladesh" style="color:var(--accent)">বাংলাদেশের জন্য Odoo Accounting সেটআপ</a>-এর সাথে — বিশেষ করে chart of accounts আর রেভিনিউ অ্যাকাউন্ট ম্যাপিং। আপনার ফিসক্যাল পজিশন অ্যাকাউন্টও ম্যাপ করলে (শুধু ট্যাক্স নয়), অ্যাকাউন্ট ম্যাপিংও যোগ করুন: Domestic Sales রেভিনিউ → Export Sales রেভিনিউ। এটি ম্যানুয়াল জার্নাল সংশোধন ছাড়াই ডোমেস্টিক আর এক্সপোর্ট রেভিনিউ আলাদা করে আপনার P&L সেগমেন্ট রিপোর্টিং পরিচ্ছন্ন রাখে।</p>
+      </div>
+
+      <h2 id="tax-report">Mushak 6.3 ডেটা পেতে Tax Report চালানো</h2>
+
+      <p>যান <strong>Accounting → Reporting → Tax Report</strong>-এ। রিপোর্টিং মাসের জন্য তারিখ রেঞ্জ সেট করুন (১ তারিখ থেকে শেষ দিন)। রিপোর্ট দেখায়:</p>
+
+      <ul>
+        <li><strong>Output VAT 15% গ্রুপ</strong> → ক্রেডিট মোট = মাসের জন্য আপনার মোট আউটপুট VAT</li>
+        <li><strong>Input VAT 15% গ্রুপ</strong> → ডেবিট মোট = মাসের জন্য আপনার মোট ইনপুট VAT ক্রেডিট</li>
+        <li><strong>VAT 0% Export গ্রুপ</strong> → মোট এক্সপোর্ট সেলস মূল্য (Mushak 6.3 প্রকাশের জন্য)</li>
+        <li><strong>Net balance</strong> = আউটপুট VAT বিয়োগ ইনপুট VAT = NBR-কে নেট পেয়েবল</li>
+      </ul>
+
+      <p>এই সংখ্যাগুলো আপনার Mushak 6.3 ফর্মে ট্রান্সফার করুন। ফর্মের NBR-নির্ধারিত ফরম্যাট NBR-এর ওয়েবসাইটে পাওয়া যায় — আপনার VAT সার্কেল অফিসও সর্বশেষ সংস্করণ দিতে পারে।</p>
+
+      <p>Tax Report কনফার্ম হওয়ার পর আর Mushak ফর্ম জমা দেওয়ার পর, Odoo-তে ক্লোজিং জার্নাল এন্ট্রি পাস করুন:</p>
+
+      <ol>
+        <li>Debit: <strong>Output VAT Payable (2110)</strong> — পুরো আউটপুট VAT পরিমাণ</li>
+        <li>Credit: <strong>Input VAT Recoverable (1210)</strong> — ইনপুট VAT ক্রেডিট পরিমাণ</li>
+        <li>Credit: <strong>VAT Payable to NBR (2115)</strong> — নেট পেয়েবল পরিমাণ</li>
+      </ol>
+
+      <p>NBR-কে ব্যাংক পেমেন্ট করার সময়, <strong>VAT Payable to NBR (2115)</strong> ডেবিট করুন আর আপনার <strong>Bank অ্যাকাউন্ট</strong> ক্রেডিট করুন। মাসের জন্য দুটি অ্যাকাউন্টই শূন্য হয়ে যাবে।</p>
+
+      <h2 id="common-errors">সাধারণ ভুল — আর কীভাবে ঠিক করবেন</h2>
+
+      <table class="tax-table">
+        <thead>
+          <tr><th>ভুল</th><th>কারণ</th><th>সমাধান</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Tax Report ভুল আউটপুট VAT সংখ্যা দেখাচ্ছে</strong></td>
+            <td>কিছু ইনভয়েসে ভুল ট্যাক্স প্রয়োগ হয়েছে (বা কোনো ট্যাক্স নেই), অথবা ট্যাক্স অ্যাকাউন্ট ভুল</td>
+            <td>Output VAT Payable অ্যাকাউন্টে ফিল্টার করা Accounting → Reporting → General Ledger চালান। প্রতিটি ক্রেডিট একটি কাস্টমার ইনভয়েস VAT লাইন হওয়া উচিত। অপ্রত্যাশিত যেকোনো এন্ট্রি তদন্ত করুন।</td>
+          </tr>
+          <tr>
+            <td><strong>এক্সপোর্ট ইনভয়েসে ০%-এর বদলে ১৫% VAT দেখাচ্ছে</strong></td>
+            <td>কাস্টমারে ফিসক্যাল পজিশন অ্যাসাইন করা নেই, বা অটো-ডিটেকশন ট্রিগার হয়নি</td>
+            <td>কাস্টমার Contact রেকর্ড → Sales & Purchase ট্যাব → Fiscal Position চেক করুন। খালি থাকলে, "Export — Zero VAT" অ্যাসাইন করুন আর ইনভয়েস পুনরায় কনফার্ম করুন।</td>
+          </tr>
+          <tr>
+            <td><strong>Tax Report-এ ইনপুট VAT দেখাচ্ছে না</strong></td>
+            <td>ভেন্ডর বিল পারচেজ ট্যাক্স ছাড়াই পোস্ট হয়েছে, অথবা ট্যাক্স ভুল অ্যাকাউন্টে পোস্ট হয়েছে</td>
+            <td>প্রতিটি ভেন্ডর বিলে, প্রতিটি প্রোডাক্ট লাইনে ট্যাক্স ফিল্ড যাচাই করুন। অনেক ইউজার পারচেজ ট্যাক্স সিলেক্ট না করেই ভেন্ডর বিল পোস্ট করেন — বাংলাদেশি Odoo ডেপ্লয়মেন্টে এটাই সবচেয়ে সাধারণ ফাঁক।</td>
+          </tr>
+          <tr>
+            <td><strong>Tax Report জেনারেল লেজার ব্যালেন্সের সাথে মিলছে না</strong></td>
+            <td>ম্যানুয়াল জার্নাল এন্ট্রি ট্যাক্স ইঞ্জিন এড়িয়ে সরাসরি VAT অ্যাকাউন্টে পোস্ট হয়েছে</td>
+            <td>ম্যানুয়াল জার্নাল এন্ট্রিতে সরাসরি VAT অ্যাকাউন্টে পোস্ট করা এড়িয়ে চলুন। সব VAT পোস্টিং কাস্টমার ইনভয়েস আর ভেন্ডর বিলের মাধ্যমে প্রবাহিত হওয়া উচিত। এই অ্যাকাউন্টগুলোতে যেকোনো ম্যানুয়াল এন্ট্রি তদন্ত করুন।</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="callout">
+        <span class="tag">NBR কমপ্লায়েন্স নোট</span>
+        <p>বাংলাদেশ NBR VAT অডিট ক্রমশ ডেটা-চালিত হয়ে উঠছে। অডিটররা আপনার Mushak 6.3 জমাদান আপনার VAT নিবন্ধন ডেটা, ব্যাংক স্টেটমেন্ট, আর কখনো কখনো আপনার কাস্টমারদের Mushak 6.1 (পারচেজ ঘোষণা)-এর সাথে ক্রস-চেক করেন। আপনার Mushak জমাদানের সাথে হুবহু মেলা একটি পরিচ্ছন্ন Odoo Tax Report আপনার সবচেয়ে ভালো সুরক্ষা। শুরু থেকে Odoo-তে VAT কমপ্লায়েন্স সেটআপ করতে সাহায্য দরকার হলে, <a href="/bn/#contact" style="color:var(--accent)">যোগাযোগ করুন আর আমি আপনার ট্যাক্স কনফিগারেশন রিভিউ করব →</a></p>
+      </div>
+
+      <h2 id="faq">সচরাচর জিজ্ঞাসা</h2>
+
+      <h3>বাংলাদেশে Mushak 6.3 কী?</h3>
+      <p>Mushak 6.3 হলো VAT and Supplementary Duty Act, 2012-এর অধীনে মাসিক VAT রিটার্ন ফর্ম। প্রতিটি VAT-নিবন্ধিত ব্যবসা পরের মাসের ১৫ তারিখের মধ্যে NBR-এ এটি জমা দেয়। এতে দেখানো হয় সেলসে সংগৃহীত আউটপুট VAT, পারচেজে পরিশোধিত ইনপুট VAT (ক্রেডিটের জন্য যোগ্য), আর নেট VAT পেয়েবল। Odoo-তে, Tax Report (Accounting → Reporting → Tax Report) দিয়ে এই ডেটা তৈরি হয় — সঠিক গ্রুপ আর অ্যাকাউন্টসহ ট্যাক্স ঠিকভাবে কনফিগার করা থাকলে।</p>
+
+      <h3>বাংলাদেশের জন্য Odoo-তে কি বিল্ট-ইন Mushak 6.3 রিপোর্ট আছে?</h3>
+      <p>না — Odoo একটি প্রি-ফরম্যাটেড Mushak 6.3 PDF দেয় না। NBR ফর্ম ম্যানুয়ালি পূরণ করার জন্য আপনার দরকারি সব সংখ্যা Tax Report দেয়। বাংলাদেশে কিছু Odoo পার্টনার একটি কাস্টম Mushak 6.3 মডিউল অফার করে যা সরাসরি NBR-ফরম্যাটেড PDF তৈরি করে; আপনার বাস্তবায়ন পার্টনারকে জিজ্ঞেস করুন বা Odoo App Store খুঁজুন। বেশিরভাগ SME-র জন্য, ম্যানুয়াল পদ্ধতি (Tax Report → Mushak ফর্মে ট্রান্সফার) যথেষ্ট এবং বেশি অডিটযোগ্য।</p>
+
+      <h3>Odoo-তে এক্সপোর্ট সেলসের জন্য জিরো-VAT কীভাবে কনফিগার করব?</h3>
+      <p>০% রেটসহ একটি 'VAT 0% Export' ট্যাক্স তৈরি করুন আর এটি 'VAT 0% Export' ট্যাক্স গ্রুপে অ্যাসাইন করুন। তারপর একটি ট্যাক্স ম্যাপিং রুলসহ 'Export — Zero VAT' নামে একটি Fiscal Position তৈরি করুন: VAT 15% → VAT 0% Export। প্রতিটি বিদেশি বায়ারের কন্ট্যাক্ট রেকর্ডে এই ফিসক্যাল পজিশন অ্যাসাইন করুন। তারপর Odoo সেই বায়ারদের সব ইনভয়েসে স্বয়ংক্রিয়ভাবে ০% VAT প্রয়োগ করবে — আপনার এক্সপোর্ট সেলস Mushak 6.3 প্রকাশের জন্য Tax Report-এর জিরো-রেটেড সেকশনে দেখা যাবে।</p>
+
+      <h3>Mushak কমপ্লায়েন্সের জন্য chart of accounts-এ কী কী অ্যাকাউন্ট দরকার?</h3>
+      <p>কমপক্ষে: (১) Output VAT Payable — current liability, প্রতিটি সেলস VAT পোস্টিং-এ ক্রেডিট হয়; (২) Input VAT Recoverable — current asset, প্রতিটি পারচেজ VAT পোস্টিং-এ ডেবিট হয়; (৩) VAT Payable to NBR — NBR-কে পরিশোধের আগে মাসিক ক্লোজিং এন্ট্রির জন্য ঐচ্ছিক ইন্টারমিডিয়েট লায়াবিলিটি। এই কোডগুলো আপনার NBR-অনুমোদিত chart of accounts-এর সাথে মেলান — আপনার VAT সার্কেল অফিস একটি chart নির্ধারণ করে থাকলে নতুন কোড তৈরি করবেন না।</p>
+
+      <h3>বাংলাদেশে কি সব পারচেজে ইনপুট VAT দাবি করা যায়?</h3>
+      <p>না। বাংলাদেশ VAT আইন ইনপুট ট্যাক্স ক্রেডিট সীমাবদ্ধ করে। ট্যাক্সযোগ্য সাপ্লাই তৈরিতে সরাসরি ব্যবহৃত পারচেজে ইনপুট VAT দাবি করা যায় (কাঁচামাল, প্রোডাকশন কনজিউমেবল, সরাসরি সম্পর্কিত সার্ভিস)। স্টাফ মিল, বিনোদন, ব্যক্তিগত ব্যবহারের আইটেম, মোটর ভেহিকল (বেশিরভাগ ক্ষেত্রে), আর ছাড়প্রাপ্ত সাপ্লাই তৈরিতে ব্যবহৃত পারচেজে ইনপুট VAT দাবি করা <em>যায় না</em>। Odoo এই সীমাবদ্ধতা স্বয়ংক্রিয়ভাবে প্রয়োগ করে না — বিল এন্ট্রির সময় সীমাবদ্ধ পারচেজ লাইনে সঠিক ট্যাক্স, বা কোনো ট্যাক্স নেই তা আপনাকেই প্রয়োগ করতে হবে।</p>
+    </div>
+  </article>
+
+  <footer>
+    <div class="shell">
+      <div class="post-foot">
+        <span class="eyebrow">আরও পড়ুন</span>
+        <div class="next">
+          <a class="next-card" href="/bn/lab/0017-odoo-sales-crm-bangladesh">
+            <span class="dir">পুরনো · 0017</span>
+            <h4>Odoo Sales ও CRM বাংলাদেশ</h4>
+            <p>B2B পাইপলাইন স্টেজ, LC-এর জন্য প্রোফর্মা ইনভয়েস, এবং বাংলাদেশি এক্সপোর্টারদের জন্য মাল্টি-কারেন্সি কনফিগারেশন।</p>
+            <span class="arrow">→</span>
+          </a>
+          <a class="next-card" href="/bn/lab/0019-hs-code-customs-odoo-bangladesh">
+            <span class="dir">নতুন · 0019</span>
+            <h4>Odoo-তে HS Code ও কাস্টমস ম্যানেজমেন্ট</h4>
+            <p>বাংলাদেশি এক্সপোর্টারদের জন্য প্রোডাক্ট HS কোড সেটআপ, কাস্টমস ফিসক্যাল পজিশন, এবং এক্সপোর্ট ডিক্লারেশন।</p>
+            <span class="arrow">→</span>
+          </a>
+        </div>
+      </div>
+      <div class="foot">
+        <span>© ২০২৬ Mehedi Hasan · Lab / 0018</span>
+        <span><a href="/bn/#lab">↑ ল্যাব ইনডেক্সে ফিরুন</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/lab/_utils.js" defer></script>
+<script src="/lab/_toc.js" defer></script>
+<script src="/whatsapp.js" defer></script>
+<script src="/scroll-top.js" defer></script>
+</body>
+
+</html>

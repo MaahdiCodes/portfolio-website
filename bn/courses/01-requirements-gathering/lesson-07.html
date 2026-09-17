@@ -1,0 +1,360 @@
+﻿<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="/favicon.ico" sizes="any" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon.png" />
+<link rel="apple-touch-icon" href="/favicon.png" />
+<meta name="robots" content="noindex, follow" />
+<link rel="canonical" href="https://mhasan.me/bn/courses/01-requirements-gathering/lesson-07" />
+<link rel="alternate" hreflang="en" href="https://mhasan.me/courses/01-requirements-gathering/lesson-07" />
+<link rel="alternate" hreflang="bn-BD" href="https://mhasan.me/bn/courses/01-requirements-gathering/lesson-07" />
+<link rel="alternate" hreflang="x-default" href="https://mhasan.me/courses/01-requirements-gathering/lesson-07" />
+<title>লেসন ০৭ — পরস্পরবিরোধী রিকোয়ারমেন্ট ও পরিবর্তন ব্যবস্থাপনা · কোর্স ০১</title>
+<meta name="description" content="পরস্পরবিরোধী রিকোয়ারমেন্ট সমাধান, প্রজেক্ট চলাকালীন চেঞ্জ রিকোয়েস্ট ব্যবস্থাপনা, ইমপ্যাক্ট অ্যানালাইসিস চালানো, আর Requirements Traceability Matrix বজায় রাখার পদ্ধতি।">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300..700&family=Geist+Mono:wght@300..500&family=Noto+Sans+Bengali:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/lab/_styles.css">
+<style>
+body{ font-family: 'Noto Sans Bengali', var(--sans); }
+.three-up{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:28px 0}
+.three-up .card{border:1px solid var(--border);border-radius:12px;padding:20px;background:rgba(21,24,29,0.5)}
+.three-up .card h4{font-size:14px;font-weight:500;margin:0 0 8px;color:var(--text)}
+.three-up .card p{font-size:13.5px;color:var(--text-2);margin:0;line-height:1.55}
+.field-note{border:1px solid var(--border);border-radius:12px;padding:22px 24px;margin:28px 0;background:linear-gradient(180deg,rgba(21,24,29,0.55),rgba(14,16,19,0.55))}
+.field-note .fn-label{font-family:var(--mono);font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:var(--accent);margin:0 0 10px}
+.field-note p{font-size:14.5px;color:var(--text-2);margin:0;line-height:1.6}
+.field-note p+p{margin-top:10px}
+.process-flow{display:flex;gap:0;border:1px solid var(--border);border-radius:12px;overflow:hidden;margin:28px 0}
+.pf-step{flex:1;padding:18px;border-right:1px solid var(--border);text-align:center}
+.pf-step:last-child{border-right:none}
+.pf-step .pf-num{font-family:var(--mono);font-size:20px;color:var(--accent);display:block;margin-bottom:8px;font-weight:300}
+.pf-step h4{font-size:13px;font-weight:500;margin:0 0 6px;color:var(--text)}
+.pf-step p{font-size:12px;color:var(--text-2);margin:0;line-height:1.45}
+@media(max-width:680px){.three-up{grid-template-columns:1fr}.process-flow{flex-direction:column}.pf-step{border-right:none;border-bottom:1px solid var(--border)}.pf-step:last-child{border-bottom:none}}
+.stat-block{display:grid;grid-template-columns:repeat(3,1fr);gap:0;background:var(--border);border-radius:12px;overflow:hidden;margin:28px 0}
+.stat-item{background:var(--surface);padding:24px 18px;text-align:center}
+.stat-num{font-family:var(--mono);font-size:26px;font-weight:300;color:var(--accent);line-height:1;display:block}
+.stat-label{font-size:12px;color:var(--text-3);margin-top:8px;line-height:1.4;display:block}
+.bar-chart{margin:28px 0;display:flex;flex-direction:column;gap:14px}
+.bc-row{display:grid;grid-template-columns:190px 1fr 44px;gap:10px;align-items:center}
+.bc-label{font-size:13px;color:var(--text-2)}
+.bc-track{height:6px;background:rgba(255,255,255,0.06);border-radius:4px;overflow:hidden}
+.bc-fill{height:100%;background:oklch(0.80 0.17 155);border-radius:4px}
+.bc-pct{font-family:var(--mono);font-size:11px;color:var(--text-3);text-align:right}
+.donut-stat{display:flex;align-items:center;gap:28px;padding:24px;border:1px solid var(--border);border-radius:12px;background:rgba(21,24,29,0.5);margin:28px 0}
+.donut-stat svg{flex:none}
+.donut-label{font-size:14px;color:var(--text-2);line-height:1.6;margin:0}
+.donut-label strong{color:var(--text)}
+.insight-row{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin:28px 0}
+.insight-card{border:1px solid var(--border);border-radius:12px;padding:20px;background:rgba(21,24,29,0.5)}
+.insight-card .ic-label{font-family:var(--mono);font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-3);margin:0 0 8px}
+.insight-card h4{font-size:15px;font-weight:500;color:var(--text);margin:0 0 8px}
+.insight-card p{font-size:13.5px;color:var(--text-2);margin:0;line-height:1.55}
+@media(max-width:680px){.stat-block{grid-template-columns:1fr}.bc-row{grid-template-columns:140px 1fr 36px}.donut-stat{flex-direction:column;text-align:center}.insight-row{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="grid-bg"></div>
+
+<nav class="nav">
+  <div class="shell">
+    <div class="nav-inner">
+      <a href="/bn/" class="brand">
+        <div class="brand-mark"></div>
+        <div class="brand-name"><b>Mehedi Hasan</b><em>ERP কনসালট্যান্ট</em></div>
+      </a>
+      <a href="./" class="back-link">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10 12L6 8l4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        কোর্স ওভারভিউ
+      </a>
+    </div>
+  </div>
+</nav>
+
+<div class="shell">
+  <div class="post-head">
+    <span class="eyebrow">কোর্স ০১ &nbsp;·&nbsp; লেসন ০৭ &nbsp;·&nbsp; ১৫ মিনিট</span>
+    <div class="post-meta">
+      <span class="chip accent">কনফ্লিক্ট রেজোলিউশন</span>
+      <span class="chip">চেঞ্জ কন্ট্রোল</span>
+      <span class="chip">RTM</span>
+    </div>
+    <h1>পরস্পরবিরোধী রিকোয়ারমেন্ট <span class="serif">ও পরিবর্তন</span> ব্যবস্থাপনা</h1>
+    <p class="lede">রিকোয়ারমেন্টের দ্বন্দ্ব খারাপ প্রসেসের লক্ষণ নয় — এটা বোঝায় স্টেকহোল্ডারদের সত্যিকারের, পরস্পরবিরোধী স্বার্থ আছে। আপনার কাজ দ্বন্দ্ব দূর করা নয়, বরং সেটাকে সামনে আনা, স্বচ্ছভাবে সমাধান করা, আর সিদ্ধান্তটা ডকুমেন্ট করা। এখানে দেখুন কীভাবে।</p>
+    <div class="byline">
+      <span>লেসন<b>০৭ / ০৯</b></span>
+      <span>সময়<b>১৫ মিনিট</b></span>
+      <span>কোর্স<b>রিকোয়ারমেন্ট গ্যাদারিং</b></span>
+    </div>
+  </div>
+</div>
+
+<div class="shell">
+  <div class="post">
+    <nav class="toc" id="toc" aria-label="Lesson contents">
+      <button class="toc-toggle" onclick="toggleToc()" aria-expanded="false" aria-controls="toc">
+        <span class="label">এই লেসনে</span>
+        <span class="current" id="toc-current">কেন দ্বন্দ্ব স্বাভাবিক</span>
+        <span class="chev"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 4l3 3 3-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </button>
+      <div class="toc-k">বিষয়সূচি</div>
+      <ol>
+        <li><a href="#s1">কেন দ্বন্দ্ব স্বাভাবিক</a></li>
+        <li><a href="#s2">সমাধান কৌশল</a></li>
+        <li><a href="#s3">চেঞ্জ কন্ট্রোল প্রসেস</a></li>
+        <li><a href="#s4">ইমপ্যাক্ট অ্যানালাইসিস</a></li>
+        <li><a href="#s5">ট্রেসেবিলিটি ম্যাট্রিক্স</a></li>
+        <li><a href="#s6">টেমপ্লেট: চেঞ্জ রেজিস্টার</a></li>
+        <li><a href="#s_conflict_types">রিকোয়ারমেন্ট দ্বন্দ্বের চার ধরন</a></li>
+        <li><a href="#s_change_impact">চেঞ্জ ইমপ্যাক্ট অ্যানালাইসিস</a></li>
+        <li><a href="#s7">রিফ্লেকশন</a></li>
+      </ol>
+      <div class="toc-progress"><span>প্রগ্রেস</span><div class="bar"><i id="prog-bar"></i></div></div>
+    </nav>
+    <div class="toc-progress-mobile"><i id="prog-bar-m"></i></div>
+
+    <article class="body">
+
+      <h2 id="s1">কেন রিকোয়ারমেন্টে দ্বন্দ্ব হয় (আর কেন এটা স্বাভাবিক, ব্যর্থতা নয়)</h2>
+      <p>রিকোয়ারমেন্টে দ্বন্দ্ব হয় কারণ মানুষের সত্যিকারের ভিন্ন, কখনো কখনো পরস্পরবিরোধী চাহিদা থাকে। ফাইন্যান্স ডিরেক্টর চান এমন একটা সিস্টেম যা যেকোনো ইনভয়েস তোলার আগে পারচেজ অর্ডার অনুমোদন বাধ্যতামূলক করে। অপারেশনস ম্যানেজার চান আগে ইনভয়েস তুলতে পারার সুযোগ থাকুক আর স্বাভাবিক অনুমোদন চেইন অনুপলব্ধ থাকলে পরে অনুমোদন পাওয়া যাক। দুটো রিকোয়ারমেন্টই যৌক্তিক। একটা ট্রেড-অফ ছাড়া দুটোই পূর্ণভাবে বাস্তবায়ন করা সম্ভব নয়।</p>
+      <p>এই পরিস্থিতিতে পড়া একজন BA-র দুটো অপশন থাকে। ভুলটা হলো: দুটো রিকোয়ারমেন্টই নোট করে সমস্যাটা ডেভেলপারদের কাছে পাঠিয়ে দেওয়া। সঠিকটা হলো: দ্বন্দ্বটা সামনে আনা, দুই স্টেকহোল্ডারের মধ্যে একটা আলোচনা সহজ করে দেওয়া, কোন রিকোয়ারমেন্ট অগ্রাধিকার পাবে (বা একটা কনফিগারযোগ্য নিয়ম দিয়ে দুটোই কীভাবে সন্তুষ্ট করা যায়) তার একটা সিদ্ধান্তে পৌঁছানো, আর সেই সিদ্ধান্ত কে নিয়েছে তার নামসহ ডকুমেন্ট করা।</p>
+      <p>BA-র সমাধান করা দ্বন্দ্ব একটা ডকুমেন্টেড ডিজাইন সিদ্ধান্ত হয়ে ওঠে। সমাধান না হওয়া দ্বন্দ্ব লঞ্চের ছয় মাস পর একটা বাগ রিপোর্ট হয়ে ফিরে আসে।</p>
+
+      <div class="field-note">
+        <p class="fn-label">RMG উদাহরণ</p>
+        <p>একটা নিটওয়্যার ফ্যাক্টরির বায়োমেট্রিক অ্যাটেনডেন্স প্রজেক্টে, HR ডিরেক্টর চেয়েছিলেন লাইন সুপারভাইজার সিস্টেমে অতিরিক্ত ঘণ্টা অনুমোদন করার পরই যেন শ্রমিকরা ওভারটাইম দাবি করতে পারে। প্রোডাকশন ম্যানেজার চেয়েছিলেন শ্রমিকরা নিজেরাই ওভারটাইম রেজিস্টার করুক আর সুপারভাইজাররা প্রতি সপ্তাহের শেষে ব্যাচে অনুমোদন করুক।</p>
+        <p>দুটো রিকোয়ারমেন্টই স্পেকে জায়গা পেয়ে যায়। কোনোটাই দ্বন্দ্বপূর্ণ হিসেবে চিহ্নিত হয়নি। ডেভেলপমেন্ট দুটো ওয়ার্কফ্লোই তৈরি করে। UAT-তে, সুপারভাইজাররা দেখেন সিস্টেম তাদের সামনে দুটো ভিন্ন ওভারটাইম অনুমোদন ইন্টারফেস হাজির করছে আর কোনটা ব্যবহার করবেন তার স্পষ্ট নির্দেশনা নেই। এরপর তিন স্প্রিন্ট রিওয়ার্ক করতে হয়।</p>
+        <p>দুই মাস আগেই, BA-র সহায়তায় HR ডিরেক্টর আর প্রোডাকশন ম্যানেজারের মধ্যে একটা ৩০-মিনিটের আলোচনায় এই দ্বন্দ্ব সমাধান হওয়া উচিত ছিল।</p>
+      </div>
+
+      <div class="stat-block">
+        <div class="stat-item">
+          <span class="stat-num">৮৫%</span>
+          <span class="stat-label">প্রজেক্ট সাইন-অফের পর অন্তত একটা উল্লেখযোগ্য চেঞ্জ রিকোয়েস্টের সম্মুখীন হয়</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num">৩.২×</span>
+          <span class="stat-label">খরচের গুণক: ডিসকভারির সময় বনাম বিল্ডের সময় রিকোয়ারমেন্ট পরিবর্তন</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num">RTM</span>
+          <span class="stat-label">চেঞ্জ ইমপ্যাক্ট ব্যবস্থাপনায় BA-র সবচেয়ে গুরুত্বপূর্ণ একক টুল</span>
+        </div>
+      </div>
+
+      <h2 id="s2">দ্বন্দ্ব সমাধানের কৌশল</h2>
+      <div class="three-up">
+        <div class="card">
+          <h4>প্রায়োরিটাইজেশন</h4>
+          <p>দুটো রিকোয়ারমেন্ট পূর্ণভাবে বাস্তবায়ন করা সম্ভব না হলে, দায়িত্বপ্রাপ্ত স্টেকহোল্ডারকে সেগুলো র‍্যাংক করতে বলুন। MoSCoW (Must-have, Should-have, Could-have, Won't-have) এটা করার একটা কাঠামোবদ্ধ উপায়। একজনের "Must" আরেকজনের কাছে "Should" হতে পারে — এই ফাঁকটাই প্রকৃত অগ্রাধিকার প্রকাশ করে।</p>
+        </div>
+        <div class="card">
+          <h4>কনফিগারেশন-ভিত্তিক সমাধান</h4>
+          <p>কখনো কখনো একটা কনফিগারযোগ্য অপশনের মাধ্যমে দুটো রিকোয়ারমেন্টই পূরণ করা যায় — একটা সিস্টেম সেটিং যা প্রতিষ্ঠানকে নিজস্ব নীতি বেছে নিতে দেয়। দুটো অপশনই ডকুমেন্ট করুন আর কনফিগারেশন সেট করার ক্ষমতা কার হাতে তাও লিখুন।</p>
+        </div>
+        <div class="card">
+          <h4>ফেজ অনুযায়ী আলাদা করা</h4>
+          <p>ফেজ ১-এ একটা পদ্ধতি বাস্তবায়ন করুন, ফেজ ২-তে দ্বিতীয় পদ্ধতিতে সম্প্রসারণের ইচ্ছা রেখে। এর জন্য ফেজ ২-এর একটা স্পষ্ট প্রতিশ্রুতি দরকার — প্রতিশ্রুতি ছাড়া "পরে দেখা যাবে" কোনো সমাধান নয়, এটা শুধু বিলম্ব।</p>
+        </div>
+        <div class="card">
+          <h4>যৌথ কর্তৃপক্ষের কাছে এস্কেলেশন</h4>
+          <p>দুই স্টেকহোল্ডার একমত হতে না পারলে আর BA সমাধান করতে না পারলে, দ্বন্দ্বটা স্পষ্টভাবে ডকুমেন্ট করে তাদের যৌথ লাইন ম্যানেজারের কাছে এস্কেলেট করুন। দুটো রিকোয়ারমেন্ট আর প্রতিটার প্রভাব উপস্থাপন করুন, আর একটা সিদ্ধান্ত চান। সিদ্ধান্তটা লিখিত হতে হবে।</p>
+        </div>
+        <div class="card">
+          <h4>আলোচনার মাধ্যমে সমঝোতা</h4>
+          <p>দুই পক্ষের মধ্যে একটা যৌথ সেশন সহজ করে দিন। একটা কাঠামোবদ্ধ পদ্ধতি ব্যবহার করুন: "এই রিকোয়ারমেন্ট পূরণ হতে আপনার সর্বনিম্ন কী দরকার?" প্রায়ই প্রকৃত চাহিদা বলা চাহিদার একটা অংশমাত্র, আর দুটো অংশের মধ্যে ওভারল্যাপ একটা কার্যকর সমাধান তৈরি করে।</p>
+        </div>
+        <div class="card">
+          <h4>বিজনেস রুল ডকুমেন্টেশন</h4>
+          <p>কিছু দৃশ্যমান দ্বন্দ্ব আসলে ছদ্মবেশে বিজনেস রুল: "ফাইন্যান্সের ইনভয়েসিংয়ের আগে অনুমোদন দরকার, তবে PO টাকা ১০,০০০-এর নিচে হলে আর ভেন্ডরের গ্রেড A রেটিং থাকলে ব্যতিক্রম।" নিয়মটা সুনির্দিষ্টভাবে ডকুমেন্ট করুন; দুই স্টেকহোল্ডারই এটা সন্তোষজনক মনে করতে পারেন।</p>
+        </div>
+      </div>
+
+      <h2 id="s3">চেঞ্জ কন্ট্রোল প্রসেস: সাইন-অফের পর কী পরিবর্তন হয়</h2>
+      <p>একবার রিকোয়ারমেন্ট সাইন-অফ হয়ে গেলে, তাতে যেকোনো পরিবর্তনই একটা চেঞ্জ রিকোয়েস্ট — এটা কোনো "বলতে ভুলে গিয়েছিলাম" নয়, "ছোট্ট একটা টুইক" নয়, আর অবশ্যই কোনো বাগ নয়। এই পার্থক্যটা অনেক গুরুত্বপূর্ণ, কারণ এটা স্কোপ, টাইমলাইন, খরচ, আর জবাবদিহিতাকে প্রভাবিত করে। সাইন-অফের পর অনানুষ্ঠানিক "ছোট সংযোজন" মেনে নেওয়া একজন BA প্রজেক্টের ক্ষতি করছেন, প্রতিটা পরিবর্তন সত্যিই ছোট হলেও।</p>
+
+      <div class="process-flow">
+        <div class="pf-step">
+          <span class="pf-num">০১</span>
+          <h4>রিকোয়েস্ট উত্থাপিত</h4>
+          <p>স্টেকহোল্ডার বিবরণ, বিজনেস জাস্টিফিকেশন, আর প্রায়োরিটিসহ একটা আনুষ্ঠানিক চেঞ্জ রিকোয়েস্ট জমা দেন</p>
+        </div>
+        <div class="pf-step">
+          <span class="pf-num">০২</span>
+          <h4>ইমপ্যাক্ট অ্যানালাইসিস</h4>
+          <p>BA আর টেক লিড স্কোপ, টাইমলাইন, খরচ, আর রিস্কের প্রভাব যাচাই করেন</p>
+        </div>
+        <div class="pf-step">
+          <span class="pf-num">০৩</span>
+          <h4>সিদ্ধান্ত</h4>
+          <p>স্পনসর অনুমোদন, প্রত্যাখ্যান, বা স্থগিত করেন। সিদ্ধান্তের কারণসহ ডকুমেন্ট করা হয়</p>
+        </div>
+        <div class="pf-step">
+          <span class="pf-num">০৪</span>
+          <h4>স্পেক আপডেট</h4>
+          <p>অনুমোদিত পরিবর্তনগুলো ভার্সন নম্বর আর তারিখসহ SRS-এ যুক্ত হয়</p>
+        </div>
+        <div class="pf-step">
+          <span class="pf-num">০৫</span>
+          <h4>জানানো হয়</h4>
+          <p>প্রভাবিত সবাইকে জানানো হয়: ডেভেলপার, টেস্টার, প্রজেক্ট ম্যানেজার, প্রভাবিত ইউজার</p>
+        </div>
+      </div>
+
+      <p>প্রজেক্ট শুরুর আগেই এই প্রসেসটা সংজ্ঞায়িত করে স্পনসরের সাথে একমত হতে হবে — প্রথম চেঞ্জ রিকোয়েস্ট আসার পর নয়। চাপের মধ্যে ঠিক করা চেঞ্জ কন্ট্রোল প্রসেস প্রায়শই ধারাবাহিকভাবে মানা হয় না।</p>
+      <p><strong>যা চেঞ্জ রিকোয়েস্ট হিসেবে গণ্য হবে:</strong> আগে থেকে সম্মত কোনো রিকোয়ারমেন্টের যেকোনো পরিবর্তন, নতুন কোনো ফাংশনাল রিকোয়ারমেন্ট সংযোজন, কোনো নন-ফাংশনাল রিকোয়ারমেন্টের পরিবর্তন, আগে স্কোপে থাকা কোনো রিকোয়ারমেন্ট বাদ দেওয়া।</p>
+      <p><strong>যা গণ্য হবে না:</strong> সম্মত স্কোপ পরিবর্তন করে না এমন স্পষ্টীকরণ ("X দিয়ে আমরা কী বুঝিয়েছিলাম?" এর উত্তর দেওয়া), যেখানে বাস্তবায়ন সম্মত রিকোয়ারমেন্টের সাথে মেলে না এমন বাগ ফিক্স, ইউজার-দৃশ্যমান আচরণে প্রভাব ফেলে না এমন ডেভেলপমেন্ট টিমের অভ্যন্তরীণ টেকনিক্যাল সিদ্ধান্ত।</p>
+
+      <h2 id="s4">ইমপ্যাক্ট অ্যানালাইসিস: প্রভাবের বলয় ম্যাপ করা</h2>
+      <p>একটা রিকোয়ারমেন্টের প্রতিটা পরিবর্তনের প্রভাব সেই পরিবর্তনের বাইরেও ছড়িয়ে পড়ে। একটা ফর্মে যোগ করা একটা ফিল্ড প্রভাবিত করে ডেটাবেস স্কিমা, API কন্ট্র্যাক্ট, ভ্যালিডেশন লজিক, সেই ফিল্ড দেখায় এমন রিপোর্ট, আর বিদ্যমান রেকর্ড পূরণ করতে হবে এমন মাইগ্রেশন স্ক্রিপ্টকে। একটা মডিউলে পরিবর্তিত বিজনেস রুল আরেকটা মডিউলের রুলের সাথে সাংঘর্ষিক হতে পারে।</p>
+      <p>ইমপ্যাক্ট অ্যানালাইসিস হলো একটা পরিবর্তন অনুমোদনের আগে এই প্রভাবগুলোর BA-র কাঠামোবদ্ধ মূল্যায়ন। এর জন্য গভীর টেকনিক্যাল জ্ঞান লাগে না — লাগে সিস্টেমটা এতটা ভালোভাবে জানা যে কোন কোন জায়গা প্রভাবিত হচ্ছে তা চিহ্নিত করা যায়।</p>
+      <p>একটা চেঞ্জ রিকোয়েস্টের ইমপ্যাক্ট অ্যানালাইসিসে উত্তর থাকা উচিত:</p>
+      <ul>
+        <li>বিদ্যমান কোন রিকোয়ারমেন্টগুলো প্রভাবিত বা অকার্যকর হচ্ছে?</li>
+        <li>কোন ইউজার স্টোরি বা টেস্ট কেস আপডেট করতে হবে?</li>
+        <li>কোন সিস্টেম মডিউল বা ইন্টিগ্রেশন প্রভাবিত হচ্ছে?</li>
+        <li>কী পরিমাণ ডেটা মাইগ্রেশন প্রয়োজন?</li>
+        <li>এফোর্ট এস্টিমেট কত (দিনে, টেকনিক্যাল লিডের কাছ থেকে)?</li>
+        <li>প্রজেক্ট টাইমলাইনে কী প্রভাব পড়ছে?</li>
+        <li>এই পরিবর্তন বাস্তবায়ন না করলে কী ঝুঁকি আছে?</li>
+      </ul>
+
+      <div class="field-note">
+        <p class="fn-label">RMG উদাহরণ — বায়োমেট্রিক ইন্টিগ্রেশন চেঞ্জ রিকোয়েস্ট</p>
+        <p>একটা পেরোল সিস্টেম প্রজেক্টের মাঝপথে, ফ্যাক্টরির MD একটা বায়োমেট্রিক ইন্টিগ্রেশন যোগ করার অনুরোধ করেন — যেখানে শ্রমিকদের অ্যাটেনডেন্স রেকর্ড সরাসরি ফিঙ্গারপ্রিন্ট স্ক্যানার থেকে পেরোল মডিউলে চলে আসবে। গো-লাইভের ছয় সপ্তাহ বাকি ছিল তখন।</p>
+        <p>ইমপ্যাক্ট অ্যানালাইসিসে দেখা যায়: একটা ডিভাইস আইডেন্টিফায়ার ফিল্ড রাখার জন্য অ্যাটেনডেন্স রেকর্ডের ডেটা মডেল পুনর্গঠন করতে হবে; বিদ্যমান ম্যানুয়াল অ্যাটেনডেন্স ইমপোর্ট মডিউল বন্ধ করতে হবে বা সমান্তরালে চালাতে হবে; অ্যাটেনডেন্স ডেটা পড়ে এমন তিনটা রিপোর্ট আপডেট করতে হবে; গো-লাইভ টাইমলাইন অন্তত চার সপ্তাহ বাড়বে; স্ক্যানারের হার্ডওয়্যার ভেন্ডরের API ডকুমেন্টেশনের জন্য ছয় সপ্তাহের লিড টাইম লাগবে।</p>
+        <p>MD বায়োমেট্রিক ইন্টিগ্রেশন ফেজ ২-তে পিছিয়ে দেন। ইমপ্যাক্ট অ্যানালাইসিস ছাড়া, টিম হয়তো পরিবর্তনটা গিলে ফেলার চেষ্টা করত আর গো-লাইভ তারিখ মিস করত।</p>
+      </div>
+
+      <h2 id="s5">রিকোয়ারমেন্টস ট্রেসেবিলিটি ম্যাট্রিক্স (RTM): নিরাপত্তা জাল</h2>
+      <p>রিকোয়ারমেন্টস ট্রেসেবিলিটি ম্যাট্রিক্স প্রতিটা রিকোয়ারমেন্টকে যুক্ত করে: যে বিজনেস অবজেক্টিভ এটা সাধন করে, যে ইউজার স্টোরি বা ফাংশনাল রিকোয়ারমেন্ট ডকুমেন্টে এটা সংজ্ঞায়িত, যে টেস্ট কেস এটা যাচাই করে, আর যে স্প্রিন্ট বা ডেলিভারি মাইলস্টোনে এটা তৈরি হচ্ছে তার সাথে।</p>
+      <p>RTM হলো সেই ডকুমেন্ট যা "আমরা এটাতে একমত হয়েছিলাম" প্রমাণযোগ্য করে তোলে। এটা ছাড়া, প্রতিটা UAT বিতর্ক হয়ে ওঠে স্মৃতির প্রতিযোগিতা। এটা থাকলে, আপনি দেখাতে পারেন সাইন-অফ করা রিকোয়ারমেন্ট, তা থেকে তৈরি টেস্ট কেস, আর "শেষ" বলতে কী বোঝায় তার অ্যাক্সেপ্টেন্স ক্রাইটেরিয়া।</p>
+
+      <div class="callout">
+        <span class="tag">RTM কাঠামো</span>
+        <p><strong>কলাম:</strong> Req ID | Business Objective | Description | Source (SRS section / US ID) | Priority | Status | Test Case ID | Test Status | Sprint / Phase | Notes<br><br>
+        <strong>পুরো প্রজেক্ট জুড়ে বজায় রাখুন:</strong> একটা রিকোয়ারমেন্ট যোগ হলে একটা রো যোগ করুন। Draft → Approved → In Progress → Done-এ সরে গেলে স্ট্যাটাস আপডেট করুন। UAT-এর পর টেস্ট স্ট্যাটাস আপডেট করুন। এটা একটা লিভিং ডকুমেন্ট — একটা ফ্রোজেন RTM অকেজো।</p>
+      </div>
+
+      <p>RTM-এর জটিল কোনো টুল হওয়ার দরকার নেই। বেশিরভাগ প্রজেক্টের জন্য একটা শেয়ার্ড Google Sheet-ই যথেষ্ট। গুরুত্বপূর্ণ হলো এটা আপডেট রাখা — একটা পুরনো RTM, RTM না থাকার চেয়েও খারাপ, কারণ এটা একটা মিথ্যা আত্মবিশ্বাস তৈরি করে।</p>
+
+      <h2 id="s6">টেমপ্লেট: চেঞ্জ রেজিস্টার + ইমপ্যাক্ট অ্যাসেসমেন্ট</h2>
+
+      <div class="callout">
+        <span class="tag">টেমপ্লেট</span>
+        <p><strong>চেঞ্জ রেজিস্টার — রো কাঠামো</strong><br><br>
+        <strong>CR-ID</strong> | <strong>Date raised</strong> | <strong>Raised by</strong> | <strong>Description</strong> | <strong>Business justification</strong> | <strong>Priority (H/M/L)</strong> | <strong>Status</strong> | <strong>Decision date</strong> | <strong>Decision maker</strong> | <strong>Decision (Approve/Reject/Defer)</strong> | <strong>Timeline impact</strong> | <strong>Cost impact</strong> | <strong>Affected requirements (Req IDs)</strong> | <strong>Notes</strong><br><br>
+        <strong>ইমপ্যাক্ট অ্যাসেসমেন্ট ফর্ম (প্রতি CR-এর জন্য):</strong><br>
+        CR-ID: [ID]<br>
+        পরিবর্তনের বিবরণ: [এক প্যারাগ্রাফ]<br>
+        প্রভাবিত রিকোয়ারমেন্ট: [Req ID-র তালিকা]<br>
+        আপডেট করতে হবে এমন টেস্ট কেস: [TC ID-র তালিকা]<br>
+        প্রভাবিত মডিউল/ইন্টিগ্রেশন: [তালিকা]<br>
+        ডেটা মাইগ্রেশন প্রয়োজন: [হ্যাঁ/না + বিবরণ]<br>
+        ডেভেলপমেন্ট এফোর্ট: [X দিন — টেকনিক্যাল লিড থেকে]<br>
+        টাইমলাইন ইমপ্যাক্ট: [গো-লাইভে +X দিন]<br>
+        বাস্তবায়ন না করলে ঝুঁকি: [বিবরণ]<br>
+        BA-র সুপারিশ: [অনুমোদন / প্রত্যাখ্যান / স্থগিত + কারণ]</p>
+      </div>
+
+      <h2 id="s_conflict_types">রিকোয়ারমেন্ট দ্বন্দ্বের চার ধরন</h2>
+      <p>সব রিকোয়ারমেন্ট দ্বন্দ্ব একরকম নয়। আপনি কোন ধরনের দ্বন্দ্বের মুখোমুখি তা বোঝাই ঠিক করে দেয় কোন সমাধান পদ্ধতি উপযুক্ত। একটা টেকনিক্যাল কনস্ট্রেইন্ট দ্বন্দ্বে নেগোসিয়েশন কৌশল প্রয়োগ করলে সময় নষ্ট হয়। একটা রাজনৈতিক দ্বন্দ্বে টেকনিক্যাল অ্যানালাইসিস প্রয়োগ করলে শত্রু তৈরি হয়।</p>
+
+      <div class="insight-row">
+        <div class="insight-card">
+          <p class="ic-label">ধরন ০১</p>
+          <h4>স্টেকহোল্ডার বনাম স্টেকহোল্ডার</h4>
+          <p>দুটো ডিপার্টমেন্ট চায় সিস্টেম ভিন্ন, বেমানান কাজ করুক। HR ডিরেক্টর চান শ্রমিকদের অ্যাটেনডেন্স রেকর্ড গোপন থাকুক; MD চান পূর্ণ দৃশ্যমানতা। সমাধান: RACI-তে একজন নির্দিষ্ট Accountable ব্যক্তির কাছে এস্কেলেট করুন। এটা একটা গভর্নেন্স সিদ্ধান্ত, BA-র সিদ্ধান্ত নয়।</p>
+        </div>
+        <div class="insight-card">
+          <p class="ic-label">ধরন ০২</p>
+          <h4>বলা চাহিদা বনাম প্রকৃত চাহিদা</h4>
+          <p>স্টেকহোল্ডার বলেন তার X দরকার, কিন্তু পর্যবেক্ষণ আর অনুসন্ধানে বেরিয়ে আসে প্রকৃত চাহিদা Y, যা X পূরণ করে না। সমাধান: বলা আর প্রকৃত রিকোয়ারমেন্ট দুটোই প্রমাণসহ পাশাপাশি উপস্থাপন করুন। স্টেকহোল্ডারকে সরাসরি কখনো প্রতিহত করবেন না — তাদের ডেটা দেখান।</p>
+        </div>
+        <div class="insight-card">
+          <p class="ic-label">ধরন ০৩</p>
+          <h4>বিজনেস বনাম টেকনিক্যাল কনস্ট্রেইন্ট</h4>
+          <p>ব্যবসার গো-লাইভের সময় একটা ফিচার দরকার যা ডেভেলপমেন্ট টিম বলছে সময়মতো তৈরি করা সম্ভব না। সমাধান: BA একটা স্কোপ ট্রেড-অফ আলোচনা সহজ করে দেয় — কী পিছিয়ে দেওয়া যায়, কী সত্যিই আপসযোগ্য নয়, আর গো-লাইভের জন্য MVP কেমন দেখতে হবে।</p>
+        </div>
+        <div class="insight-card">
+          <p class="ic-label">ধরন ০৪</p>
+          <h4>নতুন রিকোয়ারমেন্ট বনাম সম্মত স্কোপ</h4>
+          <p>সাইন-অফের পর একজন স্টেকহোল্ডার একটা নতুন রিকোয়ারমেন্ট নিয়ে আসেন। সমাধান: এটাকে চেঞ্জ রিকোয়েস্ট হিসেবে লগ করুন। একটা আনুষ্ঠানিক ইমপ্যাক্ট অ্যানালাইসিস চালান। অপশনগুলো উপস্থাপন করুন: এখনই বাস্তবায়ন (স্কোপ ও টাইমলাইন ইমপ্যাক্ট সহ), ফেজ ২-এ বাস্তবায়ন, বা অনির্দিষ্টকালের জন্য স্থগিত। ডকুমেন্ট না করা স্কোপ গিলে ফেলবেন না।</p>
+        </div>
+      </div>
+
+      <h2 id="s_change_impact">চেঞ্জ ইমপ্যাক্ট অ্যানালাইসিস: একটা দ্রুত ফ্রেমওয়ার্ক</h2>
+      <p>একটা সিদ্ধান্ত নেওয়ার আগে প্রতিটা চেঞ্জ রিকোয়েস্ট চারটা মাত্রায় যাচাই করা উচিত। একটা চেঞ্জ রিকোয়েস্ট এলে প্রজেক্ট স্পনসরের কাছে আপনি এই অ্যানালাইসিসটাই উপস্থাপন করেন — আপনার সুপারিশ নয়, বরং সিদ্ধান্ত নিতে তাদের যে তথ্য দরকার তা।</p>
+
+      <div class="bar-chart">
+        <div class="bc-row">
+          <span class="bc-label">স্কোপ ইমপ্যাক্ট</span>
+          <div class="bc-track"><div class="bc-fill" style="width:100%"></div></div>
+          <span class="bc-pct">কী পরিবর্তন হচ্ছে?</span>
+        </div>
+        <div class="bc-row">
+          <span class="bc-label">টাইমলাইন ইমপ্যাক্ট</span>
+          <div class="bc-track"><div class="bc-fill" style="width:85%"></div></div>
+          <span class="bc-pct">কত দিন?</span>
+        </div>
+        <div class="bc-row">
+          <span class="bc-label">খরচের ইমপ্যাক্ট</span>
+          <div class="bc-track"><div class="bc-fill" style="width:75%"></div></div>
+          <span class="bc-pct">এস্টিমেট রেঞ্জ</span>
+        </div>
+        <div class="bc-row">
+          <span class="bc-label">ঝুঁকির ইমপ্যাক্ট</span>
+          <div class="bc-track"><div class="bc-fill" style="width:65%"></div></div>
+          <span class="bc-pct">কী ভেঙে যেতে পারে?</span>
+        </div>
+      </div>
+      <p>কোনো সিদ্ধান্ত নেওয়ার আগে প্রতিটা অ্যানালাইসিস লিখিতভাবে ডকুমেন্ট করে অনুরোধকারীর সাথে শেয়ার করুন। এটা গো-লাইভের সময় "কিন্তু আমরা তো একমত হয়েছিলাম" জাতীয় কথোপকথন প্রতিরোধ করে — কারণ অ্যানালাইসিস দেখায় সিদ্ধান্তটা আসলে কী ছিল আর সিদ্ধান্ত নেওয়ার সময় কী তথ্য উপলব্ধ ছিল।</p>
+
+      <h2 id="s7">রিফ্লেকশন প্রশ্ন</h2>
+      <ol>
+        <li>আপনার জানা একটা প্রজেক্টে দুই স্টেকহোল্ডারের রিকোয়ারমেন্টের মধ্যে একটা দ্বন্দ্বের কথা ভাবুন। এটা কীভাবে সমাধান হয়েছিল — নাকি অমীমাংসিতই থেকে গিয়েছিল? এর পরিণতি কী ছিল? এই লেসনের কোন সমাধান কৌশলটা সবচেয়ে কার্যকর হতো?</li>
+        <li>আপনার বর্তমান বা সাম্প্রতিক প্রজেক্টে কি একটা আনুষ্ঠানিক চেঞ্জ কন্ট্রোল প্রসেস আছে? একজন স্টেকহোল্ডার "একটা ছোট পরিবর্তন" চাইলে কী হয়? একটা চেঞ্জ রেজিস্টার কীভাবে সাহায্য করতে পারত?</li>
+        <li>আপনার জানা একটা প্রজেক্ট থেকে পাঁচটা রিকোয়ারমেন্টের জন্য একটা মিনি-RTM তৈরি করুন — প্রতিটাকে একটা বিজনেস অবজেক্টিভ আর একটা টেস্ট সিনারিওর সাথে যুক্ত করে। এটা তৈরি করতে গিয়ে রিকোয়ারমেন্টের মান সম্পর্কে কী প্রকাশ পায়?</li>
+      </ol>
+
+    </article>
+  </div>
+</div>
+
+<div class="shell">
+  <div class="post-foot">
+    <div class="next">
+      <a href="lesson-06" class="next-card">
+        <span class="dir">← পূর্ববর্তী</span>
+        <h4>লেসন ০৬ — টেকনিক্যাল স্পেক</h4>
+        <p>SRS-lite, ডেটা ডিকশনারি, আর অস্পষ্টতা ধরার কৌশল।</p>
+        <span class="arrow">← লেসন ০৬</span>
+      </a>
+      <a href="lesson-08" class="next-card">
+        <span class="dir">পরবর্তী →</span>
+        <h4>লেসন ০৮ — UAT পরিকল্পনা</h4>
+        <p>UAT প্ল্যান তৈরি করুন, সেশন পরিচালনা করুন, আর সাইন-অফ নিন।</p>
+        <span class="arrow">→ লেসন ০৮</span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="shell">
+    <div class="foot">
+      <span>কোর্স ০১ · লেসন ০৭</span>
+      <a href="/bn/" style="color:var(--text-3);transition:color .15s" onmouseover="this.style.color='var(--text)'" onmouseout="this.style.color='var(--text-3)'">← পোর্টফোলিও</a>
+    </div>
+  </div>
+</footer>
+<script src="/courses/01-requirements-gathering/_progress.js"></script>
+<script src="/lab/_toc.js"></script>
+<script src="/whatsapp.js" defer></script>
+<script src="/scroll-top.js" defer></script>
+</body>
+</html>

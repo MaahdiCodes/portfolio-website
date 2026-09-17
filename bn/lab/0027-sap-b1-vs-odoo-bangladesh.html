@@ -1,0 +1,580 @@
+<!doctype html>
+<html lang="bn">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description"
+    content="বাংলাদেশে SAP Business One vs Odoo — ম্যানুফ্যাকচারিং SME-দের জন্য বাস্তব খরচ তুলনা। লাইসেন্সিং, ইমপ্লিমেন্টেশন, আর মোট মালিকানা। পুরো চিত্র →" />
+  <meta name="robots" content="noindex, follow" />
+  <meta name="author" content="Mehedi Hasan" />
+  <title>বাংলাদেশে SAP Business One vs Odoo | মেহেদী হাসান</title>
+  <link rel="canonical" href="https://mhasan.me/bn/lab/0027-sap-b1-vs-odoo-bangladesh" />
+  <link rel="alternate" hreflang="en" href="https://mhasan.me/lab/0027-sap-b1-vs-odoo-bangladesh" />
+  <link rel="alternate" hreflang="bn-BD" href="https://mhasan.me/bn/lab/0027-sap-b1-vs-odoo-bangladesh" />
+  <link rel="alternate" hreflang="x-default" href="https://mhasan.me/lab/0027-sap-b1-vs-odoo-bangladesh" />
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png" />
+  <!-- Open Graph -->
+  <meta property="og:title" content="বাংলাদেশে SAP Business One vs Odoo | মেহেদী হাসান" />
+  <meta property="og:description"
+    content="বাংলাদেশে SAP Business One vs Odoo — বাস্তব খরচ তুলনা। লাইসেন্সিং, ইমপ্লিমেন্টেশন TCO, ফিচারের গভীরতা, আর ম্যানুফ্যাকচারিং SME-দের জন্য বাংলাদেশের ইকোসিস্টেম।" />
+  <meta property="og:url" content="https://mhasan.me/bn/lab/0027-sap-b1-vs-odoo-bangladesh" />
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="https://mhasan.me/assets/og-default.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale" content="bn_BD" />
+  <meta property="og:site_name" content="মেহেদী হাসান | Odoo ERP কনসালট্যান্ট" />
+  <meta property="article:author" content="https://www.linkedin.com/in/mehedi-hasan-consultant/" />
+  <meta property="article:published_time" content="2026-05-05T11:00:00+06:00" />
+  <meta property="article:modified_time" content="2026-05-23T11:00:00+06:00" />
+  <meta property="article:section" content="Odoo ERP Bangladesh" />
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="বাংলাদেশে SAP Business One vs Odoo | বাস্তব খরচ তুলনা" />
+  <meta name="twitter:description"
+    content="বাংলাদেশি ম্যানুফ্যাকচারিং SME-দের জন্য SAP B1 vs Odoo — বাস্তব BDT সংখ্যাসহ সৎ খরচ তুলনা, ফিচার বিশ্লেষণ, আর কখন কোন প্ল্যাটফর্ম যুক্তিসঙ্গত।" />
+  <meta name="twitter:image" content="https://mhasan.me/assets/og-default.jpg" />
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "SAP Business One vs Odoo বাংলাদেশ: একটি বাস্তব খরচ তুলনা",
+    "description": "বাংলাদেশি ম্যানুফ্যাকচারিং কোম্পানির জন্য SAP Business One আর Odoo-র একটি বিস্তারিত তুলনা — BDT-তে বাস্তব লাইসেন্সিং খরচ, প্রকৃত বাংলাদেশি ডেপ্লয়মেন্ট থেকে ইমপ্লিমেন্টেশন খরচের রেঞ্জ, ম্যানুফ্যাকচারিং ও কমপ্লায়েন্সের জন্য ফিচারের গভীরতা, বাংলাদেশি পার্টনার ইকোসিস্টেম, আর নির্দিষ্ট পরিস্থিতি যেখানে প্রতিটি প্ল্যাটফর্ম সঠিক পছন্দ।",
+    "datePublished": "2026-05-05T11:00:00+06:00",
+    "dateModified": "2026-05-23T11:00:00+06:00",
+    "inLanguage": "bn",
+    "author": {
+      "@type": "Person",
+      "name": "Mehedi Hasan",
+      "url": "https://mhasan.me",
+      "jobTitle": "Odoo ERP Consultant & Business Analyst",
+      "sameAs": "https://www.linkedin.com/in/mehedi-hasan-consultant/"
+    },
+    "publisher": { "@type": "Person", "name": "Mehedi Hasan", "url": "https://mhasan.me" },
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://mhasan.me/bn/lab/0027-sap-b1-vs-odoo-bangladesh" }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "হোম", "item": "https://mhasan.me/bn" },
+      { "@type": "ListItem", "position": 2, "name": "ল্যাব", "item": "https://mhasan.me/bn/#lab" },
+      { "@type": "ListItem", "position": 3, "name": "বাংলাদেশে SAP Business One vs Odoo", "item": "https://mhasan.me/bn/lab/0027-sap-b1-vs-odoo-bangladesh" }
+    ]
+  }
+]
+</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&family=Noto+Sans+Bengali:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap">
+  <link rel="stylesheet" href="/lab/_styles.css">
+  <style>
+    body{ font-family: 'Noto Sans Bengali', var(--sans); }
+    /* comparison table */
+    .comp-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 24px 0;
+      font-size: 13px;
+    }
+    .comp-table th {
+      text-align: left;
+      padding: 12px 16px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-3);
+    }
+    .comp-table th:not(:first-child) { text-align: center; }
+    .comp-table td {
+      padding: 12px 16px;
+      border: 1px solid var(--border);
+      color: var(--text-2);
+      vertical-align: middle;
+      line-height: 1.5;
+    }
+    .comp-table td:not(:first-child) { text-align: center; }
+    .comp-table tr:hover td { background: rgba(255,255,255,0.015); }
+    .comp-table .feat { color: var(--text); font-weight: 500; }
+    .comp-table .cat-row td {
+      background: var(--surface);
+      color: var(--text-3);
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 8px 16px;
+    }
+    .win { color: oklch(0.80 0.17 155); font-weight: 600; }
+    .lose { color: oklch(0.55 0.18 30); }
+    .draw { color: oklch(0.75 0.12 60); }
+    .comp-table th.col-sap { color: oklch(0.70 0.12 30); }
+    .comp-table th.col-odoo { color: oklch(0.80 0.17 155); }
+
+    /* cost comparison */
+    .cost-compare {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin: 28px 0;
+    }
+    .cost-block {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .cost-block-head {
+      padding: 14px 18px;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+    }
+    .cbh-name {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text);
+    }
+    .cbh-sub {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--text-3);
+      letter-spacing: 0.06em;
+      margin-top: 3px;
+    }
+    .cost-row-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding: 10px 18px;
+      border-bottom: 1px solid var(--border);
+      font-size: 13px;
+    }
+    .cost-row-inner:last-child { border-bottom: none; }
+    .cr-label { color: var(--text-2); }
+    .cr-value {
+      font-family: var(--mono);
+      font-size: 12.5px;
+      color: var(--text);
+      font-weight: 600;
+      text-align: right;
+    }
+    .cr-value.high { color: oklch(0.55 0.18 30); }
+    .cr-value.low { color: oklch(0.80 0.17 155); }
+    @media(max-width:600px) {
+      .cost-compare { grid-template-columns: 1fr; }
+    }
+
+    /* when-to-choose cards */
+    .choose-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin: 28px 0;
+    }
+    .choose-card {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .choose-head {
+      padding: 13px 18px;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text);
+    }
+    .choose-body {
+      padding: 14px 18px;
+    }
+    .choose-body ul {
+      margin: 0;
+      padding: 0 0 0 16px;
+      font-size: 13px;
+      color: var(--text-2);
+      line-height: 1.8;
+    }
+    @media(max-width:600px) {
+      .choose-grid { grid-template-columns: 1fr; }
+    }
+
+    .pull {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: clamp(22px, 3vw, 34px);
+      line-height: 1.25;
+      color: var(--text);
+      margin: 48px 0;
+      border: none;
+      padding: 0;
+      max-width: 22ch;
+      letter-spacing: -0.01em;
+    }
+    .pull::before {
+      content: "";
+      display: block;
+      width: 36px;
+      height: 1px;
+      background: var(--accent);
+      margin-bottom: 18px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="grid-bg"></div>
+
+  <header class="nav">
+    <div class="shell">
+      <div class="nav-inner">
+        <a class="brand" href="/bn/">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span class="brand-name"><b>Mehedi Hasan</b><em>ERP · বিজনেস অ্যানালিস্ট</em></span>
+        </a>
+        <a class="back-link" href="/bn/#lab">← ল্যাব-এ ফিরুন</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="post-head">
+    <div class="shell">
+      <span class="eyebrow">টেকনিক্যাল ল্যাব · 0027</span>
+      <h1>SAP Business One vs Odoo বাংলাদেশ — <span class="serif">একটি বাস্তব খরচ তুলনা।</span></h1>
+      <p class="lede">SAP Business One-কে দেখানো হয় "সিরিয়াস ব্যবসার" ERP হিসেবে। Odoo-কে দেখানো হয় "সবার জন্য" ERP হিসেবে। এই দুইয়ের মধ্যে বেছে নেওয়া একটা বাংলাদেশি ম্যানুফ্যাকচারিং কোম্পানির জন্য উত্তরটা দরকার বাস্তব খরচের সংখ্যা, সৎ ফিচার বিশ্লেষণ, আর লোকাল ইকোসিস্টেমের নির্মোহ পর্যালোচনা — ভেন্ডর মার্কেটিং নয়।</p>
+      <div class="post-meta">
+        <span class="chip accent">তুলনা</span>
+        <span class="chip">SAP B1 vs Odoo</span>
+        <span class="chip">খরচ তুলনা</span>
+        <span class="chip">বাংলাদেশ ম্যানুফ্যাকচারিং</span>
+      </div>
+      <div class="byline">
+        <span>লেখক<b><a href="https://www.linkedin.com/in/mehedi-hasan-consultant/" style="color:var(--accent)" rel="author">Mehedi Hasan</a></b></span>
+        <span>প্রকাশিত<b>মে ২০২৬</b></span>
+        <span>পড়ার সময়<b>১৩ মিনিট</b></span>
+        <span>ধরন<b>তুলনামূলক গাইড</b></span>
+        <span>পরিধি<b>বাংলাদেশের ম্যানুফ্যাকচারিং SME</b></span>
+      </div>
+    </div>
+  </section>
+
+  <article class="post">
+    <aside class="toc">
+      <div class="toc-k">এই গাইডে</div>
+      <ol>
+        <li><a href="#product-overview">প্রোডাক্ট ওভারভিউ</a></li>
+        <li><a href="#cost">বাস্তব খরচ তুলনা (BDT)</a></li>
+        <li><a href="#feature-comparison">ফিচার তুলনা</a></li>
+        <li><a href="#bangladesh-ecosystem">বাংলাদেশ ইকোসিস্টেম</a></li>
+        <li><a href="#compliance">বাংলাদেশ কমপ্লায়েন্স</a></li>
+        <li><a href="#when-sap">কখন SAP B1 সঠিক পছন্দ</a></li>
+        <li><a href="#when-odoo">কখন Odoo সঠিক পছন্দ</a></li>
+        <li><a href="#faq">সচরাচর জিজ্ঞাসা</a></li>
+      </ol>
+    </aside>
+
+    <div class="body">
+      <p>গত কয়েক বছরে আমি বাংলাদেশি ক্লায়েন্টদের কাছে SAP Business One আর Odoo — দুটোই সুপারিশ করেছি। এরা একই প্রোডাক্ট নয়, একই কোম্পানি প্রোফাইলের সেবা দেয় না, আর সঠিক উত্তরটা সত্যিকার অর্থেই নির্দিষ্ট কিছু ফ্যাক্টরের ওপর নির্ভর করে — ব্র্যান্ড প্রেস্টিজ বা ভেন্ডর সম্পর্কের ওপর নয়।</p>
+
+      <p>বাংলাদেশি RMG ফ্যাক্টরি, ট্রেডিং কোম্পানি আর ম্যানুফ্যাকচারিং SME-তে দুটো প্ল্যাটফর্ম দেখে আমি যা শিখেছি: <strong>SAP B1 কেনা বেশিরভাগ বাংলাদেশি কোম্পানিকে Odoo দিয়েও সমানভাবে ভালো সেবা দেওয়া যেত, খরচের মাত্র ২০–৩০%-এ।</strong> একটা ছোট অংশের বাংলাদেশি কোম্পানির নির্দিষ্ট রিকোয়ারমেন্ট আছে, যা সত্যিকার অর্থেই SAP B1-এর অতিরিক্ত খরচকে যুক্তিসঙ্গত করে। এই প্রবন্ধটা তৈরি হয়েছে আপনাকে চিহ্নিত করতে সাহায্য করার জন্য যে আপনি কোন দলে পড়েন।</p>
+
+      <p class="pull">প্রশ্নটা এই নয় কোন ERP বেশি সম্মানজনক — প্রশ্নটা হলো পাঁচ বছর পরও আপনার অপারেশনস টিম কোনটা সঠিকভাবে ব্যবহার করবে।</p>
+
+      <h2 id="product-overview">প্রোডাক্ট ওভারভিউ</h2>
+
+      <p><strong>SAP Business One (SAP B1)</strong> হলো SAP-এর ছোট ও মাঝারি আকারের এন্টারপ্রাইজের জন্য ডিজাইন করা ERP প্রোডাক্ট, যার পজিশনিং ১০–২৫০ ইউজার রেঞ্জে। এটা ২০০২ সাল থেকে মার্কেটে আছে। SAP B1 একটা ক্লায়েন্ট-সার্ভার আর্কিটেকচার ব্যবহার করে (Windows ক্লায়েন্ট + SQL Server বা SAP HANA ডেটাবেস)। এটা শুধু SAP-এর রিসেলার পার্টনার নেটওয়ার্কের মাধ্যমে বিতরণ হয় — SAP থেকে সরাসরি কেনা যায় না। বাংলাদেশে এটা বিক্রি হয় ঢাকা-কেন্দ্রিক অনুমোদিত অল্প কয়েকজন SAP পার্টনারের মাধ্যমে। SAP B1 বিশেষভাবে শক্তিশালী ফাইন্যান্সিয়াল অ্যাকাউন্টিং, ম্যানেজমেন্ট রিপোর্টিং (Crystal Reports-এর মাধ্যমে), আর মাল্টি-কারেন্সি অপারেশনে। এর ম্যানুফ্যাকচারিং মডিউল বেসিক প্রোডাকশন ম্যানেজমেন্টের জন্য যথেষ্ট, তবে জটিল ফ্যাক্টরি ফ্লোর অপারেশনের জন্য Odoo-র চেয়ে দুর্বল।</p>
+
+      <p><strong>Odoo</strong> হলো একটা বেলজিয়ান ওপেন-সোর্স ERP প্ল্যাটফর্ম, যার দুই ধরনের লাইসেন্সিং মডেল আছে (Community ফ্রি, Enterprise পেইড)। এটা একটা ওয়েব-ভিত্তিক আর্কিটেকচারে কাজ করে (ব্রাউজার অ্যাক্সেস, কোনো Windows ক্লায়েন্ট দরকার নেই)। Odoo বিক্রি হয় সার্টিফায়েড পার্টনার আর সরাসরি Odoo SA-র মাধ্যমে। বাংলাদেশে ৮–১২টি সক্রিয় ইমপ্লিমেন্টেশন ফার্ম Odoo নিয়ে কাজ করে। Odoo-র শক্তি হলো এর বিস্তৃত মডিউল লাইব্রেরি, ম্যানুফ্যাকচারিংয়ের গভীরতা, আর নমনীয় কাস্টমাইজেশন মডেল। এর ফাইন্যান্সিয়াল অ্যাকাউন্টিং মডিউল আন্তর্জাতিক মান পূরণ করে, তবে জটিল গ্রুপ-লেভেল কনসোলিডেশনের জন্য SAP B1-এর তুলনায় কম পরিণত।</p>
+
+      <h2 id="cost">বাস্তব খরচ তুলনা (BDT)</h2>
+
+      <p>বাংলাদেশি সিদ্ধান্ত-গ্রহণকারীদের জন্য এই তুলনাটাই সবচেয়ে গুরুত্বপূর্ণ। সব সংখ্যা ২০২৫–২০২৬ সালের প্রকৃত বাংলাদেশি ডেপ্লয়মেন্ট আর পার্টনার কোটেশনের ভিত্তিতে:</p>
+
+      <div class="cost-compare">
+        <div class="cost-block">
+          <div class="cost-block-head">
+            <div class="cbh-name">SAP Business One</div>
+            <div class="cbh-sub">৩০ জন নামযুক্ত ইউজার · ম্যানুফ্যাকচারিং ডেপ্লয়মেন্ট</div>
+          </div>
+          <div class="cost-row-inner">
+            <span class="cr-label">Perpetual লাইসেন্স (৩০ ইউজার)</span>
+            <span class="cr-value high">৳82–148 লাখ</span>
+          </div>
+          <div class="cost-row-inner">
+            <span class="cr-label">বার্ষিক মেইনটেনেন্স (লাইসেন্সের ১৮%)</span>
+            <span class="cr-value high">৳14–26 লাখ/বছর</span>
+          </div>
+          <div class="cost-row-inner">
+            <span class="cr-label">ইমপ্লিমেন্টেশন (স্ট্যান্ডার্ড)</span>
+            <span class="cr-value high">৳40–120 লাখ</span>
+          </div>
+          <div class="cost-row-inner">
+            <span class="cr-label">হার্ডওয়্যার (SAP HANA বা SQL Server)</span>
+            <span class="cr-value high">৳5–15 লাখ</span>
+          </div>
+          <div class="cost-row-inner">
+            <span class="cr-label">বাংলাদেশ কমপ্লায়েন্স কাস্টমাইজেশন</span>
+            <span class="cr-value high">৳10–30 লাখ</span>
+          </div>
+          <div class="cost-row-inner">
+            <span class="cr-label">৩-বছরের TCO (perpetual)</span>
+            <span class="cr-value high">৳1.8–3.5 কোটি</span>
+          </div>
+        </div>
+        <div class="cost-block">
+          <div class="cost-block-head">
+            <div class="cbh-name">Odoo Enterprise</div>
+            <div class="cbh-sub">৩০ ইউজার · ম্যানুফ্যাকচারিং ডেপ্লয়মেন্ট</div>
+          </div>
+          <div class="cost-row-inner">
+            <span class="cr-label">লাইসেন্স (৩০ ইউজার, Standard প্ল্যান)</span>
+            <span class="cr-value low">৳6–9 লাখ/বছর</span>
+          </div>
+          <div class="cost-row-inner">
+            <span class="cr-label">বার্ষিক মেইনটেনেন্স (লাইসেন্সে অন্তর্ভুক্ত)</span>
+            <span class="cr-value low">অন্তর্ভুক্ত</span>
+          </div>
+          <div class="cost-row-inner">
+            <span class="cr-label">ইমপ্লিমেন্টেশন (স্ট্যান্ডার্ড)</span>
+            <span class="cr-value low">৳15–50 লাখ</span>
+          </div>
+          <div class="cost-row-inner">
+            <span class="cr-label">হার্ডওয়্যার (অন-প্রিমাইজ সার্ভার)</span>
+            <span class="cr-value low">৳1–2 লাখ</span>
+          </div>
+          <div class="cost-row-inner">
+            <span class="cr-label">বাংলাদেশ কমপ্লায়েন্স কাস্টমাইজেশন</span>
+            <span class="cr-value low">৳3–10 লাখ</span>
+          </div>
+          <div class="cost-row-inner">
+            <span class="cr-label">৩-বছরের TCO</span>
+            <span class="cr-value low">৳40–80 লাখ</span>
+          </div>
+        </div>
+      </div>
+
+      <p>খরচের পার্থক্যটা তীব্র: তুলনীয় ইউজার সংখ্যার জন্য SAP B1-এর ৩-বছরের TCO সাধারণত Odoo Enterprise-এর ৩–৫ গুণ। শুধু SAP B1-এর লাইসেন্সই (perpetual) Odoo-র পুরো ৩-বছরের মোট খরচকে ছাড়িয়ে যেতে পারে। ডেপ্লয়মেন্ট পরিস্থিতি অনুযায়ী বিস্তারিত শুধু-Odoo খরচ বিশ্লেষণের জন্য দেখুন আমাদের <a href="/bn/lab/0012-odoo-erp-cost-bangladesh" style="color:var(--accent)">বাংলাদেশে Odoo ERP বাস্তবায়নের খরচ</a> গাইড, অথবা নিজের ইউজার সংখ্যা আর মডিউল স্কোপের জন্য তাৎক্ষণিক একটা রেঞ্জ পেতে ব্যবহার করুন <a href="/bn/tools/odoo-cost-estimator/" style="color:var(--accent)">Odoo Cost Estimator</a>।</p>
+
+      <h2 id="feature-comparison">ফিচার তুলনা</h2>
+
+      <table class="comp-table">
+        <thead>
+          <tr>
+            <th style="width:40%">ফিচার এরিয়া</th>
+            <th class="col-sap" style="width:30%">SAP Business One</th>
+            <th class="col-odoo" style="width:30%">Odoo 17/18 Enterprise</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="cat-row"><td colspan="3">কোর ERP</td></tr>
+          <tr>
+            <td class="feat">ফাইন্যান্সিয়াল অ্যাকাউন্টিংয়ের গভীরতা</td>
+            <td class="win">পরিণত — SME অ্যাকাউন্টিংয়ে ২০+ বছরের পরিমার্জন</td>
+            <td class="draw">শক্তিশালী — বেশিরভাগ বাংলাদেশি SME রিকোয়ারমেন্টের জন্য ভালো</td>
+          </tr>
+          <tr>
+            <td class="feat">মাল্টি-কারেন্সি ও ট্রেজারি</td>
+            <td class="win">চমৎকার — বড় ট্রেজারি অপারেশনের জন্য CFO-দের পছন্দ</td>
+            <td class="draw">ভালো — USD/EUR ইনভয়েসিংসহ এক্সপোর্ট কোম্পানির জন্য যথেষ্ট</td>
+          </tr>
+          <tr>
+            <td class="feat">ম্যানেজমেন্ট রিপোর্টিং (Crystal Reports)</td>
+            <td class="win">শক্তিশালী Crystal Reports + স্ট্যান্ডার্ড SAP রিপোর্ট</td>
+            <td class="draw">Odoo Spreadsheet + বিল্ট-ইন রিপোর্ট — কম ফরম্যাটেড রিপোর্টিং</td>
+          </tr>
+          <tr>
+            <td class="feat">গ্রুপ কনসোলিডেশন (একাধিক এন্টিটি)</td>
+            <td class="win">গ্রুপ-লেভেল ফাইন্যান্সিয়াল কনসোলিডেশনের জন্য ভালো</td>
+            <td class="draw">মাল্টি-কোম্পানি আছে তবে কনসোলিডেশন কম পরিণত</td>
+          </tr>
+          <tr class="cat-row"><td colspan="3">ম্যানুফ্যাকচারিং</td></tr>
+          <tr>
+            <td class="feat">বিল অফ ম্যাটেরিয়ালস ও রুটিং</td>
+            <td class="draw">বেসিক BOM — রুটিং সীমিত</td>
+            <td class="win">পূর্ণ BOM, মাল্টি-লেভেল, ওয়ার্ক সেন্টার অপারেশনসহ রুটিং</td>
+          </tr>
+          <tr>
+            <td class="feat">ম্যানুফ্যাকচারিং শিডিউলিং</td>
+            <td class="lose">সর্বনিম্ন — ম্যানুয়াল শিডিউলিং</td>
+            <td class="win">Gantt-ভিত্তিক শিডিউলিং (Odoo 17/18)</td>
+          </tr>
+          <tr>
+            <td class="feat">কোয়ালিটি কন্ট্রোল মডিউল</td>
+            <td class="lose">নেটিভ কোয়ালিটি মডিউল নেই — অ্যাড-অন দরকার</td>
+            <td class="win">নেটিভ কোয়ালিটি পয়েন্ট, চেক আর অ্যালার্ট</td>
+          </tr>
+          <tr>
+            <td class="feat">IoT / বারকোড / শপ ফ্লোর</td>
+            <td class="lose">থার্ড-পার্টি অ্যাড-অন দরকার (উল্লেখযোগ্য খরচ)</td>
+            <td class="win">নেটিভ IoT Box, বারকোড অ্যাপ, কিয়স্ক মোড</td>
+          </tr>
+          <tr>
+            <td class="feat">সাবকন্ট্র্যাক্টিং</td>
+            <td class="draw">আছে তবে কম উন্নত</td>
+            <td class="win">খরচসহ পূর্ণাঙ্গ সাবকন্ট্র্যাক্টিং ওয়ার্কফ্লো</td>
+          </tr>
+          <tr class="cat-row"><td colspan="3">HR ও পেরোল</td></tr>
+          <tr>
+            <td class="feat">HR মডিউল</td>
+            <td class="draw">বেসিক HR — এমপ্লয়ি মাস্টার, অ্যাটেনডেন্স</td>
+            <td class="win">পূর্ণ HR — অ্যাপ্রাইজাল, কন্ট্র্যাক্ট, রিক্রুটমেন্ট, অ্যাটেনডেন্স</td>
+          </tr>
+          <tr>
+            <td class="feat">পেরোল (বাংলাদেশ লেবার অ্যাক্ট)</td>
+            <td class="lose">নেটিভ বাংলাদেশ পেরোল নেই — অ্যাড-অন দরকার</td>
+            <td class="win">BD লেবার অ্যাক্ট, PF, গ্র্যাচুইটির জন্য কনফিগারযোগ্য স্যালারি রুল</td>
+          </tr>
+          <tr class="cat-row"><td colspan="3">ব্যবহারযোগ্যতা ও প্ল্যাটফর্ম</td></tr>
+          <tr>
+            <td class="feat">ইউজার ইন্টারফেস</td>
+            <td class="lose">Windows ক্লায়েন্ট — পুরনো ইন্টারফেস, মোবাইল-ফ্রেন্ডলি নয়</td>
+            <td class="win">আধুনিক ব্রাউজার-ভিত্তিক UI + নেটিভ মোবাইল অ্যাপ</td>
+          </tr>
+          <tr>
+            <td class="feat">কাস্টমাইজেশন মডেল</td>
+            <td class="lose">SDK-ভিত্তিক কাস্টমাইজেশন — সার্টিফায়েড SAP ডেভেলপার দরকার</td>
+            <td class="win">ওপেন Python/XML — বড় ডেভেলপার পুল, কম রেট</td>
+          </tr>
+          <tr>
+            <td class="feat">মডিউল/অ্যাপের সংখ্যা</td>
+            <td class="lose">কোর মডিউল + পার্টনার অ্যাড-অন — সীমিত লাইব্রেরি</td>
+            <td class="win">Odoo Apps Store-এ ৫,০০০+ অ্যাপ</td>
+          </tr>
+          <tr>
+            <td class="feat">SAP ব্র্যান্ড স্বীকৃতি</td>
+            <td class="win">শক্তিশালী — CFO, অডিটর, ব্যাংকের পছন্দ</td>
+            <td class="draw">বাড়ছে — বাংলাদেশে ক্রমবর্ধমান স্বীকৃতি পাচ্ছে</td>
+          </tr>
+          <tr class="cat-row"><td colspan="3">বাংলাদেশ প্রেক্ষাপট</td></tr>
+          <tr>
+            <td class="feat">লোকাল ইমপ্লিমেন্টেশন পার্টনার</td>
+            <td class="lose">৪–৭টি পার্টনার (বাংলাদেশ)</td>
+            <td class="win">৮–১২টি সক্রিয় পার্টনার (বাংলাদেশ)</td>
+          </tr>
+          <tr>
+            <td class="feat">NBR VAT / Mushak সাপোর্ট</td>
+            <td class="lose">বিল্ট-ইন লোকালাইজেশন নেই — কাস্টম অ্যাড-অন দরকার</td>
+            <td class="draw">বিল্ট-ইন নেই — তবে বেশি কনসালট্যান্ট এটা কনফিগার করেছেন</td>
+          </tr>
+          <tr>
+            <td class="feat">ম্যানুফ্যাকচারিংয়ে রেফারেন্স সাইট</td>
+            <td class="lose">সীমিত — বেশিরভাগ বাংলাদেশি SAP B1 সাইট ট্রেডিং/ডিস্ট্রিবিউশন</td>
+            <td class="win">একাধিক — RMG, টেক্সটাইল, সাইকেল, ফার্মা রেফারেন্স সাইট</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2 id="bangladesh-ecosystem">বাংলাদেশ ইকোসিস্টেম</h2>
+
+      <p>গো-লাইভের পর আপনার ERP-কে সাপোর্ট করার জন্য উপলব্ধ ইকোসিস্টেমটা আপনার কেনা ফিচারগুলোর মতোই গুরুত্বপূর্ণ। বাংলাদেশে:</p>
+
+      <ul>
+        <li><strong>SAP B1 পার্টনার:</strong> ৪–৭ জন অনুমোদিত পার্টনার, বেশিরভাগই ঢাকায়। বেশিরভাগেরই অ্যাকাউন্টিংয়ে শক্তিশালী দক্ষতা আছে, তবে জটিল বাংলাদেশি ফ্যাক্টরি ফ্লোর অপারেশনের জন্য ম্যানুফ্যাকচারিংয়ে গভীরতা সীমিত। বাংলাদেশে SAP B1 ডেভেলপারের রেট Odoo ডেভেলপারের চেয়ে বেশি — পুলটা ছোট, আর SDK সার্টিফিকেশন রিকোয়ারমেন্ট একটা বাধা তৈরি করে।</li>
+        <li><strong>Odoo পার্টনার:</strong> ৮–১২টি সক্রিয় ফার্ম, বিভিন্ন স্পেশালাইজেশনসহ। বড় পুলের মানে: ইমপ্লিমেন্টেশন কোটেশনে প্রতিযোগিতামূলক প্রাইসিং, সই করার আগে দেখার মতো একই ধরনের ইন্ডাস্ট্রিতে রেফারেন্স সাইট, আর লোকাল মার্কেট রেটে কাস্টম ডেভেলপমেন্টের জন্য গভীরতর ট্যালেন্ট পুল।</li>
+        <li><strong>দীর্ঘমেয়াদী সাপোর্ট:</strong> ৫ বছর পর, যদি আপনার SAP B1 পার্টনার ফার্ম বন্ধ হয়ে যায় বা ফোকাস বদলে ফেলে, বাংলাদেশে আপনার অপশন সীমিত। Odoo-তে, ওপেন-সোর্স বেসের মানে হলো যেকোনো Python ডেভেলপার সিস্টেম মেইনটেইন করতে পারেন, আর ক্রমবর্ধমান কমিউনিটি একাধিক সাপোর্ট অপশন দেয়।</li>
+      </ul>
+
+      <h2 id="compliance">বাংলাদেশ কমপ্লায়েন্স সাপোর্ট</h2>
+
+      <p>SAP B1 বা Odoo — কোনোটাই বিল্ট-ইন বাংলাদেশ লোকালাইজেশন নিয়ে আসে না। দুটোতেই এসবের জন্য কাস্টমাইজেশন দরকার:</p>
+      <ul>
+        <li><strong>NBR VAT (Mushak 6.3):</strong> SAP B1-এর জন্য পার্টনার-তৈরি Crystal Reports টেমপ্লেট আর কাস্টম ট্যাক্স কনফিগারেশন দরকার। Odoo-র জন্য একটা কাস্টম রিপোর্ট মডিউল দরকার। সহজতর কাস্টমাইজেশন মডেলের কারণে Odoo-র অ্যাপ্রোচ সাধারণত ইমপ্লিমেন্ট করতে দ্রুত আর সস্তা।</li>
+        <li><strong>TDS (উৎসে কর কর্তন):</strong> SAP B1 এটা উইথহোল্ডিং ট্যাক্স কনফিগারেশনের মাধ্যমে হ্যান্ডল করে — Odoo-র অ্যাপ্রোচের চেয়ে বেশি পরিণত। জটিল TDS রিকোয়ারমেন্টসহ কোম্পানির জন্য (একাধিক TDS কোড, ডিডাকশন সার্টিফিকেট), SAP B1-এর উইথহোল্ডিং ট্যাক্স মডিউল ভালো।</li>
+        <li><strong>BGMEA পেরোল:</strong> SAP B1-এ বাংলাদেশের জন্য কোনো নেটিভ পেরোল নেই — অ্যাড-অন দরকার। Odoo-র স্যালারি রুল ইঞ্জিন স্ট্যান্ডার্ড কনফিগারেশনে (কোনো অ্যাড-অন ছাড়াই) BGMEA ওয়েজ বোর্ড কমপ্লায়েন্সের জন্য কনফিগার করা যায়।</li>
+        <li><strong>EPZ / বন্ডেড ওয়্যারহাউজ:</strong> দুটো প্ল্যাটফর্মেই কাস্টম কনফিগারেশন দরকার। Odoo-র ইনভেন্টরি লোকেশন মডেল EPZ বন্ডেড ওয়্যারহাউজ ট্র্যাকিং কনফিগার করাকে আরও স্বাভাবিক করে তোলে।</li>
+      </ul>
+
+      <h2 id="when-sap">কখন SAP Business One সঠিক পছন্দ</h2>
+
+      <div class="choose-grid">
+        <div class="choose-card">
+          <div class="choose-head">SAP Business One বেছে নিন যখন…</div>
+          <div class="choose-body">
+            <ul>
+              <li>আপনার CFO বা গ্রুপ ট্রেজারি এমন একটা প্যারেন্ট কোম্পানি বা হোল্ডিং গ্রুপের সাথে কনসোলিডেশনের জন্য SAP বাধ্যতামূলক করে যা SAP ECC/S4HANA ব্যবহার করে</li>
+              <li>আপনি একটা IPO পরিকল্পনা করছেন বা Big4 অডিট-গ্রেড ফাইন্যান্সিয়াল কন্ট্রোল দরকার — SAP-এর প্রতিষ্ঠিত অডিট ট্রেইল আর রিপোর্টিং গ্লোবাল অডিট ফার্মগুলোর কাছে বেশি স্বীকৃত</li>
+              <li>আপনার প্রধান জটিলতা ফাইন্যান্সিয়াল (মাল্টি-এন্টিটি কনসোলিডেশন, জটিল ট্রেজারি, ইন্টারকোম্পানি নেটিং), ফ্যাক্টরি ফ্লোর অপারেশন নয়</li>
+              <li>একটা ডিস্ট্রিবিউশন বা সার্ভিস কোম্পানিতে আপনার ১৫০–৫০০ ইউজার আছে, যেখানে SAP B1-এর শক্তি আপনার অপারেশনের সাথে মেলে</li>
+              <li>একটা প্যারেন্ট কোম্পানি বা লেন্ডারের চাহিদা অনুযায়ী সঠিক ফরম্যাটে Crystal Reports-গ্রেড ফরম্যাটেড ফাইন্যান্সিয়াল স্টেটমেন্ট দরকার</li>
+              <li>আপনি একটা মাল্টিন্যাশনালের বাংলাদেশি সাবসিডিয়ারি, যার গ্রুপ IT নীতির কারণে SAP ব্যবহার বাধ্যতামূলক</li>
+            </ul>
+          </div>
+        </div>
+        <div class="choose-card">
+          <div class="choose-head">Odoo বেছে নিন যখন…</div>
+          <div class="choose-body">
+            <ul>
+              <li>আপনি একটা বাংলাদেশি ম্যানুফ্যাকচারিং কোম্পানি (RMG, টেক্সটাইল, সাইকেল, ফার্মা), জটিল প্রোডাকশন ফ্লোর অপারেশনসহ — BOM, রুটিং, কোয়ালিটি, IoT</li>
+              <li>আপনার ২৫–১৫০ ইউজার আছে, আর ERP সিদ্ধান্তে খরচ একটা অর্থপূর্ণ ফ্যাক্টর</li>
+              <li>ব্যয়বহুল অ্যাড-অন না কিনেই আপনার বাংলাদেশ-নির্দিষ্ট পেরোল (BGMEA, লেবার অ্যাক্ট) আর কমপ্লায়েন্স (Mushak, EPZ) দরকার</li>
+              <li>Windows ক্লায়েন্ট রিকোয়ারমেন্ট ছাড়াই একটা আধুনিক ব্রাউজার-ভিত্তিক ইন্টারফেস চান</li>
+              <li>সার্টিফায়েড SAP ডেভেলপার ছাড়াই বাংলাদেশ-নির্দিষ্ট ফিল্ড, রিপোর্ট বা ওয়ার্কফ্লো যোগ করার মতো কাস্টমাইজেশন নমনীয়তা দরকার</li>
+              <li>প্রতিশ্রুতিবদ্ধ হওয়ার আগে একই ধরনের বাংলাদেশি ইন্ডাস্ট্রির একাধিক রেফারেন্স সাইট দেখতে চান</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <p>ছোট বাংলাদেশি কোম্পানির জন্য প্রাসঙ্গিক, Tally-সহ একটা বিস্তৃত ERP তুলনার জন্য দেখুন আমাদের <a href="/bn/lab/0004-odoo-vs-sap-vs-tally-bangladesh" style="color:var(--accent)">Odoo vs SAP vs Tally — বাংলাদেশি SME-দের জন্য তুলনা</a>।</p>
+
+      <div class="callout">
+        <span class="tag">সারকথা</span>
+        <p>আমি যেসব বাংলাদেশি ম্যানুফ্যাকচারিং SME নিয়ে কাজ করেছি, তাদের বেশিরভাগের জন্যই Odoo SAP B1-এর মোট খরচের ২০–৩০%-এ তুলনীয় বা ভালো অপারেশনাল ফলাফল দেয়। SAP B1 নির্দিষ্ট, স্পষ্টভাবে সংজ্ঞায়িত পরিস্থিতিতে সঠিক পছন্দ — মূলত যখন গ্রুপ কনসোলিডেশন, Big4 অডিট রিকোয়ারমেন্ট, বা প্যারেন্ট কোম্পানির নির্দেশ একে অপরিহার্য করে তোলে। এর কোনোটাই যদি আপনার জন্য প্রযোজ্য না হয়, তাহলে খরচের পার্থক্যটা যুক্তিসঙ্গত করা কঠিন। <a href="/bn/#contact" style="color:var(--accent)">আপনার নির্দিষ্ট পরিস্থিতির জন্য একটা স্বাধীন প্ল্যাটফর্ম সুপারিশ দরকার? যোগাযোগ করুন →</a></p>
+      </div>
+
+      <h2 id="faq">সচরাচর জিজ্ঞাসা</h2>
+
+      <h3>বাংলাদেশে SAP Business One-এর দাম কত?</h3>
+      <p>বাংলাদেশে SAP B1 perpetual লাইসেন্স প্রাইসিং প্রায় $2,500–$4,500 প্রতি নামযুক্ত ইউজার (একবারে, প্লাস ১৮–২২% বার্ষিক মেইনটেনেন্স)। ৩০ ইউজারের জন্য, লাইসেন্স প্রায় ৳82–148 লাখ। সাবস্ক্রিপশন মডেল চলে $95–$150/ইউজার/মাসে। স্ট্যান্ডার্ড ম্যানুফ্যাকচারিং ডেপ্লয়মেন্টের জন্য ইমপ্লিমেন্টেশন যোগ করে ৳40–120 লাখ। ৩০ ইউজারের জন্য মোট ৩-বছরের TCO প্রায় ৳1.8–3.5 কোটি — একই ইউজার সংখ্যায় Odoo Enterprise-এর চেয়ে উল্লেখযোগ্যভাবে বেশি।</p>
+
+      <h3>বাংলাদেশে ম্যানুফ্যাকচারিংয়ের জন্য SAP Business One কি Odoo-র চেয়ে ভালো?</h3>
+      <p>বেশিরভাগ বাংলাদেশি SME ম্যানুফ্যাকচারারের জন্য (৳200 কোটির নিচে টার্নওভার, ২৫–১৫০ ইউজার), Odoo SAP B1-এর TCO-র ১৫–২৫%-এ তুলনীয় ম্যানুফ্যাকচারিং ফাংশনালিটি দেয়। ফ্যাক্টরি ফ্লোর অপারেশনের জন্য Odoo-র ম্যানুফ্যাকচারিং মডিউল আসলে বেশি ফিচার-সমৃদ্ধ — ভালো রুটিং, নেটিভ কোয়ালিটি কন্ট্রোল, IoT Box ইন্টিগ্রেশন। জটিল ফাইন্যান্সিয়াল কনসোলিডেশন, গ্রুপ ট্রেজারি, আর Big4 অডিট-গ্রেড রিপোর্টিংয়ের জন্য SAP B1 ভালো। ম্যানুফ্যাকচারিং অপারেশনের জন্য, বাংলাদেশি SME স্কেলে Odoo এগিয়ে।</p>
+
+      <h3>বাংলাদেশে SAP Business One-এর কতগুলো পার্টনার আছে?</h3>
+      <p>২০২৬ সাল পর্যন্ত বাংলাদেশে প্রায় ৪–৭ জন অনুমোদিত SAP B1 পার্টনার আছে, বেশিরভাগই ঢাকা-কেন্দ্রিক। এটা Odoo-র ৮–১২টি সক্রিয় ইমপ্লিমেন্টেশন ফার্মের চেয়ে ছোট — মানে কম প্রতিযোগিতামূলক প্রাইসিং, কম রেফারেন্স সাইট, আর দীর্ঘমেয়াদী কাস্টমাইজেশন ও সাপোর্টের জন্য ছোট ট্যালেন্ট পুল। সীমিত ইকোসিস্টেমটা বাংলাদেশি SAP B1 ডেপ্লয়মেন্টের জন্য একটা অর্থপূর্ণ দীর্ঘমেয়াদী ঝুঁকি।</p>
+
+      <h3>SAP Business One কি বাংলাদেশ VAT (Mushak) আর NBR কমপ্লায়েন্স হ্যান্ডল করতে পারে?</h3>
+      <p>SAP B1-এ বিল্ট-ইন বাংলাদেশ লোকালাইজেশন নেই। NBR VAT (Mushak 6.3), EPZ ফিসক্যাল পজিশন, আর BGMEA পেরোল — সবগুলোর জন্যই আপনার SAP পার্টনারের কাছ থেকে কাস্টম অ্যাড-অন বা Crystal Reports কাস্টমাইজেশন দরকার। SAP B1-এর SDK-ভিত্তিক ডেভেলপমেন্ট মডেল আর ছোট লোকাল SAP ডেভেলপার পুলের কারণে কাস্টমাইজেশন খরচ সাধারণত সমতুল্য Odoo কাজের চেয়ে বেশি।</p>
+    </div>
+  </article>
+
+  <footer>
+    <div class="shell">
+      <div class="post-foot">
+        <span class="eyebrow">আরও পড়ুন</span>
+        <div class="next">
+          <a class="next-card" href="/bn/lab/0026-odoo-16-17-18-upgrade-bangladesh">
+            <span class="dir">পুরনো · 0026</span>
+            <h4>বাংলাদেশে Odoo 16/17/18/19</h4>
+            <p>বাংলাদেশি কোম্পানির জন্য ভার্সন তুলনা আর আপগ্রেড গাইড — কী বদলেছে আর কোন ভার্সন টার্গেট করবেন।</p>
+            <span class="arrow">→</span>
+          </a>
+          <a class="next-card" href="/bn/lab/0028-odoo-implementation-roadmap-bangladesh">
+            <span class="dir">নতুন · 0028</span>
+            <h4>বাংলাদেশে Odoo ইমপ্লিমেন্টেশন রোডম্যাপ</h4>
+            <p>বাংলাদেশি SME-দের জন্য সম্পূর্ণ ১২-সপ্তাহের ইমপ্লিমেন্টেশন রোডম্যাপ — RACI ম্যাট্রিক্স, ফেজ মাইলস্টোন, ডেটা কাটওভার, আর গো-লাইভ মানদণ্ড।</p>
+            <span class="arrow">→</span>
+          </a>
+        </div>
+      </div>
+      <div class="foot">
+        <span>© ২০২৬ Mehedi Hasan · Lab / 0027</span>
+        <span><a href="/bn/#lab">↑ ল্যাব ইনডেক্সে ফিরুন</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/lab/_utils.js" defer></script>
+<script src="/lab/_toc.js" defer></script>
+<script src="/whatsapp.js" defer></script>
+<script src="/scroll-top.js" defer></script>
+</body>
+
+</html>

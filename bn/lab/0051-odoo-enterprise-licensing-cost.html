@@ -1,0 +1,746 @@
+<!doctype html>
+<html lang="bn">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description"
+    content="Odoo Enterprise লাইসেন্সিং ব্যাখ্যা — অ্যাপ প্রাইসিং, ইউজার সংখ্যা, Odoo.sh বনাম সেলফ-হোস্টেড, এবং বাংলাদেশি SME-দের জন্য BDT খরচের অনুমান। পুরো গাইড পড়ুন →" />
+  <meta name="robots" content="noindex, follow" />
+  <meta name="author" content="Mehedi Hasan" />
+  <title>Odoo Enterprise Licensing খরচ | অ্যাপ ও ইউজার | মেহেদী হাসান</title>
+  <link rel="canonical" href="https://mhasan.me/bn/lab/0051-odoo-enterprise-licensing-cost" />
+  <link rel="alternate" hreflang="en" href="https://mhasan.me/lab/0051-odoo-enterprise-licensing-cost" />
+  <link rel="alternate" hreflang="bn-BD" href="https://mhasan.me/bn/lab/0051-odoo-enterprise-licensing-cost" />
+  <link rel="alternate" hreflang="x-default" href="https://mhasan.me/lab/0051-odoo-enterprise-licensing-cost" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png" />
+  <!-- Open Graph -->
+  <meta property="og:title" content="Odoo Enterprise Licensing খরচ | অ্যাপ ও ইউজার | মেহেদী হাসান" />
+  <meta property="og:description"
+    content="Odoo Enterprise লাইসেন্সিং ব্যাখ্যা — অ্যাপ প্রাইসিং, ইউজার সংখ্যা, Odoo.sh বনাম সেলফ-হোস্টেড, এবং বাংলাদেশি SME-দের জন্য BDT খরচের অনুমান।" />
+  <meta property="og:url" content="https://mhasan.me/bn/lab/0051-odoo-enterprise-licensing-cost" />
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="https://mhasan.me/assets/og-default.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale" content="bn_BD" />
+  <meta property="og:site_name" content="মেহেদী হাসান | Odoo ERP কনসালট্যান্ট" />
+  <meta property="article:author" content="https://www.linkedin.com/in/mehedi-hasan-consultant/" />
+  <meta property="article:published_time" content="2026-05-14T10:00:00+06:00" />
+  <meta property="article:modified_time" content="2026-05-14T10:00:00+06:00" />
+  <meta property="article:section" content="Odoo ERP Bangladesh" />
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Odoo Enterprise Licensing খরচ | অ্যাপ ও ইউজার | মেহেদী হাসান" />
+  <meta name="twitter:description"
+    content="Odoo Enterprise লাইসেন্সিং ব্যাখ্যা — অ্যাপ প্রাইসিং, ইউজার সংখ্যা, Odoo.sh বনাম সেলফ-হোস্টেড, এবং বাংলাদেশি SME-দের জন্য BDT খরচের অনুমান।" />
+  <meta name="twitter:image" content="https://mhasan.me/assets/og-default.jpg" />
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Odoo Licensing ব্যাখ্যা: Enterprise অ্যাপ, ইউজার ও বার্ষিক ফি",
+    "description": "Odoo Enterprise লাইসেন্সিং ব্যাখ্যা — অ্যাপ প্রাইসিং, ইউজার সংখ্যা, Odoo.sh বনাম সেলফ-হোস্টেড, এবং বাংলাদেশি SME-দের জন্য BDT খরচের অনুমান।",
+    "datePublished": "2026-05-14T10:00:00+06:00",
+    "dateModified": "2026-05-14T10:00:00+06:00",
+    "inLanguage": "bn",
+    "author": {
+      "@type": "Person",
+      "name": "Mehedi Hasan",
+      "url": "https://mhasan.me",
+      "jobTitle": "Odoo ERP Consultant & Business Analyst",
+      "sameAs": "https://www.linkedin.com/in/mehedi-hasan-consultant/"
+    },
+    "publisher": { "@type": "Person", "name": "Mehedi Hasan", "url": "https://mhasan.me" },
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://mhasan.me/bn/lab/0051-odoo-enterprise-licensing-cost" }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "হোম", "item": "https://mhasan.me/bn" },
+      { "@type": "ListItem", "position": 2, "name": "ল্যাব", "item": "https://mhasan.me/bn/#lab" },
+      { "@type": "ListItem", "position": 3, "name": "Odoo Enterprise Licensing খরচ", "item": "https://mhasan.me/bn/lab/0051-odoo-enterprise-licensing-cost" }
+    ]
+  }
+]
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&family=Noto+Sans+Bengali:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap">
+  <link rel="stylesheet" href="/lab/_styles.css">
+  <style>
+    body { font-family: 'Noto Sans Bengali', var(--sans); }
+    .pull {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: clamp(20px, 2.8vw, 30px);
+      line-height: 1.3;
+      color: var(--text);
+      margin: 48px 0;
+      max-width: 26ch;
+      letter-spacing: -0.01em;
+    }
+    .pull::before {
+      content: "";
+      display: block;
+      width: 36px;
+      height: 1px;
+      background: var(--accent);
+      margin-bottom: 18px;
+    }
+    .license-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13.5px;
+      margin: 24px 0;
+    }
+    .license-table th {
+      background: var(--surface);
+      color: var(--accent);
+      font-family: var(--mono);
+      font-size: 10.5px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 10px 14px;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+    }
+    .license-table td {
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      color: var(--text-2);
+      vertical-align: top;
+      line-height: 1.5;
+    }
+    .license-table tr:last-child td { border-bottom: none; }
+    .license-table .num { color: var(--accent); font-family: var(--mono); font-size: 13px; white-space: nowrap; }
+    .license-table .total-row td {
+      background: var(--surface);
+      color: var(--text);
+      font-weight: 600;
+      border-top: 2px solid var(--accent);
+    }
+    .license-table .group-row td {
+      background: var(--bg-1);
+      color: var(--text-3);
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 7px 14px;
+    }
+    .size-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin: 24px 0;
+    }
+    @media(max-width: 760px) { .size-grid { grid-template-columns: 1fr; } }
+    .size-card {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .size-card-head {
+      background: var(--surface);
+      padding: 16px 18px;
+      border-bottom: 1px solid var(--border);
+    }
+    .size-card-head .sc-label {
+      font-family: var(--mono);
+      font-size: 10px;
+      color: var(--text-3);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+    .size-card-head h4 { margin: 0; font-size: 15px; color: var(--text); }
+    .size-card-body { padding: 16px 18px; }
+    .size-card-body .sc-row { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 8px; font-size: 13.5px; }
+    .size-card-body .sc-row:last-child { margin-bottom: 0; }
+    .size-card-body .sc-key { color: var(--text-3); }
+    .size-card-body .sc-val { color: var(--accent); font-family: var(--mono); font-size: 13px; }
+    .size-card-body .sc-total { color: var(--text); font-weight: 600; }
+    .compare-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin: 24px 0;
+    }
+    @media(max-width: 640px) { .compare-grid { grid-template-columns: 1fr; } }
+    .compare-card {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .compare-card.featured { border-color: var(--accent); }
+    .compare-card-head {
+      padding: 16px 20px;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+    }
+    .compare-card.featured .compare-card-head { background: var(--accent-dim); }
+    .compare-card-head h3 { margin: 0 0 4px; font-size: 16px; color: var(--text); }
+    .compare-card-head .cc-price { font-family: var(--mono); font-size: 14px; color: var(--accent); }
+    .compare-card-body { padding: 16px 20px; }
+    .compare-card-body ul { margin: 0; padding-left: 18px; }
+    .compare-card-body li { color: var(--text-2); font-size: 13.5px; margin-bottom: 6px; line-height: 1.4; }
+    .odo-sh-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13.5px;
+      margin: 24px 0;
+    }
+    .odo-sh-table th {
+      background: var(--surface);
+      color: var(--accent);
+      font-family: var(--mono);
+      font-size: 10.5px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 10px 14px;
+      border-bottom: 1px solid var(--border);
+    }
+    .odo-sh-table td {
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      color: var(--text-2);
+      vertical-align: top;
+    }
+    .odo-sh-table tr:last-child td { border-bottom: none; }
+    .odo-sh-table .num { color: var(--accent); font-family: var(--mono); }
+    .tip-box {
+      border: 1px solid var(--border-2);
+      border-left: 3px solid var(--accent);
+      border-radius: 0 8px 8px 0;
+      padding: 16px 20px;
+      margin: 20px 0;
+      background: var(--surface);
+    }
+    .tip-box .tip-label {
+      font-family: var(--mono);
+      font-size: 10px;
+      color: var(--accent);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .tip-box p { margin: 0; color: var(--text-2); font-size: 14.5px; line-height: 1.6; }
+    .warn-box {
+      border: 1px solid rgba(255, 160, 50, 0.3);
+      border-left: 3px solid rgba(255, 160, 50, 0.8);
+      border-radius: 0 8px 8px 0;
+      padding: 16px 20px;
+      margin: 20px 0;
+      background: rgba(255, 160, 50, 0.05);
+    }
+    .warn-box .warn-label {
+      font-family: var(--mono);
+      font-size: 10px;
+      color: rgba(255, 160, 50, 0.9);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .warn-box p { margin: 0; color: var(--text-2); font-size: 14.5px; line-height: 1.6; }
+  </style>
+</head>
+
+<body>
+  <div class="grid-bg"></div>
+
+  <header class="nav">
+    <div class="shell">
+      <div class="nav-inner">
+        <a class="brand" href="/bn/">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span class="brand-name"><b>Mehedi Hasan</b><em>ERP · বিজনেস অ্যানালিস্ট</em></span>
+        </a>
+        <a class="back-link" href="/bn/#lab">← ল্যাব-এ ফিরুন</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="post-head">
+    <div class="shell">
+      <span class="eyebrow">টেকনিক্যাল ল্যাব · 0051</span>
+      <h1>Odoo Enterprise Licensing — <span class="serif">আপনি আসলে কিসের জন্য টাকা দিচ্ছেন।</span></h1>
+      <p class="lede">Odoo-র প্রাইসিং মডেল প্রচলিত ERP সফটওয়্যার থেকে মৌলিকভাবে ভিন্ন, আর বেশিরভাগ বাংলাদেশি ক্রেতা রিনিউয়াল ইনভয়েস না আসা পর্যন্ত এটি বোঝেন না। এই গাইডে আমি ব্যাখ্যা করব অ্যাপ-ভিত্তিক লাইসেন্সিং ঠিক কীভাবে কাজ করে, আপনার ইউজার সংখ্যা কীভাবে সঠিকভাবে হিসাব করবেন, Odoo.sh-এর খরচ সেলফ-হোস্টিংয়ের তুলনায় কেমন, এবং বাংলাদেশে বিভিন্ন আকারের কোম্পানির জন্য বাস্তবসম্মত বার্ষিক ফি কেমন দেখায়। অথবা হিসাব বাদ দিন — <a href="/bn/tools/odoo-cost-estimator/" style="color:var(--accent)">বিনামূল্যের Odoo Cost Estimator</a> আপনার নির্দিষ্ট ইউজার সংখ্যার জন্য বছর ১, বছর ২ এবং বছর ৩-এর লাইসেন্স খরচ মডেল করে।</p>
+      <div class="post-meta">
+        <span class="chip accent">গাইড</span>
+        <span class="chip">লাইসেন্সিং</span>
+        <span class="chip">ফাইন্যান্স</span>
+        <span class="chip">প্রোকিউরমেন্ট</span>
+      </div>
+      <div class="byline">
+        <span>লেখক<b><a href="https://www.linkedin.com/in/mehedi-hasan-consultant/" style="color:var(--accent)" rel="author">Mehedi Hasan</a></b></span>
+        <span>প্রকাশিত<b>মে ২০২৬</b></span>
+        <span>পড়ার সময়<b>১২ মিনিট</b></span>
+        <span>ধরন<b>রেফারেন্স গাইড</b></span>
+        <span>পরিসর<b>লাইসেন্সিং ও প্রোকিউরমেন্ট</b></span>
+      </div>
+    </div>
+  </section>
+
+  <article class="post">
+    <aside class="toc">
+      <div class="toc-k">এই গাইডে</div>
+      <ol>
+        <li><a href="#model">Odoo-র অ্যাপ-ভিত্তিক প্রাইসিং কীভাবে কাজ করে</a></li>
+        <li><a href="#apps">Enterprise বনাম Community: কী বিনামূল্যে</a></li>
+        <li><a href="#user-count">ইউজার সংখ্যার হিসাব</a></li>
+        <li><a href="#app-pricing">মডিউল-অনুযায়ী প্রাইসিং গাইড</a></li>
+        <li><a href="#odoo-sh">Odoo.sh হোস্টিং টিয়ার</a></li>
+        <li><a href="#self-hosted">সেলফ-হোস্টেড বনাম Odoo.sh খরচ তুলনা</a></li>
+        <li><a href="#bd-examples">বাংলাদেশি SME খরচের উদাহরণ</a></li>
+        <li><a href="#renewal">বার্ষিক রিনিউয়াল ও আপগ্রেড খরচ</a></li>
+        <li><a href="#negotiation">আপনার Odoo কন্ট্রাক্ট নেগোশিয়েট করা</a></li>
+        <li><a href="#faq">সচরাচর জিজ্ঞাসা</a></li>
+      </ol>
+    </aside>
+
+    <div class="body">
+
+      <h2 id="model">Odoo-র অ্যাপ-ভিত্তিক প্রাইসিং কীভাবে কাজ করে</h2>
+      <p>Odoo Enterprise Microsoft 365 বা Salesforce-এর মতো একটি ফ্ল্যাট "পার-সিট" ফি চার্জ করে না। বরং এটি প্রতি <strong>অ্যাপ</strong> প্রতি <strong>ইউজার</strong> প্রতি <strong>বছর</strong> হিসেবে চার্জ করে। এর মানে আপনার বার্ষিক লাইসেন্স খরচ নির্ভর করে:</p>
+      <ol>
+        <li><strong>আপনি কোন অ্যাপ ব্যবহার করেন</strong> — Accounting-এর খরচ Inventory-র চেয়ে বেশি। Manufacturing-এর খরচ HR-এর চেয়ে বেশি। প্রতিটি অ্যাপের নিজস্ব প্রাইস টিয়ার আছে।</li>
+        <li><strong>কতজন ইউজার প্রতিটি অ্যাপ অ্যাক্সেস করেন</strong> — শুধু যারা সক্রিয়ভাবে একটি নির্দিষ্ট অ্যাপ অ্যাক্সেস করেন তারাই সেই অ্যাপের লাইসেন্সের জন্য গণনা করা হয়। যে ওয়্যারহাউস কর্মী Inventory ব্যবহার করেন কিন্তু Accounting নয়, তিনি Accounting-এর ইউজার সংখ্যায় গণনা হন না।</li>
+        <li><strong>আপনি Odoo.sh নাকি সেলফ-হোস্ট ব্যবহার করছেন</strong> — Odoo.sh হোস্টিং অ্যাপ লাইসেন্সিংয়ের ওপর একটি অতিরিক্ত খরচ।</li>
+      </ol>
+
+      <p>এই কাঠামোর একটি গুরুত্বপূর্ণ প্রভাব আছে: আপনার মোট লাইসেন্স খরচ হলো আপনার সব অ্যাপ জুড়ে (অ্যাপের দাম × সেই অ্যাপের ইউজার সংখ্যা)-এর যোগফল। এটি ইউজার × একটি দাম নয়। এই কারণেই একই সংখ্যক কর্মচারীর দুটি কোম্পানির Odoo বিল খুব ভিন্ন হতে পারে।</p>
+
+      <div class="warn-box">
+        <div class="warn-label">প্রাইসিং সম্পর্কে গুরুত্বপূর্ণ নোট</div>
+        <p>Odoo-র অফিসিয়াল প্রাইসিং নির্ধারণ করে Odoo SA, আর তা পর্যায়ক্রমে পরিবর্তিত হয়। বাংলাদেশের পার্টনাররা তাদের পার্টনার টিয়ার ও আঞ্চলিক চুক্তির ওপর নির্ভর করে ভিন্ন রেট দিতে পারে। এই গাইডের সংখ্যাগুলো 2025–2026 বাজার রেটের ভিত্তিতে দৃষ্টান্তমূলক। বর্তমান প্রাইসিংয়ের জন্য সবসময় আপনার পার্টনারের কাছ থেকে একটি আনুষ্ঠানিক কোটেশন চান।</p>
+      </div>
+
+      <p class="pull">৫০ জন কর্মচারীর দুটি কোম্পানির Odoo বিল বছরে ৳3–5 লাখ আলাদা হতে পারে, শুধু তারা কোন মডিউল ব্যবহার করে আর কতজন ইউজার প্রতিটি স্পর্শ করে তার ভিত্তিতে।</p>
+
+      <h2 id="apps">Enterprise বনাম Community: বিনামূল্যে কী পাবেন</h2>
+      <p>Odoo Community Edition সত্যিকার অর্থেই ওপেন-সোর্স এবং সত্যিকার অর্থেই বিনামূল্যে। পার্থক্যটি "বিনামূল্যে বনাম পেইড" নয় — এটি "কমিউনিটি ফিচার বনাম এন্টারপ্রাইজ ফিচার।" বেশিরভাগ সিরিয়াস বাংলাদেশি ম্যানুফ্যাকচারারের জন্য, Enterprise প্রয়োজনীয়। কিন্তু Community-তে ঠিক কী নেই তা বোঝা আপনাকে মূল্যায়ন করতে সাহায্য করে যে আপনার সত্যিই Enterprise দরকার নাকি কয়েকটি নির্দিষ্ট কাস্টমাইজেশনসহ Community দিয়েই চলবে।</p>
+
+      <div class="compare-grid">
+        <div class="compare-card">
+          <div class="compare-card-head">
+            <h3>Community Edition</h3>
+            <div class="cc-price">বিনামূল্যে (ওপেন সোর্স)</div>
+          </div>
+          <div class="compare-card-body">
+            <ul>
+              <li>বেসিক Sales, Purchase, Inventory</li>
+              <li>বেসিক Accounting (কোনো অ্যানালিটিক নেই, লক ডেট নেই)</li>
+              <li>বেসিক Manufacturing (কোনো MRP II নেই, ওয়ার্কসেন্টার ক্যাপাসিটি নেই)</li>
+              <li>বেসিক HR (কোনো পে-রোল নেই)</li>
+              <li>বেসিক CRM</li>
+              <li>স্ট্যান্ডার্ড ওয়েবসাইট / ই-কমার্স</li>
+              <li>Odoo App Store থেকে কমিউনিটি-শুধু অ্যাপ</li>
+              <li>কোনো Odoo.sh নেই (সেলফ-হোস্ট করতে হবে)</li>
+              <li>কোনো অফিসিয়াল Odoo সাপোর্ট নেই</li>
+            </ul>
+          </div>
+        </div>
+        <div class="compare-card featured">
+          <div class="compare-card-head">
+            <h3>Enterprise Edition</h3>
+            <div class="cc-price">সাবস্ক্রিপশন — প্রতি অ্যাপ প্রতি ইউজার/বছর</div>
+          </div>
+          <div class="compare-card-body">
+            <ul>
+              <li>ফুল Accounting: মাল্টি-কারেন্সি, লক ডেট, বাজেট, অ্যানালিটিক</li>
+              <li>ফুল Manufacturing: MRP, ওয়ার্ক সেন্টার ক্যাপাসিটি, কোয়ালিটি</li>
+              <li>Payroll: স্যালারি রুলস, PF, গ্র্যাচুইটি, পে-স্লিপ</li>
+              <li>অ্যাডভান্সড Inventory: মাল্টি-স্টেপ রুট, সিরিয়াল/লট ট্র্যাকিং</li>
+              <li>Sign, Studio, IoT Box</li>
+              <li>কনসোলিডেটেড ফাইন্যান্সিয়াল রিপোর্ট (মাল্টি-কোম্পানি)</li>
+              <li>VoIP, SMS মার্কেটিং, লাইভ চ্যাট</li>
+              <li>Odoo.sh হোস্টিং অপশন</li>
+              <li>অফিসিয়াল Odoo সাপোর্ট কন্ট্রাক্ট</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <p>বাংলাদেশের দৃষ্টিকোণ থেকে সম্পূর্ণ ফিচার তুলনার জন্য দেখুন <a href="/bn/lab/0024-odoo-community-vs-enterprise-bangladesh" style="color:var(--accent)">Odoo Community বনাম Enterprise তুলনা গাইড</a>।</p>
+
+      <h2 id="user-count">ইউজার সংখ্যার হিসাব</h2>
+      <p>ইউজার গণনা করা সহজ শোনায়। কিন্তু তা নয়। বাংলাদেশি কোম্পানিগুলো প্রায়ই তাদের ইউজার সংখ্যা উল্লেখযোগ্যভাবে ভুল হিসাব করে — সাধারণত কম হিসাব করে — যা লাইসেন্স ইনভয়েস আসার সময় একটি অপ্রীতিকর বিস্ময় তৈরি করে।</p>
+
+      <p><strong>লাইসেন্সিংয়ের উদ্দেশ্যে কে "ইউজার" হিসেবে গণ্য হয়?</strong></p>
+      <ul>
+        <li>নিজস্ব Odoo লগইন থাকা যেকোনো ব্যক্তি যিনি একটি Enterprise অ্যাপ অ্যাক্সেস করতে পারেন, সেই অ্যাপের জন্য একজন লাইসেন্সড ইউজার হিসেবে গণ্য হন।</li>
+        <li>Odoo-র শর্তানুযায়ী শেয়ার্ড লগইন নিষিদ্ধ এবং লাইসেন্স বাতিল করে দেয়। প্রতিটি ব্যক্তির নিজস্ব লগইন থাকতে হবে।</li>
+        <li>যারা শুধু Community মডিউল ব্যবহার করেন (যেমন একটি বেসিক ওয়েবসাইট), তারা Enterprise লাইসেন্সিংয়ে গণনা হন না।</li>
+        <li>এক্সটার্নাল ইউজার (পোর্টাল ইউজার) — কাস্টমার আর ভেন্ডর যারা কাস্টমার পোর্টালের মাধ্যমে তাদের অর্ডার, ইনভয়েস, আর ডেলিভারি দেখতে পারেন — Odoo Enterprise-এ <strong>বিনামূল্যে এবং সীমাহীন</strong>। B2B কোম্পানির জন্য এটি একটি উল্লেখযোগ্য মূল্য পয়েন্ট।</li>
+      </ul>
+
+      <p><strong>নেমড ইউজার বনাম কনকারেন্ট ইউজার:</strong> Odoo নেমড ইউজার লাইসেন্সিং ব্যবহার করে, কনকারেন্ট ইউজার লাইসেন্সিং নয়। আপনার যদি ৩০ জন কর্মচারী থাকে যারা লগইন করতে পারেন, আপনার ৩০টি লাইসেন্স দরকার — এমনকি যদি তাদের মধ্যে মাত্র ১০ জন কখনো একসাথে লগইন করে থাকেন। এটি গুরুত্বপূর্ণ কারণ এর মানে লগইন ঘণ্টা সীমিত করে আপনি অপ্টিমাইজ করতে পারবেন না।</p>
+
+      <div class="tip-box">
+        <div class="tip-label">ইউজার সংখ্যা অপ্টিমাইজেশন</div>
+        <p>যেসব ওয়্যারহাউস কর্মীর শুধু ডেলিভারি নিশ্চিত করা বা স্টক কাউন্ট করা দরকার, তারা কখনো কখনো শেয়ার্ড টার্মিনাল লগইনসহ Odoo-র বারকোড অ্যাপ ব্যবহার করতে পারেন — এই কনফিগারেশন আপনার লাইসেন্স চুক্তির অধীনে কম টিয়ারের অ্যাক্সেস বা শেয়ার্ড অ্যাক্সেস ব্যবস্থার যোগ্য কিনা তা আপনার পার্টনারের সাথে যাচাই করুন।</p>
+      </div>
+
+      <h2 id="app-pricing">মডিউল-অনুযায়ী প্রাইসিং গাইড</h2>
+      <p>Odoo অ্যাপগুলোকে প্রাইসিং টিয়ারে ভাগ করে। নিচের টেবিলটি রেফারেন্স হিসেবে আনুমানিক 2025–2026 প্রাইসিং প্রতিফলিত করে। প্রকৃত দাম পার্টনার চুক্তি ও আঞ্চলিক প্রাইসিং অনুযায়ী ভিন্ন হতে পারে।</p>
+
+      <table class="license-table">
+        <thead>
+          <tr>
+            <th>অ্যাপ / মডিউল</th>
+            <th>টিয়ার</th>
+            <th>~USD/ইউজার/বছর</th>
+            <th>~BDT/ইউজার/বছর</th>
+            <th>নোট</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="group-row">
+            <td colspan="5">মূল বিজনেস অ্যাপ</td>
+          </tr>
+          <tr>
+            <td>Accounting / Invoicing</td>
+            <td>Standard</td>
+            <td class="num">~$168</td>
+            <td class="num">~৳18,480</td>
+            <td>সবচেয়ে বেশি ব্যবহৃত, ফুল অ্যাকাউন্টিং অন্তর্ভুক্ত</td>
+          </tr>
+          <tr>
+            <td>Sales</td>
+            <td>Standard</td>
+            <td class="num">~$84</td>
+            <td class="num">~৳9,240</td>
+            <td>কোটেশন, অর্ডার, প্রাইসলিস্ট</td>
+          </tr>
+          <tr>
+            <td>CRM</td>
+            <td>Standard</td>
+            <td class="num">~$84</td>
+            <td class="num">~৳9,240</td>
+            <td>পাইপলাইন, লিড, অ্যাক্টিভিটি</td>
+          </tr>
+          <tr>
+            <td>Purchase</td>
+            <td>Standard</td>
+            <td class="num">~$84</td>
+            <td class="num">~৳9,240</td>
+            <td>RFQ, PO, 3-way ম্যাচ</td>
+          </tr>
+          <tr>
+            <td>Inventory</td>
+            <td>Standard</td>
+            <td class="num">~$84</td>
+            <td class="num">~৳9,240</td>
+            <td>মাল্টি-ওয়্যারহাউস, রুট, সিরিয়াল/লট</td>
+          </tr>
+          <tr class="group-row">
+            <td colspan="5">ম্যানুফ্যাকচারিং ও অপারেশন্স</td>
+          </tr>
+          <tr>
+            <td>Manufacturing</td>
+            <td>Standard</td>
+            <td class="num">~$168</td>
+            <td class="num">~৳18,480</td>
+            <td>MRP, ওয়ার্ক সেন্টার, রাউটিং</td>
+          </tr>
+          <tr>
+            <td>Quality</td>
+            <td>Standard</td>
+            <td class="num">~$84</td>
+            <td class="num">~৳9,240</td>
+            <td>কোয়ালিটি চেক, অ্যালার্ট</td>
+          </tr>
+          <tr>
+            <td>Maintenance</td>
+            <td>Standard</td>
+            <td class="num">~$84</td>
+            <td class="num">~৳9,240</td>
+            <td>প্রিভেন্টিভ মেইনটেন্যান্স, ইকুইপমেন্ট</td>
+          </tr>
+          <tr class="group-row">
+            <td colspan="5">HR ও পে-রোল</td>
+          </tr>
+          <tr>
+            <td>Payroll</td>
+            <td>Standard</td>
+            <td class="num">~$84</td>
+            <td class="num">~৳9,240</td>
+            <td>স্যালারি রুলস, পে-স্লিপ (+ বাংলাদেশ লোকালাইজেশন খরচ)</td>
+          </tr>
+          <tr>
+            <td>Employees / HR</td>
+            <td>Standard</td>
+            <td class="num">~$84</td>
+            <td class="num">~৳9,240</td>
+            <td>এমপ্লয়ি রেকর্ড, কন্ট্রাক্ট</td>
+          </tr>
+          <tr>
+            <td>Time Off / Leaves</td>
+            <td>Standard</td>
+            <td class="num">~$84</td>
+            <td class="num">~৳9,240</td>
+            <td>লিভ টাইপ, অ্যাপ্রুভাল ওয়ার্কফ্লো</td>
+          </tr>
+          <tr class="group-row">
+            <td colspan="5">প্রোডাক্টিভিটি ও রিপোর্টিং</td>
+          </tr>
+          <tr>
+            <td>Studio</td>
+            <td>Premium</td>
+            <td class="num">~$240</td>
+            <td class="num">~৳26,400</td>
+            <td>নো-কোড ফর্ম/রিপোর্ট কাস্টমাইজেশন</td>
+          </tr>
+          <tr>
+            <td>Sign</td>
+            <td>Standard</td>
+            <td class="num">~$84</td>
+            <td class="num">~৳9,240</td>
+            <td>ই-স্বাক্ষর</td>
+          </tr>
+          <tr>
+            <td>IoT Box</td>
+            <td>Standard</td>
+            <td class="num">~$84</td>
+            <td class="num">~৳9,240</td>
+            <td>বারকোড স্ক্যানার, স্কেল ইন্টিগ্রেশন</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p style="font-size:13px;color:var(--text-3);">BDT কনভার্সনে USD 1 = ৳110 ব্যবহার করা হয়েছে। প্রকৃত এক্সচেঞ্জ রেট ভিন্ন হতে পারে। সব দাম আনুমানিক — আপনার Odoo পার্টনারের সাথে যাচাই করুন।</p>
+
+      <p><strong>মূল অন্তর্দৃষ্টি:</strong> প্রতি-ইউজার খরচ অ্যাপ অনুযায়ী নাটকীয়ভাবে ভিন্ন হয়। যে ইউজারের শুধু Accounting দরকার তিনি ~$168/বছর দেন। যে ইউজারের Accounting + Manufacturing + Inventory দরকার তিনি ~$420/বছর দেন। সব প্রধান মডিউলে থাকা একজন ইউজার বছরে $600+ পর্যন্ত পৌঁছাতে পারেন। ইউজার সংখ্যা চূড়ান্ত করার আগে তাদের প্রকৃত মডিউল অ্যাক্সেসের প্রয়োজনীয়তার বিপরীতে আপনার ইউজার তালিকা পরিকল্পনা করুন।</p>
+
+      <h2 id="odoo-sh">Odoo.sh হোস্টিং টিয়ার</h2>
+      <p>Odoo.sh হলো Odoo-র নিজস্ব ম্যানেজড ক্লাউড হোস্টিং প্ল্যাটফর্ম। এটি Google Cloud Platform (GCP)-এ চলে এবং অটোমেটেড ব্যাকআপ, ওয়ান-ক্লিক স্টেজিং এনভায়রনমেন্ট, ইন্টিগ্রেটেড GitHub CI/CD, এবং মনিটরিং প্রদান করে। ডেডিকেটেড আইটি টিম নেই এমন বাংলাদেশি কোম্পানির জন্য, এটি অপারেশনাল ঝুঁকি উল্লেখযোগ্যভাবে কমায়।</p>
+
+      <table class="odo-sh-table">
+        <thead>
+          <tr>
+            <th>প্ল্যান</th>
+            <th>~USD/মাস</th>
+            <th>ওয়ার্কার</th>
+            <th>স্টেজিং ব্রাঞ্চ</th>
+            <th>উপযুক্ত</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>One</td>
+            <td class="num">~$39/মাস</td>
+            <td>১</td>
+            <td>১</td>
+            <td>খুব ছোট টিম, হালকা ব্যবহার</td>
+          </tr>
+          <tr>
+            <td>Standard</td>
+            <td class="num">~$79/মাস</td>
+            <td>২</td>
+            <td>৩</td>
+            <td>সর্বোচ্চ ৩০ জন একসাথে ইউজার</td>
+          </tr>
+          <tr>
+            <td>Custom</td>
+            <td class="num">~$239/মাস+</td>
+            <td>৪+</td>
+            <td>৫+</td>
+            <td>ভারী ম্যানুফ্যাকচারিং, ৫০+ ইউজার</td>
+          </tr>
+        </tbody>
+      </table>
+      <p style="font-size:13px;color:var(--text-3);">দাম আনুমানিক। Odoo.sh প্রাইসিং পরিবর্তিত হতে পারে। বর্তমান রেটের জন্য odoo.sh চেক করুন।</p>
+
+      <p>Odoo.sh বেছে নেওয়া বাংলাদেশি কোম্পানির জন্য, BDT-তে বার্ষিক হোস্টিং খরচ যোগ হয়: ৳51,480–3,16,800/বছর ($39–$239/মাস, ৳110/USD রেটে)। এটি অ্যাপ লাইসেন্স খরচের ওপর অতিরিক্ত।</p>
+
+      <h2 id="self-hosted">সেলফ-হোস্টেড বনাম Odoo.sh: সম্পূর্ণ খরচ তুলনা</h2>
+      <p>সেলফ-হোস্টিং আর Odoo.sh-এর মধ্যে পছন্দ শুধু খরচের বিষয় নয় — এটি অপারেশনাল ঝুঁকি আর আইটি সক্ষমতার বিষয়।</p>
+
+      <div class="compare-grid">
+        <div class="compare-card">
+          <div class="compare-card-head">
+            <h3>সেলফ-হোস্টেড</h3>
+            <div class="cc-price">৳1.2–4 লাখ/বছর মোট ইনফ্রাস্ট্রাকচার</div>
+          </div>
+          <div class="compare-card-body">
+            <ul>
+              <li>আইটি স্টাফ থাকলে কম বার্ষিক খরচ</li>
+              <li>সার্ভার কনফিগারেশনের ওপর সম্পূর্ণ নিয়ন্ত্রণ</li>
+              <li>ডেটা আপনার নিজস্ব ফিজিক্যাল লোকেশনে থাকে</li>
+              <li>Linux সার্ভার দক্ষতা প্রয়োজন</li>
+              <li>ম্যানুয়াল ব্যাকআপ ম্যানেজমেন্ট — আপনার দায়িত্ব</li>
+              <li>ভার্সন আপগ্রেড ম্যানুয়াল এবং জটিল</li>
+              <li>ক্লাউড সার্ভারের (AWS/DO) জন্য ইন্টারনেট নির্ভরতা</li>
+              <li>অন-প্রিমাইজ সার্ভারের জন্য বিদ্যুৎ বিভ্রাটের ঝুঁকি</li>
+            </ul>
+          </div>
+        </div>
+        <div class="compare-card featured">
+          <div class="compare-card-head">
+            <h3>Odoo.sh</h3>
+            <div class="cc-price">৳51,000–3.2 লাখ/বছর হোস্টিং</div>
+          </div>
+          <div class="compare-card-body">
+            <ul>
+              <li>পয়েন্ট-ইন-টাইম রিস্টোরসহ অটোমেটেড দৈনিক ব্যাকআপ</li>
+              <li>কাস্টমাইজেশন টেস্ট করার জন্য ওয়ান-ক্লিক স্টেজিং এনভায়রনমেন্ট</li>
+              <li>কোড ডেপ্লয়মেন্টের জন্য GitHub-এর সাথে ইন্টিগ্রেটেড</li>
+              <li>Odoo নিজেই আপগ্রেড ও সার্ভার রক্ষণাবেক্ষণ পরিচালনা করে</li>
+              <li>সার্ভার ম্যানেজমেন্টের জন্য নিজস্ব আইটি স্টাফ দরকার নেই</li>
+              <li>মনিটরিং ও অ্যালার্টিং অন্তর্ভুক্ত</li>
+              <li>Google Cloud-এ সার্ভার — এন্টারপ্রাইজ নির্ভরযোগ্যতা</li>
+              <li>বেশি বার্ষিক খরচ কিন্তু অনুমানযোগ্য</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <p><strong>বাংলাদেশের জন্য সুপারিশ:</strong> Linux-সক্ষম সিসঅ্যাডমিন নেই এমন কোম্পানির জন্য, Odoo.sh-এর প্রিমিয়াম মূল্য দেওয়া সার্থক। মাস-শেষের ক্লোজের সময় একটি সেলফ-হোস্টেড ডেটাবেস ডাউন হয়ে যাওয়ার ঝুঁকি — কারণ কেউ অটোমেটেড ব্যাকআপ কনফিগার করেনি, অথবা বিদ্যুৎ বিভ্রাট PostgreSQL ডেটা ফাইল নষ্ট করে দিয়েছে — Odoo.sh সাবস্ক্রিপশনের চেয়ে অনেক বেশি খরচ করায়।</p>
+
+      <h2 id="bd-examples">বাংলাদেশি SME খরচের উদাহরণ</h2>
+      <p>এই উদাহরণগুলো বাংলাদেশে বিভিন্ন কোম্পানি প্রোফাইলের জন্য বাস্তবসম্মত বার্ষিক Odoo Enterprise লাইসেন্স খরচ দেখায়। সব সংখ্যায় আনুমানিক 2025–2026 প্রাইসিং ব্যবহার করা হয়েছে।</p>
+
+      <div class="size-grid">
+        <div class="size-card">
+          <div class="size-card-head">
+            <div class="sc-label">ছোট কোম্পানি</div>
+            <h4>ট্রেডিং কোম্পানি — ২০ ইউজার</h4>
+          </div>
+          <div class="size-card-body">
+            <div class="sc-row"><span class="sc-key">অ্যাপ</span><span class="sc-val">Accounting, Sales, Purchase, Inventory</span></div>
+            <div class="sc-row"><span class="sc-key">Accounting ইউজার</span><span class="sc-val">4 × $168 = $672</span></div>
+            <div class="sc-row"><span class="sc-key">অন্যান্য অ্যাপ ইউজার</span><span class="sc-val">20 × $84 (গড়) = $1,680</span></div>
+            <div class="sc-row"><span class="sc-key">বার্ষিক লাইসেন্স</span><span class="sc-val">~$2,352</span></div>
+            <div class="sc-row"><span class="sc-key">Odoo.sh Standard</span><span class="sc-val">$79 × 12 = $948</span></div>
+            <div class="sc-row" style="border-top:1px solid var(--border);padding-top:8px;margin-top:8px;"><span class="sc-key sc-total">বার্ষিক মোট (BDT)</span><span class="sc-val sc-total">~৳3.6 লাখ</span></div>
+          </div>
+        </div>
+        <div class="size-card">
+          <div class="size-card-head">
+            <div class="sc-label">মাঝারি কোম্পানি</div>
+            <h4>গার্মেন্ট ম্যানুফ্যাকচারার — ৪০ ইউজার</h4>
+          </div>
+          <div class="size-card-body">
+            <div class="sc-row"><span class="sc-key">অ্যাপ</span><span class="sc-val">Accounting, Sales, Purchase, Inventory, Manufacturing, HR, Payroll</span></div>
+            <div class="sc-row"><span class="sc-key">Accounting ইউজার</span><span class="sc-val">6 × $168 = $1,008</span></div>
+            <div class="sc-row"><span class="sc-key">Manufacturing ইউজার</span><span class="sc-val">15 × $168 = $2,520</span></div>
+            <div class="sc-row"><span class="sc-key">অন্যান্য অ্যাপ ইউজার</span><span class="sc-val">40 × $84 (গড়) = $3,360</span></div>
+            <div class="sc-row"><span class="sc-key">বার্ষিক লাইসেন্স</span><span class="sc-val">~$6,888</span></div>
+            <div class="sc-row"><span class="sc-key">Odoo.sh Custom</span><span class="sc-val">$239 × 12 = $2,868</span></div>
+            <div class="sc-row" style="border-top:1px solid var(--border);padding-top:8px;margin-top:8px;"><span class="sc-key sc-total">বার্ষিক মোট (BDT)</span><span class="sc-val sc-total">~৳10.7 লাখ</span></div>
+          </div>
+        </div>
+        <div class="size-card">
+          <div class="size-card-head">
+            <div class="sc-label">মাল্টি-সাইট কোম্পানি</div>
+            <h4>ফার্মা ম্যানুফ্যাকচারার — ৮০ ইউজার</h4>
+          </div>
+          <div class="size-card-body">
+            <div class="sc-row"><span class="sc-key">অ্যাপ</span><span class="sc-val">সব মূল + Quality + Maintenance + Studio</span></div>
+            <div class="sc-row"><span class="sc-key">Accounting ইউজার</span><span class="sc-val">10 × $168 = $1,680</span></div>
+            <div class="sc-row"><span class="sc-key">Manufacturing ইউজার</span><span class="sc-val">30 × $168 = $5,040</span></div>
+            <div class="sc-row"><span class="sc-key">Studio ইউজার</span><span class="sc-val">5 × $240 = $1,200</span></div>
+            <div class="sc-row"><span class="sc-key">অন্যান্য অ্যাপ ইউজার</span><span class="sc-val">80 × $84 (গড়) = $6,720</span></div>
+            <div class="sc-row"><span class="sc-key">বার্ষিক লাইসেন্স</span><span class="sc-val">~$14,640</span></div>
+            <div class="sc-row"><span class="sc-key">Odoo.sh Custom</span><span class="sc-val">$239 × 12 = $2,868</span></div>
+            <div class="sc-row" style="border-top:1px solid var(--border);padding-top:8px;margin-top:8px;"><span class="sc-key sc-total">বার্ষিক মোট (BDT)</span><span class="sc-val sc-total">~৳19.3 লাখ</span></div>
+          </div>
+        </div>
+      </div>
+
+      <p style="font-size:13px;color:var(--text-3);margin-top:4px;">এগুলো আনুমানিক প্রাইসিংয়ের ভিত্তিতে অনুমান। বাস্তব কোটেশন আপনার পার্টনারের টিয়ার আর বর্তমান Odoo প্রাইসিংয়ের ওপর নির্ভর করে ভিন্ন হবে।</p>
+
+      <h2 id="renewal">বার্ষিক রিনিউয়াল ও ভার্সন আপগ্রেড খরচ</h2>
+      <p>Odoo Enterprise লাইসেন্স বার্ষিক সাবস্ক্রিপশন। রিনিউয়ালের সময়:</p>
+      <ul>
+        <li>আপনি একই Odoo ভার্সনে প্রায় একই দামে চালিয়ে যান (বার্ষিক মূল্যবৃদ্ধি সাপেক্ষে, সাধারণত 5–10%)।</li>
+        <li>আপনি ইউজার বা অ্যাপ যোগ করতে পারেন — নতুন সংযোজন আপনার রিনিউয়াল তারিখ অনুযায়ী প্রো-রেটেড।</li>
+        <li>আপনি ইউজার কমাতে পারেন — কিন্তু কিছু পার্টনার ইউজার কমানোর জন্য রিনিউয়াল তারিখের আগে ৩০ দিনের নোটিশ চায়।</li>
+      </ul>
+
+      <p><strong>ভার্সন আপগ্রেড খরচ:</strong> একটি নতুন Odoo ভার্সনে যাওয়া (যেমন 17 থেকে 18) Enterprise-এর অংশ হিসেবে <em>টেকনিক্যালি বিনামূল্যে</em> — Odoo আপগ্রেড স্ক্রিপ্ট দেয়। তবে প্রকৃত খরচ হলো নতুন ভার্সনে আপনার সব কাস্টমাইজেশন টেস্ট করা, ব্রেকিং চেঞ্জ ঠিক করা, এবং আবার UAT চালানোর জন্য প্রয়োজনীয় পার্টনার সময়। ভারীভাবে কাস্টমাইজড একটি সিস্টেমের জন্য, একটি ভার্সন আপগ্রেডে পার্টনার সময়ে ৳3–10 লাখ খরচ হতে পারে। প্রতি ২–৩ বছরে এর জন্য বাজেট রাখুন।</p>
+
+      <h2 id="negotiation">আপনার Odoo কন্ট্রাক্ট নেগোশিয়েট করা</h2>
+      <p>Odoo পার্টনার কন্ট্রাক্টে বেশিরভাগ ক্রেতার ধারণার চেয়ে বেশি নমনীয়তা আছে। যেসব বিষয় বৈধভাবে নেগোশিয়েবল:</p>
+      <ul>
+        <li><strong>বার্ষিক বনাম মাসিক বিলিং:</strong> বার্ষিক বিলিংয়ে সবসময় ছাড় পাওয়া যায়। সবসময় বার্ষিক প্রাইসিং চান।</li>
+        <li><strong>ফেজড ইউজার রোলআউট:</strong> যদি আপনি বছর ২-এ ২০ জন ইউজার যোগ করার পরিকল্পনা করেন, দিন ১ থেকে সব ২০ জনের জন্য পরিশোধ না করে একটি ধাপে-ধাপে প্রাইসিং সিডিউল নেগোশিয়েট করুন।</li>
+        <li><strong>বান্ডল করা বাস্তবায়ন + লাইসেন্স:</strong> কিছু বাংলাদেশি পার্টনার তাদের বাস্তবায়ন কোটেশনে প্রথম বছরের লাইসেন্স অন্তর্ভুক্ত করে। আপনি একটি ছাড় পাচ্ছেন নাকি লুকানো মার্কআপসহ শুধু একটি বান্ডল ইনভয়েস পাচ্ছেন তা বুঝুন।</li>
+        <li><strong>সাপোর্ট কন্ট্রাক্টের স্কোপ:</strong> AMC-তে কী অন্তর্ভুক্ত আর কী নয়? সই করার আগে এটি লিখিতভাবে নিন। "বাগ ফিক্স আর কনফিগারেশন পরিবর্তন" শুনতে একই রকম কিন্তু বিলিং একদম ভিন্ন।</li>
+        <li><strong>এক্সচেঞ্জ রেট সুরক্ষা:</strong> যদি আপনার লাইসেন্স USD-তে নির্ধারিত হয়, জিজ্ঞাসা করুন পার্টনার বাস্তবায়ন পিরিয়ডে কারেন্সি ঝুঁকি থেকে সুরক্ষার জন্য বছর ১-এর জন্য BDT-ফিক্সড প্রাইসিং দিতে পারে কিনা।</li>
+      </ul>
+
+      <div class="callout">
+        <span class="tag">লাইসেন্স খরচ রিভিউ</span>
+        <p>আপনার Odoo কোটেশন ন্যায্য বাজার প্রাইসিং প্রতিফলিত করছে কিনা নিশ্চিত নন? আমি আপনার প্রস্তাব পর্যালোচনা করতে পারি এবং বলে দিতে পারি লাইসেন্স আর বাস্তবায়ন খরচ আপনার স্কোপের জন্য যুক্তিসঙ্গত কিনা। <a href="/bn/#contact" style="color:var(--accent)">রিভিউয়ের জন্য আপনার কোটেশন পাঠান →</a></p>
+      </div>
+
+      <p><a href="/bn/lab/0050-hidden-erp-costs-bangladesh" style="color:var(--accent)">ERP বাস্তবায়নের লুকানো খরচ</a>-ও পড়ুন — লাইসেন্স সবচেয়ে দৃশ্যমান খরচ, কিন্তু সম্পূর্ণ ৩-বছরের TCO-তে এটি কদাচিৎ সবচেয়ে বড় খরচ।</p>
+
+      <div class="callout">
+        <span class="tag">টুলটি ব্যবহার করুন</span>
+        <p><strong>বছর-ভিত্তিক লাইসেন্স পূর্বাভাস চান?</strong> <a href="/bn/tools/odoo-cost-estimator/" style="color:var(--accent)">বিনামূল্যের Odoo Cost Estimator</a> বাংলাদেশ-টিয়ার রেট ব্যবহার করে বছর ১ (প্রোমোসহ), বছর ২ (নিয়মিত), এবং বছর ৩ (রিনিউয়াল বৃদ্ধিসহ) আলাদাভাবে দেখায় — যাতে রিনিউয়াল কখনো বিস্মিত না করে।</p>
+      </div>
+
+      <h2 id="faq">সচরাচর জিজ্ঞাসা</h2>
+
+      <h3>Odoo Enterprise লাইসেন্সিং কীভাবে কাজ করে?</h3>
+      <p>Odoo Enterprise একটি অ্যাপ-ভিত্তিক সাবস্ক্রিপশন মডেল ব্যবহার করে। আপনি প্রতি অ্যাপ (মডিউল) প্রতি ইউজার প্রতি বছর পরিশোধ করেন। প্রতিটি অ্যাপের ভিন্ন প্রাইস টিয়ার আছে — সহজ অ্যাপের চেয়ে অ্যাকাউন্টিং আর ম্যানুফ্যাকচারিংয়ের খরচ বেশি। কোনো ফ্ল্যাট "পার-সিট" দাম নেই — আপনার বার্ষিক খরচ নির্ভর করে প্রতিটি ইউজারের কোন নির্দিষ্ট অ্যাপে অ্যাক্সেস দরকার তার ওপর।</p>
+
+      <h3>Odoo.sh আর সেলফ-হোস্টেডের মধ্যে পার্থক্য কী?</h3>
+      <p>Odoo.sh হলো Odoo-র নিজস্ব ম্যানেজড ক্লাউড হোস্টিং প্ল্যাটফর্ম। এতে অটোমেটেড ব্যাকআপ, স্টেজিং এনভায়রনমেন্ট, এবং সরলীকৃত ভার্সন আপগ্রেড অন্তর্ভুক্ত। সেলফ-হোস্টেড মানে আপনি নিজের সার্ভারে Odoo চালান — অন-প্রিমাইজ বা থার্ড-পার্টি ক্লাউডে। Odoo.sh অতিরিক্ত সাবস্ক্রিপশন ফি নেয় কিন্তু আপনার আইটি ম্যানেজমেন্টের বোঝা উল্লেখযোগ্যভাবে কমায়। শক্তিশালী আইটি স্টাফ নেই এমন বাংলাদেশি কোম্পানির জন্য, Odoo.sh সাধারণত ভালো পছন্দ।</p>
+
+      <h3>২০-ইউজারের একটি বাংলাদেশি কোম্পানির জন্য Odoo Enterprise-এর খরচ কত?</h3>
+      <p>Accounting, Inventory, Manufacturing, Purchase, এবং Sales ব্যবহারকারী ২০-ইউজারের একটি বাংলাদেশি ম্যানুফ্যাকচারারের জন্য, বার্ষিক Odoo Enterprise লাইসেন্স প্রায় USD 2,500–4,000 (বর্তমান রেটে ৳2.75–4.4 লাখ)। এটি শুধু লাইসেন্স — বাস্তবায়ন, কাস্টমাইজেশন, এবং সাপোর্ট আলাদা খরচ।</p>
+
+      <h3>আমরা কি Odoo Community দিয়ে শুরু করে পরে Enterprise-এ আপগ্রেড করতে পারি?</h3>
+      <p>টেকনিক্যালি হ্যাঁ। বাস্তবে, এটি মানুষের প্রত্যাশার চেয়ে বেশি বিঘ্নকারী। Community আর Enterprise একই ডেটাবেস স্ট্রাকচার শেয়ার করে, তাই আপগ্রেডটি নিজে সরল। কিন্তু আপনার Community-ভিত্তিক কাস্টমাইজেশন Enterprise সামঞ্জস্যতার জন্য পর্যালোচনা ও টেস্ট করতে হবে, আর App Store-এর যেকোনো Community-শুধু অ্যাপের Enterprise সমতুল্য নাও থাকতে পারে। যদি আপনি একজন সিরিয়াস ম্যানুফ্যাকচারার হন যার শেষ পর্যন্ত পে-রোল আর ফুল ম্যানুফ্যাকচারিং দরকার হবে, দিন ১ থেকেই Enterprise দিয়ে শুরু করুন।</p>
+
+      <h3>পোর্টাল ইউজাররা (কাস্টমার/ভেন্ডর) কি লাইসেন্স গণনায় অন্তর্ভুক্ত?</h3>
+      <p>না। পোর্টাল ইউজার — কাস্টমার আর ভেন্ডর যারা তাদের অর্ডার, ইনভয়েস, আর ডেলিভারি স্ট্যাটাস দেখতে কাস্টমার পোর্টাল অ্যাক্সেস করেন — Odoo Enterprise-এ সীমাহীন আর বিনামূল্যে। B2B কোম্পানির জন্য এটি একটি উল্লেখযোগ্য সুবিধা: আপনি লাইসেন্স খরচ না বাড়িয়ে সব কাস্টমারকে তাদের অ্যাকাউন্টে অনলাইন অ্যাক্সেস দিতে পারেন।</p>
+
+      <h3>যদি আমরা Odoo Enterprise সাবস্ক্রিপশনের জন্য পরিশোধ বন্ধ করি তাহলে কী হবে?</h3>
+      <p>আপনার Odoo ইনস্ট্যান্স চলতে থাকে — আপনি আপনার ডেটার অ্যাক্সেস হারান না। তবে, আপনি Enterprise ফিচারের অ্যাক্সেস হারান আর আপনার সিস্টেম আর Odoo-র সিকিউরিটি আপডেট আর বাগ ফিক্সের যোগ্য থাকে না। আপনি কার্যত Community ফাংশনালিটিতে ফিরে যান। পরে যদি আপনি Enterprise পুনরায় সক্রিয় করতে চান, আপনি পারবেন — কিন্তু আপনাকে যেকোনো অপরিশোধিত সাবস্ক্রিপশন পিরিয়ডের বকেয়া দিতে হবে। এটি এমন কোনো SaaS প্রোডাক্টের মতো নয় যা আপনাকে লক আউট করে দেয়; Odoo Community আপনার মেঝে, খাদ নয়।</p>
+
+    </div>
+  </article>
+
+  <footer>
+    <div class="shell">
+      <div class="post-foot">
+        <span class="eyebrow">আরও পড়ুন</span>
+        <div class="next">
+          <a class="next-card" href="/bn/lab/0050-hidden-erp-costs-bangladesh">
+            <span class="dir">পুরনো · 0050</span>
+            <h4>বাংলাদেশে ERP বাস্তবায়নের লুকানো খরচ</h4>
+            <p>ERP বাস্তবায়নের প্রকৃত মোট খরচ — যা কোনো ভেন্ডর কোটেশনে থাকে না।</p>
+            <span class="arrow">→</span>
+          </a>
+          <a class="next-card" href="/bn/lab/0052-odoo-vendor-red-flags-bangladesh">
+            <span class="dir">নতুন · 0052</span>
+            <h4>Odoo Vendor Red Flags Bangladesh</h4>
+            <p>আপনার বাস্তবায়ন পার্টনার ব্যর্থ হচ্ছে এমন ৭টি লক্ষণ — আর এ নিয়ে কী করবেন।</p>
+            <span class="arrow">→</span>
+          </a>
+        </div>
+      </div>
+      <div class="foot">
+        <span>© ২০২৬ Mehedi Hasan · Lab / 0051</span>
+        <span><a href="/bn/#lab">↑ ল্যাব ইনডেক্সে ফিরুন</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/lab/_utils.js" defer></script>
+  <script src="/lab/_toc.js" defer></script>
+  <script src="/whatsapp.js" defer></script>
+  <script src="/scroll-top.js" defer></script>
+</body>
+
+</html>

@@ -1,0 +1,504 @@
+<!doctype html>
+<html lang="bn">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description"
+    content="বাংলাদেশের কারখানার জন্য Odoo মেইনটেন্যান্স মডিউল: ইকুইপমেন্ট, প্রিভেন্টিভ শিডিউল, ওয়ার্ক অর্ডার আর মেইনটেন্যান্স KPI সেটআপ করুন। ধাপে ধাপে ফ্যাক্টরি সেটআপ গাইড →" />
+  <meta name="robots" content="noindex, follow" />
+  <meta name="author" content="Mehedi Hasan" />
+  <title>বাংলাদেশে Odoo প্রিভেন্টিভ মেইনটেন্যান্স | ফ্যাক্টরি সেটআপ | মেহেদী হাসান</title>
+  <link rel="canonical" href="https://mhasan.me/bn/lab/0061-odoo-preventive-maintenance-bangladesh" />
+  <link rel="alternate" hreflang="en" href="https://mhasan.me/lab/0061-odoo-preventive-maintenance-bangladesh" />
+  <link rel="alternate" hreflang="bn-BD" href="https://mhasan.me/bn/lab/0061-odoo-preventive-maintenance-bangladesh" />
+  <link rel="alternate" hreflang="x-default" href="https://mhasan.me/lab/0061-odoo-preventive-maintenance-bangladesh" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png" />
+  <!-- Open Graph -->
+  <meta property="og:title" content="বাংলাদেশে Odoo প্রিভেন্টিভ মেইনটেন্যান্স | ফ্যাক্টরি সেটআপ | মেহেদী হাসান" />
+  <meta property="og:description"
+    content="বাংলাদেশের কারখানার জন্য Odoo মেইনটেন্যান্স কনফিগার করুন: ইকুইপমেন্ট সেটআপ, প্রিভেন্টিভ শিডিউল, ওয়ার্ক অর্ডার, স্পেয়ার পার্টস আর মেইনটেন্যান্স খরচ ট্র্যাকিং।" />
+  <meta property="og:url" content="https://mhasan.me/bn/lab/0061-odoo-preventive-maintenance-bangladesh" />
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="https://mhasan.me/assets/og-default.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale" content="bn_BD" />
+  <meta property="og:site_name" content="মেহেদী হাসান | Odoo ERP কনসালট্যান্ট" />
+  <meta property="article:author" content="https://www.linkedin.com/in/mehedi-hasan-consultant/" />
+  <meta property="article:published_time" content="2026-05-13T11:30:00+06:00" />
+  <meta property="article:modified_time" content="2026-05-13T11:30:00+06:00" />
+  <meta property="article:section" content="Odoo ERP Bangladesh" />
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="বাংলাদেশে Odoo প্রিভেন্টিভ মেইনটেন্যান্স | ফ্যাক্টরি সেটআপ | মেহেদী হাসান" />
+  <meta name="twitter:description"
+    content="বাংলাদেশের কারখানার জন্য Odoo মেইনটেন্যান্স মডিউল: ইকুইপমেন্ট ক্যাটালগ, প্রিভেন্টিভ মেইনটেন্যান্স শিডিউল, ওয়ার্ক অর্ডার আর মেইনটেন্যান্স KPI ড্যাশবোর্ড।" />
+  <meta name="twitter:image" content="https://mhasan.me/assets/og-default.jpg" />
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "বাংলাদেশের কারখানার জন্য Odoo প্রিভেন্টিভ মেইনটেন্যান্স: সেটআপ ও শিডিউলিং",
+    "description": "বাংলাদেশের কারখানায় Odoo-র মেইনটেন্যান্স মডিউলের সম্পূর্ণ কনফিগারেশন গাইড — ইকুইপমেন্ট ক্যাটালগ, মেইনটেন্যান্স টিম সেটআপ, প্রিভেন্টিভ মেইনটেন্যান্স শিডিউলিং, ওয়ার্ক অর্ডার ওয়ার্কফ্লো, স্পেয়ার পার্টস ম্যানেজমেন্ট, মেইনটেন্যান্স খরচ ট্র্যাকিং, আর KPI ড্যাশবোর্ড।",
+    "datePublished": "2026-05-13T11:30:00+06:00",
+    "dateModified": "2026-05-13T11:30:00+06:00",
+    "inLanguage": "bn",
+    "author": {
+      "@type": "Person",
+      "name": "Mehedi Hasan",
+      "url": "https://mhasan.me",
+      "jobTitle": "Odoo ERP Consultant & Business Analyst",
+      "sameAs": "https://www.linkedin.com/in/mehedi-hasan-consultant/"
+    },
+    "publisher": { "@type": "Person", "name": "Mehedi Hasan", "url": "https://mhasan.me" },
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://mhasan.me/bn/lab/0061-odoo-preventive-maintenance-bangladesh" }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "হোম", "item": "https://mhasan.me/bn" },
+      { "@type": "ListItem", "position": 2, "name": "ল্যাব", "item": "https://mhasan.me/bn/#lab" },
+      { "@type": "ListItem", "position": 3, "name": "বাংলাদেশে Odoo প্রিভেন্টিভ মেইনটেন্যান্স", "item": "https://mhasan.me/bn/lab/0061-odoo-preventive-maintenance-bangladesh" }
+    ]
+  }
+]
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&family=Noto+Sans+Bengali:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap">
+  <link rel="stylesheet" href="/lab/_styles.css">
+  <style>
+    body{ font-family: 'Noto Sans Bengali', var(--sans); }
+    .pull {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: clamp(20px, 2.8vw, 28px);
+      line-height: 1.3;
+      color: var(--text);
+      margin: 48px 0;
+      max-width: 28ch;
+      letter-spacing: -0.01em;
+    }
+    .pull::before {
+      content: "";
+      display: block;
+      width: 36px;
+      height: 1px;
+      background: var(--accent);
+      margin-bottom: 18px;
+    }
+    .config-block {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      margin: 22px 0;
+      overflow: hidden;
+    }
+    .config-head {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 13px 20px;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+    }
+    .cfg-num {
+      width: 24px; height: 24px;
+      border-radius: 50%;
+      background: var(--accent-dim);
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      font-family: var(--mono);
+      font-size: 11px;
+      font-weight: 700;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .config-head h3 { margin: 0; font-size: 14.5px; color: var(--text); letter-spacing: -0.01em; }
+    .config-body { padding: 18px 20px; }
+    .config-body p { color: var(--text-2); font-size: 14.5px; line-height: 1.65; margin: 0 0 10px; }
+    .config-body p:last-child { margin-bottom: 0; }
+    .config-body ul, .config-body ol { color: var(--text-2); font-size: 14px; padding-left: 20px; margin: 10px 0; }
+    .config-body li { margin-bottom: 6px; line-height: 1.5; }
+    .tip-box {
+      background: var(--accent-dim);
+      border-left: 3px solid var(--accent);
+      border-radius: 0 6px 6px 0;
+      padding: 14px 18px;
+      margin: 18px 0;
+    }
+    .tip-box .tlabel { font-family: var(--mono); font-size: 10px; color: var(--accent); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 6px; }
+    .tip-box p { margin: 0; font-size: 14px; color: var(--text-2); line-height: 1.55; }
+    .warn-box {
+      background: rgba(200,140,60,0.08);
+      border-left: 3px solid rgba(200,140,60,0.6);
+      border-radius: 0 6px 6px 0;
+      padding: 14px 18px;
+      margin: 18px 0;
+    }
+    .warn-box .wlabel { font-family: var(--mono); font-size: 10px; color: rgba(220,160,70,0.9); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 6px; }
+    .warn-box p { margin: 0; font-size: 14px; color: var(--text-2); line-height: 1.55; }
+    .schedule-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13.5px;
+      margin: 16px 0;
+    }
+    .schedule-table th {
+      text-align: left;
+      padding: 10px 14px;
+      background: var(--surface);
+      color: var(--text-3);
+      font-family: var(--mono);
+      font-size: 10.5px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      border-bottom: 1px solid var(--border);
+    }
+    .schedule-table td {
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      color: var(--text-2);
+      vertical-align: top;
+    }
+    .schedule-table td:first-child { color: var(--text); font-weight: 500; }
+    .schedule-table tr:last-child td { border-bottom: none; }
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 13px;
+      margin: 20px 0;
+    }
+    @media(max-width:600px) { .kpi-grid { grid-template-columns: 1fr; } }
+    .kpi-card {
+      border: 1px solid var(--border);
+      border-radius: 7px;
+      padding: 16px;
+      background: var(--surface);
+    }
+    .kpi-card .kc-name { font-family: var(--mono); font-size: 10px; color: var(--text-3); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 6px; }
+    .kpi-card .kc-metric { font-size: 22px; font-weight: 700; color: var(--accent); letter-spacing: -0.02em; margin-bottom: 4px; }
+    .kpi-card .kc-desc { color: var(--text-2); font-size: 12.5px; line-height: 1.45; }
+  </style>
+</head>
+
+<body>
+  <div class="grid-bg"></div>
+
+  <header class="nav">
+    <div class="shell">
+      <div class="nav-inner">
+        <a class="brand" href="/bn/">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span class="brand-name"><b>Mehedi Hasan</b><em>ERP · বিজনেস অ্যানালিস্ট</em></span>
+        </a>
+        <a class="back-link" href="/bn/#lab">← ল্যাব-এ ফিরুন</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="post-head">
+    <div class="shell">
+      <span class="eyebrow">টেকনিক্যাল ল্যাব · 0061</span>
+      <h1>বাংলাদেশের কারখানার জন্য Odoo প্রিভেন্টিভ মেইনটেন্যান্স — <span class="serif">সেটআপ, শিডিউল আর KPI।</span></h1>
+      <p class="lede">অপরিকল্পিত মেশিন ব্রেকডাউন বাংলাদেশের কারখানার সবচেয়ে ব্যয়বহুল ঘটনাগুলোর একটি। খরচটা শুধু মেরামতেই সীমাবদ্ধ থাকে না — উৎপাদন বন্ধ হয়ে যায়, এক্সপোর্ট কমিটমেন্ট মিস হয়, শ্রমিকরা বসে থাকেন, আর রাত ৯টায় স্পেয়ার পার্টসের জন্য জরুরি প্রকিউরমেন্ট দৌড়ঝাঁপের বিশৃঙ্খলা তৈরি হয়। Odoo-র মেইনটেন্যান্স মডিউল ব্রেকডাউন একেবারে বন্ধ করে দেয় না। কিন্তু ঠিকভাবে কনফিগার করলে এটি ব্রেকডাউনের ফ্রিকোয়েন্সি ব্যাপকভাবে কমিয়ে দেয় আর সেই তথ্যশূন্যতা দূর করে দেয় যা ব্রেকডাউন ম্যানেজমেন্টকে এত ব্যয়বহুল করে তোলে। এটাই সেই কনফিগারেশন গাইড।</p>
+      <div class="post-meta">
+        <span class="chip accent">গাইড</span>
+        <span class="chip">মেইনটেন্যান্স</span>
+        <span class="chip">ম্যানুফ্যাকচারিং</span>
+        <span class="chip">বাংলাদেশ</span>
+      </div>
+      <div class="byline">
+        <span>লেখক<b><a href="https://www.linkedin.com/in/mehedi-hasan-consultant/" style="color:var(--accent)" rel="author">Mehedi Hasan</a></b></span>
+        <span>প্রকাশিত<b>মে ২০২৬</b></span>
+        <span>পড়ার সময়<b>১৯ মিনিট</b></span>
+        <span>ধরন<b>গাইড</b></span>
+        <span>পরিধি<b>ম্যানুফ্যাকচারিং</b></span>
+      </div>
+    </div>
+  </section>
+
+  <article class="post">
+    <aside class="toc">
+      <div class="toc-k">এই গাইডে</div>
+      <ol>
+        <li><a href="#why-maintenance">বাংলাদেশে মেইনটেন্যান্স ম্যানেজমেন্ট কেন গুরুত্বপূর্ণ</a></li>
+        <li><a href="#module-overview">Odoo মেইনটেন্যান্স মডিউল ওভারভিউ</a></li>
+        <li><a href="#equipment-setup">ধাপ ১: ইকুইপমেন্ট ক্যাটালগ সেটআপ</a></li>
+        <li><a href="#maintenance-teams">ধাপ ২: মেইনটেন্যান্স টিম ও টেকনিশিয়ান</a></li>
+        <li><a href="#corrective">ধাপ ৩: করেক্টিভ মেইনটেন্যান্স রিকোয়েস্ট</a></li>
+        <li><a href="#preventive">ধাপ ৪: প্রিভেন্টিভ মেইনটেন্যান্স শিডিউল</a></li>
+        <li><a href="#spare-parts">ধাপ ৫: স্পেয়ার পার্টস ইনভেন্টরি ইন্টিগ্রেশন</a></li>
+        <li><a href="#work-orders">ধাপ ৬: মেইনটেন্যান্স ওয়ার্ক অর্ডার</a></li>
+        <li><a href="#cost-tracking">মেইনটেন্যান্স খরচ ট্র্যাকিং</a></li>
+        <li><a href="#kpis">KPI ও রিপোর্টিং</a></li>
+        <li><a href="#bangladesh-context">বাংলাদেশ-নির্দিষ্ট বিষয়সমূহ</a></li>
+        <li><a href="#faq">সচরাচর জিজ্ঞাসা</a></li>
+      </ol>
+    </aside>
+
+    <div class="body">
+
+      <h2 id="why-maintenance">বাংলাদেশে মেইনটেন্যান্স ম্যানেজমেন্ট কেন গুরুত্বপূর্ণ</h2>
+      <p>বাংলাদেশের ম্যানুফ্যাকচারিং সেক্টর কয়েক দশক জুড়ে বিস্তৃত মেশিনারিতে চলে। গাজীপুরের একটি গার্মেন্টস কারখানায় ২০১০ সালের জাপানি সেলাই মেশিনের পাশাপাশি ২০১৮ সালের চীনা কাটিং মেশিন আর ২০০৫ সালের জার্মান ফিনিশিং ইকুইপমেন্টও থাকতে পারে। প্রতিটির মেইনটেন্যান্স ইন্টারভাল আলাদা, স্পেয়ার পার্টস সাপ্লায়ার আলাদা, আর ব্যর্থতার ধরনও আলাদা। এই বিচিত্র মেশিন বহর একটি স্প্রেডশিট বা মেইনটেন্যান্স নোটবুক দিয়ে চালানোর ফলেই কোম্পানিগুলো শিপমেন্ট ডেডলাইনের আগের দিন ৪ ঘণ্টার ব্রেকডাউনে পড়ে।</p>
+      <p>বাংলাদেশে মেইনটেন্যান্স ম্যানেজমেন্টকে যেসব নির্দিষ্ট চ্যালেঞ্জ অত্যাবশ্যক করে তোলে:</p>
+      <ul>
+        <li><strong>পাওয়ার কোয়ালিটি:</strong> লোডশেডিং, ভোল্টেজ ওঠানামা আর হঠাৎ বিদ্যুৎ বিভ্রাটের কারণে মোটর পুড়ে যাওয়া আর ইলেকট্রনিক কম্পোনেন্ট নষ্ট হওয়ার হার স্থিতিশীল গ্রিড থাকা পরিবেশের চেয়ে বেশি। তাই বৈদ্যুতিক যন্ত্রাংশের প্রিভেন্টিভ চেক ঐচ্ছিক নয়, অপরিহার্য হয়ে ওঠে।</li>
+        <li><strong>আর্দ্রতা ও তাপ:</strong> বাংলাদেশের ক্রান্তীয় জলবায়ু ক্ষয়, বেল্ট নষ্ট হওয়া আর লুব্রিক্যান্ট ভেঙে যাওয়ার গতি বাড়িয়ে দেয়। প্রস্তুতকারকের স্পেসিফিকেশন থেকে নেওয়া মেইনটেন্যান্স ইন্টারভাল (যা প্রায়ই ইউরোপীয় বা জাপানি জলবায়ুর জন্য লেখা) ঢাকার পরিস্থিতিতে ১৫–৩০% কমিয়ে আনতে হয়।</li>
+        <li><strong>স্পেয়ার পার্টসের লিড টাইম:</strong> বিশেষায়িত মেশিনারির জন্য স্পেয়ার পার্টস প্রায়ই আমদানি করতে হয় — চীন থেকে ২–৬ সপ্তাহ, ইউরোপ থেকে ৪–৮ সপ্তাহ। আগে থেকে পার্টস অর্ডার করা একটি পরিকল্পিত মেইনটেন্যান্স পদ্ধতিই বিপর্যয়কর দেরি এড়ানোর একমাত্র উপায়।</li>
+        <li><strong>দক্ষ টেকনিশিয়ানের ঘাটতি:</strong> অভিজ্ঞ মেইনটেন্যান্স টেকনিশিয়ান দুষ্প্রাপ্য আর ব্যয়বহুল। Odoo-তে তাদের কাজ ট্র্যাক করলে — কোন মেশিনে কাজ করেছেন, কী করা হয়েছে, কত সময় লেগেছে — তাদের দক্ষতা ব্যক্তিগত না থেকে প্রাতিষ্ঠানিক হয়ে ওঠে।</li>
+      </ul>
+
+      <p class="pull">প্রতিটি অপরিকল্পিত ব্রেকডাউন আসলে এমন একটি পরিকল্পিত মেইনটেন্যান্স যা ঘটেনি। বাংলাদেশের ম্যানুফ্যাকচারিংয়ে প্রতিরোধ বনাম প্রতিকারের অর্থনীতি তুলনাই করা যায় না।</p>
+
+      <h2 id="module-overview">Odoo মেইনটেন্যান্স মডিউল ওভারভিউ</h2>
+      <p>Odoo-র মেইনটেন্যান্স মডিউল (Community এবং Enterprise দুটোতেই পাওয়া যায়, তবে Enterprise-এ বাড়তি ফিচার আছে) যা কভার করে:</p>
+      <ul>
+        <li><strong>ইকুইপমেন্ট ক্যাটালগ:</strong> প্রতিটি মেশিন মেক, মডেল, সিরিয়াল নম্বর, লোকেশন, ওয়ার্ক সেন্টার অ্যাসাইনমেন্ট আর ক্রয়ের তথ্যসহ রেজিস্টার করুন।</li>
+        <li><strong>মেইনটেন্যান্স রিকোয়েস্ট:</strong> করেক্টিভ রিকোয়েস্ট (ব্রেকডাউন রিপোর্ট) আর প্রিভেন্টিভ রিকোয়েস্ট (শিডিউল অনুযায়ী স্বয়ংক্রিয়ভাবে তৈরি)।</li>
+        <li><strong>মেইনটেন্যান্স টিম:</strong> টেকনিশিয়ানদের টিমে অ্যাসাইন করুন; ইকুইপমেন্ট ক্যাটাগরি বা লোকেশন অনুযায়ী সঠিক টিমে রিকোয়েস্ট রুট করুন।</li>
+        <li><strong>ওয়ার্ক অর্ডার:</strong> মেইনটেন্যান্স রিকোয়েস্টকে টাইম ট্র্যাকিং, ব্যবহৃত পার্টস আর কমপ্লিশন সাইন-অফসহ ওয়ার্ক অর্ডারে রূপান্তর করুন।</li>
+        <li><strong>প্রিভেন্টিভ মেইনটেন্যান্স শিডিউল:</strong> সময়-ভিত্তিক (প্রতি ৩০ দিনে) অথবা মিটার-ভিত্তিক (প্রতি ৫০০ মেশিন-ঘণ্টায়) স্বয়ংক্রিয় রিকোয়েস্ট তৈরি।</li>
+        <li><strong>রিপোর্টিং:</strong> MTBF (Mean Time Between Failures), MTTR (Mean Time To Repair), প্রতি মেশিনের মেইনটেন্যান্স খরচ, আর মেইনটেন্যান্স শিডিউল কমপ্লায়েন্স।</li>
+      </ul>
+      <p>আপনার Odoo মেইন মেনু থেকে মেইনটেন্যান্স মডিউলে যান। যদি দেখা না যায়, Settings → Apps → "Maintenance" সার্চ করে ইনস্টল করুন।</p>
+
+      <h2 id="equipment-setup">ধাপ ১: ইকুইপমেন্ট ক্যাটালগ সেটআপ</h2>
+
+      <div class="config-block">
+        <div class="config-head">
+          <span class="cfg-num">1</span>
+          <h3>Equipment → Create</h3>
+        </div>
+        <div class="config-body">
+          <p>Maintenance → Equipments → New-এ যান। প্রতিটি মেশিনের জন্য পূরণ করুন:</p>
+          <ul>
+            <li><strong>Name:</strong> একটি সঙ্গতিপূর্ণ নেমিং কনভেনশন ব্যবহার করুন — "Sewing Machine · Brother S-7200C · Line 3 · Pos 12"। "Machine 1"-এর মতো অস্পষ্ট নাম মেইনটেন্যান্স রিকোয়েস্টে ইকুইপমেন্ট শনাক্ত করা অসম্ভব করে তোলে।</li>
+            <li><strong>Equipment Categories:</strong> আপনার মেইনটেন্যান্স টিম স্ট্রাকচারের সাথে মিলিয়ে ক্যাটাগরি তৈরি করুন। একটি গার্মেন্টস কারখানার জন্য: Sewing Machines, Cutting Machines, Finishing Equipment, Generators, Air Compressors, HVAC। ক্যাটাগরি ইকুইপমেন্ট টাইপ অনুযায়ী রিপোর্টিং আর সঠিক টিমে রুটিং সক্ষম করে।</li>
+            <li><strong>Maintenance Team:</strong> এই ইকুইপমেন্টের দায়িত্বপ্রাপ্ত টিম অ্যাসাইন করুন। এতে কোনো ডিসপ্যাচার ধাপ ছাড়াই করেক্টিভ রিকোয়েস্ট স্বয়ংক্রিয়ভাবে সঠিক টিমে রুট হয়ে যায়।</li>
+            <li><strong>Technician:</strong> ইচ্ছা করলে এই মেশিনের জন্য একজন প্রাইমারি টেকনিশিয়ান অ্যাসাইন করতে পারেন। শুধু নির্দিষ্ট কিছু টেকনিশিয়ান হ্যান্ডল করেন এমন বিশেষায়িত ইকুইপমেন্টের জন্য উপযোগী।</li>
+            <li><strong>Work Center:</strong> সংশ্লিষ্ট Manufacturing ওয়ার্ক সেন্টারের সাথে লিংক করুন — এটি মেইনটেন্যান্স ডাউনটাইমকে উৎপাদনের প্রভাবের সাথে সংযুক্ত করে। কোনো মেশিন বন্ধ থাকলে, সংশ্লিষ্ট ওয়ার্ক সেন্টার ম্যানুফ্যাকচারিং প্ল্যানিংয়ে অনুপলব্ধ হিসেবে দেখায়।</li>
+            <li><strong>Technical Details ট্যাব:</strong> মডেল নম্বর, সিরিয়াল নম্বর, প্রস্তুতকারক, ভেন্ডর, ওয়ারেন্টি মেয়াদ শেষের তারিখ। এগুলো স্পেয়ার পার্টস সোর্সিং আর ওয়ারেন্টি ক্লেইমের জন্য অত্যন্ত গুরুত্বপূর্ণ।</li>
+            <li><strong>Maintenance ট্যাব:</strong> মেইনটেন্যান্স ডিউরেশন (একটি স্ট্যান্ডার্ড মেইনটেন্যান্স কাজের প্রত্যাশিত সময়), মেইনটেন্যান্স ফ্রিকোয়েন্সি (কত ঘন ঘন প্রিভেন্টিভ মেইনটেন্যান্স শিডিউল করা হয়)।</li>
+          </ul>
+          <div class="tip-box">
+            <div class="tlabel">ইকুইপমেন্ট নেমিং কনভেনশন</div>
+            <p>ডেটা এন্ট্রি শুরু হওয়ার আগেই একটি নেমিং কনভেনশন ঠিক করে ডকুমেন্ট করে নিন। ইকুইপমেন্টের নাম দেওয়া হয়ে গেলে আর তা মেইনটেন্যান্স রিকোয়েস্টের সাথে যুক্ত হয়ে গেলে, পরে নাম বদলানো ঝামেলার হয়ে যায়। বাংলাদেশের কারখানার জন্য প্রস্তাবিত ফরম্যাট: "[ক্যাটাগরি শর্ট কোড] · [মেক] · [মডেল] · [লোকেশন/লাইন] · [পজিশন/আইডি]" — যেমন: "SEW · Brother · S-7200C · L3 · P12"</p>
+          </div>
+        </div>
+      </div>
+
+      <h2 id="maintenance-teams">ধাপ ২: মেইনটেন্যান্স টিম ও টেকনিশিয়ান</h2>
+
+      <div class="config-block">
+        <div class="config-head">
+          <span class="cfg-num">2</span>
+          <h3>Configuration → Maintenance Teams</h3>
+        </div>
+        <div class="config-body">
+          <p>Maintenance → Configuration → Maintenance Teams → New-এ যান। আপনার মেইনটেন্যান্স সংগঠনের সাথে মিলিয়ে টিম তৈরি করুন:</p>
+          <ul>
+            <li><strong>Mechanical Team:</strong> সেলাই মেশিন, মেকানিক্যাল সিস্টেম, বেল্ট, বেয়ারিং, গিয়ারবক্স হ্যান্ডল করে</li>
+            <li><strong>Electrical Team:</strong> মোটর, কন্ট্রোল প্যানেল, লাইটিং, বিদ্যুৎ বিতরণ হ্যান্ডল করে</li>
+            <li><strong>Infrastructure Team:</strong> জেনারেটর, HVAC, কম্প্রেসর, ভবন সিস্টেম হ্যান্ডল করে</li>
+            <li><strong>External Vendor:</strong> বাইরের বিশেষজ্ঞরা যেসব মেইনটেন্যান্স কাজ করেন তার জন্য একটি টিম — বয়লার মেইনটেন্যান্স, এলিভেটর সার্ভিসিং, ফায়ার সাপ্রেশন</li>
+          </ul>
+          <p>প্রতিটি টিমের একজন Team Leader এবং কিছু Team Members থাকে। তাদের টিমে অ্যাসাইন করা নতুন মেইনটেন্যান্স রিকোয়েস্টের জন্য টিম লিডার ইমেইল নোটিফিকেশন পান। সব মেইনটেন্যান্স টেকনিশিয়ানকে তাদের নিজ নিজ টিমের মেম্বার হিসেবে যোগ করুন — তারা তাদের নিজেদের অ্যাসাইন করা রিকোয়েস্ট Odoo-র টু-ডু কিউতে দেখতে পাবেন।</p>
+          <p><strong>Working Hours:</strong> টিমের কর্মঘণ্টা কনফিগার করুন (বাংলাদেশের একটি স্ট্যান্ডার্ড কারখানা শিফটের জন্য সকাল ৬টা – সন্ধ্যা ৬টা, অথবা বর্ধিত শিফটের জন্য সকাল ৮টা – রাত ৮টা)। এটি মেইনটেন্যান্স শিডিউলিংকে প্রভাবিত করে — কর্মঘণ্টার বাইরে প্রিভেন্টিভ রিকোয়েস্ট শিডিউল হবে না।</p>
+        </div>
+      </div>
+
+      <h2 id="corrective">ধাপ ৩: করেক্টিভ মেইনটেন্যান্স রিকোয়েস্ট</h2>
+      <p>করেক্টিভ মেইনটেন্যান্স রিকোয়েস্টের মাধ্যমে অপারেটর ও সুপারভাইজাররা মেশিন ব্রেকডাউন রিপোর্ট করেন। ওয়ার্কফ্লোটা সহজ: মেশিন নষ্ট হয় → অপারেটর একটি রিকোয়েস্ট তৈরি করেন → টিম লিডার সেটা দেখেন → একজন টেকনিশিয়ান অ্যাসাইন করেন → কাজ সম্পন্ন হয় → নোটসহ রিকোয়েস্ট বন্ধ করা হয়।</p>
+      <p><strong>একটি করেক্টিভ রিকোয়েস্ট তৈরি করা:</strong> Maintenance → Maintenance Requests → New। ইকুইপমেন্ট সিলেক্ট করুন (এতে মেইনটেন্যান্স টিম নিজে থেকেই পূরণ হয়ে যায়), Request Name আর Description ফিল্ডে সমস্যা বর্ণনা করুন, Priority সেট করুন (১–৩ স্টার), আর সেভ করুন। অ্যাসাইন করা টিম একটি নোটিফিকেশন পাবে।</p>
+      <p><strong>রিকোয়েস্ট স্টেজ কনফিগার করা:</strong> মেইনটেন্যান্স রিকোয়েস্টের জন্য ডিফল্ট Kanban স্টেজগুলো হলো: New → In Progress → Repaired → Scrap। আপনার ওয়ার্কফ্লোর সাথে মিলিয়ে এগুলো কাস্টমাইজ করুন। একটি স্ট্যান্ডার্ড মেইনটেন্যান্স ফ্লো থাকা বাংলাদেশি কারখানা হয়তো ব্যবহার করবে: Reported → Assessed → Parts Ordered → In Repair → Completed → Verified by Supervisor।</p>
+      <div class="warn-box">
+        <div class="wlabel">অপারেটর অ্যাডপশন</div>
+        <p>করেক্টিভ মেইনটেন্যান্স ম্যানেজমেন্টের সবচেয়ে বড় ব্যর্থতা হলো — অপারেটররা রিকোয়েস্ট তৈরি না করে বরং WhatsApp-এ টেকনিশিয়ানকে সরাসরি কল করে ফেলেন। সব ধরনের অনানুষ্ঠানিক রিপোর্টিং Odoo বাইপাস করে যায় আর কোনো রেকর্ড থাকে না। এর সমাধান করুন অপারেটর ইনডাকশন ট্রেনিংয়ে মোবাইল Odoo রিকোয়েস্ট তৈরি অন্তর্ভুক্ত করে, আর প্রতিটি মেশিনে QR কোড লাগিয়ে যা সরাসরি সেই মেশিনের ইকুইপমেন্ট আইডি দিয়ে আগে থেকে পূরণ করা নতুন মেইনটেন্যান্স রিকোয়েস্ট ফর্মে নিয়ে যায়। QR কোডগুলো প্রিন্ট করে ল্যামিনেট করে রাখুন।</p>
+      </div>
+
+      <h2 id="preventive">ধাপ ৪: প্রিভেন্টিভ মেইনটেন্যান্স শিডিউল</h2>
+
+      <div class="config-block">
+        <div class="config-head">
+          <span class="cfg-num">4</span>
+          <h3>Equipment Record → Preventive Maintenance Tab</h3>
+        </div>
+        <div class="config-body">
+          <p>প্রতিটি ইকুইপমেন্ট রেকর্ডে, Maintenance ট্যাবে গিয়ে কনফিগার করুন:</p>
+          <ul>
+            <li><strong>Maintenance Duration:</strong> প্রিভেন্টিভ মেইনটেন্যান্স কাজ সম্পন্ন করার প্রত্যাশিত সময় (যেমন, একটি স্ট্যান্ডার্ড সেলাই মেশিন সার্ভিসের জন্য ২ ঘণ্টা)</li>
+            <li><strong>Maintenance Frequency:</strong> কত ঘন ঘন প্রিভেন্টিভ মেইনটেন্যান্স হওয়া উচিত — দিনে (মাসিকের জন্য ৩০, ত্রৈমাসিকের জন্য ৯০) অথবা মেশিন ঘণ্টায় (যদি আওয়ার মিটার থাকে)</li>
+            <li><strong>Next Maintenance Date:</strong> প্রথম প্রিভেন্টিভ মেইনটেন্যান্স কখন শিডিউল করা হয়েছে। Odoo এই তারিখে নিজে থেকেই একটি মেইনটেন্যান্স রিকোয়েস্ট তৈরি করবে, আর সম্পন্ন হওয়ার পর পরবর্তীটি নিজে থেকেই শিডিউল করবে।</li>
+          </ul>
+          <p>প্রিভেন্টিভ মেইনটেন্যান্সের তারিখ এলে, Odoo নিজে থেকেই "Preventive" টাইপের একটি মেইনটেন্যান্স রিকোয়েস্ট তৈরি করে আর সেটা ইকুইপমেন্টের মেইনটেন্যান্স টিমে অ্যাসাইন করে। টিম লিডার নোটিফাই হন এবং একজন টেকনিশিয়ান অ্যাসাইন করেন।</p>
+          <p><strong>একটি বাংলাদেশি RMG কারখানার জন্য স্ট্যান্ডার্ড প্রিভেন্টিভ মেইনটেন্যান্স শিডিউল:</strong></p>
+        </div>
+      </div>
+
+      <table class="schedule-table">
+        <thead>
+          <tr>
+            <th>ইকুইপমেন্ট টাইপ</th>
+            <th>ফ্রিকোয়েন্সি</th>
+            <th>মূল কার্যক্রম</th>
+            <th>বাংলাদেশ অ্যাডজাস্টমেন্ট</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>ইন্ডাস্ট্রিয়াল সেলাই মেশিন</td>
+            <td>মাসিক</td>
+            <td>তেল, টেনশন চেক, নিডল বার টাইমিং, বেল্ট ইন্সপেকশন</td>
+            <td>উচ্চ ব্যবহারের কারণে (২-শিফট অপারেশন) কম ইন্টারভাল</td>
+          </tr>
+          <tr>
+            <td>কাটিং মেশিন</td>
+            <td>মাসিক</td>
+            <td>ব্লেডের অবস্থা, মোটর ব্রাশ, হ্যান্ডল গ্রিপ, কুলিং ফ্যান</td>
+            <td>গরমের মাসগুলোতে (মার্চ–অক্টোবর) কুলিং ফ্যান ত্রৈমাসিক চেক করুন</td>
+          </tr>
+          <tr>
+            <td>এয়ার কম্প্রেসর</td>
+            <td>ত্রৈমাসিক (৩০০ ঘণ্টা)</td>
+            <td>এয়ার ফিল্টার, তেলের লেভেল, বেল্ট টেনশন, সেফটি ভালভ টেস্ট</td>
+            <td>বেশি ঘন ঘন তেল চেক — তাপ তেলের ক্ষয় ত্বরান্বিত করে</td>
+          </tr>
+          <tr>
+            <td>জেনারেটর</td>
+            <td>২৫০ চালু ঘণ্টা</td>
+            <td>তেল পরিবর্তন, এয়ার ফিল্টার, ফুয়েল ফিল্টার, কুল্যান্ট লেভেল, ব্যাটারি</td>
+            <td>বাংলাদেশে জেনারেটর উল্লেখযোগ্যভাবে বেশি চলে — EU মেইনটেন্যান্স ফ্রিকোয়েন্সির ২× বাজেট রাখুন</td>
+          </tr>
+          <tr>
+            <td>HVAC ইউনিট</td>
+            <td>ত্রৈমাসিক</td>
+            <td>ফিল্টার পরিষ্কার, কয়েল পরিষ্কার, রেফ্রিজারেন্ট চেক, ড্রেন পরিষ্কার</td>
+            <td>বর্ষা মৌসুমে (জুন–সেপ্টেম্বর) মাসিক ড্রেন লাইন পরিষ্কার করুন</td>
+          </tr>
+          <tr>
+            <td>ওভারহেড ক্রেন / হোইস্ট</td>
+            <td>মাসিক</td>
+            <td>লোড টেস্ট, ওয়্যার রোপ ইন্সপেকশন, ব্রেক চেক, লিমিট সুইচ</td>
+            <td>সেফটি-ক্রিটিক্যাল — DIFE কমপ্লায়েন্সের জন্য ফলাফল লগ করুন</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2 id="spare-parts">ধাপ ৫: স্পেয়ার পার্টস ইনভেন্টরি ইন্টিগ্রেশন</h2>
+      <p>Odoo-র সবচেয়ে মূল্যবান মেইনটেন্যান্স ফিচারগুলোর একটি হলো মেইনটেন্যান্স রিকোয়েস্ট আর ইনভেন্টরির মধ্যকার ইন্টিগ্রেশন। একজন টেকনিশিয়ানের যখন একটি মেইনটেন্যান্স ওয়ার্ক অর্ডার সম্পন্ন করতে স্পেয়ার পার্ট দরকার হয়, তখন তিনি সেটা মেইনটেন্যান্স রিকোয়েস্টের ভেতর থেকেই সরাসরি ইনভেন্টরি থেকে রিকোয়েস্ট করতে পারেন। এতে স্পেয়ার পার্টস স্টক ট্র্যাকিং, রিঅর্ডার ট্রিগার আর নির্দিষ্ট মেশিনে খরচ বরাদ্দ সম্ভব হয়।</p>
+      <p><strong>কনফিগারেশন:</strong> প্রতিটি Equipment রেকর্ডে "Spare Parts" ট্যাব দিয়ে সেই মেশিনের স্ট্যান্ডার্ড স্পেয়ার পার্টসের তালিকা করা যায়। একটি প্রিভেন্টিভ মেইনটেন্যান্স রিকোয়েস্ট তৈরি হলে, এই পার্টসগুলো ব্যবহৃত ম্যাটেরিয়াল হিসেবে নিজে থেকেই অন্তর্ভুক্ত হতে পারে। যেসব পার্টস আগে থেকে অর্ডার করতে হয় (৪–৬ সপ্তাহের লিড টাইমসহ আমদানিকৃত কম্পোনেন্ট), পার্টস স্টক রিঅর্ডার মিনিমামের নিচে নামলে Odoo একটি পারচেজ অর্ডার ট্রিগার করতে পারে।</p>
+      <p><strong>স্পেয়ার পার্টস ওয়্যারহাউজ লোকেশন:</strong> স্পেয়ার পার্টসের জন্য একটি নিবেদিত ইনভেন্টরি লোকেশন তৈরি করুন: Inventory → Configuration → Locations → আপনার প্রধান ওয়্যারহাউজের চাইল্ড হিসেবে "SPR" (Spare Parts) তৈরি করুন। এতে স্টক রিপোর্টিংয়ে মেইনটেন্যান্স ম্যাটেরিয়াল উৎপাদন ম্যাটেরিয়াল থেকে আলাদা থাকে।</p>
+
+      <div class="tip-box">
+        <div class="tlabel">আমদানি স্পেয়ার পার্টস প্ল্যানিং</div>
+        <p>জার্মানি, জাপান বা চীন থেকে স্পেয়ার পার্টস আমদানি করা বাংলাদেশি কারখানার জন্য, ৪–৮ সপ্তাহের লিড টাইমের মানে হলো রিঅর্ডার ট্রিগার ২–৪ সপ্তাহ নয়, ৬–১০ সপ্তাহের প্রত্যাশিত ব্যবহারে সেট করতে হবে। Odoo-তে: স্পেয়ার পার্ট প্রোডাক্ট রেকর্ডে সাপ্লায়ার লিড টাইম বাস্তবতার সাথে মিলিয়ে সেট করুন (আমদানি পার্টসের জন্য ৪২–৫৬ দিন)। তাহলে রিঅর্ডার রুল স্টকআউট এড়াতে সময়মতো একটি পারচেজ অর্ডার তৈরি করবে। পার্ট অর্ডারে থাকার কারণে শুরু করতে না পারা একটি প্রিভেন্টিভ মেইনটেন্যান্স রিকোয়েস্ট প্রিভেন্টিভ শিডিউলিংয়ের পুরো উদ্দেশ্যটাই নষ্ট করে দেয়।</p>
+      </div>
+
+      <h2 id="work-orders">ধাপ ৬: মেইনটেন্যান্স ওয়ার্ক অর্ডার</h2>
+      <p>Odoo Enterprise-এ, মেইনটেন্যান্স রিকোয়েস্টকে বিস্তারিত টাইম ট্র্যাকিং আর একাধিক টেকনিশিয়ান অ্যাসাইনমেন্টসহ Work Order-এ রূপান্তর করা যায়। একটি মেইনটেন্যান্স রিকোয়েস্টে গিয়ে → Convert to Work Order → শুরুর সময়, ডিউরেশন আর টেকনিশিয়ান অ্যাসাইন করুন। টেকনিশিয়ানরা তাদের সময় সরাসরি ওয়ার্ক অর্ডারে লগ করেন, যা মেইনটেন্যান্স খরচ হিসাবে যুক্ত হয়।</p>
+      <p>ওয়ার্ক অর্ডার ভিউ টেকনিশিয়ানকে প্রয়োজনীয় সবকিছু দেখায়: ইকুইপমেন্টের বিবরণ, মেইনটেন্যান্স হিস্ট্রি (এই মেশিনে আগের কার্যক্রম), ব্যবহার করার পার্টস, আর চেকলিস্ট আইটেম। Odoo 17 এবং 18-এ, মেইনটেন্যান্স ওয়ার্ক অর্ডারে একটি কনফিগারযোগ্য চেকলিস্ট থাকতে পারে — যে টেকনিশিয়ানই কাজ করুন না কেন, আপনার পুরো মেইনটেন্যান্স টিমজুড়ে "মাসিক সেলাই মেশিন সার্ভিস" মানে ঠিক কী, তা স্ট্যান্ডার্ডাইজ করতে কাজে লাগে।</p>
+
+      <h2 id="cost-tracking">মেইনটেন্যান্স খরচ ট্র্যাকিং</h2>
+      <p>প্রতি মেশিন, প্রতি ক্যাটাগরি আর প্রতি পিরিয়ডের মেইনটেন্যান্স খরচ Odoo-তে তিনটি উৎস থেকে হিসাব করা হয়:</p>
+      <ul>
+        <li><strong>শ্রম:</strong> ওয়ার্ক অর্ডারে টেকনিশিয়ানের সময় × তাদের ঘণ্টাপ্রতি খরচের হার</li>
+        <li><strong>ম্যাটেরিয়াল:</strong> ইনভেন্টরি থেকে ব্যবহৃত স্পেয়ার পার্টস × ইনভেন্টরি খরচ</li>
+        <li><strong>বাহ্যিক সার্ভিস:</strong> মেইনটেন্যান্স রিকোয়েস্টের সাথে লিংক করা ভেন্ডর বিল</li>
+      </ul>
+      <p>Maintenance → Reporting → Maintenance Costs-এ খরচের রিপোর্ট দেখুন। তারিখ পরিসীমা, ইকুইপমেন্ট বা মেইনটেন্যান্স টিম অনুযায়ী ফিল্টার করুন। এই ডেটা রিবিল্ড বনাম রিপ্লেস সিদ্ধান্তের জন্য অত্যন্ত গুরুত্বপূর্ণ: কোনো মেশিনের বাৎসরিক মেইনটেন্যান্স খরচ যদি তার প্রতিস্থাপন খরচের ৩০–৪০%-এর বেশি হয়ে যায়, তাহলে সাধারণত প্রতিস্থাপনই ভালো বিনিয়োগ।</p>
+
+      <h2 id="kpis">KPI ও রিপোর্টিং</h2>
+
+      <div class="kpi-grid">
+        <div class="kpi-card">
+          <div class="kc-name">MTBF</div>
+          <div class="kc-metric">দিন</div>
+          <div class="kc-desc">Mean Time Between Failures — করেক্টিভ মেইনটেন্যান্স রিকোয়েস্টের মধ্যকার গড় সময়। MTBF বাড়া মানে মেশিনের নির্ভরযোগ্যতা বাড়ছে।</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kc-name">MTTR</div>
+          <div class="kc-metric">ঘণ্টা</div>
+          <div class="kc-desc">Mean Time To Repair — রিকোয়েস্ট তৈরি থেকে সম্পন্ন হওয়া পর্যন্ত গড় সময়। মেরামতের কার্যকারিতা আর টিমের সাড়া দেওয়ার গতি ট্র্যাক করে।</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kc-name">শিডিউল কমপ্লায়েন্স</div>
+          <div class="kc-metric">%</div>
+          <div class="kc-desc">শিডিউল অনুযায়ী (নির্ধারিত তারিখের ±৩ দিনের মধ্যে) সম্পন্ন প্রিভেন্টিভ মেইনটেন্যান্স কার্যক্রমের শতাংশ। লক্ষ্য: একটি পরিণত মেইনটেন্যান্স প্রোগ্রামের জন্য >৯০%।</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kc-name">করেক্টিভ/প্রিভেন্টিভ রেশিও</div>
+          <div class="kc-metric">রেশিও</div>
+          <div class="kc-desc">করেক্টিভ বনাম প্রিভেন্টিভ রিকোয়েস্টের অনুপাত। ৬০%-এর বেশি করেক্টিভ থাকা রেশিও একটি দুর্বল প্রিভেন্টিভ প্রোগ্রাম নির্দেশ করে।</div>
+        </div>
+      </div>
+
+      <p>Maintenance → Reporting-এ এই সব KPI দেখা যায়। MTBF আর MTTR স্ট্যাটিসটিক্স আপনার মেইনটেন্যান্স রিকোয়েস্ট ডেটা থেকে স্বয়ংক্রিয়ভাবে হিসাব হয়। ফ্যাক্টরি ম্যানেজমেন্ট মিটিংয়ে এগুলো প্রতি মাসে পর্যালোচনা করুন — এগুলো বলে দেয় আপনার মেইনটেন্যান্স প্রোগ্রাম আসলেই কাজ করছে, নাকি শুধু কাগজপত্র তৈরি করছে।</p>
+
+      <h2 id="bangladesh-context">বাংলাদেশ-নির্দিষ্ট বিষয়সমূহ</h2>
+      <p><strong>DIFE এবং কারখানা নিরাপত্তার সাথে সমন্বয়:</strong> Department of Inspection for Factories and Establishments (DIFE) কিছু নির্দিষ্ট ইকুইপমেন্ট ক্যাটাগরির জন্য মেইনটেন্যান্স রেকর্ড চায় — প্রেসার ভেসেল, হোইস্ট, এলিভেটর, ফায়ার সাপ্রেশন সিস্টেম। Odoo-র মেইনটেন্যান্স রেকর্ড প্রিন্ট বা এক্সপোর্ট করলে এই ডকুমেন্টেশন প্রয়োজনীয়তা পূরণ হয়। প্রতিটি সংশ্লিষ্ট মেশিনের জন্য বাৎসরিক ইকুইপমেন্ট ইন্সপেকশন রিপোর্ট মেইনটেন্যান্স রিকোয়েস্টের অ্যাটাচমেন্ট ফিল্ডে রাখুন।</p>
+      <p><strong>জেনারেটর মেইনটেন্যান্স ট্র্যাকিং:</strong> নির্ভরযোগ্য গ্রিড বিদ্যুৎ থাকা দেশের কারখানার তুলনায় বাংলাদেশের কারখানা জেনারেটরের ওপর অনেক বেশি নির্ভরশীল। জেনারেটরের মেইনটেন্যান্স ক্যালেন্ডার দিনের বদলে চালু ঘণ্টার ভিত্তিতে ট্র্যাক করতে হবে, কারণ লোডশেডিং শিডিউলের সাথে চালু ঘণ্টা উল্লেখযোগ্যভাবে বদলায়। আপনার জেনারেটরে ডিজিটাল আওয়ার মিটার থাকলে, প্রতি মাসে Odoo-তে ম্যানুয়ালি রিডিং এন্টার করুন আর সেই অনুযায়ী প্রিভেন্টিভ শিডিউল আপডেট করুন। জেনারেটরে ডিজিটাল ইন্টারফেস থাকলে Enterprise ইউজাররা IoT দিয়ে এটি অটোমেট করতে পারেন।</p>
+      <p><strong>বর্ষা মৌসুম প্রোটোকল:</strong> প্রতি বছর মে মাসে শিডিউল করা "Monsoon Preparation" নামে একটি পুনরাবৃত্ত মেইনটেন্যান্স রিকোয়েস্ট ক্যাটাগরি তৈরি করুন — ড্রেনেজ চেক করা, উন্মুক্ত ধাতুতে অ্যান্টি-রাস্ট ট্রিটমেন্ট, HVAC ড্রেন লাইন, ছাদের অখণ্ডতা, আর জেনারেটর এনক্লোজারের ওয়াটারপ্রুফিং। এই কাজগুলো স্ট্যান্ডার্ড OEM মেইনটেন্যান্স শিডিউলে থাকে না, কিন্তু বাংলাদেশের জলবায়ুতে অপরিহার্য।</p>
+
+      <p>মেইনটেন্যান্স ডাউনটাইমকে উৎপাদন পরিকল্পনার সাথে সংযুক্ত করা ম্যানুফ্যাকচারিং ওয়ার্ক সেন্টার কনফিগারেশনের জন্য দেখুন <a href="/bn/lab/0038-odoo-manufacturing-routing-bangladesh" style="color:var(--accent)">বাংলাদেশের জন্য Odoo ম্যানুফ্যাকচারিং রাউটিং গাইড</a>। আর মেইনটেন্যান্স ইন্টিগ্রেশনের ভিত্তি তৈরি করা বৃহত্তর ম্যানুফ্যাকচারিং মডিউল সেটআপের জন্য, <a href="/bn/lab/0013-odoo-manufacturing-module-bangladesh" style="color:var(--accent)">Odoo ম্যানুফ্যাকচারিং মডিউল সেটআপ গাইড</a>-এ প্রয়োজনীয় পূর্বশর্ত কনফিগারেশন ব্যাখ্যা করা আছে।</p>
+
+      <div class="callout">
+        <span class="tag">মেইনটেন্যান্স মডিউল সেটআপ</span>
+        <p>আপনার বাংলাদেশি কারখানার যদি শুরু থেকে Odoo মেইনটেন্যান্স কনফিগার করার সাহায্য দরকার হয় — ইকুইপমেন্ট ক্যাটালগ, প্রিভেন্টিভ শিডিউল, স্পেয়ার পার্টস ইনভেন্টরি, আর ম্যানেজমেন্ট KPI — আমি একটি ফোকাসড মেইনটেন্যান্স মডিউল বাস্তবায়ন এনগেজমেন্ট অফার করি। <a href="/bn/#contact" style="color:var(--accent)">আলোচনার জন্য যোগাযোগ করুন →</a></p>
+      </div>
+
+      <h2 id="faq">সচরাচর জিজ্ঞাসা</h2>
+
+      <h3>Odoo-তে করেক্টিভ আর প্রিভেন্টিভ মেইনটেন্যান্সের মধ্যে পার্থক্য কী?</h3>
+      <p>করেক্টিভ মেইনটেন্যান্স রিঅ্যাকটিভ — একটি মেশিন নষ্ট হয়ে যায় আর কেউ একজন তা রিপোর্ট করতে একটি রিকোয়েস্ট তৈরি করেন। প্রিভেন্টিভ মেইনটেন্যান্স প্রোঅ্যাকটিভ — ব্রেকডাউন হওয়ার আগেই Odoo ক্যালেন্ডার বা আওয়ার-মিটার শিডিউল অনুযায়ী নিজে থেকে রিকোয়েস্ট তৈরি করে। দুটোই একই Maintenance Request আর Work Order ফ্লো ব্যবহার করে। মডিউলটি এগুলো আলাদাভাবে ট্র্যাক করে, যাতে আপনি আপনার করেক্টিভ-টু-প্রিভেন্টিভ রেশিও দেখতে পারেন — যা প্রোগ্রামের পরিপক্বতার একটি গুরুত্বপূর্ণ সূচক।</p>
+
+      <h3>বাংলাদেশের কারখানায় Odoo মেইনটেন্যান্স মডিউল কি IoT সেন্সরের সাথে ইন্টিগ্রেট করা যায়?</h3>
+      <p>হ্যাঁ, একটি Odoo IoT Box দিয়ে (প্রতি ইউনিট প্রায় ৳15,000–25,000)। ভাইব্রেশন সেন্সর, তাপমাত্রা সেন্সর, আর সাইকেল কাউন্টার থ্রেশহোল্ড অতিক্রম করলে স্বয়ংক্রিয়ভাবে মেইনটেন্যান্স রিকোয়েস্ট তৈরি করতে পারে। বেশিরভাগ বাংলাদেশি কারখানার IoT যোগ করার আগে প্রথমে প্রচলিত প্রিভেন্টিভ শিডিউলিং বাস্তবায়ন করা উচিত — এই শিডিউলিং কম খরচে নির্ভরযোগ্যতার সুবিধার ৬০–৭০% এনে দেয়।</p>
+
+      <h3>Odoo-তে মেইনটেন্যান্স খরচ কীভাবে ট্র্যাক করব?</h3>
+      <p>মেইনটেন্যান্স রিকোয়েস্ট লেভেলে তিনটি উৎস থেকে খরচ ট্র্যাক করা হয়: ওয়ার্ক অর্ডারে লগ করা টেকনিশিয়ানের শ্রম সময়, ইনভেন্টরি থেকে ব্যবহৃত স্পেয়ার পার্টস (ওয়ার্ক অর্ডার সম্পন্ন হলে স্বয়ংক্রিয়ভাবে বিয়োগ হয়), আর বাহ্যিক সার্ভিস রিকোয়েস্টের সাথে লিংক করা ভেন্ডর বিল। মোট খরচ দেখুন Maintenance → Reporting → Maintenance Costs-এ। বাৎসরিক মেইনটেন্যান্স খরচ মেশিনের প্রতিস্থাপন খরচের ৩০–৪০%-এর কাছাকাছি পৌঁছালে রিবিল্ড বনাম রিপ্লেস সিদ্ধান্তের জন্য এটি ব্যবহার করুন।</p>
+
+      <h3>ISO 9001 সার্টিফায়েড বাংলাদেশি কারখানার জন্য কি Odoo মেইনটেন্যান্স কাজ করে?</h3>
+      <p>হ্যাঁ। Odoo মেইনটেন্যান্স ISO 9001 Clause 7.1.3-এর জন্য প্রয়োজনীয় ডকুমেন্টেশন তৈরি করে: সম্পূর্ণ মেশিন বিবরণসহ ইকুইপমেন্ট রেজিস্টার, তারিখ ও টেকনিশিয়ান রেকর্ডসহ প্রতি মেশিনের মেইনটেন্যান্স রিকোয়েস্ট হিস্ট্রি, আর প্রিভেন্টিভ মেইনটেন্যান্স শিডিউল কমপ্লায়েন্স রিপোর্ট। ISO অডিটের আগে মেইনটেন্যান্স হিস্ট্রি PDF এক্সপোর্ট করুন। RMG, ফার্মা, আর ফুড প্রসেসিংয়ের অনেক বাংলাদেশি কারখানা ঠিক ISO ডকুমেন্টেশন কমপ্লায়েন্সের জন্যই Odoo মেইনটেন্যান্স ব্যবহার করে।</p>
+
+    </div>
+  </article>
+
+  <footer>
+    <div class="shell">
+      <div class="post-foot">
+        <span class="eyebrow">আরও পড়ুন</span>
+        <div class="next">
+          <a class="next-card" href="/bn/lab/0060-mature-odoo-implementation-bangladesh">
+            <span class="dir">পুরনো · 0060</span>
+            <h4>গো-লাইভের ৫ বছর পর: বাংলাদেশে পরিণত Odoo</h4>
+            <p>ডেটা কোয়ালিটি, আপগ্রেড সাইকেল, ROI-র বাস্তবতা, আর প্রথম দিন থেকে ভিন্নভাবে কী করা উচিত।</p>
+            <span class="arrow">→</span>
+          </a>
+          <a class="next-card" href="/bn/lab/0062-erp-market-bangladesh-2026">
+            <span class="dir">নতুন · 0062</span>
+            <h4>বাংলাদেশে ERP-র বর্তমান অবস্থা ২০২৬</h4>
+            <p>ক্লাউড অ্যাডপশন রেট, শীর্ষ ভেন্ডর, ইন্ডাস্ট্রি ব্রেকডাউন, SME খরচ, আর Odoo কোথায় খাপ খায়।</p>
+            <span class="arrow">→</span>
+          </a>
+        </div>
+      </div>
+      <div class="foot">
+        <span>© ২০২৬ Mehedi Hasan · Lab / 0061</span>
+        <span><a href="/bn/#lab">↑ ল্যাব ইনডেক্সে ফিরুন</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/lab/_utils.js" defer></script>
+  <script src="/lab/_toc.js" defer></script>
+  <script src="/whatsapp.js" defer></script>
+  <script src="/scroll-top.js" defer></script>
+</body>
+
+</html>

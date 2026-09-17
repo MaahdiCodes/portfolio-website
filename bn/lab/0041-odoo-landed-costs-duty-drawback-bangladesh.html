@@ -1,0 +1,316 @@
+<!doctype html>
+<html lang="bn">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description"
+    content="বাংলাদেশের ইমপোর্টের জন্য Odoo landed costs কনফিগার করুন। ইনভেন্টরি ভ্যালুয়েশনে ফ্রেইট, ইনস্যুরেন্স, আর ডিউটি অন্তর্ভুক্ত করুন। সঠিকভাবে কনফিগার করুন →" />
+  <meta name="robots" content="noindex, follow" />
+  <meta name="author" content="Mehedi Hasan" />
+  <title>Odoo Landed Costs বাংলাদেশ | Duty Drawback | মেহেদী হাসান</title>
+  <link rel="canonical" href="https://mhasan.me/bn/lab/0041-odoo-landed-costs-duty-drawback-bangladesh" />
+  <link rel="alternate" hreflang="en" href="https://mhasan.me/lab/0041-odoo-landed-costs-duty-drawback-bangladesh" />
+  <link rel="alternate" hreflang="bn-BD" href="https://mhasan.me/bn/lab/0041-odoo-landed-costs-duty-drawback-bangladesh" />
+  <link rel="alternate" hreflang="x-default" href="https://mhasan.me/lab/0041-odoo-landed-costs-duty-drawback-bangladesh" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png" />
+  <!-- Open Graph -->
+  <meta property="og:title" content="Odoo Landed Costs বাংলাদেশ | Duty Drawback | মেহেদী হাসান" />
+  <meta property="og:description"
+    content="বাংলাদেশের ইমপোর্টের জন্য Odoo landed costs কনফিগার করুন। ইনভেন্টরি ভ্যালুয়েশনে ফ্রেইট, ইনস্যুরেন্স, আর ডিউটি অন্তর্ভুক্ত করুন।" />
+  <meta property="og:url" content="https://mhasan.me/bn/lab/0041-odoo-landed-costs-duty-drawback-bangladesh" />
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="https://mhasan.me/assets/og-default.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale" content="bn_BD" />
+  <meta property="og:site_name" content="মেহেদী হাসান | Odoo কনসালট্যান্ট" />
+  <meta property="article:author" content="https://www.linkedin.com/in/mehedi-hasan-consultant/" />
+  <meta property="article:published_time" content="2026-05-08T12:00:00+06:00" />
+  <meta property="article:modified_time" content="2026-05-23T12:00:00+06:00" />
+  <meta property="article:section" content="Odoo ERP Bangladesh" />
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Odoo Landed Costs বাংলাদেশ | Duty Drawback | মেহেদী হাসান" />
+  <meta name="twitter:description"
+    content="বাংলাদেশের ইমপোর্টের জন্য Odoo landed costs কনফিগার করুন। ইনভেন্টরি ভ্যালুয়েশনে ফ্রেইট, ইনস্যুরেন্স, আর ডিউটি অন্তর্ভুক্ত করুন।" />
+  <meta name="twitter:image" content="https://mhasan.me/assets/og-default.jpg" />
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Odoo বাংলাদেশে Landed Costs ও Duty Drawback",
+    "description": "বাংলাদেশের ইমপোর্টের জন্য Odoo landed costs কনফিগার করুন। ইনভেন্টরি ভ্যালুয়েশনে ফ্রেইট, ইনস্যুরেন্স, আর ডিউটি অন্তর্ভুক্ত করুন।",
+    "datePublished": "2026-05-08T12:00:00+06:00",
+    "dateModified": "2026-05-23T12:00:00+06:00",
+    "inLanguage": "bn",
+    "author": {
+      "@type": "Person",
+      "name": "Mehedi Hasan",
+      "url": "https://mhasan.me",
+      "jobTitle": "Odoo ERP Consultant & Business Analyst",
+      "sameAs": "https://www.linkedin.com/in/mehedi-hasan-consultant/"
+    },
+    "publisher": { "@type": "Person", "name": "Mehedi Hasan", "url": "https://mhasan.me" },
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://mhasan.me/bn/lab/0041-odoo-landed-costs-duty-drawback-bangladesh" }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "হোম", "item": "https://mhasan.me/bn" },
+      { "@type": "ListItem", "position": 2, "name": "ল্যাব", "item": "https://mhasan.me/bn/#lab" },
+      { "@type": "ListItem", "position": 3, "name": "Odoo Landed Costs Bangladesh", "item": "https://mhasan.me/bn/lab/0041-odoo-landed-costs-duty-drawback-bangladesh" }
+    ]
+  }
+]
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&family=Noto+Sans+Bengali:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap">
+  <link rel="stylesheet" href="/lab/_styles.css">
+  <style>
+    body{ font-family: 'Noto Sans Bengali', var(--sans); }
+    .flow-card {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+      margin: 20px 0;
+    }
+    .flow-row {
+      display: grid;
+      grid-template-columns: 140px 1fr 180px;
+      border-bottom: 1px solid var(--border);
+      align-items: stretch;
+    }
+    .flow-row:last-child { border-bottom: none; }
+    .flow-stage {
+      padding: 14px 16px;
+      background: var(--surface);
+      border-right: 1px solid var(--border);
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+    }
+    .flow-desc {
+      padding: 14px 16px;
+      font-size: 12.5px;
+      color: var(--text-2);
+      line-height: 1.7;
+    }
+    .flow-odoo {
+      padding: 14px 16px;
+      border-left: 1px solid var(--border);
+      font-family: var(--mono);
+      font-size: 10.5px;
+      color: var(--accent);
+      line-height: 1.7;
+      display: flex;
+      align-items: center;
+    }
+    .pull {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: clamp(20px, 2.8vw, 30px);
+      line-height: 1.3;
+      color: var(--text);
+      margin: 48px 0;
+      max-width: 26ch;
+      letter-spacing: -0.01em;
+    }
+    .pull::before {
+      content: "";
+      display: block;
+      width: 36px;
+      height: 1px;
+      background: var(--accent);
+      margin-bottom: 18px;
+    }
+    .field-note{margin:28px 0;border:1px solid var(--border);border-radius:12px;overflow:hidden;background:var(--surface)}
+    .fn-hd{display:flex;align-items:center;justify-content:space-between;padding:12px 18px;border-bottom:1px solid var(--border);font-family:var(--mono);font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-3)}
+    .fn-hd .when{color:var(--accent)}
+    .fn-body{padding:18px 22px;font-size:15px;line-height:1.65;color:var(--text-2)}
+    .fn-body strong{color:var(--text);font-weight:500}
+    @media(max-width:800px){
+      .flow-row { grid-template-columns: 1fr; }
+      .flow-stage { border-right: none; border-bottom: 1px solid var(--border); }
+      .flow-odoo { border-left: none; border-top: 1px solid var(--border); }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="grid-bg"></div>
+
+  <header class="nav">
+    <div class="shell">
+      <div class="nav-inner">
+        <a class="brand" href="/bn/">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span class="brand-name"><b>Mehedi Hasan</b><em>ERP · বিজনেস অ্যানালিস্ট</em></span>
+        </a>
+        <a class="back-link" href="/bn/#lab">← ল্যাব-এ ফিরুন</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="post-head">
+    <div class="shell">
+      <span class="eyebrow">টেকনিক্যাল ল্যাব · 0041</span>
+      <h1>Odoo Landed Costs — <span class="serif">ফ্রেইট, ডিউটি, আর প্রকৃত ইনভেন্টরি ভ্যালু।</span></h1>
+      <p class="lede">বাংলাদেশে কাঁচামাল আমদানি করার সময়, সাপ্লায়ারের ইনভয়েস খরচের শুধু একটি অংশ। ফ্রেইট, ইনস্যুরেন্স, CNF চার্জ, আর কাস্টমস ডিউটি প্রোডাক্টের মূল্যে ৩০-৫০% পর্যন্ত যোগ করতে পারে। Odoo-র Landed Costs ফিচার নিশ্চিত করে আপনার ইনভেন্টরি ভ্যালুয়েশন আর প্রফিট মার্জিন বাস্তবতা প্রতিফলিত করছে।</p>
+      <div class="post-meta">
+        <span class="chip accent">কনফিগারেশন গাইড</span>
+        <span class="chip">Landed Costs</span>
+        <span class="chip">ইনভেন্টরি ভ্যালুয়েশন</span>
+        <span class="chip">ইমপোর্ট</span>
+      </div>
+      <div class="byline">
+        <span>লেখক<b><a href="https://www.linkedin.com/in/mehedi-hasan-consultant/" style="color:var(--accent)" rel="author">Mehedi Hasan</a></b></span>
+        <span>প্রকাশিত<b>মে ২০২৬</b></span>
+        <span>পড়ার সময়<b>৭ মিনিট</b></span>
+        <span>ধরন<b>টেকনিক্যাল গাইড</b></span>
+        <span>পরিধি<b>ফাইন্যান্স · ইনভেন্টরি · কাস্টমস</b></span>
+      </div>
+    </div>
+  </section>
+
+  <article class="post">
+    <aside class="toc">
+      <div class="toc-k">এই গাইডে</div>
+      <ol>
+        <li><a href="#why-landed-costs">Landed Costs কেন গুরুত্বপূর্ণ</a></li>
+        <li><a href="#configuration">Odoo-তে কনফিগারেশন</a></li>
+        <li><a href="#split-methods">কস্ট বণ্টনের পদ্ধতি</a></li>
+        <li><a href="#duty-drawback">Duty Drawback ট্র্যাকিং</a></li>
+        <li><a href="#faq">সচরাচর জিজ্ঞাসা</a></li>
+      </ol>
+    </aside>
+
+    <div class="body">
+      <p>ERP বাস্তবায়নে একটি সাধারণ ভুল হলো ইমপোর্ট ডিউটি আর ফ্রেইট চার্জকে P&amp;L-এ সাধারণ খরচ হিসেবে ধরা। নেট প্রফিটের জন্য এটি গাণিতিকভাবে সঠিক হলেও, এটি প্রতি প্রোডাক্টের গ্রস মার্জিন বিশ্লেষণকে পুরোপুরি নষ্ট করে দেয়। আপনি যদি একটি বিশেষ কম্পোনেন্ট $10-এ ইমপোর্ট করেন আর শিপিং ও ডিউটিতে $4 দেন, তাহলে আপনার গুদামে সেই কম্পোনেন্টের কস্ট হওয়া উচিত $14, $10 নয়।</p>
+
+      <p>Odoo-র Landed Costs মডিউল এই হিসাব স্বয়ংক্রিয় করে। এই গাইডটি <a href="/bn/lab/0019-hs-code-customs-odoo-bangladesh" style="color:var(--accent)">HS Code ও Customs ম্যানেজমেন্ট</a> এবং <a href="/bn/lab/0014-odoo-accounting-setup-bangladesh" style="color:var(--accent)">Odoo Accounting সেটআপ</a> গাইডের সাথে মিলিয়ে কাজ করে।</p>
+
+      <p class="pull">Landed Costs ছাড়া, ব্যালান্স শিটে আপনার ইনভেন্টরি কম মূল্যায়িত হয়, আর আপনার প্রোডাক্ট মার্জিন কৃত্রিমভাবে ফুলে-ফেঁপে দেখায়।</p>
+
+      <h2 id="why-landed-costs">Landed Costs কেন গুরুত্বপূর্ণ</h2>
+      <p>ধরুন আপনি এক কনটেইনার ফেব্রিক ইমপোর্ট করছেন। সাপ্লায়ারের ইনভয়েস $50,000। চট্টগ্রাম বন্দরে পৌঁছানোর পর, আপনি সমুদ্র পরিবহনের জন্য $3,000, ইনস্যুরেন্সের জন্য $500, CNF এজেন্ট ফি-র জন্য $1,500, আর ইমপোর্ট ডিউটিতে $15,000 দেন। আপনার মোট নগদ ব্যয় দাঁড়ায় $70,000।</p>
+
+      <p>আপনি landed costs ব্যবহার না করলে যা হবে।</p>
+      <ul>
+        <li>আপনার ইনভেন্টরি মূল্যায়িত হবে $50,000-এ।</li>
+        <li>আপনি সাথে সাথে $20,000 খরচ রেকর্ড করবেন।</li>
+        <li>আপনি ফেব্রিকটি $60,000-এ বিক্রি করলে, আপনার সিস্টেম বলবে $10,000 গ্রস প্রফিট হয়েছে। বাস্তবে, আপনার $10,000 ক্ষতি হয়েছে।</li>
+      </ul>
+
+      <h2 id="configuration">Odoo-তে কনফিগারেশন</h2>
+      <p>Landed Costs ব্যবহার করতে হলে আপনাকে Automated Inventory Valuation (AVCO বা FIFO) ব্যবহার করতে হবে। Standard Price ডাইনামিক landed costs সাপোর্ট করে না।</p>
+
+      <div class="flow-card">
+        <div class="flow-row">
+          <div class="flow-stage">ধাপ ১: মাল গ্রহণ</div>
+          <div class="flow-desc">সাপ্লায়ারের কাছ থেকে গুদামে প্রোডাক্ট গ্রহণ ভ্যালিডেট করুন। PO মূল্যের ভিত্তিতে প্রাথমিক ইনভেন্টরি ভ্যালু বুক করা হয়।</div>
+          <div class="flow-odoo">Stock Valuation: PO Price</div>
+        </div>
+        <div class="flow-row">
+          <div class="flow-stage">ধাপ ২: Cost Service তৈরি</div>
+          <div class="flow-desc">"Freight", "Customs Duty" ইত্যাদির জন্য সার্ভিস প্রোডাক্ট তৈরি করুন। প্রোডাক্টে "Is a Landed Cost" চেকবক্স টিক করা আছে কিনা নিশ্চিত করুন।</div>
+          <div class="flow-odoo">Product Type: Service<br>Landed Cost: True</div>
+        </div>
+        <div class="flow-row">
+          <div class="flow-stage">ধাপ ৩: Vendor Bills</div>
+          <div class="flow-desc">ফ্রেইট ফরওয়ার্ডার বা কাস্টমস থেকে বিল পেলে, সেই সার্ভিস প্রোডাক্টের জন্য একটি vendor bill তৈরি করুন।</div>
+          <div class="flow-odoo">Create Bill</div>
+        </div>
+        <div class="flow-row">
+          <div class="flow-stage">ধাপ ৪: Landed Cost প্রয়োগ</div>
+          <div class="flow-desc">একটি Landed Cost রেকর্ড তৈরি করুন। এটিকে মূল গুদাম রিসিপ্টের সাথে যুক্ত করুন এবং কস্ট লাইন যোগ করুন। Odoo কস্ট বণ্টন করে ইনভেন্টরি ভ্যালু পুনর্গণনা করে।</div>
+          <div class="flow-odoo">Inventory → Landed Costs</div>
+        </div>
+      </div>
+
+      <h2 id="split-methods">কস্ট বণ্টনের পদ্ধতি</h2>
+      <p>কনটেইনারের আইটেমগুলোর মধ্যে অতিরিক্ত খরচ বণ্টন করতে Odoo বিভিন্ন পদ্ধতি ব্যবহার করতে পারে।</p>
+
+      <ul>
+        <li><strong>Equal:</strong> সব প্রোডাক্ট লাইনের মধ্যে সমানভাবে খরচ ভাগ করা হয়। অ্যাডমিন ফি-র জন্য ভালো।</li>
+        <li><strong>By Quantity:</strong> আইটেমের সংখ্যা অনুযায়ী ভাগ করা হয়। একই রকম আকার/ওজনের আইটেমের জন্য ভালো।</li>
+        <li><strong>By Current Cost:</strong> দামি আইটেম বেশি ফ্রেইট কস্ট শোষণ করে। ইনস্যুরেন্স আর ডিউটির জন্য (যা সাধারণত মূল্যের একটি %) প্রায়ই সবচেয়ে নির্ভুল।</li>
+        <li><strong>By Weight:</strong> ভারী আইটেম বেশি ফ্রেইট কস্ট শোষণ করে। প্রোডাক্ট কার্ডে সঠিকভাবে ওজন ডেটা রাখা প্রয়োজন।</li>
+        <li><strong>By Volume:</strong> বড় আকারের আইটেম বেশি ফ্রেইট কস্ট শোষণ করে।</li>
+      </ul>
+
+      <h2 id="duty-drawback">Duty Drawback ট্র্যাকিং</h2>
+      <p>বাংলাদেশি এক্সপোর্টারদের জন্য Duty Drawback একটি গুরুত্বপূর্ণ আর্থিক প্রণোদনা। ইমপোর্টেড কাঁচামাল দিয়ে তৈরি ফিনিশড গুডস এক্সপোর্ট করলে, আপনি পরিশোধিত ইমপোর্ট ডিউটি ফেরত দাবি করতে পারেন।</p>
+
+      <p>এটি সঠিকভাবে ট্র্যাক করতে হলে আপনাকে FIFO কস্টিং, Landed Costs-এর সাথে মিলিয়ে ব্যবহার করতে হবে। FIFO নিশ্চিত করে যে ইমপোর্টেড ব্যাচের নির্দিষ্ট কস্ট (তার নির্দিষ্ট landed duties সহ) প্রোডাকশনের মধ্য দিয়ে চলার সময় এবং শেষে এক্সপোর্ট হওয়া পর্যন্ত ট্র্যাক থাকে। এক্সপোর্ট হওয়া লটের ওপর একটি ভ্যালুয়েশন রিপোর্ট চালিয়ে, আপনি আপনার drawback দাবির জন্য সেই শিপমেন্টে অন্তর্ভুক্ত ডিউটি মূল্য নির্ভুলভাবে ডকুমেন্ট করতে পারবেন।</p>
+
+      <div class="field-note">
+        <div class="fn-hd"><span>নোট · ইমপোর্টার-ডিস্ট্রিবিউটর, ঢাকা</span><span class="when">বছর শেষের স্টক কাউন্ট</span></div>
+        <div class="fn-body">
+          একটি ডিস্ট্রিবিউটর Landed Costs মডিউল চালু করে প্রথম কয়েক মাস সঠিকভাবেই ব্যবহার করছিল। তারপর গুদাম আর ফাইন্যান্স টিম একে অপরের থেকে দূরে সরে গেল: মাল গ্রহণ ও বিক্রি হতে থাকল, কিন্তু CNF এজেন্টের ফ্রেইট-ও-ডিউটি বিল আসত পাঁচ থেকে ছয় সপ্তাহ পরে, আর নীরবে অপ্রক্রিয়াকৃত হয়ে জমা হতে থাকল। বছর শেষে দেখা গেল বেশ কয়েকটি বড় শিপমেন্টে <strong>কখনোই landed cost প্রয়োগ করা হয়নি</strong> — ব্যালান্স শিটে ইনভেন্টরি কম মূল্যায়িত ছিল, আর সেই প্রোডাক্টগুলোর গ্রস মার্জিন বাস্তবের চেয়ে অনেক বেশি সুস্থ দেখাচ্ছিল। অডিটররা স্টক ভ্যালু পুনর্মিলন না করা পর্যন্ত কেউ খেয়াল করেনি। আমরা একটি স্থায়ী নিয়ম দিয়ে এটি ঠিক করলাম: একটি রিসিপ্ট ততক্ষণ বন্ধ ধরা হবে না যতক্ষণ না তার landed-cost রেকর্ড পোস্ট হয়, আর একটি সাপ্তাহিক রিভিউ চার সপ্তাহের বেশি পুরনো, কোনো লিংকড কস্ট ছাড়া রিসিপ্ট চিহ্নিত করে। <strong>Landed costs ব্যর্থ হয় না কারণ ফিচারটা কঠিন — এটি ব্যর্থ হয় কারণ ফ্রেইট বিল আর রিসিপ্ট দুটো আলাদা ইনবক্সে থাকে।</strong>
+        </div>
+      </div>
+
+      <div class="callout">
+        <span class="tag">সারকথা</span>
+        <p>Landed costs-এর জন্য শৃঙ্খলা দরকার। গুদাম টিম মাল গ্রহণ করে, কিন্তু ফাইন্যান্স টিম সপ্তাহ পরে ফ্রেইট আর ডিউটি বিল পায়। ফাইন্যান্স যাতে এই বিলম্বিত বিলগুলো মূল রিসিপ্টের সাথে যুক্ত করে, এমন একটি ওয়ার্কফ্লো প্রতিষ্ঠা করতে হবে। প্রতিশ্রুতিবদ্ধ হওয়ার আগে ডিউটি, ফ্রেইট, আর বাস্তবায়নের বাজেট মাপতে চান? দেখুন <a href="/bn/tools/odoo-cost-estimator/" style="color:var(--accent)">Odoo cost estimator</a>। <a href="/bn/#contact" style="color:var(--accent)">আপনার ইমপোর্ট অ্যাকাউন্টিং ওয়ার্কফ্লো ডিজাইন করতে সাহায্য দরকার? যোগাযোগ করুন →</a></p>
+      </div>
+
+      <h2 id="faq">সচরাচর জিজ্ঞাসা</h2>
+
+      <h3>Odoo-তে Landed Costs কী?</h3>
+      <p>Landed Costs বলতে বোঝায় ক্রেতার দরজায় পৌঁছানোর পর একটি প্রোডাক্টের মোট মূল্য। এর মধ্যে থাকে প্রোডাক্টের মূল দাম, সব পরিবহন ফি, কাস্টমস, ডিউটি, ট্যাক্স, ইনস্যুরেন্স, কারেন্সি কনভার্সন, এবং অন্যান্য যেকোনো খরচ।</p>
+
+      <h3>Odoo কীভাবে Landed Costs গণনা করে?</h3>
+      <p>Odoo অতিরিক্ত খরচ (যেমন একটি ফ্রেইট ইনভয়েস) নিয়ে আপনার সংজ্ঞায়িত রুল অনুযায়ী আগত শিপমেন্টের প্রোডাক্টগুলোর মধ্যে ভাগ করে দেয়: পরিমাণ অনুযায়ী, আয়তন অনুযায়ী, ওজন অনুযায়ী, কস্ট অনুযায়ী, বা সমানভাবে।</p>
+
+      <h3>Odoo-তে landed costs-এর জন্য কেন FIFO বা AVCO ব্যবহার করতে হবে?</h3>
+      <p>Landed costs ইতিমধ্যে ইনভেন্টরিতে থাকা স্টকের ভ্যালুয়েশন সমন্বয় করে, তাই Odoo-র এমন একটি কস্টিং পদ্ধতি দরকার যা ডাইনামিকভাবে ভ্যালুয়েশন ট্র্যাক করে। FIFO আর AVCO (Average Cost) দুটোই এটি করে — মুভ আর সমন্বয় ঘটার সাথে সাথে ইনভেন্টরি ভ্যালু পুনর্গণনা করে। Standard Price প্রতি প্রোডাক্টে একটি নির্দিষ্ট কস্ট ধরে রাখে এবং প্রতি-শিপমেন্ট ফ্রেইট বা ডিউটি সমন্বয় শোষণ করতে পারে না, তাই Standard Price প্রোডাক্টে Landed Costs ফিচার পাওয়া যায় না। Duty drawback দাবি করা বাংলাদেশি ইমপোর্টারদের জন্য FIFO সাধারণত ভালো পছন্দ, কারণ এটি প্রতিটি ইমপোর্টেড ব্যাচের নির্দিষ্ট কস্ট ধরে রাখে।</p>
+
+      <h3>Odoo-তে একটি রিসিপ্টে কখন landed cost প্রয়োগ করব?</h3>
+      <p>যত দ্রুত সম্ভব প্রকৃত ফ্রেইট, ইনস্যুরেন্স, CNF, আর ডিউটির সংখ্যা হাতে পেলেই প্রয়োগ করুন — আদর্শভাবে vendor bill আসার সাথে সাথে। বেশি দেরি করলে, ইমপোর্টেড স্টক ইতিমধ্যে খরচ বা বিক্রি হয়ে যেতে পারে, আর Odoo সমন্বয়টি তখনও পোস্ট করতে পারলেও, মাঝের সময়ের মার্জিন রিপোর্ট ভুল থেকে যাবে। ব্যবহারিক নিয়ম: একটি রিসিপ্টকে ততক্ষণ সম্পূর্ণ বন্ধ ধরবেন না যতক্ষণ না তার landed-cost রেকর্ড পোস্ট হয়।</p>
+
+    </div>
+  </article>
+
+  <footer>
+    <div class="shell">
+      <div class="post-foot">
+        <span class="eyebrow">আরও পড়ুন</span>
+        <div class="next">
+          <a class="next-card" href="/bn/lab/0040-odoo-quality-control-iso-bangladesh">
+            <span class="dir">পুরনো · 0040</span>
+            <h4>Odoo Quality Control for ISO</h4>
+            <p>ISO সার্টিফায়েড কারখানার জন্য কঠোর কোয়ালিটি চেক, অ্যালার্ট, এবং টলারেন্স কনফিগার করুন।</p>
+            <span class="arrow">→</span>
+          </a>
+          <a class="next-card" href="/bn/lab/0042-odoo-user-access-rights-configuration">
+            <span class="dir">নতুন · 0042</span>
+            <h4>Odoo User Roles &amp; Access Rights</h4>
+            <p>SME-দের জন্য নির্ভুল অ্যাক্সেস রাইট আর ইউজার রোল কনফিগার করে আপনার ERP নিরাপদ করুন।</p>
+            <span class="arrow">→</span>
+          </a>
+        </div>
+      </div>
+      <div class="foot">
+        <span>© ২০২৬ Mehedi Hasan · Lab / 0041</span>
+        <span><a href="/bn/#lab">↑ ল্যাব ইনডেক্সে ফিরুন</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/lab/_utils.js" defer></script>
+<script src="/lab/_toc.js" defer></script>
+<script src="/whatsapp.js" defer></script>
+<script src="/scroll-top.js" defer></script>
+</body>
+
+</html>

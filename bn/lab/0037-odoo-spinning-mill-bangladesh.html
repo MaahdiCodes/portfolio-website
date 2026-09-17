@@ -1,0 +1,581 @@
+<!doctype html>
+<html lang="bn">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description"
+    content="বাংলাদেশে Odoo স্পিনিং মিল — টেক্সটাইল মিলের জন্য কাউন্ট অনুযায়ী ইয়ার্ন ইনভেন্টরি, লুম ওয়ার্ক সেন্টার রাউটিং, গ্রে ফ্যাব্রিক QC, এবং ফিনিশড গুডস স্টক ট্র্যাকিং। সেটআপ করুন →" />
+  <meta name="robots" content="noindex, follow" />
+  <meta name="author" content="Mehedi Hasan" />
+  <title>বাংলাদেশে Odoo স্পিনিং মিল | ইয়ার্ন ও লুম | মেহেদী হাসান</title>
+  <link rel="canonical" href="https://mhasan.me/bn/lab/0037-odoo-spinning-mill-bangladesh" />
+  <link rel="alternate" hreflang="en" href="https://mhasan.me/lab/0037-odoo-spinning-mill-bangladesh" />
+  <link rel="alternate" hreflang="bn-BD" href="https://mhasan.me/bn/lab/0037-odoo-spinning-mill-bangladesh" />
+  <link rel="alternate" hreflang="x-default" href="https://mhasan.me/lab/0037-odoo-spinning-mill-bangladesh" />
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png" />
+  <link rel="apple-touch-icon" href="/favicon.png" />
+  <!-- Open Graph -->
+  <meta property="og:title" content="বাংলাদেশে Odoo স্পিনিং মিল | ইয়ার্ন ও লুম | মেহেদী হাসান" />
+  <meta property="og:description"
+    content="বাংলাদেশে স্পিনিং ও উইভিং মিলের জন্য Odoo কীভাবে কনফিগার করবেন — কাউন্ট ও কম্পোজিশন অনুযায়ী ইয়ার্ন ইনভেন্টরি, লুম রাউটিং, গ্রে ফ্যাব্রিক QC, এবং ফিনিশড গুডস স্টক ট্র্যাকিং।" />
+  <meta property="og:url" content="https://mhasan.me/bn/lab/0037-odoo-spinning-mill-bangladesh" />
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="https://mhasan.me/assets/og-default.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale" content="bn_BD" />
+  <meta property="og:site_name" content="মেহেদী হাসান | Odoo ERP কনসালট্যান্ট" />
+  <meta property="article:author" content="https://www.linkedin.com/in/mehedi-hasan-consultant/" />
+  <meta property="article:published_time" content="2026-05-07T12:00:00+06:00" />
+  <meta property="article:modified_time" content="2026-05-23T12:00:00+06:00" />
+  <meta property="article:section" content="Odoo ERP Bangladesh" />
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="বাংলাদেশে Odoo স্পিনিং মিল | ইয়ার্ন ও লুম ERP গাইড" />
+  <meta name="twitter:description"
+    content="বাংলাদেশে স্পিনিং ও উইভিং মিলের জন্য Odoo কনফিগার করুন — কাউন্ট অনুযায়ী ইয়ার্ন স্টক, লুম রাউটিং, গ্রে ফ্যাব্রিক QC, এবং ফিনিশড গুডস ট্র্যাকিং।" />
+  <meta name="twitter:image" content="https://mhasan.me/assets/og-default.jpg" />
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "স্পিনিং ও উইভিং মিলের জন্য Odoo: ইয়ার্ন স্টক, লুম রাউটিং ও QC",
+    "description": "বাংলাদেশে স্পিনিং ও উইভিং মিলের জন্য Odoo ERP কনফিগার করার সম্পূর্ণ গাইড। কাউন্ট ও কম্পোজিশন অনুযায়ী ইয়ার্ন ইনভেন্টরি ব্যবস্থাপনা, ইয়ার্ন ও ফ্যাব্রিক প্রোডাকশনের জন্য BOM স্ট্রাকচার, লুম ও ওয়ার্ক সেন্টার রাউটিং কনফিগারেশন, গ্রে ফ্যাব্রিক থেকে ফিনিশড ফ্যাব্রিক ট্র্যাকিং, কোয়ালিটি কন্ট্রোল (GSM, কাউন্ট, টুইস্ট, শ্রিংকেজ), ইয়ার্ন স্টকের জন্য ইনভেন্টরি ভ্যালুয়েশন, এবং বাংলাদেশ স্পিনিং মিল-নির্দিষ্ট ERP বিবেচ্য বিষয় কভার করে।",
+    "datePublished": "2026-05-07T12:00:00+06:00",
+    "dateModified": "2026-05-23T12:00:00+06:00",
+    "inLanguage": "bn",
+    "author": {
+      "@type": "Person",
+      "name": "Mehedi Hasan",
+      "url": "https://mhasan.me",
+      "jobTitle": "Odoo ERP Consultant & Business Analyst",
+      "sameAs": "https://www.linkedin.com/in/mehedi-hasan-consultant/"
+    },
+    "publisher": { "@type": "Person", "name": "Mehedi Hasan", "url": "https://mhasan.me" },
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://mhasan.me/bn/lab/0037-odoo-spinning-mill-bangladesh" }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "হোম", "item": "https://mhasan.me/bn" },
+      { "@type": "ListItem", "position": 2, "name": "ল্যাব", "item": "https://mhasan.me/bn/#lab" },
+      { "@type": "ListItem", "position": 3, "name": "বাংলাদেশে Odoo স্পিনিং মিল", "item": "https://mhasan.me/bn/lab/0037-odoo-spinning-mill-bangladesh" }
+    ]
+  }
+]
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&family=Noto+Sans+Bengali:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap">
+  <link rel="stylesheet" href="/lab/_styles.css">
+  <style>
+    body{ font-family: 'Noto Sans Bengali', var(--sans); }
+    .yarn-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 12.5px;
+      margin: 24px 0;
+    }
+    .yarn-table th {
+      padding: 10px 14px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-3);
+      text-align: left;
+    }
+    .yarn-table td {
+      padding: 10px 14px;
+      border: 1px solid var(--border);
+      color: var(--text-2);
+      vertical-align: top;
+      line-height: 1.6;
+    }
+    .yarn-table td:first-child { font-weight: 500; color: var(--text); }
+
+    .flow-card {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+      margin: 20px 0;
+    }
+    .flow-row {
+      display: grid;
+      grid-template-columns: 140px 1fr 180px;
+      border-bottom: 1px solid var(--border);
+      align-items: stretch;
+    }
+    .flow-row:last-child { border-bottom: none; }
+    .flow-stage {
+      padding: 14px 16px;
+      background: var(--surface);
+      border-right: 1px solid var(--border);
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+    }
+    .flow-desc {
+      padding: 14px 16px;
+      font-size: 12.5px;
+      color: var(--text-2);
+      line-height: 1.7;
+    }
+    .flow-odoo {
+      padding: 14px 16px;
+      border-left: 1px solid var(--border);
+      font-family: var(--mono);
+      font-size: 10.5px;
+      color: var(--accent);
+      line-height: 1.7;
+      display: flex;
+      align-items: center;
+    }
+
+    .qc-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin: 24px 0;
+    }
+    .qc-card {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .qc-head {
+      padding: 11px 14px;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text);
+    }
+    .qc-point {
+      font-family: var(--mono);
+      font-size: 9.5px;
+      text-transform: uppercase;
+      letter-spacing: 0.09em;
+      color: var(--accent);
+      margin-bottom: 4px;
+    }
+    .qc-body {
+      padding: 12px 14px;
+    }
+    .qc-item {
+      display: flex;
+      gap: 8px;
+      font-size: 12px;
+      color: var(--text-2);
+      margin-bottom: 7px;
+      line-height: 1.5;
+    }
+    .qc-item:last-child { margin-bottom: 0; }
+    .qc-param {
+      font-family: var(--mono);
+      font-size: 10px;
+      color: var(--text-3);
+      min-width: 52px;
+      margin-top: 1px;
+    }
+
+    .pull {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: clamp(20px, 2.8vw, 30px);
+      line-height: 1.3;
+      color: var(--text);
+      margin: 48px 0;
+      max-width: 26ch;
+      letter-spacing: -0.01em;
+    }
+    .pull::before {
+      content: "";
+      display: block;
+      width: 36px;
+      height: 1px;
+      background: var(--accent);
+      margin-bottom: 18px;
+    }
+
+    .field-note{margin:28px 0;border:1px solid var(--border);border-radius:12px;overflow:hidden;background:var(--surface)}
+    .fn-hd{display:flex;align-items:center;justify-content:space-between;padding:12px 18px;border-bottom:1px solid var(--border);font-family:var(--mono);font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-3)}
+    .fn-hd .when{color:var(--accent)}
+    .fn-body{padding:18px 22px;font-size:15px;line-height:1.65;color:var(--text-2)}
+    .fn-body strong{color:var(--text);font-weight:500}
+
+    @media(max-width:800px){
+      .flow-row { grid-template-columns: 1fr; }
+      .flow-stage { border-right: none; border-bottom: 1px solid var(--border); }
+      .flow-odoo { border-left: none; border-top: 1px solid var(--border); }
+    }
+    @media(max-width:700px){
+      .qc-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="grid-bg"></div>
+
+  <header class="nav">
+    <div class="shell">
+      <div class="nav-inner">
+        <a class="brand" href="/bn/">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span class="brand-name"><b>Mehedi Hasan</b><em>ERP · বিজনেস অ্যানালিস্ট</em></span>
+        </a>
+        <a class="back-link" href="/bn/#lab">← ল্যাব-এ ফিরুন</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="post-head">
+    <div class="shell">
+      <span class="eyebrow">টেকনিক্যাল ল্যাব · 0037</span>
+      <h1>বাংলাদেশে স্পিনিং মিলের জন্য Odoo — <span class="serif">ইয়ার্ন স্টক, লুম রাউটিং, গ্রে ফ্যাব্রিক QC।</span></h1>
+      <p class="lede">বাংলাদেশের স্পিনিং আর উইভিং খাত প্রতি বছর দেশীয় RMG শিল্প আর সরাসরি এক্সপোর্টের জন্য কোটি কোটি মিটার ইয়ার্ন আর ফ্যাব্রিক উৎপাদন করে। কাউন্ট, কম্পোজিশন, আর গ্রেড অনুযায়ী ইয়ার্ন ইনভেন্টরি ব্যবস্থাপনা এবং লুম প্রোডাকশন রাউটিং হলো মূল ERP চ্যালেঞ্জ। এই গাইড দেখায় কীভাবে সম্পূর্ণ স্পিনিং-টু-ফ্যাব্রিক ওয়ার্কফ্লোর জন্য Odoo কনফিগার করবেন।</p>
+      <div class="post-meta">
+        <span class="chip accent">ইন্ডাস্ট্রি গাইড</span>
+        <span class="chip">স্পিনিং মিল</span>
+        <span class="chip">উইভিং</span>
+        <span class="chip">বাংলাদেশ টেক্সটাইল</span>
+      </div>
+      <div class="byline">
+        <span>লেখক<b><a href="https://www.linkedin.com/in/mehedi-hasan-consultant/" style="color:var(--accent)" rel="author">Mehedi Hasan</a></b></span>
+        <span>প্রকাশিত<b>মে ২০২৬</b></span>
+        <span>পড়ার সময়<b>১৩ মিনিট</b></span>
+        <span>ধরন<b>ইন্ডাস্ট্রি কনফিগারেশন গাইড</b></span>
+        <span>পরিসর<b>স্পিনিং · উইভিং · বাংলাদেশের টেক্সটাইল মিল</b></span>
+      </div>
+    </div>
+  </section>
+
+  <article class="post">
+    <aside class="toc">
+      <div class="toc-k">এই গাইডে</div>
+      <ol>
+        <li><a href="#mill-erp">স্পিনিং মিল ERP চ্যালেঞ্জ</a></li>
+        <li><a href="#yarn-inventory">ইয়ার্ন ইনভেন্টরি সেটআপ</a></li>
+        <li><a href="#bom">ইয়ার্ন ও ফ্যাব্রিকের জন্য BOM</a></li>
+        <li><a href="#routing">লুম রাউটিং কনফিগারেশন</a></li>
+        <li><a href="#grey-to-finished">গ্রে থেকে ফিনিশড ফ্যাব্রিক ট্র্যাকিং</a></li>
+        <li><a href="#qc">কোয়ালিটি কন্ট্রোল সেটআপ</a></li>
+        <li><a href="#valuation">ইয়ার্ন ইনভেন্টরি ভ্যালুয়েশন</a></li>
+        <li><a href="#bangladesh">বাংলাদেশ স্পিনিং মিল নোট</a></li>
+        <li><a href="#faq">সচরাচর জিজ্ঞাসা</a></li>
+      </ol>
+    </aside>
+
+    <div class="body">
+      <p>স্পিনিং আর উইভিং মিলগুলোতে একটি নির্দিষ্ট ERP কনফিগারেশন চ্যালেঞ্জ থাকে: কাঁচামাল (তুলার ফাইবার), মধ্যবর্তী প্রোডাক্ট (স্লাইভার, রোভিং, ইয়ার্ন), এবং ফিনিশড প্রোডাক্ট (গ্রে ফ্যাব্রিক, ফিনিশড ফ্যাব্রিক) — সবই ভিন্ন ইউনিটে পরিমাপ করা হয়, আর প্রতিটি স্টেজে প্রোডাকশন ইল্ড কখনো ঠিক 100% হয় না। প্রসেসিং ওয়েস্ট (নয়েল, ফাইবার লস, ইয়ার্ন ব্রেকেজ, লুম ওয়েস্ট) মানে 1,000 কেজি তুলার ফাইবার 1,000 কেজি ইয়ার্ন উৎপাদন করে না, আর 1,000 কেজি ইয়ার্ন প্রত্যাশিত ওজনে 1,000 মিটার গ্রে ফ্যাব্রিক উৎপাদন করে না।</p>
+
+      <p>ইল্ড ট্র্যাক না করে শুধু কোয়ান্টিটি ট্র্যাক করা ERP টেক্সটাইল ম্যানুফ্যাকচারিংয়ে একটি দায় হয়ে দাঁড়ায়। এটি আপনাকে এমন সংখ্যা দেয় যা ধীরে ধীরে ফিজিক্যাল বাস্তবতা থেকে সরে যায় — যতক্ষণ না বার্ষিক ফিজিক্যাল স্টক কাউন্টে দেখা যায় সিস্টেম বলছে আপনার কাছে 45,000 কেজি 30s কাউন্ট ইয়ার্ন আছে আর গুদামে আছে 38,000 কেজি। সঠিক BOM ইল্ড শতাংশ আর সামঞ্জস্যপূর্ণ প্রোডাকশন কোয়ান্টিটি রেকর্ডিং দিয়ে কনফিগার করা হলে Odoo এটি সঠিকভাবে হ্যান্ডল করে। এই গাইড দেখায় কীভাবে।</p>
+
+      <p>ম্যানুফ্যাকচারিং মডিউলের ভিত্তির জন্য দেখুন <a href="/bn/lab/0013-odoo-manufacturing-module-bangladesh" style="color:var(--accent)">বাংলাদেশের কারখানার জন্য Odoo ম্যানুফ্যাকচারিং মডিউল সেটআপ গাইড</a>। ইয়ার্ন স্টকে প্রযোজ্য ইনভেন্টরি ভ্যালুয়েশন পদ্ধতির জন্য দেখুন <a href="/bn/lab/0011-odoo-inventory-valuation-cheatsheet" style="color:var(--accent)">Odoo ইনভেন্টরি ভ্যালুয়েশন চিটশিট</a>।</p>
+
+      <p class="pull">একটি টেক্সটাইল মিলে, theoretical yield আর actual yield-এর মধ্যকার ফাঁক কোনো রাউন্ডিং এরর নয় — এটাই একটি লাভজনক মিল আর একটি লোকসানী মিলের মধ্যকার পার্থক্য। ERP-কে এটি নিখুঁতভাবে পরিমাপ করতে হবে।</p>
+
+      <h2 id="mill-erp">স্পিনিং মিল ERP চ্যালেঞ্জ</h2>
+
+      <ul>
+        <li><strong>ইউনিট অফ মেজার জটিলতা:</strong> তুলা বেল অনুযায়ী কেনা হয় (প্রতি বেলে 170–220 কেজি)। ইয়ার্ন কেজি অনুযায়ী উৎপাদিত হয় আর কোন বা কেজি অনুযায়ী বিক্রি হয়। ফ্যাব্রিক মিটার অনুযায়ী বিক্রি হয়, ওজন-ভিত্তিক ফ্যাব্রিকের জন্য কখনো কেজি অনুযায়ীও। ERP-কে একটি একক প্রোডাকশন ফ্লোর মধ্যে এই সব UoM আর তাদের কনভার্সন হ্যান্ডল করতে হবে।</li>
+        <li><strong>একটি প্রোডাক্ট অ্যাট্রিবিউট হিসেবে ইয়ার্ন কাউন্ট:</strong> একটি স্পিনিং মিল একাধিক কাউন্টে ইয়ার্ন উৎপাদন করে (10s, 16s, 20s, 30s, 40s)। বেশি কাউন্ট মানে সূক্ষ্মতর ইয়ার্ন মানে ভিন্ন মেশিন সেটিং, গতি, আর ইল্ড। একই তুলার ফাইবার ভিন্ন হারে ভিন্ন কাউন্টের ইয়ার্ন উৎপাদন করে। ইনভেন্টরিতে প্রতিটি কাউন্ট আলাদাভাবে ট্র্যাক করতে হয় কিন্তু কাঁচামাল একই।</li>
+        <li><strong>প্রতিটি স্টেজে প্রসেসিং ওয়েস্ট:</strong> তুলা থেকে ফিনিশড ইয়ার্ন পর্যন্ত, সাধারণ ওয়েস্ট লেভেল: ব্লোরুম/কার্ডিং (3–5%), কম্বিং (কম্বড ইয়ার্নের জন্য 12–18%), ড্রফ্রেম/রোভিং (0.5–1%), রিং স্পিনিং (1.5–3%), উইন্ডিং/কোন উইন্ডিং (0.5–1%)। BOM ইল্ড ফ্যাক্টরকে এই স্টেজ লসগুলো প্রতিফলিত করতে হবে। BOM যদি 100% ইল্ড ধরে নেয় যখন প্রকৃত ইল্ড 85%, আপনার সিস্টেম কস্ট প্রতি কেজি কম দেখায় আর আপনার ইনভেন্টরি ব্যালেন্স বাস্তবতা থেকে ঊর্ধ্বমুখী হয়ে যায়।</li>
+        <li><strong>প্রোডাকশন অর্ডার একাধিক দিন জুড়ে চলে:</strong> 30s কাউন্ট ইয়ার্ন উৎপাদন করা একটি স্পিনিং ফ্রেম 5,000 কেজি প্রোডাকশন ব্যাচ সম্পূর্ণ করতে 5–7 দিন চলতে পারে। Odoo-তে প্রোডাকশন অর্ডার এই সময়কাল জুড়ে চলে, প্রতি শিফটে দৈনিক প্রোডাকশন কোয়ান্টিটি রেকর্ড হয়।</li>
+        <li><strong>একাধিক আধা-ফিনিশড প্রোডাক্ট:</strong> মধ্যবর্তী স্টেজ (স্লাইভার, রোভিং, ড্রন স্লাইভার) ছোট মিল কমই ERP-তে আলাদাভাবে ট্র্যাক করে — সেগুলো দিনের বা সপ্তাহের মধ্যেই উৎপাদিত ও খরচ হয়। BOM স্ট্রাকচারের মাধ্যমে Odoo এটি সঠিকভাবে হ্যান্ডল করে: স্লাইভার আলাদাভাবে ট্র্যাক না করলে, স্পিনিং BOM-এ এটিকে একটি "phantom" সাব-অ্যাসেম্বলি হিসেবে অন্তর্ভুক্ত করুন যা রিং স্পিনিং MO-তে সরাসরি খরচ হয়।</li>
+      </ul>
+
+      <h2 id="yarn-inventory">Odoo-তে ইয়ার্ন ইনভেন্টরি সেটআপ</h2>
+
+      <p>ইয়ার্নের জন্য প্রোডাক্ট মাস্টার সেটআপ:</p>
+
+      <table class="yarn-table">
+        <thead>
+          <tr>
+            <th>কনফিগারেশন</th>
+            <th>সেটিং</th>
+            <th>কেন</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>প্রোডাক্ট টেমপ্লেট নাম</td>
+            <td>"100% Carded Cotton Yarn" (প্রতি কম্পোজিশনে একটি টেমপ্লেট)</td>
+            <td>ভ্যারিয়েন্ট ব্যবহার করে একই কম্পোজিশনের সব কাউন্ট একটি টেমপ্লেটের অধীনে গ্রুপ করুন</td>
+          </tr>
+          <tr>
+            <td>প্রোডাক্ট ভ্যারিয়েন্ট অ্যাট্রিবিউট</td>
+            <td>Count: 10s, 16s, 20s, 24s, 30s, 40s</td>
+            <td>প্রতিটি কাউন্ট একটি আলাদা ভ্যারিয়েন্ট কিন্তু একটি প্রোডাক্ট টেমপ্লেটের অধীনে ম্যানেজ করা</td>
+          </tr>
+          <tr>
+            <td>ইউনিট অফ মেজার</td>
+            <td>Kg (অভ্যন্তরীণ প্রোডাকশনের জন্য), Cone (গার্মেন্টস কারখানায় বিক্রির জন্য)</td>
+            <td>অভ্যন্তরীণ প্রোডাকশন ওজন-ভিত্তিক; কাস্টমার কোন অনুযায়ী কেনে — কনভার্সন ফ্যাক্টরসহ উভয় UoM সেটআপ করুন</td>
+          </tr>
+          <tr>
+            <td>ট্র্যাকিং</td>
+            <td>By Lot (ট্রেসেবল প্রোডাকশন ব্যাচের জন্য)</td>
+            <td>Lot = প্রোডাকশন ব্যাচ। তুলা → ইয়ার্ন → ফ্যাব্রিক ট্রেসেবিলিটি আর শিপমেন্টের পর কাউন্ট বিচ্যুতি পাওয়া গেলে কোয়ালিটি রিকল সক্ষম করে</td>
+          </tr>
+          <tr>
+            <td>কস্টিং পদ্ধতি</td>
+            <td>Average Cost (AVCO)</td>
+            <td>ইয়ার্ন কস্ট তুলার কোয়ালিটি সিজন, এনার্জি কস্ট, আর কাউন্ট অনুযায়ী আলাদা হয়। AVCO প্রোডাকশন রান জুড়ে কস্ট সমান করে। লট-নির্দিষ্ট কস্ট দরকার হলে এক্সপোর্টের জন্য FIFO।</td>
+          </tr>
+          <tr>
+            <td>রুট</td>
+            <td>Manufacture (অভ্যন্তরীণভাবে উৎপাদিত ইয়ার্নের জন্য)</td>
+            <td>ম্যানুফ্যাকচারিং ডিমান্ড থেকে প্রোডাকশন অর্ডার তৈরি হয়। প্রতিটি কাউন্টের ন্যূনতমের নিচে ইয়ার্ন স্টক নামলে রিঅর্ডারিং রুল ট্রিগার হয়।</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>প্রতিটি কম্পোজিশন পরিবারের জন্য আলাদা প্রোডাক্ট টেমপ্লেট সেটআপ করুন:</p>
+      <ul>
+        <li>100% Carded Cotton Yarn (ভ্যারিয়েন্ট: কাউন্ট 10s–40s)</li>
+        <li>100% Combed Cotton Yarn (ভ্যারিয়েন্ট: কাউন্ট 20s–80s)</li>
+        <li>PC Yarn (Polyester-Cotton 65/35) (ভ্যারিয়েন্ট: কাউন্ট 20s–40s)</li>
+        <li>CVC Yarn (Cotton-rich Polyester 60/40) (ভ্যারিয়েন্ট: কাউন্ট 20s–40s)</li>
+        <li>100% Polyester Yarn (ভ্যারিয়েন্ট: কাউন্ট 20s–150 denier)</li>
+      </ul>
+
+      <h2 id="bom">ইয়ার্ন প্রোডাকশনের জন্য BOM</h2>
+
+      <p>স্পিনিং BOM তুলার ফাইবার (বা ব্লেন্ডেড ইয়ার্নের জন্য তুলা + পলিয়েস্টার) নিয়ে প্রাসঙ্গিক কাউন্টে ইয়ার্ন উৎপাদন করে। গুরুত্বপূর্ণ কনফিগারেশন হলো ইল্ড ফ্যাক্টর — আউটপুট (ইয়ার্ন) আর ইনপুট (ফাইবার)-এর অনুপাত। 1 কেজি 30s কার্ডেড কটন ইয়ার্নের একটি সাধারণ BOM:</p>
+
+      <table class="yarn-table">
+        <thead>
+          <tr>
+            <th>কম্পোনেন্ট</th>
+            <th>UoM</th>
+            <th>প্রতি 1 কেজি ইয়ার্নে কোয়ান্টিটি</th>
+            <th>নোট</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Cotton Fibre — Shankar-6 (31mm staple)</td>
+            <td>Kg</td>
+            <td>1.095</td>
+            <td>9.5% ওয়েস্ট — ব্লোরুম + কার্ডিং + ড্রাফটিং লস একত্রে</td>
+          </tr>
+          <tr>
+            <td>Cone (plastic, 150g)</td>
+            <td>Pcs</td>
+            <td>0.5</td>
+            <td>1 কোন প্রায় 2 কেজি 30s ইয়ার্ন ধরে (2 কেজি/কোন = 0.5 কোন/কেজি)</td>
+          </tr>
+          <tr>
+            <td>Carton (12 cone)</td>
+            <td>Pcs</td>
+            <td>0.042</td>
+            <td>1 কার্টন / 24 কেজি (12 কোন × 2 কেজি) = প্রতি কেজিতে 0.042 কার্টন</td>
+          </tr>
+          <tr>
+            <td>Packing material (wrapper, tape)</td>
+            <td>Set</td>
+            <td>0.042</td>
+            <td>প্রতি কার্টনে একটি সেট</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>কম্বড ইয়ার্নের জন্য, কম্বার নয়েলের (একটি বাই-প্রোডাক্ট হিসেবে আলাদাভাবে বিক্রি হওয়া ওয়েস্ট) জন্য একটি আলাদা লাইন যোগ করুন। Odoo-তে, কম্বার নয়েল BOM-এ একটি বাই-প্রোডাক্ট হিসেবে কনফিগার করা যায় (Manufacturing → Configuration → Settings → "By-Products" সক্রিয় করুন)। বাই-প্রোডাক্ট লাইন নির্দিষ্ট করে যে প্রতি 1 কেজি কম্বড ইয়ার্নে 0.12 কেজি কম্বার নয়েল উৎপাদিত হয়। নয়েল স্টকে রিসিভ হয় (কম-মূল্যের বাই-প্রোডাক্ট হিসেবে) আর পেপারমেকিং আর ওয়াডিং শিল্পে বিক্রি হয়।</p>
+
+      <p>ব্লেন্ডেড ইয়ার্নের জন্য (PC বা CVC), BOM-এ দুটি ফাইবার ইনপুট থাকে:</p>
+      <ul>
+        <li>PC 65/35 yarn: প্রতি 1 কেজি ইয়ার্নে 0.67 কেজি পলিয়েস্টার স্টেপল + 0.37 কেজি তুলার ফাইবার (ব্লেন্ড রেশিও + ওয়েস্ট হিসাব করে)</li>
+        <li>CVC 60/40 yarn: প্রতি 1 কেজি ইয়ার্নে 0.62 কেজি তুলার ফাইবার + 0.43 কেজি পলিয়েস্টার স্টেপল</li>
+      </ul>
+
+      <h2 id="routing">উইভিং মিলের জন্য লুম রাউটিং কনফিগারেশন</h2>
+
+      <p>উইভিং মিলের জন্য (বা ইন্টিগ্রেটেড উইভিংসহ স্পিনিং মিল), Odoo Manufacturing → Configuration → Routings-এ ম্যানুফ্যাকচারিং রাউটিং কনফিগার করুন। প্রতি ফ্যাব্রিক কনস্ট্রাকশন টাইপে একটি রাউটিং তৈরি করুন:</p>
+
+      <div class="flow-card">
+        <div class="flow-row">
+          <div class="flow-stage">Beam Preparation (Warping)</div>
+          <div class="flow-desc">নির্দিষ্ট warp কাউন্ট আর প্রস্থে ওয়ার্প ইয়ার্ন একটি বিমে ওয়াইন্ড করা হয়। বিম প্রিপারেশন মেশিন (direct warper বা sectional warper) Work Centre "Warping" হিসেবে কনফিগার করা হয়। সময়: প্রস্থ আর গতি অনুযায়ী প্রতি বিমে 2–4 ঘণ্টা। রেকর্ড: প্রকৃত ওয়ার্প লেংথ, ওয়ার্প টেনশন, ব্রেকেজ কাউন্ট।</div>
+          <div class="flow-odoo">WC: Warping<br>ট্র্যাক করা কোয়ান্টিটি: বিম লেংথ (m)</div>
+        </div>
+        <div class="flow-row">
+          <div class="flow-stage">Drawing-in (Drafting)</div>
+          <div class="flow-desc">ফ্যাব্রিক কনস্ট্রাকশন ডিজাইন অনুযায়ী ওয়ার্প এন্ড হেডল আর রিডের মধ্য দিয়ে থ্রেড করা হয়। এটি একটি শ্রমনিবিড় ম্যানুয়াল অপারেশন (বা আধুনিক মিলের জন্য auto-drawing)। সময়: রিড কাউন্ট আর প্রস্থ অনুযায়ী প্রতি লুমে প্রতি বিমে 4–8 ঘণ্টা। নতুন বিম বা weave প্যাটার্ন পরিবর্তন হলে একবার করা হয়।</div>
+          <div class="flow-odoo">WC: Drawing-in<br>ট্র্যাক করা কোয়ান্টিটি: ড্রন বিম</div>
+        </div>
+        <div class="flow-row">
+          <div class="flow-stage">Weaving</div>
+          <div class="flow-desc">মূল প্রোডাকশন স্টেজ। গ্রে ফ্যাব্রিক তৈরি করতে লুম ক্রমাগতভাবে weft ইয়ার্ন ইনসার্ট করতে থাকে। প্রতিটি লুম একটি আলাদা ওয়ার্ক সেন্টার (বা লুম টাইপ অনুযায়ী গ্রুপ করা)। দৈনিক আউটপুট: প্রতি লুমে প্রতি দিনে বোনা মিটার। লুম এফিশিয়েন্সি = প্রকৃত মিটার / theoretical মিটার (গতি × চলমান সময় × প্রতি মিটারে পিক-এর ভিত্তিতে)।</div>
+          <div class="flow-odoo">WC: Rapier / Jacquard / Air-Jet<br>ট্র্যাক করা কোয়ান্টিটি: মিটার/শিফট</div>
+        </div>
+        <div class="flow-row">
+          <div class="flow-stage">Grey Fabric Inspection</div>
+          <div class="flow-desc">একটি ফ্যাব্রিক ইন্সপেকশন মেশিনে 100% গ্রে ফ্যাব্রিক ইন্সপেকশন। ডিফেক্ট চিহ্নিত করা হয় (ওয়ার্প ব্রেক, weft ব্রেক, রিড মার্ক, ছিদ্র, তেলের দাগ)। ফ্যাব্রিক গ্রেড করা হয়: A-গ্রেড (প্রতি 100m-এ ≤4 ডিফেক্ট পয়েন্ট), B-গ্রেড (4–8 পয়েন্ট), C-গ্রেড (>8 পয়েন্ট)। B আর C গ্রেড ডিসকাউন্টে বিক্রি হয় বা কেটে বাদ দেওয়া হয়।</div>
+          <div class="flow-odoo">WC: Inspection<br>QC check: গ্রেড + ডিফেক্ট পয়েন্ট</div>
+        </div>
+        <div class="flow-row">
+          <div class="flow-stage">Grey Folding / Rolling</div>
+          <div class="flow-desc">ইন্সপেক্ট করা গ্রে ফ্যাব্রিক কাস্টমার স্পেসিফিকেশন অনুযায়ী বেল-এ ভাঁজ করা বা টিউবে রোল করা হয়। প্রতিটি রোলে লট নম্বর, কনস্ট্রাকশন (EPI × PPI × width), আর ওজন চিহ্নিত করা হয়। গ্রে ফ্যাব্রিক স্টোরে বা সরাসরি ফিনিশিং/ডাইং ডিপার্টমেন্টে ট্রান্সফার।</div>
+          <div class="flow-odoo">WC: Folding<br>ফিনিশড গুডস: Grey Fabric লট তৈরি হয়</div>
+        </div>
+      </div>
+
+      <h2 id="grey-to-finished">গ্রে থেকে ফিনিশড ফ্যাব্রিক ট্র্যাকিং</h2>
+
+      <p>Odoo-তে গ্রে ফ্যাব্রিক থেকে ফিনিশড ফ্যাব্রিক ফ্লোতে দুটি Manufacturing Order জড়িত থাকে:</p>
+
+      <p><strong>MO 1: Yarn → Grey Fabric</strong><br>
+      ইনপুট: ওয়ার্প ইয়ার্ন (কেজি অনুযায়ী) + weft ইয়ার্ন (কেজি অনুযায়ী) + সাইজিং স্টার্চ (প্রযোজ্য হলে ওয়ার্প সাইজিংয়ের জন্য)। আউটপুট: গ্রে ফ্যাব্রিক (মিটার অনুযায়ী, প্রতি-মিটার ওজন GSM স্পেসিফিকেশনসহ)। এই MO ওয়ার্পিং, সাইজিং, ড্রয়িং-ইন, আর উইভিং কভার করে। উৎপাদিত গ্রে ফ্যাব্রিকে একটি লট নম্বর অ্যাসাইন হয় (যেমন, GF-2026-05-001 = গ্রে ফ্যাব্রিক ব্যাচ 001, মে 2026)।</p>
+
+      <p><strong>MO 2: Grey Fabric → Finished Fabric</strong><br>
+      ইনপুট: গ্রে ফ্যাব্রিক (মিটার অনুযায়ী) + ডাইং কেমিক্যাল/ডাই + ফিনিশিং কেমিক্যাল। আউটপুট: ফিনিশড ফ্যাব্রিক (মিটার অনুযায়ী)। এই MO স্কাওরিং, ব্লিচিং, ডাইং, ফিনিশিং (stenter, sanforizing) কভার করে। এখানে ফিনিশড ফ্যাব্রিক লট (dye lot) অ্যাসাইন করা হয়।</p>
+
+      <p>ওয়েট প্রসেসিং একটি ডাই হাউসে আউটসোর্স করা হলে:</p>
+      <ul>
+        <li>Grey → Finished BOM-কে একটি <strong>Subcontracting BOM</strong> হিসেবে কনফিগার করুন</li>
+        <li>ডাই হাউসের কাছে একটি সাবকন্ট্র্যাক্টিং PO তৈরি করুন: গ্রে ফ্যাব্রিক কম্পোনেন্ট হিসেবে পাঠানো হয়, ফিনিশড ফ্যাব্রিক প্রোডাক্ট হিসেবে রিসিভ হয়</li>
+        <li>Odoo পাঠানো গ্রে ফ্যাব্রিক কোয়ান্টিটি, রিসিভ হওয়া ফিনিশড ফ্যাব্রিক, এবং প্রসেসিং লস (বোনা ফ্যাব্রিকের জন্য সাধারণত 3–6%) ট্র্যাক করে</li>
+        <li>ডাই হাউসের ইনভয়েসই সাবকন্ট্র্যাক্টিং অপারেশনের কস্ট — Odoo-তে সাবকন্ট্র্যাক্টিং PO-র বিপরীতে এটি পোস্ট করুন</li>
+      </ul>
+
+      <h2 id="qc">স্পিনিং মিলের জন্য কোয়ালিটি কন্ট্রোল সেটআপ</h2>
+
+      <div class="qc-grid">
+        <div class="qc-card">
+          <div class="qc-head">
+            <div class="qc-point">QC Point 1</div>
+            Cotton Fibre Receipt
+          </div>
+          <div class="qc-body">
+            <div class="qc-item"><span class="qc-param">Micronaire</span><span>টার্গেট 3.8–4.8 μg/inch। মোটা ফাইবার (>4.9) কর্কশ ইয়ার্ন তৈরি করে; সূক্ষ্মতর (&lt;3.7) প্রসেসিং সমস্যা তৈরি করে।</span></div>
+            <div class="qc-item"><span class="qc-param">Staple</span><span>mm-এ স্টেপল লেংথ। UHML (upper half mean length) রেকর্ড করুন। PO স্পেসিফিকেশনের সাথে তুলনা করুন।</span></div>
+            <div class="qc-item"><span class="qc-param">Strength</span><span>g/tex-এ বান্ডল স্ট্রেংথ। মিড কাউন্ট ইয়ার্ন প্রোডাকশনের জন্য ন্যূনতম 28 g/tex।</span></div>
+            <div class="qc-item"><span class="qc-param">Trash</span><span>ওজন অনুযায়ী % trash content। >4% কার্ডিং স্টেজে ওয়েস্ট বাড়ায় আর ইয়ার্নের পরিচ্ছন্নতা প্রভাবিত করে।</span></div>
+          </div>
+        </div>
+        <div class="qc-card">
+          <div class="qc-head">
+            <div class="qc-point">QC Point 2</div>
+            In-Process Yarn (Ring Frame)
+          </div>
+          <div class="qc-body">
+            <div class="qc-item"><span class="qc-param">Count</span><span>Nominal কাউন্টের বিপরীতে প্রকৃত কাউন্ট। গ্রহণযোগ্য বিচ্যুতি: স্ট্যান্ডার্ডের জন্য ±2%, এক্সপোর্ট কোয়ালিটির জন্য ±1%।</span></div>
+            <div class="qc-item"><span class="qc-param">CSP</span><span>Count Strength Product — সিঙ্গেল ইয়ার্ন স্ট্রেংথ × কাউন্ট। ন্যূনতম CSP কাউন্ট অনুযায়ী আলাদা হয় (যেমন, 30s ন্যূনতম 2,100)।</span></div>
+            <div class="qc-item"><span class="qc-param">TPI</span><span>প্রতি ইঞ্চিতে টুইস্ট। প্রোডাকশন স্পেসিফিকেশনের বিপরীতে যাচাই করুন (twist multiplier × √count)। ±5% টলারেন্স।</span></div>
+            <div class="qc-item"><span class="qc-param">Elongation</span><span>ব্রেকে % elongation। উইভিং অ্যাপ্লিকেশনের জন্য ন্যূনতম 4.5%। কম elongation = লুমে ওয়ার্প ব্রেকেজ।</span></div>
+          </div>
+        </div>
+        <div class="qc-card">
+          <div class="qc-head">
+            <div class="qc-point">QC Point 3</div>
+            Finished Yarn / Grey Fabric Delivery
+          </div>
+          <div class="qc-body">
+            <div class="qc-item"><span class="qc-param">Lea Count</span><span>উইন্ডিং স্যাম্পলে অফিসিয়াল Lea count টেস্ট। ডেলিভারির আগে প্রতি প্রোডাকশন লটে ফলাফল ডকুমেন্ট করুন।</span></div>
+            <div class="qc-item"><span class="qc-param">Uster %</span><span>ইয়ার্ন evenness (CVm%)। স্ট্যান্ডার্ডের জন্য টার্গেট &lt;12%, কম্বডের জন্য &lt;9%। বেশি = ফ্যাব্রিকে বেশি ইমপারফেকশন।</span></div>
+            <div class="qc-item"><span class="qc-param">GSM</span><span>প্রতি বর্গমিটারে গ্রামে ফ্যাব্রিক ওজন। নির্দিষ্ট GSM-এর ±5% গ্রহণযোগ্য। প্রতি রোলে রেকর্ড করুন।</span></div>
+            <div class="qc-item"><span class="qc-param">Width</span><span>ফিনিশিংয়ের পর সেন্টিমিটারে ফিনিশড ফ্যাব্রিকের প্রস্থ। বায়ার স্পেসিফিকেশন পূরণ করতে হবে (যেমন, 150cm ±1cm)।</span></div>
+          </div>
+        </div>
+      </div>
+
+      <p>Odoo-তে, Quality মডিউলে এগুলো Quality Check Points হিসেবে কনফিগার করুন (Manufacturing → Quality → Control Points)। প্রতিটি চেক পয়েন্ট রাউটিংয়ের প্রাসঙ্গিক ওয়ার্ক অর্ডারে অ্যাটাচ করুন: তুলা চেক "Receipt" অপারেশনে অ্যাটাচ হয়, in-process ইয়ার্ন চেক "Ring Spinning" ওয়ার্ক অর্ডারে অ্যাটাচ হয়, ফিনিশড ইয়ার্ন চেক "Winding" বা "Packing" ওয়ার্ক অর্ডারে অ্যাটাচ হয়। ব্যর্থ চেক QC ম্যানেজারকে অ্যাসাইন করা একটি Quality Alert তৈরি করে, আর অ্যালার্ট সমাধান না হওয়া পর্যন্ত প্রোডাকশন লট পরবর্তী স্টেজে যেতে ব্লক থাকে।</p>
+
+      <div class="field-note">
+        <div class="fn-hd"><span>নোট · স্পিনিং মিল, নরসিংদী</span><span class="when">কাস্টমার অভিযোগ</span></div>
+        <div class="fn-body">
+          একটি মিল একজন নিট-ফ্যাব্রিক কাস্টমারের কাছে 30s কম্বড ইয়ার্নের একটি বড় লট শিপ করে, যিনি দুই সপ্তাহ পর তা প্রত্যাখ্যান করেন — প্রকৃত কাউন্ট 28s-এর কাছাকাছি টেস্ট করে, টলারেন্সের বাইরে, আর তাদের মেশিনে ফ্যাব্রিক ভুল GSM-এ বের হয়। মিলের কাছে ডেটা <em>ছিল</em>: একজন ল্যাব টেকনিশিয়ান প্রতি ফ্রেমে কাউন্ট রেকর্ড করেছিলেন। কিন্তু এটি একটি পেপার রেজিস্টারে ছিল যা ডেসপ্যাচ টিম কখনো দেখেনি। আমরা একটি হার্ড পাস/ফেল গেটসহ উইন্ডিং ওয়ার্ক অর্ডারে কোয়ালিটি কন্ট্রোল পয়েন্ট হিসেবে কাউন্ট চেক Odoo-তে সরিয়ে নিই — QC ক্লিয়ার বা স্ক্র্যাপ না করা পর্যন্ত টলারেন্সের বাইরে একটি লট ফিনিশড গুডসে যেতে পারে না। <strong>মিলের কখনো টেস্টের অভাব ছিল না। যা অভাব ছিল তা হলো একটি গেট যা ব্যর্থ টেস্টকে কাস্টমারের কাছে পৌঁছাতে বাধা দেয়।</strong>
+        </div>
+      </div>
+
+      <h2 id="valuation">ইয়ার্ন ইনভেন্টরি ভ্যালুয়েশন</h2>
+
+      <p>বেশিরভাগ স্পিনিং মিল সেটআপে ইয়ার্ন ইনভেন্টরি ভ্যালুয়েশনের জন্য <strong>Average Cost (AVCO)</strong> ব্যবহার করুন। AVCO উপযুক্ত কারণ:</p>
+
+      <ul>
+        <li>তুলার দাম সিজন অনুযায়ী (প্রি-হার্ভেস্ট, পোস্ট-হার্ভেস্ট) আর কোয়ালিটি অনুযায়ী যথেষ্ট ওঠানামা করে। AVCO হাতে থাকা তুলার ইনভেন্টরি জুড়ে কস্ট প্রভাব সমান করে।</li>
+        <li>প্রোডাকশন ব্যাচে প্রকৃত ইল্ড আলাদা হয়। প্রতি ব্যাচে বড় কস্ট ভ্যারিয়েন্স তৈরি না করে AVCO সময়ের সাথে গড় কস্টে ইল্ড ভ্যারিয়েশন শুষে নেয়।</li>
+        <li>বাংলাদেশে বেশিরভাগ ডোমেস্টিক ইয়ার্ন বিক্রি লট-নির্দিষ্ট নয় — কাস্টমাররা 30s কাউন্ট ইয়ার্ন কেনে, নির্দিষ্টভাবে Lot-001 বা Lot-002 নয়। AVCO এই বাণিজ্যিক বাস্তবতার সাথে মেলে।</li>
+      </ul>
+
+      <p>এক্সপোর্ট ইয়ার্ন বিক্রির জন্য যেখানে ডিউটি ড্রব্যাক বা আন্তর্জাতিক কাস্টমার ডকুমেন্টেশনের জন্য লট-নির্দিষ্ট কস্ট দরকার, পরিবর্তে <strong>FIFO</strong> ব্যবহার করুন। FIFO নির্দিষ্ট লটের কস্ট ট্র্যাক করে, যা প্রতি এক্সপোর্ট কনসাইনমেন্টে সঠিক কস্ট রিপোর্টিং সক্ষম করে।</p>
+
+      <p>বিস্তারিত ইনভেন্টরি ভ্যালুয়েশন কনফিগারেশন আর জার্নাল এন্ট্রি স্ট্রাকচারের জন্য দেখুন <a href="/bn/lab/0011-odoo-inventory-valuation-cheatsheet" style="color:var(--accent)">Odoo ইনভেন্টরি ভ্যালুয়েশন চিটশিট</a> — এটি AVCO বনাম FIFO, ল্যান্ডেড কস্ট অ্যাকাউন্টিং, এবং স্টক জার্নাল এন্ট্রি ফ্লো কভার করে যা সরাসরি ইয়ার্ন আর ফ্যাব্রিক ইনভেন্টরিতে প্রযোজ্য।</p>
+
+      <h2 id="bangladesh">বাংলাদেশ স্পিনিং মিল — নির্দিষ্ট কনফিগারেশন নোট</h2>
+
+      <ul>
+        <li><strong>বন্ডের অধীনে তুলা আমদানি:</strong> অনেক বাংলাদেশি স্পিনিং মিল ইমপোর্ট ডিউটি স্থগিত রাখতে একটি bonded warehouse ব্যবস্থার (EPZ-এর অনুরূপ) অধীনে তুলা আমদানি করে যতক্ষণ না ইয়ার্ন ডোমেস্টিকভাবে বিক্রি হয় (ডিউটি প্রযোজ্য) বা এক্সপোর্ট হয় (ড্রব্যাকের অধীনে ডিউটি মুক্ত)। bonded তুলা স্টককে একটি আলাদা Odoo লোকেশন ("Bonded Cotton Store") হিসেবে আর non-bonded-কে "Regular Cotton Store" হিসেবে কনফিগার করুন। bonded থেকে প্রোডাকশনে ট্রান্সফার ডিউটি লায়াবিলিটি ট্র্যাকিং ট্রিগার করে। Odoo-র লোকেশন-ভিত্তিক স্টক জটিল কনফিগারেশন ছাড়াই এই আলাদাকরণ সম্ভব করে।</li>
+        <li><strong>বাই-প্রোডাক্ট বিক্রি (কম্বার নয়েল, তুলার ওয়েস্ট):</strong> কম্বিং ওয়েস্ট (নয়েল) নন-ওভেন, পেপার, আর ম্যাট্রেস শিল্পে বিক্রি হওয়া একটি মূল্যবান বাই-প্রোডাক্ট। কার্ডিং ওয়েস্ট (fly, droppings) কম-গ্রেড ফিলার হিসেবে বিক্রি হয়। Odoo-তে, স্পিনিং BOM-এ এগুলো বাই-প্রোডাক্ট হিসেবে কনফিগার করুন। MO সম্পূর্ণ হলে, বাই-প্রোডাক্ট কোয়ান্টিটি একটি "Waste Products" স্টক লোকেশনে রিসিভ হয় আর একটি আলাদা সেলস অর্ডারের মাধ্যমে বিক্রি করা যায়। এটি নিশ্চিত করে বাই-প্রোডাক্ট রেভিনিউ ধরা পড়ে আর প্রধান প্রোডাক্ট কস্ট সঠিকভাবে গণনা হয় (AVCO গণনায় বাই-প্রোডাক্ট ভ্যালু প্রধান প্রোডাক্ট কস্ট অফসেট করে)।</li>
+        <li><strong>প্রধান প্রোডাকশন কস্ট হিসেবে পাওয়ার কস্ট:</strong> স্পিনিং মিল এনার্জি-নিবিড় — বিদ্যুৎ ইয়ার্ন প্রোডাকশন কস্টের 30–40% হয়। Odoo-তে বিল্ট-ইন এনার্জি কস্ট ট্র্যাকিং মডিউল না থাকলেও, ম্যানুফ্যাকচারিং রাউটিংয়ে একটি ওয়ার্ক সেন্টার কস্ট রেট হিসেবে বিদ্যুৎ অন্তর্ভুক্ত করে আপনি এটি আনুমানিক করতে পারেন (প্রতিটি ওয়ার্ক সেন্টারে একটি BDT/ঘণ্টা রেট সেট করুন যা প্রতি অপারেটিং ঘণ্টায় বিদ্যুৎ কস্ট প্রতিফলিত করে)। এটি প্রোডাক্ট কস্টে শোষিত ম্যানুফ্যাকচারিং ওভারহেডে ফিড করে।</li>
+        <li><strong>সিজনাল কটন প্রোকিউরমেন্ট:</strong> বাংলাদেশে, তুলা প্রধানত পোস্ট-হার্ভেস্ট পিরিয়ডে কেনার জন্য পাওয়া যায় (ভারতীয় Shankar ভ্যারাইটির জন্য নভেম্বর–ফেব্রুয়ারি, US/অস্ট্রেলিয়ান তুলা আগমনের জন্য জানুয়ারি–এপ্রিল)। যেসব মিল হার্ভেস্ট সিজনে তাদের সম্পূর্ণ বার্ষিক রিকোয়ারমেন্ট কেনে, তারা বছরের বেশিরভাগ সময় ব্যালেন্স শিটে বড় তুলার ইনভেন্টরি বহন করে। প্রোকিউরমেন্ট সাইকেল জুড়ে তুলার ইনভেন্টরি ভ্যালু মনিটর করতে Odoo-র AVCO costing আর স্টক ভ্যালুয়েশন রিপোর্ট অপরিহার্য।</li>
+        <li><strong>সেলস অর্ডার অ্যাট্রিবিউট হিসেবে কাস্টমার ইয়ার্ন স্পেসিফিকেশন:</strong> ইয়ার্ন কাস্টমাররা (প্রধানত RMG কারখানা) তাদের রিকোয়ারমেন্ট সুনির্দিষ্টভাবে নির্দিষ্ট করে: "30s/1 carded cotton, cone winding, 2 kg cone, Uster &lt;12%"। এই স্পেসিফিকেশন সেলস অর্ডার লাইন নোটে রেকর্ড করুন আর নিশ্চিত করুন প্রোডাকশন অর্ডার সেগুলোর সাথে মিলিয়ে তৈরি হয়েছে। একাধিক কোয়ালিটি গ্রেড উৎপাদন করলে, ভুল-গ্রেড ডেলিভারি এড়াতে সেলস অর্ডারে স্পষ্টভাবে গ্রেড নির্দিষ্ট করতে হবে।</li>
+      </ul>
+
+      <div class="callout">
+        <span class="tag">সারকথা</span>
+        <p>Odoo-তে বাংলাদেশি স্পিনিং মিলের জন্য সবচেয়ে গুরুত্বপূর্ণ তিনটি কনফিগারেশন হলো: (1) সঠিক BOM ইল্ড ফ্যাক্টর যা প্রতিটি স্টেজে প্রকৃত ফাইবার-টু-ইয়ার্ন কনভার্সন লস প্রতিফলিত করে; (2) ইয়ার্ন কাউন্ট ভ্যারিয়েন্ট ব্যবস্থাপনা যা একাধিক কাউন্ট আর কম্পোজিশন জুড়ে আপনার প্রোডাক্ট মাস্টার পরিষ্কার আর ম্যানেজযোগ্য রাখে; এবং (3) কাস্টমার অভিযোগের আগেই শিপমেন্টের আগে কাউন্ট বিচ্যুতি ধরতে রিং ফ্রেম আর ফাইনাল উইন্ডিং স্টেজে কোয়ালিটি চেক ইন্টিগ্রেশন। এই তিনটি সরাসরি স্পিনিং মিল ERP-তে সবচেয়ে সাধারণ অপারেশনাল আর ফাইন্যান্সিয়াল পরিমাপ ব্যর্থতা মোকাবিলা করে। <a href="/bn/#contact" style="color:var(--accent)">আপনার টেক্সটাইল মিলের জন্য Odoo কনফিগার করতে সাহায্য দরকার? যোগাযোগ করুন →</a></p>
+      </div>
+
+      <h2 id="faq">সচরাচর জিজ্ঞাসা</h2>
+
+      <h3>একটি স্পিনিং মিলের জন্য Odoo-তে ইয়ার্ন ইনভেন্টরি কীভাবে ম্যানেজ করবেন?</h3>
+      <p>প্রতি কম্পোজিশনে একটি প্রোডাক্ট টেমপ্লেটের (যেমন, "100% Carded Cotton Yarn") অধীনে অ্যাট্রিবিউট হিসেবে Count (10s, 16s, 20s, 30s, 40s) সহ Product Variants ব্যবহার করুন। অভ্যন্তরীণ প্রোডাকশনের জন্য UoM Kg-তে সেট করুন; গার্মেন্টস কারখানায় বিক্রির জন্য একটি কনভার্সন ফ্যাক্টরসহ Cone সেকেন্ডারি UoM হিসেবে যোগ করুন। প্রতি প্রোডাকশন ব্যাচে লট ট্র্যাকিং সক্রিয় করুন। সিজনাল তুলার দাম ভ্যারিয়েশন হ্যান্ডল করতে AVCO costing সেট করুন। প্রতি কাউন্টের সেফটি থ্রেশহোল্ডের নিচে ইয়ার্ন স্টক নামলে প্রোডাকশন MO ট্রিগার করতে প্রতি কাউন্টে ন্যূনতম রিঅর্ডারিং রুল কনফিগার করুন।</p>
+
+      <h3>একটি উইভিং মিলের জন্য Odoo-তে লুম রাউটিং কীভাবে সেটআপ করবেন?</h3>
+      <p>প্রতিটি প্রধান লুম গ্রুপের (Rapier, Jacquard, Air-Jet, Shuttle) জন্য তাদের ক্যাপাসিটি (লুম × চলমান গতি m/hour) আর কস্ট রেট (BDT/ঘণ্টা) সহ Work Centre তৈরি করুন। ওয়ার্ক অর্ডারসহ একটি Routing ডিফাইন করুন: Warping → Drawing-in → Weaving → Grey Inspection → Folding। Weaving আর Inspection ওয়ার্ক অর্ডারে কোয়ালিটি চেক অ্যাটাচ করুন। একটি ফ্যাব্রিক স্টাইলের প্রতিটি Manufacturing Order এই রাউটিং অনুসরণ করে, প্রতি স্টেজে আলাদা ওয়ার্ক অর্ডার তৈরি করে। দৈনিক প্রোডাকশন এন্ট্রি: সুপারভাইজার MO-র ওয়ার্ক অর্ডারে প্রতি শিফটে প্রতি লুমে বোনা মিটার রেকর্ড করেন। এটি আপনাকে রিয়েল টাইমে লুম এফিশিয়েন্সি (প্রকৃত বনাম theoretical মিটার/দিন) দেয়।</p>
+
+      <h3>Odoo-তে গ্রে ফ্যাব্রিক থেকে ফিনিশড ফ্যাব্রিক কীভাবে ট্র্যাক করবেন?</h3>
+      <p>দুটি লিংকড Manufacturing Order ব্যবহার করুন: MO1 (Yarn → Grey Fabric) ওয়ার্পিং, উইভিং, আর ইন্সপেকশন কভার করে। MO2 (Grey Fabric → Finished Fabric) ওয়েট প্রসেসিং (স্কাওরিং, ডাইং, ফিনিশিং) কভার করে। ওয়েট প্রসেসিং আউটসোর্স হলে, MO2-কে Subcontracting BOM হিসেবে সেট করুন — গ্রে ফ্যাব্রিক ডাই হাউসে পাঠানো কম্পোনেন্ট, ফিনিশড ফ্যাব্রিক যা ফিরে আসে। প্রতিটি MO একটি লট নম্বর তৈরি করে: গ্রে ফ্যাব্রিক লট উইভিং ব্যাচ ট্র্যাক করে, ফিনিশড ফ্যাব্রিক লট dye lot ট্র্যাক করে। ইয়ার্ন লট → গ্রে লট → ফিনিশড লট → কাস্টমার ডেলিভারি পর্যন্ত পূর্ণ ট্রেসেবিলিটি Odoo-র Traceability রিপোর্টে পাওয়া যায়।</p>
+
+      <h3>একটি স্পিনিং মিলের জন্য Odoo-তে কী কোয়ালিটি চেক কনফিগার করা উচিত?</h3>
+      <p>তিনটি QC পয়েন্ট: (1) তুলা রিসিপ্ট — micronaire, staple length, fibre strength, trash content। রিসিপ্ট স্টেজে out-of-spec বেল প্রত্যাখ্যান করুন। (2) রিং ফ্রেম in-process — nominal-এর বিপরীতে প্রকৃত কাউন্ট (±2% টলারেন্স), CSP (count-strength product), TPI (প্রতি ইঞ্চিতে টুইস্ট), ব্রেকে elongation। প্রতি ফ্রেমে প্রতি শিফটে একটি স্যাম্পল চেক করুন। (3) ডেলিভারির আগে ফিনিশড ইয়ার্ন — Lea count টেস্ট, Uster % evenness, প্রতি কিমিতে ইমপারফেকশন। ফ্যাব্রিকের জন্য: GSM, প্রস্থ, ডিফেক্ট গ্রেড। ম্যানুফ্যাকচারিং রাউটিংয়ের প্রাসঙ্গিক ওয়ার্ক অর্ডারে অ্যাটাচ করা Odoo Quality Check Points হিসেবে এগুলো কনফিগার করুন। ব্যর্থ চেক সমাধান না হওয়া পর্যন্ত লটকে এগিয়ে যাওয়া থেকে ব্লক করে এমন অ্যালার্ট তৈরি করে।</p>
+    </div>
+  </article>
+
+  <footer>
+    <div class="shell">
+      <div class="post-foot">
+        <span class="eyebrow">আরও পড়ুন</span>
+        <div class="next">
+          <a class="next-card" href="/bn/lab/0036-odoo-trading-company-bangladesh">
+            <span class="dir">পুরনো · 0036</span>
+            <h4>বাংলাদেশে ট্রেডিং কোম্পানির জন্য Odoo</h4>
+            <p>হোলসেল ডিস্ট্রিবিউটরদের জন্য মাল্টি-ওয়্যারহাউস সেটআপ, ইমপোর্ট প্রোকিউরমেন্ট, ল্যান্ডেড কস্ট, এবং কাস্টমার প্রাইসিং।</p>
+            <span class="arrow">→</span>
+          </a>
+          <a class="next-card" href="/bn/lab/0038-odoo-manufacturing-routing-bangladesh">
+            <span class="dir">নতুন · 0038</span>
+            <h4>Odoo ম্যানুফ্যাকচারিং রাউটিং</h4>
+            <p>ওয়ার্ক সেন্টার, অপারেশন, মেশিন ক্যাপাসিটি, এবং প্রোডাকশন টাইম ট্র্যাকিং।</p>
+            <span class="arrow">→</span>
+          </a>
+        </div>
+      </div>
+      <div class="foot">
+        <span>© ২০২৬ Mehedi Hasan · Lab / 0037</span>
+        <span><a href="/bn/#lab">↑ ল্যাব ইনডেক্সে ফিরুন</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/lab/_utils.js" defer></script>
+<script src="/lab/_toc.js" defer></script>
+<script src="/whatsapp.js" defer></script>
+<script src="/scroll-top.js" defer></script>
+</body>
+
+</html>

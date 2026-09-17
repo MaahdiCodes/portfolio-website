@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="/favicon.ico" sizes="any" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon.png" />
+<link rel="apple-touch-icon" href="/favicon.png" />
+<meta name="robots" content="noindex, follow" />
+<link rel="canonical" href="https://mhasan.me/bn/courses/01-requirements-gathering/lesson-06" />
+<link rel="alternate" hreflang="en" href="https://mhasan.me/courses/01-requirements-gathering/lesson-06" />
+<link rel="alternate" hreflang="bn-BD" href="https://mhasan.me/bn/courses/01-requirements-gathering/lesson-06" />
+<link rel="alternate" hreflang="x-default" href="https://mhasan.me/courses/01-requirements-gathering/lesson-06" />
+<title>লেসন ০৬ — অস্পষ্টতাকে টেকনিক্যাল স্পেকে রূপান্তর · কোর্স ০১</title>
+<meta name="description" content="নিখুঁত ফাংশনাল রিকোয়ারমেন্ট, ডেটা ডিকশনারি, আর SRS-lite স্পেসিফিকেশন লিখুন যা দিয়ে ডেভেলপাররা বানাতে পারেন — RMG আর বাংলাদেশ কমপ্লায়েন্স কনটেক্সটসহ।">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300..700&family=Geist+Mono:wght@300..500&family=Noto+Sans+Bengali:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/lab/_styles.css">
+<style>
+body{ font-family: 'Noto Sans Bengali', var(--sans); }
+.three-up{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:28px 0}
+.three-up .card{border:1px solid var(--border);border-radius:12px;padding:20px;background:rgba(21,24,29,0.5)}
+.three-up .card h4{font-size:14px;font-weight:500;margin:0 0 8px;color:var(--text)}
+.three-up .card p{font-size:13.5px;color:var(--text-2);margin:0;line-height:1.55}
+.field-note{border:1px solid var(--border);border-radius:12px;padding:22px 24px;margin:28px 0;background:linear-gradient(180deg,rgba(21,24,29,0.55),rgba(14,16,19,0.55))}
+.field-note .fn-label{font-family:var(--mono);font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:var(--accent);margin:0 0 10px}
+.field-note p{font-size:14.5px;color:var(--text-2);margin:0;line-height:1.6}
+.field-note p+p{margin-top:10px}
+.req-hierarchy{display:grid;grid-template-columns:1fr;gap:0;border:1px solid var(--border);border-radius:12px;overflow:hidden;margin:28px 0}
+.rh-row{padding:18px 22px;border-bottom:1px solid var(--border);display:flex;gap:16px;align-items:flex-start}
+.rh-row:last-child{border-bottom:none}
+.rh-level{font-family:var(--mono);font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-3);flex:none;width:100px;margin-top:2px}
+.rh-content h4{font-size:14.5px;font-weight:500;color:var(--text);margin:0 0 4px}
+.rh-content p{font-size:13.5px;color:var(--text-2);margin:0;line-height:1.5}
+@media(max-width:680px){.three-up{grid-template-columns:1fr}.rh-row{flex-direction:column}.rh-level{width:auto}}
+.stat-block{display:grid;grid-template-columns:repeat(3,1fr);gap:0;background:var(--border);border-radius:12px;overflow:hidden;margin:28px 0}
+.stat-item{background:var(--surface);padding:24px 18px;text-align:center}
+.stat-num{font-family:var(--mono);font-size:26px;font-weight:300;color:var(--accent);line-height:1;display:block}
+.stat-label{font-size:12px;color:var(--text-3);margin-top:8px;line-height:1.4;display:block}
+.bar-chart{margin:28px 0;display:flex;flex-direction:column;gap:14px}
+.bc-row{display:grid;grid-template-columns:190px 1fr 44px;gap:10px;align-items:center}
+.bc-label{font-size:13px;color:var(--text-2)}
+.bc-track{height:6px;background:rgba(255,255,255,0.06);border-radius:4px;overflow:hidden}
+.bc-fill{height:100%;background:oklch(0.80 0.17 155);border-radius:4px}
+.bc-pct{font-family:var(--mono);font-size:11px;color:var(--text-3);text-align:right}
+.donut-stat{display:flex;align-items:center;gap:28px;padding:24px;border:1px solid var(--border);border-radius:12px;background:rgba(21,24,29,0.5);margin:28px 0}
+.donut-stat svg{flex:none}
+.donut-label{font-size:14px;color:var(--text-2);line-height:1.6;margin:0}
+.donut-label strong{color:var(--text)}
+.insight-row{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin:28px 0}
+.insight-card{border:1px solid var(--border);border-radius:12px;padding:20px;background:rgba(21,24,29,0.5)}
+.insight-card .ic-label{font-family:var(--mono);font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-3);margin:0 0 8px}
+.insight-card h4{font-size:15px;font-weight:500;color:var(--text);margin:0 0 8px}
+.insight-card p{font-size:13.5px;color:var(--text-2);margin:0;line-height:1.55}
+@media(max-width:680px){.stat-block{grid-template-columns:1fr}.bc-row{grid-template-columns:140px 1fr 36px}.donut-stat{flex-direction:column;text-align:center}.insight-row{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="grid-bg"></div>
+
+<nav class="nav">
+  <div class="shell">
+    <div class="nav-inner">
+      <a href="/bn/" class="brand">
+        <div class="brand-mark"></div>
+        <div class="brand-name"><b>Mehedi Hasan</b><em>ERP কনসালট্যান্ট</em></div>
+      </a>
+      <a href="./" class="back-link">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10 12L6 8l4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        কোর্স ওভারভিউ
+      </a>
+    </div>
+  </div>
+</nav>
+
+<div class="shell">
+  <div class="post-head">
+    <span class="eyebrow">কোর্স ০১ &nbsp;·&nbsp; লেসন ০৬ &nbsp;·&nbsp; ১৬ মিনিট</span>
+    <div class="post-meta">
+      <span class="chip accent">টেকনিক্যাল স্পেক</span>
+      <span class="chip">SRS</span>
+      <span class="chip">ডেটা ডিকশনারি</span>
+    </div>
+    <h1>অস্পষ্টতাকে <span class="serif">টেকনিক্যাল স্পেকে</span> রূপান্তর</h1>
+    <p class="lede">অস্পষ্টতা কোনো স্টেকহোল্ডার সমস্যা নয় — এটা একটা BA সমস্যা। একটা অস্পষ্ট বিজনেস চাহিদা অপরিবর্তিত অবস্থায় ডেভেলপারের কাছে পৌঁছানোর মুহূর্তেই একটা রিওয়ার্ক কথোপকথনের দিকে ঘড়ির কাঁটা চলতে শুরু করে। এখানে দেখুন কীভাবে প্রজেক্টের দরকারি অনুবাদক হবেন।</p>
+    <div class="byline">
+      <span>লেসন<b>০৬ / ০৯</b></span>
+      <span>সময়<b>১৬ মিনিট</b></span>
+      <span>কোর্স<b>রিকোয়ারমেন্ট গ্যাদারিং</b></span>
+    </div>
+  </div>
+</div>
+
+<div class="shell">
+  <div class="post">
+    <nav class="toc" id="toc" aria-label="Lesson contents">
+      <button class="toc-toggle" onclick="toggleToc()" aria-expanded="false" aria-controls="toc">
+        <span class="label">এই লেসনে</span>
+        <span class="current" id="toc-current">হায়ারার্কি</span>
+        <span class="chev"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 4l3 3 3-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </button>
+      <div class="toc-k">বিষয়সূচি</div>
+      <ol>
+        <li><a href="#s1">রিকোয়ারমেন্ট হায়ারার্কি</a></li>
+        <li><a href="#s2">ফাংশনাল রিকোয়ারমেন্ট</a></li>
+        <li><a href="#s3">ডেটা রিকোয়ারমেন্ট</a></li>
+        <li><a href="#s4">ইন্টিগ্রেশন রিকোয়ারমেন্ট</a></li>
+        <li><a href="#s5">নন-ফাংশনাল রিকোয়ারমেন্ট</a></li>
+        <li><a href="#s6">বাংলাদেশ কমপ্লায়েন্স কনটেক্সট</a></li>
+        <li><a href="#s7">অ্যাম্বিগুইটি ডিটেক্টর</a></li>
+        <li><a href="#s8">টেমপ্লেট: SRS-lite</a></li>
+        <li><a href="#s_nfr">নন-ফাংশনাল রিকোয়ারমেন্ট</a></li>
+        <li><a href="#s9">রিফ্লেকশন</a></li>
+      </ol>
+      <div class="toc-progress"><span>প্রগ্রেস</span><div class="bar"><i id="prog-bar"></i></div></div>
+    </nav>
+    <div class="toc-progress-mobile"><i id="prog-bar-m"></i></div>
+
+    <article class="body">
+
+      <h2 id="s1">রিকোয়ারমেন্ট হায়ারার্কি</h2>
+      <p>রিকোয়ারমেন্ট বিমূর্ততার আলাদা স্তরে থাকে। BA-র কাজ হলো সবচেয়ে বিমূর্ত (ব্যবসার কী অর্জন করা দরকার) থেকে সবচেয়ে কংক্রিট (সিস্টেমকে ঠিক কোন ফাংশন আর ডেটা সামলাতে হবে) পর্যন্ত কাজ করা, আর নিশ্চিত করা প্রতিটা স্তর তার ওপরের স্তরের সঙ্গে ট্রেসযোগ্য।</p>
+
+      <div class="req-hierarchy">
+        <div class="rh-row">
+          <span class="rh-level">বিজনেস</span>
+          <div class="rh-content">
+            <h4>বিজনেস রিকোয়ারমেন্ট</h4>
+            <p>প্রতিষ্ঠানের প্রজেক্ট থেকে যে হাই-লেভেল ফলাফল দরকার। "এক্সপোর্ট ডকুমেন্টেশন প্রসেসিং সময় ৪০% কমান।" কোনো সিস্টেম নয়, কোনো সমাধান নয় — শুধু লক্ষ্য।</p>
+          </div>
+        </div>
+        <div class="rh-row">
+          <span class="rh-level">স্টেকহোল্ডার</span>
+          <div class="rh-content">
+            <h4>স্টেকহোল্ডার রিকোয়ারমেন্ট</h4>
+            <p>নির্দিষ্ট মানুষদের দৃষ্টিকোণ থেকে সিস্টেম সম্পর্কে কী সত্য হওয়া দরকার। "মার্চেন্ডাইজারের তিন মিনিটের কম সময়ে একটা সম্পূর্ণ কমার্শিয়াল ইনভয়েস তৈরি করতে হবে।" একজন ব্যক্তি আর একটা প্রেক্ষাপটের সঙ্গে যুক্ত।</p>
+          </div>
+        </div>
+        <div class="rh-row">
+          <span class="rh-level">ফাংশনাল</span>
+          <div class="rh-content">
+            <h4>ফাংশনাল রিকোয়ারমেন্ট</h4>
+            <p>সিস্টেমকে কী করতে হবে — নির্দিষ্ট, টেস্টযোগ্য ফাংশন। "সিস্টেমটা 'Merchandiser' রোলের একজন ইউজারকে PO হেডার, লাইন আইটেম, আর বায়ার মাস্টার রেকর্ডের ডেটা ব্যবহার করে একটা নির্বাচিত PO থেকে কমার্শিয়াল ইনভয়েস তৈরি করতে দেবে।"</p>
+          </div>
+        </div>
+        <div class="rh-row">
+          <span class="rh-level">নন-ফাংশনাল</span>
+          <div class="rh-content">
+            <h4>নন-ফাংশনাল রিকোয়ারমেন্ট</h4>
+            <p>সিস্টেমকে যে গুণগত বৈশিষ্ট্য দেখাতে হবে। "ইনভয়েস জেনারেশন ফাংশনটা ১০০টা পর্যন্ত লাইন আইটেমসহ PO-র জন্য ৫ সেকেন্ডের মধ্যে সম্পন্ন হবে।" সিস্টেম কী করে তা নয়, কীভাবে পারফর্ম করে তা সংজ্ঞায়িত করে।</p>
+          </div>
+        </div>
+      </div>
+
+      <p>প্রতিটা ফাংশনাল রিকোয়ারমেন্ট অন্তত একটা স্টেকহোল্ডার রিকোয়ারমেন্টের সঙ্গে ট্রেস করা উচিত, যা অন্তত একটা বিজনেস রিকোয়ারমেন্টের সঙ্গে ট্রেস করে। সেই লাইনটা আঁকতে না পারলে, প্রশ্ন তুলুন রিকোয়ারমেন্টটা আদৌ স্কোপে পড়ে কিনা।</p>
+
+      <div class="stat-block">
+        <div class="stat-item">
+          <span class="stat-num">৬২%</span>
+          <span class="stat-label">ডেভেলপার জানান তারা এমন রিকোয়ারমেন্ট পান যা অনুমান ছাড়া বানানোর জন্য খুব অস্পষ্ট</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num">SRS-lite</span>
+          <span class="stat-label">৫–১০ পৃষ্ঠার একটা স্পেসিফিকেশন ডকুমেন্ট এমন ১০০-পৃষ্ঠার ডকুমেন্টের চেয়ে বেশি কার্যকর যা কেউ পড়ে না</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num">F + NF</span>
+          <span class="stat-label">প্রতিটা প্রজেক্টের ফাংশনাল আর নন-ফাংশনাল দুই ধরনের রিকোয়ারমেন্টই দরকার — অনুপস্থিত NFR গো-লাইভ-পরবর্তী সংকট ঘটায়</span>
+        </div>
+      </div>
+
+      <h2 id="s2">ফাংশনাল রিকোয়ারমেন্ট: SRS সেকশন বাই সেকশন লেখা</h2>
+      <p>একটা Software Requirements Specification (SRS) হলো সেই আনুষ্ঠানিক ডকুমেন্ট যা ফাংশনাল আর নন-ফাংশনাল রিকোয়ারমেন্ট ডেভেলপমেন্ট শুরু করার মতো যথেষ্ট বিস্তারিতভাবে ধরে রাখে। বাংলাদেশের SME সেক্টরে বেশিরভাগ প্রজেক্টের জন্য, একটা পূর্ণ IEEE-স্ট্যান্ডার্ড SRS অতিরিক্ত। একটা "SRS-lite" — স্ট্রাকচার্ড কিন্তু সরলীকৃত — একই ফলাফল আমলাতান্ত্রিক ওভারহেডের একটা ভগ্নাংশে অর্জন করে।</p>
+      <p>ভালো ফাংশনাল রিকোয়ারমেন্ট লেখার নীতি:</p>
+      <ul>
+        <li><strong>বাধ্যতামূলক রিকোয়ারমেন্টের জন্য "shall" ব্যবহার করুন</strong> — "সিস্টেমটা shall…" দ্ব্যর্থহীন। "সিস্টেমটা should পারা উচিত…" এমন আলোচনার জায়গা রাখে যা একটা স্পেকে থাকার কথা নয়।</li>
+        <li><strong>প্রতি বাক্যে একটা রিকোয়ারমেন্ট</strong> — একটা ফাংশনাল রিকোয়ারমেন্টে "and" ব্যবহার করলে, এটাকে দুই ভাগে ভাগ করুন। প্রতিটা রিকোয়ারমেন্ট স্বাধীনভাবে যাচাইযোগ্য হওয়া উচিত।</li>
+        <li><strong>অ্যাক্টরের নাম বলুন</strong> — "সিস্টেমটা একজন ইউজারকে… করতে দেবে" এর চেয়ে "সিস্টেমটা Merchandiser রোলের একজন ইউজারকে… করতে দেবে" শক্তিশালী।</li>
+        <li><strong>ট্রিগার আর ফলাফল নির্দিষ্ট করুন</strong> — "ইউজার Export-এ ক্লিক করলে, সিস্টেমটা [ফিল্ড]-সহ কমার্শিয়াল ইনভয়েসের একটা PDF তৈরি করবে।" ট্রিগার → অ্যাকশন → আউটপুট।</li>
+        <li><strong>এরর হ্যান্ডলিং অন্তর্ভুক্ত করুন</strong> — "PO যদি Cancelled স্ট্যাটাসে থাকে, সিস্টেমটা ইনভয়েস জেনারেশন আটকাবে আর বার্তা দেখাবে: 'বাতিল অর্ডারের জন্য ইনভয়েস তৈরি করা যাবে না।'"</li>
+      </ul>
+
+      <div class="field-note">
+        <p class="fn-label">RMG উদাহরণ</p>
+        <p>ফ্যাক্টরি MD-র রিকোয়ারমেন্ট: "আমাদের প্রোডাকশন অর্ডারের ওপর পূর্ণ ভিজিবিলিটি চাই।" এটা কোনো ফাংশনাল রিকোয়ারমেন্ট হতে পারে না — এটা একটা বিজনেস আকাঙ্ক্ষা। একজন ভালো BA এটাকে খুলে দেখান:</p>
+        <p><strong>"পূর্ণ ভিজিবিলিটি" থেকে বের করা ফাংশনাল রিকোয়ারমেন্ট:</strong><br>
+        FR-01: সিস্টেমটা একটা একক স্ক্রিনে সব খোলা প্রোডাকশন অর্ডার দেখাবে, বায়ার, প্রোডাক্ট টাইপ, আর প্রোডাকশন স্ট্যাটাস অনুযায়ী ফিল্টারযোগ্য।<br>
+        FR-02: প্রতিটা প্রোডাকশন অর্ডার রেকর্ডে পরিকল্পিত শুরুর তারিখ, প্রকৃত শুরুর তারিখ, পরিকল্পিত সমাপ্তির তারিখ, আর বর্তমান সমাপ্তির শতাংশ অন্তর্ভুক্ত থাকবে।<br>
+        FR-03: বর্তমান তারিখের জন্য পরিকল্পিত শতাংশের চেয়ে সমাপ্তির শতাংশ ১০%-এর বেশি কম হলে সিস্টেমটা সেই প্রোডাকশন অর্ডার হাইলাইট করবে।<br>
+        FR-04: সিস্টেমটা MD রোলকে প্রোডাকশন অর্ডার ভিউ Excel ফাইল হিসেবে এক্সপোর্ট করতে দেবে।</p>
+        <p>"পূর্ণ ভিজিবিলিটি" এখন চারটা টেস্টযোগ্য রিকোয়ারমেন্ট। একজন ডেভেলপার এগুলো বানাতে পারেন। একজন টেস্টার এগুলো যাচাই করতে পারেন।</p>
+      </div>
+
+      <h2 id="s3">ডেটা রিকোয়ারমেন্ট ও ডেটা ডিকশনারি</h2>
+      <p>ডেটা রিকোয়ারমেন্ট সংজ্ঞায়িত করে সিস্টেম কী তথ্য সংরক্ষণ করে, এটা কীভাবে গঠিত, আর এর নিয়ন্ত্রণকারী নিয়ম কী। এখানেই বেশিরভাগ BA কম বিনিয়োগ করেন — আর এখানেই ডেভেলপাররা অনুমান করতে সবচেয়ে বেশি সময় ব্যয় করেন, যা পরে মাইগ্রেশন সমস্যা বা ইন্টিগ্রেশন ব্যর্থতা ঘটায়।</p>
+      <p>প্রতিটা ডেটা এনটিটির জন্য, ডকুমেন্ট করুন:</p>
+      <ul>
+        <li><strong>ফিল্ডের নাম</strong> — সিস্টেমে যেভাবে দেখানো উচিত ঠিক সেই নাম</li>
+        <li><strong>ডেটা টাইপ</strong> — টেক্সট, নম্বর, তারিখ, বুলিয়ান, ড্রপডাউন ইত্যাদি</li>
+        <li><strong>সর্বোচ্চ দৈর্ঘ্য বা রেঞ্জ</strong> — টেক্সট ফিল্ডের জন্য সর্বোচ্চ ক্যারেক্টার; নম্বরের জন্য সর্বনিম্ন/সর্বোচ্চ মান</li>
+        <li><strong>বাধ্যতামূলক নাকি ঐচ্ছিক</strong> — এই ফিল্ড ছাড়া কি ফর্ম সাবমিট করা যায়?</li>
+        <li><strong>ডিফল্ট মান</strong> — কোনো ডিফল্ট আছে কি? সেটা কী?</li>
+        <li><strong>ভ্যালিডেশন নিয়ম</strong> — "একটা বৈধ বাংলাদেশি NID ফরম্যাট হতে হবে (১৭ ডিজিট)"; "ভবিষ্যতের তারিখ হতে পারবে না"</li>
+        <li><strong>উৎস</strong> — এই ডেটা কোথা থেকে আসে? (ইউজার ইনপুট, API, ক্যালকুলেটেড, অন্য মডিউল থেকে ইম্পোর্ট করা)</li>
+        <li><strong>যুক্ত</strong> — এই ফিল্ড অন্য কোন টেবিল বা এনটিটির রেফারেন্স দেয়?</li>
+      </ul>
+
+      <div class="callout">
+        <span class="tag">কেন গুরুত্বপূর্ণ</span>
+        <p>অসংজ্ঞায়িত ডেটা ফিল্ড লঞ্চ-পরবর্তী ডেটা মাইগ্রেশন ব্যর্থতার প্রধান কারণ। নতুন সিস্টেম লঞ্চ হলে আর পুরনো Excel ডেটা না মিললে — ফিল্ড খুব লম্বা, বাধ্যতামূলক ফিল্ড যা আগে ঐচ্ছিক ছিল, লুকআপ টেবিল যা মেলে না — সংশোধনের খরচ সবসময় প্রোডাকশনে গিয়ে দিতে হয়। একটা ডেটা ডিকশনারি এটা প্রতিরোধ করে।</p>
+      </div>
+
+      <h2 id="s4">ইন্টিগ্রেশন রিকোয়ারমেন্ট: API, লেগ্যাসি সিস্টেম, ERP কানেক্টর</h2>
+      <p>বাংলাদেশের RMG আর সার্ভিস সেক্টরে বেশিরভাগ নতুন সিস্টেম বিচ্ছিন্নভাবে থাকে না। এগুলো ইন্টিগ্রেট করে: বিদ্যমান ERP-র সঙ্গে (Odoo, SAP, স্থানীয়ভাবে তৈরি সিস্টেম); থার্ড-পার্টি সার্ভিসের সঙ্গে (শিপিং ট্র্যাকিং API, পেমেন্ট গেটওয়ে, SMS/ইমেইল সার্ভিস); আর সরকারি সিস্টেমের সঙ্গে (NBR VAT, BGMEA রিপোর্টিং পোর্টাল)।</p>
+      <p>প্রতিটা ইন্টিগ্রেশনের নিজস্ব স্পেসিফিকেশন দরকার:</p>
+      <ul>
+        <li><strong>কোন দিকে কী ডেটা প্রবাহিত হয়</strong> — "প্রতি ৩০ মিনিটে ক্যারিয়ার API থেকে শিপমেন্ট স্ট্যাটাস টেনে আনা হয় আর শিপমেন্ট রেকর্ডে লেখা হয়"</li>
+        <li><strong>ফ্রিকোয়েন্সি</strong> — রিয়েল-টাইম, শিডিউলড (প্রতি X মিনিটে), অথবা অন-ডিমান্ড</li>
+        <li><strong>এরর হ্যান্ডলিং</strong> — বাহ্যিক API অনুপলব্ধ হলে কী হয়?</li>
+        <li><strong>অথেনটিকেশন</strong> — API key, OAuth, বেসিক অথ</li>
+        <li><strong>ডেটা ম্যাপিং</strong> — বাহ্যিক সিস্টেমের ফিল্ডের নাম অভ্যন্তরীণ ডেটা মডেলে কীভাবে ম্যাপ হয়?</li>
+      </ul>
+      <p>ইন্টিগ্রেশন রিকোয়ারমেন্ট সেই এলাকা যেখানে BA সবচেয়ে বেশি কম-স্পেসিফাই করেন আর যা প্রজেক্ট ওভাররানের সবচেয়ে বড় কারণ হয়। এখানে অতিরিক্ত সময় বরাদ্দ করুন।</p>
+
+      <h2 id="s5">নন-ফাংশনাল রিকোয়ারমেন্ট: পারফরম্যান্স, সিকিউরিটি, আপটাইম</h2>
+      <p>নন-ফাংশনাল রিকোয়ারমেন্ট (NFR) সিস্টেমের গুণগত বৈশিষ্ট্য সংজ্ঞায়িত করে — কতটা দ্রুত, কতটা নিরাপদ, কতটা নির্ভরযোগ্য, কতটা ব্যবহারযোগ্য। এগুলো প্রায়ই অস্পষ্ট আকাঙ্ক্ষা হিসেবে বলা হয় ("সিস্টেমটা দ্রুত আর নিরাপদ হওয়া উচিত") আর এগুলোকে ফাংশনাল রিকোয়ারমেন্টের মতোই নির্দিষ্ট করতে হবে।</p>
+
+      <div class="three-up">
+        <div class="card">
+          <h4>পারফরম্যান্স</h4>
+          <p>সিস্টেমটা ৫০০ জন পর্যন্ত কনকারেন্ট ইউজারের জন্য ৩ সেকেন্ডের মধ্যে শিপমেন্ট ড্যাশবোর্ড লোড করবে। ১২ মাস পর্যন্ত তারিখ রেঞ্জের জন্য রিপোর্ট জেনারেশন ১০ সেকেন্ডের মধ্যে সম্পন্ন হবে।</p>
+        </div>
+        <div class="card">
+          <h4>সিকিউরিটি</h4>
+          <p>সব ডেটা ট্রান্সমিশন TLS 1.2 বা তার ওপরে ব্যবহার করবে। পাসওয়ার্ড ন্যূনতম ১২-ক্যারেক্টার দৈর্ঘ্যসহ bcrypt দিয়ে সংরক্ষিত হবে। ৩০ মিনিট নিষ্ক্রিয়তার পর সেশন মেয়াদোত্তীর্ণ হবে।</p>
+        </div>
+        <div class="card">
+          <h4>অ্যাভেইলেবিলিটি</h4>
+          <p>ব্যবসার সময়ে (সকাল ৮টা–রাত ৮টা BDT, সোমবার–শনিবার) সিস্টেমটা ৯৯.৫% আপটাইম বজায় রাখবে। পরিকল্পিত রক্ষণাবেক্ষণ উইন্ডো ৭২ ঘণ্টা আগে জানানো হবে।</p>
+        </div>
+        <div class="card">
+          <h4>ইউজেবিলিটি</h4>
+          <p>কোনো সিস্টেম প্রশিক্ষণ ছাড়া একজন নতুন মার্চেন্ডাইজার শুধু ইন-সিস্টেম হেল্প টেক্সট ব্যবহার করে প্রথম লগইনের ১৫ মিনিটের মধ্যে তাদের প্রথম শিপমেন্ট রেকর্ড তৈরি করতে পারবেন।</p>
+        </div>
+        <div class="card">
+          <h4>স্কেলেবিলিটি</h4>
+          <p>শুধুমাত্র ইনফ্রাস্ট্রাকচার স্কেলিংয়ের মাধ্যমে, কোনো কোড পরিবর্তন ছাড়াই সিস্টেম আর্কিটেকচার ট্রানজ্যাকশন ভলিউমের দশগুণ বৃদ্ধি সমর্থন করবে।</p>
+        </div>
+        <div class="card">
+          <h4>ডেটা রিটেনশন</h4>
+          <p>বায়ার অডিট রিকোয়ারমেন্ট সমর্থনের জন্য প্রোডাকশন অর্ডার সিস্টেমে ন্যূনতম ৭ বছর সংরক্ষিত থাকবে। মুছে ফেলা রেকর্ড একটা অডিট ট্রেইলসহ সফট-ডিলিট হবে।</p>
+        </div>
+      </div>
+
+      <h2 id="s6">বাংলাদেশ কমপ্লায়েন্স কনটেক্সট: স্পেকে কী বিবেচনা করতে হবে</h2>
+      <p>বাংলাদেশের ডিজিটাল প্রজেক্ট রিকোয়ারমেন্টে একটা নির্দিষ্ট রেগুলেটরি পরিবেশ বিবেচনা করতে হবে। আপনার NFR-এ অন্তর্ভুক্ত করার মূল কমপ্লায়েন্স সীমাবদ্ধতা:</p>
+      <ul>
+        <li><strong>NBR ও VAT কমপ্লায়েন্স</strong> — ইনভয়েসিং, সেলস, বা পারচেজ সামলানো যেকোনো সিস্টেমকে বাংলাদেশ VAT রেগুলেশন মেনে চলতে হবে আর NBR-এর VAT রিটার্ন ফরম্যাট সাপোর্ট করতে হবে</li>
+        <li><strong>BGMEA/BKMEA রিপোর্টিং</strong> — গার্মেন্ট সেক্টরের ফ্যাক্টরিগুলোর তাদের ইন্ডাস্ট্রি অ্যাসোসিয়েশনের কাছে রিপোর্টিং বাধ্যবাধকতা থাকতে পারে যা সিস্টেমকে কী ডেটা ধরতে হবে তা প্রভাবিত করে</li>
+        <li><strong>বায়ার অডিট ট্রেইল</strong> — আন্তর্জাতিক বায়াররা (UK, EU, US) ক্রমবর্ধমানভাবে প্রোডাকশন রেকর্ড, শ্রমিক রেকর্ড, আর পরিবেশগত কমপ্লায়েন্স ডেটার জন্য ডকুমেন্টেড অডিট ট্রেইল তৈরি করতে সিস্টেমের প্রয়োজন বলছে</li>
+        <li><strong>ডেটা লোকালাইজেশন</strong> — বাংলাদেশের ডিজিটাল সিকিউরিটি অ্যাক্ট আর উদীয়মান ডেটা প্রোটেকশন ফ্রেমওয়ার্ক নির্দিষ্ট কিছু ক্যাটাগরির ডেটা (বিশেষত শ্রমিকের ব্যক্তিগত ডেটা) বাংলাদেশের মধ্যে সার্ভারে সংরক্ষণের প্রয়োজন হতে পারে</li>
+        <li><strong>বাংলাদেশ ব্যাংক রেগুলেশন</strong> — বৈদেশিক মুদ্রা, রেমিট্যান্স, বা ট্রেড ফাইন্যান্স সামলানো সিস্টেমের জন্য, বাংলাদেশ ব্যাংক রেগুলেশন নির্দিষ্ট ডেটা ফিল্ড আর রিপোর্টিং রিকোয়ারমেন্ট আরোপ করতে পারে</li>
+      </ul>
+
+      <div class="field-note">
+        <p class="fn-label">ফিল্ড নোট</p>
+        <p>একটা ফ্যাক্টরি কমপ্লায়েন্স সিস্টেম প্রজেক্টে, ডেভেলপমেন্ট শুরুর ছয় মাস পর আমরা আবিষ্কার করলাম বায়ারের প্রতিটা শ্রমিক রেকর্ড পরিবর্তনের জন্য একটা অডিট ট্রেইল দরকার — কে পরিবর্তন করেছেন, কখন, আর আগের মান কী ছিল, তাসহ। এটা SMETA অডিটের একটা স্ট্যান্ডার্ড রিকোয়ারমেন্ট, কিন্তু রিকোয়ারমেন্টে কখনো উল্লেখ হয়নি কারণ স্থানীয় টিম জানত না এটা একটা সিস্টেম-লেভেল রিকোয়ারমেন্ট (তারা ধরে নিয়েছিল এটা ম্যানুয়ালি সামলানো হয়)।</p>
+        <p>পূর্ণ অডিট ট্রেইল ফাংশনালিটি যোগ করতে ডেটাবেস রিডিজাইনে অতিরিক্ত তিন সপ্তাহ লেগেছিল আর লঞ্চে বিলম্ব হয়েছিল। প্রজেক্টের শুরুতে বায়ারের কমপ্লায়েন্স চেকলিস্টের একটা ডকুমেন্ট অ্যানালাইসিস প্রথম দিনেই এই রিকোয়ারমেন্টটা সামনে আনত।</p>
+      </div>
+
+      <h2 id="s7">অ্যাম্বিগুইটি ডিটেক্টর: রেড-ফ্ল্যাগ ফ্রেজ</h2>
+      <p>এই বাক্যাংশগুলোকে চলমান রিকোয়ারমেন্ট ব্যর্থতা হিসেবে শুনতে নিজেকে প্রশিক্ষণ দিন। একটা পেলে, এটা মেনে নেবেন না — নির্দিষ্টতার জন্য চাপ দিন।</p>
+
+      <div class="three-up">
+        <div class="card">
+          <h4>"সিস্টেমটা দ্রুত হওয়া উচিত"</h4>
+          <p>কীসের তুলনায় দ্রুত? কার জন্য? কোন লোডের অধীনে? এটা দিয়ে প্রতিস্থাপন করুন: "[X] জন কনকারেন্ট ইউজারের জন্য [ফাংশন] [Y] সেকেন্ডের মধ্যে সম্পন্ন হবে।"</p>
+        </div>
+        <div class="card">
+          <h4>"ব্যবহার করা সহজ"</h4>
+          <p>ইউজেবিলিটি টেস্টযোগ্য, কিন্তু শুধু একটা নির্দিষ্ট বেঞ্চমার্কসহ। এটা দিয়ে প্রতিস্থাপন করুন: "প্রশিক্ষণ ছাড়া একজন ইউজার [X] মিনিটের মধ্যে [কাজ] সম্পন্ন করতে পারবেন।"</p>
+        </div>
+        <div class="card">
+          <h4>"ইত্যাদি" / "etc."</h4>
+          <p>একটা রিকোয়ারমেন্টে এই বাক্যাংশগুলোর মানে হলো BA হাল ছেড়ে দিয়েছেন। "রিপোর্টটা PO নম্বর, বায়ার, স্ট্যাটাস, ইত্যাদি দেখাবে।" ইত্যাদি মানে কী? প্রতিটা ফিল্ডের নাম বলুন।</p>
+        </div>
+        <div class="card">
+          <h4>"যথাযথ" / "পর্যাপ্ত" / "যথেষ্ট"</h4>
+          <p>এগুলো রিকোয়ারমেন্টের ছদ্মবেশে বিচারমূলক সিদ্ধান্ত। "সিস্টেমটা পর্যাপ্ত সিকিউরিটি দেবে" কোনো রিকোয়ারমেন্ট নয়। কন্ট্রোলগুলোর নাম বলুন।</p>
+        </div>
+        <div class="card">
+          <h4>"সিস্টেমটা সব কেস সামলাবে"</h4>
+          <p>কেসগুলো তালিকাভুক্ত করুন। সব কেস কী কী? তালিকা করতে না পারলে, আপনি নিজের রিকোয়ারমেন্টই জানেন না।</p>
+        </div>
+        <div class="card">
+          <h4>"স্ট্যান্ডার্ড ইন্ডাস্ট্রি প্র্যাকটিস"</h4>
+          <p>কোন স্ট্যান্ডার্ড? কোন প্রতিষ্ঠান থেকে? কোন নির্দিষ্ট প্র্যাকটিস? এই বাক্যাংশ ধার করা কর্তৃত্বের আড়ালে একটা রিকোয়ারমেন্ট ফাঁক লুকায়।</p>
+        </div>
+      </div>
+
+      <h2 id="s8">টেমপ্লেট: SRS-lite স্ট্রাকচার</h2>
+
+      <div class="callout">
+        <span class="tag">টেমপ্লেট</span>
+        <p><strong>SRS-lite — ডকুমেন্ট সেকশন</strong><br><br>
+        <strong>১. ভূমিকা</strong> — প্রজেক্ট ওভারভিউ, ডকুমেন্টের স্কোপ, ডেফিনিশন/অ্যাক্রোনিম, স্টেকহোল্ডার সাইন-অফ রেকর্ড<br><br>
+        <strong>২. বিজনেস রিকোয়ারমেন্ট</strong> — সিস্টেমকে অর্জন করতে হবে এমন হাই-লেভেল লক্ষ্য (৩–৭টা বুলেট বিবৃতি)<br><br>
+        <strong>৩. স্টেকহোল্ডার রিকোয়ারমেন্ট</strong> — রোল অনুযায়ী: প্রতিটা ইউজার রোলের সিস্টেমের কাছ থেকে কী দরকার<br><br>
+        <strong>৪. ফাংশনাল রিকোয়ারমেন্ট</strong> — নম্বরযুক্ত তালিকা, প্রতি বিবৃতিতে একটা রিকোয়ারমেন্ট, মডিউল/ডোমেইন অনুযায়ী গ্রুপ করা। প্রতিটা এভাবে ফরম্যাট করা: FR-[নম্বর]: [ট্রিগার] হলে সিস্টেমটা [অ্যাক্টর]-এর জন্য [অ্যাকশন] করবে, [আউটপুট] তৈরি করে।<br><br>
+        <strong>৫. ডেটা রিকোয়ারমেন্ট</strong> — ফিল্ড-লেভেল ডেটা ডিকশনারিসহ এনটিটি তালিকা (উপরের সেকশন ৩-এর ফরম্যাট দেখুন)<br><br>
+        <strong>৬. ইন্টিগ্রেশন রিকোয়ারমেন্ট</strong> — প্রতিটা ইন্টিগ্রেশন পয়েন্ট অনুযায়ী: দিক, ফ্রিকোয়েন্সি, প্রোটোকল, এরর হ্যান্ডলিং<br><br>
+        <strong>৭. নন-ফাংশনাল রিকোয়ারমেন্ট</strong> — পারফরম্যান্স, সিকিউরিটি, অ্যাভেইলেবিলিটি, ইউজেবিলিটি, স্কেলেবিলিটি, কমপ্লায়েন্স<br><br>
+        <strong>৮. স্কোপের বাইরে</strong> — এই প্রজেক্ট কী কভার করে না তার স্পষ্ট তালিকা। স্পনসরের সাইন-অফ প্রয়োজন।<br><br>
+        <strong>৯. খোলা প্রশ্ন</strong> — মালিক ও নির্ধারিত তারিখসহ অমীমাংসিত আইটেম<br><br>
+        <strong>১০. চেঞ্জ লগ</strong> — ভার্সন, তারিখ, লেখক, পরিবর্তনের সারাংশ, অনুমোদনকারী</p>
+      </div>
+
+      <h2 id="s_nfr">নন-ফাংশনাল রিকোয়ারমেন্ট: স্পেকের সবচেয়ে অবহেলিত সেকশন</h2>
+      <p>ফাংশনাল রিকোয়ারমেন্ট বর্ণনা করে সিস্টেম কী করে। নন-ফাংশনাল রিকোয়ারমেন্ট (NFR) বর্ণনা করে এটা কতটা ভালোভাবে করে। বাংলাদেশের প্রজেক্ট বাজারে, NFR হয় স্পেক থেকে সম্পূর্ণ অনুপস্থিত থাকে, অথবা এমন অস্পষ্ট আকাঙ্ক্ষা হিসেবে লেখা হয় যা কেউ যাচাই করতে পারেন না। দুটোই ব্যয়বহুল ভুল।</p>
+
+      <div class="bar-chart">
+        <div class="bc-row">
+          <span class="bc-label">পারফরম্যান্স</span>
+          <div class="bc-track"><div class="bc-fill" style="width:88%"></div></div>
+          <span class="bc-pct">রেসপন্স টাইম, লোড</span>
+        </div>
+        <div class="bc-row">
+          <span class="bc-label">সিকিউরিটি</span>
+          <div class="bc-track"><div class="bc-fill" style="width:82%"></div></div>
+          <span class="bc-pct">অ্যাক্সেস, এনক্রিপশন</span>
+        </div>
+        <div class="bc-row">
+          <span class="bc-label">রিলায়াবিলিটি</span>
+          <div class="bc-track"><div class="bc-fill" style="width:74%"></div></div>
+          <span class="bc-pct">আপটাইম, ফেইলওভার</span>
+        </div>
+        <div class="bc-row">
+          <span class="bc-label">ইউজেবিলিটি</span>
+          <div class="bc-track"><div class="bc-fill" style="width:66%"></div></div>
+          <span class="bc-pct">প্রশিক্ষণ সময়, ভুল</span>
+        </div>
+        <div class="bc-row">
+          <span class="bc-label">স্কেলেবিলিটি</span>
+          <div class="bc-track"><div class="bc-fill" style="width:55%"></div></div>
+          <span class="bc-pct">ইউজার বৃদ্ধি, ডেটা ভলিউম</span>
+        </div>
+        <div class="bc-row">
+          <span class="bc-label">কমপ্লায়েন্স</span>
+          <div class="bc-track"><div class="bc-fill" style="width:70%"></div></div>
+          <span class="bc-pct">অডিট, রেগুলেটরি</span>
+        </div>
+      </div>
+
+      <div class="insight-row">
+        <div class="insight-card">
+          <p class="ic-label">পারফরম্যান্স NFR — ভুল উপায়</p>
+          <h4>"সিস্টেমটা দ্রুত হওয়া উচিত"</h4>
+          <p>টেস্ট করা অসম্ভব। সঠিক পরিস্থিতিতে প্রতিটা সিস্টেমই "দ্রুত"। একজন ডেভেলপারের কাছে "দ্রুত" মানে ২০০ মিলিসেকেন্ড; একজন স্টেকহোল্ডারের কাছে "দ্রুত" মানে "বর্তমান Excel শিটের চেয়ে দ্রুত"। এভাবে লিখুন: "একটা স্ট্যান্ডার্ড ব্রডব্যান্ড সংযোগে ৫০,০০০ পর্যন্ত ট্রানজ্যাকশন সারিসহ একটা ডেটাসেটের জন্য ড্যাশবোর্ড ৩ সেকেন্ডের মধ্যে লোড হবে।" এখন এটা টেস্টযোগ্য।</p>
+        </div>
+        <div class="insight-card">
+          <p class="ic-label">সিকিউরিটি NFR — ভুল উপায়</p>
+          <h4>"সিস্টেমটা নিরাপদ হওয়া উচিত"</h4>
+          <p>এভাবে লিখুন: "শুধু HR Manager রোলের ইউজাররা ব্যক্তিগত কর্মীর বেতন রেকর্ড অ্যাক্সেস করতে পারবেন। রোল-বেসড অ্যাক্সেস কন্ট্রোল শুধু UI লেভেলে নয়, ডেটাবেস লেভেলেও প্রয়োগ করতে হবে। সব লগইন প্রচেষ্টা টাইমস্ট্যাম্প আর IP অ্যাড্রেসসহ লগ করতে হবে।" টেস্টযোগ্য। বানানোর মতো। UAT-তে যাচাইযোগ্য।</p>
+        </div>
+        <div class="insight-card">
+          <p class="ic-label">ইউজেবিলিটি NFR — ভুল উপায়</p>
+          <h4>"সিস্টেমটা ব্যবহার করা সহজ হওয়া উচিত"</h4>
+          <p>এভাবে লিখুন: "মৌলিক স্মার্টফোন সাক্ষরতাসহ একজন নতুন ফ্লোর সুপারভাইজার একটা ৩০-মিনিটের অনবোর্ডিং সেশনের বাইরে অতিরিক্ত প্রশিক্ষণ ছাড়া দৈনিক অ্যাটেনডেন্স এন্ট্রি সম্পন্ন করতে পারবেন। ব্যবহারের প্রথম সপ্তাহ পর অ্যাটেনডেন্স এন্ট্রি ফর্মে এরর রেট ৫%-এর নিচে থাকবে।" এখন আপনার একটা টেস্টযোগ্য ইউজেবিলিটি লক্ষ্য আছে।</p>
+        </div>
+        <div class="insight-card">
+          <p class="ic-label">কমপ্লায়েন্স NFR — বাংলাদেশ-নির্দিষ্ট</p>
+          <h4>শ্রম আইন ও এক্সপোর্ট ডকুমেন্টেশন রিকোয়ারমেন্ট</h4>
+          <p>RMG ফ্যাক্টরির জন্য, কমপ্লায়েন্স NFR-এ প্রায়ই অন্তর্ভুক্ত থাকে: ৩ বছরের অডিট লগ রিটেনশন (BGMEA কমপ্লায়েন্স), বায়ার পোর্টাল ইন্টিগ্রেশনকে নির্দিষ্ট EDI ফরম্যাট সাপোর্ট করতে হবে, ওভারটাইম হিসাব বাংলাদেশ শ্রম আইন ২০০৬-এর ধারা ১০৮ অনুসরণ করতে হবে। এগুলো ঐচ্ছিক নয় — আর এগুলো শুধু মৌখিক সম্মতিতে নয়, স্পেকেও থাকতে হবে।</p>
+        </div>
+      </div>
+
+      <h2 id="s9">রিফ্লেকশন প্রশ্ন</h2>
+      <ol>
+        <li>আপনি বর্তমানে কাজ করছেন এমন একটা প্রজেক্ট নিন আর মূল মডিউলের জন্য "সিস্টেমটা shall…" ফরম্যাটে তিনটা ফাংশনাল রিকোয়ারমেন্ট লিখুন। এখন প্রতিটা যাচাই করুন: এটা কি টেস্টযোগ্য? এটা কি অ্যাক্টরের নাম বলে? এটা কি ট্রিগার আর ফলাফল নির্দিষ্ট করে?</li>
+        <li>আপনার বর্তমান বা সাম্প্রতিক প্রজেক্টে কোন কমপ্লায়েন্স রিকোয়ারমেন্ট প্রযোজ্য যা প্রাথমিক রিকোয়ারমেন্ট ডকুমেন্টে ছিল না? প্রজেক্টের শুরুতে ডকুমেন্ট অ্যানালাইসিস কীভাবে এগুলো সামনে আনত?</li>
+        <li>আপনার মালিকানাধীন বা অ্যাক্সেস আছে এমন একটা রিকোয়ারমেন্ট ডকুমেন্টের একটা সেকশন অডিট করুন। অ্যাম্বিগুইটি ডিটেক্টর থেকে কতগুলো "রেড-ফ্ল্যাগ ফ্রেজ" খুঁজে পান? তিনটা আবার লিখুন।</li>
+      </ol>
+
+    </article>
+  </div>
+</div>
+
+<div class="shell">
+  <div class="post-foot">
+    <div class="next">
+      <a href="lesson-05" class="next-card">
+        <span class="dir">← পূর্ববর্তী</span>
+        <h4>লেসন ০৫ — ইউজার স্টোরি</h4>
+        <p>INVEST, Given/When/Then, আর অ্যান্টি-প্যাটার্ন গ্যালারি।</p>
+        <span class="arrow">← লেসন ০৫</span>
+      </a>
+      <a href="lesson-07" class="next-card">
+        <span class="dir">পরবর্তী →</span>
+        <h4>লেসন ০৭ — পরস্পরবিরোধী রিকোয়ারমেন্ট</h4>
+        <p>দ্বন্দ্ব সমাধান করুন, চেঞ্জ রিকোয়েস্ট ম্যানেজ করুন, আর RTM বজায় রাখুন।</p>
+        <span class="arrow">→ লেসন ০৭</span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="shell">
+    <div class="foot">
+      <span>কোর্স ০১ · লেসন ০৬</span>
+      <a href="/bn/" style="color:var(--text-3);transition:color .15s" onmouseover="this.style.color='var(--text)'" onmouseout="this.style.color='var(--text-3)'">← পোর্টফোলিও</a>
+    </div>
+  </div>
+</footer>
+<script src="/courses/01-requirements-gathering/_progress.js"></script>
+<script src="/lab/_toc.js"></script>
+<script src="/whatsapp.js" defer></script>
+<script src="/scroll-top.js" defer></script>
+</body>
+</html>

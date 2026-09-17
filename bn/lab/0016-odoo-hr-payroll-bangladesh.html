@@ -1,0 +1,623 @@
+<!doctype html>
+<html lang="bn">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description"
+    content="বাংলাদেশের জন্য Odoo HR ও Payroll সেটআপ — PF, গ্র্যাচুইটি, ছুটির ধরন, স্যালারি স্ট্রাকচার, স্যালারিতে ইনকাম ট্যাক্স। ৪০০+ কর্মীর ডেপ্লয়মেন্ট থেকে নেওয়া। সঠিকভাবে সেটআপ করুন →" />
+  <meta name="robots" content="noindex, follow" />
+  <meta name="author" content="Mehedi Hasan" />
+  <title>Odoo Payroll বাংলাদেশ | PF গ্র্যাচুইটি ও ছুটি | মেহেদী হাসান</title>
+  <link rel="canonical" href="https://mhasan.me/bn/lab/0016-odoo-hr-payroll-bangladesh" />
+  <link rel="alternate" hreflang="en" href="https://mhasan.me/lab/0016-odoo-hr-payroll-bangladesh" />
+  <link rel="alternate" hreflang="bn-BD" href="https://mhasan.me/bn/lab/0016-odoo-hr-payroll-bangladesh" />
+  <link rel="alternate" hreflang="x-default" href="https://mhasan.me/lab/0016-odoo-hr-payroll-bangladesh" />
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png" />
+  <!-- Open Graph -->
+  <meta property="og:title" content="Odoo Payroll বাংলাদেশ | PF গ্র্যাচুইটি ও ছুটি | মেহেদী হাসান" />
+  <meta property="og:description"
+    content="বাংলাদেশের কমপ্লায়েন্সের জন্য Odoo HR ও Payroll কীভাবে কনফিগার করবেন — Provident Fund, গ্র্যাচুইটি, বার্ষিক/অসুস্থতা/নৈমিত্তিক ছুটি, স্যালারি স্ট্রাকচার, এবং স্যালারিতে ইনকাম ট্যাক্স।" />
+  <meta property="og:url" content="https://mhasan.me/bn/lab/0016-odoo-hr-payroll-bangladesh" />
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="https://mhasan.me/assets/og-default.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale" content="bn_BD" />
+  <meta property="og:site_name" content="মেহেদী হাসান | Odoo ERP কনসালট্যান্ট" />
+  <meta property="article:author" content="https://www.linkedin.com/in/mehedi-hasan-consultant/" />
+  <meta property="article:published_time" content="2026-05-04T12:00:00+06:00" />
+  <meta property="article:modified_time" content="2026-05-22T12:00:00+06:00" />
+  <meta property="article:section" content="Odoo ERP Bangladesh" />
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Odoo Payroll বাংলাদেশ | PF গ্র্যাচুইটি ও ছুটি" />
+  <meta name="twitter:description"
+    content="বাংলাদেশের জন্য Odoo HR ও Payroll কনফিগার করুন — PF, গ্র্যাচুইটি, ছুটি নীতি, এবং স্যালারিতে ইনকাম ট্যাক্স।" />
+  <meta name="twitter:image" content="https://mhasan.me/assets/og-default.jpg" />
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Odoo HR ও Payroll বাংলাদেশ: PF, গ্র্যাচুইটি ও ছুটি নীতি সেটআপ (2026)",
+    "description": "বাংলাদেশের কমপ্লায়েন্সের জন্য Odoo HR ও Payroll কনফিগার করার একটি প্র্যাকটিশনার গাইড — Provident Fund, গ্র্যাচুইটি, ছুটির ধরন, স্যালারি স্ট্রাকচার, এবং উৎসে ইনকাম ট্যাক্স কর্তনসহ।",
+    "datePublished": "2026-05-04T12:00:00+06:00",
+    "dateModified": "2026-05-22T00:00:00+06:00",
+    "inLanguage": "bn",
+    "author": {
+      "@type": "Person",
+      "name": "Mehedi Hasan",
+      "url": "https://mhasan.me",
+      "jobTitle": "Odoo ERP Consultant & Business Analyst",
+      "sameAs": "https://www.linkedin.com/in/mehedi-hasan-consultant/"
+    },
+    "publisher": { "@type": "Person", "name": "Mehedi Hasan", "url": "https://mhasan.me" },
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://mhasan.me/bn/lab/0016-odoo-hr-payroll-bangladesh" }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "হোম", "item": "https://mhasan.me/bn" },
+      { "@type": "ListItem", "position": 2, "name": "ল্যাব", "item": "https://mhasan.me/bn/#lab" },
+      { "@type": "ListItem", "position": 3, "name": "Odoo HR Payroll বাংলাদেশ", "item": "https://mhasan.me/bn/lab/0016-odoo-hr-payroll-bangladesh" }
+    ]
+  }
+]
+</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&family=Noto+Sans+Bengali:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap">
+  <link rel="stylesheet" href="/lab/_styles.css">
+  <style>
+    body{ font-family: 'Noto Sans Bengali', var(--sans); }
+    .pull {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: clamp(24px, 3vw, 36px);
+      line-height: 1.25;
+      color: var(--text);
+      margin: 48px 0;
+      padding: 0;
+      border: none;
+      max-width: 22ch;
+      letter-spacing: -0.01em;
+    }
+    .pull::before {
+      content: "";
+      display: block;
+      width: 36px;
+      height: 1px;
+      background: var(--accent);
+      margin-bottom: 18px;
+    }
+
+    /* salary structure */
+    .salary-table {
+      width: 100%;
+      border-collapse: collapse;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+      margin: 24px 0;
+    }
+    .salary-table thead tr { background: var(--elev); }
+    .salary-table th {
+      font-family: var(--mono);
+      font-size: 10.5px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-3);
+      padding: 12px 16px;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+    }
+    .salary-table td {
+      padding: 12px 16px;
+      font-size: 13.5px;
+      color: var(--text-2);
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .salary-table tr:last-child td { border-bottom: none; }
+    .salary-table .earning { color: var(--accent); }
+    .salary-table .deduction { color: oklch(0.72 0.18 25); }
+    .salary-table .company { color: oklch(0.82 0.16 85); }
+    .salary-table td strong { color: var(--text); }
+
+    /* leave grid */
+    .leave-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+      margin: 24px 0;
+    }
+    .leave-card {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 20px;
+      background: var(--surface);
+    }
+    .leave-card.mandatory { border-color: oklch(0.80 0.17 155 / 0.4); }
+    .leave-card .lc-label {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-3);
+      margin-bottom: 10px;
+    }
+    .leave-card.mandatory .lc-label { color: var(--accent); }
+    .leave-card h4 { margin: 0 0 6px; font-size: 15px; font-weight: 500; color: var(--text); }
+    .leave-card .lc-days {
+      font-family: var(--mono);
+      font-size: 22px;
+      font-weight: 500;
+      color: var(--accent);
+      margin-bottom: 10px;
+    }
+    .leave-card p { margin: 0; font-size: 13px; color: var(--text-2); line-height: 1.55; }
+    @media(max-width:640px) { .leave-grid { grid-template-columns: 1fr; } }
+
+    /* payslip example */
+    .payslip {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+      background: var(--surface);
+      margin: 24px 0;
+      font-family: var(--mono);
+      font-size: 13px;
+    }
+    .payslip-head {
+      padding: 14px 18px;
+      background: var(--elev);
+      border-bottom: 1px solid var(--border);
+      font-size: 10.5px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-3);
+    }
+    .payslip-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 18px;
+      border-bottom: 1px solid var(--border);
+      color: var(--text-2);
+    }
+    .payslip-row:last-child { border-bottom: none; }
+    .payslip-row.total {
+      color: var(--text);
+      font-weight: 600;
+      background: oklch(0.80 0.17 155 / 0.04);
+    }
+    .payslip-row .pr-label { }
+    .payslip-row .pr-amount { color: var(--text); }
+    .payslip-row.deduction .pr-amount { color: oklch(0.72 0.18 25); }
+    .payslip-section {
+      padding: 8px 18px;
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-3);
+      background: var(--elev);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .field-note{margin:28px 0;border:1px solid var(--border);border-radius:12px;overflow:hidden;background:var(--surface)}
+    .fn-hd{display:flex;align-items:center;justify-content:space-between;padding:12px 18px;border-bottom:1px solid var(--border);font-family:var(--mono);font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-3)}
+    .fn-hd .when{color:var(--accent)}
+    .fn-body{padding:18px 22px;font-size:15px;line-height:1.65;color:var(--text-2)}
+    .fn-body strong{color:var(--text);font-weight:500}
+  </style>
+</head>
+
+<body>
+  <div class="grid-bg"></div>
+
+  <header class="nav">
+    <div class="shell">
+      <div class="nav-inner">
+        <a class="brand" href="/bn/">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span class="brand-name"><b>Mehedi Hasan</b><em>ERP · বিজনেস অ্যানালিস্ট</em></span>
+        </a>
+        <a class="back-link" href="/bn/#lab">← ল্যাব-এ ফিরুন</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="post-head">
+    <div class="shell">
+      <span class="eyebrow">টেকনিক্যাল ল্যাব · 0016</span>
+      <h1>Odoo HR ও Payroll বাংলাদেশ — <span class="serif">PF, গ্র্যাচুইটি ও ছুটি সেটআপ।</span></h1>
+      <p class="lede">বাংলাদেশ শ্রম আইন কমপ্লায়েন্সের জন্য Odoo-র HR ও Payroll মডিউল কীভাবে কনফিগার করবেন — Provident Fund, গ্র্যাচুইটি প্রভিশন, ছুটির ধরন, স্যালারি স্ট্রাকচার, এবং স্যালারিতে ইনকাম ট্যাক্স কর্তন।</p>
+      <div class="post-meta">
+        <span class="chip accent">মডিউল গাইড</span>
+        <span class="chip">HR ও Payroll</span>
+        <span class="chip">বাংলাদেশ শ্রম আইন</span>
+        <span class="chip">কমপ্লায়েন্স</span>
+      </div>
+      <div class="byline">
+        <span>লেখক<b><a href="https://www.linkedin.com/in/mehedi-hasan-consultant/" style="color:var(--accent)" rel="author">Mehedi Hasan</a></b></span>
+        <span>প্রকাশিত<b>মে ২০২৬</b></span>
+        <span>পড়ার সময়<b>১২ মিনিট</b></span>
+        <span>ধরন<b>কনফিগারেশন গাইড</b></span>
+        <span>পরিসর<b>SME থেকে Manufacturing</b></span>
+      </div>
+    </div>
+  </section>
+
+  <article class="post">
+    <aside class="toc">
+      <div class="toc-k">এই গাইডে</div>
+      <ol>
+        <li><a href="#compliance">বাংলাদেশ শ্রম আইনের বেসলাইন</a></li>
+        <li><a href="#employee">এমপ্লয়ি মাস্টার সেটআপ</a></li>
+        <li><a href="#leave">ছুটির ধরন ও অ্যালোকেশন</a></li>
+        <li><a href="#salary">স্যালারি স্ট্রাকচার</a></li>
+        <li><a href="#pf">Provident Fund (PF) সেটআপ</a></li>
+        <li><a href="#gratuity">গ্র্যাচুইটি প্রভিশন</a></li>
+        <li><a href="#tax">স্যালারিতে ইনকাম ট্যাক্স</a></li>
+        <li><a href="#payroll">পে-রোল চালানো</a></li>
+        <li><a href="#faq">সচরাচর জিজ্ঞাসা</a></li>
+      </ol>
+    </aside>
+
+    <div class="body">
+      <p>HR ও Payroll হলো সেই Odoo মডিউল যা প্রতিটি কর্মীকে স্পর্শ করে — আর যেখানে কমপ্লায়েন্সের ব্যর্থতার সবচেয়ে সরাসরি আইনি পরিণতি থাকে। বাংলাদেশে, শ্রম আইন ২০০৬ (২০১৮ সালে সংশোধিত) ছুটি, Provident Fund, আর গ্র্যাচুইটির জন্য বাধ্যতামূলক ন্যূনতম নির্ধারণ করে যা প্রতিটি নিয়োগকর্তাকে মানতে হয়। Odoo এই সবকিছু প্রয়োগ করার জন্য কনফিগার করা যায় — কিন্তু এটি বাংলাদেশের জন্য পূর্ব-কনফিগার করা অবস্থায় আসে না।</p>
+
+      <p>এই গাইড সম্পূর্ণ সেটআপ সিকোয়েন্স কভার করে: এমপ্লয়ি রেকর্ড, ছুটির ধরন, স্যালারি স্ট্রাকচার, PF রুল, গ্র্যাচুইটি প্রভিশনিং, ইনকাম ট্যাক্স কর্তন, এবং পে-রোল প্রসেসিং। আমি এটি তৈরি করেছি RMG কারখানা (৪০০+ কর্মী), SME ট্রেডিং কোম্পানি, এবং ঢাকা-ভিত্তিক সার্ভিস ব্যবসার লাইভ ডেপ্লয়মেন্ট থেকে।</p>
+
+      <p class="pull">পে-রোলের একটি ভুল বাস্তব মানুষদের প্রভাবিত করে। গো-লাইভের আগে প্রকৃত এমপ্লয়ি ডেটার বিপরীতে প্রতিটি স্যালারি রুল টেস্ট করুন।</p>
+
+      <h2 id="compliance">বাংলাদেশ শ্রম আইনের বেসলাইন</h2>
+
+      <p>Odoo-তে কিছু কনফিগার করার আগে, আপনার পে-রোল কোন আইনি বেসলাইন মানতে হবে তা নিশ্চিত করুন। বাংলাদেশ শ্রম আইন ২০০৬ (সংশোধিত) অনুযায়ী, বাধ্যতামূলক ন্যূনতম বাধ্যবাধকতাগুলো হলো:</p>
+
+      <table>
+        <thead>
+          <tr><th>বাধ্যবাধকতা</th><th>আইনি ন্যূনতম</th><th>কাদের জন্য প্রযোজ্য</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Earned Leave</td>
+            <td>প্রতি ১৮ কর্মদিবসে ১ দিন (কারখানা শ্রমিকদের জন্য প্রায় ১০–১১ দিন/বছর; স্টাফদের জন্য ভিন্ন)</td>
+            <td>১২ মাস চাকরির পর সব শ্রমিক</td>
+          </tr>
+          <tr>
+            <td>Sick Leave</td>
+            <td>বছরে ১৪ দিন পূর্ণ বেতনসহ</td>
+            <td>সব কর্মী</td>
+          </tr>
+          <tr>
+            <td>Casual Leave</td>
+            <td>বছরে ১০ দিন পূর্ণ বেতনসহ</td>
+            <td>সব কর্মী</td>
+          </tr>
+          <tr>
+            <td>Maternity Leave</td>
+            <td>১৬ সপ্তাহ (ডেলিভারির আগে ৮ + পরে ৮) পূর্ণ বেতনসহ</td>
+            <td>≥৬ মাস চাকরি থাকা নারী কর্মী</td>
+          </tr>
+          <tr>
+            <td>Festival Leave</td>
+            <td>বছরে ১১ দিন (ঈদুল ফিতর, ঈদুল আজহা, এবং জাতীয় ছুটি)</td>
+            <td>সব কর্মী</td>
+          </tr>
+          <tr>
+            <td>Provident Fund</td>
+            <td>বেসিক স্যালারির ৫% কর্মী কন্ট্রিবিউশন + ৫% নিয়োগকর্তা কন্ট্রিবিউশন (যেখানে PF স্কিম আছে)</td>
+            <td>কোম্পানির PF স্কিমের আওতাভুক্ত কর্মী</td>
+          </tr>
+          <tr>
+            <td>Gratuity</td>
+            <td>চাকরির প্রতি বছরে ৩০ দিনের মজুরি (শ্রমিক); বছরে ১ মাসের বেসিক (স্টাফ)</td>
+            <td>চাকরি শেষে ≥১ বছর চাকরি থাকা কর্মী</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="callout">
+        <span class="tag">শিল্প-নির্দিষ্ট</span>
+        <p>BGMEA/BKMEA সদস্য কারখানা অতিরিক্তভাবে Minimum Wage Board গেজেট নোটিফিকেশন দ্বারা নিয়ন্ত্রিত হয়, যা RMG শ্রমিকদের গ্রেড অনুযায়ী ন্যূনতম মজুরি নির্ধারণ করে। আপনার কারখানা BGMEA সদস্য হলে, আপনার Odoo স্যালারি স্ট্রাকচারে এই ন্যূনতম প্রয়োগ করতে হবে। গ্রেড অনুযায়ী কম বেতন দেওয়া শুধু একটি পে-রোল ভুল নয় — এটি একটি কমপ্লায়েন্স ব্যর্থতা। ব্যবহারিক সেটআপ: আপনার সেক্টরের জন্য বর্তমান Minimum Wage Board গেজেট আনুন, প্রতিটি গেজেটকৃত গ্রেডের জন্য একটি করে Job Position তৈরি করুন, প্রতিটিতে গেজেটকৃত ফ্লোর মজুরি রেকর্ড করুন, আর কনফার্ম করার আগে প্রতিটি চুক্তির বেসিক মজুরি তার গ্রেড ফ্লোরের বিপরীতে রিভিউ করুন। ফ্লোরের নিচে যেকোনো চুক্তিকে একটি ব্লকার হিসেবে দেখুন, সতর্কতা হিসেবে নয়।</p>
+      </div>
+
+      <h2 id="employee">এমপ্লয়ি মাস্টার সেটআপ</h2>
+
+      <p>Odoo-তে প্রতিটি এমপ্লয়ি রেকর্ডে (Employees → New) এই বাংলাদেশ-নির্দিষ্ট ফিল্ডগুলো থাকতে হবে:</p>
+
+      <table>
+        <thead>
+          <tr><th>ফিল্ড / ট্যাব</th><th>যা কনফিগার করতে হবে</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Job Position / Grade</td>
+            <td>একটি Job Position-এর সাথে লিংক করুন যা স্যালারি ব্যান্ড আর PF যোগ্যতা নির্ধারণ করে। আপনার কোম্পানির গ্রেডিং স্ট্রাকচারের সাথে মেলে এমন গ্রেড তৈরি করুন (Grade A, B, C অথবা Officer, Senior Officer, Manager)।</td>
+          </tr>
+          <tr>
+            <td>Date of Joining</td>
+            <td>গ্র্যাচুইটি হিসাব আর ছুটির যোগ্যতা সঞ্চয়ের জন্য গুরুত্বপূর্ণ। Odoo এই তারিখ থেকে চাকরির বছর হিসাব করে।</td>
+          </tr>
+          <tr>
+            <td>NID / Passport</td>
+            <td>"Private Information" ট্যাবে National ID নম্বর সংরক্ষণ করুন। ব্যাংক ট্রান্সফার, PF নিবন্ধন, আর ইনকাম ট্যাক্স ফাইলিং-এর জন্য প্রয়োজনীয়।</td>
+          </tr>
+          <tr>
+            <td>Bank Account</td>
+            <td>Private Information → Save → Salary ট্যাব → Bank Account-এর অধীনে যোগ করুন। এটিই সেই অ্যাকাউন্ট যা Odoo সরাসরি পে-রোল পেমেন্টের জন্য ব্যবহার করে। ব্যাংক ট্রান্সফারে ব্যাচ-পে স্যালারি দিলে প্রয়োজনীয়।</td>
+          </tr>
+          <tr>
+            <td>TIN (Tax ID)</td>
+            <td>ইনকাম ট্যাক্স হিসাব আর Form-16 সমতুল্যের জন্য এমপ্লয়ি TIN। "Tax ID"-এর অধীনে Private Information ট্যাবে সংরক্ষণ করুন।</td>
+          </tr>
+          <tr>
+            <td>Contract</td>
+            <td>প্রতিটি কর্মীর একটি সক্রিয় কন্ট্র্যাক্ট থাকতে হবে (Employees → Employee → Contracts ট্যাব → New)। কন্ট্র্যাক্ট স্যালারি স্ট্রাকচার, মজুরি, আর PF/গ্র্যাচুইটি যোগ্যতা নির্ধারণ করে। কনফার্মড কন্ট্র্যাক্ট ছাড়া একজন কর্মীর জন্য পে-রোল চলবে না।</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2 id="leave">ছুটির ধরন ও অ্যালোকেশন</h2>
+
+      <p>Odoo-র Leave মডিউল (Time Off) রিকোয়েস্ট, অ্যাপ্রুভাল, আর ব্যালেন্স ট্র্যাকিং ম্যানেজ করে। বাংলাদেশের জন্য এই ছুটির ধরনগুলো কনফিগার করুন:</p>
+
+      <div class="leave-grid">
+        <div class="leave-card mandatory">
+          <div class="lc-label">বাধ্যতামূলক — শ্রম আইন</div>
+          <h4>Earned Leave (বার্ষিক)</h4>
+          <div class="lc-days">১০–১১ দিন/বছর</div>
+          <p>অ্যাক্রুয়াল টাইপ: "Based on worked time" — প্রতি ১৮ কর্মদিবসে ১ দিন। ক্যারিড-ফরোয়ার্ড ছুটি হিসেবে কনফিগার করুন। অব্যবহৃত ব্যালেন্স নগদায়ন করতে হবে অথবা পরের বছরে বহন করতে হবে।</p>
+        </div>
+        <div class="leave-card mandatory">
+          <div class="lc-label">বাধ্যতামূলক — শ্রম আইন</div>
+          <h4>Sick Leave</h4>
+          <div class="lc-days">১৪ দিন/বছর</div>
+          <p>অ্যালোকেশন টাইপ: Fixed (প্রতি ছুটির বছরের শুরুতে ১৪ দিন)। সিক লিভ বহন করা যায় না। পূর্ণ বেসিক স্যালারিতে পরিশোধিত।</p>
+        </div>
+        <div class="leave-card mandatory">
+          <div class="lc-label">বাধ্যতামূলক — শ্রম আইন</div>
+          <h4>Casual Leave</h4>
+          <div class="lc-days">১০ দিন/বছর</div>
+          <p>অ্যালোকেশন টাইপ: Fixed (ছুটির বছরের শুরুতে ১০ দিন)। জমা বা নগদায়ন করা যায় না। স্বল্প-নোটিশের ব্যক্তিগত জরুরি অবস্থায় ব্যবহৃত হয়।</p>
+        </div>
+        <div class="leave-card mandatory">
+          <div class="lc-label">বাধ্যতামূলক — নারী কর্মী</div>
+          <h4>Maternity Leave</h4>
+          <div class="lc-days">১৬ সপ্তাহ</div>
+          <p>"No allocation"-সহ একটি আলাদা ছুটির ধরন হিসেবে তৈরি করুন (রিকোয়েস্টে প্রয়োগ)। সম্পূর্ণ পরিশোধিত। মেডিকেল সার্টিফিকেট দরকার। যোগ্য কর্মীদের অস্বীকার করা যায় না।</p>
+        </div>
+        <div class="leave-card">
+          <div class="lc-label">কোম্পানি নীতি</div>
+          <h4>Festival / Public Holiday</h4>
+          <div class="lc-days">১১ দিন/বছর</div>
+          <p>Work Schedule-এ Public Holidays হিসেবে কনফিগার করুন (ছুটি অ্যালোকেশন হিসেবে নয়)। এগুলো কোম্পানি ক্যালেন্ডারে অ-কর্মদিবস — এগুলো ছুটির ব্যালেন্স খরচ করে না।</p>
+        </div>
+        <div class="leave-card">
+          <div class="lc-label">SME-তে সাধারণ</div>
+          <h4>Without Pay Leave</h4>
+          <div class="lc-days">অনুরোধ অনুযায়ী</div>
+          <p>"No allocation"-সহ একটি আলাদা ছুটির ধরন হিসেবে তৈরি করুন — ছুটিটি অবেতনিক আর পে-স্লিপে একটি স্যালারি ডিডাকশন ট্রিগার করে। স্যালারি স্ট্রাকচারে "Leave Deduction" অপশন চালু থাকলে Odoo স্বয়ংক্রিয়ভাবে ডিডাকশন হিসাব করে।</p>
+        </div>
+      </div>
+
+      <p>প্রতিটি ছুটির ধরনে ছুটি অ্যাপ্রুভাল ওয়ার্কফ্লো সেট করুন: এক-ধাপ (সরাসরি ম্যানেজার) অথবা দুই-ধাপ (ম্যানেজার তারপর HR)। ৪০০+ কর্মীর বড় ম্যানুফ্যাকচারিং অপারেশনের জন্য, আমি Earned Leave আর Maternity Leave-এর জন্য দুই-ধাপের অ্যাপ্রুভাল সুপারিশ করি; Casual আর Sick-এর জন্য একক-ধাপ।</p>
+
+      <h2 id="salary">স্যালারি স্ট্রাকচার</h2>
+
+      <p>স্যালারি স্ট্রাকচার পে-স্লিপের প্রতিটি আর্নিং আর ডিডাকশন লাইন সংজ্ঞায়িত করে। বাংলাদেশে, সাধারণ স্টাফ স্যালারি স্ট্রাকচার দেখতে এমন:</p>
+
+      <div class="payslip">
+        <div class="payslip-head">নমুনা বাংলাদেশ পে-স্লিপ — মাসিক স্টাফ (BDT)</div>
+        <div class="payslip-section">Earnings</div>
+        <div class="payslip-row">
+          <span class="pr-label">Basic Salary</span>
+          <span class="pr-amount">30,000</span>
+        </div>
+        <div class="payslip-row">
+          <span class="pr-label">House Rent Allowance (Basic-এর ৫০%)</span>
+          <span class="pr-amount">15,000</span>
+        </div>
+        <div class="payslip-row">
+          <span class="pr-label">Medical Allowance</span>
+          <span class="pr-amount">1,500</span>
+        </div>
+        <div class="payslip-row">
+          <span class="pr-label">Transport Allowance</span>
+          <span class="pr-amount">2,500</span>
+        </div>
+        <div class="payslip-row total">
+          <span class="pr-label">Gross Salary</span>
+          <span class="pr-amount">49,000</span>
+        </div>
+        <div class="payslip-section">Deductions</div>
+        <div class="payslip-row deduction">
+          <span class="pr-label">Employee PF (Basic-এর ৫%)</span>
+          <span class="pr-amount">–1,500</span>
+        </div>
+        <div class="payslip-row deduction">
+          <span class="pr-label">Income Tax (স্যালারিতে TDS)</span>
+          <span class="pr-amount">–1,200</span>
+        </div>
+        <div class="payslip-row total">
+          <span class="pr-label">Net Payable</span>
+          <span class="pr-amount">46,300</span>
+        </div>
+        <div class="payslip-section">নিয়োগকর্তার কন্ট্রিবিউশন (পে-স্লিপে নেই — কোম্পানি কস্ট)</div>
+        <div class="payslip-row">
+          <span class="pr-label">Employer PF (Basic-এর ৫%)</span>
+          <span class="pr-amount">1,500</span>
+        </div>
+        <div class="payslip-row">
+          <span class="pr-label">Gratuity Provision (বার্ষিক যোগ্যতার ১/১২)</span>
+          <span class="pr-amount">2,500</span>
+        </div>
+      </div>
+
+      <p>Odoo-তে, প্রতিটি লাইন স্যালারি স্ট্রাকচারের ভেতরে একটি <strong>salary rule</strong>। যান Payroll → Configuration → Salary Structures → New-তে। প্রতিটি আর্নিং আর ডিডাকশনের জন্য রুল যোগ করুন। রুলগুলো ক্রমানুসারে সাজানো — HRA রেফার করার আগে Basic Salary থাকতে হবে (যেহেতু HRA = ৫০% × Basic)।</p>
+
+      <h2 id="pf">Provident Fund (PF) সেটআপ</h2>
+
+      <p>Odoo-তে PF দুটি স্যালারি রুল: একটি এমপ্লয়ি ডিডাকশন, একটি এমপ্লয়ার কন্ট্রিবিউশন।</p>
+
+      <table>
+        <thead>
+          <tr><th>রুল</th><th>কোড</th><th>টাইপ</th><th>হিসাব</th><th>অ্যাকাউন্ট</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Employee PF</td>
+            <td>EMP_PF</td>
+            <td>Deduction (negative)</td>
+            <td>-৫% × Basic Salary</td>
+            <td>PF Payable (2XXX)</td>
+          </tr>
+          <tr>
+            <td>Employer PF</td>
+            <td>COM_PF</td>
+            <td>পে-স্লিপে নেই — কোম্পানি কস্ট</td>
+            <td>৫% × Basic Salary</td>
+            <td>PF Payable (2XXX)</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>দুটো পরিমাণই PF Payable অ্যাকাউন্টে জমা হয়। মাস শেষে, মোট PF Payable ব্যালেন্স কর্মীর PF ট্রাস্ট বা ফান্ডে জমা দেওয়া হয়। জার্নাল এন্ট্রি: Debit PF Payable → Credit Bank। জমা দেওয়ার পর, PF Payable অ্যাকাউন্ট শূন্যে ব্যালেন্স হয়।</p>
+
+      <div class="callout">
+        <span class="tag">PF যোগ্যতা</span>
+        <p>বেশিরভাগ বাংলাদেশি কোম্পানিতে, PF শুধু প্রবেশন পিরিয়ডের পরে প্রযোজ্য (সাধারণত ৩–৬ মাস)। Odoo-তে, এটি হ্যান্ডল করুন দুটি কন্ট্র্যাক্ট টেমপ্লেট তৈরি করে: একটি "Probation" টেমপ্লেট যাতে PF রুল ছাড়া একটি স্যালারি স্ট্রাকচার আছে, আর একটি "Confirmed" টেমপ্লেট যাতে PF অন্তর্ভুক্ত। একজন কর্মী প্রবেশন পার করলে, তাদের কন্ট্র্যাক্ট Confirmed টেমপ্লেটে আপডেট করুন।</p>
+      </div>
+
+      <h2 id="gratuity">গ্র্যাচুইটি প্রভিশন</h2>
+
+      <p>বাংলাদেশে গ্র্যাচুইটি একটি টার্মিনাল বেনিফিট — কর্মী কমপক্ষে এক বছর চাকরি শেষ করার পর চলে যাওয়ার সময়ই শুধু পরিশোধিত হয়। Odoo-তে, গ্র্যাচুইটিকে একটি মাসিক প্রভিশন (অ্যাক্রুয়াল) হিসেবে ট্র্যাক করুন, পে-স্লিপ ডিডাকশন হিসেবে নয়।</p>
+
+      <p>মাসিক অ্যাক্রুয়াল এন্ট্রি:</p>
+      <ul>
+        <li>Debit: Gratuity Expense (P&amp;L)</li>
+        <li>Credit: Gratuity Provision (Balance Sheet liability)</li>
+      </ul>
+
+      <p>অ্যাক্রুয়াল পরিমাণ = (সর্বশেষ Basic Salary ÷ ১২) × চাকরির বছর। বেশিরভাগ কোম্পানির জন্য, এটি প্রতি মাসে বার্ষিক বেসিক স্যালারির ১/১২ হিসেবে আনুমানিক করা হয়। ব্যালেন্স শিটে Gratuity Provision অ্যাকাউন্ট প্রতি মাসে বাড়ে। একজন কর্মী গ্র্যাচুইটির যোগ্যতা অর্জনের পর চলে গেলে, প্রকৃত পেমেন্ট প্রভিশনের বিপরীতে সেটল করা হয়: Debit Gratuity Provision → Credit Bank।</p>
+
+      <p>Odoo-তে বাংলাদেশের জন্য কোনো নেটিভ গ্র্যাচুইটি প্রভিশন মডিউল নেই। এটি বাস্তবায়ন করুন হয় (a) একটি ম্যানুয়াল মাসিক জার্নাল এন্ট্রি হিসেবে, অথবা (b) যথাযথ অ্যাকাউন্ট ম্যাপিংসহ "Does not appear on payslip" চিহ্নিত একটি স্যালারি রুল হিসেবে — রুলটি প্রতি কর্মীর প্রভিশন হিসাব করে আর পে-রোল প্রসেসিং-এর সময় স্বয়ংক্রিয়ভাবে অ্যাক্রুয়াল পোস্ট করে।</p>
+
+      <div class="field-note">
+        <div class="fn-hd"><span>নোট · ম্যানুফ্যাকচারিং কোম্পানি, মাইগ্রেশন পরবর্তী</span><span class="when">বছর-শেষের ফাইন্যান্সিয়াল ক্লোজ</span></div>
+        <div class="fn-body">
+          আমি রিভিউ করা একটি কোম্পানি পুরো এক বছর ধরে পরিচ্ছন্নভাবে Odoo Payroll চালিয়েছিল — পে-স্লিপ, PF, TDS সবকিছু ঠিক ছিল — কিন্তু কখনো গ্র্যাচুইটি প্রভিশন সেটআপ করেনি। গ্র্যাচুইটি একটি টার্মিনাল বেনিফিট হওয়ায়, মাসিক সাইকেলে কিছুই কাউকে মনে করিয়ে দেয়নি যে এটি মিসিং। ফাঁকটি শুধু বছর-শেষে সামনে এল, যখন অডিটর জিজ্ঞেস করলেন ব্যালেন্স শিটে অ্যাক্রুড গ্র্যাচুইটি লায়াবিলিটি কোথায়। উত্তর ছিল: কোথাও না। কোম্পানিকে একটি একক পিরিয়ডে একটি বড় রেট্রোস্পেক্টিভ প্রভিশন বুক করতে হলো, যা সেই বছরের প্রফিট বিকৃত করে দিল। <strong>গ্র্যাচুইটি অদৃশ্য থাকে যতক্ষণ না কেউ রিজাইন করে বা কোনো অডিটর জিজ্ঞেস করে — প্রথম দাবি থেকে নয়, প্রথম পে-রোল রান থেকেই এটি প্রভিশন করুন।</strong>
+        </div>
+      </div>
+
+      <h2 id="tax">স্যালারিতে ইনকাম ট্যাক্স</h2>
+
+      <p>ট্যাক্স-মুক্ত থ্রেশহোল্ডের বেশি উপার্জন করা প্রতিটি কর্মীর স্যালারি থেকে প্রতি মাসে উৎসে ইনকাম ট্যাক্স কর্তন (স্যালারিতে TDS) প্রয়োগ করতে হবে। ২০২৫–২৬ কর বছরের জন্য, থ্রেশহোল্ড ৳৩,৫০,০০০ বার্ষিক আয় (৳২৯,১৬৭/মাস গ্রস)।</p>
+
+      <p>TDS-কে একটি স্যালারি রুল হিসেবে কনফিগার করুন:</p>
+
+      <ul>
+        <li>রুল কোড: <code>INCOME_TAX</code></li>
+        <li>টাইপ: Deduction (negative, পে-স্লিপে দেখা যায়)</li>
+        <li>হিসাব: Python কোড যা কর্মীর বার্ষিক প্রক্ষেপিত আয়ে বাংলাদেশের প্রগ্রেসিভ ট্যাক্স স্ল্যাব প্রয়োগ করে, ১২ দিয়ে ভাগ করে, আর মাসিক TDS পরিমাণ রিটার্ন করে</li>
+        <li>অ্যাকাউন্ট: TDS on Salary Payable (2XXX)</li>
+      </ul>
+
+      <p>বাংলাদেশ FY2025–26-এর প্রগ্রেসিভ ট্যাক্স স্ল্যাব:</p>
+
+      <table>
+        <thead>
+          <tr><th>বার্ষিক আয় (BDT)</th><th>ট্যাক্স রেট</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>৩,৫০,০০০ পর্যন্ত</td><td>নেই</td></tr>
+          <tr><td>৩,৫০,০০১ – ৪,৫০,০০০</td><td>৫%</td></tr>
+          <tr><td>৪,৫০,০০১ – ৭,৫০,০০০</td><td>১০%</td></tr>
+          <tr><td>৭,৫০,০০১ – ১১,৫০,০০০</td><td>১৫%</td></tr>
+          <tr><td>১১,৫০,০০১ – ১৬,৫০,০০০</td><td>২০%</td></tr>
+          <tr><td>১৬,৫০,০০০-এর বেশি</td><td>২৫%</td></tr>
+        </tbody>
+      </table>
+
+      <p>Odoo-তে এটি একটি Python-ভিত্তিক স্যালারি রুল হিসেবে বাস্তবায়ন করুন। রুলটি কর্মীর চলতি মাসের গ্রস স্যালারিকে বার্ষিক হিসাবে রূপান্তর করে, স্ল্যাব ক্যালকুলেশন প্রয়োগ করে, আর বার্ষিক ট্যাক্স দায়ের ১/১২ রিটার্ন করে। বছর-শেষে, কর্মীর প্রকৃত ট্যাক্স রিটার্নের বিপরীতে মোট কর্তিত TDS রিকনসাইল করুন যেকোনো বেশি বা কম কর্তন হ্যান্ডল করতে।</p>
+
+      <div class="callout">
+        <span class="tag">কমপ্লায়েন্স লিংক</span>
+        <p>পরের মাসের ১৫ তারিখের মধ্যে ট্রেজারি চালানের মাধ্যমে স্যালারি TDS NBR-এ জমা দিতে হবে। এটি VAT কমপ্লায়েন্স থেকে আলাদাভাবে ট্র্যাক করা হয় — বৃহত্তর NBR ফাইলিং স্ট্রাকচারের জন্য দেখুন আমার গাইড <a href="/bn/lab/0003-nbr-vat-compliance-odoo-bangladesh" style="color:var(--accent)">Odoo-তে NBR VAT কমপ্লায়েন্স</a> নিয়ে। স্যালারি TDS জমাদানে Treasury Form-Challan ব্যবহৃত হয়, Mushak ফর্ম নয়।</p>
+      </div>
+
+      <h2 id="payroll">Odoo-তে পে-রোল চালানো</h2>
+
+      <p>একবার স্যালারি স্ট্রাকচার, PF রুল, আর ছুটি ডিডাকশন কনফিগার হয়ে গেলে, Odoo-তে মাসিক পে-রোল প্রসেস এই রকম:</p>
+
+      <ol>
+        <li><strong>অ্যাটেন্ডেন্স / ছুটি বন্ধ করুন</strong> — নিশ্চিত করুন মাসের সব ছুটির রিকোয়েস্ট অ্যাপ্রুভড বা রিজেক্টেড। যেকোনো অ্যাপ্রুভড Unpaid Leave স্যালারি ডিডাকশন হিসাবকে প্রভাবিত করে।</li>
+        <li><strong>পে-স্লিপ ব্যাচ তৈরি করুন</strong> — Payroll → Payslip Batches → New। পিরিয়ড সেট করুন (যেমন, মে ২০২৬)। "Generate Payslips" ক্লিক করুন — কনফার্মড কন্ট্র্যাক্ট থাকা প্রতিটি সক্রিয় কর্মীর জন্য Odoo একটি ড্রাফট পে-স্লিপ তৈরি করে।</li>
+        <li><strong>পে-স্লিপ রিভিউ করুন</strong> — যেকোনো পে-স্লিপ খুলুন আর হিসাবকৃত মান যাচাই করুন। যেসব কর্মীর স্যালারি পরিবর্তন হয়েছে, প্রমোশন হয়েছে, বা মাসের মাঝপথে যোগদান করেছেন (আংশিক মাস হিসাব) তাদের প্রতি বিশেষ মনোযোগ দিন।</li>
+        <li><strong>ব্যাচ ভ্যালিডেট করুন</strong> — সন্তুষ্ট হলে, ব্যাচ কনফার্ম করুন। Odoo জার্নাল এন্ট্রি পোস্ট করে: Salary Expense (P&amp;L) → Salaries Payable (BS), Employee PF ডিডাকশন, Employer PF কন্ট্রিবিউশন, TDS ডিডাকশন, এবং গ্র্যাচুইটি অ্যাক্রুয়াল।</li>
+        <li><strong>স্যালারি পরিশোধ করুন</strong> — Accounting → Vendor Bills-এ স্যালারি পেমেন্ট তৈরি করুন অথবা Batch Payments ব্যবহার করুন। Debit Salaries Payable → Credit Bank। মোবাইল ব্যাংকিং (bKash, Nagad) মাধ্যমে পরিশোধ করা কোম্পানির জন্য, Odoo থেকে পেমেন্ট ফাইল এক্সপোর্ট করুন আর মোবাইল ব্যাংকিং পোর্টালে আপলোড করুন।</li>
+        <li><strong>বিধিবদ্ধ কর্তন জমা দিন</strong> — পরের মাসের ১৫ তারিখের মধ্যে: PF-কে PF ফান্ডে, TDS-কে NBR ট্রেজারি চালানে।</li>
+      </ol>
+
+      <p>পে-রোল গো-লাইভের সময় চেঞ্জ ম্যানেজমেন্টের জন্য — ফাইন্যান্স টিম আর কর্মীদের নতুন সিস্টেমে বিশ্বাস করাতে — দেখুন আমার ফিল্ড নোট <a href="/bn/lab/0007-change-management-isnt-a-memo" style="color:var(--accent)">ERP ডেপ্লয়মেন্টে চেঞ্জ ম্যানেজমেন্ট</a> নিয়ে। পে-রোল সবচেয়ে বেশি প্রতিরোধ তৈরি করা মডিউল: সবাই তাদের পে-স্লিপ চেক করে।</p>
+
+      <div class="callout">
+        <span class="tag">পরবর্তী ধাপ</span>
+        <p>বাংলাদেশ কমপ্লায়েন্সের জন্য পে-রোল কনফিগারেশন Odoo বাস্তবায়নের টেকনিক্যালি সবচেয়ে জটিল অংশগুলোর একটি। সামগ্রিক প্রজেক্ট বাজেটে এটি কোথায় বসে তার একটা ধারণা পেতে, চেষ্টা করুন <a href="/bn/tools/odoo-cost-estimator/" style="color:var(--accent)">Odoo cost estimator</a>। প্রথমবার সেটআপ করছেন বা লিগ্যাসি পে-রোল সিস্টেম থেকে মাইগ্রেট করছেন? <a href="/bn/#contact" style="color:var(--accent)">একটি কনফিগারেশন রিভিউর জন্য যোগাযোগ করুন →</a></p>
+      </div>
+
+      <h2 id="faq">সচরাচর জিজ্ঞাসা</h2>
+
+      <h3>বাংলাদেশের জন্য Odoo-তে Provident Fund কীভাবে কনফিগার করব?</h3>
+      <p>PF দুটি স্যালারি রুল হিসেবে কনফিগার করা হয়: Employee PF (Basic-এর –৫%, PF Payable-এ পোস্ট হয়) আর Employer PF (Basic-এর +৫%, PF Payable-এও পোস্ট হয়, কিন্তু কর্মীর পে-স্লিপে দেখানো হয় না — এটি একটি কোম্পানি কস্ট)। দুটোই মাসিক PF Payable অ্যাকাউন্টে জমা হয়। পরের মাসের ১৫ তারিখের মধ্যে সম্মিলিত ব্যালেন্স PF ফান্ডে জমা দিন। PF রুল ছাড়া একটি আলাদা কন্ট্র্যাক্ট টেমপ্লেট ব্যবহার করে প্রবেশনে থাকা কর্মীদের বাদ দিন।</p>
+
+      <h3>Odoo-তে গ্র্যাচুইটি কীভাবে হিসাব ও প্রভিশন করা হয়?</h3>
+      <p>বাংলাদেশ শ্রম আইন অনুযায়ী, গ্র্যাচুইটি = ১ মাসের বেসিক স্যালারি × চাকরির বছর (স্টাফের জন্য), ১+ বছর চাকরির পর চাকরি শেষে পরিশোধিত। Odoo-তে, একটি জার্নাল এন্ট্রির মাধ্যমে এটি মাসিক প্রভিশন করুন: Debit Gratuity Expense (P&L) → Credit Gratuity Provision (Balance Sheet)। অ্যাক্রুয়াল = বার্ষিক যোগ্যতার ১/১২। কর্মীর শেষ দিনে, Gratuity Provision ব্যালেন্স সেটল করুন: Debit Provision → Credit Bank।</p>
+
+      <h3>বাংলাদেশে কোন ছুটির ধরনগুলো আইনত বাধ্যতামূলক?</h3>
+      <p>বাংলাদেশ শ্রম আইন অনুযায়ী: Earned Leave (১০–১১ দিন/বছর, অ্যাক্রুয়াল-ভিত্তিক), Sick Leave (১৪ দিন/বছর, ফিক্সড অ্যালোকেশন), Casual Leave (১০ দিন/বছর, ফিক্সড অ্যালোকেশন), Maternity Leave (যোগ্য নারী কর্মীদের জন্য ১৬ সপ্তাহ)। পাবলিক হলিডে (১১টি জাতীয় দিন) Work Schedule-এ অ-কর্মদিবস হিসেবে কনফিগার করা হয় — এগুলো ছুটির অ্যালোকেশন খরচ করে না।</p>
+
+      <h3>Odoo কি বাংলাদেশের জন্য স্যালারিতে ইনকাম ট্যাক্স (TDS) হ্যান্ডল করতে পারে?</h3>
+      <p>হ্যাঁ, NBR-এর প্রগ্রেসিভ ইনকাম ট্যাক্স স্ল্যাব বাস্তবায়ন করা একটি কাস্টম Python-ভিত্তিক স্যালারি রুল দিয়ে। রুলটি মাসিক গ্রসকে বার্ষিক হিসাবে রূপান্তর করে, চলতি বছরের ট্যাক্স টেবিল প্রয়োগ করে, ১২ দিয়ে ভাগ করে, আর মাসিক TDS একটি Income Tax Payable অ্যাকাউন্টে পোস্ট করে। কোনো কর্মীর স্যালারি বছরের মাঝপথে পরিবর্তিত হলে এটি পুনরায় হিসাব করতে হবে (পরবর্তী পে-স্লিপ রানে Odoo স্বয়ংক্রিয়ভাবে পুনরায় হিসাব করে)।</p>
+    </div>
+  </article>
+
+  <footer>
+    <div class="shell">
+      <div class="post-foot">
+        <span class="eyebrow">আরও পড়ুন</span>
+        <div class="next">
+          <a class="next-card" href="/bn/lab/0015-odoo-purchase-vendor-management-bangladesh">
+            <span class="dir">পুরনো · 0015</span>
+            <h4>Odoo Purchase ও Vendor Management: বাংলাদেশ SME প্লেবুক</h4>
+            <p>RFQ ওয়ার্কফ্লো, 3-way ম্যাচিং, অ্যাপ্রুভাল ম্যাট্রিক্স, আর TDS-সহ ভেন্ডর পেমেন্ট।</p>
+            <span class="arrow">→</span>
+          </a>
+          <a class="next-card" href="/bn/lab/0017-odoo-sales-crm-bangladesh">
+            <span class="dir">নতুন · 0017</span>
+            <h4>বাংলাদেশি এক্সপোর্টারদের জন্য Odoo Sales ও CRM</h4>
+            <p>B2B পাইপলাইন সেটআপ, মাল্টি-কারেন্সি, প্রোফর্মা ইনভয়েস, আর এক্সপোর্ট CRM কনফিগারেশন।</p>
+            <span class="arrow">→</span>
+          </a>
+        </div>
+      </div>
+      <div class="foot">
+        <span>© ২০২৬ Mehedi Hasan · Lab / 0016</span>
+        <span><a href="/bn/#lab">↑ ল্যাব ইনডেক্সে ফিরুন</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/lab/_utils.js" defer></script>
+<script src="/lab/_toc.js" defer></script>
+<script src="/whatsapp.js" defer></script>
+<script src="/scroll-top.js" defer></script>
+</body>
+
+</html>

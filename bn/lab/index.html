@@ -1,0 +1,1503 @@
+﻿<!doctype html>
+<html lang="bn">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="মেহেদী হাসানের টেকনিক্যাল ল্যাব — Odoo ERP, ম্যানুফ্যাকচারিং অপারেশন এবং বাংলাদেশে বিজনেস অ্যানালাইসিস নিয়ে প্রবন্ধ, গাইড, টেমপ্লেট এবং ইউটিলিটি।" />
+<meta name="robots" content="noindex, follow" />
+<meta name="author" content="Mehedi Hasan" />
+<title>ল্যাব — মেহেদী হাসান | Odoo ERP কনসালট্যান্ট বাংলাদেশ</title>
+<link rel="canonical" href="https://mhasan.me/bn/lab/" />
+<link rel="alternate" hreflang="en" href="https://mhasan.me/lab/" />
+<link rel="alternate" hreflang="bn-BD" href="https://mhasan.me/bn/lab/" />
+<link rel="alternate" hreflang="x-default" href="https://mhasan.me/lab/" />
+<link rel="icon" href="/favicon.ico" sizes="any" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon.png" />
+<link rel="apple-touch-icon" href="/favicon.png" />
+<meta property="og:title" content="ল্যাব — মেহেদী হাসান" />
+<meta property="og:description" content="Odoo ERP, ম্যানুফ্যাকচারিং অপারেশন এবং বিজনেস অ্যানালাইসিস নিয়ে প্রবন্ধ, গাইড, টেমপ্লেট এবং ইউটিলিটি।" />
+<meta property="og:url" content="https://mhasan.me/bn/lab/" />
+<meta property="og:type" content="website" />
+<meta property="og:locale" content="bn_BD" />
+<meta property="og:site_name" content="মেহেদী হাসান | Odoo কনসালট্যান্ট" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="ল্যাব — মেহেদী হাসান" />
+<meta name="twitter:description" content="Odoo ERP, ম্যানুফ্যাকচারিং অপারেশন এবং বিজনেস অ্যানালাইসিস নিয়ে প্রবন্ধ, গাইড, টেমপ্লেট এবং ইউটিলিটি।" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&family=Noto+Sans+Bengali:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap">
+<style>
+  body{ font-family: 'Noto Sans Bengali', var(--sans); }
+  :root{
+    --bg:#0A0B0D;
+    --bg-1:#0E1013;
+    --surface:#111317;
+    --elev:#15181D;
+    --border:#1E2228;
+    --border-2:#2A2F38;
+    --hair:rgba(255,255,255,0.06);
+    --text:#EDEEF0;
+    --text-2:#9BA1AA;
+    --text-3:#7E8694;
+    --accent:oklch(0.80 0.17 155);
+    --accent-dim:oklch(0.80 0.17 155 / 0.14);
+    --accent-glow:oklch(0.80 0.17 155 / 0.35);
+    --sans:'Geist', ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif;
+    --mono:'Geist Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+    --serif:'Instrument Serif', ui-serif, Georgia, serif;
+    --max:1280px;
+    --gutter:24px;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;overflow-x:hidden;background:var(--bg);color:var(--text);font-family:var(--sans);font-feature-settings:"ss01","cv11";-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+  body{
+    background:
+      radial-gradient(900px 600px at 80% -10%, rgba(80,230,160,0.07), transparent 60%),
+      radial-gradient(700px 500px at 10% 10%, rgba(40,60,90,0.15), transparent 70%),
+      var(--bg);
+    min-height:100vh;
+  }
+  a{color:inherit;text-decoration:none}
+  ::selection{background:var(--accent);color:#000}
+
+  /* light theme */
+  html[data-theme="light"]{
+    --bg:#F5F7FA;
+    --bg-1:#EEF1F5;
+    --surface:#FFFFFF;
+    --elev:#EDF0F4;
+    --border:#E2E6EC;
+    --border-2:#CBD0D9;
+    --hair:rgba(0,0,0,0.05);
+    --text:#0E1013;
+    --text-2:#4A5265;
+    --text-3:#8A909E;
+  }
+  html[data-theme="light"] body{
+    background:radial-gradient(900px 600px at 80% -10%,rgba(80,230,160,0.05),transparent 60%),var(--bg);
+  }
+
+  /* layout */
+  .shell{max-width:var(--max);margin:0 auto;padding:0 var(--gutter);position:relative;z-index:1}
+
+  /* nav */
+  .nav{position:sticky;top:0;z-index:50;padding:16px 0}
+  .nav-inner{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:10px 14px 10px 18px;
+    border:1px solid var(--hair);
+    background:rgba(14,16,19,0.6);
+    backdrop-filter:blur(16px) saturate(140%);
+    -webkit-backdrop-filter:blur(16px) saturate(140%);
+    border-radius:999px;
+  }
+  html[data-theme="light"] .nav-inner{background:rgba(245,247,250,0.9)}
+  .brand{display:flex;align-items:center;gap:12px;font-weight:500;letter-spacing:-0.01em}
+  .brand-mark{
+    width:30px;height:30px;border-radius:8px;
+    background:linear-gradient(135deg,var(--accent) 0%, oklch(0.55 0.14 170) 100%);
+    box-shadow:0 0 0 1px rgba(0,0,0,.35), inset 0 0 0 1px rgba(255,255,255,.18);
+    position:relative;display:grid;place-items:center;
+    font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:0.04em;
+    color:#04140B;
+  }
+  .brand-mark::after{content:"MH";position:relative;z-index:1}
+  .brand-name{display:flex;flex-direction:column;line-height:1.1}
+  .brand-name b{font-weight:500;font-size:14px;letter-spacing:-0.01em;color:var(--text)}
+  .brand-name em{font-style:normal;font-family:var(--mono);font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-3);margin-top:2px}
+  .nav-links{display:flex;gap:6px}
+  .nav-links a{font-size:13.5px;color:var(--text-2);padding:8px 14px;border-radius:999px;transition:all .2s ease}
+  .nav-links a:hover{color:var(--text);background:var(--hair)}
+  .nav-right{display:flex;align-items:center;gap:10px}
+  .nav-cta{
+    display:inline-flex;align-items:center;gap:8px;
+    font-size:13px;font-weight:500;
+    padding:9px 14px;border-radius:999px;
+    background:var(--text);color:#0A0B0D;
+    transition:transform .15s ease, background .15s ease;
+  }
+  .nav-cta:hover{transform:translateY(-1px)}
+  .nav-cta .arrow{display:inline-block;transition:transform .2s ease}
+  .nav-cta:hover .arrow{transform:translate(2px,-2px)}
+  .theme-toggle{
+    appearance:none;border:1px solid var(--border);background:var(--elev);
+    color:var(--text-2);width:34px;height:34px;border-radius:10px;
+    cursor:pointer;display:grid;place-items:center;
+    transition:all .2s ease;flex:none;padding:0;
+  }
+  .theme-toggle:hover{color:var(--text);border-color:var(--border-2)}
+  .theme-toggle svg{display:block;pointer-events:none}
+  .theme-toggle .icon-sun{display:block}
+  .theme-toggle .icon-moon{display:none}
+  html[data-theme="light"] .theme-toggle .icon-sun{display:none}
+  html[data-theme="light"] .theme-toggle .icon-moon{display:block}
+  @media(max-width:760px){.nav-links{display:none}}
+
+  /* eyebrow */
+  .eyebrow{
+    font-family:var(--mono);font-size:11.5px;letter-spacing:0.14em;color:var(--text-3);
+    text-transform:uppercase;display:inline-flex;align-items:center;gap:10px;
+  }
+  .eyebrow::before{content:"";width:18px;height:1px;background:var(--border-2)}
+
+  /* page header */
+  .lab-page-head{padding:72px 0 56px}
+  .lab-page-head h1{
+    font-family:var(--sans);font-weight:500;letter-spacing:-0.035em;
+    font-size:clamp(40px,6vw,80px);line-height:0.98;
+    margin:18px 0 0;color:var(--text);
+  }
+  .lab-page-head h1 .serif{font-family:var(--serif);font-style:italic;font-weight:400}
+  .lab-page-head p{font-size:17px;line-height:1.55;color:var(--text-2);margin:20px 0 0;max-width:560px}
+
+  /* search */
+  .lab-search-wrap{margin:0 0 32px;position:relative}
+  .lab-search{
+    width:100%;padding:13px 18px 13px 46px;
+    border:1px solid var(--border);border-radius:10px;
+    background:var(--surface);color:var(--text);
+    font-family:var(--sans);font-size:15px;
+    outline:none;transition:border-color .2s ease;
+  }
+  .lab-search:focus{border-color:var(--border-2)}
+  .lab-search::placeholder{color:var(--text-3)}
+  .lab-search-icon{
+    position:absolute;left:16px;top:50%;transform:translateY(-50%);
+    color:var(--text-3);pointer-events:none;
+  }
+  .lab-search-count{
+    font-family:var(--mono);font-size:11.5px;color:var(--text-3);letter-spacing:0.08em;
+    margin-bottom:16px;
+  }
+  .lab-no-results{
+    padding:48px 0;text-align:center;
+    font-family:var(--mono);font-size:13px;color:var(--text-3);letter-spacing:0.06em;
+    display:none;
+  }
+  .lab-no-results.visible{display:block}
+
+  /* lab table */
+  .lab{border:1px solid var(--border);border-radius:14px;overflow:hidden;background:var(--surface)}
+  .lab-head{
+    display:grid;grid-template-columns:80px 1fr 160px 160px 120px;
+    padding:14px 22px;border-bottom:1px solid var(--border);
+    font-family:var(--mono);font-size:10.5px;letter-spacing:0.14em;color:var(--text-3);text-transform:uppercase;
+  }
+  .lab-row{
+    display:grid;grid-template-columns:80px 1fr 160px 160px 120px;
+    padding:22px;border-bottom:1px solid var(--border);align-items:center;gap:16px;
+    transition:background .2s ease;position:relative;cursor:pointer;
+  }
+  .lab-row:last-child{border-bottom:none}
+  .lab-row:hover{background:rgba(255,255,255,0.015)}
+  html[data-theme="light"] .lab-row:hover{background:rgba(0,0,0,0.02)}
+  .lab-row:hover .lab-title{color:var(--accent)}
+  .lab-row:hover .lab-arrow{transform:translate(4px,-4px);color:var(--accent)}
+  .lab-row[hidden]{display:none !important}
+  .lab-num{font-family:var(--mono);font-size:12px;color:var(--text-3);letter-spacing:0.05em}
+  .lab-title{font-size:17px;letter-spacing:-0.01em;color:var(--text);transition:color .2s ease}
+  .lab-title .sub{display:block;font-size:13px;color:var(--text-2);margin-top:4px;letter-spacing:0}
+  .lab-kind{font-family:var(--mono);font-size:11.5px;color:var(--text-2);letter-spacing:0.06em}
+  .lab-date{font-family:var(--mono);font-size:11.5px;color:var(--text-3);letter-spacing:0.06em}
+  .lab-arrow{justify-self:end;font-family:var(--mono);color:var(--text-3);transition:all .2s ease;font-size:16px}
+  @media(max-width:900px){
+    .lab-head{display:none}
+    .lab-row{grid-template-columns:40px 1fr auto;grid-template-rows:auto auto;padding:18px 20px}
+    .lab-kind{grid-column:2;grid-row:2}
+    .lab-date{display:none}
+  }
+
+  /* toolbar (view toggle + per-page) */
+  .lab-toolbar{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;gap:12px;flex-wrap:wrap}
+  .lab-view-toggle{display:flex;gap:2px;background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:3px;flex:none}
+  .view-btn{
+    display:flex;align-items:center;justify-content:center;
+    width:32px;height:32px;border:none;border-radius:6px;
+    background:transparent;color:var(--text-3);cursor:pointer;transition:all .15s ease;
+  }
+  .view-btn.active{background:var(--border-2);color:var(--text)}
+  .view-btn:hover:not(.active){color:var(--text-2)}
+  .lab-per-page{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+  .per-page-label{font-family:var(--mono);font-size:11.5px;color:var(--text-3);letter-spacing:0.06em;margin-right:4px}
+  .per-page-btn{
+    padding:5px 10px;border:1px solid var(--border);border-radius:6px;
+    background:transparent;color:var(--text-3);
+    font-family:var(--mono);font-size:11.5px;letter-spacing:0.06em;
+    cursor:pointer;transition:all .15s ease;
+  }
+  .per-page-btn.active{background:var(--accent);border-color:var(--accent);color:#000}
+  .per-page-btn:hover:not(.active){border-color:var(--border-2);color:var(--text)}
+
+  /* pagination */
+  .lab-pagination{display:flex;align-items:center;justify-content:center;gap:16px;padding:24px 0}
+  .page-nav-btn{
+    padding:8px 18px;border:1px solid var(--border);border-radius:8px;
+    background:transparent;color:var(--text-2);
+    font-family:var(--mono);font-size:12px;letter-spacing:0.06em;
+    cursor:pointer;transition:all .15s ease;
+  }
+  .page-nav-btn:hover:not(:disabled){border-color:var(--border-2);color:var(--text)}
+  .page-nav-btn:disabled{opacity:0.3;cursor:default}
+  .page-info{font-family:var(--mono);font-size:12px;color:var(--text-3);letter-spacing:0.06em;min-width:100px;text-align:center}
+
+  /* thumbnail — hidden in list mode, shown in grid mode */
+  .lab-thumb{display:none}
+
+  /* grid view */
+  .lab.lab-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;background:transparent;border:none;border-radius:0;overflow:visible}
+  .lab.lab-grid .lab-head{display:none}
+  .lab.lab-grid .lab-row{
+    display:grid;
+    grid-template-areas:"thumb thumb" "num num" "title title" "kind date";
+    grid-template-columns:1fr auto;
+    grid-template-rows:auto auto 1fr auto;
+    padding:0;border:1px solid var(--border);border-radius:12px;
+    background:var(--surface);min-height:180px;align-items:start;gap:0;
+    overflow:hidden;border-bottom:1px solid var(--border);
+  }
+  .lab.lab-grid .lab-row:hover{border-color:var(--border-2);background:rgba(255,255,255,0.025)}
+  html[data-theme="light"] .lab.lab-grid .lab-row:hover{background:rgba(0,0,0,0.025)}
+  .lab.lab-grid .lab-thumb{
+    grid-area:thumb;display:block;
+    width:100%;aspect-ratio:16/9;object-fit:cover;
+  }
+  .lab.lab-grid .lab-num{grid-area:num;padding:16px 20px 0;margin-bottom:6px}
+  .lab.lab-grid .lab-title{grid-area:title;font-size:15px;line-height:1.4;padding:0 20px}
+  .lab.lab-grid .lab-title .sub{
+    display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;
+    overflow:hidden;font-size:12px;color:var(--text-3);margin-top:6px;letter-spacing:0;
+  }
+  .lab.lab-grid .lab-kind{grid-area:kind;align-self:end;padding:10px 0 18px 20px}
+  .lab.lab-grid .lab-date{grid-area:date;align-self:end;text-align:right;padding:10px 20px 18px 0}
+  .lab.lab-grid .lab-arrow{display:none}
+  @media(max-width:900px){
+    .lab.lab-grid{grid-template-columns:repeat(2,1fr)}
+  }
+  @media(max-width:500px){
+    .lab.lab-grid{grid-template-columns:1fr;gap:8px}
+    .lab-toolbar{flex-direction:column;align-items:flex-start}
+  }
+
+  /* tag filter chips */
+  .lab-tag-filter{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:16px}
+  .tag-chip{
+    padding:5px 14px;border:1px solid var(--border);border-radius:999px;
+    background:transparent;color:var(--text-3);
+    font-family:var(--mono);font-size:11.5px;letter-spacing:0.06em;
+    cursor:pointer;transition:all .15s ease;white-space:nowrap;
+  }
+  .tag-chip.active{background:var(--accent);border-color:var(--accent);color:#000;font-weight:500}
+  .tag-chip:hover:not(.active){border-color:var(--border-2);color:var(--text)}
+
+  /* newsletter strip */
+  .nl-strip{padding:48px 0 0}
+  .nl-strip-inner{
+    display:flex;align-items:center;gap:32px;flex-wrap:wrap;
+    padding:32px 40px;border:1px solid var(--border);border-radius:14px;
+    background:var(--surface);justify-content:space-between;
+  }
+  .nl-strip-copy{min-width:200px}
+  .nl-strip-head{font-size:18px;font-weight:500;letter-spacing:-0.02em;color:var(--text);margin:0}
+  .nl-strip-sub{font-size:14px;color:var(--text-2);margin:4px 0 0}
+  .nl-strip-form{display:flex;gap:8px;flex:1;min-width:280px;max-width:480px}
+  .nl-strip-input{
+    flex:1;padding:11px 16px;border:1px solid var(--border);border-radius:8px;
+    background:var(--bg);color:var(--text);font-family:var(--sans);font-size:14px;
+    outline:none;transition:border-color .2s;
+  }
+  .nl-strip-input:focus{border-color:var(--accent)}
+  .nl-strip-input::placeholder{color:var(--text-3)}
+  .nl-strip-btn{
+    padding:11px 20px;border:none;border-radius:8px;
+    background:var(--accent);color:#000;font-family:var(--sans);font-size:14px;font-weight:500;
+    cursor:pointer;transition:all .15s;white-space:nowrap;
+  }
+  .nl-strip-btn:hover{transform:translateY(-1px)}
+  .nl-strip-btn:disabled{opacity:.6;cursor:default;transform:none}
+  .nl-strip-msg{font-family:var(--mono);font-size:11.5px;color:var(--accent);letter-spacing:.06em;width:100%;margin:0}
+  .nl-strip-msg.error{color:#f87171}
+  @media(max-width:600px){
+    .nl-strip-inner{padding:24px;gap:20px;flex-direction:column;align-items:flex-start}
+    .nl-strip-form{min-width:0;max-width:none;width:100%}
+  }
+
+  /* footer */
+  footer{padding:40px 0 48px;border-top:1px solid var(--border);margin-top:64px}
+  .foot{display:flex;justify-content:space-between;align-items:center;font-family:var(--mono);font-size:11.5px;color:var(--text-3);letter-spacing:0.06em;text-transform:uppercase}
+  .foot a:hover{color:var(--text)}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<header class="nav">
+  <div class="shell">
+    <div class="nav-inner">
+      <a class="brand" href="/bn/">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span class="brand-name"><b>Mehedi Hasan</b><em>ERP · বিজনেস অ্যানালিস্ট</em></span>
+      </a>
+      <nav class="nav-links">
+        <a href="/bn/#work">কাজ</a>
+        <a href="/bn/#services">সার্ভিস</a>
+        <a href="/bn/#courses">কোর্স</a>
+        <a href="./" aria-current="page" style="color:var(--text)">ল্যাব</a>
+        <a href="/bn/#contact">যোগাযোগ</a>
+      </nav>
+      <div class="nav-right">
+        <button class="theme-toggle" id="theme-toggle" aria-label="লাইট/ডার্ক থিম টগল করুন" title="লাইট/ডার্ক থিম টগল করুন">
+          <svg class="icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+          <svg class="icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+        <a class="nav-cta" href="/bn/#contact">
+          যোগাযোগ শুরু করুন <span class="arrow">↗</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- PAGE HEADER -->
+<div class="lab-page-head">
+  <div class="shell">
+    <span class="eyebrow">টেকনিক্যাল ল্যাব</span>
+    <h1>ছোট <span class="serif">পরীক্ষা</span>, সৎ নোট।</h1>
+    <p>ERP, ডেটা মডেলিং এবং এন্টারপ্রাইজ ওয়ার্কফ্লো নিয়ে ইউটিলিটি, টেমপ্লেট এবং সংক্ষিপ্ত প্রবন্ধের একটি ডিজিটাল বাগান। প্রকাশ্যে লেখা, খোলামেলা কিছু চিন্তা।</p>
+  </div>
+</div>
+
+<!-- SEARCH + ARTICLES -->
+<div class="shell">
+  <div class="lab-search-wrap">
+    <svg class="lab-search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+    <input class="lab-search" id="lab-search" type="search" placeholder="আর্টিকেল খুঁজুন…" aria-label="ল্যাব আর্টিকেল খুঁজুন" autocomplete="off" spellcheck="false" />
+  </div>
+
+  <div class="lab-search-count" id="lab-count">সবগুলো ৬৩টি আর্টিকেল দেখানো হচ্ছে</div>
+
+  <div class="lab-tag-filter" role="group" aria-label="আর্টিকেলের ধরন অনুযায়ী ফিল্টার করুন">
+    <button class="tag-chip active" data-tag="all">সব</button>
+    <button class="tag-chip" data-tag="essay">প্রবন্ধ</button>
+    <button class="tag-chip" data-tag="guide">গাইড</button>
+    <button class="tag-chip" data-tag="checklist">চেকলিস্ট</button>
+    <button class="tag-chip" data-tag="template">টেমপ্লেট</button>
+    <button class="tag-chip" data-tag="comparison">তুলনা</button>
+  </div>
+
+  <div class="lab-toolbar">
+    <div class="lab-view-toggle" role="group" aria-label="ভিউ মোড">
+      <button class="view-btn" id="btn-list-view" data-view="list" title="লিস্ট ভিউ" aria-pressed="true">
+        <svg width="15" height="15" viewBox="0 0 15 15" fill="none" aria-hidden="true"><rect x="1" y="2" width="13" height="2" rx="1" fill="currentColor"/><rect x="1" y="6.5" width="13" height="2" rx="1" fill="currentColor"/><rect x="1" y="11" width="13" height="2" rx="1" fill="currentColor"/></svg>
+      </button>
+      <button class="view-btn" id="btn-grid-view" data-view="grid" title="গ্রিড ভিউ" aria-pressed="false">
+        <svg width="15" height="15" viewBox="0 0 15 15" fill="none" aria-hidden="true"><rect x="1" y="1" width="5.5" height="5.5" rx="1" fill="currentColor"/><rect x="8.5" y="1" width="5.5" height="5.5" rx="1" fill="currentColor"/><rect x="1" y="8.5" width="5.5" height="5.5" rx="1" fill="currentColor"/><rect x="8.5" y="8.5" width="5.5" height="5.5" rx="1" fill="currentColor"/></svg>
+      </button>
+    </div>
+    <div class="lab-per-page" role="group" aria-label="প্রতি পৃষ্ঠায় আর্টিকেল">
+      <span class="per-page-label">দেখান</span>
+      <button class="per-page-btn" data-n="10">১০</button>
+      <button class="per-page-btn" data-n="25">২৫</button>
+      <button class="per-page-btn" data-n="50">৫০</button>
+      <button class="per-page-btn" data-n="all">সব</button>
+    </div>
+  </div>
+
+  <div class="lab" id="lab-table">
+    <div class="lab-head" aria-hidden="true">
+      <span>নং</span><span>শিরোনাম</span><span>ধরন</span><span>প্রকাশিত</span><span>&nbsp;</span>
+    </div>
+
+    <a class="lab-row" href="/bn/lab/0062-erp-market-bangladesh-2026"
+       data-title="State of ERP in Bangladesh 2026: Market Report & Key Trends | বাংলাদেশে ERP বাজারের অবস্থা ২০২৬"
+       data-sub="Cloud adoption rates, top vendors, industry breakdown, SME spend benchmarks, and where Odoo fits in the Bangladesh ERP market through 2028. | ক্লাউড অ্যাডপশন, ভেন্ডর ল্যান্ডস্কেপ, SME খরচের বেঞ্চমার্ক, এবং ২০২৮ পর্যন্ত ৫টি মূল ট্রেন্ড।">
+      <span class="lab-num">0062</span>
+      <span class="lab-title">
+        বাংলাদেশে ERP বাজারের অবস্থা ২০২৬
+        <span class="sub">ক্লাউড অ্যাডপশন, ভেন্ডর ল্যান্ডস্কেপ, SME খরচের বেঞ্চমার্ক, এবং ২০২৮ পর্যন্ত ৫টি মূল ট্রেন্ড।</span>
+      </span>
+      <span class="lab-kind">প্রবন্ধ</span>
+      <span class="lab-date">মে ২০২৬</span>
+      <span class="lab-arrow">↗</span>
+    </a>
+
+    <a class="lab-row" href="/bn/lab/0061-odoo-preventive-maintenance-bangladesh"
+       data-title="Odoo Preventive Maintenance for Bangladesh Factories: Setup & Scheduling | বাংলাদেশে Odoo প্রিভেন্টিভ মেইনটেন্যান্স"
+       data-sub="Configure Odoo Maintenance for Bangladesh factories: equipment catalog, preventive schedules, work orders, spare parts, and maintenance KPI dashboards. | ইকুইপমেন্ট ক্যাটালগ, প্রিভেন্টিভ শিডিউল, ওয়ার্ক অর্ডার, এবং ফ্যাক্টরির জন্য মেইনটেন্যান্স KPI।">
+      <span class="lab-num">0061</span>
+      <span class="lab-title">
+        বাংলাদেশে Odoo প্রিভেন্টিভ মেইনটেন্যান্স
+        <span class="sub">ইকুইপমেন্ট ক্যাটালগ, প্রিভেন্টিভ শিডিউল, ওয়ার্ক অর্ডার, এবং ফ্যাক্টরির জন্য মেইনটেন্যান্স KPI।</span>
+      </span>
+      <span class="lab-kind">গাইড</span>
+      <span class="lab-date">মে ২০২৬</span>
+      <span class="lab-arrow">↗</span>
+    </a>
+
+    <a class="lab-row" href="/bn/lab/0060-mature-odoo-implementation-bangladesh"
+       data-title="5 Years After Go-Live: What Odoo Looks Like at a Mature Bangladesh Company | ৫ বছর পর: পরিণত Odoo বাস্তবায়ন বাংলাদেশে"
+       data-sub="Data quality decay, upgrade cycles, custom module technical debt, ROI reality, and what to do differently from day one of your Odoo implementation. | গো-লাইভের ৫ বছর পর — ডেটা কোয়ালিটি, আপগ্রেড সাইকেল, প্রকৃত ROI, এবং শেখা শিক্ষা।">
+      <span class="lab-num">0060</span>
+      <span class="lab-title">
+        ৫ বছর পর: পরিণত Odoo বাস্তবায়ন বাংলাদেশে
+        <span class="sub">গো-লাইভের ৫ বছর পর — ডেটা কোয়ালিটি, আপগ্রেড সাইকেল, প্রকৃত ROI, এবং শেখা শিক্ষা।</span>
+      </span>
+      <span class="lab-kind">প্রবন্ধ</span>
+      <span class="lab-date">মে ২০২৬</span>
+      <span class="lab-arrow">↗</span>
+    </a>
+
+    <a class="lab-row" href="/bn/lab/0059-odoo-ecommerce-integration-bangladesh"
+       data-title="Odoo eCommerce Integration for Bangladesh Exporters: WooCommerce & Shopify | বাংলাদেশে Odoo eCommerce ইন্টিগ্রেশন"
+       data-sub="Connect Odoo to WooCommerce, Shopify, and Daraz in Bangladesh. Real-time order sync, inventory management, SSLCommerz and bKash payment integration. | WooCommerce, Shopify ও Daraz — অর্ডার সিঙ্ক, ইনভেন্টরি, এবং বাংলাদেশের পেমেন্ট গেটওয়ে।">
+      <span class="lab-num">0059</span>
+      <span class="lab-title">
+        বাংলাদেশে Odoo eCommerce ইন্টিগ্রেশন
+        <span class="sub">WooCommerce, Shopify ও Daraz — অর্ডার সিঙ্ক, ইনভেন্টরি, এবং বাংলাদেশের পেমেন্ট গেটওয়ে।</span>
+      </span>
+      <span class="lab-kind">গাইড</span>
+      <span class="lab-date">মে ২০২৬</span>
+      <span class="lab-arrow">↗</span>
+    </a>
+
+    <a class="lab-row" href="/bn/lab/0058-odoo-ai-features-bangladesh"
+       data-title="AI Features in Odoo 17 & 18: What Bangladesh SMEs Should Actually Use | বাংলাদেশে Odoo AI ফিচার: SME-দের জন্য বাস্তবতা"
+       data-sub="Honest breakdown of every Odoo AI feature — OCR for vendor bills, predictive reordering, ChatGPT Copilot, email AI, IoT analytics — what works vs. hype. | OCR, প্রেডিক্টিভ রিঅর্ডারিং, ChatGPT — বাংলাদেশি ব্যবসার জন্য আসলে কী কাজ করে, আর কী শুধু হাইপ।">
+      <span class="lab-num">0058</span>
+      <span class="lab-title">
+        বাংলাদেশে Odoo AI ফিচার: SME-দের জন্য বাস্তবতা
+        <span class="sub">OCR, প্রেডিক্টিভ রিঅর্ডারিং, ChatGPT — বাংলাদেশি ব্যবসার জন্য আসলে কী কাজ করে, আর কী শুধু হাইপ।</span>
+      </span>
+      <span class="lab-kind">প্রবন্ধ</span>
+      <span class="lab-date">মে ২০২৬</span>
+      <span class="lab-arrow">↗</span>
+    </a>
+
+    <a class="lab-row" href="/bn/lab/0057-odoo-backup-restore-bangladesh"
+       data-title="Odoo Backup, Restore & Disaster Recovery for Bangladesh Businesses | বাংলাদেশে Odoo ব্যাকআপ ও ডিজাস্টার রিকভারি"
+       data-sub="PostgreSQL backup scripts, filestore backup, off-site cloud storage, disaster recovery planning, and monthly restore drills for Bangladesh Odoo deployments. | PostgreSQL ব্যাকআপ, ফাইলস্টোর, অফ-সাইট স্টোরেজ, এবং SME-দের জন্য মাসিক রিস্টোর ড্রিল।">
+      <span class="lab-num">0057</span>
+      <span class="lab-title">
+        বাংলাদেশে Odoo ব্যাকআপ ও ডিজাস্টার রিকভারি
+        <span class="sub">PostgreSQL ব্যাকআপ, ফাইলস্টোর, অফ-সাইট স্টোরেজ, এবং SME-দের জন্য মাসিক রিস্টোর ড্রিল।</span>
+      </span>
+      <span class="lab-kind">গাইড</span>
+      <span class="lab-date">মে ২০২৬</span>
+      <span class="lab-arrow">↗</span>
+    </a>
+
+    <a class="lab-row" href="/bn/lab/0056-odoo-iot-box-bangladesh"
+       data-title="Odoo IoT Box for Bangladesh Factories: Barcode, Scale & POS Integration | বাংলাদেশি ফ্যাক্টরির জন্য Odoo IoT বক্স"
+       data-sub="Connect barcode scanners, weighing scales, and POS printers to Odoo in Bangladesh factories. Hardware sourcing, network setup, configuration, and troubleshooting. | বারকোড স্ক্যানার, ওজন স্কেল, এবং POS প্রিন্টার — হার্ডওয়্যার সোর্সিং থেকে লাইভ কনফিগারেশন পর্যন্ত।">
+      <span class="lab-num">0056</span>
+      <span class="lab-title">
+        বাংলাদেশি ফ্যাক্টরির জন্য Odoo IoT বক্স
+        <span class="sub">বারকোড স্ক্যানার, ওজন স্কেল, এবং POS প্রিন্টার — হার্ডওয়্যার সোর্সিং থেকে লাইভ কনফিগারেশন পর্যন্ত।</span>
+      </span>
+      <span class="lab-kind">গাইড</span>
+      <span class="lab-date">মে ২০২৬</span>
+      <span class="lab-arrow">↗</span>
+    </a>
+
+    <a class="lab-row" href="/bn/lab/0055-odoo-dashboards-kpi-bangladesh"
+       data-title="Odoo Dashboards & KPIs: What Every Bangladesh Business Owner Should Track | বাংলাদেশে Odoo ড্যাশবোর্ড ও KPI"
+       data-sub="Build CEO dashboards in Odoo: track sales pipeline, inventory turnover, cash flow, manufacturing OEE, and VAT compliance for Bangladesh SMEs. | কী ট্র্যাক করবেন, কোথায় পাবেন, এবং সঠিক মানুষের কাছে কীভাবে দৃশ্যমান করবেন।">
+      <span class="lab-num">0055</span>
+      <span class="lab-title">
+        বাংলাদেশে Odoo ড্যাশবোর্ড ও KPI
+        <span class="sub">কী ট্র্যাক করবেন, কোথায় পাবেন, এবং সঠিক মানুষের কাছে কীভাবে দৃশ্যমান করবেন।</span>
+      </span>
+      <span class="lab-kind">গাইড</span>
+      <span class="lab-date">মে ২০২৬</span>
+      <span class="lab-arrow">↗</span>
+    </a>
+
+    <a class="lab-row" href="/bn/lab/0054-odoo-email-sms-setup-bangladesh"
+       data-title="Odoo Email & SMS Setup Bangladesh: SMTP, Aliases & Notifications | বাংলাদেশে Odoo ইমেইল ও SMS সেটআপ"
+       data-sub="Configure Odoo outgoing SMTP, incoming email aliases, SSL Wireless SMS gateway, and Bangladesh-specific notification templates. Complete setup guide. | SMTP, ইমেইল অ্যালিয়াস, SSL Wireless SMS, এবং নোটিফিকেশন টেমপ্লেট — সঠিকভাবে কনফিগার করা।">
+      <span class="lab-num">0054</span>
+      <span class="lab-title">
+        বাংলাদেশে Odoo ইমেইল ও SMS সেটআপ
+        <span class="sub">SMTP, ইমেইল অ্যালিয়াস, SSL Wireless SMS, এবং নোটিফিকেশন টেমপ্লেট — সঠিকভাবে কনফিগার করা।</span>
+      </span>
+      <span class="lab-kind">গাইড</span>
+      <span class="lab-date">মে ২০২৬</span>
+      <span class="lab-arrow">↗</span>
+    </a>
+
+    <a class="lab-row" href="/bn/lab/0053-odoo-api-integration-bangladesh"
+       data-title="Odoo API Integration: Connecting Banks & Third-Party Tools in Bangladesh | বাংলাদেশে Odoo API ইন্টিগ্রেশন"
+       data-sub="Connect bKash, Nagad, SSLCommerz, bank feeds, and shipping APIs (Pathao, Steadfast, Redx) to your Odoo system. Practical guide for IT managers and CTOs. | bKash, SSLCommerz, ব্যাংক ফিড, এবং শিপিং API — বাংলাদেশের ইকোসিস্টেমকে Odoo-র সাথে যুক্ত করা।">
+      <span class="lab-num">0053</span>
+      <span class="lab-title">
+        বাংলাদেশে Odoo API ইন্টিগ্রেশন
+        <span class="sub">bKash, SSLCommerz, ব্যাংক ফিড, এবং শিপিং API — বাংলাদেশের ইকোসিস্টেমকে Odoo-র সাথে যুক্ত করা।</span>
+      </span>
+      <span class="lab-kind">গাইড</span>
+      <span class="lab-date">মে ২০২৬</span>
+      <span class="lab-arrow">↗</span>
+    </a>
+
+    <a class="lab-row" href="/bn/lab/0052-odoo-vendor-red-flags-bangladesh"
+       data-title="When to Fire Your Odoo Vendor: 7 Red Flags Bangladesh Businesses Know | কখন আপনার Odoo ভেন্ডরকে বিদায় জানাবেন"
+       data-sub="7 warning signs your Odoo implementation partner is failing — no discovery, scope creep without change orders, junior consultants, and disappearing post go-live. | বাংলাদেশি ব্যবসাগুলোর চেনা ৭টি রেড ফ্ল্যাগ — এবং সেগুলো দেখলে ঠিক কী করবেন।">
+      <span class="lab-num">0052</span>
+      <span class="lab-title">
+        কখন আপনার Odoo ভেন্ডরকে বিদায় জানাবেন
+        <span class="sub">বাংলাদেশি ব্যবসাগুলোর চেনা ৭টি রেড ফ্ল্যাগ — এবং সেগুলো দেখলে ঠিক কী করবেন।</span>
+      </span>
+      <span class="lab-kind">প্রবন্ধ</span>
+      <span class="lab-date">মে ২০২৬</span>
+      <span class="lab-arrow">↗</span>
+    </a>
+
+    <a class="lab-row" href="/bn/lab/0051-odoo-enterprise-licensing-cost"
+       data-title="Odoo Licensing Explained: Enterprise Apps, Users & Annual Fees | Odoo এন্টারপ্রাইজ লাইসেন্সিং ব্যাখ্যা"
+       data-sub="Odoo Enterprise licensing explained: app-based pricing, user counts, Odoo.sh vs self-hosted, and real BDT cost estimates for Bangladesh SMEs. | অ্যাপ প্রাইসিং, ইউজার সংখ্যা, Odoo.sh বনাম সেলফ-হোস্টেড, এবং বাংলাদেশের জন্য BDT খরচের হিসাব।">
+      <span class="lab-num">0051</span>
+      <span class="lab-title">
+        Odoo এন্টারপ্রাইজ লাইসেন্সিং ব্যাখ্যা
+        <span class="sub">অ্যাপ প্রাইসিং, ইউজার সংখ্যা, Odoo.sh বনাম সেলফ-হোস্টেড, এবং বাংলাদেশের জন্য BDT খরচের হিসাব।</span>
+      </span>
+      <span class="lab-kind">গাইড</span>
+      <span class="lab-date">মে ২০২৬</span>
+      <span class="lab-arrow">↗</span>
+    </a>
+
+    <a class="lab-row" href="/bn/lab/0050-hidden-erp-costs-bangladesh"
+       data-title="Hidden Costs of ERP Implementation in Bangladesh: What No One Tells You | বাংলাদেশে ERP বাস্তবায়নের লুকানো খরচ"
+       data-sub="Hidden ERP implementation costs Bangladesh: data cleanup, shadow IT, annual renewals, staff turnover & infrastructure — the true total budget. | ৯টি খরচের খাত যা কেউ বলে না — একটি সম্পূর্ণ ৩ বছরের বাজেট ফ্রেমওয়ার্ক সহ।">
+      <span class="lab-num">0050</span>
+      <span class="lab-title">
+        বাংলাদেশে ERP বাস্তবায়নের লুকানো খরচ
+        <span class="sub">৯টি খরচের খাত যা কেউ বলে না — একটি সম্পূর্ণ ৩ বছরের বাজেট ফ্রেমওয়ার্ক সহ।</span>
+      </span>
+      <span class="lab-kind">প্রবন্ধ</span>
+      <span class="lab-date">মে ২০২৬</span>
+      <span class="lab-arrow">↗</span>
+    </a>
+
+    <a class="lab-row" href="/bn/lab/0049-odoo-partner-selection-bangladesh"
+       data-title="Odoo Partner Selection Guide: How to Evaluate Vendors in Bangladesh | বাংলাদেশে Odoo পার্টনার বাছাই"
+       data-sub="Odoo partner selection guide Bangladesh: 7 evaluation criteria, RFP scoring matrix, demo checklist & contract essentials to find the right vendor. | ৭টি মূল্যায়ন মানদণ্ড, RFP স্কোরিং ম্যাট্রিক্স, ডেমো চেকলিস্ট, এবং চুক্তির অবশ্যই-থাকা শর্ত।">
+      <span class="lab-num">0049</span>
+      <span class="lab-title">
+        বাংলাদেশে Odoo পার্টনার বাছাই
+        <span class="sub">৭টি মূল্যায়ন মানদণ্ড, RFP স্কোরিং ম্যাট্রিক্স, ডেমো চেকলিস্ট, এবং চুক্তির অবশ্যই-থাকা শর্ত।</span>
+      </span>
+      <span class="lab-kind">গাইড</span>
+      <span class="lab-date">মে ২০২৬</span>
+      <span class="lab-arrow">↗</span>
+    </a>
+
+    <a class="lab-row" href="/bn/lab/0048-odoo-roi-calculator-bangladesh"
+       data-title="How to Calculate Odoo ERP ROI for Bangladesh Manufacturing | বাংলাদেশে Odoo ERP ROI কীভাবে হিসাব করবেন"
+       data-sub="Odoo ROI calculator for Bangladesh manufacturing — quantify labor savings, inventory gains & payback period before committing to ERP. | একটি বাংলাদেশি গার্মেন্টস ফ্যাক্টরির পূর্ণ উদাহরণসহ ধাপে-ধাপে ROI ফ্রেমওয়ার্ক।">
+      <span class="lab-num">0048</span>
+      <span class="lab-title">
+        বাংলাদেশে Odoo ERP ROI কীভাবে হিসাব করবেন
+        <span class="sub">একটি বাংলাদেশি গার্মেন্টস ফ্যাক্টরির পূর্ণ উদাহরণসহ ধাপে-ধাপে ROI ফ্রেমওয়ার্ক।</span>
+      </span>
+      <span class="lab-kind">গাইড</span>
+      <span class="lab-date">মে ২০২৬</span>
+      <span class="lab-arrow">↗</span>
+    </a>
+
+    <a class="lab-row" href="/bn/lab/0047-odoo-project-charter-template"
+       data-title="Odoo Project Charter Template: Scope, Roles & Go/No-Go Criteria | Odoo প্রজেক্ট চার্টার টেমপ্লেট"
+       data-sub="Download the Odoo Project Charter Template. Define scope, assign roles, and establish go/no-go criteria before kicking off ERP development. | ERP ডেভেলপমেন্ট শুরুর আগে স্কোপ নির্ধারণ, ভূমিকা বণ্টন, এবং গো/নো-গো মানদণ্ড ঠিক করুন।">
+      <span class="lab-num">0047</span>
+      <span class="lab-title">
+        Odoo প্রজেক্ট চার্টার টেমপ্লেট
+        <span class="sub">ERP ডেভেলপমেন্ট শুরুর আগে স্কোপ নির্ধারণ, ভূমিকা বণ্টন, এবং গো/নো-গো মানদণ্ড ঠিক করুন।</span>
+      </span>
+      <span class="lab-kind">টেমপ্লেট</span>
+      <span class="lab-date">মে ২০২৬</span>
+      <span class="lab-arrow">↗</span>
+    </a>
+
+    <a class="lab-row" href="/bn/lab/0046-scope-creep-erp-project-management"
+       data-title="Managing Scope Creep in Odoo Projects: Real Bangladesh Examples | Odoo প্রজেক্টে স্কোপ ক্রিপ সামলানো"
+       data-sub="Manage scope creep in ERP projects effectively. Real examples from Bangladesh Odoo implementations on controlling unauthorized feature requests. | অননুমোদিত ফিচার রিকোয়েস্ট নিয়ন্ত্রণে বাংলাদেশের বাস্তব Odoo বাস্তবায়নের উদাহরণ।">
+      <span class="lab-num">0046</span>
+      <span class="lab-title">
+        Odoo প্রজেক্টে স্কোপ ক্রিপ সামলানো
+        <span class="sub">অননুমোদিত ফিচার রিকোয়েস্ট নিয়ন্ত্রণে বাংলাদেশের বাস্তব Odoo বাস্তবায়নের উদাহরণ।</span>
+      </span>
+      <span class="lab-kind">প্রবন্ধ</span>
+      <span class="lab-date">মে ২০২৬</span>
+      <span class="lab-arrow">↗</span>
+    </a>
+
+    <a class="lab-row" href="/bn/lab/0045-erp-requirements-document-template"
+       data-title="ERP Requirements Document: 100+ Line Items for Bangladesh SMEs | ERP রিকোয়ারমেন্ট ডকুমেন্ট টেমপ্লেট"
+       data-sub="Download the ERP Requirements Document Template with 100+ items for Bangladesh SMEs. Ensure accurate vendor quotes and prevent scope creep. | বাংলাদেশি SME-দের জন্য ১০০+ লাইন আইটেম। সঠিক ভেন্ডর কোটেশন নিশ্চিত করুন, স্কোপ ক্রিপ ঠেকান।">
+      <span class="lab-num">0045</span>
+      <span class="lab-title">
+        ERP রিকোয়ারমেন্ট ডকুমেন্ট টেমপ্লেট
+        <span class="sub">বাংলাদেশি SME-দের জন্য ১০০+ লাইন আইটেম। সঠিক ভেন্ডর কোটেশন নিশ্চিত করুন, স্কোপ ক্রিপ ঠেকান।</span>
+      </span>
+      <span class="lab-kind">টেমপ্লেট</span>
+      <span class="lab-date">মে ২০২৬</span>
+      <span class="lab-arrow">↗</span>
+    </a>
+
+    <a class="lab-row" href="/bn/lab/0044-erp-business-case-bangladesh"
+       data-title="How to Build a Business Case for Odoo ERP in Bangladesh | বাংলাদেশে Odoo ERP-র বিজনেস কেস তৈরি"
+       data-sub="Build a compelling ERP business case in Bangladesh. Justify your Odoo investment with ROI calculations and strict cost-benefit analysis. | ROI হিসাব ও কঠোর কস্ট-বেনিফিট অ্যানালাইসিস দিয়ে আপনার Odoo বিনিয়োগ যুক্তিসঙ্গত করুন।">
+      <span class="lab-num">0044</span>
+      <span class="lab-title">
+        বাংলাদেশে Odoo ERP-র বিজনেস কেস তৈরি
+        <span class="sub">ROI হিসাব ও কঠোর কস্ট-বেনিফিট অ্যানালাইসিস দিয়ে আপনার Odoo বিনিয়োগ যুক্তিসঙ্গত করুন।</span>
+      </span>
+      <span class="lab-kind">গাইড</span>
+      <span class="lab-date">মে ২০২৬</span>
+      <span class="lab-arrow">↗</span>
+    </a>
+
+    <a class="lab-row" href="/bn/lab/0043-as-is-to-be-process-mapping-erp"
+       data-title="AS-IS vs TO-BE Process Mapping: A Bangladesh ERP Practitioner's Guide | AS-IS বনাম TO-BE প্রসেস ম্যাপিং"
+       data-sub="Master AS-IS vs TO-BE process mapping for your ERP implementation. Learn how to document current workflows and design future state Odoo processes. | বর্তমান ওয়ার্কফ্লো ডকুমেন্ট করা এবং ভবিষ্যতের Odoo প্রসেস ডিজাইন করা শিখুন।">
+      <span class="lab-num">0043</span>
+      <span class="lab-title">
+        AS-IS বনাম TO-BE প্রসেস ম্যাপিং
+        <span class="sub">বর্তমান ওয়ার্কফ্লো ডকুমেন্ট করা এবং ভবিষ্যতের Odoo প্রসেস ডিজাইন করা শিখুন।</span>
+      </span>
+      <span class="lab-kind">গাইড</span>
+      <span class="lab-date">মে ২০২৬</span>
+      <span class="lab-arrow">↗</span>
+    </a>
+
+    <a class="lab-row" href="/bn/lab/0042-odoo-user-access-rights-configuration"
+       data-title="Odoo User Roles &amp; Access Rights: Configuration Guide for SMEs | Odoo ইউজার রোল ও অ্যাক্সেস রাইটস: কনফিগারেশন গাইড"
+       data-sub="Secure your Odoo ERP by configuring precise user access rights and roles. A complete guide for SMEs to manage permissions. | SME-দের জন্য সুনির্দিষ্ট ইউজার অ্যাক্সেস রাইটস ও রোল কনফিগার করে আপনার Odoo ERP সুরক্ষিত করুন।">
+      <span class="lab-num">0042</span>
+      <span class="lab-title">
+        Odoo ইউজার রোল ও অ্যাক্সেস রাইটস: কনফিগারেশন গাইড
+        <span class="sub">SME-দের জন্য সুনির্দিষ্ট ইউজার অ্যাক্সেস রাইটস ও রোল কনফিগার করে আপনার Odoo ERP সুরক্ষিত করুন।</span>
+      </span>
+      <span class="lab-kind">কনফিগারেশন গাইড</span>
+      <span class="lab-date">মে ২০২৬</span>
+      <span class="lab-arrow">↗</span>
+    </a>
+
+    <a class="lab-row" href="/bn/lab/0041-odoo-landed-costs-duty-drawback-bangladesh"
+       data-title="Landed Costs &amp; Duty Drawback in Odoo Bangladesh | বাংলাদেশে Odoo-তে ল্যান্ডেড কস্ট ও ডিউটি ড্রব্যাক"
+       data-sub="Configure Odoo landed costs for Bangladesh imports. Include freight, insurance, and duty in inventory valuation. | ইমপোর্টের জন্য ল্যান্ডেড কস্ট কনফিগার করুন। ইনভেন্টরি ভ্যালুয়েশনে ফ্রেইট, ইন্স্যুরেন্স, ডিউটি যুক্ত করুন।">
+      <span class="lab-num">0041</span>
+      <span class="lab-title">
+        বাংলাদেশে Odoo-তে ল্যান্ডেড কস্ট ও ডিউটি ড্রব্যাক
+        <span class="sub">ইমপোর্টের জন্য ল্যান্ডেড কস্ট কনফিগার করুন। ইনভেন্টরি ভ্যালুয়েশনে ফ্রেইট, ইন্স্যুরেন্স, ডিউটি যুক্ত করুন।</span>
+      </span>
+      <span class="lab-kind">কনফিগারেশন গাইড</span>
+      <span class="lab-date">মে ২০২৬</span>
+      <span class="lab-arrow">↗</span>
+    </a>
+
+    <a class="lab-row" href="/bn/lab/0040-odoo-quality-control-iso-bangladesh"
+       data-title="Odoo Quality Control for ISO-Certified Bangladesh Factories | ISO-সার্টিফায়েড বাংলাদেশি ফ্যাক্টরির জন্য Odoo কোয়ালিটি কন্ট্রোল"
+       data-sub="Configure Odoo quality control for ISO-certified Bangladesh factories. Setup quality checks, alerts, and acceptable tolerances. | ম্যানুফ্যাকচারিং কমপ্লায়েন্সের জন্য কোয়ালিটি চেক, অ্যালার্ট, এবং গ্রহণযোগ্য টলারেন্স সেট করুন।">
+      <span class="lab-num">0040</span>
+      <span class="lab-title">
+        ISO-সার্টিফায়েড বাংলাদেশি ফ্যাক্টরির জন্য Odoo কোয়ালিটি কন্ট্রোল
+        <span class="sub">ম্যানুফ্যাকচারিং কমপ্লায়েন্সের জন্য কোয়ালিটি চেক, অ্যালার্ট, এবং গ্রহণযোগ্য টলারেন্স সেট করুন।</span>
+      </span>
+      <span class="lab-kind">কনফিগারেশন গাইড</span>
+      <span class="lab-date">মে ২০২৬</span>
+      <span class="lab-arrow">↗</span>
+    </a>
+
+    <a class="lab-row" href="/bn/lab/0039-odoo-reordering-rules-mto-bangladesh"
+       data-title="Odoo Reordering Rules vs MTO vs Min/Max: When to Use Which | Odoo রিঅর্ডারিং রুলস বনাম MTO বনাম Min/Max: কখন কোনটি"
+       data-sub="Odoo Reordering Rules vs MTO vs Min/Max for Bangladesh supply chains. Learn when to use which automated procurement rule. | আপনার সাপ্লাই চেইনের জন্য কোন অটোমেটেড প্রকিউরমেন্ট রুল কখন ব্যবহার করবেন তা জানুন।">
+      <span class="lab-num">0039</span>
+      <span class="lab-title">
+        Odoo রিঅর্ডারিং রুলস বনাম MTO বনাম Min/Max: কখন কোনটি
+        <span class="sub">আপনার সাপ্লাই চেইনের জন্য কোন অটোমেটেড প্রকিউরমেন্ট রুল কখন ব্যবহার করবেন তা জানুন।</span>
+      </span>
+      <span class="lab-kind">কনফিগারেশন গাইড</span>
+      <span class="lab-date">মে ২০২৬</span>
+      <span class="lab-arrow">↗</span>
+    </a>
+
+    <a class="lab-row" href="/bn/lab/0038-odoo-manufacturing-routing-bangladesh"
+       data-title="Manufacturing Routing in Odoo: Work Centers, Operations &amp; Time Tracking | Odoo-তে ম্যানুফ্যাকচারিং রুটিং: ওয়ার্ক সেন্টার, অপারেশন ও টাইম ট্র্যাকিং"
+       data-sub="Configure Odoo manufacturing routing for Bangladesh factories — work centers, operations, machine capacity, and production time tracking. | ওয়ার্ক সেন্টার, অপারেশন, মেশিন ক্যাপাসিটি, এবং প্রোডাকশন টাইম ট্র্যাকিং কনফিগার করুন।">
+      <span class="lab-num">0038</span>
+      <span class="lab-title">
+        Odoo-তে ম্যানুফ্যাকচারিং রুটিং: ওয়ার্ক সেন্টার, অপারেশন ও টাইম ট্র্যাকিং
+        <span class="sub">ওয়ার্ক সেন্টার, অপারেশন, মেশিন ক্যাপাসিটি, এবং প্রোডাকশন টাইম ট্র্যাকিং কনফিগার করুন।</span>
+      </span>
+      <span class="lab-kind">কনফিগারেশন গাইড</span>
+      <span class="lab-date">মে ২০২৬</span>
+      <span class="lab-arrow">↗</span>
+    </a>
+
+    <a class="lab-row" href="/bn/lab/0037-odoo-spinning-mill-bangladesh"
+       data-title="Odoo for Spinning &amp; Weaving Mills Bangladesh: Yarn Stock, Loom Routing &amp; QC | বাংলাদেশে স্পিনিং ও উইভিং মিলের জন্য Odoo: ইয়ার্ন স্টক, লুম রুটিং ও QC"
+       data-sub="Yarn inventory by count and composition, loom work centre routing, grey fabric to finished fabric tracking, and quality control for spinning mills. | কাউন্ট অনুযায়ী ইয়ার্ন ইনভেন্টরি, লুম ওয়ার্ক সেন্টার রুটিং, গ্রে ফ্যাব্রিক QC, এবং বাংলাদেশি টেক্সটাইল মিলের জন্য ফিনিশড গুডস ট্র্যাকিং।">
+      <span class="lab-num">0037</span>
+      <span class="lab-title">
+        বাংলাদেশে স্পিনিং ও উইভিং মিলের জন্য Odoo: ইয়ার্ন স্টক, লুম রুটিং ও QC
+        <span class="sub">কাউন্ট অনুযায়ী ইয়ার্ন ইনভেন্টরি, লুম ওয়ার্ক সেন্টার রুটিং, গ্রে ফ্যাব্রিক QC, এবং বাংলাদেশি টেক্সটাইল মিলের জন্য ফিনিশড গুডস ট্র্যাকিং।</span>
+      </span>
+      <span class="lab-kind">ইন্ডাস্ট্রি গাইড</span>
+      <span class="lab-date">মে ২০২৬</span>
+      <span class="lab-arrow">↗</span>
+    </a>
+
+    <a class="lab-row" href="/bn/lab/0036-odoo-trading-company-bangladesh"
+       data-title="Odoo for Trading Companies Bangladesh: Multi-Warehouse &amp; Procurement | বাংলাদেশে ট্রেডিং কোম্পানির জন্য Odoo: মাল্টি-ওয়্যারহাউস ও প্রকিউরমেন্ট"
+       data-sub="Multi-warehouse setup, import procurement with LC management, landed costs, customer pricing tiers, and stock replenishment for wholesale distributors. | মাল্টি-ওয়্যারহাউস সেটআপ, ইমপোর্ট প্রকিউরমেন্ট, ল্যান্ডেড কস্ট, এবং বাংলাদেশের হোলসেল ডিস্ট্রিবিউটরদের জন্য কাস্টমার প্রাইসিং।">
+      <span class="lab-num">0036</span>
+      <span class="lab-title">
+        বাংলাদেশে ট্রেডিং কোম্পানির জন্য Odoo: মাল্টি-ওয়্যারহাউস ও প্রকিউরমেন্ট
+        <span class="sub">মাল্টি-ওয়্যারহাউস সেটআপ, ইমপোর্ট প্রকিউরমেন্ট, ল্যান্ডেড কস্ট, এবং বাংলাদেশের হোলসেল ডিস্ট্রিবিউটরদের জন্য কাস্টমার প্রাইসিং।</span>
+      </span>
+      <span class="lab-kind">ইন্ডাস্ট্রি গাইড</span>
+      <span class="lab-date">মে ২০২৬</span>
+      <span class="lab-arrow">↗</span>
+    </a>
+
+    <a class="lab-row" href="/bn/lab/0035-odoo-pharma-bangladesh"
+       data-title="Odoo for Pharmaceutical Bangladesh: Batch Tracking &amp; Compliance | বাংলাদেশে ফার্মাসিউটিক্যালসের জন্য Odoo: ব্যাচ ট্র্যাকিং ও কমপ্লায়েন্স"
+       data-sub="Lot and batch tracking, expiry date management, DGDA batch manufacturing record requirements, pharma production workflow, and recall traceability in Odoo. | লট ট্র্যাকিং, মেয়াদ ব্যবস্থাপনা, DGDA ব্যাচ কমপ্লায়েন্স, QC রিলিজ ওয়ার্কফ্লো, এবং ফার্মা প্রস্তুতকারকদের জন্য রিকল ট্রেসেবিলিটি।">
+      <span class="lab-num">0035</span>
+      <span class="lab-title">
+        বাংলাদেশে ফার্মাসিউটিক্যালসের জন্য Odoo: ব্যাচ ট্র্যাকিং ও কমপ্লায়েন্স
+        <span class="sub">লট ট্র্যাকিং, মেয়াদ ব্যবস্থাপনা, DGDA ব্যাচ কমপ্লায়েন্স, QC রিলিজ ওয়ার্কফ্লো, এবং ফার্মা প্রস্তুতকারকদের জন্য রিকল ট্রেসেবিলিটি।</span>
+      </span>
+      <span class="lab-kind">ইন্ডাস্ট্রি গাইড</span>
+      <span class="lab-date">মে ২০২৬</span>
+      <span class="lab-arrow">↗</span>
+    </a>
+
+    <a class="lab-row" href="/bn/lab/0034-odoo-cycle-export-bangladesh"
+       data-title="Odoo for Cycle &amp; Bicycle Export Bangladesh: BOM to Customs | বাংলাদেশে সাইকেল ও বাইসাইকেল এক্সপোর্টের জন্য Odoo: BOM থেকে কাস্টমস"
+       data-sub="Multi-level BOM for bicycle assembly, imported component procurement with landed costs, HS code classification, export documentation, and duty drawback traceability. | মাল্টি-লেভেল BOM, ইমপোর্টেড কম্পোনেন্ট প্রকিউরমেন্ট, HS কোড, এক্সপোর্ট ডকুমেন্টেশন, এবং বাইসাইকেল প্রস্তুতকারকদের জন্য ডিউটি ড্রব্যাক ট্রেসেবিলিটি।">
+      <span class="lab-num">0034</span>
+      <span class="lab-title">
+        বাংলাদেশে সাইকেল ও বাইসাইকেল এক্সপোর্টের জন্য Odoo: BOM থেকে কাস্টমস
+        <span class="sub">মাল্টি-লেভেল BOM, ইমপোর্টেড কম্পোনেন্ট প্রকিউরমেন্ট, HS কোড, এক্সপোর্ট ডকুমেন্টেশন, এবং বাইসাইকেল প্রস্তুতকারকদের জন্য ডিউটি ড্রব্যাক ট্রেসেবিলিটি।</span>
+      </span>
+      <span class="lab-kind">ইন্ডাস্ট্রি গাইড</span>
+      <span class="lab-date">মে ২০২৬</span>
+      <span class="lab-arrow">↗</span>
+    </a>
+
+    <a class="lab-row" href="/bn/lab/0033-odoo-rmg-garments-bangladesh"
+       data-title="Odoo for RMG &amp; Garments Bangladesh: From Sample to Shipment | বাংলাদেশে RMG ও গার্মেন্টসের জন্য Odoo: স্যাম্পল থেকে শিপমেন্ট"
+       data-sub="Sample-to-shipment workflow, size-colour BOM with product variants, work centre setup, BGMEA wage board compliance, LC export documentation, and production reporting. | স্যাম্পল অ্যাপ্রুভাল থেকে শিপমেন্ট, সাইজ-কালার BOM ভ্যারিয়ান্ট, ওয়ার্ক সেন্টার, BGMEA মজুরি, LC ডকুমেন্টেশন — সম্পূর্ণ RMG ERP কনফিগারেশন গাইড।">
+      <span class="lab-num">0033</span>
+      <span class="lab-title">
+        বাংলাদেশে RMG ও গার্মেন্টসের জন্য Odoo: স্যাম্পল থেকে শিপমেন্ট
+        <span class="sub">স্যাম্পল অ্যাপ্রুভাল থেকে শিপমেন্ট, সাইজ-কালার BOM ভ্যারিয়ান্ট, ওয়ার্ক সেন্টার, BGMEA মজুরি, LC ডকুমেন্টেশন — সম্পূর্ণ RMG ERP কনফিগারেশন গাইড।</span>
+      </span>
+      <span class="lab-kind">ইন্ডাস্ট্রি গাইড</span>
+      <span class="lab-date">মে ২০২৬</span>
+      <span class="lab-arrow">↗</span>
+    </a>
+
+    <a class="lab-row" href="/bn/lab/odoo-18-functional-certification-bangladesh"
+       data-title="Odoo Functional Certification — What It Is &amp; Why It Matters for Bangladesh ERP | Odoo ফাংশনাল সার্টিফিকেশন — এটি কী এবং বাংলাদেশে ERP-র জন্য কেন গুরুত্বপূর্ণ"
+       data-sub="A first-hand account of the Odoo 18 Functional Certification — what it tests, how it differs from experience, and why it matters when choosing a consultant in Bangladesh. | Odoo 18 ফাংশনাল সার্টিফিকেশনের একটি প্রত্যক্ষ বিবরণ — এটি কী পরীক্ষা করে, অভিজ্ঞতার থেকে কীভাবে আলাদা, এবং কনসালট্যান্ট বাছাইয়ের সময় কেন গুরুত্বপূর্ণ।">
+      <span class="lab-num">—</span>
+      <span class="lab-title">
+        Odoo ফাংশনাল সার্টিফিকেশন — এটি কী এবং বাংলাদেশে ERP-র জন্য কেন গুরুত্বপূর্ণ
+        <span class="sub">Odoo 18 ফাংশনাল সার্টিফিকেশনের একটি প্রত্যক্ষ বিবরণ — এটি কী পরীক্ষা করে, অভিজ্ঞতার থেকে কীভাবে আলাদা, এবং কনসালট্যান্ট বাছাইয়ের সময় কেন গুরুত্বপূর্ণ।</span>
+      </span>
+      <span class="lab-kind">সার্টিফিকেশন · প্রবন্ধ</span>
+      <span class="lab-date">মে ২০২৬</span>
+      <span class="lab-arrow">↗</span>
+    </a>
+
+    <a class="lab-row" href="/bn/lab/0032-odoo-post-go-live-hypercare-bangladesh"
+       data-title="Odoo Post Go-Live Hypercare Bangladesh: L1/L2/L3 Support Structure | বাংলাদেশে Odoo পোস্ট গো-লাইভ হাইপারকেয়ার: L1/L2/L3 সাপোর্ট স্ট্রাকচার"
+       data-sub="L1/L2/L3 support tiers, escalation matrix, 30-60-90 day KPIs, and exit criteria for Bangladesh Odoo hypercare — the full post go-live playbook. | গো-লাইভের পর বাংলাদেশি Odoo টিমের জন্য L1/L2/L3 সাপোর্ট টায়ার, এসকেলেশন ম্যাট্রিক্স, এবং ৩০-৬০-৯০ দিনের KPI ফ্রেমওয়ার্ক।">
+      <span class="lab-num">0032</span>
+      <span class="lab-title">
+        বাংলাদেশে Odoo পোস্ট গো-লাইভ হাইপারকেয়ার: L1/L2/L3 সাপোর্ট স্ট্রাকচার
+        <span class="sub">গো-লাইভের পর বাংলাদেশি Odoo টিমের জন্য L1/L2/L3 সাপোর্ট টায়ার, এসকেলেশন ম্যাট্রিক্স, এবং ৩০-৬০-৯০ দিনের KPI ফ্রেমওয়ার্ক।</span>
+      </span>
+      <span class="lab-kind">গাইড · সাপোর্ট</span>
+      <span class="lab-date">মে ২০২৬</span>
+      <span class="lab-arrow">↗</span>
+    </a>
+
+    <a class="lab-row" href="/bn/lab/0031-odoo-training-plan-template"
+       data-title="Odoo Training Plan Template: Roles, Modules &amp; Sign-Off Matrix | Odoo ট্রেনিং প্ল্যান টেমপ্লেট: রোল, মডিউল ও সাইন-অফ ম্যাট্রিক্স"
+       data-sub="Role-based training matrix, 2-week schedule, assessment design, and sign-off criteria for Bangladesh ERP go-live training. | বাংলাদেশি ERP গো-লাইভের জন্য রোল-ভিত্তিক ট্রেনিং ম্যাট্রিক্স, ২ সপ্তাহের শিডিউল, মূল্যায়ন ডিজাইন, এবং সাইন-অফ মানদণ্ড।">
+      <span class="lab-num">0031</span>
+      <span class="lab-title">
+        Odoo ট্রেনিং প্ল্যান টেমপ্লেট: রোল, মডিউল ও সাইন-অফ ম্যাট্রিক্স
+        <span class="sub">বাংলাদেশি ERP গো-লাইভের জন্য রোল-ভিত্তিক ট্রেনিং ম্যাট্রিক্স, ২ সপ্তাহের শিডিউল, মূল্যায়ন ডিজাইন, এবং সাইন-অফ মানদণ্ড।</span>
+      </span>
+      <span class="lab-kind">টেমপ্লেট</span>
+      <span class="lab-date">মে ২০২৬</span>
+      <span class="lab-arrow">↗</span>
+    </a>
+
+    <a class="lab-row" href="/bn/lab/0030-data-migration-checklist-odoo-bangladesh"
+       data-title="Data Migration Checklist for Odoo Bangladesh Go-Live | বাংলাদেশে Odoo গো-লাইভের জন্য ডেটা মাইগ্রেশন চেকলিস্ট"
+       data-sub="10-point checklist: customer and vendor master, opening balances, Bangladesh-specific fields, and the exact cutover day sequence. | ১০-পয়েন্ট চেকলিস্ট: মাস্টার ডেটা, ওপেনিং ব্যালেন্স, বাংলাদেশ-নির্দিষ্ট ফিল্ড, এবং কাটওভার দিনের সঠিক ক্রম।">
+      <span class="lab-num">0030</span>
+      <span class="lab-title">
+        বাংলাদেশে Odoo গো-লাইভের জন্য ডেটা মাইগ্রেশন চেকলিস্ট
+        <span class="sub">১০-পয়েন্ট চেকলিস্ট: মাস্টার ডেটা, ওপেনিং ব্যালেন্স, বাংলাদেশ-নির্দিষ্ট ফিল্ড, এবং কাটওভার দিনের সঠিক ক্রম।</span>
+      </span>
+      <span class="lab-kind">চেকলিস্ট</span>
+      <span class="lab-date">মে ২০২৬</span>
+      <span class="lab-arrow">↗</span>
+    </a>
+
+    <a class="lab-row" href="/bn/lab/0029-odoo-rfp-template-bangladesh"
+       data-title="Odoo RFP Template Bangladesh: How to Write + Vendor Scoring Matrix | বাংলাদেশে Odoo RFP টেমপ্লেট: কীভাবে লিখবেন + ভেন্ডর স্কোরিং ম্যাট্রিক্স"
+       data-sub="Full 7-section RFP structure, weighted vendor scoring matrix, and red-flag checklist for selecting the right Odoo partner in Bangladesh. | সঠিক Odoo পার্টনার বাছাইয়ের জন্য সম্পূর্ণ ৭-সেকশন RFP কাঠামো, ওয়েটেড ভেন্ডর স্কোরিং ম্যাট্রিক্স, এবং রেড-ফ্ল্যাগ চেকলিস্ট।">
+      <span class="lab-num">0029</span>
+      <span class="lab-title">
+        বাংলাদেশে Odoo RFP টেমপ্লেট: কীভাবে লিখবেন + ভেন্ডর স্কোরিং ম্যাট্রিক্স
+        <span class="sub">সঠিক Odoo পার্টনার বাছাইয়ের জন্য সম্পূর্ণ ৭-সেকশন RFP কাঠামো, ওয়েটেড ভেন্ডর স্কোরিং ম্যাট্রিক্স, এবং রেড-ফ্ল্যাগ চেকলিস্ট।</span>
+      </span>
+      <span class="lab-kind">টেমপ্লেট · RFP</span>
+      <span class="lab-date">মে ২০২৬</span>
+      <span class="lab-arrow">↗</span>
+    </a>
+
+    <a class="lab-row" href="/bn/lab/0028-odoo-implementation-roadmap-bangladesh"
+       data-title="Odoo Implementation Roadmap Bangladesh: The 12-Week Plan | বাংলাদেশে Odoo বাস্তবায়ন রোডম্যাপ: ১২-সপ্তাহের পরিকল্পনা"
+       data-sub="Complete 12-week Odoo implementation roadmap for Bangladesh SMEs — RACI matrix, phase milestones, data cutover, and go-live criteria. | বাংলাদেশি SME-দের জন্য সম্পূর্ণ ১২-সপ্তাহের রোডম্যাপ — RACI ম্যাট্রিক্স, ফেজ মাইলস্টোন, ডেটা কাটওভার, এবং গো-লাইভ মানদণ্ড।">
+      <span class="lab-num">0028</span>
+      <span class="lab-title">
+        বাংলাদেশে Odoo বাস্তবায়ন রোডম্যাপ: ১২-সপ্তাহের পরিকল্পনা
+        <span class="sub">বাংলাদেশি SME-দের জন্য সম্পূর্ণ ১২-সপ্তাহের রোডম্যাপ — RACI ম্যাট্রিক্স, ফেজ মাইলস্টোন, ডেটা কাটওভার, এবং গো-লাইভ মানদণ্ড।</span>
+      </span>
+      <span class="lab-kind">গাইড · রোডম্যাপ</span>
+      <span class="lab-date">মে ২০২৬</span>
+      <span class="lab-arrow">↗</span>
+    </a>
+
+    <a class="lab-row" href="/bn/lab/0027-sap-b1-vs-odoo-bangladesh"
+       data-title="SAP Business One vs Odoo Bangladesh: A Real Cost Comparison | SAP Business One বনাম Odoo বাংলাদেশ: একটি বাস্তব খরচ তুলনা"
+       data-sub="Licensing, implementation TCO, feature depth, and Bangladesh ecosystem — when SAP B1 wins and when Odoo is the right call. | লাইসেন্সিং, বাস্তবায়ন TCO, ফিচারের গভীরতা, এবং বাংলাদেশ ইকোসিস্টেম — কখন SAP B1 জেতে আর কখন Odoo সঠিক সিদ্ধান্ত।">
+      <span class="lab-num">0027</span>
+      <span class="lab-title">
+        SAP Business One বনাম Odoo বাংলাদেশ: একটি বাস্তব খরচ তুলনা
+        <span class="sub">লাইসেন্সিং, বাস্তবায়ন TCO, ফিচারের গভীরতা, এবং বাংলাদেশ ইকোসিস্টেম — কখন SAP B1 জেতে আর কখন Odoo সঠিক সিদ্ধান্ত।</span>
+      </span>
+      <span class="lab-kind">তুলনা</span>
+      <span class="lab-date">মে ২০২৬</span>
+      <span class="lab-arrow">↗</span>
+    </a>
+
+    <a class="lab-row" href="/bn/lab/0026-odoo-16-17-18-upgrade-bangladesh"
+       data-title="Odoo 16 vs 17 vs 18 vs 19: What Bangladesh Companies Need to Know | Odoo 16 বনাম 17 বনাম 18 বনাম 19: বাংলাদেশি কোম্পানির যা জানা দরকার"
+       data-sub="Key differences across Odoo versions, upgrade path risk for custom modules, and which version to target for new or upgraded deployments. | মূল পার্থক্য, কাস্টম মডিউলের জন্য আপগ্রেড পাথ ঝুঁকি, এবং নতুন বা আপগ্রেডেড বাংলাদেশি ডেপ্লয়মেন্টের জন্য কোন ভার্সন বেছে নেবেন।">
+      <span class="lab-num">0026</span>
+      <span class="lab-title">
+        Odoo 16 বনাম 17 বনাম 18 বনাম 19: বাংলাদেশি কোম্পানির যা জানা দরকার
+        <span class="sub">মূল পার্থক্য, কাস্টম মডিউলের জন্য আপগ্রেড পাথ ঝুঁকি, এবং নতুন বা আপগ্রেডেড বাংলাদেশি ডেপ্লয়মেন্টের জন্য কোন ভার্সন বেছে নেবেন।</span>
+      </span>
+      <span class="lab-kind">ভার্সন গাইড</span>
+      <span class="lab-date">মে ২০২৬</span>
+      <span class="lab-arrow">↗</span>
+    </a>
+
+    <a class="lab-row" href="/bn/lab/0025-odoo-on-premise-vs-cloud-bangladesh"
+       data-title="On-Premise vs Cloud Odoo: Bangladesh Infrastructure Decision Guide | অন-প্রিমাইজ বনাম ক্লাউড Odoo: বাংলাদেশের ইনফ্রাস্ট্রাকচার সিদ্ধান্ত গাইড"
+       data-sub="Bangladesh power and internet infrastructure reality check — when to run Odoo on a local server vs cloud, with total cost comparison. | বাংলাদেশের বিদ্যুৎ ও ইন্টারনেট বাস্তবতার পরীক্ষা — কখন অন-প্রিমাইজ ক্লাউডকে হারায়, ডেপ্লয়মেন্ট অপশনজুড়ে ৩ বছরের মোট খরচ তুলনাসহ।">
+      <span class="lab-num">0025</span>
+      <span class="lab-title">
+        অন-প্রিমাইজ বনাম ক্লাউড Odoo: বাংলাদেশের ইনফ্রাস্ট্রাকচার সিদ্ধান্ত গাইড
+        <span class="sub">বাংলাদেশের বিদ্যুৎ ও ইন্টারনেট বাস্তবতার পরীক্ষা — কখন অন-প্রিমাইজ ক্লাউডকে হারায়, ডেপ্লয়মেন্ট অপশনজুড়ে ৩ বছরের মোট খরচ তুলনাসহ।</span>
+      </span>
+      <span class="lab-kind">ইনফ্রাস্ট্রাকচার গাইড</span>
+      <span class="lab-date">মে ২০২৬</span>
+      <span class="lab-arrow">↗</span>
+    </a>
+
+    <a class="lab-row" href="/bn/lab/0024-odoo-community-vs-enterprise-bangladesh"
+       data-title="Odoo Community vs Enterprise: Full Feature Comparison for Bangladesh SMEs | Odoo Community বনাম Enterprise: বাংলাদেশি SME-দের জন্য সম্পূর্ণ ফিচার তুলনা"
+       data-sub="30-feature matrix, licensing cost in BDT, and the financial calculation of when Enterprise pays for itself at different user counts. | ৩০-ফিচার ম্যাট্রিক্স, BDT-তে লাইসেন্সিং খরচ, এবং কখন Enterprise নিজের খরচ উঠিয়ে আনে — বাংলাদেশি কোম্পানির জন্য সিদ্ধান্ত ফ্রেমওয়ার্ক।">
+      <span class="lab-num">0024</span>
+      <span class="lab-title">
+        Odoo Community বনাম Enterprise: বাংলাদেশি SME-দের জন্য সম্পূর্ণ ফিচার তুলনা
+        <span class="sub">৩০-ফিচার ম্যাট্রিক্স, BDT-তে লাইসেন্সিং খরচ, এবং কখন Enterprise নিজের খরচ উঠিয়ে আনে — বাংলাদেশি কোম্পানির জন্য সিদ্ধান্ত ফ্রেমওয়ার্ক।</span>
+      </span>
+      <span class="lab-kind">তুলনা</span>
+      <span class="lab-date">মে ২০২৬</span>
+      <span class="lab-arrow">↗</span>
+    </a>
+
+    <a class="lab-row" href="/bn/lab/0023-odoo-vs-erpnext-bangladesh"
+       data-title="Odoo vs ERPNext Bangladesh: Which One for Manufacturing? | Odoo বনাম ERPNext বাংলাদেশ: ম্যানুফ্যাকচারিং-এর জন্য কোনটি ভালো?"
+       data-sub="Feature depth, Bangladesh ecosystem, total cost, and compliance support — honest comparison for RMG, textile, and export factories. | ফিচারের গভীরতা, বাংলাদেশ ইকোসিস্টেম, মোট খরচ, এবং কমপ্লায়েন্স সাপোর্ট — RMG, টেক্সটাইল, এবং এক্সপোর্ট ফ্যাক্টরির জন্য সৎ তুলনা।">
+      <span class="lab-num">0023</span>
+      <span class="lab-title">
+        Odoo বনাম ERPNext বাংলাদেশ: ম্যানুফ্যাকচারিং-এর জন্য কোনটি ভালো?
+        <span class="sub">ফিচারের গভীরতা, বাংলাদেশ ইকোসিস্টেম, মোট খরচ, এবং কমপ্লায়েন্স সাপোর্ট — RMG, টেক্সটাইল, এবং এক্সপোর্ট ফ্যাক্টরির জন্য সৎ তুলনা।</span>
+      </span>
+      <span class="lab-kind">তুলনা</span>
+      <span class="lab-date">মে ২০২৬</span>
+      <span class="lab-arrow">↗</span>
+    </a>
+
+    <a class="lab-row" href="/bn/lab/0022-bgmea-wage-board-odoo-payroll"
+       data-title="BGMEA Wage Board Odoo Payroll: RMG Payroll Compliance Bangladesh | BGMEA ওয়েজ বোর্ড Odoo পে-রোলে: বাংলাদেশ RMG কমপ্লায়েন্স"
+       data-sub="8th Wage Board grade setup, minimum wage enforcement, overtime rules, PF deductions, and compliant RMG payslips in Odoo. | ৮ম ওয়েজ বোর্ড গ্রেড, ন্যূনতম মজুরি প্রয়োগ, ওভারটাইম রুল, PF ডিডাকশন, এবং Odoo-তে কমপ্লায়েন্ট RMG পেস্লিপ।">
+      <span class="lab-num">0022</span>
+      <span class="lab-title">
+        BGMEA ওয়েজ বোর্ড Odoo পে-রোলে: বাংলাদেশ RMG কমপ্লায়েন্স
+        <span class="sub">৮ম ওয়েজ বোর্ড গ্রেড, ন্যূনতম মজুরি প্রয়োগ, ওভারটাইম রুল, PF ডিডাকশন, এবং Odoo-তে কমপ্লায়েন্ট RMG পেস্লিপ।</span>
+      </span>
+      <span class="lab-kind">কমপ্লায়েন্স গাইড</span>
+      <span class="lab-date">মে ২০২৬</span>
+      <span class="lab-arrow">↗</span>
+    </a>
+
+    <a class="lab-row" href="/bn/lab/0021-epz-sez-compliance-odoo-bangladesh"
+       data-title="EPZ &amp; SEZ Compliance in Odoo: Setup for Bangladesh Export Zones | Odoo-তে EPZ ও SEZ কমপ্লায়েন্স: বাংলাদেশ এক্সপোর্ট জোনের জন্য সেটআপ"
+       data-sub="Bonded warehouse location setup, duty-free raw material tracking, BEPZA fiscal positions, and BEPZA MPR data from Odoo. | বন্ডেড ওয়্যারহাউস সেটআপ, ডিউটি-ফ্রি কাঁচামাল ট্র্যাকিং, BEPZA ফিসকাল পজিশন, এবং Odoo থেকে মাসিক প্রগ্রেস রিপোর্ট ডেটা।">
+      <span class="lab-num">0021</span>
+      <span class="lab-title">
+        Odoo-তে EPZ ও SEZ কমপ্লায়েন্স: বাংলাদেশ এক্সপোর্ট জোনের জন্য সেটআপ
+        <span class="sub">বন্ডেড ওয়্যারহাউস সেটআপ, ডিউটি-ফ্রি কাঁচামাল ট্র্যাকিং, BEPZA ফিসকাল পজিশন, এবং Odoo থেকে মাসিক প্রগ্রেস রিপোর্ট ডেটা।</span>
+      </span>
+      <span class="lab-kind">কমপ্লায়েন্স গাইড</span>
+      <span class="lab-date">মে ২০২৬</span>
+      <span class="lab-arrow">↗</span>
+    </a>
+
+    <a class="lab-row" href="/bn/lab/0020-lc-management-odoo-bangladesh"
+       data-title="Letter of Credit (LC) Workflow in Odoo: Bangladesh Exporter's Guide | Odoo-তে লেটার অফ ক্রেডিট (LC) ওয়ার্কফ্লো: বাংলাদেশি এক্সপোর্টারের গাইড"
+       data-sub="Full LC lifecycle in Odoo — proforma invoice, LC registration, shipment document assembly, and bank payment reconciliation. | সম্পূর্ণ LC লাইফসাইকেল — প্রোফর্মা ইনভয়েস, LC রেজিস্ট্রেশন, শিপমেন্ট ডকুমেন্ট অ্যাসেম্বলি, কমপ্লায়েন্স চেকিং, এবং পেমেন্ট রিকনসিলিয়েশন।">
+      <span class="lab-num">0020</span>
+      <span class="lab-title">
+        Odoo-তে লেটার অফ ক্রেডিট (LC) ওয়ার্কফ্লো: বাংলাদেশি এক্সপোর্টারের গাইড
+        <span class="sub">সম্পূর্ণ LC লাইফসাইকেল — প্রোফর্মা ইনভয়েস, LC রেজিস্ট্রেশন, শিপমেন্ট ডকুমেন্ট অ্যাসেম্বলি, কমপ্লায়েন্স চেকিং, এবং পেমেন্ট রিকনসিলিয়েশন।</span>
+      </span>
+      <span class="lab-kind">কমপ্লায়েন্স গাইড</span>
+      <span class="lab-date">মে ২০২৬</span>
+      <span class="lab-arrow">↗</span>
+    </a>
+
+    <a class="lab-row" href="/bn/lab/0019-hs-code-customs-odoo-bangladesh"
+       data-title="Customs &amp; HS Code Management in Odoo for Bangladesh Exporters | বাংলাদেশি এক্সপোর্টারদের জন্য Odoo-তে কাস্টমস ও HS কোড ব্যবস্থাপনা"
+       data-sub="Product HS code setup, customs fiscal positions, export documents, and landed cost configuration for Bangladesh exporters. | প্রোডাক্ট HS কোড সেটআপ, কাস্টমস ফিসকাল পজিশন, এক্সপোর্ট ডকুমেন্ট, এবং বাংলাদেশি ইমপোর্টার-এক্সপোর্টারদের জন্য ল্যান্ডেড কস্ট।">
+      <span class="lab-num">0019</span>
+      <span class="lab-title">
+        বাংলাদেশি এক্সপোর্টারদের জন্য Odoo-তে কাস্টমস ও HS কোড ব্যবস্থাপনা
+        <span class="sub">প্রোডাক্ট HS কোড সেটআপ, কাস্টমস ফিসকাল পজিশন, এক্সপোর্ট ডকুমেন্ট, এবং বাংলাদেশি ইমপোর্টার-এক্সপোর্টারদের জন্য ল্যান্ডেড কস্ট।</span>
+      </span>
+      <span class="lab-kind">কমপ্লায়েন্স গাইড</span>
+      <span class="lab-date">মে ২০২৬</span>
+      <span class="lab-arrow">↗</span>
+    </a>
+
+    <a class="lab-row" href="/bn/lab/0018-mushak-63-odoo-bangladesh"
+       data-title="Mushak 6.3 in Odoo: Step-by-Step Configuration for Bangladesh VAT | Odoo-তে Mushak 6.3: NBR VAT-র ধাপে-ধাপে কনফিগারেশন"
+       data-sub="Tax groups, output/input VAT accounts, fiscal positions for zero-rated exports, and generating Mushak 6.3 data from the Tax Report. | ট্যাক্স গ্রুপ, আউটপুট/ইনপুট VAT অ্যাকাউন্ট, এক্সপোর্টের জন্য ফিসকাল পজিশন, এবং Odoo-র Tax Report থেকে Mushak 6.3 ডেটা তৈরি।">
+      <span class="lab-num">0018</span>
+      <span class="lab-title">
+        Odoo-তে Mushak 6.3: NBR VAT-র ধাপে-ধাপে কনফিগারেশন
+        <span class="sub">ট্যাক্স গ্রুপ, আউটপুট/ইনপুট VAT অ্যাকাউন্ট, এক্সপোর্টের জন্য ফিসকাল পজিশন, এবং Odoo-র Tax Report থেকে Mushak 6.3 ডেটা তৈরি।</span>
+      </span>
+      <span class="lab-kind">কমপ্লায়েন্স গাইড</span>
+      <span class="lab-date">মে ২০২৬</span>
+      <span class="lab-arrow">↗</span>
+    </a>
+
+    <a class="lab-row" href="/bn/lab/0017-odoo-sales-crm-bangladesh"
+       data-title="Odoo Sales &amp; CRM for Bangladesh Exporters: B2B Pipeline Setup | বাংলাদেশি এক্সপোর্টারদের জন্য Odoo সেলস ও CRM: B2B পাইপলাইন সেটআপ"
+       data-sub="Pipeline stages, multi-currency quotations, proforma invoices for LC, and export CRM configuration. | পাইপলাইন স্টেজ, মাল্টি-কারেন্সি কোটেশন, LC-র জন্য প্রোফর্মা ইনভয়েস, এবং এক্সপোর্ট CRM কনফিগারেশন।">
+      <span class="lab-num">0017</span>
+      <span class="lab-title">
+        বাংলাদেশি এক্সপোর্টারদের জন্য Odoo সেলস ও CRM: B2B পাইপলাইন সেটআপ
+        <span class="sub">পাইপলাইন স্টেজ, মাল্টি-কারেন্সি কোটেশন, LC-র জন্য প্রোফর্মা ইনভয়েস, এবং এক্সপোর্ট CRM কনফিগারেশন।</span>
+      </span>
+      <span class="lab-kind">মডিউল গাইড</span>
+      <span class="lab-date">মে ২০২৬</span>
+      <span class="lab-arrow">↗</span>
+    </a>
+
+    <a class="lab-row" href="/bn/lab/0016-odoo-hr-payroll-bangladesh"
+       data-title="Odoo HR &amp; Payroll Bangladesh: PF, Gratuity &amp; Leave Policy Setup | বাংলাদেশে Odoo HR ও পে-রোল: PF, গ্র্যাচুইটি ও লিভ পলিসি সেটআপ"
+       data-sub="Provident Fund, Gratuity provisions, leave types, salary structures, and income tax on salary. | প্রভিডেন্ট ফান্ড, গ্র্যাচুইটি প্রভিশন, লিভ টাইপ, স্যালারি স্ট্রাকচার, এবং বেতনের ওপর আয়কর।">
+      <span class="lab-num">0016</span>
+      <span class="lab-title">
+        বাংলাদেশে Odoo HR ও পে-রোল: PF, গ্র্যাচুইটি ও লিভ পলিসি সেটআপ
+        <span class="sub">প্রভিডেন্ট ফান্ড, গ্র্যাচুইটি প্রভিশন, লিভ টাইপ, স্যালারি স্ট্রাকচার, এবং বেতনের ওপর আয়কর।</span>
+      </span>
+      <span class="lab-kind">মডিউল গাইড</span>
+      <span class="lab-date">মে ২০২৬</span>
+      <span class="lab-arrow">↗</span>
+    </a>
+
+    <a class="lab-row" href="/bn/lab/0015-odoo-purchase-vendor-management-bangladesh"
+       data-title="Odoo Purchase &amp; Vendor Management: Bangladesh SME Playbook | Odoo পারচেজ ও ভেন্ডর ম্যানেজমেন্ট: বাংলাদেশি SME প্লেবুক"
+       data-sub="RFQ workflow, 3-way matching, approval matrix, reorder rules, and vendor payment with TDS. | RFQ ওয়ার্কফ্লো, ৩-ওয়ে ম্যাচিং, অ্যাপ্রুভাল ম্যাট্রিক্স, রিঅর্ডার রুল, এবং TDS-সহ ভেন্ডর পেমেন্ট।">
+      <span class="lab-num">0015</span>
+      <span class="lab-title">
+        Odoo পারচেজ ও ভেন্ডর ম্যানেজমেন্ট: বাংলাদেশি SME প্লেবুক
+        <span class="sub">RFQ ওয়ার্কফ্লো, ৩-ওয়ে ম্যাচিং, অ্যাপ্রুভাল ম্যাট্রিক্স, রিঅর্ডার রুল, এবং TDS-সহ ভেন্ডর পেমেন্ট।</span>
+      </span>
+      <span class="lab-kind">মডিউল গাইড</span>
+      <span class="lab-date">মে ২০২৬</span>
+      <span class="lab-arrow">↗</span>
+    </a>
+
+    <a class="lab-row" href="/bn/lab/0014-odoo-accounting-setup-bangladesh"
+       data-title="Odoo Accounting Setup for Bangladesh: Chart of Accounts &amp; Fiscal Positions | বাংলাদেশে Odoo অ্যাকাউন্টিং সেটআপ: চার্ট অফ অ্যাকাউন্টস ও ফিসকাল পজিশন"
+       data-sub="COA structure, fiscal positions for domestic and export, bank journals, and NBR VAT compliance hooks. | COA কাঠামো, দেশীয় ও এক্সপোর্টের জন্য ফিসকাল পজিশন, ব্যাংক জার্নাল, এবং NBR VAT কমপ্লায়েন্স হুক।">
+      <span class="lab-num">0014</span>
+      <span class="lab-title">
+        বাংলাদেশে Odoo অ্যাকাউন্টিং সেটআপ: চার্ট অফ অ্যাকাউন্টস ও ফিসকাল পজিশন
+        <span class="sub">COA কাঠামো, দেশীয় ও এক্সপোর্টের জন্য ফিসকাল পজিশন, ব্যাংক জার্নাল, এবং NBR VAT কমপ্লায়েন্স হুক।</span>
+      </span>
+      <span class="lab-kind">মডিউল গাইড</span>
+      <span class="lab-date">মে ২০২৬</span>
+      <span class="lab-arrow">↗</span>
+    </a>
+
+    <a class="lab-row" href="/bn/lab/0013-odoo-manufacturing-module-bangladesh"
+       data-title="Odoo Manufacturing Module Setup for Bangladesh Factories | বাংলাদেশি ফ্যাক্টরির জন্য Odoo ম্যানুফ্যাকচারিং মডিউল সেটআপ"
+       data-sub="Bill of Materials, Work Centers, routing, and the full Manufacturing Order lifecycle for Bangladesh factories. | বাংলাদেশি ফ্যাক্টরির জন্য বিল অফ ম্যাটেরিয়ালস, ওয়ার্ক সেন্টার, রুটিং, এবং সম্পূর্ণ ম্যানুফ্যাকচারিং অর্ডার লাইফসাইকেল।">
+      <span class="lab-num">0013</span>
+      <span class="lab-title">
+        বাংলাদেশি ফ্যাক্টরির জন্য Odoo ম্যানুফ্যাকচারিং মডিউল সেটআপ
+        <span class="sub">বাংলাদেশি ফ্যাক্টরির জন্য বিল অফ ম্যাটেরিয়ালস, ওয়ার্ক সেন্টার, রুটিং, এবং সম্পূর্ণ ম্যানুফ্যাকচারিং অর্ডার লাইফসাইকেল।</span>
+      </span>
+      <span class="lab-kind">মডিউল গাইড</span>
+      <span class="lab-date">মে ২০২৬</span>
+      <span class="lab-arrow">↗</span>
+    </a>
+
+    <a class="lab-row" href="/bn/lab/0012-odoo-erp-cost-bangladesh"
+       data-title="Odoo ERP implementation cost in Bangladesh (2026) | বাংলাদেশে Odoo ERP বাস্তবায়নের খরচ (2026)"
+       data-sub="Real-world cost breakdown for SMEs and manufacturers — licensing, consulting, training, and TCO. | SME এবং ম্যানুফ্যাকচারারদের জন্য বাস্তব খরচের হিসাব — লাইসেন্সিং, কনসাল্টিং, ট্রেনিং, এবং TCO।">
+      <span class="lab-num">0012</span>
+      <span class="lab-title">
+        বাংলাদেশে Odoo ERP বাস্তবায়নের খরচ (2026)
+        <span class="sub">SME এবং ম্যানুফ্যাকচারারদের জন্য বাস্তব খরচের হিসাব — লাইসেন্সিং, কনসাল্টিং, ট্রেনিং, এবং TCO।</span>
+      </span>
+      <span class="lab-kind">গাইড · খরচ</span>
+      <span class="lab-date">মে ২০২৬</span>
+      <span class="lab-arrow">↗</span>
+    </a>
+
+    <a class="lab-row" href="/bn/lab/0011-odoo-inventory-valuation-cheatsheet"
+       data-title="Odoo inventory valuation cheatsheet | Odoo ইনভেন্টরি ভ্যালুয়েশন চিটশিট"
+       data-sub="FIFO vs. weighted avg — when each actually makes sense on the factory floor. | FIFO বনাম ওয়েটেড অ্যাভারেজ — ফ্যাক্টরি ফ্লোরে আসলে কখন কোনটা কাজে লাগে।">
+      <span class="lab-num">0011</span>
+      <span class="lab-title">
+        Odoo ইনভেন্টরি ভ্যালুয়েশন চিটশিট
+        <span class="sub">FIFO বনাম ওয়েটেড অ্যাভারেজ — ফ্যাক্টরি ফ্লোরে আসলে কখন কোনটা কাজে লাগে।</span>
+      </span>
+      <span class="lab-kind">ইউটিলিটি · CSV</span>
+      <span class="lab-date">এপ্রিল ২০২৬</span>
+      <span class="lab-arrow">↗</span>
+    </a>
+
+    <a class="lab-row" href="/bn/lab/0010-bpmn-templates-manufacturing-discovery"
+       data-title="BPMN templates for manufacturing discovery | ম্যানুফ্যাকচারিং ডিসকভারির জন্য BPMN টেমপ্লেট"
+       data-sub="A starter pack of process maps I use in Week 1 of every engagement. | প্রতিটি এনগেজমেন্টের প্রথম সপ্তাহে আমি যে প্রসেস ম্যাপ ব্যবহার করি, তার একটি স্টার্টার প্যাক।">
+      <span class="lab-num">0010</span>
+      <span class="lab-title">
+        ম্যানুফ্যাকচারিং ডিসকভারির জন্য BPMN টেমপ্লেট
+        <span class="sub">প্রতিটি এনগেজমেন্টের প্রথম সপ্তাহে আমি যে প্রসেস ম্যাপ ব্যবহার করি, তার একটি স্টার্টার প্যাক।</span>
+      </span>
+      <span class="lab-kind">টেমপ্লেট · .bpmn</span>
+      <span class="lab-date">মার্চ ২০২৬</span>
+      <span class="lab-arrow">↗</span>
+    </a>
+
+    <a class="lab-row" href="/bn/lab/0009-uat-script-200-users-ago"
+       data-title="The UAT script I wish I had 200 users ago | ২০০ ইউজার আগে যে UAT স্ক্রিপ্ট থাকলে ভালো হতো"
+       data-sub="On writing test cases that surface real operational edge cases, not happy paths. | হ্যাপি পাথ নয়, বাস্তব অপারেশনাল এজ কেস বের করে আনার মতো টেস্ট কেস লেখা নিয়ে।">
+      <span class="lab-num">0009</span>
+      <span class="lab-title">
+        ২০০ ইউজার আগে যে UAT স্ক্রিপ্ট থাকলে ভালো হতো
+        <span class="sub">হ্যাপি পাথ নয়, বাস্তব অপারেশনাল এজ কেস বের করে আনার মতো টেস্ট কেস লেখা নিয়ে।</span>
+      </span>
+      <span class="lab-kind">প্রবন্ধ</span>
+      <span class="lab-date">ফেব্রুয়ারি ২০২৬</span>
+      <span class="lab-arrow">↗</span>
+    </a>
+
+    <a class="lab-row" href="/bn/lab/0008-excel-odoo-migration-checklist"
+       data-title="Excel → Odoo migration checklist (v3) | Excel → Odoo মাইগ্রেশন চেকলিস্ট (v3)"
+       data-sub="The 40-item list that makes data migration feel like a weekend, not a quarter. | ৪০-আইটেমের এই লিস্ট ডেটা মাইগ্রেশনকে এক কোয়ার্টার নয়, এক সপ্তাহান্তের কাজ বানিয়ে দেয়।">
+      <span class="lab-num">0008</span>
+      <span class="lab-title">
+        Excel → Odoo মাইগ্রেশন চেকলিস্ট (v3)
+        <span class="sub">৪০-আইটেমের এই লিস্ট ডেটা মাইগ্রেশনকে এক কোয়ার্টার নয়, এক সপ্তাহান্তের কাজ বানিয়ে দেয়।</span>
+      </span>
+      <span class="lab-kind">চেকলিস্ট · MD</span>
+      <span class="lab-date">জানুয়ারি ২০২৬</span>
+      <span class="lab-arrow">↗</span>
+    </a>
+
+    <a class="lab-row" href="/bn/lab/0007-change-management-isnt-a-memo"
+       data-title="Change management isn't a memo | চেঞ্জ ম্যানেজমেন্ট কোনো মেমো নয়"
+       data-sub="Short field notes from training 200+ operators through a go-live. | গো-লাইভের সময় ২০০+ অপারেটরকে প্রশিক্ষণ দেওয়ার সংক্ষিপ্ত ফিল্ড নোট।">
+      <span class="lab-num">0007</span>
+      <span class="lab-title">
+        চেঞ্জ ম্যানেজমেন্ট কোনো মেমো নয়
+        <span class="sub">গো-লাইভের সময় ২০০+ অপারেটরকে প্রশিক্ষণ দেওয়ার সংক্ষিপ্ত ফিল্ড নোট।</span>
+      </span>
+      <span class="lab-kind">প্রবন্ধ</span>
+      <span class="lab-date">ডিসেম্বর ২০২৫</span>
+      <span class="lab-arrow">↗</span>
+    </a>
+
+    <a class="lab-row" href="/bn/lab/0006-odoo-multi-company-setup-guide"
+       data-title="Odoo multi-company setup guide | Odoo মাল্টি-কোম্পানি সেটআপ গাইড"
+       data-sub="When it genuinely helps, when it makes everything worse, and how to configure it right. | কখন এটা সত্যিই কাজে লাগে, কখন সবকিছু আরও জটিল করে তোলে, আর কীভাবে সঠিকভাবে কনফিগার করবেন।">
+      <span class="lab-num">0006</span>
+      <span class="lab-title">
+        Odoo মাল্টি-কোম্পানি সেটআপ গাইড
+        <span class="sub">কখন এটা সত্যিই কাজে লাগে, কখন সবকিছু আরও জটিল করে তোলে, আর কীভাবে সঠিকভাবে কনফিগার করবেন।</span>
+      </span>
+      <span class="lab-kind">গাইড</span>
+      <span class="lab-date">নভেম্বর ২০২৫</span>
+      <span class="lab-arrow">↗</span>
+    </a>
+
+    <a class="lab-row" href="/bn/lab/0005-erp-go-live-cost-manufacturing-bangladesh"
+       data-title="The real cost of going live wrong | ভুলভাবে গো-লাইভ করার প্রকৃত খরচ"
+       data-sub="What a failed ERP go-live actually costs in Bangladesh manufacturing — the hidden invoices. | বাংলাদেশি ম্যানুফ্যাকচারিং-এ একটি ব্যর্থ ERP গো-লাইভের প্রকৃত খরচ কত — লুকানো ইনভয়েসগুলো।">
+      <span class="lab-num">0005</span>
+      <span class="lab-title">
+        ভুলভাবে গো-লাইভ করার প্রকৃত খরচ
+        <span class="sub">বাংলাদেশি ম্যানুফ্যাকচারিং-এ একটি ব্যর্থ ERP গো-লাইভের প্রকৃত খরচ কত — লুকানো ইনভয়েসগুলো।</span>
+      </span>
+      <span class="lab-kind">প্রবন্ধ</span>
+      <span class="lab-date">অক্টোবর ২০২৫</span>
+      <span class="lab-arrow">↗</span>
+    </a>
+
+    <a class="lab-row" href="/bn/lab/0004-odoo-vs-sap-vs-tally-bangladesh"
+       data-title="Odoo vs SAP vs Tally: the honest comparison for Bangladesh SMEs | Odoo বনাম SAP বনাম Tally: বাংলাদেশি SME-দের জন্য সৎ তুলনা"
+       data-sub="Which ERP fits your scale, budget, and operations — from someone who has recommended all three. | আপনার স্কেল, বাজেট, এবং অপারেশনের সাথে কোন ERP মানানসই — যিনি তিনটিই সুপারিশ করেছেন, তার কাছ থেকে।">
+      <span class="lab-num">0004</span>
+      <span class="lab-title">
+        Odoo বনাম SAP বনাম Tally: বাংলাদেশি SME-দের জন্য সৎ তুলনা
+        <span class="sub">আপনার স্কেল, বাজেট, এবং অপারেশনের সাথে কোন ERP মানানসই — যিনি তিনটিই সুপারিশ করেছেন, তার কাছ থেকে।</span>
+      </span>
+      <span class="lab-kind">তুলনা</span>
+      <span class="lab-date">অক্টোবর ২০২৫</span>
+      <span class="lab-arrow">↗</span>
+    </a>
+
+    <a class="lab-row" href="/bn/lab/0003-nbr-vat-compliance-odoo-bangladesh"
+       data-title="NBR VAT compliance in Odoo: a Bangladesh practitioner's guide | Odoo-তে NBR VAT কমপ্লায়েন্স: একজন বাংলাদেশি প্র্যাকটিশনারের গাইড"
+       data-sub="Mushak forms, BIN setup, and month-end VAT reconciliation for Bangladesh businesses. | Mushak ফর্ম, BIN সেটআপ, এবং বাংলাদেশি ব্যবসার জন্য মাস-শেষের VAT রিকনসিলিয়েশন।">
+      <span class="lab-num">0003</span>
+      <span class="lab-title">
+        Odoo-তে NBR VAT কমপ্লায়েন্স: একজন বাংলাদেশি প্র্যাকটিশনারের গাইড
+        <span class="sub">Mushak ফর্ম, BIN সেটআপ, এবং বাংলাদেশি ব্যবসার জন্য মাস-শেষের VAT রিকনসিলিয়েশন।</span>
+      </span>
+      <span class="lab-kind">গাইড · VAT</span>
+      <span class="lab-date">সেপ্টেম্বর ২০২৫</span>
+      <span class="lab-arrow">↗</span>
+    </a>
+
+    <a class="lab-row" href="/bn/lab/0002-discovery-session-business-process-mapping"
+       data-title="The discovery session: map your business before you open Odoo | ডিসকভারি সেশন: Odoo খোলার আগে আপনার ব্যবসা ম্যাপ করুন"
+       data-sub="How to run a proper ERP discovery — what to capture, how to run sessions, what to hand off. | কীভাবে একটি সঠিক ERP ডিসকভারি চালাবেন — কী ক্যাপচার করবেন, কীভাবে সেশন চালাবেন, কী হ্যান্ড-অফ করবেন।">
+      <span class="lab-num">0002</span>
+      <span class="lab-title">
+        ডিসকভারি সেশন: Odoo খোলার আগে আপনার ব্যবসা ম্যাপ করুন
+        <span class="sub">কীভাবে একটি সঠিক ERP ডিসকভারি চালাবেন — কী ক্যাপচার করবেন, কীভাবে সেশন চালাবেন, কী হ্যান্ড-অফ করবেন।</span>
+      </span>
+      <span class="lab-kind">গাইড</span>
+      <span class="lab-date">আগস্ট ২০২৫</span>
+      <span class="lab-arrow">↗</span>
+    </a>
+
+    <a class="lab-row" href="/bn/lab/0001-why-erp-fails-bangladesh"
+       data-title="Why most ERP implementations fail in Bangladesh | বাংলাদেশে কেন ERP ব্যর্থ হয়"
+       data-sub="Five root causes, in order of frequency. None of them are about the software. | ফ্রিকোয়েন্সি অনুযায়ী সাজানো পাঁচটি মূল কারণ। এর একটিও সফটওয়্যারের দোষ নয়।">
+      <span class="lab-num">0001</span>
+      <span class="lab-title">
+        বাংলাদেশে কেন ERP ব্যর্থ হয়
+        <span class="sub">ফ্রিকোয়েন্সি অনুযায়ী সাজানো পাঁচটি মূল কারণ। এর একটিও সফটওয়্যারের দোষ নয়।</span>
+      </span>
+      <span class="lab-kind">প্রবন্ধ</span>
+      <span class="lab-date">জুলাই ২০২৫</span>
+      <span class="lab-arrow">↗</span>
+    </a>
+  </div>
+
+  <div class="lab-pagination" id="lab-pagination" hidden>
+    <button class="page-nav-btn" id="lab-prev">← আগে</button>
+    <span class="page-info" id="lab-page-info">পৃষ্ঠা ১ / ৫</span>
+    <button class="page-nav-btn" id="lab-next">পরে →</button>
+  </div>
+
+  <div class="lab-no-results" id="lab-no-results">আপনার সার্চের সাথে মিলছে এমন কোনো আর্টিকেল নেই।</div>
+</div>
+
+<!-- NEWSLETTER STRIP -->
+<div class="nl-strip">
+  <div class="shell">
+    <div class="nl-strip-inner">
+      <div class="nl-strip-copy">
+        <p class="nl-strip-head">Odoo বাংলাদেশ মাসিক</p>
+        <p class="nl-strip-sub">নতুন আর্টিকেল এবং বাস্তব প্রজেক্ট ইনসাইট — প্রতি মাসে, কোনো শোরগোল ছাড়া।</p>
+      </div>
+      <form class="nl-strip-form" id="nl-strip-form" novalidate>
+        <input class="nl-strip-input" id="nl-strip-email" type="email" placeholder="আপনার ইমেইল ঠিকানা" required autocomplete="email" />
+        <button class="nl-strip-btn" type="submit">সাবস্ক্রাইব করুন →</button>
+      </form>
+      <p class="nl-strip-msg" id="nl-strip-msg" aria-live="polite"></p>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="shell">
+    <div class="foot">
+      <span>© ২০২৬ মেহেদী হাসান · নীরব শৃঙ্খলার সাথে তৈরি</span>
+      <span><a href="/bn/">← পোর্টফোলিওতে ফিরে যান</a></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // theme toggle (shared preference with main site)
+  (function(){
+    const root = document.documentElement;
+    const btn = document.getElementById('theme-toggle');
+    if (localStorage.getItem('mh-theme') === 'light') root.setAttribute('data-theme', 'light');
+    btn.addEventListener('click', () => {
+      const isLight = root.getAttribute('data-theme') === 'light';
+      if (isLight) {
+        root.removeAttribute('data-theme');
+        localStorage.setItem('mh-theme', 'dark');
+      } else {
+        root.setAttribute('data-theme', 'light');
+        localStorage.setItem('mh-theme', 'light');
+      }
+    });
+  })();
+
+  // lab controller: search + pagination + view toggle
+  (function(){
+    const STORAGE_VIEW = 'mh-lab-view';
+    const STORAGE_PER  = 'mh-lab-per-page';
+
+    const input      = document.getElementById('lab-search');
+    const countEl    = document.getElementById('lab-count');
+    const noResults  = document.getElementById('lab-no-results');
+    const table      = document.getElementById('lab-table');
+    const pagination = document.getElementById('lab-pagination');
+    const prevBtn    = document.getElementById('lab-prev');
+    const nextBtn    = document.getElementById('lab-next');
+    const pageInfo   = document.getElementById('lab-page-info');
+
+    const allRows = Array.from(table.querySelectorAll('.lab-row'));
+    const total   = allRows.length;
+
+    // inject thumbnails — image files live at /lab/thumbs/NNNN.webp
+    allRows.forEach(row => {
+      const numEl = row.querySelector('.lab-num');
+      const num   = numEl ? numEl.textContent.trim() : '';
+      if (!num || num === '—') return;
+      const img = document.createElement('img');
+      img.className = 'lab-thumb';
+      img.src       = '/lab/thumbs/' + num + '.webp';
+      img.alt       = '';
+      img.loading   = 'lazy';
+      img.onerror   = function(){ this.style.display = 'none'; };
+      row.insertBefore(img, row.firstChild);
+    });
+
+    const storedPer = localStorage.getItem(STORAGE_PER);
+    let perPage = [10,25,50].includes(Number(storedPer)) ? Number(storedPer) : storedPer === 'all' ? 'all' : 10;
+
+    const state = {
+      query:   '',
+      perPage: perPage,
+      page:    1,
+      view:    localStorage.getItem(STORAGE_VIEW) === 'grid' ? 'grid' : 'list',
+      tag:     'all',
+    };
+
+    function getCategory(kind) {
+      const k = kind.toLowerCase();
+      if (k.includes('প্রবন্ধ')) return 'essay';
+      if (k.includes('চেকলিস্ট')) return 'checklist';
+      if (k.includes('টেমপ্লেট')) return 'template';
+      if (k.includes('তুলনা')) return 'comparison';
+      return 'guide';
+    }
+
+    function getFiltered() {
+      let rows = allRows;
+      if (state.tag !== 'all') {
+        rows = rows.filter(row => {
+          const kindEl = row.querySelector('.lab-kind');
+          return kindEl && getCategory(kindEl.textContent.trim()) === state.tag;
+        });
+      }
+      if (!state.query) return rows;
+      const q = state.query.toLowerCase();
+      return rows.filter(row =>
+        (row.dataset.title || '').toLowerCase().includes(q) ||
+        (row.dataset.sub  || '').toLowerCase().includes(q)
+      );
+    }
+
+    function render() {
+      const filtered   = getFiltered();
+      const n          = filtered.length;
+      const showAll    = state.perPage === 'all';
+      const totalPages = showAll ? 1 : Math.ceil(n / state.perPage);
+
+      if (state.page > totalPages) state.page = Math.max(1, totalPages);
+
+      const start = showAll ? 0 : (state.page - 1) * state.perPage;
+      const end   = showAll ? n : Math.min(start + state.perPage, n);
+
+      allRows.forEach(row => { row.hidden = true; });
+      filtered.slice(start, end).forEach(row => { row.hidden = false; });
+
+      if (n === 0) {
+        countEl.textContent = 'কোনো ফলাফল নেই';
+      } else if (showAll && !state.query) {
+        countEl.textContent = 'সবগুলো ' + total + 'টি আর্টিকেল দেখানো হচ্ছে';
+      } else if (showAll) {
+        countEl.textContent = total + 'টির মধ্যে ' + n + 'টি আর্টিকেল দেখানো হচ্ছে';
+      } else {
+        const s = start + 1, e = Math.min(end, n);
+        countEl.textContent = state.query
+          ? n + 'টি মিলে যাওয়া আর্টিকেলের মধ্যে ' + s + '–' + e + ' দেখানো হচ্ছে'
+          : total + 'টির মধ্যে ' + s + '–' + e + ' আর্টিকেল দেখানো হচ্ছে';
+      }
+
+      noResults.classList.toggle('visible', n === 0 && !!state.query);
+
+      if (showAll || totalPages <= 1) {
+        pagination.hidden = true;
+      } else {
+        pagination.hidden = false;
+        pageInfo.textContent = 'পৃষ্ঠা ' + state.page + ' / ' + totalPages;
+        prevBtn.disabled = state.page <= 1;
+        nextBtn.disabled = state.page >= totalPages;
+      }
+    }
+
+    function applyView() {
+      table.classList.toggle('lab-grid', state.view === 'grid');
+      document.querySelectorAll('.view-btn').forEach(btn => {
+        const active = btn.dataset.view === state.view;
+        btn.classList.toggle('active', active);
+        btn.setAttribute('aria-pressed', active);
+      });
+    }
+
+    function applyPerPage() {
+      document.querySelectorAll('.per-page-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.n === String(state.perPage));
+      });
+    }
+
+    input.addEventListener('input', () => {
+      state.query = input.value.trim();
+      state.page  = 1;
+      render();
+    });
+
+    document.querySelectorAll('.per-page-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const val = btn.dataset.n;
+        state.perPage = val === 'all' ? 'all' : Number(val);
+        state.page = 1;
+        localStorage.setItem(STORAGE_PER, val);
+        applyPerPage();
+        render();
+      });
+    });
+
+    document.querySelectorAll('.view-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        state.view = btn.dataset.view;
+        localStorage.setItem(STORAGE_VIEW, state.view);
+        applyView();
+      });
+    });
+
+    document.querySelectorAll('.tag-chip').forEach(chip => {
+      chip.addEventListener('click', () => {
+        state.tag  = chip.dataset.tag;
+        state.page = 1;
+        document.querySelectorAll('.tag-chip').forEach(c =>
+          c.classList.toggle('active', c.dataset.tag === state.tag)
+        );
+        render();
+      });
+    });
+
+    prevBtn.addEventListener('click', () => {
+      if (state.page > 1) {
+        state.page--;
+        render();
+        document.getElementById('lab-search').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+
+    nextBtn.addEventListener('click', () => {
+      const totalPages = Math.ceil(getFiltered().length / state.perPage);
+      if (state.page < totalPages) {
+        state.page++;
+        render();
+        document.getElementById('lab-search').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+
+    applyView();
+    applyPerPage();
+    render();
+  })();
+
+  // sticky nav shadow
+  const navInner = document.querySelector('.nav-inner');
+  window.addEventListener('scroll', () => {
+    navInner.style.boxShadow = window.scrollY > 8 ? '0 10px 30px rgba(0,0,0,0.35)' : 'none';
+  }, { passive: true });
+</script>
+<script>
+  // Newsletter strip — submits to existing course Apps Script; stored with course='newsletter'
+  (function(){
+    const NL_URL = 'https://script.google.com/macros/s/AKfycbwePoTRBcwfPmS2C4Zw03OAE0fLaI6QMC5D72-6WZSlHHML1nhKqKowPgpFpUboMFmi/exec';
+    const form  = document.getElementById('nl-strip-form');
+    const email = document.getElementById('nl-strip-email');
+    const msg   = document.getElementById('nl-strip-msg');
+    if (!form) return;
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const val = email.value.trim();
+      if (!val || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val)) {
+        msg.textContent = 'একটি সঠিক ইমেইল ঠিকানা দিন।';
+        msg.className = 'nl-strip-msg error';
+        return;
+      }
+      const btn = form.querySelector('.nl-strip-btn');
+      btn.disabled = true; btn.textContent = 'সাবস্ক্রাইব হচ্ছে…';
+      msg.textContent = ''; msg.className = 'nl-strip-msg';
+      fetch(NL_URL, {
+        method:'POST', mode:'no-cors',
+        headers:{'Content-Type':'application/json'},
+        body: JSON.stringify({email: val, name:'', profession:'', course:'newsletter'})
+      }).catch(()=>{}).finally(()=>{
+        msg.textContent = '✓ আপনি সাবস্ক্রাইব করেছেন।';
+        email.value = '';
+        btn.disabled = false; btn.textContent = 'সাবস্ক্রাইব করুন →';
+      });
+    });
+  })();
+</script>
+<script src="/whatsapp.js" defer></script>
+<script src="/scroll-top.js" defer></script>
+</body>
+</html>

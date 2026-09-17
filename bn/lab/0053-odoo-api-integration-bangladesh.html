@@ -1,0 +1,694 @@
+<!doctype html>
+<html lang="bn">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description"
+    content="বাংলাদেশে Odoo API ইন্টিগ্রেশন: bKash, ব্যাংক ফিড, SSLCommerz এবং শিপিং API আপনার Odoo সিস্টেমের সাথে যুক্ত করুন। IT ম্যানেজারদের জন্য ধাপে ধাপে গাইড। এখনই পড়ুন →" />
+  <meta name="robots" content="noindex, follow" />
+  <meta name="author" content="Mehedi Hasan" />
+  <title>বাংলাদেশে Odoo API ইন্টিগ্রেশন | গাইড | মেহেদী হাসান</title>
+  <link rel="canonical" href="https://mhasan.me/bn/lab/0053-odoo-api-integration-bangladesh" />
+  <link rel="alternate" hreflang="en" href="https://mhasan.me/lab/0053-odoo-api-integration-bangladesh" />
+  <link rel="alternate" hreflang="bn-BD" href="https://mhasan.me/bn/lab/0053-odoo-api-integration-bangladesh" />
+  <link rel="alternate" hreflang="x-default" href="https://mhasan.me/lab/0053-odoo-api-integration-bangladesh" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png" />
+  <!-- Open Graph -->
+  <meta property="og:title" content="বাংলাদেশে Odoo API ইন্টিগ্রেশন | গাইড | মেহেদী হাসান" />
+  <meta property="og:description"
+    content="bKash, Nagad, SSLCommerz, ব্যাংক ফিড এবং শিপিং API (Pathao, Steadfast) আপনার Odoo সিস্টেমের সাথে যুক্ত করুন। বাংলাদেশের IT ম্যানেজারদের জন্য বাস্তবসম্মত ইন্টিগ্রেশন গাইড।" />
+  <meta property="og:url" content="https://mhasan.me/bn/lab/0053-odoo-api-integration-bangladesh" />
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="https://mhasan.me/assets/og-default.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale" content="bn_BD" />
+  <meta property="og:site_name" content="মেহেদী হাসান | Odoo ERP কনসালট্যান্ট" />
+  <meta property="article:author" content="https://www.linkedin.com/in/mehedi-hasan-consultant/" />
+  <meta property="article:published_time" content="2026-05-12T10:00:00+06:00" />
+  <meta property="article:modified_time" content="2026-05-12T10:00:00+06:00" />
+  <meta property="article:section" content="Odoo ERP Bangladesh" />
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="বাংলাদেশে Odoo API ইন্টিগ্রেশন | গাইড | মেহেদী হাসান" />
+  <meta name="twitter:description"
+    content="bKash, Nagad, SSLCommerz, ব্যাংক ফিড এবং শিপিং API আপনার Odoo সিস্টেমের সাথে যুক্ত করুন। বাংলাদেশের IT ম্যানেজারদের জন্য বাস্তবসম্মত গাইড।" />
+  <meta name="twitter:image" content="https://mhasan.me/assets/og-default.jpg" />
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Odoo API ইন্টিগ্রেশন: বাংলাদেশে ব্যাংক ও থার্ড-পার্টি টুল সংযুক্ত করা",
+    "description": "bKash, Nagad, SSLCommerz, ব্যাংক ফিড এবং শিপিং API (Pathao, Steadfast, Redx) আপনার Odoo সিস্টেমের সাথে যুক্ত করুন। বাংলাদেশের IT ম্যানেজার ও CTOদের জন্য বাস্তবসম্মত ইন্টিগ্রেশন গাইড।",
+    "datePublished": "2026-05-12T10:00:00+06:00",
+    "dateModified": "2026-05-12T10:00:00+06:00",
+    "inLanguage": "bn",
+    "author": {
+      "@type": "Person",
+      "name": "Mehedi Hasan",
+      "url": "https://mhasan.me",
+      "jobTitle": "Odoo ERP Consultant & Business Analyst",
+      "sameAs": "https://www.linkedin.com/in/mehedi-hasan-consultant/"
+    },
+    "publisher": { "@type": "Person", "name": "Mehedi Hasan", "url": "https://mhasan.me" },
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://mhasan.me/bn/lab/0053-odoo-api-integration-bangladesh" }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "হোম", "item": "https://mhasan.me/bn" },
+      { "@type": "ListItem", "position": 2, "name": "ল্যাব", "item": "https://mhasan.me/bn/#lab" },
+      { "@type": "ListItem", "position": 3, "name": "বাংলাদেশে Odoo API ইন্টিগ্রেশন", "item": "https://mhasan.me/bn/lab/0053-odoo-api-integration-bangladesh" }
+    ]
+  }
+]
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&family=Noto+Sans+Bengali:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap">
+  <link rel="stylesheet" href="/lab/_styles.css">
+  <style>
+    body{ font-family: 'Noto Sans Bengali', var(--sans); }
+    .api-block {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      margin: 28px 0;
+      overflow: hidden;
+    }
+    .api-block-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 16px 20px;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+    }
+    .api-badge {
+      font-family: var(--mono);
+      font-size: 11px;
+      font-weight: 600;
+      padding: 3px 10px;
+      border-radius: 4px;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      flex-shrink: 0;
+    }
+    .api-badge.get { background: rgba(80,200,120,0.15); color: #5EC87A; border: 1px solid rgba(80,200,120,0.3); }
+    .api-badge.post { background: rgba(100,160,255,0.15); color: #7AABFF; border: 1px solid rgba(100,160,255,0.3); }
+    .api-badge.native { background: var(--accent-dim); color: var(--accent); border: 1px solid rgba(80,230,160,0.3); }
+    .api-badge.custom { background: rgba(200,160,80,0.15); color: #E0B84A; border: 1px solid rgba(200,160,80,0.3); }
+    .api-block-header h3 { margin: 0; font-size: 15px; color: var(--text); letter-spacing: -0.01em; }
+    .api-block-body { padding: 20px; }
+    .api-block-body p { color: var(--text-2); font-size: 14.5px; line-height: 1.65; margin: 0 0 12px; }
+    .api-block-body p:last-child { margin-bottom: 0; }
+    .api-block-body ul { color: var(--text-2); font-size: 14px; padding-left: 20px; margin: 10px 0 12px; }
+    .api-block-body li { margin-bottom: 6px; line-height: 1.5; }
+    .code-box {
+      background: #0D1117;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 16px 20px;
+      margin: 16px 0;
+      overflow-x: auto;
+    }
+    .code-box pre {
+      margin: 0;
+      font-family: var(--mono);
+      font-size: 12.5px;
+      color: #C9D1D9;
+      line-height: 1.6;
+      white-space: pre;
+    }
+    .code-label {
+      font-family: var(--mono);
+      font-size: 10px;
+      color: var(--text-3);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .integration-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin: 24px 0;
+    }
+    @media(max-width:640px) { .integration-grid { grid-template-columns: 1fr; } }
+    .integration-card {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 18px;
+      background: var(--surface);
+    }
+    .integration-card .ic-head {
+      font-weight: 600;
+      font-size: 14px;
+      color: var(--text);
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .integration-card .ic-tag {
+      font-family: var(--mono);
+      font-size: 10px;
+      padding: 2px 8px;
+      border-radius: 3px;
+      background: var(--accent-dim);
+      color: var(--accent);
+    }
+    .integration-card p { color: var(--text-2); font-size: 13.5px; line-height: 1.5; margin: 0; }
+    .warn-box {
+      background: rgba(200,140,60,0.08);
+      border-left: 3px solid rgba(200,140,60,0.6);
+      border-radius: 0 6px 6px 0;
+      padding: 14px 18px;
+      margin: 18px 0;
+    }
+    .warn-box .wlabel {
+      font-family: var(--mono);
+      font-size: 10px;
+      color: rgba(220,160,70,0.9);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+    .warn-box p { margin: 0; font-size: 14px; color: var(--text-2); line-height: 1.55; }
+    .step-list {
+      counter-reset: step;
+      list-style: none;
+      padding: 0;
+      margin: 20px 0;
+    }
+    .step-list li {
+      counter-increment: step;
+      display: flex;
+      gap: 16px;
+      padding: 16px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .step-list li:last-child { border-bottom: none; }
+    .step-list li::before {
+      content: counter(step);
+      width: 26px; height: 26px;
+      border-radius: 50%;
+      background: var(--accent-dim);
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      font-family: var(--mono);
+      font-size: 11px;
+      font-weight: 600;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .step-list li .sc { }
+    .step-list li .sc strong { font-size: 14.5px; color: var(--text); display: block; margin-bottom: 4px; }
+    .step-list li .sc span { font-size: 13.5px; color: var(--text-2); line-height: 1.5; }
+    .pull {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: clamp(20px, 2.8vw, 28px);
+      line-height: 1.3;
+      color: var(--text);
+      margin: 48px 0;
+      max-width: 28ch;
+      letter-spacing: -0.01em;
+    }
+    .pull::before {
+      content: "";
+      display: block;
+      width: 36px;
+      height: 1px;
+      background: var(--accent);
+      margin-bottom: 18px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="grid-bg"></div>
+
+  <header class="nav">
+    <div class="shell">
+      <div class="nav-inner">
+        <a class="brand" href="/bn/">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span class="brand-name"><b>Mehedi Hasan</b><em>ERP · বিজনেস অ্যানালিস্ট</em></span>
+        </a>
+        <a class="back-link" href="/bn/#lab">← ল্যাব-এ ফিরুন</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="post-head">
+    <div class="shell">
+      <span class="eyebrow">টেকনিক্যাল ল্যাব · 0053</span>
+      <h1>Odoo API ইন্টিগ্রেশন — <span class="serif">বাংলাদেশের পেমেন্ট, ব্যাংকিং ও শিপিং ইকোসিস্টেমের সাথে সংযোগ।</span></h1>
+      <p class="lede">বাংলাদেশের বেশিরভাগ ERP বাস্তবায়নে Odoo-কে একটি বিচ্ছিন্ন দ্বীপ হিসেবে রাখা হয়। আপনার bKash মার্চেন্ট অ্যাকাউন্ট, আপনার BRAC Bank কর্পোরেট ফিড, আপনার Pathao Courier ডিসপ্যাচ — এর কোনোটিই স্বয়ংক্রিয়ভাবে আপনার ERP-র সাথে কথা বলে না। এই গাইডে দেখানো হয়েছে Odoo-র API আসলে কীভাবে কাজ করে, বাংলাদেশের কোন সিস্টেমগুলো সংযুক্ত করা যায়, প্রতিটির জন্য কী পরিমাণ ডেভেলপমেন্ট দরকার, আর ট্যাব থেকে ট্যাবে ডেটা কপি করা বন্ধ করতে চাইলে কোথা থেকে শুরু করবেন।</p>
+      <div class="post-meta">
+        <span class="chip accent">গাইড</span>
+        <span class="chip">API ইন্টিগ্রেশন</span>
+        <span class="chip">IT ও CTO</span>
+        <span class="chip">বাংলাদেশ</span>
+      </div>
+      <div class="byline">
+        <span>লেখক<b><a href="https://www.linkedin.com/in/mehedi-hasan-consultant/" style="color:var(--accent)" rel="author">Mehedi Hasan</a></b></span>
+        <span>প্রকাশিত<b>মে ২০২৬</b></span>
+        <span>পড়ার সময়<b>১৮ মিনিট</b></span>
+        <span>ধরন<b>গাইড</b></span>
+        <span>পরিধি<b>IT ও ইন্টিগ্রেশন</b></span>
+      </div>
+    </div>
+  </section>
+
+  <article class="post">
+    <aside class="toc">
+      <div class="toc-k">এই গাইডে</div>
+      <ol>
+        <li><a href="#api-landscape">বাংলাদেশের API ল্যান্ডস্কেপ</a></li>
+        <li><a href="#odoo-api-fundamentals">Odoo API-র মূল বিষয়</a></li>
+        <li><a href="#authentication">অথেন্টিকেশন ও নিরাপত্তা</a></li>
+        <li><a href="#payment-gateways">পেমেন্ট গেটওয়ে ইন্টিগ্রেশন</a></li>
+        <li><a href="#bank-feeds">ব্যাংক ফিড ইন্টিগ্রেশন</a></li>
+        <li><a href="#shipping-apis">শিপিং ও ডেলিভারি API</a></li>
+        <li><a href="#nbr-integration">NBR ও ট্যাক্স সিস্টেম সংযোগ</a></li>
+        <li><a href="#integration-patterns">সাধারণ ইন্টিগ্রেশন প্যাটার্ন</a></li>
+        <li><a href="#troubleshooting">API সমস্যা সমাধান</a></li>
+        <li><a href="#faq">সচরাচর জিজ্ঞাসা</a></li>
+      </ol>
+    </aside>
+
+    <div class="body">
+
+      <h2 id="api-landscape">বাংলাদেশের API ল্যান্ডস্কেপ: কী সংযুক্ত করা যায়, কী যায় না</h2>
+      <p>ইন্টিগ্রেশন কোডের একটি লাইনও লেখার আগে, বাংলাদেশের ডিজিটাল ইকোসিস্টেম সম্পর্কে একটি মৌলিক সত্য বুঝে নিতে হবে। API-র মান এখানে ব্যাপকভাবে ভিন্ন — ভালোভাবে ডকুমেন্টেড REST API (bKash, SSLCommerz) থেকে শুরু করে সামান্য ডকুমেন্টেড SOAP সার্ভিস (কিছু ব্যাংকের কর্পোরেট পোর্টাল), এমনকি একেবারেই API না থাকা সিস্টেম পর্যন্ত (NBR-এর iBAS++ ব্রাউজার অটোমেশন চায়, API কল নয়)।</p>
+      <p>বাংলাদেশের ব্যবসাগুলো সাধারণত Odoo-র সাথে যা যুক্ত করতে চায় এবং প্রতিটির জন্য বাস্তবসম্মত ইন্টিগ্রেশন লেভেল কী — তার একটি ব্যবহারিক মানচিত্র এখানে দেওয়া হলো:</p>
+
+      <div class="integration-grid">
+        <div class="integration-card">
+          <div class="ic-head">bKash Merchant API <span class="ic-tag">REST + OAuth 2.0</span></div>
+          <p>ভালোভাবে ডকুমেন্টেড REST API। পেমেন্ট শুরু করা, স্ট্যাটাস চেক এবং রিফান্ড সাপোর্ট করে। IP হোয়াইটলিস্টিং ও স্যান্ডবক্স টেস্টিং প্রয়োজন। কাস্টম Odoo মডিউল লাগবে।</p>
+        </div>
+        <div class="integration-card">
+          <div class="ic-head">Nagad Merchant API <span class="ic-tag">REST + RSA এনক্রিপশন</span></div>
+          <p>ডকুমেন্টেড, তবে প্রতিটি রিকোয়েস্টে RSA কী-পেয়ার এনক্রিপশন ব্যবহার করে। bKash-এর চেয়ে জটিল। বাংলাদেশে রেজিস্টার্ড ব্যবসা লাগবে। কাস্টম মডিউল প্রয়োজন।</p>
+        </div>
+        <div class="integration-card">
+          <div class="ic-head">SSLCommerz <span class="ic-tag">REST, ভালো ডকুমেন্টেশন</span></div>
+          <p>বাংলাদেশের সবচেয়ে ডেভেলপার-ফ্রেন্ডলি পেমেন্ট গেটওয়ে। একটি গেটওয়েতেই bKash, কার্ড, মোবাইল ব্যাংকিং সাপোর্ট করে। PHP/Python SDK পাওয়া যায়। Odoo ই-কমার্সের জন্য সবচেয়ে সহজ ইন্টিগ্রেশন পয়েন্ট।</p>
+        </div>
+        <div class="integration-card">
+          <div class="ic-head">Pathao Courier API <span class="ic-tag">REST + API key</span></div>
+          <p>API key অথেন্টিকেশনসহ REST API। অর্ডার তৈরি, ট্র্যাকিং, স্ট্যাটাস পরিবর্তনে ওয়েবহুক কলব্যাক সাপোর্ট করে। ডকুমেন্টেশন Pathao মার্চেন্ট টিমের কাছে অনুরোধে পাওয়া যায়।</p>
+        </div>
+        <div class="integration-card">
+          <div class="ic-head">Steadfast Courier API <span class="ic-tag">REST, সবচেয়ে সহজ</span></div>
+          <p>হেডারে API key সহ ফ্ল্যাট REST API। অর্ডার তৈরি করুন, ট্র্যাকিং নিন। বাংলাদেশের সবচেয়ে সহজ কুরিয়ার API — কাস্টম ডেলিভারি ক্যারিয়ার মডিউলের জন্য ভালো সূচনাবিন্দু।</p>
+        </div>
+        <div class="integration-card">
+          <div class="ic-head">বাংলাদেশ ব্যাংক ফিড <span class="ic-tag">শুধু CSV/MT940</span></div>
+          <p>BRAC, Dutch-Bangla, City, Eastern — বেশিরভাগই শুধু CSV বা MT940 ফাইল এক্সপোর্ট দেয়, লাইভ API নেই। IBBL এবং কিছু নতুন ব্যাংক সীমিত API দেয়। লাইভ সিঙ্কের বদলে Odoo-র ব্যাংক স্টেটমেন্ট ইমপোর্ট ব্যবহার করুন।</p>
+        </div>
+        <div class="integration-card">
+          <div class="ic-head">NBR iBAS++ <span class="ic-tag">পাবলিক API নেই</span></div>
+          <p>NBR-এর ট্যাক্স রিটার্ন সিস্টেমে কোনো পাবলিক API নেই। ডেটা ওয়েব ইন্টারফেসের মাধ্যমে জমা দিতে হয়। Odoo প্রয়োজনীয় ফরম্যাট (Mushak 6.3 রিপোর্ট) এক্সপোর্ট করতে পারে, কিন্তু সরাসরি জমা দিতে পারে না।</p>
+        </div>
+        <div class="integration-card">
+          <div class="ic-head">ShurjoPay <span class="ic-tag">REST, বাংলাদেশি কার্ড</span></div>
+          <p>বাংলাদেশি কার্ড ও মোবাইল ব্যাংকিং কভার করা নতুন গেটওয়ে। JWT অথেন্টিকেশনসহ REST API। মিড-মার্কেটে গ্রহণযোগ্যতা বাড়ছে। ইন-হাউস ডেভেলপমেন্ট সক্ষমতা থাকা কোম্পানির জন্য উপযুক্ত।</p>
+        </div>
+      </div>
+
+      <p class="pull">বাংলাদেশের ফিনটেক ইকোসিস্টেম দ্রুত বাড়ছে, কিন্তু API-র মান এখনো উচ্চাকাঙ্ক্ষার পেছনে পড়ে আছে। বাজেট করার আগে জেনে নিন আপনি ঠিক কোন স্তরের ইন্টিগ্রেশন তৈরি করছেন।</p>
+
+      <h2 id="odoo-api-fundamentals">Odoo API-র মূল বিষয়: XML-RPC, JSON-RPC এবং REST</h2>
+      <p>Odoo তিনটি API ইন্টারফেস দেয়। কোনটি কোন কাজে ব্যবহার করবেন, সেটা বুঝে নেওয়াই আপনার ইন্টিগ্রেশন টিমের প্রথম সিদ্ধান্ত হওয়া উচিত।</p>
+
+      <div class="api-block">
+        <div class="api-block-header">
+          <span class="api-badge native">নেটিভ</span>
+          <h3>JSON-RPC — বাংলাদেশের ইন্টিগ্রেশনের জন্য স্ট্যান্ডার্ড পছন্দ</h3>
+        </div>
+        <div class="api-block-body">
+          <p><code>/web/dataset/call_kw</code>-এ Odoo-র JSON-RPC ইন্টারফেস সব Odoo ভার্সনে পাওয়া যায় এবং এটাই সবচেয়ে বেশি ব্যবহৃত ইন্টিগ্রেশন পদ্ধতি। প্রতিটি Odoo মডেল আর তার মেথড এখান থেকে অ্যাক্সেসযোগ্য — read, write, create, unlink, এবং আপনার নিজের সংজ্ঞায়িত যেকোনো কাস্টম মেথড। বাংলাদেশের বেশিরভাগ ইন্টিগ্রেশন ডেভেলপার এটাই ব্যবহার করেন, কারণ এতে বাড়তি সেটআপ লাগে না আর যেকোনো HTTP ক্লায়েন্টের সাথে কাজ করে।</p>
+          <div class="code-label">উদাহরণ: অথেন্টিকেট করে সেল অর্ডার পড়া (Python)</div>
+          <div class="code-box"><pre>import requests, json
+
+url = "https://your-odoo.com"
+
+# Step 1: Authenticate
+auth = requests.post(f"{url}/web/dataset/call_kw", json={
+    "jsonrpc": "2.0", "method": "call", "id": 1,
+    "params": {
+        "model": "res.users",
+        "method": "authenticate",
+        "args": ["your-db", "user@company.com", "password", {}],
+        "kwargs": {}
+    }
+}).json()
+
+uid = auth["result"]
+
+# Step 2: Read confirmed sale orders
+orders = requests.post(f"{url}/web/dataset/call_kw", json={
+    "jsonrpc": "2.0", "method": "call", "id": 2,
+    "params": {
+        "model": "sale.order",
+        "method": "search_read",
+        "args": [[["state", "=", "sale"]]],
+        "kwargs": {"fields": ["name", "partner_id", "amount_total"], "limit": 50}
+    }
+}).json()
+
+print(orders["result"])</pre></div>
+        </div>
+      </div>
+
+      <div class="api-block">
+        <div class="api-block-header">
+          <span class="api-badge native">নেটিভ</span>
+          <h3>XML-RPC — পুরনো কিন্তু স্থিতিশীল, সব ভার্সনে পাওয়া যায়</h3>
+        </div>
+        <div class="api-block-body">
+          <p>XML-RPC হলো Odoo-র পুরনো ইন্টারফেস, Odoo 8 থেকে পাওয়া যাচ্ছে। এটি দুটি এন্ডপয়েন্টের মাধ্যমে কাজ করে: <code>/xmlrpc/2/common</code> (অথেন্টিকেশনের জন্য) এবং <code>/xmlrpc/2/object</code> (সব মডেল অপারেশনের জন্য)। এটি JSON-RPC-এর চেয়ে একটু বেশি ভার্বোস, তবে সম্পূর্ণ স্থিতিশীল এবং বাংলাদেশের অনেক দীর্ঘমেয়াদি ইন্টিগ্রেশনে ব্যবহৃত হয়।</p>
+          <p>XML-RPC ব্যবহার করুন যখন: পুরনো Odoo ভার্সন (12, 13, 14) নিয়ে কাজ করছেন, অথবা Odoo-র অফিসিয়াল <code>odoorpc</code> Python লাইব্রেরি ব্যবহার করছেন যা XML-RPC-কে পরিষ্কারভাবে র‍্যাপ করে।</p>
+        </div>
+      </div>
+
+      <div class="api-block">
+        <div class="api-block-header">
+          <span class="api-badge post">Odoo 16+</span>
+          <h3>REST API — Odoo 16-এ নতুন, আধুনিক ইন্টিগ্রেশনের জন্য পরিষ্কার</h3>
+        </div>
+        <div class="api-block-body">
+          <p>Odoo 16-এ নির্দিষ্ট মডেলের জন্য <code>/api/</code> এন্ডপয়েন্টে একটি প্রকৃত REST API যোগ হয়েছে। এটি API key অথেন্টিকেশন ব্যবহার করে (সেশন ম্যানেজমেন্টের দরকার নেই) এবং পরিষ্কার JSON রিটার্ন করে। Odoo 18 পর্যন্ত, REST API সবচেয়ে কমন অবজেক্টগুলো কভার করে: <code>/api/sale.order</code>, <code>/api/res.partner</code>, <code>/api/stock.picking</code> ইত্যাদি।</p>
+          <p>Odoo 16+-এ নতুন ইন্টিগ্রেশনের জন্য REST API-ই সঠিক পছন্দ, কারণ এতে সেশন কুকি ম্যানেজমেন্টের দরকার নেই এবং সুরক্ষিত করা সহজ। Settings → Users → Your User → API Keys ট্যাব থেকে একটি API key তৈরি করুন।</p>
+          <div class="code-label">উদাহরণ: REST API-র মাধ্যমে সেল অর্ডার নেওয়া (Odoo 16+)</div>
+          <div class="code-box"><pre>curl -H "Authorization: Bearer YOUR_API_KEY" \
+     https://your-odoo.com/api/sale.order?domain=[["state","=","sale"]]</pre></div>
+        </div>
+      </div>
+
+      <h2 id="authentication">অথেন্টিকেশন ও API নিরাপত্তা</h2>
+      <p>বাংলাদেশের ইন্টিগ্রেশনগুলো সবচেয়ে বেশি ব্যর্থ হয় ঠিক এই জায়গাতেই — কোড ভুল হওয়ার কারণে নয়, বরং সিকিউরিটি কনফিগারেশন ভালোভাবে চিন্তা না করার কারণে। বেছে নেওয়ার জন্য তিনটি প্যাটার্ন আছে:</p>
+
+      <ol class="step-list">
+        <li>
+          <div class="sc">
+            <strong>API Key অথেন্টিকেশন (Odoo 16+-এর জন্য প্রস্তাবিত)</strong>
+            <span>প্রতিটি বাহ্যিক সিস্টেমের জন্য আলাদা API key তৈরি করুন। Settings → Technical → API Keys (অথবা প্রতি-ইউজার API Keys ট্যাব)। কী-টিকে ইন্টিগ্রেশন সার্ভারে এনভায়রনমেন্ট ভ্যারিয়েবল হিসেবে রাখুন — কখনো সোর্স কোডে নয়। প্রতি ৯০ দিনে কী রোটেট করুন। প্রতিটি ইন্টিগ্রেশনের জন্য আলাদা কী ব্যবহার করুন, যাতে বাকিদের প্রভাবিত না করে একটি রিভোক করা যায়।</span>
+          </div>
+        </li>
+        <li>
+          <div class="sc">
+            <strong>নিবেদিত ইন্টিগ্রেশন ইউজার (সব ভার্সনে)</strong>
+            <span>ইন্টিগ্রেশনের কাজের জন্য প্রয়োজনীয় ন্যূনতম পারমিশনসহ একটি আলাদা Odoo ইউজার তৈরি করুন (যেমন, api-integration@company.com)। অ্যাডমিন অ্যাকাউন্ট ব্যবহার করবেন না। কী ফাঁস হয়ে গেলেও, ন্যূনতম-পারমিশনযুক্ত ইউজার ক্ষতির পরিধি সীমিত রাখে। রেস্ট্রিক্টেড ইউজার রোল কনফিগার করার জন্য দেখুন <a href="/bn/lab/0042-odoo-user-access-rights-configuration" style="color:var(--accent)">Odoo ইউজার অ্যাক্সেস রাইটস গাইড</a>।</span>
+          </div>
+        </li>
+        <li>
+          <div class="sc">
+            <strong>Nginx/সার্ভার কনফিগের মাধ্যমে IP হোয়াইটলিস্টিং</strong>
+            <span>আপনার ইন্টিগ্রেশন সার্ভারে যদি স্ট্যাটিক IP থাকে (বাংলাদেশের অফিস সার্ভার ও ক্লাউড VM-এর জন্য প্রস্তাবিত), ওয়েব সার্ভার লেভেলে API অ্যাক্সেস সীমিত করুন। Nginx-এর allow/deny নিয়ম নিশ্চিত করে যে ক্রেডেনশিয়াল ফাঁস হলেও, যেকোনো IP থেকে API অ্যাক্সেস করা যাবে না।</span>
+          </div>
+        </li>
+        <li>
+          <div class="sc">
+            <strong>System Parameters-এ কী সংরক্ষণ করুন</strong>
+            <span>Odoo নিজেই যেসব থার্ড-পার্টি API key কল করে (যেমন bKash API key, কুরিয়ার API key), সেগুলো সংরক্ষণের জন্য Settings → Technical → System Parameters ব্যবহার করুন। স্পষ্টভাবে নাম দিন: <code>bkash.app_key</code>, <code>steadfast.api_key</code>। System Parameters-এর অ্যাক্সেস শুধু অ্যাডমিনের মধ্যে সীমাবদ্ধ রাখুন।</span>
+          </div>
+        </li>
+      </ol>
+
+      <div class="warn-box">
+        <div class="wlabel">সিকিউরিটি সতর্কতা</div>
+        <p>Git রিপোজিটরিতে কখনো API key বা Odoo ক্রেডেনশিয়াল কমিট করবেন না। বাংলাদেশের ডেভেলপমেন্ট টিমগুলো প্রায়ই কনফিগ ফাইলে API key GitHub-এ পুশ করে দেয় — এটি একটি গুরুতর সিকিউরিটি ঝুঁকি। এনভায়রনমেন্ট ভ্যারিয়েবল বা এনক্রিপ্টেড সিক্রেট স্টোর ব্যবহার করুন (AWS Secrets Manager, HashiCorp Vault, অথবা এমনকি একটি git-ignored .env ফাইল)।</p>
+      </div>
+
+      <h2 id="payment-gateways">পেমেন্ট গেটওয়ে ইন্টিগ্রেশন</h2>
+      <p>বাংলাদেশের ব্যবসাগুলোর — বিশেষত ই-কমার্স, B2C SaaS এবং এক্সপোর্ট বিলিং — পেমেন্ট গেটওয়েকে Odoo-র ইনভয়েসিং ও অ্যাকাউন্টিং মডিউলের সাথে সংযুক্ত করার দরকার হয়। প্রতিটি প্রধান গেটওয়ে কীভাবে ইন্টিগ্রেট হয়, তা এখানে দেওয়া হলো।</p>
+
+      <div class="api-block">
+        <div class="api-block-header">
+          <span class="api-badge custom">কাস্টম মডিউল</span>
+          <h3>bKash Merchant API ইন্টিগ্রেশন</h3>
+        </div>
+        <div class="api-block-body">
+          <p><strong>ইন্টিগ্রেশনের ধরন:</strong> <code>payment.provider</code> এবং <code>payment.transaction</code> মডেল এক্সটেন্ড করা একটি কাস্টম Odoo পেমেন্ট প্রোভাইডার মডিউল। bKash OAuth 2.0 ব্যবহার করে — প্রথমে একটি টোকেন নিতে হয় (<code>/tokenized/checkout/token/grant</code>-এ POST), তারপর সেই টোকেন দিয়ে পেমেন্ট তৈরি করতে হয় (<code>/tokenized/checkout/create</code>-এ POST), এরপর ইউজারকে bKash-এর পেমেন্ট পেজে রিডাইরেক্ট করতে হয়, আর শেষে আপনার ওয়েবহুক URL-এ কলব্যাক ক্যাপচার করতে হয়।</p>
+          <p><strong>বাংলাদেশ-নির্দিষ্ট রিকোয়ারমেন্ট:</strong></p>
+          <ul>
+            <li>রেজিস্টার্ড ব্যবসাসহ (ট্রেড লাইসেন্স + TIN) একটি সক্রিয় bKash মার্চেন্ট অ্যাকাউন্ট থাকতে হবে।</li>
+            <li>প্রোডাকশন ক্রেডেনশিয়ালের জন্য IP হোয়াইটলিস্টিং লাগে — আপনার Odoo সার্ভারের পাবলিক IP bKash-এর কাছে রেজিস্টার্ড থাকতে হবে।</li>
+            <li>bKash-এর একটি কলব্যাক URL লাগে যা HTTPS-এ অ্যাক্সেসযোগ্য। প্রোডাকশনে সেলফ-সাইনড সার্টিফিকেট গ্রহণযোগ্য নয়।</li>
+            <li>প্রোডাকশন ক্রেডেনশিয়াল চাওয়ার আগে <code>tokenized.sandbox.bka.sh</code>-এর স্যান্ডবক্সে টেস্ট করুন।</li>
+          </ul>
+          <p><strong>Odoo মডিউলটি যা করে:</strong> কোনো বাংলাদেশি গ্রাহক যখন bKash-এর মাধ্যমে একটি Odoo ইনভয়েস পরিশোধ করেন, পেমেন্ট ফর্মটি bKash-এ রিডাইরেক্ট হয়, পেমেন্ট সম্পন্ন হয়, Odoo-র কলব্যাক URL-এ ফিরে আসে, আর মডিউলটি স্বয়ংক্রিয়ভাবে ইনভয়েসকে পরিশোধিত হিসেবে চিহ্নিত করে এবং bKash ব্যাংক জার্নালে জার্নাল এন্ট্রি তৈরি করে।</p>
+        </div>
+      </div>
+
+      <div class="api-block">
+        <div class="api-block-header">
+          <span class="api-badge post">B2C-র জন্য সবচেয়ে সহজ</span>
+          <h3>SSLCommerz ইন্টিগ্রেশন</h3>
+        </div>
+        <div class="api-block-body">
+          <p>একাধিক পেমেন্ট পদ্ধতি (bKash, Nagad, Rocket, কার্ড, ইন্টারনেট ব্যাংকিং) একটি মাত্র গেটওয়ের মাধ্যমে গ্রহণ করতে চাইলে, প্রতিটির জন্য আলাদা ইন্টিগ্রেশন তৈরি না করে SSLCommerz-ই সঠিক পছন্দ। জটিলতা SSLCommerz নিজেই সামলায় এবং আপনার সেটলমেন্ট অ্যাকাউন্টে ফান্ড ভাগ করে দেয়।</p>
+          <p>SSLCommerz GitHub-এ একটি Python SDK দেয়। Odoo ইন্টিগ্রেশনের প্যাটার্ন এরকম: ইনভয়েস পেমেন্টে ক্লিক করলে একটি SSLCommerz সেশন তৈরি হয় (<code>/gwprocess/v4/api.php</code>-এ POST), SSLCommerz-এর হোস্টেড চেকআউটে রিডাইরেক্ট হয়, আপনার Odoo ওয়েবহুকে IPN (Instant Payment Notification) আসে, হ্যাশ সিগনেচার ভ্যালিডেট করা হয়, আর পেমেন্ট স্বয়ংক্রিয়ভাবে রিকনসাইল হয়ে যায়।</p>
+          <div class="code-label">SSLCommerz IPN ভ্যালিডেশন (Python)</div>
+          <div class="code-box"><pre>import hashlib
+
+def validate_sslcommerz_ipn(data, store_passwd):
+    """Verify SSLCommerz IPN hash before marking payment as received."""
+    received_hash = data.get("verify_sign")
+    data_without_sign = {k: v for k, v in data.items()
+                         if k not in ("verify_sign", "verify_key")}
+    # Sort keys and concat with store password
+    sorted_data = dict(sorted(data_without_sign.items()))
+    sorted_data["store_passwd"] = hashlib.md5(
+        store_passwd.encode()).hexdigest()
+    hash_str = "&".join(f"{k}={v}" for k, v in sorted_data.items())
+    expected = hashlib.md5(hash_str.encode()).hexdigest()
+    return received_hash == expected</pre></div>
+          <p>এই হ্যাশ ভ্যালিডেট না করে কখনো পেমেন্টকে গৃহীত হিসেবে চিহ্নিত করবেন না। ভ্যালিডেশন বাদ দেওয়াই বাংলাদেশি ডেভেলপারদের করা #1 SSLCommerz সিকিউরিটি ভুল।</p>
+        </div>
+      </div>
+
+      <h2 id="bank-feeds">ব্যাংক ফিড ইন্টিগ্রেশন: বাংলাদেশের বাস্তবতা</h2>
+      <p>বাংলাদেশের কর্পোরেট ব্যাংকিং API পেমেন্ট গেটওয়ে API-র চেয়ে যথেষ্ট কম পরিণত। বাংলাদেশে Odoo বাস্তবায়নের জন্য ব্যাংক কানেক্টিভিটির প্রকৃত অবস্থা এখানে দেওয়া হলো।</p>
+
+      <div class="api-block">
+        <div class="api-block-header">
+          <span class="api-badge get">ফাইল ইমপোর্ট</span>
+          <h3>BRAC Bank, Dutch-Bangla, City Bank, Eastern Bank: CSV/MT940 ইমপোর্ট</h3>
+        </div>
+        <div class="api-block-body">
+          <p>2026 সাল পর্যন্ত, বাংলাদেশের প্রধান কমার্শিয়াল ব্যাংকগুলো — BRAC, Dutch-Bangla, City Bank, Eastern Bank, Mutual Trust Bank — ব্যবসায়িক গ্রাহকদের জন্য কোনো লাইভ কর্পোরেট ব্যাংকিং API দেয় না। তারা যা দেয়:</p>
+          <ul>
+            <li><strong>CSV স্টেটমেন্ট এক্সপোর্ট:</strong> ইন্টারনেট ব্যাংকিং পোর্টাল থেকে পাওয়া যায়। প্রতিদিন বা সাপ্তাহিক ডাউনলোড করে Accounting → Bank Statements → Import-এর মাধ্যমে Odoo-তে ইমপোর্ট করুন।</li>
+            <li><strong>MT940 ফরম্যাট:</strong> কিছু ব্যাংক (বিশেষত যাদের SWIFT কানেক্টিভিটি আছে) MT940 ফরম্যাট এক্সপোর্ট দেয়। Odoo নেটিভভাবে MT940 ইমপোর্ট সাপোর্ট করে।</li>
+            <li><strong>OFX ফরম্যাট:</strong> বিরল, তবে কিছু পোর্টালে পাওয়া যায়। এটিও Odoo নেটিভভাবে সাপোর্ট করে।</li>
+          </ul>
+          <p><strong>ব্যবহারিক পরামর্শ:</strong> একটি শিডিউলড স্ক্রিপ্টের মাধ্যমে CSV ডাউনলোড অটোমেট করুন (ব্যাংক পোর্টালে লগইন করে স্টেটমেন্ট ডাউনলোড করতে Selenium বা Playwright ব্যবহার করে) এবং তারপর ফাইলটি Odoo-র ব্যাংক স্টেটমেন্ট ইমপোর্ট API-তে পুশ করুন। এতে লাইভ API ছাড়াই প্রায়-স্বয়ংক্রিয় ব্যাংক রিকনসিলিয়েশন পাবেন।</p>
+          <div class="warn-box">
+            <div class="wlabel">গুরুত্বপূর্ণ</div>
+            <p>ব্যাংক পোর্টালে স্বয়ংক্রিয় ব্রাউজার লগইন আপনার ব্যাংকের শর্তাবলী লঙ্ঘন করতে পারে। আপনার কর্পোরেট ইন্টারনেট ব্যাংকিং পোর্টালে ব্রাউজার অটোমেশন বাস্তবায়নের আগে আপনার রিলেশনশিপ ম্যানেজারের সাথে যাচাই করে নিন। কিছু ব্যাংক OTP-ভিত্তিক অ্যাক্সেস দেয় যা এমনিতেই অটোমেশনকে অব্যবহারযোগ্য করে তোলে — এক্ষেত্রে মানুষের সহায়তায় দৈনিক ইমপোর্টই একমাত্র উপায় হতে পারে।</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="api-block">
+        <div class="api-block-header">
+          <span class="api-badge native">API পাওয়া যায়</span>
+          <h3>IDLC Finance, IPDC: কর্পোরেট ফাইন্যান্স API (সীমিত)</h3>
+        </div>
+        <div class="api-block-body">
+          <p>বাংলাদেশের অল্প কিছু NBFI এবং নতুন ডিজিটাল ব্যাংক কর্পোরেট API অ্যাক্সেস দেওয়া শুরু করেছে। আপনার কোম্পানির ব্যাংক যদি কর্পোরেট API অ্যাক্সেস দেয়, তাহলে ফাইল আপলোডের বদলে Odoo-র <code>account.bank.statement.line</code> মডেল ব্যবহার করে প্রোগ্রামেটিকভাবে লেনদেন ইমপোর্ট করুন। আপনার ব্যাংক যদি এই সুবিধা দেয়, তাহলে এটাই নেওয়ার মতো পদ্ধতি।</p>
+        </div>
+      </div>
+
+      <h2 id="shipping-apis">শিপিং ও ডেলিভারি API ইন্টিগ্রেশন</h2>
+      <p>বাংলাদেশের ই-কমার্স আর B2B ফুলফিলমেন্ট কোম্পানির জন্য, কুরিয়ার API ইন্টিগ্রেশন প্রায়ই তৈরি করার মতো সবচেয়ে বেশি ROI-যুক্ত ইন্টিগ্রেশন। শিপমেন্ট তৈরি, লেবেল প্রিন্টিং আর ট্র্যাকিং স্ট্যাটাস সিঙ্ক অটোমেট করলে, কোনো অর্থবহ অর্ডার ভলিউমে প্রতিদিন ম্যানুয়াল ডেটা এন্ট্রির অনেক ঘণ্টা বেঁচে যায়।</p>
+
+      <div class="api-block">
+        <div class="api-block-header">
+          <span class="api-badge post">প্রথমে তৈরি করার প্রস্তাবিত</span>
+          <h3>Steadfast Courier API — সবচেয়ে সহজ বাংলাদেশ কুরিয়ার ইন্টিগ্রেশন</h3>
+        </div>
+        <div class="api-block-body">
+          <p>বাংলাদেশের কুরিয়ার মার্কেটে Steadfast-এর API সবচেয়ে সহজ। API key অথেন্টিকেশন (হেডারে <code>Api-Key</code> ও <code>Secret-Key</code> পাস করে), ফ্ল্যাট REST এন্ডপয়েন্ট, সরল রেসপন্স স্ট্রাকচার। ইন্টিগ্রেশনটি Odoo-র <code>stock.delivery.carrier</code> মডেল এক্সটেন্ড করে।</p>
+          <div class="code-label">Steadfast: একটি শিপমেন্ট তৈরি করা (Python)</div>
+          <div class="code-box"><pre>import requests
+
+STEADFAST_BASE = "https://portal.packzy.com/api/v1"
+headers = {
+    "Api-Key": "YOUR_API_KEY",
+    "Secret-Key": "YOUR_SECRET_KEY",
+    "Content-Type": "application/json"
+}
+
+def create_steadfast_order(invoice, customer, address, cod_amount):
+    payload = {
+        "invoice": invoice,         # Your order reference
+        "recipient_name": customer,
+        "recipient_phone": address["phone"],
+        "recipient_address": address["street"],
+        "cod_amount": cod_amount    # 0 for prepaid
+    }
+    resp = requests.post(
+        f"{STEADFAST_BASE}/create_order",
+        json=payload, headers=headers
+    )
+    data = resp.json()
+    return data.get("consignment", {}).get("tracking_code")</pre></div>
+          <p>রিটার্ন হওয়া <code>tracking_code</code>-টি Odoo-র stock.picking রেকর্ডে সংরক্ষণ করুন। Steadfast-এর স্ট্যাটাস এন্ডপয়েন্ট পোল করতে এবং Odoo-তে ডেলিভারি স্ট্যাটাস স্বয়ংক্রিয়ভাবে আপডেট করতে একটি শিডিউলড অ্যাকশন ব্যবহার করুন।</p>
+        </div>
+      </div>
+
+      <div class="api-block">
+        <div class="api-block-header">
+          <span class="api-badge custom">ওয়েবহুক সাপোর্ট</span>
+          <h3>Pathao Courier API — ওয়েবহুক-ভিত্তিক স্ট্যাটাস আপডেট</h3>
+        </div>
+        <div class="api-block-body">
+          <p>Pathao-র কুরিয়ার API ওয়েবহুক কলব্যাক সাপোর্ট করে — শিপমেন্টের স্ট্যাটাস বদলালে (পিকড, ইন-ট্রানজিট, ডেলিভার্ড, রিটার্নড) Pathao নিজেই আপনার Odoo সার্ভারে স্ট্যাটাস আপডেট পাঠায়। এটি পোলিংয়ের চেয়ে বেশি কার্যকর। Pathao-র মার্চেন্ট পোর্টালে আপনার Odoo কন্ট্রোলার URL-কে ওয়েবহুক এন্ডপয়েন্ট হিসেবে রেজিস্টার করুন, তারপর একটি Odoo কন্ট্রোলার লিখুন যা POST রিকোয়েস্ট গ্রহণ করে সংশ্লিষ্ট stock.picking রেকর্ড আপডেট করে।</p>
+          <p>Pathao-র জন্যও মার্চেন্ট অনবোর্ডিং লাগে এবং ক্রেডেনশিয়াল তাদের লজিস্টিকস বিজনেস টিমের মাধ্যমে পাওয়া যায়। Pathao for Business পোর্টালের মাধ্যমে যোগাযোগ করুন।</p>
+        </div>
+      </div>
+
+      <div class="api-block">
+        <div class="api-block-header">
+          <span class="api-badge custom">এগুলোও পাওয়া যায়</span>
+          <h3>Redx ও eCourier</h3>
+        </div>
+        <div class="api-block-body">
+          <p>Redx এবং eCourier দুটোই API key অথেন্টিকেশনসহ REST API দেয়। Redx-এর ডকুমেন্টেশন তাদের মার্চেন্ট পোর্টালের মাধ্যমে পাওয়া যায়। zone-ভিত্তিক প্রাইসিং ক্যালকুলেশনসহ eCourier API একটু বেশি জটিল। ইন্টিগ্রেশনের প্যাটার্ন Steadfast-এর মতোই — পিকিং ভ্যালিডেশনে অর্ডার তৈরি, ট্র্যাকিং কোড সংরক্ষণ, আর স্ট্যাটাস আপডেটের জন্য পোল করা বা ওয়েবহুক গ্রহণ করা।</p>
+        </div>
+      </div>
+
+      <h2 id="nbr-integration">NBR ও ট্যাক্স সিস্টেম: আসলে কী সম্ভব</h2>
+      <p>বাংলাদেশের অনেক ব্যবসা জিজ্ঞেস করে Odoo সরাসরি NBR-এ Mushak রিপোর্ট বা VAT রিটার্ন জমা দিতে পারে কিনা। সত্যিকারের উত্তর: সরাসরি নয় — তবে Odoo ঠিক সেই ফরম্যাটে ডেটা তৈরি করতে পারে যা NBR-এর দরকার।</p>
+
+      <p>NBR-এর iBAS++ সিস্টেম (যেখানে সরকারি ট্যাক্স জমা হয়) এবং Mushak অনলাইন পোর্টাল (VAT রিটার্ন) — উভয়ের জন্যই 2026 সাল পর্যন্ত ব্রাউজার ইন্টারফেসের মাধ্যমে ম্যানুয়াল সাবমিশন লাগে। স্বয়ংক্রিয় সাবমিশনের জন্য কোনো পাবলিক REST API নেই।</p>
+
+      <p>Odoo <em>যা করতে পারে</em>:</p>
+      <ul>
+        <li>Mushak 6.3 (সেলস VAT রেজিস্টার), 6.4 (পারচেজ VAT রেজিস্টার), এবং 6.5 (ক্রেডিট নোট রেজিস্টার) PDF বা CSV এক্সপোর্ট হিসেবে তৈরি করা — ঠিক NBR ফাইলিংয়ের জন্য প্রয়োজনীয় ফরম্যাটে।</li>
+        <li>ভেন্ডর পেমেন্টে TDS (Tax Deducted at Source) হিসাব করা এবং 108 ও 108A সার্টিফিকেট তৈরি করা।</li>
+        <li>ফাইলিংয়ের আগে মাসিক রিকনসিলিয়েশনের জন্য VAT পেয়েবল/রিসিভেবল ট্র্যাক করা।</li>
+        <li>VAT Online পোর্টালে আপলোডের জন্য প্রয়োজনীয় Excel ফরম্যাটে VAT রিটার্ন ডেটা এক্সপোর্ট করা।</li>
+      </ul>
+
+      <p>ইন্টিগ্রেশনের ফাঁকটি রয়ে যায় চূড়ান্ত সাবমিশন ধাপে — যার জন্য এখনো একজন মানুষকে NBR পোর্টালে লগইন করে ডেটা আপলোড বা এন্টার করতে হয়। সেই ধাপ পর্যন্ত সবকিছুই Odoo সেতুবন্ধন করে দেয়।</p>
+
+      <h2 id="integration-patterns">বাংলাদেশের ব্যবসার জন্য সাধারণ ইন্টিগ্রেশন প্যাটার্ন</h2>
+
+      <div class="api-block">
+        <div class="api-block-header">
+          <span class="api-badge native">প্যাটার্ন ১</span>
+          <h3>ই-কমার্স সিঙ্ক: WooCommerce / কাস্টম ওয়েবসাইট → Odoo</h3>
+        </div>
+        <div class="api-block-body">
+          <p>আলাদা WooCommerce স্টোরসহ বাংলাদেশের অনলাইন রিটেইলারদের অর্ডার, কাস্টমার আর ইনভেন্টরি Odoo-র সাথে সিঙ্ক করা দরকার। স্ট্যান্ডার্ড প্যাটার্ন: WooCommerce ওয়েবহুক (order.created-এ) একটি Odoo JSON-RPC এন্ডপয়েন্ট কল করে sale.order তৈরি করে, কনফার্ম করে, আর স্টক রিজার্ভেশন ট্রিগার করে। ইনভেন্টরি লেভেল প্রতি ১৫ মিনিটে একটি ক্রন জবের মাধ্যমে — যা Odoo-র <code>product.product</code> মডেল কোয়েরি করে — শিডিউল অনুযায়ী WooCommerce-এ ফিরে সিঙ্ক হয়।</p>
+          <p>পাওয়া যায় এমন টুল: Odoo Connector for WooCommerce (GitHub-এ OCA প্রজেক্ট), অথবা WooCommerce ও Odoo-র API-র মধ্যে মিডলওয়্যার হিসেবে Python FastAPI/Flask দিয়ে একটি হালকা ওয়েবহুক হ্যান্ডলার তৈরি করুন।</p>
+        </div>
+      </div>
+
+      <div class="api-block">
+        <div class="api-block-header">
+          <span class="api-badge native">প্যাটার্ন ২</span>
+          <h3>নো-কোড মিডলওয়্যার: সাধারণ বাংলাদেশ ইন্টিগ্রেশনের জন্য n8n</h3>
+        </div>
+        <div class="api-block-body">
+          <p>কাস্টম ডেভেলপমেন্ট ছাড়া ইন্টিগ্রেশন চাওয়া বাংলাদেশি ব্যবসার জন্য n8n (ওপেন-সোর্স ওয়ার্কফ্লো অটোমেশন) একটি চমৎকার মিডল লেয়ার। n8n-এ নেটিভ Odoo নোড আছে এবং মাসে ৳1,500-এর ক্লাউড VM-এ সেলফ-হোস্ট করা যায়। সাধারণ ব্যবহার: Google Forms → Odoo লিড, ইমেইল → Odoo সাপোর্ট টিকেট, Excel/Google Sheets ইমপোর্ট → Odoo প্রোডাক্ট/কাস্টমার রেকর্ড।</p>
+          <p>হাই-ভলিউম, রিয়েল-টাইম ইন্টিগ্রেশনের জন্য (যেমন মিনিটে ১০০+ ট্রানজেকশনের SSLCommerz IPN কলব্যাক) n8n উপযুক্ত নয়। এসব ক্ষেত্রে একটি যথাযথ Odoo কাস্টম মডিউলই সঠিক উত্তর।</p>
+        </div>
+      </div>
+
+      <div class="api-block">
+        <div class="api-block-header">
+          <span class="api-badge native">প্যাটার্ন ৩</span>
+          <h3>ডেটা বের করে পাঠানো: Odoo → বাহ্যিক BI / রিপোর্টিং টুল</h3>
+        </div>
+        <div class="api-block-body">
+          <p>কিছু বাংলাদেশি কোম্পানি CEO-র জন্য Power BI, Google Looker Studio বা একটি কাস্টম ড্যাশবোর্ডে Odoo-র ডেটা পাঠাতে চায়। প্যাটার্নটি এরকম: একটি শিডিউলড Python স্ক্রিপ্ট Odoo-র API কোয়েরি করে (সংশ্লিষ্ট মডেলে search_read), ডেটা রূপান্তর করে, আর একটি PostgreSQL ডেটাবেস বা Google Sheets-এ লেখে, যার সাথে Power BI বা Looker Studio সংযুক্ত থাকে।</p>
+          <p>বিকল্পভাবে, রিড-অনলি রিপোর্টিং ইউজার ব্যবহার করে Power BI-কে সরাসরি Odoo-র PostgreSQL ডেটাবেসের সাথে (সেলফ-হোস্টেড হলে) সংযুক্ত করুন। বাংলাদেশে Odoo-র অন-প্রিমাইজ ডেপ্লয়মেন্টের জন্য এটাই সবচেয়ে সহজ পদ্ধতি।</p>
+        </div>
+      </div>
+
+      <h2 id="troubleshooting">API কানেক্টিভিটি সমস্যা সমাধান</h2>
+
+      <p><strong>সমস্যা: প্রতিটি API কলে "odoo.exceptions.AccessDenied"</strong><br>
+      ইন্টিগ্রেশন ইউজারের পাসওয়ার্ড ভুল, অথবা ইউজারটি সঠিক ডেটাবেসে নেই। যাচাই করুন: ডেটাবেসের নাম হুবহু মিলছে কিনা (কেস-সেনসিটিভ), ইউজার সক্রিয় আছে কিনা (আর্কাইভড নয়), আর পাসওয়ার্ডের মেয়াদ শেষ হয়নি। Odoo 17+ ব্যবহার করলে, ইউজারে 2FA চালু আছে কিনা দেখুন — API key অথ 2FA বাইপাস করে; সেশন-ভিত্তিক অথ করে না।</p>
+
+      <p><strong>সমস্যা: টেস্টিংয়ে API কাজ করে কিন্তু বাংলাদেশ প্রোডাকশন সার্ভার থেকে ব্যর্থ হয়</strong><br>
+      সবচেয়ে সম্ভাব্য কারণ: বাংলাদেশ সার্ভারের IP বাহ্যিক API প্রোভাইডার (bKash, SSLCommerz ইত্যাদি) ব্লক করে দিয়েছে। IP হোয়াইটলিস্টিং চেক করুন। আপনার বাংলাদেশ সার্ভার যদি শেয়ার্ড/ডাইনামিক IP ব্যবহার করে (BTCL, Grameenphone হোম প্ল্যানের মতো ISP-তে সাধারণ), তাহলে একটি স্ট্যাটিক IP লাগবে — আপনার ISP-র কাছে অনুরোধ করে পাওয়া যায়, অথবা ফিক্সড পাবলিক IP-সহ একটি ক্লাউড VM ব্যবহার করুন।</p>
+
+      <p><strong>সমস্যা: বাংলাদেশ সার্ভার থেকে SSL সার্টিফিকেট এরর</strong><br>
+      বাংলাদেশ সার্ভারে প্রায়ই পুরনো CA সার্টিফিকেট বান্ডেল থাকে। Ubuntu/Debian-এ <code>sudo update-ca-certificates</code> চালান অথবা <code>ca-certificates</code> প্যাকেজ ইনস্টল করুন। আপনার সার্ভারের ঘড়ি সঠিক (NTP-সিঙ্কড) কিনা যাচাই করুন — সার্ভারের ঘড়ি ৫ মিনিটের বেশি ভুল থাকলে সার্টিফিকেট ভ্যালিডেশন ব্যর্থ হয়, যা ভুলভাবে কনফিগার করা বাংলাদেশি VM-এ অবাক করার মতো সাধারণ।</p>
+
+      <p><strong>সমস্যা: bKash/SSLCommerz থেকে ওয়েবহুক কলব্যাক Odoo-তে পৌঁছাচ্ছে না</strong><br>
+      চেক করুন আপনার Odoo সার্ভার ইন্টারনেট থেকে পোর্ট 443 (HTTPS)-এ অ্যাক্সেসযোগ্য কিনা। বাংলাদেশের অনেক অন-প্রিমাইজ সার্ভার পোর্ট ফরওয়ার্ডিং কনফিগার না করা NAT রাউটারের পেছনে থাকে। ডেভেলপমেন্ট/টেস্টিংয়ের জন্য ngrok-এর মতো একটি সার্ভিস ব্যবহার করুন। প্রোডাকশনের জন্য, নিশ্চিত করুন আপনার ফায়ারওয়াল ও রাউটার পোর্ট 443 আপনার Odoo সার্ভারে ফরওয়ার্ড করছে এবং আপনার একটি বৈধ SSL সার্টিফিকেট আছে (Let's Encrypt পুরোপুরি কাজ করে)।</p>
+
+      <p>সব ইন্টিগ্রেশন সিকিউরিটির ভিত্তি যে অ্যাক্সেস রাইটস কনফিগারেশন, তা নিয়ে বিস্তারিত আছে <a href="/bn/lab/0042-odoo-user-access-rights-configuration" style="color:var(--accent)">Odoo ইউজার রোল ও অ্যাক্সেস রাইটস গাইড</a>-এ — কীভাবে সঠিকভাবে ন্যূনতম-পারমিশনযুক্ত ইন্টিগ্রেশন ইউজার তৈরি করবেন তা জানতে। আর যেসব মাল্টি-কোম্পানি সেটআপে API ইন্টিগ্রেশন আরও জটিল হয়ে ওঠে, সেজন্য <a href="/bn/lab/0006-odoo-multi-company-setup-guide" style="color:var(--accent)">Odoo মাল্টি-কোম্পানি সেটআপ গাইড</a>-এ ব্যাখ্যা করা হয়েছে ডেটাবেস আর্কিটেকচার — যা ঠিক করে দেয় আপনার API কল কোন কোম্পানির ডেটা দেখতে পাবে।</p>
+
+      <div class="callout">
+        <span class="tag">ইন্টিগ্রেশন অ্যাসেসমেন্ট</span>
+        <p>আপনার বাংলাদেশি ব্যবসার যদি Odoo-কে bKash, কোনো কুরিয়ার API, ব্যাংকিং সিস্টেম বা কাস্টম থার্ড-পার্টি টুলের সাথে সংযুক্ত করা দরকার হয়, আমি স্কোপ মূল্যায়ন করে বিল্ড বনাম বাই বনাম মিডলওয়্যার নিয়ে পরামর্শ দিতে পারি। <a href="/bn/#contact" style="color:var(--accent)">ইন্টিগ্রেশন স্কোপিং কলের জন্য যোগাযোগ করুন →</a></p>
+      </div>
+
+      <h2 id="faq">সচরাচর জিজ্ঞাসা</h2>
+
+      <h3>Odoo-র কি REST API আছে?</h3>
+      <p>হ্যাঁ। Odoo 16 এবং পরবর্তী ভার্সনগুলো নির্দিষ্ট অবজেক্টের জন্য <code>/api/</code> এন্ডপয়েন্টে একটি নেটিভ REST API দেয়। আগের ভার্সনগুলো <code>/web/dataset/call_kw</code>-এ XML-RPC বা JSON-RPC ব্যবহার করে। বাংলাদেশের ইন্টিগ্রেশনে JSON-RPC ইন্টারফেসই সবচেয়ে বেশি ব্যবহৃত হয়, কারণ এটি যেকোনো HTTP ক্লায়েন্টের সাথে কাজ করে আর বিশেষ কোনো SDK-র দরকার হয় না।</p>
+
+      <h3>bKash কি সরাসরি Odoo-র সাথে ইন্টিগ্রেট করা যায়?</h3>
+      <p>হ্যাঁ, তবে নেটিভ Odoo মডিউল দিয়ে নয়। bKash মার্চেন্ট API (REST, OAuth 2.0) একটি কাস্টম পেমেন্ট প্রোভাইডার মডিউলের মাধ্যমে সংযুক্ত করতে হবে। প্রোডাকশন ইন্টিগ্রেশনের আগে bKash মার্চেন্ট API-র জন্য একটি রেজিস্টার্ড ব্যবসায়িক অ্যাকাউন্ট, IP হোয়াইটলিস্টিং এবং bKash-এর স্যান্ডবক্স ক্রেডেনশিয়াল লাগে। বাংলাদেশের বেশিরভাগ Odoo পার্টনার এটিকে একটি কাস্টম মডিউল হিসেবে তৈরি করে যা Odoo-র <code>payment.provider</code> মডেল এক্সটেন্ড করে।</p>
+
+      <h3>বাংলাদেশে Odoo-র সাথে কোন শিপিং API কাজ করে?</h3>
+      <p>Pathao Courier, Steadfast Courier, Redx, এবং eCourier হলো বাংলাদেশের প্রধান ডেলিভারি API। 2026 সাল পর্যন্ত App Store-এ এদের কোনোটিরই অফিসিয়াল Odoo মডিউল নেই। ইন্টিগ্রেশনের জন্য একটি কাস্টম ডেলিভারি ক্যারিয়ার মডিউল লাগে। Steadfast-এর API সবচেয়ে সহজ (API key অথসহ ফ্ল্যাট REST) এবং কাস্টম ডেভেলপমেন্টের জন্য সবচেয়ে সহজ সূচনাবিন্দু।</p>
+
+      <h3>Odoo-তে API key সংরক্ষণের সবচেয়ে নিরাপদ উপায় কী?</h3>
+      <p>থার্ড-পার্টি API key ডেটাবেসে সংরক্ষণের জন্য Settings → Technical → System Parameters ব্যবহার করুন। বাহ্যিক সিস্টেমকে দেওয়া Odoo-র নিজস্ব API key-র জন্য, ইউজারের API Keys ট্যাব থেকে প্রতিটি ইন্টিগ্রেশনের জন্য আলাদা API key তৈরি করুন। কখনো Git-এ API key কমিট করবেন না। অ্যাক্সেস রাইটস কনফিগারেশনের মাধ্যমে System Parameters-এর অ্যাক্সেস শুধু অ্যাডমিনিস্ট্রেটর রোলের মধ্যে সীমাবদ্ধ রাখুন।</p>
+
+    </div>
+  </article>
+
+  <footer>
+    <div class="shell">
+      <div class="post-foot">
+        <span class="eyebrow">আরও পড়ুন</span>
+        <div class="next">
+          <a class="next-card" href="/bn/lab/0052-odoo-vendor-red-flags-bangladesh">
+            <span class="dir">পুরনো · 0052</span>
+            <h4>কখন আপনার Odoo ভেন্ডরকে বিদায় করবেন</h4>
+            <p>আপনার বাংলাদেশ বাস্তবায়ন পার্টনার ব্যর্থ হচ্ছে এমন ৭টি সতর্কসংকেত — আর ঠিক কী করবেন।</p>
+            <span class="arrow">→</span>
+          </a>
+          <a class="next-card" href="/bn/lab/0054-odoo-email-sms-setup-bangladesh">
+            <span class="dir">নতুন · 0054</span>
+            <h4>বাংলাদেশে Odoo ইমেইল ও SMS সেটআপ</h4>
+            <p>SMTP, ইমেইল অ্যালিয়াস, SSL Wireless SMS, এবং নোটিফিকেশন টেমপ্লেট ধাপে ধাপে কনফিগার করুন।</p>
+            <span class="arrow">→</span>
+          </a>
+        </div>
+      </div>
+      <div class="foot">
+        <span>© ২০২৬ Mehedi Hasan · Lab / 0053</span>
+        <span><a href="/bn/#lab">↑ ল্যাব ইনডেক্সে ফিরুন</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/lab/_utils.js" defer></script>
+  <script src="/lab/_toc.js" defer></script>
+  <script src="/whatsapp.js" defer></script>
+  <script src="/scroll-top.js" defer></script>
+</body>
+
+</html>

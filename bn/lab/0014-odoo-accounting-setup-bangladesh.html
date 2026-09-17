@@ -1,0 +1,576 @@
+<!doctype html>
+<html lang="bn">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description"
+    content="বাংলাদেশের জন্য Odoo Accounting সেটআপ — COA স্ট্রাকচার, ফিসক্যাল পজিশন, ব্যাংক জার্নাল, এবং NBR VAT কমপ্লায়েন্স। লাইভ ডেপ্লয়মেন্ট থেকে তৈরি। সঠিকভাবে কনফিগার করুন →" />
+  <meta name="robots" content="noindex, follow" />
+  <meta name="author" content="Mehedi Hasan" />
+  <title>Odoo Accounting সেটআপ বাংলাদেশ | NBR VAT | মেহেদী হাসান</title>
+  <link rel="canonical" href="https://mhasan.me/bn/lab/0014-odoo-accounting-setup-bangladesh" />
+  <link rel="alternate" hreflang="en" href="https://mhasan.me/lab/0014-odoo-accounting-setup-bangladesh" />
+  <link rel="alternate" hreflang="bn-BD" href="https://mhasan.me/bn/lab/0014-odoo-accounting-setup-bangladesh" />
+  <link rel="alternate" hreflang="x-default" href="https://mhasan.me/lab/0014-odoo-accounting-setup-bangladesh" />
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png" />
+  <!-- Open Graph -->
+  <meta property="og:title" content="Odoo Accounting সেটআপ বাংলাদেশ | NBR VAT | মেহেদী হাসান" />
+  <meta property="og:description"
+    content="বাংলাদেশের জন্য Odoo Accounting কীভাবে কনফিগার করবেন — COA স্ট্রাকচার, VAT ও এক্সপোর্টের জন্য ফিসক্যাল পজিশন, ব্যাংক জার্নাল, এবং NBR কমপ্লায়েন্স। লাইভ ডেপ্লয়মেন্ট থেকে তৈরি।" />
+  <meta property="og:url" content="https://mhasan.me/bn/lab/0014-odoo-accounting-setup-bangladesh" />
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="https://mhasan.me/assets/og-default.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale" content="bn_BD" />
+  <meta property="og:site_name" content="মেহেদী হাসান | Odoo ERP কনসালট্যান্ট" />
+  <meta property="article:author" content="https://www.linkedin.com/in/mehedi-hasan-consultant/" />
+  <meta property="article:published_time" content="2026-05-04T10:00:00+06:00" />
+  <meta property="article:modified_time" content="2026-05-22T10:00:00+06:00" />
+  <meta property="article:section" content="Odoo ERP Bangladesh" />
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Odoo Accounting সেটআপ বাংলাদেশ | NBR VAT" />
+  <meta name="twitter:description"
+    content="বাংলাদেশের জন্য Odoo Accounting কনফিগারেশন — COA, ফিসক্যাল পজিশন, ব্যাংক জার্নাল, এবং NBR VAT কমপ্লায়েন্স।" />
+  <meta name="twitter:image" content="https://mhasan.me/assets/og-default.jpg" />
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "বাংলাদেশের জন্য Odoo Accounting সেটআপ: Chart of Accounts ও ফিসক্যাল পজিশন (2026)",
+    "description": "বাংলাদেশি ব্যবসার জন্য Odoo Accounting কনফিগার করার একটি প্র্যাকটিশনার গাইড — Chart of Accounts স্ট্রাকচার, ফিসক্যাল পজিশন, ব্যাংক জার্নাল সেটআপ, পেমেন্ট টার্মস, এবং NBR VAT কমপ্লায়েন্স হুকসহ।",
+    "datePublished": "2026-05-04T10:00:00+06:00",
+    "dateModified": "2026-05-22T00:00:00+06:00",
+    "inLanguage": "bn",
+    "author": {
+      "@type": "Person",
+      "name": "Mehedi Hasan",
+      "url": "https://mhasan.me",
+      "jobTitle": "Odoo ERP Consultant & Business Analyst",
+      "sameAs": "https://www.linkedin.com/in/mehedi-hasan-consultant/"
+    },
+    "publisher": { "@type": "Person", "name": "Mehedi Hasan", "url": "https://mhasan.me" },
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://mhasan.me/bn/lab/0014-odoo-accounting-setup-bangladesh" }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "হোম", "item": "https://mhasan.me/bn" },
+      { "@type": "ListItem", "position": 2, "name": "ল্যাব", "item": "https://mhasan.me/bn/#lab" },
+      { "@type": "ListItem", "position": 3, "name": "Odoo Accounting সেটআপ বাংলাদেশ", "item": "https://mhasan.me/bn/lab/0014-odoo-accounting-setup-bangladesh" }
+    ]
+  }
+]
+</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&family=Noto+Sans+Bengali:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap">
+  <link rel="stylesheet" href="/lab/_styles.css">
+  <style>
+    body{ font-family: 'Noto Sans Bengali', var(--sans); }
+    .pull {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: clamp(24px, 3vw, 36px);
+      line-height: 1.25;
+      color: var(--text);
+      margin: 48px 0;
+      padding: 0;
+      border: none;
+      max-width: 22ch;
+      letter-spacing: -0.01em;
+    }
+    .pull::before {
+      content: "";
+      display: block;
+      width: 36px;
+      height: 1px;
+      background: var(--accent);
+      margin-bottom: 18px;
+    }
+
+    /* COA structure */
+    .coa-group {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+      background: var(--surface);
+      margin: 24px 0;
+    }
+    .coa-row {
+      display: grid;
+      grid-template-columns: 90px 1fr 180px;
+      gap: 0;
+      padding: 12px 18px;
+      border-bottom: 1px solid var(--border);
+      font-size: 13.5px;
+      align-items: center;
+    }
+    .coa-row:last-child { border-bottom: none; }
+    .coa-row.header {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-3);
+      padding: 10px 18px;
+    }
+    .coa-row .code {
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--accent);
+      letter-spacing: 0.04em;
+    }
+    .coa-row .name { color: var(--text); }
+    .coa-row .note { font-size: 12px; color: var(--text-3); }
+    @media(max-width:640px) {
+      .coa-row { grid-template-columns: 70px 1fr; }
+      .coa-row .note { display: none; }
+    }
+
+    /* fiscal position cards */
+    .fp-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin: 24px 0;
+    }
+    .fp-card {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 20px;
+      background: var(--surface);
+    }
+    .fp-card.main { border-color: oklch(0.80 0.17 155 / 0.4); }
+    .fp-card .fp-label {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-3);
+      margin-bottom: 10px;
+    }
+    .fp-card.main .fp-label { color: var(--accent); }
+    .fp-card h4 { margin: 0 0 10px; font-size: 15px; font-weight: 500; color: var(--text); }
+    .fp-card ul { margin: 0; padding: 0 0 0 16px; }
+    .fp-card ul li { font-size: 13px; color: var(--text-2); margin-bottom: 6px; line-height: 1.5; }
+    @media(max-width:700px) { .fp-grid { grid-template-columns: 1fr; } }
+
+    /* step list */
+    .step-list {
+      list-style: none;
+      padding: 0;
+      margin: 20px 0;
+      counter-reset: steps;
+    }
+    .step-list li {
+      counter-increment: steps;
+      display: flex;
+      gap: 16px;
+      padding: 16px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 14.5px;
+      color: var(--text-2);
+      line-height: 1.6;
+    }
+    .step-list li:last-child { border-bottom: none; }
+    .step-list li::before {
+      content: counter(steps, decimal-leading-zero);
+      font-family: var(--mono);
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--accent);
+      letter-spacing: 0.06em;
+      flex: none;
+      width: 28px;
+      padding-top: 2px;
+    }
+    .step-list li strong { color: var(--text); }
+
+    .field-note{margin:28px 0;border:1px solid var(--border);border-radius:12px;overflow:hidden;background:var(--surface)}
+    .fn-hd{display:flex;align-items:center;justify-content:space-between;padding:12px 18px;border-bottom:1px solid var(--border);font-family:var(--mono);font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-3)}
+    .fn-hd .when{color:var(--accent)}
+    .fn-body{padding:18px 22px;font-size:15px;line-height:1.65;color:var(--text-2)}
+    .fn-body strong{color:var(--text);font-weight:500}
+  </style>
+</head>
+
+<body>
+  <div class="grid-bg"></div>
+
+  <header class="nav">
+    <div class="shell">
+      <div class="nav-inner">
+        <a class="brand" href="/bn/">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span class="brand-name"><b>Mehedi Hasan</b><em>ERP · বিজনেস অ্যানালিস্ট</em></span>
+        </a>
+        <a class="back-link" href="/bn/#lab">← ল্যাব-এ ফিরুন</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="post-head">
+    <div class="shell">
+      <span class="eyebrow">টেকনিক্যাল ল্যাব · 0014</span>
+      <h1>বাংলাদেশের জন্য Odoo Accounting সেটআপ — <span class="serif">chart of accounts ও ফিসক্যাল পজিশন।</span></h1>
+      <p class="lede">বাংলাদেশের জন্য Odoo-র অ্যাকাউন্টিং ইঞ্জিন কীভাবে কনফিগার করবেন: COA স্ট্রাকচার, ডোমেস্টিক ও এক্সপোর্টের জন্য ফিসক্যাল পজিশন, ব্যাংক জার্নাল, পেমেন্ট টার্মস, এবং প্রতিটি ডেপ্লয়মেন্টে দরকারি NBR VAT কমপ্লায়েন্স হুক।</p>
+      <div class="post-meta">
+        <span class="chip accent">সেটআপ গাইড</span>
+        <span class="chip">Accounting</span>
+        <span class="chip">বাংলাদেশ</span>
+        <span class="chip">NBR · VAT</span>
+      </div>
+      <div class="byline">
+        <span>লেখক<b><a href="https://www.linkedin.com/in/mehedi-hasan-consultant/" style="color:var(--accent)" rel="author">Mehedi Hasan</a></b></span>
+        <span>প্রকাশিত<b>মে ২০২৬</b></span>
+        <span>পড়ার সময়<b>১১ মিনিট</b></span>
+        <span>ধরন<b>কনফিগারেশন গাইড</b></span>
+        <span>পরিসর<b>SME থেকে Enterprise</b></span>
+      </div>
+    </div>
+  </section>
+
+  <article class="post">
+    <aside class="toc">
+      <div class="toc-k">এই গাইডে</div>
+      <ol>
+        <li><a href="#why-first">কেন অ্যাকাউন্টিং সেটআপ সবার আগে</a></li>
+        <li><a href="#install">Accounting মডিউল ইনস্টল করা</a></li>
+        <li><a href="#coa">বাংলাদেশের জন্য Chart of Accounts</a></li>
+        <li><a href="#taxes">ট্যাক্স কনফিগারেশন</a></li>
+        <li><a href="#fiscal">ফিসক্যাল পজিশন</a></li>
+        <li><a href="#journals">ব্যাংক ও ক্যাশ জার্নাল</a></li>
+        <li><a href="#payment-terms">পেমেন্ট টার্মস</a></li>
+        <li><a href="#opening">ওপেনিং ব্যালেন্স</a></li>
+        <li><a href="#faq">সচরাচর জিজ্ঞাসা</a></li>
+      </ol>
+    </aside>
+
+    <div class="body">
+      <p>যেকোনো Odoo ডেপ্লয়মেন্টে অ্যাকাউন্টিং কনফিগারেশনই সবচেয়ে গুরুত্বপূর্ণ সেটআপ সিদ্ধান্ত — অথচ সবচেয়ে বেশি তাড়াহুড়ো করে করা হয়। বাংলাদেশে এর ঝুঁকি আরও বেশি। একটি ভুল ফিসক্যাল পজিশন মানে প্রতিটি ট্রানজ্যাকশনে VAT ভুল হিসাব হবে। একটি ভুল COA অ্যাকাউন্ট কোড মানে আপনার ট্যাক্স রিটার্ন সিস্টেমের সাথে মিলবে না। একটি ভুল কস্টিং মেথড (এখানে, অ্যাকাউন্টিং লেয়ারে সেট করা হয়) মানে প্রথম দিন থেকেই ইনভেন্টরি ভ্যালু অবিশ্বাস্য হয়ে যাবে।</p>
+
+      <p>এই গাইড বাংলাদেশের প্রতিটি ডেপ্লয়মেন্টে আমি যে সেটআপ সিকোয়েন্স ব্যবহার করি তা অনুসরণ করে: ইনস্টল, COA, ট্যাক্স, ফিসক্যাল পজিশন, জার্নাল, পেমেন্ট টার্মস, ওপেনিং ব্যালেন্স — এই ক্রমে। আগে বাড়িয়ে দেবেন না।</p>
+
+      <p class="pull">অ্যাকাউন্টিং কনফিগারেশনের ভুল নীরবে জমতে থাকে। একটি ভুল অ্যাকাউন্ট কোড কেউ খেয়াল করার আগেই হাজার হাজার ভুল জার্নাল এন্ট্রি তৈরি করে ফেলে।</p>
+
+      <h2 id="why-first">কেন অ্যাকাউন্টিং সেটআপ সবার আগে হতে হবে</h2>
+
+      <p>প্রতিটি Odoo মডিউল জার্নাল এন্ট্রি পোস্ট করে। ইনভেন্টরি মুভমেন্ট স্টক ভ্যালুয়েশন এন্ট্রি তৈরি করে। Manufacturing Order কাঁচামাল থেকে WIP হয়ে ফিনিশড গুডস পর্যন্ত কস্ট মুভ করে। সেলস অর্ডার রিসিভেবল তৈরি করে। পারচেজ অর্ডার পেয়েবল তৈরি করে। এগুলোর কোনোটিই সঠিকভাবে কাজ করবে না যদি না তারা যে অ্যাকাউন্টে পোস্ট করছে সেগুলো আগে থেকেই সঠিকভাবে টাইপ করে তৈরি থাকে।</p>
+
+      <p>অ্যাকাউন্টিং-এর আগে ইনভেন্টরি সেটআপ করার ফল: আপনাকে স্টক ভ্যালুয়েশন এন্ট্রি রিভার্স করতে হবে, প্রোডাক্ট ক্যাটাগরিতে অ্যাকাউন্ট অ্যাসাইনমেন্ট ঠিক করতে হবে, আর ওপেনিং ব্যালেন্স রিকনসাইল করতে হবে — এমন কাজ যাতে কয়েক দিন লাগে। প্রথমে অ্যাকাউন্টিং সেটআপ করুন, তাহলে প্রথম ট্রানজ্যাকশন থেকেই বাকি প্রতিটি মডিউল একটি সঠিকভাবে গঠিত ফাইন্যান্সিয়াল লেজারে প্রবাহিত হবে।</p>
+
+      <h2 id="install">Accounting মডিউল ইনস্টল করা</h2>
+
+      <p>Apps → Accounting → Install। এটি Invoicing-ও ইনস্টল করে। মাল্টি-কারেন্সি দরকার হলে (এক্সপোর্টারদের জন্য আবশ্যক), Settings → Accounting → Currencies-এ যান আর আপনি যেসব কারেন্সিতে ট্রেড করেন সেগুলো অ্যাক্টিভেট করুন (বাংলাদেশি এক্সপোর্টারদের জন্য USD, EUR, GBP সবচেয়ে সাধারণ)। কোম্পানি কারেন্সি হিসেবে BDT সেট করুন।</p>
+
+      <p>Settings → Accounting-এ, কনফিগার করুন:</p>
+
+      <ul>
+        <li><strong>Fiscal Year</strong> — বাংলাদেশের ফিসক্যাল ইয়ার ১ জুলাই থেকে ৩০ জুন। কোনো জার্নাল এন্ট্রি তৈরির আগে এটি সেট করুন।</li>
+        <li><strong>Tax Calculation</strong> — "Tax included in price" নাকি "Tax excluded from price"। বাংলাদেশি ইনভয়েসে সাধারণত ট্যাক্স আলাদাভাবে দেখানো হয় (exclusive)। আপনার ফাইন্যান্স টিমের সাথে নিশ্চিত করুন।</li>
+        <li><strong>Lock Date</strong> — একটি পিরিয়ড বন্ধ হয়ে গেলে, একটি লক ডেট সেট করুন যাতে কেউ সেখানে ফিরে পোস্ট করতে না পারে। অডিট কমপ্লায়েন্সের জন্য গুরুত্বপূর্ণ।</li>
+        <li><strong>Default Accounts</strong> — ডিফল্ট ইনকাম, এক্সপেন্স, রিসিভেবল, আর পেয়েবল অ্যাকাউন্ট সেট করুন। কোনো প্রোডাক্ট বা কন্ট্যাক্টে নির্দিষ্ট অ্যাকাউন্ট সেট না থাকলে এগুলোই ফলব্যাক হিসেবে কাজ করে।</li>
+      </ul>
+
+      <h2 id="coa">বাংলাদেশের জন্য Chart of Accounts</h2>
+
+      <p>Accounting অ্যাক্টিভেট করলে Odoo একটি জেনেরিক COA ইনস্টল করে। বাংলাদেশের জন্য এটি কাস্টমাইজ করতে হবে। স্ট্যান্ডার্ড বাংলাদেশ COA স্ট্রাকচার এই গ্রুপিং অনুসরণ করে:</p>
+
+      <div class="coa-group">
+        <div class="coa-row header">
+          <span>কোড</span><span>অ্যাকাউন্ট নাম</span><span>নোট</span>
+        </div>
+        <div class="coa-row">
+          <span class="code">1000</span><span class="name">Assets</span><span class="note">কারেন্ট + ফিক্সড অ্যাসেট</span>
+        </div>
+        <div class="coa-row">
+          <span class="code">1100</span><span class="name">Cash &amp; Bank</span><span class="note">প্রতিটি ব্যাংক অ্যাকাউন্টের জন্য একটি করে অ্যাকাউন্ট</span>
+        </div>
+        <div class="coa-row">
+          <span class="code">1200</span><span class="name">Accounts Receivable</span><span class="note">ট্রেড ডেবটর — AR রিকনসিলিয়েশনের সাথে লিংক করুন</span>
+        </div>
+        <div class="coa-row">
+          <span class="code">1300</span><span class="name">Advance to Suppliers</span><span class="note">বাংলাদেশে সাধারণ — ভেন্ডর অ্যাডভান্স</span>
+        </div>
+        <div class="coa-row">
+          <span class="code">1400</span><span class="name">Inventory / Stock</span><span class="note">প্রোডাক্ট ক্যাটাগরির কস্টিং মেথড অনুযায়ী সেট করুন</span>
+        </div>
+        <div class="coa-row">
+          <span class="code">1500</span><span class="name">VAT Creditable Input</span><span class="note">পারচেজে ইনপুট VAT — প্রতি মাসে রিকনসাইল হয়</span>
+        </div>
+        <div class="coa-row">
+          <span class="code">1600</span><span class="name">AIT Receivable (TDS)</span><span class="note">রিসিপ্টে উৎসে কর্তিত ট্যাক্স</span>
+        </div>
+        <div class="coa-row">
+          <span class="code">2000</span><span class="name">Liabilities</span><span class="note">কারেন্ট + লং-টার্ম লায়াবিলিটি</span>
+        </div>
+        <div class="coa-row">
+          <span class="code">2100</span><span class="name">Accounts Payable</span><span class="note">ট্রেড ক্রেডিটর — AP রিকনসিলিয়েশনের সাথে লিংক করুন</span>
+        </div>
+        <div class="coa-row">
+          <span class="code">2200</span><span class="name">VAT Payable (Output)</span><span class="note">সেলসে সংগৃহীত ১৫% VAT — NBR-এ জমা দেওয়া হয়</span>
+        </div>
+        <div class="coa-row">
+          <span class="code">2300</span><span class="name">TDS Payable</span><span class="note">ভেন্ডর পেমেন্ট থেকে কর্তিত AIT</span>
+        </div>
+        <div class="coa-row">
+          <span class="code">2400</span><span class="name">Salaries &amp; Benefits Payable</span><span class="note">অ্যাক্রুড পে-রোল — HR মডিউল এখানে পোস্ট করে</span>
+        </div>
+        <div class="coa-row">
+          <span class="code">3000</span><span class="name">Equity</span><span class="note">শেয়ার ক্যাপিটাল + রিটেইনড আর্নিংস</span>
+        </div>
+        <div class="coa-row">
+          <span class="code">4000</span><span class="name">Revenue</span><span class="note">ক্যাটাগরি অনুযায়ী সেলস (ডোমেস্টিক, এক্সপোর্ট)</span>
+        </div>
+        <div class="coa-row">
+          <span class="code">4100</span><span class="name">Domestic Sales</span><span class="note">বাংলাদেশে VAT-যোগ্য সেলস</span>
+        </div>
+        <div class="coa-row">
+          <span class="code">4200</span><span class="name">Export Sales</span><span class="note">জিরো-রেটেড; ট্যাক্স রিটার্নের জন্য আলাদা</span>
+        </div>
+        <div class="coa-row">
+          <span class="code">5000</span><span class="name">Cost of Goods Sold</span><span class="note">ম্যানুফ্যাকচারিং ও ইনভেন্টরি COGS</span>
+        </div>
+        <div class="coa-row">
+          <span class="code">6000</span><span class="name">Operating Expenses</span><span class="note">অ্যাডমিন, সেলিং, ফাইন্যান্স চার্জ</span>
+        </div>
+      </div>
+
+      <div class="callout">
+        <span class="tag">যে মূল অ্যাকাউন্টগুলো যোগ করতে হবে</span>
+        <p>Odoo-র জেনেরিক COA-তে তিনটি অ্যাকাউন্ট বাদ পড়ে যা বাংলাদেশি ব্যবসার দরকার: <strong>Advance to Suppliers</strong> (ডেলিভারির আগে দেওয়া ভেন্ডর অ্যাডভান্স — স্থানীয় প্রোকিউরমেন্টে খুব সাধারণ), <strong>AIT Receivable</strong> (কাস্টমাররা আপনার রিসিপ্ট থেকে যে TDS আটকে রাখেন), এবং <strong>TDS Payable</strong> (ভেন্ডর পেমেন্ট থেকে আপনাকে যে AIT কাটতে হয়)। গো-লাইভের আগে তিনটিই যোগ করুন।</p>
+      </div>
+
+      <h2 id="taxes">ট্যাক্স কনফিগারেশন</h2>
+
+      <p>Accounting → Configuration → Taxes → New। বাংলাদেশের জন্য কমপক্ষে এই ট্যাক্স রেকর্ডগুলো দরকার:</p>
+
+      <table>
+        <thead>
+          <tr><th>ট্যাক্স নাম</th><th>রেট</th><th>টাইপ</th><th>অ্যাকাউন্ট</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>VAT 15% (Sales)</td>
+            <td>15%</td>
+            <td>Sales</td>
+            <td>2200 — VAT Payable</td>
+          </tr>
+          <tr>
+            <td>VAT 15% (Purchase)</td>
+            <td>15%</td>
+            <td>Purchase</td>
+            <td>1500 — VAT Creditable Input</td>
+          </tr>
+          <tr>
+            <td>VAT 0% Export (Sales)</td>
+            <td>0%</td>
+            <td>Sales</td>
+            <td>নেই (জিরো-রেটেড)</td>
+          </tr>
+          <tr>
+            <td>AIT 3% (Purchase)</td>
+            <td>3%</td>
+            <td>Purchase (withholding)</td>
+            <td>2300 — TDS Payable</td>
+          </tr>
+          <tr>
+            <td>AIT 5% (Service — Purchase)</td>
+            <td>5%</td>
+            <td>Purchase (withholding)</td>
+            <td>2300 — TDS Payable</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>প্রতিটি ট্যাক্সের জন্য নিশ্চিত করুন <strong>tax computation</strong> "Percentage of Price" আর <strong>tax account</strong> সঠিকভাবে ম্যাপ করা আছে। প্রতিটি ইনভয়েসে Odoo প্রতি ট্যাক্সের জন্য একটি জার্নাল এন্ট্রি লাইন পোস্ট করে। অ্যাকাউন্ট ভুল হলে, NBR রিটার্নের সাথে VAT রিকনসিলিয়েশন কাজ করবে না।</p>
+
+      <div class="callout">
+        <span class="tag">NBR কমপ্লায়েন্স লিংক</span>
+        <p>Odoo-তে সম্পূর্ণ Mushak ফর্ম সেটআপ ও VAT রিপোর্টিং ওয়ার্কফ্লোর জন্য দেখুন আমার বিস্তারিত গাইড <a href="/bn/lab/0003-nbr-vat-compliance-odoo-bangladesh" style="color:var(--accent)">Odoo বাংলাদেশে NBR VAT কমপ্লায়েন্স</a> নিয়ে। সেই গাইডে Mushak 6.1, 6.2, 6.3, এবং 9.1 কভার করা হয়েছে — বাংলাদেশি ব্যবসার জন্য সবচেয়ে বেশি দরকারি ফর্মগুলো।</p>
+      </div>
+
+      <h2 id="fiscal">ফিসক্যাল পজিশন</h2>
+
+      <p>Fiscal Position হলো Odoo-র সেই মেকানিজম যা আপনি কার কাছে বিক্রি করছেন বা কার কাছ থেকে কিনছেন তার ভিত্তিতে স্বয়ংক্রিয়ভাবে সঠিক ট্যাক্স আর অ্যাকাউন্ট ম্যাপিং প্রয়োগ করে। বাংলাদেশি ডেপ্লয়মেন্টে এটি সবচেয়ে কম ব্যবহৃত কনফিগারেশন ফিচার — আর বেশিরভাগ ট্যাক্স এররের উৎস।</p>
+
+      <p>অন্তত এই তিনটি ফিসক্যাল পজিশন তৈরি করুন:</p>
+
+      <div class="fp-grid">
+        <div class="fp-card main">
+          <div class="fp-label">ডিফল্ট</div>
+          <h4>Domestic — VAT-যোগ্য</h4>
+          <ul>
+            <li>ট্যাক্স ম্যাপিং: VAT 15% Sales → VAT 15% Sales (পরিবর্তন নেই)</li>
+            <li>সব বাংলাদেশ-নিবন্ধিত কাস্টমারকে অ্যাসাইন করুন</li>
+            <li>রেভিনিউ অ্যাকাউন্ট: 4100 Domestic Sales</li>
+            <li>আউটগোয়িং শিপমেন্টে Mushak 6.3 (ডেলিভারি চালান) ট্রিগার করে</li>
+          </ul>
+        </div>
+        <div class="fp-card">
+          <div class="fp-label">এক্সপোর্ট / জিরো-রেটেড</div>
+          <h4>Export — Zero VAT</h4>
+          <ul>
+            <li>ট্যাক্স ম্যাপিং: VAT 15% Sales → VAT 0% Export</li>
+            <li>সব বিদেশি কাস্টমার আর EPZ এন্টিটিকে অ্যাসাইন করুন</li>
+            <li>রেভিনিউ অ্যাকাউন্ট: 4200 Export Sales</li>
+            <li>কোনো Mushak 6.3 নেই — এর বদলে এক্সপোর্ট ডকুমেন্টেশন প্রযোজ্য</li>
+          </ul>
+        </div>
+        <div class="fp-card">
+          <div class="fp-label">স্পেশাল</div>
+          <h4>VAT-exempt</h4>
+          <ul>
+            <li>ট্যাক্স ম্যাপিং: VAT 15% → None (ট্যাক্স লাইন সরিয়ে দেয়)</li>
+            <li>NBR-অব্যাহতিপ্রাপ্ত পক্ষদের অ্যাসাইন করুন (যেমন, কৃষি সমবায়)</li>
+            <li>মূল রেভিনিউ কোডেই অ্যাকাউন্ট রাখুন — অব্যাহতি শুধু ট্যাক্সে</li>
+            <li>কন্ট্যাক্ট রেকর্ডে NBR অব্যাহতি সার্টিফিকেট নম্বর নথিভুক্ত করুন</li>
+          </ul>
+        </div>
+      </div>
+
+      <p>কন্ট্যাক্ট (কাস্টমার/সাপ্লায়ার) রেকর্ডে ফিসক্যাল পজিশন অ্যাসাইন করুন — Accounting ট্যাব → Fiscal Position। সেই পার্টনারের প্রতিটি ইনভয়েস ও পারচেজ অর্ডারে Odoo স্বয়ংক্রিয়ভাবে সঠিক ট্যাক্স প্রয়োগ করে। একজন কাস্টমার কখনো ডোমেস্টিক আর কখনো এক্সপোর্ট কিনলে, আলাদা কন্ট্যাক্ট রেকর্ড তৈরি করুন অথবা প্রতি অর্ডারে ফিসক্যাল পজিশন সেট করুন।</p>
+
+      <div class="field-note">
+        <div class="fn-hd"><span>নোট · এক্সপোর্ট-কেন্দ্রিক ট্রেডিং কোম্পানি</span><span class="when">একটি VAT রিভিউতে ধরা পড়ে</span></div>
+        <div class="fn-body">
+          একটি ট্রেডিং কোম্পানি আমার কাছে এসেছিল যখন তাদের অ্যাকাউন্টস টিম খেয়াল করল, যেসব সেলস জিরো-রেটেড হওয়ার কথা তাতে VAT Payable ব্যালেন্স বাড়ছে। কারণটা ছিল একটি মিস হওয়া ধাপ: বিদেশি বায়ারদের কন্ট্যাক্ট হিসেবে তৈরি করার সময় কোনো ফিসক্যাল পজিশন অ্যাসাইন করা হয়নি, তাই প্রতিটি এক্সপোর্ট ইনভয়েসে Odoo ডিফল্ট ১৫% ডোমেস্টিক VAT-তে ফিরে যাচ্ছিল। ওয়ার্কফ্লোতে কিছুই এটা ফ্ল্যাগ করেনি — ইনভয়েসগুলো স্বাভাবিক দেখাচ্ছিল। <strong>এক্সপোর্ট ফিসক্যাল পজিশন অ্যাসাইন করা কোনো ঐচ্ছিক ক্লিনআপ নয়; এটাই সেই কন্ট্রোল যা আপনার VAT রিটার্নকে রিকনসাইলযোগ্য রাখে।</strong> আমরা কন্ট্যাক্টগুলো ঠিক করলাম, প্রভাবিত ইনভয়েসগুলো নতুন করে ইস্যু করলাম, আর একটি মাস্টার-ডেটা চেকলিস্ট বানালাম যাতে ফিসক্যাল পজিশন ছাড়া কোনো নতুন বায়ার সেভ না হয়।
+        </div>
+      </div>
+
+      <h2 id="journals">ব্যাংক ও ক্যাশ জার্নাল</h2>
+
+      <p>Accounting → Configuration → Journals। প্রতিটি ফিজিক্যাল ব্যাংক অ্যাকাউন্টের জন্য একটি জার্নাল তৈরি করুন। বাংলাদেশি ব্যবসায় সাধারণত থাকে:</p>
+
+      <ol class="step-list">
+        <li><strong>BDT কারেন্ট অ্যাকাউন্ট</strong> — মূল অপারেটিং অ্যাকাউন্ট। জার্নাল টাইপ: Bank। কারেন্সি: BDT। ব্যাংক অ্যাকাউন্ট নম্বর আর ব্যাংকের নাম সেট করুন। Odoo-তে ব্যাংক রিকনসিলিয়েশন করলে ব্যাংক স্টেটমেন্ট ইমপোর্টের সাথে কানেক্ট করুন (মাসে ৫০+ ট্রানজ্যাকশন থাকা সব ব্যবসার জন্য সুপারিশকৃত)।</li>
+        <li><strong>USD / ফরেন কারেন্সি অ্যাকাউন্ট</strong> — USD, EUR, বা GBP-তে পেমেন্ট পাওয়া এক্সপোর্টারদের জন্য। জার্নাল টাইপ: Bank। কারেন্সি: USD (বা প্রাসঙ্গিক ফরেন কারেন্সি)। Odoo ট্রানজ্যাকশন রেটে স্বয়ংক্রিয়ভাবে BDT-তে কনভার্ট করে। আপনার কনফিগার করা অ্যাকাউন্টে এক্সচেঞ্জ গেইন/লস স্বয়ংক্রিয়ভাবে পোস্ট হয়।</li>
+        <li><strong>Petty Cash</strong> — জার্নাল টাইপ: Cash। একটি সর্বোচ্চ ফ্লোট আর একজন দায়িত্বশীল ইউজার সেট করুন। বাংলাদেশের অপারেশনে পেটি ক্যাশ ট্রানজ্যাকশন প্রতিদিন এন্ট্রি করা আর সাপ্তাহিক রিকনসাইল করা উচিত — ক্যাশ লিকেজ একটি সাধারণ অডিট ফাইন্ডিং।</li>
+        <li><strong>LC (Letter of Credit) জার্নাল</strong> — LC ব্যবহারকারী ব্যবসার জন্য, LC ইউটিলাইজেশন ট্র্যাক করতে একটি আলাদা ব্যাংক জার্নাল তৈরি করুন। এতে মাস শেষে ব্যাংকে মোট LC এক্সপোজার রিপোর্ট করা সহজ হয়ে যায়।</li>
+      </ol>
+
+      <div class="callout">
+        <span class="tag">মাল্টি-কারেন্সি নোট</span>
+        <p>ফরেন কারেন্সি ব্যাংক অ্যাকাউন্ট থাকলে, Settings → Accounting → Multi-Currencies → Automatic Currency Rate Update চালু করুন। বাংলাদেশ ব্যাংকের অফিসিয়াল রেট ফিডের সাথে লিংক করুন অথবা প্রতি মাসে ম্যানুয়ালি আপডেট করুন। এক্সপোর্ট-কেন্দ্রিক বাংলাদেশি P&amp;L-এ এক্সচেঞ্জ রেটের পার্থক্য একটি গুরুত্বপূর্ণ লাইন আইটেম — Odoo-কে পুরনো রেট ব্যবহার করতে দেবেন না।</p>
+      </div>
+
+      <h2 id="payment-terms">পেমেন্ট টার্মস</h2>
+
+      <p>Accounting → Configuration → Payment Terms। আপনার প্রকৃত চুক্তির সাথে মেলে এমন টার্মস তৈরি করুন। বাংলাদেশ-নির্দিষ্ট টার্মস যা কনফিগার করতে হবে:</p>
+
+      <table>
+        <thead>
+          <tr><th>টার্ম নাম</th><th>স্ট্রাকচার</th><th>সাধারণ ব্যবহার</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Immediate</td>
+            <td>ইনভয়েস তারিখে ১০০%</td>
+            <td>ক্যাশ সেলস, অ্যাডভান্স পেমেন্ট</td>
+          </tr>
+          <tr>
+            <td>Net 30</td>
+            <td>ইনভয়েসের ৩০ দিন পর ১০০% বকেয়া</td>
+            <td>ডোমেস্টিক B2B ক্রেডিট সেলস</td>
+          </tr>
+          <tr>
+            <td>Net 60</td>
+            <td>ইনভয়েসের ৬০ দিন পর ১০০% বকেয়া</td>
+            <td>বড় ডোমেস্টিক ডিস্ট্রিবিউটর টার্মস</td>
+          </tr>
+          <tr>
+            <td>LC at Sight</td>
+            <td>ডকুমেন্ট প্রেজেন্টেশনে ১০০%</td>
+            <td>এক্সপোর্ট LC — শিপিং ডকুমেন্ট জমা দেওয়ার সময় পেমেন্ট</td>
+          </tr>
+          <tr>
+            <td>LC 90 Days DP</td>
+            <td>LC তারিখের ৯০ দিন পর ১০০% বকেয়া</td>
+            <td>এক্সপোর্ট বায়ারদের জন্য ডিফার্ড পেমেন্ট LC</td>
+          </tr>
+          <tr>
+            <td>50% Advance + 50% on Delivery</td>
+            <td>ইনভয়েস তারিখে ৫০% + ডেলিভারিতে ৫০%</td>
+            <td>লোকাল কাস্টম ম্যানুফ্যাকচারিং অর্ডার</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>পেমেন্ট টার্মস সঠিকভাবে সেট করা মানে Odoo-র Aged Receivables আর Aged Payables রিপোর্ট নির্ভুল হয়ে ওঠে — বাংলাদেশে ক্যাশ ফ্লো ম্যানেজমেন্ট আর ব্যাংকিং সম্পর্কের জন্য অপরিহার্য।</p>
+
+      <h2 id="opening">ওপেনিং ব্যালেন্স</h2>
+
+      <p>গো-লাইভের আগে, আপনার পুরনো অ্যাকাউন্টিং সিস্টেম থেকে ওপেনিং ব্যালেন্স ইমপোর্ট করুন। Odoo-তে এটি করা হয় গো-লাইভের আগের দিনের তারিখ দিয়ে একটি জার্নাল এন্ট্রি পোস্ট করে, যেখানে আপনার পুরনো সিস্টেমের প্রতিটি অ্যাকাউন্টের ক্লোজিং ব্যালেন্স ওপেনিং ফিগার হিসেবে থাকে।</p>
+
+      <ol class="step-list">
+        <li><strong>ট্রায়াল ব্যালেন্স এক্সট্র্যাক্ট করুন</strong> আপনার পুরনো সিস্টেম থেকে গো-লাইভ তারিখের এক দিন আগে পর্যন্ত। শূন্য নয় এমন ব্যালেন্স থাকা প্রতিটি অ্যাকাউন্ট অন্তর্ভুক্ত করতে হবে।</li>
+        <li><strong>Odoo-তে একটি জার্নাল এন্ট্রি তৈরি করুন</strong> — Accounting → Journal Entries → New। তারিখ: গো-লাইভ তারিখের ১ দিন আগে। রেফারেন্স: "Opening Balances — [তারিখ]"। প্রতি অ্যাকাউন্টের জন্য একটি লাইন যোগ করুন।</li>
+        <li><strong>এন্ট্রি ভ্যালিডেট করুন</strong> — এন্ট্রিটি ব্যালেন্স হতে হবে (ডেবিট = ক্রেডিট)। না হলে, একটি অ্যাকাউন্ট মিসিং আছে। সবচেয়ে সাধারণ মিসিং অ্যাকাউন্ট হলো "Opening Retained Earnings" — আগের সব বছরের সঞ্চিত নেট।</li>
+        <li><strong>ওপেন আইটেম রিকনসাইল করুন</strong> — Accounts Receivable আর Payable-এর জন্য, Odoo-তে প্রতিটি ওপেন ইনভয়েস আর বিল চিহ্নিত করুন (অথবা ড্রাফট ডকুমেন্ট হিসেবে ইমপোর্ট করুন) আর ওপেনিং ব্যালেন্স এন্ট্রির সাথে রিকনসাইল করুন। এতে প্রথম দিন থেকেই Aged Receivables নির্ভুল হয়।</li>
+      </ol>
+
+      <p>একটি মিড-সাইজ বাংলাদেশি কোম্পানির জন্য ওপেনিং ব্যালেন্স ধাপে সাধারণত ৩–৫ দিন লাগে। সম্পূর্ণ খরচ ও শ্রমের হিসাবের জন্য দেখুন আমার <a href="/bn/lab/0012-odoo-erp-cost-bangladesh" style="color:var(--accent)">Odoo ERP কস্ট গাইড</a> — ডেটা মাইগ্রেশন আর ওপেনিং ব্যালেন্স প্রজেক্ট বাজেটের একটি বড় অংশ দখল করে, বেশিরভাগ ক্লায়েন্টের প্রত্যাশার চেয়ে বেশি। নিজের প্রজেক্টের জন্য একটি সংখ্যা পেতে, ব্যবহার করুন <a href="/bn/tools/odoo-cost-estimator/" style="color:var(--accent)">Odoo cost estimator</a>।</p>
+
+      <div class="callout">
+        <span class="tag">পরবর্তী ধাপ</span>
+        <p>বাংলাদেশের জন্য অ্যাকাউন্টিং সেটআপ আমার স্কোপ করা প্রতিটি বাস্তবায়নের অংশ। আপনার COA স্ট্রাকচার NBR কমপ্লায়েন্সের জন্য সঠিক কিনা, বা আপনার ফিসক্যাল পজিশন সঠিকভাবে ম্যাপ করা আছে কিনা নিশ্চিত না হলে, <a href="/bn/#contact" style="color:var(--accent)">চলুন ৩০ মিনিটের একটি কনফিগারেশন রিভিউ করি →</a></p>
+      </div>
+
+      <h2 id="faq">সচরাচর জিজ্ঞাসা</h2>
+
+      <h3>Odoo-তে কি বাংলাদেশ Chart of Accounts টেমপ্লেট আছে?</h3>
+      <p>না — Odoo বাংলাদেশের জন্য পূর্ব-নির্মিত কোনো COA দেয় না। Accounting মডিউলের সাথে ইনস্টল হওয়া জেনেরিক COA কাস্টমাইজেশন দরকার: NBR-নির্দিষ্ট VAT ও AIT অ্যাকাউন্ট যোগ করুন, রেভিনিউকে ডোমেস্টিক আর এক্সপোর্টে ভাগ করুন, আর বাংলাদেশ অপারেশনের দরকারি অ্যাডভান্স-টু-সাপ্লায়ার আর TDS অ্যাকাউন্ট যোগ করুন। একটি স্ট্যান্ডার্ড বাংলাদেশি SME-এর জন্য এই সেটআপে ৪–৮ ঘণ্টা লাগে।</p>
+
+      <h3>Odoo-তে বাংলাদেশের জন্য VAT কীভাবে কনফিগার করব?</h3>
+      <p>১৫% Sales VAT (VAT Payable-এ পোস্ট হয়), ১৫% Purchase VAT (VAT Creditable Input-এ পোস্ট হয়), আর ০% Export VAT-এর জন্য Tax রেকর্ড তৈরি করুন। এরপর Fiscal Position তৈরি করুন যা প্রতিটি কাস্টমার টাইপে সঠিক ট্যাক্স ম্যাপ করে — ডোমেস্টিক ১৫% পায়, এক্সপোর্ট ০% পায়, VAT-exempt কোনো ট্যাক্স পায় না। কাস্টমার রেকর্ডে ফিসক্যাল পজিশন অ্যাসাইন করুন, আর প্রতিটি ইনভয়েসে Odoo স্বয়ংক্রিয়ভাবে সঠিক ট্যাক্স প্রয়োগ করবে।</p>
+
+      <h3>বাংলাদেশের জন্য কোন ফিসক্যাল পজিশন তৈরি করা উচিত?</h3>
+      <p>কমপক্ষে তিনটি: Domestic (স্ট্যান্ডার্ড ১৫% VAT), Export (জিরো-রেটেড, ভিন্ন ডকুমেন্টেশন ফ্লো ট্রিগার করে), আর VAT-exempt (NBR-অব্যাহতিপ্রাপ্ত পক্ষদের জন্য VAT পুরোপুরি সরিয়ে দেয়)। EPZ কাস্টমার থাকা এক্সপোর্টারদের EPZ-নির্দিষ্ট ট্রিটমেন্টের জন্য একটি চতুর্থ পজিশন দরকার। মাস্টার ডেটা সেটআপের সময় প্রতিটি কাস্টমার ও সাপ্লায়ার রেকর্ডে সঠিক পজিশন অ্যাসাইন করুন — এই ধাপটি এড়ানো যায় না।</p>
+
+      <h3>Odoo-তে AIT (উৎসে কর্তিত কর) কীভাবে হ্যান্ডল করব?</h3>
+      <p>আপনার প্রোকিউরমেন্ট ক্যাটাগরিতে প্রযোজ্য রেটে AIT-কে Purchase withholding tax হিসেবে কনফিগার করুন (সাধারণত পণ্যের জন্য ৩%, সার্ভিসের জন্য ৫%)। ভেন্ডর বিলে, Odoo স্বয়ংক্রিয়ভাবে AIT কেটে আপনার TDS Payable অ্যাকাউন্টে পোস্ট করে। মাস শেষে, রেভিনিউ অথরিটিকে TDS Payable পরিমাণ পরিশোধ করুন। কাস্টমাররা AIT কেটে নেওয়া আয়ের জন্য, একটি আলাদা AIT Receivable অ্যাকাউন্ট তৈরি করুন আর আপনার ট্যাক্স সার্টিফিকেটের সাথে রিকনসাইল করুন।</p>
+    </div>
+  </article>
+
+  <footer>
+    <div class="shell">
+      <div class="post-foot">
+        <span class="eyebrow">আরও পড়ুন</span>
+        <div class="next">
+          <a class="next-card" href="/bn/lab/0013-odoo-manufacturing-module-bangladesh">
+            <span class="dir">পুরনো · 0013</span>
+            <h4>বাংলাদেশের কারখানার জন্য Odoo Manufacturing মডিউল সেটআপ</h4>
+            <p>BoM, Work Centers, রাউটিং, এবং বাংলাদেশের জন্য সম্পূর্ণ Manufacturing Order লাইফসাইকেল।</p>
+            <span class="arrow">→</span>
+          </a>
+          <a class="next-card" href="/bn/lab/0015-odoo-purchase-vendor-management-bangladesh">
+            <span class="dir">নতুন · 0015</span>
+            <h4>Odoo Purchase ও Vendor Management: বাংলাদেশ SME প্লেবুক</h4>
+            <p>RFQ ওয়ার্কফ্লো, অ্যাপ্রুভাল ম্যাট্রিক্স, 3-way ম্যাচিং, আর ভেন্ডর পেমেন্ট ম্যানেজমেন্ট।</p>
+            <span class="arrow">→</span>
+          </a>
+        </div>
+      </div>
+      <div class="foot">
+        <span>© ২০২৬ Mehedi Hasan · Lab / 0014</span>
+        <span><a href="/bn/#lab">↑ ল্যাব ইনডেক্সে ফিরুন</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/lab/_utils.js" defer></script>
+<script src="/lab/_toc.js" defer></script>
+<script src="/whatsapp.js" defer></script>
+<script src="/scroll-top.js" defer></script>
+</body>
+
+</html>

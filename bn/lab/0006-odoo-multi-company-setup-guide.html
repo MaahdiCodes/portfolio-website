@@ -1,0 +1,295 @@
+<!doctype html>
+<html lang="bn">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="icon" href="/favicon.ico" sizes="any" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon.png" />
+<link rel="apple-touch-icon" href="/favicon.png" />
+<meta name="description" content="Odoo মাল্টি-কোম্পানি সেটআপ গাইড — কখন এটা সত্যিই সাহায্য করে, কখন সব খারাপ করে দেয়, আর ইন্টার-কোম্পানি ট্রানজ্যাকশন সঠিকভাবে কীভাবে কনফিগার করবেন।" />
+<meta name="robots" content="noindex, follow" />
+<meta name="author" content="Mehedi Hasan" />
+<title>Odoo মাল্টি-কোম্পানি সেটআপ গাইড | কখন ব্যবহার করবেন | মেহেদী হাসান</title>
+<link rel="canonical" href="https://mhasan.me/bn/lab/0006-odoo-multi-company-setup-guide" />
+<link rel="alternate" hreflang="en" href="https://mhasan.me/lab/0006-odoo-multi-company-setup-guide" />
+<link rel="alternate" hreflang="bn-BD" href="https://mhasan.me/bn/lab/0006-odoo-multi-company-setup-guide" />
+<link rel="alternate" hreflang="x-default" href="https://mhasan.me/lab/0006-odoo-multi-company-setup-guide" />
+<!-- Open Graph -->
+<meta property="og:title" content="Odoo মাল্টি-কোম্পানি সেটআপ গাইড | কখন ব্যবহার করবেন | মেহেদী হাসান" />
+<meta property="og:description" content="Odoo মাল্টি-কোম্পানি সেটআপ গাইড — কখন এটা সত্যিই সাহায্য করে, কখন সব খারাপ করে দেয়, আর ইন্টার-কোম্পানি ট্রানজ্যাকশন সঠিকভাবে কীভাবে কনফিগার করবেন।" />
+<meta property="og:url" content="https://mhasan.me/bn/lab/0006-odoo-multi-company-setup-guide" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://mhasan.me/assets/og-default.jpg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:locale" content="bn_BD" />
+<meta property="og:site_name" content="মেহেদী হাসান | Odoo কনসালট্যান্ট" />
+<meta property="article:author" content="https://www.linkedin.com/in/mehedi-hasan-consultant/" />
+<meta property="article:published_time" content="2025-11-01T08:00:00+06:00" />
+<meta property="article:modified_time" content="2026-05-22T08:00:00+06:00" />
+<meta property="article:section" content="Odoo ERP Bangladesh" />
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Odoo মাল্টি-কোম্পানি সেটআপ গাইড | কখন ব্যবহার করবেন | মেহেদী হাসান" />
+<meta name="twitter:description" content="Odoo মাল্টি-কোম্পানি সেটআপ গাইড — কখন এটা সত্যিই সাহায্য করে, কখন সব খারাপ করে দেয়, আর ইন্টার-কোম্পানি ট্রানজ্যাকশন সঠিকভাবে কীভাবে কনফিগার করবেন।" />
+<meta name="twitter:image" content="https://mhasan.me/assets/og-default.jpg" />
+<!-- JSON-LD: Article + BreadcrumbList -->
+<script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Odoo মাল্টি-কোম্পানি সেটআপ গাইড — কখন ব্যবহার করবেন, কখন এড়িয়ে যাবেন",
+    "description": "Odoo মাল্টি-কোম্পানি সেটআপ গাইড — কখন এটা সত্যিই সাহায্য করে, কখন সব খারাপ করে দেয়, আর ইন্টার-কোম্পানি ট্রানজ্যাকশন সঠিকভাবে কীভাবে কনফিগার করবেন।",
+    "datePublished": "2025-11-01T08:00:00+06:00",
+    "dateModified": "2026-05-22T08:00:00+06:00",
+    "inLanguage": "bn",
+    "author": {
+      "@type": "Person",
+      "name": "Mehedi Hasan",
+      "url": "https://mhasan.me",
+      "sameAs": "https://www.linkedin.com/in/mehedi-hasan-consultant/"
+    },
+    "publisher": { "@type": "Person", "name": "Mehedi Hasan", "url": "https://mhasan.me" },
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://mhasan.me/bn/lab/0006-odoo-multi-company-setup-guide" }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "হোম", "item": "https://mhasan.me/bn" },
+      { "@type": "ListItem", "position": 2, "name": "ল্যাব", "item": "https://mhasan.me/bn/#lab" },
+      { "@type": "ListItem", "position": 3, "name": "Odoo মাল্টি-কোম্পানি সেটআপ গাইড", "item": "https://mhasan.me/bn/lab/0006-odoo-multi-company-setup-guide" }
+    ]
+  }
+]
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&family=Noto+Sans+Bengali:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap">
+<link rel="stylesheet" href="/lab/_styles.css">
+<style>
+  body{ font-family: 'Noto Sans Bengali', var(--sans); }
+  .pull{
+    font-family:var(--serif);font-style:italic;
+    font-size:clamp(28px,3.4vw,42px);line-height:1.2;color:var(--text);
+    margin:48px 0;padding:0;border:none;
+    max-width:18ch;letter-spacing:-0.01em;
+  }
+  .pull::before{content:"";display:block;width:36px;height:1px;background:var(--accent);margin-bottom:18px}
+
+  .field-note{margin:28px 0;border:1px solid var(--border);border-radius:12px;overflow:hidden;background:var(--surface)}
+  .fn-hd{display:flex;align-items:center;justify-content:space-between;padding:12px 18px;border-bottom:1px solid var(--border);font-family:var(--mono);font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-3)}
+  .fn-hd .when{color:var(--accent)}
+  .fn-body{padding:18px 22px;font-size:15px;line-height:1.65;color:var(--text-2)}
+  .fn-body strong{color:var(--text);font-weight:500}
+
+  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:28px 0}
+  .two-col .col{border:1px solid var(--border);border-radius:10px;padding:20px;background:var(--surface)}
+  .two-col .col.use{border-color:oklch(0.80 0.17 155 / 0.35)}
+  .two-col .col.avoid{border-color:oklch(0.65 0.15 25 / 0.35)}
+  .two-col .col h4{margin:0 0 12px;font-family:var(--mono);font-size:11px;letter-spacing:0.12em;text-transform:uppercase;font-weight:600}
+  .two-col .col.use h4{color:var(--accent)}
+  .two-col .col.avoid h4{color:#C76A6A}
+  .two-col .col ul{margin:0;padding:0 0 0 16px;display:flex;flex-direction:column;gap:8px}
+  .two-col .col ul li{font-size:13.5px;color:var(--text-2);line-height:1.55}
+  @media(max-width:680px){.two-col{grid-template-columns:1fr}}
+
+  .kv{display:grid;grid-template-columns:200px 1fr;gap:8px 18px;margin:18px 0;padding:18px 22px;border:1px solid var(--border);border-radius:10px;background:var(--surface);font-family:var(--mono);font-size:13px}
+  .kv .k{color:var(--text-3);letter-spacing:0.08em;text-transform:uppercase;font-size:10.5px;align-self:start;padding-top:2px}
+  .kv .v{color:var(--text)}
+
+  .flow{margin:24px 0;border:1px solid var(--border);border-radius:10px;overflow:hidden;background:var(--surface)}
+  .flow-row{display:grid;grid-template-columns:1fr 40px 1fr;align-items:center;padding:14px 20px;border-bottom:1px solid var(--border);gap:10px}
+  .flow-row:last-child{border-bottom:none}
+  .flow-row .side{font-size:13.5px;line-height:1.5;color:var(--text-2)}
+  .flow-row .side strong{color:var(--text);font-weight:500;display:block;font-size:12.5px;margin-bottom:4px;font-family:var(--mono);letter-spacing:0.06em;text-transform:uppercase}
+  .flow-row .arrow{text-align:center;color:var(--accent);font-size:18px}
+</style>
+</head>
+<body>
+<div class="grid-bg"></div>
+
+<header class="nav">
+  <div class="shell">
+    <div class="nav-inner">
+      <a class="brand" href="/bn/">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span class="brand-name"><b>Mehedi Hasan</b><em>ERP · বিজনেস অ্যানালিস্ট</em></span>
+      </a>
+      <a class="back-link" href="/bn/#lab">← ল্যাব-এ ফিরুন</a>
+    </div>
+  </div>
+</header>
+
+<section class="post-head">
+  <div class="shell">
+    <span class="eyebrow">টেকনিক্যাল ল্যাব · 0006</span>
+    <h1>Odoo মাল্টি-কোম্পানি সেটআপ: কখন ব্যবহার করবেন, আর কখন <span class="serif">এড়িয়ে</span> যাবেন।</h1>
+    <p class="lede">মাল্টি-কোম্পানি Odoo-র সবচেয়ে শক্তিশালী ফিচারগুলোর একটি, আর সবচেয়ে বেশি ভুলভাবে ব্যবহৃত ফিচারগুলোরও একটি। একটা সিদ্ধান্ত-নেওয়ার গাইড — আর আপনি যদি এগিয়ে যাওয়ারই সিদ্ধান্ত নিয়ে ফেলেন, তার জন্য কনফিগারেশনের মূল বিষয়গুলোও।</p>
+    <div class="post-meta">
+      <span class="chip accent">গাইড</span>
+      <span class="chip">মাল্টি-কোম্পানি</span>
+      <span class="chip">কনফিগারেশন</span>
+    </div>
+    <div class="byline">
+      <span>লেখক<b><a href="https://www.linkedin.com/in/mehedi-hasan-consultant/" style="color:var(--accent)" rel="author">Mehedi Hasan</a></b></span>
+      <span>প্রকাশিত<b>নভেম্বর ২০২৫</b></span>
+      <span>পড়ার সময়<b>১০ মিনিট</b></span>
+      <span>ধরন<b>টেকনিক্যাল গাইড</b></span>
+      <span>তথ্যসূত্র<b>মাল্টি-এন্টিটি ডেপ্লয়মেন্ট</b></span>
+    </div>
+  </div>
+</section>
+
+<article class="post">
+  <aside class="toc">
+    <div class="toc-k">এই গাইডে</div>
+    <ol>
+      <li><a href="#what">মাল্টি-কোম্পানি আসলে কী, আর কী নয়</a></li>
+      <li><a href="#use">যে তিনটি ক্ষেত্রে এটা কাজে লাগে</a></li>
+      <li><a href="#avoid">যে তিনটি ক্ষেত্রে লাগে না</a></li>
+      <li><a href="#setup">সেটআপের মূল বিষয়</a></li>
+      <li><a href="#interco">ইন্টারকোম্পানি ট্রানজ্যাকশন</a></li>
+      <li><a href="#faq">সচরাচর জিজ্ঞাসা</a></li>
+    </ol>
+  </aside>
+
+  <div class="body">
+    <h2 id="what">মাল্টি-কোম্পানি আসলে কী — আর কী নয়</h2>
+    <p>Odoo-র মাল্টি-কোম্পানি ফিচার একাধিক লিগ্যাল এন্টিটিকে একটি একক Odoo ডেটাবেজে একসাথে রাখতে দেয়। কিছু মাস্টার ডেটা (প্রোডাক্ট, কন্টাক্ট) শেয়ার করা যায়, আবার প্রতিটি এন্টিটির নিজস্ব হিসাবের খাতা, VAT রেজিস্ট্রেশন, চার্ট অফ অ্যাকাউন্টস এবং অ্যাক্সেস কন্ট্রোল আলাদা থাকে।</p>
+
+    <p>এটা যা নয়: ডিপার্টমেন্ট আলাদা করার, ব্রাঞ্চ রিপোর্টিং হ্যান্ডল করার, বা একই ব্যবসার আলাদা "ভিউ" আলাদা ইউজারকে দেখানোর কোনো উপায় এটা নয়। এই দরকারগুলো পূরণ হয় <strong>অ্যানালিটিক্যাল অ্যাকাউন্ট</strong> (কস্ট সেন্টার রিপোর্টিংয়ের জন্য), <strong>ব্রাঞ্চ</strong> (Odoo 17+, একই লিগ্যাল এন্টিটির ভেতরে অপারেশনাল আলাদাকরণের জন্য), আর <strong>ইউজার গ্রুপ</strong> (অ্যাক্সেস কন্ট্রোলের জন্য) দিয়ে।</p>
+
+    <p>এই ইউজ কেসগুলোর মধ্যে বিভ্রান্তিই বেশিরভাগ মাল্টি-কোম্পানি ভুল-কনফিগারেশনের উৎস। একটা ব্যবসা দ্বিতীয় কোম্পানি যোগ করে ফেলে কারণ "ফ্যাক্টরি আর ট্রেডিং শাখাটা আলাদা ব্যবসার মতো মনে হয়" — আর তারপর ছয় মাস ধরে এমন সব ট্রানজ্যাকশনের ইন্টারকোম্পানি রিকনসিলিয়েশন নিয়ে লড়াই করে, যেগুলো আসলে কখনোই সত্যিকারের ইন্টারকোম্পানি ছিল না।</p>
+
+    <p class="pull">মাল্টি-কোম্পানি একটা লিগ্যাল স্ট্রাকচারের সমস্যা সমাধান করে, সাংগঠনিক সমস্যার নয়।</p>
+
+    <h2 id="use">যে তিনটি ক্ষেত্রে এটা সত্যিই কাজে লাগে</h2>
+
+    <div class="two-col">
+      <div class="col use">
+        <h4>মাল্টি-কোম্পানি ব্যবহার করুন যখন…</h4>
+        <ul>
+          <li>বাংলাদেশে আলাদা আলাদা ট্রেড লাইসেন্স বা TIN নম্বরে নিবন্ধিত <strong>আলাদা লিগ্যাল এন্টিটি</strong> আছে</li>
+          <li>প্রতিটি এন্টিটি আলাদা BIN দিয়ে স্বাধীনভাবে নিজের <strong>ট্যাক্স রিটার্ন ও VAT রিটার্ন</strong> দাখিল করে</li>
+          <li>প্রতিটি এন্টিটির জন্য আইনগতভাবে সম্পূর্ণ আলাদা <strong>ফাইন্যান্সিয়াল স্টেটমেন্ট</strong> দরকার</li>
+          <li>সত্যিকারের <strong>ইন্টারকোম্পানি সেলস</strong> আছে — কোম্পানি A একটা ট্রান্সফার প্রাইসে কোম্পানি B-র কাছে প্রোডাক্ট বিক্রি করে, আর দুই পক্ষেরই নিজ নিজ খাতায় সেই ট্রানজ্যাকশন লাগে</li>
+          <li>এন্টিটিগুলো <strong>আলাদা কারেন্সিতে</strong> কাজ করে — যেমন একই গ্রুপের মধ্যে একটা বাংলাদেশ এন্টিটি আর একটা সিঙ্গাপুর এন্টিটি</li>
+        </ul>
+      </div>
+      <div class="col avoid">
+        <h4>ব্যবহার করবেন না যখন…</h4>
+        <ul>
+          <li><strong>ডিপার্টমেন্ট বা কস্ট সেন্টারের</strong> জন্য আলাদা রিপোর্টিং চান (অ্যানালিটিক্যাল অ্যাকাউন্ট ব্যবহার করুন)</li>
+          <li>একই লিগ্যাল এন্টিটির অধীনে <strong>একাধিক ওয়্যারহাউস বা সাইট</strong> আছে (এক কোম্পানির মধ্যে মাল্টি-ওয়্যারহাউস ব্যবহার করুন)</li>
+          <li>বিভিন্ন ইউজারকে ব্যবসার শুধু <strong>"নিজেদের" অংশ</strong> দেখাতে চান (রেকর্ড রুল আর ইউজার গ্রুপ ব্যবহার করুন)</li>
+          <li>আপনার "দুই ব্যবসা" একটাই <strong>ব্যাংক অ্যাকাউন্ট শেয়ার করে আর একই ট্যাক্স রিটার্ন দাখিল করে</strong> — অপারেশনালি যেভাবেই পরিচালিত হোক না কেন, তারা আসলে একটাই এন্টিটি</li>
+          <li>বিভিন্ন টিমের জন্য শুধু একটা <strong>পরিষ্কার UI</strong> তৈরি করতে চাইছেন — এর জন্য আরও ভালো উপায় আছে</li>
+        </ul>
+      </div>
+    </div>
+
+    <h2 id="setup">সেটআপের মূল বিষয়</h2>
+    <p>আপনি যদি নিশ্চিত হয়ে থাকেন যে মাল্টি-কোম্পানি সত্যিই দরকার, তাহলে এই ক্রমে সেটআপ করুন। ক্রমটা গুরুত্বপূর্ণ — লাফিয়ে এগিয়ে গেলে এমন কনফিগারেশন ঋণ তৈরি হয় যা পরে আনতে গেলে কষ্টকর হয়ে ওঠে।</p>
+
+    <div class="kv">
+      <span class="k">ধাপ ১</span><span class="v">Settings → Companies: কোম্পানি B তৈরি করুন নিজস্ব নাম, ঠিকানা, TIN, BIN আর লোগো দিয়ে। যদি সত্যিই স্বাধীন লিগ্যাল এন্টিটি হয়, তাহলে প্যারেন্ট কোম্পানি রেকর্ড শেয়ার করবেন না।</span>
+      <span class="k">ধাপ ২</span><span class="v">চার্ট অফ অ্যাকাউন্টস: প্রতিটি কোম্পানির নিজস্ব COA দরকার। কোম্পানি A থেকে কপি করতে পারেন, কিন্তু প্রতিটি অ্যাকাউন্ট রিভিউ করুন — আলাদা এন্টিটির প্রায়ই আলাদা VAT বাধ্যবাধকতা, আলাদা ডেপ্রিসিয়েশন ট্রিটমেন্ট, আলাদা ইন্টারকোম্পানি অ্যাকাউন্ট থাকে।</span>
+      <span class="k">ধাপ ৩</span><span class="v">শেয়ার্ড মাস্টার ডেটা: প্রোডাক্ট আর কন্টাক্ট শেয়ার করা যায় (কোম্পানি-নিরপেক্ষ)। আগে থেকেই ঠিক করুন কোন প্রোডাক্ট ক্যাটাগরি শেয়ার করা হবে আর কোনটা কোম্পানি-নির্দিষ্ট থাকবে। আলাদা প্রাইসিং থাকা শেয়ার্ড প্রোডাক্টে কোম্পানি-নির্দিষ্ট প্রাইসলিস্ট লাগবে।</span>
+      <span class="k">ধাপ ৪</span><span class="v">ইউজার অ্যাক্সেস: প্রতিটি ইউজারকে স্পষ্টভাবে এক বা একাধিক কোম্পানিতে অ্যাসাইন করতে হবে। কোম্পানি B-তে অ্যাসাইন করা না থাকলে সেই ইউজার সেখানে কিছু দেখতে বা ট্রানজ্যাক্ট করতে পারবে না। অ্যাক্সেস রুল সাবধানে ঠিক করুন — অনিচ্ছাকৃত ক্রস-কোম্পানি ভিজিবিলিটি অডিট সমস্যা তৈরি করে।</span>
+      <span class="k">ধাপ ৫</span><span class="v">ইন্টারকোম্পানি রুল: Settings → Technical → Intercompany Rules। কোন ডকুমেন্ট টাইপ স্বয়ংক্রিয়ভাবে কাউন্টারপার্ট ডকুমেন্ট তৈরি করবে তা কনফিগার করুন (SO→PO, Invoice→Vendor Bill)। কম দিয়ে শুরু করুন — শুধু যা সত্যিই দরকার তাই চালু করুন।</span>
+      <span class="k">ধাপ ৬</span><span class="v">গো-লাইভের আগে পুরো সাইকেল টেস্ট করুন: কোম্পানি A-তে কোম্পানি B-র জন্য একটা সেল তৈরি করুন, কোম্পানি B-তে ইন্টারকোম্পানি PO ভ্যালিডেট করুন, কোম্পানি A-তে ইনভয়েস করুন, কোম্পানি B-তে ভেন্ডর বিল পোস্ট করুন, আর রিকনসাইল করুন। সংখ্যা না মিললে বুঝবেন COA ম্যাপিং ভুল আছে।</span>
+    </div>
+
+    <div class="callout">
+      <span class="tag">সাধারণ ভুল</span>
+      <p>টিমগুলো মাল্টি-কোম্পানি চালু করে দিয়ে ধরে নেয় সিস্টেম নিজে থেকেই ইন্টারকোম্পানি অ্যাকাউন্ট "বের করে ফেলবে"। এটা হবে না। প্রতিটি কোম্পানির COA-তে ইন্টারকোম্পানি রিসিভেবল আর পেয়েবল অ্যাকাউন্ট স্পষ্টভাবে ম্যাপ করতে হবে, আর ইন্টারকোম্পানি রুলকে দুই পাশেই সঠিক অ্যাকাউন্টে নির্দেশ করাতে হবে। একটা ম্যাপিং মিস হলে তা চুপচাপ একটা সাসপেন্স অ্যাকাউন্টে পোস্ট হয়ে যায়।</p>
+    </div>
+
+    <h2 id="interco">ইন্টারকোম্পানি ট্রানজ্যাকশন — যে অংশে সমস্যা হয়</h2>
+    <p>কনফিগার করা থাকলে, ইন্টারকোম্পানি অটোমেশন দেখতে এমন হয়। প্রতিটি ধাপ দুই কোম্পানির খাতাতেই মিলিয়ে একটা এন্ট্রি তৈরি করে:</p>
+
+    <div class="flow">
+      <div class="flow-row">
+        <div class="side"><strong>কোম্পানি A (বিক্রেতা)</strong>কোম্পানি B-র জন্য ট্রান্সফার প্রাইসে সেলস অর্ডার তৈরি হলো</div>
+        <div class="arrow">→</div>
+        <div class="side"><strong>কোম্পানি B (ক্রেতা)</strong>পারচেজ অর্ডার স্বয়ংক্রিয়ভাবে তৈরি হয়ে কনফার্মেশনের অপেক্ষায়</div>
+      </div>
+      <div class="flow-row">
+        <div class="side"><strong>কোম্পানি A</strong>ডেলিভারি ভ্যালিডেট হলো; মাল কোম্পানি A-র ওয়্যারহাউস থেকে বেরোলো</div>
+        <div class="arrow">→</div>
+        <div class="side"><strong>কোম্পানি B</strong>রিসিপ্ট স্বয়ংক্রিয়ভাবে তৈরি হলো; মাল কোম্পানি B-র ওয়্যারহাউসে ঢুকল</div>
+      </div>
+      <div class="flow-row">
+        <div class="side"><strong>কোম্পানি A</strong>ইনভয়েস পোস্ট হলো: ডেবিট ইন্টারকোম্পানি রিসিভেবল / ক্রেডিট রেভিনিউ</div>
+        <div class="arrow">→</div>
+        <div class="side"><strong>কোম্পানি B</strong>ভেন্ডর বিল স্বয়ংক্রিয়ভাবে তৈরি হলো: ডেবিট এক্সপেন্স / ক্রেডিট ইন্টারকোম্পানি পেয়েবল</div>
+      </div>
+      <div class="flow-row">
+        <div class="side"><strong>কোম্পানি A</strong>পেমেন্ট রেজিস্টার হলো → ইন্টারকোম্পানি রিসিভেবল ক্লিয়ার</div>
+        <div class="arrow">→</div>
+        <div class="side"><strong>কোম্পানি B</strong>পেমেন্ট রেজিস্টার হলো → ইন্টারকোম্পানি পেয়েবল ক্লিয়ার</div>
+      </div>
+    </div>
+
+    <p>মাস-শেষে, কোম্পানি A-র ইন্টারকোম্পানি রিসিভেবল ব্যালেন্স অবশ্যই কোম্পানি B-র ইন্টারকোম্পানি পেয়েবল ব্যালেন্সের সমান হতে হবে (কোনো টাইমিং পার্থক্য থাকলে সেটা সমন্বয় করে)। না মিললে বুঝতে হবে কোনো একদিকে ভুল পোস্ট হয়েছে। এই রিকনসিলিয়েশন প্রতি মাসের একটা স্থায়ী কাজ — মাঝারি জটিলতার একটা মাল্টি-কোম্পানি সেটআপে এর জন্য মাসে ৪–৮ ঘণ্টা বাজেট রাখুন।</p>
+
+    <div class="field-note">
+      <div class="fn-hd"><span>নোট · ট্রেডিং + ম্যানুফ্যাকচারিং গ্রুপ · ২টি এন্টিটি</span><span class="when">গো-লাইভের ৪ মাস পর</span></div>
+      <div class="fn-body">
+        একটা পারিবারিক গ্রুপ একটা ট্রেডিং কোম্পানি আর একটা ফ্যাক্টরি — দুটোকেই আলাদা Odoo কোম্পানি হিসেবে চালাচ্ছিল, কারণ তাদের "আলাদা মনে হতো"। ইন্টারকোম্পানি রুল চালু ছিল, কিন্তু ফ্যাক্টরির চার্ট অফ অ্যাকাউন্টসে কেউ একটা আলাদা ইন্টারকোম্পানি পেয়েবল অ্যাকাউন্ট ম্যাপ করেনি — প্রতিটা কাউন্টারপার্ট ভেন্ডর বিল ডিফল্ট পেয়েবল অ্যাকাউন্টে পোস্ট হচ্ছিল। চার মাস পর গিয়ে দেখা যায়, গ্রুপ অ্যাকাউন্ট্যান্ট প্রায় পুরো এক সপ্তাহ ব্যয় করছেন এমন ব্যালেন্স মেলাতে যেগুলোর আসলে শূন্যে গিয়ে মেলার কথা ছিল। <strong>ফিক্স করতে সময় লেগেছিল মাত্র দুই ঘণ্টা: দুই পাশেই ইন্টারকোম্পানি অ্যাকাউন্ট স্পষ্টভাবে ম্যাপ করা আর চার মাসের বিল আবার পোস্ট করা। কিন্তু শিক্ষাটা নিতে সময় লেগেছিল আরও বেশি — দুই এন্টিটি একই ব্যাংক অ্যাকাউন্ট শেয়ার করত আর একই স্ট্রাকচারের অধীনে ফাইল করত, তাদের আদৌ আলাদা কোম্পানি হওয়ারই দরকার ছিল না।</strong>
+      </div>
+    </div>
+
+    <p>আমি বাংলাদেশে যেসব গ্রুপ স্ট্রাকচার দেখেছি — একই পরিবারের মালিকানাধীন একটা ট্রেডিং এন্টিটি আর একটা ম্যানুফ্যাকচারিং এন্টিটি — তাদের বেশিরভাগের জন্য সহজ পথ হলো <strong>একটা Odoo কোম্পানি, প্রতি এন্টিটির জন্য অ্যানালিটিক্যাল অ্যাকাউন্ট সহ</strong>, আর আলাদা ট্যাক্স রিপোর্টিং মাস-শেষে হ্যান্ডল করা। হিসাবনিকাশ সামান্য বেশি ম্যানুয়াল হয়; কিন্তু অপারেশনাল জটিলতা অনেক কম থাকে।</p>
+
+    <p>মাল্টি-কোম্পানিতে যাওয়ার সিদ্ধান্ত নেওয়ার আগে, ইন্টারকোম্পানি ফ্লো নিয়ে নির্দিষ্টভাবে <a href="/bn/lab/0002-discovery-session-business-process-mapping" style="color:var(--accent)">ডিসকভারি প্রসেস</a>টা করুন — ট্রানজ্যাকশন ভলিউম, ট্রান্সফার প্রাইসিং পদ্ধতি, আর ব্যালেন্স কে রিকনসাইল করবে। আর পড়ুন <a href="/bn/lab/0005-erp-go-live-cost-manufacturing-bangladesh" style="color:var(--accent)">গো-লাইভে জটিল কনফিগারেশন ভুল হলে তার আসল খরচ কত</a> সে বিষয়ে। এই হিসাবটাই প্রায়ই সিদ্ধান্ত পাল্টে দেয় — কোনো স্ট্রাকচারে যাওয়ার আগে বিনামূল্যের <a href="/bn/tools/odoo-cost-estimator/" style="color:var(--accent)">Odoo Cost Estimator</a> আপনাকে একটা বাংলাদেশ-নির্দিষ্ট রেঞ্জ দেবে।</p>
+
+    <div class="callout">
+      <span class="tag">পি.এস.</span>
+      <p>মাল্টি-কোম্পানি কনফিগারেশন আর ইন্টারকোম্পানি রিকনসিলিয়েশন সেটআপ আমার <a href="/bn/services/odoo-partner-consultant/" style="color:var(--accent)">এন্টারপ্রাইজ কনসালটিং এনগেজমেন্টের</a> একটা অংশ। স্ট্রাকচার মূল্যায়ন করছেন? তাহলে <a href="/bn/#contact" style="color:var(--accent)">কিছু কনফিগার করার আগে চলুন কথা বলি →</a></p>
+    </div>
+
+    <h2 id="faq">সচরাচর জিজ্ঞাসা</h2>
+
+    <h3>কখন Odoo মাল্টি-কোম্পানি সেটআপ ব্যবহার করা উচিত?</h3>
+    <p>আলাদা চার্ট অফ অ্যাকাউন্টস, আলাদা VAT রেজিস্ট্রেশন (বাংলাদেশে আলাদা BIN), বা স্বাধীন ফাইন্যান্সিয়াল রিপোর্টিং দরকার হলে Odoo মাল্টি-কোম্পানি ব্যবহার করুন। ডিপার্টমেন্ট, ব্রাঞ্চ বা কস্ট সেন্টারের জন্য এটা ব্যবহার করবেন না — সেগুলোর জন্য অ্যানালিটিক্যাল অ্যাকাউন্ট আর Odoo v17+-এর ব্রাঞ্চ ফিচার আছে।</p>
+
+    <h3>Odoo-তে ইন্টার-কোম্পানি ট্রানজ্যাকশন কীভাবে কাজ করে?</h3>
+    <p>Intercompany Rules দিয়ে কনফিগার করা থাকলে, কোম্পানি A-র একটা সেলস অর্ডার স্বয়ংক্রিয়ভাবে কোম্পানি B-তে একটা পারচেজ অর্ডার তৈরি করে। কোম্পানি A-র একটা ইনভয়েস কোম্পানি B-তে একটা ভেন্ডর বিল তৈরি করে। প্রতিটি ট্রানজ্যাকশন দুই পাশেই মিলিয়ে জার্নাল এন্ট্রি তৈরি করে। মাস-শেষে ইন্টারকোম্পানি রিসিভেবল আর পেয়েবল ব্যালেন্স রিকনসাইল করাটাই মাল্টি-কোম্পানি সেটআপের প্রধান মেইনটেন্যান্স খরচ — এর জন্য মাসে ৪–৮ ঘণ্টা বাজেট রাখুন।</p>
+  </div>
+</article>
+
+<footer>
+  <div class="shell">
+    <div class="post-foot">
+      <span class="eyebrow">আরও পড়ুন</span>
+      <div class="next">
+        <a class="next-card" href="/bn/lab/0007-change-management-isnt-a-memo">
+          <span class="dir">নতুন · 0007</span>
+          <h4>চেঞ্জ ম্যানেজমেন্ট কোনো মেমো নয়</h4>
+          <p>২০০+ অপারেটরকে একটা গো-লাইভের মধ্য দিয়ে ট্রেনিং দেওয়ার ফিল্ড নোট।</p>
+          <span class="arrow">→</span>
+        </a>
+        <a class="next-card" href="/bn/lab/0005-erp-go-live-cost-manufacturing-bangladesh">
+          <span class="dir">পুরনো · 0005</span>
+          <h4>ভুলভাবে গো-লাইভ করার প্রকৃত খরচ</h4>
+          <p>বাংলাদেশে ম্যানুফ্যাকচারিংয়ে একটা ব্যর্থ ERP গো-লাইভের লুকানো খরচ।</p>
+          <span class="arrow">→</span>
+        </a>
+      </div>
+    </div>
+    <div class="foot">
+      <span>© ২০২৬ Mehedi Hasan · Lab / 0006</span>
+      <span><a href="/bn/#lab">↑ ল্যাব ইনডেক্সে ফিরুন</a></span>
+    </div>
+  </div>
+</footer>
+<script src="/lab/_utils.js" defer></script>
+<script src="/lab/_toc.js" defer></script>
+<script src="/whatsapp.js" defer></script>
+<script src="/scroll-top.js" defer></script>
+</body>
+</html>

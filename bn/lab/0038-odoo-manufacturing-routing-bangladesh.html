@@ -1,0 +1,311 @@
+<!doctype html>
+<html lang="bn">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description"
+    content="বাংলাদেশের কারখানার জন্য Odoo ম্যানুফ্যাকচারিং রাউটিং কনফিগার করুন — ওয়ার্ক সেন্টার, অপারেশন, মেশিন ক্যাপাসিটি এবং প্রোডাকশন টাইম ট্র্যাকিং। সঠিকভাবে সেটআপ করুন →" />
+  <meta name="robots" content="noindex, follow" />
+  <meta name="author" content="Mehedi Hasan" />
+  <title>Odoo ম্যানুফ্যাকচারিং রাউটিং | টাইম ট্র্যাকিং | মেহেদী হাসান</title>
+  <link rel="canonical" href="https://mhasan.me/bn/lab/0038-odoo-manufacturing-routing-bangladesh" />
+  <link rel="alternate" hreflang="en" href="https://mhasan.me/lab/0038-odoo-manufacturing-routing-bangladesh" />
+  <link rel="alternate" hreflang="bn-BD" href="https://mhasan.me/bn/lab/0038-odoo-manufacturing-routing-bangladesh" />
+  <link rel="alternate" hreflang="x-default" href="https://mhasan.me/lab/0038-odoo-manufacturing-routing-bangladesh" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png" />
+  <!-- Open Graph -->
+  <meta property="og:title" content="Odoo ম্যানুফ্যাকচারিং রাউটিং | টাইম ট্র্যাকিং | মেহেদী হাসান" />
+  <meta property="og:description"
+    content="বাংলাদেশের কারখানার জন্য Odoo ম্যানুফ্যাকচারিং রাউটিং কনফিগার করুন — ওয়ার্ক সেন্টার, অপারেশন, মেশিন ক্যাপাসিটি এবং প্রোডাকশন টাইম ট্র্যাকিং।" />
+  <meta property="og:url" content="https://mhasan.me/bn/lab/0038-odoo-manufacturing-routing-bangladesh" />
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="https://mhasan.me/assets/og-default.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale" content="bn_BD" />
+  <meta property="og:site_name" content="মেহেদী হাসান | Odoo কনসালট্যান্ট" />
+  <meta property="article:author" content="https://www.linkedin.com/in/mehedi-hasan-consultant/" />
+  <meta property="article:published_time" content="2026-05-08T12:00:00+06:00" />
+  <meta property="article:modified_time" content="2026-05-23T12:00:00+06:00" />
+  <meta property="article:section" content="Odoo ERP Bangladesh" />
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Odoo ম্যানুফ্যাকচারিং রাউটিং | টাইম ট্র্যাকিং | মেহেদী হাসান" />
+  <meta name="twitter:description"
+    content="বাংলাদেশের কারখানার জন্য Odoo ম্যানুফ্যাকচারিং রাউটিং কনফিগার করুন — ওয়ার্ক সেন্টার, অপারেশন, মেশিন ক্যাপাসিটি এবং প্রোডাকশন টাইম ট্র্যাকিং।" />
+  <meta name="twitter:image" content="https://mhasan.me/assets/og-default.jpg" />
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Odoo-তে ম্যানুফ্যাকচারিং রাউটিং: ওয়ার্ক সেন্টার, অপারেশন ও টাইম ট্র্যাকিং",
+    "description": "বাংলাদেশের কারখানার জন্য Odoo ম্যানুফ্যাকচারিং রাউটিং কনফিগার করুন — ওয়ার্ক সেন্টার, অপারেশন, মেশিন ক্যাপাসিটি এবং প্রোডাকশন টাইম ট্র্যাকিং।",
+    "datePublished": "2026-05-08T12:00:00+06:00",
+    "dateModified": "2026-05-23T12:00:00+06:00",
+    "inLanguage": "bn",
+    "author": {
+      "@type": "Person",
+      "name": "Mehedi Hasan",
+      "url": "https://mhasan.me",
+      "jobTitle": "Odoo ERP Consultant & Business Analyst",
+      "sameAs": "https://www.linkedin.com/in/mehedi-hasan-consultant/"
+    },
+    "publisher": { "@type": "Person", "name": "Mehedi Hasan", "url": "https://mhasan.me" },
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://mhasan.me/bn/lab/0038-odoo-manufacturing-routing-bangladesh" }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "হোম", "item": "https://mhasan.me/bn" },
+      { "@type": "ListItem", "position": 2, "name": "ল্যাব", "item": "https://mhasan.me/bn/#lab" },
+      { "@type": "ListItem", "position": 3, "name": "Odoo ম্যানুফ্যাকচারিং রাউটিং বাংলাদেশ", "item": "https://mhasan.me/bn/lab/0038-odoo-manufacturing-routing-bangladesh" }
+    ]
+  }
+]
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&family=Noto+Sans+Bengali:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap">
+  <link rel="stylesheet" href="/lab/_styles.css">
+  <style>
+    body{ font-family: 'Noto Sans Bengali', var(--sans); }
+    .flow-card {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+      margin: 20px 0;
+    }
+    .flow-row {
+      display: grid;
+      grid-template-columns: 140px 1fr 180px;
+      border-bottom: 1px solid var(--border);
+      align-items: stretch;
+    }
+    .flow-row:last-child { border-bottom: none; }
+    .flow-stage {
+      padding: 14px 16px;
+      background: var(--surface);
+      border-right: 1px solid var(--border);
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+    }
+    .flow-desc {
+      padding: 14px 16px;
+      font-size: 12.5px;
+      color: var(--text-2);
+      line-height: 1.7;
+    }
+    .flow-odoo {
+      padding: 14px 16px;
+      border-left: 1px solid var(--border);
+      font-family: var(--mono);
+      font-size: 10.5px;
+      color: var(--accent);
+      line-height: 1.7;
+      display: flex;
+      align-items: center;
+    }
+    .pull {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: clamp(20px, 2.8vw, 30px);
+      line-height: 1.3;
+      color: var(--text);
+      margin: 48px 0;
+      max-width: 26ch;
+      letter-spacing: -0.01em;
+    }
+    .pull::before {
+      content: "";
+      display: block;
+      width: 36px;
+      height: 1px;
+      background: var(--accent);
+      margin-bottom: 18px;
+    }
+    .field-note{margin:28px 0;border:1px solid var(--border);border-radius:12px;overflow:hidden;background:var(--surface)}
+    .fn-hd{display:flex;align-items:center;justify-content:space-between;padding:12px 18px;border-bottom:1px solid var(--border);font-family:var(--mono);font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-3)}
+    .fn-hd .when{color:var(--accent)}
+    .fn-body{padding:18px 22px;font-size:15px;line-height:1.65;color:var(--text-2)}
+    .fn-body strong{color:var(--text);font-weight:500}
+    @media(max-width:800px){
+      .flow-row { grid-template-columns: 1fr; }
+      .flow-stage { border-right: none; border-bottom: 1px solid var(--border); }
+      .flow-odoo { border-left: none; border-top: 1px solid var(--border); }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="grid-bg"></div>
+
+  <header class="nav">
+    <div class="shell">
+      <div class="nav-inner">
+        <a class="brand" href="/bn/">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span class="brand-name"><b>Mehedi Hasan</b><em>ERP · বিজনেস অ্যানালিস্ট</em></span>
+        </a>
+        <a class="back-link" href="/bn/#lab">← ল্যাব-এ ফিরুন</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="post-head">
+    <div class="shell">
+      <span class="eyebrow">টেকনিক্যাল ল্যাব · 0038</span>
+      <h1>Odoo ম্যানুফ্যাকচারিং রাউটিং — <span class="serif">ওয়ার্ক সেন্টার, অপারেশন, টাইম ট্র্যাকিং।</span></h1>
+      <p class="lede">BOM আপনাকে বলে একটি প্রোডাক্ট বানাতে কী কী লাগবে, কিন্তু Routing বলে কীভাবে বানাতে হবে। বাংলাদেশের কারখানার জন্য অপারেশনের ধারা সঠিকভাবে ম্যাপ করা এবং প্রতিটি ওয়ার্ক সেন্টারে প্রকৃত সময় ট্র্যাক করাই সঠিক প্রোডাকশন কস্টিং ও বাস্তবসম্মত শিডিউলিং-এর মূল চাবিকাঠি।</p>
+      <div class="post-meta">
+        <span class="chip accent">কনফিগারেশন গাইড</span>
+        <span class="chip">ম্যানুফ্যাকচারিং</span>
+        <span class="chip">ওয়ার্ক সেন্টার</span>
+        <span class="chip">রাউটিং</span>
+      </div>
+      <div class="byline">
+        <span>লেখক<b><a href="https://www.linkedin.com/in/mehedi-hasan-consultant/" style="color:var(--accent)" rel="author">Mehedi Hasan</a></b></span>
+        <span>প্রকাশিত<b>মে ২০২৬</b></span>
+        <span>পড়ার সময়<b>৮ মিনিট</b></span>
+        <span>ধরন<b>টেকনিক্যাল গাইড</b></span>
+        <span>পরিধি<b>ম্যানুফ্যাকচারিং · কস্টিং · অপারেশনস</b></span>
+      </div>
+    </div>
+  </section>
+
+  <article class="post">
+    <aside class="toc">
+      <div class="toc-k">এই গাইডে</div>
+      <ol>
+        <li><a href="#work-centers">ওয়ার্ক সেন্টার সংজ্ঞায়িত করা</a></li>
+        <li><a href="#operations">অপারেশন ও সিকোয়েন্স</a></li>
+        <li><a href="#capacity">মেশিন ক্যাপাসিটি ও OEE</a></li>
+        <li><a href="#time-tracking">শপ ফ্লোরে টাইম ট্র্যাকিং</a></li>
+        <li><a href="#overhead">ওভারহেড কস্ট অ্যালোকেশন</a></li>
+        <li><a href="#faq">সচরাচর জিজ্ঞাসা</a></li>
+      </ol>
+    </aside>
+
+    <div class="body">
+      <p>অনেক প্রাথমিক ERP বাস্তবায়নে কনসালট্যান্ট Bill of Materials (BOM) নিখুঁতভাবে ম্যাপ করেন, কিন্তু Routing উপেক্ষা করেন। তারা শুধু একটি "ম্যাটেরিয়াল কনজিউম করো, ফিনিশড গুড প্রোডিউস করো" বাটন কনফিগার করে দেন। এটি একটি মিস করা সুযোগ। আপনার প্রকৃত ম্যানুফ্যাকচারিং কস্ট বুঝতে হলে — এবং প্রোডাকশন সঠিকভাবে শিডিউল করতে হলে — কারখানার মেঝেতে প্রোডাক্টের যাত্রাপথ ম্যাপ করা দরকার।</p>
+
+      <p>এই গাইডটি <a href="/bn/lab/0013-odoo-manufacturing-module-bangladesh" style="color:var(--accent)">Odoo Manufacturing Module সেটআপ</a> গাইডে দেওয়া ভিত্তির ওপর দাঁড়িয়ে। টেক্সটাইলের মতো নির্দিষ্ট ইন্ডাস্ট্রি উদাহরণের জন্য দেখুন <a href="/bn/lab/0037-odoo-spinning-mill-bangladesh" style="color:var(--accent)">Odoo Spinning Mill কনফিগারেশন</a>।</p>
+
+      <p class="pull">রাউটিং শুধু কর্মীদের পরের কাজটি কী তা বলার জন্য নয়। এটি সেই ইঞ্জিন যা প্রকৃত মেশিন টাইমের ভিত্তিতে আপনার প্রোডাক্টে ওভারহেড কস্ট বরাদ্দ করে।</p>
+
+      <h2 id="work-centers">ওয়ার্ক সেন্টার সংজ্ঞায়িত করা</h2>
+      <p>Odoo-তে একটি Work Center মানে কারখানার এমন একটি ফিজিক্যাল লোকেশন যেখানে প্রোডাকশন হয়। এটি একটি একক মেশিন হতে পারে (যেমন, "CNC Lathe #3"), একগুচ্ছ অভিন্ন মেশিন হতে পারে (যেমন, "Sewing Line A"), অথবা একটি ম্যানুয়াল অ্যাসেম্বলি স্টেশন হতে পারে।</p>
+
+      <p>একটি Work Center সেট আপ করার সময় নিচেরগুলো সংজ্ঞায়িত করতে হবে।</p>
+      <ul>
+        <li><strong>ওয়ার্কিং আওয়ার্স:</strong> এই সেন্টারটি কোন শিডিউলে চলে (যেমন, স্ট্যান্ডার্ড ৮ ঘণ্টার শিফট নাকি ২৪/৭ অপারেশন)।</li>
+        <li><strong>ক্যাপাসিটি:</strong> একসাথে সমান্তরালে কতগুলো আইটেম প্রসেস করা যায়।</li>
+        <li><strong>OEE টার্গেট:</strong> Overall Equipment Effectiveness-এর লক্ষ্যমাত্রা শতাংশ।</li>
+        <li><strong>ঘণ্টাপ্রতি খরচ:</strong> এটি সবচেয়ে গুরুত্বপূর্ণ। এর মধ্যে থাকে মেশিনের ডেপ্রিসিয়েশন, বিদ্যুৎ খরচ, ফ্লোর স্পেস ভাড়া, আর অপারেটরের বেতন। যদি একটি অপারেশনে ৳6,000/ঘণ্টা খরচের একটি সেন্টারে ২ ঘণ্টা লাগে, তাহলে ৳12,000 যোগ হবে ফিনিশড প্রোডাক্টের ভ্যালুয়েশনে।</li>
+      </ul>
+
+      <h2 id="operations">অপারেশন ও সিকোয়েন্স</h2>
+      <p>একটি Routing আসলে অপারেশনের একটি সিকোয়েন্স মাত্র। প্রতিটি Operation একটি Work Center-এর সাথে যুক্ত এবং তার একটি প্রত্যাশিত সময়সীমা আছে।</p>
+
+      <div class="flow-card">
+        <div class="flow-row">
+          <div class="flow-stage">Op 1: কাটিং</div>
+          <div class="flow-desc">কাঁচামাল নির্দিষ্ট মাপে কাটা হয়। অপারেশনে কোন Work Center ব্যবহার করতে হবে এবং স্ট্যান্ডার্ড সেটআপ টাইম সংজ্ঞায়িত থাকে।</div>
+          <div class="flow-odoo">WC: Cutting Room<br>সময়: ১৫ মিনিট</div>
+        </div>
+        <div class="flow-row">
+          <div class="flow-stage">Op 2: অ্যাসেম্বলি</div>
+          <div class="flow-desc">অংশগুলো একসাথে জোড়া দেওয়া হয়। কর্মীদের ট্যাবলেটে দেখার জন্য এই অপারেশনে PDF ইনস্ট্রাকশন বা ছবি যুক্ত করা যায়।</div>
+          <div class="flow-odoo">WC: Assembly Line B<br>সময়: ৪৫ মিনিট</div>
+        </div>
+        <div class="flow-row">
+          <div class="flow-stage">Op 3: কোয়ালিটি চেক</div>
+          <div class="flow-desc">ফিনিশড গুডসে যাওয়ার আগে চূড়ান্ত পরিদর্শন। এখানে কোয়ালিটি পয়েন্ট বাধ্যতামূলক করা যায়।</div>
+          <div class="flow-odoo">WC: QC Station<br>সময়: ১০ মিনিট</div>
+        </div>
+      </div>
+
+      <h2 id="capacity">মেশিন ক্যাপাসিটি ও OEE</h2>
+      <p>Odoo-তে ক্যাপাসিটি প্ল্যানিং মূলত নির্ভর করে সঠিক Work Center কনফিগারেশনের ওপর। বড় একটি অর্ডার এলে, Odoo-র Master Production Schedule (MPS) রাউটিং দেখে নির্ধারণ করে যে ডেডলাইন মেটানোর মতো মেশিন-ঘণ্টা আপনার হাতে আছে কিনা।</p>
+
+      <p>Odoo <strong>Overall Equipment Effectiveness (OEE)</strong>-ও ট্র্যাক করে। ম্যাটেরিয়াল স্বল্পতা বা ব্রেকডাউনের কারণে কোনো মেশিন বন্ধ থাকলে, অপারেটররা তা লগ করতে পারেন। OEE মেট্রিক্স ম্যানেজমেন্টকে বটলনেক চিহ্নিত করতে সাহায্য করে — আমরা কি মেশিন মেইনটেন্যান্সে সময় হারাচ্ছি, নাকি সাপ্লাই চেইনের বিলম্বে?</p>
+
+      <h2 id="time-tracking">শপ ফ্লোরে টাইম ট্র্যাকিং</h2>
+      <p>Odoo Shop Floor অ্যাপ অপারেটরদের একটি বারকোড স্ক্যান করে পরের অপারেশন দেখতে এবং "Start" ক্লিক করতে দেয়। কাজ শেষ হলে তারা "Done" ক্লিক করেন।</p>
+
+      <p>এই রিয়েল-টাইম ট্র্যাকিং আপনাকে প্রকৃত সময় বনাম প্রত্যাশিত সময়ের তুলনা দেয়। যদি আপনার রাউটিং অ্যাসেম্বলির জন্য ৪৫ মিনিট ধরে রাখে কিন্তু বাস্তবে ধারাবাহিকভাবে ৬০ মিনিট লাগে, তাহলে আপনার কস্ট ভুল আর শিডিউল সবসময় পিছিয়ে যাবে। Shop Floor অ্যাপ ERP-তে বাস্তবতা জোর করে ঢুকিয়ে দেয়।</p>
+
+      <h2 id="overhead">ওভারহেড কস্ট অ্যালোকেশন</h2>
+      <p>রাউটিং নিয়ে এত ঝামেলা কেন? <strong>নির্ভুল কস্টিং-এর জন্য।</strong></p>
+      <p>রাউটিং ছাড়া আপনার হাতে থাকে শুধু ম্যাটেরিয়াল কস্ট। প্রতিটি Work Center-এ একটি ৳/ঘণ্টা রেট বরাদ্দ করে এবং ব্যয়িত সময় ট্র্যাক করে, Odoo স্বয়ংক্রিয়ভাবে ফিনিশড গুডের ইনভেন্টরি ভ্যালুতে ওভারহেড কস্ট যোগ করে। এতে নিশ্চিত হয় যে সেই নির্দিষ্ট ব্যাচ তৈরিতে ব্যবহৃত প্রকৃত মেশিন টাইম আর শ্রমকে হিসাবে নিয়ে আপনার মার্জিন সঠিকভাবে গণনা হচ্ছে।</p>
+
+      <div class="field-note">
+        <div class="fn-hd"><span>নোট · লাইট-ইঞ্জিনিয়ারিং কারখানা, গাজীপুর</span><span class="when">কস্টিং রিভিউ</span></div>
+        <div class="fn-body">
+          একটি ওয়ার্কশপ রাউটিং নিয়ে গো-লাইভ করেছিল, কিন্তু অপারেশনের সময়সীমা সরাসরি ডেমো ডেটা থেকে কপি করা হয়েছিল, ফ্লোরের সাথে মিলিয়ে কখনো পুনরায় মাপা হয়নি। প্রতিটি রাউটিংয়ে বলা ছিল অ্যাসেম্বলি স্টেপে ৩০ মিনিট লাগবে; কিন্তু Shop Floor অ্যাপে দেখা যাচ্ছিল ধারাবাহিকভাবে ৫০-৫৫ মিনিট লাগছে। স্ট্যান্ডার্ড সময়সীমা কম থাকায় MPS এমন ডেলিভারি ডেট প্রতিশ্রুতি দিতেই থাকল যা কারখানার পক্ষে মেটানো সম্ভব ছিল না, আর প্রতিটি ফিনিশড গুডের ভ্যালুয়েশনে প্রায় <strong>৪০% কম মেশিন ওভারহেড</strong> ধরা হচ্ছিল — কাগজে-কলমে মার্জিন সুস্থ দেখাচ্ছিল, অথচ ওয়ার্কশপ কোনোমতে টিকে ছিল। আমরা এক শিফট সময় নিয়ে Shop Floor অ্যাপের মাধ্যমে প্রকৃত সময়সীমা লগ করি, তারপর প্রতিটি অপারেশনের প্রত্যাশিত সময় আপডেট করি। <strong>একটি রাউটিং ততটাই সৎ যতটা তার পেছনের সময়সীমা — সেগুলো একবার ডেমো ডেটা থেকে সেট করে রেখে দিলে আপনার কস্ট আর শিডিউল দুটোই কল্পকাহিনি হয়ে যায়।</strong>
+        </div>
+      </div>
+
+      <div class="callout">
+        <span class="tag">সারকথা</span>
+        <p>সহজ দিয়ে শুরু করুন। ৫০টি আলাদা মেশিন ম্যাপ করার বদলে আপনার Work Center গুলো বিস্তৃতভাবে ম্যাপ করুন (যেমন, "কাটিং", "সেলাই", "ফিনিশিং")। সুপারভাইজারদের ম্যাক্রো লেভেলে সময় ট্র্যাক করার অভ্যাস করান, ৳/ঘণ্টা রেটগুলো পরিমার্জন করুন, আর রিয়েল-টাইম ডেটা এন্ট্রির সংস্কৃতি প্রতিষ্ঠিত হওয়ার পর নির্দিষ্ট মেশিন শিডিউলিংয়ে বিস্তারিত যান। শুরু করার আগে পুরো বাস্তবায়নের আনুমানিক খরচ জানতে চান? দেখুন <a href="/bn/tools/odoo-cost-estimator/" style="color:var(--accent)">Odoo cost estimator</a>। <a href="/bn/#contact" style="color:var(--accent)">আপনার কারখানার ফ্লোর ম্যাপ করতে সাহায্য দরকার? যোগাযোগ করুন →</a></p>
+      </div>
+
+      <h2 id="faq">সচরাচর জিজ্ঞাসা</h2>
+
+      <h3>Odoo-তে Work Center কীভাবে কনফিগার করবেন?</h3>
+      <p>Manufacturing → Configuration → Work Centers-এ যান। নাম, ওয়ার্কিং শিডিউল, ক্যাপাসিটি এবং সবচেয়ে গুরুত্বপূর্ণ, Cost per Hour সংজ্ঞায়িত করুন। এই কস্ট রেট দিয়েই হিসাব হয় সেন্টার দিয়ে যাওয়া প্রোডাক্টগুলো কতটা ওভারহেড শোষণ করেছে।</p>
+
+      <h3>Odoo-তে BOM আর Routing-এর পার্থক্য কী?</h3>
+      <p>Bill of Materials (BOM) দরকারি কম্পোনেন্টগুলোর তালিকা দেয়। Routing বিভিন্ন Work Center জুড়ে অপারেশনাল ধাপগুলো (Work Orders) সংজ্ঞায়িত করে, যা নির্ধারণ করে সেই কম্পোনেন্টগুলো কীভাবে ফিনিশড প্রোডাক্টে রূপান্তরিত হবে।</p>
+
+      <h3>Odoo রাউটিং থেকে প্রোডাকশন কস্ট কীভাবে গণনা করে?</h3>
+      <p>প্রতিটি অপারেশনের জন্য, Odoo একটি Work Center-এ ব্যয়িত সময়কে সেই সেন্টারের Cost per Hour দিয়ে গুণ করে, তারপর ফলাফলটি ফিনিশড প্রোডাক্টের ভ্যালুয়েশনে ম্যাটেরিয়াল কস্টের সাথে যোগ করে। Work Order টাইম ট্র্যাকিং চালু না থাকলে Odoo রাউটিংয়ের প্রত্যাশিত সময়সীমা ব্যবহার করে; Shop Floor অ্যাপ থাকলে প্রকৃত লগ করা সময়সীমা ব্যবহার করে। এই কারণেই একটি ভুল কস্ট-পার-আওয়ার রেট বা অবাস্তব প্রত্যাশিত সময়সীমা নীরবে প্রতিটি মার্জিন রিপোর্ট বিকৃত করে দেয়।</p>
+
+      <h3>Odoo-তে প্রকৃত সময়সীমা প্রত্যাশিত সময়সীমার থেকে ভিন্ন হলে কী হয়?</h3>
+      <p>Odoo দুটোই রেকর্ড করে। প্রত্যাশিত সময়সীমা Master Production Schedule-এ ক্যাপাসিটি প্ল্যানিং আর ডেলিভারি-ডেট প্রতিশ্রুতি নির্ধারণ করে; প্রকৃত সময়সীমা (Shop Floor অ্যাপে অপারেটর Start আর Done ক্লিক করলে ধরা পড়ে) প্রকৃত কস্টিং নির্ধারণ করে। এই দুইয়ের মধ্যে ধারাবাহিক ফারাক থাকা মানে সেই অপারেশন পুনরায় মাপার সংকেত — উপেক্ষা করলে শিডিউল পিছিয়ে যাবে আর প্রোডাক্ট কস্ট ভুলই থেকে যাবে।</p>
+
+    </div>
+  </article>
+
+  <footer>
+    <div class="shell">
+      <div class="post-foot">
+        <span class="eyebrow">আরও পড়ুন</span>
+        <div class="next">
+          <a class="next-card" href="/bn/lab/0037-odoo-spinning-mill-bangladesh">
+            <span class="dir">পুরনো · 0037</span>
+            <h4>Odoo for Spinning Mills Bangladesh</h4>
+            <p>টেক্সটাইল খাতের জন্য ইয়ার্ন ইনভেন্টরি ম্যানেজমেন্ট, লুম রাউটিং এবং কোয়ালিটি কন্ট্রোল।</p>
+            <span class="arrow">→</span>
+          </a>
+          <a class="next-card" href="/bn/lab/0039-odoo-reordering-rules-mto-bangladesh">
+            <span class="dir">নতুন · 0039</span>
+            <h4>Odoo Reordering Rules vs MTO</h4>
+            <p>আপনার প্রকিউরমেন্ট লজিক অটোমেট করুন এবং জানুন কখন Reordering Rules আর কখন Make to Order ব্যবহার করবেন।</p>
+            <span class="arrow">→</span>
+          </a>
+        </div>
+      </div>
+      <div class="foot">
+        <span>© ২০২৬ Mehedi Hasan · Lab / 0038</span>
+        <span><a href="/bn/#lab">↑ ল্যাব ইনডেক্সে ফিরুন</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/lab/_utils.js" defer></script>
+<script src="/lab/_toc.js" defer></script>
+<script src="/whatsapp.js" defer></script>
+<script src="/scroll-top.js" defer></script>
+</body>
+
+</html>

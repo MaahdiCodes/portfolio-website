@@ -1,0 +1,547 @@
+<!doctype html>
+<html lang="bn">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description"
+    content="বাংলাদেশে ম্যানুফ্যাকচারিং খাতের জন্য Odoo vs ERPNext — ফিচার, খরচ, লোকাল সাপোর্ট এবং ইকোসিস্টেমের বাস্তব তুলনা, ২০২৬ সালের জন্য। সঠিকটি বেছে নিন →" />
+  <meta name="robots" content="noindex, follow" />
+  <meta name="author" content="Mehedi Hasan" />
+  <title>বাংলাদেশে Odoo vs ERPNext | ম্যানুফ্যাকচারিং | মেহেদী হাসান</title>
+  <link rel="canonical" href="https://mhasan.me/bn/lab/0023-odoo-vs-erpnext-bangladesh" />
+  <link rel="alternate" hreflang="en" href="https://mhasan.me/lab/0023-odoo-vs-erpnext-bangladesh" />
+  <link rel="alternate" hreflang="bn-BD" href="https://mhasan.me/bn/lab/0023-odoo-vs-erpnext-bangladesh" />
+  <link rel="alternate" hreflang="x-default" href="https://mhasan.me/lab/0023-odoo-vs-erpnext-bangladesh" />
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png" />
+  <!-- Open Graph -->
+  <meta property="og:title" content="বাংলাদেশে Odoo vs ERPNext | ম্যানুফ্যাকচারিং | মেহেদী হাসান" />
+  <meta property="og:description"
+    content="বাংলাদেশের ম্যানুফ্যাকচারিং খাতের জন্য Odoo vs ERPNext — মডিউল, মোট খরচ, লোকাল বাস্তবায়ন ইকোসিস্টেম এবং কমপ্লায়েন্স সাপোর্টের সৎ তুলনা, ২০২৬।" />
+  <meta property="og:url" content="https://mhasan.me/bn/lab/0023-odoo-vs-erpnext-bangladesh" />
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="https://mhasan.me/assets/og-default.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale" content="bn_BD" />
+  <meta property="og:site_name" content="মেহেদী হাসান | Odoo ERP কনসালট্যান্ট" />
+  <meta property="article:author" content="https://www.linkedin.com/in/mehedi-hasan-consultant/" />
+  <meta property="article:published_time" content="2026-05-05T09:00:00+06:00" />
+  <meta property="article:modified_time" content="2026-05-23T09:00:00+06:00" />
+  <meta property="article:section" content="Odoo ERP Bangladesh" />
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="বাংলাদেশে Odoo vs ERPNext | ম্যানুফ্যাকচারিং ERP ২০২৬" />
+  <meta name="twitter:description"
+    content="বাংলাদেশে Odoo vs ERPNext — ফিচার, খরচ, ইকোসিস্টেম এবং ম্যানুফ্যাকচারিং মডিউলের গভীরতা। বাংলাদেশের SME-দের জন্য কোন ওপেন-সোর্স ERP এগিয়ে?" />
+  <meta name="twitter:image" content="https://mhasan.me/assets/og-default.jpg" />
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "বাংলাদেশে Odoo vs ERPNext: ম্যানুফ্যাকচারিংয়ের জন্য কোনটি?",
+    "description": "বাংলাদেশের ম্যানুফ্যাকচারিং কোম্পানিগুলোর জন্য Odoo আর ERPNext-এর একটি হাতে-কলমে তুলনা — মডিউল, মোট মালিকানা খরচ, লোকাল ইমপ্লিমেন্টেশন পার্টনার, বাংলাদেশ কমপ্লায়েন্স সাপোর্ট, এবং RMG, টেক্সটাইল ও সাইকেল এক্সপোর্ট ফ্যাক্টরির জন্য কোন প্ল্যাটফর্ম এগিয়ে তার বিশ্লেষণ।",
+    "datePublished": "2026-05-05T09:00:00+06:00",
+    "dateModified": "2026-05-23T09:00:00+06:00",
+    "inLanguage": "bn",
+    "author": {
+      "@type": "Person",
+      "name": "Mehedi Hasan",
+      "url": "https://mhasan.me",
+      "jobTitle": "Odoo ERP Consultant & Business Analyst",
+      "sameAs": "https://www.linkedin.com/in/mehedi-hasan-consultant/"
+    },
+    "publisher": { "@type": "Person", "name": "Mehedi Hasan", "url": "https://mhasan.me" },
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://mhasan.me/bn/lab/0023-odoo-vs-erpnext-bangladesh" }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "হোম", "item": "https://mhasan.me/bn" },
+      { "@type": "ListItem", "position": 2, "name": "ল্যাব", "item": "https://mhasan.me/bn/#lab" },
+      { "@type": "ListItem", "position": 3, "name": "বাংলাদেশে Odoo vs ERPNext", "item": "https://mhasan.me/bn/lab/0023-odoo-vs-erpnext-bangladesh" }
+    ]
+  }
+]
+</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&family=Noto+Sans+Bengali:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap">
+  <link rel="stylesheet" href="/lab/_styles.css">
+  <style>
+    body{ font-family: 'Noto Sans Bengali', var(--sans); }
+    /* comparison table */
+    .comp-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 24px 0;
+      font-size: 13px;
+    }
+    .comp-table th {
+      text-align: left;
+      padding: 12px 16px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-3);
+    }
+    .comp-table th:not(:first-child) { text-align: center; }
+    .comp-table td {
+      padding: 13px 16px;
+      border: 1px solid var(--border);
+      color: var(--text-2);
+      vertical-align: middle;
+      line-height: 1.5;
+    }
+    .comp-table td:not(:first-child) { text-align: center; }
+    .comp-table tr:hover td { background: rgba(255,255,255,0.015); }
+    .comp-table .feat { color: var(--text); font-weight: 500; }
+    .comp-table .win { color: oklch(0.80 0.17 155); font-weight: 600; }
+    .comp-table .lose { color: oklch(0.55 0.18 30); }
+    .comp-table .draw { color: oklch(0.75 0.12 60); }
+    .comp-table th.col-odoo { color: oklch(0.80 0.17 155); }
+    .comp-table th.col-erp { color: oklch(0.65 0.14 260); }
+
+    /* verdict card */
+    .verdict {
+      margin: 32px 0;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    .verdict-head {
+      padding: 12px 20px;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-3);
+    }
+    .verdict-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+    .verdict-col {
+      padding: 20px 24px;
+      border-right: 1px solid var(--border);
+    }
+    .verdict-col:last-child { border-right: none; }
+    .verdict-col h4 {
+      margin: 0 0 10px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text);
+    }
+    .verdict-col h4 .badge {
+      display: inline-block;
+      font-size: 10px;
+      font-family: var(--mono);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 2px 7px;
+      border-radius: 4px;
+      margin-left: 6px;
+      vertical-align: middle;
+    }
+    .badge-odoo { background: oklch(0.80 0.17 155 / 0.15); color: oklch(0.80 0.17 155); }
+    .badge-erp { background: oklch(0.65 0.14 260 / 0.15); color: oklch(0.65 0.14 260); }
+    .verdict-col ul {
+      margin: 0;
+      padding: 0 0 0 16px;
+      color: var(--text-2);
+      font-size: 13px;
+      line-height: 1.8;
+    }
+    @media(max-width:640px) {
+      .verdict-grid { grid-template-columns: 1fr; }
+      .verdict-col { border-right: none; border-bottom: 1px solid var(--border); }
+      .verdict-col:last-child { border-bottom: none; }
+    }
+
+    .pull {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: clamp(22px, 3vw, 34px);
+      line-height: 1.25;
+      color: var(--text);
+      margin: 48px 0;
+      padding: 0;
+      border: none;
+      max-width: 22ch;
+      letter-spacing: -0.01em;
+    }
+    .pull::before {
+      content: "";
+      display: block;
+      width: 36px;
+      height: 1px;
+      background: var(--accent);
+      margin-bottom: 18px;
+    }
+
+    .field-note{margin:28px 0;border:1px solid var(--border);border-radius:12px;overflow:hidden;background:var(--surface)}
+    .fn-hd{display:flex;align-items:center;justify-content:space-between;padding:12px 18px;border-bottom:1px solid var(--border);font-family:var(--mono);font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-3)}
+    .fn-hd .when{color:var(--accent)}
+    .fn-body{padding:18px 22px;font-size:15px;line-height:1.65;color:var(--text-2)}
+    .fn-body strong{color:var(--text);font-weight:500}
+  </style>
+</head>
+
+<body>
+  <div class="grid-bg"></div>
+
+  <header class="nav">
+    <div class="shell">
+      <div class="nav-inner">
+        <a class="brand" href="/bn/">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span class="brand-name"><b>Mehedi Hasan</b><em>ERP · বিজনেস অ্যানালিস্ট</em></span>
+        </a>
+        <a class="back-link" href="/bn/#lab">← ল্যাব-এ ফিরুন</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="post-head">
+    <div class="shell">
+      <span class="eyebrow">টেকনিক্যাল ল্যাব · 0023</span>
+      <h1>বাংলাদেশে Odoo vs ERPNext — <span class="serif">ম্যানুফ্যাকচারিংয়ের জন্য কোনটি?</span></h1>
+      <p class="lede">২০২৬ সালে বাংলাদেশের ম্যানুফ্যাকচারিং কোম্পানিগুলোর জন্য Odoo আর ERPNext-এর একটি প্র্যাক্টিশনার-লেভেল তুলনা — মডিউলের গভীরতা, মোট খরচ, লোকাল বাস্তবায়ন ইকোসিস্টেম, বাংলাদেশ কমপ্লায়েন্স সাপোর্ট, এবং RMG, টেক্সটাইল ও এক্সপোর্ট ফ্যাক্টরির জন্য সৎ রায়।</p>
+      <div class="post-meta">
+        <span class="chip accent">তুলনা</span>
+        <span class="chip">Odoo vs ERPNext</span>
+        <span class="chip">ম্যানুফ্যাকচারিং ERP</span>
+        <span class="chip">বাংলাদেশ ২০২৬</span>
+      </div>
+      <div class="byline">
+        <span>লেখক<b><a href="https://www.linkedin.com/in/mehedi-hasan-consultant/" style="color:var(--accent)" rel="author">Mehedi Hasan</a></b></span>
+        <span>প্রকাশিত<b>মে ২০২৬</b></span>
+        <span>পড়ার সময়<b>১৩ মিনিট</b></span>
+        <span>ধরন<b>তুলনামূলক গাইড</b></span>
+        <span>পরিধি<b>বাংলাদেশের ম্যানুফ্যাকচারিং SME</b></span>
+      </div>
+    </div>
+  </section>
+
+  <article class="post">
+    <aside class="toc">
+      <div class="toc-k">এই গাইডে</div>
+      <ol>
+        <li><a href="#background">কোম্পানির পটভূমি</a></li>
+        <li><a href="#quick-verdict">সংক্ষিপ্ত রায়</a></li>
+        <li><a href="#feature-comparison">পূর্ণ ফিচার তুলনা</a></li>
+        <li><a href="#manufacturing">ম্যানুফ্যাকচারিং মডিউলের গভীরতা</a></li>
+        <li><a href="#bangladesh-compliance">বাংলাদেশ কমপ্লায়েন্স সাপোর্ট</a></li>
+        <li><a href="#ecosystem">লোকাল ইকোসিস্টেম</a></li>
+        <li><a href="#cost">মোট খরচের তুলনা</a></li>
+        <li><a href="#choose">কোনটি বেছে নেবেন</a></li>
+        <li><a href="#faq">সচরাচর জিজ্ঞাসা</a></li>
+      </ol>
+    </aside>
+
+    <div class="body">
+      <p>বাংলাদেশের SME মার্কেটে এখন দুটি বিশ্বাসযোগ্য ওপেন-সোর্স ERP অপশন আছে: <strong>Odoo</strong> (বেলজিয়ামের, বিশ্বব্যাপী ১ কোটি ২০ লাখের বেশি ইউজার) আর <strong>ERPNext</strong> (ভারত-উদ্ভূত, Frappe ফ্রেমওয়ার্কের ওপর তৈরি, দক্ষিণ এশিয়ায় ব্যাপকভাবে ব্যবহৃত)। দুটোই ফ্রি ডাউনলোড করা যায়। দুটোই অ্যাকাউন্টিং, ইনভেন্টরি, ম্যানুফ্যাকচারিং, HR আর সেলস কভার করে। কিন্তু এরা একে অপরের বিকল্প নয় — আর বাংলাদেশের একটি ফ্যাক্টরির জন্য ভুল প্ল্যাটফর্ম বেছে নিলে ৩–৫ বছরের একটা মাথাব্যথা তৈরি হয়, যা পরে ঠিক করতে গেলে অনেক খরচ পড়ে।</p>
+
+      <p>এই তুলনাটি স্পেক শিট থেকে নয় — বাংলাদেশের RMG, টেক্সটাইল আর সাইকেল এক্সপোর্ট ফ্যাক্টরিতে সরাসরি ডেপ্লয়মেন্ট অভিজ্ঞতা থেকে লেখা।</p>
+
+      <p class="pull">আসল ERP প্রশ্নটা "কোনটি বেশি শক্তিশালী" নয় — প্রশ্নটা হলো "তিন বছর পরেও আপনার টিম কোনটা ব্যবহার করবে?"</p>
+
+      <h2 id="background">কোম্পানির পটভূমি</h2>
+
+      <p><strong>Odoo SA</strong> প্রতিষ্ঠিত হয়েছিল বেলজিয়ামে, ২০০৫ সালে (তখন নাম ছিল TinyERP)। এখন এটি বেলজিয়ামের Louvain-la-Neuve-এ সদর দপ্তরসহ একটি প্রাইভেট কোম্পানি, বিশ্বব্যাপী অফিসসহ। Odoo-র লাইসেন্সিং মডেল দুই ধরনের: Community Edition (LGPL) ফ্রি আর ওপেন-সোর্স; Enterprise Edition কমার্শিয়াল। ২০২৬ সাল পর্যন্ত Odoo-র ১ কোটি ২০ লাখের বেশি ইউজার আছে, মার্কেটপ্লেসে ৫,০০০+ অ্যাপ আছে, আর বিশ্বব্যাপী ২,০০০+ ফার্মের পার্টনার নেটওয়ার্ক আছে।</p>
+
+      <p><strong>Frappe Technologies</strong> (ভারত) ২০০৮ সালে ERPNext তৈরি করে, মূলত একটি Python/Frappe ফ্রেমওয়ার্ক অ্যাপ্লিকেশন হিসেবে। ERPNext সম্পূর্ণ ওপেন-সোর্স (GNU GPL v3), কোনো কমার্শিয়াল টিয়ার নেই — সবার জন্যই সব ফিচার উন্মুক্ত। Frappe হোস্টেড আর সাপোর্ট সার্ভিস দেয়। ERPNext বিশেষভাবে শক্তিশালী ভারতীয়, মধ্যপ্রাচ্য আর পূর্ব আফ্রিকার মার্কেটে। বাংলাদেশে এর উপস্থিতি মূলত ভারতীয় SME ইকোসিস্টেমের স্পিলওভার।</p>
+
+      <h2 id="quick-verdict">সংক্ষিপ্ত রায়</h2>
+
+      <div class="verdict">
+        <div class="verdict-head">এক নজরে কে এগিয়ে</div>
+        <div class="verdict-grid">
+          <div class="verdict-col">
+            <h4>Odoo বেছে নিন <span class="badge badge-odoo">সুপারিশকৃত</span></h4>
+            <ul>
+              <li>জটিল ম্যানুফ্যাকচারিং (মাল্টি-লেভেল BOM, রুটিং, WIP)</li>
+              <li>৫০–৫০০+ ইউজারের ফ্যাক্টরি যাদের কাঠামোবদ্ধ ডেপ্লয়মেন্ট দরকার</li>
+              <li>NBR VAT, Mushak, EPZ আর LC কমপ্লায়েন্স রিকোয়ারমেন্ট আছে</li>
+              <li>Enterprise লাইসেন্সিংয়ের বাজেট আছে ($11.90+/ইউজার/মাস)</li>
+              <li>লোকাল পার্টনার অ্যাকাউন্টেবিলিটি আর SLA দরকার</li>
+              <li>IoT Box, বারকোড স্ক্যানিং বা POS ব্যবহারের পরিকল্পনা আছে</li>
+            </ul>
+          </div>
+          <div class="verdict-col">
+            <h4>ERPNext বিবেচনা করুন <span class="badge badge-erp">পরিস্থিতিসাপেক্ষ</span></h4>
+            <ul>
+              <li>ছোট টিম (২৫ ইউজারের কম) যাদের শক্তিশালী ইন-হাউস ডেভেলপার আছে</li>
+              <li>একদম জিরো-লাইসেন্স-কস্ট বাজেট, সাথে উপলব্ধ IT ট্যালেন্ট</li>
+              <li>সাধারণ প্রোডাকশন: শুধু BOM আর বেসিক ওয়ার্ক অর্ডার</li>
+              <li>কাস্টমাইজেশনের জন্য Python/Frappe ফ্রেমওয়ার্কে পরিচিত</li>
+              <li>NBR-নির্দিষ্ট কমপ্লায়েন্স রিপোর্ট তৈরির বাধ্যবাধকতা নেই</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <h2 id="feature-comparison">পূর্ণ ফিচার তুলনা</h2>
+
+      <table class="comp-table">
+        <thead>
+          <tr>
+            <th style="width:35%">ক্ষেত্র</th>
+            <th class="col-odoo" style="width:32.5%">Odoo 17/18</th>
+            <th class="col-erp" style="width:32.5%">ERPNext v15</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="feat">ম্যানুফ্যাকচারিং মডিউল</td>
+            <td class="win">পূর্ণাঙ্গ MRP — রুটিং, WIP, স্ক্র্যাপ, কোয়ালিটি ইন্টিগ্রেশন</td>
+            <td class="draw">BOM, Work Orders, Job Cards — রুটিং ইঞ্জিন নেই</td>
+          </tr>
+          <tr>
+            <td class="feat">ইনভেন্টরি ভ্যালুয়েশন</td>
+            <td class="win">FIFO, AVCO, Standard — প্রোডাক্ট ক্যাটাগরি অনুযায়ী কনফিগারযোগ্য</td>
+            <td class="draw">FIFO, AVCO — কম গ্র্যানুলার ক্যাটাগরি কন্ট্রোল</td>
+          </tr>
+          <tr>
+            <td class="feat">অ্যাকাউন্টিং মডিউল</td>
+            <td class="win">পূর্ণাঙ্গ ডাবল-এন্ট্রি, মাল্টি-কারেন্সি, ব্যাংক রিকনসিলিয়েশন, IFRS</td>
+            <td class="win">পূর্ণাঙ্গ ডাবল-এন্ট্রি, মাল্টি-কারেন্সি — তুলনীয় গভীরতা</td>
+          </tr>
+          <tr>
+            <td class="feat">HR ও পেরোল</td>
+            <td class="win">স্যালারি রুল, PF, গ্র্যাচুইটি, ছুটি, অ্যাটেনডেন্স ইন্টিগ্রেশন</td>
+            <td class="draw">HR আর পেরোল আছে তবে স্যালারি রুল কম কনফিগারযোগ্য</td>
+          </tr>
+          <tr>
+            <td class="feat">পারচেজ ম্যানেজমেন্ট</td>
+            <td class="win">RFQ, 3-way match, অ্যাপ্রুভাল ম্যাট্রিক্স, ভেন্ডর প্রাইসলিস্ট</td>
+            <td class="draw">Purchase Orders, বেসিক অ্যাপ্রুভাল — টায়ার্ড ম্যাট্রিক্স নেই</td>
+          </tr>
+          <tr>
+            <td class="feat">প্রজেক্ট ম্যানেজমেন্ট</td>
+            <td class="win">Gantt, টাস্ক, টাইমশিট, মাইলস্টোন বিলিং</td>
+            <td class="draw">প্রজেক্ট মডিউল আছে, Gantt সীমিত</td>
+          </tr>
+          <tr>
+            <td class="feat">CRM ও সেলস</td>
+            <td class="win">পাইপলাইন, কোটেশন, প্রোফর্মা ইনভয়েস, মাল্টি-কারেন্সি</td>
+            <td class="draw">CRM আর সেলস আছে — এক্সপোর্ট-ওয়ার্কফ্লো ফোকাস কম</td>
+          </tr>
+          <tr>
+            <td class="feat">কোয়ালিটি কন্ট্রোল</td>
+            <td class="win">কোয়ালিটি পয়েন্ট, অ্যালার্ট, প্রতিটি ম্যানুফ্যাকচারিং স্টেজে চেক</td>
+            <td class="lose">ডেডিকেটেড কোয়ালিটি মডিউল নেই — কাস্টম বিল্ড দরকার</td>
+          </tr>
+          <tr>
+            <td class="feat">IoT Box / বারকোড</td>
+            <td class="win">নেটিভ IoT Box, বারকোড স্ক্যানার ইন্টিগ্রেশন, কিয়স্ক মোড</td>
+            <td class="lose">নেটিভ IoT নেই — থার্ড-পার্টি ইন্টিগ্রেশন দরকার</td>
+          </tr>
+          <tr>
+            <td class="feat">মোবাইল অ্যাপ</td>
+            <td class="win">নেটিভ iOS + Android অ্যাপ (Enterprise)</td>
+            <td class="draw">মোবাইল রেসপনসিভ ওয়েব — নেটিভ অ্যাপ নেই</td>
+          </tr>
+          <tr>
+            <td class="feat">অ্যাপ মার্কেটপ্লেস</td>
+            <td class="win">Odoo Apps Store-এ ৫,০০০+ অ্যাপ</td>
+            <td class="draw">Frappe মার্কেটপ্লেস — ছোট, বাড়ছে</td>
+          </tr>
+          <tr>
+            <td class="feat">কাস্টমাইজেশন ভাষা</td>
+            <td class="draw">Python (ORM), XML (ভিউ), JavaScript (ফ্রন্টএন্ড)</td>
+            <td class="draw">Python (Frappe ফ্রেমওয়ার্ক), Jinja টেমপ্লেট, JavaScript</td>
+          </tr>
+          <tr>
+            <td class="feat">বাংলাদেশ VAT / Mushak</td>
+            <td class="draw">কনফিগারযোগ্য — বিল্ট-ইন Mushak টেমপ্লেট নেই (সেটআপ দরকার)</td>
+            <td class="lose">কোর-এ বাংলাদেশ লোকালাইজেশন নেই — কাস্টম অ্যাপ দরকার</td>
+          </tr>
+          <tr>
+            <td class="feat">মাল্টি-কোম্পানি</td>
+            <td class="win">নেটিভ মাল্টি-কোম্পানি, ইন্টার-কোম্পানি ট্রানজ্যাকশনসহ</td>
+            <td class="draw">মাল্টি-কোম্পানি আছে তবে কম পরিণত</td>
+          </tr>
+          <tr>
+            <td class="feat">রিপোর্টিং ও BI</td>
+            <td class="win">বিল্ট-ইন পিভট, গ্রাফ, স্প্রেডশিট ইন্টিগ্রেশন, কাস্টম রিপোর্ট</td>
+            <td class="draw">Report Builder, Query Report — কম ভিজুয়াল BI</td>
+          </tr>
+          <tr>
+            <td class="feat">লাইসেন্স খরচ</td>
+            <td class="lose">Community: ফ্রি · Enterprise: $11.90–24/ইউজার/মাস</td>
+            <td class="win">সম্পূর্ণ ফ্রি (GPL v3) — কোনো পার-ইউজার ফি নেই</td>
+          </tr>
+          <tr>
+            <td class="feat">বাংলাদেশ পার্টনার</td>
+            <td class="win">৮–১২টি সক্রিয় ইমপ্লিমেন্টেশন ফার্ম</td>
+            <td class="lose">৩–৫টি সক্রিয় ইমপ্লিমেন্টেশন ফার্ম</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2 id="manufacturing">ম্যানুফ্যাকচারিং মডিউলের গভীরতা</h2>
+
+      <p>বাংলাদেশের ফ্যাক্টরিগুলোর জন্য এই তুলনাটাই সবচেয়ে নির্ণায়ক। Odoo-র Manufacturing মডিউল তৈরি হয়েছে জটিল প্রোডাকশন পরিবেশের জন্য:</p>
+
+      <ul>
+        <li><strong>মাল্টি-লেভেল বিল অফ ম্যাটেরিয়ালস:</strong> Phantom BOM, সাব-অ্যাসেম্বলি, কিট প্রোডাক্ট — সবই নেটিভভাবে সাপোর্টেড। গ্রে ফেব্রিক → কাটিং → সোয়িং → ফিনিশিং — এমন মাল্টি-স্টেজ BOM যেকোনো গার্মেন্টস ফ্যাক্টরির জন্য Odoo সঠিকভাবে হ্যান্ডল করে।</li>
+        <li><strong>ওয়ার্ক সেন্টার রুটিং:</strong> নির্দিষ্ট অপারেশন (যেমন "Cutting", "Sewing", "Finishing") ডিফাইন করা যায়, যা নির্ধারিত ওয়ার্ক সেন্টারে সিকোয়েন্সিয়ালি বা প্যারালালি চলে। প্রতিটি ধাপের টাইম স্ট্যান্ডার্ড, ক্যাপাসিটি আর কস্ট আলাদা থাকে। ERPNext-এ Job Cards আছে কিন্তু রুটিং ইঞ্জিন নেই — অপারেশন সিকোয়েন্স জোর করা বা ওয়ার্ক সেন্টার জুড়ে ক্যাপাসিটি প্ল্যান করা যায় না।</li>
+        <li><strong>প্রোডাকশন শিডিউলিং:</strong> Odoo 17/18-এ ম্যানুফ্যাকচারিং অর্ডারের জন্য একটি Gantt-ভিত্তিক প্ল্যানিং ভিউ আছে, ওয়ার্ক সেন্টার জুড়ে ড্র্যাগ-অ্যান্ড-ড্রপ শিডিউলিংসহ। ERPNext-এ এর সমতুল্য কিছু নেই।</li>
+        <li><strong>রিয়েল-টাইম WIP:</strong> Odoo ওয়ার্ক সেন্টার অনুযায়ী ওয়ার্ক-ইন-প্রগ্রেস ইনভেন্টরি ট্র্যাক করে। আংশিক সম্পন্ন হলেও, খরচ হওয়া কম্পোনেন্ট আর উৎপাদিত আউটপুট লাইভ ট্র্যাক হয়। ERPNext-এর ওয়ার্ক অর্ডারে একই গ্র্যানুলারিটি নেই।</li>
+        <li><strong>কোয়ালিটি ইন্টিগ্রেশন:</strong> Odoo-র Quality মডিউল সরাসরি ম্যানুফ্যাকচারিংয়ের সাথে যুক্ত — যেকোনো প্রোডাকশন স্টেজে কোয়ালিটি চেক ট্রিগার করা যায়। ISO-সার্টিফায়েড ফ্যাক্টরি আর বায়ার কমপ্লায়েন্স প্রোগ্রামের জন্য এটি জরুরি। তুলনীয় কোয়ালিটি ফাংশনালিটির জন্য ERPNext-এ পুরোপুরি কাস্টম বিল্ড লাগে।</li>
+        <li><strong>সাবকন্ট্রাক্টিং:</strong> ফেব্রিক বাইরের এমব্রয়ডারি ইউনিটে পাঠিয়ে ফিনিশড গুডস ফেরত নেওয়ার মতো সাবকন্ট্র্যাক্টেড অপারেশন Odoo একটি নেটিভ ওয়ার্কফ্লো হিসেবে হ্যান্ডল করে। ERPNext সাবকন্ট্র্যাক্টিং সাপোর্ট করে, তবে আংশিক ডেলিভারি আর কস্টিংয়ের কন্ট্রোল কম।</li>
+      </ul>
+
+      <p>১০–৩০টি ওয়ার্ক সেন্টার, একটি বাস্তব BOM স্ট্রাকচার, আর বায়ার-রিকোয়ার্ড কোয়ালিটি রেকর্ডসহ বাংলাদেশের সাইকেল বা RMG ফ্যাক্টরির জন্য Odoo-র ম্যানুফ্যাকচারিং মডিউল স্পষ্ট পছন্দ। সাধারণ অ্যাসেম্বলির জন্য — এক-ধাপের BOM, একটি ওয়ার্ক অর্ডার, ব্যাস — ERPNext যথেষ্ট। কিন্তু প্রোডাকশন জটিলতার জন্য নয়।</p>
+
+      <h2 id="bangladesh-compliance">বাংলাদেশ কমপ্লায়েন্স সাপোর্ট</h2>
+
+      <p>দুটো প্ল্যাটফর্মেই বাংলাদেশ-নির্দিষ্ট কমপ্লায়েন্স সাপোর্ট করাতে কনফিগারেশন লাগে। কোনোটাই প্রি-বিল্ট Mushak ফর্ম নিয়ে আসে না:</p>
+
+      <ul>
+        <li><strong>NBR VAT (Mushak 6.3):</strong> সঠিক চার্ট-অফ-অ্যাকাউন্টস সেটআপসহ Odoo-র Tax Report কনফিগার করে Mushak 6.3 ফাইলিংয়ের জন্য দরকারি ডেটা তৈরি করা যায়। একাধিক বাংলাদেশি Odoo কনসালট্যান্ট এটা প্রোডাকশন এনভায়রনমেন্টে করেছেন। ERPNext-এ শূন্য থেকে একটা কাস্টম Frappe অ্যাপ বা বড় কনফিগারেশন দরকার — এটা করেছেন এমন লোকাল এক্সপার্ট কম।</li>
+        <li><strong>EPZ / বন্ডেড ওয়্যারহাউজ:</strong> Odoo-র ইনভেন্টরি লোকেশন আর ফিসক্যাল পজিশন EPZ বন্ডেড ওয়্যারহাউজ লজিক হ্যান্ডল করে। ERPNext-এ কাস্টম ডেভেলপমেন্ট দরকার।</li>
+        <li><strong>লেটার অফ ক্রেডিট:</strong> Odoo-র Sales + Purchase মডিউল, মাল্টি-কারেন্সিসহ, একটি LC ওয়ার্কফ্লো ম্যানেজ করতে পারে। এখানে ERPNext দুর্বল — LC-নির্দিষ্ট ডকুমেন্ট ট্র্যাকিংয়ের জন্য দুই প্ল্যাটফর্মেই কাস্টমাইজেশন দরকার, তবে Odoo-র বেস ভালো।</li>
+        <li><strong>BGMEA পেরোল:</strong> Odoo-র স্যালারি রুল ইঞ্জিন ওয়েজ বোর্ড গ্রেড স্ট্রাকচার নেটিভভাবে হ্যান্ডল করে। ERPNext-এর পেরোল তুলনামূলক সহজ, আর বাংলাদেশ লেবার অ্যাক্টের ওভারটাইম আর PF রুলের জন্য বেশি কাস্টম Python কোড দরকার হয়।</li>
+      </ul>
+
+      <h2 id="ecosystem">বাংলাদেশে লোকাল ইকোসিস্টেম</h2>
+
+      <p>ERP সিদ্ধান্তে ইকোসিস্টেম প্রচণ্ড গুরুত্বপূর্ণ। আপনি শুধু সফটওয়্যার কিনছেন না — আপনি এমন একদল মানুষ কিনছেন যারা আপনার লোকাল টাইমজোন আর ভাষায় এটা ইমপ্লিমেন্ট, সাপোর্ট আর ফিক্স করতে পারবে।</p>
+
+      <ul>
+        <li><strong>Odoo-র বাংলাদেশ ইকোসিস্টেম:</strong> ২০২৬ সাল পর্যন্ত প্রায় ৮–১২টি সক্রিয় ফার্ম — ছোট বুটিক কনসালটেন্সি থেকে মাঝারি সাইজের IT ফার্ম পর্যন্ত। RMG, টেক্সটাইল, সাইকেল এক্সপোর্ট, ফার্মাসিউটিক্যাল আর ট্রেডিং সেক্টর জুড়ে রেফারেন্স সাইট আছে। চুক্তি সই করার আগেই একই ধরনের ফ্যাক্টরিতে চলমান একটি Odoo ইনস্টলেশন দেখে আসা যায় — এটা অমূল্য।</li>
+        <li><strong>ERPNext-এর বাংলাদেশ ইকোসিস্টেম:</strong> প্রমাণিত ERPNext ডেপ্লয়মেন্টসহ প্রায় ৩–৫টি ফার্ম, বেশিরভাগই ঢাকাভিত্তিক। ভারতের বড় ERPNext ইকোসিস্টেমের নলেজ স্পিলওভার থেকে উপকৃত হয়ে কমিউনিটি বাড়ছে, তবে এটা এখনও উল্লেখযোগ্যভাবে ছোট। ম্যানুফ্যাকচারিংয়ে রেফারেন্স সাইট সীমিত।</li>
+        <li><strong>ট্যালেন্ট পুল:</strong> কাস্টম মডিউল ডেভেলপমেন্ট আর বাগ ফিক্সের জন্য বাংলাদেশে Odoo ডেভেলপার বেশি পাওয়া যায়। ERPNext (Frappe) ডেভেলপার আছেন, তবে সংখ্যায় কম।</li>
+        <li><strong>ট্রেনিং:</strong> Odoo-র গ্লোবাল ডকুমেন্টেশন আর YouTube লাইব্রেরি ইংরেজিতে বিস্তৃত। ERPNext-এর ডকুমেন্টেশন ভালো, তবে বাংলাদেশ-নির্দিষ্ট কনটেন্ট কম।</li>
+      </ul>
+
+      <div class="field-note">
+        <div class="fn-hd"><span>নোট · স্পিনিং মিল, নারায়ণগঞ্জ</span><span class="when">২য় বছর, মাঝ-ডেপ্লয়মেন্ট</span></div>
+        <div class="fn-body">
+          পরে যে স্পিনিং মিলটি রিভিউ করতে বলা হয়েছিল, তারা দুই বছর আগে ERPNext বেছে নিয়েছিল — জিরো-লাইসেন্স পিচটা আকর্ষণীয় লেগেছিল, আর কাগজে-কলমে হিসাবটাও পরিষ্কার দেখাচ্ছিল। সফটওয়্যার কখনোই সমস্যা ছিল না। সমস্যা এলো যখন তাদের ইমপ্লিমেন্টার — মাত্র দুইজনের একটি শপ — অন্য কাজ নিয়ে কার্যত চুপ হয়ে গেল। দেশে হাতেগোনা কয়েকটা ERPNext ফার্ম থাকায়, মিলটির <strong>প্রায় চার মাস</strong> লেগেছিল এমন কাউকে খুঁজে পেতে যে মাঝপথে থেমে যাওয়া একটি Frappe ডেপ্লয়মেন্ট বুঝে নিয়ে অর্ধেক তৈরি একটি কাস্টম পেরোল মডিউলের মাথামুণ্ডু বের করতে পারে। <strong>লাইসেন্সে সাশ্রয়টা বাস্তব ছিল, কিন্তু পাতলা ইকোসিস্টেমের এই ফাঁক নিঃশব্দে লাইসেন্স খরচের চেয়ে বেশি খরচ করিয়ে ফেলল।</strong>
+        </div>
+      </div>
+
+      <h2 id="cost">মোট খরচের তুলনা</h2>
+
+      <p>Odoo Community (ফ্রি) আর ERPNext (ফ্রি) — এই দুইয়ের লাইসেন্সিং খরচের ফারাক শূন্য। আসল খরচ ইমপ্লিমেন্টেশন, হোস্টিং, আর চলমান সাপোর্টে। Odoo Enterprise ব্যবহার করলে হিসাবটা উল্লেখযোগ্যভাবে বদলে যায়:</p>
+
+      <table class="comp-table">
+        <thead>
+          <tr>
+            <th>খরচের খাত</th>
+            <th class="col-odoo">Odoo Enterprise (৫০ ইউজার)</th>
+            <th class="col-erp">ERPNext (৫০ ইউজার)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="feat">বার্ষিক লাইসেন্স ফি</td>
+            <td>~৳9–15 লাখ/বছর ($11.90–18/ইউজার/মাস)</td>
+            <td class="win">৳0 (GPL, কোনো ফি নেই)</td>
+          </tr>
+          <tr>
+            <td class="feat">হোস্টিং (অন-প্রিমাইজ সার্ভার)</td>
+            <td>৳60,000–150,000 একবারে (সার্ভার হার্ডওয়্যার)</td>
+            <td>৳60,000–150,000 একবারে (একই হার্ডওয়্যার)</td>
+          </tr>
+          <tr>
+            <td class="feat">ইমপ্লিমেন্টেশন (ম্যানুফ্যাকচারিং সেটআপ)</td>
+            <td>৳10–45 লাখ (স্কোপ-নির্ভর)</td>
+            <td>৳8–30 লাখ (কম স্পেশালিস্ট = বেশি আওয়ারলি ঝুঁকি)</td>
+          </tr>
+          <tr>
+            <td class="feat">বার্ষিক সাপোর্ট কন্ট্রাক্ট</td>
+            <td>৳3–8 লাখ/বছর</td>
+            <td>৳2–5 লাখ/বছর (যদি সাপোর্ট পার্টনার খুঁজে পান)</td>
+          </tr>
+          <tr>
+            <td class="feat">কাস্টম ডেভেলপমেন্ট (বাংলাদেশ কমপ্লায়েন্স)</td>
+            <td class="win">কম — বেশি রিইউজেবল মডিউল আছে</td>
+            <td>বেশি — বেশি বেসপোক কাজ দরকার</td>
+          </tr>
+          <tr>
+            <td class="feat">৩ বছরের TCO অনুমান (৫০ ইউজার)</td>
+            <td>৳55–90 লাখ</td>
+            <td class="draw">৳35–60 লাখ (যদি ইমপ্লিমেন্টেশন ভালোভাবে হয়)</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>ERPNext-এর কম ৩-বছরের TCO বাস্তব, কিন্তু একটা শর্তসহ: "যদি ইমপ্লিমেন্টেশন ভালোভাবে হয়" — এই শর্তটা ছোট লোকাল ইকোসিস্টেমের কারণে একটা বাস্তব ঝুঁকি। একটি কঠিন ERPNext ইমপ্লিমেন্টেশন থেমে গিয়ে রি-ওয়ার্ক দরকার হলে সহজেই Odoo Enterprise-এর TCO ছাড়িয়ে যেতে পারে। বাংলাদেশে ERP গো-লাইভের খরচ বিশ্লেষণের বিস্তারিত জানতে দেখুন আমাদের <a href="/bn/lab/0005-erp-go-live-cost-manufacturing-bangladesh" style="color:var(--accent)">বাংলাদেশ ম্যানুফ্যাকচারিংয়ের জন্য ERP গো-লাইভ খরচ</a> প্রবন্ধ।</p>
+
+      <h2 id="choose">কোনটি বেছে নেবেন</h2>
+
+      <p><strong>Odoo বেছে নিন যদি:</strong> আপনার ম্যানুফ্যাকচারিং পরিবেশে জটিলতা থাকে (মাল্টি-লেভেল BOM, রুটিং, কোয়ালিটি, WIP), ২৫-এর বেশি ইউজার থাকে, বাংলাদেশ কমপ্লায়েন্স রিকোয়ারমেন্ট থাকে (Mushak, EPZ, BGMEA পেরোল), আর এমন বাজেট থাকে যা Enterprise লাইসেন্সিং বা একটি ভালো-রিসোর্সড Community ডেপ্লয়মেন্ট বহন করতে পারে। বড় লোকাল ইকোসিস্টেম প্রজেক্ট ঝুঁকি কমায় — রেফারেন্স, প্রতিযোগিতামূলক কোটেশন আর সক্ষম সাপোর্ট পাওয়া যায়।</p>
+
+      <p><strong>ERPNext বিবেচনা করুন যদি:</strong> ইন-হাউস একটি টেকনিক্যাল টিম আছে যারা Python/Frappe জানে, প্রোডাকশন সহজ (এক-ধাপের BOM, বেসিক ওয়ার্ক অর্ডার), ইউজার সংখ্যা কম, আর জিরো লাইসেন্স খরচ একটা কঠোর শর্ত। ERPNext সত্যিকার অর্থেই ভালো সফটওয়্যার — এটা বিশ্বব্যাপী বড় বড় ডেপ্লয়মেন্ট চালায়। বাংলাদেশে নির্দিষ্টভাবে ঝুঁকিটা হলো পাতলা লোকাল ইকোসিস্টেম, যার মানে কম প্রতিযোগিতামূলক প্রাইসিং আর বেছে নেওয়ার মতো কম যোগ্য ইমপ্লিমেন্টার।</p>
+
+      <p><strong>বাস্তবে আমি যা সুপারিশ করি:</strong> ২৫–৫০০ ইউজার রেঞ্জের বাংলাদেশি ম্যানুফ্যাকচারিং কোম্পানির জন্য, ২০২৬ সালে Odoo বেশি ঝুঁকিমুক্ত পছন্দ। বিস্তৃত লোকাল ইকোসিস্টেম, গভীরতর ম্যানুফ্যাকচারিং মডিউল, আর ভালো কমপ্লায়েন্স টুলিং — এগুলো ERPNext-এর লাইসেন্স খরচের সুবিধাকে ছাড়িয়ে যায়, সবচেয়ে কস্ট-কনস্ট্রেইনড ডেপ্লয়মেন্ট ছাড়া। SAP আর Tally-সহ একটি বিস্তৃত ERP তুলনার জন্য দেখুন আমাদের <a href="/bn/lab/0004-odoo-vs-sap-vs-tally-bangladesh" style="color:var(--accent)">Odoo vs SAP vs Tally — বাংলাদেশি SME-দের জন্য তুলনা</a>।</p>
+
+      <div class="callout">
+        <span class="tag">সিদ্ধান্তে সাহায্য দরকার?</span>
+        <p>সঠিক ERP প্ল্যাটফর্মের সিদ্ধান্ত নির্ভর করে আপনার ফ্যাক্টরি ফ্লোরের নির্দিষ্ট জটিলতা, ইউজার সংখ্যা, কমপ্লায়েন্স রিকোয়ারমেন্ট আর টিম ক্যাপাবিলিটির ওপর। <a href="/bn/#contact" style="color:var(--accent)">৩০ মিনিটের কোনো বাধ্যবাধকতাহীন অ্যাসেসমেন্টের জন্য যোগাযোগ করুন →</a></p>
+      </div>
+
+      <h2 id="faq">সচরাচর জিজ্ঞাসা</h2>
+
+      <h3>বাংলাদেশি ব্যবসার জন্য ERPNext কি ফ্রি?</h3>
+      <p>ERPNext Community Edition GNU GPL v3-এর অধীনে সম্পূর্ণ ফ্রি — কখনোই কোনো পার-ইউজার লাইসেন্স ফি নেই। খরচ হয় শুধু হোস্টিং (ক্লাউড VPS-এ ৳3,000–8,000/মাস বা অন-প্রিমাইজ সার্ভারের জন্য একবারে ৳40,000–150,000) আর ইমপ্লিমেন্টেশন কাজের জন্য। Frappe Cloud ম্যানেজড হোস্টিং শুরু হয় $25/মাস থেকে। ইমপ্লিমেন্টেশন আর সাপোর্ট যোগ করলে ৩ বছরে মোট খরচ সাধারণত Odoo Enterprise-এর চেয়ে কম, তবে Odoo Community-র কাছাকাছি।</p>
+
+      <h3>কোন ERP-এর ম্যানুফ্যাকচারিং সাপোর্ট ভালো — Odoo নাকি ERPNext?</h3>
+      <p>জটিল প্রোডাকশনের জন্য Odoo-র Manufacturing মডিউল উল্লেখযোগ্যভাবে বেশি পরিণত। এটা মাল্টি-লেভেল BOM, ওয়ার্ক সেন্টার রুটিং, প্রোডাকশন শিডিউলিং, রিয়েল-টাইম WIP, কোয়ালিটি ইন্টিগ্রেশন আর IoT Box কানেক্টিভিটি সাপোর্ট করে। ERPNext BOM আর বেসিক Work Orders হ্যান্ডল করে, কিন্তু রুটিং ইঞ্জিন, কোয়ালিটি মডিউল আর প্রোডাকশন শিডিউলিং Gantt-এর অভাব আছে। একাধিক প্রোডাকশন স্টেজসহ বাংলাদেশি RMG আর টেক্সটাইল ফ্যাক্টরির জন্য Odoo স্পষ্ট পছন্দ।</p>
+
+      <h3>ERPNext কি বাংলাদেশ VAT (Mushak) আর NBR কমপ্লায়েন্স সাপোর্ট করে?</h3>
+      <p>ERPNext বাংলাদেশ VAT-এর জন্য কনফিগার করা যায়, তবে বিল্ট-ইন বাংলাদেশ লোকালাইজেশন নেই (কোনো Mushak 6.3 টেমপ্লেট নেই, কোনো NBR BIN ফিল্ড নেই, কোনো EPZ ফিসক্যাল পজিশন নেই)। একটা কাস্টম Frappe অ্যাপ দরকার। Odoo-তেও Mushak-এর জন্য কনফিগারেশন দরকার হয়, তবে বাংলাদেশি Odoo কনসালট্যান্টের সংখ্যা বেশি যারা প্রোডাকশন ফ্যাক্টরির জন্য ইতিমধ্যে এই কনফিগারেশন তৈরি করেছেন — যা আপনার সেটআপ সময় আর ঝুঁকি কমায়।</p>
+
+      <h3>বাংলাদেশে Odoo বনাম ERPNext-এর কতগুলো ইমপ্লিমেন্টেশন পার্টনার আছে?</h3>
+      <p>২০২৬ সাল পর্যন্ত বাংলাদেশে প্রায় ৮–১২টি সক্রিয় Odoo ইমপ্লিমেন্টেশন ফার্ম কাজ করছে। ERPNext-এর প্রমাণিত ডেপ্লয়মেন্টসহ প্রায় ৩–৫টি ফার্ম আছে। বড় Odoo ইকোসিস্টেমের মানে বেশি প্রতিযোগিতামূলক প্রাইসিং, চুক্তি সইয়ের আগে দেখার জন্য বেশি রেফারেন্স সাইট, আর কাস্টমাইজেশন ও দীর্ঘমেয়াদী সাপোর্টের জন্য গভীরতর ডেভেলপার ট্যালেন্ট পুল।</p>
+    </div>
+  </article>
+
+  <footer>
+    <div class="shell">
+      <div class="post-foot">
+        <span class="eyebrow">আরও পড়ুন</span>
+        <div class="next">
+          <a class="next-card" href="/bn/lab/0022-bgmea-wage-board-odoo-payroll">
+            <span class="dir">পুরনো · 0022</span>
+            <h4>Odoo Payroll-এ BGMEA Wage Board</h4>
+            <p>বাংলাদেশ RMG পেরোল কনফিগার করুন — ৮ম Wage Board গ্রেড, ওভারটাইম, PF, আর কমপ্লায়েন্ট পে-স্লিপ।</p>
+            <span class="arrow">→</span>
+          </a>
+          <a class="next-card" href="/bn/lab/0024-odoo-community-vs-enterprise-bangladesh">
+            <span class="dir">নতুন · 0024</span>
+            <h4>বাংলাদেশে Odoo Community vs Enterprise</h4>
+            <p>পূর্ণ ফিচার ম্যাট্রিক্স আর খরচ বিশ্লেষণ — Community থেকে Enterprise-এ গেলে ঠিক কী পাবেন আর কী হারাবেন।</p>
+            <span class="arrow">→</span>
+          </a>
+        </div>
+      </div>
+      <div class="foot">
+        <span>© ২০২৬ Mehedi Hasan · Lab / 0023</span>
+        <span><a href="/bn/#lab">↑ ল্যাব ইনডেক্সে ফিরুন</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/lab/_utils.js" defer></script>
+<script src="/lab/_toc.js" defer></script>
+<script src="/whatsapp.js" defer></script>
+<script src="/scroll-top.js" defer></script>
+</body>
+
+</html>

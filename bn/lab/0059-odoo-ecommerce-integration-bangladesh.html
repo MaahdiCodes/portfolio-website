@@ -1,0 +1,519 @@
+<!doctype html>
+<html lang="bn">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description"
+    content="বাংলাদেশে Odoo ই-কমার্স ইন্টিগ্রেশন: WooCommerce, Shopify ও Daraz আপনার ERP-র সাথে সিঙ্ক করুন। অর্ডার ফ্লো, ইনভেন্টরি সিঙ্ক ও পেমেন্ট গেটওয়ে সেটআপ। সম্পূর্ণ গাইড →" />
+  <meta name="robots" content="noindex, follow" />
+  <meta name="author" content="Mehedi Hasan" />
+  <title>বাংলাদেশে Odoo ই-কমার্স ইন্টিগ্রেশন | মেহেদী হাসান</title>
+  <link rel="canonical" href="https://mhasan.me/bn/lab/0059-odoo-ecommerce-integration-bangladesh" />
+  <link rel="alternate" hreflang="en" href="https://mhasan.me/lab/0059-odoo-ecommerce-integration-bangladesh" />
+  <link rel="alternate" hreflang="bn-BD" href="https://mhasan.me/bn/lab/0059-odoo-ecommerce-integration-bangladesh" />
+  <link rel="alternate" hreflang="x-default" href="https://mhasan.me/lab/0059-odoo-ecommerce-integration-bangladesh" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png" />
+  <!-- Open Graph -->
+  <meta property="og:title" content="বাংলাদেশে Odoo ই-কমার্স ইন্টিগ্রেশন | মেহেদী হাসান" />
+  <meta property="og:description"
+    content="বাংলাদেশে Odoo-কে WooCommerce, Shopify এবং Daraz-এর সাথে সংযুক্ত করুন। রিয়েল-টাইম অর্ডার সিঙ্ক, ইনভেন্টরি ম্যানেজমেন্ট, SSLCommerz পেমেন্ট এবং bKash ইন্টিগ্রেশন।" />
+  <meta property="og:url" content="https://mhasan.me/bn/lab/0059-odoo-ecommerce-integration-bangladesh" />
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="https://mhasan.me/assets/og-default.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale" content="bn_BD" />
+  <meta property="og:site_name" content="মেহেদী হাসান | Odoo ERP কনসালট্যান্ট" />
+  <meta property="article:author" content="https://www.linkedin.com/in/mehedi-hasan-consultant/" />
+  <meta property="article:published_time" content="2026-05-13T10:30:00+06:00" />
+  <meta property="article:modified_time" content="2026-05-13T10:30:00+06:00" />
+  <meta property="article:section" content="Odoo ERP Bangladesh" />
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="বাংলাদেশে Odoo ই-কমার্স ইন্টিগ্রেশন | মেহেদী হাসান" />
+  <meta name="twitter:description"
+    content="বাংলাদেশি এক্সপোর্টারদের জন্য Odoo ই-কমার্স ইন্টিগ্রেশন: WooCommerce, Shopify, Daraz, SSLCommerz, bKash। অর্ডার ফ্লো ডায়াগ্রামসহ সম্পূর্ণ সেটআপ গাইড।" />
+  <meta name="twitter:image" content="https://mhasan.me/assets/og-default.jpg" />
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "বাংলাদেশি এক্সপোর্টারদের জন্য Odoo ই-কমার্স ইন্টিগ্রেশন: WooCommerce ও Shopify",
+    "description": "বাংলাদেশি এক্সপোর্টারদের জন্য Odoo-কে WooCommerce, Shopify এবং Daraz-এর সাথে ইন্টিগ্রেট করার সম্পূর্ণ গাইড। রিয়েল-টাইম অর্ডার সিঙ্ক, ইনভেন্টরি ম্যানেজমেন্ট, বাংলাদেশের পেমেন্ট গেটওয়ে (SSLCommerz, bKash, Nagad), এবং শিপিং API ইন্টিগ্রেশন কভার করা হয়েছে।",
+    "datePublished": "2026-05-13T10:30:00+06:00",
+    "dateModified": "2026-05-13T10:30:00+06:00",
+    "inLanguage": "bn",
+    "author": {
+      "@type": "Person",
+      "name": "Mehedi Hasan",
+      "url": "https://mhasan.me",
+      "jobTitle": "Odoo ERP Consultant & Business Analyst",
+      "sameAs": "https://www.linkedin.com/in/mehedi-hasan-consultant/"
+    },
+    "publisher": { "@type": "Person", "name": "Mehedi Hasan", "url": "https://mhasan.me" },
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://mhasan.me/bn/lab/0059-odoo-ecommerce-integration-bangladesh" }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "হোম", "item": "https://mhasan.me/bn" },
+      { "@type": "ListItem", "position": 2, "name": "ল্যাব", "item": "https://mhasan.me/bn/#lab" },
+      { "@type": "ListItem", "position": 3, "name": "বাংলাদেশে Odoo ই-কমার্স ইন্টিগ্রেশন", "item": "https://mhasan.me/bn/lab/0059-odoo-ecommerce-integration-bangladesh" }
+    ]
+  }
+]
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&family=Noto+Sans+Bengali:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap">
+  <link rel="stylesheet" href="/lab/_styles.css">
+  <style>
+    body{ font-family: 'Noto Sans Bengali', var(--sans); }
+    .pull {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: clamp(20px, 2.8vw, 28px);
+      line-height: 1.3;
+      color: var(--text);
+      margin: 48px 0;
+      max-width: 28ch;
+      letter-spacing: -0.01em;
+    }
+    .pull::before {
+      content: "";
+      display: block;
+      width: 36px;
+      height: 1px;
+      background: var(--accent);
+      margin-bottom: 18px;
+    }
+    .integration-block {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      margin: 24px 0;
+      overflow: hidden;
+    }
+    .integration-head {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 20px;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      flex-wrap: wrap;
+    }
+    .int-badge {
+      font-family: var(--mono);
+      font-size: 9.5px;
+      font-weight: 700;
+      padding: 3px 9px;
+      border-radius: 4px;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      flex-shrink: 0;
+    }
+    .int-badge.native { background: var(--accent-dim); color: var(--accent); border: 1px solid rgba(80,230,160,0.3); }
+    .int-badge.connector { background: rgba(100,160,255,0.1); color: #80B8FF; border: 1px solid rgba(100,160,255,0.25); }
+    .int-badge.custom { background: rgba(200,140,60,0.1); color: #DBA850; border: 1px solid rgba(200,140,60,0.25); }
+    .int-badge.middleware { background: rgba(180,100,240,0.1); color: #C080FF; border: 1px solid rgba(180,100,240,0.25); }
+    .integration-head h3 { margin: 0; font-size: 14.5px; color: var(--text); letter-spacing: -0.01em; }
+    .integration-body { padding: 18px 20px; }
+    .integration-body p { color: var(--text-2); font-size: 14.5px; line-height: 1.65; margin: 0 0 10px; }
+    .integration-body p:last-child { margin-bottom: 0; }
+    .integration-body ul, .integration-body ol { color: var(--text-2); font-size: 14px; padding-left: 20px; margin: 10px 0; }
+    .integration-body li { margin-bottom: 6px; line-height: 1.5; }
+    .tip-box {
+      background: var(--accent-dim);
+      border-left: 3px solid var(--accent);
+      border-radius: 0 6px 6px 0;
+      padding: 14px 18px;
+      margin: 18px 0;
+    }
+    .tip-box .tlabel { font-family: var(--mono); font-size: 10px; color: var(--accent); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 6px; }
+    .tip-box p { margin: 0; font-size: 14px; color: var(--text-2); line-height: 1.55; }
+    .warn-box {
+      background: rgba(200,140,60,0.08);
+      border-left: 3px solid rgba(200,140,60,0.6);
+      border-radius: 0 6px 6px 0;
+      padding: 14px 18px;
+      margin: 18px 0;
+    }
+    .warn-box .wlabel { font-family: var(--mono); font-size: 10px; color: rgba(220,160,70,0.9); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 6px; }
+    .warn-box p { margin: 0; font-size: 14px; color: var(--text-2); line-height: 1.55; }
+    .flow-diagram {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 22px 24px;
+      margin: 22px 0;
+      overflow-x: auto;
+    }
+    .flow-diagram .flow-title {
+      font-family: var(--mono);
+      font-size: 10.5px;
+      color: var(--text-3);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+    .flow-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 10px;
+    }
+    .flow-row:last-child { margin-bottom: 0; }
+    .flow-box {
+      background: var(--elev);
+      border: 1px solid var(--border-2);
+      border-radius: 6px;
+      padding: 8px 14px;
+      font-size: 12.5px;
+      color: var(--text);
+      white-space: nowrap;
+    }
+    .flow-box.highlight { border-color: var(--accent); color: var(--accent); background: var(--accent-dim); }
+    .flow-arrow { color: var(--text-3); font-size: 14px; flex-shrink: 0; }
+    .gateway-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13.5px;
+      margin: 16px 0;
+    }
+    .gateway-table th {
+      text-align: left;
+      padding: 10px 14px;
+      background: var(--surface);
+      color: var(--text-3);
+      font-family: var(--mono);
+      font-size: 10.5px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      border-bottom: 1px solid var(--border);
+    }
+    .gateway-table td {
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      color: var(--text-2);
+      vertical-align: top;
+    }
+    .gateway-table td:first-child { color: var(--text); font-weight: 500; }
+    .gateway-table tr:last-child td { border-bottom: none; }
+  </style>
+</head>
+
+<body>
+  <div class="grid-bg"></div>
+
+  <header class="nav">
+    <div class="shell">
+      <div class="nav-inner">
+        <a class="brand" href="/bn/">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span class="brand-name"><b>Mehedi Hasan</b><em>ERP · বিজনেস অ্যানালিস্ট</em></span>
+        </a>
+        <a class="back-link" href="/bn/#lab">← ল্যাব-এ ফিরুন</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="post-head">
+    <div class="shell">
+      <span class="eyebrow">টেকনিক্যাল ল্যাব · 0059</span>
+      <h1>বাংলাদেশি এক্সপোর্টারদের জন্য Odoo ই-কমার্স ইন্টিগ্রেশন: <span class="serif">WooCommerce, Shopify ও Daraz।</span></h1>
+      <p class="lede">অনলাইনে বিক্রি করা বাংলাদেশি ব্যবসাগুলো একটি ফ্র্যাগমেন্টেশন সমস্যায় ভোগে। অর্ডার আসে Daraz থেকে, একটি WooCommerce সাইট থেকে, একটি Shopify এক্সপোর্ট স্টোর থেকে, আর সরাসরি WhatsApp জিজ্ঞাসা থেকেও। প্রতিটি চ্যানেল আলাদা স্প্রেডশিট বা অ্যাপে সামলানো হয়। এই গাইডে দেখানো হয়েছে কীভাবে এই চ্যানেলগুলোকে Odoo-র সাথে সংযুক্ত করবেন, যাতে উৎস যা-ই হোক না কেন, প্রতিটি অর্ডার একটি মাত্র ইনভেন্টরি, একটি অ্যাকাউন্টস রিসিভেবল লেজার আর একটি ফুলফিলমেন্ট কিউতে এসে জমা হয়।</p>
+      <div class="post-meta">
+        <span class="chip accent">গাইড</span>
+        <span class="chip">ই-কমার্স</span>
+        <span class="chip">ইন্টিগ্রেশন</span>
+        <span class="chip">বাংলাদেশ</span>
+      </div>
+      <div class="byline">
+        <span>লেখক<b><a href="https://www.linkedin.com/in/mehedi-hasan-consultant/" style="color:var(--accent)" rel="author">Mehedi Hasan</a></b></span>
+        <span>প্রকাশিত<b>মে ২০২৬</b></span>
+        <span>পড়ার সময়<b>১৯ মিনিট</b></span>
+        <span>ধরন<b>গাইড</b></span>
+        <span>পরিধি<b>ই-কমার্স ও ইন্টিগ্রেশন</b></span>
+      </div>
+    </div>
+  </section>
+
+  <article class="post">
+    <aside class="toc">
+      <div class="toc-k">এই গাইডে</div>
+      <ol>
+        <li><a href="#why-integrate">বাংলাদেশি ব্যবসার জন্য ERP-ই-কমার্স ইন্টিগ্রেশন কেন দরকার</a></li>
+        <li><a href="#odoo-native">Odoo-র নেটিভ ই-কমার্স মডিউল</a></li>
+        <li><a href="#woocommerce">WooCommerce ইন্টিগ্রেশন</a></li>
+        <li><a href="#shopify">এক্সপোর্টের জন্য Shopify ইন্টিগ্রেশন</a></li>
+        <li><a href="#daraz">Daraz মার্কেটপ্লেস ইন্টিগ্রেশন</a></li>
+        <li><a href="#order-flow">ইউনিফায়েড অর্ডার ফ্লো</a></li>
+        <li><a href="#inventory-sync">ইনভেন্টরি সিঙ্ক ও ওভারসেলিং প্রতিরোধ</a></li>
+        <li><a href="#payment-gateways">বাংলাদেশের পেমেন্ট গেটওয়ে</a></li>
+        <li><a href="#shipping-apis">শিপিং API ইন্টিগ্রেশন</a></li>
+        <li><a href="#common-pitfalls">সাধারণ ইন্টিগ্রেশন ভুল</a></li>
+        <li><a href="#faq">সচরাচর জিজ্ঞাসা</a></li>
+      </ol>
+    </aside>
+
+    <div class="body">
+
+      <h2 id="why-integrate">বাংলাদেশি ব্যবসার জন্য ERP-ই-কমার্স ইন্টিগ্রেশন কেন দরকার</h2>
+      <p>সাধারণ একজন বাংলাদেশি অনলাইন বিক্রেতা তার ব্যবসা চার-পাঁচটি বিচ্ছিন্ন সিস্টেমে চালান। Daraz Seller Center-এ অর্ডার দেখা যায়। WooCommerce ড্যাশবোর্ডে ওয়েবসাইটের অর্ডার দেখা যায়। WhatsApp-এ আসা জিজ্ঞাসাগুলো অনানুষ্ঠানিক বিক্রিতে রূপ নেয়। একটি স্প্রেডশিটে ডিসপ্যাচ ট্র্যাক করা হয়। Tally বা আলাদা কোনো অ্যাকাউন্টিং সফটওয়্যার ইনভয়েসের কাজ সামলায়। আর Odoo (তাত্ত্বিকভাবে) ইনভেন্টরি সামলায়।</p>
+      <p>ফলাফলটা অনুমানযোগ্য: ইনভেন্টরি ওভারসেলিং, দেরিতে অর্ডার কনফার্মেশন, ভুল স্টক গণনা, ডিজিটাল চ্যানেলে বাদ পড়ে যাওয়া VAT, আর একটি চ্যানেলে দেওয়া অর্ডার আরেকটিতে ট্র্যাক করা না গেলে কাস্টমার সাপোর্টে বিশৃঙ্খলা। আমি এই একই প্যাটার্ন ঢাকার ইলেকট্রনিক্স রিটেইলার, চট্টগ্রামের এক্সপোর্ট ট্রেডার আর ঢাকার ফ্যাশন ব্র্যান্ডে একসাথে দেখেছি।</p>
+      <p>ইন্টিগ্রেশন এই সমস্যা সমাধান করে Odoo-কে প্রোডাক্ট, প্রাইসিং, স্টক আর অর্ডারের একমাত্র সোর্স অব ট্রুথ বানিয়ে — যেখানে প্রতিটি সেলস চ্যানেল একটি সিঙ্ক্রোনাইজড আউটপোস্ট হিসেবে সেই কেন্দ্রীয় সিস্টেম থেকে ডেটা নেয় ও পাঠায়।</p>
+
+      <p class="pull">ই-কমার্স ইন্টিগ্রেশনের লক্ষ্য একটি ঝকঝকে টেক স্ট্যাক তৈরি করা নয়। লক্ষ্য হলো একটি মাত্র ইনভেন্টরি থেকে বিক্রি করা, একটি কিউ থেকে ফুলফিল করা, আর একটি জায়গা থেকে রিপোর্ট করা।</p>
+
+      <h2 id="odoo-native">অপশন ১: Odoo-র নেটিভ ই-কমার্স মডিউল</h2>
+
+      <div class="integration-block">
+        <div class="integration-head">
+          <span class="int-badge native">নেটিভ — সিঙ্কের দরকার নেই</span>
+          <h3>Odoo ই-কমার্স — Odoo Website-এর ওপর তৈরি</h3>
+        </div>
+        <div class="integration-body">
+          <p>Odoo-র ই-কমার্স মডিউল আপনার Odoo ইনস্ট্যান্সের ভেতরেই সরাসরি তৈরি করা একটি সম্পূর্ণ অনলাইন স্টোর। প্রোডাক্ট, দাম, স্টক লেভেল আর অর্ডার — সবই নেটিভভাবে Odoo-তে থাকে। এখানে কোনো "সিঙ্ক" লাগে না, কারণ ওয়েবসাইট আর ERP একই ডেটাবেস। এতে ওয়েবসাইট চ্যানেলের জন্য ইন্টিগ্রেশন সমস্যাটাই একদম মিটে যায়।</p>
+          <p><strong>এতে যা থাকে:</strong></p>
+          <ul>
+            <li>Odoo প্রোডাক্ট ক্যাটালগ থেকে নেওয়া ভ্যারিয়েন্টসহ (রঙ, সাইজ ইত্যাদি) প্রোডাক্ট পেজ</li>
+            <li>রিয়েল-টাইম স্টক প্রদর্শন (প্রকৃত Odoo ইনভেন্টরির ভিত্তিতে "মাত্র ৩টি বাকি" দেখায়)</li>
+            <li>কার্ট, চেকআউট, পেমেন্ট আর অর্ডার কনফার্মেশন — সবই নেটিভ</li>
+            <li>প্রতিটি কেনাকাটায় Odoo-তে স্বয়ংক্রিয় সেল অর্ডার তৈরি</li>
+            <li>Odoo-র ডেলিভারি মেথড ব্যবহার করে শিপিং ক্যালকুলেশন</li>
+            <li>অর্ডার ট্র্যাকিংয়ের জন্য কাস্টমার পোর্টাল</li>
+            <li>আন্তর্জাতিক ক্রেতাদের জন্য মাল্টি-কারেন্সি সাপোর্ট</li>
+          </ul>
+          <p><strong>বাংলাদেশ-নির্দিষ্ট বিবেচনা:</strong> Odoo Website/eCommerce আপনাকে আপনার Odoo সার্ভারে হোস্ট করা একটি নতুন ডোমেইন-ভিত্তিক ওয়েবসাইট দেয়। SEO ইতিহাস, কাস্টমার অ্যাকাউন্ট আর কাস্টমাইজড ডিজাইনসহ ইতিমধ্যে প্রতিষ্ঠিত একটি WooCommerce সাইট থাকলে, Odoo নেটিভ ই-কমার্সে সুইচ করার মানে সেসব সবকিছু আবার তৈরি করা। একদম নতুন করে শুরু করা অনলাইন স্টোরের জন্য Odoo নেটিভ ই-কমার্সই সবচেয়ে সহজ পথ। SEO ভিত্তি থাকা বিদ্যমান স্টোরের জন্য মাইগ্রেশনের চেয়ে WooCommerce ইন্টিগ্রেশনই ভালো।</p>
+          <p><strong>বাংলাদেশে পেমেন্ট:</strong> SSLCommerz-এর অ্যাগ্রিগেটরের মাধ্যমে bKash, Nagad, Rocket আর কার্ড পেমেন্ট গ্রহণ করতে Odoo App Store থেকে SSLCommerz পেমেন্ট প্রোভাইডার মডিউল ইনস্টল করুন। বাংলাদেশ-কেন্দ্রিক Odoo ই-কমার্স স্টোরের জন্য এটাই স্ট্যান্ডার্ড পথ।</p>
+        </div>
+      </div>
+
+      <h2 id="woocommerce">অপশন ২: WooCommerce + Odoo ইন্টিগ্রেশন</h2>
+
+      <div class="integration-block">
+        <div class="integration-head">
+          <span class="int-badge connector">কানেক্টর মডিউল — দ্বিমুখী সিঙ্ক</span>
+          <h3>Odoo-র জন্য WooCommerce কানেক্টর</h3>
+        </div>
+        <div class="integration-body">
+          <p>আপনার বাংলাদেশি ব্যবসার যদি ইতিমধ্যে SEO র‍্যাংকিং, কাস্টমার বেস আর কাস্টমাইজড থিমসহ একটি WooCommerce ওয়েবসাইট থাকে, Odoo নেটিভ ই-কমার্সে মাইগ্রেট করার খরচ যে ইন্টিগ্রেশন এড়াতে চাইছেন তার চেয়েও বেশি হতে পারে। ভালো পথ হলো একটি WooCommerce-Odoo কানেক্টর, যা দুটো সিস্টেমকে দ্বিমুখীভাবে সিঙ্ক করে।</p>
+          <p><strong>সিঙ্ক যেভাবে কাজ করে:</strong></p>
+          <ol>
+            <li><strong>প্রোডাক্ট:</strong> Odoo-তে তৈরি প্রোডাক্ট (ভ্যারিয়েন্ট, প্রাইসিং আর ছবিসহ) WooCommerce-এ এক্সপোর্ট হয়। Odoo-তে কোনো পরিবর্তন হলে (দাম আপডেট, নতুন ভ্যারিয়েন্ট) তা স্বয়ংক্রিয়ভাবে WooCommerce-এ সিঙ্ক হয়।</li>
+            <li><strong>ইনভেন্টরি:</strong> Odoo-তে স্টক নড়াচড়া করলে (সেল কনফার্ম, পারচেজ রিসিভ), WooCommerce-এর স্টক পরিমাণও আপডেট হয়। এটি ওভারসেলিং প্রতিরোধ করে — একাধিক চ্যানেলে থাকা বাংলাদেশি বিক্রেতাদের জন্য এটি একটি গুরুত্বপূর্ণ বিষয়।</li>
+            <li><strong>অর্ডার:</strong> WooCommerce-এ একটি অর্ডার দেওয়া হলে Odoo-তে স্বয়ংক্রিয়ভাবে একটি সেল অর্ডার তৈরি হয়। কানেক্টরটি WooCommerce কাস্টমার ডেটাকে Odoo কাস্টমার রেকর্ডের সাথে ম্যাপ করে (নতুন রেকর্ড তৈরি করে অথবা ইমেইল দিয়ে বিদ্যমান রেকর্ডের সাথে মিলিয়ে নেয়)।</li>
+            <li><strong>অর্ডার স্ট্যাটাস:</strong> Odoo সেল অর্ডার কনফার্ম হয়ে ডেলিভারি ভ্যালিডেট হলে (শিপড), WooCommerce অর্ডার স্ট্যাটাস "Processing" বা "Completed"-এ আপডেট হয়।</li>
+          </ol>
+          <p><strong>বাংলাদেশের জন্য কানেক্টর অপশন:</strong> Odoo App Store-এ বেশ কিছু কানেক্টর মডিউল পাওয়া যায়। OdooTec-এর WooCommerce কানেক্টর আর Cybrosys-এর ইন্টিগ্রেশন ব্যাপকভাবে ব্যবহৃত হয়। মূল্য: এককালীন $200–400 অথবা বার্ষিক সাবস্ক্রিপশন। ইনস্টলেশনের জন্য দরকার: WooCommerce REST API ক্রেডেনশিয়াল (WooCommerce → Settings → Advanced → REST API থেকে Consumer Key ও Secret) আর Odoo অ্যাডমিন অ্যাক্সেস।</p>
+          <div class="warn-box">
+            <div class="wlabel">সিঙ্ক কনফ্লিক্ট সতর্কতা</div>
+            <p>কানেক্টর সক্রিয় করার পর WooCommerce-এ সরাসরি প্রোডাক্ট বা প্রাইসিং ম্যানেজ করবেন না। সব প্রোডাক্ট ডেটা Odoo → WooCommerce পথে যাওয়া উচিত। দুই সিস্টেমে আলাদাভাবে দাম আপডেট করলে সিঙ্ক একটিকে আরেকটি দিয়ে ওভাররাইট করে দেবে, যা প্রাইসিংয়ে অসামঞ্জস্য তৈরি করে। ইন্টিগ্রেশনের প্রথম দিন থেকেই প্রোডাক্ট ডেটার একমাত্র মাস্টার হিসেবে Odoo-কে প্রতিষ্ঠিত করুন।</p>
+          </div>
+        </div>
+      </div>
+
+      <h2 id="shopify">অপশন ৩: বাংলাদেশি এক্সপোর্ট বিক্রেতাদের জন্য Shopify + Odoo</h2>
+
+      <div class="integration-block">
+        <div class="integration-head">
+          <span class="int-badge connector">কানেক্টর মডিউল — এক্সপোর্ট চ্যানেলের জন্য সেরা</span>
+          <h3>Shopify-Odoo কানেক্টর — আন্তর্জাতিক ক্রেতা চ্যানেল</h3>
+        </div>
+        <div class="integration-body">
+          <p>অনেক বাংলাদেশি এক্সপোর্টার — বিশেষত RMG স্যাম্পল, হস্তশিল্প আর সাইকেল অ্যাক্সেসরিজ খাতে — Shopify ব্যবহার করেন এর আন্তর্জাতিক রিচ, Shopify Payments-এর গ্লোবাল পেমেন্ট গ্রহণযোগ্যতা আর এক্সপোর্ট-বান্ধব ফিচারের কারণে। বাংলাদেশে Shopify পেমেন্ট প্রসেসর হিসেবে পাওয়া যায় না (Shopify Payments বাংলাদেশি ব্যাংক অ্যাকাউন্টে গ্রহণ করা যায় না), তবে Shopify-র মাধ্যমে আন্তর্জাতিক পেমেন্ট নিতে Stripe, PayPal বা 2Checkout ব্যবহার করা যায়।</p>
+          <p><strong>ইন্টিগ্রেশনের ব্যবহারিক উদাহরণ:</strong> একজন বাংলাদেশি RMG এক্সপোর্টার একটি Shopify স্টোরে আন্তর্জাতিক ক্রেতাদের কাছ থেকে স্যাম্পল অর্ডার নেন। এসব অর্ডারকে Odoo ম্যানুফ্যাকচারিংয়ে প্রোডাকশন অর্ডার হিসেবে (অথবা উপলব্ধ স্টকের সাথে যুক্ত সেল অর্ডার হিসেবে) প্রবাহিত হতে হয়, এক্সপোর্ট ডকুমেন্টেশন (কমার্শিয়াল ইনভয়েস, প্যাকিং লিস্ট) তৈরি করতে হয়, আর USD বা EUR-এ Odoo-র এক্সপোর্ট অ্যাকাউন্টস রিসিভেবল আপডেট করতে হয়।</p>
+          <p><strong>কানেক্টর সেটআপ:</strong> Odoo-র জন্য Shopify কানেক্টর apps.odoo.com-এ OdooTec, Syncoria আর আরও বেশ কিছু ভেন্ডরের কাছে পাওয়া যায়। ইন্টিগ্রেশনটি Shopify-র Admin API (REST) ব্যবহার করে। মূল কনফিগারেশন: (১) Shopify প্রোডাক্ট SKU-কে Odoo ইন্টারনাল রেফারেন্সের সাথে ম্যাপ করা; (২) Shopify অর্ডারের জন্য গ্রহণকারী গুদাম নির্ধারণ করা; (৩) কারেন্সি হ্যান্ডলিং কনফিগার করা (Shopify মাল্টি-কারেন্সি বনাম Odoo প্রাইসলিস্ট)।</p>
+          <p><strong>কী সিঙ্ক করবেন:</strong> অর্ডার (Shopify → Odoo) আর ইনভেন্টরি অ্যাভেইলেবিলিটি (Odoo → Shopify)। Odoo থেকে কাস্টমারদের Shopify-তে ফিরে সিঙ্ক করবেন না — Shopify-কে তার নিজস্ব কাস্টমার রেকর্ড বজায় রাখতে দিন আর অর্ডার তৈরির সময় সেই কাস্টমার ডেটা Odoo-তে নিয়ে আসুন।</p>
+        </div>
+      </div>
+
+      <h2 id="daraz">অপশন ৪: Daraz মার্কেটপ্লেস ইন্টিগ্রেশন</h2>
+
+      <div class="integration-block">
+        <div class="integration-head">
+          <span class="int-badge custom">কাস্টম API — নেটিভ কানেক্টর নেই</span>
+          <h3>Daraz Open Platform + Odoo API</h3>
+        </div>
+        <div class="integration-body">
+          <p>বাংলাদেশ, পাকিস্তান আর শ্রীলঙ্কায় Daraz-ই প্রধান ই-কমার্স মার্কেটপ্লেস। Daraz-এ বিক্রি করা বাংলাদেশি ব্যবসার জন্য অর্ডার ভলিউম যথেষ্ট বেশি হতে পারে — প্রতিষ্ঠিত বিক্রেতাদের জন্য প্রতিদিন ৫০–৫০০+ অর্ডার। কোনো অর্থবহ স্কেলে এগুলো Odoo-র পাশাপাশি ম্যানুয়ালি ম্যানেজ করা টেকসই নয়।</p>
+          <p><strong>নির্ভরযোগ্যতার ক্রমানুসারে ইন্টিগ্রেশন অপশন:</strong></p>
+          <ol>
+            <li><strong>Daraz Open Platform API ব্যবহার করে কাস্টম Odoo মডিউল:</strong> Daraz একটি Seller API (Open Platform) দেয়, যার মাধ্যমে রেজিস্টার্ড বিক্রেতারা অর্ডার নেওয়া, স্টক পরিমাণ আপডেট করা আর প্রোগ্রামেটিকভাবে শিপমেন্ট কনফার্ম করতে পারেন। একজন বাংলাদেশি Odoo ডেভেলপার একটি কাস্টম কানেক্টর মডিউল তৈরি করতে পারেন, যা এই API-কে নির্দিষ্ট সময় অন্তর কল করে (প্রতি ৫–১৫ মিনিটে)। এককালীন ডেভেলপমেন্ট খরচ: জটিলতা অনুযায়ী ৳80,000–150,000। দীর্ঘমেয়াদে এটাই সবচেয়ে নির্ভরযোগ্য আর রক্ষণাবেক্ষণযোগ্য সমাধান।</li>
+            <li><strong>apps.odoo.com-এ থার্ড-পার্টি Odoo-Daraz কানেক্টর:</strong> apps.odoo.com-এ "Daraz" সার্চ করুন — উপলব্ধ অপশন বিভিন্ন রকম হতে পারে। কেনার আগে মডিউলটি আপনার Odoo ভার্সনের জন্য আপডেট করা হয়েছে কিনা যাচাই করুন আর রিভিউ দেখে নিন।</li>
+            <li><strong>মিডলওয়্যার (Make / Zapier):</strong> Daraz আর Odoo দুটোরই Make বা Zapier-এ সাপোর্টেড কানেক্টর থাকলে, কোনো কোডিং ছাড়াই একটি অর্ডার সিঙ্ক ওয়ার্কফ্লো তৈরি করা যায়। হাই-ভলিউম বিক্রেতাদের জন্য নির্ভরযোগ্যতা কম; মিড-টিয়ার প্ল্যানে Make মাসে ১০,০০০ পর্যন্ত অপারেশন সামলাতে পারে।</li>
+          </ol>
+          <p><strong>Daraz থেকে Odoo-তে যা সিঙ্ক হতেই হবে:</strong> অর্ডারের বিস্তারিত (প্রোডাক্ট, পরিমাণ, ক্রেতা, ডেলিভারি ঠিকানা), পেমেন্ট স্ট্যাটাস (প্রিপেইড বনাম COD), আর শিপ হওয়ার পর ট্র্যাকিং নম্বর। ইনভেন্টরি সিঙ্কও (Odoo স্টক → Daraz-এ উপলব্ধ পরিমাণ) সমান গুরুত্বপূর্ণ — এটি না থাকলে, অন্য চ্যানেলে স্টক শেষ হয়ে গেলে আপনি Daraz-এ ওভারসেল করে ফেলবেন।</p>
+        </div>
+      </div>
+
+      <h2 id="order-flow">ইউনিফায়েড অর্ডার ফ্লো</h2>
+
+      <div class="flow-diagram">
+        <div class="flow-title">ইউনিফায়েড অর্ডার ফ্লো — মাল্টি-চ্যানেল থেকে Odoo</div>
+        <div class="flow-row">
+          <div class="flow-box">Daraz অর্ডার</div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-box">WooCommerce অর্ডার</div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-box">Shopify অর্ডার</div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-box highlight">Odoo সেল অর্ডার</div>
+        </div>
+        <div class="flow-row">
+          <div class="flow-box highlight">Odoo সেল অর্ডার</div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-box">ডেলিভারি অর্ডার (গুদাম)</div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-box">ভ্যালিডেট ও শিপ</div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-box">কাস্টমার ইনভয়েস</div>
+        </div>
+        <div class="flow-row">
+          <div class="flow-box">কাস্টমার ইনভয়েস</div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-box">অ্যাকাউন্টস রিসিভেবল</div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-box">Mushak 6.1 / VAT</div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-box highlight">ফিন্যান্সিয়াল রিপোর্টিং</div>
+        </div>
+      </div>
+
+      <p>মূল ডিজাইন নীতি হলো: প্রতিটি চ্যানেলের প্রতিটি অর্ডার Odoo-তে একটি সেল অর্ডার তৈরি করে। ইনভেন্টরি বিয়োগ, ডেলিভারি, ইনভয়েসিং আর অ্যাকাউন্টিং — অর্ডারের উৎস যা-ই হোক না কেন, সবকিছু Odoo-তেই ঘটে। চ্যানেল-নির্দিষ্ট সিস্টেমগুলো (Daraz Seller Center, WooCommerce অ্যাডমিন, Shopify অ্যাডমিন) শুধু অর্ডার গ্রহণের পয়েন্ট হয়ে থাকে — সিস্টেম অব রেকর্ড নয়।</p>
+
+      <h2 id="inventory-sync">ইনভেন্টরি সিঙ্ক ও ওভারসেলিং প্রতিরোধ</h2>
+      <p>ওভারসেলিং — অর্থাৎ স্টকে না থাকা কোনো প্রোডাক্টের অর্ডার গ্রহণ করা — বিচ্ছিন্ন সেলস চ্যানেলের সবচেয়ে ক্ষতিকর পরিণতি। বাংলাদেশে, যেখানে কাস্টমারের আস্থা তৈরি করা কঠিন কিন্তু হারানো সহজ (Daraz রেটিং, Facebook রিভিউ), সেখানে "দুঃখিত, স্টক নেই" বলে ৭ দিনের দেরি হওয়া একটি ওভারসেলিং ঘটনা আপনার সেলার স্কোরের যথেষ্ট ক্ষতি করে।</p>
+      <p>সঠিক আর্কিটেকচার:</p>
+      <ul>
+        <li><strong>Odoo-তে একটি মাত্র ইনভেন্টরি লোকেশন</strong> — পণ্য ভৌতভাবে আলাদা না করলে "Daraz stock" আর "website stock"-এর জন্য আলাদা ভার্চুয়াল লোকেশন তৈরি করবেন না। একটি লোকেশন, একটি সত্য।</li>
+        <li><strong>Odoo সব চ্যানেলে স্টক আপডেট পাঠায়</strong> — Odoo-তে যখনই স্টক নড়াচড়া করে (যে কারণেই হোক), সব সংযুক্ত চ্যানেল সিঙ্ক ইন্টারভালের মধ্যে আপডেটেড পরিমাণ পায়।</li>
+        <li><strong>সেফটি স্টক বাফার</strong> — আপনার কানেক্টরে একটি ভার্চুয়াল সেফটি কোয়ান্টিটি বাফার কনফিগার করুন। Odoo-তে ১০ ইউনিট দেখালে, Daraz-এ ৮টি পাঠান। এটি চ্যানেলগুলোর মধ্যে সিঙ্ক ডিলে (দুই সিঙ্কের মাঝের ৫ মিনিটের উইন্ডোতে দেওয়া অর্ডার) সামলে নেয়।</li>
+        <li><strong>প্রায়োরিটি চ্যানেলের জন্য স্টক রিজার্ভ করুন</strong> — আপনার সরাসরি ওয়েবসাইট যদি Daraz-এর চেয়ে বেশি মার্জিন দেয়, তাহলে সরাসরি অর্ডারের জন্য রিজার্ভ করা বাফার বাদ দিয়ে Daraz-এর উপলব্ধ পরিমাণ Odoo-র পরিমাণ থেকে সেট করুন।</li>
+      </ul>
+
+      <h2 id="payment-gateways">ইন্টিগ্রেশনের প্রেক্ষাপটে বাংলাদেশের পেমেন্ট গেটওয়ে</h2>
+
+      <table class="gateway-table">
+        <thead>
+          <tr>
+            <th>গেটওয়ে</th>
+            <th>Odoo ইন্টিগ্রেশন পদ্ধতি</th>
+            <th>গৃহীত পদ্ধতি</th>
+            <th>ট্রানজেকশন ফি</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>SSLCommerz</td>
+            <td>Odoo App Store মডিউল (SSLCommerz Payment Provider)</td>
+            <td>bKash, Nagad, Rocket, Visa, Mastercard, DBBL Nexus</td>
+            <td>পদ্ধতি অনুযায়ী 1.5–2.5%</td>
+          </tr>
+          <tr>
+            <td>bKash Direct</td>
+            <td>কাস্টম Odoo পেমেন্ট প্রোভাইডার মডিউল (ডেভেলপার লাগবে)</td>
+            <td>শুধু bKash ওয়ালেট</td>
+            <td>প্রতি ট্রানজেকশনে 1.5–1.85% + ৳2</td>
+          </tr>
+          <tr>
+            <td>Nagad Direct</td>
+            <td>কাস্টম Odoo পেমেন্ট প্রোভাইডার মডিউল (ডেভেলপার লাগবে)</td>
+            <td>শুধু Nagad ওয়ালেট</td>
+            <td>1% (প্রমোশনাল), সাধারণত 1.5–2%</td>
+          </tr>
+          <tr>
+            <td>SSLC / WooCommerce</td>
+            <td>WooCommerce SSLCommerz প্লাগইন; কানেক্টরের মাধ্যমে অর্ডার Odoo-তে যায়</td>
+            <td>উপরের সব SSLCommerz পদ্ধতি</td>
+            <td>উপরের SSLCommerz-এর মতোই</td>
+          </tr>
+          <tr>
+            <td>Stripe (Shopify)</td>
+            <td>Shopify-সাইড; Odoo কনফার্মড সেল অর্ডার পায়</td>
+            <td>Visa, Mastercard, আন্তর্জাতিক কার্ড</td>
+            <td>আন্তর্জাতিক লেনদেনে 1.5% + $0.30</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="tip-box">
+        <div class="tlabel">ডিজিটাল বিক্রয়ে VAT</div>
+        <p>বাংলাদেশের VAT আইন অনুযায়ী, আপনার নিজের ওয়েবসাইট বা Odoo ই-কমার্সের মাধ্যমে করা বিক্রয় স্ট্যান্ডার্ড VAT-এর (করযোগ্য পণ্যের জন্য 15%) আওতায় পড়ে। আপনার ট্যাক্স কনফিগারেশন সঠিক থাকলে Odoo-র ট্যাক্স ফ্রেমওয়ার্ক এটি স্বয়ংক্রিয়ভাবে সামলায় (NBR VAT কমপ্লায়েন্স সেটআপ দেখুন)। Daraz আর Shopify স্বয়ংক্রিয়ভাবে NBR-কমপ্লায়েন্ট VAT ইনভয়েস তৈরি করে না — কানেক্টরের তৈরি সেল অর্ডার ব্যবহার করে এগুলো আপনাকে Odoo থেকেই তৈরি করতে হবে। মার্কেটপ্লেস অর্ডারকে "হিসাবের বাইরে" ভাববেন না — NBR Daraz-এর বড় বিক্রেতাদের সক্রিয়ভাবে পর্যবেক্ষণ করছে।</p>
+      </div>
+
+      <h2 id="shipping-apis">শিপিং API ইন্টিগ্রেশন</h2>
+      <p>বাংলাদেশের কুরিয়ার ইকোসিস্টেম যথেষ্ট পরিণত হয়েছে। Pathao Courier, Steadfast Courier, Redx আর Paperfly — সবাই পার্সেল বুকিং, ট্র্যাকিং আর স্ট্যাটাস আপডেটের জন্য REST API দেয়। এগুলোকে Odoo-র সাথে সংযুক্ত করলে ডেলিভারি অর্ডার ভ্যালিডেট হওয়ার সাথে সাথে স্বয়ংক্রিয় শিপমেন্ট বুকিং সম্ভব হয়।</p>
+      <p><strong>এটি যেভাবে কাজ করে:</strong> Odoo-তে একটি ডেলিভারি অর্ডার ভ্যালিডেট করলে (পিক, প্যাক, শিপ কনফার্ম), শিপিং API ইন্টিগ্রেশন আপনার কুরিয়ার API-তে পার্সেল বুকিং রিকোয়েস্ট পাঠায় (পার্সেলের ওজন, ডেলিভারি ঠিকানা, প্রযোজ্য হলে COD পরিমাণ)। কুরিয়ার একটি ট্র্যাকিং নম্বর ফেরত দেয়, যা Odoo ডেলিভারি অর্ডারে সংরক্ষিত হয়। এই ট্র্যাকিং নম্বরটি তারপর সেলস চ্যানেলে ফিরে সিঙ্ক হয় (WooCommerce অর্ডার স্ট্যাটাস আপডেট, Daraz ট্র্যাকিং নম্বর জমা)।</p>
+      <p><strong>উপলব্ধ ইন্টিগ্রেশন:</strong> apps.odoo.com-এ "Pathao", "Steadfast" বা "Redx" খুঁজে দেখুন — কমিউনিটি ডেভেলপাররা প্রতিটির জন্য কানেক্টর তৈরি করেছেন। বিকল্পভাবে, বাংলাদেশের বৃহত্তর ইকোসিস্টেমের সাথে Odoo-র সংযোগ কভার করা API ইন্টিগ্রেশন গাইডের জন্য, <a href="/bn/lab/0053-odoo-api-integration-bangladesh" style="color:var(--accent)">বাংলাদেশের জন্য Odoo API ইন্টিগ্রেশন গাইড</a>-এ টেকনিক্যাল সেটআপ বিস্তারিতভাবে দেওয়া আছে।</p>
+
+      <h2 id="common-pitfalls">সাধারণ ইন্টিগ্রেশন ভুল (বাংলাদেশ-নির্দিষ্ট)</h2>
+      <p><strong>১. সিস্টেমের মধ্যে SKU অমিল।</strong> প্রোডাক্ট সিঙ্ক ব্যর্থ হওয়ার সবচেয়ে সাধারণ কারণ হলো অসামঞ্জস্যপূর্ণ ইন্টারনাল রেফারেন্স। Odoo প্রোডাক্ট আইডেন্টিফায়ার হিসেবে "Internal Reference" ব্যবহার করে। WooCommerce SKU ব্যবহার করে। Shopify-ও SKU ব্যবহার করে। Daraz ব্যবহার করে Seller SKU। কানেক্টর যাতে প্রোডাক্ট সঠিকভাবে ম্যাপ করতে পারে, তার জন্য এগুলো হুবহু মিলতে হবে। কোনো ইন্টিগ্রেশন চালু করার আগে আপনার SKU সিস্টেম অডিট করে স্ট্যান্ডার্ডাইজ করুন।</p>
+      <p><strong>২. এক্সপোর্ট চ্যানেলের জন্য কারেন্সি বিভ্রান্তি।</strong> Shopify-তে USD-এ আর দেশীয়ভাবে BDT-তে বিক্রি করলে, Shopify কানেক্টর চালু করার আগে Odoo-র মাল্টি-কারেন্সি আর প্রাইসলিস্ট সঠিকভাবে কনফিগার করুন। USD-তে ইমপোর্ট করা অর্ডারে সঠিক প্রাইসলিস্ট ব্যবহার করতে হবে — নাহলে Odoo একটি USD অর্ডারে BDT দাম প্রয়োগ করে ফেলবে, যা ফিন্যান্সিয়াল রিপোর্টিংয়ে ভুল তৈরি করে।</p>
+      <p><strong>৩. ডুপ্লিকেট কাস্টমার রেকর্ড।</strong> একই কাস্টমার যদি আপনার WooCommerce সাইটে অর্ডার দেন আর পরে Daraz-এও দেন, কানেক্টরগুলো Odoo-তে দুটো আলাদা কাস্টমার রেকর্ড তৈরি করবে (আলাদা কন্টাক্ট ডিটেইল, মেলানোর মতো কোনো ইমেইল নেই)। ১২ মাস পর, অনেক বাংলাদেশি ব্যবসার কাছে শত শত ডুপ্লিকেট কাস্টমার রেকর্ড জমা হয়ে যায়, যা কাস্টমার সংখ্যা বাড়িয়ে দেখায় আর CRM রিপোর্টিং বিকৃত করে। শুরু থেকেই ইন্টিগ্রেশনে একটি ডিডুপ্লিকেশন ধাপ যোগ করুন — ইমেইলকে ম্যাচিং কী হিসেবে ব্যবহার করুন আর প্রতি প্রান্তিকে ডুপ্লিকেট মার্জ করুন।</p>
+      <p><strong>৪. মার্কেটপ্লেস অর্ডারের জন্য ট্যাক্স ম্যাপিং।</strong> Daraz বিক্রেতাদের পক্ষে পেমেন্ট সংগ্রহ করে আর তা পাঠিয়ে দেয়। মার্কেটপ্লেস কমিশন বনাম সেল রেভিনিউয়ের ট্যাক্স ট্রিটমেন্ট একটি নির্দিষ্ট বাংলাদেশি অ্যাকাউন্টিং বিবেচ্য বিষয়। আপনার Odoo চার্ট অব অ্যাকাউন্টস আর জার্নাল কনফিগারেশনকে অবশ্যই সামলাতে হবে: (ক) সম্পূর্ণ অর্ডার মূল্যে রেকর্ড করা সেল রেভিনিউ; (খ) সেলস এক্সপেন্স হিসেবে রেকর্ড করা Daraz কমিশন; (গ) পেমেন্ট হিসেবে রেকর্ড করা Daraz-এর নিট রেমিট্যান্স। এর জন্য শুধু একটি কানেক্টর নয়, সতর্ক Odoo অ্যাকাউন্টিং কনফিগারেশন দরকার।</p>
+
+      <p>ই-কমার্স অর্ডার ট্র্যাকিংয়ের ভিত্তি হিসেবে দরকারি CRM আর সেলস পাইপলাইনের জন্য, <a href="/bn/lab/0017-odoo-sales-crm-bangladesh" style="color:var(--accent)">বাংলাদেশি এক্সপোর্টারদের জন্য Odoo সেলস ও CRM গাইড</a>-এ আপস্ট্রিম কনফিগারেশন কভার করা হয়েছে।</p>
+
+      <div class="callout">
+        <span class="tag">ই-কমার্স ইন্টিগ্রেশন স্কোপিং</span>
+        <p>আপনি যদি একটি বাংলাদেশি ব্যবসা হন এবং Odoo-র সাথে মাল্টি-চ্যানেল ই-কমার্স ইন্টিগ্রেশন বিবেচনা করছেন, আমি কানেক্টর রিকোয়ারমেন্ট স্কোপ করা, সঠিক মডিউল চিহ্নিত করা আর উপরের ভুলগুলো এড়িয়ে বাস্তবায়ন পরিকল্পনায় সাহায্য করতে পারি। <a href="/bn/#contact" style="color:var(--accent)">স্কোপিং কলের জন্য যোগাযোগ করুন →</a></p>
+      </div>
+
+      <h2 id="faq">সচরাচর জিজ্ঞাসা</h2>
+
+      <h3>Odoo কি Daraz-এর (বাংলাদেশের মার্কেটপ্লেস) সাথে ইন্টিগ্রেট করা যায়?</h3>
+      <p>হ্যাঁ, তবে নেটিভভাবে নয়। ইন্টিগ্রেশনের জন্য দরকার Odoo App Store-এর একটি থার্ড-পার্টি কানেক্টর, Daraz-এর Open Platform Seller API ব্যবহার করে তৈরি একটি কাস্টম মডিউল, অথবা Make-এর মতো কোনো মিডলওয়্যার টুল। প্রতিদিন ৫০+ অর্ডার পাওয়া বিক্রেতাদের জন্য, একজন বাংলাদেশি ডেভেলপারের তৈরি কাস্টম কানেক্টর (৳80,000–150,000) থার্ড-পার্টি অপশনের চেয়ে বেশি নির্ভরযোগ্যতা দেয়। Daraz-এর API অর্ডার সংগ্রহ, স্টক আপডেট আর শিপমেন্ট ট্র্যাকিং কনফার্মেশন সাপোর্ট করে।</p>
+
+      <h3>Odoo কীভাবে WooCommerce-এর সাথে ইনভেন্টরি সিঙ্ক করে?</h3>
+      <p>একটি WooCommerce কানেক্টর মডিউল ব্যবহার করে, Odoo-তে ইনভেন্টরি পরিবর্তন হলেই WooCommerce REST API-র মাধ্যমে Odoo স্টক আপডেট WooCommerce-এ পাঠায়। WooCommerce-এর অর্ডারগুলো সেল অর্ডার হিসেবে Odoo-তে নিয়ে আসা হয়। সিঙ্ক ফ্রিকোয়েন্সি সাধারণত ৫–৩০ মিনিট। সব প্রোডাক্ট ম্যানেজমেন্ট Odoo-তে করে WooCommerce-এ পাঠানো উচিত — কানেক্টর সক্রিয় হওয়ার পর WooCommerce-এ সরাসরি ম্যানেজ করা উচিত নয়।</p>
+
+      <h3>বাংলাদেশে Odoo ই-কমার্সের সাথে কোন পেমেন্ট গেটওয়ে কাজ করে?</h3>
+      <p>Odoo নেটিভ ই-কমার্সের জন্য: Odoo App Store থেকে SSLCommerz পেমেন্ট প্রোভাইডার মডিউল ইনস্টল করুন — এটি SSLCommerz-এর অ্যাগ্রিগেটরের মাধ্যমে bKash, Nagad, Rocket আর কার্ড পেমেন্ট সক্ষম করে। Odoo-র সাথে ইন্টিগ্রেটেড WooCommerce-এর জন্য: WooCommerce-সাইডে পেমেন্ট প্লাগইন সেটআপ করুন (SSLCommerz, bKash, Nagad) — পেমেন্ট কনফার্মেশন কানেক্টরের মাধ্যমে Odoo-তে প্রবাহিত হয়। আন্তর্জাতিক Shopify বিক্রয়ের জন্য: USD পেমেন্ট পাওয়া বাংলাদেশি এক্সপোর্টারদের জন্য Stripe আর PayPal-ই সবচেয়ে নির্ভরযোগ্য অপশন।</p>
+
+      <h3>Odoo-কে Shopify-র সাথে ইন্টিগ্রেট করতে কি ডেভেলপার লাগবে?</h3>
+      <p>স্ট্যান্ডার্ড ইন্টিগ্রেশনের জন্য না। Odoo App Store-এর একটি প্রি-বিল্ট Shopify কানেক্টর (OdooTec, Cybrosys, Syncoria — $200–500) Shopify Admin API ক্রেডেনশিয়াল ব্যবহার করে Odoo-জ্ঞানসম্পন্ন যেকোনো ইউজার কনফিগার করতে পারেন। জটিল প্রোডাক্ট ভ্যারিয়েন্ট ম্যাপিং, কাস্টম ফুলফিলমেন্ট লজিক বা সিস্টেমের মধ্যে নন-স্ট্যান্ডার্ড ডেটা সিঙ্কের জন্য ডেভেলপার দরকার হয়। কানেক্টর মডিউল দিয়ে শুরু করুন আর শুধু সেই নির্দিষ্ট ফাঁকগুলোর জন্য কাস্টম ডেভেলপমেন্ট করান, যা মডিউল সামলাতে পারে না।</p>
+
+    </div>
+  </article>
+
+  <footer>
+    <div class="shell">
+      <div class="post-foot">
+        <span class="eyebrow">আরও পড়ুন</span>
+        <div class="next">
+          <a class="next-card" href="/bn/lab/0058-odoo-ai-features-bangladesh">
+            <span class="dir">পুরনো · 0058</span>
+            <h4>Odoo 17 ও 18-এ AI ফিচার: বাংলাদেশ SME গাইড</h4>
+            <p>OCR, প্রেডিক্টিভ রিঅর্ডারিং, ChatGPT — বাংলাদেশি ব্যবসার জন্য আসলে কোনটা কাজ করে আর কোনটা শুধু হাইপ।</p>
+            <span class="arrow">→</span>
+          </a>
+          <a class="next-card" href="/bn/lab/0060-mature-odoo-implementation-bangladesh">
+            <span class="dir">নতুন · 0060</span>
+            <h4>গো-লাইভের ৫ বছর পর: বাংলাদেশে পরিপক্ব Odoo</h4>
+            <p>৫ বছর পর ERP আসলে কেমন দেখায় — ডেটার মান, আপগ্রেড চক্র, ROI, আর খোলামেলা কিছু শিক্ষা।</p>
+            <span class="arrow">→</span>
+          </a>
+        </div>
+      </div>
+      <div class="foot">
+        <span>© ২০২৬ Mehedi Hasan · Lab / 0059</span>
+        <span><a href="/bn/#lab">↑ ল্যাব ইনডেক্সে ফিরুন</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/lab/_utils.js" defer></script>
+  <script src="/lab/_toc.js" defer></script>
+  <script src="/whatsapp.js" defer></script>
+  <script src="/scroll-top.js" defer></script>
+</body>
+
+</html>

@@ -1,0 +1,678 @@
+<!doctype html>
+<html lang="bn">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description"
+    content="Odoo 16 vs 17 vs 18 vs 19 — আপগ্রেড করার আগে বাংলাদেশি কোম্পানির যা জানা দরকার। ভার্সন পার্থক্য, মাইগ্রেশন ঝুঁকি, আর ২০২৬-এ কোনটা টার্গেট করবেন। →" />
+  <meta name="robots" content="noindex, follow" />
+  <meta name="author" content="Mehedi Hasan" />
+  <title>বাংলাদেশে Odoo 16 vs 17 vs 18 vs 19 | মেহেদী হাসান</title>
+  <link rel="canonical" href="https://mhasan.me/bn/lab/0026-odoo-16-17-18-upgrade-bangladesh" />
+  <link rel="alternate" hreflang="en" href="https://mhasan.me/lab/0026-odoo-16-17-18-upgrade-bangladesh" />
+  <link rel="alternate" hreflang="bn-BD" href="https://mhasan.me/bn/lab/0026-odoo-16-17-18-upgrade-bangladesh" />
+  <link rel="alternate" hreflang="x-default" href="https://mhasan.me/lab/0026-odoo-16-17-18-upgrade-bangladesh" />
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png" />
+  <!-- Open Graph -->
+  <meta property="og:title" content="বাংলাদেশে Odoo 16 vs 17 vs 18 vs 19 | মেহেদী হাসান" />
+  <meta property="og:description"
+    content="বাংলাদেশি কোম্পানির জন্য Odoo 16 vs 17 vs 18 vs 19 আপগ্রেড গাইড — ফিচার পার্থক্য, আপগ্রেড পাথ, কাস্টম-মডিউল মাইগ্রেশন ঝুঁকি, আর ২০২৬-এ টার্গেট করার মতো ভার্সন।" />
+  <meta property="og:url" content="https://mhasan.me/bn/lab/0026-odoo-16-17-18-upgrade-bangladesh" />
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="https://mhasan.me/assets/og-default.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale" content="bn_BD" />
+  <meta property="og:site_name" content="মেহেদী হাসান | Odoo ERP কনসালট্যান্ট" />
+  <meta property="article:author" content="https://www.linkedin.com/in/mehedi-hasan-consultant/" />
+  <meta property="article:published_time" content="2026-05-05T10:30:00+06:00" />
+  <meta property="article:modified_time" content="2026-05-23T10:30:00+06:00" />
+  <meta property="article:section" content="Odoo ERP Bangladesh" />
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="বাংলাদেশে Odoo 16 vs 17 vs 18 vs 19 | আপগ্রেড গাইড" />
+  <meta name="twitter:description"
+    content="বাংলাদেশি কোম্পানির জন্য Odoo 16, 17, 18 আর 19-এর মূল পার্থক্য — কী বদলেছে, আপগ্রেড ঝুঁকি, আর ২০২৬-এ নতুন ডেপ্লয়মেন্টের জন্য সুপারিশকৃত ভার্সন।" />
+  <meta name="twitter:image" content="https://mhasan.me/assets/og-default.jpg" />
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Odoo 16 vs 17 vs 18 vs 19: বাংলাদেশি কোম্পানির যা জানা দরকার",
+    "description": "বাংলাদেশি Odoo ইউজারদের জন্য একটি ব্যবহারিক ভার্সন তুলনা গাইড — Odoo 16, 17, 18 আর 19-এর মূল ফাংশনাল পার্থক্য, আপগ্রেড পাথের জটিলতা, কাস্টম মডিউল মাইগ্রেশন ঝুঁকি, আর ২০২৬-এ নতুন ডেপ্লয়মেন্ট বা আপগ্রেডের জন্য বাংলাদেশি কোম্পানির কোন ভার্সন টার্গেট করা উচিত তার বিশ্লেষণ।",
+    "datePublished": "2026-05-05T10:30:00+06:00",
+    "dateModified": "2026-05-23T10:30:00+06:00",
+    "inLanguage": "bn",
+    "author": {
+      "@type": "Person",
+      "name": "Mehedi Hasan",
+      "url": "https://mhasan.me",
+      "jobTitle": "Odoo ERP Consultant & Business Analyst",
+      "sameAs": "https://www.linkedin.com/in/mehedi-hasan-consultant/"
+    },
+    "publisher": { "@type": "Person", "name": "Mehedi Hasan", "url": "https://mhasan.me" },
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://mhasan.me/bn/lab/0026-odoo-16-17-18-upgrade-bangladesh" }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "হোম", "item": "https://mhasan.me/bn" },
+      { "@type": "ListItem", "position": 2, "name": "ল্যাব", "item": "https://mhasan.me/bn/#lab" },
+      { "@type": "ListItem", "position": 3, "name": "বাংলাদেশে Odoo 16 vs 17 vs 18 vs 19", "item": "https://mhasan.me/bn/lab/0026-odoo-16-17-18-upgrade-bangladesh" }
+    ]
+  }
+]
+</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&family=Noto+Sans+Bengali:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap">
+  <link rel="stylesheet" href="/lab/_styles.css">
+  <style>
+    body{ font-family: 'Noto Sans Bengali', var(--sans); }
+    /* version timeline */
+    .version-timeline {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      margin: 28px 0;
+    }
+    .version-card {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .version-card.current { border-color: oklch(0.80 0.17 155 / 0.5); }
+    .version-head {
+      padding: 14px 18px;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+    }
+    .version-card.current .version-head { background: oklch(0.80 0.17 155 / 0.06); }
+    .vh-number {
+      font-family: var(--mono);
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: -0.02em;
+    }
+    .version-card.current .vh-number { color: oklch(0.80 0.17 155); }
+    .vh-date {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--text-3);
+      letter-spacing: 0.06em;
+      margin-top: 2px;
+    }
+    .vh-status {
+      display: inline-block;
+      font-size: 10px;
+      font-family: var(--mono);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 2px 7px;
+      border-radius: 3px;
+      margin-top: 6px;
+    }
+    .status-lts { background: oklch(0.80 0.17 155 / 0.12); color: oklch(0.80 0.17 155); }
+    .status-stable { background: oklch(0.65 0.14 260 / 0.12); color: oklch(0.65 0.14 260); }
+    .status-new { background: oklch(0.75 0.12 60 / 0.15); color: oklch(0.75 0.12 60); }
+    .version-body {
+      padding: 14px 18px;
+      font-size: 13px;
+      color: var(--text-2);
+      line-height: 1.65;
+    }
+    .version-body ul {
+      margin: 8px 0 0;
+      padding: 0 0 0 16px;
+    }
+    .version-body li { margin-bottom: 4px; }
+    @media(max-width:920px) {
+      .version-timeline { grid-template-columns: 1fr 1fr; }
+    }
+    @media(max-width:480px) {
+      .version-timeline { grid-template-columns: 1fr; }
+    }
+
+    /* comparison table */
+    .comp-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 24px 0;
+      font-size: 13px;
+    }
+    .comp-table th {
+      text-align: left;
+      padding: 11px 14px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      font-family: var(--mono);
+      font-size: 10.5px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-3);
+    }
+    .comp-table th:not(:first-child) { text-align: center; }
+    .comp-table td {
+      padding: 12px 14px;
+      border: 1px solid var(--border);
+      color: var(--text-2);
+      vertical-align: middle;
+      line-height: 1.5;
+    }
+    .comp-table td:not(:first-child) { text-align: center; font-size: 13px; }
+    .comp-table .feat { color: var(--text); font-weight: 500; }
+    .comp-table .cat-row td {
+      background: var(--surface);
+      color: var(--text-3);
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 8px 14px;
+    }
+    .tick { color: oklch(0.80 0.17 155); }
+    .cross { color: oklch(0.55 0.18 30); }
+    .improved { color: oklch(0.80 0.17 155); font-weight: 600; font-size: 12px; }
+    .same { color: var(--text-3); }
+    .new-feat { color: oklch(0.75 0.12 60); font-weight: 600; font-size: 12px; }
+
+    .upgrade-path {
+      margin: 28px 0;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .up-node {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 10px 18px;
+      font-family: var(--mono);
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text);
+      background: var(--surface);
+    }
+    .up-node.active { border-color: oklch(0.80 0.17 155 / 0.6); color: oklch(0.80 0.17 155); background: oklch(0.80 0.17 155 / 0.06); }
+    .up-arrow {
+      font-size: 18px;
+      color: var(--text-3);
+    }
+    .up-note {
+      font-size: 11.5px;
+      color: var(--text-3);
+      font-family: var(--mono);
+      margin-top: 4px;
+    }
+    .up-step { display: flex; flex-direction: column; align-items: center; }
+
+    .pull {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: clamp(22px, 3vw, 34px);
+      line-height: 1.25;
+      color: var(--text);
+      margin: 48px 0;
+      border: none;
+      padding: 0;
+      max-width: 22ch;
+      letter-spacing: -0.01em;
+    }
+    .pull::before {
+      content: "";
+      display: block;
+      width: 36px;
+      height: 1px;
+      background: var(--accent);
+      margin-bottom: 18px;
+    }
+
+    .field-note{margin:28px 0;border:1px solid var(--border);border-radius:12px;overflow:hidden;background:var(--surface)}
+    .fn-hd{display:flex;align-items:center;justify-content:space-between;padding:12px 18px;border-bottom:1px solid var(--border);font-family:var(--mono);font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-3)}
+    .fn-hd .when{color:var(--accent)}
+    .fn-body{padding:18px 22px;font-size:15px;line-height:1.65;color:var(--text-2)}
+    .fn-body strong{color:var(--text);font-weight:500}
+  </style>
+</head>
+
+<body>
+  <div class="grid-bg"></div>
+
+  <header class="nav">
+    <div class="shell">
+      <div class="nav-inner">
+        <a class="brand" href="/bn/">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span class="brand-name"><b>Mehedi Hasan</b><em>ERP · বিজনেস অ্যানালিস্ট</em></span>
+        </a>
+        <a class="back-link" href="/bn/#lab">← ল্যাব-এ ফিরুন</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="post-head">
+    <div class="shell">
+      <span class="eyebrow">টেকনিক্যাল ল্যাব · 0026</span>
+      <h1>Odoo 16 vs 17 vs 18 vs 19 — <span class="serif">বাংলাদেশি কোম্পানির যা জানা দরকার।</span></h1>
+      <p class="lede">২০২৬ সালে বেশিরভাগ বাংলাদেশি Odoo ডেপ্লয়মেন্ট ভার্সন 16 বা 17-এ চলছে, আর এদিকে Odoo 18 পরিণত হয়েছে আর Odoo 19 রিলিজ হয়ে গেছে। আপগ্রেড করার আগে — বা নতুন ডেপ্লয়মেন্ট শুরু করার আগে — এখানে সহজ ভাষায় বর্ণনা করা হয়েছে চারটি ভার্সন জুড়ে কী বদলেছে, মাইগ্রেশন ঝুঁকি কী, আর আপনার পরিস্থিতির জন্য কোন ভার্সনটা যুক্তিসঙ্গত।</p>
+      <div class="post-meta">
+        <span class="chip accent">ভার্সন গাইড</span>
+        <span class="chip">Odoo 16 · 17 · 18 · 19</span>
+        <span class="chip">আপগ্রেড পাথ</span>
+        <span class="chip">বাংলাদেশ ২০২৬</span>
+      </div>
+      <div class="byline">
+        <span>লেখক<b><a href="https://www.linkedin.com/in/mehedi-hasan-consultant/" style="color:var(--accent)" rel="author">Mehedi Hasan</a></b></span>
+        <span>প্রকাশিত<b>মে ২০২৬</b></span>
+        <span>পড়ার সময়<b>১১ মিনিট</b></span>
+        <span>ধরন<b>তুলনামূলক গাইড</b></span>
+        <span>পরিধি<b>Odoo 16/17/18-এ থাকা বাংলাদেশি কোম্পানি</b></span>
+      </div>
+    </div>
+  </section>
+
+  <article class="post">
+    <aside class="toc">
+      <div class="toc-k">এই গাইডে</div>
+      <ol>
+        <li><a href="#version-overview">ভার্সন ওভারভিউ ও টাইমলাইন</a></li>
+        <li><a href="#what-changed-17">Odoo 17-এ কী বদলেছে</a></li>
+        <li><a href="#what-changed-18">Odoo 18-এ নতুন কী</a></li>
+        <li><a href="#what-changed-19">Odoo 19-এ নতুন কী</a></li>
+        <li><a href="#feature-comparison">ফিচার তুলনা টেবিল</a></li>
+        <li><a href="#upgrade-path">আপগ্রেড পাথ ও ঝুঁকি</a></li>
+        <li><a href="#bangladesh-context">বাংলাদেশ-নির্দিষ্ট প্রেক্ষাপট</a></li>
+        <li><a href="#recommendation">ভার্সন সুপারিশ</a></li>
+        <li><a href="#faq">সচরাচর জিজ্ঞাসা</a></li>
+      </ol>
+    </aside>
+
+    <div class="body">
+      <p>Odoo বছরে একবার নতুন ভার্সন রিলিজ করে। প্রতিটি নতুন মেজর ভার্সন কোনো প্যাচ নয় — এটা নতুন ফিচার, UI পরিবর্তন, API পার্থক্য, আর ডেটাবেস স্কিমা পরিবর্তনসহ একটা পূর্ণাঙ্গ প্ল্যাটফর্ম আপগ্রেড। কাস্টম মডিউল চালানো বাংলাদেশি কোম্পানির জন্য (বাংলাদেশ VAT রুল, BGMEA পেরোল, LC ট্র্যাকিং, EPZ ফিসক্যাল পজিশন), প্রতিটি আপগ্রেডে সেই মডিউলগুলোকে নতুন API-তে মাইগ্রেট করাতে হয় — যেটা ডেভেলপারের কাজ, এক-ক্লিক আপডেট নয়।</p>
+
+      <p>প্রতিটি ভার্সন আসলে কী যোগ করে — আর কোনটা শুধুই কসমেটিক পরিবর্তন — সেটা বোঝা আপগ্রেড বাজেটে প্রতিশ্রুতিবদ্ধ হওয়ার আগে অপরিহার্য।</p>
+
+      <p class="pull">যে Odoo আপগ্রেড একটা কাস্টম মডিউল ভেঙে দেয়, তার খরচ আপগ্রেডের নিজের খরচের চেয়েও বেশি হয়ে যায়। সেই অনুযায়ী পরিকল্পনা করুন।</p>
+
+      <h2 id="version-overview">ভার্সন ওভারভিউ ও টাইমলাইন</h2>
+
+      <div class="version-timeline">
+        <div class="version-card">
+          <div class="version-head">
+            <div class="vh-number">16</div>
+            <div class="vh-date">রিলিজ: অক্টোবর ২০২২</div>
+            <div><span class="vh-status status-lts">LTS — ২০২৭ পর্যন্ত সাপোর্ট</span></div>
+          </div>
+          <div class="version-body">
+            ২০২৬-এর শুরুতে বাংলাদেশে সবচেয়ে প্রচলিত ভার্সন। স্থিতিশীল, ভালোভাবে ডকুমেন্টেড, ডেপ্লয়মেন্ট অভিজ্ঞতাসহ লোকাল পার্টনারদের বড় কমিউনিটি।
+            <ul>
+              <li>Odoo Discuss ওভারহল চালু হয়েছিল</li>
+              <li>নতুন ওয়েবসাইট বিল্ডার</li>
+              <li>উন্নত অ্যাকাউন্টিং SEPA</li>
+              <li>স্প্রেডশিট উন্নতি</li>
+            </ul>
+          </div>
+        </div>
+        <div class="version-card">
+          <div class="version-head">
+            <div class="vh-number">17</div>
+            <div class="vh-date">রিলিজ: নভেম্বর ২০২৩</div>
+            <div><span class="vh-status status-stable">স্থিতিশীল</span></div>
+          </div>
+          <div class="version-body">
+            সম্পূর্ণ UI ওভারহল — নতুন নেভিগেশন, উন্নত কানবান, ডার্ক মোড। Odoo 14-এর পর থেকে ইউজারদের জন্য সবচেয়ে বড় দৃশ্যমান পরিবর্তন।
+            <ul>
+              <li>নতুন UI/UX ডিজাইন সিস্টেম</li>
+              <li>পারচেজ অ্যাপ্রুভাল ওয়ার্কফ্লো</li>
+              <li>প্রজেক্ট মাইলস্টোন বিলিং</li>
+              <li>ম্যানুফ্যাকচারিং শিডিউলিং Gantt</li>
+              <li>উন্নত Odoo Spreadsheet</li>
+            </ul>
+          </div>
+        </div>
+        <div class="version-card current">
+          <div class="version-head">
+            <div class="vh-number">18</div>
+            <div class="vh-date">রিলিজ: অক্টোবর ২০২৪</div>
+            <div><span class="vh-status status-stable">স্থিতিশীল — সুপারিশকৃত</span></div>
+          </div>
+          <div class="version-body">
+            নেটিভ AI ফিচারসহ প্রথম ভার্সন (Enterprise)। উন্নত মোবাইল অ্যাপ। ম্যানুফ্যাকচারিং শিডিউলিং পরিমার্জন।
+            <ul>
+              <li>AI-সহায়তায় অ্যাকাউন্টিং এন্ট্রি</li>
+              <li>AI ইমেইল সাজেশন (CRM/Helpdesk)</li>
+              <li>নতুন মোবাইল অ্যাপ ইন্টারফেস</li>
+              <li>উন্নত ম্যানুফ্যাকচারিং প্ল্যানিং</li>
+              <li>উন্নত স্প্রেডশিট ফাংশন</li>
+            </ul>
+          </div>
+        </div>
+        <div class="version-card">
+          <div class="version-head">
+            <div class="vh-number">19</div>
+            <div class="vh-date">রিলিজ: অক্টোবর ২০২৫</div>
+            <div><span class="vh-status status-new">সর্বশেষ — আর্লি অ্যাডপ্টার</span></div>
+          </div>
+          <div class="version-body">
+            সবচেয়ে নতুন রিলিজ। AI-কে আরও মডিউলে বিস্তৃত করেছে, UI পরিমার্জন করেছে, আর পারফরম্যান্স উন্নত করেছে। বাংলাদেশে পার্টনার অভিজ্ঞতা এখনও পাতলা।
+            <ul>
+              <li>বিস্তৃত AI কাভারেজ (ইনভেন্টরি, HR)</li>
+              <li>Odoo 18-এর ওপর UI পরিমার্জন</li>
+              <li>পারফরম্যান্স আর স্পিড বৃদ্ধি</li>
+              <li>ম্যানুফ্যাকচারিং প্ল্যানিংয়ে ধারাবাহিক পরিমার্জন</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <h2 id="what-changed-17">Odoo 17-এ কী বদলেছে — গুরুত্বপূর্ণ বিস্তারিত</h2>
+
+      <h3>UI ওভারহল (সবচেয়ে বড় অপারেশনাল প্রভাব)</h3>
+      <p>Odoo 17 একটি সম্পূর্ণ নতুন ডিজাইনের ইউজার ইন্টারফেস চালু করেছে। নেভিগেশন পুনর্গঠিত হয়েছে, লিস্ট আর কানবান ভিউ নতুনভাবে ডিজাইন হয়েছে, ফর্ম লেআউট আপডেট হয়েছে। মাসের পর মাস ধরে Odoo 16 শেখা বাংলাদেশি ফ্যাক্টরি কর্মীদের জন্য এটা একটা অর্থপূর্ণ রি-ট্রেনিং ইভেন্ট — প্রতিটি ইউজার গ্রুপের জন্য (ওয়্যারহাউজ, অ্যাকাউন্টিং, HR, প্রোডাকশন ফ্লোর) ১–২ দিনের রিফ্রেশার ট্রেনিং পরিকল্পনা করুন। নতুন UI সত্যিই ভালো — নেভিগেট করা দ্রুত, লেআউট পরিষ্কার — তবে এই ট্রানজিশনে বাস্তবিক প্রোডাক্টিভিটি কমে যাওয়ার একটা সময় আসে।</p>
+
+      <h3>ম্যানুফ্যাকচারিং শিডিউলিং Gantt</h3>
+      <p>Odoo 17-এ ম্যানুফ্যাকচারিং অর্ডারের জন্য একটি Gantt-ভিত্তিক প্রোডাকশন প্ল্যানিং ভিউ যোগ হয়েছে। প্রোডাকশন ম্যানেজাররা ওয়ার্ক সেন্টার আর টাইম স্লট জুড়ে ম্যানুফ্যাকচারিং অর্ডার ড্র্যাগ-অ্যান্ড-ড্রপ করতে পারেন। একাধিক ওয়ার্ক সেন্টার (কাটিং, সোয়িং, ফিনিশিং, প্যাকিং) পরিচালনা করা বাংলাদেশি ফ্যাক্টরির জন্য, Odoo 16-এর লিস্ট-ভিত্তিক প্ল্যানিংয়ের তুলনায় এটা একটা উল্লেখযোগ্য অপারেশনাল উন্নতি। ক্যাপাসিটি কনফ্লিক্ট প্রোডাকশন ডিলে ঘটানোর আগেই ভিজ্যুয়ালাইজ করা যায়।</p>
+
+      <h3>পারচেজ অ্যাপ্রুভাল ওয়ার্কফ্লো</h3>
+      <p>Odoo 17-এ একটি কনফিগারযোগ্য মাল্টি-লেভেল পারচেজ অ্যাপ্রুভাল ওয়ার্কফ্লো যোগ হয়েছে, যা পরিমাণ থ্রেশহোল্ড, প্রোডাক্ট ক্যাটাগরি, বা ডিপার্টমেন্টের ভিত্তিতে পারচেজ অর্ডার অ্যাপ্রুভাল রাউটিং করতে দেয়। ম্যানেজমেন্ট-অনুমোদিত পারচেজিং প্রসেসসহ বাংলাদেশি ফ্যাক্টরি (৳50,000-এর ওপরে পারচেজে MD বা GM-এর অনুমোদন লাগে) এটা Odoo 17-এ কোনো কাস্টম কোড ছাড়াই কনফিগার করতে পারে।</p>
+
+      <h3>Odoo Spreadsheet ইন্টিগ্রেশন</h3>
+      <p>Odoo 17 Spreadsheet মডিউলকে উল্লেখযোগ্যভাবে উন্নত করেছে — Odoo-র মধ্যেই তৈরি একটি Google Sheets-স্টাইল স্প্রেডশিট, যা যেকোনো Odoo মডেল থেকে লাইভ ডেটা টেনে আনতে পারে। ফাইন্যান্স টিম এমন ম্যানেজমেন্ট রিপোর্ট (P&L, বাজেট বনাম প্রকৃত, ক্যাশ ফ্লো) বানাতে পারে যা লাইভ Odoo ডেটা দিয়ে স্বয়ংক্রিয়ভাবে আপডেট হয়। এটা "Excel-এ এক্সপোর্ট করে ম্যানিপুলেট করা" ওয়ার্কফ্লো কমায়, যার ওপর বেশিরভাগ বাংলাদেশি অ্যাকাউন্টিং টিম নির্ভরশীল।</p>
+
+      <h2 id="what-changed-18">Odoo 18-এ নতুন কী</h2>
+
+      <h3>AI ফিচার (শুধু Enterprise)</h3>
+      <p>Odoo 18 হলো পুরো প্ল্যাটফর্ম জুড়ে নেটিভ AI ইন্টিগ্রেশনসহ প্রথম ভার্সন:</p>
+      <ul>
+        <li><strong>AI অ্যাকাউন্টিং সাজেশন:</strong> একটা ভেন্ডর বিল পোস্ট করার সময়, Odoo 18 ঐতিহাসিক প্যাটার্নের ভিত্তিতে সঠিক অ্যাকাউন্টিং জার্নাল এন্ট্রি সাজেস্ট করে। উচ্চ-ভলিউমের অ্যাকাউন্টস পেয়েবল অপারেশনের জন্য (মাসে ১০০+ ভেন্ডর বিল), এটা ম্যানুয়াল কোডিংয়ের সময় কমায়।</li>
+        <li><strong>CRM-এ AI ইমেইল সাজেশন:</strong> একজন লিড বা কাস্টমারকে ইমেইল লেখার সময়, Odoo 18 ডিলের প্রেক্ষাপটের ভিত্তিতে ইমেইল কনটেন্ট সাজেস্ট করে। একাধিক বায়ার সম্পর্ক পরিচালনা করা এক্সপোর্ট সেলস টিমের জন্য উপযোগী।</li>
+        <li><strong>AI লিড স্কোরিং:</strong> এনগেজমেন্ট প্যাটার্ন আর ঐতিহাসিক কনভার্শন ডেটার ভিত্তিতে CRM লিড স্বয়ংক্রিয়ভাবে স্কোর করা হয়।</li>
+      </ul>
+      <p>এই AI ফিচারগুলোর জন্য ইন্টারনেট কানেকশন দরকার, আর এগুলো শুধু Enterprise-এ পাওয়া যায়। CRM-এর চেয়ে প্রোডাকশন অপারেশনে বেশি ফোকাস করা বাংলাদেশি ম্যানুফ্যাকচারিং কোম্পানির জন্য, AI ফিচারগুলো আকর্ষণীয়, তবে একাই আপগ্রেডের যথেষ্ট কারণ নয়।</p>
+
+      <h3>ম্যানুফ্যাকচারিং প্ল্যানিং উন্নতি</h3>
+      <p>Odoo 18 Odoo 17-এ চালু হওয়া ম্যানুফ্যাকচারিং শিডিউলিংকে পরিমার্জন করেছে, ভালো ক্যাপাসিটি প্ল্যানিং, উন্নত ওভারল্যাপ ডিটেকশন, আর উন্নত সাবকন্ট্র্যাক্টিং ওয়ার্কফ্লো যোগ করে। জটিল প্রোডাকশন প্ল্যানিং চ্যালেঞ্জসহ ফ্যাক্টরির জন্য (মাল্টি-শিফট অপারেশন, শেয়ার্ড ওয়ার্ক সেন্টার, সাবকন্ট্র্যাক্টেড অপারেশন), Odoo 18-এর ম্যানুফ্যাকচারিং Odoo 17-এর চেয়ে অর্থপূর্ণভাবে ভালো।</p>
+
+      <h3>নতুন মোবাইল অ্যাপ ইন্টারফেস</h3>
+      <p>Odoo 18-এ iOS আর Android অ্যাপ নতুনভাবে ডিজাইন হয়েছে, ফিল্ড অপারেশনের জন্য অপ্টিমাইজড একটি মোবাইল-ফার্স্ট লেআউটসহ (ডেলিভারি, সার্ভিস, ম্যানুফ্যাকচারিং ফ্লোর চেক)। মোবাইল ERP অ্যাক্সেস ব্যবহার করা বাংলাদেশি সেলস টিম আর ওয়্যারহাউজ সুপারভাইজারের জন্য, উন্নত অ্যাপটা একটা ব্যবহারযোগ্যতার লাভ।</p>
+
+      <h2 id="what-changed-19">Odoo 19-এ নতুন কী</h2>
+
+      <p>অক্টোবর ২০২৫-এ রিলিজ হওয়া Odoo 19 একটা নাটকীয় ওভারহল নয়, একটা ধাপে-ধাপে রিলিজ — যেটা আপগ্রেড পরিকল্পনার জন্য ভালো খবর। প্রধান পরিবর্তনগুলো:</p>
+
+      <ul>
+        <li><strong>বিস্তৃত AI কাভারেজ:</strong> Odoo 18-এ চালু হওয়া AI ফিচার (অ্যাকাউন্টিং সাজেশন, ইমেইল ড্রাফটিং, লিড স্কোরিং) আরও মডিউলে বিস্তৃত হয়েছে, যার মধ্যে আছে ইনভেন্টরি রিপ্লেনিশমেন্ট হিন্ট আর HR। Odoo 18-এর মতোই, এগুলো শুধু Enterprise-এ পাওয়া যায় আর ইন্টারনেট কানেক্টিভিটি লাগে।</li>
+        <li><strong>UI পরিমার্জন:</strong> Odoo 19 Odoo 17-এ চালু হওয়া ডিজাইন সিস্টেমকে পালিশ করে — কোনো বিঘ্নকারী রি-লার্নিং নেই, শুধু আরও স্মুথ নেভিগেশন আর দ্রুত ভিউ। মাইগ্রেট করা ইউজাররা 16 → 17 জাম্পের মতো রি-ট্রেনিং ইভেন্টের মুখোমুখি হবেন না।</li>
+        <li><strong>পারফরম্যান্স:</strong> লিস্ট/কানবান রেন্ডারিং আর রিপোর্ট জেনারেশনে সাধারণ স্পিড উন্নতি — বহু-বছরের ট্রানজ্যাকশন হিস্ট্রিসহ বড় বাংলাদেশি ডেটাবেসে লক্ষণীয়।</li>
+        <li><strong>ম্যানুফ্যাকচারিং:</strong> Odoo 17 আর 18-এর তৈরি করা শিডিউলিং আর ক্যাপাসিটি-প্ল্যানিং কাজের ধারাবাহিক পরিমার্জন — ধাপে-ধাপে, পুনর্নির্মাণ নয়।</li>
+      </ul>
+
+      <p>বাংলাদেশি ম্যানুফ্যাকচারিং কোম্পানির জন্য, Odoo 19 এমন কোনো একটা must-have ফিচার আনেনি যা তাড়াহুড়ো করে আপগ্রেড করার যুক্তি দেয়। ২০২৬-এর শেষদিকে নতুনভাবে ডেপ্লয় করার জন্য এটা একটা ভালো ভার্সন, তবে 19-এ লোকাল পার্টনার অভিজ্ঞতা তৈরি হওয়া পর্যন্ত Odoo 18 বেশি রক্ষণশীল টার্গেট থেকে যায়।</p>
+
+      <h2 id="feature-comparison">ফিচার তুলনা টেবিল</h2>
+
+      <table class="comp-table">
+        <thead>
+          <tr>
+            <th style="width:40%">ফিচার এরিয়া</th>
+            <th style="width:15%">Odoo 16</th>
+            <th style="width:15%">Odoo 17</th>
+            <th style="width:15%">Odoo 18</th>
+            <th style="width:15%">Odoo 19</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="cat-row"><td colspan="5">ইউজার এক্সপেরিয়েন্স</td></tr>
+          <tr>
+            <td class="feat">UI ডিজাইন সিস্টেম</td>
+            <td class="same">V16 ডিজাইন</td>
+            <td class="improved">↑ সম্পূর্ণ রিডিজাইন</td>
+            <td class="same">ধাপে-ধাপে</td>
+            <td class="same">পরিমার্জিত</td>
+          </tr>
+          <tr>
+            <td class="feat">ডার্ক মোড</td>
+            <td class="cross">✗</td>
+            <td class="tick">✓</td>
+            <td class="tick">✓</td>
+            <td class="tick">✓</td>
+          </tr>
+          <tr>
+            <td class="feat">মোবাইল অ্যাপ (Enterprise)</td>
+            <td class="tick">✓ V16</td>
+            <td class="improved">↑ উন্নত</td>
+            <td class="improved">↑ রিডিজাইন</td>
+            <td class="improved">↑ উন্নত</td>
+          </tr>
+          <tr class="cat-row"><td colspan="5">ম্যানুফ্যাকচারিং</td></tr>
+          <tr>
+            <td class="feat">ম্যানুফ্যাকচারিং Gantt শিডিউলিং</td>
+            <td class="cross">✗</td>
+            <td class="tick">✓ যোগ হয়েছে</td>
+            <td class="improved">↑ উন্নত</td>
+            <td class="tick">✓</td>
+          </tr>
+          <tr>
+            <td class="feat">ক্যাপাসিটি প্ল্যানিং</td>
+            <td class="same">বেসিক</td>
+            <td class="same">বেসিক</td>
+            <td class="improved">↑ উন্নত</td>
+            <td class="improved">↑ উন্নত</td>
+          </tr>
+          <tr>
+            <td class="feat">সাবকন্ট্র্যাক্টিং ওয়ার্কফ্লো</td>
+            <td class="tick">✓</td>
+            <td class="tick">✓</td>
+            <td class="improved">↑ পরিমার্জিত</td>
+            <td class="tick">✓</td>
+          </tr>
+          <tr>
+            <td class="feat">কোয়ালিটি মডিউল</td>
+            <td class="tick">✓</td>
+            <td class="tick">✓</td>
+            <td class="tick">✓</td>
+            <td class="tick">✓</td>
+          </tr>
+          <tr class="cat-row"><td colspan="5">অ্যাকাউন্টিং ও ফাইন্যান্স</td></tr>
+          <tr>
+            <td class="feat">AI অ্যাকাউন্টিং সাজেশন</td>
+            <td class="cross">✗</td>
+            <td class="cross">✗</td>
+            <td class="new-feat">নতুন</td>
+            <td class="improved">↑ সম্প্রসারিত</td>
+          </tr>
+          <tr>
+            <td class="feat">ব্যাংক রিকনসিলিয়েশন</td>
+            <td class="tick">✓</td>
+            <td class="improved">↑ উন্নত ম্যাচিং</td>
+            <td class="same">অপরিবর্তিত</td>
+            <td class="same">অপরিবর্তিত</td>
+          </tr>
+          <tr>
+            <td class="feat">Odoo Spreadsheet (BI রিপোর্টিং)</td>
+            <td class="same">বেসিক</td>
+            <td class="improved">↑ বড় আপগ্রেড</td>
+            <td class="improved">↑ বেশি ফাংশন</td>
+            <td class="improved">↑ বেশি ফাংশন</td>
+          </tr>
+          <tr class="cat-row"><td colspan="5">পারচেজ ও সাপ্লাই চেইন</td></tr>
+          <tr>
+            <td class="feat">পারচেজ অ্যাপ্রুভাল ওয়ার্কফ্লো</td>
+            <td class="cross">✗ (কাস্টম দরকার)</td>
+            <td class="tick">✓ নেটিভ</td>
+            <td class="tick">✓</td>
+            <td class="tick">✓</td>
+          </tr>
+          <tr>
+            <td class="feat">রিঅর্ডারিং রুল ও MTO</td>
+            <td class="tick">✓</td>
+            <td class="tick">✓</td>
+            <td class="tick">✓</td>
+            <td class="tick">✓</td>
+          </tr>
+          <tr class="cat-row"><td colspan="5">CRM ও সেলস</td></tr>
+          <tr>
+            <td class="feat">AI লিড স্কোরিং</td>
+            <td class="cross">✗</td>
+            <td class="cross">✗</td>
+            <td class="new-feat">নতুন</td>
+            <td class="tick">✓</td>
+          </tr>
+          <tr>
+            <td class="feat">AI ইমেইল সাজেশন</td>
+            <td class="cross">✗</td>
+            <td class="cross">✗</td>
+            <td class="new-feat">নতুন</td>
+            <td class="improved">↑ সম্প্রসারিত</td>
+          </tr>
+          <tr>
+            <td class="feat">প্রজেক্ট মাইলস্টোন বিলিং</td>
+            <td class="cross">✗</td>
+            <td class="tick">✓ যোগ হয়েছে</td>
+            <td class="tick">✓</td>
+            <td class="tick">✓</td>
+          </tr>
+          <tr class="cat-row"><td colspan="5">প্ল্যাটফর্ম</td></tr>
+          <tr>
+            <td class="feat">LTS (Long-Term Support)</td>
+            <td class="tick">✓ ~২০২৭ পর্যন্ত</td>
+            <td class="cross">✗ স্ট্যান্ডার্ড</td>
+            <td class="cross">✗ স্ট্যান্ডার্ড</td>
+            <td class="cross">✗ স্ট্যান্ডার্ড</td>
+          </tr>
+          <tr>
+            <td class="feat">কমিউনিটি সাপোর্ট পরিপক্বতা</td>
+            <td class="tick">উচ্চ (৩ বছর)</td>
+            <td class="improved">উচ্চ (২ বছর)</td>
+            <td class="same">বাড়ছে (১ বছর)</td>
+            <td class="same">নতুন (&lt;১ বছর)</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2 id="upgrade-path">আপগ্রেড পাথ ও মাইগ্রেশন ঝুঁকি</h2>
+
+      <p>ডেটাবেস মাইগ্রেশনে Odoo ভার্সন স্কিপ করা সাপোর্ট করে না। পাথটা ধারাবাহিক:</p>
+
+      <div class="upgrade-path">
+        <div class="up-step">
+          <div class="up-node">Odoo 16</div>
+          <div class="up-note">বেশিরভাগ BD-র বর্তমান</div>
+        </div>
+        <div class="up-arrow">→</div>
+        <div class="up-step">
+          <div class="up-node">Odoo 17</div>
+          <div class="up-note">সাধারণ ধাপ</div>
+        </div>
+        <div class="up-arrow">→</div>
+        <div class="up-step">
+          <div class="up-node active">Odoo 18</div>
+          <div class="up-note">সুপারিশকৃত টার্গেট</div>
+        </div>
+        <div class="up-arrow">→</div>
+        <div class="up-step">
+          <div class="up-node">Odoo 19</div>
+          <div class="up-note">২০২৬-এর শেষের ডেপ্লয়মেন্ট</div>
+        </div>
+      </div>
+
+      <p>প্রতিটি ধাপের মাইগ্রেশন প্রচেষ্টা:</p>
+
+      <ul>
+        <li><strong>শুধু স্ট্যান্ডার্ড মডিউল (কাস্টম কোড নেই):</strong> প্রতিটি ভার্সন মাইগ্রেশন বেশিরভাগ ক্ষেত্রে Odoo-র আপগ্রেড স্ক্রিপ্টের মাধ্যমে স্বয়ংক্রিয়। কোনো কাস্টম অ্যাডন বা ওভাররাইড ছাড়া একটা স্ট্যান্ডার্ড Odoo 16 ইনস্টলেশনসহ বাংলাদেশি কোম্পানি ১–২ দিনের টেস্টিং আর কাটওভারে 17-এ মাইগ্রেট করতে পারে।</li>
+        <li><strong>বাংলাদেশ-নির্দিষ্ট কাস্টম মডিউল:</strong> প্রতিটি কাস্টম মডিউলকে ম্যানুয়ালি নতুন Odoo API-তে আপডেট করতে হয়। Odoo 16 আর 17-এর মধ্যে মূল পরিবর্তনগুলোর মধ্যে আছে ফিল্ড API পরিবর্তন, ভিউ XML সিনট্যাক্স পরিবর্তন, আর ORM মেথড আপডেট। একটা সাধারণ বাংলাদেশি কাস্টম মডিউল (যেমন, Mushak 6.3 রিপোর্ট, BGMEA পেরোল রুল, LC ট্র্যাকিং) মাইগ্রেট করতে প্রতি মডিউলে ১–৩ দিনের ডেভেলপার কাজ দরকার। মাইগ্রেশনের জন্য প্রতি কাস্টম মডিউলে ৳8,000–25,000 বাজেট রাখুন।</li>
+        <li><strong>Odoo Apps Store-এর থার্ড-পার্টি অ্যাপ:</strong> অ্যাপ লেখক Odoo 17/18/19 কম্প্যাটিবল একটা ভার্সন রিলিজ করবেন কিনা তার ওপর আপনি নির্ভরশীল। জনপ্রিয় অ্যাপ সাধারণত নতুন Odoo রিলিজের ৩–৬ মাসের মধ্যে আপডেট হয়। কম জনপ্রিয় বাংলাদেশ-নির্দিষ্ট অ্যাপ হয়তো আপডেট নাও হতে পারে — আপগ্রেড টাইমলাইনে প্রতিশ্রুতিবদ্ধ হওয়ার আগে লেখকের সাথে যোগাযোগ করুন।</li>
+      </ul>
+
+      <div class="field-note">
+        <div class="fn-hd"><span>নোট · অ্যাকসেসরিজ এক্সপোর্টার, গাজীপুর</span><span class="when">16 → 17 আপগ্রেড উইকএন্ড</span></div>
+        <div class="fn-body">
+          একটা কোম্পানি তাদের 16 → 17 মুভকে এক-ক্লিক কাজ মনে করে শুক্রবার ডেটাবেস আপগ্রেড চালিয়েছিল, আর সোমবার লাইভ হওয়ার আশা করেছিল। স্ট্যান্ডার্ড মডিউলগুলো নির্বিঘ্নে মাইগ্রেট হয়েছিল। তাদের কাস্টম Mushak 6.3 রিপোর্ট হয়নি — রিপোর্টের QWeb টেমপ্লেটে এমন ভিউ সিনট্যাক্স ব্যবহার হয়েছিল, যা Odoo 17 বদলে দিয়েছিল, ফলে সেটা রেন্ডার হতে সরাসরি ব্যর্থ হয়। সেই সপ্তাহেই VAT ফাইলিংয়ের সময়সীমা ছিল। <strong>তাদের বাঁচিয়েছিল গতি নয়, বরং একটা স্টেজিং কপি:</strong> কারণ আপগ্রেডটা প্রথমে একটা ডেটাবেস ক্লোনে রিহার্সাল করা হয়েছিল, ভাঙা টেমপ্লেটটা আগে থেকেই একটা পরিচিত সমস্যা ছিল আর তার সমাধানও ঠিক করা ছিল — অর্ধেক দিনের ডেভেলপার কাজ, কোনো কমপ্লায়েন্স জরুরি অবস্থা নয়। <strong>এরপর টিম যে নিয়মটা মেনে চলেছিল: কাস্টম মডিউল কখনো সরাসরি প্রোডাকশনে মাইগ্রেট করা যাবে না।</strong>
+        </div>
+      </div>
+
+      <h2 id="bangladesh-context">বাংলাদেশ-নির্দিষ্ট প্রেক্ষাপট</h2>
+
+      <p>বাংলাদেশি Odoo ডেপ্লয়মেন্টের সাথে সবচেয়ে প্রাসঙ্গিক ভার্সন-নির্দিষ্ট বিবেচনাগুলো:</p>
+
+      <ul>
+        <li><strong>Mushak / NBR কাস্টম মডিউল:</strong> প্রতিটি ভার্সন মাইগ্রেশনের পর সব বাংলাদেশি NBR কমপ্লায়েন্স মডিউল টেস্ট করা দরকার। Mushak 6.3 রিপোর্টের লজিক আর ট্যাক্স কনফিগারেশন পদ্ধতি 16 আর 17-এর মধ্যে মৌলিকভাবে বদলায়নি — তবে রিপোর্ট টেমপ্লেট XML সিনট্যাক্স বদলেছে, যার জন্য রিপোর্ট মডিউল আপডেট করা দরকার।</li>
+        <li><strong>BGMEA পেরোল রুল:</strong> স্যালারি রুল Python লজিক ভার্সন জুড়ে স্থিতিশীল। মূল মাইগ্রেশন কাজ হলো ভিউ XML আপডেট আর স্যালারি স্ট্রাকচার মডেলে Python API পরিবর্তন। একটা BGMEA পেরোল কাস্টম মডিউল সাধারণত প্রতি ভার্সনে মাইগ্রেট করতে ১ দিন লাগে।</li>
+        <li><strong>মাল্টি-কোম্পানি ইউজার:</strong> যদি আপনার একটা মাল্টি-কোম্পানি Odoo সেটআপ থাকে (হোল্ডিং কোম্পানি + সাবসিডিয়ারি), মাইগ্রেশনের পর ইন্টার-কোম্পানি ট্রানজ্যাকশন ফ্লো সতর্কভাবে টেস্ট করুন। Odoo 17 ইন্টার-কোম্পানি রুল কনফিগারেশনে পরিবর্তন এনেছে, যা বিদ্যমান সেটআপ ভেঙে দিতে পারে। কনফিগারেশন রেফারেন্সের জন্য দেখুন আমাদের <a href="/bn/lab/0006-odoo-multi-company-setup-guide" style="color:var(--accent)">Odoo মাল্টি-কোম্পানি সেটআপ গাইড</a>।</li>
+        <li><strong>Odoo 17 UI-এর ট্রেনিং প্রভাব:</strong> সবচেয়ে কম মূল্যায়িত মাইগ্রেশন খরচ হলো রি-ট্রেনিং। Odoo 17-এ মাইগ্রেট করার পর প্রতিটি ইউজার গ্রুপের জন্য ২ দিনের রিফ্রেশার ট্রেনিং সেশনের বাজেট রাখুন। ১০০-ইউজারের একটা ফ্যাক্টরির জন্য, এটা ৮–১০টা গ্রুপ ট্রেনিং সেশন, আর মাইগ্রেশনের পর প্রথম ২–৪ সপ্তাহে বাস্তব প্রোডাক্টিভিটি প্রভাব বহন করে।</li>
+        <li><strong>ডেপ্লয়মেন্ট হোস্টিং:</strong> <a href="/bn/lab/0025-odoo-on-premise-vs-cloud-bangladesh" style="color:var(--accent)">বাংলাদেশে on-premise vs cloud Odoo</a>-তে আলোচিত on-premise হোস্টিং অ্যাপ্রোচ ব্যবহার করা ফ্যাক্টরির জন্য, ভার্সন মাইগ্রেশনে সার্ভার-সাইড আপগ্রেড দরকার (Ubuntu/PostgreSQL কম্প্যাটিবিলিটি চেকসহ)। সার্ভার-লেভেল প্রস্তুতির জন্য ১ অতিরিক্ত দিন রাখুন।</li>
+      </ul>
+
+      <h2 id="recommendation">বাংলাদেশি কোম্পানির জন্য ভার্সন সুপারিশ</h2>
+
+      <p><strong>২০২৬-এ শুরু হওয়া নতুন ডেপ্লয়মেন্ট:</strong> <strong>Odoo 18</strong> টার্গেট করুন। এর পেছনে এক বছরেরও বেশি প্রোডাকশন ডেপ্লয়মেন্ট আছে, অ্যাকাউন্টিং AI আর ম্যানুফ্যাকচারিং-প্ল্যানিং উন্নতিগুলো সত্যিই কাজের, আর 18-এ বাংলাদেশে পার্টনার অভিজ্ঞতা এখন শক্তপোক্ত। Odoo 19 সবচেয়ে নতুন রিলিজ, তবে এতে লোকাল পার্টনার অভিজ্ঞতা এখনও পাতলা — ২০২৬-এর শেষদিক আর ২০২৭-এ নতুন ডেপ্লয়মেন্টের জন্য এটা ভালো পছন্দ হয়ে উঠবে।</p>
+
+      <p><strong>বর্তমানে Odoo 16-এ আছেন, আপগ্রেড করার পরিকল্পনা করছেন:</strong> একটা ধাপে-ধাপে পাথ পরিকল্পনা করুন — <strong>16 → 17 → 18</strong>। ডেটাবেস মাইগ্রেশনে Odoo ভার্সন স্কিপ করা সাপোর্ট করে না, তাই 17 একটা অপরিহার্য ধাপ, এমনকি যদি আপনি সেখানে বেশিদিন না-ও থাকেন। Odoo 16-এর কমিউনিটি সাপোর্ট গুটিয়ে আসছে, তাই পরিকল্পনায় দেরি করবেন না: কাস্টম-মডিউল মাইগ্রেশনের বাজেট রাখুন আর এখনই একটা UAT শিডিউল ঠিক করুন। এখনই 19 টার্গেট করবেন না — প্রতিটি অতিরিক্ত ভার্সন জাম্প আপনার কাস্টম-মডিউল রিরাইট আর টেস্টিং খরচকে বাড়িয়ে দেয়।</p>
+
+      <p><strong>বর্তমানে Odoo 17-এ আছেন, আপগ্রেড বিবেচনা করছেন:</strong> ২০২৬-এ <strong>Odoo 18</strong>-এ যাওয়া একটা যুক্তিসঙ্গত পদক্ষেপ — একটা একক-ভার্সন জাম্প, একটা পরিণত গন্তব্য, আর অ্যাকাউন্টিং AI ও ম্যানুফ্যাকচারিং প্ল্যানিংয়ে বাস্তব ফিচার লাভ। আপাতত Odoo 19 এড়িয়ে যান, যদি না আপনার রোডম্যাপে নির্দিষ্টভাবে 19-only কোনো ক্ষমতা থাকে — আগে লোকাল পার্টনার অভিজ্ঞতাকে পরিপক্ব হতে দিন।</p>
+
+      <div class="callout">
+        <span class="tag">ভার্সন মাইগ্রেশন অ্যাসেসমেন্ট</span>
+        <p>আপগ্রেড টাইমলাইনে প্রতিশ্রুতিবদ্ধ হওয়ার আগে, আপনার কাস্টম মডিউল লিস্ট অডিট করুন আর আপনার Odoo পার্টনারের কাছ থেকে মাইগ্রেশন প্রচেষ্টার অনুমান নিন। কাস্টম মডিউল মাইগ্রেশন সাধারণত মোট আপগ্রেড খরচের ৬০–৭০%। <a href="/bn/#contact" style="color:var(--accent)">একটা Odoo ভার্সন মাইগ্রেশন পরিকল্পনায় সাহায্য দরকার? যোগাযোগ করুন →</a></p>
+      </div>
+
+      <h2 id="faq">সচরাচর জিজ্ঞাসা</h2>
+
+      <h3>২০২৬-এ বাংলাদেশি কোম্পানির কোন Odoo ভার্সন টার্গেট করা উচিত?</h3>
+      <p>২০২৬-এ নতুন ডেপ্লয়মেন্টের জন্য, <strong>Odoo 18</strong> টার্গেট করুন — এটা প্রোডাকশন-পরিণত, এতে শক্তপোক্ত বাংলাদেশি পার্টনার অভিজ্ঞতা আছে, আর অ্যাকাউন্টিং AI ও ম্যানুফ্যাকচারিং প্ল্যানিংয়ে বাস্তব লাভ দেয়। Odoo 19 (অক্টোবর ২০২৫-এ রিলিজ) সবচেয়ে নতুন ভার্সন, তবে লোকাল পার্টনার অভিজ্ঞতা এখনও পাতলা; ২০২৬-এর শেষদিক থেকে নতুন ডেপ্লয়মেন্টের জন্য এটা উপযোগী। যদি আপনি Odoo 16 থেকে আপগ্রেড করছেন, একটা ধাপে-ধাপে 16 → 17 → 18 পাথ ব্যবহার করুন — ডেটাবেস মাইগ্রেশনে Odoo ভার্সন স্কিপ করা সাপোর্ট করে না।</p>
+
+      <h3>Odoo 16 থেকে Odoo 17-এ সবচেয়ে বড় পরিবর্তন কী?</h3>
+      <p>সবচেয়ে বড় অপারেশনাল পরিবর্তন হলো সম্পূর্ণ UI/UX রিডিজাইন। নেভিগেশন পুনর্গঠিত হয়েছে, কানবান আর লিস্ট ভিউ নতুনভাবে ডিজাইন হয়েছে, আর একটা ডার্ক মোড যোগ হয়েছে। Odoo 16-এ প্রশিক্ষিত বাংলাদেশি ফ্যাক্টরি কর্মীদের জন্য, প্রতিটি ইউজার গ্রুপের জন্য ১–২ দিনের রিফ্রেশার ট্রেনিং পরিকল্পনা করুন। ফাংশনালি, Odoo 17 যোগ করেছে: ম্যানুফ্যাকচারিং Gantt শিডিউলিং, নেটিভ পারচেজ অ্যাপ্রুভাল ওয়ার্কফ্লো, প্রজেক্ট মাইলস্টোন বিলিং, আর ম্যানেজমেন্ট রিপোর্টিংয়ের জন্য উল্লেখযোগ্যভাবে উন্নত Odoo Spreadsheet।</p>
+
+      <h3>বাংলাদেশে Odoo 16 থেকে 17 আপগ্রেডের খরচ কত?</h3>
+      <p>খরচ নির্ভর করে কাস্টম মডিউলের জটিলতার ওপর: স্ট্যান্ডার্ড ইনস্টলেশন (কোনো কাস্টম মডিউল নেই) খরচ ৳30,000–60,000। ৩–৫টি বাংলাদেশ-নির্দিষ্ট কাস্টম মডিউলসহ (Mushak, BGMEA পেরোল, LC ট্র্যাকিং) ইনস্টলেশনের খরচ ৳1.5–4 লাখ। ১০+ কাস্টম মডিউলসহ ইনস্টলেশনের খরচ ৳5–12 লাখ। কাস্টম মডিউল মাইগ্রেশন (Odoo 17 API-তে রিরাইট করা) সাধারণত মোট আপগ্রেড খরচের ৬০–৭০%।</p>
+
+      <h3>Odoo 18 কি বাংলাদেশি ব্যবসার জন্য AI ফিচার সাপোর্ট করে?</h3>
+      <p>হ্যাঁ — Odoo 18-এ (শুধু Enterprise) AI-সহায়তায় অ্যাকাউন্টিং এন্ট্রি সাজেশন, CRM/Helpdesk-এ AI ইমেইল কম্পোজিশন, আর AI লিড স্কোরিং অন্তর্ভুক্ত। বাংলাদেশি ম্যানুফ্যাকচারিংয়ের জন্য সবচেয়ে উপযোগী হলো ভেন্ডর বিল ম্যাচিংয়ের জন্য অ্যাকাউন্টিং AI — এটা অ্যাকাউন্টস পেয়েবল টিমের ম্যানুয়াল রিকনসিলিয়েশন সময় কমায়। AI ফিচারের জন্য ইন্টারনেট কানেক্টিভিটি দরকার, আর এগুলো Odoo-র ক্লাউড AI সার্ভিস দ্বারা চালিত। Odoo 19 এই AI ক্ষমতাগুলোকে আরও মডিউলে বিস্তৃত করে।</p>
+
+      <h3>Odoo 18-এর তুলনায় Odoo 19-এ নতুন কী?</h3>
+      <p>Odoo 19 (অক্টোবর ২০২৫) একটা ধাপে-ধাপে রিলিজ: এটা Odoo 18 থেকে AI ফিচারকে আরও মডিউলে বিস্তৃত করে, Odoo 17-এর ডিজাইন সিস্টেমকে রি-লার্নিং বাধ্য না করেই পরিমার্জন করে, আর বড় ডেটাবেসে পারফরম্যান্স উন্নত করে। বাংলাদেশি ম্যানুফ্যাকচারিং কোম্পানির জন্য এটা এমন কোনো একটা must-have ফিচার আনে না, তাই তাড়াহুড়ো করে আপগ্রেড করার কোনো জরুরি প্রয়োজন নেই — 19-এ পার্টনার অভিজ্ঞতা তৈরি হওয়া পর্যন্ত Odoo 18 রক্ষণশীল টার্গেট থেকে যায়।</p>
+    </div>
+  </article>
+
+  <footer>
+    <div class="shell">
+      <div class="post-foot">
+        <span class="eyebrow">আরও পড়ুন</span>
+        <div class="next">
+          <a class="next-card" href="/bn/lab/0025-odoo-on-premise-vs-cloud-bangladesh">
+            <span class="dir">পুরনো · 0025</span>
+            <h4>বাংলাদেশে On-Premise vs Cloud Odoo</h4>
+            <p>ইনফ্রাস্ট্রাকচার সিদ্ধান্ত গাইড — বাংলাদেশের বিদ্যুৎ, ইন্টারনেট আর ডেটা নিয়ন্ত্রণের বাস্তবতা।</p>
+            <span class="arrow">→</span>
+          </a>
+          <a class="next-card" href="/bn/lab/0027-sap-b1-vs-odoo-bangladesh">
+            <span class="dir">নতুন · 0027</span>
+            <h4>বাংলাদেশে SAP Business One vs Odoo</h4>
+            <p>একটা বাস্তব খরচ তুলনা — বাংলাদেশি ম্যানুফ্যাকচারিং কোম্পানির জন্য লাইসেন্সিং, ইমপ্লিমেন্টেশন আর TCO।</p>
+            <span class="arrow">→</span>
+          </a>
+        </div>
+      </div>
+      <div class="foot">
+        <span>© ২০২৬ Mehedi Hasan · Lab / 0026</span>
+        <span><a href="/bn/#lab">↑ ল্যাব ইনডেক্সে ফিরুন</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/lab/_utils.js" defer></script>
+<script src="/lab/_toc.js" defer></script>
+<script src="/whatsapp.js" defer></script>
+<script src="/scroll-top.js" defer></script>
+</body>
+
+</html>

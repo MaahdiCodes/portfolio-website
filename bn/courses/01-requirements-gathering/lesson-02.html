@@ -1,0 +1,360 @@
+﻿<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="/favicon.ico" sizes="any" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon.png" />
+<link rel="apple-touch-icon" href="/favicon.png" />
+<meta name="robots" content="noindex, follow" />
+<link rel="canonical" href="https://mhasan.me/bn/courses/01-requirements-gathering/lesson-02" />
+<link rel="alternate" hreflang="en" href="https://mhasan.me/courses/01-requirements-gathering/lesson-02" />
+<link rel="alternate" hreflang="bn-BD" href="https://mhasan.me/bn/courses/01-requirements-gathering/lesson-02" />
+<link rel="alternate" hreflang="x-default" href="https://mhasan.me/courses/01-requirements-gathering/lesson-02" />
+<title>লেসন ০২ — স্টেকহোল্ডার ম্যাপিং ও পাওয়ার ডাইনামিক্স · কোর্স ০১</title>
+<meta name="description" content="প্রতিটি স্টেকহোল্ডার চিহ্নিত করুন, তাদের পাওয়ার ও ইন্টারেস্ট ম্যাপ করুন, একটি RACI ম্যাট্রিক্স তৈরি করুন, আর বাংলাদেশি প্রতিষ্ঠানের হায়ারার্কি সামলান।">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300..700&family=Geist+Mono:wght@300..500&family=Noto+Sans+Bengali:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/lab/_styles.css">
+<style>
+body{ font-family: 'Noto Sans Bengali', var(--sans); }
+.three-up{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:28px 0}
+.three-up .card{border:1px solid var(--border);border-radius:12px;padding:20px;background:rgba(21,24,29,0.5)}
+.three-up .card h4{font-size:14px;font-weight:500;margin:0 0 8px;color:var(--text)}
+.three-up .card p{font-size:13.5px;color:var(--text-2);margin:0;line-height:1.55}
+.field-note{border:1px solid var(--border);border-radius:12px;padding:22px 24px;margin:28px 0;background:linear-gradient(180deg,rgba(21,24,29,0.55),rgba(14,16,19,0.55))}
+.field-note .fn-label{font-family:var(--mono);font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:var(--accent);margin:0 0 10px}
+.field-note p{font-size:14.5px;color:var(--text-2);margin:0;line-height:1.6}
+.field-note p+p{margin-top:10px}
+.power-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--border);border-radius:12px;overflow:hidden;margin:28px 0}
+.power-cell{padding:22px;border-bottom:1px solid var(--border);border-right:1px solid var(--border)}
+.power-cell:nth-child(2n){border-right:none}
+.power-cell:nth-last-child(-n+2){border-bottom:none}
+.power-cell .pc-label{font-family:var(--mono);font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-3);margin-bottom:8px}
+.power-cell h4{font-size:15px;font-weight:500;margin:0 0 8px;color:var(--text)}
+.power-cell p{font-size:13.5px;color:var(--text-2);margin:0;line-height:1.55}
+@media(max-width:680px){.three-up{grid-template-columns:1fr}.power-grid{grid-template-columns:1fr}.power-cell{border-right:none}.power-cell:nth-last-child(-n+2){border-bottom:1px solid var(--border)}.power-cell:last-child{border-bottom:none}}
+.stat-block{display:grid;grid-template-columns:repeat(3,1fr);gap:0;background:var(--border);border-radius:12px;overflow:hidden;margin:28px 0}
+.stat-item{background:var(--surface);padding:24px 18px;text-align:center}
+.stat-num{font-family:var(--mono);font-size:26px;font-weight:300;color:var(--accent);line-height:1;display:block}
+.stat-label{font-size:12px;color:var(--text-3);margin-top:8px;line-height:1.4;display:block}
+.bar-chart{margin:28px 0;display:flex;flex-direction:column;gap:14px}
+.bc-row{display:grid;grid-template-columns:190px 1fr 44px;gap:10px;align-items:center}
+.bc-label{font-size:13px;color:var(--text-2)}
+.bc-track{height:6px;background:rgba(255,255,255,0.06);border-radius:4px;overflow:hidden}
+.bc-fill{height:100%;background:oklch(0.80 0.17 155);border-radius:4px}
+.bc-pct{font-family:var(--mono);font-size:11px;color:var(--text-3);text-align:right}
+.donut-stat{display:flex;align-items:center;gap:28px;padding:24px;border:1px solid var(--border);border-radius:12px;background:rgba(21,24,29,0.5);margin:28px 0}
+.donut-stat svg{flex:none}
+.donut-label{font-size:14px;color:var(--text-2);line-height:1.6;margin:0}
+.donut-label strong{color:var(--text)}
+.insight-row{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin:28px 0}
+.insight-card{border:1px solid var(--border);border-radius:12px;padding:20px;background:rgba(21,24,29,0.5)}
+.insight-card .ic-label{font-family:var(--mono);font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-3);margin:0 0 8px}
+.insight-card h4{font-size:15px;font-weight:500;color:var(--text);margin:0 0 8px}
+.insight-card p{font-size:13.5px;color:var(--text-2);margin:0;line-height:1.55}
+@media(max-width:680px){.stat-block{grid-template-columns:1fr}.bc-row{grid-template-columns:140px 1fr 36px}.donut-stat{flex-direction:column;text-align:center}.insight-row{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="grid-bg"></div>
+
+<nav class="nav">
+  <div class="shell">
+    <div class="nav-inner">
+      <a href="/bn/" class="brand">
+        <div class="brand-mark"></div>
+        <div class="brand-name"><b>Mehedi Hasan</b><em>ERP কনসালট্যান্ট</em></div>
+      </a>
+      <a href="./" class="back-link">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10 12L6 8l4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        কোর্স ওভারভিউ
+      </a>
+    </div>
+  </div>
+</nav>
+
+<div class="shell">
+  <div class="post-head">
+    <span class="eyebrow">কোর্স ০১ &nbsp;·&nbsp; লেসন ০২ &nbsp;·&nbsp; ১৭ মিনিট</span>
+    <div class="post-meta">
+      <span class="chip accent">স্টেকহোল্ডার</span>
+      <span class="chip">পাওয়ার ডাইনামিক্স</span>
+      <span class="chip">RACI</span>
+    </div>
+    <h1>স্টেকহোল্ডার ম্যাপিং ও <span class="serif">পাওয়ার</span> ডাইনামিক্স</h1>
+    <p class="lede">রিকোয়ারমেন্ট সংগ্রহ করার আগে জানতে হবে কার রিকোয়ারমেন্ট আছে। আর সেটা জানার আগে বুঝতে হবে কার হাতে ক্ষমতা আছে — কারণ প্রতিটি প্রতিষ্ঠানে কিছু কণ্ঠস্বর তাদের পদবির চেয়ে বেশি গুরুত্ব বহন করে।</p>
+    <div class="byline">
+      <span>লেসন<b>০২ / ০৯</b></span>
+      <span>সময়<b>১৭ মিনিট</b></span>
+      <span>কোর্স<b>রিকোয়ারমেন্ট গ্যাদারিং</b></span>
+    </div>
+  </div>
+</div>
+
+<div class="shell">
+  <div class="post">
+    <nav class="toc" id="toc" aria-label="Lesson contents">
+      <button class="toc-toggle" onclick="toggleToc()" aria-expanded="false" aria-controls="toc">
+        <span class="label">এই লেসনে</span>
+        <span class="current" id="toc-current">কেন এটা গুরুত্বপূর্ণ</span>
+        <span class="chev"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 4l3 3 3-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </button>
+      <div class="toc-k">বিষয়সূচি</div>
+      <ol>
+        <li><a href="#s1">কেন এটা গুরুত্বপূর্ণ</a></li>
+        <li><a href="#s2">অনিয়ন মডেল</a></li>
+        <li><a href="#s3">পাওয়ার/ইন্টারেস্ট গ্রিড</a></li>
+        <li><a href="#s4">RACI ম্যাট্রিক্স</a></li>
+        <li><a href="#s5">বাংলাদেশে হায়ারার্কি</a></li>
+        <li><a href="#s6">নীরব স্টেকহোল্ডার</a></li>
+        <li><a href="#s7">টেমপ্লেট: স্টেকহোল্ডার রেজিস্টার</a></li>
+        <li><a href="#s_engagement_cadence">ফেজ অনুযায়ী এনগেজমেন্ট কেডেন্স</a></li>
+        <li><a href="#s8">রিফ্লেকশন</a></li>
+      </ol>
+      <div class="toc-progress"><span>প্রগ্রেস</span><div class="bar"><i id="prog-bar"></i></div></div>
+    </nav>
+    <div class="toc-progress-mobile"><i id="prog-bar-m"></i></div>
+
+    <article class="body">
+
+      <h2 id="s1">কেন স্টেকহোল্ডার অ্যানালাইসিস কোনো বক্স-টিকিং কাজ নয়</h2>
+      <p>বেশিরভাগ BA প্রজেক্ট শুরুতে একবার স্টেকহোল্ডার অ্যানালাইসিস করেন, আর কখনো ফিরে দেখেন না। তারা নামের একটা তালিকা বানান, যোগাযোগের ফ্রিকোয়েন্সি ঠিক করেন, ডকুমেন্ট ফাইল করেন, আর রিকোয়ারমেন্ট ওয়ার্কশপে চলে যান। এটা একটা ভুল।</p>
+      <p>স্টেকহোল্ডাররা বদলায়। কিক-অফের সময় প্রান্তিক মনে হওয়া একজন ফ্যাক্টরির HR ম্যানেজার পরে দেখা যায় একমাত্র ব্যক্তি যিনি পে-রোল ডেটার অ্যাক্সেস অনুমোদন করতে পারেন — যা আপনার একটা গুরুত্বপূর্ণ ইন্টিগ্রেশনের জন্য দরকার। যাকে পরামর্শ করা হয়নি এমন একজন ফ্লোর সুপারভাইজার UAT-তে আপনার সবচেয়ে সোচ্চার সমালোচক হয়ে ওঠেন, কারণ সিস্টেমটা তাদের আসল কাজের ধরনের সঙ্গে মেলে না।</p>
+      <p>স্টেকহোল্ডার অ্যানালাইসিস একবারের ডকুমেন্ট নয়। এটা একটা চলমান অনুশীলন। আপনি ক্রমাগত জিজ্ঞেস করছেন: এই আলোচনায় আর কাকে থাকা উচিত? কার কাছে এমন তথ্য আছে যা আমার কাছে নেই? এই রুমে কার নীরবতা আসলে একটা সংকেত?</p>
+
+      <div class="field-note">
+        <p class="fn-label">ফিল্ড নোট</p>
+        <p>নারায়ণগঞ্জের একটি নিটওয়্যার ফ্যাক্টরির জন্য একটি পে-রোল ও অ্যাটেনডেন্স সিস্টেমে, আমরা HR ম্যানেজার, ফাইন্যান্স ডিরেক্টর, আর IT হেডের সঙ্গে ওয়ার্কশপ করেছিলাম। সিস্টেম লঞ্চ হলো। দুই সপ্তাহের মধ্যে ফ্লোর সুপারভাইজাররা ডেটা এন্ট্রি করতে অস্বীকার করছিলেন, এমন ভুলের কথা বলছিলেন যা প্রসেসের দৃষ্টিকোণ থেকে অর্থহীন।</p>
+        <p>আমরা তাদের সঙ্গে কখনো কথাই বলিনি। HR ম্যানেজার তাদের কাজকে সহজ বলে বর্ণনা করেছিলেন। বাস্তবে, তাদের হাতে-লেখা এক্সেপশন কোডের একটা জটিল সিস্টেম ছিল যা আমাদের ডিজিটাল ফর্ম সাপোর্ট করত না। এরপরের ৮০% রিওয়ার্ক প্রতিরোধ করা যেত রিকোয়ারমেন্টের সময় সুপারভাইজারদের সঙ্গে দুই ঘণ্টার পর্যবেক্ষণেই।</p>
+      </div>
+
+      <div class="stat-block">
+        <div class="stat-item">
+          <span class="stat-num">৭৪%</span>
+          <span class="stat-label">প্রজেক্ট ডেলিভারির সমস্যার এই অংশ অপর্যাপ্ত স্টেকহোল্ডার এনগেজমেন্টের সঙ্গে যুক্ত, টেকনিক্যাল ব্যর্থতার সঙ্গে নয়</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num">৩-এ ১টি</span>
+          <span class="stat-label">প্রজেক্ট রিকোয়ারমেন্ট চূড়ান্ত ধরে নেওয়ার পর একটি "নীরব স্টেকহোল্ডার" ভেটোর মুখোমুখি হয়</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num">RACI</span>
+          <span class="stat-label">প্রতিটি সিদ্ধান্তের জন্য একজন Accountable ব্যক্তি ঠিক করলে সাইন-অফের সময় গড়ে ৪০% কমে</span>
+        </div>
+      </div>
+
+      <h2 id="s2">অনিয়ন মডেল: স্টেকহোল্ডার প্রভাবের স্তর</h2>
+      <p>অনিয়ন মডেল স্টেকহোল্ডারদের একাধিক বৃত্তে দেখায় — সবচেয়ে সরাসরি প্রভাবিত ইউজাররা কেন্দ্রে, আর সবচেয়ে দূরের, প্রভাবশালী পক্ষরা বাইরের প্রান্তে। মূল অন্তর্দৃষ্টি: বাইরের বৃত্তের মানুষদের প্রায়ই প্রজেক্ট অনুমোদন বা বন্ধ করার বেশি ক্ষমতা থাকে, কেন্দ্রের মানুষদের চেয়ে যারা এটা আসলে ব্যবহার করবেন।</p>
+      <ol>
+        <li><strong>কোর ইউজার</strong> — যারা প্রতিদিন সিস্টেমের সঙ্গে ইন্টারঅ্যাক্ট করবেন। ফ্লোর সুপারভাইজার, মার্চেন্ডাইজার, অ্যাকাউন্টস ক্লার্ক। উচ্চ ইন্টারেস্ট, প্রায়ই কম আনুষ্ঠানিক ক্ষমতা।</li>
+        <li><strong>সরাসরি ম্যানেজমেন্ট</strong> — লাইন ম্যানেজার আর বিভাগীয় প্রধান যারা কোর ইউজারদের অনুমোদন ও তত্ত্বাবধান করেন। মাঝারি ক্ষমতা, মাঝারি ইন্টারেস্ট।</li>
+        <li><strong>এক্সিকিউটিভ স্তর</strong> — MD, ডিরেক্টর, মালিক। দৈনন্দিন ইন্টারেস্ট কম, কিন্তু স্কোপ, বাজেট আর টাইমলাইন পরিবর্তন অনুমোদনের উচ্চ ক্ষমতা।</li>
+        <li><strong>বাহ্যিক পক্ষ</strong> — বায়ার, কমপ্লায়েন্স অডিটর, রেগুলেটর, ইন্টিগ্রেশন ভেন্ডর। প্রতিষ্ঠানের বাইরে থেকে এমন রিকোয়ারমেন্ট চাপাতে পারেন যা অভ্যন্তরীণ পছন্দকে ছাপিয়ে যায়।</li>
+      </ol>
+      <p>আপনার লক্ষ্য হলো রিকোয়ারমেন্ট চূড়ান্ত করার আগে প্রতিটি বৃত্ত থেকে দৃষ্টিভঙ্গি নিশ্চিত করা। এক্সিকিউটিভ স্তরের ওপর অতিরিক্ত নির্ভর করলে এমন রিকোয়ারমেন্ট পাবেন যা রাজনৈতিকভাবে অনুমোদিত কিন্তু কেউ ব্যবহার করতে পারবে না। কোর ইউজারদের ওপর অতিরিক্ত নির্ভর করলে এমন রিকোয়ারমেন্ট পাবেন যা অপারেশনালি সঠিক কিন্তু কেউ ফান্ড করবে না।</p>
+
+      <h2 id="s3">পাওয়ার/ইন্টারেস্ট গ্রিড: BA-র সবচেয়ে কার্যকর ম্যাপ</h2>
+      <p>প্রতিটি স্টেকহোল্ডারকে একটি দুই-অক্ষের গ্রিডে বসান: পাওয়ার (প্রজেক্টে প্রভাব ফেলার বা আটকানোর ক্ষমতা) বনাম ইন্টারেস্ট (ফলাফল নিয়ে তারা কতটা চিন্তিত)। তারা কোন কোয়াড্রান্টে পড়েন তা আপনার এনগেজমেন্ট কৌশল নির্ধারণ করে।</p>
+
+      <div class="power-grid">
+        <div class="power-cell">
+          <div class="pc-label">উচ্চ পাওয়ার · উচ্চ ইন্টারেস্ট</div>
+          <h4>ঘনিষ্ঠভাবে ম্যানেজ করুন</h4>
+          <p>এরা আপনার মূল স্টেকহোল্ডার। তাদের জড়িত, অবহিত, ও সংযুক্ত রাখুন। তারা প্রজেক্টের চ্যাম্পিয়ন হতে পারেন অথবা একে শেষও করে দিতে পারেন। RMG-তে: MD, ফাইন্যান্স ডিরেক্টর, মূল বায়ার রিলেশনশিপ ম্যানেজার।</p>
+        </div>
+        <div class="power-cell">
+          <div class="pc-label">উচ্চ পাওয়ার · কম ইন্টারেস্ট</div>
+          <h4>সন্তুষ্ট রাখুন</h4>
+          <p>তারা ঘন ঘন আপডেট চান না কিন্তু তাদের উদ্বেগকে সম্মান জানানো হচ্ছে এমন অনুভব করা দরকার। এখানে একটা ভুল পদক্ষেপ — তাদের অবাক করে দেওয়া, বা তাদের মাথার ওপর দিয়ে যাওয়া — প্রচেষ্টার তুলনায় অসামঞ্জস্যপূর্ণ ঘর্ষণ তৈরি করে। RMG-তে: কোম্পানি বোর্ড সদস্য, বাহ্যিক অডিটর।</p>
+        </div>
+        <div class="power-cell">
+          <div class="pc-label">কম পাওয়ার · উচ্চ ইন্টারেস্ট</div>
+          <h4>অবহিত রাখুন</h4>
+          <p>এই মানুষরা গভীরভাবে চিন্তিত, আর আপনার অভ্যন্তরীণ চ্যাম্পিয়ন অথবা সবচেয়ে অবিচল সমালোচক হয়ে উঠতে পারেন। তাদের ওয়ার্কশপে অন্তর্ভুক্ত করুন; তারা সবচেয়ে ভালো গ্রাউন্ড-লেভেল রিকোয়ারমেন্ট দেন। RMG-তে: ফ্লোর সুপারভাইজার, অভিজ্ঞ মার্চেন্ডাইজার।</p>
+        </div>
+        <div class="power-cell">
+          <div class="pc-label">কম পাওয়ার · কম ইন্টারেস্ট</div>
+          <h4>পর্যবেক্ষণ করুন</h4>
+          <p>এখনকার জন্য ন্যূনতম এনগেজমেন্ট, কিন্তু পরিবর্তনের দিকে নজর রাখুন। আজ যিনি আগ্রহী নন, প্রজেক্ট তার এলাকা প্রভাবিত করা শুরু করলে তিনি দ্রুত একজন মূল বাধায় পরিণত হতে পারেন। প্রয়োজন-ভিত্তিক যোগাযোগ করুন।</p>
+        </div>
+      </div>
+
+      <p>একটি ব্যবহারিক পরামর্শ: দীর্ঘমেয়াদি প্রজেক্টে প্রতি চার থেকে ছয় সপ্তাহে গ্রিডটি আবার দেখুন। প্রজেক্ট এগোনোর সঙ্গে সঙ্গে স্টেকহোল্ডাররা কোয়াড্রান্টের মধ্যে সরে যান। কিক-অফে "পর্যবেক্ষণ" ক্যাটাগরির একজন সাপ্লায়ার তাদের সিস্টেমের সঙ্গে ইন্টিগ্রেশন তৈরি শুরু করলে "ঘনিষ্ঠভাবে ম্যানেজ" ক্যাটাগরিতে চলে যেতে পারেন।</p>
+
+      <h2 id="s4">RACI ম্যাট্রিক্স: রাজনীতি ছাড়াই দায়বদ্ধতা নির্ধারণ</h2>
+      <p>RACI মানে Responsible, Accountable, Consulted, ও Informed। এটা সেই প্রশ্নের উত্তর দেয় যা রিকোয়ারমেন্ট-ভারী প্রজেক্টে সবচেয়ে বেশি বিভ্রান্তি তৈরি করে: কে সিদ্ধান্ত নিতে পারবেন, আর কে শুধু মতামত দিতে পারবেন?</p>
+      <ul>
+        <li><strong>Responsible</strong> — কাজটি করেন। যে BA রিকোয়ারমেন্ট লেখেন।</li>
+        <li><strong>Accountable</strong> — একমাত্র ব্যক্তি যিনি আউটপুট অনুমোদন করেন আর ফলাফলের মালিকানা নেন। শুধু একজনই। দুইজন থাকলে, সাইন-অফের সময় একটা রাজনৈতিক সমস্যা সামনে আসবে।</li>
+        <li><strong>Consulted</strong> — সিদ্ধান্ত নেওয়ার আগে মতামত দেন। দ্বিমুখী যোগাযোগ। এরাই আপনার ওয়ার্কশপ অংশগ্রহণকারী।</li>
+        <li><strong>Informed</strong> — সিদ্ধান্ত নেওয়ার পর ফলাফল সম্পর্কে জানানো হয়। একমুখী যোগাযোগ।</li>
+      </ul>
+
+      <div class="field-note">
+        <p class="fn-label">RMG উদাহরণ — অ্যাটেনডেন্স সিস্টেম RACI</p>
+        <p><strong>রিকোয়ারমেন্ট: ছুটির আবেদন অনুমোদন ওয়ার্কফ্লো নির্ধারণ করা</strong><br><br>
+        Responsible: বিজনেস অ্যানালিস্ট (স্পেক লেখেন)<br>
+        Accountable: HR ডিরেক্টর (ওয়ার্কফ্লো ডিজাইনের একমাত্র অ্যাপ্রুভার)<br>
+        Consulted: ফ্লোর সুপারভাইজার, পে-রোল ক্লার্ক (বর্তমান প্রসেস নিয়ে ইনপুট)<br>
+        Informed: IT লিড, MD (ওয়ার্কফ্লো সম্মত হলে জানানো হয়)</p>
+        <p>এটা না থাকলে, HR ডিরেক্টর ও MD দুজনেই ওয়ার্কফ্লো অনুমোদন করার চেষ্টা করতে পারতেন — আর দ্বিমত পোষণ করতে পারতেন। RACI সেই মিটিং হওয়া থেকে আটকায়।</p>
+      </div>
+
+      <p>প্রতিটি বড় সিদ্ধান্ত এলাকা বা রিকোয়ারমেন্ট ডোমেইনের জন্য একটি RACI তৈরি করুন, প্রতিটি আলাদা রিকোয়ারমেন্টের জন্য নয়। "পে-রোল নিয়ম," "ছুটির নীতি," আর "রিপোর্টিং অ্যাক্সেস লেভেল"-এর জন্য একটি করে RACI বেশিরভাগ প্রজেক্টের জন্য যথেষ্ট। প্রতিটি ইউজার স্টোরির জন্য RACI হলো আমলাতান্ত্রিক বাড়তি কাজ যা কেউ অনুসরণ করবে না।</p>
+
+      <h2 id="s5">বাংলাদেশি প্রতিষ্ঠানে হায়ারার্কি সামলানো</h2>
+      <p>বাংলাদেশের প্রাতিষ্ঠানিক সংস্কৃতি হাই-কনটেক্সট আর হায়ারার্কিক্যাল। এটা বোঝা মানে স্টেরিওটাইপ করা নয় — এটা কার্যকর হওয়ার ব্যাপার। যে BA পশ্চিমা ফ্ল্যাট-অর্গানাইজেশনের ধারণা একটি বাংলাদেশি ফ্যাক্টরি বা করপোরেট পরিবেশে প্রয়োগ করেন, তিনি অনুমেয় ও এড়ানো যায় এমন ভুল করবেন।</p>
+
+      <div class="three-up">
+        <div class="card">
+          <h4>প্রথমে টপ-ডাউন সমর্থন নিন</h4>
+          <p>কোনো টিমের সঙ্গে ওয়ার্কশপ চালানোর আগে নিশ্চিত করুন MD বা বিভাগীয় প্রধান ব্যক্তিগতভাবে আপনার উপস্থিতি অনুমোদন করেছেন। এটা না থাকলে মিড-লেভেল ম্যানেজাররা এড়িয়ে যাবেন, আর জুনিয়র স্টাফরা সততার সঙ্গে জড়িত হবেন না।</p>
+        </div>
+        <div class="card">
+          <h4>প্রকাশ্যে সিনিয়রিটির বিরোধিতা করবেন না</h4>
+          <p>যদি একজন সিনিয়র স্টেকহোল্ডার গ্রুপ সেশনে এমন একটি রিকোয়ারমেন্ট বলেন যা আপনি মনে করেন ভুল, তাহলে রুমে সেটাকে চ্যালেঞ্জ করবেন না। নোট নিন, আর পরে ব্যক্তিগতভাবে আপনার উদ্বেগ তুলুন। প্রকাশ্য চ্যালেঞ্জ তাদের সম্মানহানি করে আর সম্পর্ক নষ্ট করে।</p>
+        </div>
+        <div class="card">
+          <h4>"হ্যাঁ" মানে সম্মতি নয়</h4>
+          <p>একটি ভদ্র "হ্যাঁ, আমরা এটা বিবেচনা করতে পারি" প্রায়ই বোঝায় "আমি এটা করব না।" ওয়ান-অন-ওয়ান কথোপকথনে ফলো-আপ প্রশ্ন করুন: "আপনার বিভাগে এটা কাজ করতে হলে কী সত্য হতে হবে?" এতে আসল উদ্বেগ বেরিয়ে আসে।</p>
+        </div>
+        <div class="card">
+          <h4>আনুষ্ঠানিক সিদ্ধান্তের জন্য আনুষ্ঠানিক চ্যানেল দরকার</h4>
+          <p>ওয়ার্কশপে মৌখিক সম্মতি কোনো সিদ্ধান্ত নয়। Accountable স্টেকহোল্ডারের স্বাক্ষরিত একটি রিকোয়ারমেন্ট ডকুমেন্টই সিদ্ধান্ত। মৌখিক থেকে লিখিতে সবসময় সরে যান, এমনকি অপ্রয়োজনীয়ভাবে আনুষ্ঠানিক মনে হলেও।</p>
+        </div>
+        <div class="card">
+          <h4>শিডিউলিং-এর জন্য পদবি গুরুত্বপূর্ণ</h4>
+          <p>স্টেকহোল্ডার সাক্ষাৎকার বুক করার সময়, MD-র অফিস থেকে অনুরোধ সাড়া পায়। প্রজেক্ট টিমের অনুরোধ নাও পেতে পারে। রিপোর্টিং লাইন বুঝুন আর কৌশলগতভাবে সেগুলো ব্যবহার করুন।</p>
+        </div>
+        <div class="card">
+          <h4>জুনিয়র স্টাফ প্রায়ই সবচেয়ে বেশি জানেন</h4>
+          <p>যে ব্যক্তি আসলে প্রসেসটি চালান, তার কাছেই প্রায়ই এর সবচেয়ে বিস্তারিত ও সঠিক জ্ঞান থাকে। তাদের শেয়ার করার জন্য নিরাপদ পরিস্থিতি তৈরি করুন — ছোট গ্রুপ সেশন বা ওয়ান-অন-ওয়ান, বড় ওয়ার্কশপ নয় যেখানে তারা সিনিয়রদের কাছে নতি স্বীকার করবেন।</p>
+        </div>
+      </div>
+
+      <h2 id="s6">নীরব স্টেকহোল্ডার: অদৃশ্য ভেটো চিহ্নিত করা</h2>
+      <p>প্রতিটি প্রজেক্টে অন্তত একজন এমন ব্যক্তি থাকেন যাকে কোনো ওয়ার্কশপে ডাকা হয়নি, ডিস্ট্রিবিউশন তালিকায় নেই, আর প্রজেক্ট মিটিংয়ে খুব কমই উল্লেখ করা হয় — কিন্তু প্রজেক্ট এগিয়ে নিতে হলে যার অনুমোদন প্রয়োজন। আমি এই ব্যক্তিকে বলি নীরব স্টেকহোল্ডার।</p>
+      <p>বাংলাদেশের ব্যবসায়িক পরিবেশে, নীরব স্টেকহোল্ডার প্রায়ই হন:</p>
+      <ul>
+        <li>একজন নীরব বিজনেস পার্টনার বা বিনিয়োগকারী যার নাম কখনো অর্গ চার্টে দেখা যায় না</li>
+        <li>একজন প্রভাবশালী মিড-লেভেল ম্যানেজার যার টিম গুরুত্বপূর্ণ ডেটা নিয়ন্ত্রণ করে</li>
+        <li>একজন বাহ্যিক বায়ার বা কমপ্লায়েন্স অফিসার যার সাইন-অফ এক্সপোর্ট ডকুমেন্টেশনকে প্রভাবিত করা সিস্টেম পরিবর্তনের জন্য প্রয়োজন</li>
+        <li>ফাউন্ডারের স্বামী/স্ত্রী বা পরিবারের সদস্য যার ফাইন্যান্সিয়াল সিদ্ধান্তে অনানুষ্ঠানিক ক্ষমতা আছে</li>
+      </ul>
+      <p>প্রজেক্টের শুরুতে জিজ্ঞেস করে নীরব স্টেকহোল্ডারদের খুঁজে পাবেন: "এই রুমের বাইরে এমন কেউ আছে কি যার সমর্থন আমাদের এই প্রজেক্ট সফল করতে দরকার হবে?" আপনার স্পনসরকে জিজ্ঞেস করুন, আর আরও দুই-তিনজন স্টেকহোল্ডারকেও জিজ্ঞেস করুন। যে নামগুলো বারবার আসে, তারাই আপনার নীরব স্টেকহোল্ডার।</p>
+      <p>একবার চিহ্নিত হলে, কৌশলটা সহজ: তাদের আলোচনায় আগেভাগে নিয়ে আসুন, তাদের একটা স্পষ্ট ও উপযুক্ত ভূমিকা দিন (RACI-তে প্রায়ই "Consulted" বা "Informed"), আর নিশ্চিত করুন তারা সম্মানিত বোধ করেন, ওঁত পেতে ধরা পড়া নয়।</p>
+
+      <h2 id="s7">টেমপ্লেট: স্টেকহোল্ডার রেজিস্টার</h2>
+      <p>স্টেকহোল্ডার রেজিস্টার হলো সেই চলমান ডকুমেন্ট যা প্রজেক্টে জড়িত বা প্রভাবিত প্রতিটি ব্যক্তিকে ট্র্যাক করে। এটি রিকোয়ারমেন্ট ফেজ জুড়ে আপডেট করা হয় আর যোগাযোগ পরিকল্পনায় গাইড করতে ব্যবহৃত হয়।</p>
+
+      <div class="callout">
+        <span class="tag">টেমপ্লেট</span>
+        <p><strong>স্টেকহোল্ডার রেজিস্টার — কলাম কাঠামো</strong><br><br>
+        <strong>নাম</strong> | <strong>পদবি/ভূমিকা</strong> | <strong>বিভাগ</strong> | <strong>পাওয়ার (H/M/L)</strong> | <strong>ইন্টারেস্ট (H/M/L)</strong> | <strong>RACI ভূমিকা</strong> | <strong>উদ্বেগ/প্রেরণা</strong> | <strong>পছন্দের যোগাযোগ মাধ্যম</strong> | <strong>সর্বশেষ এনগেজমেন্ট</strong><br><br>
+        <em>উদাহরণ সারি:</em> করিম আহমেদ | HR ডিরেক্টর | মানব সম্পদ | H | H | পে-রোল ওয়ার্কফ্লোর জন্য Accountable | কর্মীদের রেকর্ডের ডেটা প্রাইভেসি নিয়ে উদ্বিগ্ন | ইমেইল + সাপ্তাহিক ৩০-মিনিট মিটিং | [তারিখ]<br><br>
+        এটা Excel বা শেয়ার্ড Google Sheet-এ বজায় রাখুন। প্রতিটি রিকোয়ারমেন্ট স্প্রিন্টের শুরুতে রিভিউ ও আপডেট করুন। একটা পুরনো স্টেকহোল্ডার রেজিস্টার কোনো রেজিস্টার না থাকার চেয়ে খারাপ — এটা আপনাকে কভারেজ নিয়ে মিথ্যা আত্মবিশ্বাস দেয়।</p>
+      </div>
+
+      <p>বাস্তবে, দশ থেকে পনেরোটি সারি বেশিরভাগ মাঝারি-জটিলতার প্রজেক্ট কভার করে। যদি আপনার রেজিস্টারে "ঘনিষ্ঠভাবে ম্যানেজ" কোয়াড্রান্টে বিশজনের বেশি স্টেকহোল্ডার থাকে, তাহলে আপনার একটা স্কোপ সমস্যা আছে, স্টেকহোল্ডার সমস্যা নয়।</p>
+
+      <h2 id="s_engagement_cadence">প্রজেক্ট ফেজ অনুযায়ী স্টেকহোল্ডার এনগেজমেন্ট কেডেন্স</h2>
+      <p>প্রজেক্ট জুড়ে স্টেকহোল্ডার এনগেজমেন্ট একরকম নয়। বিভিন্ন ফেজে বিভিন্ন স্টেকহোল্ডারের বিভিন্ন মাত্রার ইন্টারঅ্যাকশন দরকার। এটা ভুল করলে — ভুল মানুষের সঙ্গে বেশি বা সঠিক মানুষের সঙ্গে কম এনগেজ করলে — সময় নষ্ট হয় আর ফাঁক তৈরি হয়।</p>
+
+      <div class="bar-chart">
+        <div class="bc-row">
+          <span class="bc-label">ডিসকভারি ফেজ</span>
+          <div class="bc-track"><div class="bc-fill" style="width:100%"></div></div>
+          <span class="bc-pct">সর্বোচ্চ</span>
+        </div>
+        <div class="bc-row">
+          <span class="bc-label">রিকোয়ারমেন্ট সাইন-অফ</span>
+          <div class="bc-track"><div class="bc-fill" style="width:90%"></div></div>
+          <span class="bc-pct">সংকটপূর্ণ</span>
+        </div>
+        <div class="bc-row">
+          <span class="bc-label">বিল্ড ফেজ</span>
+          <div class="bc-track"><div class="bc-fill" style="width:45%"></div></div>
+          <span class="bc-pct">কমানো</span>
+        </div>
+        <div class="bc-row">
+          <span class="bc-label">UAT</span>
+          <div class="bc-track"><div class="bc-fill" style="width:85%"></div></div>
+          <span class="bc-pct">আবার উচ্চ</span>
+        </div>
+        <div class="bc-row">
+          <span class="bc-label">গো-লাইভ ও হ্যান্ডওভার</span>
+          <div class="bc-track"><div class="bc-fill" style="width:75%"></div></div>
+          <span class="bc-pct">সিদ্ধান্ত-গ্রহণকারী</span>
+        </div>
+      </div>
+
+      <div class="insight-row">
+        <div class="insight-card">
+          <p class="ic-label">ডিসকভারি ফেজ</p>
+          <h4>ব্যাপকভাবে এনগেজ করুন — তারপর সংকুচিত করুন</h4>
+          <p>ডিসকভারিতে বিস্তৃতভাবে জাল বিছান। কোর ইউজার, মিড-লেভেল ম্যানেজমেন্ট, আর অন্তত একজন এক্সিকিউটিভ স্পনসরের সঙ্গে সেশন চালান। তারপর আপনার চলমান এনগেজমেন্ট সবচেয়ে উচ্চ-মূল্যের স্টেকহোল্ডারদের দিকে সংকুচিত করুন। ডিসকভারির সময় যে স্টেকহোল্ডারকে উপেক্ষা করেছেন, তিনি UAT-তে সামনে আসবেন — আর তার মতামত থাকবে।</p>
+        </div>
+        <div class="insight-card">
+          <p class="ic-label">বিল্ড ফেজ</p>
+          <h4>শব্দ কমান, সিদ্ধান্তের অ্যাক্সেস ধরে রাখুন</h4>
+          <p>বিল্ডের সময় সাপ্তাহিক স্টেকহোল্ডার সেশনের দরকার নেই। যা দরকার তা হলো প্রশ্ন বা বাধা এলে সিদ্ধান্ত-গ্রহণকারীদের কাছে দ্রুত অ্যাক্সেস। ডিসকভারির সময় একটা "ডিসিশন SLA" ঠিক করুন: রিকোয়ারমেন্ট স্পষ্টীকরণ দরকার হলে কার সঙ্গে যোগাযোগ করবেন, আর প্রত্যাশিত রেসপন্স টাইম কত? বাংলাদেশে, ৪৮ ঘণ্টা একটা যুক্তিসঙ্গত প্রত্যাশা; ক্রিটিক্যাল-পাথ আইটেমের জন্য ২৪ ঘণ্টার কম।</p>
+        </div>
+        <div class="insight-card">
+          <p class="ic-label">UAT ফেজ</p>
+          <h4>কোর ইউজার ও Accountable অ্যাপ্রুভারকে আবার এনগেজ করুন</h4>
+          <p>UAT হলো সেই মুহূর্ত যখন কোর ইউজাররা — যারা বিল্ডের সময় চুপ থাকতে পারেন — আবার কেন্দ্রে চলে আসেন। তাদের দৈনন্দিন ব্যবহারের জ্ঞানই UAT-কে অর্থপূর্ণ করে তোলে। UAT শুরুর আগে তাদের আবার ব্রিফ করুন: আমরা কী বানিয়েছি, আপনার কাছে যা যাচাই করাতে চাই, আর প্রতিটি টেস্ট সিনারিওতে "পাস" কেমন দেখায়।</p>
+        </div>
+        <div class="insight-card">
+          <p class="ic-label">গো-লাইভ পরবর্তী</p>
+          <h4>প্রতিটি মূল স্টেকহোল্ডারের সঙ্গে লুপ বন্ধ করুন</h4>
+          <p>গো-লাইভের পর, RACI-তে যারা "Consulted" বা "Accountable" ছিলেন প্রতিটি স্টেকহোল্ডারকে একটা এক-পৃষ্ঠার প্রজেক্ট ক্লোজআউট নোট পাঠান। এতে থাকুক: যা ডেলিভার হয়েছে বনাম যা স্কোপ করা হয়েছিল, যা স্থগিত হয়েছে আর কেন, আর পরবর্তী পদক্ষেপ কী। এটা ছয় মাস পরে "আমরা X-এ সম্মত হয়েছিলাম আর আপনারা কখনো এটা বানাননি" জাতীয় কথোপকথন প্রতিরোধ করে — কারণ সেই কথোপকথনটা গো-লাইভেই লিখিতভাবে হয়ে গেছে।</p>
+        </div>
+      </div>
+
+      <h2 id="s8">রিফ্লেকশন প্রশ্ন</h2>
+      <ol>
+        <li>আপনার পরিচিত একটা প্রজেক্টে, স্মৃতি থেকে পাওয়ার/ইন্টারেস্ট গ্রিড আঁকুন। এখন নিজেকে জিজ্ঞেস করুন: এই স্টেকহোল্ডারদের কাউকে কি ভুল কোয়াড্রান্টে রাখা হয়েছিল — আর তার ফলাফল কী হয়েছিল?</li>
+        <li>আপনি যে সর্বশেষ উল্লেখযোগ্য প্রজেক্টে কাজ করেছেন, তাতে "নীরব স্টেকহোল্ডার" কে ছিলেন? তিনি কখন সামনে এসেছিলেন, আর তখন কী হয়েছিল?</li>
+        <li>আপনার বর্তমান প্রজেক্টের একটি মূল সিদ্ধান্তের জন্য একটা RACI লিখুন। একমাত্র Accountable ব্যক্তি কে? যদি একজনের নামও বলতে না পারেন — এটা প্রজেক্টের গভর্নেন্স সম্পর্কে আপনাকে কী বলে?</li>
+      </ol>
+
+    </article>
+  </div>
+</div>
+
+<div class="shell">
+  <div class="post-foot">
+    <div class="next">
+      <a href="lesson-01" class="next-card">
+        <span class="dir">← পূর্ববর্তী</span>
+        <h4>লেসন ০১ — ফাউন্ডেশন</h4>
+        <p>বিজনেস অ্যানালিস্টরা আসলে কী করেন, আর পাঁচটি সবচেয়ে সাধারণ ব্যর্থতার ধরন।</p>
+        <span class="arrow">← লেসন ০১</span>
+      </a>
+      <a href="lesson-03" class="next-card">
+        <span class="dir">পরবর্তী →</span>
+        <h4>লেসন ০৩ — ডিসকভারি ওয়ার্কশপ পরিচালনা</h4>
+        <p>প্রস্তুতি নিন, ফ্যাসিলিটেট করুন, আর সত্যিকারের সিদ্ধান্ত তৈরি করে এমন ওয়ার্কশপ ডকুমেন্ট করুন।</p>
+        <span class="arrow">→ লেসন ০৩</span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="shell">
+    <div class="foot">
+      <span>কোর্স ০১ · লেসন ০২</span>
+      <a href="/bn/" style="color:var(--text-3);transition:color .15s" onmouseover="this.style.color='var(--text)'" onmouseout="this.style.color='var(--text-3)'">← পোর্টফোলিও</a>
+    </div>
+  </div>
+</footer>
+<script src="/courses/01-requirements-gathering/_progress.js"></script>
+<script src="/lab/_toc.js"></script>
+<script src="/whatsapp.js" defer></script>
+<script src="/scroll-top.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,396 @@
+<!doctype html>
+<html lang="bn">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="icon" href="/favicon.ico" sizes="any" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon.png" />
+<link rel="apple-touch-icon" href="/favicon.png" />
+<meta name="description" content="বাংলাদেশের ম্যানুফ্যাকচারার ও SME-দের জন্য বিনামূল্যের Odoo ERP টেমপ্লেট, চেকলিস্ট, চিটশিট এবং প্ল্যানিং টুল — প্রজেক্ট চার্টার থেকে UAT স্ক্রিপ্ট পর্যন্ত।" />
+<meta name="robots" content="noindex, follow" />
+<meta name="author" content="Mehedi Hasan" />
+<title>বিনামূল্যের Odoo ERP রিসোর্স — টেমপ্লেট, চেকলিস্ট ও টুলস | মেহেদী হাসান</title>
+<link rel="canonical" href="https://mhasan.me/bn/resources/" />
+<link rel="alternate" hreflang="en" href="https://mhasan.me/resources/" />
+<link rel="alternate" hreflang="bn-BD" href="https://mhasan.me/bn/resources/" />
+<link rel="alternate" hreflang="x-default" href="https://mhasan.me/resources/" />
+<meta property="og:title" content="বিনামূল্যের Odoo ERP রিসোর্স — টেমপ্লেট, চেকলিস্ট ও টুলস | মেহেদী হাসান" />
+<meta property="og:description" content="বাংলাদেশের ম্যানুফ্যাকচারার ও SME-দের জন্য বিনামূল্যের Odoo ERP টেমপ্লেট, চেকলিস্ট, চিটশিট এবং প্ল্যানিং টুল।" />
+<meta property="og:url" content="https://mhasan.me/bn/resources/" />
+<meta property="og:type" content="website" />
+<meta property="og:image" content="https://mhasan.me/assets/og-default.jpg" />
+<meta property="og:locale" content="bn_BD" />
+<meta property="og:site_name" content="মেহেদী হাসান | Odoo কনসালট্যান্ট" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="বিনামূল্যের Odoo ERP রিসোর্স — টেমপ্লেট, চেকলিস্ট ও টুলস" />
+<meta name="twitter:description" content="বাংলাদেশের ম্যানুফ্যাকচারার ও SME-দের জন্য বিনামূল্যের Odoo ERP টেমপ্লেট, চেকলিস্ট, চিটশিট এবং প্ল্যানিং টুল।" />
+<meta name="twitter:image" content="https://mhasan.me/assets/og-default.jpg" />
+<script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "বিনামূল্যের Odoo ERP রিসোর্স",
+    "description": "বাংলাদেশের ম্যানুফ্যাকচারার ও SME-দের জন্য বিনামূল্যের Odoo ERP টেমপ্লেট, চেকলিস্ট, চিটশিট এবং প্ল্যানিং টুল।",
+    "url": "https://mhasan.me/bn/resources/",
+    "inLanguage": "bn",
+    "author": { "@type": "Person", "name": "Mehedi Hasan", "url": "https://mhasan.me" }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "হোম", "item": "https://mhasan.me/bn" },
+      { "@type": "ListItem", "position": 2, "name": "রিসোর্স", "item": "https://mhasan.me/bn/resources/" }
+    ]
+  }
+]
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&family=Noto+Sans+Bengali:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap">
+<style>
+  body{ font-family: 'Noto Sans Bengali', var(--sans); }
+  :root{
+    --bg:#0A0B0D;--bg-1:#0E1013;--surface:#111317;--elev:#15181D;
+    --border:#1E2228;--border-2:#2A2F38;--hair:rgba(255,255,255,0.06);
+    --text:#EDEEF0;--text-2:#9BA1AA;--text-3:#7E8694;
+    --accent:oklch(0.80 0.17 155);--accent-dim:oklch(0.80 0.17 155 / 0.14);
+    --sans:'Geist',ui-sans-serif,system-ui,-apple-system,Segoe UI,sans-serif;
+    --mono:'Geist Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
+    --serif:'Instrument Serif',ui-serif,Georgia,serif;
+    --max:1280px;--gutter:24px;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;overflow-x:hidden;background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+  body{
+    background:
+      radial-gradient(900px 600px at 80% -10%,rgba(80,230,160,0.07),transparent 60%),
+      radial-gradient(700px 500px at 10% 10%,rgba(40,60,90,0.15),transparent 70%),
+      var(--bg);
+    min-height:100vh;
+  }
+  a{color:inherit;text-decoration:none}
+  ::selection{background:var(--accent);color:#000}
+
+  html[data-theme="light"]{
+    --bg:#F5F7FA;--bg-1:#EEF1F5;--surface:#FFFFFF;--elev:#EDF0F4;
+    --border:#E2E6EC;--border-2:#CBD0D9;--hair:rgba(0,0,0,0.05);
+    --text:#0E1013;--text-2:#4A5265;--text-3:#8A909E;
+  }
+  html[data-theme="light"] body{
+    background:radial-gradient(900px 600px at 80% -10%,rgba(80,230,160,0.05),transparent 60%),var(--bg);
+  }
+
+  .grid-bg{position:fixed;inset:0;pointer-events:none;z-index:0;
+    background-image:linear-gradient(to right,rgba(255,255,255,0.022) 1px,transparent 1px),linear-gradient(to bottom,rgba(255,255,255,0.022) 1px,transparent 1px);
+    background-size:80px 80px;mask-image:radial-gradient(1200px 800px at 50% 20%,#000 40%,transparent 85%);
+  }
+  html[data-theme="light"] .grid-bg{
+    background-image:linear-gradient(to right,rgba(0,0,0,0.04) 1px,transparent 1px),linear-gradient(to bottom,rgba(0,0,0,0.04) 1px,transparent 1px);
+  }
+
+  .shell{max-width:var(--max);margin:0 auto;padding:0 var(--gutter);position:relative;z-index:1}
+
+  /* Nav */
+  .nav{position:sticky;top:0;z-index:50;padding:16px 0}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;padding:10px 14px;border:1px solid var(--hair);background:rgba(14,16,19,0.6);backdrop-filter:blur(16px) saturate(140%);-webkit-backdrop-filter:blur(16px) saturate(140%);border-radius:999px}
+  html[data-theme="light"] .nav-inner{background:rgba(245,247,250,0.9)}
+  .brand{display:flex;align-items:center;gap:12px;font-weight:500;letter-spacing:-0.01em}
+  .brand-mark{width:30px;height:30px;border-radius:8px;background:linear-gradient(135deg,var(--accent) 0%,oklch(0.55 0.14 170) 100%);display:grid;place-items:center;font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:0.04em;color:#04140B;box-shadow:0 0 0 1px rgba(0,0,0,.35),inset 0 0 0 1px rgba(255,255,255,.18)}
+  .brand-mark::after{content:"MH"}
+  .brand-name{display:flex;flex-direction:column;line-height:1.1}
+  .brand-name b{font-weight:500;font-size:14px;color:var(--text)}
+  .brand-name em{font-style:normal;font-family:var(--mono);font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-3);margin-top:2px}
+  .back-link{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:12px;color:var(--text-2);padding:8px 14px;border-radius:999px;letter-spacing:0.04em}
+  .back-link:hover{color:var(--text);background:var(--hair)}
+
+  /* Theme toggle */
+  .theme-toggle{appearance:none;border:1px solid var(--border);background:var(--elev);color:var(--text-2);width:34px;height:34px;border-radius:10px;cursor:pointer;display:grid;place-items:center;transition:all .2s ease;flex:none;padding:0}
+  .theme-toggle:hover{color:var(--text);border-color:var(--border-2)}
+  .theme-toggle svg{display:block;pointer-events:none}
+  .theme-toggle .icon-sun{display:block}
+  .theme-toggle .icon-moon{display:none}
+  html[data-theme="light"] .theme-toggle .icon-sun{display:none}
+  html[data-theme="light"] .theme-toggle .icon-moon{display:block}
+
+  /* Hero */
+  .hero{padding:72px 0 56px;border-bottom:1px solid var(--border)}
+  .eyebrow{font-family:var(--mono);font-size:11.5px;letter-spacing:0.14em;color:var(--text-3);text-transform:uppercase;display:inline-flex;align-items:center;gap:10px}
+  .eyebrow::before{content:"";width:18px;height:1px;background:var(--border-2)}
+  .hero h1{font-size:clamp(40px,5.5vw,72px);font-weight:500;letter-spacing:-0.03em;line-height:1.0;margin:22px 0 0;max-width:16ch}
+  .hero h1 em{font-family:var(--serif);font-style:italic;font-weight:400}
+  .hero .lede{font-size:18px;line-height:1.55;color:var(--text-2);margin-top:22px;max-width:60ch}
+  .hero-stats{display:flex;gap:32px;margin-top:36px;flex-wrap:wrap}
+  .stat{display:flex;flex-direction:column;gap:4px}
+  .stat b{font-size:28px;font-weight:500;letter-spacing:-0.03em;color:var(--accent);font-family:var(--mono)}
+  .stat span{font-family:var(--mono);font-size:10.5px;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-3)}
+
+  /* Categories */
+  .categories{padding:64px 0 96px}
+  .section-label{font-family:var(--mono);font-size:10.5px;letter-spacing:0.18em;text-transform:uppercase;color:var(--text-3);display:flex;align-items:center;gap:12px;margin-bottom:28px}
+  .section-label::after{content:"";flex:1;height:1px;background:var(--border)}
+  .category{margin-bottom:56px}
+  .category-head{display:flex;align-items:baseline;gap:16px;margin-bottom:20px}
+  .category-head h2{font-size:20px;font-weight:500;letter-spacing:-0.02em;margin:0}
+  .category-head .count{font-family:var(--mono);font-size:11px;color:var(--text-3);letter-spacing:0.06em}
+  .resource-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  .resource-card{
+    border:1px solid var(--border);border-radius:12px;padding:22px;
+    background:linear-gradient(180deg,rgba(21,24,29,0.6),rgba(14,16,19,0.6));
+    display:flex;flex-direction:column;gap:10px;
+    transition:all .2s ease;
+  }
+  .resource-card:hover{border-color:var(--border-2);transform:translateY(-2px);background:linear-gradient(180deg,rgba(21,24,29,0.8),rgba(14,16,19,0.8))}
+  html[data-theme="light"] .resource-card{background:linear-gradient(180deg,rgba(255,255,255,0.9),rgba(237,240,244,0.9))}
+  html[data-theme="light"] .resource-card:hover{background:rgba(255,255,255,0.95)}
+  .resource-kind{font-family:var(--mono);font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:var(--accent);background:oklch(0.80 0.17 155 / 0.10);border:1px solid oklch(0.80 0.17 155 / 0.25);border-radius:4px;padding:3px 7px;align-self:flex-start}
+  .resource-card h3{font-size:16px;font-weight:500;letter-spacing:-0.015em;margin:0;line-height:1.3;color:var(--text)}
+  .resource-card p{font-size:13.5px;line-height:1.55;color:var(--text-2);margin:0;flex:1}
+  .resource-card .meta{font-family:var(--mono);font-size:11px;color:var(--text-3);letter-spacing:0.04em}
+  .resource-card .arrow{margin-top:4px;font-family:var(--mono);font-size:12px;color:var(--text-3);transition:color .18s ease, transform .18s ease;display:inline-block}
+  .resource-card:hover .arrow{color:var(--accent);transform:translateX(3px)}
+
+  /* Footer */
+  footer{padding:32px 0 48px}
+  .foot{display:flex;justify-content:space-between;align-items:center;font-family:var(--mono);font-size:11.5px;color:var(--text-3);letter-spacing:0.06em;text-transform:uppercase;border-top:1px solid var(--border);padding-top:24px}
+
+  @media(max-width:900px){.resource-grid{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:560px){
+    .resource-grid{grid-template-columns:1fr}
+    .hero-stats{gap:20px}
+    .hero h1{font-size:38px}
+  }
+</style>
+</head>
+<body>
+<div class="grid-bg" aria-hidden="true"></div>
+
+<nav class="nav">
+  <div class="shell">
+    <div class="nav-inner">
+      <a class="brand" href="/bn/">
+        <div class="brand-mark" aria-hidden="true"></div>
+        <div class="brand-name"><b>Mehedi Hasan</b><em>Odoo কনসালট্যান্ট</em></div>
+      </a>
+      <a class="back-link" href="/bn/">← হোম</a>
+    </div>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="shell">
+    <span class="eyebrow">রিসোর্স</span>
+    <h1>বিনামূল্যের <em>ERP টুলস</em> ও টেমপ্লেট</h1>
+    <p class="lede">বাংলাদেশে বাস্তব Odoo ডেপ্লয়মেন্ট থেকে তৈরি ব্যবহারিক টেমপ্লেট, চেকলিস্ট এবং রেফারেন্স শিট। ডাউনলোড করুন, নিজের মতো করে বদলে নিন, এবং আপনার পরবর্তী প্রজেক্টে ব্যবহার করুন।</p>
+    <div class="hero-stats">
+      <div class="stat"><b>১৪</b><span>রিসোর্স</span></div>
+      <div class="stat"><b>৪</b><span>ক্যাটাগরি</span></div>
+      <div class="stat"><b>বিনামূল্যে</b><span>সবসময়</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="categories">
+  <div class="shell">
+
+    <!-- TEMPLATES -->
+    <div class="category">
+      <div class="section-label">টেমপ্লেট</div>
+      <div class="resource-grid">
+
+        <a class="resource-card" href="/bn/lab/0047-odoo-project-charter-template">
+          <span class="resource-kind">টেমপ্লেট</span>
+          <h3>Odoo প্রজেক্ট চার্টার</h3>
+          <p>স্কোপ, স্টেকহোল্ডার, টাইমলাইন, বাজেট এবং সাইন-অফ কভার করা একটি পূর্ণাঙ্গ প্রজেক্ট চার্টার। যেকোনো ERP এনগেজমেন্ট সঠিকভাবে শুরু করে।</p>
+          <span class="meta">0047 · গাইড</span>
+          <span class="arrow">→</span>
+        </a>
+
+        <a class="resource-card" href="/bn/lab/0045-erp-requirements-document-template">
+          <span class="resource-kind">টেমপ্লেট</span>
+          <h3>ERP রিকোয়ারমেন্ট ডকুমেন্ট</h3>
+          <p>ফাংশনাল/নন-ফাংশনাল সেকশন, প্রায়োরিটি স্কোরিং এবং স্টেকহোল্ডার সাইন-অফসহ কাঠামোবদ্ধ রিকোয়ারমেন্ট ডকুমেন্ট টেমপ্লেট।</p>
+          <span class="meta">0045 · টেমপ্লেট</span>
+          <span class="arrow">→</span>
+        </a>
+
+        <a class="resource-card" href="/bn/lab/0031-odoo-training-plan-template">
+          <span class="resource-kind">টেমপ্লেট</span>
+          <h3>Odoo ট্রেনিং প্ল্যান</h3>
+          <p>এন্ড-ইউজার অনবোর্ডিংয়ের জন্য সেশন স্ট্রাকচার, ট্রেইনার নোট এবং অ্যাসেসমেন্ট ক্রাইটেরিয়াসহ রোল-বেসড ট্রেনিং শিডিউল।</p>
+          <span class="meta">0031 · টেমপ্লেট</span>
+          <span class="arrow">→</span>
+        </a>
+
+        <a class="resource-card" href="/bn/lab/0029-odoo-rfp-template-bangladesh">
+          <span class="resource-kind">টেমপ্লেট</span>
+          <h3>Odoo RFP + ভেন্ডর স্কোরিং ম্যাট্রিক্স</h3>
+          <p>সঠিক পার্টনার বেছে নেওয়ার জন্য ওয়েটেড ইভ্যালুয়েশন ক্রাইটেরিয়া এবং একটি রেড-ফ্ল্যাগ চেকলিস্টসহ সম্পূর্ণ রিকোয়েস্ট-ফর-প্রপোজাল স্ট্রাকচার।</p>
+          <span class="meta">0029 · টেমপ্লেট</span>
+          <span class="arrow">→</span>
+        </a>
+
+        <a class="resource-card" href="/bn/lab/0044-erp-business-case-bangladesh">
+          <span class="resource-kind">টেমপ্লেট</span>
+          <h3>ERP বিজনেস কেস</h3>
+          <p>বাংলাদেশে একটি Odoo বাস্তবায়নের জন্য বাজেট অনুমোদন পেতে ROI ফ্রেমওয়ার্ক এবং এক্সিকিউটিভ প্রেজেন্টেশন টেমপ্লেট।</p>
+          <span class="meta">0044 · গাইড</span>
+          <span class="arrow">→</span>
+        </a>
+
+        <a class="resource-card" href="/bn/lab/0010-bpmn-templates-manufacturing-discovery">
+          <span class="resource-kind">টেমপ্লেট</span>
+          <h3>BPMN প্রসেস ম্যাপ — ম্যানুফ্যাকচারিং</h3>
+          <p>প্রোকিউরমেন্ট, প্রোডাকশন, কোয়ালিটি এবং ডিসপ্যাচের জন্য রেডি-টু-এডিট BPMN ডায়াগ্রাম — Odoo মডিউল বাউন্ডারির সাথে ম্যাপ করা।</p>
+          <span class="meta">0010 · টুল</span>
+          <span class="arrow">→</span>
+        </a>
+
+      </div>
+    </div>
+
+    <!-- CHECKLISTS -->
+    <div class="category">
+      <div class="section-label">চেকলিস্ট</div>
+      <div class="resource-grid">
+
+        <a class="resource-card" href="/bn/lab/0008-excel-odoo-migration-checklist">
+          <span class="resource-kind">চেকলিস্ট</span>
+          <h3>Excel → Odoo মাইগ্রেশন চেকলিস্ট</h3>
+          <p>৫টি ম্যানুফ্যাকচারিং গো-লাইভ জুড়ে ফিল্ড-টেস্টেড ৪০-আইটেমের চেকলিস্ট। ডেটা ক্লিনিং, ম্যাপিং, ইমপোর্ট অর্ডার এবং ভ্যালিডেশন কভার করে।</p>
+          <span class="meta">0008 · চেকলিস্ট</span>
+          <span class="arrow">→</span>
+        </a>
+
+        <a class="resource-card" href="/bn/lab/0030-data-migration-checklist-odoo-bangladesh">
+          <span class="resource-kind">চেকলিস্ট</span>
+          <h3>ডেটা মাইগ্রেশন চেকলিস্ট</h3>
+          <p>মাস্টার ডেটা, ওপেনিং ব্যালেন্স, ঐতিহাসিক অর্ডার এবং গো/নো-গো ক্রাইটেরিয়া কভার করা সম্পূর্ণ প্রি/পোস্ট মাইগ্রেশন চেকলিস্ট।</p>
+          <span class="meta">0030 · চেকলিস্ট</span>
+          <span class="arrow">→</span>
+        </a>
+
+        <a class="resource-card" href="/bn/lab/0032-odoo-post-go-live-hypercare-bangladesh">
+          <span class="resource-kind">চেকলিস্ট</span>
+          <h3>পোস্ট গো-লাইভ হাইপারকেয়ার প্ল্যান</h3>
+          <p>দৈনিক/সাপ্তাহিক সাপোর্ট ক্যাডেন্স, ইস্যু ট্রায়াজ ক্রাইটেরিয়া এবং সাইন-অফ মাইলস্টোনসহ ৩০-দিনের হাইপারকেয়ার চেকলিস্ট।</p>
+          <span class="meta">0032 · চেকলিস্ট</span>
+          <span class="arrow">→</span>
+        </a>
+
+        <a class="resource-card" href="/bn/lab/0009-uat-script-200-users-ago">
+          <span class="resource-kind">চেকলিস্ট</span>
+          <h3>UAT টেস্ট স্ক্রিপ্ট টেমপ্লেট</h3>
+          <p>পাস/ফেইল ক্রাইটেরিয়া, টেস্টার নির্দেশাবলী এবং ডিফেক্ট লগিং ফরম্যাটসহ ব্যাটল-টেস্টেড ইউজার অ্যাকসেপ্টেন্স টেস্টিং স্ক্রিপ্ট।</p>
+          <span class="meta">0009 · টেমপ্লেট</span>
+          <span class="arrow">→</span>
+        </a>
+
+      </div>
+    </div>
+
+    <!-- CHEATSHEETS -->
+    <div class="category">
+      <div class="section-label">চিটশিট</div>
+      <div class="resource-grid">
+
+        <a class="resource-card" href="/bn/lab/0011-odoo-inventory-valuation-cheatsheet">
+          <span class="resource-kind">চিটশিট</span>
+          <h3>Odoo ইনভেন্টরি ভ্যালুয়েশন</h3>
+          <p>AVCO, FIFO এবং স্ট্যান্ডার্ড প্রাইসের পাশাপাশি তুলনা — কোনটি কখন ব্যবহার করবেন, জার্নাল এন্ট্রি এবং ল্যান্ডেড কস্ট ট্রিটমেন্ট।</p>
+          <span class="meta">0011 · চিটশিট</span>
+          <span class="arrow">→</span>
+        </a>
+
+        <a class="resource-card" href="/bn/lab/0018-mushak-63-odoo-bangladesh">
+          <span class="resource-kind">চিটশিট</span>
+          <h3>Odoo-তে Mushak 6.3 — ফিল্ড ম্যাপ</h3>
+          <p>প্রতিটি Mushak 6.3 ফিল্ড তার Odoo সোর্সের সাথে ম্যাপ করা: ইনভয়েস লাইন, ট্যাক্স গ্রুপ, BIN ফিল্ড এবং চালান সিকোয়েন্স সেটআপ।</p>
+          <span class="meta">0018 · চিটশিট</span>
+          <span class="arrow">→</span>
+        </a>
+
+        <a class="resource-card" href="/bn/lab/0042-odoo-user-access-rights-configuration">
+          <span class="resource-kind">চিটশিট</span>
+          <h3>Odoo ইউজার অ্যাকসেস রাইটস</h3>
+          <p>Odoo 17/18-এ ইউজার গ্রুপ, অ্যাকসেস রুল, রেকর্ড রুল এবং মাল্টি-কোম্পানি অ্যাকসেসের জন্য কুইক-রেফারেন্স গাইড।</p>
+          <span class="meta">0042 · গাইড</span>
+          <span class="arrow">→</span>
+        </a>
+
+      </div>
+    </div>
+
+    <!-- GUIDES -->
+    <div class="category">
+      <div class="section-label">প্ল্যানিং গাইড</div>
+      <div class="resource-grid">
+
+        <a class="resource-card" href="/bn/lab/0028-odoo-implementation-roadmap-bangladesh">
+          <span class="resource-kind">গাইড</span>
+          <h3>Odoo বাস্তবায়ন রোডম্যাপ</h3>
+          <p>সপ্তাহ-ভিত্তিক টাস্ক ব্রেকডাউন এবং স্টেকহোল্ডার মাইলস্টোনসহ ডিসকভারি থেকে হাইপারকেয়ার পর্যন্ত ফেজ-বাই-ফেজ রোডম্যাপ।</p>
+          <span class="meta">0028 · গাইড</span>
+          <span class="arrow">→</span>
+        </a>
+
+        <a class="resource-card" href="/bn/lab/0043-as-is-to-be-process-mapping-erp">
+          <span class="resource-kind">গাইড</span>
+          <h3>As-Is / To-Be প্রসেস ম্যাপিং</h3>
+          <p>একটি স্ক্রিন স্পর্শ করার আগেই বর্তমান-স্টেট প্রসেস ডকুমেন্ট করবেন এবং ভবিষ্যৎ-স্টেট কনফিগারেশন ডিজাইন করবেন কীভাবে।</p>
+          <span class="meta">0043 · গাইড</span>
+          <span class="arrow">→</span>
+        </a>
+
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<footer>
+  <div class="shell">
+    <div class="foot">
+      <span>© ২০২৬ Mehedi Hasan · রিসোর্স</span>
+      <span><a href="/bn/lab/">↑ ল্যাব-এ ফিরুন</a></span>
+    </div>
+  </div>
+</footer>
+
+<script src="/whatsapp.js" defer></script>
+<script src="/scroll-top.js" defer></script>
+<script>
+  // Theme persistence
+  (function(){
+    if(localStorage.getItem('mh-theme')==='light')
+      document.documentElement.setAttribute('data-theme','light');
+  })();
+
+  // Theme toggle
+  (function(){
+    function init(){
+      var navInner = document.querySelector('.nav-inner');
+      if(!navInner) return;
+      var btn = document.createElement('button');
+      btn.className = 'theme-toggle';
+      btn.setAttribute('aria-label','লাইট/ডার্ক থিম টগল করুন');
+      btn.innerHTML =
+        '<svg class="icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>' +
+        '<svg class="icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
+      var backLink = navInner.querySelector('.back-link');
+      if(backLink) navInner.insertBefore(btn, backLink);
+      else navInner.appendChild(btn);
+      btn.addEventListener('click', function(){
+        var isLight = document.documentElement.getAttribute('data-theme')==='light';
+        if(isLight){ document.documentElement.removeAttribute('data-theme'); localStorage.setItem('mh-theme','dark'); }
+        else { document.documentElement.setAttribute('data-theme','light'); localStorage.setItem('mh-theme','light'); }
+      });
+    }
+    if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',init);
+    else init();
+  })();
+</script>
+</body>
+</html>

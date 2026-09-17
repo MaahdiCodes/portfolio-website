@@ -1,0 +1,548 @@
+<!doctype html>
+<html lang="bn">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description"
+    content="বাংলাদেশের কারখানার জন্য Odoo Manufacturing মডিউল সেটআপ — BoM, Work Centers, রাউটিং এবং MO লাইফসাইকেল। লাইভ RMG ও টেক্সটাইল ডেপ্লয়মেন্ট থেকে নেওয়া। গাইডটি পড়ুন →" />
+  <meta name="robots" content="noindex, follow" />
+  <meta name="author" content="Mehedi Hasan" />
+  <title>Odoo Manufacturing মডিউল সেটআপ বাংলাদেশ | মেহেদী হাসান</title>
+  <link rel="canonical" href="https://mhasan.me/bn/lab/0013-odoo-manufacturing-module-bangladesh" />
+  <link rel="alternate" hreflang="en" href="https://mhasan.me/lab/0013-odoo-manufacturing-module-bangladesh" />
+  <link rel="alternate" hreflang="bn-BD" href="https://mhasan.me/bn/lab/0013-odoo-manufacturing-module-bangladesh" />
+  <link rel="alternate" hreflang="x-default" href="https://mhasan.me/lab/0013-odoo-manufacturing-module-bangladesh" />
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png" />
+  <!-- Open Graph -->
+  <meta property="og:title" content="Odoo Manufacturing মডিউল সেটআপ বাংলাদেশ | মেহেদী হাসান" />
+  <meta property="og:description"
+    content="বাংলাদেশের কারখানার জন্য ধাপে ধাপে Odoo Manufacturing মডিউল সেটআপ — BoM, Work Centers, রাউটিং, MO লাইফসাইকেল, এবং লাইভ ডেপ্লয়মেন্ট থেকে পাওয়া বাস্তব সমস্যা।" />
+  <meta property="og:url" content="https://mhasan.me/bn/lab/0013-odoo-manufacturing-module-bangladesh" />
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="https://mhasan.me/assets/og-default.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale" content="bn_BD" />
+  <meta property="og:site_name" content="মেহেদী হাসান | Odoo ERP কনসালট্যান্ট" />
+  <meta property="article:author" content="https://www.linkedin.com/in/mehedi-hasan-consultant/" />
+  <meta property="article:published_time" content="2026-05-04T09:00:00+06:00" />
+  <meta property="article:modified_time" content="2026-05-22T09:00:00+06:00" />
+  <meta property="article:section" content="Odoo ERP Bangladesh" />
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Odoo Manufacturing মডিউল সেটআপ বাংলাদেশ" />
+  <meta name="twitter:description"
+    content="BoM, Work Centers, রাউটিং এবং Manufacturing Orders — বাংলাদেশের কারখানার জন্য একটি বাস্তবসম্মত Odoo Manufacturing সেটআপ গাইড।" />
+  <meta name="twitter:image" content="https://mhasan.me/assets/og-default.jpg" />
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "বাংলাদেশের কারখানার জন্য Odoo Manufacturing মডিউল সেটআপ (2026 গাইড)",
+    "description": "বাংলাদেশের কারখানার জন্য Odoo Manufacturing মডিউল সেটআপের একটি ধাপে ধাপে গাইড — Bill of Materials, Work Centers, রাউটিং, Manufacturing Orders, এবং বাস্তব সমস্যাসহ।",
+    "datePublished": "2026-05-04T09:00:00+06:00",
+    "dateModified": "2026-05-22T00:00:00+06:00",
+    "inLanguage": "bn",
+    "author": {
+      "@type": "Person",
+      "name": "Mehedi Hasan",
+      "url": "https://mhasan.me",
+      "jobTitle": "Odoo ERP Consultant & Business Analyst",
+      "sameAs": "https://www.linkedin.com/in/mehedi-hasan-consultant/"
+    },
+    "publisher": { "@type": "Person", "name": "Mehedi Hasan", "url": "https://mhasan.me" },
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://mhasan.me/bn/lab/0013-odoo-manufacturing-module-bangladesh" }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "হোম", "item": "https://mhasan.me/bn" },
+      { "@type": "ListItem", "position": 2, "name": "ল্যাব", "item": "https://mhasan.me/bn/#lab" },
+      { "@type": "ListItem", "position": 3, "name": "Odoo Manufacturing মডিউল বাংলাদেশ", "item": "https://mhasan.me/bn/lab/0013-odoo-manufacturing-module-bangladesh" }
+    ]
+  }
+]
+</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&family=Noto+Sans+Bengali:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap">
+  <link rel="stylesheet" href="/lab/_styles.css">
+  <style>
+    body{ font-family: 'Noto Sans Bengali', var(--sans); }
+    .pull {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: clamp(24px, 3vw, 36px);
+      line-height: 1.25;
+      color: var(--text);
+      margin: 48px 0;
+      padding: 0;
+      border: none;
+      max-width: 22ch;
+      letter-spacing: -0.01em;
+    }
+    .pull::before {
+      content: "";
+      display: block;
+      width: 36px;
+      height: 1px;
+      background: var(--accent);
+      margin-bottom: 18px;
+    }
+
+    /* step list */
+    .step-list {
+      list-style: none;
+      padding: 0;
+      margin: 24px 0;
+      counter-reset: steps;
+    }
+    .step-list li {
+      counter-increment: steps;
+      display: flex;
+      gap: 18px;
+      padding: 18px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 14.5px;
+      color: var(--text-2);
+      line-height: 1.6;
+    }
+    .step-list li:last-child { border-bottom: none; }
+    .step-list li::before {
+      content: counter(steps, decimal-leading-zero);
+      font-family: var(--mono);
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--accent);
+      letter-spacing: 0.06em;
+      flex: none;
+      width: 28px;
+      padding-top: 2px;
+    }
+    .step-list li strong { color: var(--text); }
+
+    /* compare grid */
+    .bom-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin: 24px 0;
+    }
+    .bom-card {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 20px;
+      background: var(--surface);
+    }
+    .bom-card.highlight { border-color: oklch(0.80 0.17 155 / 0.4); }
+    .bom-card .bc-label {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--text-3);
+      margin-bottom: 10px;
+    }
+    .bom-card.highlight .bc-label { color: var(--accent); }
+    .bom-card h4 { margin: 0 0 8px; font-size: 15px; font-weight: 500; color: var(--text); }
+    .bom-card p { margin: 0; font-size: 13px; color: var(--text-2); line-height: 1.55; }
+    @media(max-width:700px) { .bom-grid { grid-template-columns: 1fr; } }
+
+    /* MO flow */
+    .mo-flow {
+      margin: 24px 0;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+      background: var(--surface);
+    }
+    .mo-step {
+      display: grid;
+      grid-template-columns: 140px 1fr;
+      gap: 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .mo-step:last-child { border-bottom: none; }
+    .mo-step .ms-label {
+      padding: 16px 18px;
+      font-family: var(--mono);
+      font-size: 10.5px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      border-right: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      background: oklch(0.80 0.17 155 / 0.04);
+    }
+    .mo-step .ms-body {
+      padding: 16px 20px;
+      font-size: 13.5px;
+      color: var(--text-2);
+      line-height: 1.55;
+    }
+    .mo-step .ms-body strong { color: var(--text); }
+    @media(max-width:600px) {
+      .mo-step { grid-template-columns: 1fr; }
+      .mo-step .ms-label { border-right: none; border-bottom: 1px solid var(--border); }
+    }
+
+    .field-note{margin:28px 0;border:1px solid var(--border);border-radius:12px;overflow:hidden;background:var(--surface)}
+    .fn-hd{display:flex;align-items:center;justify-content:space-between;padding:12px 18px;border-bottom:1px solid var(--border);font-family:var(--mono);font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-3)}
+    .fn-hd .when{color:var(--accent)}
+    .fn-body{padding:18px 22px;font-size:15px;line-height:1.65;color:var(--text-2)}
+    .fn-body strong{color:var(--text);font-weight:500}
+  </style>
+</head>
+
+<body>
+  <div class="grid-bg"></div>
+
+  <header class="nav">
+    <div class="shell">
+      <div class="nav-inner">
+        <a class="brand" href="/bn/">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span class="brand-name"><b>Mehedi Hasan</b><em>ERP · বিজনেস অ্যানালিস্ট</em></span>
+        </a>
+        <a class="back-link" href="/bn/#lab">← ল্যাব-এ ফিরুন</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="post-head">
+    <div class="shell">
+      <span class="eyebrow">টেকনিক্যাল ল্যাব · 0013</span>
+      <h1>বাংলাদেশের কারখানার জন্য Odoo Manufacturing মডিউল সেটআপ — <span class="serif">সম্পূর্ণ গাইড।</span></h1>
+      <p class="lede">BoM টাইপ, Work Centers, রাউটিং, এবং সম্পূর্ণ Manufacturing Order লাইফসাইকেল — বাংলাদেশের কারখানা আসলে যেভাবে চলে সেভাবে কনফিগার করা। RMG, টেক্সটাইল, এবং সাইকেল এক্সপোর্ট ডেপ্লয়মেন্ট থেকে নেওয়া।</p>
+      <div class="post-meta">
+        <span class="chip accent">মডিউল গাইড</span>
+        <span class="chip">Manufacturing</span>
+        <span class="chip">Odoo</span>
+        <span class="chip">বাংলাদেশ</span>
+      </div>
+      <div class="byline">
+        <span>লেখক<b><a href="https://www.linkedin.com/in/mehedi-hasan-consultant/" style="color:var(--accent)" rel="author">Mehedi Hasan</a></b></span>
+        <span>প্রকাশিত<b>মে ২০২৬</b></span>
+        <span>পড়ার সময়<b>১২ মিনিট</b></span>
+        <span>ধরন<b>সেটআপ গাইড</b></span>
+        <span>পরিসর<b>ফ্যাক্টরি ফ্লোর থেকে MRP</b></span>
+      </div>
+    </div>
+  </section>
+
+  <article class="post">
+    <aside class="toc">
+      <div class="toc-k">এই গাইডে</div>
+      <ol>
+        <li><a href="#what-mrp">MRP কী কভার করে (আর কী করে না)</a></li>
+        <li><a href="#prereqs">প্রয়োজনীয়তা ও মডিউল অ্যাক্টিভেশন</a></li>
+        <li><a href="#bom">Bill of Materials সেটআপ</a></li>
+        <li><a href="#workcenters">Work Centers ও ক্যাপাসিটি</a></li>
+        <li><a href="#routing">Operations ও রাউটিং</a></li>
+        <li><a href="#mo">Manufacturing Order লাইফসাইকেল</a></li>
+        <li><a href="#pitfalls">বাংলাদেশ কারখানার সমস্যা</a></li>
+        <li><a href="#faq">সচরাচর জিজ্ঞাসা</a></li>
+      </ol>
+    </aside>
+
+    <div class="body">
+      <p>বাংলাদেশে আমি যে প্রতিটি ফ্যাক্টরি Odoo ডেপ্লয়মেন্ট চালাই, তার কেন্দ্রবিন্দু হলো Manufacturing মডিউল। এটি সঠিকভাবে সেট করলে এর পরের সবকিছু — ইনভেন্টরি, কস্টিং, প্রোকিউরমেন্ট, ফাইন্যান্সিয়াল রিপোর্টিং — এমনিতেই স্বাভাবিকভাবে চলতে থাকে। ভুল করলে ফলাফল হয় ঘোস্ট স্টক, বন্ধ না হওয়া Manufacturing Order, আর এমন একটি কস্টিং ইঞ্জিন যার সংখ্যায় কেউ বিশ্বাস করে না।</p>
+
+      <p>এই গাইডে আমি প্রতিটি এনগেজমেন্টে যে সেটআপ সিকোয়েন্স ব্যবহার করি সেটাই দেখাব: প্রয়োজনীয়তা, Bill of Materials টাইপ, Work Center কনফিগারেশন, রাউটিং, এবং Manufacturing Order লাইফসাইকেল। যেখানে প্রাসঙ্গিক, সেখানে বাংলাদেশ-নির্দিষ্ট বিষয় উল্লেখ করেছি — বিশেষ করে RMG, টেক্সটাইল এবং এক্সপোর্ট ম্যানুফ্যাকচারিং প্রেক্ষাপটে।</p>
+
+      <p class="pull">BoM-ই একমাত্র সত্যের উৎস। BoM ভুল হলে প্রতিটি MO, কস্ট এবং স্টক মুভ ভুল হয়ে যাবে।</p>
+
+      <h2 id="what-mrp">Manufacturing মডিউল কী কভার করে (আর কী করে না)</h2>
+
+      <p>Odoo-র Manufacturing মডিউল (টেকনিক্যালি MRP — Material Requirements Planning) যা হ্যান্ডল করে:</p>
+
+      <ul>
+        <li><strong>Bill of Materials (BoM)</strong> — রেসিপি: একটি ফিনিশড প্রোডাক্ট বানাতে কী কী লাগে</li>
+        <li><strong>Work Centers</strong> — ফিজিক্যাল প্রোডাকশন রিসোর্স (মেশিন, লাইন, টিম)</li>
+        <li><strong>Operations ও Routing</strong> — কাঁচামাল থেকে ফিনিশড গুডস পর্যন্ত টাস্কের ক্রম</li>
+        <li><strong>Manufacturing Orders (MO)</strong> — প্রকৃত প্রোডাকশন ইনস্ট্রাকশন ডকুমেন্ট</li>
+        <li><strong>Scrap ও Rework</strong> — মেটেরিয়াল লস আর রিজেক্টেড আউটপুট রেকর্ড করা</li>
+        <li><strong>Work Orders</strong> — প্রতিটি Work Center-এর জন্য টাস্ক-লেভেল ইনস্ট্রাকশন (শুধু Enterprise)</li>
+      </ul>
+
+      <p>অতিরিক্ত কনফিগারেশন ছাড়া যা হ্যান্ডল করে না:</p>
+
+      <ul>
+        <li><strong>কোয়ালিটি কন্ট্রোল</strong> — Quality মডিউল লাগে (Enterprise)</li>
+        <li><strong>মেইনটেন্যান্স শিডিউলিং</strong> — আলাদা Maintenance মডিউল</li>
+        <li><strong>অ্যাডভান্সড ক্যাপাসিটি প্ল্যানিং</strong> — Work Center-এর ওয়ার্কিং আওয়ার ব্যবহার করে, কিন্তু এটি পূর্ণাঙ্গ প্রোডাকশন শিডিউলার নয়</li>
+        <li><strong>সাবকন্ট্রাক্টিং</strong> — নির্দিষ্ট BoM টাইপ ও ভেন্ডর সেটআপ দরকার</li>
+      </ul>
+
+      <div class="callout">
+        <span class="tag">Community বনাম Enterprise</span>
+        <p>Odoo Community-তে MRP v1 আছে — সাধারণ সিঙ্গেল-লেভেল BoM আর MO-র জন্য যথেষ্ট। Enterprise যোগ করে <strong>MRP v2</strong>: মাল্টি-লেভেল BoM এক্সপ্লোশন, Work Order ট্র্যাকিং, OEE (Overall Equipment Effectiveness), আনবিল্ড অর্ডার, এবং শপ-ফ্লোর ট্যাবলেট ইন্টারফেস। দুইয়ের বেশি প্রোডাকশন স্টেপ থাকা বেশিরভাগ বাংলাদেশি কারখানার Enterprise দরকার হয়।</p>
+      </div>
+
+      <h2 id="prereqs">প্রয়োজনীয়তা ও মডিউল অ্যাক্টিভেশন</h2>
+
+      <p>Manufacturing অ্যাক্টিভেট করার আগে নিশ্চিত করুন এগুলো ইতিমধ্যে কনফিগার করা আছে:</p>
+
+      <ol class="step-list">
+        <li><strong>Inventory মডিউল কনফিগার করা</strong> — প্রোডাক্ট ক্যাটাগরি, ইউনিট অফ মেজার, ওয়্যারহাউস, আর স্টোরেজ লোকেশন নির্ধারিত থাকতে হবে। Manufacturing স্টক মুভ করে; আপনার ইনভেন্টরি স্ট্রাকচার ভুল হলে MO ভুল লোকেশনে পোস্ট হবে।</li>
+        <li><strong>Units of Measure চালু করা</strong> — Settings → Inventory → Units of Measure। যেসব বাংলাদেশি কারখানায় ফেব্রিক মিটারে কেনা হয় কিন্তু ইউনিটে খরচ হয়, বা কেমিক্যাল লিটারে কেনা হয় কিন্তু গ্রামে ব্যবহার হয়, তাদের জন্য এটি গুরুত্বপূর্ণ।</li>
+        <li><strong>প্রোডাক্ট ভ্যারিয়েন্ট চালু করা (দরকার হলে)</strong> — Settings → Inventory → Variants। RMG আর গার্মেন্টস কারখানার জন্য অপরিহার্য, যেখানে একই প্রোডাক্টের একাধিক সাইজ ও রং থাকে শেয়ার্ড BoM-সহ।</li>
+        <li><strong>কস্টিং মেথড ঠিক করা</strong> — বেশিরভাগ বাংলাদেশি ম্যানুফ্যাকচারারের জন্য AVCO (Average Cost)। আপনি ISO-সার্টিফায়েড হলে এবং লট-লেভেল কস্ট ট্রেসেবিলিটি দরকার হলে FIFO। যেকোনো স্টক মুভের আগেই প্রোডাক্ট ক্যাটাগরি লেভেলে সেট করুন। পরে পরিবর্তন করা কষ্টকর। পূর্ণ ডিসিশন ট্রি-র জন্য দেখুন আমার <a href="/bn/lab/0011-odoo-inventory-valuation-cheatsheet" style="color:var(--accent)">ইনভেন্টরি ভ্যালুয়েশন গাইড</a>।</li>
+        <li><strong>Manufacturing মডিউল অ্যাক্টিভেট করা</strong> — Apps → Manufacturing → Install। এটি MRP-ও ইনস্টল করে। Enterprise ইউজারদের জন্য, Settings → Manufacturing-এ MRP v2 ফিচার দেখা যাচ্ছে কিনা যাচাই করুন।</li>
+      </ol>
+
+      <h2 id="bom">Bill of Materials সেটআপ</h2>
+
+      <p>BoM প্রতিটি ম্যানুফ্যাকচারিং ট্রানজ্যাকশনের ভিত্তি। প্রতিটি MO, কস্ট রোল-আপ, আর প্রোকিউরমেন্ট ট্রিগার এখান থেকেই আসে। একটি BoM সংজ্ঞায়িত করে: আপনি কী বানান, বানাতে কী খরচ করেন, এবং প্রতি ইউনিট আউটপুটে প্রতিটি কম্পোনেন্ট কত পরিমাণে লাগে।</p>
+
+      <h3>BoM টাইপ</h3>
+
+      <div class="bom-grid">
+        <div class="bom-card highlight">
+          <div class="bc-label">সবচেয়ে সাধারণ</div>
+          <h4>Manufacture</h4>
+          <p>স্ট্যান্ডার্ড ইন-হাউস প্রোডাকশন। একটি Manufacturing Order তৈরি করে। কম্পোনেন্ট ইনভেন্টরি থেকে খরচ হয়, ফিনিশড গুডস স্টকে যোগ হয়। বাংলাদেশের কারখানার ৯৫% প্রোডাকশনের জন্য এটি ব্যবহার করুন।</p>
+        </div>
+        <div class="bom-card">
+          <div class="bc-label">সাব-অ্যাসেম্বলি</div>
+          <h4>Kit</h4>
+          <p>কোনো MO তৈরি হয় না। প্রোডাক্টটি কিট হিসেবে বিক্রি হয় আর কম্পোনেন্ট স্টক থেকে পিক করা হয়। স্পেয়ার পার্টস কিট আর বান্ডল করা এক্সপোর্ট প্যাকেজিং-এর জন্য ব্যবহৃত হয় — প্রোডাকশনের জন্য নয়।</p>
+        </div>
+        <div class="bom-card">
+          <div class="bc-label">আউটসোর্সড ওয়ার্ক</div>
+          <h4>Subcontracting</h4>
+          <p>কম্পোনেন্ট একজন ভেন্ডরের কাছে পাঠানো হয় যিনি ম্যানুফ্যাকচারিং করেন। Odoo MO-র পাশাপাশি একটি Purchase Order তৈরি করে। বাংলাদেশের টেক্সটাইলে জব ওয়ার্কের জন্য সাধারণ — যেমন গ্রে ফেব্রিক ডাইং-এর জন্য পাঠানো।</p>
+        </div>
+      </div>
+
+      <h3>একটি BoM তৈরি করা — ধাপে ধাপে</h3>
+
+      <p>যান Manufacturing → Products → Bills of Materials → New-তে।</p>
+
+      <ol class="step-list">
+        <li><strong>প্রোডাক্ট সেট করুন</strong> — ফিনিশড প্রোডাক্ট বেছে নিন। ভ্যারিয়েন্ট চালু থাকলে, সব ভ্যারিয়েন্টের জন্য অথবা নির্দিষ্ট একটির জন্য BoM সেট করতে পারেন (যেমন, "Polo Shirt — White, XL")। ভ্যারিয়েন্ট-নির্দিষ্ট পরিমাণের জন্য (সাইজ অনুযায়ী ভিন্ন ফেব্রিক কনজাম্পশন), একই BoM টেমপ্লেট ব্যবহার করুন আর কম্পোনেন্ট কোয়ান্টিটি অ্যাট্রিবিউট অনুযায়ী সেট করুন।</li>
+        <li><strong>BoM টাইপ সেট করুন</strong> — স্ট্যান্ডার্ড ইন-হাউস প্রোডাকশনের জন্য "Manufacture"।</li>
+        <li><strong>কোয়ান্টিটি সেট করুন</strong> — BoM কোয়ান্টিটি সাধারণত ১ ইউনিট হওয়া উচিত। MO-তে বড় পরিমাণ প্রোডিউস করলে Odoo কম্পোনেন্ট কনজাম্পশন সমানুপাতিকভাবে স্কেল করে। ব্যাচ কস্টিং-এর জন্য BoM কোয়ান্টিটি ১০০ সেট করা একটি সাধারণ ভুল — এটি কাজ করে, কিন্তু অপারেটর ও অডিটরদের বিভ্রান্ত করে।</li>
+        <li><strong>কম্পোনেন্ট যোগ করুন</strong> — প্রতি ইউনিটে খরচ হওয়া প্রতিটি কাঁচামাল লিস্ট করুন। একটি গার্মেন্টের জন্য: ফেব্রিক (২.৫ মি), থ্রেড (২০০ মি), বোতাম (৮ পিস), লেবেল (১ পিস), পলি ব্যাগ (১ পিস)। প্রতিটির জন্য সঠিক UoM সেট করুন। যাচাই করুন এই আইটেমগুলো আপনার ওয়্যারহাউসে যেভাবে স্টোর হয় UoM তার সাথে মেলে কিনা — না মিললে স্টক ভ্যালুয়েশনে এরর হয়।</li>
+        <li><strong>অপারেশন সেট করুন (রাউটিং চালু থাকলে)</strong> — প্রতিটি কম্পোনেন্টকে যে অপারেশনে খরচ হয় তার সাথে লিংক করুন। এটি Work Order-লেভেল কম্পোনেন্ট ট্র্যাকিং সম্ভব করে। ঐচ্ছিক কিন্তু মাল্টি-স্টেপ প্রোডাকশন লাইনের জন্য অত্যন্ত সুপারিশকৃত।</li>
+        <li><strong>সেভ ও কনফার্ম করুন</strong> — একবার লাইভ হলে, এই প্রোডাক্টের প্রতিটি MO এই BoM অনুযায়ী চলে। পরিবর্তন শুধু নতুন MO-তে প্রযোজ্য হয়, চলমান MO-তে নয়।</li>
+      </ol>
+
+      <div class="callout">
+        <span class="tag">বাংলাদেশ নোট</span>
+        <p>গার্মেন্টস কারখানার জন্য, প্রতিটি স্টাইল বা বায়ারের জন্য আলাদা BoM নির্ধারণ করুন। ফেব্রিক কনজাম্পশন, ট্রিম স্পেক, আর অ্যাক্সেসরি লিস্ট বায়ার অনুযায়ী আলাদা হয় — Odoo-র BoM ভার্সনিং ব্যবহার করুন (পুরনোটি আর্কাইভ করুন, নতুন তৈরি করুন) যাতে প্রোডাকশন রেকর্ড না মুছে একটি পরিষ্কার হিস্ট্রি বজায় থাকে।</p>
+      </div>
+
+      <h3>মাল্টি-লেভেল BoM (Enterprise)</h3>
+
+      <p>আপনার কারখানা যদি ফাইনাল অ্যাসেম্বলির আগে সাব-অ্যাসেম্বলি বানায় — যেমন, একজন সাইকেল ম্যানুফ্যাকচারার যিনি পেইন্টিং-এর আগে ফ্রেম ওয়েল্ড করেন — তাহলে আপনার মাল্টি-লেভেল BoM দরকার। ফিনিশড প্রোডাক্ট BoM একটি সেমি-ফিনিশড প্রোডাক্টকে (ফ্রেম) রেফার করে, যার নিজেরও একটি BoM আছে। Odoo যখন MO এক্সপ্লোড করে, তখন প্রতিটি লেভেলের জন্য সাব-MO তৈরি করে। এটি শুধু MRP v2-এর একটি Enterprise ফিচার।</p>
+
+      <h2 id="workcenters">Work Centers ও ক্যাপাসিটি</h2>
+
+      <p>একটি Work Center একটি ফিজিক্যাল প্রোডাকশন রিসোর্সকে প্রতিনিধিত্ব করে: একটি মেশিন, একটি প্রোডাকশন লাইন, একটি ফিনিশিং টেবিল, অথবা একটি টিম। Work Center-এর ক্যাপাসিটি ঘণ্টা/দিনে মাপা হয় এবং এটিই ওয়ার্ক অর্ডার শিডিউলিং-এর ভিত্তি।</p>
+
+      <h3>Work Centers তৈরি করা</h3>
+
+      <p>Manufacturing → Configuration → Work Centers → New। মূল ফিল্ড:</p>
+
+      <table>
+        <thead>
+          <tr><th>ফিল্ড</th><th>যা লিখবেন</th><th>বাংলাদেশ নোট</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Name</td>
+            <td>মেশিন বা লাইনের নাম</td>
+            <td>অপারেটররা চেনেন এমন নাম ব্যবহার করুন: "Line 1 – Stitching", "Flat Knit Machine 3"</td>
+          </tr>
+          <tr>
+            <td>Working Hours</td>
+            <td>শিফট শিডিউল</td>
+            <td>বাংলাদেশের কারখানায় প্রায়ই দুটি ৮-ঘণ্টার শিফট চলে। Single Shift আর Double Shift-এর জন্য আলাদা Working Time রেকর্ড তৈরি করুন — প্রতিটি Work Center-এ যথাযথটি লিংক করুন</td>
+          </tr>
+          <tr>
+            <td>Time Efficiency %</td>
+            <td>বাস্তব বনাম তাত্ত্বিক আউটপুট</td>
+            <td>বেশিরভাগ বাংলাদেশি কারখানার জন্য ৮০% দিয়ে শুরু করুন। তিন মাসের বাস্তব প্রোডাকশন ডেটার পর রিফাইন করুন</td>
+          </tr>
+          <tr>
+            <td>Capacity</td>
+            <td>প্যারালাল অপারেশন</td>
+            <td>২০ জন অপারেটর প্যারালালে চালানো একটি প্রোডাকশন লাইনের ক্যাপাসিটি ২০ — এটি সেট করুন যাতে Odoo সেখানে একসাথে ২১টি ওয়ার্ক অর্ডার শিডিউল না করে</td>
+          </tr>
+          <tr>
+            <td>OEE Target %</td>
+            <td>টার্গেট OEE (Enterprise)</td>
+            <td>সাধারণ RMG কারখানা: ৬০–৭৫%। অটোমেটেড উইভিং মিল: ৮৫%+</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="callout">
+        <span class="tag">Working Hours গুরুত্বপূর্ণ</span>
+        <p>আমি যে সবচেয়ে সাধারণ Work Center এরর দেখি: বাংলাদেশের সরকারি ছুটি Working Time ক্যালেন্ডার থেকে বাদ দেওয়া হয় না। ফলে Odoo ঈদের ছুটিতেও প্রোডাকশন শিডিউল করে। প্রতি বছরের শুরুতে Working Time রেকর্ডে একটি সঠিক বাংলাদেশ সরকারি ছুটির তালিকা তৈরি করুন।</p>
+      </div>
+
+      <h2 id="routing">Operations ও রাউটিং</h2>
+
+      <p>একটি Operation একটি টাস্ক — কাটিং, স্টিচিং, ওয়াশিং, ফিনিশিং। একটি Routing হলো Operations-এর ক্রমানুসারে সাজানো, যা কাঁচামালকে একটি ফিনিশড প্রোডাক্টে রূপান্তর করে। Routing একটি <strong>শুধু Enterprise</strong> ফিচার এবং Settings → Manufacturing → Work Orders-এ চালু করতে হয়।</p>
+
+      <h3>Operations তৈরি করা</h3>
+
+      <p>Manufacturing → Configuration → Operations → New। প্রতিটি অপারেশনের জন্য সেট করুন:</p>
+
+      <ul>
+        <li><strong>Name</strong> — টাস্কটি কী: "Cutting", "Stitching – Body", "Stitching – Sleeve", "Finishing", "QC Inspection", "Packing"</li>
+        <li><strong>Default Work Center</strong> — ডিফল্টভাবে কোন মেশিন বা লাইন এই অপারেশন সম্পাদন করে</li>
+        <li><strong>Duration Computation</strong> — "Based on Real Time" (ওয়ার্কাররা প্রকৃত সময় লগ করেন) অথবা "Set Duration" (প্রতি ইউনিটে ফিক্সড স্ট্যান্ডার্ড সময়)। শুরুতে "Set Duration" ব্যবহার করুন; অপারেটররা প্রশিক্ষিত হওয়ার পর রিয়েল-টাইম ট্র্যাকিং-এ মাইগ্রেট করুন।</li>
+        <li><strong>Default Duration (minutes)</strong> — প্রতি ইউনিট প্রোডিউসড হওয়ার স্ট্যান্ডার্ড সময়। যেমন, "Stitching – Body": প্রতি শার্টে ৪ মিনিট।</li>
+      </ul>
+
+      <h3>একটি BoM-এ রাউটিং যোগ করা</h3>
+
+      <p>BoM খুলুন → Operations ট্যাব → প্রোডাকশন সিকোয়েন্সের প্রতিটি অপারেশনের জন্য একটি লাইন যোগ করুন। MO কনফার্ম হলে Odoo স্বয়ংক্রিয়ভাবে Work Order তৈরি করে — প্রতিটি Manufacturing Order-এ প্রতিটি Operation-এর জন্য একটি Work Order।</p>
+
+      <h2 id="mo">Manufacturing Order লাইফসাইকেল</h2>
+
+      <p>Manufacturing Order (MO) হলো দৈনন্দিন প্রোডাকশন চালানো অপারেশনাল ডকুমেন্ট। এখানে সম্পূর্ণ লাইফসাইকেল দেওয়া হলো:</p>
+
+      <div class="mo-flow">
+        <div class="mo-step">
+          <div class="ms-label">Draft</div>
+          <div class="ms-body"><strong>MO তৈরি হয়েছে।</strong> ম্যানুয়ালি তৈরি করা যায় (Manufacturing → Manufacturing Orders → New), একটি Sales Order দিয়ে ট্রিগার হতে পারে (Make to Order), অথবা শিডিউলার দিয়ে জেনারেট হতে পারে (রিঅর্ডারিং রুল)। কম্পোনেন্ট রিজার্ভ করা হয় কিন্তু খরচ হয় না। এখনও এডিটেবল।</div>
+        </div>
+        <div class="mo-step">
+          <div class="ms-label">Confirmed</div>
+          <div class="ms-body"><strong>MO কনফার্ম হয়েছে।</strong> Work Order জেনারেট হয় (রাউটিং কনফিগার করা থাকলে)। কম্পোনেন্ট অ্যাভেইলেবিলিটি চেক করা হয়। শিডিউলড ডেট সেট হয়। এই পর্যায়ে MO শপ-ফ্লোর অ্যাপে অপারেটরদের কাছে দেখা যায়। কম্পোনেন্ট ইনভেন্টরিতে "reserved"-এ পরিবর্তিত হয়।</div>
+        </div>
+        <div class="mo-step">
+          <div class="ms-label">In Progress</div>
+          <div class="ms-body"><strong>প্রোডাকশন শুরু হয়েছে।</strong> অপারেটররা Work Order প্রোগ্রেস লগ করেন (start, pause, done)। সিম্পল ফ্লোতে (Work Order ছাড়া), আপনি সরাসরি "Quantity Producing" ফিল্ড আপডেট করেন। লট ট্র্যাকিং চালু থাকলে এই পর্যায়ে কম্পোনেন্ট লট/সিরিয়াল নাম্বার অ্যাসাইন হয়।</div>
+        </div>
+        <div class="mo-step">
+          <div class="ms-label">Scrap</div>
+          <div class="ms-body"><strong>স্ক্র্যাপ রেকর্ড হয়েছে (ঐচ্ছিক)।</strong> যেকোনো রিজেক্টেড কাঁচামাল বা ওয়ার্ক-ইন-প্রোগ্রেস Scrap বাটন দিয়ে স্ক্র্যাপ করা হয় — এটি পরিমাণটি প্রোডাকশন স্টক থেকে সরিয়ে একটি Scrap লোকেশনে নেয়, আর কস্টটি একটি Scrap এক্সপেন্স অ্যাকাউন্টে পোস্ট করে। প্রোডাক্ট আর কারণ অনুযায়ী স্ক্র্যাপ ট্র্যাক করুন।</div>
+        </div>
+        <div class="mo-step">
+          <div class="ms-label">Produce</div>
+          <div class="ms-body"><strong>প্রোডিউসড কোয়ান্টিটি সেট হয়েছে।</strong> প্রকৃত প্রোডিউসড পরিমাণ এন্টার করুন। পরিকল্পিত পরিমাণের থেকে ভিন্ন হলে (গার্মেন্ট প্রোডাকশনে রিজেকশনের কারণে সাধারণ), Odoo ভ্যারিয়েন্স হ্যান্ডল করে — হয় বাকি পরিমাণের জন্য একটি ব্যাকঅর্ডার তৈরি করে, নয়তো ঘাটতিটা বন্ধ করে দেয়।</div>
+        </div>
+        <div class="mo-step">
+          <div class="ms-label">Done</div>
+          <div class="ms-body"><strong>MO বন্ধ হয়েছে।</strong> কম্পোনেন্ট স্টক থেকে খরচ হয় (ইনভেন্টরি কমে)। ফিনিশড গুডস স্টকে যোগ হয় (ইনভেন্টরি বাড়ে)। জার্নাল এন্ট্রি পোস্ট হয়: Raw Materials → WIP → Finished Goods। আপনার কস্টিং মেথড অনুযায়ী স্ট্যান্ডার্ড বা অ্যাভারেজ কস্টে ভ্যালুয়েশন হয়।</div>
+        </div>
+      </div>
+
+      <div class="callout">
+        <span class="tag">গুরুত্বপূর্ণ শৃঙ্খলা</span>
+        <p>বাংলাদেশের ফ্যাক্টরি ডেপ্লয়মেন্টে ইনভেন্টরি ডিসক্রেপান্সির #১ কারণ হলো বন্ধ না হওয়া Manufacturing Order। একটি MO ৩০ দিন ধরে "In Progress" থাকা মানে কম্পোনেন্ট রিজার্ভ আছে কিন্তু খরচ হয়নি — আপনার স্টক রিপোর্টে ফ্যান্টম অ্যাভেইলেবিলিটি দেখাবে। একটি দৈনিক ক্লোজ শৃঙ্খলা প্রয়োগ করুন: প্রতিটি MO শিফট শেষে হয় Done হতে হবে, নয়তো ব্যাকঅর্ডার-স্প্লিট হতে হবে।</p>
+      </div>
+
+      <h2 id="pitfalls">বাংলাদেশ কারখানার সমস্যা</h2>
+
+      <p>RMG, টেক্সটাইল, এবং সাইকেল এক্সপোর্ট জুড়ে কারখানার জন্য Manufacturing সেটআপ করার পর, এগুলোই আমি সবচেয়ে বেশি দেখা এরর:</p>
+
+      <table>
+        <thead>
+          <tr><th>সমস্যা</th><th>যা ঘটে</th><th>সমাধান</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>BoM-এ UoM মিসম্যাচ</td>
+            <td>ফেব্রিক গজে কেনা, BoM মিটারে — স্বয়ংক্রিয় কনভার্শনে ভুল কস্ট তৈরি হয়</td>
+            <td>প্রতিটি মেটেরিয়াল ক্যাটাগরির জন্য একটি UoM স্ট্যান্ডার্ডাইজ করুন। গো-লাইভের আগে UoM কনভার্শন সঠিকভাবে কনফিগার করুন (১ গজ = ০.৯১৪৪ মি)</td>
+          </tr>
+          <tr>
+            <td>স্ক্র্যাপ ট্র্যাকিং নেই</td>
+            <td>রিজেক্টেড গার্মেন্ট / কাট-অফ ফেব্রিক রেকর্ড থেকে হারিয়ে যায় — ফ্যান্টম ইনভেন্টরি জমে</td>
+            <td>প্রতিটি MO-তে Scrap চালু করুন। রিপোর্টিং-এর জন্য স্ক্র্যাপ কারণ তৈরি করুন (Cutting Waste, Stitching Defect, Washing Shrinkage)</td>
+          </tr>
+          <tr>
+            <td>BoM প্রকৃত কনজাম্পশন প্রতিফলিত করছে না</td>
+            <td>স্ট্যান্ডার্ড কস্ট ভুল হয়; প্রফিটেবিলিটি রিপোর্ট অনির্ভরযোগ্য হয়</td>
+            <td>প্রতি মাসে MO ভ্যারিয়েন্স রিপোর্ট চালান। প্রতি কোয়ার্টারে প্রকৃত প্রোডাকশন ডেটা থেকে BoM কম্পোনেন্ট কোয়ান্টিটি আপডেট করুন</td>
+          </tr>
+          <tr>
+            <td>ভুল কস্টিং মেথড</td>
+            <td>ফ্যাশন আইটেমের জন্য স্ট্যান্ডার্ড কস্ট মানে ফেব্রিকের দাম বদলালে কস্ট সবসময় পুরনো হয়ে যায়</td>
+            <td>বেশিরভাগ বাংলাদেশি কারখানার জন্য AVCO ব্যবহার করুন। শুধু তখনই স্ট্যান্ডার্ড কস্ট, যখন একটি ডেডিকেটেড কস্ট অ্যাকাউন্টিং টিম এটি মেইনটেইন করে</td>
+          </tr>
+          <tr>
+            <td>সাবকন্ট্রাক্টিং কনফিগার করা নেই</td>
+            <td>জব ওয়ার্ক (ওয়াশিং, ডাইং, প্রিন্টিং) Odoo-র বাইরে ম্যানুয়ালি করা হয় — প্রসেসের সময় স্টক হারিয়ে যায়</td>
+            <td>প্রতিটি জব ওয়ার্ক প্রসেসের জন্য Subcontracting BoM কনফিগার করুন। ভেন্ডরের সাথে লিংক করুন আর কম্পোনেন্ট ফ্লো সেট করুন</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="field-note">
+        <div class="fn-hd"><span>নোট · RMG কারখানা, গাজীপুর</span><span class="when">গো-লাইভের ~৩ মাস পর</span></div>
+        <div class="fn-body">
+          আমি সাপোর্ট করেছি এমন একটি নিট গার্মেন্ট কারখানা এমন ফেব্রিক স্টক রিপোর্ট করছিল যা ওয়্যারহাউসে ফিজিক্যালি ছিলই না। কারণটা চুরি ছিল না — শৃঙ্খলার অভাব ছিল। অপারেটররা Manufacturing Order কনফার্ম করতেন কিন্তু কখনো Done মার্ক করতেন না; কয়েক ডজন MO সপ্তাহের পর সপ্তাহ ধরে "In Progress" থেকে যেত, কম্পোনেন্ট <strong>reserved</strong>-এ আটকে থাকত, খরচ হতো না। স্টক রিপোর্টে এমন অ্যাভেইলেবিলিটি দেখাত যা ফ্লোর ইতিমধ্যে কেটে সেলাই করে ফেলেছিল। সমাধানটা টেকনিক্যাল ছিল না, প্রসেসগত ছিল: প্রতি শিফট শেষে একটি নিয়ম — প্রতিটি MO হয় Done হবে, নয়তো ব্যাকঅর্ডার-স্প্লিট হবে। <strong>দুই সপ্তাহের মধ্যে ইনভেন্টরি রিপোর্ট ফ্লোরের সাথে মিলে গেল — কোনো নতুন মডিউল নয়, শুধু একটি বন্ধ লুপ।</strong>
+        </div>
+      </div>
+
+      <p>গো-লাইভে এটি ভুল করার খরচের প্রভাব সম্পর্কে জানতে দেখুন আমার নোট <a href="/bn/lab/0005-erp-go-live-cost-manufacturing-bangladesh" style="color:var(--accent)">বাংলাদেশের ম্যানুফ্যাকচারিং-এ একটি খারাপ ERP গো-লাইভের প্রকৃত খরচ</a> নিয়ে। প্যাটার্নটি সবসময় একই: সঠিক সেটআপে খরচ হয় এক সপ্তাহের কনসালট্যান্ট সময়; একটি খারাপ সেটআপ ঠিক করতে খরচ হয় তিন মাস আর একটি রি-ইমপ্লিমেন্টেশন। এখনও বাজেট স্কোপ করছেন? <a href="/bn/tools/odoo-cost-estimator/" style="color:var(--accent)">Odoo cost estimator</a> বাংলাদেশে একটি ম্যানুফ্যাকচারিং ডেপ্লয়মেন্টের জন্য দ্রুত একটি রেঞ্জ দেয়।</p>
+
+      <div class="callout">
+        <span class="tag">পরবর্তী ধাপ</span>
+        <p>Manufacturing মডিউল সেটআপ আমার প্রতিটি <a href="/bn/services/manufacturing-erp-consultant/" style="color:var(--accent)">ম্যানুফ্যাকচারিং ERP বাস্তবায়ন</a>-এর অংশ। বাংলাদেশের একটি কারখানার জন্য কনফিগার করছেন? গো-লাইভের আগে আপনার BoM স্ট্রাকচার আর Work Center সেটআপ রিভিউ করতে আমি খুশি হব। <a href="/bn/#contact" style="color:var(--accent)">যোগাযোগ করুন →</a></p>
+      </div>
+
+      <h2 id="faq">সচরাচর জিজ্ঞাসা</h2>
+
+      <h3>Odoo Community-তে কি Manufacturing মডিউল আছে?</h3>
+      <p>হ্যাঁ — Odoo Community-তে BoM, MO, আর সিম্পল স্ক্র্যাপসহ একটি বেসিক Manufacturing মডিউল (MRP v1) আছে। Odoo Enterprise যোগ করে MRP v2: Work Order ট্র্যাকিং, মাল্টি-লেভেল BoM এক্সপ্লোশন, OEE ড্যাশবোর্ড, আনবিল্ড অর্ডার, এবং শপ-ফ্লোর ট্যাবলেট ইন্টারফেস। একাধিক প্রোডাকশন স্টেপ থাকা বেশিরভাগ বাংলাদেশি কারখানা Enterprise-এর রাউটিং ফিচার থেকে উপকৃত হয়।</p>
+
+      <h3>গার্মেন্ট ম্যানুফ্যাকচারিং-এর জন্য একটি Bill of Materials কীভাবে সেটআপ করব?</h3>
+      <p>যান Manufacturing → Products → Bills of Materials → New-তে। ফিনিশড প্রোডাক্ট সেট করুন (যেমন, "Men's Polo Shirt"), BoM টাইপ হিসেবে "Manufacture" বেছে নিন, আর প্রতিটি মেটেরিয়ালের জন্য কম্পোনেন্ট লাইন যোগ করুন: ফেব্রিক (মিটার), থ্রেড (মিটার), বোতাম (পিস), লেবেল (পিস), পলি ব্যাগ (পিস)। ভিন্ন ফেব্রিক কনজাম্পশনসহ সাইজ ভ্যারিয়েন্টের জন্য, ভ্যারিয়েন্ট অ্যাট্রিবিউট অনুযায়ী কম্পোনেন্ট কোয়ান্টিটি সেট করে একটি একক BoM টেমপ্লেট ব্যবহার করুন।</p>
+
+      <h3>Odoo-তে Work Center আর Operation-এর মধ্যে পার্থক্য কী?</h3>
+      <p>একটি Work Center একটি ফিজিক্যাল রিসোর্স — একটি মেশিন, একটি প্রোডাকশন লাইন, বা একটি টিম। একটি Operation সেই Work Center-এ সম্পাদিত একটি টাস্ক: কাটিং, স্টিচিং, ফিনিশিং। একটি Routing Operations-কে ক্রমানুসারে Work Centers-এর সাথে লিংক করে। Work Centers-এর ক্যাপাসিটি থাকে (ঘণ্টা/দিন আর প্যারালাল অপারেটর); Operations-এর প্রতি ইউনিট প্রোডিউসড হওয়ার স্ট্যান্ডার্ড ডিউরেশন থাকে।</p>
+
+      <h3>Odoo প্রোডাকশন ভ্যারিয়েন্স কীভাবে হ্যান্ডল করে?</h3>
+      <p>পরিকল্পিত পরিমাণ থেকে ভিন্ন একটি প্রোডিউসড কোয়ান্টিটি দিয়ে যখন আপনি একটি MO বন্ধ করেন, Odoo দুটি অপশন দেয়: একটি ব্যাকঅর্ডার তৈরি করা (বাকি পরিমাণ পরে প্রোডিউস করার জন্য) অথবা সাথে সাথে ঘাটতিটা বন্ধ করে দেওয়া। কম্পোনেন্ট কনজাম্পশন প্রকৃত প্রোডিউসড পরিমাণ অনুযায়ী সমানুপাতিকভাবে সমন্বয় হয়। কস্ট ভ্যারিয়েন্স (প্রকৃত কনজাম্পশন বনাম BoM স্ট্যান্ডার্ড) Production Variance রিপোর্টে দেখা যায় — যা বাংলাদেশের ম্যানুফ্যাকচারিং-এ প্রফিটেবিলিটি ট্র্যাকিং-এর জন্য গুরুত্বপূর্ণ।</p>
+    </div>
+  </article>
+
+  <footer>
+    <div class="shell">
+      <div class="post-foot">
+        <span class="eyebrow">আরও পড়ুন</span>
+        <div class="next">
+          <a class="next-card" href="/bn/lab/0012-odoo-erp-cost-bangladesh">
+            <span class="dir">পুরনো · 0012</span>
+            <h4>বাংলাদেশে Odoo ERP বাস্তবায়নের খরচ</h4>
+            <p>বাস্তব খরচ বিশ্লেষণ — লাইসেন্সিং, কনসালটিং, ট্রেনিং, এবং মোট মালিকানা খরচ।</p>
+            <span class="arrow">→</span>
+          </a>
+          <a class="next-card" href="/bn/lab/0014-odoo-accounting-setup-bangladesh">
+            <span class="dir">নতুন · 0014</span>
+            <h4>বাংলাদেশের জন্য Odoo Accounting সেটআপ</h4>
+            <p>Chart of Accounts, ফিসক্যাল পজিশন, এবং বাংলাদেশি ব্যবসার জন্য NBR কমপ্লায়েন্স হুক।</p>
+            <span class="arrow">→</span>
+          </a>
+        </div>
+      </div>
+      <div class="foot">
+        <span>© ২০২৬ Mehedi Hasan · Lab / 0013</span>
+        <span><a href="/bn/#lab">↑ ল্যাব ইনডেক্সে ফিরুন</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/lab/_utils.js" defer></script>
+<script src="/lab/_toc.js" defer></script>
+<script src="/whatsapp.js" defer></script>
+<script src="/scroll-top.js" defer></script>
+</body>
+
+</html>

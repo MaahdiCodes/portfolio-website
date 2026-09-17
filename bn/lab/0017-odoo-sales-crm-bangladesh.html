@@ -1,0 +1,531 @@
+<!doctype html>
+<html lang="bn">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description"
+    content="বাংলাদেশি এক্সপোর্টারদের জন্য Odoo Sales ও CRM — B2B পাইপলাইন, মাল্টি-কারেন্সি কোটেশন, LC-এর জন্য প্রোফর্মা ইনভয়েস, এবং এক্সপোর্ট ফিসক্যাল পজিশন। সঠিকভাবে সেটআপ করুন →" />
+  <meta name="robots" content="noindex, follow" />
+  <meta name="author" content="Mehedi Hasan" />
+  <title>Odoo CRM বাংলাদেশ | B2B এক্সপোর্ট পাইপলাইন | মেহেদী হাসান</title>
+  <link rel="canonical" href="https://mhasan.me/bn/lab/0017-odoo-sales-crm-bangladesh" />
+  <link rel="alternate" hreflang="en" href="https://mhasan.me/lab/0017-odoo-sales-crm-bangladesh" />
+  <link rel="alternate" hreflang="bn-BD" href="https://mhasan.me/bn/lab/0017-odoo-sales-crm-bangladesh" />
+  <link rel="alternate" hreflang="x-default" href="https://mhasan.me/lab/0017-odoo-sales-crm-bangladesh" />
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png" />
+  <!-- Open Graph -->
+  <meta property="og:title" content="Odoo CRM বাংলাদেশ | B2B এক্সপোর্ট পাইপলাইন | মেহেদী হাসান" />
+  <meta property="og:description"
+    content="বাংলাদেশি এক্সপোর্টারদের জন্য Odoo CRM ও Sales কীভাবে কনফিগার করবেন — পাইপলাইন স্টেজ, মাল্টি-কারেন্সি কোটেশন, LC-এর জন্য প্রোফর্মা ইনভয়েস, এবং কাস্টমার ফিসক্যাল পজিশন সেটআপ।" />
+  <meta property="og:url" content="https://mhasan.me/bn/lab/0017-odoo-sales-crm-bangladesh" />
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="https://mhasan.me/assets/og-default.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale" content="bn_BD" />
+  <meta property="og:site_name" content="মেহেদী হাসান | Odoo ERP কনসালট্যান্ট" />
+  <meta property="article:author" content="https://www.linkedin.com/in/mehedi-hasan-consultant/" />
+  <meta property="article:published_time" content="2026-05-04T13:00:00+06:00" />
+  <meta property="article:modified_time" content="2026-05-22T13:00:00+06:00" />
+  <meta property="article:section" content="Odoo ERP Bangladesh" />
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Odoo CRM বাংলাদেশ | B2B এক্সপোর্ট পাইপলাইন" />
+  <meta name="twitter:description"
+    content="বাংলাদেশি এক্সপোর্টারদের জন্য Odoo CRM ও Sales কনফিগারেশন — পাইপলাইন, মাল্টি-কারেন্সি, প্রোফর্মা ইনভয়েস, এবং ফিসক্যাল পজিশন।" />
+  <meta name="twitter:image" content="https://mhasan.me/assets/og-default.jpg" />
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "বাংলাদেশি এক্সপোর্টারদের জন্য Odoo Sales ও CRM: B2B পাইপলাইন সেটআপ (2026)",
+    "description": "বাংলাদেশি এক্সপোর্টারদের জন্য Odoo CRM ও Sales কনফিগার করার একটি প্র্যাকটিশনার গাইড — B2B পাইপলাইন স্টেজ, মাল্টি-কারেন্সি কোটেশন, Letter of Credit-এর জন্য প্রোফর্মা ইনভয়েস, ফিসক্যাল পজিশনসহ কাস্টমার মাস্টার সেটআপ, এবং সেলস রিপোর্টিং।",
+    "datePublished": "2026-05-04T13:00:00+06:00",
+    "dateModified": "2026-05-22T00:00:00+06:00",
+    "inLanguage": "bn",
+    "author": {
+      "@type": "Person",
+      "name": "Mehedi Hasan",
+      "url": "https://mhasan.me",
+      "jobTitle": "Odoo ERP Consultant & Business Analyst",
+      "sameAs": "https://www.linkedin.com/in/mehedi-hasan-consultant/"
+    },
+    "publisher": { "@type": "Person", "name": "Mehedi Hasan", "url": "https://mhasan.me" },
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://mhasan.me/bn/lab/0017-odoo-sales-crm-bangladesh" }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "হোম", "item": "https://mhasan.me/bn" },
+      { "@type": "ListItem", "position": 2, "name": "ল্যাব", "item": "https://mhasan.me/bn/#lab" },
+      { "@type": "ListItem", "position": 3, "name": "Odoo Sales CRM বাংলাদেশ", "item": "https://mhasan.me/bn/lab/0017-odoo-sales-crm-bangladesh" }
+    ]
+  }
+]
+</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&family=Noto+Sans+Bengali:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap">
+  <link rel="stylesheet" href="/lab/_styles.css">
+  <style>
+    body{ font-family: 'Noto Sans Bengali', var(--sans); }
+    .pull {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: clamp(24px, 3vw, 36px);
+      line-height: 1.25;
+      color: var(--text);
+      margin: 48px 0;
+      padding: 0;
+      border: none;
+      max-width: 22ch;
+      letter-spacing: -0.01em;
+    }
+    .pull::before {
+      content: "";
+      display: block;
+      width: 36px;
+      height: 1px;
+      background: var(--accent);
+      margin-bottom: 18px;
+    }
+
+    /* pipeline stages */
+    .pipeline {
+      margin: 28px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+      background: var(--surface);
+    }
+    .stage {
+      display: grid;
+      grid-template-columns: 200px 1fr 120px;
+      border-bottom: 1px solid var(--border);
+      align-items: start;
+    }
+    .stage:last-child { border-bottom: none; }
+    .stage .st-name {
+      padding: 16px 18px;
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      border-right: 1px solid var(--border);
+      background: oklch(0.80 0.17 155 / 0.04);
+    }
+    .stage .st-desc {
+      padding: 16px 20px;
+      font-size: 13.5px;
+      color: var(--text-2);
+      line-height: 1.55;
+    }
+    .stage .st-desc strong { color: var(--text); }
+    .stage .st-prob {
+      padding: 16px 16px;
+      font-family: var(--mono);
+      font-size: 13px;
+      color: var(--text-3);
+      text-align: right;
+      border-left: 1px solid var(--border);
+    }
+    @media(max-width:700px) {
+      .stage { grid-template-columns: 1fr; }
+      .stage .st-name { border-right: none; border-bottom: 1px solid var(--border); }
+      .stage .st-prob { border-left: none; border-top: 1px solid var(--border); text-align: left; }
+    }
+
+    /* module compare */
+    .mod-split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin: 24px 0;
+    }
+    .mod-card {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 20px;
+      background: var(--surface);
+    }
+    .mod-card.crm { border-color: oklch(0.80 0.17 155 / 0.4); }
+    .mod-card .mc-label {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-3);
+      margin-bottom: 10px;
+    }
+    .mod-card.crm .mc-label { color: var(--accent); }
+    .mod-card h4 { margin: 0 0 10px; font-size: 15px; font-weight: 500; color: var(--text); }
+    .mod-card ul { margin: 0; padding: 0 0 0 16px; }
+    .mod-card ul li { font-size: 13px; color: var(--text-2); margin-bottom: 6px; line-height: 1.5; }
+    @media(max-width:640px) { .mod-split { grid-template-columns: 1fr; } }
+
+    /* customer setup fields */
+    .cust-list {
+      list-style: none;
+      padding: 0;
+      margin: 20px 0;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .cust-list li {
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      gap: 16px;
+      padding: 14px 18px;
+      border-bottom: 1px solid var(--border);
+      font-size: 13.5px;
+      align-items: start;
+    }
+    .cust-list li:last-child { border-bottom: none; }
+    .cust-list li .cl-field {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-3);
+      padding-top: 2px;
+    }
+    .cust-list li .cl-desc { color: var(--text-2); line-height: 1.55; }
+    .cust-list li .cl-desc strong { color: var(--text); }
+    @media(max-width:640px) {
+      .cust-list li { grid-template-columns: 1fr; gap: 4px; }
+    }
+
+    .field-note{margin:28px 0;border:1px solid var(--border);border-radius:12px;overflow:hidden;background:var(--surface)}
+    .fn-hd{display:flex;align-items:center;justify-content:space-between;padding:12px 18px;border-bottom:1px solid var(--border);font-family:var(--mono);font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-3)}
+    .fn-hd .when{color:var(--accent)}
+    .fn-body{padding:18px 22px;font-size:15px;line-height:1.65;color:var(--text-2)}
+    .fn-body strong{color:var(--text);font-weight:500}
+  </style>
+</head>
+
+<body>
+  <div class="grid-bg"></div>
+
+  <header class="nav">
+    <div class="shell">
+      <div class="nav-inner">
+        <a class="brand" href="/bn/">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span class="brand-name"><b>Mehedi Hasan</b><em>ERP · বিজনেস অ্যানালিস্ট</em></span>
+        </a>
+        <a class="back-link" href="/bn/#lab">← ল্যাব-এ ফিরুন</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="post-head">
+    <div class="shell">
+      <span class="eyebrow">টেকনিক্যাল ল্যাব · 0017</span>
+      <h1>বাংলাদেশি এক্সপোর্টারদের জন্য Odoo Sales ও CRM — <span class="serif">B2B পাইপলাইন সেটআপ।</span></h1>
+      <p class="lede">দীর্ঘ এক্সপোর্ট সেলস সাইকেলের জন্য পাইপলাইন স্টেজ, মাল্টি-কারেন্সি কোটেশন, LC ওপেনিং-এর জন্য প্রোফর্মা ইনভয়েস, ফিসক্যাল পজিশনসহ কাস্টমার মাস্টার, আর গুরুত্বপূর্ণ সেলস রিপোর্ট। সাইকেল এক্সপোর্ট, RMG, এবং টেক্সটাইল ডেপ্লয়মেন্ট থেকে তৈরি।</p>
+      <div class="post-meta">
+        <span class="chip accent">মডিউল গাইড</span>
+        <span class="chip">CRM · Sales</span>
+        <span class="chip">বাংলাদেশি এক্সপোর্টার</span>
+        <span class="chip">মাল্টি-কারেন্সি</span>
+      </div>
+      <div class="byline">
+        <span>লেখক<b><a href="https://www.linkedin.com/in/mehedi-hasan-consultant/" style="color:var(--accent)" rel="author">Mehedi Hasan</a></b></span>
+        <span>প্রকাশিত<b>মে ২০২৬</b></span>
+        <span>পড়ার সময়<b>১১ মিনিট</b></span>
+        <span>ধরন<b>সেটআপ গাইড</b></span>
+        <span>পরিসর<b>B2B এক্সপোর্ট অপারেশন</b></span>
+      </div>
+    </div>
+  </section>
+
+  <article class="post">
+    <aside class="toc">
+      <div class="toc-k">এই গাইডে</div>
+      <ol>
+        <li><a href="#crm-vs-sales">CRM বনাম Sales — কে কী করে</a></li>
+        <li><a href="#pipeline">B2B এক্সপোর্টের জন্য পাইপলাইন স্টেজ</a></li>
+        <li><a href="#customer">কাস্টমার মাস্টার সেটআপ</a></li>
+        <li><a href="#quotation">কোটেশন ও Sales Orders</a></li>
+        <li><a href="#proforma">LC-এর জন্য প্রোফর্মা ইনভয়েস</a></li>
+        <li><a href="#multicurrency">মাল্টি-কারেন্সি কনফিগারেশন</a></li>
+        <li><a href="#reporting">সেলস রিপোর্টিং ও KPI</a></li>
+        <li><a href="#faq">সচরাচর জিজ্ঞাসা</a></li>
+      </ol>
+    </aside>
+
+    <div class="body">
+      <p>আমি যেসব বাংলাদেশি এক্সপোর্টারের সাথে কাজ করি তাদের বেশিরভাগেরই একটি সাধারণ সমস্যা: সেলস প্রসেস বাস করে WhatsApp, ইমেইল, আর MD-র নোটবুকে। দাম, স্যাম্পল, বায়ার ফিডব্যাক, অর্ডার কোয়ান্টিটি, ডেলিভারি প্রতিশ্রুতি — সবকিছু ব্যক্তিগত চ্যানেলে ছড়িয়ে থাকে। আমি যখন জিজ্ঞেস করি "পাইপলাইনে কী আছে?", উত্তরটা সাধারণত হয় ডেটার বদলে একটা অনুভূতি।</p>
+
+      <p>Odoo-র CRM আর Sales মডিউল এটা পাল্টে দেয় — কিন্তু এক্সপোর্ট B2B প্রেক্ষাপটের জন্য এগুলো কনফিগার করা দরকার: দীর্ঘ সেলস সাইকেল, মাল্টি-কারেন্সি প্রাইসিং, LC ওপেনিং-এর জন্য প্রোফর্মা ইনভয়েস, আর ফিসক্যাল পজিশন যা বিদেশি বায়ারদের জন্য স্বয়ংক্রিয়ভাবে শূন্য VAT প্রয়োগ করে। এই গাইড সম্পূর্ণ সেটআপ কভার করে।</p>
+
+      <p class="pull">একটি পাইপলাইন তখনই কাজে লাগে যখন এটি বাস্তবতা প্রতিফলিত করে। CRM-এ খারাপ ডেটা CRM না থাকার চেয়েও খারাপ — এটি একটি মিথ্যা আত্মবিশ্বাস তৈরি করে।</p>
+
+      <h2 id="crm-vs-sales">CRM বনাম Sales — কোন মডিউল কী করে</h2>
+
+      <div class="mod-split">
+        <div class="mod-card crm">
+          <div class="mc-label">প্রতিশ্রুতির আগে</div>
+          <h4>CRM (Customer Relationship Management)</h4>
+          <ul>
+            <li>বায়ার অনুসন্ধান <strong>Leads → Opportunities</strong> হিসেবে ম্যানেজ করুন</li>
+            <li>প্রথম যোগাযোগ থেকে অর্ডার প্রতিশ্রুতি পর্যন্ত পাইপলাইন স্টেজ ট্র্যাক করুন</li>
+            <li>অ্যাক্টিভিটি লগ করুন: কল, ইমেইল, ফ্যাক্টরি ভিজিট, স্যাম্পল শিপমেন্ট</li>
+            <li>সেলসপারসন অ্যাসাইন করুন আর রেসপন্স টাইম ট্র্যাক করুন</li>
+            <li>বায়ার, প্রোডাক্ট, আর সেলসপারসন অনুযায়ী উইন/লস বিশ্লেষণ</li>
+            <li>পাইপলাইন প্রোবাবিলিটি থেকে রেভিনিউ ফোরকাস্ট</li>
+          </ul>
+        </div>
+        <div class="mod-card">
+          <div class="mc-label">প্রতিশ্রুতির পরে</div>
+          <h4>Sales (Order Management)</h4>
+          <ul>
+            <li>দাম সম্মত হলে কোটেশন আর <strong>Sales Orders (SO)</strong> তৈরি করুন</li>
+            <li>LC ওপেনিং-এর জন্য প্রোফর্মা ইনভয়েস ইস্যু করুন</li>
+            <li>কনফার্মড SO থেকে ডেলিভারি / শিপমেন্ট ট্রিগার করুন</li>
+            <li>কাস্টমার ইনভয়েস (কমার্শিয়াল ইনভয়েস) তৈরি করুন</li>
+            <li>ইনভয়েসের বিপরীতে পেমেন্ট ট্র্যাক করুন</li>
+            <li>সেলস রিপোর্ট: প্রোডাক্ট, কাস্টমার, পিরিয়ড অনুযায়ী রেভিনিউ</li>
+          </ul>
+        </div>
+      </div>
+
+      <p>বাংলাদেশি এক্সপোর্টারদের জন্য, CRM-থেকে-Sales হ্যান্ডওভার সাধারণত ঘটে যখন বায়ার একটি Purchase Order ইস্যু করেন অথবা একটি Letter of Credit খোলা হয়। তার আগ পর্যন্ত, অপরচুনিটি CRM-এ থাকে। LC হাতে এলে, এটি একটি কনফার্মড Sales Order-এ চলে যায়।</p>
+
+      <h2 id="pipeline">B2B এক্সপোর্টের জন্য পাইপলাইন স্টেজ</h2>
+
+      <p>ডিফল্ট Odoo CRM পাইপলাইন স্টেজ (New, Qualified, Proposition, Won) এক্সপোর্ট ম্যানুফ্যাকচারিং-এর জন্য খুব জেনেরিক। বাংলাদেশি গার্মেন্ট, টেক্সটাইল, এবং সাইকেল এক্সপোর্ট ব্যবসার জন্য আমি এই স্টেজগুলো কনফিগার করি:</p>
+
+      <div class="pipeline">
+        <div class="stage">
+          <div class="st-name">Enquiry Received</div>
+          <div class="st-desc"><strong>বায়ার আমাদের সাথে যোগাযোগ করেছে বা আমরা তাদের কাছে গিয়েছি।</strong> CRM-এ একটি Opportunity হিসেবে অনুসন্ধানটি লগ করুন। রেকর্ড করুন: বায়ার কোম্পানি, দেশ, প্রোডাক্ট ক্যাটাগরি, আনুমানিক বার্ষিক ভলিউম, আর কে রেফার করেছে। একজন সেলসপারসন অ্যাসাইন করুন আর প্রথম ফলো-আপ অ্যাক্টিভিটি সেট করুন।</div>
+          <div class="st-prob">১০%</div>
+        </div>
+        <div class="stage">
+          <div class="st-name">Sample Sent</div>
+          <div class="st-desc"><strong>বায়ারের কাছে স্যাম্পল পাঠানো হয়েছে।</strong> এটি বিনিয়োগ স্টেজ — স্যাম্পলে টাকা আর সময় দুটোই খরচ হয়। স্যাম্পল নম্বর, প্রোডাক্ট ডিটেইলস, আর প্রত্যাশিত ফিডব্যাক তারিখ রেকর্ড করুন। বাংলাদেশি এক্সপোর্ট অনুসন্ধানের বেশিরভাগ এখানেই আটকে যায়। ফলো-আপ অ্যাক্টিভিটি অত্যন্ত গুরুত্বপূর্ণ।</div>
+          <div class="st-prob">২৫%</div>
+        </div>
+        <div class="stage">
+          <div class="st-name">Sample Approved</div>
+          <div class="st-desc"><strong>বায়ার স্যাম্পল অ্যাপ্রুভ করেছেন।</strong> প্রাইস নেগোশিয়েশন শুরু হয়। Opportunity থেকে একটি ড্রাফট Quotation তৈরি করুন — CRM অপরচুনিটিকে Sales Order-এর সাথে লিংক করুন। প্রতিটি প্রাইস রিভিশন রাউন্ড অ্যাক্টিভিটি হিসেবে লগ করুন। এখানেই কস্টিং অ্যাকুরেসি সবচেয়ে বেশি গুরুত্বপূর্ণ।</div>
+          <div class="st-prob">৪০%</div>
+        </div>
+        <div class="stage">
+          <div class="st-name">Price Agreed</div>
+          <div class="st-desc"><strong>দাম আর ডেলিভারি টার্মস কনফার্মড।</strong> বায়ারের PI (Purchase Intent) বা ইমেইল কনফার্মেশন পাওয়া গেছে। Odoo-তে Sales Order কনফার্ম করুন। LC পেমেন্ট হলে: LC ওপেনিং-এর জন্য Proforma Invoice ইস্যু করুন। TT পেমেন্ট হলে: অর্ডার কনফার্ম করুন আর প্রোডাকশন শিডিউল করুন।</div>
+          <div class="st-prob">৭০%</div>
+        </div>
+        <div class="stage">
+          <div class="st-name">LC / PO Received</div>
+          <div class="st-desc"><strong>LC বা Purchase Order আনুষ্ঠানিকভাবে হাতে এসেছে।</strong> Sales Order-এর বিপরীতে LC ডিটেইলস লগ করা হয় (LC নম্বর, মেয়াদ, পরিমাণ, ব্যাংক)। প্রোডাকশন শিডিউলিং শুরু হয়। Make to Order রুট ব্যবহার করলে এই স্টেজ Manufacturing Order ট্রিগার করে।</div>
+          <div class="st-prob">৮৫%</div>
+        </div>
+        <div class="stage">
+          <div class="st-name">Won</div>
+          <div class="st-desc"><strong>পণ্য শিপড আর ডকুমেন্ট জমা দেওয়া হয়েছে।</strong> Sales Order পূরণ আর ইনভয়েসড হয়েছে। CRM অপরচুনিটি Won হিসেবে চিহ্নিত করুন। কমার্শিয়াল ইনভয়েস, প্যাকিং লিস্ট, আর বিল অফ লেডিং Sales Order রেকর্ডের বিপরীতে আপলোড করা হয়।</div>
+          <div class="st-prob">১০০%</div>
+        </div>
+      </div>
+
+      <p>CRM → Configuration → Stages-এ এই স্টেজগুলো কনফিগার করুন। ডানদিকের "probability" কলাম Odoo-র রেভিনিউ ফোরকাস্টিং ব্যবহার করে — নিশ্চিত করুন এটি প্রতি স্টেজে আপনার প্রকৃত উইন রেট প্রতিফলিত করে, শুধু গোল সংখ্যা নয়।</p>
+
+      <h2 id="customer">কাস্টমার মাস্টার সেটআপ</h2>
+
+      <p>প্রতিটি বায়ার (বিদেশি বা দেশীয়) Odoo-তে একটি Contact। এক্সপোর্ট কাস্টমারদের জন্য, এই ফিল্ডগুলো সাবধানে কনফিগার করুন — এগুলো নিয়ন্ত্রণ করে Odoo কীভাবে ইনভয়েস তৈরি করে, ট্যাক্স প্রয়োগ করে, আর কারেন্সি হ্যান্ডেল করে:</p>
+
+      <ul class="cust-list">
+        <li>
+          <span class="cl-field">Company Type</span>
+          <span class="cl-desc">কর্পোরেট বায়ারদের জন্য <strong>Company</strong>। এটি কমার্শিয়াল ইনভয়েস আর শিপিং ডকুমেন্টে কন্ট্যাক্টের নাম কীভাবে প্রিন্ট হয় তা প্রভাবিত করে। এককভাবে ব্যবসা করা বায়ারদের জন্য (B2B এক্সপোর্টে বিরল), Individual ব্যবহার করুন।</span>
+        </li>
+        <li>
+          <span class="cl-field">Country</span>
+          <span class="cl-desc"><strong>এক্সপোর্ট কমপ্লায়েন্সের জন্য গুরুত্বপূর্ণ।</strong> বায়ারের দেশ সেট করুন। এটি এক জিরো-VAT এক্সপোর্ট সেল স্বয়ংক্রিয়ভাবে নির্ধারণ করতে Odoo ফিসক্যাল পজিশনের সাথে ব্যবহার করে। সঠিক দেশ ছাড়া, ইনভয়েসে VAT ভুলভাবে প্রয়োগ হতে পারে।</span>
+        </li>
+        <li>
+          <span class="cl-field">Currency</span>
+          <span class="cl-desc"><strong>USD, EUR, GBP</strong>, অথবা বায়ারের ট্রেডিং কারেন্সি সেট করুন। এই বায়ারের সব কোটেশন আর ইনভয়েস ডিফল্টভাবে এই কারেন্সিতে হবে। Odoo ডকুমেন্ট তারিখের রেট ব্যবহার করে অ্যাকাউন্টিং লেয়ারে BDT-তে কনভার্ট করে।</span>
+        </li>
+        <li>
+          <span class="cl-field">Fiscal Position</span>
+          <span class="cl-desc">সব বিদেশি বায়ারদের <strong>"Export — Zero VAT"</strong> অ্যাসাইন করুন। এটি স্ট্যান্ডার্ড ১৫% VAT-কে ০%-এ ম্যাপ করে, আর রেভিনিউ অ্যাকাউন্ট "Domestic Sales" থেকে "Export Sales"-এ পরিবর্তন করে। এটি ছাড়া, প্রতিটি এক্সপোর্ট ইনভয়েসে ভুলভাবে ১৫% VAT অন্তর্ভুক্ত হবে।</span>
+        </li>
+        <li>
+          <span class="cl-field">Payment Terms</span>
+          <span class="cl-desc">সম্মত পেমেন্ট টার্মস সেট করুন: LC at Sight, LC 90 Days DP, TT 30 days, ইত্যাদি। এটি স্বয়ংক্রিয়ভাবে ইনভয়েস ডিউ ডেট পপুলেট করে আর Aged Receivables রিপোর্ট চালায়। সঠিক পেমেন্ট টার্মস এক্সপোর্ট ক্যাশ ফ্লো ম্যানেজমেন্টের ভিত্তি।</span>
+        </li>
+        <li>
+          <span class="cl-field">Incoterm (default)</span>
+          <span class="cl-desc">বায়ারের স্ট্যান্ডার্ড Incoterm সেট করুন (FOB Chittagong, CIF Destination, ইত্যাদি)। এটি কোটেশন আর ইনভয়েসে প্রিন্ট হয় — ফ্রেইট দায়িত্ব আর LC কমপ্লায়েন্সের জন্য গুরুত্বপূর্ণ। শিপমেন্ট অনুযায়ী টার্মস ভিন্ন হলে প্রতি Sales Order-এ ওভাররাইড করা যায়।</span>
+        </li>
+        <li>
+          <span class="cl-field">Salesperson</span>
+          <span class="cl-desc">দায়িত্বশীল সেলসপারসন অ্যাসাইন করুন। এটি এই বায়ারের সব অপরচুনিটি, অর্ডার, আর ইনভয়েসকে সেলসপারসনের পারফরম্যান্স রিপোর্টের সাথে লিংক করে — এক্সপোর্ট কমিশন ট্র্যাকিং-এর জন্য অপরিহার্য।</span>
+        </li>
+      </ul>
+
+      <h2 id="quotation">কোটেশন ও Sales Orders</h2>
+
+      <p>Sales → Orders → Quotations → New। একটি বাংলাদেশ এক্সপোর্ট কোটেশনের জন্য:</p>
+
+      <ol>
+        <li><strong>কাস্টমার সেলেক্ট করুন</strong> — কাস্টমার রেকর্ড থেকে ফিসক্যাল পজিশন, কারেন্সি, পেমেন্ট টার্মস, আর Incoterm স্বয়ংক্রিয়ভাবে পপুলেট হয়।</li>
+        <li><strong>অর্ডার তারিখ আর মেয়াদ সেট করুন</strong> — এক্সপোর্ট কোটে সাধারণত ১৫–৩০ দিনের বৈধতা থাকে। কোটেশনে মেয়াদ তারিখ সেট করুন।</li>
+        <li><strong>প্রোডাক্ট লাইন যোগ করুন</strong> — প্রোডাক্ট, কোয়ান্টিটি (এক্সপোর্ট ইউনিটে: পিস, ডজন, কার্টন), বায়ারের কারেন্সিতে ইউনিট প্রাইস। Odoo ফরেন কারেন্সি আর BDT দুটোতেই মোট হিসাব করে।</li>
+        <li><strong>Shipping ও delivery ট্যাব</strong> — কমিটমেন্ট ডেট, ডেলিভারি ঠিকানা (পোর্ট), আর Incoterm সেট করুন। LC সেলসের জন্য, কমিটমেন্ট ডেট LC শিপমেন্ট ডেডলাইনের সাথে মিলতে হবে।</li>
+        <li><strong>ইমেইলে পাঠান</strong> — Odoo একটি ফরম্যাটেড PDF কোটেশন তৈরি করে। সরাসরি Odoo থেকে পাঠান যাতে ইমেইলটি রেকর্ডের বিপরীতে লগ হয় — আর "আমি পাঠিয়েছিলাম কিন্তু ইমেইল খুঁজে পাচ্ছি না" পরিস্থিতি থাকবে না।</li>
+        <li><strong>Sales Order কনফার্ম করুন</strong> — বায়ার কনফার্ম করলে। স্বয়ংক্রিয়ভাবে একটি ডেলিভারি অর্ডার (আউটগোয়িং শিপমেন্ট) তৈরি হয়। Make to Order ব্যবহার করলে, একটি Manufacturing Order-ও ট্রিগার হয়।</li>
+      </ol>
+
+      <div class="callout">
+        <span class="tag">অ্যাকাউন্টিং ইন্টিগ্রেশন</span>
+        <p>Odoo Sales আর Accounting একই কাস্টমার ডেটাবেস, ফিসক্যাল পজিশন, আর কারেন্সি সেটিংস শেয়ার করে। আপনার অ্যাকাউন্টিং সেটআপ সঠিক হলে (দেখুন আমার <a href="/bn/lab/0014-odoo-accounting-setup-bangladesh" style="color:var(--accent)">Odoo Accounting সেটআপ গাইড</a>), Sales Order থেকে তৈরি হওয়া ইনভয়েস স্বয়ংক্রিয়ভাবে: এক্সপোর্ট কাস্টমারদের জন্য ০% VAT প্রয়োগ করবে, Export Sales রেভিনিউ অ্যাকাউন্টে পোস্ট করবে, আর সঠিক এক্সচেঞ্জ রেটে BDT সমতুল্য দেখাবে — কোনো ম্যানুয়াল হস্তক্ষেপ ছাড়াই।</p>
+      </div>
+
+      <h2 id="proforma">LC-এর জন্য প্রোফর্মা ইনভয়েস</h2>
+
+      <p>Letter of Credit খোলা এক্সপোর্ট বায়ারদের জন্য, প্রোফর্মা ইনভয়েস সেই ডকুমেন্ট যা বায়ার তাদের ব্যাংকে জমা দেন। এতে দেখাতে হবে: এক্সপোর্টার ডিটেইলস, বায়ার ডিটেইলস, প্রোডাক্ট বর্ণনা, কোয়ান্টিটি, ইউনিট প্রাইস, মোট মূল্য, কারেন্সি, Incoterm, এবং শিপমেন্ট টার্মস। এটি কোনো অ্যাকাউন্টিং এন্ট্রি তৈরি করে না।</p>
+
+      <p>Odoo-তে প্রোফর্মা ইনভয়েস চালু করতে: Settings → Sales → Invoicing → "Proforma Invoice" টিক করুন। চালু করার পর, Sales Order-এ একটি "Send Pro Forma Invoice" বাটন থাকবে — অর্ডার থেকে সরাসরি প্রোফর্মা তৈরি আর ইমেইল করতে সেটা ক্লিক করুন।</p>
+
+      <p>LC কমপ্লায়েন্সের জন্য, প্রোফর্মা ইনভয়েস LC টার্মসের সাথে হুবহু মিলতে হবে — প্রোডাক্ট বর্ণনা, কোয়ান্টিটি, পরিমাণ, আর Incoterm বায়ার তার ব্যাংকে যা ঘোষণা করেছেন তার সাথে অভিন্ন হতে হবে। যেকোনো অসামঞ্জস্য পেমেন্টের জন্য শিপিং ডকুমেন্ট জমা দেওয়ার সময় একটি ডকুমেন্ট ডিসক্রেপান্সি তৈরি করবে। বায়ারকে পাঠানোর আগে আপনার সেলস প্রসেসে একটি প্রোফর্মা রিভিউ ধাপ তৈরি করুন।</p>
+
+      <div class="field-note">
+        <div class="fn-hd"><span>নোট · এক্সপোর্ট ম্যানুফ্যাকচারার, প্রথম Odoo শিপমেন্ট</span><span class="when">LC ডকুমেন্ট প্রেজেন্টেশন</span></div>
+        <div class="fn-body">
+          একজন এক্সপোর্টারকে Odoo-তে নিয়ে আসার সবচেয়ে ঝুঁকিপূর্ণ মুহূর্ত প্রথম কোটেশন নয় — এটি প্রথম LC। একটি ডেপ্লয়মেন্টে, গো-লাইভের আগে পাঠানো প্রোফর্মা ইনভয়েসে পরে Sales Order থেকে Odoo যে কমার্শিয়াল ইনভয়েস তৈরি করেছিল তার চেয়ে সামান্য ভিন্ন একটি প্রোডাক্ট বর্ণনা ব্যবহৃত হয়েছিল। বায়ারের ব্যাংক প্রোফর্মার শব্দচয়নের বিপরীতে LC খুলেছিল; প্রেজেন্টেশনের সময় মিসম্যাচটি একটি ডকুমেন্ট ডিসক্রেপান্সি হয়ে ওঠে, আর বায়ার এটি মওকুফ করার সময় পেমেন্ট থমকে যায়। কেউ কিছু ভুল করেনি — দুটো ডকুমেন্ট শুধু ভিন্ন সময়ে ভিন্ন হাতে লেখা হয়েছিল। <strong>সমাধানটা ছিল একটি নিয়ম: প্রোফর্মা আর কমার্শিয়াল ইনভয়েস দুটোই একই Sales Order থেকে আসে, আর LC খোলার পর সেই অর্ডারের প্রোডাক্ট বর্ণনা লক করা থাকে।</strong>
+        </div>
+      </div>
+
+      <div class="callout">
+        <span class="tag">মাল্টি-কোম্পানি নোট</span>
+        <p>আপনার গ্রুপে যদি বায়ারদের কাছে বিক্রি করা একটি ট্রেডিং এন্টিটি আর প্রোডিউস করা একটি ম্যানুফ্যাকচারিং এন্টিটি থাকে, Sales Order ট্রেডিং কোম্পানিতে তৈরি হতে পারে কিন্তু ফ্যাক্টরি পূরণ করে। এর জন্য একটি ইন্টারকোম্পানি Sales Order-থেকে-Purchase Order ফ্লো দরকার। সম্পূর্ণ ইন্টারকোম্পানি কনফিগারেশনের জন্য দেখুন আমার <a href="/bn/lab/0006-odoo-multi-company-setup-guide" style="color:var(--accent)">Odoo মাল্টি-কোম্পানি সেটআপ গাইড</a>।</p>
+      </div>
+
+      <h2 id="multicurrency">মাল্টি-কারেন্সি কনফিগারেশন</h2>
+
+      <p>বাংলাদেশি এক্সপোর্টারদের জন্য, মাল্টি-কারেন্সি ঐচ্ছিক নয় — এটি বাধ্যতামূলক। এখানে সম্পূর্ণ কনফিগারেশন দেওয়া হলো:</p>
+
+      <ol>
+        <li><strong>মাল্টি-কারেন্সি চালু করুন</strong> — Settings → Accounting → Currencies → "Multi-Currencies" টিক করুন। USD, EUR, GBP (আর আপনি যেসব কারেন্সিতে ট্রেড করেন) অ্যাক্টিভেট করুন।</li>
+        <li><strong>এক্সচেঞ্জ রেট সেট করুন</strong> — Accounting → Configuration → Currencies → USD সেলেক্ট করুন → Rate সেট করুন। অপশন: ম্যানুয়াল আপডেট, একটি কারেন্সি রেট প্রোভাইডার থেকে স্বয়ংক্রিয়। বাংলাদেশের জন্য, বাংলাদেশ ব্যাংকের অফিসিয়াল রেট থেকে ম্যানুয়ালি আপডেট করুন, অথবা BB রেট টেনে আনে এমন একটি থার্ড-পার্টি প্রোভাইডার ব্যবহার করুন। কমপক্ষে সাপ্তাহিক আপডেট করুন।</li>
+        <li><strong>কারেন্সি এক্সচেঞ্জ অ্যাকাউন্ট</strong> — Accounting → Configuration → Settings → Currency Exchange Gain/Loss অ্যাকাউন্ট। পেমেন্ট রেট ইনভয়েস রেট থেকে ভিন্ন হলে এই অ্যাকাউন্টগুলো এক্সচেঞ্জ রেট পার্থক্য গ্রহণ করে। প্রতিটি বাংলাদেশি এক্সপোর্টারের প্রতি মাসেই এক্সচেঞ্জ গেইন/লস এন্ট্রি থাকবে।</li>
+        <li><strong>ফরেন কারেন্সি ইনভয়েস</strong> — একজন USD কাস্টমারকে ইনভয়েস করলে, ইনভয়েসে USD-তে পরিমাণ দেখায়। একটি আলাদা কলামে BDT সমতুল্য দেখানো হয়। অ্যাকাউন্টিং এন্ট্রি ইনভয়েস তারিখের রেটে BDT-তে পোস্ট হয়। পেমেন্ট এলে আর আপনি এটি বুক করলে (পেমেন্ট তারিখের প্রকৃত রেটে), রেট পার্থক্য স্বয়ংক্রিয়ভাবে গেইন/লসে পোস্ট হয়।</li>
+      </ol>
+
+      <h2 id="reporting">সেলস রিপোর্টিং ও KPI</h2>
+
+      <p>Odoo Sales বিল্ট-ইন রিপোর্টিং দেয়। বাংলাদেশি এক্সপোর্ট ব্যবসার জন্য সবচেয়ে কাজের KPI:</p>
+
+      <table>
+        <thead>
+          <tr><th>রিপোর্ট / KPI</th><th>কোথায় পাবেন</th><th>কেন গুরুত্বপূর্ণ</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Pipeline by Stage</td>
+            <td>CRM → Pipeline → Kanban view</td>
+            <td>ডিল ভেলোসিটি ভিজুয়ালাইজ করুন — অপরচুনিটি কত দ্রুত Sample থেকে LC-তে যায়</td>
+          </tr>
+          <tr>
+            <td>Revenue Forecast</td>
+            <td>CRM → Reporting → Forecast</td>
+            <td>স্টেজ প্রোবাবিলিটি দিয়ে ওয়েটেড এই কোয়ার্টারের প্রত্যাশিত রেভিনিউ — প্রোডাকশন প্ল্যানিং ইনপুট</td>
+          </tr>
+          <tr>
+            <td>Sales by Customer</td>
+            <td>Sales → Reporting → Sales Analysis → Customer অনুযায়ী গ্রুপ</td>
+            <td>বায়ার কনসেন্ট্রেশন রিস্ক — ৬০%+ রেভিনিউ একজন বায়ার থেকে হলে, এটি একটি বিজনেস কন্টিনিউইটি রিস্ক</td>
+          </tr>
+          <tr>
+            <td>Sales by Product</td>
+            <td>Sales → Reporting → Sales Analysis → Product অনুযায়ী গ্রুপ</td>
+            <td>কোন প্রোডাক্ট / স্টাইল রেভিনিউ চালায় — পরবর্তী সিজনের ডেভেলপমেন্টে সাহায্য করে</td>
+          </tr>
+          <tr>
+            <td>Sales by Salesperson</td>
+            <td>Sales → Reporting → Sales Analysis → Salesperson অনুযায়ী গ্রুপ</td>
+            <td>কমিশন হিসাব আর পারফরম্যান্স রিভিউ</td>
+          </tr>
+          <tr>
+            <td>Aged Receivables</td>
+            <td>Accounting → Reporting → Partner Ledger → Aged Receivables</td>
+            <td>বকেয়া এক্সপোর্ট পেমেন্ট — LC ট্র্যাকিং আর ব্যাংক সম্পর্ক ম্যানেজমেন্টের জন্য গুরুত্বপূর্ণ</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="callout">
+        <span class="tag">পরবর্তী ধাপ</span>
+        <p>এক্সপোর্ট ব্যবসার জন্য CRM আর Sales সেটআপে এমন কনফিগারেশন সিদ্ধান্ত জড়িত যা অ্যাকাউন্টিং আর ইনভেন্টরি মডিউলে জমতে থাকে। নতুন করে সেটআপ করছেন বা একটি বিদ্যমান ডেপ্লয়মেন্ট পরিষ্কার করছেন? <a href="/bn/#contact" style="color:var(--accent)">একটি স্কোপিং কল বুক করুন আর আমি আপনার ব্যবসার জন্য সঠিক কনফিগারেশন ম্যাপ করে দেব →</a></p>
+      </div>
+
+      <h2 id="faq">সচরাচর জিজ্ঞাসা</h2>
+
+      <h3>Odoo CRM আর Odoo Sales-এর মধ্যে পার্থক্য কী?</h3>
+      <p>CRM প্রি-সেল প্রসেস ম্যানেজ করে: লিড, অপরচুনিটি, পাইপলাইন স্টেজ, স্যাম্পল ট্র্যাকিং, আর ফলো-আপ অ্যাক্টিভিটি। Sales পোস্ট-কমিটমেন্ট ম্যানেজ করে: কোটেশন, Sales Orders, ডেলিভারি, ইনভয়েসিং, আর পেমেন্ট ট্র্যাকিং। বাংলাদেশি এক্সপোর্টারদের জন্য, CRM বায়ারকে হ্যান্ডেল করে যতক্ষণ না LC বা PO কনফার্ম হয়; Sales অর্ডার আর ফুলফিলমেন্ট হ্যান্ডেল করে। দুটোই একই কাস্টমার ডেটাবেস শেয়ার করে আর "Create Quotation from CRM" ফ্লোর মাধ্যমে লিংক করা যায়।</p>
+
+      <h3>Letter of Credit-এর জন্য Odoo-তে প্রোফর্মা ইনভয়েস কীভাবে তৈরি করব?</h3>
+      <p>Settings → Sales → Invoicing → "Proforma Invoice" টিক করে প্রোফর্মা ইনভয়েস চালু করুন। যেকোনো কনফার্মড (বা ড্রাফট) Sales Order থেকে, "Send Pro Forma Invoice" বাটন ব্যবহার করুন। Odoo আপনার কোম্পানি ডিটেইলস, বায়ার ডিটেইলস, প্রোডাক্ট, কোয়ান্টিটি, ইউনিট প্রাইস, মোট মূল্য, কারেন্সি, আর Incoterm-সহ একটি PDF তৈরি করে — LC খোলার জন্য বায়ারের ব্যাংকের যা যা দরকার সবকিছু। প্রোফর্মা দিয়ে কোনো অ্যাকাউন্টিং এন্ট্রি তৈরি হয় না।</p>
+
+      <h3>বাংলাদেশি এক্সপোর্টারদের জন্য Odoo মাল্টি-কারেন্সি সেলস কীভাবে হ্যান্ডল করে?</h3>
+      <p>Settings → Accounting → Currencies-এ মাল্টি-কারেন্সি চালু করুন। প্রতিটি এক্সপোর্ট কাস্টমারকে USD (বা প্রাসঙ্গিক কারেন্সি) অ্যাসাইন করুন। সেই কাস্টমারের জন্য Sales Orders আর ইনভয়েস বায়ারের কারেন্সিতে হবে। Odoo ইনভয়েস তারিখের এক্সচেঞ্জ রেট ব্যবহার করে BDT-তে কনভার্ট করে আর আপনার অ্যাকাউন্টিং-এ BDT সমতুল্য পোস্ট করে। ভিন্ন রেটে পেমেন্ট এলে, Odoo স্বয়ংক্রিয়ভাবে এক্সচেঞ্জ গেইন বা লস হিসাব করে আপনার কনফিগার করা এক্সচেঞ্জ অ্যাকাউন্টে পোস্ট করে।</p>
+
+      <h3>Odoo কি ফ্যাশন সিজন আর বার্ষিক বায়ার ক্যালেন্ডারের জন্য পাইপলাইন ট্র্যাক করতে পারে?</h3>
+      <p>হ্যাঁ — অপরচুনিটিকে সিজন (SS2027, AW2027) আর বায়ার ক্যাটাগরি অনুযায়ী ট্যাগ করতে Odoo CRM-এর Tags ফিচার ব্যবহার করুন। আপনার সিজনাল সেলস সাইকেল প্রতিফলিত করে এমন কাস্টম পাইপলাইন স্টেজ তৈরি করুন। Revenue Forecast রিপোর্ট ট্যাগ অনুযায়ী ফিল্টার করা যায়, যা একটি সিজনাল পাইপলাইন ভিউ দেয়। বায়ার-স্টাইল-সিজন ওয়ার্কফ্লোতে থাকা কারখানার জন্য, Opportunity ফর্মে স্টাইল নম্বর আর সিজন বাধ্যতামূলক ফিল্ড হিসেবে যোগ করলে রিপোর্টিং-এর জন্য ডেটা পরিচ্ছন্ন থাকে।</p>
+    </div>
+  </article>
+
+  <footer>
+    <div class="shell">
+      <div class="post-foot">
+        <span class="eyebrow">আরও পড়ুন</span>
+        <div class="next">
+          <a class="next-card" href="/bn/lab/0016-odoo-hr-payroll-bangladesh">
+            <span class="dir">পুরনো · 0016</span>
+            <h4>Odoo HR ও Payroll বাংলাদেশ</h4>
+            <p>Odoo-তে PF, গ্র্যাচুইটি, ছুটি নীতি, এবং বাংলাদেশ শ্রম আইন কমপ্লায়েন্স।</p>
+            <span class="arrow">→</span>
+          </a>
+          <a class="next-card" href="/bn/lab/0018-mushak-63-odoo-bangladesh">
+            <span class="dir">নতুন · 0018</span>
+            <h4>Odoo বাংলাদেশে Mushak 6.3 VAT সেটআপ</h4>
+            <p>বাংলাদেশের জন্য NBR VAT কমপ্লায়েন্স কনফিগার করুন — ট্যাক্স গ্রুপ, ফিসক্যাল পজিশন ও মাসিক রিটার্ন ডেটা।</p>
+            <span class="arrow">→</span>
+          </a>
+          <a class="next-card" href="/bn/#lab">
+            <span class="dir">সব আর্টিকেল</span>
+            <h4>সম্পূর্ণ ল্যাব ব্রাউজ করুন</h4>
+            <p>বাংলাদেশে Odoo ERP আর বিজনেস অ্যানালিসিস নিয়ে ১৮টি গাইড, প্রবন্ধ, এবং টেমপ্লেট।</p>
+            <span class="arrow">→</span>
+          </a>
+        </div>
+      </div>
+      <div class="foot">
+        <span>© ২০২৬ Mehedi Hasan · Lab / 0017</span>
+        <span><a href="/bn/#lab">↑ ল্যাব ইনডেক্সে ফিরুন</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/lab/_utils.js" defer></script>
+<script src="/lab/_toc.js" defer></script>
+<script src="/whatsapp.js" defer></script>
+<script src="/scroll-top.js" defer></script>
+</body>
+
+</html>

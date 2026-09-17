@@ -1,0 +1,630 @@
+﻿<!doctype html>
+<html lang="bn">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description"
+    content="BGMEA ও BKMEA ওয়েজ বোর্ড Odoo পেরোলে — গ্রেড সেটআপ, ন্যূনতম মজুরি কমপ্লায়েন্স, ওভারটাইম ও বাংলাদেশের RMG পেরোল। সঠিকভাবে কনফিগার করুন →" />
+  <meta name="robots" content="noindex, follow" />
+  <meta name="author" content="Mehedi Hasan" />
+  <title>BGMEA ওয়েজ বোর্ড Odoo | RMG পেরোল বাংলাদেশ | মেহেদী হাসান</title>
+  <link rel="canonical" href="https://mhasan.me/bn/lab/0022-bgmea-wage-board-odoo-payroll" />
+  <link rel="alternate" hreflang="en" href="https://mhasan.me/lab/0022-bgmea-wage-board-odoo-payroll" />
+  <link rel="alternate" hreflang="bn-BD" href="https://mhasan.me/bn/lab/0022-bgmea-wage-board-odoo-payroll" />
+  <link rel="alternate" hreflang="x-default" href="https://mhasan.me/lab/0022-bgmea-wage-board-odoo-payroll" />
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png" />
+  <!-- Open Graph -->
+  <meta property="og:title" content="BGMEA ওয়েজ বোর্ড Odoo | RMG পেরোল বাংলাদেশ | মেহেদী হাসান" />
+  <meta property="og:description"
+    content="Odoo Payroll-এ BGMEA 8th Wage Board (2023) গ্রেড স্ট্রাকচার কীভাবে কনফিগার করবেন — স্যালারি রুল, ন্যূনতম মজুরি কমপ্লায়েন্স, ওভারটাইম, আর বাংলাদেশের RMG পেস্লিপ সেটআপ।" />
+  <meta property="og:url" content="https://mhasan.me/bn/lab/0022-bgmea-wage-board-odoo-payroll" />
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="https://mhasan.me/assets/og-default.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale" content="bn_BD" />
+  <meta property="og:site_name" content="মেহেদী হাসান | Odoo ERP কনসালট্যান্ট" />
+  <meta property="article:author" content="https://www.linkedin.com/in/mehedi-hasan-consultant/" />
+  <meta property="article:published_time" content="2026-05-05T13:00:00+06:00" />
+  <meta property="article:modified_time" content="2026-05-23T13:00:00+06:00" />
+  <meta property="article:section" content="Odoo ERP Bangladesh" />
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="BGMEA ওয়েজ বোর্ড Odoo | RMG পেরোল বাংলাদেশ" />
+  <meta name="twitter:description"
+    content="বাংলাদেশের গার্মেন্টস ফ্যাক্টরির জন্য Odoo Payroll-এ BGMEA 8th Wage Board গ্রেড, ন্যূনতম মজুরি, আর RMG পেরোল কমপ্লায়েন্স রুল কনফিগার করুন।" />
+  <meta name="twitter:image" content="https://mhasan.me/assets/og-default.jpg" />
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Odoo Payroll কমপ্লায়েন্স: বাংলাদেশ RMG-এর জন্য BGMEA/BKMEA ওয়েজ বোর্ড সেটআপ",
+    "description": "বাংলাদেশের গার্মেন্টস ফ্যাক্টরির জন্য Odoo Payroll-এ BGMEA 8th Wage Board (2023) কনফিগার করার একটি প্র্যাকটিশনার গাইড — ওয়েজ বোর্ড গ্রেড স্যালারি স্ট্রাকচার, বেসিক, হাউস রেন্ট, মেডিকেল ও ট্রান্সপোর্ট অ্যালাউন্সের জন্য স্যালারি রুল কোডিং, ওভারটাইম রুল, PF ডিডাকশন, ইনকাম ট্যাক্স, আর BGMEA-কমপ্লায়েন্ট মাসিক পেস্লিপ তৈরি নিয়ে।",
+    "datePublished": "2026-05-05T13:00:00+06:00",
+    "dateModified": "2026-05-23T13:00:00+06:00",
+    "inLanguage": "bn",
+    "author": {
+      "@type": "Person",
+      "name": "Mehedi Hasan",
+      "url": "https://mhasan.me",
+      "jobTitle": "Odoo ERP Consultant & Business Analyst",
+      "sameAs": "https://www.linkedin.com/in/mehedi-hasan-consultant/"
+    },
+    "publisher": { "@type": "Person", "name": "Mehedi Hasan", "url": "https://mhasan.me" },
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://mhasan.me/bn/lab/0022-bgmea-wage-board-odoo-payroll" }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "হোম", "item": "https://mhasan.me/bn" },
+      { "@type": "ListItem", "position": 2, "name": "ল্যাব", "item": "https://mhasan.me/bn/#lab" },
+      { "@type": "ListItem", "position": 3, "name": "BGMEA ওয়েজ বোর্ড Odoo বাংলাদেশ", "item": "https://mhasan.me/bn/lab/0022-bgmea-wage-board-odoo-payroll" }
+    ]
+  }
+]
+</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&family=Noto+Sans+Bengali:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap">
+  <link rel="stylesheet" href="/lab/_styles.css">
+  <style>
+    body{ font-family: 'Noto Sans Bengali', var(--sans); }
+    .pull {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: clamp(24px, 3vw, 36px);
+      line-height: 1.25;
+      color: var(--text);
+      margin: 48px 0;
+      padding: 0;
+      border: none;
+      max-width: 22ch;
+      letter-spacing: -0.01em;
+    }
+    .pull::before {
+      content: "";
+      display: block;
+      width: 36px;
+      height: 1px;
+      background: var(--accent);
+      margin-bottom: 18px;
+    }
+
+    /* wage grade table */
+    .wage-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 24px 0;
+      font-size: 13px;
+    }
+    .wage-table th {
+      text-align: left;
+      padding: 10px 14px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-3);
+    }
+    .wage-table td {
+      padding: 12px 14px;
+      border: 1px solid var(--border);
+      color: var(--text-2);
+      vertical-align: middle;
+      line-height: 1.5;
+    }
+    .wage-table td strong { color: var(--text); }
+    .wage-table tr.grade-7 td { background: oklch(0.80 0.17 155 / 0.04); }
+    .wage-table td.grade-num {
+      font-family: var(--mono);
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--accent);
+      text-align: center;
+    }
+    .wage-table td.wage-amt {
+      font-family: var(--mono);
+      font-size: 13px;
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    /* salary rule list */
+    .rule-list {
+      margin: 24px 0;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .rule-row {
+      display: grid;
+      grid-template-columns: 200px 120px 1fr;
+      border-bottom: 1px solid var(--border);
+      align-items: start;
+      font-size: 13px;
+    }
+    .rule-row:last-child { border-bottom: none; }
+    .rule-row .rr-name {
+      padding: 14px 16px;
+      font-weight: 600;
+      color: var(--text);
+      border-right: 1px solid var(--border);
+      background: var(--surface);
+    }
+    .rule-row .rr-code {
+      padding: 14px 14px;
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--accent);
+      border-right: 1px solid var(--border);
+      background: oklch(0.80 0.17 155 / 0.03);
+    }
+    .rule-row .rr-formula {
+      padding: 14px 16px;
+      color: var(--text-2);
+      line-height: 1.55;
+    }
+    .rule-row .rr-formula code {
+      font-family: var(--mono);
+      font-size: 11.5px;
+      background: oklch(0.80 0.17 155 / 0.1);
+      color: var(--accent);
+      padding: 2px 5px;
+      border-radius: 3px;
+    }
+    .rule-head {
+      display: grid;
+      grid-template-columns: 200px 120px 1fr;
+      padding: 10px 0;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+    }
+    .rule-head span {
+      padding: 0 16px;
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-3);
+    }
+    @media(max-width:680px) {
+      .rule-row, .rule-head { grid-template-columns: 1fr; }
+      .rule-row .rr-name { border-right: none; border-bottom: 1px solid var(--border); }
+      .rule-row .rr-code { border-right: none; border-bottom: 1px solid var(--border); }
+    }
+
+    /* step flow */
+    .step-flow {
+      margin: 28px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+    .step {
+      display: grid;
+      grid-template-columns: 56px 1fr;
+      gap: 0;
+      position: relative;
+    }
+    .step:not(:last-child)::before {
+      content: "";
+      position: absolute;
+      left: 27px;
+      top: 52px;
+      bottom: 0;
+      width: 2px;
+      background: var(--border);
+    }
+    .step-num {
+      width: 56px;
+      padding-top: 4px;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .step-num span {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: 2px solid var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--mono);
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--accent);
+      background: var(--bg);
+      flex-shrink: 0;
+      z-index: 1;
+      position: relative;
+    }
+    .step-body {
+      padding: 0 0 36px 16px;
+    }
+    .step-body h4 {
+      margin: 6px 0 8px;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text);
+    }
+    .step-body p { margin: 0 0 8px; font-size: 13.5px; color: var(--text-2); line-height: 1.6; }
+    .step-body code {
+      font-family: var(--mono);
+      font-size: 12px;
+      background: oklch(0.80 0.17 155 / 0.08);
+      color: var(--accent);
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+
+    /* payslip sample */
+    .payslip {
+      margin: 28px 0;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+      font-size: 13px;
+    }
+    .payslip-head {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 14px 18px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .payslip-head .ph-title {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-3);
+    }
+    .payslip-head .ph-grade {
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--accent);
+      font-weight: 600;
+    }
+    .payslip-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 18px;
+      border-bottom: 1px solid var(--border);
+      color: var(--text-2);
+    }
+    .payslip-row:last-child { border-bottom: none; }
+    .payslip-row.deduction { color: oklch(0.55 0.18 30); }
+    .payslip-row.total {
+      background: var(--surface);
+      font-weight: 600;
+      color: var(--text);
+      border-top: 2px solid var(--border);
+    }
+    .payslip-row .pr-label { }
+    .payslip-row .pr-amount {
+      font-family: var(--mono);
+      font-size: 13px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="grid-bg"></div>
+
+  <header class="nav">
+    <div class="shell">
+      <div class="nav-inner">
+        <a class="brand" href="/bn/">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span class="brand-name"><b>Mehedi Hasan</b><em>ERP · বিজনেস অ্যানালিস্ট</em></span>
+        </a>
+        <a class="back-link" href="/bn/#lab">← ল্যাব-এ ফিরুন</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="post-head">
+    <div class="shell">
+      <span class="eyebrow">টেকনিক্যাল ল্যাব · 0022</span>
+      <h1>Odoo পেরোলে BGMEA ওয়েজ বোর্ড — <span class="serif">বাংলাদেশের RMG কমপ্লায়েন্স কনফিগার করা।</span></h1>
+      <p class="lede">BGMEA 8th Wage Board (2023)-এর জন্য Odoo Payroll কীভাবে কনফিগার করবেন — ওয়েজ বোর্ড গ্রেড স্যালারি স্ট্রাকচার, বেসিক, হাউস রেন্ট, মেডিকেল ও ট্রান্সপোর্টের স্যালারি রুল, বাংলাদেশ লেবার অ্যাক্ট অনুযায়ী ওভারটাইম, PF ডিডাকশন, আর RMG ফ্যাক্টরি শ্রমিকদের জন্য কমপ্লায়েন্ট মাসিক পেস্লিপ তৈরি। ঢাকা ও চট্টগ্রামজুড়ে BGMEA আর BKMEA ফ্যাক্টরি ডেপ্লয়মেন্টের অভিজ্ঞতা থেকে তৈরি।</p>
+      <div class="post-meta">
+        <span class="chip accent">কমপ্লায়েন্স গাইড</span>
+        <span class="chip">BGMEA · ওয়েজ বোর্ড</span>
+        <span class="chip">RMG পেরোল</span>
+        <span class="chip">বাংলাদেশ লেবার অ্যাক্ট</span>
+      </div>
+      <div class="byline">
+        <span>লেখক<b><a href="https://www.linkedin.com/in/mehedi-hasan-consultant/" style="color:var(--accent)" rel="author">Mehedi Hasan</a></b></span>
+        <span>প্রকাশিত<b>মে ২০২৬</b></span>
+        <span>পড়ার সময়<b>১৪ মিনিট</b></span>
+        <span>ধরন<b>সেটআপ গাইড</b></span>
+        <span>পরিধি<b>RMG ফ্যাক্টরি — BGMEA ও BKMEA সদস্য</b></span>
+      </div>
+    </div>
+  </section>
+
+  <article class="post">
+    <aside class="toc">
+      <div class="toc-k">এই গাইডে</div>
+      <ol>
+        <li><a href="#wage-board">8th Wage Board গ্রেড স্ট্রাকচার</a></li>
+        <li><a href="#salary-structure">Odoo স্যালারি স্ট্রাকচার সেটআপ</a></li>
+        <li><a href="#salary-rules">স্যালারি রুল: বেসিক, HRA, মেডিকেল</a></li>
+        <li><a href="#overtime">ওভারটাইম কনফিগারেশন</a></li>
+        <li><a href="#deductions">PF, ইনকাম ট্যাক্স ও অন্যান্য ডিডাকশন</a></li>
+        <li><a href="#payslip-sample">নমুনা পেস্লিপ — এন্ট্রি গ্রেড</a></li>
+        <li><a href="#compliance-checks">ন্যূনতম মজুরি কমপ্লায়েন্স চেক</a></li>
+        <li><a href="#faq">সচরাচর জিজ্ঞাসা</a></li>
+      </ol>
+    </aside>
+
+    <div class="body">
+      <p>বাংলাদেশের RMG খাতে ৪০ লাখেরও বেশি শ্রমিক কর্মরত, যাদের বেশিরভাগই BGMEA (Bangladesh Garment Manufacturers and Exporters Association) বা BKMEA (Bangladesh Knitwear Manufacturers and Exporters Association)-এর সদস্য গার্মেন্টস ফ্যাক্টরিতে কাজ করেন। প্রতিটি ফ্যাক্টরিকে ওয়েজ বোর্ডের ন্যূনতম হারে বা তার বেশি বেতন দিতে হয়। আর প্রতিটি অডিটেই — সেটা বায়ারের কোড অফ কন্ডাক্ট টিম হোক, BGMEA হোক, বা Department of Inspection for Factories and Establishments (DIFE) হোক — পেরোল রেকর্ড পরীক্ষা করা হয়।</p>
+
+      <p>BGMEA ওয়েজ স্ট্রাকচারের জন্য Odoo Payroll সঠিকভাবে কনফিগার করার মানে হলো: সঠিক স্যালারি কম্পোনেন্ট, সঠিক ক্যালকুলেশন রুল, আর এমন ন্যূনতম মজুরি প্রয়োগ যা কোনো শ্রমিককে কখনো বোর্ডের হারের নিচে বেতন পেতে দেয় না। এই গাইডে 8th Wage Board-এর পূর্ণ কনফিগারেশন কভার করা হয়েছে, যা কার্যকর হয়েছে ১ ডিসেম্বর ২০২৩ থেকে।</p>
+
+      <p class="pull">যে গার্মেন্টস ফ্যাক্টরি চাহিদামতো ৬০ সেকেন্ডের মধ্যে যেকোনো শ্রমিকের কমপ্লায়েন্ট পেস্লিপ বের করতে পারে না, তার সমস্যাটা রেকর্ডের নয় — পেরোলের।</p>
+
+      <h2 id="wage-board">BGMEA 8th Wage Board — গ্রেড স্ট্রাকচার (2023)</h2>
+
+      <p>RMG খাতের জন্য 8th Wage Board ঘোষণা করা হয়েছে, যা কার্যকর হয়েছে ১ ডিসেম্বর ২০২৩ থেকে। এতে একটি গ্রেডভিত্তিক ন্যূনতম মজুরি স্ট্রাকচার নির্ধারণ করা হয়েছে: সর্বনিম্ন গ্রেড — অদক্ষ হেল্পার আর ট্রেইনি শ্রমিক — এর গ্রস ন্যূনতম মজুরি <strong>মাসে BDT 12,500</strong>, আর আধা-দক্ষ, দক্ষ, উচ্চ-দক্ষ, এবং সুপারভাইজরি পদের জন্য ন্যূনতম মজুরি ধাপে ধাপে বাড়ে। একটি ফ্যাক্টরি যেকোনো গ্রেডের জন্য ন্যূনতমের চেয়ে বেশি দিতে পারে, কিন্তু কখনোই কম নয়।</p>
+
+      <div class="callout">
+        <span class="tag">গেজেটেড সংখ্যা ব্যবহার করুন — সেকেন্ডারি সোর্স নয়</span>
+        <p>গ্রেডের সঠিক সংখ্যা আর প্রতিটি গ্রেডের ন্যূনতম মজুরি নির্ধারিত হয় সরকারি Minimum Wage Board ঘোষণা আর <strong>Bangladesh Gazette</strong> বিজ্ঞপ্তি অনুযায়ী — আর 2023 সালের ঘোষণায় আগের গ্রেড স্কেলের কিছু অংশ সংশোধন করা হয়েছে। Odoo-তে কন্ট্রাক্ট তৈরি করার আগে প্রতিটি গ্রেডের ন্যূনতম মজুরি সরাসরি নিন হালনাগাদ BGMEA সার্কুলার বা গেজেট থেকে — কোনো ব্লগ বা ফরোয়ার্ড করা স্প্রেডশিট থেকে নয়। সর্বনিম্ন গ্রেডের গ্রস ন্যূনতম BDT 12,500 হলো সবচেয়ে বেশি উদ্ধৃত সংখ্যা; এর ওপরের প্রতিটি গ্রেড আপনার ফ্যাক্টরির নিবন্ধিত গ্রেড স্ট্রাকচারের অফিসিয়াল শিডিউলের সাথে মিলিয়ে নিশ্চিত করুন। কিছু বায়ার কমপ্লায়েন্স প্রোগ্রাম (বিশেষত ইউরোপীয় ও মার্কিন ব্র্যান্ড) তাদের সাপ্লায়ার কোড অফ কন্ডাক্টের অংশ হিসেবে আইনি ন্যূনতমের চেয়ে বেশি মজুরি দাবি করে — এই ন্যূনতমের-বেশি মজুরিগুলো ফ্যাক্টরিভিত্তিক আলোচনার মাধ্যমে ঠিক হয়, আর সেগুলোও Odoo পেরোলে সঠিকভাবে প্রতিফলিত হতে হবে।</p>
+      </div>
+
+      <h2 id="salary-structure">Odoo-তে স্যালারি স্ট্রাকচার সেটআপ করা</h2>
+
+      <div class="step-flow">
+        <div class="step">
+          <div class="step-num"><span>1</span></div>
+          <div class="step-body">
+            <h4>স্যালারি স্ট্রাকচার টাইপ তৈরি করুন</h4>
+            <p>যান <strong>Payroll → Configuration → Salary Structure Types → New</strong>-এ। নাম দিন <code>RMG — Bangladesh Labour Act</code>। Country: Bangladesh। Default schedule: Monthly। এই স্ট্রাকচার টাইপ বাংলাদেশ লেবার অ্যাক্টের অধীনে থাকা সব শ্রমিকের স্যালারি স্ট্রাকচারকে একত্র করে — ওয়েজ বোর্ড শ্রমিক আর বেতনভুক্ত স্টাফ উভয়েই এই টাইপ ব্যবহার করতে পারেন।</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num"><span>2</span></div>
+          <div class="step-body">
+            <h4>ওয়েজ বোর্ড স্যালারি স্ট্রাকচার তৈরি করুন</h4>
+            <p>স্ট্রাকচার টাইপের অধীনে তৈরি করুন: <strong>Payroll → Configuration → Salary Structures → New</strong>। নাম: <code>BGMEA Wage Board — 8th (2023)</code>। Type: RMG — Bangladesh Labour Act। এই স্ট্রাকচারটিই সব ওয়েজ বোর্ড শ্রমিকের কন্ট্রাক্টে অ্যাসাইন করা হবে। বেতনভুক্ত ম্যানেজমেন্ট স্টাফ পাবেন আলাদা একটি স্ট্রাকচার (যেমন, "Management — Bangladesh Monthly")।</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num"><span>3</span></div>
+          <div class="step-body">
+            <h4>প্রতিটি গ্রেডের জন্য ওয়েজ বোর্ড কন্ট্রাক্ট তৈরি করুন</h4>
+            <p>প্রতিটি গ্রেডের জন্য একটি কন্ট্রাক্ট টেমপ্লেট লাগবে (অথবা আপনি আলাদা আলাদা কন্ট্রাক্ট তৈরি করতে পারেন)। প্রতিটি কর্মীর কন্ট্রাক্টে উল্লেখ থাকবে: <code>Salary Structure</code> = BGMEA Wage Board 8th, <code>Wage</code> = তার গ্রেডের গ্রস মাসিক মজুরি (বা তার বেশি — কিন্তু কখনো কম নয়)। কন্ট্রাক্টের এই ওয়েজ ফিল্ডটিই সেই গ্রস মজুরি, যাকে স্যালারি রুলগুলো ক্যালকুলেশনের বেস হিসেবে ব্যবহার করে।</p>
+          </div>
+        </div>
+      </div>
+
+      <h2 id="salary-rules">স্যালারি রুল — বেসিক, HRA, মেডিকেল, ট্রান্সপোর্ট</h2>
+
+      <p>BGMEA ওয়েজ স্ট্রাকচার মোট মজুরিকে কয়েকটি কম্পোনেন্টে ভাগ করে। ওয়েজ বোর্ড একটি আনুমানিক অনুপাত নির্ধারণ করে দেয়; সঠিক বিভাজন ফ্যাক্টরিভেদে ভিন্ন হয় (ওয়েজ বোর্ড ঘোষণার সময় BGMEA-র সাথে নিশ্চিত করা হয়):</p>
+
+      <div class="rule-list">
+        <div class="rule-head">
+          <span>কম্পোনেন্ট</span>
+          <span>Odoo কোড</span>
+          <span>ফর্মুলা / রুল</span>
+        </div>
+        <div class="rule-row">
+          <div class="rr-name">Basic Salary</div>
+          <div class="rr-code">BASIC</div>
+          <div class="rr-formula">সাধারণত গ্রসের 56–60%। ফর্মুলা: <code>contract.wage * 0.57</code>। এই শতাংশটি আপনার ফ্যাক্টরির নিবন্ধিত ওয়েজ স্ট্রাকচারের সাথে মিলতে হবে — ওয়েজ বোর্ড রেজিস্ট্রেশনের সময় BGMEA-র সাথে নিশ্চিত করে নিন। PF, গ্র্যাচুইটি, আর ওভারটাইম ক্যালকুলেশনের ক্ষেত্রে বেসিকই রেফারেন্স।</div>
+        </div>
+        <div class="rule-row">
+          <div class="rr-name">House Rent Allowance</div>
+          <div class="rr-code">HRA</div>
+          <div class="rr-formula">লেবার অ্যাক্ট অনুযায়ী বেসিক স্যালারির 40%। ফর্মুলা: <code>result_rules['BASIC'][0].total * 0.40</code>। এটি HRA হিসাব করতে Basic স্যালারি রুলের ফলাফল রেফার করে — ফলে বেসিক বদলালে HRA-ও স্বয়ংক্রিয়ভাবে সমন্বিত হয়।</div>
+        </div>
+        <div class="rule-row">
+          <div class="rr-name">Medical Allowance</div>
+          <div class="rr-code">MED</div>
+          <div class="rr-formula">8th Wage Board অনুযায়ী মাসে ফিক্সড BDT 750 (বা বোর্ড হালনাগাদ করলে সেই অনুযায়ী)। ফর্মুলা: <code>750.0</code>। একে শতাংশ বানাবেন না — ওয়েজ বোর্ড একটি ফিক্সড অ্যামাউন্ট নির্ধারণ করে দেয়। ওয়েজ বোর্ড পরিবর্তন হলে এটি আপডেট করুন।</div>
+        </div>
+        <div class="rule-row">
+          <div class="rr-name">Transport Allowance</div>
+          <div class="rr-code">TRANS</div>
+          <div class="rr-formula">8th Wage Board বা ফ্যাক্টরি পলিসি অনুযায়ী মাসে ফিক্সড BDT 500। ফর্মুলা: <code>500.0</code>। কিছু ফ্যাক্টরি দূরবর্তী শিফট বা নাইট শিফট শ্রমিকদের জন্য বেশি ট্রান্সপোর্ট দেয় — ভিন্ন হলে আলাদা রুল হিসেবে কনফিগার করুন।</div>
+        </div>
+        <div class="rule-row">
+          <div class="rr-name">Attendance Bonus</div>
+          <div class="rr-code">ATT_BONUS</div>
+          <div class="rr-formula">অনেক RMG ফ্যাক্টরি শূন্য অনুপস্থিতির শ্রমিকদের জন্য মাসিক অ্যাটেন্ডেন্স ইনসেন্টিভ দেয় (BDT 200–500)। ফর্মুলা: <code>inputs.ATT_BONUS.amount</code> — পেস্লিপের একটি ইনপুট লাইন দিয়ে নিয়ন্ত্রিত (কর্মীর পারফেক্ট অ্যাটেন্ডেন্স থাকলে বোনাস অ্যামাউন্ট, না থাকলে 0)।</div>
+        </div>
+        <div class="rule-row">
+          <div class="rr-name">Overtime Pay</div>
+          <div class="rr-code">OT</div>
+          <div class="rr-formula">OT Rate = Basic ÷ 208 × 2 × OT ঘণ্টা। ফর্মুলা: <code>(result_rules['BASIC'][0].total / 208) * 2 * inputs.OT_HOURS.amount</code>। OT_HOURS হলো মাসের মোট ওভারটাইম ঘণ্টার জন্য একটি পেস্লিপ ইনপুট লাইন। এটি অবশ্যই ≥ 0 হতে হবে এবং অ্যাটেন্ডেন্স রেকর্ডের সাথে যাচাই করা আবশ্যক।</div>
+        </div>
+        <div class="rule-row">
+          <div class="rr-name">Gross Salary</div>
+          <div class="rr-code">GROSS</div>
+          <div class="rr-formula">ডিডাকশনের আগে সব আয়ের মোট। Category: Earnings। ফর্মুলা: Basic + HRA + Medical + Transport + Attendance Bonus + OT। পেস্লিপে "Gross" হিসেবে দেখানো এই লাইনটিই PF আর ইনকাম ট্যাক্স ক্যালকুলেশনে ব্যবহৃত হয়।</div>
+        </div>
+      </div>
+
+      <h2 id="overtime">ওভারটাইম — বাংলাদেশ লেবার অ্যাক্টের নিয়ম</h2>
+
+      <p><strong>Bangladesh Labour Act, 2006 (Section 108)</strong>-এর অধীনে, ম্যানুফ্যাকচারিং শ্রমিকদের জন্য ওভারটাইমের নিয়মগুলো এরকম:</p>
+
+      <ul>
+        <li><strong>স্বাভাবিক কর্মঘণ্টা:</strong> দৈনিক ৮ ঘণ্টা, সাপ্তাহিক ৪৮ ঘণ্টা (৬ দিন)</li>
+        <li><strong>সর্বোচ্চ ওভারটাইম:</strong> স্বাভাবিক পরিস্থিতিতে দৈনিক ২ ঘণ্টা, সাপ্তাহিক ১২ ঘণ্টার বেশি নয়</li>
+        <li><strong>OT রেট:</strong> বেসিক ঘণ্টাপ্রতি হারের দ্বিগুণ (গ্রস ঘণ্টাপ্রতি হারের দ্বিগুণ নয়)</li>
+        <li><strong>বেসিক ঘণ্টাপ্রতি হার:</strong> মাসিক বেসিক ÷ ২০৮ ঘণ্টা (২৬ দিন × ৮ ঘণ্টা)</li>
+        <li><strong>OT পেমেন্টের তারিখ:</strong> মাসিক বেতনের সাথেই দিতে হবে — পিছিয়ে দেওয়া যাবে না</li>
+        <li><strong>রেকর্ড রাখা:</strong> ওভারটাইম রেজিস্টার (লেবার অ্যাক্টের অধীনে Form 21) সংরক্ষণ করতে হবে এবং DIFE পরিদর্শনের জন্য প্রস্তুত রাখতে হবে</li>
+      </ul>
+
+      <p>Odoo-তে ওভারটাইমের ঘণ্টা সাধারণত পেস্লিপ ইনপুট হিসেবে দেওয়া হয় (ওভারটাইম রেজিস্টার থেকে HR টিম নিজে হাতে এন্ট্রি করে), অথবা Odoo Attendance যদি বায়োমেট্রিক মেশিনের সাথে ইন্টিগ্রেটেড থাকে, তাহলে ক্লক-ইন/ক্লক-আউট ডেটা থেকে স্বয়ংক্রিয়ভাবে হিসাব হয়। ৫০০+ শ্রমিকের ফ্যাক্টরির জন্য বায়োমেট্রিক-থেকে-Odoo ইন্টিগ্রেশন করা অত্যন্ত সুপারিশযোগ্য — এই স্কেলে হাতে OT এন্ট্রি করলে ভুলের সম্ভাবনা বাড়ে, আর সেটা একটা কমপ্লায়েন্স ঝুঁকিও।</p>
+
+      <h2 id="deductions">ডিডাকশন — PF, ইনকাম ট্যাক্স, এবং অন্যান্য</h2>
+
+      <table class="wage-table">
+        <thead>
+          <tr><th>ডিডাকশন</th><th>হার / নিয়ম</th><th>Odoo স্যালারি রুল কোড</th><th>প্রযোজ্য যাদের জন্য</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Provident Fund (PF) — কর্মী</strong></td>
+            <td>বেসিকের 5% (বা কোম্পানি পলিসি অনুযায়ী — সাধারণত 5–10%)</td>
+            <td><code>PF_EMP</code></td>
+            <td>PF সদস্যপদ থাকা শ্রমিকরা। বাংলাদেশের আইনে সব শ্রমিকের জন্য PF বাধ্যতামূলক নয়, তবে BGMEA ফ্যাক্টরিতে এটা সাধারণ চর্চা এবং অনেক বায়ার CoC প্রোগ্রামে বাধ্যতামূলক।</td>
+          </tr>
+          <tr>
+            <td><strong>Provident Fund (PF) — মালিকপক্ষ</strong></td>
+            <td>বেসিকের ম্যাচিং 5% (মালিকপক্ষের কন্ট্রিবিউশন)</td>
+            <td><code>PF_EMP_CONTRIB</code></td>
+            <td>মালিকপক্ষের PF কন্ট্রিবিউশন — এটি একটি পেরোল কস্ট (পেস্লিপে নোট বা আলাদা এমপ্লয়ার কস্ট লাইন হিসেবে দেখানো হয়, কর্মীর গ্রস থেকে কাটা হয় না)।</td>
+          </tr>
+          <tr>
+            <td><strong>ইনকাম ট্যাক্স (উইথহোল্ডিং)</strong></td>
+            <td>NBR-এর বার্ষিক ট্যাক্স স্ল্যাব অনুযায়ী (পুরুষদের জন্য বছরে প্রথম BDT 3.5 লাখ কর-মুক্ত; নারী ও তৃতীয় লিঙ্গের জন্য BDT 4 লাখ, 2024-25 অনুযায়ী)</td>
+            <td><code>INCOME_TAX</code></td>
+            <td>শুধু কর-মুক্ত সীমার ওপরে আয় করা শ্রমিকদের জন্য। মাসে BDT 12,500 (বছরে BDT 1.5 লাখ) আয় করা এন্ট্রি-গ্রেড শ্রমিকদের কোনো ইনকাম ট্যাক্স প্রযোজ্য নয় — তারা এক্সেম্পশন সীমার নিচে।</td>
+          </tr>
+          <tr>
+            <td><strong>Worker Welfare Fund</strong></td>
+            <td>Bangladesh Labour Welfare Foundation Act অনুযায়ী নিট মুনাফার 0.5% (মালিকপক্ষের দায়, কর্মীর ডিডাকশন নয়)</td>
+            <td>প্রযোজ্য নয় — জার্নাল এন্ট্রি, পেস্লিপ নয়</td>
+            <td>মালিকপক্ষের সংবিধিবদ্ধ কন্ট্রিবিউশন — এটি অ্যাকাউন্টিংয়ে হ্যান্ডেল হয়, আলাদা পেস্লিপে নয়।</td>
+          </tr>
+          <tr>
+            <td><strong>অনুপস্থিতির ডিডাকশন</strong></td>
+            <td>দৈনিক হার × অনুপস্থিত দিন। দৈনিক হার = গ্রস ÷ ২৬ কর্মদিবস</td>
+            <td><code>ABSENT_DED</code></td>
+            <td>অনুমোদিত ছুটি ছাড়া অনুপস্থিত থাকা শ্রমিকরা। ফর্মুলা: <code>-(contract.wage / 26) * inputs.ABSENT_DAYS.amount</code></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2 id="payslip-sample">নমুনা পেস্লিপ — এন্ট্রি-গ্রেড শ্রমিক (ন্যূনতম মজুরি)</h2>
+
+      <p>8th Wage Board-এর ন্যূনতম হারে (গ্রস BDT 12,500, 0 অনুপস্থিত দিন, 20 OT ঘণ্টা, PF সদস্য) একজন এন্ট্রি-গ্রেড (হেল্পার) শ্রমিকের পেস্লিপ Odoo-তে দেখতে এরকম হয়:</p>
+
+      <div class="payslip">
+        <div class="payslip-head">
+          <div class="ph-title">মাসিক পেস্লিপ — এন্ট্রি গ্রেড (হেল্পার)</div>
+          <div class="ph-grade">এন্ট্রি গ্রেড · BDT 12,500 গ্রস</div>
+        </div>
+        <div class="payslip-row">
+          <span class="pr-label">Basic Salary (গ্রসের 57%)</span>
+          <span class="pr-amount">7,125</span>
+        </div>
+        <div class="payslip-row">
+          <span class="pr-label">House Rent Allowance (বেসিকের 40%)</span>
+          <span class="pr-amount">2,850</span>
+        </div>
+        <div class="payslip-row">
+          <span class="pr-label">Medical Allowance</span>
+          <span class="pr-amount">750</span>
+        </div>
+        <div class="payslip-row">
+          <span class="pr-label">Transport Allowance</span>
+          <span class="pr-amount">500</span>
+        </div>
+        <div class="payslip-row">
+          <span class="pr-label">Overtime Pay (20 ঘণ্টা × 7,125/208 × 2)</span>
+          <span class="pr-amount">1,369</span>
+        </div>
+        <div class="payslip-row total">
+          <span class="pr-label">Gross Earnings</span>
+          <span class="pr-amount">12,594</span>
+        </div>
+        <div class="payslip-row deduction">
+          <span class="pr-label">PF — কর্মীর কন্ট্রিবিউশন (বেসিকের 5%)</span>
+          <span class="pr-amount">−356</span>
+        </div>
+        <div class="payslip-row deduction">
+          <span class="pr-label">Income Tax</span>
+          <span class="pr-amount">নেই</span>
+        </div>
+        <div class="payslip-row total">
+          <span class="pr-label">Net Pay</span>
+          <span class="pr-amount">12,238</span>
+        </div>
+      </div>
+
+      <p>উল্লেখ্য: এই উদাহরণে গ্রস BDT 12,500-এর বেশি, কারণ এতে ওভারটাইম যুক্ত। ন্যূনতম মজুরি (12,500) প্রযোজ্য ওভারটাইমের আগের বেস মাসিক মজুরির ওপর। ওভারটাইম সবসময় অতিরিক্ত হিসেবে যোগ হয়। উদাহরণের বেসিক স্যালারি ভাগ (57%) কেবল দৃষ্টান্তমূলক — আপনার ফ্যাক্টরির নিবন্ধিত ভাগ আপনার গ্রেড স্ট্রাকচারের জন্য BGMEA রেকর্ডের সাথে মিলতে হবে।</p>
+
+      <h2 id="compliance-checks">Odoo-তে ন্যূনতম মজুরি কমপ্লায়েন্স চেক</h2>
+
+      <p>Odoo স্বয়ংক্রিয়ভাবে ওয়েজ বোর্ডের ন্যূনতম হারকে একটি হার্ড কনস্ট্রেইন্ট হিসেবে প্রয়োগ করে না। এই চেকগুলো আপনার HR ওয়ার্কফ্লোতে যুক্ত করে নিতে হবে:</p>
+
+      <ul>
+        <li><strong>কন্ট্রাক্ট ন্যূনতম চেক:</strong> কন্ট্রাক্ট তৈরি করার সময় Notes ফিল্ডে একটি নোট যোগ করুন, বা গ্রেডের ন্যূনতম মজুরির চেয়ে কম যেকোনো কন্ট্রাক্টের জন্য HR ম্যানেজারের অনুমোদন বাধ্যতামূলক করতে Odoo-র কন্ট্রাক্ট অ্যাপ্রুভাল ওয়ার্কফ্লো ব্যবহার করুন। কন্ট্রাক্টের ওয়েজ গ্রেড ফিল্ড (কাস্টম বা জব পজিশনের মাধ্যমে) একটি ভ্যালিডেশন রুল ট্রিগার করা উচিত — এটি একজন Odoo ডেভেলপার ১–২ ঘণ্টায় কনফিগার করতে পারেন।</li>
+        <li><strong>মাসিক পেরোল অডিট:</strong> পেস্লিপ কনফার্ম করার আগে পেরোল রিপোর্ট এক্সপোর্ট করুন (Payroll → Reporting → Payslip Analysis) আর যেসব কর্মীর নেট বেতন তাদের গ্রেডের ন্যূনতমের চেয়ে কম, সেগুলো ফিল্টার করুন। যেকোনো রেকর্ড খতিয়ে দেখুন — এটা এমন অ্যাটেন্ডেন্স ডিডাকশনের ইঙ্গিত হতে পারে যা নেট বেতনকে ন্যূনতম মজুরির নিচে নামিয়ে দিয়েছে (যা আইনত অনুমোদিত নয় — অ্যাটেন্ডেন্স ডিডাকশন আইনি ন্যূনতমের নিচে বেতন কমাতে পারে না)।</li>
+        <li><strong>BGMEA স্যালারি স্টেটমেন্ট:</strong> BGMEA ফ্যাক্টরিগুলোকে মাসের মোট মজুরি পেমেন্ট দেখিয়ে BGMEA-তে একটি মাসিক স্যালারি স্টেটমেন্ট জমা দিতে হয়। এটি Odoo-র পেরোল সামারি রিপোর্ট থেকে তৈরি হয়। একত্রিত সংখ্যাগুলো মজুরি পেমেন্টের ব্যাংক ট্রান্সফার রেকর্ডের সাথে মিলতে হবে।</li>
+      </ul>
+
+      <div class="callout">
+        <span class="tag">সম্পর্কিত পড়াশোনা</span>
+        <p>BGMEA পেরোল কমপ্লায়েন্স HR মডিউলের লিভ ম্যানেজমেন্টের সাথে ঘনিষ্ঠভাবে যুক্ত, যা নিয়ন্ত্রণ করে কীভাবে অনুপস্থিত দিন পেরোল ডিডাকশনে প্রবাহিত হয়। পুরো HR আর পেরোল কনফিগারেশনের জন্য — লিভ পলিসি, PF, আর গ্র্যাচুইটিসহ — দেখুন <a href="/bn/lab/0016-odoo-hr-payroll-bangladesh" style="color:var(--accent)">Odoo HR ও Payroll বাংলাদেশ সেটআপ গাইড</a>। ওয়েজ বোর্ড পরিবর্তনের মধ্য দিয়ে যাওয়া RMG ফ্যাক্টরির জন্য — যেখানে কন্ট্রাক্ট আপডেট, বকেয়া পুনঃহিসাব, আর শ্রমিকদের কাছে পরিবর্তন জানানো জড়িত — <a href="/bn/lab/0007-change-management-isnt-a-memo" style="color:var(--accent)">চেঞ্জ ম্যানেজমেন্ট কোনো মেমো নয়</a>-এ বর্ণিত চেঞ্জ ম্যানেজমেন্ট পদ্ধতি সরাসরি প্রযোজ্য। পেরোলসহ একটি Odoo রোলআউটের বাজেট করতে — HR, Payroll, আর Attendance মডিউল প্লাস ইউজার সংখ্যা — ব্যবহার করুন <a href="/bn/tools/odoo-cost-estimator/" style="color:var(--accent)">বাংলাদেশের জন্য Odoo Cost Estimator</a>। <a href="/bn/#contact" style="color:var(--accent)">Odoo-তে BGMEA-কমপ্লায়েন্ট পেরোল সেটআপে সহায়তা দরকার? যোগাযোগ করুন →</a></p>
+      </div>
+
+      <h2 id="faq">সচরাচর জিজ্ঞাসা</h2>
+
+      <h3>বাংলাদেশে BGMEA 8th Wage Board-এর ন্যূনতম মজুরি কত?</h3>
+      <p>8th Wage Board, যা ১ ডিসেম্বর ২০২৩ থেকে কার্যকর, সর্বনিম্ন গ্রেড — অদক্ষ হেল্পার আর ট্রেইনি শ্রমিক — এর জন্য গ্রস ন্যূনতম মাসিক মজুরি নির্ধারণ করে BDT 12,500, আর আধা-দক্ষ, দক্ষ, এবং সুপারভাইজরি গ্রেডের জন্য ধাপে ধাপে বেশি ন্যূনতম মজুরি। গ্রেডের সঠিক সংখ্যা আর প্রতিটি গ্রেডের সংখ্যা নির্ধারিত হয় সরকারি Minimum Wage Board ঘোষণা আর Bangladesh Gazette বিজ্ঞপ্তি দিয়ে — যা আইনগতভাবে বাধ্যতামূলক রেফারেন্স — তাই কন্ট্রাক্ট কনফিগার করার আগে হালনাগাদ BGMEA সার্কুলারের সাথে মিলিয়ে নিশ্চিত করুন। BGMEA বা BKMEA-র সদস্য সব RMG ফ্যাক্টরিকে গেজেটেড ন্যূনতম হারে বা তার বেশি বেতন দিতে হবে। এর চেয়ে কম দিলে তা Bangladesh Labour Act 2006 আর BGMEA সদস্যপদের শর্ত লঙ্ঘন করে, এবং এর ফলে বায়ার অডিটে ব্যর্থতা, রপ্তানি বিধিনিষেধ, আর DIFE-এর আইনি ব্যবস্থার মুখে পড়তে হতে পারে।</p>
+
+      <h3>Odoo Payroll-এ BGMEA ওয়েজ গ্রেড কীভাবে সেটআপ করব?</h3>
+      <p>"RMG — Bangladesh Labour Act" স্ট্রাকচার টাইপের অধীনে "BGMEA Wage Board 8th (2023)" নামে একটি Salary Structure তৈরি করুন। স্যালারি রুল যোগ করুন: Basic Salary (কন্ট্রাক্ট ওয়েজের 57%), House Rent (বেসিকের 40%), Medical (ফিক্সড BDT 750), Transport (ফিক্সড BDT 500), Overtime (বেসিক/208 × 2 × OT ঘণ্টার ইনপুট), আর ডিডাকশন (বেসিকের 5% PF, প্রতিদিনের অনুপস্থিতির ডিডাকশন)। প্রতিটি কর্মী পান তাদের গ্রেডের ন্যূনতম গ্রস মজুরি (বা তার বেশি) সহ একটি কন্ট্রাক্ট আর এই স্যালারি স্ট্রাকচার। এই রুলগুলো ব্যবহার করে Odoo স্বয়ংক্রিয়ভাবে পেস্লিপ হিসাব করে।</p>
+
+      <h3>বাংলাদেশ RMG-তে লেবার অ্যাক্ট অনুযায়ী ওভারটাইম কীভাবে হিসাব হয়?</h3>
+      <p>ওভারটাইম রেট = Basic Salary ÷ 208 ঘণ্টা × 2। স্বাভাবিক ঘণ্টা মাসে 208 (26 দিন × 8 ঘণ্টা)। লেবার অ্যাক্ট অনুযায়ী সর্বোচ্চ ওভারটাইম দৈনিক 2 ঘণ্টা (সাপ্তাহিক 12 ঘণ্টা), যা দেওয়া হয় বেসিক ঘণ্টাপ্রতি হারের দ্বিগুণে — গ্রস ঘণ্টাপ্রতি হারের দ্বিগুণে নয়। মাসের OT ঘণ্টা পেস্লিপ ইনপুট হিসেবে দেওয়া হয় (ওভারটাইম রেজিস্টার থেকে, অথবা Odoo Attendance-এর বায়োমেট্রিক ডেটা থেকে)। OT অবশ্যই মাসিক বেতনের সাথেই দিতে হবে — পরের মাসে পিছিয়ে দেওয়া যাবে না।</p>
+
+      <h3>বাংলাদেশে গার্মেন্টস শ্রমিকদের জন্য PF (Provident Fund) কি বাধ্যতামূলক?</h3>
+      <p>বাংলাদেশের শ্রম আইনে সব বেসরকারি খাতের শ্রমিকের জন্য PF সার্বজনীনভাবে বাধ্যতামূলক নয় — Bangladesh Labour Act-এর বিধান অনুযায়ী এটি বাধ্যতামূলক হয় যখন কোনো ফ্যাক্টরিতে 100+ শ্রমিক থাকে আর সেটি অন্তত 5 বছর ধরে চালু থাকে। তবে অনেক BGMEA-সদস্য ফ্যাক্টরি স্বেচ্ছায় শ্রমিক কল্যাণের একটি ব্যবস্থা হিসেবে PF চালু করে, আর অনেক বায়ার কোড অফ কন্ডাক্ট প্রোগ্রামে এটি একটি ন্যূনতম মানদণ্ড হিসেবে বাধ্যতামূলক। আপনার ফ্যাক্টরিতে PF স্কিম চালু থাকলে, কর্মী (বেসিকের ন্যূনতম 5%) আর মালিকপক্ষ (ম্যাচিং কন্ট্রিবিউশন) — উভয়কেই অংশ নিতে হবে। Odoo-তে দুটোই স্যালারি রুল হিসেবে কনফিগার করুন — কর্মীর PF একটি ডিডাকশন হিসেবে, আর মালিকপক্ষের PF একটি পেরোল কস্ট হিসেবে যা PF লায়াবিলিটি অ্যাকাউন্টে পোস্ট হয়।</p>
+    </div>
+  </article>
+
+  <footer>
+    <div class="shell">
+      <div class="post-foot">
+        <span class="eyebrow">আরও পড়ুন</span>
+        <div class="next">
+          <a class="next-card" href="/bn/lab/0021-epz-sez-compliance-odoo-bangladesh">
+            <span class="dir">পুরনো · 0021</span>
+            <h4>Odoo-তে EPZ ও SEZ কমপ্লায়েন্স</h4>
+            <p>বাংলাদেশের এক্সপোর্ট জোনের জন্য বন্ডেড ওয়্যারহাউস, শুল্কমুক্ত কাঁচামাল ট্র্যাকিং, আর BEPZA রিপোর্টিং।</p>
+            <span class="arrow">→</span>
+          </a>
+          <a class="next-card" href="/bn/lab/0023-odoo-vs-erpnext-bangladesh">
+            <span class="dir">নতুন · 0023</span>
+            <h4>Odoo vs ERPNext বাংলাদেশ</h4>
+            <p>বাংলাদেশের ম্যানুফ্যাকচারিংয়ের জন্য মডিউল, মোট খরচ, স্থানীয় ইমপ্লিমেন্টেশন ইকোসিস্টেম, আর কমপ্লায়েন্স সাপোর্টের সৎ তুলনা।</p>
+            <span class="arrow">→</span>
+          </a>
+        </div>
+      </div>
+      <div class="foot">
+        <span>© 2026 Mehedi Hasan · Lab / 0022</span>
+        <span><a href="/bn/#lab">↑ ল্যাব ইনডেক্সে ফিরুন</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/lab/_utils.js" defer></script>
+<script src="/lab/_toc.js" defer></script>
+<script src="/whatsapp.js" defer></script>
+<script src="/scroll-top.js" defer></script>
+</body>
+
+</html>

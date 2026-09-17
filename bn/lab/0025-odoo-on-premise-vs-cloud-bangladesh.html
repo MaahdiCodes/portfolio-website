@@ -1,0 +1,537 @@
+<!doctype html>
+<html lang="bn">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description"
+    content="বাংলাদেশে On-premise vs cloud Odoo — SME-দের জন্য খরচ, নির্ভরযোগ্যতা, বিদ্যুৎ বিভ্রাট আর ডেটা নিয়ন্ত্রণ কভার করা একটি ইনফ্রাস্ট্রাকচার সিদ্ধান্ত গাইড। সিদ্ধান্ত নিন →" />
+  <meta name="robots" content="noindex, follow" />
+  <meta name="author" content="Mehedi Hasan" />
+  <title>বাংলাদেশে On-Premise vs Cloud Odoo | মেহেদী হাসান</title>
+  <link rel="canonical" href="https://mhasan.me/bn/lab/0025-odoo-on-premise-vs-cloud-bangladesh" />
+  <link rel="alternate" hreflang="en" href="https://mhasan.me/lab/0025-odoo-on-premise-vs-cloud-bangladesh" />
+  <link rel="alternate" hreflang="bn-BD" href="https://mhasan.me/bn/lab/0025-odoo-on-premise-vs-cloud-bangladesh" />
+  <link rel="alternate" hreflang="x-default" href="https://mhasan.me/lab/0025-odoo-on-premise-vs-cloud-bangladesh" />
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png" />
+  <!-- Open Graph -->
+  <meta property="og:title" content="বাংলাদেশে On-Premise vs Cloud Odoo | মেহেদী হাসান" />
+  <meta property="og:description"
+    content="বাংলাদেশি SME-দের জন্য On-premise vs cloud Odoo — ইন্টারনেট নির্ভরযোগ্যতা, বিদ্যুৎ বিভ্রাট, ডেটা নিয়ন্ত্রণ আর মোট খরচ কভার করা একটি বাস্তব ইনফ্রাস্ট্রাকচার বিশ্লেষণ।" />
+  <meta property="og:url" content="https://mhasan.me/bn/lab/0025-odoo-on-premise-vs-cloud-bangladesh" />
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="https://mhasan.me/assets/og-default.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale" content="bn_BD" />
+  <meta property="og:site_name" content="মেহেদী হাসান | Odoo ERP কনসালট্যান্ট" />
+  <meta property="article:author" content="https://www.linkedin.com/in/mehedi-hasan-consultant/" />
+  <meta property="article:published_time" content="2026-05-05T10:00:00+06:00" />
+  <meta property="article:modified_time" content="2026-05-23T10:00:00+06:00" />
+  <meta property="article:section" content="Odoo ERP Bangladesh" />
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="বাংলাদেশে On-Premise vs Cloud Odoo | ইনফ্রাস্ট্রাকচার গাইড" />
+  <meta name="twitter:description"
+    content="আপনার বাংলাদেশি ফ্যাক্টরিতে Odoo লোকাল সার্ভারে চলবে নাকি ক্লাউডে? ইনফ্রাস্ট্রাকচারের বাস্তব চিত্র — বিদ্যুৎ, ইন্টারনেট, খরচ আর ডেটা নিয়ন্ত্রণ।" />
+  <meta name="twitter:image" content="https://mhasan.me/assets/og-default.jpg" />
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "On-Premise vs Cloud Odoo: বাংলাদেশ ইনফ্রাস্ট্রাকচার সিদ্ধান্ত গাইড",
+    "description": "On-premise আর cloud Odoo ডেপ্লয়মেন্টের মধ্যে বেছে নেওয়া বাংলাদেশি SME-দের জন্য একটি ব্যবহারিক গাইড — বাংলাদেশ-নির্দিষ্ট ইনফ্রাস্ট্রাকচার বাস্তবতা (বিদ্যুৎ নির্ভরযোগ্যতা, ইন্টারনেট ব্যান্ডউইথ, ISP রিডানডেন্সি), তিনটি হোস্টিং পরিস্থিতির খরচ তুলনা, ডেটা সার্বভৌমত্বের বিবেচনা, আর একটি স্পষ্ট সিদ্ধান্ত-কাঠামো।",
+    "datePublished": "2026-05-05T10:00:00+06:00",
+    "dateModified": "2026-05-23T10:00:00+06:00",
+    "inLanguage": "bn",
+    "author": {
+      "@type": "Person",
+      "name": "Mehedi Hasan",
+      "url": "https://mhasan.me",
+      "jobTitle": "Odoo ERP Consultant & Business Analyst",
+      "sameAs": "https://www.linkedin.com/in/mehedi-hasan-consultant/"
+    },
+    "publisher": { "@type": "Person", "name": "Mehedi Hasan", "url": "https://mhasan.me" },
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://mhasan.me/bn/lab/0025-odoo-on-premise-vs-cloud-bangladesh" }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "হোম", "item": "https://mhasan.me/bn" },
+      { "@type": "ListItem", "position": 2, "name": "ল্যাব", "item": "https://mhasan.me/bn/#lab" },
+      { "@type": "ListItem", "position": 3, "name": "বাংলাদেশে On-Premise vs Cloud Odoo", "item": "https://mhasan.me/bn/lab/0025-odoo-on-premise-vs-cloud-bangladesh" }
+    ]
+  }
+]
+</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&family=Noto+Sans+Bengali:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap">
+  <link rel="stylesheet" href="/lab/_styles.css">
+  <style>
+    body{ font-family: 'Noto Sans Bengali', var(--sans); }
+    .option-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 14px;
+      margin: 28px 0;
+    }
+    .option-card {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .option-head {
+      padding: 14px 18px;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+    }
+    .option-head .oh-label {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-3);
+    }
+    .option-head .oh-name {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text);
+      margin-top: 3px;
+    }
+    .option-head .oh-price {
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--accent);
+      margin-top: 4px;
+    }
+    .option-body {
+      padding: 14px 18px;
+      font-size: 13px;
+      color: var(--text-2);
+      line-height: 1.65;
+    }
+    .option-body strong { color: var(--text); }
+    @media(max-width:760px) {
+      .option-grid { grid-template-columns: 1fr; }
+    }
+
+    .decision-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 24px 0;
+      font-size: 13px;
+    }
+    .decision-table th {
+      text-align: left;
+      padding: 11px 14px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      font-family: var(--mono);
+      font-size: 10.5px;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      color: var(--text-3);
+    }
+    .decision-table td {
+      padding: 12px 14px;
+      border: 1px solid var(--border);
+      color: var(--text-2);
+      vertical-align: top;
+      line-height: 1.55;
+    }
+    .decision-table td strong { color: var(--text); }
+    .decision-table tr:hover td { background: rgba(255,255,255,0.015); }
+    .badge-onprem {
+      display: inline-block;
+      font-size: 10px;
+      font-family: var(--mono);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 2px 6px;
+      border-radius: 3px;
+      background: oklch(0.80 0.17 155 / 0.12);
+      color: oklch(0.80 0.17 155);
+    }
+    .badge-cloud {
+      display: inline-block;
+      font-size: 10px;
+      font-family: var(--mono);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 2px 6px;
+      border-radius: 3px;
+      background: oklch(0.65 0.14 260 / 0.12);
+      color: oklch(0.65 0.14 260);
+    }
+
+    .pull {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: clamp(22px, 3vw, 34px);
+      line-height: 1.25;
+      color: var(--text);
+      margin: 48px 0;
+      border: none;
+      padding: 0;
+      max-width: 22ch;
+      letter-spacing: -0.01em;
+    }
+    .pull::before {
+      content: "";
+      display: block;
+      width: 36px;
+      height: 1px;
+      background: var(--accent);
+      margin-bottom: 18px;
+    }
+
+    .field-note{margin:28px 0;border:1px solid var(--border);border-radius:12px;overflow:hidden;background:var(--surface)}
+    .fn-hd{display:flex;align-items:center;justify-content:space-between;padding:12px 18px;border-bottom:1px solid var(--border);font-family:var(--mono);font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-3)}
+    .fn-hd .when{color:var(--accent)}
+    .fn-body{padding:18px 22px;font-size:15px;line-height:1.65;color:var(--text-2)}
+    .fn-body strong{color:var(--text);font-weight:500}
+  </style>
+</head>
+
+<body>
+  <div class="grid-bg"></div>
+
+  <header class="nav">
+    <div class="shell">
+      <div class="nav-inner">
+        <a class="brand" href="/bn/">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span class="brand-name"><b>Mehedi Hasan</b><em>ERP · বিজনেস অ্যানালিস্ট</em></span>
+        </a>
+        <a class="back-link" href="/bn/#lab">← ল্যাব-এ ফিরুন</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="post-head">
+    <div class="shell">
+      <span class="eyebrow">টেকনিক্যাল ল্যাব · 0025</span>
+      <h1>On-premise vs cloud Odoo — <span class="serif">বাংলাদেশ ইনফ্রাস্ট্রাকচারের বাস্তব চিত্র।</span></h1>
+      <p class="lede">আপনার বাংলাদেশি ফ্যাক্টরিতে Odoo লোকাল সার্ভারে চলা উচিত, নাকি ক্লাউডে? এই গাইড মার্কেটিং বাদ দিয়ে বাংলাদেশ-নির্দিষ্ট ইনফ্রাস্ট্রাকচার বাস্তবতা নিয়ে সরাসরি কথা বলে — ISP নির্ভরযোগ্যতা, বিদ্যুৎ বিভ্রাট, ডেটা সার্বভৌমত্ব, IT স্টাফ খরচ, আর তিনটি ডেপ্লয়মেন্ট পরিস্থিতির মোট খরচ তুলনা।</p>
+      <div class="post-meta">
+        <span class="chip accent">ইনফ্রাস্ট্রাকচার গাইড</span>
+        <span class="chip">On-Premise vs Cloud</span>
+        <span class="chip">Odoo হোস্টিং</span>
+        <span class="chip">বাংলাদেশ</span>
+      </div>
+      <div class="byline">
+        <span>লেখক<b><a href="https://www.linkedin.com/in/mehedi-hasan-consultant/" style="color:var(--accent)" rel="author">Mehedi Hasan</a></b></span>
+        <span>প্রকাশিত<b>মে ২০২৬</b></span>
+        <span>পড়ার সময়<b>১১ মিনিট</b></span>
+        <span>ধরন<b>সিদ্ধান্ত গাইড</b></span>
+        <span>পরিধি<b>Odoo ডেপ্লয় করা বাংলাদেশি SME</b></span>
+      </div>
+    </div>
+  </section>
+
+  <article class="post">
+    <aside class="toc">
+      <div class="toc-k">এই গাইডে</div>
+      <ol>
+        <li><a href="#three-options">তিনটি ডেপ্লয়মেন্ট অপশন</a></li>
+        <li><a href="#bangladesh-reality">বাংলাদেশ ইনফ্রাস্ট্রাকচারের বাস্তবতা</a></li>
+        <li><a href="#cost-comparison">খরচের তুলনা</a></li>
+        <li><a href="#data-control">ডেটা নিয়ন্ত্রণ ও নিরাপত্তা</a></li>
+        <li><a href="#it-requirements">IT স্টাফিং রিকোয়ারমেন্ট</a></li>
+        <li><a href="#decision-matrix">সিদ্ধান্ত ম্যাট্রিক্স</a></li>
+        <li><a href="#recommendation">আমার সুপারিশ</a></li>
+        <li><a href="#faq">সচরাচর জিজ্ঞাসা</a></li>
+      </ol>
+    </aside>
+
+    <div class="body">
+      <p>২০২৬ সালে বেশিরভাগ গ্লোবাল ERP আলোচনায় ক্লাউড ERP-ই স্বাভাবিক সুপারিশ। কম আপফ্রন্ট খরচ, সার্ভার মেইনটেনেন্স নেই, স্বয়ংক্রিয় আপগ্রেড, যেকোনো জায়গা থেকে অ্যাক্সেস। উন্নত মার্কেটের বেশিরভাগ ইন্ডাস্ট্রির জন্য এটা সঠিক।</p>
+
+      <p>ইন্টারনেট ইনফ্রাস্ট্রাকচারের দিক থেকে বাংলাদেশ একটি উন্নত মার্কেট নয়। গাজীপুর, নারায়ণগঞ্জ বা চট্টগ্রাম EPZ-এর একটি ফ্যাক্টরি সিঙ্গাপুরের একটি অফিসের চেয়ে সম্পূর্ণ আলাদা ইনফ্রাস্ট্রাকচার বাস্তবতার মুখোমুখি হয় — আর এই বাস্তবতা স্বীকার না করে নেওয়া ERP হোস্টিং সিদ্ধান্ত এমন প্রোডাকশন ফ্লোর সমস্যা তৈরি করে যা কোনো ক্লাউড SLA ক্ষতিপূরণ দিয়ে ঠিক করা যায় না।</p>
+
+      <p class="pull">ইন্টারনেট বন্ধ হলে যে ERP সিস্টেমও বন্ধ হয়ে যায়, সেটা কোনো ERP সিস্টেম নয় — সেটা একটা দায়।</p>
+
+      <h2 id="three-options">তিনটি ডেপ্লয়মেন্ট অপশন</h2>
+
+      <div class="option-grid">
+        <div class="option-card">
+          <div class="option-head">
+            <div class="oh-label">অপশন ১</div>
+            <div class="oh-name">On-Premise</div>
+            <div class="oh-price">৳0/মাস (সার্ভারের মালিক আপনি)</div>
+          </div>
+          <div class="option-body">
+            আপনার <strong>ভবনের ভেতরেই</strong> একটি সার্ভারে Odoo ইনস্টল করুন। ইউজাররা আপনার লোকাল নেটওয়ার্ক (LAN) দিয়ে কানেক্ট করে। দৈনন্দিন অপারেশনের জন্য ইন্টারনেট দরকার নেই। UPS থাকলে বিদ্যুৎ বিভ্রাটেও কাজ করে। <strong>ইন-হাউস বা কন্ট্র্যাক্টেড IT অ্যাডমিন দরকার।</strong>
+          </div>
+        </div>
+        <div class="option-card">
+          <div class="option-head">
+            <div class="oh-label">অপশন ২</div>
+            <div class="oh-name">থার্ড-পার্টি Cloud VPS</div>
+            <div class="oh-price">৳3,000–12,000/মাস</div>
+          </div>
+          <div class="option-body">
+            একটি <strong>ভাড়া করা ভার্চুয়াল সার্ভারে</strong> (AWS, DigitalOcean, Linode, বা SSL Wireless, Digi Telecom-এর মতো লোকাল প্রোভাইডার) Odoo ইনস্টল করুন। OS আর Odoo আপনি নিজে ম্যানেজ করেন। ফ্যাক্টরির সব লোকেশন থেকে <strong>নিয়মিত ইন্টারনেট অ্যাক্সেস দরকার</strong>।
+          </div>
+        </div>
+        <div class="option-card">
+          <div class="option-head">
+            <div class="oh-label">অপশন ৩</div>
+            <div class="oh-name">Odoo.com / Odoo.sh SaaS</div>
+            <div class="oh-price">$9.90–24/ইউজার/মাস</div>
+          </div>
+          <div class="option-body">
+            Odoo SA সবকিছু হোস্ট আর ম্যানেজ করে। কোনো সার্ভার ম্যানেজ করার দরকার নেই। Odoo.com Online-এর জন্য <strong>Enterprise লাইসেন্স দরকার</strong>। Odoo.sh কাস্টম মডিউল ডেপ্লয়মেন্ট যোগ করে। <strong>সম্পূর্ণভাবে ইন্টারনেট অ্যাক্সেসের ওপর নির্ভরশীল।</strong>
+          </div>
+        </div>
+      </div>
+
+      <h2 id="bangladesh-reality">বাংলাদেশ ইনফ্রাস্ট্রাকচারের বাস্তবতা</h2>
+
+      <p>এগুলোই সেই ইনফ্রাস্ট্রাকচার তথ্য, যা বাংলাদেশি ফ্যাক্টরির জন্য হোস্টিং সিদ্ধান্তকে নিয়ন্ত্রণ করে:</p>
+
+      <h3>ইন্টারনেট নির্ভরযোগ্যতা</h3>
+      <p>বাংলাদেশের শিল্প এলাকায় ইন্টারনেট নির্ভরযোগ্যতা বৈশ্বিক মান থেকে নিচে। গাজীপুর, নারায়ণগঞ্জ, আশুলিয়া আর চট্টগ্রাম EPZ-এর ফ্যাক্টরিগুলোতে সাধারণত দেখা যায়:</p>
+      <ul>
+        <li><strong>ISP আউটেজ:</strong> শিল্প এলাকায় গড়ে সপ্তাহে ১–৬ ঘণ্টা (একাধিক ফ্যাক্টরি ডেপ্লয়মেন্টের ফিডব্যাকের ভিত্তিতে)</li>
+        <li><strong>ব্যান্ডউইথ কনটেনশন:</strong> শেয়ার্ড ISP ইনফ্রাস্ট্রাকচারের কারণে সকালের পিক আওয়ারে স্পিড নির্ধারিত ব্যান্ডউইথের ১০–২০%-এ নেমে যেতে পারে</li>
+        <li><strong>রিডানডেন্সি অপশন:</strong> ঢাকা শহরে অটোমেটিক ফেইলওভারসহ ডুয়াল ISP সম্ভব, মোট খরচ ৳8,000–15,000/মাস, তবে ঢাকার বাইরের শিল্প এলাকায় বিরল</li>
+        <li><strong>ফাইবার প্রাপ্যতা:</strong> বেশিরভাগ ফ্যাক্টরি লোকেশনের জন্য BTCL ফাইবার + ব্যাকআপ LTE কানেকশনই বাস্তবসম্মত রিডানডেন্সি সমাধান</li>
+      </ul>
+
+      <h3>বিদ্যুৎ নির্ভরযোগ্যতা</h3>
+      <ul>
+        <li><strong>গ্রিড বিদ্যুৎ বিভ্রাট:</strong> DESA-সেবিত এলাকার বাইরে লোড শেডিং এখনও একটা বাস্তবতা। ঢাকা শহরের বাইরে শিল্প এলাকার ফ্যাক্টরিগুলোতে পিক সিজনে দিনে ১–৪ ঘণ্টা লোড শেডিং হয়।</li>
+        <li><strong>জেনারেটর ব্যাকআপ:</strong> বেশিরভাগ ম্যানুফ্যাকচারিং ফ্যাক্টরিতে প্রোডাকশন ইকুইপমেন্টের জন্য ইতিমধ্যে ডিজেল জেনারেটর আছে। জেনারেটর লোডে সার্ভার আর নেটওয়ার্কিং ইকুইপমেন্ট যোগ করা বেশিরভাগ ক্ষেত্রে ৳0 বাড়তি খরচ।</li>
+        <li><strong>UPS রিকোয়ারমেন্ট:</strong> গ্রিড ফেইল হওয়া আর জেনারেটর চালু হওয়ার মধ্যে ফাঁক — সাধারণত ১৫–৪৫ সেকেন্ড — এই সময়টুকুতে ক্লাউড-নির্ভর ERP-র জন্য সব ইউজার ডিভাইস আর নেটওয়ার্কিং ইকুইপমেন্টে UPS দরকার।</li>
+      </ul>
+
+      <p><strong>সম্মিলিত প্রভাব:</strong> শুধু-ক্লাউড ডেপ্লয়মেন্টে, অফিস রাউটার বন্ধ করে দেওয়া একটা ISP আউটেজ বা বিদ্যুৎ বিভ্রাটের মানে হলো শূন্য ERP অ্যাক্সেস। প্রোডাকশন ফ্লোর কর্মীরা আউটপুট রেকর্ড করতে পারেন না, ওয়্যারহাউজ শিপমেন্ট কনফার্ম করতে পারে না, অ্যাকাউন্টস ভেন্ডর বিল পোস্ট করতে পারে না। on-premise ডেপ্লয়মেন্টে, সার্ভার UPS-এ থাকলে আর ইউজাররা LAN-এ থাকলে, এই একই ঘটনাগুলো শূন্য ব্যাঘাত ঘটায়।</p>
+
+      <div class="field-note">
+        <div class="fn-hd"><span>নোট · গার্মেন্টস ফ্যাক্টরি, চট্টগ্রাম EPZ</span><span class="when">গো-লাইভের পর প্রথম বর্ষা</span></div>
+        <div class="fn-body">
+          ক্লাউড-হোস্টেড Odoo-তে গো-লাইভ করা একটি ফ্যাক্টরি ভারী বর্ষার সময় কর্মদিবসের প্রায় পুরো সকালটাই ISP লিংক হারিয়ে ফেলেছিল — সেই জোনে এটা একটা নিয়মিত ঘটনা। প্রোডাকশন চলতেই থাকল, কিন্তু কিছুই <strong>রেকর্ড</strong> করা যাচ্ছিল না: কোনো গুডস রিসিপ্ট নেই, কোনো ম্যানুফ্যাকচারিং অর্ডার কনফার্মেশন নেই, কোনো শিপমেন্ট পিক নেই। লাইন ফিরে আসার সময় ফ্লোরে কাগজের স্লিপের একটা স্তূপ জমে গিয়েছিল, যা মেলাতে দুই দিন লেগেছিল, আর একটা ডেলিভারি ভুল লটের বিপরীতে কনফার্ম হয়ে গিয়েছিল। সেই কোয়ার্টারের পর তারা ডেটাবেসটা ফ্যাক্টরি LAN-এর একটি অন-প্রিমাইজ সার্ভারে সরিয়ে নেয়। <strong>ক্লাউড কখনো ধীর ছিল না — ঠিক সেই মুহূর্তে অনুপস্থিত ছিল, যখন ফ্লোরের সবচেয়ে বেশি দরকার ছিল।</strong>
+        </div>
+      </div>
+
+      <h3>ডেটা সার্বভৌমত্ব</h3>
+      <p>বেশিরভাগ বাংলাদেশি ফ্যাক্টরির জন্য, দুটো পরিস্থিতিতে ডেটা সার্বভৌমত্ব একটা ব্যবহারিক উদ্বেগ:</p>
+      <ul>
+        <li><strong>NBR অডিট:</strong> ট্যাক্স অডিটের সময় NBR (জাতীয় রাজস্ব বোর্ড) যদি ERP রেকর্ড চায়, তাহলে লোকাল সার্ভারে ডেটা থাকলে প্রক্রিয়াটা সহজ হয়। বিদেশি সার্ভারে ডেটা থাকলে একটা আন্তর্জাতিক ডেটা রিকোয়েস্ট চেইন জড়িয়ে পড়ে, যার সাথে অনেক NBR অডিটর পরিচিত নন — এতে জটিলতা তৈরি হয়।</li>
+        <li><strong>বায়ারের ফ্যাক্টরি অডিট:</strong> বড় আন্তর্জাতিক বায়াররা (H&M, Zara, Nike) ফ্যাক্টরি অডিট করে, যাতে মাঝে মাঝে HR আর পেরোল রেকর্ড রিভিউও থাকে। অডিটের সময় লোকাল ডেটা স্টোরেজ দেখানো আর যাচাই করা সহজ।</li>
+        <li><strong>ব্যাংক রিকোয়ারমেন্ট:</strong> কিছু বাংলাদেশি কমার্শিয়াল ব্যাংক ঋণ আর ওভারড্রাফট সুবিধার জন্য ফাইন্যান্সিয়াল ডেটা লোকালি স্টোর করা বাধ্যতামূলক করে। এটা সার্বজনীন নয়, তবে বিদেশে হোস্ট করা ERP ডেটায় প্রতিশ্রুতিবদ্ধ হওয়ার আগে আপনার ব্যাংকের সাথে যাচাই করে নেওয়া ভালো।</li>
+      </ul>
+
+      <h2 id="cost-comparison">খরচের তুলনা (৫০ ইউজার, ৩ বছর)</h2>
+
+      <table class="decision-table">
+        <thead>
+          <tr>
+            <th>খরচের খাত</th>
+            <th>On-Premise</th>
+            <th>Cloud VPS</th>
+            <th>Odoo.com SaaS</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>সার্ভার / প্ল্যাটফর্ম খরচ</strong></td>
+            <td>৳1–2 লাখ একবারে (সার্ভার + UPS)</td>
+            <td>৳1.1–4.3 লাখ/বছর (VPS ফি)</td>
+            <td>ইউজার লাইসেন্সে অন্তর্ভুক্ত</td>
+          </tr>
+          <tr>
+            <td><strong>Odoo লাইসেন্স</strong></td>
+            <td>৳0 (Community) বা Enterprise ইউজার ফি</td>
+            <td>৳0 (Community) বা Enterprise ইউজার ফি</td>
+            <td>শুধু Enterprise — ~৳9–15 লাখ/বছর (৫০ ইউজার)</td>
+          </tr>
+          <tr>
+            <td><strong>IT অ্যাডমিন খরচ</strong></td>
+            <td>৳1–2 লাখ/বছর (সার্ভার অ্যাডমিন রিটেইনার)</td>
+            <td>৳0.5–1 লাখ/বছর (রিমোট অ্যাডমিন)</td>
+            <td>৳0 (Odoo ম্যানেজ করে)</td>
+          </tr>
+          <tr>
+            <td><strong>ব্যাকআপ ও DR</strong></td>
+            <td>৳20,000–50,000/বছর (ব্যাকআপ ড্রাইভ + স্ক্রিপ্ট)</td>
+            <td>৳10,000–30,000/বছর (স্ন্যাপশট খরচ)</td>
+            <td>অন্তর্ভুক্ত</td>
+          </tr>
+          <tr>
+            <td><strong>ডুয়াল ISP (রিডানডেন্সি)</strong></td>
+            <td>দরকার নেই — LAN অ্যাক্সেস</td>
+            <td>৳2–5 লাখ/বছর (যদি দরকার হয়)</td>
+            <td>৳2–5 লাখ/বছর (অপরিহার্য)</td>
+          </tr>
+          <tr>
+            <td><strong>৩-বছরের মোট (Community)</strong></td>
+            <td><strong>৳4–7 লাখ</strong></td>
+            <td><strong>৳5–15 লাখ</strong></td>
+            <td>প্রযোজ্য নয় (SaaS-এ Enterprise লাগে)</td>
+          </tr>
+          <tr>
+            <td><strong>৩-বছরের মোট (Enterprise)</strong></td>
+            <td><strong>৳30–50 লাখ</strong> (লাইসেন্স + সার্ভার)</td>
+            <td><strong>৳35–55 লাখ</strong> (লাইসেন্স + VPS)</td>
+            <td><strong>৳35–55 লাখ</strong></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>ইমপ্লিমেন্টেশন আর ট্রেনিংসহ মোট ERP খরচ পরিকল্পনার জন্য দেখুন আমাদের <a href="/bn/lab/0012-odoo-erp-cost-bangladesh" style="color:var(--accent)">বাংলাদেশে Odoo ERP বাস্তবায়নের খরচ</a> বিশ্লেষণ — অথবা দ্রুত একটা ডেপ্লয়মেন্ট বাজেট রেঞ্জের জন্য নিজের হিসাব চালান <a href="/bn/tools/odoo-cost-estimator/" style="color:var(--accent)">Odoo Cost Estimator</a>-এ।</p>
+
+      <h2 id="data-control">ডেটা নিয়ন্ত্রণ ও নিরাপত্তা</h2>
+
+      <p>একটা সাধারণ ভুল ধারণা হলো on-premise স্বভাবতই cloud-এর চেয়ে কম নিরাপদ। বাস্তবে, নিরাপত্তা নির্ভর করে কনফিগারেশনের ওপর, লোকেশনের ওপর নয়। বাংলাদেশি ফ্যাক্টরির জন্য প্রাসঙ্গিক তুলনা:</p>
+
+      <ul>
+        <li><strong>On-premise ঝুঁকি:</strong> সার্ভার হার্ডওয়্যার চুরি হওয়া, সংক্রামিত USB/ইমেইলের মাধ্যমে র‍্যানসমওয়্যার (বিশেষত যেসব ফ্যাক্টরিতে কর্মীরা অবাধে USB ডিভাইস প্লাগ করেন), আর অফসাইট ব্যাকআপের অভাব (আগুন বা বন্যা সার্ভার আর ডেটা দুটোই ধ্বংস করে দেয়)।</li>
+        <li><strong>Cloud ঝুঁকি:</strong> অ্যাকাউন্ট কম্প্রোমাইজ, শেয়ার্ড-ইনফ্রাস্ট্রাকচার ভালনারেবিলিটি (বড় ক্লাউড প্রোভাইডারদের ক্ষেত্রে বিরল), আর প্রোভাইডারের সিকিউরিটি প্র্যাকটিসের ওপর নির্ভরতা। বড় ক্লাউড প্রোভাইডারদের (AWS, DigitalOcean) সিকিউরিটি প্র্যাকটিস বেশিরভাগ বাংলাদেশি কোম্পানি on-premise-এ যা অর্জন করতে পারে তার চেয়ে অনেক বেশি।</li>
+        <li><strong>হাইব্রিড অ্যাপ্রোচ:</strong> একটি on-premise সার্ভার, যেখান থেকে প্রতিদিন স্বয়ংক্রিয় এনক্রিপ্টেড ব্যাকআপ যায় একটি ক্লাউড স্টোরেজ বাকেটে (AWS S3 বা সমতুল্য, খরচ ৳500–2,000/মাস)। এটা on-premise-এর LAN-অ্যাক্সেসের সুবিধাকে cloud-এর অফসাইট ব্যাকআপ সুরক্ষার সাথে যুক্ত করে — আর বেশিরভাগ বাংলাদেশি ফ্যাক্টরি ডেপ্লয়মেন্টের জন্য আমি এটাই সুপারিশ করি।</li>
+      </ul>
+
+      <h2 id="it-requirements">IT স্টাফিং রিকোয়ারমেন্ট</h2>
+
+      <table class="decision-table">
+        <thead>
+          <tr>
+            <th>ডেপ্লয়মেন্ট</th>
+            <th>দরকারি IT স্কিল</th>
+            <th>স্টাফিং মডেল</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="badge-onprem">On-Premise</span></td>
+            <td>Linux সার্ভার অ্যাডমিন, Odoo সার্ভিস ম্যানেজমেন্ট, ব্যাকআপ কনফিগারেশন, বেসিক PostgreSQL অ্যাডমিন</td>
+            <td>পার্ট-টাইম IT ব্যক্তি (মাসে ১০–২০ ঘণ্টা) বা একটি লোকাল IT ফার্মের সাথে মাসিক রিটেইনার (৳8,000–18,000/মাস)</td>
+          </tr>
+          <tr>
+            <td><span class="badge-cloud">Cloud VPS</span></td>
+            <td>on-premise-এর মতোই, শুধু ফিজিক্যাল হার্ডওয়্যার মেইনটেনেন্স বাদে</td>
+            <td>রিমোট IT অ্যাডমিন রিটেইনার (on-premise অ্যাডমিনের চেয়ে সামান্য কম খরচ)</td>
+          </tr>
+          <tr>
+            <td><span class="badge-cloud">Odoo.com SaaS</span></td>
+            <td>সার্ভার ম্যানেজমেন্টের জন্য কিছু দরকার নেই — শুধু Odoo অ্যাডমিন ইউজার স্কিল</td>
+            <td>ইনফ্রাস্ট্রাকচারের জন্য ডেডিকেটেড IT অ্যাডমিন দরকার নেই — IT ওভারহেড উল্লেখযোগ্যভাবে কমায়</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2 id="decision-matrix">সিদ্ধান্ত ম্যাট্রিক্স</h2>
+
+      <table class="decision-table">
+        <thead>
+          <tr>
+            <th>আপনার পরিস্থিতি</th>
+            <th>সুপারিশকৃত ডেপ্লয়মেন্ট</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>ঘন ঘন ISP আউটেজসহ শিল্প এলাকার ফ্যাক্টরি, ডিজেল জেনারেটর ব্যাকআপ আছে</td>
+            <td><span class="badge-onprem">On-Premise</span> — LAN অ্যাক্সেস আউটেজের সময়ও ERP চালু রাখে</td>
+          </tr>
+          <tr>
+            <td>এন্টারপ্রাইজ ফাইবারসহ (ডুয়াল ISP) ঢাকার অফিস, নির্ভরযোগ্য বিদ্যুৎ, কোনো শপ ফ্লোর নেই</td>
+            <td><span class="badge-cloud">Cloud VPS বা Odoo.com SaaS</span> — ইন্টারনেট নির্ভরযোগ্যতা যথেষ্ট</td>
+          </tr>
+          <tr>
+            <td>একটা Odoo ইনস্ট্যান্স শেয়ার করা একাধিক ফ্যাক্টরি লোকেশন (২–৫টি সাইট)</td>
+            <td><span class="badge-cloud">Cloud VPS</span> — প্রতিটি সাইট একটা কেন্দ্রীয় ক্লাউড সার্ভারে কানেক্ট করে; কোনো VPN জটিলতা নেই</td>
+          </tr>
+          <tr>
+            <td>কাস্টম মডিউল ডেপ্লয় করতে হবে (বাংলাদেশ-নির্দিষ্ট অ্যাডন)</td>
+            <td><span class="badge-onprem">On-Premise</span> বা <span class="badge-cloud">Odoo.sh</span> — Odoo.com SaaS কাস্টম মডিউল ডেপ্লয়মেন্টের অনুমতি দেয় না</td>
+          </tr>
+          <tr>
+            <td>জিরো সার্ভার ম্যানেজমেন্ট, Enterprise ফিচার, শুধু স্ট্যান্ডার্ড ব্যবহার চান</td>
+            <td><span class="badge-cloud">Odoo.com SaaS</span> — ইন্টারনেট নির্ভরতা মেনে নিন</td>
+          </tr>
+          <tr>
+            <td>বাংলাদেশ VAT/Mushak কাস্টমাইজেশন + শপ ফ্লোর IoT দরকার</td>
+            <td><span class="badge-onprem">On-Premise Enterprise</span> — পূর্ণ নিয়ন্ত্রণ + LAN-এ IoT Box</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2 id="recommendation">বাংলাদেশি ফ্যাক্টরির জন্য আমার সুপারিশ</h2>
+
+      <p>বেশিরভাগ বাংলাদেশি ম্যানুফ্যাকচারিং কোম্পানির জন্য (শিল্প এলাকার ফ্যাক্টরি, ২৫–২০০ ইউজার, প্রোডাকশন ফ্লোর অপারেশন), আমার সুপারিশ হলো <strong>প্রতিদিনের স্বয়ংক্রিয় ক্লাউড ব্যাকআপসহ on-premise Odoo</strong>:</p>
+
+      <ul>
+        <li>একটি মিড-রেঞ্জ সার্ভার (Dell PowerEdge T140 বা সমতুল্য, 32GB RAM, 2TB SSD RAID) খরচ পড়ে ৳1–1.5 লাখ, আর নির্ভরযোগ্যভাবে চলে ৫+ বছর</li>
+        <li>বিদ্যুৎ বিভ্রাটের সময় ২–৩ ঘণ্টার ব্যাটারি ব্যাকআপের জন্য একটি 2KVA UPS (৳25,000–40,000) যোগ করুন</li>
+        <li>দীর্ঘ বিভ্রাটের জন্য সার্ভারকে আপনার ফ্যাক্টরির বিদ্যমান ডিজেল জেনারেটরের সাথে সংযুক্ত করুন</li>
+        <li>প্রতিদিন কম্প্রেসড PostgreSQL ডেটাবেস ব্যাকআপ AWS S3-তে শিডিউল করুন (৳500–1,500/মাস)</li>
+        <li>ইউজারদের LAN অ্যাক্সেস দিন — আপনার ইন্টারনেট রাউটার বন্ধ থাকলেও প্রোডাকশন ফ্লোরের Odoo কাজ করে</li>
+      </ul>
+
+      <p>এই সেটআপ বাংলাদেশ ইনফ্রাস্ট্রাকচারের প্রেক্ষাপটে শুধু-ক্লাউড থেকে তৈরি হওয়া ইন্টারনেট নির্ভরতার ঝুঁকি দূর করে, একই সাথে ক্লাউড ব্যাকআপ সুরক্ষা ধরে রাখে। একাধিক সাইটের কোম্পানির জন্য, একটি cloud VPS (DigitalOcean সিঙ্গাপুর, 4 vCPU/8GB সার্ভারের জন্য প্রায় ৳3,000–6,000/মাস) একটা ভালো মধ্যপন্থা — একটাই সার্ভার, সব সাইট কানেক্ট করে, কোনো হার্ডওয়্যার ম্যানেজ করতে হয় না, তবে প্রতিটি লোকেশনে এখনও নির্ভরযোগ্য ইন্টারনেট দরকার।</p>
+
+      <p>কোন ডেপ্লয়মেন্ট অপশন পাওয়া যাবে তা যে সিদ্ধান্তের ওপর নির্ভর করে — Community vs Enterprise — তার জন্য দেখুন <a href="/bn/lab/0024-odoo-community-vs-enterprise-bangladesh" style="color:var(--accent)">Odoo Community vs Enterprise: বাংলাদেশি SME-দের জন্য পূর্ণ তুলনা</a>।</p>
+
+      <div class="callout">
+        <span class="tag">ইনফ্রাস্ট্রাকচার অ্যাসেসমেন্ট</span>
+        <p>সঠিক হোস্টিং সিদ্ধান্ত নির্ভর করে আপনার নির্দিষ্ট ফ্যাক্টরি লোকেশন, ইন্টারনেট নির্ভরযোগ্যতা, সাইট জুড়ে ইউজার বণ্টন, আর IT ক্যাপাসিটির ওপর। <a href="/bn/#contact" style="color:var(--accent)">আপনার Odoo ডেপ্লয়মেন্টের আগে একটি ইনফ্রাস্ট্রাকচার অ্যাসেসমেন্টের জন্য যোগাযোগ করুন →</a></p>
+      </div>
+
+      <h2 id="faq">সচরাচর জিজ্ঞাসা</h2>
+
+      <h3>বাংলাদেশি ফ্যাক্টরির জন্য কোনটা ভালো — on-premise নাকি cloud Odoo?</h3>
+      <p>শিল্প এলাকার বেশিরভাগ বাংলাদেশি ফ্যাক্টরির জন্য on-premise বেশি স্থিতিস্থাপক পছন্দ। সপ্তাহে ১–৪ ঘণ্টার ISP আউটেজ সাধারণ ঘটনা — এই আউটেজের সময় শুধু-ক্লাউড ERP কাজ করা বন্ধ করে দেয়। UPS আর জেনারেটরে থাকা একটি on-premise সার্ভার ইন্টারনেটের অবস্থা যাই হোক না কেন, লোকাল নেটওয়ার্কে ERP চালু রাখে। এন্টারপ্রাইজ ফাইবার আর নির্ভরযোগ্য বিদ্যুৎসহ ঢাকা শহরের অফিসের জন্য cloud একটি কার্যকর অপশন।</p>
+
+      <h3>বাংলাদেশে on-premise Odoo হোস্টিংয়ের খরচ কত?</h3>
+      <p>২৫–১০০ ইউজারের জন্য সঠিকভাবে কনফিগার করা একটি on-premise সেটআপের খরচ: সার্ভার হার্ডওয়্যারের জন্য ৳60,000–180,000, UPS-এর জন্য ৳20,000–50,000, একবারের সেটআপের জন্য ৳15,000–30,000, আর মেইনটেনেন্সের জন্য বছরে ৳20,000–40,000। ৩ বছরের মোট খরচ প্রায় ৳1.5–4 লাখ — সমান সংখ্যক ইউজারের জন্য cloud হোস্টিং ফি-র চেয়ে উল্লেখযোগ্যভাবে কম।</p>
+
+      <h3>বাংলাদেশি কোম্পানি কি Odoo.com (SaaS) cloud হোস্টিং ব্যবহার করতে পারে?</h3>
+      <p>হ্যাঁ — Odoo.com Online (Enterprise) পাওয়া যায়। ডেটা হোস্ট হয় Odoo SA-র ইউরোপীয় ডেটা সেন্টারে। মূল উদ্বেগটা হলো ইন্টারনেট নির্ভরযোগ্যতা: ISP আউটেজের সময় শুধু-ক্লাউড ERP থেমে যায়। এন্টারপ্রাইজ ফাইবার আর ব্যাকআপ কানেক্টিভিটিসহ (ডুয়াল ISP বা ফাইবার + LTE) কোম্পানিগুলো সফলভাবে SaaS ব্যবহার করতে পারে। SaaS কাস্টম মডিউল ডেপ্লয়মেন্টও সাপোর্ট করে না — আপনি বাংলাদেশ-নির্দিষ্ট VAT মডিউল ইনস্টল করতে পারবেন না।</p>
+
+      <h3>Odoo.sh কী, আর এটা Odoo.com থেকে কীভাবে আলাদা?</h3>
+      <p>Odoo.sh হলো Enterprise কাস্টমারদের জন্য Odoo SA-র PaaS অফার — একটি পূর্ণাঙ্গ সার্ভার এনভায়রনমেন্ট, যেখানে আপনি কাস্টম মডিউল ডেপ্লয় করতে পারেন, প্রোডাকশন/স্টেজিং/ডেভ ব্র্যাঞ্চ ম্যানেজ করতে পারেন, আর Python কোড চালাতে পারেন — সব ক্লাউডে। Odoo.com SaaS-এর বিপরীতে (কাস্টম মডিউল নেই), Odoo.sh বাংলাদেশ-নির্দিষ্ট অ্যাডন সাপোর্ট করে। প্ল্যাটফর্মের দাম শুরু $9.90/মাস থেকে, সাথে Enterprise ইউজার লাইসেন্স।</p>
+    </div>
+  </article>
+
+  <footer>
+    <div class="shell">
+      <div class="post-foot">
+        <span class="eyebrow">আরও পড়ুন</span>
+        <div class="next">
+          <a class="next-card" href="/bn/lab/0024-odoo-community-vs-enterprise-bangladesh">
+            <span class="dir">পুরনো · 0024</span>
+            <h4>বাংলাদেশে Odoo Community vs Enterprise</h4>
+            <p>৩০-ফিচার ম্যাট্রিক্স আর খরচ বিশ্লেষণ — Community যা কভার করে আর Enterprise কখন খরচ উশুল করে।</p>
+            <span class="arrow">→</span>
+          </a>
+          <a class="next-card" href="/bn/lab/0026-odoo-16-17-18-upgrade-bangladesh">
+            <span class="dir">নতুন · 0026</span>
+            <h4>বাংলাদেশে Odoo 16/17/18/19</h4>
+            <p>বিভিন্ন ভার্সন জুড়ে কী বদলেছে, আর ২০২৬ সালে বাংলাদেশি কোম্পানির কোন ভার্সন টার্গেট করা উচিত।</p>
+            <span class="arrow">→</span>
+          </a>
+        </div>
+      </div>
+      <div class="foot">
+        <span>© ২০২৬ Mehedi Hasan · Lab / 0025</span>
+        <span><a href="/bn/#lab">↑ ল্যাব ইনডেক্সে ফিরুন</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/lab/_utils.js" defer></script>
+<script src="/lab/_toc.js" defer></script>
+<script src="/whatsapp.js" defer></script>
+<script src="/scroll-top.js" defer></script>
+</body>
+
+</html>

@@ -1,0 +1,312 @@
+<!doctype html>
+<html lang="bn">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description"
+    content="বাংলাদেশের সাপ্লাই চেইনের জন্য Odoo Reordering Rules বনাম MTO বনাম Min/Max। কখন কোন অটোমেটেড প্রকিউরমেন্ট রুল ব্যবহার করবেন জানুন। সম্পূর্ণ প্লেবুক →" />
+  <meta name="robots" content="noindex, follow" />
+  <meta name="author" content="Mehedi Hasan" />
+  <title>Odoo Reordering Rules বনাম MTO | Min/Max | মেহেদী হাসান</title>
+  <link rel="canonical" href="https://mhasan.me/bn/lab/0039-odoo-reordering-rules-mto-bangladesh" />
+  <link rel="alternate" hreflang="en" href="https://mhasan.me/lab/0039-odoo-reordering-rules-mto-bangladesh" />
+  <link rel="alternate" hreflang="bn-BD" href="https://mhasan.me/bn/lab/0039-odoo-reordering-rules-mto-bangladesh" />
+  <link rel="alternate" hreflang="x-default" href="https://mhasan.me/lab/0039-odoo-reordering-rules-mto-bangladesh" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png" />
+  <!-- Open Graph -->
+  <meta property="og:title" content="Odoo Reordering Rules বনাম MTO | Min/Max | মেহেদী হাসান" />
+  <meta property="og:description"
+    content="বাংলাদেশের সাপ্লাই চেইনের জন্য Odoo Reordering Rules বনাম MTO বনাম Min/Max। কখন কোন অটোমেটেড প্রকিউরমেন্ট রুল ব্যবহার করবেন জানুন।" />
+  <meta property="og:url" content="https://mhasan.me/bn/lab/0039-odoo-reordering-rules-mto-bangladesh" />
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="https://mhasan.me/assets/og-default.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale" content="bn_BD" />
+  <meta property="og:site_name" content="মেহেদী হাসান | Odoo কনসালট্যান্ট" />
+  <meta property="article:author" content="https://www.linkedin.com/in/mehedi-hasan-consultant/" />
+  <meta property="article:published_time" content="2026-05-08T12:00:00+06:00" />
+  <meta property="article:modified_time" content="2026-05-23T12:00:00+06:00" />
+  <meta property="article:section" content="Odoo ERP Bangladesh" />
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Odoo Reordering Rules বনাম MTO | Min/Max | মেহেদী হাসান" />
+  <meta name="twitter:description"
+    content="বাংলাদেশের সাপ্লাই চেইনের জন্য Odoo Reordering Rules বনাম MTO বনাম Min/Max। কখন কোন অটোমেটেড প্রকিউরমেন্ট রুল ব্যবহার করবেন জানুন।" />
+  <meta name="twitter:image" content="https://mhasan.me/assets/og-default.jpg" />
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Odoo Reordering Rules বনাম MTO বনাম Min/Max: কখন কোনটি ব্যবহার করবেন",
+    "description": "বাংলাদেশের সাপ্লাই চেইনের জন্য Odoo Reordering Rules বনাম MTO বনাম Min/Max। কখন কোন অটোমেটেড প্রকিউরমেন্ট রুল ব্যবহার করবেন জানুন।",
+    "datePublished": "2026-05-08T12:00:00+06:00",
+    "dateModified": "2026-05-23T12:00:00+06:00",
+    "inLanguage": "bn",
+    "author": {
+      "@type": "Person",
+      "name": "Mehedi Hasan",
+      "url": "https://mhasan.me",
+      "jobTitle": "Odoo ERP Consultant & Business Analyst",
+      "sameAs": "https://www.linkedin.com/in/mehedi-hasan-consultant/"
+    },
+    "publisher": { "@type": "Person", "name": "Mehedi Hasan", "url": "https://mhasan.me" },
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://mhasan.me/bn/lab/0039-odoo-reordering-rules-mto-bangladesh" }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "হোম", "item": "https://mhasan.me/bn" },
+      { "@type": "ListItem", "position": 2, "name": "ল্যাব", "item": "https://mhasan.me/bn/#lab" },
+      { "@type": "ListItem", "position": 3, "name": "Odoo Reordering Rules vs MTO Bangladesh", "item": "https://mhasan.me/bn/lab/0039-odoo-reordering-rules-mto-bangladesh" }
+    ]
+  }
+]
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&family=Noto+Sans+Bengali:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap">
+  <link rel="stylesheet" href="/lab/_styles.css">
+  <style>
+    body{ font-family: 'Noto Sans Bengali', var(--sans); }
+    .yarn-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 12.5px;
+      margin: 24px 0;
+    }
+    .yarn-table th {
+      padding: 10px 14px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-3);
+      text-align: left;
+    }
+    .yarn-table td {
+      padding: 10px 14px;
+      border: 1px solid var(--border);
+      color: var(--text-2);
+      vertical-align: top;
+      line-height: 1.6;
+    }
+    .yarn-table td:first-child { font-weight: 500; color: var(--text); }
+    .pull {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: clamp(20px, 2.8vw, 30px);
+      line-height: 1.3;
+      color: var(--text);
+      margin: 48px 0;
+      max-width: 26ch;
+      letter-spacing: -0.01em;
+    }
+    .pull::before {
+      content: "";
+      display: block;
+      width: 36px;
+      height: 1px;
+      background: var(--accent);
+      margin-bottom: 18px;
+    }
+    .field-note{margin:28px 0;border:1px solid var(--border);border-radius:12px;overflow:hidden;background:var(--surface)}
+    .fn-hd{display:flex;align-items:center;justify-content:space-between;padding:12px 18px;border-bottom:1px solid var(--border);font-family:var(--mono);font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-3)}
+    .fn-hd .when{color:var(--accent)}
+    .fn-body{padding:18px 22px;font-size:15px;line-height:1.65;color:var(--text-2)}
+    .fn-body strong{color:var(--text);font-weight:500}
+  </style>
+</head>
+
+<body>
+  <div class="grid-bg"></div>
+
+  <header class="nav">
+    <div class="shell">
+      <div class="nav-inner">
+        <a class="brand" href="/bn/">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span class="brand-name"><b>Mehedi Hasan</b><em>ERP · বিজনেস অ্যানালিস্ট</em></span>
+        </a>
+        <a class="back-link" href="/bn/#lab">← ল্যাব-এ ফিরুন</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="post-head">
+    <div class="shell">
+      <span class="eyebrow">টেকনিক্যাল ল্যাব · 0039</span>
+      <h1>Odoo Reordering Rules বনাম MTO — <span class="serif">কখন কোনটি ব্যবহার করবেন।</span></h1>
+      <p class="lede">অটোমেটেড প্রকিউরমেন্ট ERP-র সবচেয়ে কাঙ্ক্ষিত ফিচার, কিন্তু ভুল স্ট্র্যাটেজি বেছে নিলে হয় গুদাম উপচে পড়বে, নয়তো ক্রিটিক্যাল স্টকআউট হবে। আপনার Make to Order ব্যবহার করা উচিত, নাকি Min/Max রুল সেট করা উচিত? বাংলাদেশের সাপ্লাই চেইনের জন্য এটি কীভাবে ঠিক করবেন, দেখুন।</p>
+      <div class="post-meta">
+        <span class="chip accent">কনফিগারেশন গাইড</span>
+        <span class="chip">প্রকিউরমেন্ট</span>
+        <span class="chip">MTO</span>
+        <span class="chip">Min/Max</span>
+      </div>
+      <div class="byline">
+        <span>লেখক<b><a href="https://www.linkedin.com/in/mehedi-hasan-consultant/" style="color:var(--accent)" rel="author">Mehedi Hasan</a></b></span>
+        <span>প্রকাশিত<b>মে ২০২৬</b></span>
+        <span>পড়ার সময়<b>৭ মিনিট</b></span>
+        <span>ধরন<b>টেকনিক্যাল গাইড</b></span>
+        <span>পরিধি<b>সাপ্লাই চেইন · ইনভেন্টরি</b></span>
+      </div>
+    </div>
+  </section>
+
+  <article class="post">
+    <aside class="toc">
+      <div class="toc-k">এই গাইডে</div>
+      <ol>
+        <li><a href="#mto">Make To Order (MTO)</a></li>
+        <li><a href="#min-max">Reordering Rules (Min/Max)</a></li>
+        <li><a href="#comparison">MTO বনাম Min/Max তুলনা</a></li>
+        <li><a href="#best-practices">বাংলাদেশের জন্য সেরা চর্চা</a></li>
+        <li><a href="#faq">সচরাচর জিজ্ঞাসা</a></li>
+      </ol>
+    </aside>
+
+    <div class="body">
+      <p>একটি সঠিকভাবে কনফিগার করা Odoo সিস্টেমের কাজ হলো আপনার প্রকিউরমেন্ট টিমের ভারী কাজটা নিজে করে দেওয়া। কী কিনতে হবে বা তৈরি করতে হবে তা বের করতে স্প্রেডশিট ঘাঁটার বদলে, সিস্টেমের উচিত স্বয়ংক্রিয়ভাবে ড্রাফট Request for Quotation (RFQ) আর Manufacturing Order তৈরি করা। কিন্তু এই অটোমেশনের পেছনের লজিক আপনার বাস্তব ব্যবসায়িক মডেলের সাথে মিলতে হবে।</p>
+
+      <p>এই রুলগুলো আপনার আর্থিক রিপোর্টিংয়ে কীভাবে প্রভাব ফেলে তা মূল্যায়ন করতে চাইলে দেখুন <a href="/bn/lab/0011-odoo-inventory-valuation-cheatsheet" style="color:var(--accent)">Odoo inventory valuation cheatsheet</a>। আপনার কারখানার প্যারামিটার সঠিকভাবে সেট আপ করার জন্য দেখুন <a href="/bn/lab/0013-odoo-manufacturing-module-bangladesh" style="color:var(--accent)">Odoo manufacturing module সেটআপ গাইড</a>।</p>
+
+      <p class="pull">MTO আপনার বর্তমান স্টক লেভেল উপেক্ষা করে। Reordering Rules সম্পূর্ণভাবে তার ওপর নির্ভর করে। এই পার্থক্যটা বুঝতে পারাই সাপ্লাই চেইন বিশৃঙ্খলা প্রতিরোধের চাবিকাঠি।</p>
+
+      <h2 id="mto">Make To Order (MTO)</h2>
+      <p>Make To Order (যাকে Replenish on Order-ও বলা হয়) একটি Sales Order (চাহিদা) আর একটি Purchase/Manufacturing Order (সরবরাহ)-এর মধ্যে একটি কঠোর, অভেদ্য সংযোগ তৈরি করে।</p>
+
+      <p><strong>এটি কীভাবে কাজ করে:</strong> আপনি যখন Product A-র ৫০ ইউনিটের একটি Sales Order কনফার্ম করেন, Odoo সাথে সাথে ঠিক ৫০ ইউনিটের জন্য একটি Purchase Order বা Manufacturing Order তৈরি করে। আপনার গুদামে ইতিমধ্যে ১০০ ইউনিট আছে কিনা তা এটি <em>চেক করে না</em>।</p>
+
+      <p><strong>MTO কখন ব্যবহার করবেন:</strong></p>
+      <ul>
+        <li><strong>অত্যন্ত কাস্টমাইজড প্রোডাক্ট:</strong> যেসব আইটেম কাস্টমারের স্পেসিফিকেশন অনুযায়ী হুবহু তৈরি হয় (যেমন, কাস্টম মেশিনারি, পার্সোনালাইজড পোশাক)।</li>
+        <li><strong>পচনশীল বা স্বল্প শেলফ-লাইফের পণ্য:</strong> যেসব আইটেম নষ্ট হয়ে যাওয়া এড়াতে স্টকে রাখতে চান না।</li>
+        <li><strong>উচ্চমূল্যের, স্বল্প-ভলিউমের আইটেম:</strong> দামি কম্পোনেন্ট যেখানে সেফটি স্টক রাখার হোল্ডিং কস্ট যৌক্তিকতা হারায়।</li>
+        <li><strong>ড্রপ-শিপিং:</strong> সাপ্লায়ারের কাছ থেকে কেনা এবং সরাসরি কাস্টমারের কাছে পাঠানো প্রোডাক্ট।</li>
+      </ul>
+
+      <h2 id="min-max">Reordering Rules (Min/Max)</h2>
+      <p>Reordering Rules (Min/Max রুল) সেফটি স্টক বজায় রাখে। এগুলো নিয়ন্ত্রিত হয় প্রজেক্টেড ইনভেন্টরি লেভেল দিয়ে, আলাদা আলাদা সেলস অর্ডার দিয়ে নয়।</p>
+
+      <p><strong>এটি কীভাবে কাজ করে:</strong> আপনি একটি Minimum পরিমাণ সেট করেন (যেমন, ২০) এবং একটি Maximum পরিমাণ (যেমন, ১০০)। যখন "প্রজেক্টেড স্টক" (হাতে থাকা স্টক + আগত - বহির্গামী) ২০-এর নিচে নেমে যায়, Odoo একটি প্রকিউরমেন্ট অর্ডার তৈরি করে প্রজেক্টেড স্টককে ঠিক ১০০-তে নিয়ে আসতে। আপনার প্রজেক্টেড স্টক ১৯-এ পৌঁছালে, Odoo ৮১ অর্ডার করবে।</p>
+
+      <p><strong>Min/Max কখন ব্যবহার করবেন:</strong></p>
+      <ul>
+        <li><strong>স্ট্যান্ডার্ডাইজড কম্পোনেন্ট:</strong> স্ক্রু, স্ট্যান্ডার্ড ফেব্রিক, প্যাকেজিং ম্যাটেরিয়াল।</li>
+        <li><strong>Fast-moving consumer goods (FMCG):</strong> নিয়মিত বিক্রি হওয়া আইটেম যেখানে লিড টাইম অনুমানযোগ্য।</li>
+        <li><strong>দীর্ঘ লিড টাইমের আইটেম:</strong> ইমপোর্টেড কাঁচামাল যা পৌঁছাতে ৪৫-৬০ দিন লাগে। উচ্চ Minimum পরিমাণ দিয়ে লিড টাইমের বিপরীতে বাফার করতে হবে।</li>
+      </ul>
+
+      <h2 id="comparison">MTO বনাম Min/Max তুলনা</h2>
+
+      <table class="yarn-table">
+        <thead>
+          <tr>
+            <th>বৈশিষ্ট্য</th>
+            <th>Make to Order (MTO)</th>
+            <th>Reordering Rules (Min/Max)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>ট্রিগার হয়</td>
+            <td>Sales Order কনফার্মেশনে</td>
+            <td>Projected Stock, Minimum-এর নিচে নামলে</td>
+          </tr>
+          <tr>
+            <td>বিদ্যমান স্টক চেক করে?</td>
+            <td>না। যা বিক্রি হয়েছে ঠিক ততটাই অর্ডার করে।</td>
+            <td>হ্যাঁ। বর্তমান স্টক + আগত অর্ডার বিবেচনা করে।</td>
+          </tr>
+          <tr>
+            <td>অর্ডারের পরিমাণ</td>
+            <td>Sales Order-এর পরিমাণের সমান</td>
+            <td>নির্ধারিত Maximum পরিমাণ পর্যন্ত পূরণ করে</td>
+          </tr>
+          <tr>
+            <td>সবচেয়ে উপযোগী</td>
+            <td>কাস্টম, দামি, বা পচনশীল পণ্যের জন্য</td>
+            <td>কনজিউমেবল, স্ট্যান্ডার্ড কাঁচামালের জন্য</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2 id="best-practices">বাংলাদেশের জন্য সেরা চর্চা</h2>
+      <p>বাংলাদেশে সাপ্লাই চেইন প্রায়ই ইমপোর্ট বিলম্বে (LC প্রসেসিং, কাস্টমস ক্লিয়ারেন্স) এবং অস্থিতিশীল স্থানীয় সরবরাহে প্রভাবিত হয়। ইমপোর্টেড কাঁচামালের জন্য শুধু MTO-র ওপর নির্ভর করলে প্রায় নিশ্চিতভাবেই ডেলিভারি ডেডলাইন মিস হবে।</p>
+
+      <ul>
+        <li><strong>হাইব্রিড অ্যাপ্রোচ:</strong> ফিনিশড গুডের চূড়ান্ত অ্যাসেম্বলির জন্য MTO ব্যবহার করুন, কিন্তু তার অন্তর্নিহিত কাঁচামালের জন্য Min/Max Reordering Rules ব্যবহার করুন। এতে নিশ্চিত হয় যে আপনার কারখানা সাথে সাথে MTO অ্যাসেম্বলি শুরু করতে পারবে, কারণ কাঁচামাল ইতিমধ্যেই গুদামে বাফার করা আছে।</li>
+        <li><strong>LC লিড টাইম বাফার করুন:</strong> ইমপোর্টেড আইটেমের জন্য Minimum পরিমাণ সেট করার সময়, আপনার দৈনিক ব্যবহার হিসাব করুন এবং সবচেয়ে খারাপ পরিস্থিতির লিড টাইম দিয়ে গুণ করুন (LC ও পোর্ট বিলম্ব সহ)। Minimum এই সংখ্যার একটু ওপরে সেট করুন।</li>
+      </ul>
+
+      <div class="field-note">
+        <div class="fn-hd"><span>নোট · ইলেকট্রিক্যাল-গুডস অ্যাসেম্বলার, নারায়ণগঞ্জ</span><span class="when">প্রথম এক্সপোর্ট অর্ডার</span></div>
+        <div class="fn-body">
+          একটি অ্যাসেম্বলার তার ফিনিশড প্রোডাক্ট Make to Order সেট করেছিল, এই যুক্তিতে যে এটি শুধু কনফার্মড অর্ডারের বিপরীতেই তৈরি করবে। যুক্তিটা সঠিকই ছিল — যতক্ষণ না একজন বায়ার একটি বড় অর্ডার কনফার্ম করল। Odoo যথাযথভাবে Manufacturing Order তৈরি করল, কিন্তু তার ভেতরের ইমপোর্টেড কম্পোনেন্টগুলোর <strong>৪৫-৬০ দিনের LC-ও-কাস্টমস লিড টাইম</strong> ছিল এবং জিরো বাফার স্টক ছিল, কারণ MTO চাহিদার আগে কখনোই অন্তর্নিহিত কাঁচামালের প্রকিউরমেন্ট ট্রিগার করে না। কারখানাটি প্রায় দুই মাস পর্যন্ত তৈরি শুরুই করতে পারেনি। আমরা ফিনিশড গুডে MTO রেখে দিলাম, কিন্তু প্রতিটি ইমপোর্টেড কম্পোনেন্টকে সরিয়ে দিলাম Reordering Rules-এ, সবচেয়ে খারাপ লিড টাইম অনুযায়ী মাপা একটি Minimum দিয়ে। <strong>MTO অ্যাসেম্বলির জন্য একটি চাহিদা সংকেত, যে ম্যাটেরিয়ালের ওপর সেই অ্যাসেম্বলি নির্ভরশীল তা বাফার করার বিকল্প নয়।</strong>
+        </div>
+      </div>
+
+      <div class="callout">
+        <span class="tag">সারকথা</span>
+        <p>অটোমেশন ততটাই ভালো যতটা ভালো আপনি রুলগুলো সেট করেন। প্রথমে আপনার ইনভেন্টরি ক্যাটাগরাইজ করুন। উচ্চ-ভলিউমের স্ট্যান্ডার্ড আইটেমে Min/Max রুল দিন। কাস্টম আইটেমে MTO দিন। Odoo-র রাউটিং প্রায়োরিটি সম্পূর্ণভাবে না বুঝে কখনো একই প্রোডাক্টে দুটো মিশাবেন না। <a href="/bn/#contact" style="color:var(--accent)">প্রকিউরমেন্ট অডিট দরকার? যোগাযোগ করুন →</a></p>
+      </div>
+
+      <h2 id="faq">সচরাচর জিজ্ঞাসা</h2>
+
+      <h3>Odoo-তে Make to Order (MTO) কখন ব্যবহার করব?</h3>
+      <p>অত্যন্ত কাস্টমাইজড, কম অর্ডার হওয়া, বা স্বল্প শেলফ-লাইফের প্রোডাক্টের জন্য MTO ব্যবহার করুন। MTO Sales Order আর Procurement Order (Purchase বা Manufacturing)-এর মধ্যে একটি সরাসরি সংযোগ তৈরি করে, অর্থাৎ আপনি ঠিক যতটা অর্ডার হয়েছে ততটাই কেনেন বা তৈরি করেন, ইনভেন্টরি স্টক লেভেল উপেক্ষা করে।</p>
+
+      <h3>Odoo-তে Reordering Rules (Min/Max) কীভাবে কাজ করে?</h3>
+      <p>প্রজেক্টেড স্টক একটি Minimum পরিমাণের নিচে নেমে গেলে Reordering Rules প্রকিউরমেন্ট ট্রিগার করে। Odoo স্বয়ংক্রিয়ভাবে একটি RFQ বা Manufacturing Order তৈরি করবে স্টককে Maximum পরিমাণে ফিরিয়ে আনতে। এটি দ্রুত চলমান কনজিউমেবল ও স্ট্যান্ডার্ড কাঁচামালের জন্য আদর্শ।</p>
+
+      <h3>একই প্রোডাক্টে MTO আর Reordering Rules দুটোই ব্যবহার করা যায় কি?</h3>
+      <p>হ্যাঁ, তবে সতর্ক থাকুন — এতে Odoo-র আচরণ পাল্টে যায়। দুটো রুট সক্রিয় থাকলে, একটি সেলস অর্ডার তখনো সেই নির্দিষ্ট পরিমাণের জন্য MTO প্রকিউরমেন্ট ট্রিগার করে, আর Reordering Rule আলাদাভাবে বাফার বজায় রাখে। বেশিরভাগ বাংলাদেশি সেটআপের জন্য পরিষ্কার প্যাটার্ন হলো ফিনিশড গুডে MTO আর তার কাঁচামালে Reordering Rules — একই প্রোডাক্টে দুটো একসাথে না মিশিয়ে। Odoo-র রুট প্রায়োরিটি না বুঝে একই প্রোডাক্টে দুটো একসাথে বসালে সাধারণত ডুপ্লিকেট পারচেজ অর্ডার তৈরি হয়।</p>
+
+      <h3>ইমপোর্টেড কাঁচামালের জন্য Minimum পরিমাণ কীভাবে সেট করব?</h3>
+      <p>গড় দৈনিক ব্যবহার হিসাব করুন, তারপর সবচেয়ে খারাপ পরিস্থিতির রিপ্লেনিশমেন্ট লিড টাইম দিয়ে গুণ করুন — সাপ্লায়ারের প্রোডাকশন, LC প্রসেসিং, সমুদ্রপথে পরিবহন, আর কাস্টমস ক্লিয়ারেন্স মিলিয়ে। বাংলাদেশে অনেক ইমপোর্টেড আইটেমের জন্য এই মোট সময় ৪৫-৬০ দিন। Minimum এই সংখ্যার একটু ওপরে সেট করুন যাতে যথেষ্ট সময় হাতে রেখে রিঅর্ডার ট্রিগার হয়, আর Maximum সেট করুন লিড টাইম প্লাস একটি যুক্তিসঙ্গত রিভিউ সাইকেল কভার করার জন্য।</p>
+
+    </div>
+  </article>
+
+  <footer>
+    <div class="shell">
+      <div class="post-foot">
+        <span class="eyebrow">আরও পড়ুন</span>
+        <div class="next">
+          <a class="next-card" href="/bn/lab/0038-odoo-manufacturing-routing-bangladesh">
+            <span class="dir">পুরনো · 0038</span>
+            <h4>Odoo Manufacturing Routing</h4>
+            <p>ওয়ার্ক সেন্টার, অপারেশন, মেশিন ক্যাপাসিটি এবং প্রোডাকশন টাইম ট্র্যাকিং।</p>
+            <span class="arrow">→</span>
+          </a>
+          <a class="next-card" href="/bn/lab/0040-odoo-quality-control-iso-bangladesh">
+            <span class="dir">নতুন · 0040</span>
+            <h4>Odoo Quality Control for ISO</h4>
+            <p>ISO সার্টিফায়েড কারখানার জন্য কঠোর কোয়ালিটি চেক, অ্যালার্ট, এবং টলারেন্স কনফিগার করুন।</p>
+            <span class="arrow">→</span>
+          </a>
+        </div>
+      </div>
+      <div class="foot">
+        <span>© ২০২৬ Mehedi Hasan · Lab / 0039</span>
+        <span><a href="/bn/#lab">↑ ল্যাব ইনডেক্সে ফিরুন</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/lab/_utils.js" defer></script>
+<script src="/lab/_toc.js" defer></script>
+<script src="/whatsapp.js" defer></script>
+<script src="/scroll-top.js" defer></script>
+</body>
+
+</html>

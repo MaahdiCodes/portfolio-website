@@ -1,0 +1,542 @@
+<!doctype html>
+<html lang="bn">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description"
+    content="বাংলাদেশের কারখানার জন্য Odoo IoT Box: বারকোড স্ক্যানার, ওজন স্কেল আর POS প্রিন্টার আপনার ম্যানুফ্যাকচারিং ওয়ার্কফ্লোর সাথে যুক্ত করুন। সঠিকভাবে সেটআপ করুন →" />
+  <meta name="robots" content="noindex, follow" />
+  <meta name="author" content="Mehedi Hasan" />
+  <title>বাংলাদেশে Odoo IoT Box | বারকোড ও স্কেল | মেহেদী হাসান</title>
+  <link rel="canonical" href="https://mhasan.me/bn/lab/0056-odoo-iot-box-bangladesh" />
+  <link rel="alternate" hreflang="en" href="https://mhasan.me/lab/0056-odoo-iot-box-bangladesh" />
+  <link rel="alternate" hreflang="bn-BD" href="https://mhasan.me/bn/lab/0056-odoo-iot-box-bangladesh" />
+  <link rel="alternate" hreflang="x-default" href="https://mhasan.me/lab/0056-odoo-iot-box-bangladesh" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png" />
+  <!-- Open Graph -->
+  <meta property="og:title" content="বাংলাদেশে Odoo IoT Box | বারকোড ও স্কেল | মেহেদী হাসান" />
+  <meta property="og:description"
+    content="বাংলাদেশের কারখানায় বারকোড স্ক্যানার, ওজন স্কেল আর POS প্রিন্টার Odoo-র সাথে যুক্ত করুন। হার্ডওয়্যার সোর্সিং, নেটওয়ার্ক কনফিগ, আর ট্রাবলশুটিং কভার করা সেটআপ গাইড।" />
+  <meta property="og:url" content="https://mhasan.me/bn/lab/0056-odoo-iot-box-bangladesh" />
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="https://mhasan.me/assets/og-default.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale" content="bn_BD" />
+  <meta property="og:site_name" content="মেহেদী হাসান | Odoo ERP কনসালট্যান্ট" />
+  <meta property="article:author" content="https://www.linkedin.com/in/mehedi-hasan-consultant/" />
+  <meta property="article:published_time" content="2026-05-12T11:30:00+06:00" />
+  <meta property="article:modified_time" content="2026-05-12T11:30:00+06:00" />
+  <meta property="article:section" content="Odoo ERP Bangladesh" />
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="বাংলাদেশে Odoo IoT Box | বারকোড ও স্কেল | মেহেদী হাসান" />
+  <meta name="twitter:description"
+    content="বাংলাদেশের কারখানায় বারকোড স্ক্যানার, ওজন স্কেল আর POS প্রিন্টার Odoo-র সাথে যুক্ত করুন। হার্ডওয়্যার সোর্সিং, সেটআপ, আর ট্রাবলশুটিং গাইড।" />
+  <meta name="twitter:image" content="https://mhasan.me/assets/og-default.jpg" />
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "বাংলাদেশের কারখানার জন্য Odoo IoT Box: বারকোড, স্কেল ও POS ইন্টিগ্রেশন",
+    "description": "বাংলাদেশের কারখানায় বারকোড স্ক্যানার, ওজন স্কেল আর POS প্রিন্টার Odoo-র সাথে যুক্ত করুন। হার্ডওয়্যার সোর্সিং, নেটওয়ার্ক সেটআপ, কনফিগারেশন, আর ম্যানুফ্যাকচারিং অপারেশনের জন্য ট্রাবলশুটিং।",
+    "datePublished": "2026-05-12T11:30:00+06:00",
+    "dateModified": "2026-05-12T11:30:00+06:00",
+    "inLanguage": "bn",
+    "author": {
+      "@type": "Person",
+      "name": "Mehedi Hasan",
+      "url": "https://mhasan.me",
+      "jobTitle": "Odoo ERP Consultant & Business Analyst",
+      "sameAs": "https://www.linkedin.com/in/mehedi-hasan-consultant/"
+    },
+    "publisher": { "@type": "Person", "name": "Mehedi Hasan", "url": "https://mhasan.me" },
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://mhasan.me/bn/lab/0056-odoo-iot-box-bangladesh" }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "হোম", "item": "https://mhasan.me/bn" },
+      { "@type": "ListItem", "position": 2, "name": "ল্যাব", "item": "https://mhasan.me/bn/#lab" },
+      { "@type": "ListItem", "position": 3, "name": "বাংলাদেশে Odoo IoT Box", "item": "https://mhasan.me/bn/lab/0056-odoo-iot-box-bangladesh" }
+    ]
+  }
+]
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&family=Noto+Sans+Bengali:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap">
+  <link rel="stylesheet" href="/lab/_styles.css">
+  <style>
+    body{ font-family: 'Noto Sans Bengali', var(--sans); }
+    .pull {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: clamp(20px, 2.8vw, 28px);
+      line-height: 1.3;
+      color: var(--text);
+      margin: 48px 0;
+      max-width: 28ch;
+      letter-spacing: -0.01em;
+    }
+    .pull::before {
+      content: "";
+      display: block;
+      width: 36px;
+      height: 1px;
+      background: var(--accent);
+      margin-bottom: 18px;
+    }
+    .device-block {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      margin: 26px 0;
+      overflow: hidden;
+    }
+    .device-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 16px 20px;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+    }
+    .device-badge {
+      font-family: var(--mono);
+      font-size: 10px;
+      font-weight: 600;
+      padding: 3px 10px;
+      border-radius: 4px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      flex-shrink: 0;
+    }
+    .device-badge.usb { background: var(--accent-dim); color: var(--accent); border: 1px solid rgba(80,230,160,0.3); }
+    .device-badge.serial { background: rgba(200,140,80,0.12); color: #E0B84A; border: 1px solid rgba(200,140,80,0.25); }
+    .device-badge.bt { background: rgba(100,140,255,0.12); color: #7AABFF; border: 1px solid rgba(100,140,255,0.25); }
+    .device-badge.network { background: rgba(180,100,200,0.12); color: #C070E0; border: 1px solid rgba(180,100,200,0.25); }
+    .device-header h3 { margin: 0; font-size: 15px; color: var(--text); letter-spacing: -0.01em; }
+    .device-body { padding: 20px; }
+    .device-body p { color: var(--text-2); font-size: 14.5px; line-height: 1.65; margin: 0 0 12px; }
+    .device-body p:last-child { margin-bottom: 0; }
+    .device-body ul { color: var(--text-2); font-size: 14px; padding-left: 20px; margin: 10px 0 12px; }
+    .device-body li { margin-bottom: 6px; line-height: 1.5; }
+    .hw-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+      margin: 14px 0;
+    }
+    .hw-table th {
+      text-align: left;
+      padding: 9px 14px;
+      background: var(--surface);
+      color: var(--text-3);
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      border-bottom: 1px solid var(--border);
+    }
+    .hw-table td {
+      padding: 10px 14px;
+      border-bottom: 1px solid var(--border);
+      color: var(--text-2);
+      vertical-align: top;
+    }
+    .hw-table td:first-child { color: var(--text); font-weight: 500; }
+    .hw-table tr:last-child td { border-bottom: none; }
+    .tip-box {
+      background: var(--accent-dim);
+      border-left: 3px solid var(--accent);
+      border-radius: 0 6px 6px 0;
+      padding: 14px 18px;
+      margin: 18px 0;
+    }
+    .tip-box .tlabel { font-family: var(--mono); font-size: 10px; color: var(--accent); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 6px; }
+    .tip-box p { margin: 0; font-size: 14px; color: var(--text-2); line-height: 1.55; }
+    .warn-box {
+      background: rgba(200,140,60,0.08);
+      border-left: 3px solid rgba(200,140,60,0.6);
+      border-radius: 0 6px 6px 0;
+      padding: 14px 18px;
+      margin: 18px 0;
+    }
+    .warn-box .wlabel { font-family: var(--mono); font-size: 10px; color: rgba(220,160,70,0.9); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 6px; }
+    .warn-box p { margin: 0; font-size: 14px; color: var(--text-2); line-height: 1.55; }
+    .step-list {
+      counter-reset: step;
+      list-style: none;
+      padding: 0;
+      margin: 20px 0;
+    }
+    .step-list li {
+      counter-increment: step;
+      display: flex;
+      gap: 16px;
+      padding: 15px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .step-list li:last-child { border-bottom: none; }
+    .step-list li::before {
+      content: counter(step);
+      width: 26px; height: 26px;
+      border-radius: 50%;
+      background: var(--accent-dim);
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      font-family: var(--mono);
+      font-size: 11px;
+      font-weight: 600;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .step-list li .sc strong { font-size: 14px; color: var(--text); display: block; margin-bottom: 4px; }
+    .step-list li .sc span { font-size: 13.5px; color: var(--text-2); line-height: 1.5; }
+    .use-case-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 13px;
+      margin: 20px 0;
+    }
+    @media(max-width:600px) { .use-case-grid { grid-template-columns: 1fr; } }
+    .uc-card {
+      border: 1px solid var(--border);
+      border-radius: 7px;
+      padding: 16px;
+      background: var(--surface);
+    }
+    .uc-card .uc-head { font-weight: 600; font-size: 14px; color: var(--text); margin-bottom: 8px; }
+    .uc-card p { color: var(--text-2); font-size: 13px; line-height: 1.5; margin: 0; }
+  </style>
+</head>
+
+<body>
+  <div class="grid-bg"></div>
+
+  <header class="nav">
+    <div class="shell">
+      <div class="nav-inner">
+        <a class="brand" href="/bn/">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span class="brand-name"><b>Mehedi Hasan</b><em>ERP · বিজনেস অ্যানালিস্ট</em></span>
+        </a>
+        <a class="back-link" href="/bn/#lab">← ল্যাব-এ ফিরুন</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="post-head">
+    <div class="shell">
+      <span class="eyebrow">টেকনিক্যাল ল্যাব · 0056</span>
+      <h1>বাংলাদেশের কারখানার জন্য Odoo IoT Box — <span class="serif">বারকোড স্ক্যানার, ওজন স্কেল, আর শপ ফ্লোর প্রিন্টার, সঠিকভাবে কনফিগার করা।</span></h1>
+      <p class="lede">কারখানার ফ্লোরে ম্যানুয়াল ডেটা এন্ট্রি বাংলাদেশের ম্যানুফ্যাকচারিংয়ে ERP ডেটা এররের সবচেয়ে বড় উৎস। শ্রমিকরা কাগজে গণনা লিখে রাখেন, সুপারভাইজাররা ঘণ্টাখানেক পর তা Odoo-তে এন্ট্রি করেন — যাতে থাকে ট্রান্সক্রিপশন ভুল, সময়ের ফাঁক, আর রিয়েল-টাইম ভিজিবিলিটির অভাব। Odoo IoT Box ফিজিক্যাল হার্ডওয়্যারকে সরাসরি Odoo-র সাথে যুক্ত করে এই সমস্যার বেশিরভাগ দূর করে দেয়: একটি বারকোড স্ক্যান করলেই সিস্টেম তা সাথে সাথে রেকর্ড করে; একটি ব্যাচ ওজন করলেই Odoo সঠিক সংখ্যাটি ধরে ফেলে। এই গাইডে থাকছে হার্ডওয়্যার নির্বাচন, বাংলাদেশে সোর্সিং, সেটআপ, আর সবচেয়ে বেশি মূল্য দেয় এমন কারখানা-ফ্লোর ইউজ কেস।</p>
+      <div class="post-meta">
+        <span class="chip accent">গাইড</span>
+        <span class="chip">IoT ইন্টিগ্রেশন</span>
+        <span class="chip">ম্যানুফ্যাকচারিং</span>
+        <span class="chip">বাংলাদেশ</span>
+      </div>
+      <div class="byline">
+        <span>লেখক<b><a href="https://www.linkedin.com/in/mehedi-hasan-consultant/" style="color:var(--accent)" rel="author">Mehedi Hasan</a></b></span>
+        <span>প্রকাশিত<b>মে ২০২৬</b></span>
+        <span>পড়ার সময়<b>১৫ মিনিট</b></span>
+        <span>ধরন<b>গাইড</b></span>
+        <span>পরিধি<b>কারখানা ও হার্ডওয়্যার</b></span>
+      </div>
+    </div>
+  </section>
+
+  <article class="post">
+    <aside class="toc">
+      <div class="toc-k">এই গাইডে</div>
+      <ol>
+        <li><a href="#what-is-iot">Odoo IoT Box আসলে কী</a></li>
+        <li><a href="#bd-use-cases">বাংলাদেশের কারখানার ইউজ কেস</a></li>
+        <li><a href="#hardware">বাংলাদেশে হার্ডওয়্যার সোর্সিং</a></li>
+        <li><a href="#power-network">পাওয়ার ও নেটওয়ার্ক সেটআপ</a></li>
+        <li><a href="#barcode-setup">বারকোড স্ক্যানার সেটআপ</a></li>
+        <li><a href="#scale-setup">ওজন স্কেল ইন্টিগ্রেশন</a></li>
+        <li><a href="#printer-setup">জব কার্ডের জন্য POS প্রিন্টার</a></li>
+        <li><a href="#odoo-config">Odoo IoT কনফিগারেশন</a></li>
+        <li><a href="#raspberry-pi">বাজেট অপশন: Raspberry Pi 4</a></li>
+        <li><a href="#troubleshooting">ট্রাবলশুটিং</a></li>
+        <li><a href="#faq">সচরাচর জিজ্ঞাসা</a></li>
+      </ol>
+    </aside>
+
+    <div class="body">
+
+      <h2 id="what-is-iot">Odoo IoT Box আসলে কী এবং এটা কী কাজ করে</h2>
+      <p>Odoo IoT Box আসলে একটি Raspberry Pi 4, যেখানে একটি বিশেষায়িত Odoo অপারেটিং সিস্টেম ইমেজ চলে। এটি ফিজিক্যাল হার্ডওয়্যার (স্ক্যানার, স্কেল, প্রিন্টার) আর Odoo অ্যাপ্লিকেশনের মধ্যে একটি সেতুর কাজ করে। USB বা সিরিয়াল কেবল দিয়ে হার্ডওয়্যার IoT Box-এ প্লাগ করুন, IoT Box-কে নেটওয়ার্কে যুক্ত করুন, আর Odoo সাথে সাথেই কানেক্ট হওয়া ডিভাইসগুলো চিনে নেবে।</p>
+      <p>একবার যুক্ত হয়ে গেলে, হার্ডওয়্যারটি Odoo-র জন্য একটি সরাসরি ইনপুট ডিভাইসে পরিণত হয়: একটি বারকোড স্ক্যান করলে Odoo-তে একটি অ্যাকশন ট্রিগার হয় (পিকিং রেকর্ড করা, ওয়ার্ক অর্ডার কনফার্ম করা, প্রোডাক্ট শনাক্ত করা)। একটি স্কেল থেকে ওজনের রিডিং স্বয়ংক্রিয়ভাবে quantity ফিল্ডে বসে যায়। থার্মাল প্রিন্টার থেকে রসিদ প্রিন্ট হয় Odoo-র নির্দেশে, আলাদা কোনো ড্রাইভার অ্যাপ্লিকেশন ছাড়াই।</p>
+      <p>বাংলাদেশের কারখানা ম্যানেজারদের জন্য মূল বিষয়টি হলো: ফিজিক্যাল অপারেশনের পর ম্যানুয়ালি ডেটা এন্ট্রি করার মানুষী ধাপটি এখানে বাদ পড়ে যায়। ERP রেকর্ড তৈরি হয় ঠিক সেই মুহূর্তেই যখন ফিজিক্যাল ঘটনাটি ঘটে — কেউ মনে করে এন্ট্রি দেওয়ার এক ঘণ্টা পরে নয়।</p>
+
+      <p class="pull">ফিজিক্যাল ঘটনা আর ERP এন্ট্রির মধ্যে প্রতি ঘণ্টার বিলম্ব মানেই ম্যানেজমেন্টের একঘণ্টা অন্ধত্ব। IoT Box কারখানার ফ্লোরেই এই ফাঁকটা বন্ধ করে দেয়।</p>
+
+      <h2 id="bd-use-cases">বাংলাদেশের কারখানার ইউজ কেস: IoT Box কোথায় সবচেয়ে বেশি কাজে দেয়</h2>
+
+      <div class="use-case-grid">
+        <div class="uc-card">
+          <div class="uc-head">RMG ও গার্মেন্টস — রোল বারকোড স্ক্যানিং</div>
+          <p>টেক্সটাইল মিল থেকে প্রাপ্তির সময় ফ্যাব্রিক রোলের বারকোড স্ক্যান করুন। Odoo স্বয়ংক্রিয়ভাবে স্টক মুভ তৈরি করে, রোল নম্বর রেকর্ড করে, আর ইনভেন্টরি তাৎক্ষণিকভাবে আপডেট করে। কোনো ম্যানুয়াল এন্ট্রি নেই, মাস শেষে ফিজিক্যাল আর সিস্টেম স্টকের মধ্যে কোনো গরমিলও নেই।</p>
+        </div>
+        <div class="uc-card">
+          <div class="uc-head">কাঁচামাল ওজন — সুতা ও ফাইবার</div>
+          <p>স্পিনিং মিল আর উইভিং ইউনিট প্রোডাকশনে ইস্যু করার আগে সুতার কোন ওজন করে। IoT স্কেল ইন্টিগ্রেশন সেই সঠিক ওজনটি ম্যানুফ্যাকচারিং অর্ডারের ম্যাটেরিয়াল কনজাম্পশনে রেকর্ড করে — যা সুতার ভেরিয়েন্স গরমিল সৃষ্টিকারী ম্যানুয়াল রেকর্ডিং দূর করে।</p>
+        </div>
+        <div class="uc-card">
+          <div class="uc-head">সাইকেল এক্সপোর্ট — পার্টস পিকিং</div>
+          <p>ওয়্যারহাউস পিকাররা অর্ডার পিকিং-এর সময় পার্টসের বারকোড স্ক্যান করেন। Odoo প্রতিটি স্ক্যান পিকিং লিস্টের সাথে যাচাই করে, ভুল আইটেম রিয়েল টাইমে চিহ্নিত করে, আর কনফার্মেশনে স্বয়ংক্রিয়ভাবে স্টক লোকেশন আপডেট করে — যা এক্সপোর্ট প্যাকিং এররের কারণ হওয়া মিস-পিক দূর করে।</p>
+        </div>
+        <div class="uc-card">
+          <div class="uc-head">ফিনিশড গুডস — QC-তে প্যাকিং স্ক্যান</div>
+          <p>QC স্টাফরা ইন্সপেকশনের পর ফিনিশড প্রোডাক্টের বারকোড স্ক্যান করেন। Odoo রেকর্ড করে কোন আইটেম QC পাস করেছে, কে ইন্সপেক্ট করেছেন, আর সেগুলো ফিনিশড গুডস লোকেশনে সরিয়ে নেয় — কাগজের লগ ছাড়াই একটি সম্পূর্ণ কোয়ালিটি ও ট্রেসেবিলিটি রেকর্ড তৈরি করে।</p>
+        </div>
+        <div class="uc-card">
+          <div class="uc-head">জব কার্ড প্রিন্টিং — ওয়ার্ক অর্ডার ডিসপ্যাচ</div>
+          <p>Odoo-তে একটি ম্যানুফ্যাকচারিং ওয়ার্ক অর্ডার কনফার্ম হওয়ামাত্র, IoT-যুক্ত প্রিন্টার ফ্লোর সুপারভাইজারের জন্য স্বয়ংক্রিয়ভাবে জব কার্ড প্রিন্ট করে দেয়। এতে "প্রিন্ট করে ফ্লোরে পৌঁছে দেওয়ার" ম্যানুয়াল ধাপটি বাদ পড়ে, যা প্রোডাকশন শুরুতে দেরি ঘটায়।</p>
+        </div>
+        <div class="uc-card">
+          <div class="uc-head">কারখানার ক্যান্টিন বা স্টোরের জন্য POS</div>
+          <p>যেসব ছোট কারখানায় নিজস্ব ক্যান্টিন বা স্টাফ স্টোর আছে, তারা IoT রিসিট প্রিন্টার আর বারকোড স্ক্যানারসহ Odoo POS ব্যবহার করতে পারে। স্টাফদের কেনাকাটা Odoo-তে রেকর্ড হয় আর পেরোল ইন্টিগ্রেশনের মাধ্যমে বেতন থেকে কেটে নেওয়া হয়।</p>
+        </div>
+      </div>
+
+      <h2 id="hardware">বাংলাদেশে হার্ডওয়্যার সোর্সিং</h2>
+      <p>Odoo IoT সেটআপের জন্য বাংলাদেশের বাইরে থেকে হার্ডওয়্যার আমদানি করার দরকার নেই। বেশিরভাগ কম্প্যাটিবল হার্ডওয়্যার স্থানীয়ভাবেই পাওয়া যায়, আর স্থানীয় সোর্সিং আন্তর্জাতিক আমদানির চেয়ে উল্লেখযোগ্যভাবে সস্তা (কাস্টমস ডিউটি, শিপিং খরচ, আর সময় বাঁচায়)।</p>
+
+      <div class="device-block">
+        <div class="device-header">
+          <span class="device-badge usb">USB</span>
+          <h3>বারকোড স্ক্যানার — স্থানীয়ভাবে পাওয়া যায়, ৳1,200–8,000</h3>
+        </div>
+        <div class="device-body">
+          <table class="hw-table">
+            <thead><tr><th>মডেল</th><th>ধরন</th><th>আনুমানিক দাম (৳)</th><th>সবচেয়ে উপযুক্ত</th></tr></thead>
+            <tbody>
+              <tr><td>জেনেরিক USB 1D স্ক্যানার</td><td>ওয়্যার্ড USB, 1D বারকোড</td><td>1,200–2,000</td><td>সাধারণ ইনভেন্টরি, বেসিক প্রোডাক্ট স্ক্যানিং। এলিফ্যান্ট রোড, IDB ভবনে পাওয়া যায়।</td></tr>
+              <tr><td>Honeywell Voyager 1202g</td><td>ওয়্যারলেস USB, 1D</td><td>3,500–5,500</td><td>যেখানে স্ক্যানারকে ঘুরে ঘুরে ব্যবহার করতে হয় এমন ওয়্যারহাউস পিকিং। লং-রেঞ্জ, টেকসই।</td></tr>
+              <tr><td>Zebra DS2208</td><td>ওয়্যার্ড USB, 1D + 2D (QR)</td><td>5,000–8,000</td><td>QR কোড স্ক্যানিং দরকার হলে (প্যাকেজিং, সিরিয়াল নম্বর)। IT ডিস্ট্রিবিউটরদের মাধ্যমে পাওয়া যায়।</td></tr>
+              <tr><td>Honeywell Granit 1911i</td><td>ইন্ডাস্ট্রিয়াল ওয়্যারলেস, 1D + 2D</td><td>12,000–18,000</td><td>ভারী কারখানা পরিবেশের জন্য। ড্রপ-রেজিস্ট্যান্ট, ডাস্ট/স্প্ল্যাশ-প্রুফ। ডিস্ট্রিবিউটরদের মাধ্যমে আমদানি।</td></tr>
+            </tbody>
+          </table>
+          <p><strong>বাংলাদেশে কোথায় কিনবেন:</strong> IDB ভবন (আগারগাঁও), মাল্টিপ্ল্যান সেন্টার (এলিফ্যান্ট রোড), BCS কম্পিউটার সিটি (আগারগাঁও) — এসব জায়গায় বারকোড হার্ডওয়্যার রাখে এমন অনেক দোকান আছে। Honeywell আর Zebra ব্র্যান্ডেড ইউনিটের জন্য অনুমোদিত IT ডিস্ট্রিবিউটরদের সাথে যোগাযোগ করুন — "Zebra Bangladesh distributor" বা "Honeywell barcode scanner Bangladesh" লিখে খুঁজুন।</p>
+        </div>
+      </div>
+
+      <div class="device-block">
+        <div class="device-header">
+          <span class="device-badge serial">RS-232 / USB</span>
+          <h3>ওজন স্কেল — ডেটা আউটপুটসহ ইন্ডাস্ট্রিয়াল স্কেল</h3>
+        </div>
+        <div class="device-body">
+          <p>সব ওজন স্কেল Odoo IoT-তে কাজ করে না। স্কেলটিকে অবশ্যই USB (সিরিয়াল ডিভাইস হিসেবে) বা RS-232 সিরিয়াল পোর্টের মাধ্যমে ডেটা আউটপুট দিতে হবে, আর একটি স্ট্যান্ডার্ড ডেটা প্রোটোকল (Mettler-Toledo বা সমতুল্য) ব্যবহার করতে হবে। শুধু WiFi বা শুধু Bluetooth-ভিত্তিক স্কেল Odoo IoT Box-এ নেটিভভাবে সাপোর্ট করে না।</p>
+          <table class="hw-table">
+            <thead><tr><th>স্কেলের ধরন</th><th>কানেকশন</th><th>আনুমানিক দাম (৳)</th><th>ইউজ কেস</th></tr></thead>
+            <tbody>
+              <tr><td>Ohaus Ranger 3000 (বেঞ্চ স্কেল)</td><td>USB / RS-232</td><td>25,000–45,000</td><td>সুতা, থ্রেড, ছোট পার্টস। ঢাকায় Ohaus ডিস্ট্রিবিউটর।</td></tr>
+              <tr><td>A&D FX-i সিরিজ</td><td>USB / RS-232</td><td>20,000–38,000</td><td>ল্যাব ও প্রোডাকশন কোয়ালিটি পরিমাপ। A&D বাংলাদেশের মাধ্যমে পাওয়া যায়।</td></tr>
+              <tr><td>Mettler-Toledo প্রোটোকলসহ প্ল্যাটফর্ম স্কেল</td><td>RS-232</td><td>15,000–30,000</td><td>ফ্যাব্রিক রোল, বাল্ক সুতা। কেনার আগে RS-232 পোর্ট আর প্রোটোকল সাপোর্ট যাচাই করুন।</td></tr>
+              <tr><td>সিরিয়াল আউটপুটসহ লোকাল ব্র্যান্ড</td><td>RS-232</td><td>8,000–15,000</td><td>বাজেট অপশন। Mettler-Toledo বা সমতুল্য প্রোটোকল সাপোর্ট যাচাই করুন। ডেটা শিট চেয়ে নিন।</td></tr>
+            </tbody>
+          </table>
+          <div class="warn-box">
+            <div class="wlabel">স্কেল কেনার আগে</div>
+            <p>কেনার আগে সরবরাহকারীর কাছে সবসময় স্কেলের কমিউনিকেশন প্রোটোকল ডকুমেন্টেশন চেয়ে নিন। স্কেলটিকে Mettler-Toledo কন্টিনিউয়াস আউটপুট সাপোর্ট করতে হবে, অথবা অন্তত একটি কী চাপলে একটি ডেটা স্ট্রিং পাঠাতে হবে (ম্যানুয়াল রিকোয়েস্ট মোড)। যে স্কেল শুধু একটি LED স্ক্রিনে ফলাফল দেখায় আর কোনো ডেটা আউটপুট পোর্ট নেই, তা যত দামই হোক না কেন Odoo IoT Box-এ যুক্ত করা যাবে না।</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="device-block">
+        <div class="device-header">
+          <span class="device-badge usb">USB</span>
+          <h3>থার্মাল প্রিন্টার — জব কার্ড ও রসিদের জন্য</h3>
+        </div>
+        <div class="device-body">
+          <p>ওয়ার্ক সেন্টারে জব কার্ড প্রিন্টিং আর POS-এ রসিদের জন্য, Odoo IoT ESC/POS থার্মাল প্রিন্টার সাপোর্ট করে। এগুলো বাংলাদেশে ব্যাপকভাবে পাওয়া যায়।</p>
+          <table class="hw-table">
+            <thead><tr><th>ব্র্যান্ড</th><th>ধরন</th><th>আনুমানিক ৳</th><th>নোট</th></tr></thead>
+            <tbody>
+              <tr><td>Epson TM-T82</td><td>80mm থার্মাল, USB</td><td>8,000–12,000</td><td>বাংলাদেশে সবচেয়ে সাধারণ POS প্রিন্টার। চমৎকার Odoo কম্প্যাটিবিলিটি। সবখানে পাওয়া যায়।</td></tr>
+              <tr><td>TSC TE210</td><td>লেবেল প্রিন্টার, USB</td><td>12,000–18,000</td><td>বারকোড লেবেল প্রিন্টিংয়ের জন্য। TSC ব্র্যান্ড বাংলাদেশে খুবই জনপ্রিয় ও সাশ্রয়ী।</td></tr>
+              <tr><td>Xprinter XP-58</td><td>58mm থার্মাল, USB</td><td>2,500–4,000</td><td>বাজেট রসিদ প্রিন্টার। ESC/POS-এর সাথে কাজ করে। Daraz বাংলাদেশে পাওয়া যায়।</td></tr>
+              <tr><td>Zebra ZD420</td><td>লেবেল প্রিন্টার, USB/Bluetooth</td><td>35,000–50,000</td><td>প্রোডাক্ট, বাক্সের বারকোডের জন্য ইন্ডাস্ট্রিয়াল লেবেল প্রিন্টিং। খুবই টেকসই। আমদানিকৃত।</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <h2 id="power-network">পাওয়ার ও নেটওয়ার্ক সেটআপ: বাংলাদেশ-নির্দিষ্ট বিবেচ্য বিষয়</h2>
+      <p>বাংলাদেশের কারখানা পরিবেশে দুটি চ্যালেঞ্জ থাকে যা অফিস পরিবেশে সাধারণত থাকে না: পাওয়ার অস্থিরতা আর বড় ফ্লোর এলাকা জুড়ে নেটওয়ার্ক কভারেজ।</p>
+
+      <p><strong>পাওয়ার — সবসময় UPS ব্যবহার করুন:</strong> ঢাকা আর চট্টগ্রামের শিল্প এলাকাতেও বাংলাদেশে ঘনঘন ভোল্টেজ ওঠানামা আর লোডশেডিং হয়। Raspberry Pi 4 (IoT Box) পাওয়ার ওঠানামার প্রতি সংবেদনশীল — ভোল্টেজ স্পাইক SD কার্ড নষ্ট করে দিতে পারে আর IoT Box ব্যবহারের অযোগ্য করে ফেলতে পারে। সবসময় IoT Box-কে UPS দিয়ে, বা অন্তত একটি ভালো ভোল্টেজ স্ট্যাবিলাইজার দিয়ে চালান। একটি ছোট 650VA UPS (৳4,000–7,000) পর্যাপ্ত সুরক্ষা দেয় আর সংক্ষিপ্ত লোডশেডিংয়ে ১৫–৩০ মিনিট চালু রাখতে পারে।</p>
+
+      <p><strong>নেটওয়ার্ক — যেখানে সম্ভব ওয়্যার্ড ইথারনেট ব্যবহার করুন:</strong> কারখানার ফ্লোর বৈদ্যুতিকভাবে "নয়েজি" পরিবেশ। ভেরিয়েবল ফ্রিকোয়েন্সি ড্রাইভ, মোটর, আর ফ্লুরোসেন্ট লাইটিং RF ইন্টারফিয়ারেন্স তৈরি করে যা WiFi-এর নির্ভরযোগ্যতা কমিয়ে দেয়। কারখানার ফ্লোরে IoT Box ইনস্টলেশনের জন্য, সবচেয়ে কাছের সুইচ থেকে IoT Box লোকেশন পর্যন্ত একটি Cat6 ইথারনেট কেবল টানুন। ওয়্যার্ড সংযোগ সম্ভব না হলে, মূল অফিস WiFi সিগন্যালের ওপর নির্ভর না করে IoT Box-এর কাছাকাছি একটি WiFi অ্যাক্সেস পয়েন্ট বসান।</p>
+
+      <p><strong>IoT Box-এর জন্য স্ট্যাটিক IP:</strong> আপনার রাউটারে (IoT Box-এর MAC অ্যাড্রেস ব্যবহার করে) DHCP রিজার্ভেশনের মাধ্যমে IoT Box-কে একটি স্ট্যাটিক IP দিন। এতে IoT Box সবসময় একই IP পাবে আর Odoo সবসময় তার কাছে পৌঁছাতে পারবে। ডাইনামিক IP অ্যাসাইনমেন্টের কারণে লিজ রিনিউ হওয়ার সময় IoT Box ডিসকানেক্ট হয়ে যায়।</p>
+
+      <h2 id="barcode-setup">Odoo-তে বারকোড স্ক্যানার সেটআপ</h2>
+
+      <ol class="step-list">
+        <li>
+          <div class="sc">
+            <strong>Odoo-তে IoT অ্যাপ চালু করুন</strong>
+            <span>Settings → Apps → "IoT" খুঁজুন → Install। ইনভেন্টরি বারকোড অপারেশনের জন্য "Barcode" অ্যাপও ইনস্টল করুন, আর ওয়ার্ক অর্ডারের জন্য ব্যবহার করলে "Manufacturing" অ্যাপ।</span>
+          </div>
+        </li>
+        <li>
+          <div class="sc">
+            <strong>IoT Box নেটওয়ার্কে যুক্ত করুন ও Odoo-তে রেজিস্টার করুন</strong>
+            <span>IoT Box চালু করুন, ইথারনেটের মাধ্যমে সংযুক্ত করুন। এটি স্ক্রিনে তার IP দেখাবে (যদি HDMI মনিটর লাগানো থাকে) অথবা আপনার রাউটারের DHCP টেবিল থেকে খুঁজে বের করুন। Odoo-তে: IoT → IoT Boxes → Connect। IoT Box-এর IP লিখুন আর Pair-এ ক্লিক করুন। Odoo আর IoT Box অথেনটিকেটেড যোগাযোগের জন্য টোকেন বিনিময় করে।</span>
+          </div>
+        </li>
+        <li>
+          <div class="sc">
+            <strong>USB দিয়ে বারকোড স্ক্যানার IoT Box-এ সংযুক্ত করুন</strong>
+            <span>USB স্ক্যানারটি IoT Box-এর যেকোনো USB পোর্টে প্লাগ করুন। ৩০ সেকেন্ডের মধ্যে এটি Odoo-র IoT Devices লিস্টে দেখা যাবে (IoT → Devices)। এটি ডিভাইসের নামসহ "Barcode Scanner" হিসেবে দেখাবে। কোনো ড্রাইভার ইনস্টল করার দরকার নেই।</span>
+          </div>
+        </li>
+        <li>
+          <div class="sc">
+            <strong>স্ক্যানারকে ওয়ার্ক সেন্টারে অ্যাসাইন করুন (Manufacturing-এর জন্য)</strong>
+            <span>Manufacturing → Configuration → Work Centers → ওয়ার্ক সেন্টার বাছাই করুন → IoT ট্যাব → এই ওয়ার্ক সেন্টারে বারকোড স্ক্যানার অ্যাসাইন করুন। এখন কোনো শ্রমিক এই ওয়ার্ক সেন্টারে একটি ওয়ার্ক অর্ডার খুললে, বারকোড স্ক্যান করলেই অপারেশন স্বয়ংক্রিয়ভাবে এগিয়ে যায়।</span>
+          </div>
+        </li>
+        <li>
+          <div class="sc">
+            <strong>ইনভেন্টরি বারকোড অপারেশনে টেস্ট করুন</strong>
+            <span>Inventory → Barcode → একটি প্রোডাক্টের বারকোড স্ক্যান করুন। প্রোডাক্টে বারকোড কনফিগার করা থাকলে (Inventory → Products → পণ্য → Barcode ফিল্ড), স্ক্যানটি সেটি শনাক্ত করে quantity ফিল্ড পূরণ করে দেবে। কোনো বারকোড না দেখালে, প্রোডাক্টের বারকোড কনফিগার করা নেই — প্রোডাক্ট ফর্মে যোগ করুন।</span>
+          </div>
+        </li>
+      </ol>
+
+      <div class="tip-box">
+        <div class="tlabel">বাংলাদেশ বারকোড ফরম্যাট নোট</div>
+        <p>বাংলাদেশে তৈরি বেশিরভাগ পণ্য EAN-13 বারকোড ব্যবহার করে (রিটেইল পণ্যে দেখা যায় এমন স্ট্যান্ডার্ড ১৩-অঙ্কের ফরম্যাট)। স্থানীয়ভাবে তৈরি বা আধা-সমাপ্ত পণ্যে প্রায়ই কোনো বারকোডই থাকে না — এগুলোর জন্য নিজে বারকোড তৈরি ও প্রিন্ট করতে হবে। Odoo-তে, যেকোনো প্রোডাক্টে গিয়ে Barcode ফিল্ডে একটি ইউনিক কোড লিখুন। এরপর Odoo-র বারকোড লেবেল রিপোর্ট বা IoT Box-এ সংযুক্ত একটি লেবেল প্রিন্টার দিয়ে বারকোড লেবেল প্রিন্ট করুন। নিজেদের লেবেল তৈরি করা বাংলাদেশি কারখানাগুলোর মধ্যে Odoo IoT-এর সাথে TSC লেবেল প্রিন্টারই সবচেয়ে জনপ্রিয় সেটআপ।</p>
+      </div>
+
+      <h2 id="scale-setup">ওজন স্কেল ইন্টিগ্রেশন</h2>
+      <p>স্কেল ইন্টিগ্রেশন বারকোড স্ক্যানারের চেয়ে বেশি জটিল, কারণ স্কেল স্ট্যান্ডার্ড USB HID (Human Interface Device)-এর বদলে সিরিয়াল কমিউনিকেশন প্রোটোকল ব্যবহার করে। IoT Box এটি একটি USB-টু-সিরিয়াল অ্যাডাপ্টারের মাধ্যমে হ্যান্ডল করে, অথবা সরাসরি RS-232-এর মাধ্যমে যদি আপনার কাছে সিরিয়াল GPIO HAT-যুক্ত পুরনো Raspberry Pi থাকে।</p>
+
+      <p><strong>হার্ডওয়্যার সংযোগ:</strong> স্কেলের RS-232 আউটপুট একটি USB-টু-RS232 অ্যাডাপ্টারে (এলিফ্যান্ট রোডে ৳200–500-এ পাওয়া যায়) সংযুক্ত করুন, তারপর অ্যাডাপ্টারটি IoT Box-এর USB পোর্টে প্লাগ করুন। স্কেলটি চালু থাকতে হবে আর ডেটা আউটপুট দিতে হবে।</p>
+
+      <p><strong>প্রোটোকল কনফিগারেশন:</strong> IoT Box অ্যাডমিন প্যানেলে (ব্রাউজারে IoT Box-এর IP-তে গিয়ে → Devices → আপনার স্কেল), আপনার স্কেলের সেটিংসের সাথে মিলিয়ে বড রেট, ডেটা বিট, প্যারিটি, আর স্টপ বিট কনফিগার করুন। সাধারণ সেটিংস: 9600 বড, 8N1 (৮ ডেটা বিট, প্যারিটি নেই, ১ স্টপ বিট)। সঠিক কমিউনিকেশন প্যারামিটারের জন্য আপনার স্কেলের ইউজার ম্যানুয়াল দেখুন।</p>
+
+      <p><strong>Odoo-তে স্কেল ব্যবহার:</strong> সংযুক্ত ও কনফিগার হয়ে গেলে, স্কেলটি Odoo IoT Devices-এ দেখা যাবে। Manufacturing → Work Orders-এ, ওজন করা প্রয়োজন এমন একটি অপারেশন খুলুন। বর্তমান স্কেল রিডিং স্বয়ংক্রিয়ভাবে Quantity ফিল্ডে দেখাবে। ওজন ধরার জন্য স্কেলের "Send" বাটন চাপুন (অথবা কন্টিনিউয়াস আউটপুট কনফিগার করুন)।</p>
+
+      <h2 id="printer-setup">শপ ফ্লোর জব কার্ডের জন্য POS প্রিন্টার</h2>
+      <p>স্বয়ংক্রিয় জব কার্ড প্রিন্টিংয়ের জন্য একটি Epson TM-T82 বা সমতুল্য ESC/POS প্রিন্টার Odoo IoT Box-এ সংযুক্ত করা বাংলাদেশি কারখানাগুলোর জন্য সবচেয়ে দ্রুত উপকারী IoT ডেপ্লয়মেন্টগুলোর একটি। একজন সুপারভাইজার যখন একটি ম্যানুফ্যাকচারিং ওয়ার্ক অর্ডার কনফার্ম করেন, তখন সংশ্লিষ্ট ওয়ার্ক সেন্টারে জব কার্ড স্বয়ংক্রিয়ভাবে প্রিন্ট হয়ে যায়, আলাদা কোনো পদক্ষেপ ছাড়াই।</p>
+
+      <p>সেটআপ: প্রিন্টারের USB কেবল IoT Box-এ প্লাগ করুন → এটি Odoo IoT Devices-এ "Printer" হিসেবে দেখাবে → Manufacturing → Configuration → Work Centers → IoT ট্যাব → Printer ফিল্ডে গিয়ে একটি ওয়ার্ক সেন্টারে অ্যাসাইন করুন। প্রিন্টিং কখন হবে তার জন্য ওয়ার্ক সেন্টার সেটিংসে ট্রিগার সেট করুন (ওয়ার্ক অর্ডার শুরুতে, কনফার্মেশনে)।</p>
+
+      <p>লেবেল প্রিন্টিংয়ের জন্য (বারকোডসহ প্রোডাক্ট লেবেল), তার বদলে লেবেল প্রিন্টারটি Inventory মডিউলে অ্যাসাইন করুন: Settings → Technical → Printers → ইনভেন্টরি অপারেশনের লেবেল-প্রিন্টিং অ্যাকশনে অ্যাসাইন করুন।</p>
+
+      <h2 id="odoo-config">Odoo IoT কনফিগারেশন চেকলিস্ট</h2>
+      <p>বাংলাদেশি কারখানা পরিবেশে IoT Box লাইভ করার আগে, এই কনফিগারেশনগুলো যাচাই করুন:</p>
+
+      <ul>
+        <li><strong>IoT মডিউল ইনস্টল করা আছে</strong> — Settings → Apps → IoT। যে হার্ডওয়্যারের জন্য দরকার সে অনুযায়ী Barcode, Manufacturing, আর অন্যান্য মডিউলও ইনস্টল করুন।</li>
+        <li><strong>IoT Box রেজিস্টার করা আছে</strong> — IoT → IoT Boxes-এ আপনার বক্সটি "Connected" স্ট্যাটাসে (সবুজ ডট) দেখাচ্ছে।</li>
+        <li><strong>সব ডিভাইস দেখা যাচ্ছে</strong> — IoT → Devices-এ প্রতিটি সংযুক্ত USB ডিভাইস তালিকাভুক্ত। ডিভাইস অনুপস্থিত থাকা মানে কানেকশন বা ড্রাইভার সমস্যা।</li>
+        <li><strong>ওয়ার্ক সেন্টার কনফিগার করা</strong> — হার্ডওয়্যারযুক্ত প্রতিটি ওয়ার্ক সেন্টারে সঠিক IoT ডিভাইস অ্যাসাইন করা আছে (স্ক্যানার এবং/অথবা প্রিন্টার)।</li>
+        <li><strong>প্রোডাক্ট বারকোড অ্যাসাইন করা</strong> — স্ক্যান করা হবে এমন প্রতিটি প্রোডাক্টের Barcode ফিল্ডে একটি মান আছে। বিদ্যমান বারকোড নেই এমন প্রোডাক্টের জন্য লেবেল তৈরি ও প্রিন্ট করুন।</li>
+        <li><strong>UPS সংযুক্ত</strong> — IoT Box একটি UPS বা ভোল্টেজ স্ট্যাবিলাইজারে আছে।</li>
+        <li><strong>স্ট্যাটিক IP অ্যাসাইন করা</strong> — IoT Box-এর IP রাউটার DHCP-তে রিজার্ভ করা, র‍্যান্ডমভাবে অ্যাসাইন করা নয়।</li>
+        <li><strong>নেটওয়ার্ক টেস্ট করা হয়েছে</strong> — কারখানার ফ্লোর থেকে একটি বারকোড স্ক্যান করুন আর Odoo-তে রেসপন্স টাইম &lt;2 সেকেন্ড কিনা যাচাই করুন।</li>
+      </ul>
+
+      <h2 id="raspberry-pi">বাজেট অপশন: IoT Box হিসেবে Raspberry Pi 4</h2>
+      <p>Odoo.com-এর মাধ্যমে কেনা অফিসিয়াল Odoo IoT Box আসলে একটি Raspberry Pi 4, যাতে আগে থেকেই Odoo IoT ইমেজ ইনস্টল করা থাকে। স্থানীয়ভাবে একটি Raspberry Pi 4 কিনে নিজে Odoo IoT ইমেজ ফ্ল্যাশ করে আপনি কম খরচে একই ফলাফল পেতে পারেন।</p>
+
+      <p><strong>বাংলাদেশে সোর্সিং:</strong> Raspberry Pi 4 (4GB) বাংলাদেশে ইলেকট্রনিক্স ডিস্ট্রিবিউটরদের মাধ্যমে পাওয়া যায়। বর্তমান দামের জন্য BDShop.com, Techshop BD, বা Daraz-এর অনুমোদিত ডিস্ট্রিবিউটরদের দেখুন (প্রাপ্যতার ওপর নির্ভর করে আনুমানিক ৳8,000–12,000 — Pi-র প্রাপ্যতা বিশ্বব্যাপী ওঠানামা করে)। এর সাথে একটি 32GB+ microSD কার্ড (SanDisk বা Samsung, ৳500–800) আর একটি 5V/3A USB-C পাওয়ার সাপ্লাইও (৳600–1,200) দরকার হবে।</p>
+
+      <p><strong>সেটআপ ধাপ:</strong></p>
+      <ol>
+        <li>odoo.com/page/iot-box থেকে Odoo IoT ইমেজ ডাউনলোড করুন (আপনি যে Odoo ভার্সন চালাচ্ছেন তার জন্য উপলব্ধ)।</li>
+        <li>Raspberry Pi Imager বা Balena Etcher দিয়ে ইমেজটি microSD কার্ডে ফ্ল্যাশ করুন।</li>
+        <li>SD কার্ড Raspberry Pi 4-এ ঢোকান, ইথারনেট সংযুক্ত করুন, চালু করুন।</li>
+        <li>আপনার রাউটার DHCP টেবিল থেকে Pi-র IP খুঁজে বের করুন। সেই IP-তে ব্রাউজ করুন — আপনি IoT Box অ্যাডমিন ইন্টারফেস দেখতে পাবেন।</li>
+        <li>Odoo ব্যাকএন্ড থেকে Odoo IoT Box পেয়ারিং প্রসেস অনুসরণ করুন।</li>
+      </ol>
+
+      <p>ফলাফলে যে সেটআপ পাবেন তা অফিসিয়াল IoT Box-এর সাথে কার্যকরীভাবে একই রকম, খরচ প্রায় ৪০% কম — তবে ট্রেড-অফ হলো, Odoo-র ম্যানেজড হার্ডওয়্যার সাপোর্ট পাওয়ার বদলে SD কার্ড ইমেজ আর আপডেট নিজেকেই ম্যানেজ করতে হবে।</p>
+
+      <h2 id="troubleshooting">বাংলাদেশে সাধারণ IoT সমস্যার ট্রাবলশুটিং</h2>
+
+      <p><strong>Odoo-তে IoT Box "Disconnected" দেখাচ্ছে</strong><br>
+      বাংলাদেশে সবচেয়ে সাধারণ কারণ: DHCP লিজ রিনিউয়ের পর IoT Box একটি ভিন্ন IP পেয়েছে। সমাধান: DHCP রিজার্ভেশনের মাধ্যমে একটি স্ট্যাটিক IP অ্যাসাইন করুন। দ্বিতীয় কারণ: লোডশেডিংয়ের পর রাউটার আর IoT Box দুটোই রিস্টার্ট হয়েছে, কিন্তু রাউটার বুট সম্পূর্ণ হওয়ার আগেই IoT Box চালু হয়ে গেছে। IoT Box কনফিগ এডিট করে ৩০ সেকেন্ডের বুট ডিলে যোগ করুন, অথবা পাওয়ার ফিরে আসার পর ৬০ সেকেন্ড অপেক্ষা করুন — IoT Box স্বয়ংক্রিয়ভাবে পুনরায় সংযুক্ত হবে।</p>
+
+      <p><strong>Odoo-তে বারকোড স্ক্যান শনাক্ত হচ্ছে না</strong><br>
+      স্ক্যান করা বারকোডের মান Odoo-র কোনো প্রোডাক্ট বারকোডের সাথে মিলছে না। যাচাই করুন: (১) প্রোডাক্টের Barcode ফিল্ডের মান স্ক্যানার যা পড়ছে তার সাথে হুবহু মিলছে কিনা; (২) স্ক্যানার সঠিক বারকোড টাইপে সেট করা আছে কিনা (QR স্ক্যান করতে চাইলে কিন্তু স্ক্যানার শুধু 1D মোডে থাকলে তা পড়বে না)। স্ক্যানারের ম্যানুয়াল প্রোগ্রামিং বারকোডের মাধ্যমে স্ক্যানারকে অটো-ডিটেক্ট মোডে কনফিগার করুন।</p>
+
+      <p><strong>Odoo-তে স্কেল রিডিং দেখাচ্ছে না</strong><br>
+      সিরিয়াল পোর্ট প্যারামিটার যাচাই করুন — স্কেল আর IoT Box কনফিগের মধ্যে বড রেট বা প্যারিটির অমিলই সবচেয়ে সাধারণ কারণ। USB-টু-RS232 অ্যাডাপ্টারটি শনাক্ত হচ্ছে কিনা তাও যাচাই করুন (IoT Box অ্যাডমিন প্যানেলে সিরিয়াল পোর্টের অধীনে একটি ডিভাইস হিসেবে দেখানোর কথা)। কিছু সস্তা USB-RS232 অ্যাডাপ্টার আনসাইন্ড ড্রাইভার ব্যবহার করে যা IoT Box-এর Linux OS চিনতে পারে না — সর্বোচ্চ কম্প্যাটিবিলিটির জন্য Prolific PL2303 বা FTDI FT232 চিপসেটের অ্যাডাপ্টার ব্যবহার করুন।</p>
+
+      <p><strong>প্রিন্টার খালি পাতা প্রিন্ট করছে</strong><br>
+      প্রিন্টার সংযুক্ত আছে কিন্তু ভুল ড্রাইভার বা পেপার সাইজ কনফিগার করা আছে। Odoo IoT Devices → Printer-এ গিয়ে যাচাই করুন প্রিন্ট অপশন আপনার পেপার সাইজের সাথে মিলছে কিনা (স্ট্যান্ডার্ড POS রোলের জন্য 80mm)। ESC/POS প্রিন্টারের ক্ষেত্রে, IoT Box এটিকে ESC/POS হিসেবেই শনাক্ত করেছে কিনা নিশ্চিত করুন, প্লেইন টেক্সট প্রিন্টার হিসেবে নয়।</p>
+
+      <p>IoT Box যে ম্যানুফ্যাকচারিং মডিউল কনফিগারেশনের সাথে যুক্ত হয়, সে সম্পর্কে দেখুন <a href="/bn/lab/0013-odoo-manufacturing-module-bangladesh" style="color:var(--accent)">Odoo Manufacturing Module Setup গাইড</a>। IoT ডেটা যে ওয়ার্ক সেন্টার রুটিং আর টাইম ট্র্যাকিংয়ে ফিড হয়, সে সম্পর্কে দেখুন <a href="/bn/lab/0038-odoo-manufacturing-routing-bangladesh" style="color:var(--accent)">Manufacturing Routing গাইড</a>।</p>
+
+      <div class="callout">
+        <span class="tag">IoT Box সেটআপ সার্ভিস</span>
+        <p>আপনার বাংলাদেশি কারখানায় যদি Odoo IoT Box কনফিগার করা দরকার হয় — বারকোড স্ক্যানিং, স্কেল ইন্টিগ্রেশন, জব কার্ড প্রিন্টিং — আমি একটি সুগঠিত এনগেজমেন্টে হার্ডওয়্যার সেটআপ ডিজাইন করে Odoo সাইড কনফিগার করে দিতে পারি। <a href="/bn/#contact" style="color:var(--accent)">আপনার কারখানার রিকোয়ারমেন্ট নিয়ে কথা বলতে যোগাযোগ করুন →</a></p>
+      </div>
+
+      <h2 id="faq">সচরাচর জিজ্ঞাসা</h2>
+
+      <h3>বাংলাদেশে Odoo IoT Box-এর জন্য বারকোড স্ক্যানার কোথায় কিনব?</h3>
+      <p>বারকোড স্ক্যানার পাওয়া যায় ঢাকার এলিফ্যান্ট রোডের IDB ভবন আর মাল্টিপ্ল্যান সেন্টারে, চট্টগ্রামের আগ্রাবাদ IT মার্কেটে, আর Daraz বাংলাদেশে। জেনেরিক USB 1D স্ক্যানারের দাম ৳1,200–2,000। Honeywell আর Zebra ব্র্যান্ডেড স্ক্যানার (৳3,500–8,000) বেশি টেকসই এবং কারখানার ফ্লোরে ব্যবহারের জন্য সুপারিশকৃত। 2D/QR স্ক্যানিংয়ের জন্য, IT ডিস্ট্রিবিউটরদের কাছে Zebra DS2208 বা সমতুল্য কিছু খুঁজুন।</p>
+
+      <h3>বাংলাদেশে অফিসিয়াল Odoo IoT Box-এর বদলে কি Raspberry Pi ব্যবহার করা যায়?</h3>
+      <p>হ্যাঁ। অফিসিয়াল IoT Box আসলে একটি Raspberry Pi 4, যাতে আগে থেকেই Odoo IoT ইমেজ ফ্ল্যাশ করা থাকে। আপনি স্থানীয়ভাবে একটি Raspberry Pi 4 কিনে (৳8,000–12,000) নিজে odoo.com থেকে Odoo IoT ইমেজ ফ্ল্যাশ করতে পারেন। ফলাফল কার্যকরীভাবে হুবহু একই রকম। Odoo-র ম্যানেজড হার্ডওয়্যার সাপোর্টের বদলে আপডেট নিজেকেই ম্যানেজ করতে হবে, তবে বাংলাদেশি কারখানাগুলোর জন্য এটাই সবচেয়ে সাশ্রয়ী পদ্ধতি।</p>
+
+      <h3>বাংলাদেশে কোন ওজন স্কেল Odoo IoT Box-এর সাথে কাজ করে?</h3>
+      <p>স্কেলগুলোকে অবশ্যই USB (সিরিয়াল ডিভাইস হিসেবে) বা RS-232-এর মাধ্যমে সংযুক্ত হতে হবে আর একটি স্ট্যান্ডার্ড প্রোটোকল (Mettler-Toledo পছন্দনীয়) সাপোর্ট করতে হবে। Ohaus Ranger 3000 আর A&D FX-i সিরিজ নির্ভরযোগ্যভাবে কম্প্যাটিবল। RS-232 আর Mettler-Toledo প্রোটোকলসহ লোকাল ব্র্যান্ডের স্কেলও কাজ করতে পারে — কেনার আগে ডেটা শিট চেয়ে নিন। শুধু WiFi বা শুধু Bluetooth-ভিত্তিক স্কেল এড়িয়ে চলুন। ডেটা আউটপুটসহ একটি ইন্ডাস্ট্রিয়াল প্ল্যাটফর্ম স্কেলের জন্য ৳15,000–35,000 বাজেট রাখুন।</p>
+
+      <h3>Odoo IoT Box কাজ করতে কি ইন্টারনেট প্রয়োজন?</h3>
+      <p>আপনার Odoo যদি অন-প্রিমাইজ হয় (IoT Box-এর মতো একই লোকাল নেটওয়ার্কে), তাহলে ইন্টারনেট প্রয়োজন নেই — যোগাযোগ হয় LAN-এর মাধ্যমে। Odoo যদি ক্লাউড-হোস্টেড হয় (Odoo.sh বা অন্য কোনো ক্লাউড সার্ভার), তাহলে সার্ভারে পৌঁছাতে IoT Box-এর ইন্টারনেট দরকার হবে। যেসব বাংলাদেশি কারখানায় ইন্টারনেট নির্ভরযোগ্যতা অসামঞ্জস্যপূর্ণ, সেখানে লোকাল IoT Box যোগাযোগসহ অন-প্রিমাইজ Odoo বেশি স্থিতিস্থাপক — ইন্টারনেট বিভ্রাটের সময়ও শপ ফ্লোর স্ক্যানিং চালু থাকে।</p>
+
+    </div>
+  </article>
+
+  <footer>
+    <div class="shell">
+      <div class="post-foot">
+        <span class="eyebrow">আরও পড়ুন</span>
+        <div class="next">
+          <a class="next-card" href="/bn/lab/0055-odoo-dashboards-kpi-bangladesh">
+            <span class="dir">পুরনো · 0055</span>
+            <h4>Odoo Dashboards & KPIs Bangladesh</h4>
+            <p>এক স্ক্রিন থেকেই সেলস পাইপলাইন, ইনভেন্টরি টার্ন, ক্যাশ ফ্লো, আর ম্যানুফ্যাকচারিং OEE ট্র্যাক করুন।</p>
+            <span class="arrow">→</span>
+          </a>
+          <a class="next-card" href="/bn/lab/0057-odoo-backup-restore-bangladesh">
+            <span class="dir">নতুন · 0057</span>
+            <h4>Odoo Backup & Disaster Recovery Bangladesh</h4>
+            <p>বাংলাদেশি ব্যবসার জন্য PostgreSQL ব্যাকআপ, ফাইলস্টোর, অফ-সাইট স্টোরেজ, আর রিকভারি ড্রিল।</p>
+            <span class="arrow">→</span>
+          </a>
+        </div>
+      </div>
+      <div class="foot">
+        <span>© ২০২৬ Mehedi Hasan · Lab / 0056</span>
+        <span><a href="/bn/#lab">↑ ল্যাব ইনডেক্সে ফিরুন</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/lab/_utils.js" defer></script>
+  <script src="/lab/_toc.js" defer></script>
+  <script src="/whatsapp.js" defer></script>
+  <script src="/scroll-top.js" defer></script>
+</body>
+
+</html>

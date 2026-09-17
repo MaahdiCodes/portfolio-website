@@ -1,0 +1,640 @@
+﻿<!doctype html>
+<html lang="bn">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description"
+    content="বাংলাদেশের এক্সপোর্ট জোনের জন্য Odoo-তে EPZ ও SEZ কমপ্লায়েন্স — বন্ডেড ওয়্যারহাউজ, শুল্কমুক্ত ইনপুট, ফিসক্যাল পজিশন ও BEPZA রিপোর্টিং। সঠিকভাবে কনফিগার করুন →" />
+  <meta name="robots" content="noindex, follow" />
+  <meta name="author" content="Mehedi Hasan" />
+  <title>Odoo-তে EPZ কমপ্লায়েন্স বাংলাদেশ | SEZ সেটআপ | মেহেদী হাসান</title>
+  <link rel="canonical" href="https://mhasan.me/bn/lab/0021-epz-sez-compliance-odoo-bangladesh" />
+  <link rel="alternate" hreflang="en" href="https://mhasan.me/lab/0021-epz-sez-compliance-odoo-bangladesh" />
+  <link rel="alternate" hreflang="bn-BD" href="https://mhasan.me/bn/lab/0021-epz-sez-compliance-odoo-bangladesh" />
+  <link rel="alternate" hreflang="x-default" href="https://mhasan.me/lab/0021-epz-sez-compliance-odoo-bangladesh" />
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png" />
+  <!-- Open Graph -->
+  <meta property="og:title" content="Odoo-তে EPZ কমপ্লায়েন্স বাংলাদেশ | SEZ সেটআপ | মেহেদী হাসান" />
+  <meta property="og:description"
+    content="বাংলাদেশের EPZ ও SEZ কমপ্লায়েন্সের জন্য Odoo কীভাবে কনফিগার করবেন — বন্ডেড ওয়্যারহাউজ সেটআপ, শুল্কমুক্ত কাঁচামাল প্রকিউরমেন্ট, BEPZA ফিসক্যাল পজিশন, আর এক্সপোর্ট কনজাম্পশন ট্র্যাকিং।" />
+  <meta property="og:url" content="https://mhasan.me/bn/lab/0021-epz-sez-compliance-odoo-bangladesh" />
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="https://mhasan.me/assets/og-default.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale" content="bn_BD" />
+  <meta property="og:site_name" content="মেহেদী হাসান | Odoo ERP কনসালট্যান্ট" />
+  <meta property="article:author" content="https://www.linkedin.com/in/mehedi-hasan-consultant/" />
+  <meta property="article:published_time" content="2026-05-05T12:00:00+06:00" />
+  <meta property="article:modified_time" content="2026-05-23T12:00:00+06:00" />
+  <meta property="article:section" content="Odoo ERP Bangladesh" />
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Odoo-তে EPZ কমপ্লায়েন্স বাংলাদেশ | SEZ সেটআপ" />
+  <meta name="twitter:description"
+    content="বাংলাদেশে EPZ ও SEZ কমপ্লায়েন্সের জন্য Odoo কনফিগার করুন — বন্ডেড ওয়্যারহাউজ, শুল্কমুক্ত ইনপুট, BEPZA ফিসক্যাল পজিশন, আর কনজাম্পশন ট্র্যাকিং।" />
+  <meta name="twitter:image" content="https://mhasan.me/assets/og-default.jpg" />
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Odoo-তে EPZ ও SEZ কমপ্লায়েন্স: বাংলাদেশের এক্সপোর্ট জোনের জন্য সেটআপ",
+    "description": "বাংলাদেশের Export Processing Zone (EPZ) আর Special Economic Zone (SEZ) কমপ্লায়েন্সের জন্য Odoo কনফিগার করার একটি প্র্যাকটিশনার গাইড — বন্ডেড ওয়্যারহাউজ কনফিগারেশন, শুল্কমুক্ত কাঁচামাল প্রকিউরমেন্ট ও ট্র্যাকিং, BEPZA ফিসক্যাল পজিশন সেটআপ, এক্সপোর্ট প্রুফের জন্য কনজাম্পশন রেকর্ডিং, আর Odoo থেকে BEPZA Monthly Progress Report ডেটা তৈরি করা কভার করে।",
+    "datePublished": "2026-05-05T12:00:00+06:00",
+    "dateModified": "2026-05-23T12:00:00+06:00",
+    "inLanguage": "bn",
+    "author": {
+      "@type": "Person",
+      "name": "Mehedi Hasan",
+      "url": "https://mhasan.me",
+      "jobTitle": "Odoo ERP Consultant & Business Analyst",
+      "sameAs": "https://www.linkedin.com/in/mehedi-hasan-consultant/"
+    },
+    "publisher": { "@type": "Person", "name": "Mehedi Hasan", "url": "https://mhasan.me" },
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://mhasan.me/bn/lab/0021-epz-sez-compliance-odoo-bangladesh" }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "হোম", "item": "https://mhasan.me/bn" },
+      { "@type": "ListItem", "position": 2, "name": "ল্যাব", "item": "https://mhasan.me/bn/#lab" },
+      { "@type": "ListItem", "position": 3, "name": "Odoo-তে EPZ কমপ্লায়েন্স বাংলাদেশ", "item": "https://mhasan.me/bn/lab/0021-epz-sez-compliance-odoo-bangladesh" }
+    ]
+  }
+]
+</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&family=Noto+Sans+Bengali:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap">
+  <link rel="stylesheet" href="/lab/_styles.css">
+  <style>
+    body{ font-family: 'Noto Sans Bengali', var(--sans); }
+    .pull {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: clamp(24px, 3vw, 36px);
+      line-height: 1.25;
+      color: var(--text);
+      margin: 48px 0;
+      padding: 0;
+      border: none;
+      max-width: 22ch;
+      letter-spacing: -0.01em;
+    }
+    .pull::before {
+      content: "";
+      display: block;
+      width: 36px;
+      height: 1px;
+      background: var(--accent);
+      margin-bottom: 18px;
+    }
+
+    /* zone comparison */
+    .zone-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin: 28px 0;
+    }
+    .zone-card {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .zone-card.epz { border-color: oklch(0.80 0.17 155 / 0.5); }
+    .zone-head {
+      padding: 14px 16px;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+    }
+    .zone-card.epz .zone-head { background: oklch(0.80 0.17 155 / 0.06); }
+    .zone-head .zh-type {
+      font-family: var(--mono);
+      font-size: 9px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-3);
+      margin-bottom: 4px;
+    }
+    .zone-card.epz .zone-head .zh-type { color: var(--accent); }
+    .zone-head h4 { margin: 0; font-size: 14px; font-weight: 600; color: var(--text); }
+    .zone-body {
+      padding: 14px 16px;
+    }
+    .zone-body ul {
+      margin: 0;
+      padding: 0 0 0 14px;
+    }
+    .zone-body ul li {
+      font-size: 12.5px;
+      color: var(--text-2);
+      margin-bottom: 6px;
+      line-height: 1.5;
+    }
+    @media(max-width:700px) {
+      .zone-grid { grid-template-columns: 1fr; }
+    }
+
+    /* warehouse setup steps */
+    .step-flow {
+      margin: 28px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      counter-reset: step-counter;
+    }
+    .step {
+      display: grid;
+      grid-template-columns: 56px 1fr;
+      gap: 0;
+      position: relative;
+    }
+    .step:not(:last-child)::before {
+      content: "";
+      position: absolute;
+      left: 27px;
+      top: 52px;
+      bottom: 0;
+      width: 2px;
+      background: var(--border);
+    }
+    .step-num {
+      width: 56px;
+      padding-top: 4px;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .step-num span {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: 2px solid var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--mono);
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--accent);
+      background: var(--bg);
+      flex-shrink: 0;
+      z-index: 1;
+      position: relative;
+    }
+    .step-body {
+      padding: 0 0 36px 16px;
+    }
+    .step-body h4 {
+      margin: 6px 0 8px;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text);
+    }
+    .step-body p { margin: 0 0 8px; font-size: 13.5px; color: var(--text-2); line-height: 1.6; }
+    .step-body code {
+      font-family: var(--mono);
+      font-size: 12px;
+      background: oklch(0.80 0.17 155 / 0.08);
+      color: var(--accent);
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+
+    /* stock flow diagram */
+    .stock-flow {
+      margin: 28px 0;
+      display: flex;
+      align-items: center;
+      gap: 0;
+      flex-wrap: wrap;
+    }
+    .sf-node {
+      flex: 1;
+      min-width: 100px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px 12px;
+      text-align: center;
+      background: var(--surface);
+    }
+    .sf-node.bonded {
+      border-color: oklch(0.80 0.17 155 / 0.5);
+      background: oklch(0.80 0.17 155 / 0.05);
+    }
+    .sf-node .sn-label {
+      font-family: var(--mono);
+      font-size: 9px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-3);
+      margin-bottom: 6px;
+    }
+    .sf-node.bonded .sn-label { color: var(--accent); }
+    .sf-node .sn-name {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text);
+    }
+    .sf-arrow {
+      padding: 0 6px;
+      color: var(--text-3);
+      font-size: 20px;
+      flex-shrink: 0;
+    }
+    @media(max-width:600px) {
+      .stock-flow { flex-direction: column; }
+      .sf-arrow { transform: rotate(90deg); }
+    }
+
+    /* compliance table */
+    .comp-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 24px 0;
+      font-size: 13px;
+    }
+    .comp-table th {
+      text-align: left;
+      padding: 10px 14px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-3);
+    }
+    .comp-table td {
+      padding: 12px 14px;
+      border: 1px solid var(--border);
+      color: var(--text-2);
+      vertical-align: top;
+      line-height: 1.5;
+    }
+    .comp-table td strong { color: var(--text); }
+
+    /* field note */
+    .field-note{margin:28px 0;border:1px solid var(--border);border-radius:12px;overflow:hidden;background:var(--surface)}
+    .fn-hd{display:flex;align-items:center;justify-content:space-between;padding:12px 18px;border-bottom:1px solid var(--border);font-family:var(--mono);font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-3)}
+    .fn-hd .when{color:var(--accent)}
+    .fn-body{padding:18px 22px;font-size:15px;line-height:1.65;color:var(--text-2)}
+    .fn-body strong{color:var(--text);font-weight:500}
+  </style>
+</head>
+
+<body>
+  <div class="grid-bg"></div>
+
+  <header class="nav">
+    <div class="shell">
+      <div class="nav-inner">
+        <a class="brand" href="/bn/">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span class="brand-name"><b>Mehedi Hasan</b><em>ERP · বিজনেস অ্যানালিস্ট</em></span>
+        </a>
+        <a class="back-link" href="/bn/#lab">← ল্যাব-এ ফিরুন</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="post-head">
+    <div class="shell">
+      <span class="eyebrow">টেকনিক্যাল ল্যাব · 0021</span>
+      <h1>Odoo-তে EPZ ও SEZ কমপ্লায়েন্স — <span class="serif">বাংলাদেশের এক্সপোর্ট জোনের জন্য বন্ডেড ওয়্যারহাউজ সেটআপ।</span></h1>
+      <p class="lede">BEPZA কমপ্লায়েন্সের জন্য Odoo কীভাবে কনফিগার করবেন — বন্ডেড ওয়্যারহাউজ লোকেশন সেটআপ, শুল্কমুক্ত কাঁচামাল প্রকিউরমেন্ট, EPZ ইমপোর্টের জন্য ফিসক্যাল পজিশন ম্যাপিং, ম্যানুফ্যাকচারিং কনজাম্পশন ট্র্যাকিং, আর BEPZA Monthly Progress Report (MPR)-এর জন্য প্রয়োজনীয় ডেটা তৈরি করা। এই গাইডটি তৈরি হয়েছে EPZ নিটওয়্যার আর ওভেন গার্মেন্ট ফ্যাক্টরির ডেপ্লয়মেন্ট থেকে।</p>
+      <div class="post-meta">
+        <span class="chip accent">কমপ্লায়েন্স গাইড</span>
+        <span class="chip">EPZ · SEZ · BEPZA</span>
+        <span class="chip">বন্ডেড ওয়্যারহাউজ</span>
+        <span class="chip">বাংলাদেশ এক্সপোর্ট জোন</span>
+      </div>
+      <div class="byline">
+        <span>লেখক<b><a href="https://www.linkedin.com/in/mehedi-hasan-consultant/" style="color:var(--accent)" rel="author">Mehedi Hasan</a></b></span>
+        <span>প্রকাশিত<b>মে ২০২৬</b></span>
+        <span>পড়ার সময়<b>১৩ মিনিট</b></span>
+        <span>ধরন<b>সেটআপ গাইড</b></span>
+        <span>পরিধি<b>EPZ ও বন্ডেড ওয়্যারহাউজ ফ্যাক্টরি</b></span>
+      </div>
+    </div>
+  </section>
+
+  <article class="post">
+    <aside class="toc">
+      <div class="toc-k">এই গাইডে</div>
+      <ol>
+        <li><a href="#epz-vs-sez">EPZ বনাম SEZ বনাম বন্ডেড ওয়্যারহাউজ</a></li>
+        <li><a href="#compliance-obligations">BEPZA কমপ্লায়েন্স বাধ্যবাধকতা</a></li>
+        <li><a href="#warehouse-setup">Odoo-তে বন্ডেড ওয়্যারহাউজ</a></li>
+        <li><a href="#procurement">শুল্কমুক্ত কাঁচামাল প্রকিউরমেন্ট</a></li>
+        <li><a href="#manufacturing">ম্যানুফ্যাকচারিং কনজাম্পশন ট্র্যাকিং</a></li>
+        <li><a href="#mpr">Odoo থেকে BEPZA MPR ডেটা</a></li>
+        <li><a href="#fiscal-position">ফিসক্যাল পজিশন কনফিগারেশন</a></li>
+        <li><a href="#faq">সচরাচর জিজ্ঞাসা</a></li>
+      </ol>
+    </aside>
+
+    <div class="body">
+      <p>বাংলাদেশে BEPZA-র অধীনে আটটি Export Processing Zone আছে, আর তার সাথে যোগ হচ্ছে BEZA-র অধীনে ক্রমবর্ধমান সংখ্যক Special Economic Zone। এই জোনগুলোর ভেতরের ফ্যাক্টরির জন্য শুল্কমুক্ত ইমপোর্টের সুবিধাই সবচেয়ে বড় খরচ-সুবিধা। কিন্তু এর সাথে জড়িয়ে আছে কড়া ট্র্যাকিং বাধ্যবাধকতা। BEPZA-র অডিটররা যেকোনো সময় না জানিয়ে চলে আসতে পারেন, আর ইমপোর্ট, কনজাম্পশন ও এক্সপোর্ট করা প্রতি কেজি কাঁচামালের একটা রিকনসিলিয়েশন দাবি করতে পারেন।</p>
+
+      <p>আমি যেসব EPZ ফ্যাক্টরি নিয়ে কাজ করেছি, তাদের বেশিরভাগই এটা Excel-এ ট্র্যাক করে। গত ছয় মাসের বন্ডেড কাঁচামাল ইমপোর্ট আর তৈরি পণ্যের এক্সপোর্টের মধ্যে রিকনসিলিয়েশন চাইলে সাধারণত উত্তর পেতে তিন দিনের ম্যানুয়াল হিসাব লাগে। Odoo সেই একই উত্তর তিন মিনিটে দিতে পারে — যদি শুরু থেকেই সঠিকভাবে কনফিগার করা থাকে।</p>
+
+      <p class="pull">BEPZA কমপ্লায়েন্স কাগজপত্রের বিষয় নয়। এটা হলো পোর্টে পৌঁছানো থেকে এক্সপোর্ট জাহাজ পর্যন্ত প্রতি গ্রাম বন্ডেড কাঁচামালের একটা লাইভ, রিকনসাইলেবল রেকর্ড রাখার বিষয়।</p>
+
+      <h2 id="epz-vs-sez">EPZ বনাম SEZ বনাম বন্ডেড ওয়্যারহাউজ — মূল পার্থক্য</h2>
+
+      <div class="zone-grid">
+        <div class="zone-card epz">
+          <div class="zone-head">
+            <div class="zh-type">BEPZA পরিচালিত</div>
+            <h4>EPZ (Export Processing Zone)</h4>
+          </div>
+          <div class="zone-body">
+            <ul>
+              <li>৮টি জোন: চট্টগ্রাম, ঢাকা, মংলা, কুমিল্লা, ঈশ্বরদী, উত্তরা, আদমজী, কর্ণফুলী</li>
+              <li>১০০% এক্সপোর্ট-ওরিয়েন্টেড — অনুমতি ছাড়া স্থানীয় বাজারে বিক্রি করা যায় না</li>
+              <li>কাঁচামাল, মেশিনারি, স্পেয়ার পার্টসের শুল্কমুক্ত ইমপোর্ট</li>
+              <li>প্রোডাকশনে ব্যবহৃত ইমপোর্টে কোনো VAT নেই</li>
+              <li>BEPZA-কে Monthly Progress Report (MPR)</li>
+              <li>বার্ষিক ইউটিলাইজেশন ডিক্লারেশন</li>
+              <li>শক্তিশালী ফিজিক্যাল ইনফ্রাস্ট্রাকচার — জোনে ডেডিকেটেড কাস্টমস পোস্ট</li>
+            </ul>
+          </div>
+        </div>
+        <div class="zone-card">
+          <div class="zone-head">
+            <div class="zh-type">BEZA পরিচালিত</div>
+            <h4>SEZ (Special Economic Zone)</h4>
+          </div>
+          <div class="zone-body">
+            <ul>
+              <li>নতুন ফ্রেমওয়ার্ক — বাংলাদেশজুড়ে বিস্তৃত হচ্ছে</li>
+              <li>এক্সপোর্ট আর (সীমিত) ডোমেস্টিক-ওরিয়েন্টেড, দুই ধরনের ইন্ডাস্ট্রিই থাকতে পারে</li>
+              <li>EPZ-এর মতোই শুল্ক সুবিধা, তবে BEZA Act 2010 দ্বারা পরিচালিত</li>
+              <li>বেশি নমনীয় জোন গভর্নেন্স — প্রাইভেট SEZ ডেভেলপার সম্ভব</li>
+              <li>কমপ্লায়েন্স রিপোর্টিং BEPZA-র বদলে BEZA-কে</li>
+              <li>বিনিয়োগে ইনকাম ট্যাক্স হলিডে পিরিয়ড</li>
+            </ul>
+          </div>
+        </div>
+        <div class="zone-card">
+          <div class="zone-head">
+            <div class="zh-type">NBR-লাইসেন্সপ্রাপ্ত</div>
+            <h4>বন্ডেড ওয়্যারহাউজ (অফ-জোন)</h4>
+          </div>
+          <div class="zone-body">
+            <ul>
+              <li>EPZ/SEZ-এর বাইরে অবস্থিত ১০০% এক্সপোর্ট-ওরিয়েন্টেড ফ্যাক্টরির জন্য উপলব্ধ</li>
+              <li>NBR Customs Bonding Commissionerate দ্বারা লাইসেন্সপ্রাপ্ত</li>
+              <li>বন্ডেড ওয়্যারহাউজ লাইসেন্সের অধীনে শুল্কমুক্ত ইমপোর্ট</li>
+              <li>কাস্টমসে ত্রৈমাসিক রিকনসিলিয়েশন স্টেটমেন্ট</li>
+              <li>এক্সপোর্ট ক্লিয়ারেন্সের জন্য অন-সাইট কাস্টমস ইনস্পেকশন</li>
+              <li>RMG, টেক্সটাইল, ফুটওয়্যার আর অন্যান্য এক্সপোর্ট সেক্টরের জন্য উপলব্ধ</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <p>এই গাইডের Odoo কনফিগারেশন নীতিগুলো তিনটি ফ্রেমওয়ার্কেই প্রযোজ্য। নির্দিষ্ট রিপোর্টিং ফরম্যাট (BEPZA MPR বনাম BEZA বনাম NBR কাস্টমস বন্ড রিকনসিলিয়েশন) আলাদা হয়, কিন্তু Odoo-র অন্তর্নিহিত ইনভেন্টরি ট্র্যাকিং লজিক একই থাকে।</p>
+
+      <h2 id="compliance-obligations">BEPZA কমপ্লায়েন্স বাধ্যবাধকতা</h2>
+
+      <p>প্রতিটি EPZ ফ্যাক্টরিকে নিচের বিষয়গুলো বজায় রাখতে ও রিপোর্ট করতে হয়:</p>
+
+      <table class="comp-table">
+        <thead>
+          <tr><th>বাধ্যবাধকতা</th><th>ফ্রিকোয়েন্সি</th><th>BEPZA যা দাবি করে</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Monthly Progress Report (MPR)</strong></td>
+            <td>মাসিক (১০ তারিখের মধ্যে)</td>
+            <td>প্রতিটি কাঁচামালের জন্য: ওপেনিং স্টক, মাসের ইমপোর্ট, মাসের কনজাম্পশন, ক্লোজিং স্টক। তৈরি পণ্যের জন্য: প্রোডাকশন কোয়ান্টিটি, এক্সপোর্ট কোয়ান্টিটি, ক্লোজিং স্টক।</td>
+          </tr>
+          <tr>
+            <td><strong>বার্ষিক ইউটিলাইজেশন ডিক্লারেশন</strong></td>
+            <td>বার্ষিক (আর্থিক বছর শেষে)</td>
+            <td>সব শুল্কমুক্ত ইমপোর্টের বিপরীতে এক্সপোর্ট করা তৈরি পণ্যের পূর্ণ-বছরের রিকনসিলিয়েশন। উদ্বৃত্ত (অব্যবহৃত) কাঁচামালের জন্য ব্যাখ্যা বা শুল্ক পরিশোধ দরকার হয়।</td>
+          </tr>
+          <tr>
+            <td><strong>BEPZA ইনস্পেকশন</strong></td>
+            <td>চাহিদা অনুযায়ী (না জানিয়ে)</td>
+            <td>বন্ডেড কাঁচামাল, প্রসেসের মধ্যে থাকা পণ্য, আর এক্সপোর্টের অপেক্ষায় থাকা তৈরি পণ্যের ফিজিক্যাল স্টক গণনা। স্টক অবশ্যই বন্ডেড লেজারের সাথে মিলতে হবে।</td>
+          </tr>
+          <tr>
+            <td><strong>এক্সপোর্ট প্রুফ জমাদান</strong></td>
+            <td>প্রতি শিপমেন্টে</td>
+            <td>প্রতিটি শিপমেন্টের কাঁচামাল কনজাম্পশনের বন্ডেড দায় নিষ্পত্তি করতে BEPZA-কে Bill of Export আর Bill of Lading-এর কপি জমা দিতে হয়।</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2 id="warehouse-setup">Odoo-তে বন্ডেড ওয়্যারহাউজ সেটআপ</h2>
+
+      <div class="step-flow">
+        <div class="step">
+          <div class="step-num"><span>1</span></div>
+          <div class="step-body">
+            <h4>একটি ডেডিকেটেড বন্ডেড ওয়্যারহাউজ (বা লোকেশন) তৈরি করুন</h4>
+            <p><strong>Inventory → Configuration → Warehouses → New</strong>-এ যান। নাম দিন: <code>EPZ Bonded Warehouse</code> অথবা <code>Bonded Store</code>। যদি আপনার একটাই ফিজিক্যাল ফ্যাসিলিটি থাকে কিন্তু বন্ডেড ও ডোমেস্টিক স্টক আলাদা রাখতে চান, তাহলে এর বদলে একটা চাইল্ড লোকেশন তৈরি করুন: Inventory → Configuration → Locations → [আপনার মূল ওয়্যারহাউজ] → New Child: <code>Bonded Raw Material Store</code>।</p>
+            <p>লোকেশনটি একটা কাস্টম নোট দিয়ে চিহ্নিত করুন অথবা Odoo-র লোকেশন টাইপ ব্যবহার করুন। মূল শর্ত: <strong>সব শুল্কমুক্ত ইমপোর্ট এই লোকেশনে যাবে</strong>। কাস্টমস-ক্লিয়ার্ড পারচেজ রিসিপ্ট ছাড়া আর কিছুই বন্ডেড লোকেশনে ঢুকতে পারবে না।</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num"><span>2</span></div>
+          <div class="step-body">
+            <h4>কাঁচামাল প্রোডাক্টকে "Bonded" ট্যাগ দিন</h4>
+            <p><code>Bonded Raw Materials</code> নামে একটা প্রোডাক্ট ক্যাটাগরি তৈরি করুন আর যেসব প্রোডাক্ট শুল্কমুক্ত ইমপোর্ট করা হয় সেগুলোকে এতে অ্যাসাইন করুন। এতে বন্ডেড স্ট্যাটাস অনুযায়ী ইনভেন্টরি রিপোর্ট, ল্যান্ডেড কস্ট অ্যালোকেশন আর ভ্যালুয়েশন রিপোর্ট ফিল্টার করা সহজ হয়। ভবিষ্যতে MPR-এর জন্য কাস্টম রিপোর্টিংও সহজ করে তোলে।</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num"><span>3</span></div>
+          <div class="step-body">
+            <h4>বন্ডেড ইমপোর্টের জন্য দুই-ধাপের রিসিপ্ট কনফিগার করুন</h4>
+            <p>বন্ডেড ওয়্যারহাউজে মাল্টি-স্টেপ রিসিপ্ট চালু করুন: <strong>Inventory → Configuration → Warehouses → [Bonded WH] → Incoming Shipments: Receive + Quality Check (2 steps)</strong>। এতে একটা কোয়ারেন্টাইন ধাপ তৈরি হয়, যেখানে বন্ডেড ইমপোর্ট বন্ডেড স্টকে ঢোকার আগে কোয়ান্টিটি ও কোয়ালিটি ভেরিফিকেশনের অপেক্ষায় থাকে। কাস্টমস অফিসাররা প্রায়ই এই ধাপে কোয়ান্টিটি ভেরিফাই করেন — Odoo-র কোয়ারেন্টাইন লোকেশন এই ইনস্পেকশন এরিয়ার সাথে মেলে।</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num"><span>4</span></div>
+          <div class="step-body">
+            <h4>বন্ডেড ম্যাটেরিয়ালের জন্য লট/সিরিয়াল ট্র্যাকিং চালু করুন</h4>
+            <p>বন্ডেড কাঁচামালের জন্য লট ট্র্যাকিং চালু করুন: প্রোডাক্ট রেকর্ডে → Inventory ট্যাব → Tracking: <code>By Lot</code>। প্রতিটি ইমপোর্ট কনসাইনমেন্টকে LC নম্বর বা Bill of Lading নম্বরের সাথে মেলানো একটা লট নম্বর দিন। এতে প্রতি-কনসাইনমেন্ট একটা অডিট ট্রেইল তৈরি হয় — যা BEPZA ইনস্পেকশনের সময় গুরুত্বপূর্ণ, যেখানে তারা একটা নির্দিষ্ট শিপমেন্টের ইউটিলাইজেশন যাচাই করতে পারেন।</p>
+          </div>
+        </div>
+      </div>
+
+      <h2 id="procurement">শুল্কমুক্ত কাঁচামাল প্রকিউরমেন্ট</h2>
+
+      <p>ইমপোর্ট থেকে বন্ডেড স্টক পর্যন্ত বন্ডেড কাঁচামালের ফ্লো:</p>
+
+      <div class="stock-flow">
+        <div class="sf-node">
+          <div class="sn-label">উৎস</div>
+          <div class="sn-name">বিদেশি সাপ্লায়ার</div>
+        </div>
+        <div class="sf-arrow">→</div>
+        <div class="sf-node">
+          <div class="sn-label">ট্রানজিট</div>
+          <div class="sn-name">চট্টগ্রাম পোর্ট / C&F</div>
+        </div>
+        <div class="sf-arrow">→</div>
+        <div class="sf-node bonded">
+          <div class="sn-label">Odoo: বন্ডেড রিসিপ্ট</div>
+          <div class="sn-name">Bonded Raw Material Store</div>
+        </div>
+        <div class="sf-arrow">→</div>
+        <div class="sf-node">
+          <div class="sn-label">Odoo: MO কনজাম্পশন</div>
+          <div class="sn-name">প্রোডাকশন / WIP</div>
+        </div>
+        <div class="sf-arrow">→</div>
+        <div class="sf-node">
+          <div class="sn-label">Odoo: DO</div>
+          <div class="sn-name">এক্সপোর্ট শিপমেন্ট</div>
+        </div>
+      </div>
+
+      <p>বন্ডেড কাঁচামালের জন্য Purchase Order তৈরি করার সময় Odoo-তে যা করতে হয়:</p>
+
+      <ol>
+        <li><strong>ডেলিভারি লোকেশন সেট করুন</strong> Bonded Raw Material Store-এ — সাধারণ ওয়্যারহাউজে নয়। PO-তে "Deliver To" ফিল্ডে অথবা রিসিপ্ট অপারেশন টাইপের ডেস্টিনেশন লোকেশনে।</li>
+        <li><strong>"EPZ Bonded Import" ফিসক্যাল পজিশন প্রয়োগ করুন</strong> ভেন্ডরের ওপর (নিচে ফিসক্যাল পজিশন সেকশনে দেখুন)। এতে ইমপোর্ট ট্যাক্স তাৎক্ষণিক খরচ না দেখিয়ে একটা সাসপেন্ডেড ডিউটি অ্যাকাউন্টে ম্যাপ হয়।</li>
+        <li><strong>ল্যান্ডেড কস্ট রেকর্ড করুন</strong> C&F চার্জ, পোর্ট ফি আর ফ্রেইটের জন্য — কিন্তু কাস্টমস ডিউটির জন্য নয় (যা বন্ডেড লাইসেন্সের অধীনে সাসপেন্ডেড থাকে)। শুধু ফ্রেইট আর হ্যান্ডলিংয়ের অংশগুলোই ল্যান্ডেড কস্টে প্রযোজ্য। বন্ডেড কাঁচামালের সঠিক পার-ইউনিট কস্ট পেতে ল্যান্ডেড কস্ট বন্ডেড স্টকে পোস্ট করুন।</li>
+        <li><strong>একটা লট নম্বর অ্যাসাইন করুন</strong> রিসিপ্ট ভ্যালিডেট করার সময় LC বা Bill of Lading নম্বরের সাথে মিলিয়ে। এটাই সেই কনসাইনমেন্ট রেফারেন্স যা BEPZA ইনস্পেকশনের সময় জিজ্ঞেস করবে।</li>
+      </ol>
+
+      <h2 id="manufacturing">ম্যানুফ্যাকচারিং কনজাম্পশন ট্র্যাকিং</h2>
+
+      <p>Manufacturing Order (MO)-তেই Odoo-তে বন্ডেড কাঁচামাল কনজাম্পশন রেকর্ড হয়। BEPZA কমপ্লায়েন্সের জন্য এটাই সবচেয়ে গুরুত্বপূর্ণ ডেটা পয়েন্ট — এটা বন্ডেড ইনপুটকে তৈরি পণ্যের আউটপুটের সাথে যুক্ত করে।</p>
+
+      <ul>
+        <li><strong>Bill of Materials (BOM)</strong> — বন্ডেড কাঁচামালকে কম্পোনেন্ট হিসেবে রেখে প্রতিটি প্রোডাক্টের জন্য BOM কনফিগার করুন। প্রতি ইউনিটের কোয়ান্টিটি নির্দিষ্ট করুন (যেমন, প্রতি কেজি নিটেড ফ্যাব্রিকে ১.২ কেজি কটন ইয়ার্ন, স্ট্যান্ডার্ড ওয়েস্টেজ ধরে)। BEPZA-র ইউটিলাইজেশন নর্ম যা অনুমতি দেয় তা এই BOM-ভিত্তিক কোয়ান্টিটির ওপরই নির্ভর করে।</li>
+        <li><strong>MO-তে সোর্স লোকেশন</strong> — Manufacturing Order তৈরি করার সময়, কাঁচামালের সোর্স লোকেশন <code>Bonded Raw Material Store</code>-এ সেট করুন। এতে নিশ্চিত হয় যে কনজাম্পশন সাধারণ স্টক নয়, বন্ডেড লোকেশন থেকে পোস্ট হচ্ছে — যা আপনার বন্ডেড ইনভেন্টরি ব্যালেন্স সঠিক রাখে।</li>
+        <li><strong>ওয়েস্টেজ ট্র্যাকিং</strong> — BEPZA প্রতিটি প্রোডাক্ট টাইপের জন্য একটা ওয়েস্টেজ নর্ম অনুমতি দেয় (যেমন, নিটওয়্যারের জন্য ৩–৫% ইয়ার্ন ওয়েস্টেজ, BEPZA-র সাথে আলোচনা সাপেক্ষে)। BOM-এ ওয়েস্টেজকে একটা স্ক্র্যাপ রুটসহ "কম্পোনেন্ট" হিসেবে কনফিগার করুন, অথবা Odoo-র স্ক্র্যাপ অর্ডার ব্যবহার করে প্রকৃত প্রোডাকশন ওয়েস্ট রেকর্ড করে একটা "Bonded Wastage" লোকেশনে পোস্ট করুন। আপনার BEPZA লাইসেন্সে এই নর্মটি নথিভুক্ত রাখুন — আগাম অনুমোদন ছাড়া এটা অতিক্রম করবেন না।</li>
+        <li><strong>ব্যাকফ্লাশ বনাম রিয়েল-টাইম কনজাম্পশন</strong> — উচ্চ-ভলিউম EPZ নিটওয়্যার ফ্যাক্টরির জন্য ব্যাকফ্লাশিং (রিয়েল-টাইমে নয়, MO সম্পন্ন হওয়ার সময় কনজাম্পশন রেকর্ড করা) বেশি ব্যবহারিক। বাস্তবায়নের আগে এটা আপনার অপারেশনস টিম আর BEPZA অডিটরের কাছে গ্রহণযোগ্য কি না যাচাই করে নিন।</li>
+      </ul>
+
+      <div class="field-note">
+        <div class="fn-hd"><span>নোট · EPZ নিটওয়্যার ফ্যাক্টরি, Odoo-তে প্রথম BEPZA ইনস্পেকশন</span><span class="when">বন্ডেড লেজার ড্রিফট</span></div>
+        <div class="fn-body">
+          একটা ফ্যাক্টরি বন্ডেড লোকেশন সঠিকভাবেই সেট করেছিল, কিন্তু এর Manufacturing Order তৈরি হচ্ছিল ডিফল্ট কাঁচামাল সোর্স — অর্থাৎ সাধারণ ওয়্যারহাউজ থেকে — কারণ কেউ বন্ডেড BOM-এর জন্য অপারেশন টাইপের সোর্স লোকেশন বদলায়নি। কনজাম্পশন পোস্ট হচ্ছিল সাধারণ স্টক থেকে; বন্ডেড লোকেশনের ব্যালেন্স ক্রমাগত বাড়ছিল, অথচ ফিজিক্যাল বন্ডেড স্টোর খালি হয়ে যাচ্ছিল। কেউ খেয়াল করেনি, যতক্ষণ না একজন BEPZA ইনস্পেক্টর Odoo-র বন্ডেড রিপোর্টকে ফিজিক্যাল গণনার সাথে মিলিয়ে কাগজে-কলমে কয়েক টন ইয়ার্নের একটা গ্যাপ খুঁজে পেলেন। <strong>সমাধান ছিল প্রতিটি বন্ডেড প্রোডাক্টের জন্য ম্যানুফ্যাকচারিং অপারেশন টাইপে বন্ডেড লোকেশনকে হার্ড-ওয়্যার্ড সোর্স বানিয়ে দেওয়া, আর একটা মাসিক চেক যোগ করা: MPR ফাইল করার আগে Odoo-র বন্ডেড লোকেশন ব্যালেন্স অবশ্যই ফিজিক্যাল স্টোর গণনার সাথে মিলতে হবে। যে বন্ডেড লেজার কখনো রিকনসাইল করা হয় না, সেটা কোনো রেকর্ড নয় — সেটা অডিটরের অপেক্ষায় থাকা একটা দায়।</strong>
+        </div>
+      </div>
+
+      <h2 id="mpr">Odoo থেকে BEPZA Monthly Progress Report (MPR) ডেটা</h2>
+
+      <p>MPR-এর জন্য প্রতিটি কাঁচামালের (ইয়ার্ন, ফ্যাব্রিক, অ্যাক্সেসরিজ ইত্যাদি) নিচের ডেটা দরকার:</p>
+
+      <table class="comp-table">
+        <thead>
+          <tr><th>MPR ফিল্ড</th><th>Odoo রিপোর্ট / সোর্স</th><th>কীভাবে বের করবেন</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>ওপেনিং স্টক (মাসের ১ তারিখ)</strong></td>
+            <td>Inventory Valuation Report</td>
+            <td>Inventory → Reporting → Inventory Valuation → ফিল্টার: location = Bonded Store, date = মাসের প্রথম দিন</td>
+          </tr>
+          <tr>
+            <td><strong>মাসের ইমপোর্ট</strong></td>
+            <td>Purchase Receipts</td>
+            <td>Inventory → Reporting → Moves → ফিল্টার: location_dest = Bonded Store, date range = মাস। প্রোডাক্ট অনুযায়ী গ্রুপ করুন।</td>
+          </tr>
+          <tr>
+            <td><strong>মাসের কনজাম্পশন</strong></td>
+            <td>Manufacturing Orders</td>
+            <td>Manufacturing → Reporting → Production Analysis → ফিল্টার: source location = Bonded Store, date range = মাস। প্রোডাক্ট অনুযায়ী কনজিউমড কাঁচামাল।</td>
+          </tr>
+          <tr>
+            <td><strong>ক্লোজিং স্টক (মাসের শেষ দিন)</strong></td>
+            <td>Inventory Valuation Report</td>
+            <td>ওপেনিং স্টকের মতোই ফিল্টার, শুধু ডেট মাসের শেষ দিন।</td>
+          </tr>
+          <tr>
+            <td><strong>এক্সপোর্ট করা তৈরি পণ্য</strong></td>
+            <td>Delivery Orders</td>
+            <td>Inventory → Reporting → Moves → ফিল্টার: operation type = Export Delivery, date range = মাস। প্রোডাক্ট অনুযায়ী গ্রুপ করুন।</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>Odoo একটা ফরম্যাটেড BEPZA MPR PDF তৈরি করে না। স্ট্যান্ডার্ড ওয়ার্কফ্লো হলো: Odoo-র রিপোর্টিং থেকে উপরের ডেটা বের করুন → BEPZA MPR Excel টেমপ্লেটে (BEPZA থেকে পাওয়া যায়) পেস্ট করুন → জমা দিন। ২০+ কাঁচামাল SKU থাকা ফ্যাক্টরির জন্য এটা প্রতি মাসে একটা বড় কাজ। একটা কাস্টম Odoo MPR মডিউল এই ডেটা এক্সট্র্যাকশন আর ফরম্যাটিং স্বয়ংক্রিয় করতে পারে, যা প্রসেসকে ৪ ঘণ্টা থেকে ১৫ মিনিটে নামিয়ে আনে।</p>
+
+      <h2 id="fiscal-position">EPZ/বন্ডেড ইমপোর্টের জন্য ফিসক্যাল পজিশন</h2>
+
+      <p>EPZ আর বন্ডেড ওয়্যারহাউজ ফ্যাক্টরির জন্য কাঁচামাল ইমপোর্টের ওপর কাস্টমস ডিউটি সাসপেন্ডেড থাকে — মওকুফ নয়। এক্সপোর্ট প্রুফ না দেওয়া পর্যন্ত এটা একটা কন্টিনজেন্ট লায়াবিলিটি হিসেবে থেকে যায়। Odoo-তে ফিসক্যাল পজিশন এটাকে সঠিকভাবে মডেল করে:</p>
+
+      <p>একটা ফিসক্যাল পজিশন তৈরি করুন: <strong>EPZ Bonded Import — Duty Suspended</strong></p>
+
+      <p>এই ফিসক্যাল পজিশনে ট্যাক্স ম্যাপিং:</p>
+      <ul>
+        <li>Customs Duty 25% → ম্যাপ করুন একটা 0% ট্যাক্সে, account = <code>Suspended Customs Duty (Liability)</code></li>
+        <li>Supplementary Duty → ম্যাপ করুন 0%-এ, account = <code>Suspended SD (Liability)</code></li>
+        <li>VAT on Import 15% → ম্যাপ করুন 0%-এ (বন্ডেড ইমপোর্টে VAT-ও সাসপেন্ডেড)</li>
+      </ul>
+
+      <p>সব বন্ডেড ওয়্যারহাউজ ভেন্ডরের ওপর এই ফিসক্যাল পজিশন অ্যাসাইন করুন। একটা বন্ডেড ইমপোর্ট বিল পোস্ট হলে সাসপেন্ডেড ডিউটির পরিমাণ একটা লায়াবিলিটি হিসেবে রেকর্ড হয় — এটা একটা রিমাইন্ডার যে নির্দিষ্ট সময়ের মধ্যে পণ্য এক্সপোর্ট না হলে এই ডিউটি পরিশোধ করতে হবে। এক্সপোর্ট প্রুফ কনফার্ম হলে, সাসপেন্ডেড ডিউটি লায়াবিলিটি রিভার্স করতে একটা জার্নাল এন্ট্রি পোস্ট করুন (সাসপেন্ডেড ডিউটি অ্যাকাউন্ট ডেবিট করুন, একটা "Duty Discharged" ইনকাম অ্যাকাউন্ট ক্রেডিট করুন)।</p>
+
+      <div class="callout">
+        <span class="tag">সম্পর্কিত পড়াশোনা</span>
+        <p>EPZ কমপ্লায়েন্স সঠিক VAT কনফিগারেশনের ভিত্তির ওপর দাঁড়িয়ে থাকে। যদি এখনো NBR VAT ট্যাক্স গ্রুপ আর ফিসক্যাল পজিশন সেটআপ করে না থাকেন, তাহলে <a href="/bn/lab/0003-nbr-vat-compliance-odoo-bangladesh" style="color:var(--accent)">Odoo বাংলাদেশের জন্য NBR VAT কমপ্লায়েন্স গাইড</a> মূল ফ্রেমওয়ার্কটা দেয়। <a href="/bn/lab/0018-mushak-63-odoo-bangladesh" style="color:var(--accent)">Mushak 6.3 Odoo সেটআপ গাইড</a>-এর Mushak 6.3 কনফিগারেশনও প্রাসঙ্গিক — EPZ ফ্যাক্টরি প্রোডাকশন ইনপুটে VAT থেকে অব্যাহতিপ্রাপ্ত, তবে এই অব্যাহতি Odoo-তে সঠিকভাবে মডেল করতে হবে, যাতে এক্সপোর্ট ইনভয়েস (জিরো-রেটেড) Tax Report-এ ঠিকভাবে দেখায়। বন্ডেড-রেডি Odoo ডেপ্লয়মেন্টের বাজেট — ইউজার, মডিউল, আর কাস্টম MPR রিপোর্টসহ — মেপে দেখতে চেষ্টা করুন <a href="/bn/tools/odoo-cost-estimator/" style="color:var(--accent)">বাংলাদেশের জন্য Odoo cost estimator</a>। আপনার EPZ Odoo সেটআপে সাহায্য দরকার? <a href="/bn/#contact" style="color:var(--accent)">যোগাযোগ করুন, আমি আপনার কনফিগারেশন রিভিউ করব →</a></p>
+      </div>
+
+      <h2 id="faq">সচরাচর জিজ্ঞাসা</h2>
+
+      <h3>বাংলাদেশে ফ্যাক্টরির জন্য EPZ কমপ্লায়েন্স রিকোয়ারমেন্ট কী কী?</h3>
+      <p>BEPZA-লাইসেন্সপ্রাপ্ত EPZ ফ্যাক্টরিকে অবশ্যই ১০০% এক্সপোর্ট-ওরিয়েন্টেড হতে হয় আর তাদের অনুমোদিত কাঁচামাল তালিকার আওতায় শুল্কমুক্ত কাঁচামাল ইমপোর্ট করতে হয়। প্রতিটি ম্যানুফ্যাকচারিং অর্ডারে প্রতিটি বন্ডেড কাঁচামালের কনজাম্পশন ট্র্যাক করতে হয়, প্রতি মাসের ১০ তারিখের মধ্যে BEPZA-কে একটা Monthly Progress Report (MPR) জমা দিতে হয়, বার্ষিক ইউটিলাইজেশন ডিক্লারেশন জমা দিতে হয়, আর সবসময় এমন ফিজিক্যাল স্টক বজায় রাখতে হয় যা বন্ডেড লেজারের সাথে মেলে। BEPZA ইনস্পেক্টররা না জানিয়ে চলে আসতে পারেন — আপনার Odoo বন্ডেড স্টক ব্যালেন্স অবশ্যই ফিজিক্যাল গণনার সাথে মিলতে হবে।</p>
+
+      <h3>EPZ ফ্যাক্টরির জন্য Odoo-তে বন্ডেড ওয়্যারহাউজ কীভাবে কাজ করে?</h3>
+      <p>"Bonded Raw Material Store" নামে ট্যাগ করা একটা ডেডিকেটেড স্টোরেজ লোকেশন সেটআপ করুন — সাধারণ ওয়্যারহাউজ স্টক থেকে আলাদা। সব শুল্কমুক্ত ইমপোর্ট এই লোকেশনেই রিসিভ হয় (Purchase Receipts-এ ডেস্টিনেশন = Bonded Store সেট করা)। Manufacturing Order-গুলো Bonded Store থেকে কাঁচামাল সোর্স করে — MO সম্পন্ন হওয়ার সময় বা প্রোডাকশন চলাকালীন কনজাম্পশন রেকর্ড হয়। এক্সপোর্ট শিপমেন্টের Delivery Order প্ল্যান্ট থেকে বেরোনো তৈরি পণ্য রেকর্ড করে। যেকোনো সময়ে বন্ডেড স্টক ব্যালেন্স = ওপেনিং স্টক + ইমপোর্ট − কনজাম্পশন − ওয়েস্টেজ। এটাই আপনার BEPZA-রিকনসাইলেবল ব্যালেন্স।</p>
+
+      <h3>Odoo কি BEPZA Monthly Progress Report (MPR) সাপোর্ট করে?</h3>
+      <p>বিল্ট-ইন ফরম্যাটেড রিপোর্ট হিসেবে নয়। তবে সব সোর্স ডেটাই Odoo-তে থাকে: Inventory Valuation থেকে ওপেনিং/ক্লোজিং স্টক, Bonded লোকেশনে ফিল্টার করা Purchase Receipts থেকে ইমপোর্ট, Manufacturing Order অ্যানালাইসিস থেকে কনজাম্পশন, Delivery Orders থেকে এক্সপোর্ট। মাসিক প্রসেস হলো: Odoo থেকে এই চারটা ডেটাসেট বের করুন → BEPZA MPR Excel টেমপ্লেট পূরণ করুন → জমা দিন। উচ্চ-ভলিউম ফ্যাক্টরির জন্য (২০+ কাঁচামাল SKU, মাসে ১০০+ MO), একটা কাস্টম Odoo MPR রিপোর্ট মডিউল এই ডেটা এক্সট্র্যাকশন স্বয়ংক্রিয় করতে পারে আর প্রসেসকে ঘণ্টা থেকে মিনিটে নামিয়ে আনতে পারে।</p>
+
+      <h3>EPZ কাঁচামাল পুরোপুরি কনজিউম আর এক্সপোর্ট না হলে কী হয়?</h3>
+      <p>নির্দিষ্ট সময়ের মধ্যে (সাধারণত ইমপোর্টের ১২–১৮ মাসের মধ্যে, BEPZA লাইসেন্সের শর্তের ওপর নির্ভর করে) এক্সপোর্ট করা যায়নি এমন অব্যবহৃত বন্ডেড কাঁচামালের ওপর ডিউটি রিকভারি প্রযোজ্য হয় — যে আমদানি শুল্ক সাসপেন্ড করা হয়েছিল তার পুরোটাই পরিশোধ করতে হয়। অব্যবহৃত কাঁচামাল দেশীয় বাজারে বিক্রি (বিরল আর সীমাবদ্ধ) অথবা পুনরায় রপ্তানির জন্য BEPZA-র অনুমতির জন্যও আবেদন করা যায়। Odoo-তে, সাসপেন্ডেড কাস্টমস ডিউটি লায়াবিলিটি অ্যাকাউন্ট এই এক্সপোজার ট্র্যাক করে — অবশিষ্ট বন্ডেড স্টক ব্যবহার করা না গেলে NBR-কে কত দিতে হবে তার পরিমাণ এই ব্যালেন্সে দেখা যায়।</p>
+    </div>
+  </article>
+
+  <footer>
+    <div class="shell">
+      <div class="post-foot">
+        <span class="eyebrow">আরও পড়ুন</span>
+        <div class="next">
+          <a class="next-card" href="/bn/lab/0020-lc-management-odoo-bangladesh">
+            <span class="dir">পুরনো · 0020</span>
+            <h4>বাংলাদেশে Odoo-তে LC Workflow</h4>
+            <p>Letter of Credit লাইফসাইকেল — বাংলাদেশি এক্সপোর্টারদের জন্য প্রোফর্মা ইনভয়েস থেকে পেমেন্ট রিকনসিলিয়েশন পর্যন্ত।</p>
+            <span class="arrow">→</span>
+          </a>
+          <a class="next-card" href="/bn/lab/0022-bgmea-wage-board-odoo-payroll">
+            <span class="dir">নতুন · 0022</span>
+            <h4>Odoo পেরোলে BGMEA Wage Board</h4>
+            <p>8th Wage Board গ্রেড সেটআপ, ন্যূনতম মজুরি কমপ্লায়েন্স, আর Odoo-তে RMG পেরোল কনফিগারেশন।</p>
+            <span class="arrow">→</span>
+          </a>
+        </div>
+      </div>
+      <div class="foot">
+        <span>© ২০২৬ Mehedi Hasan · Lab / 0021</span>
+        <span><a href="/bn/#lab">↑ ল্যাব ইনডেক্সে ফিরুন</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/lab/_utils.js" defer></script>
+<script src="/lab/_toc.js" defer></script>
+<script src="/whatsapp.js" defer></script>
+<script src="/scroll-top.js" defer></script>
+</body>
+
+</html>

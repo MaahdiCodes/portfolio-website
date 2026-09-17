@@ -1,0 +1,727 @@
+﻿<!doctype html>
+<html lang="bn">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description"
+    content="Odoo গো-লাইভ পরবর্তী সাপোর্ট — L1/L2/L3 এসকেলেশন কাঠামো, হাইপারকেয়ার KPI, আর বাংলাদেশি ERP টিমের জন্য প্রথম ৯০ দিনের প্লেবুক। সঠিকভাবে সেট আপ করুন →" />
+  <meta name="robots" content="noindex, follow" />
+  <meta name="author" content="Mehedi Hasan" />
+  <title>বাংলাদেশে Odoo গো-লাইভ পরবর্তী হাইপারকেয়ার | মেহেদী হাসান</title>
+  <link rel="canonical" href="https://mhasan.me/bn/lab/0032-odoo-post-go-live-hypercare-bangladesh" />
+  <link rel="alternate" hreflang="en" href="https://mhasan.me/lab/0032-odoo-post-go-live-hypercare-bangladesh" />
+  <link rel="alternate" hreflang="bn-BD" href="https://mhasan.me/bn/lab/0032-odoo-post-go-live-hypercare-bangladesh" />
+  <link rel="alternate" hreflang="x-default" href="https://mhasan.me/lab/0032-odoo-post-go-live-hypercare-bangladesh" />
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png" />
+  <!-- Open Graph -->
+  <meta property="og:title" content="বাংলাদেশে Odoo গো-লাইভ পরবর্তী হাইপারকেয়ার | মেহেদী হাসান" />
+  <meta property="og:description"
+    content="L1/L2/L3 সাপোর্ট কাঠামো, এসকেলেশন ম্যাট্রিক্স, ইস্যু সিভিয়ারিটি ক্লাসিফিকেশন, আর গো-লাইভ পরবর্তী হাইপারকেয়ার পিরিয়ডে বাংলাদেশি Odoo টিমের জন্য ৩০-৬০-৯০ দিনের KPI।" />
+  <meta property="og:url" content="https://mhasan.me/bn/lab/0032-odoo-post-go-live-hypercare-bangladesh" />
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="https://mhasan.me/assets/og-default.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale" content="bn_BD" />
+  <meta property="og:site_name" content="মেহেদী হাসান | Odoo ERP কনসালট্যান্ট" />
+  <meta property="article:author" content="https://www.linkedin.com/in/mehedi-hasan-consultant/" />
+  <meta property="article:published_time" content="2026-05-05T14:00:00+06:00" />
+  <meta property="article:modified_time" content="2026-05-23T14:00:00+06:00" />
+  <meta property="article:section" content="Odoo ERP Bangladesh" />
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="বাংলাদেশে Odoo গো-লাইভ পরবর্তী হাইপারকেয়ার | L1/L2/L3 গাইড" />
+  <meta name="twitter:description"
+    content="L1/L2/L3 সাপোর্ট টিয়ার, এসকেলেশন ম্যাট্রিক্স, ৩০-৬০-৯০ দিনের KPI, আর বাংলাদেশি Odoo হাইপারকেয়ারের এক্সিট ক্রাইটেরিয়া — সম্পূর্ণ গো-লাইভ পরবর্তী প্লেবুক।" />
+  <meta name="twitter:image" content="https://mhasan.me/assets/og-default.jpg" />
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "গো-লাইভ পরবর্তী হাইপারকেয়ার: বাংলাদেশি Odoo টিমের জন্য L1/L2/L3 সাপোর্ট কাঠামো",
+    "description": "বাংলাদেশে Odoo বাস্তবায়নের জন্য গো-লাইভ পরবর্তী হাইপারকেয়ার সাপোর্ট কাঠামো তৈরির সম্পূর্ণ গাইড। হাইপারকেয়ারের সংজ্ঞা, দায়িত্বসহ L1/L2/L3 সাপোর্ট টিয়ার সংজ্ঞা, এসকেলেশন ম্যাট্রিক্স, ইস্যু সিভিয়ারিটি ক্লাসিফিকেশন (S1/S2/S3/S4), SLA টার্গেট, ৩০-৬০-৯০ দিনের KPI ফ্রেমওয়ার্ক, প্রথম মাস-শেষের ক্লোজ চেকলিস্ট, হাইপারকেয়ার থেকে BAU সাপোর্টে যাওয়ার এক্সিট ক্রাইটেরিয়া, আর সপ্তাহান্তে সাপোর্ট কভারেজ ও ঈদের সময় এসকেলেশনসহ বাংলাদেশ-নির্দিষ্ট বিবেচ্য বিষয় কভার করা হয়েছে।",
+    "datePublished": "2026-05-05T14:00:00+06:00",
+    "dateModified": "2026-05-23T14:00:00+06:00",
+    "inLanguage": "bn",
+    "author": {
+      "@type": "Person",
+      "name": "Mehedi Hasan",
+      "url": "https://mhasan.me",
+      "jobTitle": "Odoo ERP Consultant & Business Analyst",
+      "sameAs": "https://www.linkedin.com/in/mehedi-hasan-consultant/"
+    },
+    "publisher": { "@type": "Person", "name": "Mehedi Hasan", "url": "https://mhasan.me" },
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://mhasan.me/bn/lab/0032-odoo-post-go-live-hypercare-bangladesh" }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "হোম", "item": "https://mhasan.me/bn" },
+      { "@type": "ListItem", "position": 2, "name": "ল্যাব", "item": "https://mhasan.me/bn/#lab" },
+      { "@type": "ListItem", "position": 3, "name": "বাংলাদেশে Odoo গো-লাইভ পরবর্তী হাইপারকেয়ার", "item": "https://mhasan.me/bn/lab/0032-odoo-post-go-live-hypercare-bangladesh" }
+    ]
+  }
+]
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&family=Noto+Sans+Bengali:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap">
+  <link rel="stylesheet" href="/lab/_styles.css">
+  <style>
+    body{ font-family: 'Noto Sans Bengali', var(--sans); }
+    /* L1/L2/L3 tier cards */
+    .tier-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin: 28px 0;
+    }
+    .tier-card {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .tier-head {
+      padding: 14px 18px;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+    }
+    .tier-level {
+      font-family: var(--mono);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--accent);
+      margin-bottom: 4px;
+    }
+    .tier-name {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text);
+    }
+    .tier-body {
+      padding: 14px 18px;
+      font-size: 13px;
+      color: var(--text-2);
+      line-height: 1.8;
+    }
+    .tier-body ul {
+      margin: 0;
+      padding: 0 0 0 14px;
+    }
+    .tier-sla {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: oklch(0.80 0.17 155);
+      margin-top: 10px;
+      display: block;
+      letter-spacing: 0.04em;
+    }
+
+    /* escalation matrix */
+    .esc-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 12.5px;
+      margin: 24px 0;
+    }
+    .esc-table th {
+      padding: 10px 14px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-3);
+      text-align: left;
+    }
+    .esc-table td {
+      padding: 10px 14px;
+      border: 1px solid var(--border);
+      color: var(--text-2);
+      vertical-align: top;
+      line-height: 1.6;
+    }
+    .esc-table td:first-child { font-weight: 500; color: var(--text); }
+    .s1 { color: oklch(0.60 0.20 30); font-weight: 700; font-family: var(--mono); }
+    .s2 { color: oklch(0.70 0.18 50); font-weight: 700; font-family: var(--mono); }
+    .s3 { color: oklch(0.75 0.12 60); font-family: var(--mono); }
+    .s4 { color: var(--text-3); font-family: var(--mono); }
+
+    /* KPI blocks */
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin: 24px 0;
+    }
+    .kpi-period {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .kpi-head {
+      padding: 11px 16px;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text);
+    }
+    .kpi-body {
+      padding: 13px 16px;
+    }
+    .kpi-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin-bottom: 10px;
+      font-size: 12.5px;
+      color: var(--text-2);
+      line-height: 1.5;
+    }
+    .kpi-item:last-child { margin-bottom: 0; }
+    .kpi-metric {
+      font-family: var(--mono);
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--accent);
+      min-width: 60px;
+      margin-top: 2px;
+    }
+
+    /* issue log */
+    .issue-log {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+      margin: 24px 0;
+    }
+    .issue-log table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 12.5px;
+    }
+    .issue-log th {
+      padding: 10px 12px;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      border-right: 1px solid var(--border);
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: var(--text-3);
+      text-align: left;
+    }
+    .issue-log th:last-child { border-right: none; }
+    .issue-log td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      border-right: 1px solid var(--border);
+      color: var(--text-2);
+    }
+    .issue-log td:last-child { border-right: none; }
+    .issue-log tr:last-child td { border-bottom: none; }
+
+    /* exit criteria */
+    .exit-list {
+      list-style: none;
+      padding: 0;
+      margin: 20px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .exit-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 12px 16px;
+      font-size: 13px;
+      color: var(--text-2);
+      line-height: 1.6;
+    }
+    .exit-icon {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: oklch(0.80 0.17 155);
+      font-weight: 700;
+      margin-top: 2px;
+      min-width: 20px;
+    }
+
+    .pull {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: clamp(20px, 2.8vw, 30px);
+      line-height: 1.3;
+      color: var(--text);
+      margin: 48px 0;
+      max-width: 24ch;
+      letter-spacing: -0.01em;
+    }
+    .pull::before {
+      content: "";
+      display: block;
+      width: 36px;
+      height: 1px;
+      background: var(--accent);
+      margin-bottom: 18px;
+    }
+
+    @media(max-width:700px) {
+      .tier-grid { grid-template-columns: 1fr; }
+      .kpi-grid { grid-template-columns: 1fr; }
+    }
+
+    .field-note{margin:28px 0;border:1px solid var(--border);border-radius:12px;overflow:hidden;background:var(--surface)}
+    .fn-hd{display:flex;align-items:center;justify-content:space-between;padding:12px 18px;border-bottom:1px solid var(--border);font-family:var(--mono);font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-3)}
+    .fn-hd .when{color:var(--accent)}
+    .fn-body{padding:18px 22px;font-size:15px;line-height:1.65;color:var(--text-2)}
+    .fn-body strong{color:var(--text);font-weight:500}
+  </style>
+</head>
+
+<body>
+  <div class="grid-bg"></div>
+
+  <header class="nav">
+    <div class="shell">
+      <div class="nav-inner">
+        <a class="brand" href="/bn/">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span class="brand-name"><b>Mehedi Hasan</b><em>ERP · বিজনেস অ্যানালিস্ট</em></span>
+        </a>
+        <a class="back-link" href="/bn/#lab">← ল্যাব-এ ফিরুন</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="post-head">
+    <div class="shell">
+      <span class="eyebrow">টেকনিক্যাল ল্যাব · 0032</span>
+      <h1>গো-লাইভ পরবর্তী হাইপারকেয়ার — <span class="serif">বাংলাদেশি Odoo টিমের জন্য L1/L2/L3 সাপোর্ট।</span></h1>
+      <p class="lede">গো-লাইভ কোনো সমাপ্তি রেখা নয়। এটা সেই মুহূর্ত, যখন গত বারো সপ্তাহের সব কাজ অপারেশনাল বাস্তবতার মুখোমুখি হয় — সত্যিকার ট্রানজ্যাকশন, সত্যিকার চাপ, আর এমন সব ইউজারের সামনে যারা হয়তো প্রথমবার নতুন সিস্টেম ব্যবহার করছেন। গো-লাইভের পরের দুই সপ্তাহই ঠিক করে দেয় Odoo সফল হবে, নাকি নীরবে ব্যর্থ হবে।</p>
+      <div class="post-meta">
+        <span class="chip accent">গাইড</span>
+        <span class="chip">গো-লাইভ পরবর্তী</span>
+        <span class="chip">সাপোর্ট কাঠামো</span>
+        <span class="chip">হাইপারকেয়ার</span>
+      </div>
+      <div class="byline">
+        <span>লেখক<b><a href="https://www.linkedin.com/in/mehedi-hasan-consultant/" style="color:var(--accent)" rel="author">Mehedi Hasan</a></b></span>
+        <span>প্রকাশিত<b>মে ২০২৬</b></span>
+        <span>পড়ার সময়<b>১২ মিনিট</b></span>
+        <span>ধরন<b>বাস্তবায়ন গাইড</b></span>
+        <span>পরিধি<b>বাংলাদেশি SME · গো-লাইভ পরবর্তী</b></span>
+      </div>
+    </div>
+  </section>
+
+  <article class="post">
+    <aside class="toc">
+      <div class="toc-k">এই গাইডে</div>
+      <ol>
+        <li><a href="#what-hypercare">হাইপারকেয়ার কী</a></li>
+        <li><a href="#l1l2l3">L1/L2/L3 সাপোর্ট টিয়ার</a></li>
+        <li><a href="#severity">ইস্যু সিভিয়ারিটি ক্লাসিফিকেশন</a></li>
+        <li><a href="#issue-log">ইস্যু লগ টেমপ্লেট</a></li>
+        <li><a href="#kpis">৩০-৬০-৯০ দিনের KPI</a></li>
+        <li><a href="#month-end">প্রথম মাস-শেষের ক্লোজ চেকলিস্ট</a></li>
+        <li><a href="#exit">এক্সিট ক্রাইটেরিয়া — হাইপারকেয়ার থেকে BAU</a></li>
+        <li><a href="#bangladesh">বাংলাদেশ-নির্দিষ্ট বিবেচ্য বিষয়</a></li>
+        <li><a href="#faq">সচরাচর জিজ্ঞাসা</a></li>
+      </ol>
+    </aside>
+
+    <div class="body">
+      <p>বাংলাদেশি ERP বাস্তবায়নে আমি যে গো-লাইভ ব্যর্থতাটা সবচেয়ে বেশি দেখি, তা টেকনিক্যাল ব্যর্থতা নয় — এটা সাপোর্টের ব্যর্থতা। কনসালট্যান্ট সিস্টেম হস্তান্তর করে দেন, আর নিজের অ্যাভেইলেবিলিটি কমিয়ে ফেলেন। তৃতীয় দিনে একটা সিভিয়ারিটি-১ ইস্যু দেখা দেয়। কাউকে ফোন করতে হবে, তা কেউ জানে না। সমাধানের অপেক্ষায় ওয়্যারহাউজ টিম ফিরে যায় ম্যানুয়াল রেকর্ডে। যতক্ষণে ইস্যুটা ঠিক হয়, ততক্ষণে দুই সপ্তাহের ইনভেন্টরি ডেটা রিকনসাইল করতে হয়, আর তিনজন মানুষ চুপচাপ ঠিক করে ফেলেছেন যে তারা পুরনো পদ্ধতিই পছন্দ করেন।</p>
+
+      <p>হাইপারকেয়ার এটা ঠেকায়। এটা একটা কাঠামোবদ্ধ, সময়-সীমাবদ্ধ নিবিড় সাপোর্ট পিরিয়ড, যা নিশ্চিত করে প্রতিটি ইস্যু লগ হচ্ছে, প্রতিটি ক্রিটিক্যাল ডিফেক্ট দ্রুত সমাধান হচ্ছে, আর অভ্যন্তরীণ টিম স্বাধীনভাবে চালানোর আত্মবিশ্বাস গড়ে তুলছে। এই গাইড আপনাকে সেটা সঠিকভাবে চালানোর কাঠামো দেবে।</p>
+
+      <p>বাস্তবায়নের জীবনচক্রে হাইপারকেয়ার কোথায় বসে, তা বুঝতে দেখুন <a href="/bn/lab/0028-odoo-implementation-roadmap-bangladesh" style="color:var(--accent)">বাংলাদেশি SME-দের জন্য ১২-সপ্তাহের Odoo বাস্তবায়ন রোডম্যাপ</a> — সেই পরিকল্পনায় হাইপারকেয়ার থাকে ১৩–১৪ নম্বর সপ্তাহে।</p>
+
+      <p class="pull">গো-লাইভ যেখানে বাস্তবায়ন শেষ হয়। হাইপারকেয়ার যেখানে অ্যাডপশন শুরু হয়। এই দুটো এক জিনিস নয়।</p>
+
+      <h2 id="what-hypercare">হাইপারকেয়ার কী — আর কী নয়</h2>
+
+      <p><strong>হাইপারকেয়ার হলো:</strong> গো-লাইভের পর সাধারণত ২–৪ সপ্তাহ ধরে চলা একটা নিবিড়, সময়-সীমাবদ্ধ সাপোর্ট পিরিয়ড, যেখানে কনসালট্যান্ট উঁচু মাত্রায় অ্যাভেইলেবল থাকেন, প্রতিটি ইস্যু আনুষ্ঠানিকভাবে লগ ও দৈনিক ট্রায়াজ করা হয়, আর প্রথম ক্রিটিক্যাল বিজনেস প্রসেসগুলো (মাস-শেষের ক্লোজ, পেরোল) সরাসরি সাপোর্ট পায়। এটা স্থায়ী BAU সাপোর্ট ব্যবস্থা থেকে আলাদা এবং তার আগে আসে।</p>
+
+      <p><strong>হাইপারকেয়ার যা নয়:</strong> চলমান সফটওয়্যার মেইনটেনেন্স, ওপেন-এন্ডেড সাপোর্ট রিটেইনার, বা ট্রেনিংয়ের বিকল্প নয়। যেসব ইউজার হাইপারকেয়ারকে ট্রেনিং ক্যাচ-আপ হিসেবে ব্যবহার করেন, তা বলে দেয় ট্রেনিং ফেজ (সপ্তাহ ১০–১১) তার লক্ষ্য পূরণ করেনি। হাইপারকেয়ারে তোলা ইস্যুগুলো হওয়া উচিত সত্যিকারের অপারেশনাল ইস্যু — "এটা কীভাবে করব?" ধরনের প্রশ্ন নয়, যার উত্তর ট্রেনিংয়েই দেওয়ার কথা ছিল। ট্রেনিং যদি সঠিকভাবে সম্পন্ন হয়ে থাকে (দেখুন <a href="/bn/lab/0031-odoo-training-plan-template" style="color:var(--accent)">Odoo ট্রেনিং প্ল্যান টেমপ্লেট</a>), তাহলে হাইপারকেয়ার ইস্যু লগে থাকবে ডিফেক্ট আর এজ কেস — বেসিক ব্যবহার সংক্রান্ত প্রশ্ন নয়।</p>
+
+      <p><strong>বাস্তবায়নের আকার অনুযায়ী সাধারণ হাইপারকেয়ার মেয়াদ:</strong></p>
+      <ul>
+        <li><strong>স্ট্যান্ডার্ড বাস্তবায়ন (২৫–৫০ ইউজার, কোর মডিউল):</strong> ২ সপ্তাহের হাইপারকেয়ার। প্রথম ১–৩ দিন কনসালট্যান্ট অনসাইটে থাকেন, ১–২ সপ্তাহ রিমোট হাই-অ্যাভেইলেবিলিটি।</li>
+        <li><strong>জটিল বাস্তবায়ন (৫০–১৫০ ইউজার, ম্যানুফ্যাকচারিং + কমপ্লায়েন্স):</strong> ৩–৪ সপ্তাহের হাইপারকেয়ার। প্রথম ১–৫ দিন কনসালট্যান্ট অনসাইটে, দ্বিতীয় সপ্তাহ রিমোট হাই-অ্যাভেইলেবিলিটি, ৩–৪ সপ্তাহে কমানো অ্যাভেইলেবিলিটি।</li>
+        <li><strong>মাল্টি-কোম্পানি বা মাল্টি-লোকেশন:</strong> ৪–৬ সপ্তাহ। প্রতিটি লোকেশনের গো-লাইভ তারিখ ১–২ সপ্তাহ ব্যবধানে আলাদা হতে পারে।</li>
+      </ul>
+
+      <div class="field-note">
+        <div class="fn-hd"><span>নোট · ম্যানুফ্যাকচারার, গাজীপুর</span><span class="when">হাইপারকেয়ারের ৩য় দিন</span></div>
+        <div class="fn-body">
+          একটা ম্যানুফ্যাকচারিং কোম্পানি একটা রোববারে গো-লাইভ করেছিল, যাদের ইমপ্লিমেন্টেশন পার্টনার শনি-রোববার সপ্তাহান্ত পালন করত। অপারেশনের প্রথম রোববারেই একটা ট্যাক্স-কনফিগারেশন ফল্ট সব ভেন্ডর বিল ব্লক করে দেয় — স্পষ্ট একটা S1 — আর কনসালট্যান্টের সাথে সোমবার বিকেলের আগে যোগাযোগ করাই যায়নি। AP টিম দেড় দিন হারায় এবং পরে এন্ট্রি করার জন্য কাগজে বিল রেকর্ড করে রাখে। <strong>ত্রুটিটা নিজে সামান্যই ছিল — একবার কেউ দেখলে বিশ মিনিটে ঠিক হয়ে যেত। ক্ষতিটা পুরোপুরি এসেছিল এমন একটা সাপোর্ট ক্যালেন্ডার থেকে, যা বাংলাদেশের কর্মসপ্তাহের সাথে মেলেনি — এটা চুক্তিতে থাকার কথা ছিল, তৃতীয় দিনের আবিষ্কার হিসেবে নয়।</strong>
+        </div>
+      </div>
+
+      <h2 id="l1l2l3">L1/L2/L3 সাপোর্ট টিয়ার</h2>
+
+      <p>গো-লাইভের আগে, যেকোনো সম্ভাব্য ইস্যুর জন্য সমাধানের একটা স্পষ্ট পথ থাকতে হবে। L1/L2/L3 কাঠামো ইস্যুর ধরন আর জটিলতা অনুযায়ী সেই পথ নির্ধারণ করে। গো-লাইভ দিনের আগেই প্রতিটি টিয়ারে কে থাকবেন তা নাম ধরে ঠিক করে রাখতে হবে।</p>
+
+      <div class="tier-grid">
+        <div class="tier-card">
+          <div class="tier-head">
+            <div class="tier-level">লেভেল ১</div>
+            <div class="tier-name">ফার্স্ট-লাইন সাপোর্ট</div>
+          </div>
+          <div class="tier-body">
+            <p><strong>দায়িত্বে:</strong> অভ্যন্তরীণ সুপার-ইউজার (মডিউল চ্যাম্পিয়ন) — যারা সপ্তাহ ১০-এ ট্রেনিং পেয়েছেন।</p>
+            <ul>
+              <li>ইউজারের হাউ-টু প্রশ্ন</li>
+              <li>ভুলে যাওয়া পাসওয়ার্ড (Odoo অ্যাডমিনে রিসেট)</li>
+              <li>বেসিক প্রসেস স্পষ্টীকরণ</li>
+              <li>রিপোর্ট বোঝার সহায়তা</li>
+              <li>ইউজার এরর রিকভারি (ড্রাফট বাতিল করা, ভুল এন্ট্রি রিভার্স করা)</li>
+            </ul>
+            <span class="tier-sla">→ রেসপন্স: ৩০ মিনিটের মধ্যে · অফিস সময়ে · WhatsApp বা ফোনে</span>
+          </div>
+        </div>
+        <div class="tier-card">
+          <div class="tier-head">
+            <div class="tier-level">লেভেল ২</div>
+            <div class="tier-name">ফাংশনাল সাপোর্ট</div>
+          </div>
+          <div class="tier-body">
+            <p><strong>দায়িত্বে:</strong> ক্লায়েন্ট প্রজেক্ট ম্যানেজার + সিনিয়র সুপার-ইউজার। L1 ১ ঘণ্টার মধ্যে সমাধান করতে না পারলে এখানে এসকেলেট হয়।</p>
+            <ul>
+              <li>কনফিগারেশন রিভিউ দরকার এমন প্রসেস এরর</li>
+              <li>ওয়ার্কফ্লো ইস্যু (আটকে থাকা অ্যাপ্রুভাল, ব্লকড অর্ডার)</li>
+              <li>ডেটা সংশোধন (ভুল অ্যামাউন্ট পোস্ট হওয়া, ভুল ভেন্ডর)</li>
+              <li>রিপোর্ট আর ফিল্টার কনফিগারেশন</li>
+              <li>অ্যাক্সেস রাইটস ইস্যু (ইউজার একটা মেনু দেখতে পাচ্ছে না)</li>
+            </ul>
+            <span class="tier-sla">→ রেসপন্স: ৪ ঘণ্টার মধ্যে · অফিস সময়ে · টিকেট বা WhatsApp গ্রুপে</span>
+          </div>
+        </div>
+        <div class="tier-card">
+          <div class="tier-head">
+            <div class="tier-level">লেভেল ৩</div>
+            <div class="tier-name">টেকনিক্যাল সাপোর্ট</div>
+          </div>
+          <div class="tier-body">
+            <p><strong>দায়িত্বে:</strong> Odoo কনসালট্যান্ট / ইমপ্লিমেন্টেশন ভেন্ডর। ফাংশনাল সমাধান যথেষ্ট না হলে L2 থেকে এখানে এসকেলেট হয়।</p>
+            <ul>
+              <li>সিস্টেম ডিফেক্ট আর কাস্টম কোড বাগ</li>
+              <li>ডেভেলপার অ্যাক্সেস দরকার এমন কনফিগারেশন পরিবর্তন</li>
+              <li>সার্ভার পারফরম্যান্স ইস্যু আর এরর</li>
+              <li>SQL-লেভেল ফিক্স দরকার এমন ডেটা ইন্টিগ্রিটি ইস্যু</li>
+              <li>ইন্টিগ্রেশন ব্যর্থতা (ব্যাংক ফিড, বায়োমেট্রিক)</li>
+            </ul>
+            <span class="tier-sla">→ S1: ২ ঘণ্টার রেসপন্স · S2: একই দিনে · S3/S4: পরবর্তী কর্মদিবসে</span>
+          </div>
+        </div>
+      </div>
+
+      <h2 id="severity">ইস্যু সিভিয়ারিটি ক্লাসিফিকেশন</h2>
+
+      <p>হাইপারকেয়ারে লগ হওয়া প্রতিটি ইস্যুকে সিভিয়ারিটি অনুযায়ী শ্রেণীবদ্ধ করতে হবে। সিভিয়ারিটিই ঠিক করে রেসপন্স টাইম আর কে ইস্যুটা হ্যান্ডল করবে। রক্ষণশীলভাবে ক্লাসিফাই করুন — যে ইস্যু ব্যবসা থামিয়ে দেয়, তা S1, এমনকি যদি মাত্র একজন ইউজার প্রভাবিত হন, যদি সেই ইউজারই একমাত্র ব্যক্তি হন যিনি একটা ক্রিটিক্যাল ট্রানজ্যাকশন প্রসেস করতে পারেন।</p>
+
+      <table class="esc-table">
+        <thead>
+          <tr>
+            <th style="width:10%">সিভিয়ারিটি</th>
+            <th style="width:25%">সংজ্ঞা</th>
+            <th style="width:30%">উদাহরণ (বাংলাদেশ প্রেক্ষাপট)</th>
+            <th style="width:15%">রেসপন্স SLA</th>
+            <th style="width:20%">রেজোলিউশন SLA</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="s1">S1 — ক্রিটিক্যাল</span></td>
+            <td>ব্যবসার কার্যক্রম বন্ধ। কোনো ওয়ার্কঅ্যারাউন্ড নেই।</td>
+            <td>কোনো ভেন্ডর বিলই তৈরি করা যাচ্ছে না (ট্যাক্স কনফিগারেশন ভেঙে গেছে); GRN পোস্ট করা যাচ্ছে না (ইনভেন্টরি জার্নাল ভুল কনফিগার করা); Odoo সার্ভার ডাউন; Mushak ইনভয়েস একেবারেই জেনারেট করা যাচ্ছে না</td>
+            <td>২ ঘণ্টার মধ্যে (যেকোনো সময়)</td>
+            <td>৪ ঘণ্টার মধ্যে</td>
+          </tr>
+          <tr>
+            <td><span class="s2">S2 — উচ্চ</span></td>
+            <td>প্রধান ফাংশন ব্যাহত। ওয়ার্কঅ্যারাউন্ড আছে তবে ধীর বা ভুলপ্রবণ।</td>
+            <td>ভেন্ডর বিলে TDS সঠিকভাবে ক্যালকুলেট হচ্ছে না (ম্যানুয়াল ওয়ার্কঅ্যারাউন্ড সম্ভব); পেরোল ব্যাচে এক ধরনের এমপ্লয়ির জন্য ভুল স্যালারি জেনারেট হচ্ছে; একটা ব্যাংকের জন্য ব্যাংক রিকনসিলিয়েশন ইমপোর্ট ব্যর্থ হচ্ছে</td>
+            <td>৪ ঘণ্টার মধ্যে</td>
+            <td>একই কর্মদিবসে</td>
+          </tr>
+          <tr>
+            <td><span class="s3">S3 — মধ্যম</span></td>
+            <td>ছোট ফাংশন ব্যাহত। উল্লেখযোগ্য বাড়তি ঝামেলা ছাড়াই ওয়ার্কঅ্যারাউন্ড আছে।</td>
+            <td>রিপোর্টে একটা কলাম নেই; প্রিন্ট টেমপ্লেট অ্যালাইনমেন্ট ইস্যু (Mushak প্রিন্ট হয় তবে ফরম্যাটিং কিছুটা এলোমেলো); ড্যাশবোর্ড KPI-তে ভুল পিরিয়ড ফিল্টার ডিফল্ট দেখাচ্ছে</td>
+            <td>পরবর্তী কর্মদিবসে</td>
+            <td>৩ কর্মদিবসের মধ্যে</td>
+          </tr>
+          <tr>
+            <td><span class="s4">S4 — কম</span></td>
+            <td>কসমেটিক বা এনহ্যান্সমেন্ট রিকোয়েস্ট। কোনো অপারেশনাল প্রভাব নেই।</td>
+            <td>বাংলায় UI লেবেল চাওয়া হয়েছে; রিপোর্টে কলামের ক্রম; একটা সুবিধাজনক ফিচার যা মূল স্কোপে ছিল না</td>
+            <td>পরবর্তী কর্মদিবসে</td>
+            <td>পোস্ট-হাইপারকেয়ার ব্যাকলগে শিডিউল করা</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2 id="issue-log">ইস্যু লগ টেমপ্লেট</h2>
+
+      <p>হাইপারকেয়ারে তোলা প্রতিটি ইস্যু — যেকোনো ইউজারের কাছ থেকে, যেকোনো চ্যানেলে — অবশ্যই ইস্যু লগে এন্টার করতে হবে। শুধু WhatsApp কথোপকথনের মাধ্যমে ইস্যু ম্যানেজ করবেন না। লগে না থাকলে, ট্র্যাকিং আর রিপোর্টিংয়ের হিসাবে সেই ইস্যুর কোনো অস্তিত্ব নেই।</p>
+
+      <div class="issue-log">
+        <table>
+          <thead>
+            <tr>
+              <th style="width:8%">ইস্যু #</th>
+              <th style="width:12%">তারিখ</th>
+              <th style="width:10%">মডিউল</th>
+              <th style="width:8%">সিভিয়ারিটি</th>
+              <th style="width:28%">বিবরণ</th>
+              <th style="width:10%">রিপোর্ট করেছেন</th>
+              <th style="width:10%">অ্যাসাইন করা হয়েছে</th>
+              <th style="width:7%">স্ট্যাটাস</th>
+              <th style="width:7%">সমাধান হয়েছে</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>HC-001</td>
+              <td>দিন ১, ১০:২৩</td>
+              <td>Purchase</td>
+              <td><span class="s2">S2</span></td>
+              <td>"Service Provider — no TIN" ক্যাটাগরির ভেন্ডরদের বিলে TDS লাইন দেখাচ্ছে না। ১৫% AIT আশা করা হয়েছিল, দেখাচ্ছে ০%।</td>
+              <td>AP টিম</td>
+              <td>L3 কনসালট্যান্ট</td>
+              <td>সমাধান হয়েছে</td>
+              <td>দিন ১, ১৫:০০</td>
+            </tr>
+            <tr>
+              <td>HC-002</td>
+              <td>দিন ২, ০৯:১৫</td>
+              <td>Inventory</td>
+              <td><span class="s3">S3</span></td>
+              <td>GRN প্রিন্ট টেমপ্লেট: "Item Code" কলামে প্রোডাক্টের ইন্টারনাল রেফারেন্স দেখাচ্ছে না। কোম্পানির লেটারহেড ঠিক আছে।</td>
+              <td>ওয়্যারহাউজ</td>
+              <td>L3 কনসালট্যান্ট</td>
+              <td>সমাধান হয়েছে</td>
+              <td>দিন ৩, ১১:০০</td>
+            </tr>
+            <tr>
+              <td>HC-003</td>
+              <td>দিন ৩</td>
+              <td>HR</td>
+              <td><span class="s2">S2</span></td>
+              <td>১ জুলাইয়ের আগে নিয়োগ পাওয়া এমপ্লয়িদের লিভ ব্যালেন্স চলতি বছরের প্রো-রেটেড লিভ এনটাইটেলমেন্টের বদলে ০ দিন দেখাচ্ছে।</td>
+              <td>HR টিম</td>
+              <td>L3 কনসালট্যান্ট</td>
+              <td>চলমান</td>
+              <td>—</td>
+            </tr>
+            <tr>
+              <td style="color:var(--text-3);font-family:var(--mono);font-size:11px;" colspan="9">প্রতিটি ইস্যুর জন্য নতুন রো যোগ করুন। দৈনিক স্ট্যান্ডআপে লগ রিভিউ করুন। সঠিক ওপেন-ইস্যু সংখ্যা বজায় রাখতে সমাধান হওয়া ইস্যু দ্রুত ক্লোজ করুন।</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>হাইপারকেয়ার চলাকালীন প্রতি কর্মদিবসে ক্লায়েন্ট PM আর কনসালট্যান্টের মধ্যে ১৫ মিনিটের স্ট্যান্ডআপে ইস্যু লগ রিভিউ করা হয়। মালিক বা সমাধানের তারিখ নেই এমন যেকোনো ইস্যু সেই কলেই অ্যাসাইন করা হয়। ২৪ ঘণ্টার বেশি সময় ধরে খোলা থাকা কোনো সমাধান পরিকল্পনাবিহীন S1 বা S2 ইস্যু সাথে সাথে স্পনসরের কাছে এসকেলেট করা হয়।</p>
+
+      <h2 id="kpis">৩০-৬০-৯০ দিনের KPI</h2>
+
+      <p>গো-লাইভের পর সিস্টেমের স্থিতিশীলতা আর অ্যাডপশন মাপতে এই KPI-গুলো ট্র্যাক করুন। প্রতি মাসে স্পনসর আর বিভাগীয় প্রধানদের সাথে শেয়ার করুন। দ্বিতীয় বা তৃতীয় মাসে KPI কমতে থাকা মানে অ্যাডপশন পিছিয়ে যাচ্ছে — ইউজাররা পুরনো অভ্যাসে ফিরে যাচ্ছেন — যার জন্য শুধু ধৈর্য নয়, হস্তক্ষেপ দরকার।</p>
+
+      <div class="kpi-grid">
+        <div class="kpi-period">
+          <div class="kpi-head">দিন ১–৩০</div>
+          <div class="kpi-body">
+            <div class="kpi-item">
+              <span class="kpi-metric">ডিফেক্ট</span>
+              <span>খোলা S1+S2 ইস্যু শূন্যের দিকে নামছে। টার্গেট: ১৪তম দিনের শেষে শূন্য খোলা S1/S2।</span>
+            </div>
+            <div class="kpi-item">
+              <span class="kpi-metric">ট্রানজ্যাকশন</span>
+              <span>Odoo-তে সরাসরি এন্টার করা দৈনিক ট্রানজ্যাকশনের % (ওয়ার্কঅ্যারাউন্ডের বিপরীতে)। টার্গেট: ৭ম দিনের মধ্যে ৯০%+।</span>
+            </div>
+            <div class="kpi-item">
+              <span class="kpi-metric">L1 রেট</span>
+              <span>L3 এসকেলেশন ছাড়াই L1-এ (সুপার-ইউজার) সমাধান হওয়া সাপোর্ট কোয়েরির %। টার্গেট: প্রথম মাসের শেষে ৭০%+।</span>
+            </div>
+            <div class="kpi-item">
+              <span class="kpi-metric">মাস-শেষ</span>
+              <span>Odoo-তে প্রথম মাস-শেষের ক্লোজ সম্পন্ন। টার্গেট: মাস-শেষের ৫ কর্মদিবসের মধ্যে।</span>
+            </div>
+          </div>
+        </div>
+        <div class="kpi-period">
+          <div class="kpi-head">দিন ৩১–৬০</div>
+          <div class="kpi-body">
+            <div class="kpi-item">
+              <span class="kpi-metric">ডিফেক্ট</span>
+              <span>শূন্য খোলা S1। S2 ইস্যু ৯৫%+ সময়ে SLA-র মধ্যে সমাধান হচ্ছে।</span>
+            </div>
+            <div class="kpi-item">
+              <span class="kpi-metric">সেলফ-সার্ভ</span>
+              <span>কনসালট্যান্টের জড়িত হওয়া ছাড়াই সুপার-ইউজাররা ৮৫%+ কোয়েরি সমাধান করছেন।</span>
+            </div>
+            <div class="kpi-item">
+              <span class="kpi-metric">পেরোল</span>
+              <span>কনসালট্যান্টের সহায়তা ছাড়াই প্রথম পেরোল ব্যাচ প্রসেস হয়েছে (HR মডিউল লাইভ থাকলে)।</span>
+            </div>
+            <div class="kpi-item">
+              <span class="kpi-metric">ইনভেন্টরি</span>
+              <span>মাসিক ইনভেন্টরি ভ্যালুয়েশন রিপোর্ট জেনারেট হয়েছে এবং অ্যাকাউন্টস টিম রিভিউ করেছে।</span>
+            </div>
+          </div>
+        </div>
+        <div class="kpi-period">
+          <div class="kpi-head">দিন ৬১–৯০</div>
+          <div class="kpi-body">
+            <div class="kpi-item">
+              <span class="kpi-metric">স্থিতিশীলতা</span>
+              <span>গত ৩০ দিনে শূন্য S1 ইনসিডেন্ট। প্রতি সপ্তাহে S2 সংখ্যা ২-এর নিচে।</span>
+            </div>
+            <div class="kpi-item">
+              <span class="kpi-metric">অ্যাডপশন</span>
+              <span>স্কোপভুক্ত ১০০% ট্রানজ্যাকশন Odoo-তে প্রসেস হচ্ছে। কোনো সমান্তরাল লিগ্যাসি সিস্টেম ব্যবহারে নেই।</span>
+            </div>
+            <div class="kpi-item">
+              <span class="kpi-metric">BAU-প্রস্তুত</span>
+              <span>L1/L2 টিম স্বাধীনভাবে কাজ করছে। শুধু BAU রিটেইনার কোয়েরির জন্য কনসালট্যান্ট নিযুক্ত থাকছেন।</span>
+            </div>
+            <div class="kpi-item">
+              <span class="kpi-metric">ভ্যালু</span>
+              <span>অন্তত একটা ম্যানেজমেন্ট রিপোর্ট (ইনভেন্টরি টার্ন, AP এজিং, সেলস পাইপলাইন) কোনো বিজনেস সিদ্ধান্তে ব্যবহৃত হয়েছে।</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <h2 id="month-end">প্রথম মাস-শেষের ক্লোজ চেকলিস্ট</h2>
+
+      <p>Odoo-তে প্রথম মাস-শেষের ক্লোজ হাইপারকেয়ার পিরিয়ডের সবচেয়ে ঝুঁকিপূর্ণ কাজ। বাংলাদেশের অনেক অ্যাকাউন্টস টিম কখনো আনুষ্ঠানিক মাস-শেষের ক্লোজ করেনি — Tally-তে তারা শুধু ট্রানজ্যাকশন বুক করে যান। Odoo-র পিরিয়ড লকিং আর আনুষ্ঠানিক ক্লোজ প্রসেস তাদের জন্য একটা নতুন শৃঙ্খলা। এটা সরাসরি সাপোর্ট করুন।</p>
+
+      <ul>
+        <li><strong>ব্যাংক রিকনসিলিয়েশন:</strong> সব Odoo ব্যাংক স্টেটমেন্ট লাইন ফিজিক্যাল ব্যাংক স্টেটমেন্টের সাথে মিলান। সুদ, ব্যাংক চার্জ, আর ট্রানজ্যাকশন হয়ে এন্টার হয়নি এমন কোনো ডাইরেক্ট ডিপোজিট পোস্ট করুন। টার্গেট: মাস-শেষের ৩ কর্মদিবসের মধ্যে রিকনসাইল।</li>
+        <li><strong>AP/AR কাট-অফ:</strong> নিশ্চিত করুন পিরিয়ডের সব ইনভয়েস আর বিল এন্টার ও পোস্ট হয়েছে। ক্লোজিং মাসের জন্য কোনো ড্রাফট ইনভয়েস পিরিয়ড ক্লোজে বাকি থাকা উচিত নয়।</li>
+        <li><strong>ইনভেন্টরি ভ্যালুয়েশন:</strong> স্টক ভ্যালুয়েশন রিপোর্ট চালান। মোট ইনভেন্টরি ভ্যালু ব্যালেন্স শিটের ইনভেন্টরি অ্যাসেট অ্যাকাউন্টের সাথে মিলছে কিনা নিশ্চিত করুন। কোনো তারতম্য থাকলে ক্লোজ করার আগে খতিয়ে দেখতে হবে।</li>
+        <li><strong>ডেপ্রিসিয়েশন রান:</strong> Fixed Assets মডিউল সক্রিয় থাকলে, Accounting → Accounting → Assets থেকে মাসিক ডেপ্রিসিয়েশন চালান। ডেপ্রিসিয়েশন খরচ সঠিকভাবে পোস্ট হয়েছে কিনা নিশ্চিত করুন।</li>
+        <li><strong>অ্যাক্রুয়াল আর প্রভিশন:</strong> অ্যাকাউন্টস টিমের সাথে পুনরাবৃত্ত অ্যাক্রুয়াল (গ্র্যাচুইটি প্রভিশন, লিভ এনক্যাশমেন্ট প্রভিশন) রিভিউ করুন। প্রয়োজনে ম্যানুয়াল জার্নাল এন্ট্রি পোস্ট করুন।</li>
+        <li><strong>VAT রিটার্ন পিরিয়ড:</strong> বাংলাদেশের VAT পিরিয়ড মাসিক ক্লোজ হলে, পিরিয়ডের জন্য ট্যাক্স রিপোর্ট চালান। মোট আউটপুট VAT, ইনপুট VAT, আর নিট প্রদেয় VAT প্রত্যাশা অনুযায়ী মিলছে কিনা নিশ্চিত করুন।</li>
+        <li><strong>পিরিয়ড লক:</strong> সব এন্ট্রি নিশ্চিত হওয়ার পর, Odoo-তে পিরিয়ড লক করুন (Settings → Technical → Periods)। এতে বন্ধ পিরিয়ডে ব্যাকডেটেড ট্রানজ্যাকশন ঢোকানো আটকানো যায়।</li>
+        <li><strong>ম্যানেজমেন্ট রিপোর্টিং:</strong> স্পনসর বা CFO-র সাথে P&L আর ব্যালেন্স শিট জেনারেট করে শেয়ার করুন। প্রায়ই এটাই তাদের প্রথমবার Odoo-জেনারেটেড ফাইন্যান্সিয়াল দেখার সুযোগ — নিশ্চিত করুন তারা রিপোর্টগুলো বুঝছেন।</li>
+      </ul>
+
+      <h2 id="exit">এক্সিট ক্রাইটেরিয়া — হাইপারকেয়ার থেকে BAU সাপোর্টে</h2>
+
+      <p>হাইপারকেয়ার থেকে Business As Usual (BAU) সাপোর্টে যাওয়াটা একটা আনুষ্ঠানিক ঘটনা — কনসালট্যান্ট একতরফাভাবে অ্যাভেইলেবিলিটি ধীরে ধীরে কমিয়ে দেবেন, এমন কিছু নয়। ট্রানজিশনের আগে ক্লায়েন্ট PM আর কনসালট্যান্ট একমত হন যে নিচের সব এক্সিট ক্রাইটেরিয়া পূরণ হয়েছে:</p>
+
+      <ul class="exit-list">
+        <li>
+          <span class="exit-icon">✓</span>
+          <div>গত ৫টি টানা কর্মদিবসে কোনো S1 বা S2 ইস্যু ২৪ ঘণ্টার বেশি খোলা থাকেনি।</div>
+        </li>
+        <li>
+          <span class="exit-icon">✓</span>
+          <div>অভ্যন্তরীণ L1 টিম (সুপার-ইউজার) অন্তত ৫টি টানা কর্মদিবস ধরে L3-এর সংশ্লিষ্টতা ছাড়াই ৮০%+ সাপোর্ট কোয়েরি সমাধান করছে।</div>
+        </li>
+        <li>
+          <span class="exit-icon">✓</span>
+          <div>Odoo-তে প্রথম মাস-শেষের ক্লোজ সম্পন্ন হয়েছে, আর অ্যাকাউন্টস টিম নিশ্চিত করেছে যে ফাইন্যান্সিয়াল ঠিক আছে।</div>
+        </li>
+        <li>
+          <span class="exit-icon">✓</span>
+          <div>HR মডিউল লাইভ থাকলে: প্রথম পূর্ণাঙ্গ পেরোল ব্যাচ প্রসেস হয়েছে, আর কনসালট্যান্টের সংশ্লিষ্টতা ছাড়াই পে-স্লিপ অ্যাপ্রুভ ও বিতরণ হয়েছে।</div>
+        </li>
+        <li>
+          <span class="exit-icon">✓</span>
+          <div>স্কোপভুক্ত ১০০% দৈনিক ট্রানজ্যাকশন Odoo-তে প্রসেস হচ্ছে। কোনো বিভাগ একই ডেটার জন্য Tally, Excel, বা অন্য কোনো সিস্টেমে সমান্তরাল রেকর্ড রাখছে না।</div>
+        </li>
+        <li>
+          <span class="exit-icon">✓</span>
+          <div>BAU সাপোর্ট কন্ট্র্যাক্ট (প্রযোজ্য হলে) সই হয়েছে, আর BAU সাপোর্ট প্রসেস সব ইউজারকে জানানো হয়েছে — কাকে ফোন করতে হবে, কীভাবে টিকেট তুলতে হবে, কী রেসপন্স টাইম আশা করা যায়।</div>
+        </li>
+        <li>
+          <span class="exit-icon">✓</span>
+          <div>বাকি থাকা S3/S4 ইস্যু ব্যাকলগ ক্লায়েন্ট PM রিভিউ করে প্রায়োরিটাইজ করেছেন। আইটেমগুলো BAU রিটেইনারে অথবা পরবর্তী Odoo ভার্সন আপগ্রেড সাইকেলে সমাধান করা হবে।</div>
+        </li>
+      </ul>
+
+      <h2 id="bangladesh">বাংলাদেশ-নির্দিষ্ট হাইপারকেয়ার বিবেচ্য বিষয়</h2>
+
+      <ul>
+        <li><strong>সপ্তাহান্তে কভারেজ:</strong> বাংলাদেশের কর্মসপ্তাহ চলে রোববার থেকে বৃহস্পতিবার পর্যন্ত। আপনার কনসালট্যান্ট যদি বিদেশে থাকেন বা শনি-রোববার সপ্তাহান্ত পালন করেন, তাহলে গো-লাইভের আগেই লিখিতভাবে তাদের বাংলাদেশ-সপ্তাহ অনুযায়ী সাপোর্ট শিডিউল নিশ্চিত করে নিন। রোববার সকালে একটা ক্রিটিক্যাল S1 ইস্যু, আর কনসালট্যান্ট সোমবারের আগে অ্যাভেইলেবল নন — এটা একটা পরিকল্পনার ব্যর্থতা, কোনো আকস্মিক ঘটনা নয়।</li>
+        <li><strong>প্রধান সাপোর্ট চ্যানেল হিসেবে WhatsApp:</strong> বাংলাদেশে WhatsApp-ই অপারেশনাল টিমের জন্য কার্যত সাপোর্ট চ্যানেল। এটা মেনে নিন। হাইপারকেয়ার ইস্যুর জন্য একটা নির্দিষ্ট WhatsApp গ্রুপ তৈরি করুন — ক্লায়েন্ট PM, সুপার-ইউজার, আর কনসালট্যান্ট। নিয়ম করে দিন: গ্রুপের প্রতিটি ইস্যু ইস্যু ট্র্যাকারেও লগ করতে হবে। গতির জন্য WhatsApp, জবাবদিহিতার জন্য ইস্যু ট্র্যাকার।</li>
+        <li><strong>সাপোর্ট কলে নামাজের সময়:</strong> বাংলাদেশে নামাজের সময় জুড়ে (বিশেষত দুপুরে জোহর আর বিকেলে আসর) শিডিউল করা সাপোর্ট কল বাধাগ্রস্ত হবে। নামাজের সময় মাথায় রেখে সাপোর্ট উইন্ডো শিডিউল করুন, অথবা কলে বিরতি ধরে রাখুন।</li>
+        <li><strong>ঈদের ছুটিতে হাইপারকেয়ার:</strong> আপনার গো-লাইভ যদি ঈদের কাছাকাছি সময়ে হয়, চুক্তিতে স্পষ্টভাবে বর্ধিত হাইপারকেয়ার নিয়ে আলোচনা করে নিন। গো-লাইভের প্রথম ২ সপ্তাহ এমনিতেই হাইপারকেয়ার — সেই ২ সপ্তাহের মধ্যে ঈদ পড়লে, আপনার হাইপারকেয়ার দরকার প্রকৃত প্রথম ২টা অপারেশনাল সপ্তাহ (ঈদের পরে) কভার করার জন্য, ঈদ-সপ্তাহের সীমিত অপারেশনের জন্য নয়। বাংলাদেশি বাস্তবায়ন চুক্তিতে এটা একটা সাধারণ ফাঁক।</li>
+        <li><strong>বিদ্যুৎ আর ইন্টারনেট স্থিতিশীলতা:</strong> বাংলাদেশে অন-প্রিমাইজ সার্ভার ডেপ্লয়মেন্ট বিদ্যুৎ বিভ্রাট আর ইন্টারনেট বিঘ্নের ঝুঁকিতে থাকে। সার্ভার UPS-এ থাকলে আর ইন্টারনেট চলে গেলে, ইউজাররা যেন UPS-এর সময়সীমা জানেন আর একটা ফলব্যাক প্রসেস (পরে এন্টার করার জন্য কাগজে ট্রানজ্যাকশন রেকর্ড রাখা) থাকে, তা নিশ্চিত করুন। হাইপারকেয়ার প্ল্যানে এটা ডকুমেন্ট করুন।</li>
+      </ul>
+
+      <div class="callout">
+        <span class="tag">সারকথা</span>
+        <p>গো-লাইভ একটা মাইলফলক, কোনো সমাপ্তি নয়। বাস্তবায়ন আর টেকসই কার্যক্রমের মধ্যে হাইপারকেয়ারই সেতু। সঠিকভাবে গঠিত একটা L1/L2/L3 সাপোর্ট মডেল, একটা কার্যকর ইস্যু লগ, আর স্পষ্ট এক্সিট ক্রাইটেরিয়া-ই একটা প্রজেক্ট টিকে থাকার আর ৯০ দিনে নীরবে ভেঙে পড়ার মধ্যে পার্থক্য গড়ে দেয়। ১২-সপ্তাহের বাস্তবায়ন পরিকল্পনা আর ৪-সপ্তাহের হাইপারকেয়ার পরিকল্পনা মিলিয়ে মোট ১৬ সপ্তাহের পেশাদার কাজ। প্রথম ১২ সপ্তাহের মতোই গুরুত্ব দিয়ে শেষ ৪ সপ্তাহকে দেখে এই বিনিয়োগ সুরক্ষিত রাখুন। <a href="/bn/#contact" style="color:var(--accent)">আপনার গো-লাইভ পরবর্তী সাপোর্ট প্ল্যান সাজাতে সাহায্য দরকার? যোগাযোগ করুন →</a></p>
+      </div>
+
+      <h2 id="faq">সচরাচর জিজ্ঞাসা</h2>
+
+      <h3>ERP বাস্তবায়নে হাইপারকেয়ার কী?</h3>
+      <p>হাইপারকেয়ার হলো একটা নিবিড়, সময়-সীমাবদ্ধ সাপোর্ট পিরিয়ড (সাধারণত ২–৪ সপ্তাহ), যা গো-লাইভ দিনে শুরু হয়। হাইপারকেয়ারে কনসালট্যান্ট উঁচু মাত্রায় অ্যাভেইলেবল থাকেন, প্রতিটি ইস্যু আনুষ্ঠানিকভাবে লগ ও দৈনিক ট্রায়াজ করা হয়, আর প্রথম ক্রিটিক্যাল বিজনেস প্রসেসগুলো (মাস-শেষের ক্লোজ, পেরোল) সরাসরি সাপোর্ট পায়। অভ্যন্তরীণ টিম স্বাধীনভাবে চালাতে পারলে আর নির্দিষ্ট এক্সিট ক্রাইটেরিয়া পূরণ হলে এটা শেষ হয়। এরপরে আসা চলমান BAU সাপোর্ট রিটেইনার থেকে এটা আলাদা।</p>
+
+      <h3>Odoo-তে L1/L2/L3 সাপোর্ট কী?</h3>
+      <p>তিনটা সাপোর্ট টিয়ার: L1 (অভ্যন্তরীণ সুপার-ইউজার) হাউ-টু প্রশ্ন, পাসওয়ার্ড রিসেট, আর বেসিক প্রসেস স্পষ্টীকরণ হ্যান্ডল করে — ৩০ মিনিটের মধ্যে রেসপন্স। L2 (ক্লায়েন্ট প্রজেক্ট ম্যানেজার / সিনিয়র কি ইউজার) প্রসেস এরর, ওয়ার্কফ্লো ইস্যু, আর ডেটা সংশোধন হ্যান্ডল করে — ৪ ঘণ্টার মধ্যে রেসপন্স। L3 (Odoo কনসালট্যান্ট / ভেন্ডর) সিস্টেম ডিফেক্ট, কনফিগারেশন পরিবর্তন, আর সার্ভার ইস্যু হ্যান্ডল করে — S1 রেসপন্স ২ ঘণ্টায়, S2 একই দিনে, S3/S4 পরবর্তী কর্মদিবসে। প্রথমে সবসময় L1-এ চেষ্টা করা হয়, L1 সমাধান করতে না পারলেই শুধু এসকেলেট হয়।</p>
+
+      <h3>বাংলাদেশে Odoo হাইপারকেয়ার কতদিন চলে?</h3>
+      <p>স্ট্যান্ডার্ড বাংলাদেশি SME বাস্তবায়নের জন্য (২৫–৫০ ইউজার, কোর মডিউল), হাইপারকেয়ার চলে ২ সপ্তাহ। জটিল বাস্তবায়ন (৫০–১৫০ ইউজার, ম্যানুফ্যাকচারিং + কমপ্লায়েন্স) চলে ৩–৪ সপ্তাহ। মাল্টি-কোম্পানি বা মাল্টি-লোকেশন ডেপ্লয়মেন্টের জন্য বর্ধিত হাইপারকেয়ার (৪–৬ সপ্তাহ) উপযুক্ত। হাইপারকেয়ার থেকে বের হওয়া হয় যখন: টানা ৫ কর্মদিবস কোনো S1/S2 ইস্যু নেই, অভ্যন্তরীণ L1 স্বাধীনভাবে ৮০%+ কোয়েরি সমাধান করছে, প্রথম মাস-শেষের ক্লোজ সম্পন্ন হয়েছে, আর প্রথম পেরোল রান সম্পন্ন হয়েছে (প্রযোজ্য হলে)।</p>
+
+      <h3>বাংলাদেশে Odoo গো-লাইভের প্রথম মাসে কী হওয়া উচিত?</h3>
+      <p>দিন ১–৫: কনসালট্যান্ট অনসাইটে থাকেন, লাইভ প্রোডাকশনে সব ধরনের ট্রানজ্যাকশন টেস্ট করা হয়, ইস্যু লগ তৈরি হয়। সপ্তাহ ২: সব বিভাগ জুড়ে পূর্ণ অপারেশনাল ভেরিফিকেশন, প্রথম সপ্তাহের ব্যাংক রিকনসিলিয়েশন। সপ্তাহ ৩–৪: কনসালট্যান্টের সহায়তায় প্রথম মাস-শেষের ক্লোজ — ব্যাংক রিকনসিলিয়েশন, জার্নাল এন্ট্রি, VAT পিরিয়ড ক্লোজ, ডেপ্রিসিয়েশন রান। HR মডিউল লাইভ থাকলে: প্রথম পেরোল ব্যাচ প্রসেস আর রিভিউ হয়। ৩০তম দিনের মধ্যে: L1 টিম ৭০%+ সেলফ-রেজোলিউশন রেটে কাজ করছে, BAU সাপোর্টে ট্রানজিশন শুরু হয়েছে।</p>
+    </div>
+  </article>
+
+  <footer>
+    <div class="shell">
+      <div class="post-foot">
+        <span class="eyebrow">আরও পড়ুন</span>
+        <div class="next">
+          <a class="next-card" href="/bn/lab/0031-odoo-training-plan-template">
+            <span class="dir">পুরনো · 0031</span>
+            <h4>Odoo ট্রেনিং প্ল্যান টেমপ্লেট</h4>
+            <p>রোল-ভিত্তিক ট্রেনিং ম্যাট্রিক্স আর সাইন-অফ ক্রাইটেরিয়া — একটা সফল গো-লাইভ আর হাইপারকেয়ার পিরিয়ডের পূর্বশর্ত।</p>
+            <span class="arrow">→</span>
+          </a>
+          <a class="next-card" href="/bn/lab/0033-odoo-rmg-garments-bangladesh">
+            <span class="dir">নতুন · 0033</span>
+            <h4>বাংলাদেশে RMG-র জন্য Odoo</h4>
+            <p>স্যাম্পল-টু-শিপমেন্ট ওয়ার্কফ্লো, সাইজ-কালার BOM, BGMEA ওয়েজ কমপ্লায়েন্স — গার্মেন্টস ফ্যাক্টরির জন্য পূর্ণাঙ্গ কনফিগারেশন গাইড।</p>
+            <span class="arrow">→</span>
+          </a>
+        </div>
+      </div>
+      <div class="foot">
+        <span>© ২০২৬ Mehedi Hasan · Lab / 0032</span>
+        <span><a href="/bn/#lab">↑ ল্যাব ইনডেক্সে ফিরুন</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/lab/_utils.js" defer></script>
+<script src="/lab/_toc.js" defer></script>
+<script src="/whatsapp.js" defer></script>
+<script src="/scroll-top.js" defer></script>
+</body>
+
+</html>

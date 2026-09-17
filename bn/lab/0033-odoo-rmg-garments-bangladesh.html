@@ -1,0 +1,697 @@
+<!doctype html>
+<html lang="bn">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description"
+    content="বাংলাদেশে RMG-এর জন্য Odoo — স্যাম্পল অনুমোদন থেকে শিপমেন্ট পর্যন্ত গার্মেন্টস প্রোডাকশন কনফিগার করুন, BGMEA মজুরি, সাইজ-কালার BOM, এবং LC ডকুমেন্টেশন। সম্পূর্ণ গাইড →" />
+  <meta name="robots" content="noindex, follow" />
+  <meta name="author" content="Mehedi Hasan" />
+  <title>বাংলাদেশে RMG-এর জন্য Odoo | গার্মেন্টস ERP গাইড | মেহেদী হাসান</title>
+  <link rel="canonical" href="https://mhasan.me/bn/lab/0033-odoo-rmg-garments-bangladesh" />
+  <link rel="alternate" hreflang="en" href="https://mhasan.me/lab/0033-odoo-rmg-garments-bangladesh" />
+  <link rel="alternate" hreflang="bn-BD" href="https://mhasan.me/bn/lab/0033-odoo-rmg-garments-bangladesh" />
+  <link rel="alternate" hreflang="x-default" href="https://mhasan.me/lab/0033-odoo-rmg-garments-bangladesh" />
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png" />
+  <link rel="apple-touch-icon" href="/favicon.png" />
+  <!-- Open Graph -->
+  <meta property="og:title" content="বাংলাদেশে RMG-এর জন্য Odoo | গার্মেন্টস ERP গাইড | মেহেদী হাসান" />
+  <meta property="og:description"
+    content="বাংলাদেশে RMG ও গার্মেন্টস কারখানার জন্য Odoo কীভাবে কনফিগার করবেন — স্যাম্পল-টু-শিপমেন্ট ওয়ার্কফ্লো, সাইজ-কালার BOM, BGMEA মজুরি কমপ্লায়েন্স, LC ডকুমেন্টেশন, এবং প্রোডাকশন রিপোর্টিং।" />
+  <meta property="og:url" content="https://mhasan.me/bn/lab/0033-odoo-rmg-garments-bangladesh" />
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="https://mhasan.me/assets/og-default.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale" content="bn_BD" />
+  <meta property="og:site_name" content="মেহেদী হাসান | Odoo ERP কনসালট্যান্ট" />
+  <meta property="article:author" content="https://www.linkedin.com/in/mehedi-hasan-consultant/" />
+  <meta property="article:published_time" content="2026-05-07T10:00:00+06:00" />
+  <meta property="article:modified_time" content="2026-05-23T10:00:00+06:00" />
+  <meta property="article:section" content="Odoo ERP Bangladesh" />
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="বাংলাদেশে RMG-এর জন্য Odoo | গার্মেন্টস ERP গাইড" />
+  <meta name="twitter:description"
+    content="বাংলাদেশে RMG কারখানার জন্য Odoo কনফিগার করুন — স্যাম্পল-টু-শিপমেন্ট ওয়ার্কফ্লো, সাইজ-কালার BOM, BGMEA মজুরি কমপ্লায়েন্স, এবং এক্সপোর্ট LC ডকুমেন্টেশন।" />
+  <meta name="twitter:image" content="https://mhasan.me/assets/og-default.jpg" />
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "বাংলাদেশে RMG ও গার্মেন্টসের জন্য Odoo: স্যাম্পল থেকে শিপমেন্ট পর্যন্ত",
+    "description": "বাংলাদেশে রেডিমেড গার্মেন্টস (RMG) কারখানার জন্য Odoo ERP কনফিগার করার সম্পূর্ণ গাইড। সম্পূর্ণ স্যাম্পল-টু-শিপমেন্ট ওয়ার্কফ্লো, সাইজ-কালার Bill of Materials, কাটিং/সেলাই/ফিনিশিং/প্যাকিং-এর জন্য ওয়ার্ক সেন্টার সেটআপ, BGMEA ওয়েজ বোর্ড কমপ্লায়েন্স, অ্যাটেনডেন্স ইন্টিগ্রেশন, LC ডকুমেন্টেশন, প্রোডাকশন রিপোর্টিং, এবং বাংলাদেশ-নির্দিষ্ট RMG ERP বিবেচ্য বিষয় কভার করে।",
+    "datePublished": "2026-05-07T10:00:00+06:00",
+    "dateModified": "2026-05-23T10:00:00+06:00",
+    "inLanguage": "bn",
+    "author": {
+      "@type": "Person",
+      "name": "Mehedi Hasan",
+      "url": "https://mhasan.me",
+      "jobTitle": "Odoo ERP Consultant & Business Analyst",
+      "sameAs": "https://www.linkedin.com/in/mehedi-hasan-consultant/"
+    },
+    "publisher": { "@type": "Person", "name": "Mehedi Hasan", "url": "https://mhasan.me" },
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://mhasan.me/bn/lab/0033-odoo-rmg-garments-bangladesh" }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "হোম", "item": "https://mhasan.me/bn" },
+      { "@type": "ListItem", "position": 2, "name": "ল্যাব", "item": "https://mhasan.me/bn/#lab" },
+      { "@type": "ListItem", "position": 3, "name": "বাংলাদেশে RMG-এর জন্য Odoo", "item": "https://mhasan.me/bn/lab/0033-odoo-rmg-garments-bangladesh" }
+    ]
+  }
+]
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&family=Noto+Sans+Bengali:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap">
+  <link rel="stylesheet" href="/lab/_styles.css">
+  <style>
+    body{ font-family: 'Noto Sans Bengali', var(--sans); }
+    .workflow-steps {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      margin: 28px 0;
+      position: relative;
+    }
+    .wf-step {
+      display: grid;
+      grid-template-columns: 48px 1fr;
+      gap: 0 20px;
+      align-items: stretch;
+    }
+    .wf-left {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .wf-dot {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--surface);
+      border: 2px solid var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--mono);
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--accent);
+      flex-shrink: 0;
+      margin-top: 4px;
+    }
+    .wf-line {
+      width: 2px;
+      background: var(--border);
+      flex: 1;
+      margin: 4px 0;
+    }
+    .wf-step:last-child .wf-line { display: none; }
+    .wf-body {
+      padding: 4px 0 28px;
+    }
+    .wf-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+    .wf-desc {
+      font-size: 13px;
+      color: var(--text-2);
+      line-height: 1.75;
+    }
+    .wf-odoo {
+      display: inline-block;
+      margin-top: 8px;
+      font-family: var(--mono);
+      font-size: 10.5px;
+      color: var(--accent);
+      letter-spacing: 0.04em;
+    }
+
+    .bom-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 12.5px;
+      margin: 24px 0;
+    }
+    .bom-table th {
+      padding: 10px 14px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-3);
+      text-align: left;
+    }
+    .bom-table td {
+      padding: 10px 14px;
+      border: 1px solid var(--border);
+      color: var(--text-2);
+      vertical-align: top;
+    }
+    .bom-table td:first-child { font-weight: 500; color: var(--text); }
+    .bom-table tr.section-head td {
+      background: var(--surface);
+      color: var(--text-3);
+      font-family: var(--mono);
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .wc-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin: 24px 0;
+    }
+    .wc-card {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 16px;
+    }
+    .wc-num {
+      font-family: var(--mono);
+      font-size: 10px;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 6px;
+    }
+    .wc-name {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+    .wc-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      font-size: 12.5px;
+      color: var(--text-2);
+      line-height: 1.75;
+    }
+    .wc-kpi {
+      margin-top: 10px;
+      font-family: var(--mono);
+      font-size: 10.5px;
+      color: var(--text-3);
+      border-top: 1px solid var(--border);
+      padding-top: 10px;
+    }
+
+    .pull {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: clamp(20px, 2.8vw, 30px);
+      line-height: 1.3;
+      color: var(--text);
+      margin: 48px 0;
+      max-width: 26ch;
+      letter-spacing: -0.01em;
+    }
+    .pull::before {
+      content: "";
+      display: block;
+      width: 36px;
+      height: 1px;
+      background: var(--accent);
+      margin-bottom: 18px;
+    }
+
+    .field-note{margin:28px 0;border:1px solid var(--border);border-radius:12px;overflow:hidden;background:var(--surface)}
+    .fn-hd{display:flex;align-items:center;justify-content:space-between;padding:12px 18px;border-bottom:1px solid var(--border);font-family:var(--mono);font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-3)}
+    .fn-hd .when{color:var(--accent)}
+    .fn-body{padding:18px 22px;font-size:15px;line-height:1.65;color:var(--text-2)}
+    .fn-body strong{color:var(--text);font-weight:500}
+
+    @media(max-width:700px){
+      .wc-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="grid-bg"></div>
+
+  <header class="nav">
+    <div class="shell">
+      <div class="nav-inner">
+        <a class="brand" href="/bn/">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span class="brand-name"><b>Mehedi Hasan</b><em>ERP · বিজনেস অ্যানালিস্ট</em></span>
+        </a>
+        <a class="back-link" href="/bn/#lab">← ল্যাব-এ ফিরুন</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="post-head">
+    <div class="shell">
+      <span class="eyebrow">টেকনিক্যাল ল্যাব · 0033</span>
+      <h1>বাংলাদেশে RMG-এর জন্য Odoo — <span class="serif">স্যাম্পল অনুমোদন থেকে শিপমেন্ট পর্যন্ত।</span></h1>
+      <p class="lede">বাংলাদেশের RMG খাত প্রতি বছর $40 বিলিয়নের গার্মেন্টস শিপ করে। যেসব কারখানা এই ভলিউম স্প্রেডশিট আর WhatsApp দিয়ে সামলায়, তারা ট্রেসেবিলিটি, ইল্ড এবং কমপ্লায়েন্স টেবিলে ফেলে রাখছে। এই গাইড দেখায় কীভাবে Odoo কনফিগার করবেন যাতে তা প্রকৃত RMG প্রোডাকশন ওয়ার্কফ্লোর সাথে মেলে — কোনো জেনেরিক ম্যানুফ্যাকচারিং টেমপ্লেট নয়।</p>
+      <div class="post-meta">
+        <span class="chip accent">ইন্ডাস্ট্রি গাইড</span>
+        <span class="chip">RMG / গার্মেন্টস</span>
+        <span class="chip">বাংলাদেশ</span>
+        <span class="chip">ম্যানুফ্যাকচারিং</span>
+      </div>
+      <div class="byline">
+        <span>লেখক<b><a href="https://www.linkedin.com/in/mehedi-hasan-consultant/" style="color:var(--accent)" rel="author">Mehedi Hasan</a></b></span>
+        <span>প্রকাশিত<b>মে ২০২৬</b></span>
+        <span>পড়ার সময়<b>১৪ মিনিট</b></span>
+        <span>ধরন<b>ইন্ডাস্ট্রি কনফিগারেশন গাইড</b></span>
+        <span>পরিসর<b>RMG · বাংলাদেশের কারখানা</b></span>
+      </div>
+    </div>
+  </section>
+
+  <article class="post">
+    <aside class="toc">
+      <div class="toc-k">এই গাইডে</div>
+      <ol>
+        <li><a href="#rmg-erp-challenge">কেন RMG-এর আলাদা ERP দরকার</a></li>
+        <li><a href="#workflow">স্যাম্পল-টু-শিপমেন্ট ওয়ার্কফ্লো</a></li>
+        <li><a href="#bom">গার্মেন্টসের জন্য Bill of Materials</a></li>
+        <li><a href="#work-centres">ওয়ার্ক সেন্টার সেটআপ</a></li>
+        <li><a href="#bgmea">BGMEA মজুরি কমপ্লায়েন্স</a></li>
+        <li><a href="#lc-export">LC ও এক্সপোর্ট ডকুমেন্টেশন</a></li>
+        <li><a href="#reporting">প্রোডাকশন রিপোর্টিং</a></li>
+        <li><a href="#bangladesh">বাংলাদেশ-নির্দিষ্ট নোট</a></li>
+        <li><a href="#faq">সচরাচর জিজ্ঞাসা</a></li>
+      </ol>
+    </aside>
+
+    <div class="body">
+      <p>আমি ২০০-মেশিনের একক-বায়ার অপারেশন থেকে শুরু করে একসাথে ১২ জন বায়ার সামলানো ২,০০০-মেশিনের মাল্টি-ফ্লোর সেটআপ পর্যন্ত বিস্তৃত RMG কারখানায় কাজ করেছি। ERP ব্যর্থতার প্যাটার্ন দুই প্রান্তেই একই: কারখানা একটি জেনেরিক ম্যানুফ্যাকচারিং সিস্টেম কেনে, নিজের প্রসেসকে সিস্টেমের ধারণার সাথে মানিয়ে নেয় — উল্টোটা নয় — আর ছয় মাসের মধ্যেই এক্সেলে সমান্তরাল রেকর্ড রাখতে শুরু করে, কারণ সিস্টেমটা "গার্মেন্টসের জন্য কাজ করে না"।</p>
+
+      <p>Odoo RMG-এর জন্য ভালো কাজ করে — কিন্তু শুধু তখনই, যখন গার্মেন্টস আসলে কীভাবে তৈরি হয় তা প্রতিফলিত করার জন্য এটি কনফিগার করা হয়। এর মানে হলো স্যাম্পল অনুমোদন সাইকেল, সাইজ-কালার BOM স্ট্রাকচার, কাটিং থেকে প্যাকিং পর্যন্ত ওয়ার্ক সেন্টার ফ্লো, এবং BGMEA-কমপ্লায়েন্ট পেরোল বোঝা — যা বেশিরভাগ কারখানার সবচেয়ে বড় অপারেটিং খরচ তৈরি করে। এই গাইড এই সবকিছুই কভার করে।</p>
+
+      <p>সব ইন্ডাস্ট্রিতে প্রযোজ্য মৌলিক ম্যানুফ্যাকচারিং মডিউল কনফিগারেশনের জন্য দেখুন <a href="/bn/lab/0013-odoo-manufacturing-module-bangladesh" style="color:var(--accent)">বাংলাদেশের কারখানার জন্য Odoo ম্যানুফ্যাকচারিং মডিউল সেটআপ গাইড</a>। এই আর্টিকেল সেটির ওপর ভিত্তি করে RMG-নির্দিষ্ট কনফিগারেশন নিয়ে আলোচনা করে।</p>
+
+      <p class="pull">যেসব কারখানা ERP নিয়ে সংগ্রাম করে তারা জটিল প্রোডাক্টের কারখানা নয়। তারা সহজ প্রোডাক্ট আর জটিল ওয়ার্কফ্লোর কারখানা — যা বাংলাদেশের প্রতিটি RMG কারখানাকেই বর্ণনা করে।</p>
+
+      <h2 id="rmg-erp-challenge">কেন RMG-এর আলাদা ERP কনফিগারেশন দরকার</h2>
+
+      <p>স্ট্যান্ডার্ড ম্যানুফ্যাকচারিং ERP ধরে নেয়: এক প্রোডাক্ট → এক BOM → এক প্রোডাকশন অর্ডার → এক ফিনিশড গুডস ইউনিট। RMG এই প্রতিটি ধারণা ভেঙে দেয়:</p>
+
+      <ul>
+        <li><strong>একটি স্টাইলের ১৫–৩০টি ভ্যারিয়েন্ট থাকে।</strong> ৫টি সাইজ আর ৬টি কালারে একটি পুরুষদের পোলো শার্ট মানে ৩০টি প্রোডাক্ট ভ্যারিয়েন্ট। প্রতিটি ভ্যারিয়েন্টের ফ্যাব্রিক কনজাম্পশন সামান্য আলাদা। ৫০টি অ্যাক্টিভ স্টাইল চালানো একটি কারখানার ১,৫০০+ ভ্যারিয়েন্ট থাকে। জেনেরিক ERP প্রতি ভ্যারিয়েন্টে একটি প্রোডাক্ট তৈরি করে — ১,৫০০ প্রোডাক্ট, ১,৫০০ BOM, ম্যানেজ করা অসম্ভব।</li>
+        <li><strong>প্রোডাকশন ইউনিট অনুযায়ী নয় — লাইন আর দিন অনুযায়ী হিসাব হয়।</strong> RMG-তে গুরুত্বপূর্ণ KPI হলো সাইজ অনুযায়ী প্রতিদিন প্রতি লাইনে পিস। Style A-এর ৫,০০০ পিসের একটি প্রোডাকশন অর্ডার ৮ দিন ধরে ৩টি সেলাই লাইনে ছড়িয়ে থাকে। ERP-কে শুধু মোট সম্পূর্ণতা নয়, প্রতি লাইনে দৈনিক আউটপুট ট্র্যাক করতে হয়।</li>
+        <li><strong>ম্যাটেরিয়াল কনজাম্পশন কাট অনুযায়ী — MO অনুযায়ী নয়।</strong> ফ্যাব্রিক খরচ হয় যখন কাটা হয়, ফিনিশড গার্মেন্ট সম্পূর্ণ হওয়ার সময় নয়। একটি কাটিং লট ৩টি ভিন্ন প্রোডাকশন অর্ডারে যেতে পারে। ফ্যাব্রিক ইল্ড (স্ট্যান্ডার্ড BOM কোয়ান্টিটির সাথে প্রকৃত খরচ হওয়া ফ্যাব্রিকের অনুপাত) কাটিং-এ সবচেয়ে গুরুত্বপূর্ণ কস্ট কন্ট্রোল মেট্রিক — জেনেরিক ERP এটা উপেক্ষা করে।</li>
+        <li><strong>বায়ার রিকোয়ারমেন্ট পারচেজ অর্ডার অনুযায়ী আলাদা হয়।</strong> একই স্টাইলের ভিন্ন বায়ারের জন্য আলাদা লেবেল স্পেসিফিকেশন, প্যাকিং রিকোয়ারমেন্ট, বা কার্টন মার্ক থাকতে পারে। ERP-কে শুধু স্টাইল-লেভেল কনফিগারেশন নয়, বায়ার PO-লেভেল নির্দেশনাও ট্র্যাক করতে হয়।</li>
+        <li><strong>BGMEA মজুরি কমপ্লায়েন্স আলোচনার বিষয় নয়।</strong> বাংলাদেশের শ্রম আইন অ্যাটেনডেন্স-লিংকড স্যালারি, ওভারটাইম রেকর্ড, PF কর্তন, এবং গ্র্যাচুইটি প্রভিশন বাধ্যতামূলক করে। প্রচলিত BGMEA/BKMEA ওয়েজ বোর্ড নোটিফিকেশন মেনে না চলা পেরোল আইনি ও অডিট ঝুঁকি তৈরি করে।</li>
+      </ul>
+
+      <p>এই প্রতিটি চ্যালেঞ্জের Odoo-তে একটি সঠিক সমাধান আছে — কিন্তু ইচ্ছাকৃত কনফিগারেশন দরকার। চলুন একে একে দেখি।</p>
+
+      <h2 id="workflow">Odoo-তে স্যাম্পল-টু-শিপমেন্ট ওয়ার্কফ্লো</h2>
+
+      <p>প্রথম ফ্যাব্রিক রোল কাটিং টেবিলে পৌঁছানোর মাস আগে থেকেই RMG প্রোডাকশন সাইকেল শুরু হয়। প্রতিটি ধাপ Odoo-তে কীভাবে ম্যাপ হয় দেখুন:</p>
+
+      <div class="workflow-steps">
+        <div class="wf-step">
+          <div class="wf-left"><div class="wf-dot">01</div><div class="wf-line"></div></div>
+          <div class="wf-body">
+            <div class="wf-title">স্যাম্পল ডেভেলপমেন্ট ও অনুমোদন</div>
+            <div class="wf-desc">বায়ার টেক প্যাক পাঠায়। কারখানা প্রোটো, ফিট স্যাম্পল, প্রি-প্রোডাকশন (PP) স্যাম্পল তৈরি করে। Odoo-র <strong>chatter</strong> ব্যবহার করে Sales Order-এর বিপরীতে অনুমোদন ট্র্যাক করা হয় (টেক প্যাক অ্যাটাচ করুন, কমেন্টে অনুমোদনের স্ট্যাটাস রেকর্ড করুন)। কিছু কারখানা প্রতি স্যাম্পল টাইপের জন্য আলাদা প্রজেক্ট টাস্ক ব্যবহার করে। PP স্যাম্পল অনুমোদন ফ্যাব্রিক বুকিং ট্রিগার করে।</div>
+            <span class="wf-odoo">→ Odoo: Sales Order (quote stage) + Chatter attachments + Project tasks</span>
+          </div>
+        </div>
+        <div class="wf-step">
+          <div class="wf-left"><div class="wf-dot">02</div><div class="wf-line"></div></div>
+          <div class="wf-body">
+            <div class="wf-title">ফ্যাব্রিক ও ট্রিম প্রোকিউরমেন্ট</div>
+            <div class="wf-desc">PP অনুমোদিত হওয়ার পর, ফ্যাব্রিক, থ্রেড, বাটন, লেবেল, হ্যাংট্যাগ, এবং কার্টনের জন্য Purchase Order তৈরি হয়। ফ্যাব্রিক মিটার বা কেজি অনুযায়ী কেনা হয়। BOM প্রোকিউরমেন্ট রিকোয়ারমেন্ট চালায় — Odoo-র <strong>replenishment</strong> প্রোডাকশন MO কোয়ান্টিটি আর প্রতি স্টাইল প্রতি সাইজ BOM কনজাম্পশনের ভিত্তিতে হিসাব করে কত ফ্যাব্রিক অর্ডার করতে হবে।</div>
+            <span class="wf-odoo">→ Odoo: Purchase Orders + Reordering rules + Vendor lead times</span>
+          </div>
+        </div>
+        <div class="wf-step">
+          <div class="wf-left"><div class="wf-dot">03</div><div class="wf-line"></div></div>
+          <div class="wf-body">
+            <div class="wf-title">ফ্যাব্রিক রিসিপ্ট ও ইন্সপেকশন</div>
+            <div class="wf-desc">ফ্যাব্রিক রোল আকারে আসে। প্রতিটি রোল তার লট নম্বর (ট্রেসেবিলিটির জন্য), প্রকৃত মিটার/কেজি, এবং একটি কোয়ালিটি ইন্সপেকশন ফলাফল (GSM, শেড ভ্যারিয়েশন, শ্রিংকেজ টেস্ট) সহ PO-র বিপরীতে রিসিভ করা হয়। মানহীন রোল Odoo-তে রিসিপ্টে একটি <strong>Return</strong> অপারেশনের মাধ্যমে সরাসরি ফেরত দেওয়া হয়। গৃহীত রোল কাটিং ট্রেসেবিলিটির জন্য তাদের লট নম্বরসহ ফ্যাব্রিক স্টোরে রাখা হয়।</div>
+            <span class="wf-odoo">→ Odoo: Lot/serial tracking on receipts + Quality checks at receipt</span>
+          </div>
+        </div>
+        <div class="wf-step">
+          <div class="wf-left"><div class="wf-dot">04</div><div class="wf-line"></div></div>
+          <div class="wf-body">
+            <div class="wf-title">কাটিং</div>
+            <div class="wf-desc">কাটিং প্ল্যান নির্দিষ্ট করে কত লেয়ার ফ্যাব্রিক, লে লেংথ, এবং মার্কার এফিশিয়েন্সি। Odoo-তে, কাটিং হলো Manufacturing Order-এর প্রথম ওয়ার্ক অর্ডার। কাটিং ওয়ার্ক অর্ডার থেকে খরচ হওয়া ফ্যাব্রিক ব্যবহৃত নির্দিষ্ট ফ্যাব্রিক লট নম্বরের বিপরীতে রেকর্ড করা হয় — এটি আপনাকে প্রতি স্টাইলে ফ্যাব্রিক ইল্ড দেয়। কাট প্যানেল গণনা করে সেলাই ফ্লোরে ট্রান্সফার করা হয়।</div>
+            <span class="wf-odoo">→ Odoo: Work Orders (Cutting WC) + Component lot consumption</span>
+          </div>
+        </div>
+        <div class="wf-step">
+          <div class="wf-left"><div class="wf-dot">05</div><div class="wf-line"></div></div>
+          <div class="wf-body">
+            <div class="wf-title">সেলাই (লাইন অপারেশন)</div>
+            <div class="wf-desc">সেলাই মূল প্রোডাকশন স্টেজ। Odoo-তে, প্রতিটি সেলাই লাইন একটি ওয়ার্ক সেন্টার। সেলাইয়ের MO ওয়ার্ক অর্ডার প্রতি লাইনে দৈনিক আউটপুট কোয়ান্টিটি রেকর্ড করে। সুপারভাইজার Odoo Manufacturing অ্যাপের মাধ্যমে ট্যাবলেট বা ফোনে দৈনিক প্রোডাকশন এন্ট্রি করেন। এটি রিয়েল টাইমে প্রোডাকশন বোর্ড পূরণ করে।</div>
+            <span class="wf-odoo">→ Odoo: Multiple Work Centres (Line 1, Line 2…) + Daily production entry</span>
+          </div>
+        </div>
+        <div class="wf-step">
+          <div class="wf-left"><div class="wf-dot">06</div><div class="wf-line"></div></div>
+          <div class="wf-body">
+            <div class="wf-title">ফিনিশিং, QC ও প্যাকিং</div>
+            <div class="wf-desc">প্যাকিংয়ের আগে ফিনিশিং (আয়রনিং, স্পট ক্লিনিং) এবং ইনলাইন QC হয়। রিজেক্টেড পিস Odoo-তে স্ক্র্যাপ করা হয় (একটি স্ক্র্যাপ অর্ডার আর লস এন্ট্রি ট্রিগার করে)। পাস করা পিস প্যাকিং-এ যায়, যেখানে বায়ারের কার্টন স্পেসিফিকেশন অনুযায়ী প্যাক করা হয়। Sales Order ডেলিভারি ডকুমেন্ট থেকে প্যাকিং লিস্ট তৈরি হয়।</div>
+            <span class="wf-odoo">→ Odoo: Scrap orders (QC rejections) + Delivery Order + Packing list report</span>
+          </div>
+        </div>
+        <div class="wf-step">
+          <div class="wf-left"><div class="wf-dot">07</div><div class="wf-line"></div></div>
+          <div class="wf-body">
+            <div class="wf-title">ইন্সপেকশন ও শিপমেন্ট</div>
+            <div class="wf-desc">থার্ড-পার্টি ইন্সপেকশনের (SGS, Bureau Veritas, Intertek) ফলাফল chatter-এ Delivery Order-এ অ্যাটাচ করা হয়। পাস হলে, শিপমেন্ট ডিসপ্যাচ করা হয়। Delivery Order প্যাকিং লিস্ট তৈরি করে এবং কাস্টমস ও এক্সপোর্ট ডকুমেন্টেশনে ফিড করতে পারে। কনফার্মড Sales Order-এর বিপরীতে ইনভয়েস তৈরি হয়।</div>
+            <span class="wf-odoo">→ Odoo: Delivery Validation + Invoice generation + Export documents</span>
+          </div>
+        </div>
+      </div>
+
+      <h2 id="bom">গার্মেন্টসের জন্য Bill of Materials — সাইজ-কালার অ্যাপ্রোচ</h2>
+
+      <p>RMG Odoo সেটআপে সবচেয়ে গুরুত্বপূর্ণ কনফিগারেশন সিদ্ধান্ত হলো আপনি Bill of Materials কীভাবে গঠন করবেন। এটা ভুল করলে আপনি হাজার হাজার প্রোডাক্ট আর BOM ম্যানেজ করতে থাকবেন। সঠিক করলে সিস্টেম যেকোনো সংখ্যক স্টাইলে স্কেল করে।</p>
+
+      <div class="field-note">
+        <div class="fn-hd"><span>নোট · RMG কারখানা, নারায়ণগঞ্জ</span><span class="when">প্রথম ক্যাটালগ রিভিউ</span></div>
+        <div class="fn-body">
+          একটি গার্মেন্টস কারখানা BOM স্ট্র্যাটেজি ঠিক হওয়ার আগেই তার Odoo প্রোডাক্ট মাস্টার তৈরি করেছিল — প্রতিটি স্টাইলের প্রতিটি সাইজ-কালার কম্বিনেশন আলাদা প্রোডাক্ট হিসেবে এন্টার করা হয়েছিল। যখন আমরা এটি রিভিউ করি, ততক্ষণে ১,৪০০-এর বেশি প্রোডাক্ট আর ১,৪০০টি সিঙ্গেল-লাইন BOM জমে গিয়েছিল, আর মার্চেন্ডাইজিং টিম স্টক ফিগার বিশ্বাস করা বন্ধ করে দিয়েছিল কারণ একই ফ্যাব্রিক এক ডজন প্রোডাক্ট নামে দেখাচ্ছিল। আমরা প্রোডাক্ট ভ্যারিয়েন্ট দিয়ে ক্যাটালগ পুনর্গঠন করি — এক টেমপ্লেট, প্রতি স্টাইলে এক BOM — আর ১,৪০০ প্রোডাক্ট নেমে আসে প্রায় ৯০-এ। <strong>ভ্যারিয়েন্ট-বনাম-আলাদা-প্রোডাক্টের সিদ্ধান্ত কোনো পছন্দের ব্যাপার নয়। এটাই একটি ব্যবহারযোগ্য সিস্টেম আর একটি পরিত্যক্ত সিস্টেমের মধ্যে পার্থক্য, আর প্রথম প্রোডাক্ট এন্টার করার আগেই এটি ঠিক করতে হয়।</strong>
+        </div>
+      </div>
+
+      <p><strong>সঠিক অ্যাপ্রোচ: প্রোডাক্ট ভ্যারিয়েন্ট, প্রতি স্টাইলে (টেমপ্লেট লেভেলে) একটি BOM।</strong></p>
+
+      <p>প্রতিটি স্টাইলকে দুটি অ্যাট্রিবিউটসহ একটি প্রোডাক্ট হিসেবে কনফিগার করুন: <strong>Size</strong> (XS, S, M, L, XL, XXL) আর <strong>Colour</strong> (White, Navy, Red, ইত্যাদি)। Odoo স্বয়ংক্রিয়ভাবে ভ্যারিয়েন্ট তৈরি করে। BOM প্রোডাক্ট টেমপ্লেট লেভেলে ডিফাইন করা হয় এবং সাইজ-নির্ভর কোয়ান্টিটি নির্দিষ্ট করতে <strong>Apply on Variants</strong> ব্যবহার করে:</p>
+
+      <table class="bom-table">
+        <thead>
+          <tr>
+            <th>কম্পোনেন্ট</th>
+            <th>ইউনিট</th>
+            <th>Qty (S)</th>
+            <th>Qty (M)</th>
+            <th>Qty (L)</th>
+            <th>Qty (XL)</th>
+            <th>Apply on Variants</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="section-head">
+            <td colspan="7">ফ্যাব্রিক</td>
+          </tr>
+          <tr>
+            <td>100% Cotton Jersey 160GSM — White</td>
+            <td>Metre</td>
+            <td>1.40</td>
+            <td>1.52</td>
+            <td>1.65</td>
+            <td>1.78</td>
+            <td>Colour = White</td>
+          </tr>
+          <tr>
+            <td>100% Cotton Jersey 160GSM — Navy</td>
+            <td>Metre</td>
+            <td>1.40</td>
+            <td>1.52</td>
+            <td>1.65</td>
+            <td>1.78</td>
+            <td>Colour = Navy</td>
+          </tr>
+          <tr class="section-head">
+            <td colspan="7">ট্রিম (সাইজ-নিরপেক্ষ)</td>
+          </tr>
+          <tr>
+            <td>Sewing Thread — White 40/2</td>
+            <td>Cone</td>
+            <td>0.08</td>
+            <td>0.08</td>
+            <td>0.09</td>
+            <td>0.10</td>
+            <td>All variants</td>
+          </tr>
+          <tr>
+            <td>Collar Rib — White</td>
+            <td>Metre</td>
+            <td>0.35</td>
+            <td>0.38</td>
+            <td>0.42</td>
+            <td>0.46</td>
+            <td>Colour = White</td>
+          </tr>
+          <tr>
+            <td>Main Label — woven</td>
+            <td>Pcs</td>
+            <td>1</td>
+            <td>1</td>
+            <td>1</td>
+            <td>1</td>
+            <td>All variants</td>
+          </tr>
+          <tr>
+            <td>Size Label (S/M/L/XL)</td>
+            <td>Pcs</td>
+            <td>1</td>
+            <td>1</td>
+            <td>1</td>
+            <td>1</td>
+            <td>Size-specific variant</td>
+          </tr>
+          <tr>
+            <td>Hangtag + Barcode sticker</td>
+            <td>Set</td>
+            <td>1</td>
+            <td>1</td>
+            <td>1</td>
+            <td>1</td>
+            <td>All variants</td>
+          </tr>
+          <tr class="section-head">
+            <td colspan="7">প্যাকেজিং</td>
+          </tr>
+          <tr>
+            <td>Poly bag — size S/M</td>
+            <td>Pcs</td>
+            <td>1</td>
+            <td>1</td>
+            <td>—</td>
+            <td>—</td>
+            <td>Size = S or M</td>
+          </tr>
+          <tr>
+            <td>Poly bag — size L/XL</td>
+            <td>Pcs</td>
+            <td>—</td>
+            <td>—</td>
+            <td>1</td>
+            <td>1</td>
+            <td>Size = L or XL</td>
+          </tr>
+          <tr>
+            <td>Export carton (12 pcs/ctn)</td>
+            <td>Pcs</td>
+            <td>0.083</td>
+            <td>0.083</td>
+            <td>0.083</td>
+            <td>0.083</td>
+            <td>All variants</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>এই স্ট্রাকচার আপনাকে বায়ারের অর্ডারে সাইজ রেশিও (অ্যাসোর্টমেন্ট মিক্স) যাই হোক না কেন, প্রতিটি প্রোডাকশন অর্ডারে সঠিক ফ্যাব্রিক আর ট্রিম কোয়ান্টিটি দেয়। বায়ার যখন 1:2:3:2:1 সাইজ রেশিওতে (XS:S:M:L:XL:XXL) Style A-এর ৩,০০০ পিসের অর্ডার দেয়, Odoo সব সাইজ জুড়ে সঠিক অ্যাগ্রিগেট কম্পোনেন্ট রিকোয়ারমেন্টসহ একটি MO তৈরি করে।</p>
+
+      <h2 id="work-centres">RMG-এর জন্য ওয়ার্ক সেন্টার সেটআপ</h2>
+
+      <p>Odoo Manufacturing → Configuration → Work Centres-এ নিম্নলিখিত ওয়ার্ক সেন্টারগুলো কনফিগার করুন। প্রতিটি ওয়ার্ক সেন্টারের একটি ক্যাপাসিটি (মেশিন বা অপারেটর), একটি কস্ট রেট (ওভারহেড অ্যাবজর্পশনের জন্য BDT/ঘণ্টা), এবং এফিশিয়েন্সি ফ্যাক্টর থাকে।</p>
+
+      <div class="wc-grid">
+        <div class="wc-card">
+          <div class="wc-num">WC-01</div>
+          <div class="wc-name">কাটিং</div>
+          <ul class="wc-list">
+            <li>ফ্যাব্রিক স্প্রেডিং ও লেয়িং</li>
+            <li>মার্কার প্লেসমেন্ট ও কাটিং</li>
+            <li>নাম্বারিং ও বান্ডলিং</li>
+            <li>ফিউজিং (ইন্টারলাইনিং)</li>
+          </ul>
+          <div class="wc-kpi">KPI: প্রতি শিফটে কাট পিস · BOM-এর বিপরীতে ফ্যাব্রিক ইল্ড %</div>
+        </div>
+        <div class="wc-card">
+          <div class="wc-num">WC-02 to WC-0N</div>
+          <div class="wc-name">সেলাই লাইন</div>
+          <ul class="wc-list">
+            <li>প্রতি লাইনে একটি ওয়ার্ক সেন্টার</li>
+            <li>প্রতি লাইনে দৈনিক আউটপুট ট্র্যাক করে</li>
+            <li>এফিশিয়েন্সি = টার্গেটের বিপরীতে প্রকৃত পিস</li>
+            <li>SMV-ভিত্তিক স্ট্যান্ডার্ড টাইম</li>
+          </ul>
+          <div class="wc-kpi">KPI: pcs/line/day · OB% এফিশিয়েন্সি · প্ল্যানের বিপরীতে WIP</div>
+        </div>
+        <div class="wc-card">
+          <div class="wc-num">WC-FN</div>
+          <div class="wc-name">ফিনিশিং</div>
+          <ul class="wc-list">
+            <li>আয়রনিং ও প্রেসিং</li>
+            <li>স্পট ক্লিনিং</li>
+            <li>ফাইনাল থ্রেড ট্রিমিং</li>
+            <li>মেজারমেন্ট চেক</li>
+          </ul>
+          <div class="wc-kpi">KPI: প্রতিদিন ফিনিশ হওয়া পিস · রিওয়ার্ক সংখ্যা</div>
+        </div>
+        <div class="wc-card">
+          <div class="wc-num">WC-QC</div>
+          <div class="wc-name">কোয়ালিটি কন্ট্রোল</div>
+          <ul class="wc-list">
+            <li>AQL ইন্সপেকশন (2.5 বা 4.0)</li>
+            <li>ডিফেক্ট অনুযায়ী রিজেক্ট ক্লাসিফিকেশন</li>
+            <li>স্ক্র্যাপ বনাম রিওয়ার্ক সিদ্ধান্ত</li>
+            <li>ফাইনাল অডিট পাস-রেট লগিং</li>
+          </ul>
+          <div class="wc-kpi">KPI: রিজেকশন রেট % · ডিফেক্ট প্যারেটো · AQL পাস রেট</div>
+        </div>
+        <div class="wc-card">
+          <div class="wc-num">WC-PK</div>
+          <div class="wc-name">প্যাকিং</div>
+          <ul class="wc-list">
+            <li>ফোল্ডিং ও পলি-ব্যাগিং</li>
+            <li>হ্যাংট্যাগ ও বারকোড প্লেসমেন্ট</li>
+            <li>বায়ার স্পেক অনুযায়ী কার্টন প্যাকিং</li>
+            <li>কার্টন সিলিং ও মার্কিং</li>
+          </ul>
+          <div class="wc-kpi">KPI: প্রতিদিন প্যাক হওয়া কার্টন · প্যাকিং অ্যাকুরেসি</div>
+        </div>
+        <div class="wc-card">
+          <div class="wc-num">WC-EM</div>
+          <div class="wc-name">এমব্রয়ডারি / প্রিন্ট</div>
+          <ul class="wc-list">
+            <li>এমব্রয়ডারি (অভ্যন্তরীণ বা সাবকন্ট্র্যাক্ট)</li>
+            <li>স্ক্রিন / ডিজিটাল প্রিন্ট</li>
+            <li>হিট ট্রান্সফার অ্যাপ্লিকেশন</li>
+            <li>আউটসোর্স হলে সাবকন্ট্র্যাক্ট PO</li>
+          </ul>
+          <div class="wc-kpi">KPI: প্রতি ঘণ্টায় পিস · সাবকন্ট্র্যাক্ট ইল্ড</div>
+        </div>
+      </div>
+
+      <p>সাবকন্ট্র্যাক্ট করা প্রসেসের জন্য (এমব্রয়ডারি, ওয়াশিং, প্রিন্টিং), Odoo-র <strong>Subcontracting BOM type</strong> ব্যবহার করুন। কাট প্যানেল একটি সাবকন্ট্র্যাক্টিং PO-র মাধ্যমে সাব-কন্ট্রাক্টরের কাছে পাঠানো হয়, এবং ফিনিশড প্যানেল রিসিপ্ট হিসেবে ফিরে আসে। Odoo স্বয়ংক্রিয়ভাবে ম্যাটেরিয়াল ট্র্যাকিং আর কস্ট অ্যাকাউন্টিং হ্যান্ডল করে।</p>
+
+      <h2 id="bgmea">Odoo-তে BGMEA ওয়েজ বোর্ড কমপ্লায়েন্স</h2>
+
+      <p>বাংলাদেশে RMG শ্রমিকরা BGMEA/BKMEA ওয়েজ বোর্ড নোটিফিকেশনের আওতায় পড়ে, যা ওয়ার্কার গ্রেড অনুযায়ী ন্যূনতম মজুরি নির্ধারণ করে। Odoo-র পেরোল মডিউলকে এই রিকোয়ারমেন্টের সাথে ঠিকঠাক মেলাতে হয় — BGMEA বা Department of Inspection for Factories and Establishments (DIFE)-এর পেরোল অডিট এই স্ট্রাকচারের বিপরীতে পেস্লিপ চেক করবে।</p>
+
+      <p>গ্রেড স্ট্রাকচার, PF, গ্র্যাচুইটি, এবং ছুটির নীতিসহ সম্পূর্ণ পেরোল কনফিগারেশনের জন্য দেখুন <a href="/bn/lab/0022-bgmea-wage-board-odoo-payroll" style="color:var(--accent)">Odoo-তে BGMEA ওয়েজ বোর্ড সেটআপ গাইড</a>। RMG-র জন্য নির্দিষ্ট মূল পয়েন্ট:</p>
+
+      <ul>
+        <li><strong>গ্রেড-ভিত্তিক স্যালারি স্ট্রাকচার:</strong> প্রতি ওয়ার্কার গ্রেডে একটি স্যালারি স্ট্রাকচার তৈরি করুন। প্রতিটি স্ট্রাকচারে থাকে Basic (সেই গ্রেডের বর্তমান গেজেটেড ওয়েজ-বোর্ড মিনিমাম অনুযায়ী), House Rent, Medical, Transport, এবং Food allowance। অ্যামাউন্ট হার্ড-কোড করার বদলে সবসময় সর্বশেষ গেজেটেড ফিগার অনুযায়ী এগুলো কনফিগার করুন — ওয়েজ বোর্ড পর্যায়ক্রমে সংশোধিত হয়। প্রতিটি সঠিক কম্পিউটেশন টাইপ (fixed বা percentage of basic) সহ একটি salary rule হিসেবে কনফিগার করুন।</li>
+        <li><strong>অ্যাটেনডেন্স ইন্টিগ্রেশন:</strong> বায়োমেট্রিক ডিভাইস (ZKTeco, Suprema, ইত্যাদি) CSV হিসেবে অ্যাটেনডেন্স লগ এক্সপোর্ট করে বা API-এর মাধ্যমে পুশ করে। Odoo-র attendance মডিউল এগুলো ইমপোর্ট করে, আর পেরোল মডিউল অ্যাবসেন্ট দিনের জন্য প্রতি-দিন কর্তন হিসাব করতে অ্যাটেনডেন্স রেকর্ড ব্যবহার করে (মাসিক-হারের শ্রমিকদের জন্য Basic ÷ 26 × অ্যাবসেন্ট দিন)।</li>
+        <li><strong>ওভারটাইম:</strong> বাংলাদেশ শ্রম আইনের আওতায়, ওভারটাইম Basic ঘণ্টার রেটের 2× পরিশোধ করা হয়। একটি overtime salary rule কনফিগার করুন: (Basic ÷ 208) × 2 × ওভারটাইম ঘণ্টা। ওভারটাইম ঘণ্টার ইনপুট আসে অ্যাটেনডেন্স লগ থেকে — প্রতিদিন 8 ঘণ্টা বা সপ্তাহে 48 ঘণ্টার বেশি ওভারটাইম।</li>
+        <li><strong>PF কন্ট্রিবিউশন:</strong> শ্রমিক Basic-এর 5% দেয়, নিয়োগকর্তা Basic-এর 5% দেয়। দুটি পেরোল রুল হিসেবে কনফিগার করুন — একটি deduction (employee PF) আর একটি employer contribution ক্যাটাগরিতে (employer PF)। স্বচ্ছতার জন্য employer PF পেস্লিপে দেখা যায় কিন্তু কর্মীর নেট স্যালারি কমায় না।</li>
+        <li><strong>গ্র্যাচুইটি প্রভিশন:</strong> স্যালারি থেকে কর্তন হয় না — এটি একটি মাসিক provision accrual। একটি ম্যানুয়াল জার্নাল এন্ট্রি রুল কনফিগার করুন যা Gratuity Expense ডেবিট করে আর Gratuity Provision liability ক্রেডিট করে, (Basic × 1/12 × years of service factor) হিসেবে গণনা করে। বাস্তবে, অনেক কারখানা পেরোল ইঞ্জিনের বদলে এটি মাসিক provision journal হিসেবে চালায়।</li>
+        <li><strong>বার্ষিক ছুটি এনক্যাশমেন্ট:</strong> কর্মীরা প্রতি ১৮ দিন কাজের জন্য ১ দিন বার্ষিক ছুটি অর্জন করে (কারখানা শ্রমিকদের জন্য)। বছর শেষে বা সেপারেশনে ছুটি এনক্যাশ হলে, পেমেন্ট হয় Basic ÷ 26 × ছুটির দিন সংখ্যা। শুধু এনক্যাশমেন্ট মাসে প্রযোজ্য একটি আলাদা one-time salary rule হিসেবে কনফিগার করুন।</li>
+      </ul>
+
+      <h2 id="lc-export">Odoo-তে LC ও এক্সপোর্ট ডকুমেন্টেশন</h2>
+
+      <p>বাংলাদেশে RMG এক্সপোর্ট প্রায় সম্পূর্ণভাবে LC-ভিত্তিক (Letter of Credit)। LC পেমেন্ট শর্ত, শিপমেন্ট ডেডলাইন, এবং ডকুমেন্ট রিকোয়ারমেন্ট নির্ধারণ করে। LC-লিংকড এক্সপোর্ট ডকুমেন্টেশন সাপোর্ট করতে Odoo-র sale আর accounting মডিউল কনফিগার করা দরকার।</p>
+
+      <ul>
+        <li><strong>LC অ্যাংকর হিসেবে Sales Order:</strong> বায়ার LC পাওয়ার পর, Odoo-তে Sales Order তৈরি করুন আর অর্ডারের Notes বা একটি কাস্টম ফিল্ডে LC নম্বর, LC ভ্যালু, মেয়াদ শেষের তারিখ, এবং শিপমেন্ট ডেডলাইন রেকর্ড করুন। সমস্ত ডাউনস্ট্রিম অপারেশন (পারচেজিং, প্রোডাকশন, ডেলিভারি) এই Sales Order-এর সাথে ট্রেস হয়।</li>
+        <li><strong>শিপমেন্ট ডেডলাইন অ্যালার্ট:</strong> Delivery Order-এ Odoo-র scheduled date ব্যবহার করুন। এটি LC শিপমেন্ট তারিখের 2 দিন আগে সেট করুন (কাস্টমস প্রসেসিংয়ের জন্য বাফার)। Manufacturing Order সম্পূর্ণ হওয়ার তারিখ শিপমেন্ট তারিখের 5 দিন আগে সেট করা উচিত। Odoo-র activity reminder ডেডলাইন কাছে এলে দায়িত্বপ্রাপ্ত ব্যক্তিকে সতর্ক করে।</li>
+        <li><strong>এক্সপোর্ট ইনভয়েস:</strong> ইনভয়েস USD-তে (বা LC কারেন্সিতে) তৈরি হয়। Odoo-তে USD কারেন্সি কনফিগার করুন এবং বায়ারের জন্য USD-তে pricelist ব্যবহার করুন। ইনভয়েস "Customer Reference" ফিল্ডে LC নম্বর রেফারেন্স করে। এই রেফারেন্স সব এক্সপোর্ট ডকুমেন্টে দেখা যায়।</li>
+        <li><strong>প্যাকিং লিস্ট:</strong> Odoo-র Delivery Order একটি প্যাকিং লিস্ট তৈরি করে। একটি কাস্টম QWeb রিপোর্ট টেমপ্লেট কনফিগার করুন যা দেখায়: স্টাইল, কালার, সাইজ ব্রেকডাউন, কার্টন নম্বর, গ্রস আর নেট ওজন, মেজারমেন্ট, এবং মোট পিস। কমার্শিয়াল ইনভয়েস ছাড়া এটাই প্রধান এক্সপোর্ট ডকুমেন্ট।</li>
+        <li><strong>এক্সপোর্ট অ্যাকাউন্টিং:</strong> বাংলাদেশে এক্সপোর্ট সেলস VAT-এর জন্য জিরো-রেটেড (0% আউটপুট VAT)। Odoo-র fiscal position-এ একটি আলাদা ট্যাক্স গ্রুপ "Export — 0%" কনফিগার করুন। সব এক্সপোর্ট বায়ারের ক্ষেত্রে এই fiscal position প্রয়োগ করুন। ট্যাক্স রিপোর্ট ডোমেস্টিক টার্নওভার থেকে আলাদাভাবে এক্সপোর্ট টার্নওভার দেখাবে, যা Mushak সিস্টেমের অধীনে মাসিক VAT রিটার্নের (9.1) জন্য প্রয়োজন।</li>
+      </ul>
+
+      <h2 id="reporting">Odoo RMG-তে প্রোডাকশন রিপোর্টিং</h2>
+
+      <p>RMG কারখানা ম্যানেজমেন্ট প্রতিদিন যেসব রিপোর্ট ব্যবহার করে তার সবগুলো ডিফল্টভাবে Odoo-তে বিল্ট-ইন নয়, তবে কনফিগার বা এক্সট্র্যাক্ট করা যায়:</p>
+
+      <ul>
+        <li><strong>দৈনিক প্রোডাকশন বোর্ড:</strong> Manufacturing → Reporting → Production Analysis। তারিখ = আজ দিয়ে ফিল্টার করুন, Work Centre অনুযায়ী গ্রুপ করুন। এটি প্রতিদিন প্রতি ওয়ার্ক সেন্টারে উৎপাদিত পিস দেখায়। দরকার হলে সকালের প্রোডাকশন মিটিংয়ের জন্য Excel-এ এক্সপোর্ট করুন।</li>
+        <li><strong>WIP (Work in Progress) স্টেজ অনুযায়ী:</strong> কাটিং আউটপুট আর সেলাই সম্পূর্ণতার মধ্যকার পার্থক্য আপনাকে কাটিং-টু-সেলাই স্টেজে WIP দেয়। "In Progress" স্ট্যাটাসে ফিল্টার করা, রাউটিং স্টেপ অনুযায়ী গ্রুপ করা Manufacturing Order-এ একটি Odoo pivot view কনফিগার করুন। এটি রিয়েল টাইমে প্রোডাকশন স্টেজ অনুযায়ী WIP দেয়।</li>
+        <li><strong>অর্ডার অনুযায়ী শিপমেন্ট রেডিনেস:</strong> Sales → Reporting → Sales Analysis। Delivery Date (এই সপ্তাহ / এই মাস) অনুযায়ী ফিল্টার করুন। এটি দেখায় কোন বায়ার PO শিপমেন্টের জন্য বাকি আর কত শতাংশ ডেলিভার হয়েছে।</li>
+        <li><strong>ফ্যাব্রিক ইল্ড:</strong> সম্পূর্ণ হওয়া MO-এর জন্য প্রকৃত কম্পোনেন্ট কনজাম্পশন (Work Orders থেকে) BOM স্ট্যান্ডার্ড কনজাম্পশনের সাথে তুলনা করুন। ভ্যারিয়েন্সই ফ্যাব্রিক ইল্ড লস। এর জন্য একটি কাস্টম রিপোর্ট বা component_qty_done বনাম product_qty × BOM component qty তুলনাকারী Manufacturing Orders-এ একটি shceduled Odoo filter দরকার।</li>
+        <li><strong>কোয়ালিটি রিজেকশন রেট:</strong> Manufacturing → Reporting → Scrap-এ Scrap Analysis রিপোর্ট। প্রোডাক্ট আর পিরিয়ড অনুযায়ী ফিল্টার করুন। মোট স্ক্র্যাপ ÷ মোট প্রোডাকশন = রিজেকশন রেট %। আপনার ডিফেক্ট প্যারেটো দেখতে স্ক্র্যাপ কারণ অনুযায়ী গ্রুপ করুন।</li>
+      </ul>
+
+      <h2 id="bangladesh">বাংলাদেশ RMG — স্থানীয় প্রেক্ষাপটের জন্য নির্দিষ্ট কনফিগারেশন নোট</h2>
+
+      <ul>
+        <li><strong>সাবকন্ট্র্যাক্টিং ব্যতিক্রম নয়, নিয়ম।</strong> বেশিরভাগ RMG কারখানা ওয়াশিং, এমব্রয়ডারি, আর প্রিন্টিং সাবকন্ট্র্যাক্ট করে। প্রতিটি সাবকন্ট্র্যাক্ট করা প্রসেসের জন্য Odoo-র subcontracting BOM type ব্যবহার করুন — stock transfer আর ম্যানুয়াল PO ব্যবহার করবেন না। Subcontracting BOM ম্যাটেরিয়াল ফ্লো, কস্টিং, আর ফিনিশড গুডস রিসিপ্ট সঠিকভাবে ও স্বয়ংক্রিয়ভাবে হ্যান্ডল করে।</li>
+        <li><strong>একাধিক বায়ার, একাধিক কমপ্লায়েন্স রিকোয়ারমেন্ট।</strong> H&M, Inditex, PVH, আর Li & Fung-এর বায়ারদের আলাদা লেবেল স্পেসিফিকেশন, টেস্টিং রিকোয়ারমেন্ট, এবং প্যাকিং স্ট্যান্ডার্ড থাকে। বায়ার-নির্দিষ্ট রিকোয়ারমেন্ট Sales Order notes হিসেবে রাখুন এবং chatter-এর মাধ্যমে প্রতিটি অর্ডারে বায়ারের কমপ্লায়েন্স চেকলিস্ট PDF অ্যাটাচ করুন। প্রোডাক্ট মাস্টারে সব বায়ার-নির্দিষ্ট রিকোয়ারমেন্ট এনকোড করার চেষ্টা করবেন না — প্রোডাক্ট মাস্টার পরিষ্কার রাখুন এবং বায়ার নির্দিষ্টতার জন্য অর্ডার-লেভেল ডকুমেন্টেশন ব্যবহার করুন।</li>
+        <li><strong>পাওয়ার আউটেজ কনটিনজেন্সি।</strong> অস্থির বিদ্যুৎ সরবরাহের কারখানায় অন-প্রিমাইজ Odoo ডেপ্লয়মেন্টের জন্য একটি UPS দরকার যা সার্ভার আর অন্তত শপ ফ্লোর টার্মিনাল কভার করে। সেলাই ফ্লোর প্রোডাকশন এন্ট্রির জন্য Odoo-র অফলাইন মোড কনফিগার করুন বা Odoo মোবাইল অ্যাপ ব্যবহার করুন — সার্ভার সংক্ষিপ্তভাবে অ্যাক্সেসযোগ্য না থাকলে অ্যাপ লোকালভাবে এন্ট্রি ক্যাশ করে আর কানেক্টিভিটি ফিরে এলে সিঙ্ক করে।</li>
+        <li><strong>শুক্র/শনিবার সাপ্তাহিক ছুটি।</strong> বাংলাদেশের কারখানা ক্যালেন্ডার প্রতিফলিত করতে Odoo-র work schedule কনফিগার করুন: রবিবার থেকে বৃহস্পতিবার স্ট্যান্ডার্ড কর্মদিবস, শুক্র আর শনিবার সাপ্তাহিক ছুটি (বা শুক্রবার হাফ-ডে + শনিবার ছুটি, কারখানা নীতি অনুযায়ী)। এটি অ্যাটেনডেন্স হিসাব, ওভারটাইম থ্রেশহোল্ড, এবং ডেলিভারি ডেট শিডিউলিংকে প্রভাবিত করে।</li>
+        <li><strong>কমপ্লায়েন্স অডিট ট্রেইল।</strong> BGMEA, বায়ার CSR অডিট, এবং DIFE ইন্সপেকশন পেরোল রেকর্ড, অ্যাটেনডেন্স রেকর্ড, এবং ওভারটাইম লগ চাইবে। Odoo এগুলো সবই মূলত তৈরি করে। HR মডিউলের ডেটা সম্পূর্ণ ও সঠিক নিশ্চিত করুন — অসম্পূর্ণ অ্যাটেনডেন্স রেকর্ড কারখানা কমপ্লায়েন্স অডিটে সবচেয়ে সাধারণ ত্রুটি।</li>
+      </ul>
+
+      <div class="callout">
+        <span class="tag">সারকথা</span>
+        <p>RMG-এর জন্য Odoo প্লাগ-অ্যান্ড-প্লে ডেপ্লয়মেন্ট নয়। BOM স্ট্রাকচার, ওয়ার্ক সেন্টার কনফিগারেশন, পেরোল কমপ্লায়েন্স, এবং LC ডকুমেন্টেশন — সবগুলোর জন্যই গো-লাইভের আগে ইচ্ছাকৃত ডিজাইন সিদ্ধান্ত দরকার। যেসব কারখানা সঠিক কনফিগারেশনে ২–৩ সপ্তাহ বিনিয়োগ করে, তারা এমন একটি সিস্টেম পায় যা স্যাম্পল থেকে শিপমেন্ট পর্যন্ত পূর্ণ ট্রেসেবিলিটিসহ ট্র্যাক করে। যারা সেটআপ তাড়াহুড়ো করে, তারা এমন একটি সিস্টেম পায় যা ৯০ দিনের মধ্যে Excel-এর সমান্তরালে চলে। শুরুর আগে আপনার কারখানার লাইসেন্সিং আর বাস্তবায়ন বাজেট স্কোপ করতে, চেষ্টা করুন <a href="/bn/tools/odoo-cost-estimator/" style="color:var(--accent)">Odoo cost estimator</a>। <a href="/bn/#contact" style="color:var(--accent)">আপনার RMG কারখানার জন্য Odoo কনফিগার করতে সাহায্য দরকার? যোগাযোগ করুন →</a></p>
+      </div>
+
+      <h2 id="faq">সচরাচর জিজ্ঞাসা</h2>
+
+      <h3>বাংলাদেশে RMG কারখানার জন্য Odoo কীভাবে সেটআপ করবেন?</h3>
+      <p>RMG-এর জন্য Odoo সেটআপ করুন এভাবে: ওয়ার্ক সেন্টারসহ (Cutting, Sewing lines, Finishing, QC, Packing) Manufacturing; সাইজ-কালারের জন্য প্রোডাক্ট ভ্যারিয়েন্ট ব্যবহার করে BOM (প্রতি স্টাইল টেমপ্লেটে একটি BOM, প্রতি ভ্যারিয়েন্টে নয়); BGMEA গ্রেড-ভিত্তিক স্যালারি স্ট্রাকচার আর বায়োমেট্রিক অ্যাটেনডেন্স ইন্টিগ্রেশনসহ HR/Payroll; ফ্যাব্রিক রোলের জন্য লট ট্র্যাকিংসহ Inventory; LC রেফারেন্স ট্র্যাকিংসহ বায়ার PO ম্যানেজমেন্টের জন্য Sales; এক্সপোর্ট জিরো-রেটেড VAT আর TDS-এর জন্য Accounting। BOM স্ট্রাকচারই সবচেয়ে গুরুত্বপূর্ণ সিদ্ধান্ত — কোনো প্রোডাক্ট এন্টার করার আগেই এটি ঠিক করে নিন।</p>
+
+      <h3>Odoo কি BGMEA ওয়েজ বোর্ড কমপ্লায়েন্স হ্যান্ডল করে?</h3>
+      <p>হ্যাঁ। বর্তমান গেজেটেড ওয়েজ-বোর্ড মিনিমাম অনুযায়ী Basic, প্লাস House Rent, Medical, Transport, এবং Food allowance, PF কর্তন (5%/5% শ্রমিক/নিয়োগকর্তা), Basic ঘণ্টার রেটের 2× ওভারটাইম, এবং গ্র্যাচুইটি প্রভিশন accrual সহ প্রতি BGMEA ওয়ার্কার গ্রেডে স্যালারি স্ট্রাকচার কনফিগার করুন। বায়োমেট্রিক ডিভাইস থেকে অ্যাটেনডেন্স প্রতি-দিন কর্তন হিসাবের জন্য পেরোলে ফিড করে। Odoo এমন পেস্লিপ, স্যালারি রেজিস্টার, এবং PF শিডিউল তৈরি করে যা BGMEA আর DIFE অডিট রিকোয়ারমেন্ট পূরণ করে।</p>
+
+      <h3>Odoo গার্মেন্টস BOM-এ সাইজ আর কালার ভ্যারিয়েন্ট কীভাবে হ্যান্ডল করে?</h3>
+      <p>Odoo প্রোডাক্ট ভ্যারিয়েন্ট ব্যবহার করুন: Size আর Colour অ্যাট্রিবিউট হিসেবে প্রতি স্টাইলে একটি প্রোডাক্ট তৈরি করুন। প্রোডাক্ট টেমপ্লেট লেভেলে BOM ডিফাইন করুন। সাইজ-নির্ভর কম্পোনেন্টের জন্য (ফ্যাব্রিক, কলার রিব, পলি ব্যাগ) "Apply on Variants" ব্যবহার করুন এবং কালার-নির্ভর কম্পোনেন্ট (ফ্যাব্রিক কালার, থ্রেড কালার) প্রাসঙ্গিক কালার ভ্যারিয়েন্টে প্রয়োগ করা রাখুন। এটি আপনার প্রোডাক্ট ক্যাটালগকে প্রতি সাইজ-কালার কম্বিনেশনে একটির বদলে প্রতি স্টাইলে একটি এন্ট্রিতে রাখে — ৫০+ অ্যাক্টিভ স্টাইল থাকলে এটি অপরিহার্য।</p>
+
+      <h3>Odoo গার্মেন্টসের জন্য প্রোডাকশন ট্র্যাকিং কীভাবে ম্যানেজ করে?</h3>
+      <p>প্রতিটি বায়ার PO লাইন Odoo-তে একটি Manufacturing Order হয়ে যায়। MO-র প্রতিটি স্টেজের জন্য ওয়ার্ক অর্ডার থাকে (Cutting → Sewing → Finishing → QC → Packing)। সুপারভাইজাররা Manufacturing tablet view ব্যবহার করে প্রতি ওয়ার্ক সেন্টারে দৈনিক আউটপুট রেকর্ড করেন। Odoo রিয়েল-টাইম WIP স্টেজ অনুযায়ী, প্ল্যানের বিপরীতে দৈনিক আউটপুট, এবং শিপমেন্ট ডেটের বিপরীতে সঞ্চিত সম্পূর্ণতা দেখায়। রিজেকশন স্ক্র্যাপ অর্ডার হিসেবে রেকর্ড করা হয়, যা ইনভেন্টরি থেকে বাদ যায় আর একটি স্ক্র্যাপ কস্ট এন্ট্রি পোস্ট করে। প্রোডাকশন ড্যাশবোর্ড ম্যানেজমেন্টকে সব অ্যাক্টিভ অর্ডার আর শিপমেন্ট ডেডলাইনের বিপরীতে তাদের সম্পূর্ণতার স্ট্যাটাসের দৃশ্যমানতা দেয়।</p>
+    </div>
+  </article>
+
+  <footer>
+    <div class="shell">
+      <div class="post-foot">
+        <span class="eyebrow">আরও পড়ুন</span>
+        <div class="next">
+          <a class="next-card" href="/bn/lab/0032-odoo-post-go-live-hypercare-bangladesh">
+            <span class="dir">পুরনো · 0032</span>
+            <h4>Odoo পোস্ট গো-লাইভ হাইপারকেয়ার</h4>
+            <p>গো-লাইভের পর বাংলাদেশের Odoo টিমের জন্য L1/L2/L3 সাপোর্ট স্ট্রাকচার, এস্কেলেশন ম্যাট্রিক্স, এবং 30-60-90 দিনের KPI।</p>
+            <span class="arrow">→</span>
+          </a>
+          <a class="next-card" href="/bn/lab/0034-odoo-cycle-export-bangladesh">
+            <span class="dir">নতুন · 0034</span>
+            <h4>বাংলাদেশে সাইকেল এক্সপোর্টের জন্য Odoo</h4>
+            <p>বাইসাইকেল ম্যানুফ্যাকচারারদের জন্য BOM স্ট্রাকচার, কম্পোনেন্ট প্রোকিউরমেন্ট, প্রোডাকশন রাউটিং, এবং কাস্টমস ডকুমেন্টেশন।</p>
+            <span class="arrow">→</span>
+          </a>
+        </div>
+      </div>
+      <div class="foot">
+        <span>© ২০২৬ Mehedi Hasan · Lab / 0033</span>
+        <span><a href="/bn/#lab">↑ ল্যাব ইনডেক্সে ফিরুন</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/lab/_utils.js" defer></script>
+<script src="/lab/_toc.js" defer></script>
+<script src="/whatsapp.js" defer></script>
+<script src="/scroll-top.js" defer></script>
+</body>
+
+</html>

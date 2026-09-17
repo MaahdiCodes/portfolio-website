@@ -1,0 +1,394 @@
+﻿<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="/favicon.ico" sizes="any" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon.png" />
+<link rel="apple-touch-icon" href="/favicon.png" />
+<meta name="robots" content="noindex, follow" />
+<link rel="canonical" href="https://mhasan.me/bn/courses/01-requirements-gathering/lesson-01" />
+<link rel="alternate" hreflang="en" href="https://mhasan.me/courses/01-requirements-gathering/lesson-01" />
+<link rel="alternate" hreflang="bn-BD" href="https://mhasan.me/bn/courses/01-requirements-gathering/lesson-01" />
+<link rel="alternate" hreflang="x-default" href="https://mhasan.me/courses/01-requirements-gathering/lesson-01" />
+<title>লেসন ০১ — ফাউন্ডেশন: বিজনেস অ্যানালিস্টরা আসলে কী করেন · কোর্স ০১</title>
+<meta name="description" content="BA-র ভূমিকা বুঝুন, PM ও SA থেকে এর পার্থক্য জানুন, এবং কেন রিকোয়ারমেন্ট ব্যর্থ হয় তা শিখুন — বাংলাদেশের RMG খাতের উদাহরণসহ।">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300..700&family=Geist+Mono:wght@300..500&family=Noto+Sans+Bengali:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/lab/_styles.css">
+<style>
+body{ font-family: 'Noto Sans Bengali', var(--sans); }
+.three-up{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:28px 0}
+.three-up .card{border:1px solid var(--border);border-radius:12px;padding:20px;background:rgba(21,24,29,0.5)}
+.three-up .card h4{font-size:14px;font-weight:500;margin:0 0 8px;color:var(--text)}
+.three-up .card p{font-size:13.5px;color:var(--text-2);margin:0;line-height:1.55}
+.field-note{border:1px solid var(--border);border-radius:12px;padding:22px 24px;margin:28px 0;background:linear-gradient(180deg,rgba(21,24,29,0.55),rgba(14,16,19,0.55))}
+.field-note .fn-label{font-family:var(--mono);font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:var(--accent);margin:0 0 10px}
+.field-note p{font-size:14.5px;color:var(--text-2);margin:0;line-height:1.6}
+.field-note p+p{margin-top:10px}
+.role-table{width:100%;border-collapse:collapse;margin:24px 0;font-size:14px}
+.role-table th,.role-table td{padding:12px 16px;border-bottom:1px solid var(--border);text-align:left;color:var(--text-2)}
+.role-table th{font-family:var(--mono);font-size:10px;color:var(--text-3);letter-spacing:0.12em;text-transform:uppercase;font-weight:400}
+.role-table td:first-child{color:var(--text);font-weight:500}
+.role-table tr:last-child td{border-bottom:none}
+@media(max-width:680px){.three-up{grid-template-columns:1fr}}
+.stat-block{display:grid;grid-template-columns:repeat(3,1fr);gap:0;background:var(--border);border-radius:12px;overflow:hidden;margin:28px 0}
+.stat-item{background:var(--surface);padding:24px 18px;text-align:center}
+.stat-num{font-family:var(--mono);font-size:26px;font-weight:300;color:var(--accent);line-height:1;display:block}
+.stat-label{font-size:12px;color:var(--text-3);margin-top:8px;line-height:1.4;display:block}
+.bar-chart{margin:28px 0;display:flex;flex-direction:column;gap:14px}
+.bc-row{display:grid;grid-template-columns:190px 1fr 44px;gap:10px;align-items:center}
+.bc-label{font-size:13px;color:var(--text-2)}
+.bc-track{height:6px;background:rgba(255,255,255,0.06);border-radius:4px;overflow:hidden}
+.bc-fill{height:100%;background:oklch(0.80 0.17 155);border-radius:4px}
+.bc-pct{font-family:var(--mono);font-size:11px;color:var(--text-3);text-align:right}
+.donut-stat{display:flex;align-items:center;gap:28px;padding:24px;border:1px solid var(--border);border-radius:12px;background:rgba(21,24,29,0.5);margin:28px 0}
+.donut-stat svg{flex:none}
+.donut-label{font-size:14px;color:var(--text-2);line-height:1.6;margin:0}
+.donut-label strong{color:var(--text)}
+.insight-row{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin:28px 0}
+.insight-card{border:1px solid var(--border);border-radius:12px;padding:20px;background:rgba(21,24,29,0.5)}
+.insight-card .ic-label{font-family:var(--mono);font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-3);margin:0 0 8px}
+.insight-card h4{font-size:15px;font-weight:500;color:var(--text);margin:0 0 8px}
+.insight-card p{font-size:13.5px;color:var(--text-2);margin:0;line-height:1.55}
+@media(max-width:680px){.stat-block{grid-template-columns:1fr}.bc-row{grid-template-columns:140px 1fr 36px}.donut-stat{flex-direction:column;text-align:center}.insight-row{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="grid-bg"></div>
+
+<nav class="nav">
+  <div class="shell">
+    <div class="nav-inner">
+      <a href="/bn/" class="brand">
+        <div class="brand-mark"></div>
+        <div class="brand-name"><b>Mehedi Hasan</b><em>ERP কনসালট্যান্ট</em></div>
+      </a>
+      <a href="./" class="back-link">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10 12L6 8l4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        কোর্স ওভারভিউ
+      </a>
+    </div>
+  </div>
+</nav>
+
+<div class="shell">
+  <div class="post-head">
+    <span class="eyebrow">কোর্স ০১ &nbsp;·&nbsp; লেসন ০১ &nbsp;·&nbsp; ১৫ মিনিট</span>
+    <div class="post-meta">
+      <span class="chip accent">ফাউন্ডেশন</span>
+      <span class="chip">BA-র ভূমিকা</span>
+      <span class="chip">বাংলাদেশ কনটেক্সট</span>
+    </div>
+    <h1>ফাউন্ডেশন — বিজনেস অ্যানালিস্টরা <span class="serif">আসলে</span> কী করেন</h1>
+    <p class="lede">টেক ও অপারেশন্স জগতে BA-র ভূমিকা নিয়ে সবচেয়ে বেশি ভুল বোঝাবুঝি হয়। কৌশলে গভীরে যাওয়ার আগে আমাদের ঠিক করে নিতে হবে একজন BA আসলে কী, এই বিভ্রান্তি কোথা থেকে আসে, আর এটা ভুল হলে প্রজেক্টের কী মূল্য দিতে হয়।</p>
+    <div class="byline">
+      <span>লেসন<b>০১ / ০৯</b></span>
+      <span>সময়<b>১৫ মিনিট</b></span>
+      <span>কোর্স<b>রিকোয়ারমেন্ট গ্যাদারিং</b></span>
+    </div>
+  </div>
+</div>
+
+<div class="shell">
+  <div class="post">
+    <!-- TOC -->
+    <nav class="toc" id="toc" aria-label="Lesson contents">
+      <button class="toc-toggle" onclick="toggleToc()" aria-expanded="false" aria-controls="toc">
+        <span class="label">এই লেসনে</span>
+        <span class="current" id="toc-current">নোট-টেকার মিথ</span>
+        <span class="chev">
+          <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 4l3 3 3-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+      </button>
+      <div class="toc-k">বিষয়সূচি</div>
+      <ol>
+        <li><a href="#s1">নোট-টেকার মিথ</a></li>
+        <li><a href="#s2">BA বনাম PM বনাম SA</a></li>
+        <li><a href="#s3">কেন রিকোয়ারমেন্ট ব্যর্থ হয়</a></li>
+        <li><a href="#s4">BA-র নর্থ স্টার</a></li>
+        <li><a href="#s5">বাংলাদেশ কনটেক্সট</a></li>
+        <li><a href="#s6">অ্যান্টি-প্যাটার্ন</a></li>
+        <li><a href="#s7">টেমপ্লেট: রোল চার্টার</a></li>
+        <li><a href="#s_ba_impact">ভালো রিকোয়ারমেন্টের বিজনেস কেস</a></li>
+        <li><a href="#s8">রিফ্লেকশন</a></li>
+      </ol>
+      <div class="toc-progress"><span>প্রগ্রেস</span><div class="bar"><i id="prog-bar"></i></div></div>
+    </nav>
+    <div class="toc-progress-mobile"><i id="prog-bar-m"></i></div>
+
+    <!-- BODY -->
+    <article class="body">
+
+      <h2 id="s1">নোট-টেকার মিথ</h2>
+      <p>একটি কোম্পানির দশজন মানুষকে জিজ্ঞেস করুন একজন বিজনেস অ্যানালিস্ট কী করেন, আর আপনি দশটা আলাদা উত্তর পাবেন। কিছু প্রতিষ্ঠানে BA মানে যিনি মিটিংয়ে বসে সবকিছু Confluence-এ টাইপ করেন। অন্য কোথাও, BA একজন জুনিয়র প্রজেক্ট ম্যানেজার যিনি শিডিউলিং-এ সাহায্য করেন। কিছু জায়গায়, BA-কে ভুল করে ডেটা অ্যানালিস্ট ভাবা হয় — যিনি Excel বা Power BI-তে ড্যাশবোর্ড বানান।</p>
+      <p>এগুলোর কোনোটাই ঠিক ভুল নয়। কিন্তু কোনোটাই ঠিক <em>সঠিক</em>ও নয়। এই ভুল ধারণাগুলো টিকে থাকে কারণ BA-র ভূমিকা বিজনেস, টেকনোলজি আর মানুষের সংযোগস্থলে অবস্থিত — অর্থাৎ প্রতিটি পক্ষের পক্ষেই এই ভূমিকাকে নিজের সংজ্ঞার দিকে টেনে নেওয়া সহজ।</p>
+      <p>এর ফল হলো, রিকোয়ারমেন্ট ঠিকমতো সংগ্রহ হয় না, এবং তাই প্রজেক্ট ব্যর্থ হয় — ডেপ্লয়মেন্টে নয়, বরং সেই মুহূর্তে যখন কেউ প্রথম বসে বলেছিল "আপনার কী দরকার বলুন।"</p>
+
+      <div class="field-note">
+        <p class="fn-label">ফিল্ড নোট</p>
+        <p>চট্টগ্রামের একটি গার্মেন্টস ফ্যাক্টরিতে আমি এমন একটি প্রজেক্টে যোগ দিয়েছিলাম যেটি ইতিমধ্যে তিন মাস পুড়িয়ে ফেলেছিল। রেকর্ডে থাকা "BA" মানুষ যা <strong>বলেছিল</strong> তারা চায়, তার একটি ৪৭-পৃষ্ঠার ডকুমেন্ট তৈরি করেছিলেন — মিটিং নোট, ইমেইল সামারি, হোয়াইটবোর্ডের ছবি। যা অনুপস্থিত ছিল: সিস্টেমটির আসলে কী <strong>করা</strong> দরকার সে সম্পর্কে একটি মাত্র বাক্যও নেই। ডেভেলপার সপ্তাহের পর সপ্তাহ ভুল অনুমানের ওপর ভিত্তি করে বানাচ্ছিলেন। আসল বিজনেস রিকোয়ারমেন্ট — বায়ার PO অনুযায়ী শিপমেন্ট স্ট্যাটাস ট্র্যাক করা — ৩১ নম্বর প্যারাগ্রাফে চাপা পড়ে ছিল।</p>
+      </div>
+
+      <div class="stat-block">
+        <div class="stat-item">
+          <span class="stat-num">৩৭%</span>
+          <span class="stat-label">বৈশ্বিকভাবে সফটওয়্যার প্রজেক্ট ব্যর্থতার এই অংশ সরাসরি রিকোয়ারমেন্ট-ফেজের ভাঙনের সঙ্গে যুক্ত</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num">৫৬%</span>
+          <span class="stat-label">দক্ষিণ এশিয়ার BA-দের এই অংশ BA কাজের পাশাপাশি একই সঙ্গে PM বা SA-র দায়িত্বও পালন করেন</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num">২.৪×</span>
+          <span class="stat-label">বেশি সম্ভাবনা সময়মতো ও বাজেটের মধ্যে ডেলিভারির, যদি বিল্ড শুরুর আগেই রিকোয়ারমেন্ট স্পষ্ট থাকে</span>
+        </div>
+      </div>
+
+      <p>একজন বিজনেস অ্যানালিস্ট এমন ব্যক্তি যিনি নিশ্চিত করেন <strong>সঠিক সমস্যাটির সমাধান হচ্ছে</strong>। যে সমস্যাটি বলা হয়েছে সেটা নয়। যে সমস্যাটি রাজনৈতিকভাবে জনপ্রিয় সেটাও নয়। আসল সমস্যাটি, যার সমাধান হলে প্রতিষ্ঠান আর তার ইউজারদের জন্য মূল্য তৈরি হবে।</p>
+      <p>অর্থাৎ BA-র প্রধান আউটপুট কোনো ডকুমেন্ট নয়। এটি <strong>শেয়ার্ড আন্ডারস্ট্যান্ডিং</strong> — স্টেকহোল্ডারদের মধ্যে, বিজনেস আর IT-র মধ্যে, যা চাওয়া হয়েছিল আর যা তৈরি করতে হবে তার মধ্যে।</p>
+
+      <h2 id="s2">BA বনাম PM বনাম SA: বাংলাদেশে হাইব্রিড বাস্তবতা</h2>
+      <p>আন্তর্জাতিকভাবে এই ভূমিকাগুলো মোটামুটি আলাদা। বিজনেস অ্যানালিস্ট ঠিক করেন <em>কী</em> তৈরি হবে। প্রজেক্ট ম্যানেজার ঠিক করেন <em>কখন</em> আর <em>কত খরচে</em>। সিস্টেমস অ্যানালিস্ট বা সলিউশন আর্কিটেক্ট ঠিক করেন এটি টেকনিক্যালি <em>কীভাবে</em> তৈরি হবে।</p>
+      <p>তবে বাংলাদেশের টেকনোলজি ও কনসালটিং মার্কেটে প্রায়ই একজন মানুষ তিনটি কাজই করেন। ছোট টিম, সীমিত বাজেট, আর "একসঙ্গে অনেক দায়িত্ব সামলানো"র সংস্কৃতির কারণে আপনি BA টাইটেল বহন করার পাশাপাশি টাইমলাইনও ট্র্যাক করতে পারেন আর টেকনিক্যাল ডিজাইন ডকুমেন্টও রিভিউ করতে পারেন।</p>
+      <p>এটা কোনো সমস্যা নয় — যতক্ষণ আপনি জানেন যেকোনো মুহূর্তে কোন টুপি পরে আছেন। বিপদ তখনই আসে যখন এগুলো গুলিয়ে ফেলেন: PM-এর তাড়াহুড়োর চাপে গুরুত্বপূর্ণ BA প্রশ্ন করা বন্ধ করে দেন, অথবা সমস্যাটা পুরোপুরি না বুঝেই SA-সুলভ চিন্তা আপনাকে সমাধানের দিকে ঠেলে দেয়।</p>
+
+      <table class="role-table">
+        <thead>
+          <tr>
+            <th>ভূমিকা</th>
+            <th>মূল প্রশ্ন</th>
+            <th>প্রধান আউটপুট</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>বিজনেস অ্যানালিস্ট</td>
+            <td>বিজনেসের আসলে কী দরকার?</td>
+            <td>রিকোয়ারমেন্ট, ইউজার স্টোরি, স্পেক</td>
+          </tr>
+          <tr>
+            <td>প্রজেক্ট ম্যানেজার</td>
+            <td>আমরা এটা কীভাবে, কখন, কত খরচে ডেলিভার করব?</td>
+            <td>প্ল্যান, রিস্ক রেজিস্টার, স্ট্যাটাস রিপোর্ট</td>
+          </tr>
+          <tr>
+            <td>সিস্টেমস অ্যানালিস্ট / SA</td>
+            <td>এই চাহিদা পূরণে সিস্টেমটি কীভাবে তৈরি হবে?</td>
+            <td>টেকনিক্যাল ডিজাইন, আর্কিটেকচার, ডেটা মডেল</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>যখন আপনি তিনটি কাজই করছেন, তখন স্পষ্ট চেকপয়েন্ট তৈরি করুন: "এই মুহূর্তে আমি রিকোয়ারমেন্টের কাজ করছি। ডেলিভারির চাপে আমি এটা সংক্ষিপ্ত করব না।" এই শৃঙ্খলাই ভালো ফলাফল দেওয়া BA-দের আলাদা করে দ্রুত-কিন্তু-ভুল ফলাফল দেওয়া BA-দের থেকে।</p>
+
+      <h2 id="s3">কেন রিকোয়ারমেন্ট ব্যর্থ হয়: সাধারণ ভাঙনের একটি শ্রেণিবিন্যাস</h2>
+      <p>Standish Group-এর Chaos Report ১৯৯৪ সাল থেকে সফটওয়্যার প্রজেক্টের ব্যর্থতা ট্র্যাক করে আসছে। রিকোয়ারমেন্ট-সম্পর্কিত সমস্যা বৈশ্বিকভাবে প্রজেক্ট ব্যর্থতার শীর্ষ তিন কারণের মধ্যে নিয়মিতভাবেই থাকে। বাংলাদেশে, যেখানে অনেক প্রজেক্ট নির্দিষ্ট BA ছাড়াই চলে, এই সংখ্যা আরও বেশি।</p>
+      <p>এখানে RMG, ফাইন্যান্সিয়াল সার্ভিসেস, আর NGO খাতের প্রজেক্ট পোস্ট-মর্টেম থেকে তৈরি করা ব্যর্থতার শ্রেণিবিন্যাস দেওয়া হলো:</p>
+
+      <div class="three-up">
+        <div class="card">
+          <h4>যা বলা হয় ≠ যা আসল</h4>
+          <p>স্টেকহোল্ডাররা তা-ই বলেন যা তারা মনে করেন আপনি শুনতে চান, বা যা শুনতে চিত্তাকর্ষক লাগে — তাদের আসল চাহিদা নয়। একটি ফ্যাক্টরির MD বলেন "সম্পূর্ণ ভিজিবিলিটি" চাই, অথচ তার আসল দরকার শিপমেন্ট দেরি হলে একটি অ্যালার্ট।</p>
+        </div>
+        <div class="card">
+          <h4>স্টেকহোল্ডার বাদ পড়া</h4>
+          <p>রিকোয়ারমেন্ট সংগ্রহ করা হয় রুমে উপস্থিত মানুষদের থেকে, যারা সিস্টেমটি আসলে ব্যবহার করবেন তাদের থেকে নয়। ফ্লোর সুপারভাইজারদের সঙ্গে কখনো পরামর্শই করা হয় না, অথচ তারাই প্রতিদিন সিস্টেমটি ব্যবহার করবেন।</p>
+        </div>
+        <div class="card">
+          <h4>অস্পষ্টতা মেনে নেওয়া</h4>
+          <p>BA শোনেন "সিস্টেমটি দ্রুত হওয়া উচিত" আর কোনো সংজ্ঞা ছাড়াই তা লিখে ফেলেন। একজন স্টেকহোল্ডারের কাছে দ্রুত মানে ২ সেকেন্ডের কম, আরেকজনের কাছে ২ মিনিটের কম।</p>
+        </div>
+        <div class="card">
+          <h4>নীরবতার মাধ্যমে স্কোপ ক্রিপ</h4>
+          <p>কেউ ঠিক করেন না কী <em>স্কোপের বাইরে</em>। ছয় মাস পর, MD জিজ্ঞেস করেন কেন সিস্টেম এক্সপোর্ট ডকুমেন্টেশন হ্যান্ডল করে না — এমন একটি ফিচার যা তৈরি করার ব্যাপারে কেউ কখনো সম্মত হয়নি।</p>
+        </div>
+        <div class="card">
+          <h4>রিকোয়ারমেন্ট উইশ-লিস্ট হিসেবে</h4>
+          <p>রিকোয়ারমেন্ট সংগ্রহ করা হয় কিন্তু কখনো অগ্রাধিকার দেওয়া হয় না। টিম সবকিছু সমান গুরুত্বে তৈরি করে, আর বিজনেসের আসল প্রয়োজনীয় মূল ফিচারগুলো শেষ করার আগেই সময় ফুরিয়ে যায়।</p>
+        </div>
+        <div class="card">
+          <h4>ট্রেসেবিলিটি নেই</h4>
+          <p>ডেভেলপমেন্টের সময় রিকোয়ারমেন্ট বদলায় কিন্তু কেউ স্পেক আপডেট করে না। UAT-এর সময় কেউ মনে রাখতে পারে না কী নিয়ে সম্মত হওয়া হয়েছিল, আর সাইন-অফ একটি ভেরিফিকেশন না হয়ে একটি দরকষাকষিতে পরিণত হয়।</p>
+        </div>
+      </div>
+
+      <p>এই ব্যর্থতার ধরনগুলো বোঝাই সেগুলো এড়ানোর প্রথম ধাপ। এই কোর্সের বাকি অংশ প্রতিটি সরাসরি সমাধান করে।</p>
+
+      <div class="donut-stat">
+        <svg width="110" height="110" viewBox="0 0 110 110" aria-hidden="true">
+          <circle cx="55" cy="55" r="42" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="13"/>
+          <circle cx="55" cy="55" r="42" fill="none" stroke="oklch(0.80 0.17 155)" stroke-width="13"
+                  stroke-dasharray="97.6 263.9" stroke-linecap="round"
+                  transform="rotate(-90 55 55)"/>
+          <text x="55" y="55" text-anchor="middle" dy="0.35em" fill="oklch(0.80 0.17 155)"
+                font-family="Geist Mono,monospace" font-size="18" font-weight="300">37%</text>
+        </svg>
+        <p class="donut-label"><strong>প্রজেক্ট ব্যর্থতার ৩৭% রিকোয়ারমেন্ট ব্যর্থতা।</strong> Standish Group-এর Chaos Report ১৯৯৪ সাল থেকে ধারাবাহিকভাবে এটি ট্র্যাক করে আসছে। বাংলাদেশে, যেখানে বড় করপোরেটের বাইরে নির্দিষ্ট BA ভূমিকা বিরল, সংখ্যাটি আরও বেশি। ইঙ্গিতটি সহজ: রিকোয়ারমেন্ট প্রসেস ঠিক করাই বেশিরভাগ প্রজেক্ট টিমের জন্য সবচেয়ে উচ্চ-লিভারেজ পদক্ষেপ।</p>
+      </div>
+
+      <h2 id="s4">ভালো কী রকম দেখায়: BA-র নর্থ স্টার</h2>
+      <p>একটি সুসম্পন্ন রিকোয়ারমেন্ট ফেজ অল্প কিছু ফলাফল তৈরি করে। ডকুমেন্ট নয় — ফলাফল। ডকুমেন্টগুলো সেই ফলাফলের প্রমাণ, ফলাফল নিজে নয়।</p>
+      <ol>
+        <li><strong>শেয়ার্ড আন্ডারস্ট্যান্ডিং</strong> — প্রতিটি স্টেকহোল্ডার আর প্রতিটি ডেভেলপারের কাছে একই মানসিক মডেল থাকে যে কী তৈরি হচ্ছে আর কেন।</li>
+        <li><strong>টেস্টেবল রিকোয়ারমেন্ট</strong> — প্রতিটি রিকোয়ারমেন্ট UAT-এর সময় স্পষ্টভাবে যাচাই করা যায় পূরণ হয়েছে কি না। "ইউজার তার শিপমেন্ট স্ট্যাটাস দেখতে পারেন" টেস্টেবল। "সিস্টেম ভালো ভিজিবিলিটি দেয়" তা নয়।</li>
+        <li><strong>অগ্রাধিকারপ্রাপ্ত স্কোপ</strong> — সবাই একমত হয় কী থাকবে, কী থাকবে না, আর কোন ক্রমে ডেলিভার হবে।</li>
+        <li><strong>ডকুমেন্টেড সিদ্ধান্ত</strong> — স্কোপ, ডিজাইন বা অগ্রাধিকার নিয়ে প্রতিটি বড় সিদ্ধান্ত কারণসহ রেকর্ড করা থাকে। পরে কোনো স্টেকহোল্ডার যখন জিজ্ঞেস করেন "আমরা এভাবে কেন করেছিলাম?", তখন আপনার কাছে উত্তর থাকে।</li>
+      </ol>
+
+      <blockquote>"BA-র কাজ শুধু লিখে রাখা নয়। এটি এমন পরিস্থিতি তৈরি করা, যাতে সঠিক জিনিসটাই তৈরি হয়।"</blockquote>
+
+      <h2 id="s5">বাংলাদেশ কনটেক্সট: RMG ও সাপ্লাই চেইন প্রজেক্টে BA</h2>
+      <p>বাংলাদেশের গার্মেন্টস ও এক্সপোর্ট খাতের কিছু নিজস্ব বৈশিষ্ট্য আছে যা রিকোয়ারমেন্ট গ্যাদারিং কীভাবে কাজ করে তা নির্ধারণ করে। এগুলো বুঝলে আপনি এখানে অন্য মার্কেট থেকে হুট করে আসা একজন কনসালট্যান্টের চেয়ে বেশি কার্যকর হবেন।</p>
+
+      <div class="field-note">
+        <p class="fn-label">BD কনটেক্সট</p>
+        <p><strong>হায়ারার্কি বাস্তব, আর তা মেনে চলতে হয়।</strong> বেশিরভাগ বাংলাদেশি ফ্যাক্টরিতে সবকিছুর চূড়ান্ত সিদ্ধান্ত থাকে MD বা মালিকের হাতে। MD-কে পাশ কাটিয়ে চলা রিকোয়ারমেন্ট সেশন — এমনকি অনিচ্ছাকৃতভাবে হলেও — বাধার মুখে পড়বে। সবসময় আগে টপ-লেভেল সমর্থন নিন, তারপর নিচে নামুন। সিনিয়র নেতৃত্ব দেখার আগে কখনো জুনিয়র স্টাফের কাছে ফাইন্ডিংস উপস্থাপন করবেন না।</p>
+        <p><strong>পরোক্ষ যোগাযোগই স্বাভাবিক।</strong> একজন ফ্যাক্টরি ম্যানেজার যখন বলেন "হ্যাঁ, এটা হতে পারে," তখন তিনি প্রায়ই বোঝান "আমার আপত্তি আছে কিন্তু আমি সরাসরি না বলতে চাই না।" ভদ্র সম্মতির মধ্যে লুকানো শর্তগুলো শুনতে শিখুন।</p>
+        <p><strong>প্রসেস জ্ঞান থাকে মানুষের মাথায়, ডকুমেন্টে নয়।</strong> বহুজাতিক ফ্যাক্টরির বিপরীতে, বাংলাদেশি SME ফ্যাক্টরিতে প্রায়ই কোনো লিখিত SOP থাকে না। এক্সপোর্ট ডকুমেন্টেশন প্রসেসটি সম্পূর্ণভাবে একজন অভিজ্ঞ মার্চেন্ডাইজারের মাথায় থাকে। আপনার কাজ হলো সেই জ্ঞানকে ডিজিটাইজ করার আগে বাইরে বের করে আনা।</p>
+        <p><strong>মাল্টি-সিস্টেম পরিবেশ।</strong> অনেক ফ্যাক্টরি একই প্রসেসের জন্য সমান্তরাল সিস্টেম চালায় — একটি ERP মডিউল, একটি Excel শিট, একটি WhatsApp গ্রুপ, আর একটি কাগজের রেজিস্টার। বর্তমানে কী আছে তা ম্যাপ করা, কী থাকা উচিত তা নির্ধারণ করার আগে অপরিহার্য।</p>
+      </div>
+
+      <p>এগুলো বাধা নয়। এগুলো কনটেক্সট। যে BA এগুলো বোঝেন তিনি ভালো প্রশ্ন করবেন, লুকানো রিকোয়ারমেন্ট বের করে আনবেন, আর সেই ভুলগুলো এড়াবেন যা প্রজেক্টকে সময় ও বাজেট ছাড়িয়ে নিয়ে যায়।</p>
+
+      <h2 id="s6">ফিল্ড নোট: BA-দের ৫টি সবচেয়ে সাধারণ অ্যান্টি-প্যাটার্ন</h2>
+      <p>এগুলো এমন আচরণ যা রিকোয়ারমেন্টের মান নষ্ট করে। আমি নিজেই কোনো না কোনো সময় প্রতিটি করেছি।</p>
+
+      <div class="three-up">
+        <div class="card">
+          <h4>০১ — লিডিং প্রশ্ন</h4>
+          <p>"সিস্টেমটি যদি স্বয়ংক্রিয়ভাবে রিপোর্ট তৈরি করতে পারত, তাহলে কি ভালো হতো না?" স্টেকহোল্ডার হ্যাঁ বলেন। এখন আপনার কাছে এমন একটি রিকোয়ারমেন্ট আছে যা কখনো আসল প্রয়োজন ছিল না — আর কাউকে না কাউকে সেটা বানাতে হবে।</p>
+        </div>
+        <div class="card">
+          <h4>০২ — সলিউশন বায়াস</h4>
+          <p>আপনি মনে সমাধান নিয়ে আসেন আর সেই অনুযায়ী রিকোয়ারমেন্ট সংগ্রহ করেন। BA যখন একইসঙ্গে টেক লিডও হন তখন এটা বিশেষভাবে সাধারণ। ফলাফল হয় এমন একটি সিস্টেম যা ভুল সমস্যা সুন্দরভাবে সমাধান করে।</p>
+        </div>
+        <div class="card">
+          <h4>০৩ — রাত ৩টার রিকোয়ারমেন্ট</h4>
+          <p>আপনি রিকোয়ারমেন্ট সংগ্রহ করেন, স্পেক লেখেন, সাইন-অফ পান — তারপর গো-লাইভের তিন সপ্তাহ আগে রাত ১১টায় একটা ইমেইল পান: "আমরা এইমাত্র বুঝলাম X দরকার।" যদি X স্কোপে না থাকে, এটা একটা চেঞ্জ রিকোয়েস্ট, বাগ নয়। এই পার্থক্যটা ডকুমেন্ট করুন।</p>
+        </div>
+        <div class="card">
+          <h4>০৪ — প্রক্সি স্টেকহোল্ডার</h4>
+          <p>আপনি সেই ম্যানেজারের সাক্ষাৎকার নেন যিনি আত্মবিশ্বাসের সঙ্গে তার টিমের প্রয়োজন নিয়ে কথা বলেন। কিন্তু আপনি কখনো আসল ইউজারদের সঙ্গে কথা বলেন না। সিস্টেম লঞ্চ হয় আর কেউ এটা ব্যবহার করে না, কারণ এটা কাজের আসল ধরনের সঙ্গে মেলে না।</p>
+        </div>
+        <div class="card">
+          <h4>০৫ — অ্যানালাইসিস প্যারালাইসিস</h4>
+          <p>আপনি রিকোয়ারমেন্ট ডকুমেন্ট প্রকাশ না করে বারবার পরিমার্জন করতে থাকেন। নিখুঁত হয়ে ওঠে ভালোর শত্রু। রিভিউ ও সাইন-অফ হওয়া ৯০% সঠিক একটি স্পেক, কখনো আপনার ডেস্ক না ছাড়া ১০০% সঠিক স্পেকের চেয়ে ভালো।</p>
+        </div>
+        <div class="card">
+          <h4>বোনাস — অনাথ রিকোয়ারমেন্ট</h4>
+          <p>রিকোয়ারমেন্ট লেখা হয়, কিন্তু কখনো ডিজাইন, টেস্ট কেস বা ডেভেলপমেন্ট টাস্কের সঙ্গে লিংক করা হয় না। UAT আসার সময়ে কেউ বলতে পারে না আসলে কী নিয়ে সম্মত হওয়া হয়েছিল। ট্রেসেবিলিটি এটা প্রতিরোধ করে।</p>
+        </div>
+      </div>
+
+      <h2 id="s7">টেমপ্লেট: BA রোল চার্টার</h2>
+      <p>যেকোনো প্রজেক্ট শুরু করার আগে, একটি এক-পৃষ্ঠার BA রোল চার্টার তৈরি করুন আর আপনার প্রজেক্ট স্পনসরের সঙ্গে শেয়ার করুন। এটা আপনার ভূমিকা নিয়ে ভুল বোঝাবুঝিকে পরে ঘর্ষণে পরিণত হওয়া থেকে রক্ষা করে। এখানে কাঠামোটি দেওয়া হলো:</p>
+
+      <div class="callout">
+        <span class="tag">টেমপ্লেট</span>
+        <p><strong>BA রোল চার্টার — এক-পৃষ্ঠার কাঠামো</strong><br><br>
+        <strong>প্রজেক্ট:</strong> [নাম]<br>
+        <strong>BA:</strong> [আপনার নাম]<br>
+        <strong>স্পনসর:</strong> [নাম ও পদবি]<br><br>
+        <strong>আমি যা করব:</strong> রিকোয়ারমেন্ট ওয়ার্কশপ ফ্যাসিলিটেট করা, বিজনেস ও ফাংশনাল রিকোয়ারমেন্ট ডকুমেন্ট করা, ইউজার স্টোরি ও অ্যাকসেপ্টেন্স ক্রাইটেরিয়া তৈরি করা, UAT পরিকল্পনায় সহায়তা করা, রিকোয়ারমেন্ট আর টেস্ট কেসের মধ্যে ট্রেসেবিলিটি বজায় রাখা।<br><br>
+        <strong>আমি যা করব না:</strong> ডেলিভারি টাইমলাইন প্রজেক্ট ম্যানেজ করা, টেকনোলজি আর্কিটেকচার সিদ্ধান্ত নেওয়া, নিজে ইউজার অ্যাকসেপ্টেন্স টেস্টিং করা, স্টেকহোল্ডারের সম্মতি ছাড়া বিজনেস অগ্রাধিকার ঠিক করা।<br><br>
+        <strong>আমার আউটপুট আর্টিফ্যাক্ট:</strong> স্টেকহোল্ডার রেজিস্টার, রিকোয়ারমেন্ট স্পেসিফিকেশন (SRS-lite), অ্যাকসেপ্টেন্স ক্রাইটেরিয়াসহ ইউজার স্টোরি ব্যাকলগ, UAT প্ল্যান, ট্রেসেবিলিটি ম্যাট্রিক্স।<br><br>
+        <strong>আপনার কাছ থেকে যে মূল সিদ্ধান্তগুলো আমার দরকার:</strong> রিকোয়ারমেন্টের অনুমোদিত অ্যাপ্রুভার কারা? চেঞ্জ কন্ট্রোল প্রসেস কী? লক্ষ্য গো-লাইভ তারিখ কবে?<br><br>
+        <strong>সম্মত হয়েছে:</strong> [তারিখ] &nbsp; <strong>স্বাক্ষরিত:</strong> [স্পনসরের নাম]</p>
+      </div>
+
+      <p>এই ডকুমেন্টটি আপনাকে স্কোপ ক্রিপ থেকে, আপনার নয় এমন সিদ্ধান্তের জন্য দোষারোপ থেকে, আর গো-লাইভের সময় "আমরা কখনো এতে সম্মত হইনি" জাতীয় কথোপকথন থেকে বাঁচাবে। এটা লিখতে ৩০ মিনিট লাগে আর পুরো প্রজেক্ট জুড়ে সুফল দেয়।</p>
+
+      <h2 id="s_ba_impact">ভালো রিকোয়ারমেন্টের বিজনেস কেস</h2>
+      <p>ব্যর্থতার পরিসংখ্যানের বাইরেও, রিকোয়ারমেন্টের মানে বিনিয়োগ করার একটি ইতিবাচক যুক্তি আছে। স্ট্রাকচার্ড রিকোয়ারমেন্ট ফেজ থাকা প্রজেক্ট শুধু কম ব্যর্থ হয় না — এগুলোর খরচও কম হয়, বিল্ডের মাঝপথে কম বদলায়, আর এমন ফলাফল দেয় যা স্টেকহোল্ডাররা আসলেই ব্যবহার করেন।</p>
+
+      <div class="bar-chart">
+        <div class="bc-row">
+          <span class="bc-label">রিকোয়ারমেন্টের মান</span>
+          <div class="bc-track"><div class="bc-fill" style="width:88%"></div></div>
+          <span class="bc-pct">সর্বোচ্চ ROI</span>
+        </div>
+        <div class="bc-row">
+          <span class="bc-label">কোড রিভিউ প্র্যাকটিস</span>
+          <div class="bc-track"><div class="bc-fill" style="width:62%"></div></div>
+          <span class="bc-pct">উচ্চ ROI</span>
+        </div>
+        <div class="bc-row">
+          <span class="bc-label">অটোমেটেড টেস্টিং</span>
+          <div class="bc-track"><div class="bc-fill" style="width:71%"></div></div>
+          <span class="bc-pct">উচ্চ ROI</span>
+        </div>
+        <div class="bc-row">
+          <span class="bc-label">প্রজেক্ট ম্যানেজমেন্ট টুলস</span>
+          <div class="bc-track"><div class="bc-fill" style="width:44%"></div></div>
+          <span class="bc-pct">মাঝারি ROI</span>
+        </div>
+        <div class="bc-row">
+          <span class="bc-label">গো-লাইভ পরবর্তী বাগ ফিক্স</span>
+          <div class="bc-track"><div class="bc-fill" style="width:15%"></div></div>
+          <span class="bc-pct">সর্বনিম্ন ROI</span>
+        </div>
+      </div>
+      <p>উপরের বার একাধিক শিল্পখাতের সফটওয়্যার প্রজেক্ট গবেষণার ভিত্তিতে ব্যয় করা সময়ের প্রতি ইউনিটে আপেক্ষিক রিটার্ন অন ইনভেস্টমেন্ট প্রতিনিধিত্ব করে। ডিসকভারির সময় একটি রিকোয়ারমেন্ট ঠিক করতে ১ ইউনিট প্রচেষ্টা লাগে। গো-লাইভের পর একই সমস্যা ঠিক করতে লাগে প্রায় ১০০ ইউনিট। BA-র প্রাথমিক কাজ কোনো বাড়তি খরচ নয় — এটাই সবচেয়ে সস্তা বিমা।</p>
+
+      <div class="insight-row">
+        <div class="insight-card">
+          <p class="ic-label">ডিসকভারি বনাম রিওয়ার্ক</p>
+          <h4>আগেভাগে খুঁজে পাওয়া ১০০× সস্তা</h4>
+          <p>IBM Systems Sciences Institute-এর গবেষণা ডেভেলপমেন্টের বিভিন্ন পর্যায়ে ত্রুটি ঠিক করার আপেক্ষিক খরচ নিয়ে: ডিসকভারিতে পাওয়া একটি রিকোয়ারমেন্ট ত্রুটির খরচ ১×। ডিজাইনে পাওয়া গেলে: ৫×। বিল্ডে: ১০×। টেস্টিং-এ: ২০×। গো-লাইভের পর: ১০০×। BA একটি রিকোয়ারমেন্ট স্পষ্ট করতে যে একটি ঘণ্টা আগে ব্যয় করেন, তা পরে দিনের পর দিনের রিওয়ার্ক বাঁচায়।</p>
+        </div>
+        <div class="insight-card">
+          <p class="ic-label">বাংলাদেশ কনটেক্সট</p>
+          <h4>হাইব্রিড BA-র সুযোগ</h4>
+          <p>বাংলাদেশের মার্কেটে, নির্দিষ্ট BA-র স্বল্পতা আসলে এই শৃঙ্খলায় বিনিয়োগ করা প্র্যাকটিশনারদের জন্য একটি সুযোগ। যে BA স্ট্রাকচার্ড রিকোয়ারমেন্ট আউটপুট দেখাতে পারেন — স্টেকহোল্ডার ম্যাপ, টেস্টেবল ইউজার স্টোরি, ট্রেসেবল স্পেক — তিনি এমন একটি মার্কেটে আলাদা হয়ে যান যেখানে বেশিরভাগ "BA" মিটিং নোট নেওয়া জেনারেলিস্ট। বার খুব উঁচু নয়। এটা পার করার পুরস্কার যথেষ্ট।</p>
+        </div>
+      </div>
+
+      <h2 id="s8">রিফ্লেকশন প্রশ্ন</h2>
+      <ol>
+        <li>এমন একটি প্রজেক্টের কথা ভাবুন যেখানে আপনি জড়িত ছিলেন আর রিকোয়ারমেন্ট অস্পষ্ট ছিল বা ব্যাপকভাবে বদলেছিল। শ্রেণিবিন্যাসের কোন ব্যর্থতার ধরনটি প্রযোজ্য ছিল — আর কোন মুহূর্তে একটি BA হস্তক্ষেপ সাহায্য করতে পারত?</li>
+        <li>১–৫ স্কেলে, আপনার চারপাশের মানুষ কতটা স্পষ্টভাবে বোঝেন একজন BA কী করেন? এটা বদলাতে আপনি কী একটা জিনিস জানাতে পারেন?</li>
+        <li>আপনার বর্তমান বা সম্প্রতি শেষ হওয়া একটি প্রজেক্টের জন্য BA রোল চার্টারের প্রথম তিনটি লাইন খসড়া করুন। "আমি যা করব না" এর অধীনে আপনি কী তালিকাভুক্ত করবেন?</li>
+      </ol>
+
+    </article>
+  </div>
+</div>
+
+<!-- FOOTER NAV -->
+<div class="shell">
+  <div class="post-foot">
+    <div class="next">
+      <a href="./" class="next-card">
+        <span class="dir">← কোর্স ওভারভিউ</span>
+        <h4>লেসন তালিকায় ফিরুন</h4>
+        <p>সম্পূর্ণ কোর্স ওভারভিউ ও লেসন ইনডেক্সে ফিরে যান।</p>
+        <span class="arrow">↗ ইনডেক্স</span>
+      </a>
+      <a href="lesson-02" class="next-card">
+        <span class="dir">পরবর্তী লেসন →</span>
+        <h4>স্টেকহোল্ডার ম্যাপিং ও পাওয়ার ডাইনামিক্স</h4>
+        <p>প্রতিটি স্টেকহোল্ডার চিহ্নিত করুন, তাদের প্রভাব ম্যাপ করুন, আর অদৃশ্য ভেটো এড়িয়ে চলুন।</p>
+        <span class="arrow">→ লেসন ০২</span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="shell">
+    <div class="foot">
+      <span>কোর্স ০১ · লেসন ০১</span>
+      <a href="/bn/" style="color:var(--text-3);transition:color .15s" onmouseover="this.style.color='var(--text)'" onmouseout="this.style.color='var(--text-3)'">← পোর্টফোলিও</a>
+    </div>
+  </div>
+</footer>
+
+<script src="/courses/01-requirements-gathering/_progress.js"></script>
+<script src="/lab/_toc.js"></script>
+<script src="/whatsapp.js" defer></script>
+<script src="/scroll-top.js" defer></script>
+</body>
+</html>

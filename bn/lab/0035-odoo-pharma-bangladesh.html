@@ -1,0 +1,552 @@
+<!doctype html>
+<html lang="bn">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description"
+    content="বাংলাদেশে Odoo ফার্মা — লট ট্র্যাকিং, মেয়াদ ব্যবস্থাপনা, DGDA ব্যাচ কমপ্লায়েন্স, এবং ফার্মাসিউটিক্যাল ম্যানুফ্যাকচারিং ওয়ার্কফ্লো। সঠিকভাবে কনফিগার করুন →" />
+  <meta name="robots" content="noindex, follow" />
+  <meta name="author" content="Mehedi Hasan" />
+  <title>বাংলাদেশে Odoo ফার্মা | ব্যাচ ট্র্যাকিং | মেহেদী হাসান</title>
+  <link rel="canonical" href="https://mhasan.me/bn/lab/0035-odoo-pharma-bangladesh" />
+  <link rel="alternate" hreflang="en" href="https://mhasan.me/lab/0035-odoo-pharma-bangladesh" />
+  <link rel="alternate" hreflang="bn-BD" href="https://mhasan.me/bn/lab/0035-odoo-pharma-bangladesh" />
+  <link rel="alternate" hreflang="x-default" href="https://mhasan.me/lab/0035-odoo-pharma-bangladesh" />
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png" />
+  <link rel="apple-touch-icon" href="/favicon.png" />
+  <!-- Open Graph -->
+  <meta property="og:title" content="বাংলাদেশে Odoo ফার্মা | ব্যাচ ট্র্যাকিং | মেহেদী হাসান" />
+  <meta property="og:description"
+    content="বাংলাদেশে ফার্মাসিউটিক্যাল ম্যানুফ্যাকচারিংয়ের জন্য Odoo কীভাবে কনফিগার করবেন — লট ট্র্যাকিং, মেয়াদ শেষের তারিখ ব্যবস্থাপনা, DGDA ব্যাচ কমপ্লায়েন্স, এবং গ্র্যানুলেশন থেকে প্যাকেজিং পর্যন্ত ম্যানুফ্যাকচারিং ওয়ার্কফ্লো।" />
+  <meta property="og:url" content="https://mhasan.me/bn/lab/0035-odoo-pharma-bangladesh" />
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="https://mhasan.me/assets/og-default.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale" content="bn_BD" />
+  <meta property="og:site_name" content="মেহেদী হাসান | Odoo ERP কনসালট্যান্ট" />
+  <meta property="article:author" content="https://www.linkedin.com/in/mehedi-hasan-consultant/" />
+  <meta property="article:published_time" content="2026-05-07T11:00:00+06:00" />
+  <meta property="article:modified_time" content="2026-05-23T11:00:00+06:00" />
+  <meta property="article:section" content="Odoo ERP Bangladesh" />
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="বাংলাদেশে Odoo ফার্মা | ব্যাচ ট্র্যাকিং ও কমপ্লায়েন্স গাইড" />
+  <meta name="twitter:description"
+    content="বাংলাদেশে ফার্মা ম্যানুফ্যাকচারিংয়ের জন্য Odoo কনফিগার করুন — লট ট্র্যাকিং, মেয়াদ ব্যবস্থাপনা, DGDA ব্যাচ কমপ্লায়েন্স, এবং পূর্ণাঙ্গ প্রোডাকশন ওয়ার্কফ্লো।" />
+  <meta name="twitter:image" content="https://mhasan.me/assets/og-default.jpg" />
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "বাংলাদেশে ফার্মাসিউটিক্যালের জন্য Odoo: ব্যাচ ট্র্যাকিং ও কমপ্লায়েন্স",
+    "description": "বাংলাদেশে ফার্মাসিউটিক্যাল ম্যানুফ্যাকচারিংয়ের জন্য Odoo ERP কনফিগার করার সম্পূর্ণ গাইড। লট ও ব্যাচ ট্র্যাকিং সেটআপ, মেয়াদ শেষের তারিখ ব্যবস্থাপনা, শেল্ফ লাইফ কনফিগারেশন, DGDA ব্যাচ ম্যানুফ্যাকচারিং রেকর্ড রিকোয়ারমেন্ট, ফার্মাসিউটিক্যাল প্রোডাকশন ওয়ার্কফ্লো (গ্র্যানুলেশন → কম্প্রেশন → কোটিং → প্যাকেজিং), কোয়ালিটি কন্ট্রোল ও ব্যাচ রিলিজ, তাপমাত্রা-সংবেদনশীল স্টোরেজ, এবং রিকল ট্রেসেবিলিটি কভার করে।",
+    "datePublished": "2026-05-07T11:00:00+06:00",
+    "dateModified": "2026-05-23T11:00:00+06:00",
+    "inLanguage": "bn",
+    "author": {
+      "@type": "Person",
+      "name": "Mehedi Hasan",
+      "url": "https://mhasan.me",
+      "jobTitle": "Odoo ERP Consultant & Business Analyst",
+      "sameAs": "https://www.linkedin.com/in/mehedi-hasan-consultant/"
+    },
+    "publisher": { "@type": "Person", "name": "Mehedi Hasan", "url": "https://mhasan.me" },
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://mhasan.me/bn/lab/0035-odoo-pharma-bangladesh" }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "হোম", "item": "https://mhasan.me/bn" },
+      { "@type": "ListItem", "position": 2, "name": "ল্যাব", "item": "https://mhasan.me/bn/#lab" },
+      { "@type": "ListItem", "position": 3, "name": "বাংলাদেশে Odoo ফার্মা", "item": "https://mhasan.me/bn/lab/0035-odoo-pharma-bangladesh" }
+    ]
+  }
+]
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&family=Noto+Sans+Bengali:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap">
+  <link rel="stylesheet" href="/lab/_styles.css">
+  <style>
+    body{ font-family: 'Noto Sans Bengali', var(--sans); }
+    .pharma-steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin: 28px 0;
+    }
+    .pharma-step {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .ps-head {
+      padding: 12px 16px;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+    }
+    .ps-stage {
+      font-family: var(--mono);
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--accent);
+      margin-bottom: 4px;
+    }
+    .ps-name {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text);
+    }
+    .ps-body {
+      padding: 12px 16px;
+      font-size: 12.5px;
+      color: var(--text-2);
+      line-height: 1.75;
+    }
+    .ps-qc {
+      margin-top: 10px;
+      padding-top: 10px;
+      border-top: 1px solid var(--border);
+      font-family: var(--mono);
+      font-size: 10px;
+      color: oklch(0.80 0.17 155);
+    }
+
+    .lot-config {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+      margin: 24px 0;
+    }
+    .lot-config table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 12.5px;
+    }
+    .lot-config th {
+      padding: 10px 14px;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      border-right: 1px solid var(--border);
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: var(--text-3);
+      text-align: left;
+    }
+    .lot-config th:last-child { border-right: none; }
+    .lot-config td {
+      padding: 10px 14px;
+      border-bottom: 1px solid var(--border);
+      border-right: 1px solid var(--border);
+      color: var(--text-2);
+      vertical-align: top;
+      line-height: 1.6;
+    }
+    .lot-config td:first-child { font-weight: 500; color: var(--text); }
+    .lot-config td:last-child { border-right: none; }
+    .lot-config tr:last-child td { border-bottom: none; }
+
+    .recall-steps {
+      counter-reset: recall;
+      list-style: none;
+      padding: 0;
+      margin: 20px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .recall-steps li {
+      counter-increment: recall;
+      display: flex;
+      gap: 14px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px 16px;
+      font-size: 13px;
+      color: var(--text-2);
+      line-height: 1.65;
+    }
+    .recall-steps li::before {
+      content: counter(recall);
+      font-family: var(--mono);
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--accent);
+      min-width: 20px;
+      margin-top: 2px;
+    }
+
+    .pull {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: clamp(20px, 2.8vw, 30px);
+      line-height: 1.3;
+      color: var(--text);
+      margin: 48px 0;
+      max-width: 26ch;
+      letter-spacing: -0.01em;
+    }
+    .pull::before {
+      content: "";
+      display: block;
+      width: 36px;
+      height: 1px;
+      background: var(--accent);
+      margin-bottom: 18px;
+    }
+
+    .field-note{margin:28px 0;border:1px solid var(--border);border-radius:12px;overflow:hidden;background:var(--surface)}
+    .fn-hd{display:flex;align-items:center;justify-content:space-between;padding:12px 18px;border-bottom:1px solid var(--border);font-family:var(--mono);font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-3)}
+    .fn-hd .when{color:var(--accent)}
+    .fn-body{padding:18px 22px;font-size:15px;line-height:1.65;color:var(--text-2)}
+    .fn-body strong{color:var(--text);font-weight:500}
+
+    @media(max-width:700px){
+      .pharma-steps { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="grid-bg"></div>
+
+  <header class="nav">
+    <div class="shell">
+      <div class="nav-inner">
+        <a class="brand" href="/bn/">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span class="brand-name"><b>Mehedi Hasan</b><em>ERP · বিজনেস অ্যানালিস্ট</em></span>
+        </a>
+        <a class="back-link" href="/bn/#lab">← ল্যাব-এ ফিরুন</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="post-head">
+    <div class="shell">
+      <span class="eyebrow">টেকনিক্যাল ল্যাব · 0035</span>
+      <h1>বাংলাদেশে ফার্মার জন্য Odoo — <span class="serif">ব্যাচ ট্র্যাকিং, মেয়াদ, DGDA কমপ্লায়েন্স।</span></h1>
+      <p class="lede">বাংলাদেশে ৩০০-এর বেশি লাইসেন্সপ্রাপ্ত ফার্মাসিউটিক্যাল ম্যানুফ্যাকচারার আছে। যারা WHO-GMP বা EU-GMP সার্টিফিকেশনের অধীনে চলে, তারা পূর্ণ ব্যাচ ট্রেসেবিলিটিসহ ERP চালায়। যারা এখনও Tally আর স্প্রেডশিটে আছে, তারা কোনো পেপার ট্রেইল ছাড়া একটি রিকলের এক DGDA অডিট ফাইন্ডিং দূরে আছে। এই গাইড দেখায় কীভাবে ফার্মাসিউটিক্যাল ম্যানুফ্যাকচারিং কমপ্লায়েন্সের জন্য Odoo কনফিগার করবেন।</p>
+      <div class="post-meta">
+        <span class="chip accent">ইন্ডাস্ট্রি গাইড</span>
+        <span class="chip">ফার্মাসিউটিক্যাল</span>
+        <span class="chip">বাংলাদেশ</span>
+        <span class="chip">GMP কমপ্লায়েন্স</span>
+      </div>
+      <div class="byline">
+        <span>লেখক<b><a href="https://www.linkedin.com/in/mehedi-hasan-consultant/" style="color:var(--accent)" rel="author">Mehedi Hasan</a></b></span>
+        <span>প্রকাশিত<b>মে ২০২৬</b></span>
+        <span>পড়ার সময়<b>১৩ মিনিট</b></span>
+        <span>ধরন<b>ইন্ডাস্ট্রি কনফিগারেশন গাইড</b></span>
+        <span>পরিসর<b>ফার্মা · বাংলাদেশের GMP ম্যানুফ্যাকচারার</b></span>
+      </div>
+    </div>
+  </section>
+
+  <article class="post">
+    <aside class="toc">
+      <div class="toc-k">এই গাইডে</div>
+      <ol>
+        <li><a href="#pharma-erp">কেন ফার্মার আলাদা ERP দরকার</a></li>
+        <li><a href="#lot-tracking">লট ও ব্যাচ ট্র্যাকিং সেটআপ</a></li>
+        <li><a href="#expiry">মেয়াদ শেষের তারিখ ব্যবস্থাপনা</a></li>
+        <li><a href="#manufacturing">ফার্মা ম্যানুফ্যাকচারিং ওয়ার্কফ্লো</a></li>
+        <li><a href="#qc-release">QC ও ব্যাচ রিলিজ</a></li>
+        <li><a href="#dgda">DGDA কমপ্লায়েন্স ডেটা</a></li>
+        <li><a href="#recall">রিকল ট্রেসেবিলিটি</a></li>
+        <li><a href="#storage">তাপমাত্রা-সংবেদনশীল স্টোরেজ</a></li>
+        <li><a href="#faq">সচরাচর জিজ্ঞাসা</a></li>
+      </ol>
+    </aside>
+
+    <div class="body">
+      <p>ফার্মাসিউটিক্যাল ERP সাধারণ ম্যানুফ্যাকচারিং ERP থেকে আলাদা কোনো ক্যাটাগরি নয় — এটি একই সিস্টেম, শুধু অনেক বেশি ট্রেসেবিলিটি রিকোয়ারমেন্ট সহ। ফার্মা প্রোডাকশন ফ্যাসিলিটিতে প্রবেশ করা প্রতিটি কাঁচামাল অবশ্যই সেই ফিনিশড ডোজেজ ফর্মে ট্রেসেবল হতে হবে যাতে এটি অবদান রেখেছে, এবং প্রতিটি ফিনিশড ডোজেজ ফর্ম অবশ্যই তার ইনপুট কাঁচামাল লট পর্যন্ত ফিরে ট্রেসেবল হতে হবে। এটি ঐচ্ছিক নয়: এটি প্রোডাক্ট রিকল সক্ষমতার ভিত্তি, যা DGDA লাইসেন্সিং, WHO-GMP, এবং যেকোনো এক্সপোর্ট মার্কেট রেগুলেটরি অনুমোদনের অধীনে প্রয়োজন।</p>
+
+      <p>সঠিকভাবে কনফিগার করা হলে Odoo এটি ঠিকভাবে হ্যান্ডল করে। মূল সক্ষমতা — রিসিপ্ট থেকে প্রোডাকশন হয়ে ডেলিভারি পর্যন্ত লট-ভিত্তিক ট্রেসেবিলিটি — স্ট্যান্ডার্ড Odoo Inventory আর Manufacturing মডিউলে বিল্ট-ইন আছে। ফার্মার যা প্রয়োজন তা হলো প্রতিটি প্রোডাক্টে এই সক্ষমতা চালু থাকা, প্রতিটি ট্রানজ্যাকশন পয়েন্টে ধারাবাহিকভাবে প্রয়োগ হওয়া, এবং মেয়াদ শেষের তারিখ ট্র্যাকিং আর কোয়ালিটি চেক ইন্টিগ্রেশন দিয়ে সমৃদ্ধ হওয়া।</p>
+
+      <p>EPZ-ভিত্তিক ফার্মা এক্সপোর্টারদের জন্য দেখুন <a href="/bn/lab/0021-epz-sez-compliance-odoo-bangladesh" style="color:var(--accent)">EPZ কমপ্লায়েন্স কনফিগারেশন গাইড</a>। API আর এক্সিপিয়েন্ট স্টকের জন্য প্রযোজ্য ইনভেন্টরি ভ্যালুয়েশনের জন্য, <a href="/bn/lab/0011-odoo-inventory-valuation-cheatsheet" style="color:var(--accent)">Odoo ইনভেন্টরি ভ্যালুয়েশন চিটশিট</a> প্রাসঙ্গিক কস্টিং পদ্ধতি কভার করে।</p>
+
+      <p class="pull">ফার্মাসিউটিক্যালে, ERP কোনো অপারেশনাল সুবিধা নয় — এটি প্রধান প্রমাণ যে আপনার ম্যানুফ্যাকচারিং প্রসেস নিয়ন্ত্রিত ছিল। ERP ট্রেসেবিলিটি ছাড়া একটি রিকল একটি সংকট। ERP ট্রেসেবিলিটিসহ একটি রিকল একটি সামলানো যায় এমন ঘটনা।</p>
+
+      <h2 id="pharma-erp">কেন ফার্মাসিউটিক্যাল ম্যানুফ্যাকচারিংয়ের আলাদা ERP কনফিগারেশন দরকার</h2>
+
+      <p>স্ট্যান্ডার্ড ম্যানুফ্যাকচারিং ERP-র যেসব ধারণা ফার্মা ভেঙে দেয়:</p>
+
+      <ul>
+        <li><strong>প্রতিটি ব্যাচ অনন্য:</strong> ১,০০,০০০ ট্যাবলেটের একটি প্রোডাকশন ব্যাচ একই প্রোডাক্টের অন্য একটি ব্যাচের সাথে বিনিময়যোগ্য নয়। প্রতিটি ব্যাচের নিজস্ব পরিচয় (ব্যাচ নম্বর), নিজস্ব ইনপুট ম্যাটেরিয়াল লট, নিজস্ব ইন-প্রসেস টেস্ট ফলাফল, এবং নিজস্ব রিলিজ স্ট্যাটাস থাকে। ERP-কে শুধু প্রোডাক্ট নয়, ব্যাচ ট্র্যাক করতে হবে।</li>
+        <li><strong>কাঁচামাল ফিনিশড গুডসে ট্রেসেবল:</strong> সাপ্লায়ারের একটি API লটে যদি কোয়ালিটি সমস্যা পাওয়া যায়, আপনাকে সেই API লট ব্যবহার করা প্রতিটি প্রোডাকশন ব্যাচ, এবং সেই ব্যাচ থেকে প্রোডাক্ট পাওয়া প্রতিটি কাস্টমার শনাক্ত করতে হবে। এর জন্য সম্পূর্ণ ফরওয়ার্ড আর ব্যাকওয়ার্ড ট্রেসেবিলিটি দরকার — শুধু লট নম্বর নয়, পুরো মুভমেন্ট চেইন।</li>
+        <li><strong>মেয়াদ শেষের তারিখ বাধ্যতামূলক:</strong> প্রতিটি ফার্মাসিউটিক্যাল প্রোডাক্ট আর কাঁচামালের একটি মেয়াদ শেষের তারিখ থাকে। স্টক FEFO (First Expired First Out) ব্যবহার করে ম্যানেজ করতে হবে, FIFO বা LIFO নয়। মেয়াদোত্তীর্ণ স্টক কখনো বিক্রি করা উচিত না — সিস্টেমকে এটি প্রয়োগ করতে হবে, অপারেটরের সতর্কতার ওপর নির্ভর করা যাবে না।</li>
+        <li><strong>কোয়ালিটি রিলিজ একটি কন্ট্রোল স্টেপ:</strong> বেশিরভাগ ম্যানুফ্যাকচারিংয়ের বিপরীতে, QC ব্যাচ রিলিজ না করা পর্যন্ত ফার্মা প্রোডাক্ট বিক্রি করা যায় না। ERP-কে এটি প্রয়োগ করতে হবে: ম্যানুফ্যাকচারিং দ্বারা তৈরি ফিনিশড গুডস একটি "quarantine" স্ট্যাটাসে প্রবেশ করতে হবে এবং শুধু QC অনুমোদনের পরই "released" স্টকে যেতে পারবে। Sales Order quarantine স্টক থেকে ডেলিভার করতে পারবে না।</li>
+        <li><strong>ম্যানুফ্যাকচারিং রেকর্ড রেগুলেটরি ডকুমেন্ট:</strong> Batch Manufacturing Record (BMR) DGDA, WHO-GMP, এবং সব বড় ফার্মাকোপিয়ার অধীনে একটি রেগুলেটরি রিকোয়ারমেন্ট। এটি প্রোডাকশনের প্রতিটি ধাপ, লট নম্বর ও কোয়ান্টিটিসহ ব্যবহৃত প্রতিটি ম্যাটেরিয়াল, প্রতিটি ইন-প্রসেস টেস্ট ফলাফল, এবং প্রতিটি ডেভিয়েশন রেকর্ড করতে হবে। ERP-কে এই ডেটা একটি কাঠামোবদ্ধ ফরম্যাটে ধারণ করতে হবে।</li>
+      </ul>
+
+      <h2 id="lot-tracking">Odoo-তে লট ও ব্যাচ ট্র্যাকিং সেটআপ</h2>
+
+      <p>এভাবে লট ট্র্যাকিং সক্রিয় করুন:</p>
+
+      <ol>
+        <li><strong>সিস্টেম সেটিং:</strong> Inventory → Configuration → Settings → Traceability → "Lots & Serial Numbers" আর "Expiration Dates" সক্রিয় করুন।</li>
+        <li><strong>প্রোডাক্ট ট্র্যাকিং:</strong> প্রতিটি ফার্মাসিউটিক্যাল প্রোডাক্টে (ফিনিশড গুডস, API, এক্সিপিয়েন্ট, প্যাকেজিং ম্যাটেরিয়াল), <strong>Tracking = By Lot</strong> সেট করুন। প্যাকেজিং ম্যাটেরিয়াল বাদ দেবেন না — প্রাইমারি প্যাকেজিং (ব্লিস্টার, বোতল) প্রিন্ট ব্যাচ নম্বর যাচাইয়ের জন্য লট-ট্র্যাক হতে হবে।</li>
+        <li><strong>লট নম্বর ফরম্যাট:</strong> আপনার লট নম্বর ফরম্যাট স্ট্যান্ডার্ডাইজ করুন। একটি সাধারণ বাংলাদেশ ফার্মা ফরম্যাট: <code>BN-YYYYMM-NNN</code> (যেমন, BN-202605-001 = ব্যাচ 001, মে 2026-এ তৈরি)। আপনার SOP-তে এটি একটি নিয়ম হিসেবে কনফিগার করুন — Odoo লট নম্বর হিসেবে যেকোনো স্ট্রিং গ্রহণ করে কিন্তু আপনার লট নম্বর সিস্টেমেটিক হওয়া উচিত।</li>
+      </ol>
+
+      <div class="lot-config">
+        <table>
+          <thead>
+            <tr>
+              <th>প্রোডাক্ট ক্যাটাগরি</th>
+              <th>ট্র্যাকিং সেটিং</th>
+              <th>মেয়াদ শেষের তারিখ</th>
+              <th>লট নম্বরের উৎস</th>
+              <th>FEFO প্রয়োজন?</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>API (Active Pharmaceutical Ingredients)</td>
+              <td>By Lot</td>
+              <td>হ্যাঁ — সাপ্লায়ার CoA থেকে</td>
+              <td>সাপ্লায়ার ব্যাচ নম্বর</td>
+              <td>হ্যাঁ</td>
+            </tr>
+            <tr>
+              <td>এক্সিপিয়েন্ট (ফিলার, বাইন্ডার, লুব্রিকেন্ট)</td>
+              <td>By Lot</td>
+              <td>হ্যাঁ — সাপ্লায়ার CoA থেকে</td>
+              <td>সাপ্লায়ার ব্যাচ নম্বর</td>
+              <td>হ্যাঁ</td>
+            </tr>
+            <tr>
+              <td>প্রাইমারি প্যাকেজিং (ব্লিস্টার, বোতল, ভায়াল)</td>
+              <td>By Lot</td>
+              <td>সাধারণত কোনো মেয়াদ নেই</td>
+              <td>সাপ্লায়ার ব্যাচ বা অভ্যন্তরীণ কোড</td>
+              <td>না (FIFO)</td>
+            </tr>
+            <tr>
+              <td>সেকেন্ডারি প্যাকেজিং (কার্টন, ইনসার্ট)</td>
+              <td>By Lot (ব্যাচ/মেয়াদসহ প্রিন্টেড ম্যাটেরিয়ালের জন্য)</td>
+              <td>না</td>
+              <td>প্রিন্ট রান রেফারেন্স</td>
+              <td>না</td>
+            </tr>
+            <tr>
+              <td>ফিনিশড ফার্মাসিউটিক্যাল প্রোডাক্ট</td>
+              <td>By Lot</td>
+              <td>হ্যাঁ — ম্যানুফ্যাকচার ডেট + শেল্ফ লাইফ থেকে গণনা করা</td>
+              <td>অভ্যন্তরীণ ব্যাচ নম্বর (BN-YYYYMM-NNN)</td>
+              <td>হ্যাঁ — বাধ্যতামূলক</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 id="expiry">Odoo-তে মেয়াদ শেষের তারিখ ব্যবস্থাপনা</h2>
+
+      <p>একটি প্রোডাক্টে "Use Expiration Dates" সক্রিয় থাকলে, Odoo-তে প্রতিটি লটের চারটি ডেট ফিল্ড থাকে:</p>
+
+      <ul>
+        <li><strong>Expiration Date:</strong> যে তারিখের পর প্রোডাক্ট ব্যবহার বা বিক্রি করা যাবে না। API-এর জন্য, এটি সাপ্লায়ারের CoA থেকে আসে। ফিনিশড প্রোডাক্টের জন্য, এটি স্বয়ংক্রিয়ভাবে সেট হয় Manufacturing Date + Use Time (প্রোডাক্টে দিন হিসেবে কনফিগার করা) হিসেবে।</li>
+        <li><strong>Best Before Date:</strong> যে তারিখ পর্যন্ত প্রোডাক্টের সম্পূর্ণ কার্যকারিতা থাকবে বলে আশা করা হয়। বেশিরভাগ ফার্মা প্রোডাক্টের জন্য, এটি Expiration Date-এর সমান।</li>
+        <li><strong>Removal Date:</strong> যে তারিখে স্টক বিক্রির জন্য উপলব্ধতা থেকে সরিয়ে বা কোয়ারেন্টিন করা উচিত — সাধারণত মেয়াদের 3 মাস আগে সেট করা হয় যাতে মেয়াদ শেষ হওয়ার আগে ডিস্ট্রিবিউশন আর ব্যবহারের সুযোগ থাকে। Odoo-র expiry অ্যালার্টের ট্রিগার ডেট হিসেবে এটি কনফিগার করুন।</li>
+        <li><strong>Use Time (days):</strong> প্রোডাক্ট মাস্টারে সেট করা। একটি manufacturing order তৈরি করার সময় Odoo স্বয়ংক্রিয়ভাবে মেয়াদ শেষের তারিখ গণনা করতে এটি ব্যবহার করে — Manufacturing Date + Use Time = ফিনিশড গুডস লটে Expiry Date।</li>
+      </ul>
+
+      <div class="field-note">
+        <div class="fn-hd"><span>নোট · ফার্মা ম্যানুফ্যাকচারার, টঙ্গী</span><span class="when">স্টক রাইট-অফ রিভিউ</span></div>
+        <div class="fn-body">
+          একটি ফার্মাসিউটিক্যাল কোম্পানিতে লট ট্র্যাকিং চালু ছিল কিন্তু কখনো removal strategy সেট করা হয়নি, তাই পিকাররা দরজার সবচেয়ে কাছেরটাই তুলে নিত। এক কোয়ার্টার শেষের রিভিউতে দেখা যায়, গুদামে বেশ কয়েক লাখ টাকার ফিনিশড প্রোডাক্ট মেয়াদের তিন মাসের মধ্যে ছিল, যেখানে নতুন, দীর্ঘ-মেয়াদী স্টক ইতিমধ্যে শিপ হয়ে গিয়েছিল। ডিস্ট্রিবিউটাররা কম-মেয়াদী কার্টন ফেরত পাঠাতে শুরু করে। আমরা প্রতিটি ফার্মাসিউটিক্যাল প্রোডাক্টে removal strategy FEFO সেট করি আর দৈনিক expiry অ্যালার্ট চালু করি — কম-মেয়াদী স্টক এখন লিখিত ক্ষতিতে পরিণত হওয়ার মাস আগেই সামনে আসে। <strong>লট ট্র্যাকিং শুধু যা ঘটেছে তা রেকর্ড করে। FEFO হলো যা ঘটে তা পরিবর্তন করে; এটি ছাড়া, সিস্টেম শুধু ক্ষতি প্রতিরোধ না করে দেখতে থাকে।</strong>
+        </div>
+      </div>
+
+      <p><strong>FEFO প্রয়োগ:</strong> Inventory → Configuration → Settings → Storage Locations-এ যান, "Storage Locations" আগে থেকে চালু না থাকলে সক্রিয় করুন। এরপর প্রোডাক্টের inventory ট্যাবে, Removal Strategy = "First Expiry First Out (FEFO)" সেট করুন। একটি সেলস অর্ডার বা ট্রান্সফারের জন্য পিকিং তৈরি হলে, Odoo স্বয়ংক্রিয়ভাবে সবচেয়ে কম-মেয়াদী লট প্রস্তাব করে। হোলসেল/হাসপাতাল সেলস কনটেক্সটের জন্য, এটি অপরিহার্য — এটি গুদামে কম-মেয়াদী স্টক জমা হওয়া প্রতিরোধ করে।</p>
+
+      <p><strong>মেয়াদ অ্যালার্ট:</strong> প্রতিদিন চালাতে Odoo-র scheduled action "Generate Expiry Alerts" কনফিগার করুন (Settings → Technical → Automation → Scheduled Actions)। যেসব লট তাদের Removal Date-এ পৌঁছায় তারা QC বা ওয়্যারহাউস ম্যানেজারের জন্য একটি activity অ্যালার্ট তৈরি করে। সব কম-মেয়াদী স্টক দেখতে আপনি একটি কাস্টম রিপোর্টও তৈরি করতে পারেন: Inventory → Products → Lots/Serial Numbers, Expiration Date ≤ আজ + 90 দিন দিয়ে ফিল্টার করুন।</p>
+
+      <h2 id="manufacturing">Odoo-তে ফার্মাসিউটিক্যাল ম্যানুফ্যাকচারিং ওয়ার্কফ্লো</h2>
+
+      <p>প্রতিটি প্রধান প্রোডাকশন স্টেজে একটি ওয়ার্ক অর্ডারসহ ম্যানুফ্যাকচারিং রাউটিং কনফিগার করুন। প্রতিটি স্টেজের নিজস্ব ওয়ার্ক সেন্টার, সময় অনুমান, কোয়ালিটি চেক, এবং দায়িত্বপ্রাপ্ত অপারেটর থাকে।</p>
+
+      <div class="pharma-steps">
+        <div class="pharma-step">
+          <div class="ps-head">
+            <div class="ps-stage">Stage 1</div>
+            <div class="ps-name">Dispensing</div>
+          </div>
+          <div class="ps-body">
+            কাঁচামাল (API + এক্সিপিয়েন্ট) BOM-এ নির্দিষ্ট সঠিক কোয়ান্টিটিতে ওজন করা হয়। প্রতিটি কম্পোনেন্টের লট নম্বর আর প্রকৃত ওজন করা কোয়ান্টিটি MO ওয়ার্ক অর্ডারে রেকর্ড করা হয়। একজন দ্বিতীয় ব্যক্তি প্রতিটি ওজন যাচাই করেন (double verification — একটি GMP রিকোয়ারমেন্ট)।
+            <div class="ps-qc">QC check: প্রতি কম্পোনেন্টে identity test · ওজন যাচাই · ডিসপেন্সারি ক্লিনলিনেস লগ</div>
+          </div>
+        </div>
+        <div class="pharma-step">
+          <div class="ps-head">
+            <div class="ps-stage">Stage 2</div>
+            <div class="ps-name">Granulation</div>
+          </div>
+          <div class="ps-body">
+            ওয়েট বা ড্রাই গ্র্যানুলেশন। API আর এক্সিপিয়েন্ট মেশানো ও গ্র্যানুলেট করা হয়। প্রসেস প্যারামিটার (মিক্সিং স্পিড, সময়, ওয়েট গ্র্যানুলেশনের জন্য বাইন্ডার ভলিউম) কোয়ালিটি চেকে রেকর্ড করা হয়। এগিয়ে যাওয়ার আগে গ্র্যানুল ময়েশ্চার কনটেন্ট টেস্ট করা হয় (LOD test)।
+            <div class="ps-qc">QC check: LOD % · গ্র্যানুল সাইজ ডিস্ট্রিবিউশন · ব্লেন্ডিং টাইম রেকর্ড</div>
+          </div>
+        </div>
+        <div class="pharma-step">
+          <div class="ps-head">
+            <div class="ps-stage">Stage 3</div>
+            <div class="ps-name">Compression</div>
+          </div>
+          <div class="ps-body">
+            রোটারি ট্যাবলেট প্রেসে গ্র্যানুল কম্প্রেসড হয়ে ট্যাবলেট হয়। প্রতি 30 মিনিটে ইন-প্রসেস চেক করা হয়: ট্যাবলেট ওজন ভ্যারিয়েশন, হার্ডনেস, ফ্র্যায়াবিলিটি, ডিসইন্টিগ্রেশন টাইম। ত্রুটিপূর্ণ ট্যাবলেট প্রত্যাখ্যাত ও ওজন করা হয় — প্রকৃত ইল্ড = theoretical yield বাদ reject।
+            <div class="ps-qc">QC check: ওজন ভ্যারিয়েশন · হার্ডনেস (kP) · ফ্র্যায়াবিলিটি % · ডিসইন্টিগ্রেশন টাইম · ইল্ড %</div>
+          </div>
+        </div>
+        <div class="pharma-step">
+          <div class="ps-head">
+            <div class="ps-stage">Stage 4</div>
+            <div class="ps-name">Coating</div>
+          </div>
+          <div class="ps-body">
+            একটি কোটিং প্যানে ফিল্ম বা সুগার কোটিং প্রয়োগ করা হয়। কোটিং ওজন বৃদ্ধির টার্গেট BOM-এ নির্দিষ্ট করা থাকে। ইউনিফর্ম কোটিং, কালার সামঞ্জস্য, চিপিংয়ের জন্য ভিজ্যুয়াল ইন্সপেকশন। সব প্রোডাক্টের কোটিং দরকার হয় না — আনকোটেড ট্যাবলেটের জন্য এই স্টেজ বাদ যায়।
+            <div class="ps-qc">QC check: ওজন বৃদ্ধি % · অ্যাপিয়ারেন্স · কোটিং ইউনিফর্মিটি</div>
+          </div>
+        </div>
+        <div class="pharma-step">
+          <div class="ps-head">
+            <div class="ps-stage">Stage 5</div>
+            <div class="ps-name">Primary Packaging</div>
+          </div>
+          <div class="ps-body">
+            ট্যাবলেট ব্লিস্টার বা বোতলজাত করা হয়। ব্লিস্টার ফয়েলের লট নম্বর রেকর্ড করা হয়। প্রতিটি ব্লিস্টার/লেবেলে ব্যাচ নম্বর, ম্যানুফ্যাকচারিং ডেট, এবং মেয়াদ শেষের তারিখ প্রিন্ট করা হয় — অনুমোদিত আর্টওয়ার্কের বিপরীতে প্রিন্ট যাচাই করুন। ত্রুটিপূর্ণ ব্লিস্টার প্রত্যাখ্যাত হয়।
+            <div class="ps-qc">QC check: প্রিন্ট লেজিবিলিটি · ব্যাচ/মেয়াদ প্রিন্ট অ্যাকুরেসি · সিল ইন্টেগ্রিটি · প্রতি ব্লিস্টারে ট্যাবলেট গণনা</div>
+          </div>
+        </div>
+        <div class="pharma-step">
+          <div class="ps-head">
+            <div class="ps-stage">Stage 6</div>
+            <div class="ps-name">Secondary Packaging</div>
+          </div>
+          <div class="ps-body">
+            প্যাকেজ ইনসার্টসহ কার্টনে ব্লিস্টার প্যাক করা হয়। কার্টন শিপার কেসে যায়। কার্টন লেবেলে ব্যাচ নম্বর আর মেয়াদ থাকে। শিপার কেস প্যালেটাইজড আর ব্যাচ রিলিজের অপেক্ষায় QC কোয়ারেন্টিন স্টোরেজে সরানো হয়।
+            <div class="ps-qc">QC check: প্রতি কেসে কার্টন গণনা · কার্টনে ব্যাচ/মেয়াদ · ইনসার্ট উপস্থিতি · শিপার কেস ইন্টেগ্রিটি</div>
+          </div>
+        </div>
+      </div>
+
+      <h2 id="qc-release">Odoo-তে QC ও ব্যাচ রিলিজ</h2>
+
+      <p>ফার্মাসিউটিক্যাল ম্যানুফ্যাকচারিংয়ে, বিক্রির আগে কোয়ালিটি ডিপার্টমেন্টকে প্রতিটি ব্যাচ রিলিজ করতে হয়। Odoo এটি একটি দুই-লোকেশন স্টক স্ট্রাকচারের মাধ্যমে বাস্তবায়ন করে:</p>
+
+      <ul>
+        <li><strong>Quarantine location:</strong> আপনার প্রধান ওয়্যারহাউসের অধীনে "QC Quarantine" নামে একটি স্টক লোকেশন তৈরি করুন। এর usage type Internal সেট করুন। একটি Manufacturing Order সম্পূর্ণ হলে, ফিনিশড গুডস প্রধান ফিনিশড গুডস লোকেশনে নয়, QC Quarantine-এ ট্রান্সফার হয়।</li>
+        <li><strong>Released stock location:</strong> আপনার প্রধান ফিনিশড গুডস লোকেশন (যেমন, "Finished Goods / Released")।</li>
+        <li><strong>রিলিজ প্রসেস:</strong> QC সব ফাইনাল প্রোডাক্ট টেস্টিং (পটেন্সি অ্যাসে, ডিসোলিউশন, মাইক্রোবায়োলজিক্যাল) সম্পূর্ণ করার পর, একজন QC অফিসার নির্দিষ্ট লট নম্বরের জন্য QC Quarantine → Finished Goods / Released একটি অভ্যন্তরীণ ট্রান্সফার তৈরি করেন। এই ট্রান্সফারই "batch release" ট্রানজ্যাকশন। এই ট্রান্সফারের পরই লট সেলস অর্ডারে অ্যালোকেট করা যাবে।</li>
+        <li><strong>মেয়াদোত্তীর্ণ বা রিলিজ না করা লট ব্লক করা:</strong> Finished Goods প্রোডাক্টে একটি putaway rule কনফিগার করুন যা ডিফল্টভাবে নতুন আগমনকে QC Quarantine-এ রুট করে। সেলস অর্ডার পিকিং শুধু Released লোকেশন ব্যবহার করে। এটি রিলিজ না করা বা মেয়াদোত্তীর্ণ স্টক দুর্ঘটনাক্রমে শিপ হওয়া প্রতিরোধ করে।</li>
+        <li><strong>QC reject ও destruction:</strong> কোনো ব্যাচ রিলিজ টেস্টিংয়ে ব্যর্থ হলে, একটি স্ক্র্যাপ অর্ডারের মাধ্যমে লট QC Quarantine থেকে একটি "Rejected/Destroyed" লোকেশনে ট্রান্সফার হয়। স্ক্র্যাপ এন্ট্রি কারণ রেকর্ড করে (assay failure, contamination, ইত্যাদি) এবং অ্যাকাউন্টিংয়ে একটি write-off ট্রিগার করে। লট আরও ব্যবহারের জন্য লক হয়ে যায়।</li>
+      </ul>
+
+      <h2 id="dgda">Odoo-তে DGDA কমপ্লায়েন্স ডেটা</h2>
+
+      <p>Directorate General of Drug Administration (DGDA) ফার্মাসিউটিক্যাল ম্যানুফ্যাকচারারদের প্রতিটি প্রোডাকশন ব্যাচের জন্য Batch Manufacturing Record আর Batch Packing Record রাখতে বলে। Odoo অন্তর্নিহিত ডেটা ধারণ করে; একে BMR হিসেবে ফরম্যাট করতে আপনার একটি কাস্টম রিপোর্ট দরকার।</p>
+
+      <p>Manufacturing Order-এ Odoo যে ডেটা ধারণ করে (যা BMR-এ ফিড করে):</p>
+
+      <ul>
+        <li>প্রোডাক্ট নাম, ব্যাচ নম্বর, ব্যাচ সাইজ (কোয়ান্টিটি)</li>
+        <li>ম্যানুফ্যাকচারিং ডেট, মেয়াদ শেষের তারিখ</li>
+        <li>কাঁচামাল কম্পোনেন্ট: নাম, স্পেসিফিকেশন, লট নম্বর, dispense করা কোয়ান্টিটি (work order component consumption থেকে)</li>
+        <li>ইন-প্রসেস কোয়ালিটি চেক ফলাফল (ওয়ার্ক অর্ডারে সংযুক্ত Odoo Quality মডিউল চেক থেকে)</li>
+        <li>প্রতিটি স্টেজে ব্যবহৃত ওয়ার্ক সেন্টার (টাইম ট্র্যাকিংয়ের মাধ্যমে অপারেটর রেকর্ড করা যায়)</li>
+        <li>ফাইনাল ইল্ড (উৎপাদিত কোয়ান্টিটি বনাম শুরু হওয়া কোয়ান্টিটি)</li>
+        <li>QC রিলিজ ট্রান্সফার রেকর্ড আর দায়িত্বপ্রাপ্ত ব্যক্তি</li>
+      </ul>
+
+      <p>একটি কাস্টম QWeb রিপোর্ট তৈরি করুন যা Manufacturing Order থেকে এই সব ডেটা টেনে আপনার DGDA-অনুমোদিত BMR টেমপ্লেটে ফরম্যাট করে। এটি একটি এককালীন ডেভেলপমেন্ট প্রচেষ্টা (সাধারণত 3–5 দিনের Odoo ডেভেলপমেন্ট সময়) কিন্তু রেগুলেটরি কমপ্লায়েন্সের জন্য অপরিহার্য। কারখানা ইন্সপেকশনের সময় একজন DGDA ইন্সপেক্টর BMR-ই চাইবেন।</p>
+
+      <h2 id="recall">Odoo-তে রিকল ট্রেসেবিলিটি</h2>
+
+      <p>রিকল দৃশ্যকল্প: একজন সাপ্লায়ার আপনাকে জানায় যে একটি API লট (যেমন, Metformin HCl, Lot MF-2025-CN-019) পটেন্সি টেস্টিংয়ে ব্যর্থ হয়েছে। এই API লট ব্যবহার করা প্রতিটি ফিনিশড প্রোডাক্ট ব্যাচ, এবং সেই ব্যাচ থেকে প্রোডাক্ট পাওয়া প্রতিটি কাস্টমার আপনাকে শনাক্ত করতে হবে।</p>
+
+      <ol class="recall-steps">
+        <li><strong>কাঁচামাল লট থেকে ফরওয়ার্ড ট্রেস:</strong> Inventory → Reporting → Traceability → API লট নম্বর (MF-2025-CN-019) সার্চ করুন। Odoo এই লট খরচ করা সব Manufacturing Order দেখায়। সব অভ্যন্তরীণ ব্যাচ নম্বর নোট করুন (যেমন, BN-202601-005, BN-202601-012)।</li>
+        <li><strong>ফিনিশড গুডস ব্যাচ থেকে ফরওয়ার্ড ট্রেস:</strong> শনাক্ত করা প্রতিটি ফিনিশড গুডস ব্যাচের জন্য, ফিনিশড গুডস লটে আবার Traceability চালান। এটি কাস্টমার নাম, ডেলিভারি ডেট, এবং কোয়ান্টিটিসহ এই লট অন্তর্ভুক্ত সব Sales Order ডেলিভারি দেখায়।</li>
+        <li><strong>ক্ষতিগ্রস্ত কাস্টমার রিকল করুন:</strong> Odoo traceability রিপোর্ট থেকে কাস্টমার লিস্ট এক্সপোর্ট করুন। আপনার কোয়ালিটি ডিপার্টমেন্ট রিকল নোটিফিকেশন আর রিটার্ন নির্দেশনাসহ প্রতিটি কাস্টমারের সাথে যোগাযোগ করে।</li>
+        <li><strong>বাকি স্টক ব্লক করুন:</strong> আপনার গুদামে (Released বা QC Quarantine) ক্ষতিগ্রস্ত লটের যেকোনো কোয়ান্টিটির জন্য, তাদের একটি "Recall Hold" লোকেশনে সরাতে একটি অভ্যন্তরীণ ট্রান্সফার তৈরি করুন। এটি রিকল চলাকালীন রিকল করা প্রোডাক্টের দুর্ঘটনাক্রমে শিপমেন্ট প্রতিরোধ করে।</li>
+        <li><strong>রেগুলেটরি রিপোর্টিং:</strong> DGDA-কে রিকল রিপোর্ট করুন: প্রোডাক্ট নাম, ক্ষতিগ্রস্ত ব্যাচ নম্বর, ত্রুটিপূর্ণ কাঁচামালের লট নম্বর, রিকলের কারণ, মার্কেটে থাকা কোয়ান্টিটি, এবং সংশোধনমূলক পদক্ষেপ। এই সব ডেটা Odoo-র traceability রিপোর্ট আর MO রেকর্ড থেকে পাওয়া যায়।</li>
+      </ol>
+
+      <p>API লট থেকে কাস্টমার লিস্ট পর্যন্ত সম্পূর্ণ ফরওয়ার্ড ট্রেস Odoo-তে 10 মিনিটের কম সময়ে সম্পূর্ণ করা যায়। ERP লট ট্র্যাকিং ছাড়া, একই কাজে পেপার রেকর্ড জুড়ে দিনের পর দিন ম্যানুয়াল রিকনসিলিয়েশন লাগে — যে সময়ের মধ্যে আরও ত্রুটিপূর্ণ প্রোডাক্ট শিপ হতে থাকতে পারে।</p>
+
+      <h2 id="storage">তাপমাত্রা-সংবেদনশীল স্টোরেজ ব্যবস্থাপনা</h2>
+
+      <p>অনেক ফার্মাসিউটিক্যাল প্রোডাক্টের নিয়ন্ত্রিত স্টোরেজ দরকার: 2–8°C (রেফ্রিজারেটেড), 15–25°C (নিয়ন্ত্রিত রুম টেম্পারেচার), বা আলো থেকে সুরক্ষিত। স্টোরেজ লোকেশন কনফিগারেশনের মাধ্যমে Odoo তাপমাত্রা জোন ব্যবস্থাপনা সাপোর্ট করতে পারে:</p>
+
+      <ul>
+        <li><strong>লোকেশন জোন তৈরি করুন:</strong> Inventory-তে, স্টোরেজ জোনের সাথে সম্পর্কিত সাব-লোকেশন তৈরি করুন: "Cold Room (2–8°C)", "CRT Storage (15–25°C)", "Ambient Storage"। লোকেশনের নামে তার স্টোরেজ কন্ডিশন লেবেল করুন।</li>
+        <li><strong>প্রতি প্রোডাক্ট ক্যাটাগরিতে putaway rule:</strong> রেফ্রিজারেটেড প্রোডাক্টের আগত রিসিপ্ট স্বয়ংক্রিয়ভাবে Cold Room লোকেশনে রুট করে এমন putaway rule তৈরি করুন। এটি রিসিপ্টের সময় কোথায় প্রোডাক্ট রাখতে হবে সেই ম্যানুয়াল সিদ্ধান্ত দূর করে।</li>
+        <li><strong>কোল্ড চেইন ডকুমেন্টেশন:</strong> সাপ্লায়ার থেকে পাওয়া কোল্ড চেইন প্রোডাক্টের জন্য, purchase receipt-এ একটি অ্যাটাচমেন্ট হিসেবে ট্রানজিটের সময়কার তাপমাত্রা লগ রেকর্ড করুন (সাপ্লায়ার একটি temperature data logger রিপোর্ট দেয়)। ভ্যাকসিন আর বায়োলজিক প্রোডাক্টের জন্য এটি একটি GMP রিকোয়ারমেন্ট।</li>
+        <li><strong>টেম্পারেচার এক্সকারশন হ্যান্ডলিং:</strong> কোনো কোল্ড চেইন প্রোডাক্ট তার প্রয়োজনীয় তাপমাত্রার রেঞ্জের বাইরে সংরক্ষিত পাওয়া গেলে, Odoo-তে ক্ষতিগ্রস্ত লট একটি "Quarantine — Temperature Excursion" লোকেশনে ট্রান্সফার করুন আর একটি কোয়ালিটি ইনভেস্টিগেশন শুরু করুন। এক্সকারশন সত্ত্বেও QC নিশ্চিত না করা পর্যন্ত লট রিলিজ করবেন না।</li>
+      </ul>
+
+      <div class="callout">
+        <span class="tag">সারকথা</span>
+        <p>বাংলাদেশে ফার্মার জন্য Odoo-র তিনটি অনাপোষযোগ্য কনফিগারেশন দরকার: (1) ব্যতিক্রম ছাড়া প্রতিটি প্রোডাক্টে লট ট্র্যাকিং; (2) সব ফার্মাসিউটিক্যাল স্টকে FEFO প্রয়োগ আর মেয়াদ শেষের তারিখ ব্যবস্থাপনা; এবং (3) একটি QC quarantine লোকেশন যা রিলিজ না করা ব্যাচ বিক্রি হওয়া প্রতিরোধ করে। এর বাইরে, BMR কাস্টম রিপোর্ট আর রিকল ট্রেসেবিলিটি সক্ষমতাই Odoo-কে একটি স্টক ম্যানেজমেন্ট টুল থেকে প্রকৃত GMP-কমপ্লায়েন্ট ফার্মাসিউটিক্যাল ERP-তে রূপান্তরিত করে। <a href="/bn/#contact" style="color:var(--accent)">আপনার ফার্মাসিউটিক্যাল কোম্পানির জন্য Odoo কনফিগার করতে সাহায্য দরকার? যোগাযোগ করুন →</a></p>
+      </div>
+
+      <h2 id="faq">সচরাচর জিজ্ঞাসা</h2>
+
+      <h3>ফার্মাসিউটিক্যালের জন্য Odoo-তে লট ও ব্যাচ ট্র্যাকিং কীভাবে সক্রিয় করবেন?</h3>
+      <p>Inventory → Configuration → Settings-এ যান, "Lots & Serial Numbers" আর "Expiration Dates" সক্রিয় করুন। এরপর প্রতিটি ফার্মাসিউটিক্যাল প্রোডাক্টে (API, এক্সিপিয়েন্ট, প্রাইমারি/সেকেন্ডারি প্যাকেজিং, এবং ফিনিশড গুডস) Tracking = "By Lot" সেট করুন। রিসিপ্টে (কাঁচামালের জন্য সাপ্লায়ার CoA ব্যাচ নম্বর থেকে) আর ম্যানুফ্যাকচারিংয়ে (ফিনিশড গুডসের জন্য আপনার অভ্যন্তরীণ ব্যাচ নম্বর ফরম্যাট) লট নম্বর অ্যাসাইন করুন। Odoo তখন প্রতিটি লটের প্রতিটি মুভমেন্ট রেকর্ড করবে, যা GMP কমপ্লায়েন্স আর প্রোডাক্ট রিকলের জন্য প্রয়োজনীয় ট্রেসেবিলিটি চেইন তৈরি করে।</p>
+
+      <h3>Odoo ফার্মাসিউটিক্যাল প্রোডাক্টের মেয়াদ শেষের তারিখ কীভাবে ব্যবস্থাপনা করে?</h3>
+      <p>ফার্মাসিউটিক্যাল প্রোডাক্টে "Use Expiration Dates" সক্রিয় করুন। প্রতিটি লটের একটি Expiration Date, Removal Date, এবং Best Before Date থাকে। ফিনিশড গুডসের জন্য, প্রোডাক্টে "Use Time" (দিনে শেল্ফ লাইফ) সেট করুন — Odoo স্বয়ংক্রিয়ভাবে মেয়াদ গণনা করে ম্যানুফ্যাকচারিং ডেট + use time হিসেবে। সবসময় সবচেয়ে পুরনো-মেয়াদী স্টক আগে শিপ হয় তা নিশ্চিত করতে ফার্মা প্রোডাক্টে Removal Strategy = FEFO সেট করুন। কম-মেয়াদী লট QC টিমের জন্য activity ট্রিগার করে তা নিশ্চিত করতে প্রতিদিন scheduled expiry অ্যালার্ট অ্যাকশন চালান। মেয়াদোত্তীর্ণ স্টকের বিক্রি ব্লক করতে নিশ্চিত করুন সেলস অর্ডার পিকিং শুধু Released স্টক লোকেশন থেকে টানে (QC Quarantine নয়, যেখানে নতুন প্রোডাকশন প্রথমে পৌঁছায়)।</p>
+
+      <h3>বাংলাদেশে DGDA ব্যাচ ম্যানুফ্যাকচারিং রেকর্ড রিকোয়ারমেন্ট Odoo হ্যান্ডল করতে পারে?</h3>
+      <p>একটি DGDA BMR-এর জন্য প্রয়োজনীয় সব ডেটা Odoo ধারণ করে: প্রোডাক্ট/ব্যাচ পরিচয়, ম্যানুফ্যাকচারিং আর মেয়াদ শেষের তারিখ, কাঁচামাল লট নম্বর আর কোয়ান্টিটি, ইন-প্রসেস কোয়ালিটি চেক ফলাফল, ওয়ার্ক সেন্টার আর অপারেটর রেকর্ড, ফাইনাল ইল্ড, এবং QC রিলিজ সাইন-অফ। Odoo ডিফল্টভাবে যা দেয় না তা হলো একটি ফরম্যাটেড BMR প্রিন্ট টেমপ্লেট — DGDA-অনুমোদিত BMR ফরম্যাটে সব Manufacturing Order ডেটা রেন্ডার করে এমন একটি কাস্টম QWeb রিপোর্ট আপনার দরকার। এটি একটি এককালীন ডেভেলপমেন্ট (3–5 দিন) যা রেগুলেটরি কমপ্লায়েন্সের জন্য বাধ্যতামূলক। একই ডেটা WHO-GMP ইন্সপেকশন রিকোয়ারমেন্টও সাপোর্ট করে।</p>
+
+      <h3>Odoo-তে ফার্মাসিউটিক্যাল ম্যানুফ্যাকচারিং ওয়ার্কফ্লো কীভাবে সেটআপ করবেন?</h3>
+      <p>Manufacturing-এ মাল্টি-স্টেপ রাউটিং কনফিগার করুন: Dispensing → Granulation → Compression → Coating → Primary Packaging → Secondary Packaging-এর জন্য ওয়ার্ক অর্ডার, প্রতিটির নিজস্ব Work Centre আর কোয়ালিটি চেকসহ। শেষ ওয়ার্ক অর্ডারের ফিনিশড গুডস সরাসরি Released স্টকে না গিয়ে একটি QC Quarantine লোকেশনে যায়। QC ফাইনাল প্রোডাক্ট টেস্টিং করে এবং ব্যাচ পাস করলে, QC Quarantine থেকে Released স্টকে একটি অভ্যন্তরীণ ট্রান্সফার তৈরি করে — এটাই batch release ইভেন্ট। শুধু রিলিজ করা লট সেলস অর্ডারে অ্যালোকেট করা যায়। প্রত্যাখ্যাত ব্যাচ একটি স্ক্র্যাপ অর্ডারের মাধ্যমে একটি Destroyed লোকেশনে সরানো হয়, যা ইনভেন্টরি ভ্যালু write off করে আর লট লক করে।</p>
+    </div>
+  </article>
+
+  <footer>
+    <div class="shell">
+      <div class="post-foot">
+        <span class="eyebrow">আরও পড়ুন</span>
+        <div class="next">
+          <a class="next-card" href="/bn/lab/0034-odoo-cycle-export-bangladesh">
+            <span class="dir">পুরনো · 0034</span>
+            <h4>বাংলাদেশে সাইকেল এক্সপোর্টের জন্য Odoo</h4>
+            <p>বাইসাইকেল ম্যানুফ্যাকচারারদের জন্য মাল্টি-লেভেল BOM, আমদানি করা কম্পোনেন্ট প্রোকিউরমেন্ট, এবং ডিউটি ড্রব্যাক ট্রেসেবিলিটি।</p>
+            <span class="arrow">→</span>
+          </a>
+          <a class="next-card" href="/bn/lab/0036-odoo-trading-company-bangladesh">
+            <span class="dir">নতুন · 0036</span>
+            <h4>বাংলাদেশে ট্রেডিং কোম্পানির জন্য Odoo</h4>
+            <p>হোলসেল ডিস্ট্রিবিউটরদের জন্য মাল্টি-ওয়্যারহাউস সেটআপ, প্রোকিউরমেন্ট ওয়ার্কফ্লো, ল্যান্ডেড কস্ট, এবং কাস্টমার প্রাইসিং।</p>
+            <span class="arrow">→</span>
+          </a>
+        </div>
+      </div>
+      <div class="foot">
+        <span>© ২০২৬ Mehedi Hasan · Lab / 0035</span>
+        <span><a href="/bn/#lab">↑ ল্যাব ইনডেক্সে ফিরুন</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/lab/_utils.js" defer></script>
+<script src="/lab/_toc.js" defer></script>
+<script src="/whatsapp.js" defer></script>
+<script src="/scroll-top.js" defer></script>
+</body>
+
+</html>

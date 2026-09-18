@@ -1,0 +1,342 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description"
+    content="Configure Odoo Expenses for Bangladesh companies: mobile receipt capture, approval workflows, and reimbursement policies for field and travel staff." />
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="Mehedi Hasan" />
+  <title>Odoo Expenses & Employee Reimbursement Setup Bangladesh | Mehedi Hasan</title>
+  <link rel="canonical" href="https://mhasan.me/lab/0096-odoo-expenses-employee-reimbursement-bangladesh" />
+  <link rel="alternate" hreflang="en" href="https://mhasan.me/lab/0096-odoo-expenses-employee-reimbursement-bangladesh" />
+  <link rel="alternate" hreflang="x-default" href="https://mhasan.me/lab/0096-odoo-expenses-employee-reimbursement-bangladesh" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png" />
+  <!-- Open Graph -->
+  <meta property="og:title" content="Odoo Expenses & Employee Reimbursement Setup Bangladesh | Mehedi Hasan" />
+  <meta property="og:description"
+    content="Configure Odoo Expenses for Bangladesh companies: mobile receipt capture, approval workflows, and reimbursement policies for field and travel staff." />
+  <meta property="og:url" content="https://mhasan.me/lab/0096-odoo-expenses-employee-reimbursement-bangladesh" />
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="https://mhasan.me/assets/og-default.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:site_name" content="Mehedi Hasan | Odoo ERP Consultant" />
+  <meta property="article:author" content="https://www.linkedin.com/in/mehedi-hasan-consultant/" />
+  <meta property="article:published_time" content="2026-09-18T14:00:00+06:00" />
+  <meta property="article:modified_time" content="2026-09-18T14:00:00+06:00" />
+  <meta property="article:section" content="Odoo ERP Bangladesh" />
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Odoo Expenses & Employee Reimbursement Setup Bangladesh | Mehedi Hasan" />
+  <meta name="twitter:description"
+    content="Configure Odoo Expenses for Bangladesh companies: mobile receipt capture, approval workflows, and reimbursement policies for field and travel staff." />
+  <meta name="twitter:image" content="https://mhasan.me/assets/og-default.jpg" />
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Odoo Expenses & Employee Reimbursement Setup for Bangladesh Companies",
+    "description": "Configuring Odoo Expenses for Bangladesh companies with field staff, sales teams, and frequent travel: mobile receipt capture, category policy limits, multi-level approval, cash advance handling, and how approved expenses flow into accounting and client re-billing.",
+    "datePublished": "2026-09-18T14:00:00+06:00",
+    "dateModified": "2026-09-18T14:00:00+06:00",
+    "author": {
+      "@type": "Person",
+      "name": "Mehedi Hasan",
+      "url": "https://mhasan.me",
+      "jobTitle": "Odoo ERP Consultant & Business Analyst",
+      "sameAs": "https://www.linkedin.com/in/mehedi-hasan-consultant/"
+    },
+    "publisher": { "@type": "Person", "name": "Mehedi Hasan", "url": "https://mhasan.me" },
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://mhasan.me/lab/0096-odoo-expenses-employee-reimbursement-bangladesh" }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://mhasan.me" },
+      { "@type": "ListItem", "position": 2, "name": "Lab", "item": "https://mhasan.me/lab/" },
+      { "@type": "ListItem", "position": 3, "name": "Odoo Expenses Employee Reimbursement Bangladesh", "item": "https://mhasan.me/lab/0096-odoo-expenses-employee-reimbursement-bangladesh" }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Can employees photograph receipts on their phone instead of keeping paper for Odoo Expenses?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. The Odoo mobile app lets an employee photograph a receipt at the point of purchase, and Odoo's OCR (optical character recognition) reads the vendor name, amount, and date automatically to pre-fill the expense line, which the employee then confirms or corrects before submitting. This removes the common Bangladesh field-staff problem of accumulating a pocket full of fading thermal receipts over a multi-day trip and trying to reconstruct expenses from memory at the end, with several receipts illegible or lost by the time reimbursement is filed."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I set per-category expense limits in Odoo, like a meal allowance cap?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Expense categories are configured under Expenses → Configuration → Expense Categories, where each category can have a maximum amount and a unit of measure (per expense, or per unit for mileage-based categories). Setting a meal category to a maximum of a fixed amount per day, for example, means any submission above that limit is flagged for the approver to review specifically, rather than being silently approved alongside everything else. Bangladesh companies with a written travel and expense policy should translate each policy line (meal caps, transport limits, accommodation tiers by city or by employee grade) directly into a matching expense category limit, so the policy is enforced by the system rather than relying on an approver remembering every rule."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How does Odoo Expenses handle cash advances given before a business trip?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Odoo supports recording an advance payment against an employee (as a negative expense or an advance record, depending on version and configuration) before the trip, then reconciling actual submitted expenses against that advance afterward. The employee's expense report shows the advance amount, the actual expenses claimed, and the resulting balance, which is either an amount still owed to the employee or an amount the employee needs to return. This matches the common Bangladesh corporate practice of issuing a cash advance before travel rather than expecting an employee to fund the trip personally and wait for reimbursement, and it prevents the advance from being forgotten and never reconciled against actual spend."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can approved employee expenses be automatically billed to a client project in Odoo?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, when an expense is marked as billable and linked to a specific customer project or Sales Order during submission. Once approved, the expense can be pulled into that client's invoice as a re-billed line item, similar to how approved timesheets flow into an invoice for time-based billing. This is common for Bangladesh consultancies and service providers whose contracts specify that travel and out-of-pocket costs are reimbursed by the client, and it removes the manual step of an accounts team member separately tracking which employee expenses relate to which client engagement."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the approval workflow for employee expenses in Odoo?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The standard flow is submission by the employee, review and approval by their direct manager, and a further review by the finance or accounts team before the expense is posted to accounting and queued for reimbursement. Odoo supports this as a two-stage approval (manager, then finance) which most Bangladesh companies should use rather than a single-approver flow, because the manager approval confirms the expense is legitimate and policy-compliant from an operational perspective, while the finance approval confirms it is correctly categorized and ready for the accounting entry and payment run."
+        }
+      }
+    ]
+  }
+]
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap">
+  <link rel="stylesheet" href="_styles.css">
+</head>
+
+<body>
+  <div class="grid-bg"></div>
+
+  <header class="nav">
+    <div class="shell">
+      <div class="nav-inner">
+        <a class="brand" href="../">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span class="brand-name"><b>Mehedi Hasan</b><em>ERP · Business Analyst</em></span>
+        </a>
+        <a class="back-link" href="../#lab">← Back to Lab</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="post-head">
+    <div class="shell">
+      <span class="eyebrow">Technical Lab · 0096</span>
+      <h1>Odoo Expenses for Bangladesh Field & Travel Staff: <span class="serif">from a shoebox of receipts to a policy that enforces itself.</span></h1>
+      <p class="lede">Employee expense reimbursement is one of the most consistently informal processes I find in Bangladesh SMEs with field sales, service technicians, or regular business travel. A staff member fronts costs, keeps whatever receipts survive the trip, and submits them weeks later on paper for a manager to approve by memory rather than by policy. Odoo Expenses replaces this with mobile capture, category limits, and a real approval trail, without requiring the company to become bureaucratic about it.</p>
+      <div class="post-meta">
+        <span class="chip accent">Guide</span>
+        <span class="chip">Expenses</span>
+        <span class="chip">Reimbursement</span>
+        <span class="chip">Bangladesh</span>
+      </div>
+      <div class="byline">
+        <span>By<b><a href="https://www.linkedin.com/in/mehedi-hasan-consultant/" style="color:var(--accent)" rel="author">Mehedi Hasan</a></b></span>
+        <span>Published<b>September 2026</b></span>
+        <span>Read time<b>15 minutes</b></span>
+        <span>Form<b>Guide</b></span>
+        <span>Scope<b>HR & Finance Operations</b></span>
+      </div>
+    </div>
+  </section>
+
+  <article class="post">
+    <aside class="toc">
+      <div class="toc-k">In this guide</div>
+      <ol>
+        <li><a href="#why-underused">Why Expenses Is an Underused Module in Bangladesh</a></li>
+        <li><a href="#mobile-capture">Mobile Receipt Capture in Practice</a></li>
+        <li><a href="#categories-limits">Expense Categories & Policy Limits</a></li>
+        <li><a href="#approval-workflow">The Multi-Level Approval Workflow</a></li>
+        <li><a href="#cash-advances">Cash Advances for Business Travel</a></li>
+        <li><a href="#accounting-flow">How Approved Expenses Flow Into Accounting</a></li>
+        <li><a href="#client-rebilling">Re-Billing Expenses to a Client Project</a></li>
+        <li><a href="#policy-design">Designing a Policy That People Actually Follow</a></li>
+        <li><a href="#fraud-controls">Common Claim Patterns Worth Watching</a></li>
+        <li><a href="#limits">Where Expenses Configuration Hits Limits</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ol>
+    </aside>
+
+    <div class="body">
+
+      <h2 id="why-underused">Why Expenses Is an Underused Module in Bangladesh</h2>
+      <p>Of every Odoo app I implement for Bangladesh SMEs, Expenses is the one companies are most likely to already own (bundled into their Enterprise license) and least likely to have actually configured. The reason is not that the module is complicated; it is that expense reimbursement, unlike sales or inventory, does not visibly block daily operations when it is broken. A messy manual process still eventually reimburses people, just slowly, with disputes, and with no policy enforcement, so it survives as an informal habit long after the company has professionalized everything else.</p>
+      <p>The cost of that informality is real even when it is invisible day to day: disputed amounts that damage trust between field staff and finance, reimbursement delays that field staff quietly resent, no visibility into which expense categories are actually driving cost (is it fuel, is it accommodation, is it client entertainment), and zero ability to catch policy violations before they become a pattern rather than a one-off exception.</p>
+
+      <div class="stat-row">
+        <div class="stat-card">
+          <div class="sc-val">1 photo</div>
+          <div class="sc-label">Per receipt</div>
+          <div class="sc-note">Captured at the point of purchase instead of accumulated on paper</div>
+        </div>
+        <div class="stat-card">
+          <div class="sc-val">2 approvals</div>
+          <div class="sc-label">Manager, then finance</div>
+          <div class="sc-note">A real control point most informal processes skip entirely</div>
+        </div>
+        <div class="stat-card">
+          <div class="sc-val">By category</div>
+          <div class="sc-label">Cost visibility</div>
+          <div class="sc-note">Fuel, meals, accommodation, and client entertainment as separate, trackable lines</div>
+        </div>
+      </div>
+
+      <p class="pull">An expense policy written in a staff handbook and an expense policy enforced by the software an employee actually uses are two very different things.</p>
+
+      <h2 id="mobile-capture">Mobile Receipt Capture in Practice</h2>
+      <p>The single highest-value habit change Odoo Expenses enables for Bangladesh field staff is photographing a receipt the moment it is issued, using the Odoo mobile app's expense capture feature, rather than pocketing it and hoping it survives until the trip ends. Odoo's OCR reads the vendor, date, and amount off the photographed receipt and pre-fills an expense line, which the employee reviews, assigns to a category, and submits, often within a minute of the actual purchase.</p>
+      <p>This matters more in the Bangladesh context than it might elsewhere, because thermal receipts common at fuel stations, small restaurants, and local transport fade within days in humid conditions and are easily lost in a pocket or bag during multi-day travel. A field technician traveling for a week of site visits who tries to reconstruct expenses from memory and a handful of surviving receipts at the end of that week will inevitably under-claim some legitimate costs and over-claim or misremember others, which is unfair to the employee in the first case and a genuine policy risk in the second.</p>
+      <p>The practical rollout point: do not assume field staff will adopt mobile capture on their own initiative. Build it into onboarding and, for existing staff, run one short session showing the actual photograph-to-submission flow on their own phone. Adoption is almost always a habit and training question, not a technology capability question, since the feature itself is straightforward once someone has done it once.</p>
+
+      <h2 id="categories-limits">Expense Categories & Policy Limits</h2>
+      <p>Expense Categories (Expenses → Configuration → Expense Categories) are where a written travel policy becomes an enforced one. Each category can carry a maximum amount, so a submission above the policy limit is flagged distinctly for the approver rather than blending in with compliant submissions.</p>
+
+      <table>
+        <thead>
+          <tr><th>Category</th><th>Typical Bangladesh Policy Pattern</th><th>Configuration Note</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Meals & Per Diem</td><td>Fixed daily allowance, often tiered by employee grade or by city (Dhaka vs outside Dhaka)</td><td>Set as a per-day maximum; consider separate categories per grade tier if the gap is significant</td></tr>
+          <tr><td>Local Transport</td><td>Actual cost with a reasonable cap, or a per-kilometer mileage rate for personal vehicle use</td><td>Odoo supports mileage-based categories with a rate per unit distance</td></tr>
+          <tr><td>Accommodation</td><td>Capped by city tier (Dhaka/Chattogram higher cap than smaller districts) and by employee grade</td><td>Multiple accommodation categories by tier are cleaner than one category with a note-based exception process</td></tr>
+          <tr><td>Client Entertainment</td><td>Requires a named client or purpose field and typically a lower default cap with manager pre-approval expected</td><td>Add a required custom field for client name if not already present, so entertainment spend is traceable to a specific relationship</td></tr>
+          <tr><td>Fuel / Vehicle</td><td>Actual cost against company vehicle, or mileage allowance for personal vehicle used for company business</td><td>Separate categories for each case avoid conflating two different reimbursement logics</td></tr>
+        </tbody>
+      </table>
+
+      <div class="tip-box">
+        <div class="tlabel">Practical Shortcut</div>
+        <p>Do not try to encode every edge case from your written policy into category limits on day one. Start with the categories covering 80% of actual claim volume (meals, transport, accommodation) with sensible limits, and add narrower categories only once you see a genuine recurring pattern that needs its own rule. An overly granular category list from the start slows down submission for employees and increases the chance staff pick the wrong category just to move quickly.</p>
+      </div>
+
+      <h2 id="approval-workflow">The Multi-Level Approval Workflow</h2>
+      <p>Odoo Expenses supports a two-stage approval by default: a manager approves the expense report as legitimate and policy-appropriate, and finance performs a second review before posting to accounting and releasing payment. Both stages matter and serve different purposes, and Bangladesh companies that collapse them into a single approval step lose something specific in each direction.</p>
+
+      <div class="timeline-track">
+        <div class="tl-node now">
+          <div class="tl-date">Submission</div>
+          <div class="tl-title">Employee submits an expense report with attached receipts</div>
+          <div class="tl-body">Grouped as a report (a full trip or a weekly batch) rather than one approval request per individual expense line.</div>
+        </div>
+        <div class="tl-node">
+          <div class="tl-date">Manager Review</div>
+          <div class="tl-title">Direct manager approves based on operational legitimacy</div>
+          <div class="tl-body">Was this trip authorized, does the claimed activity match what the manager knows actually happened, are amounts reasonable for the context.</div>
+        </div>
+        <div class="tl-node">
+          <div class="tl-date">Finance Review</div>
+          <div class="tl-title">Finance checks category compliance, tax treatment, and documentation completeness</div>
+          <div class="tl-body">A manager rarely has visibility into whether a receipt meets documentation standards for the company's own audit or tax purposes; finance does.</div>
+        </div>
+        <div class="tl-node future">
+          <div class="tl-date">Posting & Payment</div>
+          <div class="tl-title">Approved report posts to accounting and is queued in the next payment run</div>
+          <div class="tl-body">Reimbursement timing becomes predictable and tied to a schedule rather than "whenever someone gets around to it."</div>
+        </div>
+      </div>
+
+      <p>The predictability of the payment run matters more to staff morale than most companies realize. Field and sales staff who front their own money for company business and then wait an unpredictable number of weeks for reimbursement, with no visibility into where their claim currently sits, understandably grow resentful over time even if the amounts involved are modest. A visible approval status and a known payment cycle (for example, approved reports paid on the 15th and last day of each month) removes most of that friction without changing the underlying policy at all.</p>
+
+      <h2 id="cash-advances">Cash Advances for Business Travel</h2>
+      <p>A pattern specific enough to Bangladesh (and much of South Asia) to deserve its own section: companies commonly issue a cash advance to an employee before a trip, rather than expecting the employee to personally fund travel costs and wait for reimbursement afterward. This is a sensible practice given typical salary levels relative to travel costs, but it is also the part of expense management most likely to be tracked informally and then forgotten, with advances never fully reconciled against actual spend.</p>
+      <p>Odoo handles this by recording the advance against the employee, then reconciling submitted expenses against it once the trip is complete. The resulting balance is either owed back to the company (advance exceeded actual spend) or owed to the employee (actual spend exceeded the advance). Configuring this properly, rather than treating advances as an off-system cash transaction tracked in someone's notebook, closes a real leakage point: unreconciled advances are money the company has paid out with no corresponding cost record, and they accumulate quietly across an organization with frequent traveling staff until someone finally audits them and finds a surprising total.</p>
+
+      <div class="disclaimer">
+        <p><strong>Note:</strong> The exact advance-handling mechanism (a dedicated advance feature versus a negative expense line workaround) varies by Odoo version. Confirm the available approach for your specific version during setup, and regardless of the mechanism, enforce a rule that no new advance is issued to an employee with a prior advance still unreconciled past a reasonable window, typically 30 days after trip completion.</p>
+      </div>
+
+      <h2 id="accounting-flow">How Approved Expenses Flow Into Accounting</h2>
+      <p>Once an expense report clears both approval stages, Odoo generates the corresponding accounting entries automatically: the expense amount is posted to the relevant expense account (mapped per category, so meals, transport, and accommodation post to distinct general ledger accounts rather than one blended "miscellaneous" line), and a payable is created against the employee for reimbursement. This categorized posting is what makes management reporting on travel and field cost meaningful, since a business can see exactly how much was spent on fuel versus accommodation versus client entertainment across a quarter, rather than one lump "expenses" figure that explains nothing.</p>
+      <p>This also matters for VAT and tax documentation. Properly categorized expense accounts with attached receipt images make it considerably easier to respond to an NBR query or an internal audit than a shoebox of paper receipts loosely filed by month. For the broader chart of accounts structure this plugs into, see the <a href="0014-odoo-accounting-setup-bangladesh" style="color:var(--accent)">Odoo Accounting setup guide</a>, and for the payroll side of employee-related payments this often sits alongside, the <a href="0016-odoo-hr-payroll-bangladesh" style="color:var(--accent)">HR & Payroll guide</a> covers how reimbursements and salary runs stay properly separated in the accounting records.</p>
+
+      <h2 id="client-rebilling">Re-Billing Expenses to a Client Project</h2>
+      <p>For Bangladesh consultancies, service providers, and project-based businesses whose contracts specify that travel and out-of-pocket costs are reimbursed by the client, an expense can be marked billable and linked to the relevant customer project or Sales Order at submission. Once approved, it becomes a re-billable line that flows into that client's invoice, the same mechanical pattern used for billable timesheet hours covered in the <a href="0094-odoo-timesheets-billable-hours-bangladesh" style="color:var(--accent)">Timesheets & billable hours guide</a>.</p>
+      <p>The judgment call worth making deliberately: decide upfront whether re-billed expenses are passed through at cost or marked up, and configure the Sales Order line pricing accordingly, since Odoo will do either depending on how the billable expense is priced when it reaches the invoice stage. Bangladesh service contracts vary on this point, and getting it wrong (billing at cost when the contract allows a markup, or the reverse) is a quiet but real margin leak.</p>
+
+      <h2 id="policy-design">Designing a Policy That People Actually Follow</h2>
+      <p>None of this configuration substitutes for a written policy that staff actually understand, but it changes what "understand" needs to mean in practice. When policy limits are enforced by category configuration rather than left to an approver's memory, staff learn the actual limits quickly because the system tells them immediately when a submission exceeds one, rather than discovering the limit weeks later when a manager finally reviews a backlog of claims and pushes back on an old submission.</p>
+      <p>I recommend Bangladesh companies pair the Odoo configuration with a one-page plain-language summary of category limits (not the full HR policy document, which staff rarely read in full) distributed at onboarding and pinned somewhere staff will actually see it, such as a shared WhatsApp group or printed at the site office. The system enforces the limit at submission; the one-page summary sets the expectation before the employee travels, which avoids the frustration of an employee spending beyond a limit they never actually knew existed.</p>
+
+      <h2 id="fraud-controls">Common Claim Patterns Worth Watching</h2>
+      <p>Formalizing expense reimbursement inevitably surfaces patterns that were invisible in an informal, paper-based process, and it is worth naming the ones I see most often in Bangladesh field and sales operations so approvers know what to actually look for once the data is visible rather than treating every flagged claim as an accusation.</p>
+      <p>The most common is round-number clustering: a genuine fuel or meal receipt rarely lands on an exact round figure, so a pattern of expense lines consistently claimed at neat round numbers (500, 1000, 1500 taka) across an employee's history is worth a closer look, not because it is automatically fraudulent, but because it often indicates estimated rather than receipted claims slipping through. The second is duplicate submission, where the same receipt photo is submitted twice, sometimes genuinely by accident during a busy travel period and sometimes deliberately; Odoo's OCR extracting the same vendor, date, and amount combination twice is a useful automatic flag an approver can check for during review. The third is category drift, where an employee's ratio of, for example, client entertainment to actual client meetings gradually rises over several months without a corresponding change in their role, which the categorized reporting in this guide makes visible at a glance in a way a shoebox of paper receipts never would.</p>
+      <p>None of this requires building an elaborate fraud detection system. It requires an approver who actually looks at the categorized monthly report described earlier rather than rubber-stamping submissions, and a policy culture where an occasional genuine query about an unusual claim is treated as normal financial diligence, not as an accusation against a trusted employee. Bangladesh companies that go straight from zero oversight to an adversarial audit posture tend to damage trust unnecessarily; the goal of this configuration is visibility, not suspicion.</p>
+
+      <h2 id="limits">Where Expenses Configuration Hits Limits</h2>
+      <p>Odoo Expenses handles individual employee-initiated claims well but is not built for complex procurement scenarios such as pre-trip budget approval workflows with multi-currency estimation, or integration with corporate credit card feeds for automatic reconciliation, features some larger enterprise expense platforms offer natively. For most Bangladesh SMEs this is not a meaningful gap, since corporate card programs are far less common than in markets with more developed card infrastructure, and pre-trip budget approval can usually be handled adequately through a simple manager sign-off before travel begins, tracked outside Odoo or via a lightweight Studio-built request form as covered in the <a href="0093-odoo-studio-no-code-bangladesh" style="color:var(--accent)">Studio guide</a>.</p>
+      <p>OCR accuracy on receipts is also worth setting realistic expectations around: it performs well on clearly printed thermal and paper receipts in reasonable lighting, but handwritten receipts, common at smaller local vendors and roadside stops across Bangladesh, are read less reliably and usually need manual correction by the employee before submission. This is a data entry step, not a workflow failure, and it should be communicated to staff during training rather than treated as evidence the feature does not work.</p>
+
+      <div class="callout">
+        <span class="tag">Expense Policy & Workflow Setup</span>
+        <p>If employee reimbursement at your company still runs on paper receipts and manager memory, I can configure Odoo Expenses with categories that match your actual travel policy, a proper two-stage approval flow, and cash advance reconciliation so field and travel staff get reimbursed on a predictable schedule. <a href="../#contact" style="color:var(--accent)">Contact me to set up your expense workflow →</a></p>
+      </div>
+
+      <h2 id="faq">Frequently asked questions</h2>
+
+      <h3>Can employees photograph receipts on their phone instead of keeping paper for Odoo Expenses?</h3>
+      <p>Yes. The Odoo mobile app lets an employee photograph a receipt at the point of purchase, and Odoo's OCR (optical character recognition) reads the vendor name, amount, and date automatically to pre-fill the expense line, which the employee then confirms or corrects before submitting. This removes the common Bangladesh field-staff problem of accumulating a pocket full of fading thermal receipts over a multi-day trip and trying to reconstruct expenses from memory at the end, with several receipts illegible or lost by the time reimbursement is filed.</p>
+
+      <h3>How do I set per-category expense limits in Odoo, like a meal allowance cap?</h3>
+      <p>Expense categories are configured under Expenses → Configuration → Expense Categories, where each category can have a maximum amount and a unit of measure (per expense, or per unit for mileage-based categories). Setting a meal category to a maximum of a fixed amount per day, for example, means any submission above that limit is flagged for the approver to review specifically, rather than being silently approved alongside everything else. Bangladesh companies with a written travel and expense policy should translate each policy line (meal caps, transport limits, accommodation tiers by city or by employee grade) directly into a matching expense category limit, so the policy is enforced by the system rather than relying on an approver remembering every rule.</p>
+
+      <h3>How does Odoo Expenses handle cash advances given before a business trip?</h3>
+      <p>Odoo supports recording an advance payment against an employee (as a negative expense or an advance record, depending on version and configuration) before the trip, then reconciling actual submitted expenses against that advance afterward. The employee's expense report shows the advance amount, the actual expenses claimed, and the resulting balance, which is either an amount still owed to the employee or an amount the employee needs to return. This matches the common Bangladesh corporate practice of issuing a cash advance before travel rather than expecting an employee to fund the trip personally and wait for reimbursement, and it prevents the advance from being forgotten and never reconciled against actual spend.</p>
+
+      <h3>Can approved employee expenses be automatically billed to a client project in Odoo?</h3>
+      <p>Yes, when an expense is marked as billable and linked to a specific customer project or Sales Order during submission. Once approved, the expense can be pulled into that client's invoice as a re-billed line item, similar to how approved timesheets flow into an invoice for time-based billing. This is common for Bangladesh consultancies and service providers whose contracts specify that travel and out-of-pocket costs are reimbursed by the client, and it removes the manual step of an accounts team member separately tracking which employee expenses relate to which client engagement.</p>
+
+      <h3>What is the approval workflow for employee expenses in Odoo?</h3>
+      <p>The standard flow is submission by the employee, review and approval by their direct manager, and a further review by the finance or accounts team before the expense is posted to accounting and queued for reimbursement. Odoo supports this as a two-stage approval (manager, then finance) which most Bangladesh companies should use rather than a single-approver flow, because the manager approval confirms the expense is legitimate and policy-compliant from an operational perspective, while the finance approval confirms it is correctly categorized and ready for the accounting entry and payment run.</p>
+
+    </div>
+  </article>
+
+  <footer>
+    <div class="shell">
+      <div class="post-foot">
+        <span class="eyebrow">Continue exploring</span>
+        <div class="next">
+          <a class="next-card" href="0095-odoo-helpdesk-ticketing-setup-bangladesh">
+            <span class="dir">Older · 0095</span>
+            <h4>Odoo Helpdesk & Customer Support Ticketing Setup Bangladesh</h4>
+            <p>SLA policies, ticket routing, and support-to-invoice workflows for AMC contracts.</p>
+            <span class="arrow">→</span>
+          </a>
+          <a class="next-card" href="../#lab">
+            <span class="dir">All articles</span>
+            <h4>Back to Lab Index</h4>
+            <p>Browse all guides on Odoo ERP, manufacturing operations, and business analysis in Bangladesh.</p>
+            <span class="arrow">→</span>
+          </a>
+        </div>
+      </div>
+      <div class="foot">
+        <span>© 2026 Mehedi Hasan · Lab / 0096</span>
+        <span><a href="../#lab">↑ Back to lab index</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="_utils.js" defer></script>
+  <script src="_toc.js" defer></script>
+  <script src="/whatsapp.js" defer></script>
+  <script src="/scroll-top.js" defer></script>
+</body>
+
+</html>

@@ -1,0 +1,344 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description"
+    content="Odoo ERP for Bangladesh poultry and dairy businesses: flock/batch costing, feed conversion tracking, cold-chain milk collection, and mortality/yield reporting." />
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="Mehedi Hasan" />
+  <title>Odoo for Poultry & Dairy Agribusiness Bangladesh | Mehedi Hasan</title>
+  <link rel="canonical" href="https://mhasan.me/lab/0087-odoo-poultry-dairy-agribusiness-bangladesh" />
+  <link rel="alternate" hreflang="en" href="https://mhasan.me/lab/0087-odoo-poultry-dairy-agribusiness-bangladesh" />
+  <link rel="alternate" hreflang="x-default" href="https://mhasan.me/lab/0087-odoo-poultry-dairy-agribusiness-bangladesh" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png" />
+  <!-- Open Graph -->
+  <meta property="og:title" content="Odoo for Poultry & Dairy Agribusiness Bangladesh | Mehedi Hasan" />
+  <meta property="og:description"
+    content="Odoo ERP for Bangladesh poultry and dairy businesses: flock/batch costing, feed conversion tracking, cold-chain milk collection, and mortality/yield reporting." />
+  <meta property="og:url" content="https://mhasan.me/lab/0087-odoo-poultry-dairy-agribusiness-bangladesh" />
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="https://mhasan.me/assets/og-default.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:site_name" content="Mehedi Hasan | Odoo ERP Consultant" />
+  <meta property="article:author" content="https://www.linkedin.com/in/mehedi-hasan-consultant/" />
+  <meta property="article:published_time" content="2026-09-18T14:00:00+06:00" />
+  <meta property="article:modified_time" content="2026-09-18T14:00:00+06:00" />
+  <meta property="article:section" content="Odoo ERP Bangladesh" />
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Odoo for Poultry & Dairy Agribusiness Bangladesh | Mehedi Hasan" />
+  <meta name="twitter:description"
+    content="Odoo ERP for Bangladesh poultry and dairy businesses: flock/batch costing, feed conversion tracking, cold-chain milk collection, and mortality/yield reporting." />
+  <meta name="twitter:image" content="https://mhasan.me/assets/og-default.jpg" />
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Odoo for Poultry & Dairy Agribusiness Bangladesh",
+    "description": "Odoo ERP for Bangladesh poultry and dairy businesses: flock/batch costing, feed conversion tracking, cold-chain milk collection, and mortality/yield reporting.",
+    "datePublished": "2026-09-18T14:00:00+06:00",
+    "dateModified": "2026-09-18T14:00:00+06:00",
+    "author": {
+      "@type": "Person",
+      "name": "Mehedi Hasan",
+      "url": "https://mhasan.me",
+      "jobTitle": "Odoo ERP Consultant & Business Analyst",
+      "sameAs": "https://www.linkedin.com/in/mehedi-hasan-consultant/"
+    },
+    "publisher": { "@type": "Person", "name": "Mehedi Hasan", "url": "https://mhasan.me" },
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://mhasan.me/lab/0087-odoo-poultry-dairy-agribusiness-bangladesh" }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://mhasan.me" },
+      { "@type": "ListItem", "position": 2, "name": "Lab", "item": "https://mhasan.me/lab/" },
+      { "@type": "ListItem", "position": 3, "name": "Odoo for Poultry & Dairy Agribusiness Bangladesh", "item": "https://mhasan.me/lab/0087-odoo-poultry-dairy-agribusiness-bangladesh" }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How do you track a poultry flock as a costed batch in Odoo?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A batch of day-old chicks (DOC) placed into a shed on a given date is set up as a Lot/Serial-tracked batch under Inventory > Configuration > Settings > Traceability, functioning as a work-in-progress cost object that accumulates feed consumption, medication and vaccination cost, and labor allocated to that shed over the full grow-out cycle (typically 30 to 35 days for broilers), until the batch is sold at target live weight. Because feed is consistently the dominant cost component, commonly 65 to 75 percent of total broiler production cost, tracking feed issued specifically against each flock batch rather than as an undifferentiated farm-wide feed expense is what makes the batch's final cost per kilogram of live weight a meaningful, actionable number rather than a rough average across the whole farm."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How is Feed Conversion Ratio (FCR) tracked in Odoo?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "FCR, the kilograms of feed consumed per kilogram of live weight gained, is calculated by dividing total feed issued against a flock batch (tracked as component consumption against that batch's lot in the Manufacturing or Inventory app) by the batch's total live weight gain at a given point or at sale. A well-managed Bangladesh broiler operation typically achieves an FCR between 1.6 and 1.8 for a standard 30 to 35 day grow-out cycle, with figures above 2.0 usually indicating feed wastage, poor feed quality, disease pressure, or heat stress reducing feed efficiency. Tracking FCR by shed, by feed supplier, and by season in Odoo turns it from a number calculated once at flock closeout into an early operational signal a farm manager can act on mid-cycle."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you record mortality and its cost impact in a poultry batch in Odoo?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Daily mortality counts are logged against the flock batch as a quantity reduction on the tracked lot, ideally recorded once per day per shed rather than reconciled only at the end of the cycle, since mortality patterns (a spike on a specific day) are a leading indicator of disease outbreak that needs immediate attention, not just an accounting adjustment. The cumulative mortality rate against the original day-old-chick placement count becomes a batch-level KPI, and because every bird lost has already consumed feed and shed space without producing sellable weight, mortality directly inflates the effective cost per kilogram of the birds that do survive to sale, a relationship Odoo's batch costing surfaces automatically once mortality is logged as it happens rather than backfilled from a paper mortality register at cycle end."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How does milk collection and fat/SNF-based pricing work in Odoo for a dairy business?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Milk collected from a network of smallholder farmers or a company-owned herd is recorded as a purchase or intake transaction per collection point and per farmer, with fat percentage and Solids-Not-Fat (SNF) percentage captured at the point of collection using a milk analyzer, since Bangladesh dairy procurement standard practice prices raw milk based on these two quality parameters rather than a flat per-liter rate. In Odoo this is configured using a pricelist or a custom pricing computation on the purchase order that calculates the payable rate per farmer's delivery based on the recorded fat and SNF readings against an agreed base rate and quality-adjustment scale, so that a smallholder delivering higher-fat milk is paid correctly more than one delivering diluted or lower-quality milk, exactly as the procurement agreement specifies."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What raw milk to processed product yield should a Bangladesh dairy plant expect?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yield varies significantly by product: pasteurized liquid milk yield is close to 95 to 97 percent of raw milk input by volume, accounting for processing loss and standardization, while yield for higher-value-added products drops much further, roughly 9 to 10 kilograms of raw milk are needed to produce 1 kilogram of standard hard cheese, and roughly 5 to 6 liters of raw milk to produce 1 kilogram of ghee, reflecting the concentration of solids involved. Tracking these yields as standard Bill of Materials ratios per product line in Odoo's Manufacturing app, and comparing actual output against them each processing run, is what lets a dairy processor identify when a specific day's yield underperformance points to raw milk quality issues versus a processing or equipment problem."
+        }
+      }
+    ]
+  }
+]
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap">
+  <link rel="stylesheet" href="_styles.css">
+  <style>
+    .path-tag { font-family: var(--mono); font-size: 12.5px; background: var(--elev); border: 1px solid var(--border); border-radius: 5px; padding: 2px 8px; color: var(--text); }
+  </style>
+</head>
+
+<body>
+  <div class="grid-bg"></div>
+
+  <header class="nav">
+    <div class="shell">
+      <div class="nav-inner">
+        <a class="brand" href="../">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span class="brand-name"><b>Mehedi Hasan</b><em>ERP · Business Analyst</em></span>
+        </a>
+        <a class="back-link" href="../#lab">← Back to Lab</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="post-head">
+    <div class="shell">
+      <span class="eyebrow">Technical Lab · 0087</span>
+      <h1>Odoo for Bangladesh's <span class="serif">poultry and dairy agribusiness sector.</span></h1>
+      <p class="lede">Commercial poultry and dairy are two of the fastest-formalizing agribusiness categories in Bangladesh, moving from backyard and smallholder production toward integrated companies running their own hatcheries, feed mills, contract grow-out farms, and processing plants. Both share a structural ERP challenge that most general manufacturing thinking does not anticipate: the product is a living, biological asset with a mortality risk and a feed-driven conversion economics that determines almost the entire cost structure, and in dairy's case, a raw material (milk) whose quality and price are set at the point of collection, not the point of sale. This guide covers how Odoo's inventory, manufacturing, and purchasing tools adapt to both.</p>
+      <div class="post-meta">
+        <span class="chip accent">Guide</span>
+        <span class="chip">Poultry & Dairy</span>
+        <span class="chip">Agribusiness</span>
+      </div>
+      <div class="byline">
+        <span>By<b><a href="https://www.linkedin.com/in/mehedi-hasan-consultant/" style="color:var(--accent)" rel="author">Mehedi Hasan</a></b></span>
+        <span>Published<b>September 2026</b></span>
+        <span>Read time<b>17 minutes</b></span>
+        <span>Form<b>Guide</b></span>
+        <span>Scope<b>Odoo Manufacturing / Poultry & Dairy Sector</b></span>
+      </div>
+    </div>
+  </section>
+
+  <article class="post">
+    <aside class="toc">
+      <div class="toc-k">In this guide</div>
+      <ol>
+        <li><a href="#sector">Bangladesh's Poultry & Dairy Sector</a></li>
+        <li><a href="#flock-costing">Flock/Batch Costing in Poultry</a></li>
+        <li><a href="#fcr">Feed Conversion Ratio: The Critical KPI</a></li>
+        <li><a href="#mortality">Mortality Tracking & Cost Impact</a></li>
+        <li><a href="#dairy-collection">Dairy Milk Collection & Fat/SNF Pricing</a></li>
+        <li><a href="#dairy-processing">Cold Chain & Processing Yield</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ol>
+    </aside>
+
+    <div class="body">
+
+      <h2 id="sector">Bangladesh's Poultry & Dairy Sector</h2>
+      <p>Bangladesh's commercial poultry industry has grown into an integrated value chain spanning grandparent and parent stock hatcheries, feed mills, contract or company-owned broiler and layer grow-out farms, and processing, led by companies including Kazi Farms, Paragon Poultry, Nourish, and CP Bangladesh, alongside thousands of smaller independent farms that supply the domestic market through live-bird markets. Dairy runs a parallel but structurally different model: formal processors, most visibly Pran, Milk Vita (the dairy cooperative model pioneered under BRDB), Aftab, and Akij, collect raw milk from networks of thousands of smallholder farmers through a chain of local collection points, alongside a smaller number of larger company-owned dairy herds, then process it into pasteurized milk, powdered milk, and dairy products.</p>
+      <p>Both segments share a business-model feature that general manufacturing ERP guidance, including the Manufacturing module concepts covered in the site's broader agro-processing guide for <a href="0069-odoo-food-beverage-agro-processing-bangladesh" style="color:var(--accent)">Odoo for Food, Beverage & Agro-Processing Bangladesh</a>, does not fully anticipate: the core production asset is a living organism (a flock of birds, a dairy herd or a network of smallholder-owned cows) whose output is governed by biological conversion ratios and mortality risk rather than a fixed machine cycle time, and whose upstream raw material (feed for poultry, milk itself for dairy) dominates the cost structure to a degree unusual even by manufacturing standards. Getting an ERP to actually track these dynamics, rather than forcing them into a generic production-order model built for machines, is what this guide focuses on.</p>
+
+      <div class="stat-row">
+        <div class="stat-card">
+          <div class="sc-val">65–75%</div>
+          <div class="sc-label">Feed Cost Share</div>
+          <div class="sc-note">Approximate share of total broiler production cost attributable to feed alone</div>
+        </div>
+        <div class="stat-card">
+          <div class="sc-val">1.6–1.8</div>
+          <div class="sc-label">Good Broiler FCR</div>
+          <div class="sc-note">Feed Conversion Ratio target for a well-managed 30-35 day grow-out cycle</div>
+        </div>
+        <div class="stat-card">
+          <div class="sc-val">Fat + SNF</div>
+          <div class="sc-label">Milk Pricing Basis</div>
+          <div class="sc-note">Standard Bangladesh dairy procurement practice prices raw milk on quality, not flat volume</div>
+        </div>
+      </div>
+
+      <p>Layer (egg-laying) operations add a further wrinkle worth noting for anyone implementing across both broiler and layer sides of a business: a layer flock is not sold at the end of a short grow-out cycle, it produces a daily saleable output (eggs) over a laying period that can run 12 months or longer before the flock itself is sold as spent hens. This means a layer flock's costing in Odoo needs to function less like a single work-in-progress batch closed out once, and more like a long-running cost center whose feed and health cost is compared continuously against daily egg output and egg-grading (size and quality grade affect price, similar in principle to the multi-grade output splitting used elsewhere in agribusiness), rather than a single lump-sum cost recognized only at flock disposal.</p>
+
+      <h2 id="flock-costing">Flock/Batch Costing in Poultry</h2>
+      <p>A batch of day-old chicks (DOC) placed into a grow-out shed on a specific date is the natural cost unit in broiler farming, and it should be tracked in Odoo as a Lot/Serial-tracked batch under <span class="path-tag">Inventory > Configuration > Settings > Traceability</span>, functioning as a work-in-progress cost object from placement through to sale at target live weight, typically 30 to 35 days for standard broilers. Every input associated with that shed and that placement date, feed issued, vaccination and medication cost, litter/bedding material, and allocated labor and utility cost, should be recorded against that specific batch lot rather than pooled into an undifferentiated farm-wide expense figure, using the Manufacturing app's component consumption tracking the same way a factory would track material consumption against a production order.</p>
+      <p>This matters because feed, the dominant cost line by a wide margin, is not consumed at a constant daily rate. Broiler feed consumption rises through the grow-out cycle as birds gain weight, moving through starter, grower, and finisher feed formulations, each priced differently, and a farm that tracks feed cost only in aggregate loses the ability to see whether a specific batch's elevated cost came from an unusually long cycle, a switch to a more expensive feed supplier, or genuine over-consumption relative to weight gain, which is exactly the question the Feed Conversion Ratio, covered next, is built to answer.</p>
+
+      <div class="tip-box">
+        <div class="tlabel">Practical Shortcut</div>
+        <p>For contract growers (farms raising birds under a company's day-old-chick and feed supply arrangement, common in Bangladesh's integrated poultry model), the ERP batch should still track full cost even though the grower does not own the birds, because the integrator company needs accurate batch-level cost and FCR data to calculate the grower's contract payment fairly and to identify which contracted farms are consistently underperforming on conversion efficiency.</p>
+      </div>
+
+      <h2 id="fcr">Feed Conversion Ratio: The Critical KPI</h2>
+      <p>Feed Conversion Ratio (FCR), the kilograms of feed consumed per kilogram of live weight gained, is the single most important operational KPI in broiler farming because feed is both the dominant cost and the most controllable variable in the entire production cycle. A well-managed Bangladesh broiler operation on a standard 30 to 35 day cycle typically achieves an FCR between 1.6 and 1.8, meaning 1.6 to 1.8 kilograms of feed produce each kilogram of live bird weight at sale. FCR above 2.0 is a clear warning sign, usually pointing to feed wastage from poor feeder management, disease pressure reducing feed efficiency, heat stress (a genuine seasonal risk during Bangladesh's hot pre-monsoon months, when birds eat less efficiently and grow more slowly under heat load), or a feed quality problem from a specific supplier batch.</p>
+
+      <div class="big-stat">
+        <div class="bs-val">1.6–1.8</div>
+        <div class="bs-label">Target Feed Conversion Ratio</div>
+        <div class="bs-note">Kilograms of feed per kilogram of live weight gain for a well-managed broiler cycle. Every 0.1 point of FCR deterioration measurably erodes farm margin, since feed is the dominant cost line.</div>
+      </div>
+
+      <p>In Odoo, FCR is calculated by dividing total feed issued against a flock batch's lot (recorded as component consumption in the Manufacturing app, ideally logged at each feed delivery to the shed rather than reconciled only at cycle end) by the batch's total live weight gain, measured through periodic sample weighing during the cycle and a final weight at sale. Tracked by shed, by feed supplier, by season, and by grower (for contract farming arrangements), FCR becomes a live signal a farm manager can act on mid-cycle, adjusting feeding practice or investigating a specific shed's conditions, rather than a number only calculated in hindsight once the batch has already been sold and the opportunity to correct anything has passed.</p>
+
+      <h2 id="mortality">Mortality Tracking & Cost Impact</h2>
+      <p>Daily mortality is a routine part of poultry farming, but its rate and pattern carry significant diagnostic and cost information that most Bangladesh farms currently capture only in a handwritten shed register, if at all systematically. Every bird lost has already consumed feed and occupied shed space without producing sellable output, meaning mortality does not just reduce the batch's final saleable quantity, it directly inflates the effective feed cost per kilogram of the birds that do survive to sale, a relationship that compounds as the cycle progresses since birds lost later in the cycle have consumed more cumulative feed than birds lost early.</p>
+
+      <div class="stat-row">
+        <div class="stat-card">
+          <div class="sc-val">&lt;5%</div>
+          <div class="sc-label">Good Cycle Mortality</div>
+          <div class="sc-note">Typical cumulative mortality target for a well-managed broiler cycle under normal conditions</div>
+        </div>
+        <div class="stat-card">
+          <div class="sc-val">Daily log</div>
+          <div class="sc-label">Recording Frequency</div>
+          <div class="sc-note">Mortality should be logged once per day per shed, not reconciled only at batch closeout</div>
+        </div>
+        <div class="stat-card">
+          <div class="sc-val">Spike = signal</div>
+          <div class="sc-label">Disease Early Warning</div>
+          <div class="sc-note">A sudden daily mortality spike is the earliest practical indicator of a disease outbreak needing immediate attention</div>
+        </div>
+      </div>
+
+      <p>Recording daily mortality as a quantity reduction against the flock batch's tracked lot in Odoo, rather than backfilling a single cumulative figure at cycle end, serves two distinct purposes at once: it keeps the batch's running cost-per-surviving-bird calculation accurate throughout the cycle, and, more urgently from an operational standpoint, it surfaces a mortality spike on a specific day as an immediate signal rather than a footnote discovered weeks later. A farm manager who sees mortality jump on a specific shed on a specific day, cross-referenced against that shed's recent feed batch and any weather event, can act within hours rather than only understanding the pattern once the full cycle's numbers are finally totaled.</p>
+
+      <h2 id="dairy-collection">Dairy Milk Collection & Fat/SNF Pricing</h2>
+      <p>Bangladesh's dairy procurement model runs predominantly through a network of collection points, sometimes company-operated chilling centers, sometimes cooperative society collection points in the Milk Vita model, where smallholder farmers deliver raw milk once or twice daily. Standard industry practice prices this incoming milk based on quality, specifically fat percentage and Solids-Not-Fat (SNF) percentage, tested at the point of collection using a handheld or in-line milk analyzer, rather than a flat per-liter rate regardless of quality, since fat and SNF content vary meaningfully between individual farmers' herds, feeding practice, and even time of day.</p>
+
+      <div class="feature-grid">
+        <div class="feature-card">
+          <div class="fc-icon">01</div>
+          <div class="fc-body">
+            <h4>Per-farmer intake records</h4>
+            <p>Each farmer's delivery is logged as a distinct purchase transaction with quantity, fat percentage, and SNF percentage captured at intake.</p>
+          </div>
+        </div>
+        <div class="feature-card">
+          <div class="fc-icon">02</div>
+          <div class="fc-body">
+            <h4>Quality-adjusted pricing</h4>
+            <p>A pricing formula or pricelist computes payable rate per delivery against an agreed base rate and a fat/SNF adjustment scale, not a flat volume rate.</p>
+          </div>
+        </div>
+        <div class="feature-card">
+          <div class="fc-icon">03</div>
+          <div class="fc-body">
+            <h4>Collection route tracking</h4>
+            <p>Volume and quality aggregated by collection route and chilling center identify which routes and which farmers consistently deliver higher- or lower-quality milk.</p>
+          </div>
+        </div>
+        <div class="feature-card">
+          <div class="fc-icon">04</div>
+          <div class="fc-body">
+            <h4>Cold-chain time stamping</h4>
+            <p>Collection-to-chilling time is logged where practical, since delayed chilling degrades raw milk quality before it ever reaches the processing plant.</p>
+          </div>
+        </div>
+      </div>
+
+      <p>In Odoo, this is configured using a purchase pricing computation, either a formula-based pricelist or a custom price calculation on the purchase order line, that applies the recorded fat and SNF readings against the agreed base rate and quality-adjustment scale for each farmer's delivery, under <span class="path-tag">Purchase > Configuration > Pricelists</span> combined with custom fields for fat and SNF capture on the purchase receipt. This ensures a smallholder delivering consistently higher-fat milk is paid correctly more than one delivering diluted or lower-quality milk exactly as the procurement agreement specifies, removes a common source of farmer dispute over payment fairness, and gives the processor a clean, auditable record of milk quality by route and by farmer over time.</p>
+
+      <h2 id="dairy-processing">Cold Chain & Processing Yield</h2>
+      <p>Raw milk quality degrades rapidly without proper cold-chain handling, which makes chilling infrastructure (bulk milk coolers at collection points, insulated transport to the processing plant) a genuine operational and food-safety requirement, not a nicety, and one that Bangladesh's dairy sector has historically under-invested in relative to more developed dairy markets. While Odoo does not control refrigeration equipment directly, recording collection-to-chilling and chilling-to-processing time stamps against each batch of collected milk gives quality control a data trail to correlate against any downstream quality issue (souring, reduced shelf life in the finished pasteurized product), the same forward-traceability discipline covered for quality-critical manufacturing more generally in <a href="0040-odoo-quality-control-iso-bangladesh" style="color:var(--accent)">Odoo Quality Control for ISO-Certified Factories</a> and for batch-tracked regulated production in <a href="0035-odoo-pharma-bangladesh" style="color:var(--accent)">Odoo for Pharma Bangladesh</a>.</p>
+      <p>Processing yield, the ratio of finished product output to raw milk input, varies significantly by product line and should be modeled as a standard Bill of Materials ratio per product under <span class="path-tag">Manufacturing > Products > Bills of Materials</span>. Pasteurized liquid milk retains close to 95 to 97 percent of raw milk volume after standardization and processing loss, while higher value-added products consume raw milk at a much steeper ratio: roughly 9 to 10 kilograms of raw milk to produce 1 kilogram of standard hard cheese, and roughly 5 to 6 liters of raw milk to produce 1 kilogram of ghee, reflecting how much water and non-solid content is removed to concentrate the finished product. Comparing actual output against these standard ratios on each processing run is what lets a dairy plant distinguish a raw-milk-quality problem (low fat or SNF content reducing achievable yield regardless of processing) from an actual equipment or process inefficiency, two very different problems that look identical from a finished-goods quantity report alone.</p>
+
+      <div class="pull">A dairy processor that only measures yield in aggregate at month end cannot tell whether last Tuesday's shortfall came from thin milk at the collection point or a separator running below spec. Batch-level yield tracking is the only way to actually separate those two causes.</div>
+
+      <p>One additional practical point for consultants scoping this kind of project: feed mill operations, where an integrated poultry or dairy company mills its own feed from maize, soybean meal, and other imported and domestic inputs rather than buying finished feed, deserve their own BOM and routing setup distinct from the livestock-side batch costing described above, since feed milling is itself a conventional process-manufacturing operation (batching, grinding, mixing, pelletizing) that produces a costed feed product which then becomes the raw material consumed against flock or herd batches. Treating the feed mill as its own manufacturing operation with its own BOM, rather than folding milling cost directly into flock cost, gives management visibility into whether a margin problem originates in feed production efficiency or in livestock-side conversion performance, two very different problems requiring very different corrective action.</p>
+
+      <div class="callout">
+        <span class="tag">Poultry & Dairy Agribusiness Consultation</span>
+        <p>If your poultry operation cannot tell you FCR by shed until a batch has already been sold, or your dairy collection network is still paying farmers on a flat rate that ignores fat and SNF quality, I can configure Odoo's batch tracking, quality-based pricing, and yield reporting to match how your operation actually needs to run. <a href="../#contact" style="color:var(--accent)">Contact me for a strategy session →</a></p>
+      </div>
+
+      <h2 id="faq">Frequently asked questions</h2>
+
+      <h3>How do you track a poultry flock as a costed batch in Odoo?</h3>
+      <p>A batch of day-old chicks (DOC) placed into a shed on a given date is set up as a Lot/Serial-tracked batch under Inventory > Configuration > Settings > Traceability, functioning as a work-in-progress cost object that accumulates feed consumption, medication and vaccination cost, and labor allocated to that shed over the full grow-out cycle (typically 30 to 35 days for broilers), until the batch is sold at target live weight. Because feed is consistently the dominant cost component, commonly 65 to 75 percent of total broiler production cost, tracking feed issued specifically against each flock batch rather than as an undifferentiated farm-wide feed expense is what makes the batch's final cost per kilogram of live weight a meaningful, actionable number rather than a rough average across the whole farm.</p>
+
+      <h3>How is Feed Conversion Ratio (FCR) tracked in Odoo?</h3>
+      <p>FCR, the kilograms of feed consumed per kilogram of live weight gained, is calculated by dividing total feed issued against a flock batch (tracked as component consumption against that batch's lot in the Manufacturing or Inventory app) by the batch's total live weight gain at a given point or at sale. A well-managed Bangladesh broiler operation typically achieves an FCR between 1.6 and 1.8 for a standard 30 to 35 day grow-out cycle, with figures above 2.0 usually indicating feed wastage, poor feed quality, disease pressure, or heat stress reducing feed efficiency. Tracking FCR by shed, by feed supplier, and by season in Odoo turns it from a number calculated once at flock closeout into an early operational signal a farm manager can act on mid-cycle.</p>
+
+      <h3>How do you record mortality and its cost impact in a poultry batch in Odoo?</h3>
+      <p>Daily mortality counts are logged against the flock batch as a quantity reduction on the tracked lot, ideally recorded once per day per shed rather than reconciled only at the end of the cycle, since mortality patterns (a spike on a specific day) are a leading indicator of disease outbreak that needs immediate attention, not just an accounting adjustment. The cumulative mortality rate against the original day-old-chick placement count becomes a batch-level KPI, and because every bird lost has already consumed feed and shed space without producing sellable weight, mortality directly inflates the effective cost per kilogram of the birds that do survive to sale, a relationship Odoo's batch costing surfaces automatically once mortality is logged as it happens rather than backfilled from a paper mortality register at cycle end.</p>
+
+      <h3>How does milk collection and fat/SNF-based pricing work in Odoo for a dairy business?</h3>
+      <p>Milk collected from a network of smallholder farmers or a company-owned herd is recorded as a purchase or intake transaction per collection point and per farmer, with fat percentage and Solids-Not-Fat (SNF) percentage captured at the point of collection using a milk analyzer, since Bangladesh dairy procurement standard practice prices raw milk based on these two quality parameters rather than a flat per-liter rate. In Odoo this is configured using a pricelist or a custom pricing computation on the purchase order that calculates the payable rate per farmer's delivery based on the recorded fat and SNF readings against an agreed base rate and quality-adjustment scale, so that a smallholder delivering higher-fat milk is paid correctly more than one delivering diluted or lower-quality milk, exactly as the procurement agreement specifies.</p>
+
+      <h3>What raw milk to processed product yield should a Bangladesh dairy plant expect?</h3>
+      <p>Yield varies significantly by product: pasteurized liquid milk yield is close to 95 to 97 percent of raw milk input by volume, accounting for processing loss and standardization, while yield for higher-value-added products drops much further, roughly 9 to 10 kilograms of raw milk are needed to produce 1 kilogram of standard hard cheese, and roughly 5 to 6 liters of raw milk to produce 1 kilogram of ghee, reflecting the concentration of solids involved. Tracking these yields as standard Bill of Materials ratios per product line in Odoo's Manufacturing app, and comparing actual output against them each processing run, is what lets a dairy processor identify when a specific day's yield underperformance points to raw milk quality issues versus a processing or equipment problem.</p>
+
+    </div>
+  </article>
+
+  <footer>
+    <div class="shell">
+      <div class="post-foot">
+        <span class="eyebrow">Continue exploring</span>
+        <div class="next">
+          <a class="next-card" href="0086-odoo-tea-estate-plantation-management-bangladesh">
+            <span class="dir">Older · 0086</span>
+            <h4>Odoo for Tea Estate & Plantation Management Bangladesh</h4>
+            <p>Green leaf harvest tracking, factory processing yield, and auction-ready costing.</p>
+            <span class="arrow">→</span>
+          </a>
+          <a class="next-card" href="../#lab">
+            <span class="dir">All articles</span>
+            <h4>Back to Lab Index</h4>
+            <p>Browse all guides on Odoo ERP, manufacturing operations, and business analysis in Bangladesh.</p>
+            <span class="arrow">→</span>
+          </a>
+        </div>
+      </div>
+      <div class="foot">
+        <span>© 2026 Mehedi Hasan · Lab / 0087</span>
+        <span><a href="../#lab">↑ Back to lab index</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="_utils.js" defer></script>
+  <script src="_toc.js" defer></script>
+  <script src="/whatsapp.js" defer></script>
+  <script src="/scroll-top.js" defer></script>
+</body>
+
+</html>

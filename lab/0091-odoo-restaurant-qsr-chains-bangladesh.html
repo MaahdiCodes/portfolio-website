@@ -1,0 +1,371 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description"
+    content="Odoo POS and kitchen operations for Bangladesh restaurant and QSR chains: recipe costing, kitchen display workflows, and delivery-aggregator integration." />
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="Mehedi Hasan" />
+  <title>Odoo for Restaurant & QSR Chains Bangladesh | Mehedi Hasan</title>
+  <link rel="canonical" href="https://mhasan.me/lab/0091-odoo-restaurant-qsr-chains-bangladesh" />
+  <link rel="alternate" hreflang="en" href="https://mhasan.me/lab/0091-odoo-restaurant-qsr-chains-bangladesh" />
+  <link rel="alternate" hreflang="x-default" href="https://mhasan.me/lab/0091-odoo-restaurant-qsr-chains-bangladesh" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png" />
+  <!-- Open Graph -->
+  <meta property="og:title" content="Odoo for Restaurant & QSR Chains Bangladesh | Mehedi Hasan" />
+  <meta property="og:description"
+    content="Odoo POS and kitchen operations for Bangladesh restaurant and QSR chains: recipe costing, kitchen display workflows, and delivery-aggregator integration." />
+  <meta property="og:url" content="https://mhasan.me/lab/0091-odoo-restaurant-qsr-chains-bangladesh" />
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="https://mhasan.me/assets/og-default.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:site_name" content="Mehedi Hasan | Odoo ERP Consultant" />
+  <meta property="article:author" content="https://www.linkedin.com/in/mehedi-hasan-consultant/" />
+  <meta property="article:published_time" content="2026-09-18T14:00:00+06:00" />
+  <meta property="article:modified_time" content="2026-09-18T14:00:00+06:00" />
+  <meta property="article:section" content="Odoo ERP Bangladesh" />
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Odoo for Restaurant & QSR Chains Bangladesh | Mehedi Hasan" />
+  <meta name="twitter:description"
+    content="Odoo POS and kitchen operations for Bangladesh restaurant and QSR chains: recipe costing, kitchen display workflows, and delivery-aggregator integration." />
+  <meta name="twitter:image" content="https://mhasan.me/assets/og-default.jpg" />
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Odoo for Restaurant & QSR Chains Bangladesh",
+    "description": "Odoo POS and kitchen operations for Bangladesh restaurant and QSR chains: recipe costing, kitchen display workflows, and delivery-aggregator integration.",
+    "datePublished": "2026-09-18T14:00:00+06:00",
+    "dateModified": "2026-09-18T14:00:00+06:00",
+    "author": {
+      "@type": "Person",
+      "name": "Mehedi Hasan",
+      "url": "https://mhasan.me",
+      "jobTitle": "Odoo ERP Consultant & Business Analyst",
+      "sameAs": "https://www.linkedin.com/in/mehedi-hasan-consultant/"
+    },
+    "publisher": { "@type": "Person", "name": "Mehedi Hasan", "url": "https://mhasan.me" },
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://mhasan.me/lab/0091-odoo-restaurant-qsr-chains-bangladesh" }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://mhasan.me" },
+      { "@type": "ListItem", "position": 2, "name": "Lab", "item": "https://mhasan.me/lab/" },
+      { "@type": "ListItem", "position": 3, "name": "Odoo for Restaurant & QSR Chains Bangladesh", "item": "https://mhasan.me/lab/0091-odoo-restaurant-qsr-chains-bangladesh" }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How does recipe-based costing work in Odoo for a restaurant?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Each menu item is modeled as a Bill of Materials (BOM) in Odoo's Manufacturing module, the same mechanism used for a factory's production BOM but applied to a recipe: the BOM lists every ingredient and its exact quantity per plate or per serving. When ingredient purchase prices change, which happens often in Bangladesh given vegetable, poultry, and cooking oil price volatility, the BOM's calculated cost updates and the menu item's actual food cost percentage recalculates automatically. This lets a restaurant chain see current food cost percentage per menu item at any time, rather than relying on an annual or occasional manual recipe costing exercise that goes stale within weeks of ingredient prices moving."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does Odoo have a kitchen display system (KDS) for restaurants?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Odoo POS includes a Kitchen Display / Preparation Display feature that routes orders from the POS terminal directly to a screen at the relevant kitchen station (grill, fry, cold prep, drinks), configured under Point of Sale > Configuration > Point of Sale with preparation printers or screens assigned by product category. Kitchen staff mark items as in-progress or ready directly on the display, which the front counter or delivery staff see in real time, replacing the handwritten kitchen order ticket (KOT) system many Bangladesh restaurants still run, and reducing the specific error pattern where a paper ticket gets lost or misread during a peak rush."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do multi-branch QSR chains handle a central kitchen in Odoo?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A central kitchen or commissary model, where semi-finished items (marinated proteins, pre-made sauces, portioned dough) are prepared centrally and distributed to branches for final cooking and assembly, is modeled in Odoo as a two-stage manufacturing and inter-location transfer flow: the central kitchen location runs its own manufacturing orders converting raw ingredients into semi-finished goods, which are then moved via internal transfer to each branch's stock location, where the branch's own recipe BOM consumes the semi-finished item alongside branch-added ingredients to produce the final menu item. This gives the chain visibility into central kitchen output, transfer timing, and each branch's actual consumption against its allocated semi-finished stock."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can Odoo integrate directly with Foodpanda or Pathao Food?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Not natively as a certified, seamless integration. Foodpanda and Pathao Food orders arrive on their own tablet or portal at the restaurant, separate from the Odoo POS, and there is no standard, officially supported connector syncing them automatically into Odoo. Practically, most Bangladesh restaurant chains handle this by manually re-entering aggregator orders into Odoo POS as a distinct payment method/sales channel for reconciliation purposes, or by building a custom, unofficial integration against the aggregator's available API or a middleware connector where one exists, which requires ongoing maintenance since aggregator APIs change without much notice. Being upfront about this gap during planning avoids a chain being surprised post-implementation that aggregator orders still require manual handling."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What does an Odoo implementation cost for a Bangladesh restaurant or QSR chain?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "For a QSR or restaurant chain with 5 to 20 branches, an Odoo implementation covering POS, kitchen display, recipe costing, and central kitchen inventory typically runs BDT 8 to 18 lakh, with BDT 3 to 8 lakh per year for support, plus hardware (POS terminals, kitchen display screens, printers) at roughly BDT 30,000 to 70,000 per branch depending on kitchen station count and screen quality. Chains wanting a custom delivery-aggregator reconciliation integration should budget separately for that development, since it sits outside standard Odoo licensing and implementation scope."
+        }
+      }
+    ]
+  }
+]
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap">
+  <link rel="stylesheet" href="_styles.css">
+  <style>
+    .path-tag { font-family: var(--mono); font-size: 12.5px; background: var(--elev); border: 1px solid var(--border); border-radius: 5px; padding: 2px 8px; color: var(--text); }
+  </style>
+</head>
+
+<body>
+  <div class="grid-bg"></div>
+
+  <header class="nav">
+    <div class="shell">
+      <div class="nav-inner">
+        <a class="brand" href="../">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span class="brand-name"><b>Mehedi Hasan</b><em>ERP · Business Analyst</em></span>
+        </a>
+        <a class="back-link" href="../#lab">← Back to Lab</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="post-head">
+    <div class="shell">
+      <span class="eyebrow">Technical Lab · 0091</span>
+      <h1>Odoo for restaurant and QSR chains <span class="serif">where the product melts, spoils, and gets remade daily.</span></h1>
+      <p class="lede">A retail chain sells the same shirt in Uttara and Chattogram at the same margin. A ten-branch QSR chain sells a burger whose actual cost shifts every time the chicken or the cooking oil price moves, prepared by a different kitchen team each shift, sometimes finished from a central kitchen's semi-cooked components, and increasingly ordered through Foodpanda or Pathao Food rather than a till. Odoo covers most of this well, but only if the recipe costing, kitchen routing, and central kitchen flow are built deliberately, and only if the delivery-aggregator gap is planned for honestly rather than assumed away.</p>
+      <div class="post-meta">
+        <span class="chip accent">Guide</span>
+        <span class="chip">Restaurant Operations</span>
+        <span class="chip">QSR Chains</span>
+      </div>
+      <div class="byline">
+        <span>By<b><a href="https://www.linkedin.com/in/mehedi-hasan-consultant/" style="color:var(--accent)" rel="author">Mehedi Hasan</a></b></span>
+        <span>Published<b>September 2026</b></span>
+        <span>Read time<b>17 minutes</b></span>
+        <span>Form<b>Guide</b></span>
+        <span>Scope<b>Restaurant & QSR Operations</b></span>
+      </div>
+    </div>
+  </section>
+
+  <article class="post">
+    <aside class="toc">
+      <div class="toc-k">In this guide</div>
+      <ol>
+        <li><a href="#the-problem">Why Restaurant Operations Aren't Just Retail POS</a></li>
+        <li><a href="#recipe-costing">Recipe-Based Costing with BOMs</a></li>
+        <li><a href="#kds">Kitchen Display and Order Routing</a></li>
+        <li><a href="#central-kitchen">Multi-Branch Central Kitchen Models</a></li>
+        <li><a href="#aggregators">The Delivery Aggregator Reality</a></li>
+        <li><a href="#wastage">Wastage and Portion Control</a></li>
+        <li><a href="#staffing">Shift Staffing and Tips</a></li>
+        <li><a href="#reporting">Reporting That Actually Drives Margin</a></li>
+        <li><a href="#menu-engineering">Menu Engineering with Real Cost Data</a></li>
+        <li><a href="#rollout">Rolling It Out Branch by Branch</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ol>
+    </aside>
+
+    <div class="body">
+
+      <h2 id="the-problem">Why Restaurant Operations Aren't Just Retail POS</h2>
+      <p>It is tempting to treat a restaurant chain as a variant of the retail POS problem already well covered in <a href="0064-odoo-pos-retail-chains-bangladesh" style="color:var(--accent)">Odoo POS for Bangladesh Retail Chains</a>, and a meaningful part of the setup genuinely is shared: multi-outlet stock locations, offline-capable POS, session reconciliation. But a restaurant sells a manufactured product assembled fresh per order from perishable ingredients, not a pre-packaged SKU picked off a shelf, and that difference cascades into requirements retail POS never has to solve: a menu item's true cost changes as ingredient prices move, an order needs to be routed to the correct kitchen station and prepared correctly before it can be "sold" in any meaningful sense, and a meaningful share of revenue for many Bangladesh chains now arrives through a delivery aggregator's own tablet, entirely outside the POS.</p>
+      <p>Bangladesh's QSR and casual dining sector has grown quickly across both home-grown chains and international franchises, typically operating 5 to 40 branches concentrated in Dhaka, Chattogram, and increasingly divisional cities, and the operational maturity gap between a single restaurant and a chain running a shared menu, shared costing, and a central kitchen across a dozen locations is exactly where a properly configured Odoo build earns its cost.</p>
+
+      <div class="stat-row">
+        <div class="stat-card">
+          <div class="sc-val">5–40</div>
+          <div class="sc-label">Typical Branch Count</div>
+          <div class="sc-note">Range for Bangladesh QSR/casual dining chains adopting centralized Odoo</div>
+        </div>
+        <div class="stat-card">
+          <div class="sc-val">28–38%</div>
+          <div class="sc-label">Target Food Cost %</div>
+          <div class="sc-note">Common healthy range chains aim to hold menu items within</div>
+        </div>
+        <div class="stat-card">
+          <div class="sc-val">20–40%</div>
+          <div class="sc-label">Aggregator Order Share</div>
+          <div class="sc-note">Common portion of revenue now arriving via Foodpanda/Pathao Food for urban chains</div>
+        </div>
+      </div>
+
+      <h2 id="recipe-costing">Recipe-Based Costing with BOMs</h2>
+      <p>The single most valuable and most commonly skipped configuration in a Bangladesh restaurant Odoo build is recipe-based costing using the Manufacturing module's Bill of Materials, the same underlying mechanism a factory uses to define a production recipe, applied here to a plate rather than a manufactured product. Each menu item is set up under <span class="path-tag">Manufacturing > Products > Bills of Materials</span> with every ingredient and its exact quantity per serving listed as a component line, a chicken burger's BOM including its specific gram weight of chicken, bun, sauce, and garnish, priced against each ingredient's current purchase cost.</p>
+      <p>The payoff is that food cost percentage, the ingredient cost of a menu item as a percentage of its selling price, recalculates automatically whenever ingredient purchase prices change, rather than sitting static from whatever costing exercise was last done, often months earlier. Bangladesh restaurant chains face genuinely volatile input costs, chicken, cooking oil, and seasonal vegetable prices move meaningfully within a single quarter, and a chain pricing its menu based on a stale cost assumption can be running several points of margin worse than management believes without any single number in the system flagging it. A live, BOM-driven food cost view, refreshed under <span class="path-tag">Manufacturing > Reporting > Cost Structure</span>, turns this from an annual surprise into an ongoing, monitored metric.</p>
+
+      <div class="tip-box">
+        <div class="tlabel">Practical Shortcut</div>
+        <p>Build BOMs for your top 20 to 30 revenue-driving menu items first, not the full menu on day one. These items typically represent 70 to 80 percent of total sales volume in a QSR menu, and getting accurate, current costing on them delivers most of the margin visibility benefit long before the full menu (including slow-moving items) is fully BOM-modeled.</p>
+      </div>
+
+      <h2 id="kds">Kitchen Display and Order Routing</h2>
+      <p>Odoo POS includes a Kitchen Display (Preparation Display) capability that routes an order, or specific line items within an order, directly to a screen at the relevant kitchen station, grill, fry station, cold prep, beverages, configured under <span class="path-tag">Point of Sale > Configuration > Point of Sale</span> by assigning preparation categories to product types. Kitchen staff mark each item in-progress and ready directly on the station screen, and that status is visible back at the counter or to delivery packing staff in real time, which meaningfully reduces the two classic failure modes of the paper kitchen order ticket (KOT) system still common in Bangladesh restaurants: a ticket physically lost during a peak rush, and a front-counter staff member with no reliable way to know an order's actual prep status without walking back to the kitchen to ask.</p>
+      <p>For chains with multiple prep stations per branch, correctly mapping product categories to the right station screen is the configuration detail that determines whether this actually speeds up service or just digitizes the same confusion: a burger's bun toasting, patty grilling, and sauce assembly may need to route to different physical stations within the same kitchen, and getting that routing wrong at setup creates exactly the kind of cross-station confusion the KDS was meant to eliminate.</p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Kitchen Station</th>
+            <th>KDS Routing Basis</th>
+            <th>Common Bangladesh QSR Example</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Grill/Fry</td>
+            <td>Product category tag</td>
+            <td>Burger patties, fried chicken, fries</td>
+          </tr>
+          <tr>
+            <td>Cold prep</td>
+            <td>Product category tag</td>
+            <td>Salads, sandwich assembly, cold sides</td>
+          </tr>
+          <tr>
+            <td>Beverages</td>
+            <td>Product category tag</td>
+            <td>Soft drinks, shakes, hot beverages</td>
+          </tr>
+          <tr>
+            <td>Packing/Dispatch</td>
+            <td>Order-complete trigger</td>
+            <td>Final assembly for dine-in tray or delivery bag</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2 id="central-kitchen">Multi-Branch Central Kitchen Models</h2>
+      <p>A meaningful share of Bangladesh QSR chains beyond a handful of branches run a central kitchen or commissary model: a single facility prepares semi-finished components, marinated chicken, pre-made sauces, portioned dough, par-cooked items, in bulk, then distributes them to individual branches, where branch kitchens complete final cooking and assembly. This is genuinely a manufacturing and logistics flow, not just a recipe, and modeling it correctly in Odoo requires treating the central kitchen as its own stock location running its own manufacturing orders (converting raw ingredients into semi-finished goods under a first-stage BOM), followed by internal stock transfers moving those semi-finished items from the central kitchen location to each branch's stock location.</p>
+      <p>At the branch, the final menu item's BOM then consumes the received semi-finished component alongside any branch-added fresh ingredients, giving the chain a two-stage costing view: central kitchen production cost and efficiency, and each branch's final assembly cost and consumption accuracy against what it was allocated. This structure also surfaces a genuinely useful operational signal that paper-based commissary systems rarely catch cleanly: a branch consistently consuming more semi-finished stock than its recorded sales volume justifies, which often points to portion control drift, waste, or in some cases inventory leakage at that specific branch.</p>
+
+      <div class="feature-grid">
+        <div class="feature-card">
+          <div class="fc-icon">01</div>
+          <div class="fc-body">
+            <h4>Central Kitchen as Its Own Location</h4>
+            <p>Runs its own manufacturing orders and stock location, distinct from any single branch's inventory.</p>
+          </div>
+        </div>
+        <div class="feature-card">
+          <div class="fc-icon">02</div>
+          <div class="fc-body">
+            <h4>Two-Stage BOM</h4>
+            <p>Semi-finished items produced centrally feed into each branch's final menu item BOM as a component.</p>
+          </div>
+        </div>
+        <div class="feature-card">
+          <div class="fc-icon">03</div>
+          <div class="fc-body">
+            <h4>Inter-Branch Transfer Tracking</h4>
+            <p>Standard internal transfers move semi-finished stock with full traceability of quantity and timing per branch.</p>
+          </div>
+        </div>
+        <div class="feature-card">
+          <div class="fc-icon">04</div>
+          <div class="fc-body">
+            <h4>Consumption Variance Signal</h4>
+            <p>Branch consumption against allocated semi-finished stock flags portion drift or waste early, per branch.</p>
+          </div>
+        </div>
+      </div>
+
+      <h2 id="aggregators">The Delivery Aggregator Reality</h2>
+      <p>Foodpanda and Pathao Food are now a significant revenue channel for Bangladesh restaurant chains in Dhaka and Chattogram, commonly 20 to 40 percent of total order volume for urban QSR brands, and it needs to be said plainly rather than glossed over in a sales pitch: there is no seamless, officially certified native integration between these aggregators and Odoo POS. Orders arrive on the aggregator's own tablet or portal at the restaurant, a completely separate system from whatever is running the in-store POS, and no standard connector keeps them automatically synced into Odoo's sales and inventory records.</p>
+      <p>The realistic operational patterns Bangladesh chains actually run, and that an honest implementation plan should present as options rather than hide: manual re-entry of aggregator orders into Odoo POS as a distinct payment method or sales channel, which preserves accurate inventory depletion and sales reporting at the cost of staff time during a busy delivery period; or a custom, unofficial integration built against whatever API access the aggregator currently exposes, which can automate the sync but requires ongoing maintenance since aggregator platform APIs change without much advance notice to integration partners, and a chain relying on a custom integration needs a support relationship in place that can react when it breaks, not treat it as a one-time build. Chains under-resourcing this reconciliation step commonly end up with an inventory system that looks accurate for in-store and phone orders but silently drifts on aggregator volume, since aggregator sales are consuming real ingredient stock that never gets recorded as a proper Odoo sale.</p>
+
+      <div class="disclaimer">
+        <p><strong>Note:</strong> Aggregator commission structures (typically a percentage of order value withheld by the platform) should be reconciled against the aggregator's own settlement statement, not assumed to match gross order value recorded in Odoo, since the net payout a chain actually receives is materially lower than the sale price customers pay on the app.</p>
+      </div>
+
+      <h2 id="wastage">Wastage and Portion Control</h2>
+      <p>Perishable ingredient wastage, spoilage, over-preparation, and portion inconsistency between shifts is a persistent margin leak in restaurant operations that a BOM-driven costing system, on its own, only partially addresses: the BOM tells you what a menu item should cost if made exactly to recipe, not what actually happened on the floor. Odoo's inventory adjustment and scrap functionality under <span class="path-tag">Inventory > Operations > Scrap</span>, used disciplined and recorded daily rather than only during periodic stock counts, gives a chain a documented wastage trail by branch and by ingredient, which is the only way to distinguish genuine unavoidable spoilage from a portion control problem at a specific branch or shift.</p>
+      <p>Comparing actual ingredient consumption (drawn from BOM-driven theoretical usage against sales volume) to actual purchased and received stock at each branch, a variance report achievable once BOMs and inventory transactions are both properly maintained, is one of the highest-value recurring reports a multi-branch chain can run, and it is functionally impossible to produce reliably without the underlying recipe costing and inventory discipline this section and the recipe costing section above both depend on.</p>
+
+      <h2 id="staffing">Shift Staffing and Tips</h2>
+      <p>Restaurant and QSR staffing runs on rotating shifts with a meaningfully different pay structure than office HR: hourly or shift-based wages for counter and kitchen staff, service charge or tip pooling arrangements common in casual dining formats, and high staff turnover that makes fast onboarding of new POS users a recurring, not one-time, operational need. Odoo's Employee and Payroll setup, covered in general terms in <a href="0016-odoo-hr-payroll-bangladesh" style="color:var(--accent)">Odoo HR & Payroll Bangladesh</a>, needs to be configured for shift-based schedules and, where the chain runs a service charge pooling model, a defined distribution rule calculated from POS service charge collection and disbursed through payroll, rather than handled as an informal cash split at shift end that leaves no auditable record.</p>
+
+      <h2 id="reporting">Reporting That Actually Drives Margin</h2>
+      <p>Beyond individual branch sales, the reports that actually move a restaurant chain's profitability are: food cost percentage by menu item and by branch (since the same item can show different actual cost at different branches due to portion drift or local ingredient sourcing differences), sales mix trend (which items are gaining or losing share of total orders, directly informing menu engineering decisions), central kitchen consumption variance by branch, and channel mix between dine-in, takeaway, and aggregator delivery, since each channel carries a different effective margin once commission and packaging costs are accounted for. The KPI dashboard approach in <a href="0055-odoo-dashboards-kpi-bangladesh" style="color:var(--accent)">Odoo Dashboards & KPI Bangladesh</a> applies directly to building a single operations screen combining these views for a multi-branch chain's leadership team.</p>
+
+      <h2 id="menu-engineering">Menu Engineering with Real Cost Data</h2>
+      <p>Once recipe BOMs and sales mix reporting are both live, a chain gains the ability to do genuine menu engineering, classifying each menu item by its combination of sales volume and profit margin, rather than deciding what to promote or discontinue based on gut feel or which items a franchise owner personally prefers. The classic framework sorts items into four groups: high volume and high margin (promote these aggressively), high volume but low margin (candidates for a modest price increase or a recipe cost reduction), low volume but high margin (worth a marketing push since the item is profitable but underexposed), and low volume with low margin (usually the first candidates for menu removal, since they consume kitchen complexity and inventory carrying cost disproportionate to what they contribute).</p>
+      <p>Building this analysis directly from Odoo's sales and BOM cost data, rather than a separate manually maintained spreadsheet that inevitably falls out of sync with actual current ingredient costs, is what turns menu engineering from an annual consultant-led exercise into a quarterly or even monthly internal review a chain's own management can run. For a chain with several branches showing different local sales mixes, this same analysis run per branch can also reveal genuinely different local preferences worth reflecting in branch-specific menu boards, rather than assuming one national menu mix fits every location equally.</p>
+
+      <h2 id="rollout">Rolling It Out Branch by Branch</h2>
+      <p>A realistic rollout sequence for a Bangladesh restaurant or QSR chain moving from disconnected billing software or a single flagship location:</p>
+      <ul>
+        <li><strong>Pilot at the flagship or head-office-adjacent branch first,</strong> building out recipe BOMs for the top menu items and testing the KDS routing under a real peak-hour rush before rolling to other branches.</li>
+        <li><strong>Stand up the central kitchen flow before scaling to more than a handful of branches,</strong> since retrofitting a commissary structure after several branches are already running independent local prep is significantly more disruptive.</li>
+        <li><strong>Decide the aggregator handling approach explicitly before go-live,</strong> manual re-entry or a custom integration, rather than discovering the gap after launch when staff are already improvising a workaround.</li>
+        <li><strong>Roll BOM costing out to the full menu progressively,</strong> prioritizing by sales volume, rather than delaying go-live until every menu item (including rarely ordered ones) has a complete recipe cost.</li>
+        <li><strong>Introduce wastage tracking discipline from day one at each new branch,</strong> since retraining kitchen staff into a scrap-recording habit after go-live is markedly harder than establishing it during initial training.</li>
+      </ul>
+
+      <div class="callout">
+        <span class="tag">Restaurant Operations Consultation</span>
+        <p>If you run a restaurant or QSR chain in Bangladesh and cannot currently tell which menu items are actually profitable or how much your delivery aggregator orders are really costing you in reconciliation effort, I can design and implement the Odoo POS, recipe costing, and central kitchen structure this business model actually needs. <a href="../#contact" style="color:var(--accent)">Contact me for a strategy session →</a></p>
+      </div>
+
+      <h2 id="faq">Frequently asked questions</h2>
+
+      <h3>How does recipe-based costing work in Odoo for a restaurant?</h3>
+      <p>Each menu item is modeled as a Bill of Materials (BOM) in Odoo's Manufacturing module, the same mechanism used for a factory's production BOM but applied to a recipe: the BOM lists every ingredient and its exact quantity per plate or per serving. When ingredient purchase prices change, which happens often in Bangladesh given vegetable, poultry, and cooking oil price volatility, the BOM's calculated cost updates and the menu item's actual food cost percentage recalculates automatically. This lets a restaurant chain see current food cost percentage per menu item at any time, rather than relying on an annual or occasional manual recipe costing exercise that goes stale within weeks of ingredient prices moving.</p>
+
+      <h3>Does Odoo have a kitchen display system (KDS) for restaurants?</h3>
+      <p>Yes. Odoo POS includes a Kitchen Display / Preparation Display feature that routes orders from the POS terminal directly to a screen at the relevant kitchen station (grill, fry, cold prep, drinks), configured under Point of Sale > Configuration > Point of Sale with preparation printers or screens assigned by product category. Kitchen staff mark items as in-progress or ready directly on the display, which the front counter or delivery staff see in real time, replacing the handwritten kitchen order ticket (KOT) system many Bangladesh restaurants still run, and reducing the specific error pattern where a paper ticket gets lost or misread during a peak rush.</p>
+
+      <h3>How do multi-branch QSR chains handle a central kitchen in Odoo?</h3>
+      <p>A central kitchen or commissary model, where semi-finished items (marinated proteins, pre-made sauces, portioned dough) are prepared centrally and distributed to branches for final cooking and assembly, is modeled in Odoo as a two-stage manufacturing and inter-location transfer flow: the central kitchen location runs its own manufacturing orders converting raw ingredients into semi-finished goods, which are then moved via internal transfer to each branch's stock location, where the branch's own recipe BOM consumes the semi-finished item alongside branch-added ingredients to produce the final menu item. This gives the chain visibility into central kitchen output, transfer timing, and each branch's actual consumption against its allocated semi-finished stock.</p>
+
+      <h3>Can Odoo integrate directly with Foodpanda or Pathao Food?</h3>
+      <p>Not natively as a certified, seamless integration. Foodpanda and Pathao Food orders arrive on their own tablet or portal at the restaurant, separate from the Odoo POS, and there is no standard, officially supported connector syncing them automatically into Odoo. Practically, most Bangladesh restaurant chains handle this by manually re-entering aggregator orders into Odoo POS as a distinct payment method/sales channel for reconciliation purposes, or by building a custom, unofficial integration against the aggregator's available API or a middleware connector where one exists, which requires ongoing maintenance since aggregator APIs change without much notice. Being upfront about this gap during planning avoids a chain being surprised post-implementation that aggregator orders still require manual handling.</p>
+
+      <h3>What does an Odoo implementation cost for a Bangladesh restaurant or QSR chain?</h3>
+      <p>For a QSR or restaurant chain with 5 to 20 branches, an Odoo implementation covering POS, kitchen display, recipe costing, and central kitchen inventory typically runs BDT 8 to 18 lakh, with BDT 3 to 8 lakh per year for support, plus hardware (POS terminals, kitchen display screens, printers) at roughly BDT 30,000 to 70,000 per branch depending on kitchen station count and screen quality. Chains wanting a custom delivery-aggregator reconciliation integration should budget separately for that development, since it sits outside standard Odoo licensing and implementation scope.</p>
+
+    </div>
+  </article>
+
+  <footer>
+    <div class="shell">
+      <div class="post-foot">
+        <span class="eyebrow">Continue exploring</span>
+        <div class="next">
+          <a class="next-card" href="0090-odoo-real-estate-developers-bangladesh">
+            <span class="dir">Older · 0090</span>
+            <h4>Odoo for Real Estate Developers & Plot/Flat Sales Bangladesh</h4>
+            <p>Installment-based sales tracking, project costing, and buyer payment schedules.</p>
+            <span class="arrow">→</span>
+          </a>
+          <a class="next-card" href="../#lab">
+            <span class="dir">All articles</span>
+            <h4>Back to Lab Index</h4>
+            <p>Browse all guides on Odoo ERP, manufacturing operations, and business analysis in Bangladesh.</p>
+            <span class="arrow">→</span>
+          </a>
+        </div>
+      </div>
+      <div class="foot">
+        <span>© 2026 Mehedi Hasan · Lab / 0091</span>
+        <span><a href="../#lab">↑ Back to lab index</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="_utils.js" defer></script>
+  <script src="_toc.js" defer></script>
+  <script src="/whatsapp.js" defer></script>
+  <script src="/scroll-top.js" defer></script>
+</body>
+
+</html>

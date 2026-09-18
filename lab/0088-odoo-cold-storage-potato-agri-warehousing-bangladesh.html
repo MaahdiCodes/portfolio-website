@@ -1,0 +1,387 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description"
+    content="Odoo ERP for Bangladesh cold storage operators: farmer deposit/bond ledgers, chamber capacity tracking, potato lot shrinkage, and seasonal billing cycles." />
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="Mehedi Hasan" />
+  <title>Odoo for Cold Storage & Potato/Agri Warehousing Bangladesh | Mehedi Hasan</title>
+  <link rel="canonical" href="https://mhasan.me/lab/0088-odoo-cold-storage-potato-agri-warehousing-bangladesh" />
+  <link rel="alternate" hreflang="en" href="https://mhasan.me/lab/0088-odoo-cold-storage-potato-agri-warehousing-bangladesh" />
+  <link rel="alternate" hreflang="x-default" href="https://mhasan.me/lab/0088-odoo-cold-storage-potato-agri-warehousing-bangladesh" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png" />
+  <!-- Open Graph -->
+  <meta property="og:title" content="Odoo for Cold Storage & Potato/Agri Warehousing Bangladesh | Mehedi Hasan" />
+  <meta property="og:description"
+    content="Odoo ERP for Bangladesh cold storage operators: farmer deposit/bond ledgers, chamber capacity tracking, potato lot shrinkage, and seasonal billing cycles." />
+  <meta property="og:url" content="https://mhasan.me/lab/0088-odoo-cold-storage-potato-agri-warehousing-bangladesh" />
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="https://mhasan.me/assets/og-default.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:site_name" content="Mehedi Hasan | Odoo ERP Consultant" />
+  <meta property="article:author" content="https://www.linkedin.com/in/mehedi-hasan-consultant/" />
+  <meta property="article:published_time" content="2026-09-18T14:00:00+06:00" />
+  <meta property="article:modified_time" content="2026-09-18T14:00:00+06:00" />
+  <meta property="article:section" content="Odoo ERP Bangladesh" />
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Odoo for Cold Storage & Potato/Agri Warehousing Bangladesh | Mehedi Hasan" />
+  <meta name="twitter:description"
+    content="Odoo ERP for Bangladesh cold storage operators: farmer deposit/bond ledgers, chamber capacity tracking, potato lot shrinkage, and seasonal billing cycles." />
+  <meta name="twitter:image" content="https://mhasan.me/assets/og-default.jpg" />
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Odoo for Cold Storage & Potato/Agri Warehousing Bangladesh",
+    "description": "Odoo ERP for Bangladesh cold storage operators: farmer deposit/bond ledgers, chamber capacity tracking, potato lot shrinkage, and seasonal billing cycles.",
+    "datePublished": "2026-09-18T14:00:00+06:00",
+    "dateModified": "2026-09-18T14:00:00+06:00",
+    "author": {
+      "@type": "Person",
+      "name": "Mehedi Hasan",
+      "url": "https://mhasan.me",
+      "jobTitle": "Odoo ERP Consultant & Business Analyst",
+      "sameAs": "https://www.linkedin.com/in/mehedi-hasan-consultant/"
+    },
+    "publisher": { "@type": "Person", "name": "Mehedi Hasan", "url": "https://mhasan.me" },
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://mhasan.me/lab/0088-odoo-cold-storage-potato-agri-warehousing-bangladesh" }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://mhasan.me" },
+      { "@type": "ListItem", "position": 2, "name": "Lab", "item": "https://mhasan.me/lab/" },
+      { "@type": "ListItem", "position": 3, "name": "Odoo for Cold Storage & Potato/Agri Warehousing Bangladesh", "item": "https://mhasan.me/lab/0088-odoo-cold-storage-potato-agri-warehousing-bangladesh" }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Why doesn't standard Odoo inventory work for a cold storage business?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Standard Odoo inventory assumes the company operating the warehouse owns the stock sitting in it, which is true for a manufacturer or trader but not for a Bangladesh cold storage (himagar) operator. In cold storage, the potato bags belong to the depositing farmer or trader, and the storage company is only a custodian charging rent. Configuring this correctly means using Odoo's owner field on stock quants and moves (consignment stock, tracked under Inventory > Configuration > Settings with Multiple Owners enabled) so every bag stays attributed to its depositor throughout its stay, rather than being absorbed into the storage company's own stock valuation. Get this wrong and the storage operator's balance sheet ends up overstating inventory it does not own and cannot sell."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you track individual farmer lots in Odoo cold storage?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Each depositor's intake is recorded as a separate lot/serial number under Inventory > Products > Lots, tagged with the depositor as the stock owner, the intake weight and bag count, and the chamber and rack location assigned. Because Odoo lot tracking supports partial withdrawals against a lot, a farmer taking out 40 of his 200 deposited bags mid-season is handled as a partial delivery against that specific lot, keeping the remaining 160 bags correctly attributed and located. This lot-per-depositor discipline is what makes the season-end reconciliation between what was deposited, what was withdrawn, and what remains auditable rather than a manual register cross-check."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How is potato storage shrinkage recorded in the system?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Natural moisture and weight loss during storage is recorded as a scheduled inventory adjustment against the affected lots, typically as a scrap or negative adjustment tied to a documented shrinkage percentage rather than an unexplained stock discrepancy. Bangladesh cold stores commonly apply a shrinkage allowance in the 8 to 12 percent range across a full storage season depending on chamber humidity control and storage duration, and recording it as a deliberate, dated adjustment (rather than letting it surface as a surprise at withdrawal) is what lets the operator show depositors a defensible number instead of a dispute at the gate."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How does seasonal billing work for cold storage rent in Odoo?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Rent is normally charged per bag per storage period (commonly a per-maund or per-bag rate for the full March to November storage season, sometimes with a slab rate for early or late withdrawal), and in Odoo this is modeled as a recurring or milestone-based sales order line tied to each depositor's lot rather than a flat monthly subscription invoice. Most of the actual cash collection happens at withdrawal time when the depositor settles the accumulated rent before the gate pass is issued, which means the accounting setup needs deferred revenue recognition (accruing rent income month by month even though cash arrives in a concentrated window) to avoid a profit and loss statement that looks empty for eight months and enormous in one."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What does an Odoo cold storage implementation cost in Bangladesh?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A single-facility cold storage implementation (one himagar with multiple chambers, 5,000 to 40,000 metric ton capacity) typically runs BDT 6 to 14 lakh for Odoo configuration covering the deposit ledger, chamber/location structure, lot tracking, and seasonal billing setup, with a further BDT 2 to 5 lakh per year for support during peak intake and withdrawal seasons when transaction volume and staff error rates both spike. Multi-facility groups running several cold stores under one company naturally cost more due to the added complexity of consolidated reporting across chambers that may have different capacity, tariff, and shrinkage profiles."
+        }
+      }
+    ]
+  }
+]
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap">
+  <link rel="stylesheet" href="_styles.css">
+  <style>
+    .path-tag { font-family: var(--mono); font-size: 12.5px; background: var(--elev); border: 1px solid var(--border); border-radius: 5px; padding: 2px 8px; color: var(--text); }
+  </style>
+</head>
+
+<body>
+  <div class="grid-bg"></div>
+
+  <header class="nav">
+    <div class="shell">
+      <div class="nav-inner">
+        <a class="brand" href="../">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span class="brand-name"><b>Mehedi Hasan</b><em>ERP · Business Analyst</em></span>
+        </a>
+        <a class="back-link" href="../#lab">← Back to Lab</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="post-head">
+    <div class="shell">
+      <span class="eyebrow">Technical Lab · 0088</span>
+      <h1>Odoo for cold storage <span class="serif">and potato/agri warehousing.</span></h1>
+      <p class="lede">A Bangladesh himagar does not sell potatoes. It stores other people's potatoes, in bags it never owned, for a fee based on how long those bags sat in a chamber. That single fact, custody without ownership, breaks nearly every default assumption in a standard ERP inventory model, and it is why most cold storage operators in Bogura, Munshiganj, Rangpur, and Joypurhat still run their deposit registers on paper ledgers years after their trading and manufacturing neighbors moved to Odoo.</p>
+      <div class="post-meta">
+        <span class="chip accent">Guide</span>
+        <span class="chip">Cold Storage</span>
+        <span class="chip">Agri Warehousing</span>
+      </div>
+      <div class="byline">
+        <span>By<b><a href="https://www.linkedin.com/in/mehedi-hasan-consultant/" style="color:var(--accent)" rel="author">Mehedi Hasan</a></b></span>
+        <span>Published<b>September 2026</b></span>
+        <span>Read time<b>18 minutes</b></span>
+        <span>Form<b>Guide</b></span>
+        <span>Scope<b>Cold Storage Operations</b></span>
+      </div>
+    </div>
+  </section>
+
+  <article class="post">
+    <aside class="toc">
+      <div class="toc-k">In this guide</div>
+      <ol>
+        <li><a href="#the-model">The Bangladesh Cold Storage Business Model</a></li>
+        <li><a href="#ownership-problem">Why Standard Inventory Ownership Breaks Here</a></li>
+        <li><a href="#deposit-ledger">The Farmer Deposit/Bond Ledger in Odoo</a></li>
+        <li><a href="#chamber-capacity">Chamber and Room Capacity Tracking</a></li>
+        <li><a href="#shrinkage">Shrinkage and Weight Loss During Storage</a></li>
+        <li><a href="#seasonal-billing">The Seasonal Billing Cycle</a></li>
+        <li><a href="#withdrawal">Withdrawal, Gate Pass, and Settlement</a></li>
+        <li><a href="#reporting">Reporting Owners Actually Need</a></li>
+        <li><a href="#rollout">Rolling It Out Before Intake Season</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ol>
+    </aside>
+
+    <div class="body">
+
+      <h2 id="the-model">The Bangladesh Cold Storage Business Model</h2>
+      <p>Bangladesh has one of the world's more distinctive cold storage sectors, built almost entirely around a single crop: potato. The country has roughly 400 registered cold storages with a combined capacity well past 5 million metric tons, concentrated in Munshiganj, Bogura, Rangpur, Joypurhat, and Comilla, and the overwhelming majority of that capacity is potato-only, seasonal, single-purpose. The Bangladesh Cold Storage Association (BCSA) and the Department of Agricultural Marketing (DAM) both track capacity and tariff data by district, and the Bangladesh Agricultural Development Corporation (BADC) has its own certified seed potato storage requirements that some larger facilities also serve.</p>
+      <p>The business model is fundamentally a bailment, not a sale. A farmer or a potato trading intermediary (locally called a faria or arotdar in the broader agri trade sense, though cold storage depositors are typically farmers and small traders directly) harvests or buys potato in March and April, deposits it in bags at a himagar, and pays a season-long storage rent, typically withdrawing between August and November when market prices for stored potato rise well above the harvest-glut price. The storage operator never buys or sells the potato itself, its revenue is entirely the per-bag storage fee, sometimes supplemented by loading, weighing, and bag-handling charges.</p>
+      <p>This is a meaningfully different operating pattern from the agro-processing plants covered in <a href="0069-odoo-food-beverage-agro-processing-bangladesh" style="color:var(--accent)">Odoo for Food, Beverage & Agro-Processing Bangladesh</a>, which own their raw material and convert it into a finished product. A cold storage operator converts nothing. Its entire value proposition is safekeeping, temperature control, and honest recordkeeping across a single, intensely seasonal seven-to-eight-month cycle.</p>
+
+      <div class="stat-row">
+        <div class="stat-card">
+          <div class="sc-val">400+</div>
+          <div class="sc-label">Registered Cold Storages</div>
+          <div class="sc-note">Nationwide, concentrated in Munshiganj, Bogura, Rangpur, Joypurhat</div>
+        </div>
+        <div class="stat-card">
+          <div class="sc-val">5M+ MT</div>
+          <div class="sc-label">Combined Capacity</div>
+          <div class="sc-note">Approximate national cold storage capacity, potato-dominant</div>
+        </div>
+        <div class="stat-card">
+          <div class="sc-val">8–12%</div>
+          <div class="sc-label">Typical Season Shrinkage</div>
+          <div class="sc-note">Weight loss from intake to a full season's withdrawal</div>
+        </div>
+        <div class="stat-card">
+          <div class="sc-val">Mar–Nov</div>
+          <div class="sc-label">Storage Season</div>
+          <div class="sc-note">Intake at harvest, withdrawal concentrated Aug–Nov</div>
+        </div>
+      </div>
+
+      <p class="pull">The storage operator's ledger is not an inventory record. It is closer to a bank's deposit book, where every bag is someone else's asset and the operator's only job is proving, on demand, exactly whose it is.</p>
+
+      <h2 id="ownership-problem">Why Standard Inventory Ownership Breaks Here</h2>
+      <p>Odoo's inventory module, like nearly every ERP inventory model, defaults to the assumption that stock sitting in your warehouse is your stock: it hits your balance sheet, your valuation layer, your stock ledger. That assumption is correct for a trading company or a manufacturer and completely wrong for a cold storage operator. If a himagar's Odoo instance is configured naively, with potato simply received into stock like any purchased raw material, two things go wrong quickly. First, the storage company's balance sheet inflates with inventory value it does not own and has no right to sell, which distorts every financial ratio and makes bank financing conversations (cold storages are frequently financed against seasonal working capital lines from Bangladesh Krishi Bank and commercial bank agri-lending desks) harder to have cleanly. Second, and more dangerous operationally, there is no structural separation between "stock the company owns" and "stock the company merely holds," which means a data entry mistake can genuinely blur whose potato is whose.</p>
+      <p>The correct configuration uses Odoo's consignment stock capability: under <span class="path-tag">Inventory > Configuration > Settings</span>, enabling the "Consignment" / multi-owner stock feature allows every stock quant and stock move to carry an owner field distinct from the company operating the warehouse. Every intake transaction records the depositor as the owner of that specific quant from the moment the bags cross the gate. The storage company's own books show zero inventory value for potato stock (correctly, since it owns none), while Inventory > Reporting still gives full visibility into what physically sits in each chamber, filterable by owner. This is the single most important configuration decision in a cold storage Odoo build, and it is also the step most local "quick Odoo setup" vendors skip, because it does not show up as a problem until the first bank auditor or the first depositor dispute forces the question.</p>
+
+      <div class="disclaimer">
+        <p><strong>Note:</strong> Consignment/multi-owner stock in Odoo requires the underlying warehouse routes and valuation settings to be configured consistently across every chamber location, not just enabled globally. A partial rollout (some chambers configured for owned stock, others for consignment) is a common cause of reporting confusion during early implementations, and the fix is a deliberate one-time location audit before go-live rather than a patch after the first season closes.</p>
+      </div>
+
+      <h2 id="deposit-ledger">The Farmer Deposit/Bond Ledger in Odoo</h2>
+      <p>Every depositor's intake becomes a lot record under <span class="path-tag">Inventory > Products > Lots/Serial Numbers</span>, created at the weighbridge or intake counter with the depositor set as the stock owner, the intake date, the gross weight, the bag count, and the chamber/rack location assigned. In practice, this lot is the digital equivalent of the paper bond slip (locally often called a rosid or deposit receipt) that Bangladesh cold stores have issued to farmers for decades, except the lot record in Odoo can be looked up instantly, cross-referenced against the depositor's running balance, and cannot be physically lost or altered the way a paper slip in a farmer's pocket can.</p>
+      <p>Because Odoo lots support partial delivery, a depositor who brought in 300 bags in April and wants to withdraw 80 in September is processed as a partial delivery against that lot, correctly leaving 220 bags still attributed to him at his original intake weight basis (adjusted for the shrinkage allowance discussed below), still in the same chamber and rack. This lot-per-depositor structure is what makes season-end reconciliation, matching total intake against total withdrawal plus remaining stock plus documented shrinkage, an actual report instead of a week of manual register cross-checking that historically consumed himagar office staff every November.</p>
+
+      <div class="feature-grid">
+        <div class="feature-card">
+          <div class="fc-icon">01</div>
+          <div class="fc-body">
+            <h4>Depositor as Partner</h4>
+            <p>Every farmer/trader is a contact record with a running deposit and withdrawal history visible on their partner ledger, not a name scribbled in a register.</p>
+          </div>
+        </div>
+        <div class="feature-card">
+          <div class="fc-icon">02</div>
+          <div class="fc-body">
+            <h4>Lot per Intake Batch</h4>
+            <p>Each intake transaction is its own lot, tagged by chamber, rack, weight, and bag count, never merged with another depositor's stock.</p>
+          </div>
+        </div>
+        <div class="feature-card">
+          <div class="fc-icon">03</div>
+          <div class="fc-body">
+            <h4>Partial Withdrawal Support</h4>
+            <p>Depositors rarely withdraw everything at once. Odoo tracks the remaining balance per lot after each partial pickup.</p>
+          </div>
+        </div>
+        <div class="feature-card">
+          <div class="fc-icon">04</div>
+          <div class="fc-body">
+            <h4>Digital Bond Slip</h4>
+            <p>A printable deposit receipt generated from the lot record replaces the handwritten rosid, reducing disputes at withdrawal.</p>
+          </div>
+        </div>
+      </div>
+
+      <h2 id="chamber-capacity">Chamber and Room Capacity Tracking</h2>
+      <p>A cold storage facility is physically organized into chambers (rooms), each with a fixed capacity measured in bags or metric tons and a specific temperature/humidity band appropriate for potato (typically maintained around 2 to 4 degrees Celsius with controlled humidity to slow sprouting and moisture loss). In Odoo, each chamber is modeled as a stock location under <span class="path-tag">Inventory > Configuration > Locations</span>, structured as a child of the warehouse with its own capacity attribute tracked either through a custom field or through a simple maximum-quantity rule enforced at putaway.</p>
+      <p>This matters commercially, not just operationally: cold storage tariffs are a function of capacity utilization, and a facility operating at 60 percent of chamber capacity mid-season while turning away new depositors because the intake team lost track of which racks are actually free is a real, recurring revenue leak in facilities still running paper-based intake. Odoo's putaway rules can direct incoming lots to the least-utilized available chamber automatically, and Inventory > Reporting gives management a live capacity utilization view per chamber rather than a physical walk-through count, which during peak April intake (when trucks queue at the gate and every hour of delay costs the farmer additional field-drying risk) is the difference between smooth intake and a bottleneck.</p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Chamber Attribute</th>
+            <th>Odoo Configuration Point</th>
+            <th>Why It Matters</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Capacity (bags/MT)</td>
+            <td>Location custom field + putaway max-qty rule</td>
+            <td>Prevents overbooking a chamber past its safe physical/thermal load</td>
+          </tr>
+          <tr>
+            <td>Temperature zone</td>
+            <td>Location tag/category</td>
+            <td>Some chambers run different setpoints for seed potato vs table potato</td>
+          </tr>
+          <tr>
+            <td>Rack/row position</td>
+            <td>Sub-location under chamber</td>
+            <td>Lets staff and depositors locate a specific lot physically without a manual search</td>
+          </tr>
+          <tr>
+            <td>Utilization %</td>
+            <td>Inventory > Reporting, filtered by location</td>
+            <td>Live view of sellable remaining capacity during intake season</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="tip-box">
+        <div class="tlabel">Practical Shortcut</div>
+        <p>Do not model every physical rack as its own Odoo location on day one. Model at the chamber level first, get one full season of clean data through the system, then subdivide into racks in year two if the operational team genuinely needs rack-level granularity. Over-modeling location hierarchy before staff are comfortable with the basic intake and withdrawal flow is the most common reason cold storage Odoo rollouts stall during their first peak season.</p>
+      </div>
+
+      <h2 id="shrinkage">Shrinkage and Weight Loss During Storage</h2>
+      <p>Potato loses weight in storage through moisture evaporation and respiration, a physical reality every depositor and every storage operator in Bangladesh already understands informally, typically discussed as a shrinkage allowance in the 8 to 12 percent range across a full seven-to-eight-month season, varying with chamber humidity control quality and how long a specific lot actually sits before withdrawal. The dispute this creates without proper records is predictable: a farmer who deposited 300 bags at 50 kg each expects close to 15,000 kg back (minus a shrinkage he accepts as normal), and if the storage operator cannot show a documented, dated shrinkage calculation, an argument over exact withdrawal weight is inevitable, and in a business built on repeat annual depositors, unresolved disputes cost the facility its next season's customers.</p>
+      <p>In Odoo, shrinkage should be recorded as a scheduled, documented inventory adjustment rather than left to surface as an unexplained discrepancy at withdrawal. A practical approach: run a monthly or bi-monthly scrap/adjustment entry against active lots under <span class="path-tag">Inventory > Operations > Adjustments</span>, applying an agreed shrinkage percentage (ideally validated against periodic sample re-weighing of a subset of lots) tagged with a reason code and date. This produces an audit trail showing exactly when and why each lot's recorded weight declined, which the storage operator can show a depositor at withdrawal time as a defensible, non-adversarial number rather than a number that only appears the day the farmer comes to collect his stock.</p>
+
+      <div class="big-stat">
+        <div class="bs-val">8–12%</div>
+        <div class="bs-label">Documented Season Shrinkage Range</div>
+        <div class="bs-note">Recorded as scheduled, dated adjustments per lot, not discovered at the withdrawal counter.</div>
+      </div>
+
+      <h2 id="seasonal-billing">The Seasonal Billing Cycle</h2>
+      <p>Cold storage rent in Bangladesh is charged per bag (or per maund, in facilities still using the traditional unit) for the storage period, with the tariff typically set for the full standard season and a different, usually higher, per-bag rate applied for early withdrawal within the first months or extended storage beyond the standard season end. This creates two accounting realities that a naive monthly-subscription billing setup handles badly. First, most cash actually arrives in a concentrated window between August and November as depositors settle their bill at withdrawal, not evenly across the year. Second, the rent income was genuinely earned month by month as the potato sat in the chamber, which matters for an accurate profit and loss statement rather than one that shows eight months of near-zero revenue against fixed electricity, refrigeration, and staff costs, followed by one enormous month.</p>
+      <p>The correct Odoo structure ties each depositor's lot to a sales order line with a defined per-bag tariff and a deferred revenue schedule, so accounting recognizes rent income progressively across the storage duration under <span class="path-tag">Accounting > Configuration > Deferred Revenue</span>, while the actual customer invoice and cash collection happen at withdrawal against the accumulated balance. For depositors who pay a partial advance at intake (common practice at several larger facilities to secure the season's capacity commitment), that advance is recorded against the sales order as a deposit rather than immediate revenue, drawn down at final settlement.</p>
+
+      <div class="trend-item">
+        <div class="tr-head">The electricity cost timing mismatch</div>
+        <p>Refrigeration compressor electricity is the single largest recurring operating cost for a Bangladesh cold storage and runs continuously through the season regardless of when depositors pay, which means the facility's cash flow position between April and July (potato sitting, compressors running, almost no cash coming in) is structurally tight even for a profitable operator. Odoo's cash flow forecast reporting, built from the deferred revenue schedule against the known fixed cost run rate, gives management an honest picture of this seasonal trough rather than being surprised by it every year.</p>
+      </div>
+
+      <h2 id="withdrawal">Withdrawal, Gate Pass, and Settlement</h2>
+      <p>Withdrawal is the highest-stakes operational moment in the whole cycle: potato bags physically leave the facility, and once they do there is no undoing an error in quantity, weight, or billing. A disciplined Odoo withdrawal flow requires the outstanding balance on the depositor's account (accumulated rent plus any handling charges) to be settled, or a clearly agreed partial-settlement exception approved, before the delivery order for that lot is validated and a gate pass generated. Building this as a hard sequence, rather than a soft reminder a busy gate clerk can skip during the November withdrawal rush when trucks are queued and depositors are impatient, is what prevents the recurring problem of stock leaving the facility against an unpaid or under-paid balance.</p>
+      <p>The gate pass itself, generated from the validated delivery order, should show the depositor name, lot reference, original intake weight and bag count, applied shrinkage, net withdrawal quantity, and settled amount, giving both the depositor and any checkpoint or transport documentation a single verifiable document instead of a hand-written chit. For facilities also handling seed potato under BADC certification requirements, this same document trail supports the additional traceability BADC periodically requests during certification audits.</p>
+
+      <h2 id="reporting">Reporting Owners Actually Need</h2>
+      <p>Beyond individual lot tracking, the reports that matter to a himagar owner or the managing partners of a cold storage company are aggregate ones: total capacity utilization by chamber across the season, total tonnage still outstanding (deposited but not yet withdrawn) as a running liability figure that matters for season-end financial close, revenue recognized versus revenue collected (the deferred revenue gap discussed above), and a depositor concentration report showing whether the facility's business is spread across many small farmers or concentrated in a handful of large traders, which matters for credit risk if the facility itself extends any storage-on-credit arrangements. These are standard Odoo reporting views (Inventory > Reporting and Accounting > Reporting) once the underlying lot-owner and deferred-revenue structure is correctly built, and the dashboards approach covered in <a href="0055-odoo-dashboards-kpi-bangladesh" style="color:var(--accent)">Odoo Dashboards & KPI Bangladesh</a> applies directly to building a single-screen season view for a himagar's management.</p>
+      <p>For groups operating multiple cold storage facilities under one company, which is increasingly common as successful operators add a second or third himagar in a neighboring district, the same structure trading companies use for multi-warehouse stock visibility, detailed in <a href="0036-odoo-trading-company-bangladesh" style="color:var(--accent)">Odoo for Trading Companies Bangladesh</a>, and the valuation discipline in <a href="0011-odoo-inventory-valuation-cheatsheet" style="color:var(--accent)">the Odoo Inventory Valuation Cheatsheet</a> both apply, since consolidated ownership tracking across facilities is exactly the same problem as consolidated stock visibility across warehouses, just with the added constraint that the stock itself is never the company's own.</p>
+
+      <h2 id="rollout">Rolling It Out Before Intake Season</h2>
+      <p>Cold storage is one of the least forgiving businesses to implement ERP mid-season for, because once April intake starts, the facility cannot pause operations to fix a data model mistake, and a single wrong ownership configuration compounds across thousands of bags before anyone notices. The realistic implementation sequence:</p>
+      <ul>
+        <li><strong>Configure and test the ownership/consignment model in January or February,</strong> well before the first truck arrives, including a dry run of a full intake-to-lot-creation cycle with real staff.</li>
+        <li><strong>Set up chamber locations and capacity rules before intake begins,</strong> not during the first busy week, since retrofitting location structure onto already-received stock is significantly harder than starting clean.</li>
+        <li><strong>Train the weighbridge and intake counter staff specifically,</strong> since they are the ones creating lot records under time pressure with a truck queue behind them, and their data entry accuracy determines every downstream report's accuracy for the entire season.</li>
+        <li><strong>Run the deferred revenue and billing configuration through a finance walkthrough</strong> with the facility's accountant before the first invoice is due, since this is usually the least familiar part of the system to staff who have only ever billed depositors at withdrawal from a paper register.</li>
+        <li><strong>Reconcile the first full season's shrinkage figures against physical spot checks</strong> at least twice during the season, adjusting the documented shrinkage percentage if the pattern diverges meaningfully from the assumed rate.</li>
+      </ul>
+
+      <div class="callout">
+        <span class="tag">Cold Storage ERP Consultation</span>
+        <p>If you operate a potato or agri cold storage facility in Bangladesh and are still reconciling farmer deposits from a paper register every season, I can design and implement the Odoo consignment stock, chamber capacity, and seasonal billing structure this business model actually requires, before your next intake season starts. <a href="../#contact" style="color:var(--accent)">Contact me for a strategy session →</a></p>
+      </div>
+
+      <h2 id="faq">Frequently asked questions</h2>
+
+      <h3>Why doesn't standard Odoo inventory work for a cold storage business?</h3>
+      <p>Standard Odoo inventory assumes the company operating the warehouse owns the stock sitting in it, which is true for a manufacturer or trader but not for a Bangladesh cold storage (himagar) operator. In cold storage, the potato bags belong to the depositing farmer or trader, and the storage company is only a custodian charging rent. Configuring this correctly means using Odoo's owner field on stock quants and moves (consignment stock, tracked under Inventory > Configuration > Settings with Multiple Owners enabled) so every bag stays attributed to its depositor throughout its stay, rather than being absorbed into the storage company's own stock valuation. Get this wrong and the storage operator's balance sheet ends up overstating inventory it does not own and cannot sell.</p>
+
+      <h3>How do you track individual farmer lots in Odoo cold storage?</h3>
+      <p>Each depositor's intake is recorded as a separate lot/serial number under Inventory > Products > Lots, tagged with the depositor as the stock owner, the intake weight and bag count, and the chamber and rack location assigned. Because Odoo lot tracking supports partial withdrawals against a lot, a farmer taking out 40 of his 200 deposited bags mid-season is handled as a partial delivery against that specific lot, keeping the remaining 160 bags correctly attributed and located. This lot-per-depositor discipline is what makes the season-end reconciliation between what was deposited, what was withdrawn, and what remains auditable rather than a manual register cross-check.</p>
+
+      <h3>How is potato storage shrinkage recorded in the system?</h3>
+      <p>Natural moisture and weight loss during storage is recorded as a scheduled inventory adjustment against the affected lots, typically as a scrap or negative adjustment tied to a documented shrinkage percentage rather than an unexplained stock discrepancy. Bangladesh cold stores commonly apply a shrinkage allowance in the 8 to 12 percent range across a full storage season depending on chamber humidity control and storage duration, and recording it as a deliberate, dated adjustment (rather than letting it surface as a surprise at withdrawal) is what lets the operator show depositors a defensible number instead of a dispute at the gate.</p>
+
+      <h3>How does seasonal billing work for cold storage rent in Odoo?</h3>
+      <p>Rent is normally charged per bag per storage period (commonly a per-maund or per-bag rate for the full March to November storage season, sometimes with a slab rate for early or late withdrawal), and in Odoo this is modeled as a recurring or milestone-based sales order line tied to each depositor's lot rather than a flat monthly subscription invoice. Most of the actual cash collection happens at withdrawal time when the depositor settles the accumulated rent before the gate pass is issued, which means the accounting setup needs deferred revenue recognition (accruing rent income month by month even though cash arrives in a concentrated window) to avoid a profit and loss statement that looks empty for eight months and enormous in one.</p>
+
+      <h3>What does an Odoo cold storage implementation cost in Bangladesh?</h3>
+      <p>A single-facility cold storage implementation (one himagar with multiple chambers, 5,000 to 40,000 metric ton capacity) typically runs BDT 6 to 14 lakh for Odoo configuration covering the deposit ledger, chamber/location structure, lot tracking, and seasonal billing setup, with a further BDT 2 to 5 lakh per year for support during peak intake and withdrawal seasons when transaction volume and staff error rates both spike. Multi-facility groups running several cold stores under one company naturally cost more due to the added complexity of consolidated reporting across chambers that may have different capacity, tariff, and shrinkage profiles.</p>
+
+    </div>
+  </article>
+
+  <footer>
+    <div class="shell">
+      <div class="post-foot">
+        <span class="eyebrow">Continue exploring</span>
+        <div class="next">
+          <a class="next-card" href="0087-odoo-poultry-dairy-agribusiness-bangladesh">
+            <span class="dir">Older · 0087</span>
+            <h4>Odoo for Poultry & Dairy Agribusiness Bangladesh</h4>
+            <p>Flock/batch costing, feed conversion tracking, and cold-chain milk collection.</p>
+            <span class="arrow">→</span>
+          </a>
+          <a class="next-card" href="../#lab">
+            <span class="dir">All articles</span>
+            <h4>Back to Lab Index</h4>
+            <p>Browse all guides on Odoo ERP, manufacturing operations, and business analysis in Bangladesh.</p>
+            <span class="arrow">→</span>
+          </a>
+        </div>
+      </div>
+      <div class="foot">
+        <span>© 2026 Mehedi Hasan · Lab / 0088</span>
+        <span><a href="../#lab">↑ Back to lab index</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="_utils.js" defer></script>
+  <script src="_toc.js" defer></script>
+  <script src="/whatsapp.js" defer></script>
+  <script src="/scroll-top.js" defer></script>
+</body>
+
+</html>

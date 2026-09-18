@@ -1,0 +1,367 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description"
+    content="Odoo Manufacturing for Bangladesh steel re-rolling mills and light engineering workshops: scrap/billet costing, rolling mill routing, and yield tracking." />
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="Mehedi Hasan" />
+  <title>Odoo for Steel Re-Rolling Mills & Light Engineering Bangladesh | Mehedi Hasan</title>
+  <link rel="canonical" href="https://mhasan.me/lab/0084-odoo-steel-rerolling-light-engineering-bangladesh" />
+  <link rel="alternate" hreflang="en" href="https://mhasan.me/lab/0084-odoo-steel-rerolling-light-engineering-bangladesh" />
+  <link rel="alternate" hreflang="x-default" href="https://mhasan.me/lab/0084-odoo-steel-rerolling-light-engineering-bangladesh" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png" />
+  <!-- Open Graph -->
+  <meta property="og:title" content="Odoo for Steel Re-Rolling Mills & Light Engineering Bangladesh | Mehedi Hasan" />
+  <meta property="og:description"
+    content="Odoo Manufacturing for Bangladesh steel re-rolling mills and light engineering workshops: scrap/billet costing, rolling mill routing, and yield tracking." />
+  <meta property="og:url" content="https://mhasan.me/lab/0084-odoo-steel-rerolling-light-engineering-bangladesh" />
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="https://mhasan.me/assets/og-default.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:site_name" content="Mehedi Hasan | Odoo ERP Consultant" />
+  <meta property="article:author" content="https://www.linkedin.com/in/mehedi-hasan-consultant/" />
+  <meta property="article:published_time" content="2026-09-18T14:00:00+06:00" />
+  <meta property="article:modified_time" content="2026-09-18T14:00:00+06:00" />
+  <meta property="article:section" content="Odoo ERP Bangladesh" />
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Odoo for Steel Re-Rolling Mills & Light Engineering Bangladesh | Mehedi Hasan" />
+  <meta name="twitter:description"
+    content="Odoo Manufacturing for Bangladesh steel re-rolling mills and light engineering workshops: scrap/billet costing, rolling mill routing, and yield tracking." />
+  <meta name="twitter:image" content="https://mhasan.me/assets/og-default.jpg" />
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Odoo for Steel Re-Rolling Mills & Light Engineering Bangladesh",
+    "description": "Odoo Manufacturing for Bangladesh steel re-rolling mills and light engineering workshops: scrap/billet costing, rolling mill routing, and yield tracking.",
+    "datePublished": "2026-09-18T14:00:00+06:00",
+    "dateModified": "2026-09-18T14:00:00+06:00",
+    "author": {
+      "@type": "Person",
+      "name": "Mehedi Hasan",
+      "url": "https://mhasan.me",
+      "jobTitle": "Odoo ERP Consultant & Business Analyst",
+      "sameAs": "https://www.linkedin.com/in/mehedi-hasan-consultant/"
+    },
+    "publisher": { "@type": "Person", "name": "Mehedi Hasan", "url": "https://mhasan.me" },
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://mhasan.me/lab/0084-odoo-steel-rerolling-light-engineering-bangladesh" }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://mhasan.me" },
+      { "@type": "ListItem", "position": 2, "name": "Lab", "item": "https://mhasan.me/lab/" },
+      { "@type": "ListItem", "position": 3, "name": "Odoo for Steel Re-Rolling Mills & Light Engineering Bangladesh", "item": "https://mhasan.me/lab/0084-odoo-steel-rerolling-light-engineering-bangladesh" }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How do you cost scrap and billet input in Odoo for a steel re-rolling mill?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Scrap and billet should be tracked using Odoo's Lot/Serial tracking combined with either FIFO or a landed-cost-adjusted average costing method, configured under Inventory > Configuration > Settings > Traceability and the product category's costing method. Because scrap steel and billet prices are genuinely volatile, often moving week to week with international scrap indices and local currency movement, a mill that uses a single blended average cost across all inventory will misprice output made from a specific expensive or cheap purchase lot. Recording each scrap or billet consignment as its own lot with its actual landed cost (including freight, wharfage, and any import duty where billet is imported) lets the rolling mill's output costing reflect what that specific batch actually cost to acquire, not a stale average."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How is a rolling mill's production routing modeled in Odoo?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The rolling mill routing is built as a sequence of work centers under Manufacturing > Configuration > Work Centers and Routings, typically: reheating furnace (billet or scrap brought to rolling temperature), roughing mill stand, intermediate mill stands, finishing mill stand, and cooling bed. Each work center carries its own capacity (tons per hour is the standard mill KPI) and its own cost driver (furnace fuel, usually natural gas or, less commonly now, furnace oil, is the dominant cost at the reheating stage, while stand wear and roll changes drive cost at the rolling stages). Modeling these as separate sequential work centers rather than one lump 'rolling' operation is what lets a mill see which specific stage is actually constraining throughput on a given shift."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is a normal yield or conversion ratio for a Bangladesh re-rolling mill?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Well-run Bangladesh re-rolling mills processing billet into rod or bar typically achieve a yield (finished product weight divided by input billet weight) in the range of 96 to 98.5 percent, since the main loss is mill scale (oxidation loss during reheating) and crop ends trimmed from each bar. Mills processing lower-quality mixed scrap through their own induction or arc furnace into billet first, before rolling, see meaningfully lower overall yield from raw scrap to finished rod, commonly in the 85 to 90 percent range, because scrap melting itself carries a higher loss than rolling an already-clean billet. Tracking this ratio by shift and by input source in Odoo is the single most direct way to see whether a yield problem originates in melting, reheating, or rolling."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How does a light engineering workshop's Odoo setup differ from a re-rolling mill's?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A re-rolling mill runs continuous-process manufacturing against a small number of standard products (specific rod diameters and grades) at high volume, so standard BOMs and routings with well-established yield benchmarks fit well. A light engineering workshop (machine shops, fabrication units, spare parts manufacturers serving RMG, food processing, or other factories) instead runs make-to-order job costing, where each customer job has its own specification, its own one-off routing through cutting, machining, welding, and finishing work centers, and its own material list. In Odoo this is handled with Manufacturing Orders linked to Sales Orders under a Make-to-Order (MTO) route, with job-specific BOMs created per order rather than maintained as standing master data, and actual labor and machine time booked against each job to produce a true per-job cost rather than a standard product cost."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can Odoo track furnace fuel cost per ton of rolled steel?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, by attaching a cost-per-hour or cost-per-ton figure to the reheating furnace work center under its costing configuration, so that every manufacturing order routed through the furnace picks up a proportional fuel cost based on time in the furnace or tonnage processed. This is important in Bangladesh because reheating furnace fuel (natural gas in most cases, subject to industrial gas tariff changes set by the Bangladesh Energy Regulatory Commission) is typically the largest single cost component in the rolling process after the billet or scrap itself, and a mill that leaves furnace fuel as unallocated factory overhead loses the ability to see which product sizes or which furnace operating patterns are actually most fuel-efficient per ton produced."
+        }
+      }
+    ]
+  }
+]
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap">
+  <link rel="stylesheet" href="_styles.css">
+  <style>
+    .path-tag { font-family: var(--mono); font-size: 12.5px; background: var(--elev); border: 1px solid var(--border); border-radius: 5px; padding: 2px 8px; color: var(--text); }
+  </style>
+</head>
+
+<body>
+  <div class="grid-bg"></div>
+
+  <header class="nav">
+    <div class="shell">
+      <div class="nav-inner">
+        <a class="brand" href="../">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span class="brand-name"><b>Mehedi Hasan</b><em>ERP · Business Analyst</em></span>
+        </a>
+        <a class="back-link" href="../#lab">← Back to Lab</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="post-head">
+    <div class="shell">
+      <span class="eyebrow">Technical Lab · 0084</span>
+      <h1>Odoo for steel re-rolling mills <span class="serif">and light engineering workshops.</span></h1>
+      <p class="lede">Bangladesh's steel re-rolling mills convert scrap and billet into the rod and bar that feed the country's construction boom, running a continuous-process operation where input cost volatility and mill yield determine profitability more than almost anything else. A short distance away on the shop floor spectrum sit light engineering workshops, machine shops and fabrication units serving other factories with one-off spare parts and custom assemblies, which need an almost entirely different ERP configuration despite sharing the same raw material (steel). This guide covers both, and where the line between them falls inside Odoo.</p>
+      <div class="post-meta">
+        <span class="chip accent">Guide</span>
+        <span class="chip">Steel & Metal</span>
+        <span class="chip">Manufacturing</span>
+      </div>
+      <div class="byline">
+        <span>By<b><a href="https://www.linkedin.com/in/mehedi-hasan-consultant/" style="color:var(--accent)" rel="author">Mehedi Hasan</a></b></span>
+        <span>Published<b>September 2026</b></span>
+        <span>Read time<b>17 minutes</b></span>
+        <span>Form<b>Guide</b></span>
+        <span>Scope<b>Odoo Manufacturing / Steel Sector</b></span>
+      </div>
+    </div>
+  </section>
+
+  <article class="post">
+    <aside class="toc">
+      <div class="toc-k">In this guide</div>
+      <ol>
+        <li><a href="#sector">Bangladesh's Re-Rolling & Light Engineering Sector</a></li>
+        <li><a href="#input-costing">Scrap and Billet Input Costing</a></li>
+        <li><a href="#routing">Rolling Mill Routing: Furnace to Cooling Bed</a></li>
+        <li><a href="#yield">Yield / Conversion Ratio Tracking</a></li>
+        <li><a href="#light-engineering">Light Engineering: Make-to-Order Job Costing</a></li>
+        <li><a href="#costing">Costing a Ton of Finished Rod End to End</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ol>
+    </aside>
+
+    <div class="body">
+
+      <h2 id="sector">Bangladesh's Re-Rolling & Light Engineering Sector</h2>
+      <p>Bangladesh's steel industry sits almost entirely on the re-rolling model rather than integrated primary steelmaking: mills including BSRM, GPH Ispat, Abul Khair Steel, KSRM, and a large tier of smaller regional mills melt scrap in induction or electric arc furnaces (or buy billet directly) and roll it into rod, bar, angle, and structural sections that supply the country's construction sector, which has grown consistently with urbanization in Dhaka, Chattogram, and the industrial corridors around them. Alongside this sits a much less consolidated light engineering layer: machine shops, fabrication workshops, and spare-parts manufacturers who serve RMG factories, food processing plants, and the mills themselves with custom parts, replacement components, and small fabricated assemblies.</p>
+      <p>These two segments share a raw material family but need almost opposite ERP configurations. A re-rolling mill is continuous-process manufacturing at scale against a narrow set of standard products (a handful of rod diameters and steel grades), where the core management questions are yield, fuel efficiency, and input cost timing. A light engineering workshop is job-shop manufacturing against an effectively unlimited set of one-off specifications, where the core management question is whether each individual job was actually profitable once real labor and machine time are counted. The general routing and work center concepts that apply to both, and to Bangladesh manufacturing generally, are covered in <a href="0038-odoo-manufacturing-routing-bangladesh" style="color:var(--accent)">Odoo Manufacturing Routing Bangladesh</a> and the broader manufacturing module setup in <a href="0013-odoo-manufacturing-module-bangladesh" style="color:var(--accent)">Odoo Manufacturing Module Setup Bangladesh</a>, but the way those concepts get applied diverges sharply between the two business models, covered section by section below.</p>
+
+      <p>Finished rod and bar in Bangladesh must also meet Bangladesh Standards and Testing Institution (BSTI) grade specifications, most commonly 500W and 500 grade TMT (thermo-mechanically treated) bar, which carry defined tensile strength, elongation, and rib pattern requirements that buyers and government infrastructure projects check against mill test certificates before accepting a shipment. A mill's Odoo setup should record the BSTI grade and the corresponding batch test certificate reference against each finished lot, the same lot that already carries the input billet genealogy and yield data, so that a specific delivery's compliance documentation can be pulled directly from the system rather than cross-referenced manually from a separate lab test register when a buyer or a government tender inspector asks for it.</p>
+
+      <div class="stat-row">
+        <div class="stat-card">
+          <div class="sc-val">96–98.5%</div>
+          <div class="sc-label">Billet-to-Rod Yield</div>
+          <div class="sc-note">Typical conversion yield for a well-run mill rolling clean billet into finished rod</div>
+        </div>
+        <div class="stat-card">
+          <div class="sc-val">40–50%</div>
+          <div class="sc-label">Input Cost Share</div>
+          <div class="sc-note">Approximate share of finished product cost attributable to scrap/billet alone</div>
+        </div>
+        <div class="stat-card">
+          <div class="sc-val">Tons/hr</div>
+          <div class="sc-label">Standard Mill KPI</div>
+          <div class="sc-note">Rolling mill throughput is measured and capacity-planned in tons per hour, not units per shift</div>
+        </div>
+      </div>
+
+      <h2 id="input-costing">Scrap and Billet Input Costing</h2>
+      <p>Scrap steel and billet prices are among the most volatile input costs in Bangladesh manufacturing, moving with international scrap indices (heavy melting scrap benchmarks out of the Turkish and Southeast Asian markets set the tone that Bangladesh import pricing tracks), freight rates, and BDT/USD exchange movement, sometimes shifting materially within a single month. A mill that costs its rolled output using a single blended average across all scrap or billet in stock will systematically misprice product made from an unusually cheap or unusually expensive purchase lot, which matters enormously in a business where margin per ton is already thin and highly sensitive to input timing.</p>
+      <p>The correct configuration in Odoo tracks each scrap or billet consignment as a distinct lot under <span class="path-tag">Inventory > Configuration > Settings > Traceability</span>, with its actual landed cost recorded through the Landed Costs feature (covering freight, wharfage at Chattogram port for imported billet, and any applicable customs duty). Depending on the mill's actual purchasing pattern, either FIFO costing (which reflects true cost sequence when input batches are large and distinct) or a periodically-revised average cost (more practical when scrap arrives continuously in smaller mixed lots from local scrap dealers) is configured at the product category level under <span class="path-tag">Inventory > Configuration > Product Categories</span>. What matters is that whichever method is chosen, it is chosen deliberately and reviewed against actual input cost swings, rather than left on Odoo's default and forgotten, since the default behavior may not match how volatile this particular input actually is.</p>
+
+      <div class="tip-box">
+        <div class="tlabel">Practical Shortcut</div>
+        <p>Mills sourcing scrap from many small local dealers rather than a few large import contracts should resist the temptation to create a separate lot for every few-ton delivery. Group same-week, same-grade scrap receipts into weekly costing lots instead. This keeps the lot count manageable while still capturing the cost volatility that actually matters, which is week-to-week and month-to-month movement, not delivery-to-delivery noise.</p>
+      </div>
+
+      <h2 id="routing">Rolling Mill Routing: Furnace to Cooling Bed</h2>
+      <p>A rolling mill's production flow is a fixed sequence of distinct physical stages, each with its own capacity ceiling and its own dominant cost driver, and each should be its own work center under <span class="path-tag">Manufacturing > Configuration > Work Centers</span> rather than a single generic "rolling" operation.</p>
+
+      <div class="timeline-track">
+        <div class="tl-node">
+          <div class="tl-date">Stage 1</div>
+          <div class="tl-title">Reheating furnace</div>
+          <div class="tl-body">Billet or pre-rolled scrap is heated to rolling temperature (typically 1100-1200°C). Furnace fuel, mostly natural gas under current industrial gas tariffs, is the dominant cost driver at this stage and the main source of mill scale (oxidation) loss.</div>
+        </div>
+        <div class="tl-node">
+          <div class="tl-date">Stage 2</div>
+          <div class="tl-title">Roughing mill stand</div>
+          <div class="tl-body">Initial reduction passes bring the heated billet down toward intermediate size. Roll wear and stand changeover time are the main capacity constraints here.</div>
+        </div>
+        <div class="tl-node">
+          <div class="tl-date">Stage 3</div>
+          <div class="tl-title">Intermediate mill stands</div>
+          <div class="tl-body">Successive passes continue reducing cross-section toward final diameter. Throughput (tons per hour) is set largely by stand speed matching across this sequence.</div>
+        </div>
+        <div class="tl-node">
+          <div class="tl-date">Stage 4</div>
+          <div class="tl-title">Finishing mill stand</div>
+          <div class="tl-body">Final sizing pass produces the target rod or bar diameter and section profile to spec.</div>
+        </div>
+        <div class="tl-node">
+          <div class="tl-date">Stage 5</div>
+          <div class="tl-title">Cooling bed & bundling</div>
+          <div class="tl-body">Rolled product is air- or water-cooled, cut to length, bundled, and weighed, generating the actual output weight used in yield calculation.</div>
+        </div>
+      </div>
+
+      <p>Each work center's capacity is expressed in tons per hour rather than piece count, matching how mills actually plan shifts and schedule production. Attaching furnace fuel cost as a cost-per-ton or cost-per-hour figure on the reheating furnace work center's costing tab, and roll/stand maintenance cost as a per-ton figure on the rolling stands, means a manufacturing order rolled through the full sequence accumulates a realistic allocated cost at each stage rather than a single blended "conversion cost" figure that hides which stage is actually expensive.</p>
+
+      <h2 id="yield">Yield / Conversion Ratio Tracking</h2>
+      <p>Yield, the ratio of finished product weight to input billet or scrap weight, is the single most important operational KPI in a re-rolling mill, because the loss (mill scale from oxidation during reheating, crop ends trimmed from the leading and trailing edge of each bar, and any rejected out-of-tolerance product) is pure margin erosion on an input that already represents 40 to 50 percent of finished cost. A mill rolling clean, consistent billet typically achieves 96 to 98.5 percent yield to finished rod. A mill melting its own mixed scrap through an induction or arc furnace first sees materially lower overall yield from raw scrap through to finished rod, commonly 85 to 90 percent, because melting losses (slag, oxidation during the melt itself) stack on top of the rolling-stage loss.</p>
+
+      <div class="stat-row">
+        <div class="stat-card">
+          <div class="sc-val">96–98.5%</div>
+          <div class="sc-label">Clean Billet → Rod</div>
+          <div class="sc-note">Yield when rolling purchased billet directly</div>
+        </div>
+        <div class="stat-card">
+          <div class="sc-val">85–90%</div>
+          <div class="sc-label">Raw Scrap → Rod</div>
+          <div class="sc-note">Overall yield when melting mixed scrap in-house before rolling</div>
+        </div>
+        <div class="stat-card">
+          <div class="sc-val">1–2%</div>
+          <div class="sc-label">Yield Swing = Margin Swing</div>
+          <div class="sc-note">A one to two point yield change moves bottom-line margin meaningfully at mill scale</div>
+        </div>
+      </div>
+
+      <p>In Odoo, yield tracking is set up by recording actual output weight at the cooling bed work order against the actual input weight consumed at the furnace stage for the same manufacturing order, using the Manufacturing app's actual component consumption versus BOM standard quantity comparison. Tracked by shift, by billet source or scrap grade, and by furnace operator, this turns yield from a number finance calculates once a month from aggregate tonnage figures into a live operational signal that a production manager can act on the same week a specific furnace setting or scrap grade starts underperforming.</p>
+
+      <h2 id="light-engineering">Light Engineering: Make-to-Order Job Costing</h2>
+      <p>Light engineering workshops, machine shops fabricating custom brackets, replacement gears, or conveyor parts for RMG and food processing factories, or general fabrication units building tanks, structural steel, or custom equipment, need a fundamentally different Odoo setup from a re-rolling mill, even though both consume steel as a primary input. Where a mill runs standard products at continuous volume, a workshop runs make-to-order (MTO) jobs where every order can have a unique specification, a unique one-off routing through cutting, turning, milling, welding, and finishing work centers, and a unique bill of materials that often does not exist as reusable master data at all.</p>
+
+      <div class="feature-grid">
+        <div class="feature-card">
+          <div class="fc-icon">01</div>
+          <div class="fc-body">
+            <h4>MTO route on sales order</h4>
+            <p>Each customer job triggers its own Manufacturing Order directly from the Sales Order under the Make-to-Order route, rather than drawing from forecasted stock.</p>
+          </div>
+        </div>
+        <div class="feature-card">
+          <div class="fc-icon">02</div>
+          <div class="fc-body">
+            <h4>Job-specific BOM</h4>
+            <p>A one-off BOM is created per job specification rather than maintained as standing catalog data, reflecting the actual custom nature of the work.</p>
+          </div>
+        </div>
+        <div class="feature-card">
+          <div class="fc-icon">03</div>
+          <div class="fc-body">
+            <h4>Actual labor & machine time booking</h4>
+            <p>Operators log actual time against each work center per job (lathe, mill, welding bay) so true job cost, not an estimated quote, is what gets compared against the invoiced price.</p>
+          </div>
+        </div>
+        <div class="feature-card">
+          <div class="fc-icon">04</div>
+          <div class="fc-body">
+            <h4>Per-job margin reporting</h4>
+            <p>Odoo's Manufacturing Order cost analysis surfaces actual versus quoted cost per job, the single most useful report a workshop owner never had on paper before.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="pull">A re-rolling mill loses money one basis point of yield at a time. A light engineering workshop loses money one underquoted job at a time. Neither loss shows up without actual cost tracked at the point where the work actually happens.</div>
+
+      <p>Barcode-driven data capture at each work center, whether that is a mill's cooling bed weighing station or a workshop's individual machine bays, closes the gap between what the ERP assumes happened and what actually happened on the shop floor, a discipline covered in more general terms in <a href="0065-odoo-barcode-warehouse-scanning-bangladesh" style="color:var(--accent)">Odoo Barcode & Warehouse Scanning Bangladesh</a>, and one that pays for itself faster in job-shop environments than almost anywhere else, since a workshop without accurate time booking per job is, in cost terms, flying blind on every single order it accepts.</p>
+      <p>Spare parts inventory adds a second layer of complexity for light engineering workshops that both fabricate custom jobs and stock a catalog of common replacement parts (bearings, belts, standard fasteners, gaskets) for repeat customers. This dual nature, part make-to-order job shop and part make-to-stock spares distributor, is handled in Odoo by running two distinct routes side by side on the same database: an MTO route for custom fabrication jobs as described above, and a standard reordering-rule-driven make-to-stock route for catalog spare parts under <span class="path-tag">Inventory > Configuration > Reordering Rules</span>, so that a workshop does not force every repeat bearing sale through a full custom manufacturing order, while still capturing true job cost on the fabrication work that actually needs it.</p>
+      <p>Subcontracted operations are also common in this sector on both sides of the divide: mills sometimes subcontract galvanizing or specific finishing treatments to external processors, and light engineering workshops routinely subcontract heat treatment, chrome plating, or CNC operations they do not have in-house capacity for. Odoo's subcontracting BOM mechanics, where a component is sent to a vendor and returned as a semi-finished or finished input to the next production step, apply here just as they do in the RMG job-work context, and the cost of the subcontracted operation (vendor invoice plus any freight to and from the subcontractor) rolls into the finished job or product cost the same way an in-house operation's labor and machine time would.</p>
+
+      <h2 id="costing">Costing a Ton of Finished Rod End to End</h2>
+      <p>Bringing the pieces together for a mill, the true cost of a ton of finished rod in Odoo rolls up through the actual lot cost of the billet or scrap consumed (landed cost included), furnace fuel allocated per ton processed, rolling stand wear and labor allocated per ton across the roughing, intermediate, and finishing stages, and the yield-adjusted effective input cost (a mill running at 97 percent yield needs roughly three percent more input tonnage per ton of finished product than one running at 100 percent, a difference that compounds directly into effective cost per ton sold). This end-to-end roll-up, refreshed against actual input costs and actual yield rather than a static standard cost set once a year, is what lets mill management price against real-time scrap market movement with confidence instead of a rule-of-thumb markup that either leaves margin on the table when input prices fall or erodes margin unnoticed when they rise.</p>
+
+      <p>One further point worth flagging for management evaluating an ERP investment in this sector: the payback case for a mill is almost always built on yield and fuel visibility rather than on the general efficiency gains a typical ERP pitch leads with. A one percentage point yield improvement on a mid-size mill rolling several thousand tons a month is worth far more in a single year than the entire cost of a well-executed Odoo implementation, which is the argument that tends to actually move a mill-owning family to invest, more than any generic promise of "better visibility."</p>
+
+      <div class="callout">
+        <span class="tag">Steel & Metal Manufacturing Consultation</span>
+        <p>If your mill is still averaging scrap cost across volatile purchase lots, treating the furnace and rolling stands as one undifferentiated cost pool, or your workshop is quoting jobs without ever finding out what they actually cost to produce, I can configure Odoo's lot costing, work centers, and MTO job routing to match how your operation actually runs. <a href="../#contact" style="color:var(--accent)">Contact me for a strategy session →</a></p>
+      </div>
+
+      <h2 id="faq">Frequently asked questions</h2>
+
+      <h3>How do you cost scrap and billet input in Odoo for a steel re-rolling mill?</h3>
+      <p>Scrap and billet should be tracked using Odoo's Lot/Serial tracking combined with either FIFO or a landed-cost-adjusted average costing method, configured under Inventory > Configuration > Settings > Traceability and the product category's costing method. Because scrap steel and billet prices are genuinely volatile, often moving week to week with international scrap indices and local currency movement, a mill that uses a single blended average cost across all inventory will misprice output made from a specific expensive or cheap purchase lot. Recording each scrap or billet consignment as its own lot with its actual landed cost (including freight, wharfage, and any import duty where billet is imported) lets the rolling mill's output costing reflect what that specific batch actually cost to acquire, not a stale average.</p>
+
+      <h3>How is a rolling mill's production routing modeled in Odoo?</h3>
+      <p>The rolling mill routing is built as a sequence of work centers under Manufacturing > Configuration > Work Centers and Routings, typically: reheating furnace (billet or scrap brought to rolling temperature), roughing mill stand, intermediate mill stands, finishing mill stand, and cooling bed. Each work center carries its own capacity (tons per hour is the standard mill KPI) and its own cost driver (furnace fuel, usually natural gas, is the dominant cost at the reheating stage, while stand wear and roll changes drive cost at the rolling stages). Modeling these as separate sequential work centers rather than one lump "rolling" operation is what lets a mill see which specific stage is actually constraining throughput on a given shift.</p>
+
+      <h3>What is a normal yield or conversion ratio for a Bangladesh re-rolling mill?</h3>
+      <p>Well-run Bangladesh re-rolling mills processing billet into rod or bar typically achieve a yield (finished product weight divided by input billet weight) in the range of 96 to 98.5 percent, since the main loss is mill scale (oxidation loss during reheating) and crop ends trimmed from each bar. Mills processing lower-quality mixed scrap through their own induction or arc furnace into billet first, before rolling, see meaningfully lower overall yield from raw scrap to finished rod, commonly in the 85 to 90 percent range, because scrap melting itself carries a higher loss than rolling an already-clean billet. Tracking this ratio by shift and by input source in Odoo is the single most direct way to see whether a yield problem originates in melting, reheating, or rolling.</p>
+
+      <h3>How does a light engineering workshop's Odoo setup differ from a re-rolling mill's?</h3>
+      <p>A re-rolling mill runs continuous-process manufacturing against a small number of standard products (specific rod diameters and grades) at high volume, so standard BOMs and routings with well-established yield benchmarks fit well. A light engineering workshop instead runs make-to-order job costing, where each customer job has its own specification, its own one-off routing through cutting, machining, welding, and finishing work centers, and its own material list. In Odoo this is handled with Manufacturing Orders linked to Sales Orders under a Make-to-Order (MTO) route, with job-specific BOMs created per order rather than maintained as standing master data, and actual labor and machine time booked against each job to produce a true per-job cost rather than a standard product cost.</p>
+
+      <h3>Can Odoo track furnace fuel cost per ton of rolled steel?</h3>
+      <p>Yes, by attaching a cost-per-hour or cost-per-ton figure to the reheating furnace work center under its costing configuration, so that every manufacturing order routed through the furnace picks up a proportional fuel cost based on time in the furnace or tonnage processed. This is important in Bangladesh because reheating furnace fuel is typically the largest single cost component in the rolling process after the billet or scrap itself, and a mill that leaves furnace fuel as unallocated factory overhead loses the ability to see which product sizes or which furnace operating patterns are actually most fuel-efficient per ton produced.</p>
+
+    </div>
+  </article>
+
+  <footer>
+    <div class="shell">
+      <div class="post-foot">
+        <span class="eyebrow">Continue exploring</span>
+        <div class="next">
+          <a class="next-card" href="0083-odoo-ceramics-tiles-manufacturing-bangladesh">
+            <span class="dir">Older · 0083</span>
+            <h4>Odoo for Ceramics & Tiles Manufacturing Bangladesh</h4>
+            <p>Raw material batch costing, kiln firing routing, and breakage/wastage tracking.</p>
+            <span class="arrow">→</span>
+          </a>
+          <a class="next-card" href="../#lab">
+            <span class="dir">All articles</span>
+            <h4>Back to Lab Index</h4>
+            <p>Browse all guides on Odoo ERP, manufacturing operations, and business analysis in Bangladesh.</p>
+            <span class="arrow">→</span>
+          </a>
+        </div>
+      </div>
+      <div class="foot">
+        <span>© 2026 Mehedi Hasan · Lab / 0084</span>
+        <span><a href="../#lab">↑ Back to lab index</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="_utils.js" defer></script>
+  <script src="_toc.js" defer></script>
+  <script src="/whatsapp.js" defer></script>
+  <script src="/scroll-top.js" defer></script>
+</body>
+
+</html>

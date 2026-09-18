@@ -1,0 +1,299 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Configure Advance Income Tax (AIT) withholding in Odoo for Bangladesh: TDS on vendor payments, NBR withholding tax rates by service category, and certificate generation." />
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="Mehedi Hasan" />
+  <title>AIT Withholding Tax Configuration in Odoo Bangladesh | Mehedi Hasan</title>
+  <link rel="canonical" href="https://mhasan.me/lab/0071-ait-income-tax-withholding-odoo-bangladesh" />
+  <link rel="alternate" hreflang="en" href="https://mhasan.me/lab/0071-ait-income-tax-withholding-odoo-bangladesh" />
+  <link rel="alternate" hreflang="x-default" href="https://mhasan.me/lab/0071-ait-income-tax-withholding-odoo-bangladesh" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png" />
+  <meta property="og:title" content="AIT Withholding Tax Configuration in Odoo Bangladesh | Mehedi Hasan" />
+  <meta property="og:description" content="Configure Advance Income Tax (AIT) withholding in Odoo for Bangladesh: TDS on vendor payments, NBR withholding tax rates by service category, and certificate generation." />
+  <meta property="og:url" content="https://mhasan.me/lab/0071-ait-income-tax-withholding-odoo-bangladesh" />
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="https://mhasan.me/assets/og-default.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:site_name" content="Mehedi Hasan | Odoo ERP Consultant" />
+  <meta property="article:author" content="https://www.linkedin.com/in/mehedi-hasan-consultant/" />
+  <meta property="article:published_time" content="2026-09-18T12:00:00+06:00" />
+  <meta property="article:modified_time" content="2026-09-18T12:00:00+06:00" />
+  <meta property="article:section" content="Odoo ERP Bangladesh" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="AIT Withholding Tax Configuration in Odoo Bangladesh | Mehedi Hasan" />
+  <meta name="twitter:description" content="Configure Advance Income Tax (AIT) withholding in Odoo for Bangladesh: TDS on vendor payments, NBR withholding tax rates by service category, and certificate generation." />
+  <meta name="twitter:image" content="https://mhasan.me/assets/og-default.jpg" />
+  <script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Configuring AIT (Advance Income Tax) Withholding in Odoo for Bangladesh",
+    "description": "A practical guide to configuring Advance Income Tax (AIT) / Tax Deducted at Source (TDS) withholding on vendor payments in Odoo for Bangladesh companies: NBR withholding rates by service category and TIN status, fiscal position and tax setup, TDS certificate generation, and the withholding liability accounting entries this creates.",
+    "datePublished": "2026-09-18T12:00:00+06:00",
+    "dateModified": "2026-09-18T12:00:00+06:00",
+    "author": { "@type": "Person", "name": "Mehedi Hasan", "url": "https://mhasan.me", "jobTitle": "Odoo ERP Consultant & Business Analyst", "sameAs": "https://www.linkedin.com/in/mehedi-hasan-consultant/" },
+    "publisher": { "@type": "Person", "name": "Mehedi Hasan", "url": "https://mhasan.me" },
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://mhasan.me/lab/0071-ait-income-tax-withholding-odoo-bangladesh" }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://mhasan.me" },
+      { "@type": "ListItem", "position": 2, "name": "Lab", "item": "https://mhasan.me/lab/" },
+      { "@type": "ListItem", "position": 3, "name": "AIT Withholding Tax Configuration in Odoo Bangladesh", "item": "https://mhasan.me/lab/0071-ait-income-tax-withholding-odoo-bangladesh" }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is the difference between AIT withholding and VAT (Mushak) in Odoo?",
+        "acceptedAnswer": { "@type": "Answer", "text": "AIT (Advance Income Tax), also called TDS (Tax Deducted at Source) on the payer's side, is a mechanism under the Income Tax Act where a company deducts a percentage of income tax from a payment to a vendor or contractor before paying them, and deposits it to NBR on the vendor's behalf as an advance against that vendor's eventual income tax liability. VAT under the Mushak system is an entirely separate consumption tax charged on the value of goods or services and is unrelated to income tax. A single vendor payment in Bangladesh often has both VAT charged on top of the invoice and AIT deducted from the payment, and Odoo must handle these as two distinct, independently configured tax mechanisms, not as one combined tax." }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I configure AIT withholding rates in Odoo?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Create a withholding tax type in Odoo Accounting under Accounting → Configuration → Taxes, scoped to Purchases, with Tax Computation set to a percentage and the amount entered as negative (since it reduces the payable to the vendor). Create one such tax record per NBR-specified rate and service category combination you deal with, since AIT rates vary by category (contractors, suppliers of goods, professional and technical services, and others) and by whether the vendor holds a valid TIN. Then use Fiscal Positions to map the correct AIT tax automatically based on the vendor's category, so the right rate applies without your accounts team manually selecting it on every bill." }
+      },
+      {
+        "@type": "Question",
+        "name": "Does AIT withholding rate depend on whether the vendor has a TIN?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes. NBR's withholding tax rules generally apply a higher AIT rate, in many categories double the standard rate, to payments made to a person or business that does not hold a valid Taxpayer Identification Number (TIN), as an incentive for vendors to register and file returns. In Odoo, this means you need at least two withholding tax rate variants per service category, one for TIN-holding vendors and one for non-TIN vendors, and a mandatory field on the vendor's Contact record to record TIN status and the TIN number itself so the correct rate is applied and never left to memory." }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I generate a TDS certificate for a vendor in Odoo?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Odoo does not include a Bangladesh-specific TDS certificate report out of the box, so most companies build a simple custom report or a formatted spreadsheet export that pulls, per vendor per period, the total payments made, the AIT amount withheld on each payment, the applicable section/rate reference, and the challan or treasury deposit reference showing the amount was actually deposited to NBR. This is generated from the withholding tax lines recorded against that vendor's bills in Odoo Accounting, typically on a quarterly or annual basis, since vendors need this certificate to claim credit for the tax already deducted when filing their own income tax return." }
+      },
+      {
+        "@type": "Question",
+        "name": "What accounting entries does AIT withholding create in Odoo?",
+        "acceptedAnswer": { "@type": "Answer", "text": "When a vendor bill with AIT withholding is validated in Odoo, the system reduces the amount payable to the vendor by the withheld amount and posts that amount to a separate AIT Payable (withholding tax liability) account rather than to the vendor's payable account. When your company later deposits that withheld tax to NBR's treasury, you record a payment from the AIT Payable account to cash or bank, clearing the liability. This means your vendor payable balance always reflects only what you still owe the vendor, while a separate, clearly visible liability account tracks tax collected on the government's behalf and not yet deposited." }
+      }
+    ]
+  }
+]
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap">
+  <link rel="stylesheet" href="_styles.css">
+  <style>
+    .pull{font-family:var(--serif);font-style:italic;font-size:clamp(20px,2.8vw,28px);line-height:1.3;color:var(--text);margin:48px 0;max-width:28ch;letter-spacing:-0.01em}
+    .pull::before{content:"";display:block;width:36px;height:1px;background:var(--accent);margin-bottom:18px}
+    .stat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:26px 0}
+    @media(max-width:680px){.stat-row{grid-template-columns:1fr 1fr}}
+    @media(max-width:440px){.stat-row{grid-template-columns:1fr}}
+    .stat-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:18px 16px;text-align:center}
+    .stat-card .sc-val{font-size:28px;font-weight:700;color:var(--accent);letter-spacing:-0.03em;line-height:1;margin-bottom:6px}
+    .stat-card .sc-label{font-family:var(--mono);font-size:10px;color:var(--text-3);letter-spacing:0.07em;text-transform:uppercase}
+    .stat-card .sc-note{font-size:11.5px;color:var(--text-2);margin-top:5px;line-height:1.4}
+    .rate-table{width:100%;border-collapse:collapse;font-size:13.5px;margin:18px 0}
+    .rate-table th{text-align:left;padding:10px 14px;background:var(--surface);color:var(--text-3);font-family:var(--mono);font-size:10.5px;letter-spacing:0.06em;text-transform:uppercase;border-bottom:1px solid var(--border)}
+    .rate-table td{padding:11px 14px;border-bottom:1px solid var(--border);color:var(--text-2);vertical-align:top}
+    .rate-table td:first-child{color:var(--text);font-weight:600}
+    .rate-table tr:last-child td{border-bottom:none}
+    .rate-table td.tin-yes{color:var(--accent);font-weight:600}
+    .rate-table td.tin-no{color:#e0a95c;font-weight:600}
+    .step-list{counter-reset:step;list-style:none;padding:0;margin:24px 0}
+    .step-list li{position:relative;padding:12px 0 12px 42px;border-bottom:1px solid var(--border);font-size:14.5px;color:var(--text-2);line-height:1.6}
+    .step-list li:last-child{border-bottom:none}
+    .step-list li::before{counter-increment:step;content:counter(step,decimal-leading-zero);position:absolute;left:0;top:12px;font-family:var(--mono);font-size:12px;color:var(--accent);font-weight:600}
+    .step-list li strong{color:var(--text);font-weight:600}
+    .disclaimer{background:rgba(224,169,92,0.08);border:1px solid rgba(224,169,92,0.25);border-radius:6px;padding:14px 18px;margin:20px 0}
+    .disclaimer p{margin:0;font-size:13px;color:var(--text-2);line-height:1.55}
+    .disclaimer strong{color:var(--text)}
+    .tip-box{background:var(--accent-dim);border-left:3px solid var(--accent);border-radius:0 6px 6px 0;padding:14px 18px;margin:18px 0}
+    .tip-box .tlabel{font-family:var(--mono);font-size:10px;color:var(--accent);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:6px}
+    .tip-box p{margin:0;font-size:14px;color:var(--text-2);line-height:1.55}
+  </style>
+</head>
+<body>
+  <div class="grid-bg"></div>
+  <header class="nav">
+    <div class="shell">
+      <div class="nav-inner">
+        <a class="brand" href="../">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span class="brand-name"><b>Mehedi Hasan</b><em>ERP · Business Analyst</em></span>
+        </a>
+        <a class="back-link" href="../#lab">← Back to Lab</a>
+      </div>
+    </div>
+  </header>
+  <section class="post-head">
+    <div class="shell">
+      <span class="eyebrow">Technical Lab · 0071</span>
+      <h1>AIT withholding tax in Odoo: <span class="serif">the compliance step VAT setup doesn't cover.</span></h1>
+      <p class="lede">Getting Mushak and VAT right in Odoo is only half of Bangladesh's tax compliance picture. Advance Income Tax withholding on vendor payments is a separate legal obligation under the Income Tax Act, with its own rate table, its own liability account, and its own certificate requirement, and most Odoo implementations in Bangladesh skip it entirely until an NBR audit forces the issue.</p>
+      <div class="post-meta">
+        <span class="chip accent">Guide</span>
+        <span class="chip">AIT / TDS</span>
+        <span class="chip">Bangladesh</span>
+      </div>
+      <div class="byline">
+        <span>By<b><a href="https://www.linkedin.com/in/mehedi-hasan-consultant/" style="color:var(--accent)" rel="author">Mehedi Hasan</a></b></span>
+        <span>Published<b>September 2026</b></span>
+        <span>Read time<b>13 minutes</b></span>
+        <span>Form<b>Guide</b></span>
+        <span>Scope<b>Tax Compliance</b></span>
+      </div>
+    </div>
+  </section>
+  <article class="post">
+    <aside class="toc">
+      <div class="toc-k">In this guide</div>
+      <ol>
+        <li><a href="#what-is-ait">What AIT withholding actually is</a></li>
+        <li><a href="#vs-vat">AIT vs VAT/Mushak: not the same thing</a></li>
+        <li><a href="#rates">NBR withholding rates by category</a></li>
+        <li><a href="#configuration">Configuring withholding tax in Odoo</a></li>
+        <li><a href="#fiscal-positions">Fiscal positions and vendor mapping</a></li>
+        <li><a href="#certificates">Generating TDS certificates</a></li>
+        <li><a href="#accounting">The accounting entries</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ol>
+    </aside>
+    <div class="body">
+
+      <h2 id="what-is-ait">What AIT withholding actually is</h2>
+      <p>Advance Income Tax (AIT), commonly called Tax Deducted at Source (TDS) from the payer's perspective, is a legal requirement under Bangladesh's Income Tax Act that obligates a company making certain categories of payment, contractor bills, supplier invoices above threshold amounts, professional and technical service fees, rent, and several other categories, to deduct a percentage of that payment as income tax and deposit it directly to the National Board of Revenue (NBR), rather than paying the full invoiced amount to the vendor and leaving tax collection to the vendor's own annual filing.</p>
+      <p>The logic is straightforward from the government's side: rather than relying entirely on businesses to self-report and pay income tax at year-end, NBR collects a portion of it in advance, at the point money changes hands, through the paying company acting as a withholding agent. The vendor then receives a certificate showing how much was withheld and can claim that amount as a credit against their own final income tax liability when they file their annual return.</p>
+
+      <div class="disclaimer">
+        <p><strong>Important:</strong> AIT rates, thresholds, and category definitions are set by NBR through the annual Finance Act and statutory rules, and they change periodically. The rate ranges and categories referenced in this guide reflect the general structure of Bangladesh's withholding tax regime and are for ERP configuration planning purposes. Always confirm the exact current rate for your specific transaction category with your tax advisor or the latest NBR circular before finalizing your Odoo tax configuration.</p>
+      </div>
+
+      <h2 id="vs-vat">AIT vs VAT/Mushak: not the same thing</h2>
+      <p>This is the single most common point of confusion for Bangladesh companies setting up Odoo, and it is worth stating plainly: AIT and VAT are two completely separate tax mechanisms that happen to both apply to the same vendor invoice, and Odoo must treat them as two independent tax lines, never merged into one.</p>
+      <p>VAT under the Mushak system, covered in depth in <a href="0003-nbr-vat-compliance-odoo-bangladesh" style="color:var(--accent)">NBR VAT Compliance in Odoo Bangladesh</a> and <a href="0018-mushak-63-odoo-bangladesh" style="color:var(--accent)">Mushak 6.3 in Odoo Bangladesh</a>, is a consumption tax charged on top of the value of goods or services, typically added to the invoice amount and eventually payable by the end consumer, with the seller acting as a collection agent. AIT, by contrast, is an income tax mechanism deducted from the payment amount by the buyer, and it relates to the vendor's income, not the transaction's consumption value. A single BDT 5 lakh contractor invoice might carry 7.5% VAT added on top (bringing the gross to BDT 5.375 lakh) and simultaneously have 5-7% AIT deducted from the payment to the contractor, meaning the contractor actually receives less than the base invoice amount even though VAT was also charged. Both mechanisms exist on the same transaction, moving in opposite directions, and Odoo's tax configuration needs separate tax records, separate reporting, and separate liability accounts for each.</p>
+
+      <div class="stat-row">
+        <div class="stat-card">
+          <div class="sc-val">2 taxes</div>
+          <div class="sc-label">On one invoice</div>
+          <div class="sc-note">VAT added on top, AIT deducted from payment, both apply independently</div>
+        </div>
+        <div class="stat-card">
+          <div class="sc-val">2x rate</div>
+          <div class="sc-label">Non-TIN penalty</div>
+          <div class="sc-note">Typical AIT rate multiplier NBR applies to vendors without a valid TIN</div>
+        </div>
+        <div class="stat-card">
+          <div class="sc-val">Quarterly</div>
+          <div class="sc-label">Deposit cycle</div>
+          <div class="sc-note">Common frequency for depositing withheld AIT to NBR treasury</div>
+        </div>
+      </div>
+
+      <h2 id="rates">NBR withholding rates by category</h2>
+      <p>AIT rates are not a single flat percentage, they vary by the nature of the payment and the vendor's registration status. While exact figures should always be confirmed against the current Finance Act and NBR's statutory rules for the applicable year, the general structure that your Odoo tax configuration needs to accommodate looks like this:</p>
+
+      <table class="rate-table">
+        <thead>
+          <tr><th>Payment category</th><th>Typical rate band (TIN holder)</th><th>Without valid TIN</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Contractor / supplier (goods & general contracts)</td><td class="tin-yes">Lower base rate, tiered by value</td><td class="tin-no">Higher rate, often double base</td></tr>
+          <tr><td>Professional / technical services</td><td class="tin-yes">Moderate flat rate</td><td class="tin-no">Higher rate</td></tr>
+          <tr><td>Rent (commercial premises)</td><td class="tin-yes">Flat rate on gross rent</td><td class="tin-no">Higher rate</td></tr>
+          <tr><td>Commission / brokerage</td><td class="tin-yes">Moderate flat rate</td><td class="tin-no">Higher rate</td></tr>
+          <tr><td>Transport / carrying contractor</td><td class="tin-yes">Lower flat rate</td><td class="tin-no">Higher rate</td></tr>
+        </tbody>
+      </table>
+
+      <p>Two structural points matter more than memorizing exact percentages: first, the non-TIN penalty rate is a deliberate NBR policy to push unregistered vendors toward formal tax registration, and it is common enough (many small local vendors and individual contractors in Bangladesh still lack a TIN) that your Odoo setup must handle it as a routine case, not an edge case. Second, some categories have value thresholds below which no AIT applies at all, so a small, one-off vendor payment may correctly generate zero withholding while a larger payment in the same category triggers it. Your accounts team, or your fiscal position configuration, needs to reflect both the category and the threshold, not just a blanket percentage.</p>
+
+      <h2 id="configuration">Configuring withholding tax in Odoo</h2>
+      <p>Odoo Accounting supports withholding tax as a standard tax type, though Bangladesh-specific rates are not preloaded and must be configured manually or through a localization module if your implementation partner has one. The core configuration steps are:</p>
+
+      <ol class="step-list">
+        <li><strong>Create withholding tax records.</strong> Under <strong>Accounting → Configuration → Taxes</strong>, create a new tax for each AIT category and TIN-status combination you deal with (for example, "AIT – Contractor – TIN," "AIT – Contractor – No TIN," "AIT – Professional Services – TIN"). Set the tax scope to Purchases and the amount as a negative percentage, since withholding tax reduces the amount paid to the vendor rather than adding to what the customer owes you.</li>
+        <li><strong>Point each tax to a dedicated liability account.</strong> Rather than letting the withheld amount post to a generic tax account, create a distinct "AIT Payable" liability account in your Chart of Accounts and assign it on each withholding tax record, so withheld amounts are visibly separated from VAT payable and from ordinary trade payables, matching the account structure principles covered in <a href="0014-odoo-accounting-setup-bangladesh" style="color:var(--accent)">Odoo Accounting Setup Bangladesh</a>.</li>
+        <li><strong>Add TIN status as a vendor field.</strong> On the vendor's Contact record, add a field (a custom field if not already present) capturing whether the vendor holds a valid TIN and the TIN number itself. This becomes the basis for automatically selecting the correct withholding rate.</li>
+        <li><strong>Apply the tax on vendor bills.</strong> When entering a vendor bill, apply both the relevant VAT tax (if applicable) and the correct AIT withholding tax as separate tax lines on the same bill. Odoo calculates both independently and nets the final payable amount to the vendor accordingly.</li>
+      </ol>
+
+      <h2 id="fiscal-positions">Fiscal positions and vendor mapping</h2>
+      <p>Manually selecting the correct AIT tax on every single vendor bill is workable for a small company with a handful of vendors, but it becomes error-prone quickly as vendor count grows, and a wrongly applied rate is exactly the kind of mistake an NBR audit will flag. The more robust approach is to use Odoo's <strong>Fiscal Positions</strong> (under <strong>Accounting → Configuration → Fiscal Positions</strong>) to automatically map the correct AIT tax based on the vendor's assigned category.</p>
+      <p>Set up a fiscal position per vendor category (Contractors – TIN, Contractors – No TIN, Professional Services, and so on), and assign the appropriate fiscal position to each vendor's Contact record. Once this mapping is in place, whenever your accounts team creates a bill for that vendor, Odoo automatically substitutes the correct AIT tax without requiring the person entering the bill to remember which of a dozen possible rates applies. This is the same fiscal-position mechanism used elsewhere in Bangladesh Odoo configurations to route different VAT treatments automatically, and reusing that pattern for AIT keeps your tax configuration consistent and auditable in one place rather than scattered across manual selections.</p>
+
+      <div class="tip-box">
+        <div class="tlabel">Keep a category reference sheet current</div>
+        <p>Because NBR revises withholding rates and thresholds through the annual Finance Act, assign one person, typically your finance manager or external tax advisor, responsibility for reviewing the AIT rate table each fiscal year and updating the corresponding tax records and fiscal positions in Odoo before the new rates take effect. A withholding tax configuration set up correctly in 2024 and never revisited is a compliance gap waiting to surface at the next audit, not a one-time setup task.</p>
+      </div>
+
+      <h2 id="certificates">Generating TDS certificates</h2>
+      <p>Vendors need documentary proof of how much tax was withheld from their payments in order to claim credit for it against their own annual income tax return. Odoo does not ship a Bangladesh-specific TDS certificate report out of the box, so most companies address this with a custom report or a structured spreadsheet export built from the withholding tax lines already recorded in Odoo Accounting.</p>
+      <p>A usable TDS certificate, whether generated as an Odoo custom report or exported and formatted separately, should show per vendor per period: the total gross payments made, the AIT amount withheld on each payment with the applicable rate and category reference, the cumulative total withheld for the period, and, critically, the challan or treasury deposit reference confirming the withheld amount was actually deposited to NBR. Vendors and their auditors will ask for this last piece specifically, since a certificate claiming tax was withheld is only useful to the vendor if that tax was genuinely deposited, not merely deducted and held.</p>
+      <p>Most Bangladesh companies generate these certificates quarterly for larger, recurring vendors and annually for smaller, occasional ones, aligned with NBR's own reporting cycles. Building this as a saved, scheduled report in Odoo rather than a manual quarterly scramble through vendor bill history saves significant time once your vendor count exceeds twenty or thirty active accounts.</p>
+
+      <h2 id="accounting">The accounting entries AIT withholding creates</h2>
+      <p>When a vendor bill carrying an AIT withholding tax line is validated in Odoo, the accounting entry splits into three parts instead of the simple two-sided entry a bill without withholding would create: the expense or asset account is debited for the full invoiced value, the vendor's payable account is credited for the net amount actually owed after withholding, and the AIT Payable liability account is credited for the withheld amount. This means your vendor payable balance at any point in time correctly reflects only what you still owe that vendor in cash, not the gross invoice value.</p>
+      <p>Separately, when your company actually deposits the withheld AIT to NBR's treasury (via a bank challan, typically), record this as a payment from the AIT Payable account to your bank account, clearing that liability. Keeping this as a distinct account, rather than letting withheld amounts sit mixed into a general tax or suspense account, means your accountant can reconcile at any point exactly how much AIT has been withheld from vendors, how much has actually been deposited to NBR, and whether any deposit is overdue, which is precisely the kind of gap an NBR audit is designed to find if it is not being tracked deliberately.</p>
+
+      <div class="callout">
+        <span class="tag">Consultation CTA</span>
+        <p>If your Odoo instance currently handles VAT and Mushak reporting but has never had a proper AIT withholding tax structure configured, you are likely under-withholding, over-withholding, or unable to produce TDS certificates when vendors ask, all of which carry real audit risk. I can help you build the withholding tax records, fiscal positions, and reporting your accounts team needs. <a href="../#contact" style="color:var(--accent)">Contact me for a strategy session →</a></p>
+      </div>
+
+      <h2 id="faq">Frequently asked questions</h2>
+
+      <h3>What is the difference between AIT withholding and VAT (Mushak) in Odoo?</h3>
+      <p>AIT (Advance Income Tax), also called TDS (Tax Deducted at Source) on the payer's side, is a mechanism under the Income Tax Act where a company deducts a percentage of income tax from a payment to a vendor or contractor before paying them, and deposits it to NBR on the vendor's behalf as an advance against that vendor's eventual income tax liability. VAT under the Mushak system is an entirely separate consumption tax charged on the value of goods or services and is unrelated to income tax. A single vendor payment in Bangladesh often has both VAT charged on top of the invoice and AIT deducted from the payment, and Odoo must handle these as two distinct, independently configured tax mechanisms, not as one combined tax.</p>
+
+      <h3>How do I configure AIT withholding rates in Odoo?</h3>
+      <p>Create a withholding tax type in Odoo Accounting under Accounting → Configuration → Taxes, scoped to Purchases, with Tax Computation set to a percentage and the amount entered as negative (since it reduces the payable to the vendor). Create one such tax record per NBR-specified rate and service category combination you deal with, since AIT rates vary by category (contractors, suppliers of goods, professional and technical services, and others) and by whether the vendor holds a valid TIN. Then use Fiscal Positions to map the correct AIT tax automatically based on the vendor's category, so the right rate applies without your accounts team manually selecting it on every bill.</p>
+
+      <h3>Does AIT withholding rate depend on whether the vendor has a TIN?</h3>
+      <p>Yes. NBR's withholding tax rules generally apply a higher AIT rate, in many categories double the standard rate, to payments made to a person or business that does not hold a valid Taxpayer Identification Number (TIN), as an incentive for vendors to register and file returns. In Odoo, this means you need at least two withholding tax rate variants per service category, one for TIN-holding vendors and one for non-TIN vendors, and a mandatory field on the vendor's Contact record to record TIN status and the TIN number itself so the correct rate is applied and never left to memory.</p>
+
+      <h3>How do I generate a TDS certificate for a vendor in Odoo?</h3>
+      <p>Odoo does not include a Bangladesh-specific TDS certificate report out of the box, so most companies build a simple custom report or a formatted spreadsheet export that pulls, per vendor per period, the total payments made, the AIT amount withheld on each payment, the applicable section/rate reference, and the challan or treasury deposit reference showing the amount was actually deposited to NBR. This is generated from the withholding tax lines recorded against that vendor's bills in Odoo Accounting, typically on a quarterly or annual basis, since vendors need this certificate to claim credit for the tax already deducted when filing their own income tax return.</p>
+
+      <h3>What accounting entries does AIT withholding create in Odoo?</h3>
+      <p>When a vendor bill with AIT withholding is validated in Odoo, the system reduces the amount payable to the vendor by the withheld amount and posts that amount to a separate AIT Payable (withholding tax liability) account rather than to the vendor's payable account. When your company later deposits that withheld tax to NBR's treasury, you record a payment from the AIT Payable account to cash or bank, clearing the liability. This means your vendor payable balance always reflects only what you still owe the vendor, while a separate, clearly visible liability account tracks tax collected on the government's behalf and not yet deposited.</p>
+
+    </div>
+  </article>
+  <footer>
+    <div class="shell">
+      <div class="post-foot">
+        <span class="eyebrow">Continue exploring</span>
+        <div class="next">
+          <a class="next-card" href="0070-odoo-freight-forwarding-cf-agents-bangladesh">
+            <span class="dir">Older · 0070</span>
+            <h4>Odoo for Freight Forwarding & C&F Agents Bangladesh</h4>
+            <p>Shipment tracking, HS-code billing, and customs documentation.</p>
+            <span class="arrow">→</span>
+          </a>
+          <a class="next-card" href="../#lab">
+            <span class="dir">All articles</span>
+            <h4>Back to Lab Index</h4>
+            <p>Browse all guides on Odoo ERP, manufacturing operations, and business analysis in Bangladesh.</p>
+            <span class="arrow">→</span>
+          </a>
+        </div>
+      </div>
+      <div class="foot">
+        <span>© 2026 Mehedi Hasan · Lab / 0071</span>
+        <span><a href="../#lab">↑ Back to lab index</a></span>
+      </div>
+    </div>
+  </footer>
+  <script src="_utils.js" defer></script>
+  <script src="_toc.js" defer></script>
+  <script src="/whatsapp.js" defer></script>
+  <script src="/scroll-top.js" defer></script>
+</body>
+</html>

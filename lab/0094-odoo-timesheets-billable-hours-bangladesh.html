@@ -1,0 +1,376 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description"
+    content="Configure Odoo Timesheets for Bangladesh service companies: billable vs non-billable tracking, project profitability, and timesheet-to-invoice automation." />
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="Mehedi Hasan" />
+  <title>Odoo Timesheets & Billable Hours for Service Companies Bangladesh | Mehedi Hasan</title>
+  <link rel="canonical" href="https://mhasan.me/lab/0094-odoo-timesheets-billable-hours-bangladesh" />
+  <link rel="alternate" hreflang="en" href="https://mhasan.me/lab/0094-odoo-timesheets-billable-hours-bangladesh" />
+  <link rel="alternate" hreflang="x-default" href="https://mhasan.me/lab/0094-odoo-timesheets-billable-hours-bangladesh" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png" />
+  <!-- Open Graph -->
+  <meta property="og:title" content="Odoo Timesheets & Billable Hours for Service Companies Bangladesh | Mehedi Hasan" />
+  <meta property="og:description"
+    content="Configure Odoo Timesheets for Bangladesh service companies: billable vs non-billable tracking, project profitability, and timesheet-to-invoice automation." />
+  <meta property="og:url" content="https://mhasan.me/lab/0094-odoo-timesheets-billable-hours-bangladesh" />
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="https://mhasan.me/assets/og-default.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:site_name" content="Mehedi Hasan | Odoo ERP Consultant" />
+  <meta property="article:author" content="https://www.linkedin.com/in/mehedi-hasan-consultant/" />
+  <meta property="article:published_time" content="2026-09-18T14:00:00+06:00" />
+  <meta property="article:modified_time" content="2026-09-18T14:00:00+06:00" />
+  <meta property="article:section" content="Odoo ERP Bangladesh" />
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Odoo Timesheets & Billable Hours for Service Companies Bangladesh | Mehedi Hasan" />
+  <meta name="twitter:description"
+    content="Configure Odoo Timesheets for Bangladesh service companies: billable vs non-billable tracking, project profitability, and timesheet-to-invoice automation." />
+  <meta name="twitter:image" content="https://mhasan.me/assets/og-default.jpg" />
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Odoo Timesheets & Billable Hours for Service Companies in Bangladesh",
+    "description": "A configuration guide for Bangladesh service businesses using Odoo Timesheets: billable vs non-billable categories, bill rates by role, the approval workflow before time becomes invoiceable, timesheet-to-invoice automation, and project profitability analysis from actual hours versus quoted hours.",
+    "datePublished": "2026-09-18T14:00:00+06:00",
+    "dateModified": "2026-09-18T14:00:00+06:00",
+    "author": {
+      "@type": "Person",
+      "name": "Mehedi Hasan",
+      "url": "https://mhasan.me",
+      "jobTitle": "Odoo ERP Consultant & Business Analyst",
+      "sameAs": "https://www.linkedin.com/in/mehedi-hasan-consultant/"
+    },
+    "publisher": { "@type": "Person", "name": "Mehedi Hasan", "url": "https://mhasan.me" },
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://mhasan.me/lab/0094-odoo-timesheets-billable-hours-bangladesh" }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://mhasan.me" },
+      { "@type": "ListItem", "position": 2, "name": "Lab", "item": "https://mhasan.me/lab/" },
+      { "@type": "ListItem", "position": 3, "name": "Odoo Timesheets & Billable Hours Bangladesh", "item": "https://mhasan.me/lab/0094-odoo-timesheets-billable-hours-bangladesh" }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How do I set different billing rates per employee in Odoo Timesheets?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Odoo does not set a bill rate directly on the employee record for timesheets. Instead, the standard approach is to configure a Sales Order line per role or per employee with its own unit price, and link timesheets to that line through the project's billing configuration, or use the Employee's Timesheet Cost field (for internal cost tracking) combined with a Sales Order line price (for what the client is billed). For companies billing many roles at different rates, the cleanest setup is one Sales Order line per role tier (Junior Consultant, Senior Consultant, Project Manager) with timesheets tagged to the matching line, rather than trying to set a single blanket rate per project."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can Odoo prevent unapproved timesheets from being invoiced to a client?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, if the approval workflow is configured deliberately. Odoo Timesheets has a manager validation step (timesheets can be marked as submitted, then approved by a manager) that should be completed before those hours are pulled into a customer invoice. Odoo does not enforce this link automatically out of the box in every configuration, so the practical control is a documented internal rule (invoicing staff only pull approved timesheets) combined with using the reporting filters to invoice by approval status rather than by date range alone. Bangladesh service firms that skip formal timesheet approval and invoice directly from logged hours are the ones most likely to bill disputed or inflated hours to a client."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How does Odoo convert timesheets into a client invoice?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "For a project set up with a Time and Materials billing policy (Project configured with a linked Sales Order and the 'Timesheets' invoicing policy), approved timesheet hours accumulate against the relevant Sales Order line. From the Sales Order, choosing 'Create Invoice' with the 'based on delivered quantity' option pulls the approved hours directly into invoice lines, with quantity equal to hours logged and price from the Sales Order line's rate. This removes the manual step of an accounts team member re-typing hours from a timesheet report into an invoice, which is where transcription errors and disputed billing commonly originate in Bangladesh service firms still working from spreadsheets."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between billable and non-billable time in Odoo Timesheets?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Billable time is logged against a project and task that is linked to a client Sales Order line with an invoicing policy of 'Timesheets,' meaning the hours will generate revenue when invoiced. Non-billable time is logged against internal projects, unlinked tasks, or tasks explicitly marked non-billable, meaning it is tracked for cost and utilization purposes but never appears on a client invoice. Bangladesh service firms should create a small number of standing internal projects (Internal Meetings, Business Development, Training, Bench Time) so that non-billable hours have somewhere accurate to go, rather than either going unlogged or getting mixed into a client project by mistake."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How can I see if a project is over budget on hours before it is finished?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Set a planned or allocated hours figure on the project or on the Sales Order line at the start of the engagement, then compare it against the live sum of logged timesheet hours using the Project app's reporting view or a pivot table grouped by project. Odoo's Timesheets reporting lets you filter by project and compare actual hours logged against the planned figure at any point during the engagement, rather than waiting until the project closes to discover it ran over. Building this into a weekly review, rather than checking only at invoicing time, is what actually catches underquoting early enough to act on it."
+        }
+      }
+    ]
+  }
+]
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap">
+  <link rel="stylesheet" href="_styles.css">
+</head>
+
+<body>
+  <div class="grid-bg"></div>
+
+  <header class="nav">
+    <div class="shell">
+      <div class="nav-inner">
+        <a class="brand" href="../">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span class="brand-name"><b>Mehedi Hasan</b><em>ERP · Business Analyst</em></span>
+        </a>
+        <a class="back-link" href="../#lab">← Back to Lab</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="post-head">
+    <div class="shell">
+      <span class="eyebrow">Technical Lab · 0094</span>
+      <h1>Odoo Timesheets for Bangladesh Service Companies: <span class="serif">from logged hours to a client invoice that holds up.</span></h1>
+      <p class="lede">Most Bangladesh IT firms, agencies, and consultancies I work with already log time somewhere: a spreadsheet, a WhatsApp end-of-day message, a paper register at the reception desk. What they do not have is a reliable chain from "an engineer worked on this task" to "the client was billed the correct, approved amount for it." That chain is what Odoo Timesheets, configured properly, actually delivers. This guide covers the mechanics: billable structure, bill rates, approval discipline, invoicing automation, and profitability reporting.</p>
+      <div class="post-meta">
+        <span class="chip accent">Guide</span>
+        <span class="chip">Timesheets</span>
+        <span class="chip">Professional Services</span>
+        <span class="chip">Bangladesh</span>
+      </div>
+      <div class="byline">
+        <span>By<b><a href="https://www.linkedin.com/in/mehedi-hasan-consultant/" style="color:var(--accent)" rel="author">Mehedi Hasan</a></b></span>
+        <span>Published<b>September 2026</b></span>
+        <span>Read time<b>17 minutes</b></span>
+        <span>Form<b>Guide</b></span>
+        <span>Scope<b>Billing & Profitability</b></span>
+      </div>
+    </div>
+  </section>
+
+  <article class="post">
+    <aside class="toc">
+      <div class="toc-k">In this guide</div>
+      <ol>
+        <li><a href="#why-it-matters">Why Timesheet Discipline Matters in Bangladesh</a></li>
+        <li><a href="#billable-structure">Billable vs Non-Billable Structure</a></li>
+        <li><a href="#project-task">Project & Task Structure for Accurate Billing</a></li>
+        <li><a href="#bill-rates">Bill Rates by Role & Seniority</a></li>
+        <li><a href="#approval-workflow">The Approval Workflow</a></li>
+        <li><a href="#invoice-automation">Timesheet-to-Invoice Automation</a></li>
+        <li><a href="#profitability">Project Profitability & Underquoting</a></li>
+        <li><a href="#mobile-daily">Daily Entry Habits That Make or Break This</a></li>
+        <li><a href="#limits">Where Timesheets Configuration Hits Limits</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ol>
+    </aside>
+
+    <div class="body">
+
+      <h2 id="why-it-matters">Why Timesheet Discipline Matters in Bangladesh</h2>
+      <p>Bangladesh's IT and professional services sector has grown faster than its billing discipline has matured. It is common for a company to have a genuinely skilled delivery team and a genuinely informal approach to recording what that team actually did, hour by hour, on a given client engagement. The result is a familiar pattern: a project that felt busy and successful gets invoiced at the end of the month for a number that is really an estimate, not a record, and the client occasionally pushes back on that number because there is no defensible trail behind it.</p>
+      <p>Odoo Timesheets solves a narrower problem than people expect it to. It will not make your estimators better at scoping engagements, and it will not stop a client from disputing a bill on principle. What it does reliably is close the gap between "work happened" and "an accurate, defensible, approved record of that work exists," which is the precondition for everything downstream: correct invoicing, honest profitability analysis, and a paper trail if a client questions a bill six weeks later.</p>
+
+      <div class="stat-row">
+        <div class="stat-card">
+          <div class="sc-val">1 record</div>
+          <div class="sc-label">Per hour logged</div>
+          <div class="sc-note">Instead of an end-of-month reconstruction from memory</div>
+        </div>
+        <div class="stat-card">
+          <div class="sc-val">2 steps</div>
+          <div class="sc-label">Submit, then approve</div>
+          <div class="sc-note">The manager sign-off gate most Bangladesh firms skip informally</div>
+        </div>
+        <div class="stat-card">
+          <div class="sc-val">0 re-typing</div>
+          <div class="sc-label">Timesheet to invoice</div>
+          <div class="sc-note">When billing policy is configured correctly on the project</div>
+        </div>
+      </div>
+
+      <p class="pull">A timesheet nobody approved is not a billing record. It is a memory, written down.</p>
+
+      <h2 id="billable-structure">Billable vs Non-Billable Structure</h2>
+      <p>The single biggest configuration mistake I see in Bangladesh service companies adopting Odoo Timesheets is treating every project the same way, so that internal work, business development calls, and actual client delivery all get logged into whatever project happens to be open, with no consistent separation. Fix this before anything else.</p>
+
+      <div class="feature-grid">
+        <div class="feature-card">
+          <div class="fc-icon">01</div>
+          <div class="fc-body">
+            <h4>Client projects, billing policy: Timesheets</h4>
+            <p>One project per client engagement (or per major workstream within a large client), linked to a Sales Order with the invoicing policy set to bill based on timesheets delivered.</p>
+          </div>
+        </div>
+        <div class="feature-card">
+          <div class="fc-icon">02</div>
+          <div class="fc-body">
+            <h4>Internal Meetings & Admin</h4>
+            <p>A standing internal project for meetings, internal admin, and general overhead. Non-billable by default, but still tracked for utilization math.</p>
+          </div>
+        </div>
+        <div class="feature-card">
+          <div class="fc-icon">03</div>
+          <div class="fc-body">
+            <h4>Business Development</h4>
+            <p>Pre-sales work, proposal writing, and client pitches logged separately from delivery work, so you can see how much billable capacity is consumed by winning new business.</p>
+          </div>
+        </div>
+        <div class="feature-card">
+          <div class="fc-icon">04</div>
+          <div class="fc-body">
+            <h4>Training & Bench</h4>
+            <p>Time for staff between engagements or in training. Critical for Bangladesh firms managing a bench of consultants waiting for the next assignment, so idle capacity is visible, not hidden inside a client project.</p>
+          </div>
+        </div>
+      </div>
+
+      <p>With this structure, a consultant's week always has somewhere accurate to log every hour, billable or not, and your utilization reporting (hours billed against hours available) becomes meaningful instead of a number quietly inflated by miscategorized internal time.</p>
+
+      <h2 id="project-task">Project & Task Structure for Accurate Billing</h2>
+      <p>Within each client project, task structure determines how granular your billing and profitability data can be. A single "General Work" task that absorbs every hour for the whole engagement gives you an accurate total but tells you nothing about where the hours actually went. For most Bangladesh service engagements, I recommend structuring tasks around the deliverables in the statement of work, not around internal team structure, since deliverables are what the client actually agreed to pay for and what a dispute, if one arises, will be argued about.</p>
+      <p>For fixed-scope engagements (a defined implementation, a website build, a set number of support hours per month), tasks map to milestones or modules: "Requirements Workshop," "Sales Module Configuration," "UAT Support," and so on. For retainer or ongoing support engagements, tasks can map to ticket categories or request types instead. Either way, the task list should be visible to the client-facing team lead as a living reflection of scope, not just an internal Odoo artifact nobody outside the delivery team looks at.</p>
+
+      <div class="tip-box">
+        <div class="tlabel">Practical Shortcut</div>
+        <p>When scope changes mid-engagement (a common reality in Bangladesh client relationships where verbal scope additions happen in meetings), add a new task for the additional work immediately rather than letting the team log the extra hours against an existing task. This keeps your later profitability comparison (actual vs quoted) honest, because the original task's hours are not silently inflated by unrelated added scope.</p>
+      </div>
+
+      <h2 id="bill-rates">Bill Rates by Role & Seniority</h2>
+      <p>Odoo does not have a single field on the employee record that says "this person's client bill rate is X." That is a deliberate design choice, because a consultant's bill rate is a property of the engagement and the role they are performing on it, not a fixed personal attribute, and one senior consultant might bill at a junior rate on a lower-value engagement or vice versa. The practical setup for Bangladesh firms with tiered rates:</p>
+      <ol>
+        <li><strong>Create Sales Order lines per role tier</strong> on the client's Sales Order: one line for "Senior Consultant Hours" at one rate, another for "Developer Hours" at another rate, rather than a single blended line.</li>
+        <li><strong>Link each employee's timesheets to the correct line</strong> through the project task or, for more complex setups, through the Sales Order line association available when timesheets are entered against a specific service line.</li>
+        <li><strong>Keep an internal Timesheet Cost figure per employee</strong> (Employee record → HR Settings → Timesheet Cost) so that Odoo can calculate internal cost of delivery against the billed amount, giving you a true margin figure per project, not just revenue.</li>
+      </ol>
+      <p>This structure takes slightly longer to set up per project than a single blended rate, but it is the only way the profitability reporting later in this guide produces numbers you can actually trust when a project mixes senior and junior time in different proportions than originally quoted, which in my experience is most Bangladesh service projects by the time they are two months in.</p>
+
+      <h2 id="approval-workflow">The Approval Workflow</h2>
+      <p>This is the control point Bangladesh service firms most often skip, usually not out of carelessness but because manager sign-off feels like bureaucracy layered onto people who are already trusted. The counter-argument is straightforward: an unapproved timesheet is not evidence of anything to a client who disputes a bill, and it removes the one checkpoint where a manager catches an inflated entry, a miscategorized non-billable hour billed as client time, or simply an honest mistake before it reaches an invoice.</p>
+
+      <div class="timeline-track">
+        <div class="tl-node now">
+          <div class="tl-date">Daily</div>
+          <div class="tl-title">Consultant logs hours against project and task</div>
+          <div class="tl-body">Ideally same-day, through the Odoo mobile app or web timesheet grid, not reconstructed at week's end from memory.</div>
+        </div>
+        <div class="tl-node">
+          <div class="tl-date">Weekly</div>
+          <div class="tl-title">Consultant submits the week's timesheet for approval</div>
+          <div class="tl-body">Locks the entries from further silent edits and puts them into the manager's approval queue.</div>
+        </div>
+        <div class="tl-node">
+          <div class="tl-date">Within 2–3 days</div>
+          <div class="tl-title">Manager reviews and approves, or sends back with a query</div>
+          <div class="tl-body">This is the actual control point. A manager who spot-checks unusually high or low entries against what they know happened on the project catches most problems here.</div>
+        </div>
+        <div class="tl-node future">
+          <div class="tl-date">Invoicing cycle</div>
+          <div class="tl-title">Only approved hours are pulled into the client invoice</div>
+          <div class="tl-body">Enforced by internal process discipline, since Odoo's invoicing screen will happily pull unapproved hours too if the accounts team is not instructed otherwise.</div>
+        </div>
+      </div>
+
+      <p>The honest caveat here: Odoo's out-of-the-box behavior does not hard-block invoicing on unapproved timesheets in every configuration. The approval step exists and can be enforced through user training and, for stricter control, through a Studio-level automated action that flags or restricts invoice creation when unapproved hours are present on a Sales Order line (see the <a href="0093-odoo-studio-no-code-bangladesh" style="color:var(--accent)">Odoo Studio guide</a> for how far that kind of guardrail automation can reasonably go without a developer). Most Bangladesh firms are better served by a simple documented rule and a monthly spot-check than by over-engineering the enforcement.</p>
+
+      <h2 id="invoice-automation">Timesheet-to-Invoice Automation</h2>
+      <p>Once a project is correctly linked to a Sales Order with the "Timesheets" invoicing policy, converting approved hours into a client invoice is a matter of opening the Sales Order and choosing to create an invoice based on delivered quantity. Odoo pulls the approved timesheet hours as the delivered quantity against each relevant order line, applies the configured rate, and generates draft invoice lines automatically. The accounts team reviews the draft, adds any expense re-billing or fixed fee lines, and confirms.</p>
+      <p>This single step replaces what is, in most Bangladesh service firms I have onboarded, a manual monthly ritual: someone exports a spreadsheet of hours, cross-references it against who worked on what, calculates amounts by hand, and types the results into an invoice, often under end-of-month time pressure with no independent check on arithmetic. Automating this does not just save time; it removes an entire category of billing dispute (arithmetic and transcription error) that has nothing to do with whether the underlying hours were fair, but still damages client trust when it happens.</p>
+      <p>For firms running retainer contracts with a fixed monthly fee rather than pure time and materials, the timesheet data still matters even though it does not directly drive invoice amount: it tells you whether the retainer's included hours are being consumed faster than planned, which is your early warning to renegotiate scope or price before the retainer becomes unprofitable. This mirrors the AMC consumption tracking logic used in service-and-maintenance businesses, covered from the support-ticket angle in the <a href="0095-odoo-helpdesk-ticketing-setup-bangladesh" style="color:var(--accent)">Helpdesk & ticketing setup guide</a>.</p>
+
+      <h2 id="profitability">Project Profitability & the Underquoting Signal</h2>
+      <p>The most valuable use of accurate timesheet data has nothing to do with billing a client correctly this month. It is catching, mid-project, that a project was underquoted before the loss is fully realized. Bangladesh service firms competing on price in a crowded IT and consulting market routinely quote optimistically to win business, and without a live view of hours actually consumed against hours quoted, the first time anyone notices the gap is when the project closes at a loss.</p>
+
+      <table>
+        <thead>
+          <tr><th>Signal</th><th>What It Means</th><th>Action</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Actual hours &gt; 50% of quoted budget before 50% of milestones delivered</td><td>Likely underquoted or scope has quietly expanded</td><td>Review with the client before continuing at the current pace, or formally raise a change request</td></tr>
+          <tr><td>Non-billable hours rising on a specific client project</td><td>Rework, unclear requirements, or internal inefficiency</td><td>Investigate the specific task category driving it</td></tr>
+          <tr><td>Senior consultant hours far above planned ratio</td><td>Junior team under-skilled for the work, or task allocation is wrong</td><td>Rebalance the team or adjust the rate mix on future similar quotes</td></tr>
+          <tr><td>Utilization (billable / available hours) trending down company-wide</td><td>Bench time growing, or non-billable categorization creeping</td><td>Cross-check against the <a href="0055-odoo-dashboards-kpi-bangladesh" style="color:var(--accent)">dashboards and KPI setup</a> to catch this at a company level, not just per project</td></tr>
+        </tbody>
+      </table>
+
+      <div class="big-stat">
+        <div class="bs-val">Weekly</div>
+        <div class="bs-label">Review cadence that actually catches underquoting</div>
+        <div class="bs-note">Checking actual-vs-quoted hours only at invoicing or project close is almost always too late to correct course.</div>
+      </div>
+
+      <p>Building this review into a standing weekly project meeting, using Odoo's Timesheets reporting pivot filtered by project and grouped by task, converts timesheet data from an administrative record into a genuine early-warning system. This is also the data that should feed back into how the next similar project gets quoted, closing the loop between delivery reality and sales estimation, a discipline most Bangladesh service firms talk about wanting and few actually build into a repeatable process. For the wider business context this sits inside, see the <a href="0092-odoo-it-professional-services-firms-bangladesh" style="color:var(--accent)">Odoo for IT & Professional Services Firms guide</a>, and for scoping the engagement in the first place, the <a href="0047-odoo-project-charter-template" style="color:var(--accent)">Project Charter Template</a> covers the upfront scope definition that this timesheet discipline is measured against.</p>
+
+      <h2 id="mobile-daily">Daily Entry Habits That Make or Break This</h2>
+      <p>None of the configuration above matters if consultants do not log time close to when the work happens. The furthest-behind Bangladesh teams I see try to reconstruct an entire week of hours from memory on Friday afternoon, which produces numbers that are directionally right but not accurate enough to trust for billing disputes or profitability analysis at the task level.</p>
+      <p>The Odoo mobile app's timesheet entry is deliberately fast: select project, select task, enter hours, save, and it takes under thirty seconds per entry once a consultant is used to it. For teams resistant to daily logging, a practical compromise that still beats end-of-week reconstruction is a mid-day and end-of-day two-touch habit rather than a single end-of-week session. Whatever cadence you choose, treat consistent, same-day timesheet entry as a performance expectation communicated during onboarding, not an optional habit left to individual discipline, because the entire billing and profitability chain described in this guide depends on the underlying data being entered close to real time.</p>
+
+      <h2 id="limits">Where Timesheets Configuration Hits Limits</h2>
+      <p>Odoo Timesheets is not a full resource-planning or capacity-forecasting tool. It tells you what happened, not what is coming. If you need forward-looking capacity planning (which consultants are available next month, whether you can take on a new engagement given current commitments), that is a Planning app or a Sales forecasting exercise layered on top of timesheet history, not something Timesheets itself provides natively.</p>
+      <p>It also does not enforce billing policy compliance automatically in every scenario, as noted in the approval section: Odoo will generally let you invoice unapproved hours if you tell it to, so the discipline has to be organizational, not purely technical. And multi-currency billing for Bangladesh firms working with overseas clients (a common pattern in IT services exporting to the US, UK, or Australia) requires the Sales Order and invoicing currency to be configured correctly at the client level; timesheets themselves are currency-agnostic and simply record hours, with the rate and currency applied at the Sales Order and invoice stage.</p>
+
+      <div class="callout">
+        <span class="tag">Timesheet & Billing Workflow Setup</span>
+        <p>If your team already tracks time somewhere but the path from hours logged to an accurate client invoice is still manual, I can configure the project, billing, and approval structure in Odoo so it runs the way this guide describes, tuned to how your engagements are actually priced. <a href="../#contact" style="color:var(--accent)">Contact me to set up your timesheet-to-invoice workflow →</a></p>
+      </div>
+
+      <h2 id="faq">Frequently asked questions</h2>
+
+      <h3>How do I set different billing rates per employee in Odoo Timesheets?</h3>
+      <p>Odoo does not set a bill rate directly on the employee record for timesheets. Instead, the standard approach is to configure a Sales Order line per role or per employee with its own unit price, and link timesheets to that line through the project's billing configuration, or use the Employee's Timesheet Cost field (for internal cost tracking) combined with a Sales Order line price (for what the client is billed). For companies billing many roles at different rates, the cleanest setup is one Sales Order line per role tier (Junior Consultant, Senior Consultant, Project Manager) with timesheets tagged to the matching line, rather than trying to set a single blanket rate per project.</p>
+
+      <h3>Can Odoo prevent unapproved timesheets from being invoiced to a client?</h3>
+      <p>Yes, if the approval workflow is configured deliberately. Odoo Timesheets has a manager validation step (timesheets can be marked as submitted, then approved by a manager) that should be completed before those hours are pulled into a customer invoice. Odoo does not enforce this link automatically out of the box in every configuration, so the practical control is a documented internal rule (invoicing staff only pull approved timesheets) combined with using the reporting filters to invoice by approval status rather than by date range alone. Bangladesh service firms that skip formal timesheet approval and invoice directly from logged hours are the ones most likely to bill disputed or inflated hours to a client.</p>
+
+      <h3>How does Odoo convert timesheets into a client invoice?</h3>
+      <p>For a project set up with a Time and Materials billing policy (Project configured with a linked Sales Order and the "Timesheets" invoicing policy), approved timesheet hours accumulate against the relevant Sales Order line. From the Sales Order, choosing "Create Invoice" with the "based on delivered quantity" option pulls the approved hours directly into invoice lines, with quantity equal to hours logged and price from the Sales Order line's rate. This removes the manual step of an accounts team member re-typing hours from a timesheet report into an invoice, which is where transcription errors and disputed billing commonly originate in Bangladesh service firms still working from spreadsheets.</p>
+
+      <h3>What is the difference between billable and non-billable time in Odoo Timesheets?</h3>
+      <p>Billable time is logged against a project and task that is linked to a client Sales Order line with an invoicing policy of "Timesheets," meaning the hours will generate revenue when invoiced. Non-billable time is logged against internal projects, unlinked tasks, or tasks explicitly marked non-billable, meaning it is tracked for cost and utilization purposes but never appears on a client invoice. Bangladesh service firms should create a small number of standing internal projects (Internal Meetings, Business Development, Training, Bench Time) so that non-billable hours have somewhere accurate to go, rather than either going unlogged or getting mixed into a client project by mistake.</p>
+
+      <h3>How can I see if a project is over budget on hours before it is finished?</h3>
+      <p>Set a planned or allocated hours figure on the project or on the Sales Order line at the start of the engagement, then compare it against the live sum of logged timesheet hours using the Project app's reporting view or a pivot table grouped by project. Odoo's Timesheets reporting lets you filter by project and compare actual hours logged against the planned figure at any point during the engagement, rather than waiting until the project closes to discover it ran over. Building this into a weekly review, rather than checking only at invoicing time, is what actually catches underquoting early enough to act on it.</p>
+
+    </div>
+  </article>
+
+  <footer>
+    <div class="shell">
+      <div class="post-foot">
+        <span class="eyebrow">Continue exploring</span>
+        <div class="next">
+          <a class="next-card" href="0093-odoo-studio-no-code-bangladesh">
+            <span class="dir">Older · 0093</span>
+            <h4>Odoo Studio: No-Code App Building for Bangladesh SMEs</h4>
+            <p>What Studio can and can't do, and where its real limits are.</p>
+            <span class="arrow">→</span>
+          </a>
+          <a class="next-card" href="../#lab">
+            <span class="dir">All articles</span>
+            <h4>Back to Lab Index</h4>
+            <p>Browse all guides on Odoo ERP, manufacturing operations, and business analysis in Bangladesh.</p>
+            <span class="arrow">→</span>
+          </a>
+        </div>
+      </div>
+      <div class="foot">
+        <span>© 2026 Mehedi Hasan · Lab / 0094</span>
+        <span><a href="../#lab">↑ Back to lab index</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="_utils.js" defer></script>
+  <script src="_toc.js" defer></script>
+  <script src="/whatsapp.js" defer></script>
+  <script src="/scroll-top.js" defer></script>
+</body>
+
+</html>

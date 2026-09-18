@@ -1,0 +1,295 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="RJSC annual return, Schedule X, and AGM filing deadlines in Bangladesh: the company-secretarial data your Odoo setup should track and produce on demand." />
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="Mehedi Hasan" />
+  <title>RJSC Annual Compliance & e-Filing: What Your ERP Should Track | Mehedi Hasan</title>
+  <link rel="canonical" href="https://mhasan.me/lab/0081-rjsc-annual-compliance-efiling-odoo-bangladesh" />
+  <link rel="alternate" hreflang="en" href="https://mhasan.me/lab/0081-rjsc-annual-compliance-efiling-odoo-bangladesh" />
+  <link rel="alternate" hreflang="x-default" href="https://mhasan.me/lab/0081-rjsc-annual-compliance-efiling-odoo-bangladesh" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png" />
+  <meta property="og:title" content="RJSC Annual Compliance & e-Filing: What Your ERP Should Track | Mehedi Hasan" />
+  <meta property="og:description" content="RJSC annual return, Schedule X, and AGM filing deadlines in Bangladesh: the company-secretarial data your Odoo setup should track and produce on demand." />
+  <meta property="og:url" content="https://mhasan.me/lab/0081-rjsc-annual-compliance-efiling-odoo-bangladesh" />
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="https://mhasan.me/assets/og-default.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:site_name" content="Mehedi Hasan | Odoo ERP Consultant" />
+  <meta property="article:author" content="https://www.linkedin.com/in/mehedi-hasan-consultant/" />
+  <meta property="article:published_time" content="2026-09-18T14:00:00+06:00" />
+  <meta property="article:modified_time" content="2026-09-18T14:00:00+06:00" />
+  <meta property="article:section" content="Odoo ERP Bangladesh" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="RJSC Annual Compliance & e-Filing: What Your ERP Should Track | Mehedi Hasan" />
+  <meta name="twitter:description" content="RJSC annual return, Schedule X, and AGM filing deadlines in Bangladesh: the company-secretarial data your Odoo setup should track and produce on demand." />
+  <meta name="twitter:image" content="https://mhasan.me/assets/og-default.jpg" />
+  <script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "RJSC Annual Compliance and e-Filing: What Your Odoo ERP Should Track",
+    "description": "A practical guide for Bangladesh companies on RJSC annual return filings under Section 36 of the Companies Act 1994, Schedule X, Balance Sheet deadlines, and how to structure Odoo Accounting and Contacts data so AGM season is a data extraction exercise rather than a reconstruction project.",
+    "datePublished": "2026-09-18T14:00:00+06:00",
+    "dateModified": "2026-09-18T14:00:00+06:00",
+    "author": { "@type": "Person", "name": "Mehedi Hasan", "url": "https://mhasan.me", "jobTitle": "Odoo ERP Consultant & Business Analyst", "sameAs": "https://www.linkedin.com/in/mehedi-hasan-consultant/" },
+    "publisher": { "@type": "Person", "name": "Mehedi Hasan", "url": "https://mhasan.me" },
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://mhasan.me/lab/0081-rjsc-annual-compliance-efiling-odoo-bangladesh" }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://mhasan.me" },
+      { "@type": "ListItem", "position": 2, "name": "Lab", "item": "https://mhasan.me/lab/" },
+      { "@type": "ListItem", "position": 3, "name": "RJSC Annual Compliance & e-Filing: What Your ERP Should Track", "item": "https://mhasan.me/lab/0081-rjsc-annual-compliance-efiling-odoo-bangladesh" }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Can Odoo file RJSC annual returns directly?",
+        "acceptedAnswer": { "@type": "Answer", "text": "No. Odoo has no RJSC filing feature and no connector to the RJSC online portal. RJSC annual returns, Schedule X, and the Balance Sheet are filed manually through the RJSC's own portal using the prescribed Form 1, typically by a company secretary or the filing company's compliance team. Odoo's role is upstream: keeping the underlying data (shareholder and director records, audited financial figures) clean and readily extractable so preparing those filings does not require reconstructing information from scratch each AGM season." }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the deadline for filing Schedule X with the RJSC after an AGM?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Schedule X, the annual summary of share capital and the list of shareholders and directors, must be filed within 21 days of the AGM, signed by two directors including the Managing Director if the company has one. Note that secondary sources show genuine inconsistency about whether the general annual return filing window under Section 36 is 21 or 28 days from the AGM; businesses should verify the current exact deadline with a company secretary or directly against current RJSC guidance rather than treat either figure as settled without confirmation." }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the deadline for filing the Balance Sheet with the RJSC?",
+        "acceptedAnswer": { "@type": "Answer", "text": "The audited Balance Sheet must be filed with the RJSC within 30 days of the AGM. This is filed online through the RJSC portal alongside the other annual return documents using the prescribed Form 1, and depends on the audit being completed and the AGM being held on schedule, which makes AGM timing itself a critical upstream dependency for meeting this deadline." }
+      },
+      {
+        "@type": "Question",
+        "name": "Should a company's official shareholder register be kept inside Odoo?",
+        "acceptedAnswer": { "@type": "Answer", "text": "No, not as the authoritative record. Odoo is not a statutory share registry system and does not enforce the legal formalities (share transfer approvals, board resolutions, statutory register formatting) that company law requires of an official share register. The recommended approach is to maintain the authoritative share register either in a dedicated company-secretarial tool or in a controlled manual register maintained by the company secretary, and to keep Odoo's Contacts records for shareholders reconciled against that authoritative source rather than treating Odoo itself as the register of record." }
+      },
+      {
+        "@type": "Question",
+        "name": "What company data should be reconciled before AGM season if a company runs Odoo?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Before each AGM, a company should reconcile: the Contacts records for all current directors and shareholders against the authoritative share register (catching any share transfers or director changes not yet reflected in either system), the audited financial figures in Odoo Accounting against the draft Balance Sheet the auditor is preparing, and any changes in registered office address, authorized signatories, or company particulars that need to be reflected in RJSC filings. Doing this reconciliation as a routine pre-AGM checklist item, rather than during the filing crunch itself, meaningfully reduces the risk of late or inaccurate RJSC submissions." }
+      }
+    ]
+  }
+]
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap">
+  <link rel="stylesheet" href="_styles.css">
+</head>
+<body>
+  <div class="grid-bg"></div>
+  <header class="nav">
+    <div class="shell">
+      <div class="nav-inner">
+        <a class="brand" href="../">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span class="brand-name"><b>Mehedi Hasan</b><em>ERP · Business Analyst</em></span>
+        </a>
+        <a class="back-link" href="../#lab">← Back to Lab</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="post-head">
+    <div class="shell">
+      <span class="eyebrow">Technical Lab · 0081</span>
+      <h1>RJSC filings aren't an Odoo feature: <span class="serif">they're a data readiness problem your ERP can solve.</span></h1>
+      <p class="lede">Every AGM season, someone asks a version of the same question: can Odoo just file our RJSC return for us. It can't, and no ERP will, because RJSC filing is a statutory legal act performed through the Registrar's own portal, not a system integration. What Odoo can do, if it is set up deliberately, is make sure the shareholder, director, and financial data those filings need is clean, current, and extractable in an afternoon instead of reconstructed from scratch every year.</p>
+      <div class="post-meta">
+        <span class="chip accent">Guide</span>
+        <span class="chip">RJSC</span>
+        <span class="chip">Company Secretarial</span>
+        <span class="chip">Bangladesh 2026</span>
+      </div>
+      <div class="byline">
+        <span>By<b><a href="https://www.linkedin.com/in/mehedi-hasan-consultant/" style="color:var(--accent)" rel="author">Mehedi Hasan</a></b></span>
+        <span>Published<b>September 2026</b></span>
+        <span>Read time<b>16 minutes</b></span>
+        <span>Form<b>Guide</b></span>
+        <span>Scope<b>Compliance / Data Governance</b></span>
+      </div>
+    </div>
+  </section>
+
+  <article class="post">
+    <aside class="toc">
+      <div class="toc-k">In this guide</div>
+      <ol>
+        <li><a href="#legal-basis">The legal basis: Section 36 and Schedule X</a></li>
+        <li><a href="#deadlines">The deadlines, and the ambiguity worth flagging</a></li>
+        <li><a href="#not-a-feature">Why this is not an Odoo feature request</a></li>
+        <li><a href="#what-data">What RJSC filings actually need</a></li>
+        <li><a href="#register-vs-odoo">Where the share register should live relative to Odoo</a></li>
+        <li><a href="#odoo-role">What Odoo should actually be responsible for</a></li>
+        <li><a href="#tagging">A practical tagging structure in Odoo Contacts</a></li>
+        <li><a href="#readiness-checklist">A pre-AGM data-readiness checklist</a></li>
+        <li><a href="#common-failures">Common failure patterns I see</a></li>
+        <li><a href="#outlook">Why this matters more as companies formalize</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ol>
+    </aside>
+
+    <div class="body">
+
+      <h2 id="legal-basis">The legal basis: Section 36 and Schedule X</h2>
+      <p>Under Section 36 of the Companies Act 1994, every company with share capital is required to submit an annual return to the Registrar of Joint Stock Companies and Firms (RJSC). This is not a discretionary corporate housekeeping task; it is a statutory obligation tied to the company's continued good standing, and persistent non-filing has real consequences for a company's legal status and for directors personally.</p>
+      <p>The specific document at the centre of this obligation is Schedule X, the annual summary of share capital and the list of shareholders and directors, which must be signed by two directors, including the Managing Director where the company has one. This is filed alongside the audited Balance Sheet, and both are submitted online through the RJSC portal using the prescribed Form 1. None of this is exotic to any company secretary in Bangladesh; it is one of the most routine recurring compliance events a company faces. What is less routine, in my experience advising Odoo clients, is how much of the underlying data these filings depend on is scattered across spreadsheets, paper share certificates, and institutional memory rather than sitting cleanly inside the systems the company already runs day to day.</p>
+
+      <div class="big-stat">
+        <div class="bs-val">21 / 30 Days</div>
+        <div class="bs-label">Post-AGM Filing Windows</div>
+        <div class="bs-note">Schedule X within 21 days of the AGM; the audited Balance Sheet within 30 days.</div>
+      </div>
+
+      <h2 id="deadlines">The deadlines, and the ambiguity worth flagging honestly</h2>
+      <p>Schedule X must be filed within 21 days of the AGM. The audited Balance Sheet must be filed within 30 days of the AGM. Those two figures are consistent across the sources I have checked and are the ones I use when advising clients on filing calendars.</p>
+      <p>Where I want to be candid rather than falsely precise: secondary sources discussing the general annual return filing window under Section 36 itself show genuine inconsistency, some cite 21 days from the AGM, others cite 28 days. I am not going to present one of these as settled fact when the sources I have available do not agree, and neither should any consultant advising a client on a statutory deadline with real penalty exposure attached. My advice to clients, and my advice here, is the same: treat the Schedule X (21 days) and Balance Sheet (30 days) deadlines as the two figures to plan around with confidence, and verify the general annual return window's exact day count directly with a practicing company secretary or against current RJSC guidance before treating a specific number as final, rather than relying on any single secondary source, including this article, for that particular figure.</p>
+
+      <div class="disclaimer">
+        <p><strong>Note:</strong> This article states the Schedule X (21 days) and Balance Sheet (30 days) post-AGM deadlines as given in the research underlying this piece. Where sources disagree on the general annual return filing window (21 vs. 28 days), that disagreement is stated plainly rather than resolved arbitrarily. Always confirm current exact deadlines with a company secretary before relying on any single source for a statutory filing date.</p>
+      </div>
+
+      <div class="timeline-track">
+        <div class="tl-node">
+          <div class="tl-date">AGM Day</div>
+          <div class="tl-title">Annual General Meeting held</div>
+          <div class="tl-body">Financial statements adopted, directors confirmed or changed, and the clock starts on multiple RJSC filing deadlines simultaneously.</div>
+        </div>
+        <div class="tl-node now">
+          <div class="tl-date">AGM + 21 days</div>
+          <div class="tl-title">Schedule X due</div>
+          <div class="tl-body">Annual summary of share capital and list of shareholders/directors, signed by two directors including the MD if applicable.</div>
+        </div>
+        <div class="tl-node future">
+          <div class="tl-date">AGM + 30 days</div>
+          <div class="tl-title">Balance Sheet due</div>
+          <div class="tl-body">Audited Balance Sheet filed online via the RJSC portal using Form 1.</div>
+        </div>
+      </div>
+
+      <h2 id="not-a-feature">Why this is not an Odoo feature request</h2>
+      <p>I get this question often enough to address it directly: no, Odoo does not have, and will not have, a button that files your RJSC annual return. This is worth stating plainly because I have seen implementation partners oversell "compliance modules" that imply more automation than actually exists. RJSC filing is a statutory act performed through the Registrar's own government portal, using the Registrar's own prescribed forms, typically prepared and submitted by a company secretary or a designated compliance officer. There is no public API, no data interchange standard, and no realistic integration path between a private company's ERP and a government registrar's filing system, and I would treat any vendor claiming otherwise with real skepticism.</p>
+      <p>What ERP software, including Odoo, legitimately contributes is entirely upstream of the filing act itself: making sure the data that goes into Schedule X and supports the Balance Sheet is accurate, current, and quick to extract, rather than something the finance team reconstructs under time pressure every AGM season. That reframing, from "can my ERP file this for me" to "is my ERP's data clean enough to make filing this easy," is the actual useful question, and it is the one this article is built around.</p>
+
+      <h2 id="what-data">What RJSC filings actually need</h2>
+      <p>Breaking Schedule X and the Balance Sheet down into their underlying data requirements:</p>
+
+      <table>
+        <thead>
+          <tr><th>RJSC filing element</th><th>Underlying data required</th><th>Natural source</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Share capital summary</td><td>Total authorized and paid-up capital, share classes, par value</td><td>Statutory share register (not Odoo)</td></tr>
+          <tr><td>List of shareholders</td><td>Current shareholder names, addresses, shareholding percentages, any transfers during the year</td><td>Statutory share register, reconciled against Odoo Contacts</td></tr>
+          <tr><td>List of directors</td><td>Current directors, any appointments or resignations during the year, MD designation</td><td>Board resolutions, reconciled against Odoo Contacts / HR</td></tr>
+          <tr><td>Audited Balance Sheet</td><td>Finalized, auditor-signed financial position as at year end</td><td>Odoo Accounting, reconciled with the external auditor</td></tr>
+        </tbody>
+      </table>
+
+      <p>Notice that the two items most prone to going stale, the shareholder list and the director list, do not naturally live inside standard Odoo Accounting or Contacts workflows unless someone deliberately maintains them there. A share transfer between two existing shareholders, or the appointment of a new director mid-year, does not automatically appear in Odoo unless someone updates the relevant Contacts records and tags at the time the change happens, which is exactly the kind of administrative housekeeping that gets deferred under day-to-day operating pressure and then discovered as a gap right before an AGM.</p>
+
+      <h2 id="register-vs-odoo">Where the share register should live relative to Odoo</h2>
+      <p>This is the point I push back on hardest when a client proposes building their statutory share register as a custom Odoo model. Odoo is not, and should not be treated as, a statutory share registry system. A proper share register carries legal formalities, board approval trails for transfers, prescribed formatting, and evidentiary weight in disputes, that a general-purpose ERP's custom field structure was never designed to enforce or preserve. Building it as an ad hoc Odoo customization creates the appearance of a system of record without the legal rigor an actual share register requires, which is arguably worse than an honestly-labeled Excel register maintained carefully by a company secretary, because it invites false confidence.</p>
+
+      <div class="tip-box">
+        <div class="tlabel">Practical Note</div>
+        <p>My standard recommendation: keep the authoritative share register either with the company secretary in a dedicated register (physical or a purpose-built company-secretarial tool, not general ERP customization), and use Odoo's Contacts app purely as an operational reflection of who the current shareholders and directors are, tagged clearly, for purposes like correspondence, dividend processing if applicable, and internal reporting. Reconcile the two periodically, at minimum before every AGM, rather than trying to make one system serve both the operational and statutory purposes simultaneously.</p>
+      </div>
+
+      <h2 id="odoo-role">What Odoo should actually be responsible for</h2>
+      <p>Given that framing, the legitimate scope of Odoo's contribution to RJSC readiness is threefold. First, maintaining accurate, tagged Contacts records for current directors and shareholders, updated at the time of any change rather than reconstructed later, which requires a simple internal process discipline (whoever handles a share transfer or board appointment also updates the relevant Odoo Contact record the same week) more than any technical configuration. Second, keeping Odoo Accounting's chart of accounts and closing process disciplined enough that the year-end trial balance handed to the auditor is clean and does not require weeks of adjustment before the Balance Sheet can be finalized, which is exactly the foundational bookkeeping discipline covered in <a href="0014-odoo-accounting-setup-bangladesh" style="color:var(--accent)">Odoo Accounting Setup for Bangladesh</a>. Third, making sure withholding tax and other statutory obligations that feed into the audited financial position, covered for AIT specifically in <a href="0071-ait-income-tax-withholding-odoo-bangladesh" style="color:var(--accent)">AIT Withholding Tax Configuration in Odoo Bangladesh</a>, are properly recorded during the year rather than discovered as reconciling items during the audit itself.</p>
+      <p>None of this is glamorous work, and none of it will ever appear as a feature on an Odoo pricing page. It is the unglamorous data hygiene that determines whether AGM season is a two-day data pull or a three-week fire drill, and in my experience the difference between those two outcomes is almost entirely about whether this housekeeping happened consistently throughout the year rather than whether the company owns better software.</p>
+
+      <h2 id="tagging">A practical tagging structure in Odoo Contacts</h2>
+      <p>For clients who want a concrete starting point rather than an abstract principle, here is the tagging structure I actually set up in Odoo's Contacts app for this purpose. Create dedicated contact tags for "Shareholder" and "Director" under Contacts > Configuration > Contact Tags, and apply them to the relevant individual or company contact records. For shareholders, add custom fields (via Studio, or simple free-text fields if Studio isn't licensed) capturing shareholding percentage and share class, updated whenever a transfer is confirmed with the company secretary, not estimated from memory. For directors, tag the record with appointment date and, where applicable, an end date for resignations, so a simple filtered list view at any point in time shows exactly who the current board is without cross-referencing separate board minutes.</p>
+      <p>This does not replace the authoritative share register, and I say that again deliberately because it is the point most likely to get lost in translation between a consultant and a client eager to consolidate everything into one system. It gives the finance and compliance team a live, queryable operational view that should match the register, and any mismatch discovered during a periodic reconciliation is a signal that either the register or the Odoo tagging fell behind, worth investigating immediately rather than at the next AGM under filing pressure. A saved filter or a simple dashboard view built on these tags turns "who are our current shareholders and directors" from a question that requires phone calls into a query that takes thirty seconds, which is precisely the kind of unglamorous configuration work that makes RJSC season materially less stressful without touching the filing process itself.</p>
+
+      <h2 id="readiness-checklist">A pre-AGM data-readiness checklist</h2>
+      <ul class="task-list">
+        <li>Reconcile Odoo Contacts records for shareholders against the authoritative share register, checking for any transfers not yet reflected. <span class="task-meta">4-6 weeks before AGM</span></li>
+        <li>Confirm current director list in Odoo matches board resolutions on file for any appointments or resignations during the year. <span class="task-meta">4-6 weeks before AGM</span></li>
+        <li>Close the books in Odoo Accounting and hand a clean trial balance to the auditor with minimal adjusting entries expected. <span class="task-meta">6-8 weeks before AGM</span></li>
+        <li>Confirm registered office address and other company particulars are current for the RJSC filing. <span class="task-meta">2-3 weeks before AGM</span></li>
+        <li>Verify who is authorized to sign Schedule X (two directors, including the MD if applicable) and confirm their availability around the filing deadline. <span class="task-meta">2-3 weeks before AGM</span></li>
+        <li>Calendar the Schedule X (AGM + 21 days) and Balance Sheet (AGM + 30 days) deadlines immediately after the AGM date is confirmed. <span class="task-meta">Day of AGM</span></li>
+      </ul>
+
+      <h2 id="common-failures">Common failure patterns I see</h2>
+      <p>The most common failure pattern is not fraud or negligence, it is simple data drift. A company issues new shares to an investor mid-year, everyone in the room knows about it, the bank account reflects the new capital inflow, but nobody updates the Contacts record or the internal shareholder tracking, and eight months later, preparing Schedule X, the finance team is not entirely sure whether the new investor's shareholding percentage was calculated correctly relative to a stale total. A close second is director changes: a board seat changes hands, the outgoing director's Odoo user access might even get correctly revoked for security reasons, but the company-secretarial side of removing them from filings and updating RJSC records lags behind because it sits with a different person than the one managing Odoo access.</p>
+      <p>The underlying pattern in both cases is the same: the operational system (Odoo) and the legal system of record (the share register, board minutes) drift apart because nobody owns the reconciliation between them as an explicit, recurring task. Assigning that reconciliation to a named person, usually whoever is closest to both the finance function and the company secretary relationship, and running it on a quarterly cadence rather than only before an AGM, is the single highest-leverage fix I recommend, tying naturally into the broader business-case discipline covered in <a href="0044-erp-business-case-bangladesh" style="color:var(--accent)">How to Build a Business Case for Odoo ERP in Bangladesh</a>, where data governance ownership is consistently one of the most underestimated implementation costs.</p>
+
+      <h2 id="outlook">Why this matters more as companies formalize</h2>
+      <p>RJSC compliance discipline tends to matter more, not less, as a Bangladesh company grows past its founding generation, brings in outside investors, or prepares for a transaction (acquisition, private equity investment, or eventual listing) where due diligence will scrutinize exactly the shareholder and director history that sloppy RJSC filing hygiene leaves murky. A company that has kept clean, reconciled records year over year sails through that due diligence. A company that has treated RJSC filing as an annual scramble discovers, often at the worst possible moment in a transaction timeline, that its own shareholding history has gaps or inconsistencies that take weeks to untangle. Building the reconciliation discipline described in this article now is cheap. Reconstructing years of drifted records under deal-timeline pressure is not.</p>
+
+      <p>This is a genuinely underrated area of ERP consulting work in Bangladesh, precisely because it produces no visible dashboard and no dramatic before-and-after demo. Its value shows up only in the counterfactual: the AGM season that was calm instead of chaotic, the due diligence request that took a day instead of three weeks, the filing that went in on time because nobody had to first figure out who actually owns what. That is a harder story to sell than a new module, but it is often the more valuable engagement for a company that has been running Odoo for years without ever revisiting its company-secretarial data hygiene.</p>
+
+      <div class="callout">
+        <span class="tag">Company-Secretarial Data Review</span>
+        <p>If your AGM season involves scrambling to reconstruct shareholder and director records that should already be clean in your systems, I can help you set up a reconciliation process between Odoo and your authoritative share register, so RJSC filing becomes a routine data pull rather than an annual fire drill. <a href="../#contact" style="color:var(--accent)">Contact me for a review →</a></p>
+      </div>
+
+      <h2 id="faq">Frequently asked questions</h2>
+
+      <h3>Can Odoo file RJSC annual returns directly?</h3>
+      <p>No. Odoo has no RJSC filing feature and no connector to the RJSC online portal. RJSC annual returns, Schedule X, and the Balance Sheet are filed manually through the RJSC's own portal using the prescribed Form 1, typically by a company secretary or the filing company's compliance team. Odoo's role is upstream: keeping the underlying data (shareholder and director records, audited financial figures) clean and readily extractable so preparing those filings does not require reconstructing information from scratch each AGM season.</p>
+
+      <h3>What is the deadline for filing Schedule X with the RJSC after an AGM?</h3>
+      <p>Schedule X, the annual summary of share capital and the list of shareholders and directors, must be filed within 21 days of the AGM, signed by two directors including the Managing Director if the company has one. Note that secondary sources show genuine inconsistency about whether the general annual return filing window under Section 36 is 21 or 28 days from the AGM; businesses should verify the current exact deadline with a company secretary or directly against current RJSC guidance rather than treat either figure as settled without confirmation.</p>
+
+      <h3>What is the deadline for filing the Balance Sheet with the RJSC?</h3>
+      <p>The audited Balance Sheet must be filed with the RJSC within 30 days of the AGM. This is filed online through the RJSC portal alongside the other annual return documents using the prescribed Form 1, and depends on the audit being completed and the AGM being held on schedule, which makes AGM timing itself a critical upstream dependency for meeting this deadline.</p>
+
+      <h3>Should a company's official shareholder register be kept inside Odoo?</h3>
+      <p>No, not as the authoritative record. Odoo is not a statutory share registry system and does not enforce the legal formalities (share transfer approvals, board resolutions, statutory register formatting) that company law requires of an official share register. The recommended approach is to maintain the authoritative share register either in a dedicated company-secretarial tool or in a controlled manual register maintained by the company secretary, and to keep Odoo's Contacts records for shareholders reconciled against that authoritative source rather than treating Odoo itself as the register of record.</p>
+
+      <h3>What company data should be reconciled before AGM season if a company runs Odoo?</h3>
+      <p>Before each AGM, a company should reconcile: the Contacts records for all current directors and shareholders against the authoritative share register (catching any share transfers or director changes not yet reflected in either system), the audited financial figures in Odoo Accounting against the draft Balance Sheet the auditor is preparing, and any changes in registered office address, authorized signatories, or company particulars that need to be reflected in RJSC filings. Doing this reconciliation as a routine pre-AGM checklist item, rather than during the filing crunch itself, meaningfully reduces the risk of late or inaccurate RJSC submissions.</p>
+
+    </div>
+  </article>
+
+  <footer>
+    <div class="shell">
+      <div class="post-foot">
+        <span class="eyebrow">Continue exploring</span>
+        <div class="next">
+          <a class="next-card" href="0080-cyber-security-ordinance-critical-infrastructure-odoo-bangladesh">
+            <span class="dir">Older · 0080</span>
+            <h4>Cyber Security Ordinance 2025 & ERP Hosting Bangladesh</h4>
+            <p>What CII rules mean for where and how you host your Odoo ERP.</p>
+            <span class="arrow">→</span>
+          </a>
+          <a class="next-card" href="../#lab">
+            <span class="dir">All articles</span>
+            <h4>Back to Lab Index</h4>
+            <p>Browse all guides on Odoo ERP, manufacturing operations, and business analysis in Bangladesh.</p>
+            <span class="arrow">→</span>
+          </a>
+        </div>
+      </div>
+      <div class="foot">
+        <span>© 2026 Mehedi Hasan · Lab / 0081</span>
+        <span><a href="../#lab">↑ Back to lab index</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="_utils.js" defer></script>
+  <script src="_toc.js" defer></script>
+  <script src="/whatsapp.js" defer></script>
+  <script src="/scroll-top.js" defer></script>
+</body>
+</html>

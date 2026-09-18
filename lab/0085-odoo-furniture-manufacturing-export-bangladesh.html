@@ -1,0 +1,366 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description"
+    content="Odoo ERP for Bangladesh furniture manufacturers: timber/board costing, custom order BOMs, finishing routing, and EUDR-ready wood traceability for export." />
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="Mehedi Hasan" />
+  <title>Odoo for Furniture Manufacturing & Export Bangladesh | Mehedi Hasan</title>
+  <link rel="canonical" href="https://mhasan.me/lab/0085-odoo-furniture-manufacturing-export-bangladesh" />
+  <link rel="alternate" hreflang="en" href="https://mhasan.me/lab/0085-odoo-furniture-manufacturing-export-bangladesh" />
+  <link rel="alternate" hreflang="x-default" href="https://mhasan.me/lab/0085-odoo-furniture-manufacturing-export-bangladesh" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png" />
+  <!-- Open Graph -->
+  <meta property="og:title" content="Odoo for Furniture Manufacturing & Export Bangladesh | Mehedi Hasan" />
+  <meta property="og:description"
+    content="Odoo ERP for Bangladesh furniture manufacturers: timber/board costing, custom order BOMs, finishing routing, and EUDR-ready wood traceability for export." />
+  <meta property="og:url" content="https://mhasan.me/lab/0085-odoo-furniture-manufacturing-export-bangladesh" />
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="https://mhasan.me/assets/og-default.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:site_name" content="Mehedi Hasan | Odoo ERP Consultant" />
+  <meta property="article:author" content="https://www.linkedin.com/in/mehedi-hasan-consultant/" />
+  <meta property="article:published_time" content="2026-09-18T14:00:00+06:00" />
+  <meta property="article:modified_time" content="2026-09-18T14:00:00+06:00" />
+  <meta property="article:section" content="Odoo ERP Bangladesh" />
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Odoo for Furniture Manufacturing & Export Bangladesh | Mehedi Hasan" />
+  <meta name="twitter:description"
+    content="Odoo ERP for Bangladesh furniture manufacturers: timber/board costing, custom order BOMs, finishing routing, and EUDR-ready wood traceability for export." />
+  <meta name="twitter:image" content="https://mhasan.me/assets/og-default.jpg" />
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Odoo for Furniture Manufacturing & Export Bangladesh",
+    "description": "Odoo ERP for Bangladesh furniture manufacturers: timber/board costing, custom order BOMs, finishing routing, and EUDR-ready wood traceability for export.",
+    "datePublished": "2026-09-18T14:00:00+06:00",
+    "dateModified": "2026-09-18T14:00:00+06:00",
+    "author": {
+      "@type": "Person",
+      "name": "Mehedi Hasan",
+      "url": "https://mhasan.me",
+      "jobTitle": "Odoo ERP Consultant & Business Analyst",
+      "sameAs": "https://www.linkedin.com/in/mehedi-hasan-consultant/"
+    },
+    "publisher": { "@type": "Person", "name": "Mehedi Hasan", "url": "https://mhasan.me" },
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://mhasan.me/lab/0085-odoo-furniture-manufacturing-export-bangladesh" }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://mhasan.me" },
+      { "@type": "ListItem", "position": 2, "name": "Lab", "item": "https://mhasan.me/lab/" },
+      { "@type": "ListItem", "position": 3, "name": "Odoo for Furniture Manufacturing & Export Bangladesh", "item": "https://mhasan.me/lab/0085-odoo-furniture-manufacturing-export-bangladesh" }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How do you cost timber and board materials in Odoo for furniture manufacturing?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Timber and engineered board (MDF, particle board, plywood) should be tracked with Lot/Serial tracking under Inventory > Configuration > Settings > Traceability, with each incoming consignment recorded as a distinct lot carrying wood species, moisture content, and supplier or forest source. Solid timber cost varies significantly by species (mango wood and rubberwood are common lower-cost domestic species, while imported oak or teak-faced board commands a premium) and by moisture content, since improperly dried timber that later warps or cracks in the finished product creates a rework or rejection cost that a flat per-cubic-foot cost figure hides. Recording actual landed cost per lot, including import duty on imported board where applicable, lets Odoo's standard costing reflect what a specific batch actually cost rather than an average across species and sources."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How should custom, made-to-order furniture BOMs be structured in Odoo?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Because a large share of furniture, especially higher-value solid wood pieces sold through showrooms or made to a specific export buyer's drawing, is built to individual customer specification rather than produced repetitively to stock, the BOM structure should favor kit-style and Make-to-Order (MTO) BOMs over fixed standard BOMs. A base template BOM captures the common structural components and standard hardware, while dimension, wood species, and finish are handled as variant attributes or order-specific BOM line overrides created at the Sales Order stage, generating a Manufacturing Order under the MTO route rather than drawing from a forecasted standard product. This keeps repeat-selling standard lines efficient to produce while still capturing the true one-off material list and cost for a fully custom piece."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What EUDR wood traceability data does an Odoo setup need to capture for furniture exporters?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The EU Deforestation Regulation (EUDR) requires that wood-derived products placed on the EU market, including furniture, be accompanied by a due diligence statement confirming the wood is deforestation-free and legally harvested, supported by geolocation data for the plot of production. In Odoo, this means every timber and board lot needs to carry, at minimum, species, country and (where required) plot-level geolocation of harvest, harvest or purchase date, and supplier legality documentation attached as a document to the purchase order or lot record, so that this data can be pulled per finished-goods lot when generating the due diligence statement for a specific export shipment, rather than reconstructed from paper supplier invoices under shipment deadline pressure."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "When does EUDR apply to Bangladesh furniture exporters?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The EU Deforestation Regulation applies to large and medium operators and traders placing relevant wood-derived products on the EU market from December 2026, with a later compliance date of June 2027 for micro and small enterprises. Bangladesh furniture exporters selling to EU buyers, directly or through EU-based importers who bear ultimate compliance responsibility, should expect EU buyers to start requesting due diligence-ready traceability data well before their applicable deadline, since buyers need lead time to build supply-chain-wide compliance and will favor suppliers who can already produce the required data over those who cannot."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you route the finishing stages (cutting, assembly, staining, upholstery) of furniture production in Odoo?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Each distinct process stage, cutting and machining, assembly, sanding, staining or painting/finishing, and upholstery where applicable, is set up as its own work center under Manufacturing > Configuration > Work Centers with its own labor and material consumption profile. Upholstery in particular consumes a distinct material set (fabric or leather, foam, webbing) that should be tracked on its own BOM lines rather than folded into the wood-frame BOM, since fabric consumption is typically costed by running meter or square meter and varies by piece size and style independent of the wood frame's cost, and separating these lines is what lets a factory see whether a margin problem on an upholstered piece originates in the frame or the covering material."
+        }
+      }
+    ]
+  }
+]
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap">
+  <link rel="stylesheet" href="_styles.css">
+  <style>
+    .path-tag { font-family: var(--mono); font-size: 12.5px; background: var(--elev); border: 1px solid var(--border); border-radius: 5px; padding: 2px 8px; color: var(--text); }
+  </style>
+</head>
+
+<body>
+  <div class="grid-bg"></div>
+
+  <header class="nav">
+    <div class="shell">
+      <div class="nav-inner">
+        <a class="brand" href="../">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span class="brand-name"><b>Mehedi Hasan</b><em>ERP · Business Analyst</em></span>
+        </a>
+        <a class="back-link" href="../#lab">← Back to Lab</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="post-head">
+    <div class="shell">
+      <span class="eyebrow">Technical Lab · 0085</span>
+      <h1>Odoo for Bangladesh's <span class="serif">furniture manufacturing & export sector.</span></h1>
+      <p class="lede">Furniture manufacturing in Bangladesh spans everything from solid-wood showroom pieces built one at a time to a customer's specification, to engineered-board (MDF and particle board) production lines making repeatable modular units, to a growing export segment shipping to EU and North American buyers. The ERP challenge cuts across all three: timber is a variable natural material like leather or clay, custom orders break the standard-BOM assumption most manufacturing ERPs are built around, and EU buyers are about to require deforestation-free wood traceability that most Bangladesh factories have never had to produce. This guide covers all three, with particular depth on what EUDR actually requires.</p>
+      <div class="post-meta">
+        <span class="chip accent">Guide</span>
+        <span class="chip">Furniture</span>
+        <span class="chip">Export Compliance</span>
+      </div>
+      <div class="byline">
+        <span>By<b><a href="https://www.linkedin.com/in/mehedi-hasan-consultant/" style="color:var(--accent)" rel="author">Mehedi Hasan</a></b></span>
+        <span>Published<b>September 2026</b></span>
+        <span>Read time<b>18 minutes</b></span>
+        <span>Form<b>Guide</b></span>
+        <span>Scope<b>Odoo Manufacturing / Furniture Sector</b></span>
+      </div>
+    </div>
+  </section>
+
+  <article class="post">
+    <aside class="toc">
+      <div class="toc-k">In this guide</div>
+      <ol>
+        <li><a href="#sector">Bangladesh's Furniture Manufacturing Sector</a></li>
+        <li><a href="#material-costing">Timber & Board Material Costing</a></li>
+        <li><a href="#custom-bom">Custom Order BOMs: MTO vs Standard</a></li>
+        <li><a href="#finishing">Finishing Routing: Cutting to Upholstery</a></li>
+        <li><a href="#eudr">EUDR: What Furniture Exporters Must Prepare For</a></li>
+        <li><a href="#documentation">Export Documentation & Buyer Compliance</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ol>
+    </aside>
+
+    <div class="body">
+
+      <h2 id="sector">Bangladesh's Furniture Manufacturing Sector</h2>
+      <p>Bangladesh's furniture industry has grown from a domestic, largely informal trade centered on Dhaka's Hatirpool and Karwan Bazar furniture markets into a segment with genuine industrial manufacturers (Otobi, Hatil, Partex Furniture, Regal Furniture, Brothers Furniture) and a smaller but growing export segment shipping ready-to-assemble and solid wood pieces to buyers in the EU, UK, Middle East, and North America. The sector runs on two structurally different material bases: solid wood, sourced domestically (mango wood, rubberwood, and mahogany from plantation and social forestry sources, since natural forest timber harvesting is tightly restricted) or imported (oak, teak-faced veneer, pine), and engineered board (MDF, particle board, plywood), largely imported from countries including Malaysia, Indonesia, India, and China, used heavily in the modular and RTA (ready-to-assemble) furniture segment that has grown fastest with urban apartment living in Dhaka and Chattogram.</p>
+      <p>The ERP problem this creates has three separate layers. First, material cost and quality genuinely varies by wood species, moisture content, and source in a way a generic "wood" stock item cannot capture, a challenge structurally similar to the hide-grading problem covered in <a href="0066-odoo-leather-footwear-manufacturing-bangladesh" style="color:var(--accent)">Odoo for Leather & Footwear Manufacturing Bangladesh</a>. Second, a meaningful share of furniture, particularly higher-value solid wood pieces, is built to individual order rather than produced repetitively to stock, which breaks the standard-BOM, standard-routing assumption that most manufacturing ERP guidance (including the general routing concepts in <a href="0038-odoo-manufacturing-routing-bangladesh" style="color:var(--accent)">Odoo Manufacturing Routing Bangladesh</a>) is written around. Third, and increasingly urgent, EU buyers are moving toward a hard deforestation-free traceability requirement that most Bangladesh furniture exporters have not previously had to document at all.</p>
+
+      <div class="stat-row">
+        <div class="stat-card">
+          <div class="sc-val">Dec 2026</div>
+          <div class="sc-label">EUDR Deadline</div>
+          <div class="sc-note">Applicable date for large and medium operators placing wood products on the EU market</div>
+        </div>
+        <div class="stat-card">
+          <div class="sc-val">Jun 2027</div>
+          <div class="sc-label">Small Enterprise Deadline</div>
+          <div class="sc-note">Later applicable date for micro and small operators and traders</div>
+        </div>
+        <div class="stat-card">
+          <div class="sc-val">2 material bases</div>
+          <div class="sc-label">Solid Wood + Board</div>
+          <div class="sc-note">Most factories run both material types simultaneously, each needing different tracking logic</div>
+        </div>
+      </div>
+
+      <p>Domestic timber sourcing in Bangladesh also carries its own legality layer worth building into an ERP's supplier records from the start: mango wood and rubberwood, the two dominant lower-cost domestic species, are grown as agricultural and plantation crops (mango wood typically comes from orchards past productive fruiting age, rubberwood from rubber plantations after latex-tapping life ends) rather than harvested from natural forest, which is precisely the distinction a buyer's or auditor's due diligence process will want documented, since it is what separates a legitimate agricultural byproduct supply chain from a natural-forest sourcing risk. Recording this source category on the vendor record, alongside the plot or estate of origin where it is known, turns a fact the factory owner already knows informally into a data point the ERP can actually produce on request.</p>
+
+      <h2 id="material-costing">Timber & Board Material Costing</h2>
+      <p>Wood is a natural material, and the same species from different sources, or even different consignments from the same source, can carry meaningfully different moisture content, grain quality, and defect rate, all of which affect both cost and the finished product's dimensional stability (poorly kiln-dried timber that has not reached equilibrium moisture content is the single most common cause of warping and joint failure discovered months after a piece has shipped, well past the point where the cause can be traced back without records). Engineered board is more consistent batch to batch but still varies by supplier and by grade (interior versus exterior/moisture-resistant MDF, different core densities in particle board), and its cost is directly exposed to import duty and freight movement since the overwhelming majority is imported.</p>
+      <p>The correct Odoo configuration enables Lot/Serial tracking under <span class="path-tag">Inventory > Configuration > Settings > Traceability</span> on both material families, with each incoming consignment recorded as its own lot carrying species (for solid wood), moisture content, thickness/grade (for board), and source. Landed cost, recorded through <span class="path-tag">Inventory > Configuration > Landed Costs</span>, should include import duty and freight for imported board and veneer so a finished piece's true material cost reflects what that specific batch actually cost to bring in, not a blended average that hides a duty rate change or a freight cost spike from a particular shipment.</p>
+
+      <div class="tip-box">
+        <div class="tlabel">Practical Shortcut</div>
+        <p>Most Bangladesh furniture factories do not need moisture-meter readings logged for every single board, but they absolutely benefit from recording moisture content at the lot level for kiln-dried solid timber, since this single data point is the leading indicator for warranty claims and rework months down the line. Capture it once at receiving, store it on the lot, and the traceability is already in place if a quality issue ever needs to be traced back.</p>
+      </div>
+
+      <h2 id="custom-bom">Custom Order BOMs: MTO vs Standard</h2>
+      <p>Furniture sits at an unusual point on the make-to-stock versus make-to-order spectrum: modular and RTA lines (a specific wardrobe or bookshelf model sold repeatedly through showrooms) behave like conventional repetitive manufacturing and fit standard BOMs well, while solid wood showroom pieces and, especially, export orders built to a specific buyer's drawing (custom dimensions, custom wood species selection, custom finish and hardware) do not. Forcing the custom side of the business through the same fixed-BOM logic as the standard side is the most common furniture ERP misconfiguration, and it produces exactly the failure mode you would expect: inaccurate costing on every custom job, because the BOM the system is costing against is not the BOM that was actually built.</p>
+      <p>The fix is to run both models side by side deliberately. Standard, repeat-selling products keep conventional BOMs and a make-to-stock or make-to-order-from-forecast route. Custom pieces are handled through Odoo's Make-to-Order (MTO) route triggered directly from the Sales Order, with a kit-style base BOM (capturing common structural elements and standard hardware, configured under <span class="path-tag">Manufacturing > Products > Bills of Materials</span>) that a production planner or sales engineer overrides with order-specific dimensions, wood species selection, and finish at the point of order confirmation. This keeps the setup effort proportional: standard lines stay efficient and low-maintenance, while custom orders get a BOM that actually reflects what will be cut and assembled, which is what makes the resulting cost and margin figures trustworthy.</p>
+
+      <div class="feature-grid">
+        <div class="feature-card">
+          <div class="fc-icon">01</div>
+          <div class="fc-body">
+            <h4>Kit-style base BOM</h4>
+            <p>Captures common structural components and standard hardware shared across a product family, regardless of final custom dimensions.</p>
+          </div>
+        </div>
+        <div class="feature-card">
+          <div class="fc-icon">02</div>
+          <div class="fc-body">
+            <h4>Order-specific overrides</h4>
+            <p>Dimension, wood species, and finish are set per Sales Order, generating an accurate one-off Manufacturing Order BOM rather than a generic estimate.</p>
+          </div>
+        </div>
+        <div class="feature-card">
+          <div class="fc-icon">03</div>
+          <div class="fc-body">
+            <h4>MTO route from Sales Order</h4>
+            <p>Custom jobs trigger production directly from the confirmed order rather than drawing against forecasted standard stock.</p>
+          </div>
+        </div>
+        <div class="feature-card">
+          <div class="fc-icon">04</div>
+          <div class="fc-body">
+            <h4>Per-order actual costing</h4>
+            <p>Actual material and labor booked against the specific Manufacturing Order produces a true job margin, not a standard-cost approximation.</p>
+          </div>
+        </div>
+      </div>
+
+      <h2 id="finishing">Finishing Routing: Cutting to Upholstery</h2>
+      <p>Furniture production runs through a distinct sequence of process stages, each with its own labor profile and material consumption pattern, and each should be modeled as its own work center under <span class="path-tag">Manufacturing > Configuration > Work Centers</span> rather than collapsed into a single generic "production" step.</p>
+
+      <div class="timeline-track">
+        <div class="tl-node">
+          <div class="tl-date">Stage 1</div>
+          <div class="tl-title">Cutting & machining</div>
+          <div class="tl-body">Timber and board are cut to dimension, routed, and drilled. Offcut and scrap rates here are a direct function of cutting plan efficiency, similar in principle to leather cutting yield.</div>
+        </div>
+        <div class="tl-node">
+          <div class="tl-date">Stage 2</div>
+          <div class="tl-title">Assembly</div>
+          <div class="tl-body">Frame and structural components are joined (joinery, screws, dowels, or knock-down fittings for RTA lines).</div>
+        </div>
+        <div class="tl-node">
+          <div class="tl-date">Stage 3</div>
+          <div class="tl-title">Sanding</div>
+          <div class="tl-body">Surface preparation before finishing, a labor-intensive stage whose time consumption varies significantly by piece complexity.</div>
+        </div>
+        <div class="tl-node">
+          <div class="tl-date">Stage 4</div>
+          <div class="tl-title">Staining, painting & finishing</div>
+          <div class="tl-body">Chemical finish application (stain, lacquer, or paint), consuming finishing chemicals costed and tracked separately from the wood substrate.</div>
+        </div>
+        <div class="tl-node">
+          <div class="tl-date">Stage 5</div>
+          <div class="tl-title">Upholstery (where applicable)</div>
+          <div class="tl-body">Fabric or leather, foam, and webbing are applied to seating and soft furniture, consuming a materially different cost profile from the wood frame.</div>
+        </div>
+      </div>
+
+      <p>Upholstery deserves particular attention in BOM design because its material consumption (fabric or leather by running meter or square meter, foam by volume) scales with piece size and style independent of the wood frame cost beneath it, and factories that lump upholstery material cost into a single "finishing materials" line lose the ability to see whether a margin problem on a sofa or armchair originates in the frame, the covering fabric, or the labor time. Keeping upholstery on its own BOM lines, with fabric consumption tracked by the running meter figure a cutting pattern actually requires, is a small setup discipline that pays off directly the first time a fabric cost increase needs to be passed through to pricing on specific SKUs rather than an entire product range.</p>
+
+      <h2 id="eudr">EUDR: What Furniture Exporters Must Prepare For</h2>
+      <p>The EU Deforestation Regulation (EUDR) is the single most consequential compliance change facing Bangladesh's furniture export segment in the next two years, and it deserves treatment on its own rather than as a footnote to general export documentation. EUDR requires that operators and traders placing relevant commodities, timber and wood-derived products including furniture among them, on the EU market demonstrate the product is deforestation-free (not produced on land deforested after December 2020) and produced in compliance with the country of production's relevant laws, backed by a due diligence statement that includes geolocation coordinates for the plot or plots of production.</p>
+
+      <div class="stat-row">
+        <div class="stat-card">
+          <div class="sc-val">Dec 2026</div>
+          <div class="sc-label">Large/Medium Operators</div>
+          <div class="sc-note">EUDR applicable date for larger operators and traders</div>
+        </div>
+        <div class="stat-card">
+          <div class="sc-val">Jun 2027</div>
+          <div class="sc-label">Micro/Small Operators</div>
+          <div class="sc-note">Later applicable date for micro and small enterprises</div>
+        </div>
+        <div class="stat-card">
+          <div class="sc-val">Dec 2020</div>
+          <div class="sc-label">Deforestation Cutoff</div>
+          <div class="sc-note">Wood harvested from land deforested after this date does not qualify, regardless of when it was processed</div>
+        </div>
+      </div>
+
+      <p>For a Bangladesh exporter, the practical implication is that every timber or board input entering an EU-bound finished product needs species, country of harvest, and, where the regulation requires it for the specific supply chain, plot-level geolocation data attached to the purchase record, plus supplier documentation confirming legal harvest. This is exactly the data structure the lot-tracking configuration described above already produces, provided the lot record is extended to capture geolocation and legality documentation as attachments rather than stopping at species and moisture content. Structured this way, generating a due diligence statement for a specific export shipment becomes a matter of pulling the finished-goods lot's full genealogy back through the BOM chain to its constituent timber and board lots, the same traceability discipline covered for rubber wood and other wood-derived exports in <a href="0079-eudr-odoo-traceability-rubber-wood-furniture-bangladesh" style="color:var(--accent)">EUDR & Odoo Traceability for Rubber, Wood & Furniture Bangladesh</a>, rather than a frantic manual reconstruction of supplier paperwork once a buyer's compliance team asks for it with a shipment deadline already looming.</p>
+
+      <div class="pull">EUDR does not ask whether your furniture is well made. It asks whether you can prove, plot by plot, where the wood came from. Most Bangladesh exporters cannot answer that question today, and the buyers who will ask it are not waiting for the deadline to start asking.</div>
+
+      <p>Buyers are not waiting for the regulation's applicable date to start filtering suppliers. EU importers carry ultimate legal responsibility under EUDR, which means they have every incentive to shift toward suppliers who can already produce clean due diligence data well ahead of December 2026, and away from suppliers who would force the importer to chase documentation at the last minute. A Bangladesh furniture exporter that can generate this data on request today, even informally, ahead of most competitors, has a genuine and immediate commercial advantage in EU buyer conversations, independent of whether the specific buyer has formally required it yet.</p>
+
+      <h2 id="documentation">Export Documentation & Buyer Compliance</h2>
+      <p>Beyond EUDR specifically, furniture exporters carry the same general export documentation load as other Bangladesh manufacturing exporters (commercial invoice, packing list, certificate of origin, and bill of lading through Chattogram or, increasingly, Mongla port), plus buyer-specific requirements that vary by market: FSC (Forest Stewardship Council) chain-of-custody certification is increasingly requested for solid wood pieces sold through European retailers even independent of EUDR, and some buyers require fumigation certificates for wood packaging materials under ISPM 15 rules. None of this documentation load is itself an ERP function, but each piece is generated from data the ERP already holds (product specification, wood source, shipment details) if that data is captured cleanly at the point of purchase and production rather than assembled after the fact from scattered paper records, which is the same operating principle behind every traceability-driven compliance requirement covered across this site's export-sector guides.</p>
+
+      <p>It is also worth being direct with clients about what Odoo does and does not do here: it is not a certification body, it will not itself verify that a supplier's legality claim is true, and it cannot substitute for an actual FSC chain-of-custody audit or a genuine due diligence risk assessment. What it does is remove the operational excuse for not having the data ready. Once species, source, and documentation are captured once at receiving and carried automatically through the BOM chain to the finished lot, a factory has no remaining reason to be scrambling for paperwork when a buyer's compliance team or an EU customs authority actually asks for it.</p>
+
+      <div class="callout">
+        <span class="tag">Furniture Export & EUDR Readiness Consultation</span>
+        <p>If your furniture factory is still costing custom orders against a generic BOM, treating every wood species as interchangeable stock, or has no structured answer yet for where your export timber actually comes from, I can configure Odoo's lot tracking, MTO routing, and traceability so you are ready for EUDR before your buyers start asking. <a href="../#contact" style="color:var(--accent)">Contact me for a strategy session →</a></p>
+      </div>
+
+      <h2 id="faq">Frequently asked questions</h2>
+
+      <h3>How do you cost timber and board materials in Odoo for furniture manufacturing?</h3>
+      <p>Timber and engineered board (MDF, particle board, plywood) should be tracked with Lot/Serial tracking under Inventory > Configuration > Settings > Traceability, with each incoming consignment recorded as a distinct lot carrying wood species, moisture content, and supplier or forest source. Solid timber cost varies significantly by species (mango wood and rubberwood are common lower-cost domestic species, while imported oak or teak-faced board commands a premium) and by moisture content, since improperly dried timber that later warps or cracks in the finished product creates a rework or rejection cost that a flat per-cubic-foot cost figure hides. Recording actual landed cost per lot, including import duty on imported board where applicable, lets Odoo's standard costing reflect what a specific batch actually cost rather than an average across species and sources.</p>
+
+      <h3>How should custom, made-to-order furniture BOMs be structured in Odoo?</h3>
+      <p>Because a large share of furniture, especially higher-value solid wood pieces sold through showrooms or made to a specific export buyer's drawing, is built to individual customer specification rather than produced repetitively to stock, the BOM structure should favor kit-style and Make-to-Order (MTO) BOMs over fixed standard BOMs. A base template BOM captures the common structural components and standard hardware, while dimension, wood species, and finish are handled as variant attributes or order-specific BOM line overrides created at the Sales Order stage, generating a Manufacturing Order under the MTO route rather than drawing from a forecasted standard product. This keeps repeat-selling standard lines efficient to produce while still capturing the true one-off material list and cost for a fully custom piece.</p>
+
+      <h3>What EUDR wood traceability data does an Odoo setup need to capture for furniture exporters?</h3>
+      <p>The EU Deforestation Regulation (EUDR) requires that wood-derived products placed on the EU market, including furniture, be accompanied by a due diligence statement confirming the wood is deforestation-free and legally harvested, supported by geolocation data for the plot of production. In Odoo, this means every timber and board lot needs to carry, at minimum, species, country and (where required) plot-level geolocation of harvest, harvest or purchase date, and supplier legality documentation attached as a document to the purchase order or lot record, so that this data can be pulled per finished-goods lot when generating the due diligence statement for a specific export shipment, rather than reconstructed from paper supplier invoices under shipment deadline pressure.</p>
+
+      <h3>When does EUDR apply to Bangladesh furniture exporters?</h3>
+      <p>The EU Deforestation Regulation applies to large and medium operators and traders placing relevant wood-derived products on the EU market from December 2026, with a later compliance date of June 2027 for micro and small enterprises. Bangladesh furniture exporters selling to EU buyers, directly or through EU-based importers who bear ultimate compliance responsibility, should expect EU buyers to start requesting due diligence-ready traceability data well before their applicable deadline, since buyers need lead time to build supply-chain-wide compliance and will favor suppliers who can already produce the required data over those who cannot.</p>
+
+      <h3>How do you route the finishing stages (cutting, assembly, staining, upholstery) of furniture production in Odoo?</h3>
+      <p>Each distinct process stage, cutting and machining, assembly, sanding, staining or painting/finishing, and upholstery where applicable, is set up as its own work center under Manufacturing > Configuration > Work Centers with its own labor and material consumption profile. Upholstery in particular consumes a distinct material set (fabric or leather, foam, webbing) that should be tracked on its own BOM lines rather than folded into the wood-frame BOM, since fabric consumption is typically costed by running meter or square meter and varies by piece size and style independent of the wood frame's cost, and separating these lines is what lets a factory see whether a margin problem on an upholstered piece originates in the frame or the covering material.</p>
+
+    </div>
+  </article>
+
+  <footer>
+    <div class="shell">
+      <div class="post-foot">
+        <span class="eyebrow">Continue exploring</span>
+        <div class="next">
+          <a class="next-card" href="0084-odoo-steel-rerolling-light-engineering-bangladesh">
+            <span class="dir">Older · 0084</span>
+            <h4>Odoo for Steel Re-Rolling Mills & Light Engineering Bangladesh</h4>
+            <p>Scrap/billet costing, rolling mill routing, and yield tracking.</p>
+            <span class="arrow">→</span>
+          </a>
+          <a class="next-card" href="../#lab">
+            <span class="dir">All articles</span>
+            <h4>Back to Lab Index</h4>
+            <p>Browse all guides on Odoo ERP, manufacturing operations, and business analysis in Bangladesh.</p>
+            <span class="arrow">→</span>
+          </a>
+        </div>
+      </div>
+      <div class="foot">
+        <span>© 2026 Mehedi Hasan · Lab / 0085</span>
+        <span><a href="../#lab">↑ Back to lab index</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="_utils.js" defer></script>
+  <script src="_toc.js" defer></script>
+  <script src="/whatsapp.js" defer></script>
+  <script src="/scroll-top.js" defer></script>
+</body>
+
+</html>

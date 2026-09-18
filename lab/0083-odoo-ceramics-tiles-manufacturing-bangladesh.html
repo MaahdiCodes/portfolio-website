@@ -1,0 +1,406 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description"
+    content="Odoo ERP for Bangladesh ceramics and tile manufacturers: raw material (clay/feldspar) batch costing, kiln firing routing, and breakage/wastage tracking." />
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="Mehedi Hasan" />
+  <title>Odoo for Ceramics & Tiles Manufacturing Bangladesh | Mehedi Hasan</title>
+  <link rel="canonical" href="https://mhasan.me/lab/0083-odoo-ceramics-tiles-manufacturing-bangladesh" />
+  <link rel="alternate" hreflang="en" href="https://mhasan.me/lab/0083-odoo-ceramics-tiles-manufacturing-bangladesh" />
+  <link rel="alternate" hreflang="x-default" href="https://mhasan.me/lab/0083-odoo-ceramics-tiles-manufacturing-bangladesh" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png" />
+  <!-- Open Graph -->
+  <meta property="og:title" content="Odoo for Ceramics & Tiles Manufacturing Bangladesh | Mehedi Hasan" />
+  <meta property="og:description"
+    content="Odoo ERP for Bangladesh ceramics and tile manufacturers: raw material (clay/feldspar) batch costing, kiln firing routing, and breakage/wastage tracking." />
+  <meta property="og:url" content="https://mhasan.me/lab/0083-odoo-ceramics-tiles-manufacturing-bangladesh" />
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="https://mhasan.me/assets/og-default.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:site_name" content="Mehedi Hasan | Odoo ERP Consultant" />
+  <meta property="article:author" content="https://www.linkedin.com/in/mehedi-hasan-consultant/" />
+  <meta property="article:published_time" content="2026-09-18T14:00:00+06:00" />
+  <meta property="article:modified_time" content="2026-09-18T14:00:00+06:00" />
+  <meta property="article:section" content="Odoo ERP Bangladesh" />
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Odoo for Ceramics & Tiles Manufacturing Bangladesh | Mehedi Hasan" />
+  <meta name="twitter:description"
+    content="Odoo ERP for Bangladesh ceramics and tile manufacturers: raw material (clay/feldspar) batch costing, kiln firing routing, and breakage/wastage tracking." />
+  <meta name="twitter:image" content="https://mhasan.me/assets/og-default.jpg" />
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Odoo for Ceramics & Tiles Manufacturing Bangladesh",
+    "description": "Odoo ERP for Bangladesh ceramics and tile manufacturers: raw material (clay/feldspar) batch costing, kiln firing routing, and breakage/wastage tracking.",
+    "datePublished": "2026-09-18T14:00:00+06:00",
+    "dateModified": "2026-09-18T14:00:00+06:00",
+    "author": {
+      "@type": "Person",
+      "name": "Mehedi Hasan",
+      "url": "https://mhasan.me",
+      "jobTitle": "Odoo ERP Consultant & Business Analyst",
+      "sameAs": "https://www.linkedin.com/in/mehedi-hasan-consultant/"
+    },
+    "publisher": { "@type": "Person", "name": "Mehedi Hasan", "url": "https://mhasan.me" },
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://mhasan.me/lab/0083-odoo-ceramics-tiles-manufacturing-bangladesh" }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://mhasan.me" },
+      { "@type": "ListItem", "position": 2, "name": "Lab", "item": "https://mhasan.me/lab/" },
+      { "@type": "ListItem", "position": 3, "name": "Odoo for Ceramics & Tiles Manufacturing Bangladesh", "item": "https://mhasan.me/lab/0083-odoo-ceramics-tiles-manufacturing-bangladesh" }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How should a ceramics factory track raw material batches in Odoo?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Enable Lot/Serial tracking under Inventory > Configuration > Settings > Traceability on every body-forming raw material: china clay, ball clay, feldspar, quartz/silica, and the pre-mixed glaze frit. Each incoming consignment, whether it is Bijoypur clay from Netrokona or imported feldspar from Vietnam or China, is received as a distinct lot with its own moisture content, plasticity grade, and iron-oxide level noted on the lot record. Because these properties shift between mines and shipments and directly affect shrinkage and final glaze color, costing and quality issues need to trace back to the specific input lot, not an averaged 'clay' stock figure, which is what Odoo's lot-level valuation and traceability are built to support."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you model the kiln firing step as a routing operation in Odoo?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Kiln firing is set up as its own work center under Manufacturing > Configuration > Work Centers, with capacity defined by kiln car (or shuttle load) count and a fixed cycle time per firing (commonly 12 to 24 hours for a tunnel kiln pushing bisque and glost cycles, longer for shuttle kilns on stoneware). Fuel cost (almost always natural gas from the Titas or Bakhrabad distribution network) is attached to the work center as a cost-per-hour or cost-per-cycle figure so that Odoo's manufacturing order costing allocates a proportional gas cost to every batch that passes through the kiln, rather than leaving fuel as an unallocated overhead line that never shows up in per-SKU cost."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you track ceramic breakage and wastage across production stages in Odoo?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Breakage is recorded as a scrap or component-loss quantity at each manufacturing order operation where it actually occurs (greenware handling after forming, bisque handling after the first firing, glost firing, and packing), using Odoo's Manufacturing app scrap orders or immediate production reporting at each work order. Because ceramics behaves fundamentally differently from most manufacturing (it has structurally significant in-process loss at multiple stages, not just at final QC), recording loss stage by stage rather than as a single end-of-run shrinkage figure is what lets you see whether a specific kiln cycle, glaze batch, or handling team is driving an abnormal breakage rate."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can Odoo separate A-grade and B-grade (seconds) output from the same production batch?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, using Odoo's by-products and quality control points together. A quality control point is configured at the sorting/grading stage under Quality > Control Points, and the manufacturing order is set up to register multiple output lots against the same production order: a primary finished product lot for A-grade pieces and a by-product or variant lot for B-grade seconds, each carrying its own valuation and sales price list. This lets grading, which is a routine and economically significant step in ceramics that most ERPs do not model out of the box, flow directly into inventory and pricing without a manual reclassification step after the fact."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is a normal breakage rate for a Bangladesh ceramics or tile factory?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Well-run tableware and tile lines in Bangladesh typically run combined in-process breakage (greenware, bisque, and glost stages combined) in the 5 to 8 percent range for standard flatware and plain tiles, and meaningfully higher, often 10 to 15 percent, for complex hollowware shapes (cups, teapots, figurines) or heavily decorated bone china. Rates above this range usually point to a specific correctable cause: kiln temperature uniformity problems, a weak clay body recipe, rough handling during transfer between stages, or glaze application defects, and tracking breakage by stage and by shift in Odoo is what surfaces which of these is actually driving the number."
+        }
+      }
+    ]
+  }
+]
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap">
+  <link rel="stylesheet" href="_styles.css">
+  <style>
+    .path-tag { font-family: var(--mono); font-size: 12.5px; background: var(--elev); border: 1px solid var(--border); border-radius: 5px; padding: 2px 8px; color: var(--text); }
+    .grade-table { width: 100%; border-collapse: collapse; font-size: 13.5px; margin: 18px 0; }
+    .grade-table th { text-align: left; padding: 10px 14px; background: var(--surface); color: var(--text-3); font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.06em; text-transform: uppercase; border-bottom: 1px solid var(--border); }
+    .grade-table td { padding: 11px 14px; border-bottom: 1px solid var(--border); color: var(--text-2); vertical-align: top; }
+    .grade-table td:first-child { color: var(--text); font-weight: 600; }
+    .grade-table tr:last-child td { border-bottom: none; }
+  </style>
+</head>
+
+<body>
+  <div class="grid-bg"></div>
+
+  <header class="nav">
+    <div class="shell">
+      <div class="nav-inner">
+        <a class="brand" href="../">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span class="brand-name"><b>Mehedi Hasan</b><em>ERP · Business Analyst</em></span>
+        </a>
+        <a class="back-link" href="../#lab">← Back to Lab</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="post-head">
+    <div class="shell">
+      <span class="eyebrow">Technical Lab · 0083</span>
+      <h1>Odoo for Bangladesh's <span class="serif">ceramics and tile manufacturers.</span></h1>
+      <p class="lede">Ceramics is one of the few manufacturing categories where the raw material is genuinely a natural, variable product (clay and feldspar behave differently batch to batch), the production process runs through an energy-intensive kiln stage with its own capacity and cost logic, and a meaningful share of finished output is structurally destined to sell as a lower grade, not as scrap. Most ERP implementations in this sector treat clay like any other purchased input, ignore the kiln as a real work center, and reconcile breakage and grading in a spreadsheet after the fact. This guide covers how to configure Odoo so it does not.</p>
+      <div class="post-meta">
+        <span class="chip accent">Guide</span>
+        <span class="chip">Ceramics & Tiles</span>
+        <span class="chip">Manufacturing</span>
+      </div>
+      <div class="byline">
+        <span>By<b><a href="https://www.linkedin.com/in/mehedi-hasan-consultant/" style="color:var(--accent)" rel="author">Mehedi Hasan</a></b></span>
+        <span>Published<b>September 2026</b></span>
+        <span>Read time<b>16 minutes</b></span>
+        <span>Form<b>Guide</b></span>
+        <span>Scope<b>Odoo Manufacturing / Ceramics Sector</b></span>
+      </div>
+    </div>
+  </section>
+
+  <article class="post">
+    <aside class="toc">
+      <div class="toc-k">In this guide</div>
+      <ol>
+        <li><a href="#sector">Bangladesh's Ceramics & Tiles Industry</a></li>
+        <li><a href="#raw-material">Raw Material Batch Costing: Clay, Feldspar, Glaze</a></li>
+        <li><a href="#kiln">Kiln Firing as a Routing Step</a></li>
+        <li><a href="#breakage">Breakage & Wastage Tracking Across Stages</a></li>
+        <li><a href="#grading">A-Grade vs B-Grade (Seconds) Output</a></li>
+        <li><a href="#costing">Costing a Tile or Tableware SKU End to End</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ol>
+    </aside>
+
+    <div class="body">
+
+      <h2 id="sector">Bangladesh's Ceramics & Tiles Industry</h2>
+      <p>Bangladesh's ceramics sector has grown from a handful of tableware makers in the 1980s into a genuine domestic manufacturing category with export ambitions, spanning tiles (RAK Ceramics Bangladesh, Great Wall Ceramic Industries, DBL Ceramics), sanitaryware, and tableware and bone china (Monno Ceramic Industries, Standard Ceramic Industries, Shinepukur Ceramics under the Beximco Group, FU-WANG Ceramic). Domestic demand from the construction boom drives the tiles side, while tableware makers, Shinepukur in particular, export bone china to Europe and North America. The Bangladesh Ceramic Manufacturers and Exporters Association (BCMEA) is the sector's trade body and the reference point for gas pricing and import-duty advocacy that shapes the industry's cost structure.</p>
+      <p>The ERP challenge in ceramics does not resemble discrete manufacturing (fabricated metal, garments) or process manufacturing with a single reaction step (chemicals). It is closer to a hybrid: a batch-mixed raw material body (like process manufacturing), followed by a forming step that creates discrete, individually trackable pieces (like discrete manufacturing), followed by an energy-intensive thermal step (the kiln) that behaves like a shared, capacity-constrained resource, followed by a grading step that splits identical-BOM output into different-value products. Getting Odoo's Manufacturing module (covered in general terms in <a href="0013-odoo-manufacturing-module-bangladesh" style="color:var(--accent)">Odoo Manufacturing Module Setup Bangladesh</a>) to actually reflect this sequence, rather than a generic one-BOM-one-output model, is what separates a ceramics ERP setup that gives useful cost data from one that just tracks stock quantity.</p>
+
+      <p>Demand on the tile side is overwhelmingly domestic, tracking the country's real estate and apartment construction cycle in Dhaka, Chattogram, and secondary cities, while tableware manufacturers split between the domestic middle-class market and export contracts that require the kind of buyer-facing traceability documentation that international garment buyers have long demanded of RMG suppliers. A factory that can produce a lot-level cost and quality trail on request is simply a more credible export counterparty, independent of whether a specific buyer has formally asked for it yet.</p>
+
+      <div class="stat-row">
+        <div class="stat-card">
+          <div class="sc-val">1200°C</div>
+          <div class="sc-label">Typical Glost Firing Temp</div>
+          <div class="sc-note">Peak kiln temperature for vitrified tile and porcelain tableware bodies</div>
+        </div>
+        <div class="stat-card">
+          <div class="sc-val">30–40%</div>
+          <div class="sc-label">Gas Cost Share</div>
+          <div class="sc-note">Approximate share of total production cost from kiln fuel (natural gas) in a typical plant</div>
+        </div>
+        <div class="stat-card">
+          <div class="sc-val">5–15%</div>
+          <div class="sc-label">In-Process Breakage</div>
+          <div class="sc-note">Combined greenware, bisque, and glost-stage loss, varying by shape complexity</div>
+        </div>
+      </div>
+
+      <h2 id="raw-material">Raw Material Batch Costing: Clay, Feldspar, Glaze</h2>
+      <p>A ceramic body is a mixed formulation, typically ball clay and china clay for plasticity and whiteness, feldspar as a flux that lowers the vitrification temperature, and quartz or silica sand for structural strength, blended in a batch (a "body recipe") and processed through a ball mill into a slip or pug. Bangladesh sources a meaningful share of china clay domestically from the Bijoypur deposit near Durgapur in Netrokona district, supplemented by imported ball clay, feldspar, and zircon-based opacifiers from India, China, Vietnam, and Ukraine. The critical point for ERP setup is that these are not interchangeable commodity inputs: moisture content, plasticity, iron-oxide level (which affects whiteness and fires-color), and particle-size distribution vary meaningfully between mines and between shipments of the same nominal material.</p>
+      <p>In Odoo, every body-forming raw material and the pre-mixed glaze frit should carry Lot/Serial tracking, enabled per product under <span class="path-tag">Inventory > Configuration > Settings > Traceability</span>, with each incoming consignment received as its own lot recording moisture percentage, plasticity grade, and (where tested) iron-oxide content as lot attributes or attached quality-check results. This matters for two practical reasons. First, cost: feldspar and imported clay prices swing with international freight and currency movements, and a factory that averages cost across all incoming lots will misprice a formulation that happens to use an unusually expensive imported batch. Second, and more importantly for a working consultant, quality root-causing: when a production run comes out of the kiln with unexpected warping or an off-white body color, the first diagnostic question is almost always "which clay and feldspar lot went into this batch," and that question is only answerable quickly if lot genealogy is tracked through the body-preparation BOM rather than reconstructed from a paper batch-mixing register.</p>
+
+      <div class="tip-box">
+        <div class="tlabel">Practical Shortcut</div>
+        <p>Full chemical assay tracking (silica percentage, alumina percentage, loss-on-ignition) at the lot level is overkill for most Bangladesh ceramics SMEs and belongs to specialized lab information systems, not the ERP. Track the two or three properties that actually drive your rejection rate (commonly moisture content and plasticity grade for body clays, particle fineness for glaze frit) as simple lot attributes in Odoo, and leave detailed chemistry in your quality lab's own records, cross-referenced by lot number.</p>
+      </div>
+
+      <h2 id="kiln">Kiln Firing as a Routing Step</h2>
+      <p>The kiln is the single largest fixed-cost, capacity-constrained resource in a ceramics plant, and it needs to be modeled as its own work center rather than folded into a generic "production" step. Most mid-size Bangladesh plants run tunnel kilns (continuous, with ware moving through on cars or rollers) for tiles and higher-volume tableware, and shuttle kilns (batch-loaded, door-sealed) for lower-volume or specialty stoneware and bone china runs where firing schedules vary by product.</p>
+
+      <div class="timeline-track">
+        <div class="tl-node">
+          <div class="tl-date">Stage 1</div>
+          <div class="tl-title">Body preparation & forming</div>
+          <div class="tl-body">Clay, feldspar, and quartz are batched, milled into slip or pug, and formed into greenware by pressing (tiles, most tableware) or slip-casting (hollowware like cups, teapots, figurines).</div>
+        </div>
+        <div class="tl-node">
+          <div class="tl-date">Stage 2</div>
+          <div class="tl-title">Drying</div>
+          <div class="tl-body">Greenware is dried to remove moisture before firing. This is the most fragile handling point in the whole process and a major source of early-stage breakage.</div>
+        </div>
+        <div class="tl-node">
+          <div class="tl-date">Stage 3</div>
+          <div class="tl-title">Bisque firing</div>
+          <div class="tl-body">First kiln pass, typically 900–1000°C, hardens the body into bisqueware without vitrifying it, ready for glazing.</div>
+        </div>
+        <div class="tl-node">
+          <div class="tl-date">Stage 4</div>
+          <div class="tl-title">Glazing</div>
+          <div class="tl-body">Glaze is applied by dipping, spraying, or waterfall application depending on the product line. Glaze thickness and evenness directly affect final grading outcomes.</div>
+        </div>
+        <div class="tl-node">
+          <div class="tl-date">Stage 5</div>
+          <div class="tl-title">Glost (glaze) firing</div>
+          <div class="tl-body">Second, higher-temperature kiln pass (commonly up to 1200°C for vitrified tile and porcelain bodies) melts the glaze and fully vitrifies the body. This is the highest gas-cost step in the entire process.</div>
+        </div>
+        <div class="tl-node">
+          <div class="tl-date">Stage 6</div>
+          <div class="tl-title">Sorting, grading, and packing</div>
+          <div class="tl-body">Fired pieces are inspected and sorted into A-grade, B-grade/seconds, and rejects, then packed for dispatch.</div>
+        </div>
+      </div>
+
+      <p>Each kiln is set up as a work center under <span class="path-tag">Manufacturing > Configuration > Work Centers</span>, with capacity expressed as kiln car count (tunnel kilns) or load volume per shuttle cycle, and a fixed cycle time (commonly 12 to 24 hours per firing depending on kiln design and body type, with bone china sometimes requiring longer, slower schedules to avoid thermal shock cracking). Gas cost, sourced from the Titas Gas or Bakhrabad Gas distribution network depending on plant location, is attached to the work center as a cost-per-hour or cost-per-cycle figure under the work center's costing tab, so that every manufacturing order routed through the kiln picks up a proportional share of fuel cost automatically. This is the step most Bangladesh ceramics ERP setups skip, leaving gas as an unallocated factory overhead line that never actually shows up in a per-SKU cost, which is exactly backwards for an industry where fuel is routinely the largest single cost component after raw material.</p>
+
+      <div class="pull">A kiln that is not modeled as a capacity-constrained work center in the ERP is a kiln whose true cost per piece nobody in the finance department can actually calculate.</div>
+
+      <h2 id="breakage">Breakage & Wastage Tracking Across Stages</h2>
+      <p>Ceramics has structurally higher in-process loss than most manufacturing categories, and it happens at multiple distinct stages rather than concentrating at final inspection the way it does in, say, plastics injection molding (a comparison worth drawing out, since the by-product and regrind concepts covered in <a href="0068-odoo-plastics-packaging-manufacturing-bangladesh" style="color:var(--accent)">Odoo for Plastics & Packaging Manufacturing Bangladesh</a> are structurally similar but occur at a single stage, not four or five). Greenware is fragile and breaks during handling and transfer to the dryer. Dried and bisque-fired ware chips during transfer to glazing. Glost firing produces cracking, warping, and glaze defects (crawling, pinholing, color variation) that are only visible after the piece comes out of the kiln. Packing and palletizing add a final handling-loss stage before dispatch.</p>
+      <p>Odoo records this using scrap orders or immediate production loss entries at each relevant manufacturing order operation, logged under the specific work order for that stage (forming, drying, bisque firing, glost firing, packing) rather than as one lump shrinkage percentage applied at the end of the routing. This stage-level granularity is what makes the data actionable: aggregated by shift, by kiln car position (ware near a tunnel kiln's burner zone often fires differently from ware near the entrance), and by product shape, it tells you whether an abnormal breakage rate traces back to a rough handling team, an underperforming kiln zone, or a specific shape (cups and other hollowware consistently break more than flat tiles) rather than leaving you with an unexplained aggregate wastage number at month end.</p>
+
+      <div class="stat-row">
+        <div class="stat-card">
+          <div class="sc-val">5–8%</div>
+          <div class="sc-label">Normal Breakage</div>
+          <div class="sc-note">Combined in-process loss for standard tiles and flatware on a well-run line</div>
+        </div>
+        <div class="stat-card">
+          <div class="sc-val">10–15%</div>
+          <div class="sc-label">Complex Shapes</div>
+          <div class="sc-note">Typical range for hollowware, decorated bone china, and figurines</div>
+        </div>
+        <div class="stat-card">
+          <div class="sc-val">4 stages</div>
+          <div class="sc-label">Distinct Loss Points</div>
+          <div class="sc-note">Greenware handling, bisque handling, glost firing, and packing each contribute separately</div>
+        </div>
+      </div>
+
+      <h2 id="grading">A-Grade vs B-Grade (Seconds) Output</h2>
+      <p>Unlike most manufactured goods, a meaningful and entirely routine share of ceramic output does not fail, it simply grades lower. A tile with a minor edge chip, a slight dimensional variance, or a visible glaze crawl mark is not scrap, it is a "second," saleable through a different channel (local retail, lower-tier distributors, export to price-sensitive markets) at a materially lower price point, commonly 40 to 70 percent of A-grade pricing depending on the defect severity and product category. Most ERPs, including a default Odoo setup, assume one BOM produces one output product, which does not fit this reality without deliberate configuration.</p>
+
+      <table class="grade-table">
+        <thead>
+          <tr>
+            <th>Grade</th>
+            <th>Typical Defect Profile</th>
+            <th>Relative Price Index</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>A-grade</td>
+            <td>No visible defects, within dimensional tolerance, full glaze quality</td>
+            <td>100 (baseline)</td>
+          </tr>
+          <tr>
+            <td>B-grade / seconds</td>
+            <td>Minor chips, slight color or dimensional variance, minor glaze defects</td>
+            <td>40–70</td>
+          </tr>
+          <tr>
+            <td>C-grade / commercial</td>
+            <td>Visible but non-structural defects, sold through discount and local retail channels</td>
+            <td>20–40</td>
+          </tr>
+          <tr>
+            <td>Reject</td>
+            <td>Cracked, structurally unsound, or severely warped, not saleable as finished product</td>
+            <td>Scrap value only</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>The configuration that handles this in Odoo combines two features: a quality control point set up under <span class="path-tag">Quality > Control Points</span> at the sorting stage, tied to the relevant work center, and the manufacturing order's ability to register multiple finished-goods lots against a single production order. In practice, this means the BOM produces a generic "fired product" output, and the sorting operation's quality check routes each physical piece to one of several product variants or by-products (A-grade product, B-grade product, C-grade product), each carrying its own valuation and its own sales price list entry. Structured this way, grading is not a manual reclassification exercise performed in a spreadsheet after the goods receipt, it is a data point captured once at the point of sorting and reflected automatically in both inventory valuation and the price list a salesperson quotes against. The same quality-control-point mechanism used across other regulated manufacturing sectors is covered more generally in <a href="0040-odoo-quality-control-iso-bangladesh" style="color:var(--accent)">Odoo Quality Control for ISO-Certified Factories</a>, and the underlying logic transfers directly to ceramics grading even though the certification driver (ISO 9001 vs. simple commercial grading) differs.</p>
+
+      <div class="feature-grid">
+        <div class="feature-card">
+          <div class="fc-icon">01</div>
+          <div class="fc-body">
+            <h4>Quality control point at sorting</h4>
+            <p>Defines the checklist (dimensional check, visual glaze inspection, ring test for cracks) an inspector runs on every batch before it is graded.</p>
+          </div>
+        </div>
+        <div class="feature-card">
+          <div class="fc-icon">02</div>
+          <div class="fc-body">
+            <h4>Multiple output lots per MO</h4>
+            <p>The manufacturing order registers separate finished lots for A-grade, B-grade, and reject quantities from the same production batch.</p>
+          </div>
+        </div>
+        <div class="feature-card">
+          <div class="fc-icon">03</div>
+          <div class="fc-body">
+            <h4>Grade-specific price lists</h4>
+            <p>Each grade variant carries its own sales price list entry, so a B-grade sale is never accidentally invoiced at A-grade pricing.</p>
+          </div>
+        </div>
+        <div class="feature-card">
+          <div class="fc-icon">04</div>
+          <div class="fc-body">
+            <h4>Grade yield reporting</h4>
+            <p>Aggregated by product line and kiln cycle, the A-grade to B-grade to reject split becomes a trackable production KPI, not an end-of-month surprise.</p>
+          </div>
+        </div>
+      </div>
+
+      <h2 id="costing">Costing a Tile or Tableware SKU End to End</h2>
+      <p>Pulling these pieces together, the true cost of a finished ceramic SKU in Odoo rolls up through body preparation (clay, feldspar, and quartz costed at their actual received lot cost), forming and drying labor, the bisque firing cycle's allocated kiln fuel cost, glaze material and application labor, the glost firing cycle's fuel cost (typically the single largest allocated cost line), and sorting and packing labor, with the final grading split determining which revenue line each unit of output actually lands in. This is meaningfully more complex than costing a garment or a plastic component, and factories that skip proper kiln cost allocation and grade-based revenue splitting typically end up pricing A-grade product too low (because unallocated gas cost and unrecognized B-grade revenue distort the picture) or discovering margin problems only at year-end reconciliation, long after pricing decisions on that season's SKUs have already been made.</p>
+      <p>Getting the warehouse side right matters too, since finished ceramic goods need to be tracked as fragile, grade-differentiated stock through to dispatch, an operational discipline that overlaps meaningfully with barcode-driven put-away and cycle counting practices used elsewhere in Bangladesh manufacturing, covered in more general terms in the site's warehouse scanning guide, alongside protective packaging considerations that reduce dispatch-stage breakage before goods leave the factory gate.</p>
+      <p>One further practical point worth raising with any Bangladesh ceramics management team evaluating an ERP rebuild: standard costing (a fixed expected cost per SKU, revised periodically) tends to serve this sector better than continuously recalculated actual costing, precisely because gas prices, imported feldspar cost, and breakage rates all move independently of each other and of the sales price list. Odoo supports both costing methods per product category, and setting body-forming and kiln-heavy product lines to standard costing with a disciplined quarterly cost-roll review gives management a stable number to price against, while still reconciling against actual landed cost and actual kiln fuel consumption behind the scenes to catch drift before it erodes margin unnoticed for two or three quarters running.</p>
+
+      <div class="callout">
+        <span class="tag">Ceramics ERP Setup Consultation</span>
+        <p>If your ceramics or tile factory is still averaging clay cost across batches, treating the kiln as a black box in your costing, or reconciling A-grade versus seconds output in a spreadsheet after dispatch, I can configure Odoo's lot tracking, work centers, and quality control points to match your actual production flow. <a href="../#contact" style="color:var(--accent)">Contact me for a strategy session →</a></p>
+      </div>
+
+      <h2 id="faq">Frequently asked questions</h2>
+
+      <h3>How should a ceramics factory track raw material batches in Odoo?</h3>
+      <p>Enable Lot/Serial tracking under Inventory > Configuration > Settings > Traceability on every body-forming raw material: china clay, ball clay, feldspar, quartz/silica, and the pre-mixed glaze frit. Each incoming consignment, whether it is Bijoypur clay from Netrokona or imported feldspar from Vietnam or China, is received as a distinct lot with its own moisture content, plasticity grade, and iron-oxide level noted on the lot record. Because these properties shift between mines and shipments and directly affect shrinkage and final glaze color, costing and quality issues need to trace back to the specific input lot, not an averaged "clay" stock figure, which is what Odoo's lot-level valuation and traceability are built to support.</p>
+
+      <h3>How do you model the kiln firing step as a routing operation in Odoo?</h3>
+      <p>Kiln firing is set up as its own work center under Manufacturing > Configuration > Work Centers, with capacity defined by kiln car (or shuttle load) count and a fixed cycle time per firing (commonly 12 to 24 hours for a tunnel kiln pushing bisque and glost cycles, longer for shuttle kilns on stoneware). Fuel cost (almost always natural gas from the Titas or Bakhrabad distribution network) is attached to the work center as a cost-per-hour or cost-per-cycle figure so that Odoo's manufacturing order costing allocates a proportional gas cost to every batch that passes through the kiln, rather than leaving fuel as an unallocated overhead line that never shows up in per-SKU cost.</p>
+
+      <h3>How do you track ceramic breakage and wastage across production stages in Odoo?</h3>
+      <p>Breakage is recorded as a scrap or component-loss quantity at each manufacturing order operation where it actually occurs (greenware handling after forming, bisque handling after the first firing, glost firing, and packing), using Odoo's Manufacturing app scrap orders or immediate production reporting at each work order. Because ceramics behaves fundamentally differently from most manufacturing (it has structurally significant in-process loss at multiple stages, not just at final QC), recording loss stage by stage rather than as a single end-of-run shrinkage figure is what lets you see whether a specific kiln cycle, glaze batch, or handling team is driving an abnormal breakage rate.</p>
+
+      <h3>Can Odoo separate A-grade and B-grade (seconds) output from the same production batch?</h3>
+      <p>Yes, using Odoo's by-products and quality control points together. A quality control point is configured at the sorting/grading stage under Quality > Control Points, and the manufacturing order is set up to register multiple output lots against the same production order: a primary finished product lot for A-grade pieces and a by-product or variant lot for B-grade seconds, each carrying its own valuation and sales price list. This lets grading, which is a routine and economically significant step in ceramics that most ERPs do not model out of the box, flow directly into inventory and pricing without a manual reclassification step after the fact.</p>
+
+      <h3>What is a normal breakage rate for a Bangladesh ceramics or tile factory?</h3>
+      <p>Well-run tableware and tile lines in Bangladesh typically run combined in-process breakage (greenware, bisque, and glost stages combined) in the 5 to 8 percent range for standard flatware and plain tiles, and meaningfully higher, often 10 to 15 percent, for complex hollowware shapes (cups, teapots, figurines) or heavily decorated bone china. Rates above this range usually point to a specific correctable cause: kiln temperature uniformity problems, a weak clay body recipe, rough handling during transfer between stages, or glaze application defects, and tracking breakage by stage and by shift in Odoo is what surfaces which of these is actually driving the number.</p>
+
+    </div>
+  </article>
+
+  <footer>
+    <div class="shell">
+      <div class="post-foot">
+        <span class="eyebrow">Continue exploring</span>
+        <div class="next">
+          <a class="next-card" href="0082-vat-input-tax-credit-rebate-odoo-bangladesh">
+            <span class="dir">Older · 0082</span>
+            <h4>VAT Input Tax Credit (Rebate) Claim Workflow in Odoo Bangladesh</h4>
+            <p>Mushak 6.3 invoice matching, Mushak 9.1 return entry, and rebate claim risk.</p>
+            <span class="arrow">→</span>
+          </a>
+          <a class="next-card" href="../#lab">
+            <span class="dir">All articles</span>
+            <h4>Back to Lab Index</h4>
+            <p>Browse all guides on Odoo ERP, manufacturing operations, and business analysis in Bangladesh.</p>
+            <span class="arrow">→</span>
+          </a>
+        </div>
+      </div>
+      <div class="foot">
+        <span>© 2026 Mehedi Hasan · Lab / 0083</span>
+        <span><a href="../#lab">↑ Back to lab index</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="_utils.js" defer></script>
+  <script src="_toc.js" defer></script>
+  <script src="/whatsapp.js" defer></script>
+  <script src="/scroll-top.js" defer></script>
+</body>
+
+</html>

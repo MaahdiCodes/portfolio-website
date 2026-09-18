@@ -76,7 +76,10 @@
         "name": "Odoo S.A.",
         "url": "https://www.odoo.com"
       },
-      "dateCreated": "2026"
+      "dateCreated": "2026",
+      "identifier": "0001110498",
+      "image": "https://mhasan.me/assets/certifications/odoo-18-functional-certification.jpg",
+      "url": "https://mhasan.me/#credentials"
     }
   },
   {
@@ -1713,6 +1716,116 @@
       .about-l,
       .about-r {
         grid-column: 1/-1
+      }
+    }
+
+    /* credentials */
+    .credential {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 24px;
+      align-items: stretch
+    }
+
+    .cred-media {
+      grid-column: 1 / span 6;
+      position: relative
+    }
+
+    .cred-glow {
+      position: absolute;
+      inset: -30px;
+      background: radial-gradient(420px 260px at 15% 10%, var(--accent-glow), transparent 70%);
+      z-index: -1;
+      opacity: .55;
+      pointer-events: none
+    }
+
+    .cred-frame {
+      padding: 14px;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      background: var(--surface);
+      box-shadow: 0 30px 60px -30px rgba(0, 0, 0, 0.5);
+    }
+
+    .cred-frame img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 10px
+    }
+
+    .cred-info {
+      grid-column: 8 / span 5;
+      display: flex;
+      flex-direction: column;
+      padding-top: 4px
+    }
+
+    .cred-status {
+      align-self: flex-start;
+      margin-bottom: 22px
+    }
+
+    .cred-info h3 {
+      font-size: 23px;
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      margin: 0 0 6px;
+      color: var(--text)
+    }
+
+    .cred-issuer {
+      font-size: 14px;
+      color: var(--text-2);
+      margin: 0 0 28px
+    }
+
+    .cred-facts {
+      border-top: 1px solid var(--border);
+      margin-top: auto
+    }
+
+    .cred-fact {
+      display: grid;
+      grid-template-columns: 130px 1fr;
+      gap: 16px;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--border)
+    }
+
+    .cred-fact .k {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--text-3);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding-top: 2px
+    }
+
+    .cred-fact .v {
+      font-size: 14px;
+      color: var(--text);
+      line-height: 1.5
+    }
+
+    .cred-actions {
+      display: flex;
+      gap: 12px;
+      margin-top: 28px;
+      flex-wrap: wrap
+    }
+
+    @media(max-width:860px) {
+
+      .cred-media,
+      .cred-info {
+        grid-column: 1/-1
+      }
+
+      .cred-media {
+        margin-bottom: 4px
       }
     }
 
@@ -3367,6 +3480,46 @@
     </div>
   </section>
 
+  <!-- CREDENTIALS -->
+  <section id="credentials">
+    <div class="shell">
+      <div class="section-head">
+        <div class="reveal">
+          <span class="eyebrow">Credentials · 006</span>
+          <h2 class="section-title">The certification behind the <span class="serif">claim</span>.</h2>
+        </div>
+        <p class="section-desc reveal">Issued directly by Odoo S.A. — not a self-reported badge. Verifiable by
+          certificate number.</p>
+      </div>
+      <div class="credential reveal">
+        <div class="cred-media">
+          <div class="cred-glow"></div>
+          <div class="cred-frame">
+            <img src="assets/certifications/odoo-18-functional-certification.jpg"
+              alt="Odoo 18 Functional Certification, issued by Odoo S.A. to Mehedi Hasan, certificate number 0001110498"
+              width="1280" height="903" loading="lazy" />
+          </div>
+        </div>
+        <div class="cred-info">
+          <span class="status cred-status"><span class="pulse"></span> Verified · Odoo S.A.</span>
+          <h3>Odoo 18 Functional Certification</h3>
+          <p class="cred-issuer">Issued by Odoo S.A. · Belgium</p>
+          <div class="cred-facts">
+            <div class="cred-fact"><span class="k">Recipient</span><span class="v">Mehedi Hasan</span></div>
+            <div class="cred-fact"><span class="k">Issued by</span><span class="v">Odoo S.A.</span></div>
+            <div class="cred-fact"><span class="k">Certificate no.</span><span class="v">0001110498</span></div>
+            <div class="cred-fact"><span class="k">Date</span><span class="v">05/06/2026</span></div>
+          </div>
+          <div class="cred-actions">
+            <a class="btn btn-primary" href="assets/certifications/odoo-18-functional-certification.jpg"
+              target="_blank" rel="noopener">View full certificate <span>↗</span></a>
+            <a class="btn" href="#contact">Discuss a project <span class="dot"></span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- TESTIMONIALS STRIP — hidden until real data collected -->
   <section id="testimonials" style="display:none">
     <div class="shell">
@@ -3420,7 +3573,7 @@
     <div class="shell">
       <div class="section-head">
         <div class="reveal">
-          <span class="eyebrow">FAQ · 006</span>
+          <span class="eyebrow">FAQ · 007</span>
           <h2 class="section-title" id="faq-heading">Common <span class="serif">questions</span> about Odoo ERP in
             Bangladesh.</h2>
         </div>
@@ -3506,7 +3659,7 @@
     <div class="shell">
       <div class="contact-wrap reveal">
         <div style="grid-column:1 / -1">
-          <span class="eyebrow">Contact · 006</span>
+          <span class="eyebrow">Contact · 008</span>
         </div>
         <h2>Have a rollout that needs a <span class="serif">steady</span> hand?</h2>
         <p class="section-desc" style="grid-column:9 / span 4">I reply within 1 business day. The best intros mention

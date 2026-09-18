@@ -1,0 +1,354 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description"
+    content="Configure Odoo Consolidation for Bangladesh business groups: multi-entity financial roll-up, inter-company eliminations, and group-level reporting." />
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="Mehedi Hasan" />
+  <title>Odoo Consolidation for Bangladesh Group Companies & Sister Concerns | Mehedi Hasan</title>
+  <link rel="canonical" href="https://mhasan.me/lab/0098-odoo-consolidation-group-companies-bangladesh" />
+  <link rel="alternate" hreflang="en" href="https://mhasan.me/lab/0098-odoo-consolidation-group-companies-bangladesh" />
+  <link rel="alternate" hreflang="x-default" href="https://mhasan.me/lab/0098-odoo-consolidation-group-companies-bangladesh" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png" />
+  <!-- Open Graph -->
+  <meta property="og:title" content="Odoo Consolidation for Bangladesh Group Companies & Sister Concerns | Mehedi Hasan" />
+  <meta property="og:description"
+    content="Configure Odoo Consolidation for Bangladesh business groups: multi-entity financial roll-up, inter-company eliminations, and group-level reporting." />
+  <meta property="og:url" content="https://mhasan.me/lab/0098-odoo-consolidation-group-companies-bangladesh" />
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="https://mhasan.me/assets/og-default.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:site_name" content="Mehedi Hasan | Odoo ERP Consultant" />
+  <meta property="article:author" content="https://www.linkedin.com/in/mehedi-hasan-consultant/" />
+  <meta property="article:published_time" content="2026-09-18T14:00:00+06:00" />
+  <meta property="article:modified_time" content="2026-09-18T14:00:00+06:00" />
+  <meta property="article:section" content="Odoo ERP Bangladesh" />
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Odoo Consolidation for Bangladesh Group Companies & Sister Concerns | Mehedi Hasan" />
+  <meta name="twitter:description"
+    content="Configure Odoo Consolidation for Bangladesh business groups: multi-entity financial roll-up, inter-company eliminations, and group-level reporting." />
+  <meta name="twitter:image" content="https://mhasan.me/assets/og-default.jpg" />
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Odoo Consolidation for Bangladesh Group Companies & Sister Concerns",
+    "description": "Configure Odoo Consolidation for Bangladesh business groups: multi-entity financial roll-up, inter-company eliminations, and group-level reporting.",
+    "datePublished": "2026-09-18T14:00:00+06:00",
+    "dateModified": "2026-09-18T14:00:00+06:00",
+    "author": {
+      "@type": "Person",
+      "name": "Mehedi Hasan",
+      "url": "https://mhasan.me",
+      "jobTitle": "Odoo ERP Consultant & Business Analyst",
+      "sameAs": "https://www.linkedin.com/in/mehedi-hasan-consultant/"
+    },
+    "publisher": { "@type": "Person", "name": "Mehedi Hasan", "url": "https://mhasan.me" },
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://mhasan.me/lab/0098-odoo-consolidation-group-companies-bangladesh" }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://mhasan.me" },
+      { "@type": "ListItem", "position": 2, "name": "Lab", "item": "https://mhasan.me/lab/" },
+      { "@type": "ListItem", "position": 3, "name": "Odoo Consolidation for Bangladesh Group Companies", "item": "https://mhasan.me/lab/0098-odoo-consolidation-group-companies-bangladesh" }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Should sister concerns share one Odoo database or use separate databases?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Use one database with multiple companies when the sister concerns share master data (customers, vendors, products, or staff move between entities) and transact with each other frequently. Use separate databases when the businesses are operationally unrelated, need independent upgrade schedules, or ownership will diverge (a sister concern might be sold or spun off). Most Bangladesh family groups with related trading and manufacturing lines fit the single-database, multi-company model better than they initially assume."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How does Odoo handle inter-company transactions between sister concerns?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Within a single multi-company database, Odoo can auto-generate the mirrored transaction on the counterparty company when one company sells to another (a sales order on Company A automatically creates a matching purchase order on Company B). At group reporting level, these inter-company sales, purchases, and any unrealized profit sitting in year-end inventory must still be manually eliminated in the consolidation module or worksheet, because standard multi-company accounting does not auto-eliminate for consolidated statements."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does Odoo have a built-in consolidation module?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Odoo Enterprise includes a Consolidation app that lets you define a consolidation entity, map each subsidiary's chart of accounts to a common consolidated chart, pull trial balances from each company (Odoo or external), and apply elimination journal entries before generating consolidated financial statements. It is a genuinely usable tool for Bangladesh group structures with 3 to 15 entities, though it still requires a person who understands consolidation accounting to configure the mappings and eliminations correctly."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can Odoo show group-level dashboards across all sister concerns?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. With all entities in one database, Odoo's reporting and dashboard views can be filtered to 'all companies' or a selected subset, giving the ownership group a single combined view of revenue, cash position, and receivables across every sister concern without opening each company's books separately. This requires the companies to share a reasonably harmonized chart of accounts and consistent analytic tagging, which is usually the harder part of the setup, not the dashboard itself."
+        }
+      }
+    ]
+  }
+]
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap">
+  <link rel="stylesheet" href="_styles.css">
+  <style>
+    .structure-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:24px 0}
+    @media(max-width:680px){.structure-grid{grid-template-columns:1fr}}
+    .structure-card{border:1px solid var(--border);border-radius:10px;padding:18px;background:var(--surface)}
+    .structure-card h4{margin:0 0 8px;font-size:14.5px;color:var(--text)}
+    .structure-card p{margin:0;font-size:13px;color:var(--text-2);line-height:1.55}
+  </style>
+</head>
+
+<body>
+  <div class="grid-bg"></div>
+
+  <header class="nav">
+    <div class="shell">
+      <div class="nav-inner">
+        <a class="brand" href="../">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span class="brand-name"><b>Mehedi Hasan</b><em>ERP · Business Analyst</em></span>
+        </a>
+        <a class="back-link" href="../#lab">← Back to Lab</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="post-head">
+    <div class="shell">
+      <span class="eyebrow">Technical Lab · 0098</span>
+      <h1>Odoo Consolidation for <span class="serif">Bangladesh group companies</span> and sister concerns.</h1>
+      <p class="lede">Almost every family business past a certain size in Bangladesh is not one company. It is four or five companies, legally separate, sharing an owner, a management team, and often a building, but reporting to nobody as a group. Here is how I actually configure Odoo to give that family a single consolidated view without breaking each entity's statutory books.</p>
+      <div class="post-meta">
+        <span class="chip accent">Guide</span>
+        <span class="chip">Multi-Company</span>
+        <span class="chip">Consolidation</span>
+        <span class="chip">Group Reporting</span>
+      </div>
+      <div class="byline">
+        <span>By<b><a href="https://www.linkedin.com/in/mehedi-hasan-consultant/" style="color:var(--accent)" rel="author">Mehedi Hasan</a></b></span>
+        <span>Published<b>September 2026</b></span>
+        <span>Read time<b>16 minutes</b></span>
+        <span>Form<b>Guide</b></span>
+        <span>Scope<b>Group Finance</b></span>
+      </div>
+    </div>
+  </section>
+
+  <article class="post">
+    <aside class="toc">
+      <div class="toc-k">In this guide</div>
+      <ol>
+        <li><a href="#sister-concern-problem">The Sister Concern Problem</a></li>
+        <li><a href="#one-db-or-many">One Database or Separate Databases</a></li>
+        <li><a href="#multi-company-setup">Setting Up Multi-Company in Odoo</a></li>
+        <li><a href="#intercompany-transactions">Inter-Company Transactions</a></li>
+        <li><a href="#eliminations">Elimination: Where Groups Get It Wrong</a></li>
+        <li><a href="#consolidation-module">The Consolidation Module, Configured</a></li>
+        <li><a href="#fiscal-mismatch">When Fiscal Structures Differ</a></li>
+        <li><a href="#group-dashboards">Group-Level Dashboards</a></li>
+        <li><a href="#rollout-order">A Realistic Rollout Order</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ol>
+    </aside>
+
+    <div class="body">
+
+      <h2 id="sister-concern-problem">The Sister Concern Problem</h2>
+      <p>Walk into almost any established Bangladesh business family and you find the same shape. There is a garments buying house, a spinning mill, a small property arm renting out excess factory floor, and maybe a fledgling trading company one of the sons started two years ago. Each is a separate limited company with its own TIN, its own BIN, its own bank accounts, and its own auditor sign-off. All of them share the same chairman, the same finance director walking between offices, and often the same handful of senior accountants who close each entity's books independently and then, at month end, manually retype numbers into an Excel workbook that becomes the "group MIS."</p>
+      <p>This is not a failure of ambition. It is what happens when a business grows by adding legally separate entities rather than divisions, which in Bangladesh is often done deliberately: for tax planning, for lender covenants that cap exposure per entity, for keeping export incentive eligibility clean in one company while a domestic trading arm sits in another, or simply because each entity was incorporated to satisfy a different buyer's or bank's requirement at the time.</p>
+      <p>The result is a group that is data-rich at the entity level and completely blind at the group level. The chairman does not know, on any given day, the combined cash position across four companies without calling four accountants. Two sister concerns routinely sell to each other at cost or with a small margin, and that inter-company revenue sits recorded in both companies' books, quietly inflating combined turnover if anyone ever adds the entity statements together naively.</p>
+
+      <div class="stat-row">
+        <div class="stat-card">
+          <div class="sc-val">3-8</div>
+          <div class="sc-label">Typical Entity Count</div>
+          <div class="sc-note">Sister concerns under one Bangladesh family group I typically see needing consolidation</div>
+        </div>
+        <div class="stat-card">
+          <div class="sc-val">2-4 weeks</div>
+          <div class="sc-label">Setup Effort</div>
+          <div class="sc-note">To configure multi-company plus a working consolidation model for 3-5 entities</div>
+        </div>
+        <div class="stat-card">
+          <div class="sc-val">1 DB</div>
+          <div class="sc-label">Usual Recommendation</div>
+          <div class="sc-note">Most related sister concerns are better served by one database than separate ones</div>
+        </div>
+      </div>
+
+      <p class="pull">The group does not lack data. It lacks one place where the data from all the entities agrees with itself.</p>
+
+      <h2 id="one-db-or-many">One Database or Separate Databases: The Real Trade-Off</h2>
+      <p>This is the first decision, and it is the one I see Bangladesh groups get wrong most often, usually by defaulting to separate databases because each entity was set up on Odoo at a different time by a different implementer, rather than because anyone deliberately chose it.</p>
+
+      <div class="structure-grid">
+        <div class="structure-card">
+          <h4>One database, multiple companies</h4>
+          <p>All sister concerns live inside a single Odoo instance, each as a "Company" record. Shared master data (products, a common vendor list, a shared chart of accounts template), native inter-company document flows, and one login for a user who works across entities. Best when the entities transact with each other regularly, share purchasing, or share staff across departments.</p>
+        </div>
+        <div class="structure-card">
+          <h4>Separate databases per company</h4>
+          <p>Each entity is fully isolated: its own upgrade schedule, its own customizations, its own performance profile, no risk of a user in Company A accidentally viewing Company B's data. Best when a sister concern is operationally unrelated to the rest of the group (a real estate arm sitting inside an RMG group, for instance), or when the entity is being prepared for eventual sale or spin-off and needs to be commercially and technically separable on short notice.</p>
+        </div>
+      </div>
+
+      <p>The trade-off that actually matters in practice is not technical, it is organizational. A single database gives you native cross-company reporting, shared master data maintenance (one product catalog instead of four), and much simpler inter-company transaction posting. It costs you data isolation: a careless permission setup lets a user in the trading company see the manufacturing company's payroll runs, and a bad customization or a runaway report in one company can slow the system down for every other company sharing the instance.</p>
+      <p>Separate databases protect isolation completely but make consolidation strictly harder, because you now need to extract data out of each database (via export, API, or the Consolidation app's external data import) rather than simply filtering by company inside one system. I have implemented both, and for a genuine Bangladesh family group of sister concerns, most of the time the honest recommendation is one database, multiple companies, with disciplined access group configuration to handle the isolation concern rather than solving it by fragmenting the whole database.</p>
+      <p>The exception is when a sister concern is legally ring-fenced for a reason that matters: a joint venture with an outside minority shareholder who has audit rights only to that entity, or a subsidiary being carved out for eventual sale to a strategic buyer who will want a clean, exportable database. In those specific cases, separate databases avoid a much messier future untangling. For the underlying mechanics of setting up multiple companies inside one instance correctly the first time, including chart of accounts sharing and inter-company rules, see the <a href="0006-odoo-multi-company-setup-guide" style="color:var(--accent)">Odoo Multi-Company Setup Guide</a>.</p>
+
+      <div class="tip-box">
+        <div class="tlabel">Practical Shortcut</div>
+        <p>If you are not sure which model fits, ask one question: in the last twelve months, how many times did Company A invoice Company B, or did a staff member's timesheet need to be split across two entities? More than a handful of times a month and the single-database model will save you real administrative pain. Close to zero and separate databases lose you nothing.</p>
+      </div>
+
+      <h2 id="multi-company-setup">Setting Up Multi-Company in Odoo Correctly</h2>
+      <p>Assuming the single-database, multi-company model fits, the setup sequence I follow for Bangladesh group companies is deliberately conservative, because the mistakes made here surface eight months later as a chart of accounts that cannot be consolidated.</p>
+      <p><strong>Start with a harmonized chart of accounts template.</strong> Each sister concern will have its own legal chart of accounts for statutory filing, but if every entity uses a different account numbering scheme, mapping them into a group consolidation later becomes a manual, error-prone translation exercise. I set up one master chart of accounts template at the group level, then let each company inherit it with entity-specific accounts added where genuinely needed (a factory-specific WIP account, for instance). This single decision saves the most time later of anything in this list.</p>
+      <p><strong>Decide what is shared and what is not, deliberately, per master data type.</strong> Odoo lets you mark products, customers, and vendors as company-specific or shared across all companies. Share the product catalog if the sister concerns sell overlapping product lines. Keep customer and vendor records shared if the group negotiates with the same suppliers or sells to overlapping buyers under different entities, since duplicate vendor records across four companies is exactly the kind of mess that makes later consolidation painful. Keep them separate if a sister concern's customer base is genuinely distinct and commercially confidential from the others internally.</p>
+      <p><strong>Set up inter-company rules early, not as an afterthought.</strong> Odoo's Inter-Company Transactions settings, configured under each company's settings, let you enable automatic generation of the mirror document (a purchase order on Company B when Company A raises a sales order to Company B, or an automatic vendor bill draft when an inter-company invoice posts). Configure this before go-live, not after the first inter-company sale has already been recorded twice, differently, by two different accountants.</p>
+      <p><strong>Assign users to companies explicitly, and test the switch.</strong> A user working across two sister concerns needs both companies allowed on their user record, with a sensible default. Test, with an actual user, that switching the company context in the top bar actually restricts what they see the way you expect. This is the step most commonly skipped, and it is the one that produces the "wait, why can I see the other company's purchase prices" complaint three weeks after go-live.</p>
+
+      <h2 id="intercompany-transactions">Inter-Company Transactions: Getting the Flow Right</h2>
+      <p>The most common real transaction pattern in a Bangladesh sister-concern group is one entity selling raw material, semi-finished goods, or a shared service (say, a shared logistics or maintenance team billed internally) to another. Configured correctly, this should require one person to record one transaction, with Odoo generating the counterparty document automatically.</p>
+      <p>In practice, I still see two failure patterns repeatedly. The first is duplicate manual entry: without inter-company automation enabled, the selling company's accountant records a sales invoice, and separately the buying company's accountant records a purchase bill, often with mismatched dates, mismatched quantities, or a different unit price if someone made a typo. These two records then need manual reconciliation at month end, which is exactly the manual burden the group was trying to escape by moving to Odoo in the first place.</p>
+      <p>The second failure pattern is subtler and more dangerous: the inter-company price is set at an arbitrary transfer price (often simply "cost plus 5%" agreed verbally years ago) with no documented transfer pricing policy, no visibility into whether that price is arm's-length, and no consistency between what different sister concerns charge each other for similar internal transactions. This becomes a genuine tax exposure question under Bangladesh's related-party transaction rules, not just a bookkeeping tidiness issue, and it is worth a conversation with the group's tax advisor, not something an ERP configuration alone can fix.</p>
+
+      <div class="feature-grid">
+        <div class="feature-card">
+          <div class="fc-icon">01</div>
+          <div class="fc-body">
+            <h4>Enable auto-generation</h4>
+            <p>Turn on the inter-company rule so one document creates its mirror automatically, removing double entry and date/quantity mismatches.</p>
+          </div>
+        </div>
+        <div class="feature-card">
+          <div class="fc-icon">02</div>
+          <div class="fc-body">
+            <h4>Document the transfer price policy</h4>
+            <p>Write down, even briefly, how inter-company prices are set. This protects the group commercially and during any future tax review.</p>
+          </div>
+        </div>
+        <div class="feature-card">
+          <div class="fc-icon">03</div>
+          <div class="fc-body">
+            <h4>Tag inter-company journals distinctly</h4>
+            <p>Use a dedicated inter-company journal or analytic tag so these transactions can be pulled out cleanly at consolidation time.</p>
+          </div>
+        </div>
+        <div class="feature-card">
+          <div class="fc-icon">04</div>
+          <div class="fc-body">
+            <h4>Reconcile monthly, not annually</h4>
+            <p>A monthly inter-company reconciliation catches mismatches while the transaction is still fresh, not eight months into a year-end audit.</p>
+          </div>
+        </div>
+      </div>
+
+      <h2 id="eliminations">Elimination: Where Groups Actually Get It Wrong</h2>
+      <p>This is the section that separates a group that has "connected its companies in Odoo" from a group that has genuinely consolidated. If Company A sells BDT 2 crore of yarn to Company B during the year, and you simply add Company A's revenue and Company B's cost of goods together to get "group revenue," you have overstated the group's real external revenue by that BDT 2 crore, because it never left the group. This is the double-counting problem, and it is the single most common consolidation error I see in Bangladesh group MIS workbooks built in Excel by well-meaning accountants who have never been trained in formal consolidation accounting.</p>
+      <p>Proper elimination requires removing three things at group level: the inter-company revenue and matching inter-company cost of sales, any inter-company payable and receivable balance between the entities (so the group balance sheet does not show the group owing itself money), and, the part almost everyone misses, any unrealized profit sitting in year-end inventory that one sister concern bought from another and has not yet sold externally. If Company B still holds, at year end, inventory it bought from Company A at a 15% markup, the group's consolidated inventory value should be reduced back to Company A's original cost, because from the group's perspective no profit has actually been earned on goods still sitting in a warehouse.</p>
+
+      <div class="disclaimer">
+        <p><strong>Note:</strong> Odoo's multi-company accounting does not perform these eliminations automatically, and no ERP genuinely does this without configuration and a human who understands consolidation accounting reviewing the entries. What Odoo's Consolidation app gives you is a structured place to record these elimination journal entries against a consolidated chart, rather than a free-standing Excel workbook that nobody can audit trail back to source.</p>
+      </div>
+
+      <h2 id="consolidation-module">The Consolidation Module, Configured for a Bangladesh Group</h2>
+      <p>Odoo Enterprise's Consolidation app is the right tool for most Bangladesh groups with somewhere between three and fifteen legal entities, and it is genuinely underused locally, mostly because implementation partners rarely get asked for it and because it requires someone on the finance side who actually understands what a consolidation worksheet is supposed to do.</p>
+      <p>The setup sequence: first, create a Consolidated Chart of Accounts, this is the group-level account structure that every subsidiary's accounts will map into. Second, create a Consolidation entity in the app and add each sister concern as a subsidiary, whether that subsidiary is a company inside the same Odoo database (which pulls trial balance data natively) or an external company whose trial balance is imported via a structured spreadsheet (relevant if a sister concern runs on a different system, or lives in a separate Odoo database by design). Third, map every account in each subsidiary's chart to the corresponding consolidated account, this mapping step is where the harmonized chart of accounts decision from earlier pays off, since a shared numbering scheme across entities makes this a fast, largely mechanical exercise rather than a line-by-line negotiation.</p>
+      <p>Fourth, and this is the step that requires real accounting judgment rather than configuration, build the elimination journal entries into the consolidation period: inter-company revenue against inter-company cost, inter-company receivables against payables, and the unrealized profit adjustment on closing inventory. Fifth, generate the consolidated trial balance and financial statements from the app, which will now reflect the group's true external position rather than a naive sum of the parts.</p>
+      <p>One honest caveat: the Consolidation app assumes a reasonably disciplined monthly or quarterly close process at the entity level. If individual sister concerns are still closing their books six weeks late, the consolidation will always be running behind, and the group MIS the chairman actually wants (a same-week view of group cash and receivables) needs the entity-level close cadence fixed first. The consolidation tool cannot compensate for slow entity bookkeeping; it only formalizes what is fed into it.</p>
+
+      <h2 id="fiscal-mismatch">When Fiscal Structures Differ Across Entities</h2>
+      <p>Bangladesh groups occasionally end up with sister concerns on different fiscal years, most often because one entity was incorporated with foreign investment and follows a July-June fiscal year to align with an international parent's reporting calendar, while the domestic sister concerns follow the standard Bangladesh January-December year, or vice versa. This is a genuine complication for consolidation, not a configuration inconvenience.</p>
+      <p>The practical approach is to run the consolidation on the group's chosen reporting calendar (usually whichever is used for the majority of entities or for the primary lender relationship) and require the misaligned entity to produce an interim trial balance cut at the group's period end, in addition to its own statutory year end. This interim cut does not need to be audited, it needs to be accurate enough for group management reporting. Odoo's Consolidation app accepts these interim imports the same way it accepts a full external subsidiary's data, so the mechanism is not the hard part. The hard part is getting the misaligned entity's accountant into the habit of producing that extra cut on time every period, which is a process discipline problem more than a software one.</p>
+
+      <h2 id="group-dashboards">Group-Level Dashboards the Family Actually Uses</h2>
+      <p>The consolidation module solves the statutory and audit-facing side of group reporting. What the owning family usually wants day to day is simpler and more immediate: one screen showing combined cash position, combined receivables ageing, and revenue by entity, updated close to real time, not waiting for a quarterly consolidation close.</p>
+      <p>This is where Odoo's native multi-company dashboard filtering does most of the work without needing the full Consolidation app machinery. Once all sister concerns share one database and a harmonized chart of accounts, standard Odoo Accounting and Spreadsheet dashboards can be filtered to "all companies" or a chosen subset, giving a combined, near-real-time view. This will not have inter-company eliminations applied (it is a management view, not a statutory consolidated statement), but for the chairman deciding whether the group can afford a new equipment purchase this quarter, an unaudited, near-real-time combined cash and receivables view is usually more useful than a technically correct but three-months-delayed consolidated statement. Building this out properly, including the KPI selection that actually gets looked at rather than ignored, is covered in the <a href="0055-odoo-dashboards-kpi-bangladesh" style="color:var(--accent)">Odoo Dashboards & KPI guide</a>, and the underlying accounting setup that makes multi-entity reporting reliable in the first place is covered in <a href="0014-odoo-accounting-setup-bangladesh" style="color:var(--accent)">Odoo Accounting Setup for Bangladesh</a>.</p>
+      <p>I have found it useful to distinguish, explicitly, between these two artifacts for the client: a fast, unaudited group management dashboard for weekly decisions, and a slower, formally eliminated consolidated statement for quarterly board reporting and annual audit. Trying to make one artifact serve both purposes usually means the fast dashboard gets bogged down waiting for elimination entries, or the audited consolidation gets rushed to hit a weekly cadence it was never built for.</p>
+
+      <h2 id="rollout-order">A Realistic Rollout Order</h2>
+      <p>Groups that try to stand up multi-company, inter-company automation, full consolidation, and group dashboards simultaneously in one project tend to stall, because each layer depends on the one below being stable. The order that has actually worked on Bangladesh group implementations I have run:</p>
+      <ol>
+        <li><strong>Harmonize the chart of accounts</strong> across all sister concerns first, even before touching Odoo configuration. This is a finance team exercise, not an IT one, and it takes longer than people expect because it means someone has to actually reconcile why Company A calls an account "Factory Overhead" and Company B calls the equivalent "Indirect Manufacturing Cost."</li>
+        <li><strong>Stand up multi-company in Odoo</strong> with the harmonized chart, shared or separated master data decided deliberately, and correct user access per entity.</li>
+        <li><strong>Enable and test inter-company transaction automation</strong> on a small set of real transactions before relying on it for the full transaction volume.</li>
+        <li><strong>Run one full consolidation cycle manually</strong> with the finance team, using the Consolidation app, before automating anything, so the eliminations are understood, not just clicked through.</li>
+        <li><strong>Build the group dashboard</strong> last, once the underlying data across entities is trustworthy enough that a combined number actually means something.</li>
+      </ol>
+
+      <div class="callout">
+        <span class="tag">Group Consolidation Assessment</span>
+        <p>If your family group is running three or more sister concerns on separate books, or on separate Odoo instances that were never designed to talk to each other, I can assess whether a single-database multi-company model fits your structure, and build out the chart of accounts harmonization, inter-company rules, and consolidation configuration needed to give ownership one real view of the group. <a href="../#contact" style="color:var(--accent)">Contact me for a consolidation review →</a></p>
+      </div>
+
+      <h2 id="faq">Frequently asked questions</h2>
+
+      <h3>Should sister concerns share one Odoo database or use separate databases?</h3>
+      <p>Use one database with multiple companies when the sister concerns share master data or transact with each other frequently. Use separate databases when the businesses are operationally unrelated, need independent upgrade schedules, or ownership will diverge, such as a sister concern being prepared for sale. Most Bangladesh family groups with related trading and manufacturing lines fit the single-database, multi-company model better than they initially assume.</p>
+
+      <h3>How does Odoo handle inter-company transactions between sister concerns?</h3>
+      <p>Within a single multi-company database, Odoo can auto-generate the mirrored transaction on the counterparty company when one company sells to another. At group reporting level, these inter-company sales, purchases, and any unrealized profit sitting in year-end inventory must still be manually eliminated in the consolidation module or worksheet, because standard multi-company accounting does not auto-eliminate for consolidated statements.</p>
+
+      <h3>Does Odoo have a built-in consolidation module?</h3>
+      <p>Odoo Enterprise includes a Consolidation app that lets you define a consolidation entity, map each subsidiary's chart of accounts to a common consolidated chart, pull trial balances from each company, and apply elimination journal entries before generating consolidated financial statements. It is genuinely usable for Bangladesh group structures with 3 to 15 entities, though it still requires someone who understands consolidation accounting to configure the mappings and eliminations correctly.</p>
+
+      <h3>Can Odoo show group-level dashboards across all sister concerns?</h3>
+      <p>Yes. With all entities in one database, Odoo's reporting and dashboard views can be filtered to all companies or a selected subset, giving the ownership group a combined view of revenue, cash position, and receivables without opening each company's books separately. This requires a reasonably harmonized chart of accounts and consistent analytic tagging, which is usually the harder part of the setup, not the dashboard itself.</p>
+
+    </div>
+  </article>
+
+  <footer>
+    <div class="shell">
+      <div class="post-foot">
+        <span class="eyebrow">Continue exploring</span>
+        <div class="next">
+          <a class="next-card" href="0097-odoo-recruitment-module-bangladesh">
+            <span class="dir">Older · 0097</span>
+            <h4>Odoo Recruitment Module for Bangladesh Hiring</h4>
+            <p>Job posting pipelines, candidate evaluation stages, and onboarding handoff.</p>
+            <span class="arrow">→</span>
+          </a>
+          <a class="next-card" href="../#lab">
+            <span class="dir">All articles</span>
+            <h4>Back to Lab Index</h4>
+            <p>Browse the full library of guides on Odoo ERP, manufacturing operations, and business analysis in Bangladesh.</p>
+            <span class="arrow">→</span>
+          </a>
+        </div>
+      </div>
+      <div class="foot">
+        <span>© 2026 Mehedi Hasan · Lab / 0098</span>
+        <span><a href="../#lab">↑ Back to lab index</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="_utils.js" defer></script>
+  <script src="_toc.js" defer></script>
+  <script src="/whatsapp.js" defer></script>
+  <script src="/scroll-top.js" defer></script>
+</body>
+
+</html>

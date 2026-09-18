@@ -1,0 +1,295 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Odoo ERP for Bangladesh freight forwarders and C&F agents: shipment tracking, HS-code-linked billing, customs documentation, and client invoicing workflows." />
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="Mehedi Hasan" />
+  <title>Odoo for Freight Forwarding & C&F Agents Bangladesh | Mehedi Hasan</title>
+  <link rel="canonical" href="https://mhasan.me/lab/0070-odoo-freight-forwarding-cf-agents-bangladesh" />
+  <link rel="alternate" hreflang="en" href="https://mhasan.me/lab/0070-odoo-freight-forwarding-cf-agents-bangladesh" />
+  <link rel="alternate" hreflang="x-default" href="https://mhasan.me/lab/0070-odoo-freight-forwarding-cf-agents-bangladesh" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png" />
+  <meta property="og:title" content="Odoo for Freight Forwarding & C&F Agents Bangladesh | Mehedi Hasan" />
+  <meta property="og:description" content="Odoo ERP for Bangladesh freight forwarders and C&F agents: shipment tracking, HS-code-linked billing, customs documentation, and client invoicing workflows." />
+  <meta property="og:url" content="https://mhasan.me/lab/0070-odoo-freight-forwarding-cf-agents-bangladesh" />
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="https://mhasan.me/assets/og-default.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:site_name" content="Mehedi Hasan | Odoo ERP Consultant" />
+  <meta property="article:author" content="https://www.linkedin.com/in/mehedi-hasan-consultant/" />
+  <meta property="article:published_time" content="2026-09-18T12:00:00+06:00" />
+  <meta property="article:modified_time" content="2026-09-18T12:00:00+06:00" />
+  <meta property="article:section" content="Odoo ERP Bangladesh" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Odoo for Freight Forwarding & C&F Agents Bangladesh | Mehedi Hasan" />
+  <meta name="twitter:description" content="Odoo ERP for Bangladesh freight forwarders and C&F agents: shipment tracking, HS-code-linked billing, customs documentation, and client invoicing workflows." />
+  <meta name="twitter:image" content="https://mhasan.me/assets/og-default.jpg" />
+  <script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Odoo for Freight Forwarding and C&F Agents in Bangladesh",
+    "description": "A practical guide to configuring Odoo for Bangladesh freight forwarders and Clearing & Forwarding (C&F) agents: shipment/job tracking, HS-code-linked billing for customs duty pass-through, multi-client account management, documentation tracking, and margin tracking per shipment.",
+    "datePublished": "2026-09-18T12:00:00+06:00",
+    "dateModified": "2026-09-18T12:00:00+06:00",
+    "author": { "@type": "Person", "name": "Mehedi Hasan", "url": "https://mhasan.me", "jobTitle": "Odoo ERP Consultant & Business Analyst", "sameAs": "https://www.linkedin.com/in/mehedi-hasan-consultant/" },
+    "publisher": { "@type": "Person", "name": "Mehedi Hasan", "url": "https://mhasan.me" },
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://mhasan.me/lab/0070-odoo-freight-forwarding-cf-agents-bangladesh" }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://mhasan.me" },
+      { "@type": "ListItem", "position": 2, "name": "Lab", "item": "https://mhasan.me/lab/" },
+      { "@type": "ListItem", "position": 3, "name": "Odoo for Freight Forwarding & C&F Agents Bangladesh", "item": "https://mhasan.me/lab/0070-odoo-freight-forwarding-cf-agents-bangladesh" }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Should a freight forwarder use Odoo Project, Sales Orders, or a custom module for shipment tracking?",
+        "acceptedAnswer": { "@type": "Answer", "text": "For most Bangladesh C&F agents and freight forwarders, the practical approach is to use Odoo's Sales Order as the shipment job header (one order per shipment or per client's periodic job), with a linked Project or Task representing the operational milestones of that shipment: booking confirmed, documents received, customs assessment, duty payment, delivery. This keeps invoicing tied naturally to the Sales Order while giving operations staff a task-based view of where each shipment stands, without needing custom development for a first implementation." }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I link HS codes to billing for customs duty pass-through in Odoo?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Set up your cleared goods as products or a generic 'Customs Clearance' service line item with an HS code reference field (custom field or the product's internal reference), and record the assessed duty, VAT, and AIT at source amounts the client actually owes NBR as pass-through cost lines on the shipment's Sales Order, separate from your own service fee. This keeps the duty pass-through (money that flows through you to the government on the client's behalf) clearly distinct from your margin (the C&F service fee and handling charges), which matters both for your own P&L clarity and for defending your invoice if a client questions what portion of the bill is your fee versus statutory duty." }
+      },
+      {
+        "@type": "Question",
+        "name": "How should a freight forwarder manage multiple clients with different billing terms in Odoo?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Use Odoo's Contacts and Sales pricelists to set client-specific rate cards (per-container handling fee, per-shipment documentation fee, agreed markup percentage on duty advance), and use payment terms on each client's contact record to reflect their actual credit arrangement, whether that is advance payment before customs release, 15/30-day credit, or a running account settled monthly. Because freight forwarding margins are thin and cash flow sensitive (duty and VAT must often be paid to NBR before goods are released, ahead of client payment), configuring accurate payment terms and monitoring the Accounts Receivable aging report in Odoo Accounting is more operationally important here than in most other business types." }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I track shipping documents like Bill of Lading, LC documents, and Certificate of Origin in Odoo?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Attach each document type directly to the shipment's Sales Order or linked Task using Odoo's native document attachment feature, and use a checklist (a simple set of sub-tasks or a custom Quality Control Point-style checklist) to track which required documents have been received and which are outstanding for a given shipment: Bill of Lading or Airway Bill, Commercial Invoice, Packing List, Certificate of Origin, and where applicable the LC documents required by the bank. This turns document completeness from something tracked in someone's memory or a WhatsApp thread into a visible status on the shipment record." }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I track margin per shipment in Odoo for a freight forwarding business?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Record all shipment costs (ocean or air freight paid to the carrier, inland haulage, port and terminal handling charges, customs clearance fees paid to C&F staff or sub-agents, and duty/VAT advanced on the client's behalf) as Purchase Orders or vendor bills linked to the same Sales Order or a shared analytic account for that shipment. Odoo's Sales Order margin field, or a simple analytic account profitability report, then shows revenue billed to the client against actual cost incurred, giving you a true per-shipment margin rather than only knowing profitability at the end of the month across all shipments combined." }
+      }
+    ]
+  }
+]
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap">
+  <link rel="stylesheet" href="_styles.css">
+  <style>
+    .pull{font-family:var(--serif);font-style:italic;font-size:clamp(20px,2.8vw,28px);line-height:1.3;color:var(--text);margin:48px 0;max-width:28ch;letter-spacing:-0.01em}
+    .pull::before{content:"";display:block;width:36px;height:1px;background:var(--accent);margin-bottom:18px}
+    .stat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:26px 0}
+    @media(max-width:680px){.stat-row{grid-template-columns:1fr 1fr}}
+    @media(max-width:440px){.stat-row{grid-template-columns:1fr}}
+    .stat-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:18px 16px;text-align:center}
+    .stat-card .sc-val{font-size:30px;font-weight:700;color:var(--accent);letter-spacing:-0.03em;line-height:1;margin-bottom:6px}
+    .stat-card .sc-label{font-family:var(--mono);font-size:10px;color:var(--text-3);letter-spacing:0.07em;text-transform:uppercase}
+    .stat-card .sc-note{font-size:11.5px;color:var(--text-2);margin-top:5px;line-height:1.4}
+    .flow-steps{display:flex;flex-wrap:wrap;gap:10px;margin:22px 0}
+    .flow-steps .fstep{flex:1;min-width:130px;border:1px solid var(--border);border-radius:8px;padding:12px 14px;background:var(--surface);text-align:center}
+    .flow-steps .fstep .fnum{font-family:var(--mono);font-size:10px;color:var(--accent);letter-spacing:0.08em;margin-bottom:6px}
+    .flow-steps .fstep .flabel{font-size:12.5px;color:var(--text);font-weight:600;line-height:1.3}
+    .doc-table{width:100%;border-collapse:collapse;font-size:13.5px;margin:18px 0}
+    .doc-table th{text-align:left;padding:10px 14px;background:var(--surface);color:var(--text-3);font-family:var(--mono);font-size:10.5px;letter-spacing:0.06em;text-transform:uppercase;border-bottom:1px solid var(--border)}
+    .doc-table td{padding:11px 14px;border-bottom:1px solid var(--border);color:var(--text-2);vertical-align:top}
+    .doc-table td:first-child{color:var(--text);font-weight:600}
+    .doc-table tr:last-child td{border-bottom:none}
+    .tip-box{background:var(--accent-dim);border-left:3px solid var(--accent);border-radius:0 6px 6px 0;padding:14px 18px;margin:18px 0}
+    .tip-box .tlabel{font-family:var(--mono);font-size:10px;color:var(--accent);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:6px}
+    .tip-box p{margin:0;font-size:14px;color:var(--text-2);line-height:1.55}
+  </style>
+</head>
+<body>
+  <div class="grid-bg"></div>
+  <header class="nav">
+    <div class="shell">
+      <div class="nav-inner">
+        <a class="brand" href="../">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span class="brand-name"><b>Mehedi Hasan</b><em>ERP · Business Analyst</em></span>
+        </a>
+        <a class="back-link" href="../#lab">← Back to Lab</a>
+      </div>
+    </div>
+  </header>
+  <section class="post-head">
+    <div class="shell">
+      <span class="eyebrow">Technical Lab · 0070</span>
+      <h1>Odoo for freight forwarding & C&F agents: <span class="serif">a service business, not a warehouse.</span></h1>
+      <p class="lede">Freight forwarders and Clearing & Forwarding agents in Bangladesh run on shipment jobs, thin margins, and a mountain of paperwork, not on inventory. Most end up forcing Odoo's manufacturing or trading templates onto a business that actually needs project-style job tracking and careful duty pass-through billing. Here is the setup that fits.</p>
+      <div class="post-meta">
+        <span class="chip accent">Guide</span>
+        <span class="chip">Freight & C&F</span>
+        <span class="chip">Bangladesh</span>
+      </div>
+      <div class="byline">
+        <span>By<b><a href="https://www.linkedin.com/in/mehedi-hasan-consultant/" style="color:var(--accent)" rel="author">Mehedi Hasan</a></b></span>
+        <span>Published<b>September 2026</b></span>
+        <span>Read time<b>13 minutes</b></span>
+        <span>Form<b>Guide</b></span>
+        <span>Scope<b>Service Operations & Billing</b></span>
+      </div>
+    </div>
+  </section>
+  <article class="post">
+    <aside class="toc">
+      <div class="toc-k">In this guide</div>
+      <ol>
+        <li><a href="#business-model">A different kind of business</a></li>
+        <li><a href="#shipment-tracking">Shipment / job tracking</a></li>
+        <li><a href="#hs-billing">HS-code-linked billing for duty pass-through</a></li>
+        <li><a href="#multi-client">Managing multiple client accounts</a></li>
+        <li><a href="#documentation">Documentation tracking</a></li>
+        <li><a href="#margin">Margin tracking per shipment</a></li>
+        <li><a href="#rollout">Getting started without overbuilding</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ol>
+    </aside>
+    <div class="body">
+
+      <h2 id="business-model">A different kind of business</h2>
+      <p>Every other manufacturing-focused article in this lab deals with a business that buys raw material, transforms it, and sells finished goods. A freight forwarder or C&F agent does none of that. Their product is coordination and paperwork: booking cargo space with a shipping line, coordinating with the port authority (Chattogram Port Authority or Mongla), managing customs clearance through a licensed C&F house, and delivering the goods to the client's factory or warehouse. Revenue comes from service fees, documentation charges, and a markup on the duty and taxes they advance to NBR on the client's behalf. Cost comes from actual freight paid to carriers, port handling charges, and the C&F staff's clearance fees.</p>
+      <p>Because there is no physical transformation happening, forcing Odoo's Manufacturing module onto this business, the way you would for the plastics or food processors covered elsewhere in this lab, is the wrong instinct. The right model treats each shipment as a service job: a Sales Order (or in Odoo's newer terminology, a quotation converted to a confirmed order) representing the client engagement, with either a Project task or a simple set of milestones tracking where that shipment stands operationally.</p>
+
+      <div class="stat-row">
+        <div class="stat-card">
+          <div class="sc-val">3-8%</div>
+          <div class="sc-label">Typical service margin</div>
+          <div class="sc-note">C&F service fee as a percentage of total shipment value, before duty pass-through</div>
+        </div>
+        <div class="stat-card">
+          <div class="sc-val">5-15 days</div>
+          <div class="sc-label">Clearance cycle</div>
+          <div class="sc-note">Typical time from vessel arrival at Chattogram to gate-out after customs release</div>
+        </div>
+        <div class="stat-card">
+          <div class="sc-val">6-10</div>
+          <div class="sc-label">Documents per shipment</div>
+          <div class="sc-note">Typical count of documents that must be complete before customs assessment</div>
+        </div>
+      </div>
+
+      <h2 id="shipment-tracking">Shipment / job tracking as a project</h2>
+      <p>Set up each shipment as a Sales Order in Odoo, one per shipment for occasional clients, or one Sales Order per recurring client covering a defined billing period if you handle high volumes for a single importer. Link a Project task to that Sales Order representing the shipment's operational lifecycle. A practical milestone structure for an import shipment looks like this:</p>
+
+      <div class="flow-steps">
+        <div class="fstep"><div class="fnum">01</div><div class="flabel">Booking confirmed</div></div>
+        <div class="fstep"><div class="fnum">02</div><div class="flabel">Documents received</div></div>
+        <div class="fstep"><div class="fnum">03</div><div class="flabel">Bill of Entry filed</div></div>
+        <div class="fstep"><div class="fnum">04</div><div class="flabel">Customs assessment</div></div>
+        <div class="fstep"><div class="fnum">05</div><div class="flabel">Duty paid</div></div>
+        <div class="fstep"><div class="fnum">06</div><div class="flabel">Goods released</div></div>
+        <div class="fstep"><div class="fnum">07</div><div class="flabel">Delivered & invoiced</div></div>
+      </div>
+
+      <p>Each stage becomes a task status your operations team updates, giving both your staff and, if you choose to expose it, the client a live view of where their shipment stands rather than the status update happening only via phone calls or WhatsApp. This structure also naturally produces the operational data behind your invoicing: once a shipment reaches "delivered," the linked Sales Order is ready to be finalized and invoiced, tying financial closure to an operational milestone instead of an arbitrary end-of-month batch invoice run.</p>
+
+      <h2 id="hs-billing">HS-code-linked billing for duty pass-through</h2>
+      <p>The most important billing discipline for a Bangladesh freight forwarder or C&F agent is separating two very different kinds of money on every client invoice: your service fee (revenue you keep) and the duty, VAT, and Advance Income Tax (AIT) you have paid to NBR on the client's behalf and are now recovering (pass-through, not revenue). Mixing these together on an invoice, or worse, in your own bookkeeping, makes your P&L unreadable and makes it hard to defend an invoice when a client questions a large total.</p>
+      <p>Set each cleared consignment up with a reference to its HS code (Harmonized System code), either as a custom field on the shipment's Sales Order line or tied to a generic "Customs Clearance – [HS Code]" service product, since the assessed duty rate depends directly on that HS classification. The mechanics of HS code classification and how it drives customs assessment are covered in more depth in <a href="0019-hs-code-customs-odoo-bangladesh" style="color:var(--accent)">HS Code & Customs in Odoo Bangladesh</a>; for a freight forwarder, the practical requirement is simpler: record the assessed duty, VAT, and AIT at source amounts as separate, clearly labeled pass-through cost lines on the Sales Order, distinct from your handling fee, documentation charge, and any agreed markup percentage on the advanced duty amount.</p>
+
+      <div class="tip-box">
+        <div class="tlabel">Why this separation matters beyond bookkeeping</div>
+        <p>NBR audits of C&F agents and their client importers periodically review whether duty amounts collected from clients match what was actually deposited against the Bill of Entry. An invoice structure that clearly itemizes "Duty & VAT paid to NBR: BDT X" separately from "Clearance & handling service fee: BDT Y" is far easier to defend and reconcile than a single lump "Total Clearance Charges" line that blends both, and it also makes your own margin visible internally instead of buried inside a large pass-through number.</p>
+      </div>
+
+      <h2 id="multi-client">Managing multiple client accounts with different billing terms</h2>
+      <p>A freight forwarding business typically serves a mix of clients: large importers with negotiated per-container rates and 15 to 30 day credit terms, smaller occasional shippers who pay per shipment with no credit, and a handful of clients where you advance duty payment and recover it plus a markup upon delivery. Use Odoo's Contacts records to hold each client's specific commercial terms, and Sales Pricelists (under <strong>Sales → Configuration → Pricelists</strong>) to encode client-specific rate cards, so that a per-container handling fee or a documentation charge auto-populates correctly per client rather than being manually re-keyed on every job.</p>
+      <p>Payment terms deserve particular attention in this sector because cash flow timing is tight: you frequently must pay duty and VAT to NBR to release goods before the client has paid you for that shipment. Set accurate Payment Terms on each client's Contact record reflecting their actual agreed credit period, and monitor the Accounts Receivable aging report in Odoo Accounting closely, since a forwarder who has advanced BDT 20 lakh in duty on a client's behalf and is waiting 45 days for reimbursement against a 15-day agreed term has a real working capital problem that the aging report will surface early if it is watched, and will surface late (as a cash crisis) if it is not.</p>
+
+      <h2 id="documentation">Documentation tracking</h2>
+      <p>Every shipment requires a specific set of documents to be complete before customs clearance can proceed, and an incomplete document set is one of the most common causes of clearance delay and demurrage cost at Chattogram port.</p>
+
+      <table class="doc-table">
+        <thead>
+          <tr><th>Document</th><th>Source</th><th>Why it matters</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Bill of Lading / Airway Bill</td><td>Shipping line / airline</td><td>Proof of shipment, required for Bill of Entry filing</td></tr>
+          <tr><td>Commercial Invoice</td><td>Overseas supplier</td><td>Basis for customs valuation and duty assessment</td></tr>
+          <tr><td>Packing List</td><td>Overseas supplier</td><td>Cross-checked against physical inspection at port</td></tr>
+          <tr><td>Certificate of Origin</td><td>Exporting country chamber/authority</td><td>Determines preferential duty rate eligibility (e.g. under trade agreements)</td></tr>
+          <tr><td>LC documents</td><td>Issuing/negotiating bank</td><td>Required where the import is financed via Letter of Credit</td></tr>
+          <tr><td>Insurance Certificate</td><td>Insurer</td><td>Required for CIF valuation and claims if goods are damaged in transit</td></tr>
+        </tbody>
+      </table>
+
+      <p>Attach each document directly to the shipment's Sales Order or linked Project task using Odoo's native attachment feature, and maintain a simple checklist of required versus received documents visible on the shipment record. This turns "do we have everything we need to file the Bill of Entry" from a question someone has to chase down by phone into a status any staff member can see at a glance. For clients whose imports are LC-financed, this same document discipline connects to the broader LC document flow, covered in <a href="0020-lc-management-odoo-bangladesh" style="color:var(--accent)">LC Management in Odoo Bangladesh</a>, since the C&F agent is often the party physically handling the LC documents on the importer's behalf at the clearance stage.</p>
+
+      <h2 id="margin">Margin tracking on freight, handling, and clearance fees</h2>
+      <p>Because a single shipment involves multiple cost components (ocean or air freight, inland haulage from the port to the client's factory, port and terminal handling charges, C&F clearance fees, and any sub-agent fees at origin or destination), knowing whether a specific shipment was actually profitable requires those costs to be captured against that specific job, not absorbed into a general expense account reconciled only at month-end.</p>
+      <p>Record vendor bills for freight, haulage, and handling as Purchase Orders or vendor bills linked to the same Sales Order or a shared analytic account representing that shipment. Odoo's analytic accounting then lets you pull a profitability report per shipment: revenue billed (service fee plus any markup) against actual cost incurred (freight, handling, clearance labor), producing a true per-shipment margin. This is particularly valuable for identifying which types of shipments (by client, by route, by cargo type) are actually profitable versus which are being carried at thin or negative margin because a quote made months ago never got revisited against rising freight rates. Landed cost thinking from <a href="0041-odoo-landed-costs-duty-drawback-bangladesh" style="color:var(--accent)">Odoo Landed Costs & Duty Drawback Bangladesh</a> is directly relevant here, since the same discipline of allocating freight and handling cost accurately against a specific consignment applies whether you are the importer valuing your own stock or the forwarder tracking your own service margin.</p>
+
+      <h2 id="rollout">Getting started without overbuilding</h2>
+      <p>Freight forwarding businesses are prone to over-engineering their ERP setup because the operational complexity feels like it demands custom development. In most cases it does not. Start with Sales Orders as the shipment record, a simple Project board for operational status, document attachments on that record, and analytic accounts for cost tracking. This combination, all native to Odoo without custom modules, covers the real needs of a Bangladesh C&F agency with 5 to 50 shipments a month. Reserve custom development for genuine scale problems, such as automated status updates to clients via SMS or WhatsApp once shipment volume justifies the integration cost.</p>
+      <p>A sequencing mistake worth naming explicitly: many forwarders try to configure detailed automatic HS-code duty calculation and multi-currency freight invoicing in the very first week of an Odoo rollout, before the basic Sales Order and document-attachment workflow is even stable with staff. Get the team comfortable creating a shipment record, attaching documents, and moving it through status stages first, for at least a month of live shipments, before layering in the analytic cost tracking and HS-code billing detail. A forwarding company that goes live with the full structure on day one, but whose staff still track the real status of shipments on paper because the Odoo habit never formed, has built an elaborate system nobody actually uses, which is a more expensive failure than a simpler system that gets adopted.</p>
+      <p>It is also worth deciding early whether sub-agents at origin or destination ports (a partner C&F house handling clearance in a city where you have no branch) are modeled as vendors whose bills flow into your shipment's analytic account, or as a separate revenue-share arrangement recorded differently. Bangladesh forwarders who work through a network of correspondent agents in Dhaka, Chattogram, and Mongla often blur this distinction informally, paying and receiving on a net basis without a clean paper trail, which makes it very difficult later to know whether a given corridor of business is actually profitable once every sub-agent fee is accounted for.</p>
+
+      <div class="callout">
+        <span class="tag">Consultation CTA</span>
+        <p>If your freight forwarding or C&F business is still tracking shipments across WhatsApp threads and a shared Excel sheet, and you genuinely do not know which clients or routes are profitable once real costs are counted, I can help you set up the Sales Order, Project, and analytic accounting structure that answers both questions inside Odoo. <a href="../#contact" style="color:var(--accent)">Contact me for a strategy session →</a></p>
+      </div>
+
+      <h2 id="faq">Frequently asked questions</h2>
+
+      <h3>Should a freight forwarder use Odoo Project, Sales Orders, or a custom module for shipment tracking?</h3>
+      <p>For most Bangladesh C&F agents and freight forwarders, the practical approach is to use Odoo's Sales Order as the shipment job header (one order per shipment or per client's periodic job), with a linked Project or Task representing the operational milestones of that shipment: booking confirmed, documents received, customs assessment, duty payment, delivery. This keeps invoicing tied naturally to the Sales Order while giving operations staff a task-based view of where each shipment stands, without needing custom development for a first implementation.</p>
+
+      <h3>How do I link HS codes to billing for customs duty pass-through in Odoo?</h3>
+      <p>Set up your cleared goods as products or a generic "Customs Clearance" service line item with an HS code reference field (custom field or the product's internal reference), and record the assessed duty, VAT, and AIT at source amounts the client actually owes NBR as pass-through cost lines on the shipment's Sales Order, separate from your own service fee. This keeps the duty pass-through (money that flows through you to the government on the client's behalf) clearly distinct from your margin (the C&F service fee and handling charges), which matters both for your own P&L clarity and for defending your invoice if a client questions what portion of the bill is your fee versus statutory duty.</p>
+
+      <h3>How should a freight forwarder manage multiple clients with different billing terms in Odoo?</h3>
+      <p>Use Odoo's Contacts and Sales pricelists to set client-specific rate cards (per-container handling fee, per-shipment documentation fee, agreed markup percentage on duty advance), and use payment terms on each client's contact record to reflect their actual credit arrangement, whether that is advance payment before customs release, 15/30-day credit, or a running account settled monthly. Because freight forwarding margins are thin and cash flow sensitive (duty and VAT must often be paid to NBR before goods are released, ahead of client payment), configuring accurate payment terms and monitoring the Accounts Receivable aging report in Odoo Accounting is more operationally important here than in most other business types.</p>
+
+      <h3>How do I track shipping documents like Bill of Lading, LC documents, and Certificate of Origin in Odoo?</h3>
+      <p>Attach each document type directly to the shipment's Sales Order or linked Task using Odoo's native document attachment feature, and use a checklist (a simple set of sub-tasks or a custom Quality Control Point-style checklist) to track which required documents have been received and which are outstanding for a given shipment: Bill of Lading or Airway Bill, Commercial Invoice, Packing List, Certificate of Origin, and where applicable the LC documents required by the bank. This turns document completeness from something tracked in someone's memory or a WhatsApp thread into a visible status on the shipment record.</p>
+
+      <h3>How do I track margin per shipment in Odoo for a freight forwarding business?</h3>
+      <p>Record all shipment costs (ocean or air freight paid to the carrier, inland haulage, port and terminal handling charges, customs clearance fees paid to C&F staff or sub-agents, and duty/VAT advanced on the client's behalf) as Purchase Orders or vendor bills linked to the same Sales Order or a shared analytic account for that shipment. Odoo's Sales Order margin field, or a simple analytic account profitability report, then shows revenue billed to the client against actual cost incurred, giving you a true per-shipment margin rather than only knowing profitability at the end of the month across all shipments combined.</p>
+
+    </div>
+  </article>
+  <footer>
+    <div class="shell">
+      <div class="post-foot">
+        <span class="eyebrow">Continue exploring</span>
+        <div class="next">
+          <a class="next-card" href="0069-odoo-food-beverage-agro-processing-bangladesh">
+            <span class="dir">Older · 0069</span>
+            <h4>Odoo for Food & Beverage / Agro-Processing Bangladesh</h4>
+            <p>Expiry/lot tracking, BSTI compliance, and recipe-based manufacturing.</p>
+            <span class="arrow">→</span>
+          </a>
+          <a class="next-card" href="../#lab">
+            <span class="dir">All articles</span>
+            <h4>Back to Lab Index</h4>
+            <p>Browse all guides on Odoo ERP, manufacturing operations, and business analysis in Bangladesh.</p>
+            <span class="arrow">→</span>
+          </a>
+        </div>
+      </div>
+      <div class="foot">
+        <span>© 2026 Mehedi Hasan · Lab / 0070</span>
+        <span><a href="../#lab">↑ Back to lab index</a></span>
+      </div>
+    </div>
+  </footer>
+  <script src="_utils.js" defer></script>
+  <script src="_toc.js" defer></script>
+  <script src="/whatsapp.js" defer></script>
+  <script src="/scroll-top.js" defer></script>
+</body>
+</html>

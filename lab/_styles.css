@@ -345,3 +345,74 @@ html[data-theme="light"] .share-btn:hover{background:rgba(0,0,0,0.09)}
 .copy-btn{position:absolute;top:10px;right:10px;padding:4px 10px;border-radius:6px;font-family:var(--mono);font-size:10px;letter-spacing:0.06em;border:1px solid var(--border);background:var(--elev);color:var(--text-2);cursor:pointer;transition:all .15s ease;z-index:1}
 .copy-btn:hover{background:var(--surface);color:var(--text);border-color:var(--border-2)}
 .copy-btn:active{background:var(--accent-dim);color:var(--accent);border-color:oklch(0.80 0.17 155 / 0.35)}
+
+/* ============================================================
+   C: Shared article content widgets (added 2026-09-18)
+   Common visual patterns previously redefined per-article
+   (stat cards, tip boxes, disclaimers, pull quotes) are now
+   canonical here, plus new components (timeline, feature grid,
+   verdict pills, hero stat). Any article's own <style> block
+   may still locally override these — later in cascade wins.
+   ============================================================ */
+
+.pull{font-family:var(--serif);font-style:italic;font-size:clamp(22px,3vw,32px);line-height:1.3;color:var(--text);margin:48px 0;max-width:26ch;letter-spacing:-0.01em}
+.pull::before{content:"";display:block;width:36px;height:1px;background:var(--accent);margin-bottom:18px}
+
+.stat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:28px 0}
+@media(max-width:680px){.stat-row{grid-template-columns:1fr 1fr}}
+@media(max-width:440px){.stat-row{grid-template-columns:1fr}}
+.stat-card{background:linear-gradient(180deg,rgba(21,24,29,0.7),rgba(14,16,19,0.7));border:1px solid var(--border);border-radius:10px;padding:20px 16px;text-align:center;position:relative;overflow:hidden;transition:border-color .2s ease, transform .2s ease}
+.stat-card::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--accent),transparent);opacity:0;transition:opacity .2s ease}
+.stat-card:hover{border-color:var(--border-2);transform:translateY(-2px)}
+.stat-card:hover::before{opacity:1}
+.stat-card .sc-val{font-family:var(--sans);font-size:clamp(24px,3vw,32px);font-weight:700;color:var(--accent);letter-spacing:-0.03em;line-height:1;margin-bottom:8px}
+.stat-card .sc-label{font-family:var(--mono);font-size:10px;color:var(--text-3);letter-spacing:0.08em;text-transform:uppercase}
+.stat-card .sc-note{font-size:11.5px;color:var(--text-2);margin-top:6px;line-height:1.45}
+html[data-theme="light"] .stat-card{background:linear-gradient(180deg,rgba(255,255,255,0.9),rgba(237,240,244,0.9))}
+
+.tip-box{background:var(--accent-dim);border-left:3px solid var(--accent);border-radius:0 8px 8px 0;padding:16px 20px;margin:20px 0}
+.tip-box .tlabel{font-family:var(--mono);font-size:10px;color:var(--accent);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:6px}
+.tip-box p{margin:0;font-size:14px;color:var(--text-2);line-height:1.6}
+
+.disclaimer{background:rgba(100,160,255,0.06);border:1px solid rgba(100,160,255,0.18);border-radius:8px;padding:16px 20px;margin:22px 0}
+.disclaimer p{margin:0;font-size:13px;color:var(--text-2);line-height:1.55}
+.disclaimer strong{color:var(--text)}
+
+.trend-item{border-left:2px solid var(--accent);padding:16px 20px;margin:16px 0;background:var(--surface);border-radius:0 8px 8px 0}
+.trend-item .tr-head{font-weight:600;font-size:14.5px;color:var(--text);margin-bottom:6px}
+.trend-item p{color:var(--text-2);font-size:13.5px;line-height:1.6;margin:0}
+
+/* Deadline / compliance timeline */
+.timeline-track{position:relative;margin:32px 0;padding-left:28px}
+.timeline-track::before{content:"";position:absolute;left:5px;top:6px;bottom:6px;width:1px;background:var(--border)}
+.tl-node{position:relative;padding-bottom:26px}
+.tl-node:last-child{padding-bottom:0}
+.tl-node::before{content:"";position:absolute;left:-28px;top:4px;width:11px;height:11px;border-radius:50%;background:var(--bg);border:2px solid var(--border-2)}
+.tl-node.now::before{border-color:var(--accent);background:var(--accent);box-shadow:0 0 0 4px var(--accent-dim)}
+.tl-node.future::before{border-color:var(--accent)}
+.tl-date{font-family:var(--mono);font-size:11px;color:var(--accent);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:4px}
+.tl-node.future .tl-date{color:var(--text-3)}
+.tl-title{font-weight:600;font-size:15px;color:var(--text);margin-bottom:4px}
+.tl-body{font-size:13.5px;color:var(--text-2);line-height:1.6}
+
+/* Icon feature grid */
+.feature-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:24px 0}
+@media(max-width:600px){.feature-grid{grid-template-columns:1fr}}
+.feature-card{border:1px solid var(--border);border-radius:10px;padding:18px;background:var(--surface);display:flex;gap:14px;align-items:flex-start}
+.feature-card .fc-icon{flex:none;width:34px;height:34px;border-radius:8px;background:var(--accent-dim);border:1px solid oklch(0.80 0.17 155 / 0.3);display:grid;place-items:center;font-family:var(--mono);font-size:13px;font-weight:600;color:var(--accent)}
+.feature-card .fc-body h4{margin:0 0 4px;font-size:14px;font-weight:600;color:var(--text)}
+.feature-card .fc-body p{margin:0;font-size:12.5px;color:var(--text-2);line-height:1.55}
+
+/* Verdict pill (comparisons, checklists) */
+.verdict-pill{display:inline-flex;align-items:center;gap:5px;font-family:var(--mono);font-size:10.5px;letter-spacing:0.06em;text-transform:uppercase;padding:3px 9px;border-radius:999px;font-weight:600}
+.verdict-pill.yes{background:oklch(0.80 0.17 155 / 0.14);color:var(--accent);border:1px solid oklch(0.80 0.17 155 / 0.3)}
+.verdict-pill.no{background:rgba(255,90,90,0.1);color:oklch(0.68 0.19 25);border:1px solid rgba(255,90,90,0.25)}
+.verdict-pill.partial{background:rgba(255,190,60,0.1);color:oklch(0.78 0.15 80);border:1px solid rgba(255,190,60,0.25)}
+html[data-theme="light"] .verdict-pill.no{background:rgba(220,50,50,0.08)}
+html[data-theme="light"] .verdict-pill.partial{background:rgba(200,140,0,0.08)}
+
+/* Big single hero stat (deadlines, key figures) */
+.big-stat{border:1px solid var(--border);border-radius:14px;padding:32px 28px;margin:28px 0;text-align:center;background:radial-gradient(400px 160px at 50% 0%, oklch(0.80 0.17 155 / 0.08), transparent 70%), var(--surface)}
+.big-stat .bs-val{font-family:var(--sans);font-size:clamp(36px,6vw,56px);font-weight:700;letter-spacing:-0.03em;color:var(--accent);line-height:1}
+.big-stat .bs-label{font-family:var(--mono);font-size:11px;color:var(--text-3);letter-spacing:0.12em;text-transform:uppercase;margin-top:10px}
+.big-stat .bs-note{font-size:13px;color:var(--text-2);margin-top:8px;max-width:44ch;margin-left:auto;margin-right:auto;line-height:1.5}

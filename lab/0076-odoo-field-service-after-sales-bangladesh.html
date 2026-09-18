@@ -1,0 +1,288 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Set up Odoo Field Service for Bangladesh equipment dealers and after-sales teams: technician scheduling, spare parts, AMC contracts, and customer SLAs." />
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="Mehedi Hasan" />
+  <title>Odoo Field Service & After-Sales Support Bangladesh | Mehedi Hasan</title>
+  <link rel="canonical" href="https://mhasan.me/lab/0076-odoo-field-service-after-sales-bangladesh" />
+  <link rel="alternate" hreflang="en" href="https://mhasan.me/lab/0076-odoo-field-service-after-sales-bangladesh" />
+  <link rel="alternate" hreflang="x-default" href="https://mhasan.me/lab/0076-odoo-field-service-after-sales-bangladesh" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png" />
+  <meta property="og:title" content="Odoo Field Service & After-Sales Support Bangladesh | Mehedi Hasan" />
+  <meta property="og:description" content="Set up Odoo Field Service for Bangladesh equipment dealers and after-sales teams: technician scheduling, spare parts, AMC contracts, and customer SLAs." />
+  <meta property="og:url" content="https://mhasan.me/lab/0076-odoo-field-service-after-sales-bangladesh" />
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="https://mhasan.me/assets/og-default.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:site_name" content="Mehedi Hasan | Odoo ERP Consultant" />
+  <meta property="article:author" content="https://www.linkedin.com/in/mehedi-hasan-consultant/" />
+  <meta property="article:published_time" content="2026-09-18T12:00:00+06:00" />
+  <meta property="article:modified_time" content="2026-09-18T12:00:00+06:00" />
+  <meta property="article:section" content="Odoo ERP Bangladesh" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Odoo Field Service & After-Sales Support Bangladesh | Mehedi Hasan" />
+  <meta name="twitter:description" content="Set up Odoo Field Service for Bangladesh equipment dealers and after-sales teams: technician scheduling, spare parts, AMC contracts, and customer SLAs." />
+  <meta name="twitter:image" content="https://mhasan.me/assets/og-default.jpg" />
+  <script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Odoo Field Service & After-Sales Support for Bangladesh Equipment Dealers",
+    "description": "A practical guide for Bangladesh generator, industrial machinery, HVAC, and IT hardware dealers on configuring Odoo Field Service: technician dispatch across Dhaka, Chattogram, and regional coverage areas, spare parts inventory, Annual Maintenance Contract tracking, customer SLA commitments, and mobile use for technicians with unreliable connectivity.",
+    "datePublished": "2026-09-18T12:00:00+06:00",
+    "dateModified": "2026-09-18T12:00:00+06:00",
+    "author": { "@type": "Person", "name": "Mehedi Hasan", "url": "https://mhasan.me", "jobTitle": "Odoo ERP Consultant & Business Analyst", "sameAs": "https://www.linkedin.com/in/mehedi-hasan-consultant/" },
+    "publisher": { "@type": "Person", "name": "Mehedi Hasan", "url": "https://mhasan.me" },
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://mhasan.me/lab/0076-odoo-field-service-after-sales-bangladesh" }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://mhasan.me" },
+      { "@type": "ListItem", "position": 2, "name": "Lab", "item": "https://mhasan.me/lab/" },
+      { "@type": "ListItem", "position": 3, "name": "Odoo Field Service & After-Sales Support Bangladesh", "item": "https://mhasan.me/lab/0076-odoo-field-service-after-sales-bangladesh" }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What kind of Bangladesh businesses benefit most from Odoo Field Service?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Businesses that sell and service physical equipment with an ongoing after-sales relationship: generator and genset dealers, industrial and textile machinery importers, HVAC and air conditioning contractors, agricultural equipment dealers, and IT hardware and networking equipment resellers. The common thread is a customer base spread across Dhaka, Chattogram, and regional districts that needs scheduled maintenance visits, breakdown repairs, and spare parts fulfillment, often under a paid Annual Maintenance Contract (AMC) that creates a recurring revenue stream on top of the original equipment sale." }
+      },
+      {
+        "@type": "Question",
+        "name": "How does Odoo track AMC (Annual Maintenance Contract) renewals for Bangladesh after-sales teams?",
+        "acceptedAnswer": { "@type": "Answer", "text": "AMC contracts are typically modeled as recurring Sales subscriptions or as Field Service contracts tied to specific customer equipment records, with a defined coverage period, number of included service visits, and renewal date. Odoo's automated activities and email/SMS integration can trigger renewal reminders 60, 30, and 15 days before contract expiry to both the account manager and the customer, which is critical in Bangladesh where AMC renewal is often a manual follow-up process prone to being missed, resulting in lost recurring revenue and customers quietly lapsing into unprotected equipment ownership." }
+      },
+      {
+        "@type": "Question",
+        "name": "Can Odoo Field Service work for technicians in areas with unreliable internet outside Dhaka?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes, with the right configuration. The Odoo mobile app caches assigned field service tasks, customer and equipment history, and spare parts data locally on the technician's phone, allowing the technician to view job details, mark tasks in progress, and record parts used even with an intermittent or temporarily absent connection. Data syncs back to the server once connectivity resumes. This is particularly relevant for technicians covering districts like Rangpur, Bogura, Sylhet, or Cox's Bazar where mobile data coverage can be inconsistent between industrial sites." }
+      },
+      {
+        "@type": "Question",
+        "name": "How does spare parts inventory integrate with field service work orders in Odoo?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Each field service work order can include a list of expected spare parts, which reserves stock from a dedicated spare parts warehouse or from the technician's own van/kit inventory location. When the technician completes the job and records parts actually consumed, Odoo automatically creates the stock move and, if configured, generates the customer invoice line for billable parts. This closes the loop between technician activity, inventory depletion, and revenue capture, which is commonly a manual and error-prone reconciliation process in Bangladesh after-sales operations still running on paper job cards." }
+      }
+    ]
+  }
+]
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap">
+  <link rel="stylesheet" href="_styles.css">
+  <style>
+    .pull{font-family:var(--serif);font-style:italic;font-size:clamp(24px,3.2vw,36px);line-height:1.25;color:var(--text);margin:44px 0;max-width:24ch;letter-spacing:-0.01em}
+    .pull::before{content:"";display:block;width:36px;height:1px;background:var(--accent);margin-bottom:16px}
+    .stat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:26px 0}
+    @media(max-width:680px){.stat-row{grid-template-columns:1fr 1fr}}
+    @media(max-width:440px){.stat-row{grid-template-columns:1fr}}
+    .stat-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:18px 16px;text-align:center}
+    .stat-card .sc-val{font-size:26px;font-weight:700;color:var(--accent);letter-spacing:-0.03em;line-height:1;margin-bottom:6px}
+    .stat-card .sc-label{font-family:var(--mono);font-size:10px;color:var(--text-3);letter-spacing:0.07em;text-transform:uppercase}
+    .stat-card .sc-note{font-size:11.5px;color:var(--text-2);margin-top:5px;line-height:1.4}
+    .sla-table{width:100%;border-collapse:collapse;margin:24px 0;font-size:13.5px}
+    .sla-table th{text-align:left;padding:11px 14px;font-family:var(--mono);font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-3);border-bottom:2px solid var(--border);font-weight:400;background:var(--surface)}
+    .sla-table td{padding:12px 14px;border-bottom:1px solid var(--border);color:var(--text-2);vertical-align:top;line-height:1.5}
+    .sla-table td:first-child{color:var(--text);font-weight:600}
+    .sla-table tr:last-child td{border-bottom:none}
+    .step-list{list-style:none;padding:0;margin:24px 0;counter-reset:step}
+    .step-list li{position:relative;padding:16px 18px 16px 54px;border:1px solid var(--border);border-radius:8px;margin-bottom:10px;background:var(--surface)}
+    .step-list li::before{counter-increment:step;content:counter(step,decimal-leading-zero);position:absolute;left:16px;top:16px;font-family:var(--mono);font-size:12px;color:var(--accent);font-weight:600}
+    .step-list li b{display:block;color:var(--text);font-size:14.5px;margin-bottom:4px}
+    .step-list li span{font-size:13.5px;color:var(--text-2);line-height:1.55}
+    .tip-box{background:var(--accent-dim);border-left:3px solid var(--accent);border-radius:0 6px 6px 0;padding:14px 18px;margin:18px 0}
+    .tip-box .tlabel{font-family:var(--mono);font-size:10px;color:var(--accent);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:6px}
+    .tip-box p{margin:0;font-size:14px;color:var(--text-2);line-height:1.55}
+  </style>
+</head>
+<body>
+  <div class="grid-bg"></div>
+  <header class="nav">
+    <div class="shell">
+      <div class="nav-inner">
+        <a class="brand" href="../">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span class="brand-name"><b>Mehedi Hasan</b><em>ERP · Business Analyst</em></span>
+        </a>
+        <a class="back-link" href="../#lab">← Back to Lab</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="post-head">
+    <div class="shell">
+      <span class="eyebrow">Technical Lab · 0076</span>
+      <h1>Field service in Odoo: <span class="serif">after the sale is where the margin lives.</span></h1>
+      <p class="lede">Selling a generator, a chiller, or a fleet of industrial sewing machines is a single transaction. Servicing it for the next seven years is a relationship, and in Bangladesh's equipment dealer market it is frequently the more profitable half of the business, if the after-sales operation is actually organized. Most are still running on WhatsApp groups and paper job cards.</p>
+      <div class="post-meta">
+        <span class="chip accent">Guide</span>
+        <span class="chip">Field Service</span>
+        <span class="chip">Bangladesh</span>
+      </div>
+      <div class="byline">
+        <span>By<b><a href="https://www.linkedin.com/in/mehedi-hasan-consultant/" style="color:var(--accent)" rel="author">Mehedi Hasan</a></b></span>
+        <span>Published<b>September 2026</b></span>
+        <span>Read time<b>13 minutes</b></span>
+        <span>Form<b>Guide</b></span>
+        <span>Scope<b>After-Sales Operations</b></span>
+      </div>
+    </div>
+  </section>
+
+  <article class="post">
+    <aside class="toc">
+      <div class="toc-k">In this guide</div>
+      <ol>
+        <li><a href="#who-needs-this">Who this is actually for</a></li>
+        <li><a href="#dispatch">Technician dispatch and coverage areas</a></li>
+        <li><a href="#spare-parts">Spare parts tied to work orders</a></li>
+        <li><a href="#amc">AMC contracts and renewal tracking</a></li>
+        <li><a href="#sla">Customer-facing SLA commitments</a></li>
+        <li><a href="#mobile">The mobile app and weak connectivity</a></li>
+        <li><a href="#reporting">Reporting: profitability per contract</a></li>
+        <li><a href="#rollout">Rollout sequence</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ol>
+    </aside>
+
+    <div class="body">
+
+      <h2 id="who-needs-this">Who this is actually for</h2>
+      <p>Odoo Field Service is built for exactly the kind of business that dominates Bangladesh's equipment after-sales market: generator and genset dealers servicing standby power for garment factories and commercial buildings, industrial and textile machinery importers whose sales contracts include installation and ongoing maintenance, HVAC contractors maintaining commercial air conditioning across Dhaka's office towers and Chattogram's port facilities, agricultural equipment dealers supporting irrigation pumps and tillers across regional districts, and IT hardware and networking resellers running managed maintenance for corporate clients. In every one of these businesses, the equipment sale is often the smaller commercial event; the multi-year service relationship that follows it, particularly when sold as a paid Annual Maintenance Contract, is where sustained margin actually accumulates.</p>
+      <p>What these businesses tend to have in common in Bangladesh today is a genuinely capable technical team paired with an administratively primitive dispatch and record-keeping process: a service coordinator manually calling technicians to assign jobs, a WhatsApp group used as the de facto job tracking system, paper job cards that get filed (or lost) after a visit, and spare parts consumption that gets reconciled against inventory weeks after the fact, if at all. None of this is a technician skill problem. It is entirely a systems and visibility problem, and it is precisely what Odoo's Field Service app, combined with Inventory and Sales, is designed to fix.</p>
+      <p>A typical scenario I encounter: a mid-size generator and industrial engine dealer in Dhaka with 40-plus active AMC customers across garment factories, hospitals, and commercial buildings, running a service desk of two coordinators fielding calls on personal mobile phones and dispatching roughly 18 field technicians by voice call and text message. The business has good technicians and a reasonable spare parts stock, but has no reliable way to answer, on any given day, how many open service calls are outstanding, which are approaching or past their SLA response window, or which AMC contracts are due for renewal in the next month. That operational blindness is not a hypothetical inefficiency, it directly costs the business renewal revenue when a contract lapses unnoticed, and it costs customer goodwill when a critical breakdown call sits unassigned for hours because no single coordinator has visibility into the full technician roster's real-time status.</p>
+
+      <div class="stat-row">
+        <div class="stat-card">
+          <div class="sc-val">3+</div>
+          <div class="sc-label">Coverage Zones</div>
+          <div class="sc-note">Dhaka, Chattogram, and regional districts typically need distinct dispatch pools</div>
+        </div>
+        <div class="stat-card">
+          <div class="sc-val">60/30/15</div>
+          <div class="sc-label">AMC Renewal Alerts</div>
+          <div class="sc-note">Days before contract expiry that reminders should fire</div>
+        </div>
+        <div class="stat-card">
+          <div class="sc-val">Offline-first</div>
+          <div class="sc-label">Mobile App Behavior</div>
+          <div class="sc-note">Caches job data locally for technicians in low-connectivity districts</div>
+        </div>
+      </div>
+
+      <h2 id="dispatch">Technician dispatch across Dhaka, Chattogram, and regional coverage</h2>
+      <p>A Bangladesh equipment dealer's technician pool is rarely a single undifferentiated team. A generator dealer headquartered in Tejgaon typically maintains a core Dhaka metro team, a smaller Chattogram-based team covering the port city and its surrounding industrial belt, and a thin, often subcontracted, network of regional technicians covering districts like Gazipur, Narayanganj, Bogura, or Sylhet where full-time headcount doesn't justify itself against call volume. Odoo Field Service handles this through service teams and technician skill/zone tagging: each field service request can be automatically or manually routed to the appropriate team based on the customer's district, the equipment type, and technician availability, rather than relying on a coordinator's memory of who happens to be near a given site that week.</p>
+      <p>The planning view in Field Service, which presents technician schedules as a calendar/Gantt-style board, is where the coordinator function actually changes character: instead of reactive phone calls when a breakdown call comes in, the coordinator can see every technician's committed jobs for the day and week, spot a technician who will be passing near a customer site for an unrelated call and bundle a preventive visit onto the same trip, and rebalance the following day's schedule when an emergency breakdown call comes in mid-morning. For a dealer running 15-30 field technicians across multiple cities, this scheduling visibility alone typically recovers meaningful technician-hours per week that were previously lost to inefficient routing and duplicate site visits.</p>
+
+      <h2 id="spare-parts">Spare parts tied directly to field service work orders</h2>
+      <p>The most persistent operational leak in Bangladesh after-sales businesses is the gap between spare parts leaving the warehouse (or a technician's van) and that consumption being reflected in both inventory and the customer invoice. A technician replaces a fuel injector or a capacitor on-site, notes it on a paper job card that may or may not make it back to the office that week, and by the time someone reconciles inventory, the part has been consumed for weeks with no corresponding stock movement or billing entry.</p>
+      <p>Odoo's Field Service work orders solve this by attaching an expected parts list to each job, which reserves stock either from a central spare parts warehouse or from a technician's own van/kit inventory location (modeled as its own Odoo warehouse location, a pattern that keeps each technician's carried stock visible and reconcilable). When the technician completes the job through the mobile app and confirms parts actually used, which may differ from what was expected, Odoo generates the stock move automatically and, where the part is billable under the service contract terms, creates the invoice line without a separate manual data entry step. This is the same discipline of connecting field activity to inventory movement that a preventive maintenance program depends on internally, covered for factory equipment in <a href="0061-odoo-preventive-maintenance-bangladesh" style="color:var(--accent)">Odoo Preventive Maintenance Bangladesh</a>; field service extends that same logic outward to the customer's site rather than the factory floor.</p>
+
+      <div class="tip-box">
+        <div class="tlabel">Configuration note</div>
+        <p>Set up each technician's vehicle or tool kit as its own stock location under a "Field Technicians" warehouse. This lets you run a monthly reconciliation of what a technician's van should be carrying against what Odoo shows as consumed, catching both pilferage and simple under-reporting before it accumulates into a large unexplained variance at year-end stock count.</p>
+        </div>
+
+      <h2 id="amc">AMC contracts and renewal tracking</h2>
+      <p>The Annual Maintenance Contract is the commercial backbone of Bangladesh equipment after-sales, and it is also the single most common source of quietly lost recurring revenue, because renewal follow-up is almost always a manual, memory-dependent process owned by whichever account manager happened to sell the original contract. When that account manager is busy, on leave, or has moved on, contracts lapse silently, and the dealer only discovers it when the customer calls for a breakdown visit and asks why they're suddenly being charged instead of receiving covered service.</p>
+      <p>In Odoo, AMC contracts are modeled either as recurring Sales subscriptions or as Field Service contracts linked directly to specific pieces of customer equipment, each with a defined coverage window, an included number of preventive visits per year, and a hard renewal date. The critical configuration is connecting this renewal date to automated reminders rather than leaving it to human memory: a scheduled action that fires email and SMS alerts at 60, 30, and 15 days before expiry, addressed to both the internal account manager and the customer directly, covered from the messaging infrastructure side in <a href="0054-odoo-email-sms-setup-bangladesh" style="color:var(--accent)">Odoo Email & SMS Setup Bangladesh</a>. This single automation, in my experience implementing it for equipment dealers, is often the highest-ROI piece of the entire field service rollout, because it converts a leaking recurring revenue stream into a defended one without requiring any additional sales effort beyond the renewal call itself.</p>
+
+      <h2 id="sla">Customer-facing SLA commitments</h2>
+      <p>Larger Bangladesh customers, particularly RMG factories running standby generators that cannot afford extended downtime during production hours, or commercial buildings with HVAC contracts tied to tenant comfort guarantees, increasingly negotiate explicit service level commitments into their AMC contracts: a maximum response time from call logged to technician dispatched, and a maximum resolution time from arrival to equipment back in service, often tiered by fault severity.</p>
+
+      <table class="sla-table">
+        <thead>
+          <tr><th>Severity</th><th>Typical response commitment</th><th>Typical resolution commitment</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Critical (production down)</td><td>2-4 hours, Dhaka metro</td><td>Same day, or temporary workaround same day</td></tr>
+          <tr><td>High (degraded operation)</td><td>Next business day</td><td>Within 2-3 business days</td></tr>
+          <tr><td>Routine (preventive/scheduled)</td><td>Per agreed maintenance calendar</td><td>Completed within scheduled visit window</td></tr>
+        </tbody>
+      </table>
+
+      <p>Odoo Field Service tracks these SLA clocks automatically once a work order is created from a customer call: the timestamp from ticket creation to technician assignment, and from assignment to job completion, both become reportable fields. Building a simple SLA compliance dashboard, using the same dashboard techniques covered generally in <a href="0055-odoo-dashboards-kpi-bangladesh" style="color:var(--accent)">Odoo Dashboards & KPI Bangladesh</a>, gives the dealer's management team an honest, real-time view of whether the business is actually meeting the commitments it has sold to customers, rather than discovering an SLA breach only when an angry customer escalates it. For dealers competing on service quality rather than just price, being able to show a customer their own historical SLA compliance record during a renewal negotiation is a meaningfully strong commercial argument.</p>
+
+      <h2 id="mobile">The mobile app and technicians with unreliable connectivity</h2>
+      <p>Field technicians in Bangladesh spend their working day inside factories, basements, and rural sites where mobile data coverage ranges from excellent (central Dhaka, Chattogram) to intermittent (industrial zones on the fringe of Gazipur or Narayanganj) to genuinely unreliable (parts of Rangpur, Bogura, Sylhet's tea garden areas, and coastal districts like Cox's Bazar). A field service system that assumes constant connectivity fails exactly the technicians who need it most.</p>
+      <p>Odoo's mobile app is designed with this reality in mind: assigned jobs, customer and equipment history, and expected spare parts data sync to the device and remain viewable and editable offline. A technician can open a job, view the equipment's service history and any relevant manuals or notes attached to the customer record, mark the job in progress, record parts consumed and time spent, and capture photos of completed work, all without an active connection. Once the phone reconnects, whether back at the depot, at the next site, or simply when a signal briefly returns, the data syncs automatically. The practical implication for rollout is to explicitly train technicians on this offline behavior during onboarding, since technicians accustomed to paper job cards sometimes distrust that offline data entry has genuinely been saved, and will default back to keeping a redundant paper note "just in case" unless shown clearly that the sync is reliable.</p>
+
+      <h2 id="reporting">Reporting: knowing which contracts actually make money</h2>
+      <p>A question I ask nearly every equipment dealer I meet in Bangladesh, and one that almost never has a confident answer, is: which of your AMC contracts are actually profitable once technician time, travel, and parts consumption are counted against the contract fee? Most dealers price AMC contracts using a rough rule of thumb set years ago (a percentage of original equipment value, or a flat regional rate) and never revisit whether a specific customer's actual service history justifies that price. A generator installed in a dusty brick-field environment near Bogura may need three times the technician visits and parts of an identical unit running in a climate-controlled Dhaka data center, yet both are frequently priced identically under a standardized AMC rate card.</p>
+      <p>Once field service work orders, technician time, and spare parts consumption are flowing through Odoo consistently, this becomes a solvable reporting question rather than a guess. A simple profitability report, grouping completed work order costs (technician hours at a loaded cost rate, plus parts consumed at cost) against AMC contract revenue recognized for the same customer and period, surfaces exactly which contracts are quietly subsidizing others. This is not a theoretical benefit: dealers who run this analysis for the first time after a field service rollout typically find a meaningful minority of their AMC book, often in the range of one contract in five, running at a loss once true service cost is counted, and use that data to reprice at the next renewal cycle rather than continuing to guess.</p>
+
+      <h2 id="rollout">A realistic rollout sequence</h2>
+      <ul class="step-list">
+        <li><b>Phase 1: Equipment and contract master data</b><span>Load every serviced customer asset into Odoo as tracked equipment records, linked to the customer and, where applicable, an active AMC contract with its coverage terms and renewal date.</span></li>
+        <li><b>Phase 2: Dispatch and work order workflow</b><span>Stand up service teams by geography, train the coordinator on the planning/Gantt view, and move all new service requests through Field Service work orders instead of the WhatsApp group, running both in parallel for a transition period.</span></li>
+        <li><b>Phase 3: Spare parts and technician stock locations</b><span>Set up van/kit locations per technician and connect work order parts consumption to stock moves and billing, starting with the highest-value or highest-turnover spare parts categories first.</span></li>
+        <li><b>Phase 4: AMC renewal automation and SLA dashboard</b><span>Turn on the 60/30/15-day renewal reminders and build the SLA compliance dashboard once enough work order history exists to make the numbers meaningful.</span></li>
+      </ul>
+
+      <div class="callout">
+        <span class="tag">Consultation CTA</span>
+        <p>If your after-sales operation is still running on phone calls, a WhatsApp group, and paper job cards, and you suspect (correctly, in most cases I've reviewed) that AMC renewals and spare parts consumption are leaking revenue you can't currently quantify, I can help you scope and roll out Field Service against your specific equipment categories and coverage areas. <a href="../#contact" style="color:var(--accent)">Contact me for a strategy session →</a></p>
+      </div>
+
+      <h2 id="faq">Frequently asked questions</h2>
+
+      <h3>What kind of Bangladesh businesses benefit most from Odoo Field Service?</h3>
+      <p>Businesses that sell and service physical equipment with an ongoing after-sales relationship: generator and genset dealers, industrial and textile machinery importers, HVAC and air conditioning contractors, agricultural equipment dealers, and IT hardware and networking equipment resellers. The common thread is a customer base spread across Dhaka, Chattogram, and regional districts that needs scheduled maintenance visits, breakdown repairs, and spare parts fulfillment, often under a paid Annual Maintenance Contract (AMC) that creates a recurring revenue stream on top of the original equipment sale.</p>
+
+      <h3>How does Odoo track AMC (Annual Maintenance Contract) renewals for Bangladesh after-sales teams?</h3>
+      <p>AMC contracts are typically modeled as recurring Sales subscriptions or as Field Service contracts tied to specific customer equipment records, with a defined coverage period, number of included service visits, and renewal date. Odoo's automated activities and email/SMS integration can trigger renewal reminders 60, 30, and 15 days before contract expiry to both the account manager and the customer, which is critical in Bangladesh where AMC renewal is often a manual follow-up process prone to being missed, resulting in lost recurring revenue and customers quietly lapsing into unprotected equipment ownership.</p>
+
+      <h3>Can Odoo Field Service work for technicians in areas with unreliable internet outside Dhaka?</h3>
+      <p>Yes, with the right configuration. The Odoo mobile app caches assigned field service tasks, customer and equipment history, and spare parts data locally on the technician's phone, allowing the technician to view job details, mark tasks in progress, and record parts used even with an intermittent or temporarily absent connection. Data syncs back to the server once connectivity resumes. This is particularly relevant for technicians covering districts like Rangpur, Bogura, Sylhet, or Cox's Bazar where mobile data coverage can be inconsistent between industrial sites.</p>
+
+      <h3>How does spare parts inventory integrate with field service work orders in Odoo?</h3>
+      <p>Each field service work order can include a list of expected spare parts, which reserves stock from a dedicated spare parts warehouse or from the technician's own van/kit inventory location. When the technician completes the job and records parts actually consumed, Odoo automatically creates the stock move and, if configured, generates the customer invoice line for billable parts. This closes the loop between technician activity, inventory depletion, and revenue capture, which is commonly a manual and error-prone reconciliation process in Bangladesh after-sales operations still running on paper job cards.</p>
+
+    </div>
+  </article>
+
+  <footer>
+    <div class="shell">
+      <div class="post-foot">
+        <span class="eyebrow">Continue exploring</span>
+        <div class="next">
+          <a class="next-card" href="0075-esg-sustainability-reporting-odoo-rmg-bangladesh">
+            <span class="dir">Older · 0075</span>
+            <h4>ESG & Sustainability Reporting in Odoo for RMG Bangladesh</h4>
+            <p>Tracking buyer-required ESG data for Higg Index, BSCI, and EU CSRD-aligned audits.</p>
+            <span class="arrow">→</span>
+          </a>
+          <a class="next-card" href="../#lab">
+            <span class="dir">All articles</span>
+            <h4>Back to Lab Index</h4>
+            <p>Browse all guides on Odoo ERP, manufacturing operations, and business analysis in Bangladesh.</p>
+            <span class="arrow">→</span>
+          </a>
+        </div>
+      </div>
+      <div class="foot">
+        <span>© 2026 Mehedi Hasan · Lab / 0076</span>
+        <span><a href="../#lab">↑ Back to lab index</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="_utils.js" defer></script>
+  <script src="_toc.js" defer></script>
+  <script src="/whatsapp.js" defer></script>
+  <script src="/scroll-top.js" defer></script>
+</body>
+</html>

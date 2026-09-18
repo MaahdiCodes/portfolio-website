@@ -1,0 +1,370 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description"
+    content="Odoo ERP for Bangladesh hospitals and diagnostic centers: patient billing, lab test/inventory tracking, doctor referral commissions, and DGDA-adjacent compliance." />
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="Mehedi Hasan" />
+  <title>Odoo for Hospital & Diagnostic Center Operations Bangladesh | Mehedi Hasan</title>
+  <link rel="canonical" href="https://mhasan.me/lab/0089-odoo-hospital-diagnostic-center-bangladesh" />
+  <link rel="alternate" hreflang="en" href="https://mhasan.me/lab/0089-odoo-hospital-diagnostic-center-bangladesh" />
+  <link rel="alternate" hreflang="x-default" href="https://mhasan.me/lab/0089-odoo-hospital-diagnostic-center-bangladesh" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png" />
+  <!-- Open Graph -->
+  <meta property="og:title" content="Odoo for Hospital & Diagnostic Center Operations Bangladesh | Mehedi Hasan" />
+  <meta property="og:description"
+    content="Odoo ERP for Bangladesh hospitals and diagnostic centers: patient billing, lab test/inventory tracking, doctor referral commissions, and DGDA-adjacent compliance." />
+  <meta property="og:url" content="https://mhasan.me/lab/0089-odoo-hospital-diagnostic-center-bangladesh" />
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="https://mhasan.me/assets/og-default.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:site_name" content="Mehedi Hasan | Odoo ERP Consultant" />
+  <meta property="article:author" content="https://www.linkedin.com/in/mehedi-hasan-consultant/" />
+  <meta property="article:published_time" content="2026-09-18T14:00:00+06:00" />
+  <meta property="article:modified_time" content="2026-09-18T14:00:00+06:00" />
+  <meta property="article:section" content="Odoo ERP Bangladesh" />
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Odoo for Hospital & Diagnostic Center Operations Bangladesh | Mehedi Hasan" />
+  <meta name="twitter:description"
+    content="Odoo ERP for Bangladesh hospitals and diagnostic centers: patient billing, lab test/inventory tracking, doctor referral commissions, and DGDA-adjacent compliance." />
+  <meta name="twitter:image" content="https://mhasan.me/assets/og-default.jpg" />
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Odoo for Hospital & Diagnostic Center Operations Bangladesh",
+    "description": "Odoo ERP for Bangladesh hospitals and diagnostic centers: patient billing, lab test/inventory tracking, doctor referral commissions, and DGDA-adjacent compliance.",
+    "datePublished": "2026-09-18T14:00:00+06:00",
+    "dateModified": "2026-09-18T14:00:00+06:00",
+    "author": {
+      "@type": "Person",
+      "name": "Mehedi Hasan",
+      "url": "https://mhasan.me",
+      "jobTitle": "Odoo ERP Consultant & Business Analyst",
+      "sameAs": "https://www.linkedin.com/in/mehedi-hasan-consultant/"
+    },
+    "publisher": { "@type": "Person", "name": "Mehedi Hasan", "url": "https://mhasan.me" },
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://mhasan.me/lab/0089-odoo-hospital-diagnostic-center-bangladesh" }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://mhasan.me" },
+      { "@type": "ListItem", "position": 2, "name": "Lab", "item": "https://mhasan.me/lab/" },
+      { "@type": "ListItem", "position": 3, "name": "Odoo for Hospital & Diagnostic Center Operations Bangladesh", "item": "https://mhasan.me/lab/0089-odoo-hospital-diagnostic-center-bangladesh" }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Can Odoo replace a Hospital Management Information System (HMIS) in Bangladesh?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No, and it should not be positioned that way. Odoo has no clinical/EMR module, no e-prescription workflow, no nursing charting, no OT scheduling, and no clinical decision support, which are the core functions of a purpose-built HMIS. What Odoo genuinely covers well is the business and operations layer sitting alongside clinical care: patient billing and package pricing, lab consumable and reagent inventory, doctor referral commission tracking, procurement, accounting, and HR/payroll. Most Bangladesh private hospitals and diagnostic centers that adopt Odoo run it side by side with a dedicated HMIS or a simpler clinical record system, using Odoo specifically for the parts an HMIS typically handles poorly: finance, inventory, and vendor management."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you set up package pricing for diagnostic tests in Odoo?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A test or health-check package (for example, a fixed-price bundle covering CBC, blood sugar, lipid profile, and a chest X-ray) is modeled in Odoo as a Bill of Materials style kit product or a Sales product with component lines representing each included test, priced as a single fixed total under Sales > Products, distinct from the sum of each test's individual walk-in price. This lets the diagnostic center report true package margin (package price minus the cost of consumables and referral commission triggered by each component test) separately from standalone test revenue, which matters because packages are usually priced at a discount to individual test totals specifically to drive volume, and management needs to see whether that volume actually offsets the margin given up."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How should doctor referral commissions be tracked in Odoo?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Referral commissions should be tracked as a separate, auditable ledger tied to the referring doctor as a vendor/partner record, calculated as a defined percentage or flat amount per referred test or procedure, and settled through a standard vendor bill and payment cycle under Accounting > Vendors, completely separate from the patient's own billing and payment. Building this as its own workflow, with the referring doctor recorded against each patient invoice line as a custom field or analytic tag, gives the facility a clean, auditable commission report by doctor and by period, which matters both for the facility's own cost control and because loosely documented referral payment practices are a recurring source of scrutiny in Bangladesh private healthcare, so a clear paper trail protects the facility as much as it tracks the expense."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does DGDA regulate hospital and diagnostic center procurement in Odoo?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The Directorate General of Drug Administration (DGDA) directly regulates pharmaceutical manufacturers and drug importers/distributors, which is a different relationship than a hospital or diagnostic center's own procurement of medical consumables, reagents, and drugs for internal use and dispensing. A healthcare provider's Odoo setup does not need manufacturing-grade DGDA batch compliance, but it does need to procure only from DGDA-licensed suppliers, maintain lot/expiry tracking on drugs and reagents purchased under Inventory > Traceability, and be able to produce a clean purchase and consumption trail if a regulatory or insurance audit asks for one. This is a lighter compliance layer than the manufacturing-side DGDA requirements covered for pharma companies, but it is not optional."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What does an Odoo implementation cost for a Bangladesh hospital or diagnostic center?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "For a diagnostic center or small private hospital (30 to 150 beds or equivalent daily patient volume), an Odoo implementation covering billing, package pricing, lab inventory, referral commission tracking, and accounting typically runs BDT 8 to 20 lakh, with BDT 3 to 8 lakh per year for support, excluding any separate clinical HMIS licensing the facility runs alongside it. Larger multi-branch diagnostic chains or hospitals wanting deep integration between Odoo and an existing HMIS (for patient master data sync, for example) should budget additional integration development cost on top of these baseline figures."
+        }
+      }
+    ]
+  }
+]
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap">
+  <link rel="stylesheet" href="_styles.css">
+  <style>
+    .path-tag { font-family: var(--mono); font-size: 12.5px; background: var(--elev); border: 1px solid var(--border); border-radius: 5px; padding: 2px 8px; color: var(--text); }
+  </style>
+</head>
+
+<body>
+  <div class="grid-bg"></div>
+
+  <header class="nav">
+    <div class="shell">
+      <div class="nav-inner">
+        <a class="brand" href="../">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span class="brand-name"><b>Mehedi Hasan</b><em>ERP · Business Analyst</em></span>
+        </a>
+        <a class="back-link" href="../#lab">← Back to Lab</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="post-head">
+    <div class="shell">
+      <span class="eyebrow">Technical Lab · 0089</span>
+      <h1>Odoo for hospitals <span class="serif">and diagnostic centers, minus the clinical layer.</span></h1>
+      <p class="lede">Say this plainly before anything else: Odoo is not a hospital management system, and no honest consultant should sell it as one to a Bangladesh private hospital or diagnostic chain. It has no EMR, no e-prescription, no nursing chart. What it does well, and what a genuinely large share of Bangladesh healthcare providers still run on spreadsheets and disconnected billing software for, is the business layer underneath the clinic: patient billing, package pricing, lab inventory, and the referral commission arithmetic every private facility quietly runs and few document properly.</p>
+      <div class="post-meta">
+        <span class="chip accent">Guide</span>
+        <span class="chip">Healthcare Operations</span>
+        <span class="chip">Diagnostic Centers</span>
+      </div>
+      <div class="byline">
+        <span>By<b><a href="https://www.linkedin.com/in/mehedi-hasan-consultant/" style="color:var(--accent)" rel="author">Mehedi Hasan</a></b></span>
+        <span>Published<b>September 2026</b></span>
+        <span>Read time<b>17 minutes</b></span>
+        <span>Form<b>Guide</b></span>
+        <span>Scope<b>Healthcare Provider Operations</b></span>
+      </div>
+    </div>
+  </section>
+
+  <article class="post">
+    <aside class="toc">
+      <div class="toc-k">In this guide</div>
+      <ol>
+        <li><a href="#not-hmis">Odoo Is Not an HMIS, and That's Fine</a></li>
+        <li><a href="#where-it-fits">Where Odoo Actually Fits in a Bangladesh Facility</a></li>
+        <li><a href="#package-pricing">Patient Billing and Package Pricing</a></li>
+        <li><a href="#lab-inventory">Lab Consumable and Reagent Inventory</a></li>
+        <li><a href="#referral-commissions">Doctor Referral Commissions</a></li>
+        <li><a href="#dgda-procurement">DGDA-Adjacent Procurement Compliance</a></li>
+        <li><a href="#staffing">Staffing and Duty Roster Realities</a></li>
+        <li><a href="#reporting">Reporting Hospital Management Actually Wants</a></li>
+        <li><a href="#rollout">Implementation Sequencing Alongside a Live Facility</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ol>
+    </aside>
+
+    <div class="body">
+
+      <h2 id="not-hmis">Odoo Is Not an HMIS, and That's Fine</h2>
+      <p>Every conversation about Odoo in a Bangladesh hospital or diagnostic center should start with what it cannot do. It has no clinical charting, no doctor's e-prescription module, no nursing medication administration record, no OT (operation theater) scheduling with clinical dependencies, and no integrated lab result interface reading directly off analyzer machines. Facilities that need those capabilities run a dedicated Hospital Management Information System (HMIS), whether a purpose-built local product or an international platform, and nothing in this guide argues for replacing that layer with Odoo.</p>
+      <p>What is true, and what makes Odoo genuinely relevant here, is that a large share of Bangladesh's private hospitals, clinics, and diagnostic/pathology centers, particularly the ones in the 30 to 150 bed range or the mid-size diagnostic chains with 3 to 15 branches, either have no proper financial and inventory system at all, or run their billing on a locally built or single-purpose billing package with weak accounting, inventory, and reporting depth. That gap, the business operations layer sitting underneath the clinical workflow, is where Odoo does real work: patient invoicing, package pricing, procurement, lab consumable stock, HR and payroll (detailed in <a href="0016-odoo-hr-payroll-bangladesh" style="color:var(--accent)">Odoo HR & Payroll Bangladesh</a>, directly relevant given how shift-heavy hospital staffing is), and the doctor referral commission structure most facilities currently track in a notebook or a private spreadsheet nobody outside the finance office sees.</p>
+
+      <div class="disclaimer">
+        <p><strong>Note:</strong> This guide addresses private hospitals, clinics, and diagnostic/pathology centers as commercial operating businesses. It does not address government hospital administration, which runs under entirely different procurement and reporting rules through the Directorate General of Health Services (DGHS), or clinical governance and quality accreditation, which sits outside ERP scope entirely.</p>
+      </div>
+
+      <h2 id="where-it-fits">Where Odoo Actually Fits in a Bangladesh Facility</h2>
+      <p>The realistic architecture most Bangladesh facilities end up with, and the one worth designing for deliberately rather than backing into, runs a clinical system (HMIS or a simpler patient record tool) for anything touching diagnosis, treatment, and clinical documentation, and Odoo for everything that is fundamentally a business transaction: the invoice a patient pays at the counter, the reagent purchase order sent to a diagnostic supplier, the referral commission owed to a doctor, and the monthly payroll run for nurses, lab technicians, and administrative staff. Where the two systems need to talk, typically patient identity and the list of tests or procedures ordered, a lightweight integration (even a manually reconciled daily export/import in smaller facilities, or a proper API bridge in larger ones) keeps clinical data in the clinical system and financial data in Odoo without forcing either system to do the other's job badly.</p>
+
+      <div class="stat-row">
+        <div class="stat-card">
+          <div class="sc-val">30–150</div>
+          <div class="sc-label">Typical Bed Range</div>
+          <div class="sc-note">Private hospitals where Odoo's business layer fits without a full HMIS replacement conversation</div>
+        </div>
+        <div class="stat-card">
+          <div class="sc-val">3–15</div>
+          <div class="sc-label">Branch Count</div>
+          <div class="sc-note">Common diagnostic chain size adopting centralized Odoo billing/inventory</div>
+        </div>
+        <div class="stat-card">
+          <div class="sc-val">10–25%</div>
+          <div class="sc-label">Typical Referral Commission</div>
+          <div class="sc-note">Common range applied to test/procedure revenue for physician referrals</div>
+        </div>
+      </div>
+
+      <h2 id="package-pricing">Patient Billing and Package Pricing</h2>
+      <p>Bangladesh private healthcare pricing runs on two parallel models that a billing system needs to handle simultaneously: individual walk-in pricing per test or procedure, and fixed-price packages bundling several tests or a full health check-up (a very common consumer product in Bangladesh diagnostic marketing, often sold as an "executive health check" or a targeted package for diabetes, cardiac, or pre-employment screening). In Odoo, under <span class="path-tag">Sales > Products</span>, a package is modeled as a kit-style product with component lines representing each included test or service, priced as a single fixed total distinct from what those same components would cost purchased individually.</p>
+      <p>This structure matters for a reason beyond convenience: it lets the facility see true package margin, the package price minus the actual consumable cost and referral commission triggered by each included component test, separately from standalone test revenue. Packages are almost always priced at a discount to the sum of individual test prices specifically to drive volume and win the price-sensitive segment of the market, and without component-level cost visibility, management cannot actually tell whether a popular package is a strategic loss-leader that is working as intended or a margin problem nobody has flagged.</p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Billing Type</th>
+            <th>Odoo Structure</th>
+            <th>Operational Note</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Individual test/procedure</td>
+            <td>Standard sales product, single price</td>
+            <td>Priced per NBR VAT rules applicable to the specific healthcare service category</td>
+          </tr>
+          <tr>
+            <td>Fixed-price package</td>
+            <td>Kit product with component lines</td>
+            <td>Reveals true margin per package vs. sum of individual test costs</td>
+          </tr>
+          <tr>
+            <td>Insurance/corporate billing</td>
+            <td>Customer-specific price list, deferred settlement terms</td>
+            <td>Corporate clients often settle monthly on a consolidated invoice, not per visit</td>
+          </tr>
+          <tr>
+            <td>Admission/IPD billing</td>
+            <td>Running sales order accumulating charges until discharge</td>
+            <td>Bed charge, procedure, medicine, and consumable lines all roll into one final settlement</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p class="pull">A package price is a marketing decision wearing an accounting disguise. Until the component cost is visible, nobody actually knows whether the discount was smart or expensive.</p>
+
+      <h2 id="lab-inventory">Lab Consumable and Reagent Inventory</h2>
+      <p>Diagnostic and pathology lab operations consume reagents, test kits, culture media, and disposable collection materials that are expiry-sensitive in a way that closely resembles pharmaceutical inventory management: a reagent used past its expiry can produce an inaccurate result, which is a clinical risk, not just a cost write-off. Odoo's lot and expiry tracking under <span class="path-tag">Inventory > Traceability</span>, configured with FEFO (first-expiry-first-out) removal strategy on reagent and consumable products, ensures lab staff are directed to consume the soonest-expiring stock first rather than grabbing whatever is at the front of the shelf, and expiry alerts under <span class="path-tag">Inventory > Reporting > Expiration Dates</span> give the lab manager advance warning before stock ages out unused.</p>
+      <p>This lot-tracking discipline is the same mechanism covered for pharmaceutical manufacturers in <a href="0035-odoo-pharma-bangladesh" style="color:var(--accent)">Odoo for Pharma Bangladesh</a>, applied here to a healthcare provider's internal consumption rather than a manufacturer's production batches. The volume and cost profile differ significantly (a diagnostic center is managing shelf stock of purchased reagents, not manufacturing anything), but the underlying requirement, knowing exactly what lot of what reagent was on hand and used on which date, is structurally identical, and it is just as important for a facility defending a result dispute or an insurance audit as it is for a pharma company defending a batch recall.</p>
+
+      <div class="tip-box">
+        <div class="tlabel">Practical Shortcut</div>
+        <p>Prioritize expiry-tracked lot management for high-cost, short-shelf-life reagents first (immunoassay kits, certain culture media) rather than trying to lot-track every disposable item in the lab from day one. A phased rollout by consumable value and expiry sensitivity gets the highest-risk items under control fastest without overwhelming lab staff with data entry on low-value, long-shelf-life items like gauze or gloves.</p>
+      </div>
+
+      <h2 id="referral-commissions">Doctor Referral Commissions</h2>
+      <p>Physician referral commissions, a percentage of test or procedure revenue paid to the doctor who referred the patient, are a widespread and commercially normal practice across Bangladesh private healthcare, and they are also a genuinely sensitive topic: informally tracked or under-documented referral payments have drawn regulatory and public scrutiny in Bangladesh's healthcare sector precisely because a lack of clear records makes it impossible to distinguish a standard commercial referral arrangement from something more problematic. A facility with a properly built, auditable referral tracking system in Odoo is protecting itself as much as it is managing an expense line.</p>
+      <p>The practical build: each referring doctor is a vendor/partner record, and every patient invoice line that resulted from that doctor's referral carries a reference (a custom field or analytic tag) linking back to the referring doctor. A scheduled report or automated computation, built either as a simple filtered list under Accounting or a custom Odoo Studio field calculation, totals the commission owed per doctor per period at the agreed percentage or flat rate, and settlement runs through the standard vendor bill and payment cycle under <span class="path-tag">Accounting > Vendors > Bills</span>, entirely separate from the patient's own payment record. Keeping this workflow structurally distinct from patient billing, rather than netting commission off the patient invoice directly, is what preserves a clean audit trail on both sides: the patient's bill shows the full service price, and the doctor's commission is a separate, dated, traceable payment.</p>
+
+      <div class="feature-grid">
+        <div class="feature-card">
+          <div class="fc-icon">01</div>
+          <div class="fc-body">
+            <h4>Doctor as Vendor Record</h4>
+            <p>Every referring physician is a distinct partner with their own commission rate and running balance, not an entry in a side notebook.</p>
+          </div>
+        </div>
+        <div class="feature-card">
+          <div class="fc-icon">02</div>
+          <div class="fc-body">
+            <h4>Invoice-Line Attribution</h4>
+            <p>Each billed test or procedure line is tagged to the referring doctor at the point of billing, not reconstructed later from memory.</p>
+          </div>
+        </div>
+        <div class="feature-card">
+          <div class="fc-icon">03</div>
+          <div class="fc-body">
+            <h4>Separate Settlement Cycle</h4>
+            <p>Commission payments run through vendor bills, fully separate from patient payment records, for a clean audit trail both directions.</p>
+          </div>
+        </div>
+        <div class="feature-card">
+          <div class="fc-icon">04</div>
+          <div class="fc-body">
+            <h4>Periodic Commission Report</h4>
+            <p>A per-doctor, per-period commission summary gives management and finance a defensible number on demand, not a scramble at month-end.</p>
+          </div>
+        </div>
+      </div>
+
+      <h2 id="dgda-procurement">DGDA-Adjacent Procurement Compliance</h2>
+      <p>It is worth being precise about which regulator does what here, since this is a common point of confusion. The Directorate General of Drug Administration (DGDA) directly regulates pharmaceutical manufacturers and licensed drug importers and distributors, which is the relationship covered in the pharma manufacturing article referenced above. A hospital or diagnostic center's own relationship with DGDA is one step removed: it is a purchaser of medical consumables, drugs for internal dispensing, and diagnostic reagents, and its compliance obligation is procuring only from DGDA-licensed suppliers and maintaining a clean, auditable trail of what was purchased, from whom, and when it was consumed.</p>
+      <p>In Odoo, this means vendor master records under <span class="path-tag">Purchase > Vendors</span> should carry the supplier's DGDA license reference as a stored field, purchase approval workflows should block procurement from unverified or unlicensed suppliers for regulated categories, and the same lot/expiry tracking discussed for lab reagents extends to any drugs the facility dispenses internally (common in inpatient settings where medication is billed as part of the patient's overall charge rather than sold separately). This is a lighter compliance burden than a manufacturer's batch-level DGDA reporting, but a facility that cannot produce a clean procurement and consumption trail on request, whether for a regulatory visit, an insurance audit, or a legal inquiry following an adverse event, has a real exposure that a properly configured Odoo procurement and inventory setup closes.</p>
+
+      <h2 id="staffing">Staffing and Duty Roster Realities</h2>
+      <p>Hospitals and diagnostic centers run continuous shift coverage, nurses, lab technicians, and support staff working rotating shifts including night duty, which creates payroll complexity beyond a standard office HR setup: shift differentials, night duty allowances, and overtime calculated against actual roster hours rather than a flat monthly salary. Odoo's Attendance and Payroll modules, configured with shift-based work schedules under <span class="path-tag">Employees > Configuration > Working Schedules</span>, handle this correctly when set up with the facility's actual shift patterns rather than a generic 9-to-5 template inherited from a standard office HR deployment, a mistake that is common when a facility's first Odoo configuration is done by someone without healthcare staffing experience.</p>
+      <p>On-call and locum physician arrangements, common for hospitals that do not employ every specialist full-time, add a further layer: a doctor on a per-visit or per-shift retainer is typically modeled as a vendor arrangement (similar in structure to the referral commission tracking above) rather than a standard payroll employee, since the payment basis, frequency, and tax treatment differ from salaried staff.</p>
+
+      <h2 id="reporting">Reporting Hospital Management Actually Wants</h2>
+      <p>Beyond individual invoices and commission ledgers, the reports that matter to a hospital administrator or diagnostic chain owner are aggregate ones: revenue by department or test category, package versus individual-test revenue mix, referral commission expense as a percentage of revenue by doctor and specialty (useful for identifying both the facility's most valuable referral relationships and any single doctor whose referral volume creates concentration risk), consumable cost as a percentage of lab revenue, and bed or equipment utilization for hospitals running inpatient services. The dashboard-building approach covered in <a href="0055-odoo-dashboards-kpi-bangladesh" style="color:var(--accent)">Odoo Dashboards & KPI Bangladesh</a> applies directly here, and a well-built single-screen view of these figures is typically the single most valued deliverable of a hospital Odoo implementation, since it replaces a monthly manual compilation exercise that previously took the finance team days to assemble from disconnected registers.</p>
+
+      <p>One additional reporting item worth building deliberately rather than leaving as an afterthought is a monthly variance report comparing budgeted versus actual consumable spend per department, since diagnostic and pathology departments in particular tend to see reagent cost creep quietly upward as test volume grows, and a facility that only reviews this annually during budget season typically discovers the drift long after it has eroded a full year of margin. Tying this variance report to the same lot and consumption data already captured for expiry tracking means no additional data entry burden, only a different lens applied to data the system is already recording.</p>
+
+      <h2 id="rollout">Implementation Sequencing Alongside a Live Facility</h2>
+      <p>A hospital or diagnostic center cannot pause patient billing to implement a new system, which makes sequencing critical:</p>
+      <ul>
+        <li><strong>Start with billing and package pricing first,</strong> since it is the highest-volume, most visible daily transaction and delivers the clearest immediate improvement over a disconnected billing tool.</li>
+        <li><strong>Bring lab inventory and expiry tracking in as a second phase,</strong> once billing staff are comfortable, rather than launching both simultaneously and overwhelming a small implementation team.</li>
+        <li><strong>Build the referral commission structure carefully and confidentially,</strong> involving only the finance leadership who need to see it, since this is sensitive data that should not be broadly visible across general staff access.</li>
+        <li><strong>Run billing in parallel with the legacy system for at least two to four weeks</strong> before fully cutting over, reconciling daily totals between old and new systems to catch configuration errors before they compound.</li>
+        <li><strong>Bring payroll and HR online last,</strong> timed to a payroll period boundary rather than mid-cycle, to avoid a confusing partial-period calculation for shift-based staff.</li>
+      </ul>
+
+      <div class="callout">
+        <span class="tag">Healthcare Operations Consultation</span>
+        <p>If you run a private hospital or diagnostic center in Bangladesh and need the business layer, billing, package pricing, lab inventory, and referral commission tracking, properly built alongside your existing clinical system rather than duct-taped together, I can design and implement that Odoo setup without touching your clinical workflow. <a href="../#contact" style="color:var(--accent)">Contact me for a strategy session →</a></p>
+      </div>
+
+      <h2 id="faq">Frequently asked questions</h2>
+
+      <h3>Can Odoo replace a Hospital Management Information System (HMIS) in Bangladesh?</h3>
+      <p>No, and it should not be positioned that way. Odoo has no clinical/EMR module, no e-prescription workflow, no nursing charting, no OT scheduling, and no clinical decision support, which are the core functions of a purpose-built HMIS. What Odoo genuinely covers well is the business and operations layer sitting alongside clinical care: patient billing and package pricing, lab consumable and reagent inventory, doctor referral commission tracking, procurement, accounting, and HR/payroll. Most Bangladesh private hospitals and diagnostic centers that adopt Odoo run it side by side with a dedicated HMIS or a simpler clinical record system, using Odoo specifically for the parts an HMIS typically handles poorly: finance, inventory, and vendor management.</p>
+
+      <h3>How do you set up package pricing for diagnostic tests in Odoo?</h3>
+      <p>A test or health-check package (for example, a fixed-price bundle covering CBC, blood sugar, lipid profile, and a chest X-ray) is modeled in Odoo as a Bill of Materials style kit product or a Sales product with component lines representing each included test, priced as a single fixed total under Sales > Products, distinct from the sum of each test's individual walk-in price. This lets the diagnostic center report true package margin (package price minus the cost of consumables and referral commission triggered by each component test) separately from standalone test revenue, which matters because packages are usually priced at a discount to individual test totals specifically to drive volume, and management needs to see whether that volume actually offsets the margin given up.</p>
+
+      <h3>How should doctor referral commissions be tracked in Odoo?</h3>
+      <p>Referral commissions should be tracked as a separate, auditable ledger tied to the referring doctor as a vendor/partner record, calculated as a defined percentage or flat amount per referred test or procedure, and settled through a standard vendor bill and payment cycle under Accounting > Vendors, completely separate from the patient's own billing and payment. Building this as its own workflow, with the referring doctor recorded against each patient invoice line as a custom field or analytic tag, gives the facility a clean, auditable commission report by doctor and by period, which matters both for the facility's own cost control and because loosely documented referral payment practices are a recurring source of scrutiny in Bangladesh private healthcare, so a clear paper trail protects the facility as much as it tracks the expense.</p>
+
+      <h3>Does DGDA regulate hospital and diagnostic center procurement in Odoo?</h3>
+      <p>The Directorate General of Drug Administration (DGDA) directly regulates pharmaceutical manufacturers and drug importers/distributors, which is a different relationship than a hospital or diagnostic center's own procurement of medical consumables, reagents, and drugs for internal use and dispensing. A healthcare provider's Odoo setup does not need manufacturing-grade DGDA batch compliance, but it does need to procure only from DGDA-licensed suppliers, maintain lot/expiry tracking on drugs and reagents purchased under Inventory > Traceability, and be able to produce a clean purchase and consumption trail if a regulatory or insurance audit asks for one. This is a lighter compliance layer than the manufacturing-side DGDA requirements covered for pharma companies, but it is not optional.</p>
+
+      <h3>What does an Odoo implementation cost for a Bangladesh hospital or diagnostic center?</h3>
+      <p>For a diagnostic center or small private hospital (30 to 150 beds or equivalent daily patient volume), an Odoo implementation covering billing, package pricing, lab inventory, referral commission tracking, and accounting typically runs BDT 8 to 20 lakh, with BDT 3 to 8 lakh per year for support, excluding any separate clinical HMIS licensing the facility runs alongside it. Larger multi-branch diagnostic chains or hospitals wanting deep integration between Odoo and an existing HMIS (for patient master data sync, for example) should budget additional integration development cost on top of these baseline figures.</p>
+
+    </div>
+  </article>
+
+  <footer>
+    <div class="shell">
+      <div class="post-foot">
+        <span class="eyebrow">Continue exploring</span>
+        <div class="next">
+          <a class="next-card" href="0088-odoo-cold-storage-potato-agri-warehousing-bangladesh">
+            <span class="dir">Older · 0088</span>
+            <h4>Odoo for Cold Storage & Potato/Agri Warehousing Bangladesh</h4>
+            <p>Farmer deposit ledgers, chamber capacity tracking, and seasonal billing.</p>
+            <span class="arrow">→</span>
+          </a>
+          <a class="next-card" href="../#lab">
+            <span class="dir">All articles</span>
+            <h4>Back to Lab Index</h4>
+            <p>Browse all guides on Odoo ERP, manufacturing operations, and business analysis in Bangladesh.</p>
+            <span class="arrow">→</span>
+          </a>
+        </div>
+      </div>
+      <div class="foot">
+        <span>© 2026 Mehedi Hasan · Lab / 0089</span>
+        <span><a href="../#lab">↑ Back to lab index</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="_utils.js" defer></script>
+  <script src="_toc.js" defer></script>
+  <script src="/whatsapp.js" defer></script>
+  <script src="/scroll-top.js" defer></script>
+</body>
+
+</html>

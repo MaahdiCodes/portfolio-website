@@ -197,13 +197,17 @@
       --text-2: #9BA1AA;
       --text-3: #7E8694;
       --accent: oklch(0.80 0.17 155);
-      --accent-dim: oklch(0.80 0.17 155 / 0.14);
-      --accent-glow: oklch(0.80 0.17 155 / 0.35);
+      --accent-dim: color-mix(in oklch, var(--accent) 14%, transparent);
+      --accent-glow: color-mix(in oklch, var(--accent) 35%, transparent);
       --sans: 'Geist', ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif;
       --mono: 'Geist Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
       --serif: 'Instrument Serif', ui-serif, Georgia, serif;
       --max: 1280px;
       --gutter: 24px;
+      --surface-2: #0E1115;
+      --surface-3: #0B0D10;
+      --surface-4: #191C22;
+      --surface-5: #15181D;
     }
 
     * {
@@ -383,19 +387,19 @@
     }
 
     .theme-toggle .icon-sun {
-      display: block
+      display: none
     }
 
     .theme-toggle .icon-moon {
-      display: none
+      display: block
     }
 
     html[data-theme="light"] .theme-toggle .icon-sun {
-      display: none
+      display: block
     }
 
     html[data-theme="light"] .theme-toggle .icon-moon {
-      display: block
+      display: none
     }
 
     .nav-links a {
@@ -620,7 +624,7 @@
 
     .btn:hover {
       border-color: var(--border-2);
-      background: #191C22;
+      background: var(--surface-4);
       transform: translateY(-1px)
     }
 
@@ -632,7 +636,7 @@
     }
 
     .btn-primary:hover {
-      background: oklch(0.85 0.17 155);
+      background: color-mix(in oklch, var(--accent) 88%, white 12%);
       transform: translateY(-1px)
     }
 
@@ -829,7 +833,7 @@
 
     .proof-card .status-chip.live {
       color: var(--accent);
-      border-color: oklch(0.80 0.17 155 / 0.4)
+      border-color: color-mix(in oklch, var(--accent) 40%, transparent)
     }
 
     .proof-card h3 {
@@ -901,7 +905,7 @@
       height: 200px;
       border-top: 1px solid var(--border);
       border-bottom: 1px solid var(--border);
-      background: #0B0D10;
+      background: var(--surface-3);
       padding: 0 28px;
       display: flex;
       flex-direction: column;
@@ -946,12 +950,12 @@
       font-weight: 500;
       letter-spacing: 0.04em;
       color: var(--text-3);
-      background: #0E1115;
+      background: var(--surface-2);
     }
 
     .mf-step.done .mf-node {
-      border-color: oklch(0.80 0.17 155 / 0.35);
-      color: oklch(0.80 0.17 155 / 0.7);
+      border-color: color-mix(in oklch, var(--accent) 35%, transparent);
+      color: color-mix(in oklch, var(--accent) 70%, transparent);
       background: var(--accent-dim)
     }
 
@@ -995,11 +999,11 @@
     }
 
     .mf-conn.lit {
-      background: oklch(0.80 0.17 155 / 0.4)
+      background: color-mix(in oklch, var(--accent) 40%, transparent)
     }
 
     .mf-conn.lit::after {
-      color: oklch(0.80 0.17 155 / 0.5)
+      color: color-mix(in oklch, var(--accent) 50%, transparent)
     }
 
     .mf-meta {
@@ -1019,7 +1023,7 @@
       height: 200px;
       border-top: 1px solid var(--border);
       border-bottom: 1px solid var(--border);
-      background: #0B0D10;
+      background: var(--surface-3);
       padding: 16px 28px;
       display: flex;
       flex-direction: column;
@@ -1110,7 +1114,7 @@
       height: 220px;
       border-top: 1px solid var(--border);
       border-bottom: 1px solid var(--border);
-      background: #0B0D10;
+      background: var(--surface-3);
       display: grid;
       grid-template-columns: 140px 1fr;
       position: relative;
@@ -1173,7 +1177,7 @@
       border: 1px solid var(--border);
       border-radius: 6px;
       padding: 8px 10px;
-      background: #0E1115
+      background: var(--surface-2)
     }
 
     .mock-tile .num {
@@ -1202,7 +1206,7 @@
       border-radius: 6px;
       padding: 10px;
       position: relative;
-      background: #0E1115;
+      background: var(--surface-2);
       min-height: 0;
       overflow: hidden
     }
@@ -1325,9 +1329,9 @@
 
     .svc.enterprise {
       background:
-        radial-gradient(600px 200px at 100% 0%, oklch(0.80 0.17 155 / 0.08), transparent 60%),
+        radial-gradient(600px 200px at 100% 0%, color-mix(in oklch, var(--accent) 8%, transparent), transparent 60%),
         linear-gradient(180deg, rgba(17, 19, 23, 0.8), rgba(10, 11, 13, 0.8));
-      border-color: oklch(0.80 0.17 155 / 0.18);
+      border-color: color-mix(in oklch, var(--accent) 18%, transparent);
     }
 
     .svc .svc-kicker {
@@ -1399,7 +1403,7 @@
     }
 
     .svc.enterprise li::before {
-      border-color: oklch(0.80 0.17 155 / 0.5)
+      border-color: color-mix(in oklch, var(--accent) 50%, transparent)
     }
 
     .svc.enterprise li {
@@ -1835,7 +1839,7 @@
       border-radius: 18px;
       padding: 56px 48px;
       background:
-        radial-gradient(500px 280px at 85% 0%, oklch(0.80 0.17 155 / 0.12), transparent 70%),
+        radial-gradient(500px 280px at 85% 0%, color-mix(in oklch, var(--accent) 12%, transparent), transparent 70%),
         linear-gradient(180deg, rgba(17, 19, 23, 0.8), rgba(10, 11, 13, 0.8));
       display: grid;
       grid-template-columns: repeat(12, 1fr);
@@ -1957,7 +1961,7 @@
       border-radius: 18px;
       padding: 52px 48px;
       background:
-        radial-gradient(400px 240px at 0% 50%, oklch(0.80 0.17 155 / 0.08), transparent 70%),
+        radial-gradient(400px 240px at 0% 50%, color-mix(in oklch, var(--accent) 8%, transparent), transparent 70%),
         var(--surface);
     }
 
@@ -2050,7 +2054,7 @@
 
     .nl-btn:hover {
       transform: translateY(-1px);
-      box-shadow: 0 4px 16px oklch(0.80 0.17 155 / 0.25)
+      box-shadow: 0 4px 16px color-mix(in oklch, var(--accent) 25%, transparent)
     }
 
     .nl-btn:disabled {
@@ -2262,12 +2266,12 @@
     }
 
     select.cf-input {
-      background: #15181D;
+      background: var(--surface-5);
       color: var(--text)
     }
 
     select.cf-input option {
-      background: #15181D;
+      background: var(--surface-5);
       color: var(--text)
     }
 
@@ -2324,7 +2328,7 @@
 
     .cf-submit:hover {
       transform: translateY(-1px);
-      box-shadow: 0 4px 14px oklch(0.80 0.17 155 / 0.22)
+      box-shadow: 0 4px 14px color-mix(in oklch, var(--accent) 22%, transparent)
     }
 
     .cf-submit:disabled {
@@ -2660,20 +2664,23 @@
 
     /* light theme */
     html[data-theme="light"] {
-      --bg: #F5F7FA;
+      --bg: #F7F9FC;
       --bg-1: #EEF1F5;
       --surface: #FFFFFF;
       --elev: #EDF0F4;
-      --border: #E2E6EC;
-      --border-2: #CBD0D9;
+      --border: #E2E8F0;
+      --border-2: #CBD5E0;
       --hair: rgba(0, 0, 0, 0.05);
-      --text: #0E1013;
-      --text-2: #4A5265;
-      --text-3: #8A909E;
+      --text: #1A2B3C;
+      --text-2: #4A5568;
+      --text-3: #718096;
+      --accent: #009B8E;
+      --accent-dim: color-mix(in oklch, #009B8E 10%, transparent);
+      --accent-glow: color-mix(in oklch, #009B8E 20%, transparent);
     }
 
     html[data-theme="light"] body {
-      background: radial-gradient(900px 600px at 80% -10%, rgba(80, 230, 160, 0.05), transparent 60%), var(--bg);
+      background: radial-gradient(900px 600px at 80% -10%, rgba(0, 155, 142, 0.05), transparent 60%), var(--bg);
     }
 
     html[data-theme="light"] .noise {
@@ -2728,7 +2735,7 @@
     }
 
     html[data-theme="light"] .svc.enterprise {
-      background: radial-gradient(600px 200px at 100% 0%, oklch(0.80 0.17 155/0.07), transparent 60%), linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(237, 240, 244, 0.98));
+      background: radial-gradient(600px 200px at 100% 0%, color-mix(in oklch, var(--accent) 7%, transparent), transparent 60%), linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(237, 240, 244, 0.98));
     }
 
     html[data-theme="light"] .course-card {
@@ -2748,13 +2755,89 @@
     }
 
     html[data-theme="light"] .contact-wrap {
-      background: radial-gradient(500px 280px at 85% 0%, oklch(0.80 0.17 155/0.07), transparent 70%), linear-gradient(180deg, rgba(255, 255, 255, 0.97), rgba(237, 240, 244, 0.97));
+      background: radial-gradient(500px 280px at 85% 0%, color-mix(in oklch, var(--accent) 7%, transparent), transparent 70%), linear-gradient(180deg, rgba(255, 255, 255, 0.97), rgba(237, 240, 244, 0.97));
     }
 
     html[data-theme="light"] .sig-name {
       background: linear-gradient(180deg, var(--text) 0%, var(--text) 55%, var(--text-3) 100%);
       -webkit-background-clip: text;
       background-clip: text;
+    }
+
+    /* Dark Navy theme — same dark family as the default dark mode, recolored
+       from near-black to consultive.io's navy gradient, with a teal accent */
+    html[data-theme="dark-navy"] {
+      --bg: #061628;
+      --bg-1: #0B2545;
+      --surface: #0E2038;
+      --elev: #132C52;
+      --border: #1B3A6B;
+      --border-2: #2A4A7F;
+      --hair: rgba(255, 255, 255, 0.06);
+      --text: #EDEEF0;
+      --text-2: #9BAAC2;
+      --text-3: #6E7F9C;
+      --accent: #00B8A9;
+      --accent-dim: color-mix(in oklch, #00B8A9 14%, transparent);
+      --accent-glow: color-mix(in oklch, #00B8A9 35%, transparent);
+      --surface-2: #102544;
+      --surface-3: #081B30;
+      --surface-4: #14315A;
+      --surface-5: #132C52;
+    }
+
+    html[data-theme="dark-navy"] body {
+      background:
+        radial-gradient(900px 600px at 80% -10%, rgba(0, 184, 169, 0.08), transparent 60%),
+        radial-gradient(700px 500px at 10% 10%, rgba(27, 58, 107, 0.28), transparent 70%),
+        var(--bg);
+    }
+
+    html[data-theme="dark-navy"] .nav-inner {
+      background: rgba(11, 37, 69, 0.6)
+    }
+
+    html[data-theme="dark-navy"] .proof-card {
+      background: linear-gradient(180deg, rgba(14, 32, 56, 0.95) 0%, rgba(6, 22, 40, 0.95) 100%)
+    }
+
+    html[data-theme="dark-navy"] .mockup,
+    html[data-theme="dark-navy"] .mock-flow,
+    html[data-theme="dark-navy"] .mock-adoption,
+    html[data-theme="dark-navy"] .mock-dash {
+      background: var(--surface-3)
+    }
+
+    html[data-theme="dark-navy"] .mock-side,
+    html[data-theme="dark-navy"] .mock-tile,
+    html[data-theme="dark-navy"] .mock-chart {
+      background: var(--surface-2)
+    }
+
+    html[data-theme="dark-navy"] .mf-node {
+      background: var(--surface-2)
+    }
+
+    html[data-theme="dark-navy"] .mock-flow::after,
+    html[data-theme="dark-navy"] .mock-adoption::after,
+    html[data-theme="dark-navy"] .mock-dash::after {
+      background: linear-gradient(180deg, transparent 55%, rgba(6, 22, 40, 0.6) 100%)
+    }
+
+    html[data-theme="dark-navy"] .svc {
+      background: linear-gradient(180deg, rgba(14, 32, 56, 0.7), rgba(6, 22, 40, 0.7))
+    }
+
+    html[data-theme="dark-navy"] .svc.enterprise {
+      background: radial-gradient(600px 200px at 100% 0%, color-mix(in oklch, var(--accent) 10%, transparent), transparent 60%), linear-gradient(180deg, rgba(19, 44, 82, 0.8), rgba(6, 22, 40, 0.8));
+    }
+
+    html[data-theme="dark-navy"] .status {
+      background: rgba(19, 44, 82, 0.55)
+    }
+
+    html[data-theme="dark-navy"] .contact-wrap {
+      background: radial-gradient(500px 280px at 85% 0%, color-mix(in oklch, var(--accent) 10%, transparent), transparent 70%), linear-gradient(180deg, rgba(14, 32, 56, 0.75), rgba(6, 22, 40, 0.75));
     }
 
     /* lab view all link */
@@ -2782,10 +2865,17 @@
 
     .lab-view-all:hover {
       color: var(--accent);
-      border-color: oklch(0.80 0.17 155/0.4);
+      border-color: color-mix(in oklch, var(--accent) 40%, transparent);
       background: var(--accent-dim)
     }
   </style>
+  <script>
+    (function () {
+      var t = localStorage.getItem('mh-theme');
+      if (t === 'dark-navy') document.documentElement.setAttribute('data-theme', 'dark-navy');
+      else if (t !== 'dark') document.documentElement.setAttribute('data-theme', 'light');
+    })();
+  </script>
 </head>
 
 <body>
@@ -2947,15 +3037,15 @@
                 <svg viewBox="0 0 300 80" preserveAspectRatio="none">
                   <defs>
                     <linearGradient id="g1" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="0%" stop-color="oklch(0.80 0.17 155)" stop-opacity="0.45" />
-                      <stop offset="100%" stop-color="oklch(0.80 0.17 155)" stop-opacity="0" />
+                      <stop offset="0%" style="stop-color:var(--accent)" stop-opacity="0.45" />
+                      <stop offset="100%" style="stop-color:var(--accent)" stop-opacity="0" />
                     </linearGradient>
                   </defs>
                   <path
                     d="M0,60 L30,55 L60,58 L90,42 L120,48 L150,32 L180,36 L210,22 L240,28 L270,14 L300,18 L300,80 L0,80 Z"
                     fill="url(#g1)" />
                   <path d="M0,60 L30,55 L60,58 L90,42 L120,48 L150,32 L180,36 L210,22 L240,28 L270,14 L300,18"
-                    fill="none" stroke="oklch(0.80 0.17 155)" stroke-width="1.25" />
+                    fill="none" style="stroke:var(--accent)" stroke-width="1.25" />
                 </svg>
               </div>
             </div>
@@ -3016,7 +3106,7 @@
                   <g stroke="var(--border-2)" stroke-width="1" fill="none">
                     <line x1="0" y1="40" x2="300" y2="40" />
                   </g>
-                  <g fill="oklch(0.80 0.17 155 / 0.6)">
+                  <g fill="color-mix(in oklch, var(--accent) 60%, transparent)">
                     <rect x="12" y="30" width="14" height="40" />
                     <rect x="36" y="22" width="14" height="48" />
                     <rect x="60" y="34" width="14" height="36" />
@@ -3827,20 +3917,25 @@
       else nav.style.boxShadow = 'none';
     }, { passive: true });
 
-    // theme toggle
+    // theme toggle — cycles light (default) -> dark-navy -> dark (classic)
     (function () {
       const root = document.documentElement;
       const btn = document.getElementById('theme-toggle');
-      if (localStorage.getItem('mh-theme') === 'light') root.setAttribute('data-theme', 'light');
+      const TITLES = {
+        light: 'Theme: Light — click for Dark Navy',
+        'dark-navy': 'Theme: Dark Navy — click for Dark (Classic)',
+        dark: 'Theme: Dark (Classic) — click for Light'
+      };
+      function current() { return root.getAttribute('data-theme') || 'dark'; }
+      function setTitle() { btn.title = TITLES[current()]; }
+      setTitle();
       btn.addEventListener('click', () => {
-        const isLight = root.getAttribute('data-theme') === 'light';
-        if (isLight) {
-          root.removeAttribute('data-theme');
-          localStorage.setItem('mh-theme', 'dark');
-        } else {
-          root.setAttribute('data-theme', 'light');
-          localStorage.setItem('mh-theme', 'light');
-        }
+        const order = ['light', 'dark-navy', 'dark'];
+        const next = order[(order.indexOf(current()) + 1) % order.length];
+        if (next === 'dark') root.removeAttribute('data-theme');
+        else root.setAttribute('data-theme', next);
+        localStorage.setItem('mh-theme', next);
+        setTitle();
       });
     })();
 

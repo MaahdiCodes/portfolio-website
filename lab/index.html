@@ -34,8 +34,8 @@
     --text-2:#9BA1AA;
     --text-3:#7E8694;
     --accent:oklch(0.80 0.17 155);
-    --accent-dim:oklch(0.80 0.17 155 / 0.14);
-    --accent-glow:oklch(0.80 0.17 155 / 0.35);
+    --accent-dim:color-mix(in oklch, var(--accent) 14%, transparent);
+    --accent-glow:color-mix(in oklch, var(--accent) 35%, transparent);
     --sans:'Geist', ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif;
     --mono:'Geist Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
     --serif:'Instrument Serif', ui-serif, Georgia, serif;
@@ -54,22 +54,46 @@
   a{color:inherit;text-decoration:none}
   ::selection{background:var(--accent);color:#000}
 
-  /* light theme */
+  /* light theme (default) — consultive.io-inspired: white/navy-gray, teal accent */
   html[data-theme="light"]{
-    --bg:#F5F7FA;
+    --bg:#F7F9FC;
     --bg-1:#EEF1F5;
     --surface:#FFFFFF;
     --elev:#EDF0F4;
-    --border:#E2E6EC;
-    --border-2:#CBD0D9;
+    --border:#E2E8F0;
+    --border-2:#CBD5E0;
     --hair:rgba(0,0,0,0.05);
-    --text:#0E1013;
-    --text-2:#4A5265;
-    --text-3:#8A909E;
+    --text:#1A2B3C;
+    --text-2:#4A5568;
+    --text-3:#718096;
+    --accent:#009B8E;
+    --accent-dim:color-mix(in oklch, #009B8E 10%, transparent);
+    --accent-glow:color-mix(in oklch, #009B8E 20%, transparent);
   }
   html[data-theme="light"] body{
-    background:radial-gradient(900px 600px at 80% -10%,rgba(80,230,160,0.05),transparent 60%),var(--bg);
+    background:radial-gradient(900px 600px at 80% -10%,rgba(0,155,142,0.05),transparent 60%),var(--bg);
   }
+
+  /* dark navy theme — same dark family, recolored from near-black to navy, teal accent */
+  html[data-theme="dark-navy"]{
+    --bg:#061628;
+    --bg-1:#0B2545;
+    --surface:#0E2038;
+    --elev:#132C52;
+    --border:#1B3A6B;
+    --border-2:#2A4A7F;
+    --hair:rgba(255,255,255,0.06);
+    --text:#EDEEF0;
+    --text-2:#9BAAC2;
+    --text-3:#6E7F9C;
+    --accent:#00B8A9;
+    --accent-dim:color-mix(in oklch, #00B8A9 14%, transparent);
+    --accent-glow:color-mix(in oklch, #00B8A9 35%, transparent);
+  }
+  html[data-theme="dark-navy"] body{
+    background:radial-gradient(900px 600px at 80% -10%,rgba(0,184,169,0.08),transparent 60%),radial-gradient(700px 500px at 10% 10%, rgba(27,58,107,0.24), transparent 70%),var(--bg);
+  }
+  html[data-theme="dark-navy"] .nav-inner{background:rgba(11,37,69,0.6)}
 
   /* layout */
   .shell{max-width:var(--max);margin:0 auto;padding:0 var(--gutter);position:relative;z-index:1}
@@ -121,10 +145,10 @@
   }
   .theme-toggle:hover{color:var(--text);border-color:var(--border-2)}
   .theme-toggle svg{display:block;pointer-events:none}
-  .theme-toggle .icon-sun{display:block}
-  .theme-toggle .icon-moon{display:none}
-  html[data-theme="light"] .theme-toggle .icon-sun{display:none}
-  html[data-theme="light"] .theme-toggle .icon-moon{display:block}
+  .theme-toggle .icon-sun{display:none}
+  .theme-toggle .icon-moon{display:block}
+  html[data-theme="light"] .theme-toggle .icon-sun{display:block}
+  html[data-theme="light"] .theme-toggle .icon-moon{display:none}
   @media(max-width:760px){.nav-links{display:none}}
 
   /* eyebrow */
@@ -320,6 +344,13 @@
   .foot{display:flex;justify-content:space-between;align-items:center;font-family:var(--mono);font-size:11.5px;color:var(--text-3);letter-spacing:0.06em;text-transform:uppercase}
   .foot a:hover{color:var(--text)}
 </style>
+<script>
+  (function(){
+    var t = localStorage.getItem('mh-theme');
+    if (t === 'dark-navy') document.documentElement.setAttribute('data-theme', 'dark-navy');
+    else if (t !== 'dark') document.documentElement.setAttribute('data-theme', 'light');
+  })();
+</script>
 </head>
 <body>
 
@@ -1778,20 +1809,25 @@
 </footer>
 
 <script>
-  // theme toggle (shared preference with main site)
+  // theme toggle (shared preference with main site) — cycles light -> dark-navy -> dark (classic)
   (function(){
     const root = document.documentElement;
     const btn = document.getElementById('theme-toggle');
-    if (localStorage.getItem('mh-theme') === 'light') root.setAttribute('data-theme', 'light');
+    const TITLES = {
+      light: 'Theme: Light — click for Dark Navy',
+      'dark-navy': 'Theme: Dark Navy — click for Dark (Classic)',
+      dark: 'Theme: Dark (Classic) — click for Light'
+    };
+    function current() { return root.getAttribute('data-theme') || 'dark'; }
+    function setTitle() { btn.title = TITLES[current()]; }
+    setTitle();
     btn.addEventListener('click', () => {
-      const isLight = root.getAttribute('data-theme') === 'light';
-      if (isLight) {
-        root.removeAttribute('data-theme');
-        localStorage.setItem('mh-theme', 'dark');
-      } else {
-        root.setAttribute('data-theme', 'light');
-        localStorage.setItem('mh-theme', 'light');
-      }
+      const order = ['light', 'dark-navy', 'dark'];
+      const next = order[(order.indexOf(current()) + 1) % order.length];
+      if (next === 'dark') root.removeAttribute('data-theme');
+      else root.setAttribute('data-theme', next);
+      localStorage.setItem('mh-theme', next);
+      setTitle();
     });
   })();
 

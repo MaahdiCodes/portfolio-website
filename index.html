@@ -2777,9 +2777,9 @@
       --text: #EDEEF0;
       --text-2: #9BAAC2;
       --text-3: #6E7F9C;
-      --accent: #00B8A9;
-      --accent-dim: color-mix(in oklch, #00B8A9 14%, transparent);
-      --accent-glow: color-mix(in oklch, #00B8A9 35%, transparent);
+      --accent: oklch(0.80 0.16 185);
+      --accent-dim: color-mix(in oklch, oklch(0.80 0.16 185) 14%, transparent);
+      --accent-glow: color-mix(in oklch, oklch(0.80 0.16 185) 35%, transparent);
       --surface-2: #102544;
       --surface-3: #081B30;
       --surface-4: #14315A;
@@ -2788,7 +2788,7 @@
 
     html[data-theme="dark-navy"] body {
       background:
-        radial-gradient(900px 600px at 80% -10%, rgba(0, 184, 169, 0.08), transparent 60%),
+        radial-gradient(900px 600px at 80% -10%, color-mix(in oklch, var(--accent) 10%, transparent), transparent 60%),
         radial-gradient(700px 500px at 10% 10%, rgba(27, 58, 107, 0.28), transparent 70%),
         var(--bg);
     }
@@ -2872,8 +2872,8 @@
   <script>
     (function () {
       var t = localStorage.getItem('mh-theme');
-      if (t === 'dark-navy') document.documentElement.setAttribute('data-theme', 'dark-navy');
-      else if (t !== 'dark') document.documentElement.setAttribute('data-theme', 'light');
+      if (t === 'light') document.documentElement.setAttribute('data-theme', 'light');
+      else if (t !== 'dark') document.documentElement.setAttribute('data-theme', 'dark-navy');
     })();
   </script>
 </head>
@@ -3746,7 +3746,7 @@
       else nav.style.boxShadow = 'none';
     }, { passive: true });
 
-    // theme toggle — cycles light (default) -> dark-navy -> dark (classic)
+    // theme toggle — cycles dark-navy (default) -> dark (classic) -> light
     (function () {
       const root = document.documentElement;
       const btn = document.getElementById('theme-toggle');
@@ -3759,7 +3759,7 @@
       function setTitle() { btn.title = TITLES[current()]; }
       setTitle();
       btn.addEventListener('click', () => {
-        const order = ['light', 'dark-navy', 'dark'];
+        const order = ['dark-navy', 'dark', 'light'];
         const next = order[(order.indexOf(current()) + 1) % order.length];
         if (next === 'dark') root.removeAttribute('data-theme');
         else root.setAttribute('data-theme', next);

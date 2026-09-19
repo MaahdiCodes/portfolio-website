@@ -1,9 +1,9 @@
 // Apply stored theme immediately — runs before DOMContentLoaded to avoid flash.
-// Three themes: 'light' (default), 'dark-navy', 'dark' (original near-black, no attribute needed).
+// Three themes: 'dark-navy' (default), 'dark' (original near-black, no attribute needed), 'light'.
 (function(){
   var t = localStorage.getItem('mh-theme');
-  if(t === 'dark-navy') document.documentElement.setAttribute('data-theme','dark-navy');
-  else if(t !== 'dark') document.documentElement.setAttribute('data-theme','light');
+  if(t === 'light') document.documentElement.setAttribute('data-theme','light');
+  else if(t !== 'dark') document.documentElement.setAttribute('data-theme','dark-navy');
 })();
 
 // Inject theme toggle button into lab/course navs and wire up the click handler.
@@ -43,7 +43,7 @@
     setTitle();
 
     btn.addEventListener('click', function(){
-      var order = ['light', 'dark-navy', 'dark'];
+      var order = ['dark-navy', 'dark', 'light'];
       var next = order[(order.indexOf(currentTheme()) + 1) % order.length];
       if(next === 'dark') document.documentElement.removeAttribute('data-theme');
       else document.documentElement.setAttribute('data-theme', next);

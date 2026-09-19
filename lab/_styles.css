@@ -341,13 +341,13 @@ html[data-theme="dark-navy"]{
   --text:#EDEEF0;
   --text-2:#9BAAC2;
   --text-3:#6E7F9C;
-  --accent:#00B8A9;
-  --accent-dim: color-mix(in oklch, #00B8A9 14%, transparent);
-  --accent-glow: color-mix(in oklch, #00B8A9 35%, transparent);
+  --accent: oklch(0.80 0.16 185);
+  --accent-dim: color-mix(in oklch, oklch(0.80 0.16 185) 14%, transparent);
+  --accent-glow: color-mix(in oklch, oklch(0.80 0.16 185) 35%, transparent);
 }
 html[data-theme="dark-navy"] ::selection{background:var(--accent);color:#04140F}
 html[data-theme="dark-navy"] body{
-  background:radial-gradient(900px 600px at 80% -10%, rgba(0,184,169,0.08), transparent 60%),radial-gradient(700px 500px at 10% 10%, rgba(27,58,107,0.24), transparent 70%),var(--bg);
+  background:radial-gradient(900px 600px at 80% -10%, color-mix(in oklch, var(--accent) 10%, transparent), transparent 60%),radial-gradient(700px 500px at 10% 10%, rgba(27,58,107,0.24), transparent 70%),var(--bg);
 }
 html[data-theme="dark-navy"] .nav-inner{background:rgba(11,37,69,0.6)}
 html[data-theme="dark-navy"] .post .toc{background:linear-gradient(180deg,rgba(14,32,56,0.55),rgba(6,22,40,0.55))}

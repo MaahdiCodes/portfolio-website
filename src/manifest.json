@@ -1,0 +1,24 @@
+{
+  "name": "Mehedi Hasan | Odoo ERP Consultant",
+  "short_name": "Mehedi Hasan",
+  "description": "Odoo Certified Functional Consultant in Bangladesh — manufacturing ERP implementation and business process automation.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#061628",
+  "theme_color": "#061628",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/favicon.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

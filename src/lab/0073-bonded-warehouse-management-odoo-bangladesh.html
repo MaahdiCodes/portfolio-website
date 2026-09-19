@@ -1,0 +1,225 @@
+---
+permalink: "lab/0073-bonded-warehouse-management-odoo-bangladesh.html"
+title: "Bonded Warehouse Management in Odoo Bangladesh | Mehedi Hasan"
+description: "Configure Odoo for Bangladesh bonded warehouse (Bond License) operations: duty-free raw material tracking, utilization declarations, and NBR bond audit readiness."
+canonical: "https://mhasan.me/lab/0073-bonded-warehouse-management-odoo-bangladesh"
+ogImage: "https://mhasan.me/assets/og/lab/0073-bonded-warehouse-management-odoo-bangladesh.png"
+ogSiteName: "Mehedi Hasan | Odoo ERP Consultant"
+datePublished: "2026-09-18T12:00:00+06:00"
+dateModified: "2026-09-18T12:00:00+06:00"
+articleSection: "Odoo ERP Bangladesh"
+eyebrowNum: "0073"
+h1: "Bonded warehouse management in Odoo: <span class=\"serif\">duty-free stock without the audit panic.</span>"
+lede: "Every export-oriented factory outside an EPZ or SEZ that imports raw material duty-free is running on an NBR Bond License, not a zone privilege. The bond only stays valid if the factory can prove, on demand, exactly how much duty-free material came in and exactly how much went out as exported product. This is where most Odoo setups quietly fail, because they were built for a domestic trading business, not a bonded one."
+chips: ["Guide", "Customs & Bond", "Bangladesh"]
+bylineItems:
+  - label: "By"
+    value: "<a href=\"https://www.linkedin.com/in/mehedi-hasan-consultant/\" style=\"color:var(--accent)\" rel=\"author\">Mehedi Hasan</a>"
+  - label: "Published"
+    value: "September 2026"
+  - label: "Read time"
+    value: "13 minutes"
+  - label: "Form"
+    value: "Guide"
+  - label: "Scope"
+    value: "Bond License Compliance"
+nextArticle:
+  href: "0072-bangladesh-bank-import-lc-forex-odoo"
+  dir: "Older · 0072"
+  title: "Bangladesh Bank Import LC &amp; FX Rules in Odoo"
+  desc: "LC margin, multi-currency revaluation, and Bangladesh Bank reporting."
+prevArticle:
+  href: "../#lab"
+  dir: "All articles"
+  title: "Back to Lab Index"
+  desc: "Browse all guides on Odoo ERP, manufacturing operations, and business analysis in Bangladesh."
+jsonLd: |
+  [
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "Bonded Warehouse Management in Odoo Bangladesh: Bond License, UD Filing, and Audit Readiness",
+      "description": "A practical guide for Bangladesh export-oriented manufacturers on configuring Odoo to run bonded warehouse operations under an NBR Bond License: separate duty-free inventory tracking, input-output utilization ratios, Utilization Declaration filing, and passing the annual bond audit.",
+      "datePublished": "2026-09-18T12:00:00+06:00",
+      "dateModified": "2026-09-18T12:00:00+06:00",
+      "author": { "@type": "Person", "name": "Mehedi Hasan", "url": "https://mhasan.me", "jobTitle": "Odoo ERP Consultant & Business Analyst", "sameAs": "https://www.linkedin.com/in/mehedi-hasan-consultant/" },
+      "publisher": { "@type": "Person", "name": "Mehedi Hasan", "url": "https://mhasan.me" },
+      "mainEntityOfPage": { "@type": "WebPage", "@id": "https://mhasan.me/lab/0073-bonded-warehouse-management-odoo-bangladesh" }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://mhasan.me" },
+        { "@type": "ListItem", "position": 2, "name": "Lab", "item": "https://mhasan.me/lab/" },
+        { "@type": "ListItem", "position": 3, "name": "Bonded Warehouse Management in Odoo Bangladesh", "item": "https://mhasan.me/lab/0073-bonded-warehouse-management-odoo-bangladesh" }
+      ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is the difference between a bonded warehouse and an EPZ factory in Bangladesh?",
+          "acceptedAnswer": { "@type": "Answer", "text": "An EPZ or SEZ factory operates inside a physically fenced, BEPZA-governed or BEZA-governed zone where the entire zone is treated as customs territory outside Bangladesh, with duty exemption built into the zone's legal status. A bonded warehouse is a facility anywhere in Bangladesh, inside an ordinary industrial area like Gazipur, Narayanganj, or Chattogram, that has been granted a Bond License by NBR Customs under the Customs Act. The factory itself remains inside Bangladesh's domestic customs territory, but a specific licensed and physically secured space (or the whole factory, under a General Bond) is allowed to hold imported raw materials without paying duty, on the condition that the output is exported. Bonded warehouse status is a facility-specific permission with ongoing utilization accounting; EPZ status is a zone-wide legal designation." }
+        },
+        {
+          "@type": "Question",
+          "name": "What is a Utilization Declaration (UD) and why does Odoo need to support it?",
+          "acceptedAnswer": { "@type": "Answer", "text": "A Utilization Declaration is the technical document a bonded factory files with NBR Customs Bond Commissionerate that states the input-output coefficient for a product: how many units or what weight of each duty-free raw material is consumed to produce one unit of the exported finished good. NBR uses the UD to calculate how much duty-free material a factory is entitled to import against a given export order, and later to check whether actual consumption matches the declared ratio. Odoo needs to support this because the UD ratio has to reconcile against real manufacturing order consumption data (BoM issue quantities), and any factory that cannot produce this reconciliation on demand faces duty demand notices during the bond audit." }
+        },
+        {
+          "@type": "Question",
+          "name": "Can a General Bond factory use standard Odoo inventory locations, or does it need a separate warehouse?",
+          "acceptedAnswer": { "@type": "Answer", "text": "It needs at minimum a separate logical location, and in most well-run implementations a completely separate warehouse record inside Odoo. Bonded raw materials must be traceable at all times as distinct from duty-paid domestic-market stock, because the two categories face different tax treatment and different reporting obligations. Mixing bonded and non-bonded stock in the same location makes it impossible to produce a clean utilization report and is one of the most common reasons a bond audit escalates into a dispute." }
+        },
+        {
+          "@type": "Question",
+          "name": "What happens if a bonded factory's actual raw material usage does not match its declared UD ratio?",
+          "acceptedAnswer": { "@type": "Answer", "text": "A mismatch triggers scrutiny during the annual bond audit conducted by NBR's Bond Commissionerate. If consumption is higher than declared (meaning more duty-free material was used per unit of export than the UD allows, often because of wastage, rejection, or short shipment), the factory can face a duty demand on the unaccounted difference, treated as if that material was diverted to the domestic market, plus penalty and interest under the Customs Act. Repeated or large mismatches can lead to bond license suspension or cancellation, which halts the factory's ability to import duty-free and can shut down production for export orders that depend on bonded inputs." }
+        }
+      ]
+    }
+  ]
+extraStyles: |
+  .pull{font-family:var(--serif);font-style:italic;font-size:clamp(22px,3vw,32px);line-height:1.3;color:var(--text);margin:44px 0;max-width:26ch;letter-spacing:-0.01em}
+      .pull::before{content:"";display:block;width:36px;height:1px;background:var(--accent);margin-bottom:16px}
+      .stat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:26px 0}
+      @media(max-width:680px){.stat-row{grid-template-columns:1fr 1fr}}
+      @media(max-width:440px){.stat-row{grid-template-columns:1fr}}
+      .stat-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:18px 16px;text-align:center}
+      .stat-card .sc-val{font-size:28px;font-weight:700;color:var(--accent);letter-spacing:-0.03em;line-height:1;margin-bottom:6px}
+      .stat-card .sc-label{font-family:var(--mono);font-size:10px;color:var(--text-3);letter-spacing:0.07em;text-transform:uppercase}
+      .stat-card .sc-note{font-size:11.5px;color:var(--text-2);margin-top:5px;line-height:1.4}
+      .step-list{list-style:none;padding:0;margin:24px 0;counter-reset:step}
+      .step-list li{position:relative;padding:16px 18px 16px 54px;border:1px solid var(--border);border-radius:8px;margin-bottom:10px;background:var(--surface)}
+      .step-list li::before{counter-increment:step;content:counter(step,decimal-leading-zero);position:absolute;left:16px;top:16px;font-family:var(--mono);font-size:12px;color:var(--accent);font-weight:600}
+      .step-list li b{display:block;color:var(--text);font-size:14.5px;margin-bottom:4px}
+      .step-list li span{font-size:13.5px;color:var(--text-2);line-height:1.55}
+      .risk-box{background:rgba(199,106,106,0.08);border:1px solid rgba(199,106,106,0.3);border-radius:8px;padding:16px 20px;margin:22px 0}
+      .risk-box .rlabel{font-family:var(--mono);font-size:10px;color:#C76A6A;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:6px;font-weight:600}
+      .risk-box p{margin:0;font-size:13.5px;color:var(--text-2);line-height:1.55}
+      .tip-box{background:var(--accent-dim);border-left:3px solid var(--accent);border-radius:0 6px 6px 0;padding:14px 18px;margin:18px 0}
+      .tip-box .tlabel{font-family:var(--mono);font-size:10px;color:var(--accent);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:6px}
+      .tip-box p{margin:0;font-size:14px;color:var(--text-2);line-height:1.55}
+---
+<aside class="toc">
+      <div class="toc-k">In this guide</div>
+      <ol>
+        <li><a href="#what-is-bond">What a bonded warehouse actually is</a></li>
+        <li><a href="#bond-types">General Bond vs Special Bond</a></li>
+        <li><a href="#vs-epz">How this differs from EPZ/SEZ</a></li>
+        <li><a href="#odoo-setup">Separating bonded inventory in Odoo</a></li>
+        <li><a href="#ud">Utilization ratios and the UD</a></li>
+        <li><a href="#audit">The annual bond audit</a></li>
+        <li><a href="#mismatch">When utilization doesn't match</a></li>
+        <li><a href="#rollout">A phased rollout plan</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ol>
+    </aside>
+
+    <div class="body">
+      <h2 id="what-is-bond">What a bonded warehouse actually is</h2>
+      <p>A bonded warehouse in the Bangladesh context is not a physical category of building, it is a legal permission. NBR Customs, through the Bond Commissionerate and administratively supported by the Duty Exemption and Drawback Office (DEDO), grants a Bond License to a factory that exports its output, allowing that factory to import raw materials, packing materials, and certain accessories without paying customs duty and VAT at the import stage, on the strict condition that those materials are consumed in the manufacture of goods that are subsequently exported. If the goods are not exported, or if more duty-free material was imported than was actually used in exported production, the factory owes duty on the unaccounted quantity.</p>
+      <p>This is a fundamentally different arrangement from a normal import. A trading company that imports fabric, pays duty at the port, and sells domestically has already settled its obligation to NBR the moment the shipment clears customs. A bonded factory instead defers that obligation, sometimes indefinitely, in exchange for accepting an ongoing accounting responsibility: it must be able to show, material by material, shipment by shipment, exactly where every duty-free unit went. Bangladesh's RMG sector runs almost entirely on this model outside the EPZs, which is why bond compliance touches such a large share of the country's export manufacturing base, but the same mechanism applies to leather goods, footwear, plastics, and light engineering exporters who import components duty-free for re-export.</p>
+
+      <div class="stat-row">
+        <div class="stat-card">
+          <div class="sc-val">2 Types</div>
+          <div class="sc-label">Bond Licenses</div>
+          <div class="sc-note">General Bond and Special Bond, issued under the Customs Act</div>
+        </div>
+        <div class="stat-card">
+          <div class="sc-val">Annual</div>
+          <div class="sc-label">Bond Audit Cycle</div>
+          <div class="sc-note">Bond Commissionerate reviews utilization at least once a year</div>
+        </div>
+        <div class="stat-card">
+          <div class="sc-val">1 UD</div>
+          <div class="sc-label">Per Product Line</div>
+          <div class="sc-note">Every exported product needs its own declared input-output ratio</div>
+        </div>
+      </div>
+
+      <h2 id="bond-types">General Bond vs Special Bond</h2>
+      <p>NBR issues two broad categories of bond license, and the difference matters for how you configure Odoo. A <strong>General Bond</strong> is issued to a 100% export-oriented factory (the classic RMG or knitwear model) and treats the entire licensed factory premises as the bonded area, with duty-free raw material allowed to move relatively freely within the factory's own production floor, subject to the utilization accounting described below. A <strong>Special Bond</strong> is issued to a factory that is not 100% export-oriented, meaning it sells both to the export market and the domestic market from the same production line. Special Bond holders must physically and procedurally separate the duty-free bonded stock from the duty-paid domestic stock, because the two streams cannot be commingled without collapsing the duty-free entitlement for the whole batch.</p>
+      <p>In practice, Special Bond factories are the harder Odoo configuration problem. A General Bond factory can often run with one bonded warehouse and one non-bonded warehouse (for local sundries, packaging bought domestically, or spares). A Special Bond factory needs the same raw material item (say, a specific yarn count) tracked in two separate valuation streams depending on whether that particular lot was imported duty-free or sourced domestically or already duty-paid, because a single product code cannot silently hide two different customs statuses.</p>
+
+      <h2 id="vs-epz">How bonded warehouse compliance differs from EPZ/SEZ</h2>
+      <p>It is worth being precise about this distinction because vendors and even some consultants conflate the two. An EPZ or SEZ factory, covered in depth in <a href="0021-epz-sez-compliance-odoo-bangladesh" style="color:var(--accent)">EPZ/SEZ Compliance in Odoo Bangladesh</a>, sits inside a fenced zone administered by BEPZA or BEZA where the zone itself is treated as being outside Bangladesh's domestic customs territory. Everything that crosses the zone boundary, in either direction, is a customs event, but movement is governed by zone-level rules rather than a factory-specific license.</p>
+      <p>A bonded warehouse factory has no physical zone boundary. It sits on an ordinary industrial plot in Gazipur, Ashulia, Narayanganj, or Chattogram EPZ's surrounding districts, and its duty-free status attaches to the Bond License itself, not to the address. This means the compliance burden is carried entirely by the factory's own record-keeping: there is no zone customs post checking every truck, so NBR relies far more heavily on the factory's own utilization declarations, stock registers, and periodic audits to police the arrangement. That shifts significantly more of the compliance workload onto the ERP system than an EPZ factory typically carries, because the ERP is effectively standing in for the zone fence.</p>
+
+      <p class="pull">A bonded factory's ERP is not just recording inventory. It is the evidence file NBR will eventually ask to see.</p>
+
+      <h2 id="odoo-setup">Separating bonded inventory in Odoo</h2>
+      <p>The starting mistake in most Odoo implementations for bonded factories is treating bonded raw material as just another inventory location under the same warehouse as everything else. That works for day-to-day picking but breaks down the moment someone needs a clean utilization report, because Odoo's standard stock valuation and consumption reports do not know that a portion of the stock carries a duty-free customs status that has to be reconciled separately from ordinary purchased inventory.</p>
+      <p>The configuration that holds up under audit uses a dedicated warehouse record, for example <code>WH/BOND</code>, distinct from the domestic warehouse <code>WH/DOM</code>, with its own set of locations: a bonded raw material store, a bonded work-in-progress location if the factory tracks issued-to-production stock separately, and (for Special Bond holders) a domestic raw material store that never receives bonded-status stock. Purchase orders for imported duty-free materials route their receipts into the bonded warehouse specifically, and the vendor bill or landed cost record carries a reference to the underlying Bill of Entry (customs import declaration) so the link between the physical stock and the customs paperwork survives in the system, not just in a filing cabinet. This is the same discipline covered from the customs-declaration side in <a href="0019-hs-code-customs-odoo-bangladesh" style="color:var(--accent)">HS Code &amp; Customs in Odoo Bangladesh</a>, and it pairs directly with landed cost handling, since duty-free bonded shipments still carry freight, insurance, and clearing charges that need to land on the correct cost basis, a topic covered fully in <a href="0041-odoo-landed-costs-duty-drawback-bangladesh" style="color:var(--accent)">Odoo Landed Costs &amp; Duty Drawback Bangladesh</a>.</p>
+      <p>Manufacturing orders that consume bonded raw material should pull specifically from the bonded raw material location through the Bill of Materials, and the finished goods produced from that consumption should route to a bonded finished-goods location pending export, not directly into a general finished-goods store that also holds domestic-sale stock. When the export shipment is finally invoiced and the goods physically leave on the vessel or through the airport, that delivery is the trigger that closes the loop between the imported duty-free input and the exported output. Everything in between, from goods receipt to production consumption to shipment, needs a traceable chain, which in Odoo terms means lot or serial tracking on the raw material where the factory's product mix makes it practical, and disciplined use of the manufacturing order's component consumption records where lot tracking is too granular for high-volume commodity inputs like grey fabric or yarn.</p>
+
+      <div class="tip-box">
+        <div class="tlabel">Configuration note</div>
+        <p>Do not rely on a single "Bonded" product category tag as your only control. Categories describe a product, not a specific lot's customs history. A factory that imports the same yarn count both duty-free (bonded) and duty-paid (domestic) in different months needs the warehouse and location structure to carry that distinction, because the product record alone cannot.</p>
+      </div>
+
+      <h2 id="ud">Utilization ratios and the Utilization Declaration</h2>
+      <p>The Utilization Declaration, universally referred to as the UD, is the technical document that ties everything together. For each exportable product, the factory declares to the Bond Commissionerate how many units, or what weight, of each duty-free raw material is required to produce one unit of finished output, including a reasonable allowance for normal process wastage. This UD ratio is what NBR uses to calculate how much duty-free material a factory is entitled to import against a confirmed export order or master L/C, and it is also what the bond audit team uses afterward to check whether declared consumption matches what was actually used.</p>
+      <p>In Odoo, the UD ratio should map directly onto the Bill of Materials quantity for each finished good, with the BoM serving as the single source of truth that both production planning and compliance reporting draw from. When manufacturing consumes more raw material per unit than the BoM specifies, whether from rework, rejection, or a change in fabric consumption that was never reflected back into the declared UD, that gap is exactly the gap an auditor will ask about. Building a recurring internal report, ideally a scheduled action or a saved filter on the Manufacturing app comparing planned BoM consumption against actual component consumption by product and by month, turns this from a once-a-year scramble into an ongoing control that flags drift before it becomes a six-month backlog to explain.</p>
+
+      <table>
+        <thead>
+          <tr><th>UD element</th><th>Where it lives in Odoo</th><th>Why it matters at audit time</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Declared input-output ratio</td><td>Bill of Materials, per finished good</td><td>Is the baseline auditors compare actual consumption against</td></tr>
+          <tr><td>Actual raw material consumed</td><td>Manufacturing order component moves</td><td>Must reconcile to declared ratio within an allowed wastage margin</td></tr>
+          <tr><td>Duty-free import quantity</td><td>Purchase order + Bill of Entry reference, bonded warehouse receipt</td><td>Establishes the total entitlement being drawn down</td></tr>
+          <tr><td>Exported finished quantity</td><td>Delivery order linked to export invoice / EXP form</td><td>Confirms the material actually left the country as claimed</td></tr>
+          <tr><td>Closing bonded stock</td><td>Bonded warehouse on-hand quantity</td><td>Must equal imports minus consumption minus documented wastage</td></tr>
+        </tbody>
+      </table>
+
+      <h2 id="audit">The annual bond audit: what documentation Odoo needs to produce</h2>
+      <p>The Bond Commissionerate's audit team typically wants to see a reconciliation covering a full financial or calendar year: total duty-free import quantity by raw material, total quantity issued to production, total finished goods produced, total finished goods exported with matching shipping bill and Bill of Entry references, and the closing bonded stock balance, with the difference between what should be on hand and what physically is on hand explained line by line. A factory that can generate this reconciliation directly from Odoo, rather than reconstructing it manually from paper registers under audit-week pressure, materially changes the tone and length of the audit.</p>
+
+      <ul class="step-list">
+        <li><b>Bonded stock ledger</b><span>A location-filtered stock moves report for the bonded warehouse only, covering the audit period, showing every receipt, consumption, and adjustment with reference documents attached.</span></li>
+        <li><b>UD versus actual consumption report</b><span>Product-by-product comparison of the declared BoM ratio against the actual weighted-average consumption for the period, with variance highlighted rather than buried.</span></li>
+        <li><b>Import-to-export traceability</b><span>A chain from each Bill of Entry through to the export shipping bill it fed, ideally supported by lot tracking or batch numbers where the product allows it.</span></li>
+        <li><b>Wastage and rejection log</b><span>Quality module scrap or rejection records for bonded-input production, because undocumented wastage is the single most common source of unexplained utilization gaps.</span></li>
+        <li><b>Closing stock physical count</b><span>A recent cycle count or full physical inventory of the bonded location reconciled against the Odoo book balance before the auditors arrive, not during their visit.</span></li>
+      </ul>
+
+      <h2 id="mismatch">When utilization doesn't match: what it actually costs</h2>
+      <p>The consequences of a utilization mismatch are not abstract. If the audit finds that a factory imported duty-free material for 100,000 units of finished goods but can only demonstrate export of 92,000 units, with no documented wastage or rejection explanation for the remaining 8,000 units' worth of input, NBR treats the shortfall as if that material was diverted into the domestic market without paying duty. The factory becomes liable for the duty and VAT that would have been paid on that material at import, plus penalty and interest calculated under the Customs Act, and depending on the size and pattern of the discrepancy, the case can be escalated for further investigation rather than closed with a straightforward payment.</p>
+
+      <div class="risk-box">
+        <div class="rlabel">Real exposure</div>
+        <p>Beyond the direct duty demand, a factory with a poor bond audit history faces slower future UD approvals, more frequent physical inspections, and in serious or repeated cases, suspension or cancellation of the Bond License itself. A cancelled bond license does not just create a compliance headache, it removes the factory's ability to import raw material duty-free at all, which for a garment or leather exporter competing on landed cost against regional peers is often commercially fatal for that product line.</p>
+      </div>
+
+      <p>Most mismatches are not fraud, they are recordkeeping gaps: a wastage allowance that was never formally documented, a sample shipment that left without being logged against the UD, or bonded and domestic stock that got mixed at some point during a warehouse reorganization. An Odoo configuration that enforces the separation described above, and that produces the reconciliation report as a routine monthly output rather than an annual fire drill, closes most of these gaps before they compound into something an auditor has to escalate.</p>
+
+      <h2 id="rollout">A phased rollout plan</h2>
+      <p>Retrofitting bond discipline into an Odoo instance that has been running loosely for a few years is realistic, but it should not be attempted as a single big-bang change during a live production season. A workable sequence starts with creating the dedicated bonded warehouse and location structure and re-classifying current bonded stock into it based on a physical count, ideally timed to coincide with a natural low-production period. Next comes tightening the Bill of Materials to match the actual filed UD ratios product by product, correcting any BoMs that have drifted from what was declared to Customs. Only after those two steps are stable should the factory build the recurring reconciliation report and assign a named person, usually in the compliance or merchandising-finance function, to review it monthly rather than leaving it to surface only when the bond audit notice arrives.</p>
+
+      <div class="callout">
+        <span class="tag">Consultation CTA</span>
+        <p>If your factory is running a General or Special Bond and your last audit involved more explaining than reconciling, I can review your current Odoo warehouse structure against your filed UD ratios and build the reconciliation reporting that makes the next audit a non-event. <a href="../#contact" style="color:var(--accent)">Contact me for a strategy session →</a></p>
+      </div>
+
+      <h2 id="faq">Frequently asked questions</h2>
+
+      <h3>What is the difference between a bonded warehouse and an EPZ factory in Bangladesh?</h3>
+      <p>An EPZ or SEZ factory operates inside a physically fenced, BEPZA-governed or BEZA-governed zone where the entire zone is treated as customs territory outside Bangladesh, with duty exemption built into the zone's legal status. A bonded warehouse is a facility anywhere in Bangladesh, inside an ordinary industrial area like Gazipur, Narayanganj, or Chattogram, that has been granted a Bond License by NBR Customs under the Customs Act. The factory itself remains inside Bangladesh's domestic customs territory, but a specific licensed and physically secured space (or the whole factory, under a General Bond) is allowed to hold imported raw materials without paying duty, on the condition that the output is exported. Bonded warehouse status is a facility-specific permission with ongoing utilization accounting; EPZ status is a zone-wide legal designation.</p>
+
+      <h3>What is a Utilization Declaration (UD) and why does Odoo need to support it?</h3>
+      <p>A Utilization Declaration is the technical document the bonded factory files with NBR Customs Bond Commissionerate that states the input-output coefficient for a product: how many units or what weight of each duty-free raw material is consumed to produce one unit of the exported finished good. NBR uses the UD to calculate how much duty-free material a factory is entitled to import against a given export order, and later to check whether actual consumption matches the declared ratio. Odoo needs to support this because the UD ratio has to reconcile against real manufacturing order consumption data (BoM issue quantities), and any factory that cannot produce this reconciliation on demand faces duty demand notices during the bond audit.</p>
+
+      <h3>Can a General Bond factory use standard Odoo inventory locations, or does it need a separate warehouse?</h3>
+      <p>It needs at minimum a separate logical location, and in most well-run implementations a completely separate warehouse record inside Odoo. Bonded raw materials must be traceable at all times as distinct from duty-paid domestic-market stock, because the two categories face different tax treatment and different reporting obligations. Mixing bonded and non-bonded stock in the same location makes it impossible to produce a clean utilization report and is one of the most common reasons a bond audit escalates into a dispute.</p>
+
+      <h3>What happens if a bonded factory's actual raw material usage does not match its declared UD ratio?</h3>
+      <p>A mismatch triggers scrutiny during the annual bond audit conducted by NBR's Bond Commissionerate. If consumption is higher than declared (meaning more duty-free material was used per unit of export than the UD allows, often because of wastage, rejection, or short shipment), the factory can face a duty demand on the unaccounted difference, treated as if that material was diverted to the domestic market, plus penalty and interest under the Customs Act. Repeated or large mismatches can lead to bond license suspension or cancellation, which halts the factory's ability to import duty-free and can shut down production for export orders that depend on bonded inputs.</p>
+
+    </div>

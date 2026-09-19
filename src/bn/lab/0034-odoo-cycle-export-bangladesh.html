@@ -1,0 +1,572 @@
+---
+permalink: "bn/lab/0034-odoo-cycle-export-bangladesh.html"
+title: "বাংলাদেশে Odoo সাইকেল এক্সপোর্ট | BOM থেকে কাস্টমস | মেহেদী হাসান"
+description: "বাংলাদেশে Odoo সাইকেল এক্সপোর্ট — বাইসাইকেল অ্যাসেম্বলির জন্য BOM স্ট্রাকচার, আমদানি করা কম্পোনেন্ট প্রোকিউরমেন্ট, প্রোডাকশন রাউটিং, এবং HS কোড এক্সপোর্ট ডকুমেন্টেশন। সেটআপ করুন →"
+robots: "noindex, follow"
+canonical: "https://mhasan.me/bn/lab/0034-odoo-cycle-export-bangladesh"
+hreflangBn: "https://mhasan.me/bn/lab/0034-odoo-cycle-export-bangladesh"
+hreflangEn: "https://mhasan.me/lab/0034-odoo-cycle-export-bangladesh"
+lang: "bn"
+ogDescription: "বাংলাদেশের বাইসাইকেল এক্সপোর্ট ম্যানুফ্যাকচারারদের জন্য Odoo কীভাবে কনফিগার করবেন — বাইসাইকেল অ্যাসেম্বলির জন্য BOM, আমদানি করা কম্পোনেন্ট প্রোকিউরমেন্ট, প্রোডাকশন রাউটিং, HS কোড ক্লাসিফিকেশন, এবং এক্সপোর্ট ডকুমেন্টেশন।"
+twitterTitle: "বাংলাদেশে Odoo সাইকেল এক্সপোর্ট | BOM থেকে কাস্টমস গাইড"
+twitterDescription: "বাংলাদেশে সাইকেল এক্সপোর্টের জন্য Odoo কনফিগার করুন — BOM স্ট্রাকচার, আমদানি করা কম্পোনেন্ট প্রোকিউরমেন্ট, লুম রাউটিং, HS কোড কাস্টমস ডকুমেন্টেশন।"
+ogImage: "https://mhasan.me/assets/og-default.jpg"
+ogSiteName: "মেহেদী হাসান | Odoo ERP কনসালট্যান্ট"
+ogLocale: "bn_BD"
+datePublished: "2026-05-07T10:30:00+06:00"
+dateModified: "2026-05-23T10:30:00+06:00"
+articleSection: "Odoo ERP Bangladesh"
+eyebrowNum: "0034"
+h1: "বাংলাদেশে সাইকেল এক্সপোর্টের জন্য Odoo — <span class=\"serif\">BOM থেকে কাস্টমস, পূর্ণাঙ্গ কনফিগার।</span>"
+lede: "বাংলাদেশ বিশ্বের তৃতীয় বৃহত্তম বাইসাইকেল রপ্তানিকারক। যেসব কারখানা প্রতি বছর ইউরোপ আর আমেরিকায় লাখ লাখ ইউনিট শিপ করে, তারা জটিল মাল্টি-লেভেল BOM, চীন আর তাইওয়ান থেকে আমদানি করা কম্পোনেন্ট, এবং লট-লেভেল ট্রেসেবিলিটি প্রয়োজন এমন ডিউটি ড্রব্যাক ক্লেইম ম্যানেজ করে। এই গাইড দেখায় কীভাবে এই সবকিছু হ্যান্ডল করতে Odoo কনফিগার করবেন।"
+chips: ["ইন্ডাস্ট্রি গাইড", "সাইকেল / বাইসাইকেল", "এক্সপোর্ট", "বাংলাদেশ"]
+bylineItems:
+  - label: "লেখক"
+    value: "<a href=\"https://www.linkedin.com/in/mehedi-hasan-consultant/\" style=\"color:var(--accent)\" rel=\"author\">Mehedi Hasan</a>"
+  - label: "প্রকাশিত"
+    value: "মে ২০২৬"
+  - label: "পড়ার সময়"
+    value: "১৩ মিনিট"
+  - label: "ধরন"
+    value: "ইন্ডাস্ট্রি কনফিগারেশন গাইড"
+  - label: "পরিসর"
+    value: "বাইসাইকেল এক্সপোর্ট · বাংলাদেশের ম্যানুফ্যাকচারার"
+nextArticle:
+  href: "/bn/lab/0033-odoo-rmg-garments-bangladesh"
+  dir: "পুরনো · 0033"
+  title: "বাংলাদেশে RMG-এর জন্য Odoo"
+  desc: "স্যাম্পল-টু-শিপমেন্ট ওয়ার্কফ্লো, সাইজ-কালার BOM, BGMEA মজুরি কমপ্লায়েন্স — গার্মেন্টস কারখানার জন্য পূর্ণাঙ্গ কনফিগারেশন গাইড।"
+prevArticle:
+  href: "/bn/lab/0035-odoo-pharma-bangladesh"
+  dir: "নতুন · 0035"
+  title: "বাংলাদেশে ফার্মাসিউটিক্যালের জন্য Odoo"
+  desc: "Odoo-তে লট ট্র্যাকিং, মেয়াদ ব্যবস্থাপনা, DGDA ব্যাচ কমপ্লায়েন্স, এবং ফার্মা ম্যানুফ্যাকচারিং ওয়ার্কফ্লো।"
+jsonLd: |
+  [
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "বাংলাদেশে সাইকেল ও বাইসাইকেল এক্সপোর্টের জন্য Odoo: BOM থেকে কাস্টমস",
+      "description": "বাংলাদেশের বাইসাইকেল ও সাইকেল এক্সপোর্ট ম্যানুফ্যাকচারিংয়ে Odoo ERP-এর জন্য একটি সম্পূর্ণ কনফিগারেশন গাইড। বাইসাইকেল অ্যাসেম্বলির জন্য মাল্টি-লেভেল BOM, HS কোড ও LC ম্যানেজমেন্টসহ আমদানি করা কম্পোনেন্ট প্রোকিউরমেন্ট, ফ্রেম ওয়েল্ডিং থেকে ফাইনাল অ্যাসেম্বলি ও QC পর্যন্ত প্রোডাকশন রাউটিং, কমার্শিয়াল ইনভয়েস ও প্যাকিং লিস্টসহ এক্সপোর্ট ডকুমেন্টেশন, এবং ডিউটি ড্রব্যাক ও EPZ অপারেশনসহ বাংলাদেশ-নির্দিষ্ট সাইকেল এক্সপোর্ট বিবেচ্য বিষয় কভার করে।",
+      "datePublished": "2026-05-07T10:30:00+06:00",
+      "dateModified": "2026-05-23T10:30:00+06:00",
+      "inLanguage": "bn",
+      "author": {
+        "@type": "Person",
+        "name": "Mehedi Hasan",
+        "url": "https://mhasan.me",
+        "jobTitle": "Odoo ERP Consultant & Business Analyst",
+        "sameAs": "https://www.linkedin.com/in/mehedi-hasan-consultant/"
+      },
+      "publisher": { "@type": "Person", "name": "Mehedi Hasan", "url": "https://mhasan.me" },
+      "mainEntityOfPage": { "@type": "WebPage", "@id": "https://mhasan.me/bn/lab/0034-odoo-cycle-export-bangladesh" }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "হোম", "item": "https://mhasan.me/bn" },
+        { "@type": "ListItem", "position": 2, "name": "ল্যাব", "item": "https://mhasan.me/bn/#lab" },
+        { "@type": "ListItem", "position": 3, "name": "বাংলাদেশে Odoo সাইকেল এক্সপোর্ট", "item": "https://mhasan.me/bn/lab/0034-odoo-cycle-export-bangladesh" }
+      ]
+    }
+  ]
+extraStyles: |
+  body{ font-family: 'Noto Sans Bengali', var(--sans); }
+      .bom-tree {
+        margin: 28px 0;
+        font-size: 13px;
+      }
+      .bom-node {
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        overflow: hidden;
+        margin-bottom: 12px;
+      }
+      .bom-head {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 12px 18px;
+        background: var(--surface);
+        border-bottom: 1px solid var(--border);
+      }
+      .bom-level {
+        font-family: var(--mono);
+        font-size: 10px;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        color: var(--accent);
+        min-width: 64px;
+      }
+      .bom-product {
+        font-weight: 600;
+        color: var(--text);
+      }
+      .bom-type {
+        margin-left: auto;
+        font-family: var(--mono);
+        font-size: 10px;
+        color: var(--text-3);
+        background: var(--elev);
+        border: 1px solid var(--border);
+        border-radius: 4px;
+        padding: 2px 8px;
+      }
+      .bom-components {
+        padding: 12px 18px;
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+      }
+      .bom-comp {
+        display: flex;
+        align-items: baseline;
+        gap: 10px;
+        color: var(--text-2);
+        line-height: 1.6;
+      }
+      .bom-comp-name { flex: 1; }
+      .bom-comp-qty {
+        font-family: var(--mono);
+        font-size: 11px;
+        color: var(--text-3);
+        min-width: 60px;
+        text-align: right;
+      }
+      .bom-comp-src {
+        font-family: var(--mono);
+        font-size: 10px;
+        color: oklch(0.80 0.17 155);
+        min-width: 72px;
+        text-align: right;
+      }
+  
+      .routing-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 12.5px;
+        margin: 24px 0;
+      }
+      .routing-table th {
+        padding: 10px 14px;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        font-family: var(--mono);
+        font-size: 10px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--text-3);
+        text-align: left;
+      }
+      .routing-table td {
+        padding: 10px 14px;
+        border: 1px solid var(--border);
+        color: var(--text-2);
+        vertical-align: top;
+        line-height: 1.6;
+      }
+      .routing-table td:first-child { font-weight: 500; color: var(--text); }
+  
+      .hs-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+        margin: 24px 0;
+      }
+      .hs-item {
+        display: flex;
+        gap: 12px;
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        padding: 12px 14px;
+        align-items: flex-start;
+      }
+      .hs-code {
+        font-family: var(--mono);
+        font-size: 12px;
+        font-weight: 700;
+        color: var(--accent);
+        min-width: 80px;
+        margin-top: 1px;
+      }
+      .hs-desc {
+        font-size: 12.5px;
+        color: var(--text-2);
+        line-height: 1.6;
+      }
+  
+      .pull {
+        font-family: var(--serif);
+        font-style: italic;
+        font-size: clamp(20px, 2.8vw, 30px);
+        line-height: 1.3;
+        color: var(--text);
+        margin: 48px 0;
+        max-width: 26ch;
+        letter-spacing: -0.01em;
+      }
+      .pull::before {
+        content: "";
+        display: block;
+        width: 36px;
+        height: 1px;
+        background: var(--accent);
+        margin-bottom: 18px;
+      }
+  
+      .field-note{margin:28px 0;border:1px solid var(--border);border-radius:12px;overflow:hidden;background:var(--surface)}
+      .fn-hd{display:flex;align-items:center;justify-content:space-between;padding:12px 18px;border-bottom:1px solid var(--border);font-family:var(--mono);font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-3)}
+      .fn-hd .when{color:var(--accent)}
+      .fn-body{padding:18px 22px;font-size:15px;line-height:1.65;color:var(--text-2)}
+      .fn-body strong{color:var(--text);font-weight:500}
+  
+      @media(max-width:700px){
+        .hs-grid { grid-template-columns: 1fr; }
+      }
+---
+<aside class="toc">
+      <div class="toc-k">এই গাইডে</div>
+      <ol>
+        <li><a href="#industry">বাংলাদেশ সাইকেল এক্সপোর্ট প্রেক্ষাপট</a></li>
+        <li><a href="#bom">মাল্টি-লেভেল BOM স্ট্রাকচার</a></li>
+        <li><a href="#procurement">আমদানি করা কম্পোনেন্ট প্রোকিউরমেন্ট</a></li>
+        <li><a href="#routing">প্রোডাকশন রাউটিং</a></li>
+        <li><a href="#hs-codes">HS কোড ক্লাসিফিকেশন</a></li>
+        <li><a href="#export-docs">এক্সপোর্ট ডকুমেন্টেশন</a></li>
+        <li><a href="#drawback">ডিউটি ড্রব্যাক ট্রেসেবিলিটি</a></li>
+        <li><a href="#bangladesh">বাংলাদেশ-নির্দিষ্ট নোট</a></li>
+        <li><a href="#faq">সচরাচর জিজ্ঞাসা</a></li>
+      </ol>
+    </aside>
+
+    <div class="body">
+      <p>বাংলাদেশ প্রতি বছর ২০ লাখের বেশি বাইসাইকেল রপ্তানি করে, প্রধানত ইউরোপীয় ইউনিয়ন, USA, এবং জাপানে। বড় এক্সপোর্টাররা EPZ কারখানা চালায় যারা ৬০–৮০% কম্পোনেন্ট আমদানি করে এবং রি-এক্সপোর্টের জন্য ফিনিশড বাইসাইকেল অ্যাসেম্বল করে। ডিউটি ড্রব্যাক সিস্টেম, বাইসাইকেল কম্পোনেন্টের HS কোড জটিলতা, এবং ডিউটি ক্লেইমের জন্য প্রয়োজনীয় লট-লেভেল ট্রেসেবিলিটি — এই বিষয়গুলো এটিকে বাংলাদেশের সবচেয়ে ERP-নিবিড় ম্যানুফ্যাকচারিং ক্যাটাগরিগুলোর একটি করে তোলে।</p>
+
+      <p>আমি যেসব সাইকেল কারখানার সাথে কাজ করেছি তাদের বেশিরভাগই প্রোকিউরমেন্ট Excel-এ চালায়, হাতে লেখা রেজিস্টারে প্রোডাকশন রেকর্ড রাখে, আর ডিউটি ড্রব্যাক অফিসার সবসময় যে প্রশ্নটা করে তার দ্রুত উত্তর দেওয়ার কোনো সামর্থ্য তাদের নেই: "দেখান কোন আমদানি করা কম্পোনেন্ট — কোন ইমপোর্ট এন্ট্রি নম্বর সহ — এই এক্সপোর্ট ইনভয়েসের বাইসাইকেলগুলোতে গিয়েছে।" Odoo এই প্রশ্নের উত্তর তিন ক্লিকে দিতে পারে। এই গাইড দেখায় কীভাবে এটি সেটআপ করবেন।</p>
+
+      <p>মূল ম্যানুফ্যাকচারিং মডিউল সেটআপের জন্য দেখুন <a href="/bn/lab/0013-odoo-manufacturing-module-bangladesh" style="color:var(--accent)">বাংলাদেশের কারখানার জন্য Odoo ম্যানুফ্যাকচারিং মডিউল গাইড</a>। আরও ব্যাপকভাবে কাস্টমস আর HS কোড ম্যানেজমেন্টের জন্য দেখুন <a href="/bn/lab/0019-hs-code-customs-odoo-bangladesh" style="color:var(--accent)">HS কোড ও কাস্টমস ম্যানেজমেন্ট গাইড</a>।</p>
+
+      <p class="pull">একটি বাইসাইকেলের ১০০-এর বেশি কম্পোনেন্ট থাকে। প্রতিটিই একটি প্রোকিউরমেন্ট সিদ্ধান্ত, একটি কোয়ালিটি চেক, এবং একটি ট্রেসেবিলিটি রিকোয়ারমেন্ট। ERP যা সব ১০০টি দেখতে পারে না, সেটা ERP নয় — সেটা ব্যয়বহুল ডেটা এন্ট্রি।</p>
+
+      <h2 id="industry">বাংলাদেশ সাইকেল এক্সপোর্ট: ERP প্রেক্ষাপট</h2>
+
+      <p>বাংলাদেশের সাইকেল ম্যানুফ্যাকচারাররা চ্যালেঞ্জের একটি নির্দিষ্ট সমন্বয়ের মুখোমুখি হয় যা ERP কনফিগারেশনকে অসাধারণ করে তোলে:</p>
+
+      <ul>
+        <li><strong>কম্পোনেন্ট ইমপোর্ট নির্ভরতা:</strong> ফ্রেম আর কিছু কম্পোনেন্ট স্থানীয়ভাবে তৈরি হয়। ডিরেইলার, হাব, বটম ব্র্যাকেট, টায়ার, এবং অনেক প্রিসিশন পার্টস আমদানি করা হয় — প্রধানত চীন আর তাইওয়ান থেকে। প্রতিটি আমদানি শিপমেন্টের একটি Bill of Entry, ইমপোর্ট ডিউটি, এবং AIT/VAT থাকে। এই কম্পোনেন্টের ডিউটিই এক্সপোর্টের সময় ডিউটি ড্রব্যাক ক্লেইম তৈরি করে।</li>
+        <li><strong>মাল্টি-লেভেল অ্যাসেম্বলি:</strong> একটি বাইসাইকেল সহজ অ্যাসেম্বলড প্রোডাক্ট নয়। এর সাব-অ্যাসেম্বলি (হুইল অ্যাসেম্বলি, ফ্রেম অ্যাসেম্বলি, ড্রাইভট্রেইন অ্যাসেম্বলি) আছে যা ভিন্ন ডিপার্টমেন্টে তৈরি হতে পারে বা সাবকন্ট্র্যাক্ট হতে পারে। BOM 3–4 লেভেল গভীর, ফ্ল্যাট নয়।</li>
+        <li><strong>মডেল প্রলিফারেশন:</strong> একটি সাধারণ সাইকেল এক্সপোর্টারের ৩০–৮০টি অ্যাক্টিভ মডেল থাকে (মাউন্টেন বাইক, রোড বাইক, শিশুদের বাইক, ই-বাইক)। প্রতিটি মডেলের আলাদা BOM থাকে। ৮০টি BOM ম্যানুয়ালি ম্যানেজ করা স্কেলযোগ্য নয়।</li>
+        <li><strong>বায়ার-নির্দিষ্ট রিকোয়ারমেন্ট:</strong> EUDR আর Green Deal রিকোয়ারমেন্টের আওতায় ইউরোপীয় বায়াররা ক্রমবর্ধমানভাবে কম্পোনেন্ট ট্রেসেবিলিটি ডকুমেন্টেশন চাইছে। EPZ-ভিত্তিক এক্সপোর্টারদের BEPZA থেকে অতিরিক্ত কমপ্লায়েন্স রিকোয়ারমেন্ট থাকে।</li>
+        <li><strong>ডিউটি ড্রব্যাক ভ্যালু:</strong> কম্পোনেন্টের ওপর নির্ভর করে বাইসাইকেল কম্পোনেন্টের আমদানি ডিউটি CIF ইমপোর্ট ভ্যালুর 8–25% পর্যন্ত হতে পারে। বছরে $2M-এর কম্পোনেন্ট আমদানি করা একটি কারখানার জন্য, ড্রব্যাক ক্লেইম $160,000–$500,000। খারাপ ট্রেসেবিলিটি রেকর্ডের কারণে এটা হারানো একটি গুরুত্বপূর্ণ খরচ।</li>
+      </ul>
+
+      <h2 id="bom">Odoo-তে মাল্টি-লেভেল BOM স্ট্রাকচার</h2>
+
+      <p>Odoo-তে একটি বাইসাইকেল BOM সাব-অ্যাসেম্বলিসহ মাল্টি-লেভেল BOM হিসেবে গঠন করা উচিত। এটি আপনাকে শুধু ফিনিশড বাইসাইকেল লেভেলে নয়, সাব-অ্যাসেম্বলি লেভেলেও প্রোডাকশন প্ল্যানিং আর ট্রেসেবিলিটি দেয়।</p>
+
+      <div class="bom-tree">
+        <div class="bom-node">
+          <div class="bom-head">
+            <span class="bom-level">Level 0</span>
+            <span class="bom-product">26" Mountain Bicycle — Model MTB-X1</span>
+            <span class="bom-type">Manufacture</span>
+          </div>
+          <div class="bom-components">
+            <div class="bom-comp">
+              <span class="bom-comp-name">Frame Assembly — MTB-X1 (sub-assembly)</span>
+              <span class="bom-comp-qty">1 pcs</span>
+              <span class="bom-comp-src">Local MFG</span>
+            </div>
+            <div class="bom-comp">
+              <span class="bom-comp-name">Front Wheel Assembly — 26" (sub-assembly)</span>
+              <span class="bom-comp-qty">1 pcs</span>
+              <span class="bom-comp-src">Local MFG</span>
+            </div>
+            <div class="bom-comp">
+              <span class="bom-comp-name">Rear Wheel Assembly — 26" (sub-assembly)</span>
+              <span class="bom-comp-qty">1 pcs</span>
+              <span class="bom-comp-src">Local MFG</span>
+            </div>
+            <div class="bom-comp">
+              <span class="bom-comp-name">Drivetrain Assembly — 21-speed (sub-assembly)</span>
+              <span class="bom-comp-qty">1 pcs</span>
+              <span class="bom-comp-src">Local MFG</span>
+            </div>
+            <div class="bom-comp">
+              <span class="bom-comp-name">Handlebar + Stem + Grips (sub-assembly)</span>
+              <span class="bom-comp-qty">1 set</span>
+              <span class="bom-comp-src">Local MFG</span>
+            </div>
+            <div class="bom-comp">
+              <span class="bom-comp-name">Saddle + Seatpost</span>
+              <span class="bom-comp-qty">1 set</span>
+              <span class="bom-comp-src">Import CN</span>
+            </div>
+            <div class="bom-comp">
+              <span class="bom-comp-name">V-Brake Set (front + rear) — Shimano</span>
+              <span class="bom-comp-qty">1 set</span>
+              <span class="bom-comp-src">Import TW</span>
+            </div>
+            <div class="bom-comp">
+              <span class="bom-comp-name">Pedals — alloy platform</span>
+              <span class="bom-comp-qty">1 pair</span>
+              <span class="bom-comp-src">Import CN</span>
+            </div>
+            <div class="bom-comp">
+              <span class="bom-comp-name">Carton box + foam padding + cable ties</span>
+              <span class="bom-comp-qty">1 set</span>
+              <span class="bom-comp-src">Local</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="bom-node">
+          <div class="bom-head">
+            <span class="bom-level">Level 1</span>
+            <span class="bom-product">Frame Assembly — MTB-X1</span>
+            <span class="bom-type">Manufacture</span>
+          </div>
+          <div class="bom-components">
+            <div class="bom-comp">
+              <span class="bom-comp-name">Hi-Ten Steel Frame — MTB-X1 (welded, painted)</span>
+              <span class="bom-comp-qty">1 pcs</span>
+              <span class="bom-comp-src">Local MFG</span>
+            </div>
+            <div class="bom-comp">
+              <span class="bom-comp-name">Front Fork — Hi-Ten steel</span>
+              <span class="bom-comp-qty">1 pcs</span>
+              <span class="bom-comp-src">Import CN</span>
+            </div>
+            <div class="bom-comp">
+              <span class="bom-comp-name">Headset — 1-1/8" threaded</span>
+              <span class="bom-comp-qty">1 set</span>
+              <span class="bom-comp-src">Import CN</span>
+            </div>
+            <div class="bom-comp">
+              <span class="bom-comp-name">Bottom Bracket — 68mm BSA</span>
+              <span class="bom-comp-qty">1 pcs</span>
+              <span class="bom-comp-src">Import CN</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="bom-node">
+          <div class="bom-head">
+            <span class="bom-level">Level 1</span>
+            <span class="bom-product">Rear Wheel Assembly — 26"</span>
+            <span class="bom-type">Manufacture</span>
+          </div>
+          <div class="bom-components">
+            <div class="bom-comp">
+              <span class="bom-comp-name">26" Alloy Rim — double-wall</span>
+              <span class="bom-comp-qty">1 pcs</span>
+              <span class="bom-comp-src">Import CN</span>
+            </div>
+            <div class="bom-comp">
+              <span class="bom-comp-name">Rear Hub — 7-speed freewheel</span>
+              <span class="bom-comp-qty">1 pcs</span>
+              <span class="bom-comp-src">Import TW</span>
+            </div>
+            <div class="bom-comp">
+              <span class="bom-comp-name">Spoke — 14G stainless, 260mm</span>
+              <span class="bom-comp-qty">36 pcs</span>
+              <span class="bom-comp-src">Import CN</span>
+            </div>
+            <div class="bom-comp">
+              <span class="bom-comp-name">Nipple — alloy</span>
+              <span class="bom-comp-qty">36 pcs</span>
+              <span class="bom-comp-src">Import CN</span>
+            </div>
+            <div class="bom-comp">
+              <span class="bom-comp-name">26" x 2.125" MTB Tyre — Kenda</span>
+              <span class="bom-comp-qty">1 pcs</span>
+              <span class="bom-comp-src">Import CN</span>
+            </div>
+            <div class="bom-comp">
+              <span class="bom-comp-name">26" Inner Tube — Schrader valve</span>
+              <span class="bom-comp-qty">1 pcs</span>
+              <span class="bom-comp-src">Import CN</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <p>Odoo-তে, সব সাব-অ্যাসেম্বলি BOM-এ (Level 1) <strong>BOM Type = Manufacture</strong> সেট করুন। এর মানে Odoo প্রতিটি সাব-অ্যাসেম্বলির জন্য একটি আলাদা Manufacturing Order তৈরি করে — আপনি ফ্রেম অ্যাসেম্বলি, হুইল বিল্ডিং, আর ড্রাইভট্রেইন অ্যাসেম্বলির জন্য আলাদা প্রোডাকশন ট্র্যাকিং পান। টপ-লেভেল বাইসাইকেল MO এই সাব-অ্যাসেম্বলিগুলো কম্পোনেন্ট হিসেবে খরচ করে।</p>
+
+      <p>যদি আপনি চান সাব-অ্যাসেম্বলি ফিনিশড বাইসাইকেলের একই MO-এর ভেতরে তৈরি হোক (আলাদাভাবে প্ল্যান করা না হয়ে), সাব-অ্যাসেম্বলির জন্য <strong>BOM Type = Kit</strong> ব্যবহার করুন। সাব-অ্যাসেম্বলি কখনো আলাদাভাবে স্টোর না হলে Kit ব্যবহার করুন; ব্যাচে তৈরি হলে, স্বাধীনভাবে ইন্সপেক্ট হলে, বা একাধিক বাইসাইকেল মডেলে শেয়ার করা হলে Manufacture ব্যবহার করুন।</p>
+
+      <h2 id="procurement">আমদানি করা কম্পোনেন্ট প্রোকিউরমেন্ট</h2>
+
+      <p>বাংলাদেশে সাইকেল ম্যানুফ্যাকচারিংয়ের বেশিরভাগ উচ্চ-মূল্যের কম্পোনেন্ট চীন (তিয়ানজিন, উশি) এবং তাইওয়ান থেকে আমদানি করা হয়। Odoo-তে প্রোকিউরমেন্ট ওয়ার্কফ্লো কীভাবে কনফিগার করবেন তা এখানে দেওয়া হলো:</p>
+
+      <ul>
+        <li><strong>ভেন্ডর কনফিগারেশন:</strong> ভেন্ডরদের তাদের দেশ (চীন/তাইওয়ান), কারেন্সি (CNY/USD), পেমেন্ট শর্ত, এবং লিড টাইমসহ তৈরি করুন। প্রতি ভেন্ডরে pricelist কারেন্সি সেট করুন। Purchase Order স্বয়ংক্রিয়ভাবে ভেন্ডরের কারেন্সিতে তৈরি হয়।</li>
+        <li><strong>প্রোডাক্টে HS কোড:</strong> প্রতিটি কম্পোনেন্টের প্রোডাক্ট মাস্টারে ইমপোর্ট HS কোড এন্টার করুন (Inventory → Products → product form → General Information → HS Code field)। এটি পারচেজ রিসিপ্ট ডকুমেন্টেশনে এবং ডিউটি ড্রব্যাক ক্লেইমের জন্য ব্যবহৃত হয়।</li>
+        <li><strong>LC-লিংকড প্রোকিউরমেন্ট:</strong> একটি LC-এর অধীনে সোর্সিং করার সময়, Purchase Order-এ একটি external reference হিসেবে LC নম্বর রেকর্ড করুন। LC মেয়াদ শেষের তারিখের জন্য একটি scheduled activity reminder সেট করুন। এটি নিশ্চিত করে কোনো LC ট্র্যাক না করা শিপমেন্ট ছাড়া মেয়াদ শেষ হয় না।</li>
+        <li><strong>Bill of Entry (B/E) রেকর্ডিং:</strong> শিপমেন্ট চট্টগ্রাম কাস্টমসে ক্লিয়ার হলে, Bill of Entry নম্বরই ডিউটি ড্রব্যাক ক্লেইমের মূল রেফারেন্স। Purchase receipt-এ B/E নম্বর আর ইমপোর্ট ডিউটি অ্যামাউন্ট একটি নোট হিসেবে রেকর্ড করুন, অথবা একটি কাস্টম ফিল্ড ব্যবহার করুন। কিছু কারখানা প্রতি ইমপোর্ট লটে B/E ডেটা স্টোর করতে Odoo-র Lot/Serial Number notes ব্যবহার করে একটি আলাদা "Import Shipment" রেকর্ড তৈরি করে।</li>
+        <li><strong>ল্যান্ডেড কস্ট:</strong> ইমপোর্ট ডিউটি, C&amp;F চার্জ, পোর্ট হ্যান্ডলিং, কাস্টমস ব্রোকার ফি, এবং ফ্রেইট (CIF প্রাইসে অন্তর্ভুক্ত না হলে) হলো ল্যান্ডেড কস্ট। Odoo-তে, Inventory → Operations → Landed Costs-এ যান, রিসিপ্ট লিংক করুন, এবং কোয়ান্টিটি বা ভ্যালু অনুযায়ী কম্পোনেন্টগুলোতে কস্ট ডিস্ট্রিবিউট করুন। এটি আপনাকে প্রতিটি আমদানি করা কম্পোনেন্টের প্রকৃত ল্যান্ডেড কস্ট দেয় — সঠিক BOM কস্টিং আর মার্জিন অ্যানালাইসিসের জন্য অত্যন্ত গুরুত্বপূর্ণ।</li>
+      </ul>
+
+      <h2 id="routing">Odoo-তে প্রোডাকশন রাউটিং</h2>
+
+      <table class="routing-table">
+        <thead>
+          <tr>
+            <th style="width:15%">অপারেশন</th>
+            <th style="width:20%">ওয়ার্ক সেন্টার</th>
+            <th style="width:30%">যা ঘটে</th>
+            <th style="width:15%">সময় (আনুমানিক)</th>
+            <th style="width:20%">Odoo ট্র্যাকিং</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Frame Cutting</td>
+            <td>Tube Cutting WC</td>
+            <td>মডেল স্পেসিফিকেশন অনুযায়ী ফ্রেম, ফর্ক, আর স্টের জন্য স্টিল টিউব লেংথে কাটা হয়</td>
+            <td>0.5 hrs/unit</td>
+            <td>Work Order — Tube Cutting</td>
+          </tr>
+          <tr>
+            <td>Frame Welding</td>
+            <td>Welding WC</td>
+            <td>ফ্রেম জয়েন্টের TIG/MIG ওয়েল্ডিং। জিগ ফিক্সচার জ্যামিতিক সামঞ্জস্য নিশ্চিত করে। পোস্ট-ওয়েল্ড ইন্সপেকশন (ভিজ্যুয়াল, ওয়েল্ড কোয়ালিটি)</td>
+            <td>1.5 hrs/unit</td>
+            <td>Work Order — Welding</td>
+          </tr>
+          <tr>
+            <td>Frame Painting</td>
+            <td>Paint WC</td>
+            <td>পাউডার কোটিং বা ওয়েট পেইন্ট। বায়ারের কালার কোড অনুযায়ী কালার। ওভেন কিউরিং। রান/চিপের জন্য ভিজ্যুয়াল ইন্সপেকশন</td>
+            <td>0.75 hrs/unit</td>
+            <td>Work Order — Painting</td>
+          </tr>
+          <tr>
+            <td>Wheel Building</td>
+            <td>Wheel Assembly WC</td>
+            <td>রিম আর হাবে স্পোক লেসিং। টেনশনিং মেশিনে ট্রুইং। টায়ার আর টিউব মাউন্টিং</td>
+            <td>0.6 hrs/pair</td>
+            <td>Work Order — Wheel Assembly (separate MO)</td>
+          </tr>
+          <tr>
+            <td>Final Assembly</td>
+            <td>Assembly Line WC</td>
+            <td>ফর্ক, হেডসেট, হুইল, ড্রাইভট্রেইন, ব্রেক, হ্যান্ডেলবার, স্যাডল, প্যাডেল ইনস্টল করা হয়। গিয়ার আর ব্রেক কেবল অ্যাডজাস্টমেন্ট</td>
+            <td>1.0 hrs/unit</td>
+            <td>Work Order — Final Assembly</td>
+          </tr>
+          <tr>
+            <td>QC &amp; PDI</td>
+            <td>QC WC</td>
+            <td>প্রি-ডেলিভারি ইন্সপেকশন: গিয়ার শিফটিং, ব্রেক পুল, হুইল ট্রু, পেইন্ট ডিফেক্ট। বায়ার স্পেক অনুযায়ী AQL স্যাম্পলিং</td>
+            <td>0.3 hrs/unit</td>
+            <td>Quality Check + Scrap Order (rejects)</td>
+          </tr>
+          <tr>
+            <td>Packing &amp; Cartonning</td>
+            <td>Packing WC</td>
+            <td>বায়ার স্পেক অনুযায়ী সেমি-নক-ডাউন (SKD) প্যাকিং (হ্যান্ডেলবার আলগা, প্যাডেল আলগা, আংশিক অ্যাসেম্বল করা)। কার্টন লেবেল, বায়ার বারকোড স্টিকার</td>
+            <td>0.4 hrs/unit</td>
+            <td>Work Order — Packing</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2 id="hs-codes">বাইসাইকেল কম্পোনেন্টের জন্য HS কোড ক্লাসিফিকেশন</h2>
+
+      <div class="hs-grid">
+        <div class="hs-item">
+          <span class="hs-code">8712.00</span>
+          <span class="hs-desc">ফিনিশড বাইসাইকেল (দুই-চাকার, নন-মোটরাইজড) — এক্সপোর্ট প্রোডাক্টের HS কোড। সাব-কোড: 8712.0010 (শিশুদের), 8712.0020 (মাউন্টেন/রোড), 8712.0090 (অন্যান্য)।</span>
+        </div>
+        <div class="hs-item">
+          <span class="hs-code">8714.91</span>
+          <span class="hs-desc">সাইকেলের ফ্রেম আর ফর্ক। আমদানি করা স্টিল ফ্রেম আর ফর্ক সেটের জন্য ব্যবহৃত।</span>
+        </div>
+        <div class="hs-item">
+          <span class="hs-code">8714.92</span>
+          <span class="hs-desc">হুইল রিম আর স্পোক। চীন থেকে আমদানি করা অ্যালয় রিম আর স্টেইনলেস স্পোক।</span>
+        </div>
+        <div class="hs-item">
+          <span class="hs-code">8714.94</span>
+          <span class="hs-desc">ব্রেক আর ব্রেক পার্টস। Shimano V-brake, ক্যান্টিলিভার ব্রেক, ক্যালিপার ব্রেক।</span>
+        </div>
+        <div class="hs-item">
+          <span class="hs-code">8714.95</span>
+          <span class="hs-desc">স্যাডল। আমদানি করা ভিনাইল, লেদার, বা প্যাডেড সাইকেল স্যাডল।</span>
+        </div>
+        <div class="hs-item">
+          <span class="hs-code">8714.99</span>
+          <span class="hs-desc">অন্যান্য সাইকেল পার্টস — ডিরেইলার, গিয়ার শিফটার, ক্র্যাংকসেট, বটম ব্র্যাকেট, প্যাডেল, হাব।</span>
+        </div>
+        <div class="hs-item">
+          <span class="hs-code">4011.50</span>
+          <span class="hs-desc">সাইকেলের জন্য নিউমেটিক রাবার টায়ার। Kenda, Cheng Shin, এবং জেনেরিক আমদানি করা টায়ার।</span>
+        </div>
+        <div class="hs-item">
+          <span class="hs-code">7315.11</span>
+          <span class="hs-desc">সাইকেলের জন্য রোলার চেইন। তাইওয়ান/চীন থেকে আমদানি করা KMC আর SRAM চেইন।</span>
+        </div>
+      </div>
+
+      <p>Odoo-তে, প্রোডাক্টের <strong>HS Code</strong> ফিল্ডে প্রতিটি HS কোড এন্টার করুন। Delivery Order থেকে কমার্শিয়াল ইনভয়েস বা প্যাকিং লিস্ট তৈরি করলে, কাস্টমস ডিক্লারেশনের জন্য HS কোড পাওয়া যায়। ডিউটি ড্রব্যাক ক্লেইমের জন্য, Customs Duty Drawback Rules-এর অধীনে যোগ্য ইনপুট-আউটপুট সম্পর্ক দেখাতে আপনার আমদানি করা কম্পোনেন্টের (ইনপুট) HS কোড আর এক্সপোর্ট করা বাইসাইকেলের (আউটপুট) HS কোড দরকার।</p>
+
+      <h2 id="export-docs">Odoo থেকে এক্সপোর্ট ডকুমেন্টেশন</h2>
+
+      <p>বাংলাদেশ থেকে একটি স্ট্যান্ডার্ড বাইসাইকেল এক্সপোর্ট শিপমেন্টের জন্য এই ডকুমেন্টগুলো দরকার, যার সবগুলোই Odoo তৈরি বা সাপোর্ট করতে পারে:</p>
+
+      <ul>
+        <li><strong>কমার্শিয়াল ইনভয়েস:</strong> Odoo Sales Order ইনভয়েস থেকে তৈরি হয়। দেখায়: এক্সপোর্টারের বিবরণ, ইমপোর্টারের বিবরণ, LC নম্বর, উৎপত্তির দেশ (বাংলাদেশ), কোয়ান্টিটি (পিস আর কার্টন), HS কোড (8712.00XX), ইউনিট প্রাইস, USD-তে মোট FOB/CIF ভ্যালু। certificate of origin ডিক্লারেশন আর LC রেফারেন্স অন্তর্ভুক্ত করতে একটি কাস্টম QWeb রিপোর্ট টেমপ্লেট কনফিগার করুন।</li>
+        <li><strong>প্যাকিং লিস্ট:</strong> Delivery Order থেকে তৈরি হয়। দেখায়: কার্টন নম্বর (ক্রমান্বয়ে নম্বরকৃত), প্রতি কার্টনে পিস, প্রতি কার্টনে গ্রস/নেট ওজন, ডাইমেনশন, মোট কার্টন, মোট পিস। SKD প্যাকিংয়ের জন্য, অ্যাসেম্বল করা বাইসাইকেল থেকে আলাদাভাবে প্রতি কার্টনের আলগা কম্পোনেন্ট তালিকাভুক্ত করুন।</li>
+        <li><strong>Certificate of Origin (CO):</strong> বাংলাদেশ Export Promotion Bureau (EPB) বা Chamber of Commerce থেকে আবেদন করা হয়। CO কমার্শিয়াল ইনভয়েস নম্বর রেফারেন্স করে আর বাংলাদেশ উৎপত্তি যাচাই করে। Odoo-তে, রেকর্ড-রক্ষণের জন্য Delivery Order-এ একটি নোট হিসেবে CO রেফারেন্স নম্বর স্টোর করুন।</li>
+        <li><strong>EXP ফর্ম:</strong> সব এক্সপোর্ট শিপমেন্টের জন্য Bangladesh Bank EXP (Export) ফর্ম প্রয়োজন। EXP নম্বর ব্যাংক দ্বারা ইস্যু করা হয় আর LC আর এক্সপোর্ট ইনভয়েস রেফারেন্স করে। ট্রেসেবিলিটির জন্য Sales Order বা ইনভয়েসে EXP নম্বর স্টোর করুন।</li>
+        <li><strong>Bill of Lading:</strong> কার্গো লোড হওয়ার পর শিপিং লাইন দ্বারা ইস্যু করা হয়। Odoo-র chatter-এ Delivery Order-এ B/L PDF অ্যাটাচ করুন। ডিউটি ড্রব্যাক ক্লেইমের জন্য B/L নম্বর প্রয়োজন।</li>
+      </ul>
+
+      <h2 id="drawback">Odoo-তে ডিউটি ড্রব্যাক ট্রেসেবিলিটি</h2>
+
+      <p>বাংলাদেশে ডিউটি ড্রব্যাক ক্লেইমের জন্য প্রতিটি এক্সপোর্ট শিপমেন্টের ক্ষেত্রে প্রমাণ করতে হয় কোন আমদানি করা ম্যাটেরিয়াল ব্যবহার করা হয়েছিল আর তার ওপর কী ইমপোর্ট ডিউটি পরিশোধ করা হয়েছিল। Odoo লট-লেভেল ট্রেসেবিলিটির মাধ্যমে এটি সম্ভব করে:</p>
+
+      <div class="field-note">
+        <div class="fn-hd"><span>নোট · সাইকেল এক্সপোর্টার, চট্টগ্রাম EPZ</span><span class="when">ডিউটি ড্রব্যাক অডিট</span></div>
+        <div class="fn-body">
+          একটি EPZ-ভিত্তিক বাইসাইকেল এক্সপোর্টার এক বছরের এক্সপোর্ট কভার করে একটি ডিউটি ড্রব্যাক ক্লেইমের জন্য আবেদন করেছিল এবং তার মাত্র অর্ধেকই প্রমাণ করতে পেরেছিল। কম্পোনেন্ট আমদানি করা হয়েছিল, ডিউটি পরিশোধ করা হয়েছিল, আর বাইসাইকেল সত্যিই এক্সপোর্ট হয়েছিল — কিন্তু রিসিপ্ট বুক করা হয়েছিল লট নম্বর ছাড়া, তাই কোন ইমপোর্ট শিপমেন্ট কোন এক্সপোর্ট কনসাইনমেন্টে গিয়েছে তা প্রমাণ করার কোনো উপায় ছিল না। যে লাইনগুলো একটি Bill of Entry-এর সাথে সম্পর্কিত করা যায়নি, ড্রব্যাক অফিসার সেগুলো প্রত্যাখ্যান করেছিলেন। আমরা সব আমদানি করা কম্পোনেন্টে লট ট্র্যাকিং সক্রিয় করি আর প্রতিটি লটকে তার B/E নম্বরের সাথে লিংক করি; পরের বছরের ক্লেইম পুরোপুরি ক্লিয়ার হয়। <strong>ট্রেসেবিলিটি চেইন ইমপোর্ট রিসিভ হওয়ার মুহূর্তেই থাকতে হবে। ক্লেইমের সময় এটি পুনর্গঠন করা যায় না।</strong>
+        </div>
+      </div>
+
+      <ol>
+        <li><strong>সব আমদানি করা কম্পোনেন্টে লট ট্র্যাকিং সক্রিয় করুন:</strong> প্রোডাক্ট মাস্টারে, সব আমদানি করা কম্পোনেন্টে (ডিরেইলার, হাব, টায়ার, রিম, ইত্যাদি) Tracking = "By Lot" সেট করুন। PO-র বিপরীতে এই কম্পোনেন্টগুলো রিসিভ করার সময়, ইমপোর্ট শিপমেন্ট ব্যাচের সাথে সম্পর্কিত লট নম্বর অ্যাসাইন করুন (যেমন, 2026-এর 42তম চীন ইমপোর্ট শিপমেন্টের জন্য LOT-2026-CN-042)। লট নোটে Bill of Entry (B/E) নম্বর আর ডিউটি অ্যামাউন্ট রেকর্ড করুন।</li>
+        <li><strong>প্রোডাকশনে কম্পোনেন্ট লট কনজাম্পশন রেকর্ড করুন:</strong> Manufacturing Order ওয়ার্ক অর্ডারে, কম্পোনেন্ট খরচ হওয়ার সময়, Odoo রেকর্ড করে কোন নির্দিষ্ট লট ব্যবহার করা হয়েছিল। এটাই মূল ধাপ — এটি আমদানি করা কম্পোনেন্ট লটকে নির্দিষ্ট ফিনিশড বাইসাইকেল MO-এর সাথে লিংক করে।</li>
+        <li><strong>এক্সপোর্ট ডেলিভারি থেকে ইমপোর্ট লট পর্যন্ত ট্রেস করুন:</strong> একটি শিপমেন্ট এক্সপোর্ট হওয়ার পর, Inventory → Traceability-এ যান → ফিনিশড বাইসাইকেল প্রোডাক্ট আর এক্সপোর্ট ডেলিভারি ডেট রেঞ্জ নির্বাচন করুন। Odoo-র traceability রিপোর্ট চেইন দেখায়: Export Delivery → Manufacturing Order → Component Lots → Purchase Receipts। Purchase Receipts থেকে, আপনার কাছে ইমপোর্ট শিপমেন্টের বিবরণ, B/E নম্বর, এবং ড্রব্যাক ক্লেইমের জন্য প্রয়োজনীয় পরিশোধিত ডিউটি অ্যামাউন্ট থাকে।</li>
+        <li><strong>ড্রব্যাক ক্লেইম ডেটা তৈরি করুন:</strong> traceability ডেটা Excel-এ এক্সপোর্ট করুন। বাংলাদেশ কাস্টমসে ড্রব্যাক আবেদনের জন্য প্রয়োজন: এক্সপোর্ট ইনভয়েস নম্বর + তারিখ, FOB ভ্যালু, আমদানি করা কম্পোনেন্টের বিবরণ + HS কোড + কোয়ান্টিটি + B/E নম্বর + পরিশোধিত ডিউটি। এর সবই Odoo-র traceability ডেটায় আছে।</li>
+      </ol>
+
+      <h2 id="bangladesh">বাংলাদেশ সাইকেল এক্সপোর্ট — নির্দিষ্ট বিবেচ্য বিষয়</h2>
+
+      <ul>
+        <li><strong>EPZ অপারেশন:</strong> অনেক বড় সাইকেল এক্সপোর্টার বাংলাদেশ Export Processing Zone (EPZ)-এর ভেতরে কাজ করে। EPZ কারখানার VAT আর ডিউটি ট্রিটমেন্ট আলাদা — তারা bonded warehouse স্ট্যাটাসসহ BEPZA নিয়মের অধীনে কাজ করে। Odoo-তে, "bonded" স্টক লোকেশনসহ EPZ ফ্যাসিলিটি আলাদা warehouse হিসেবে কনফিগার করুন। bonded আর non-bonded লোকেশনের মধ্যে ট্রান্সফার ডিউটি ইভেন্ট ট্রিগার করে যা ট্র্যাক করা দরকার। সম্পূর্ণ সেটআপের জন্য দেখুন <a href="/bn/lab/0021-epz-sez-compliance-odoo-bangladesh" style="color:var(--accent)">EPZ কমপ্লায়েন্স গাইড</a>।</li>
+        <li><strong>EU GSP+ ও EUSR রিকোয়ারমেন্ট:</strong> বাংলাদেশ বাইসাইকেল এক্সপোর্টের জন্য EU GSP+ প্রেফারেন্স থেকে উপকৃত হয় (EU-তে কমানো ইমপোর্ট ডিউটি)। এর জন্য কমার্শিয়াল ইনভয়েসে একটি REX (Registered Exporter) স্টেটমেন্ট অফ অরিজিন বা Form A সার্টিফিকেট প্রয়োজন। অরিজিন ডিক্লারেশনের ভাষা এক্সপোর্ট ইনভয়েসে থাকতে হবে — আপনার Odoo কমার্শিয়াল ইনভয়েস QWeb টেমপ্লেটে এটি একটি ফিক্সড টেক্সট ব্লক হিসেবে অন্তর্ভুক্ত করুন।</li>
+        <li><strong>কম্পোনেন্ট কোয়ালিটি ও ভেন্ডর ম্যানেজমেন্ট:</strong> চাইনিজ কম্পোনেন্ট সাপ্লায়ার আর ব্যাচ অনুযায়ী কোয়ালিটিতে যথেষ্ট পার্থক্য দেখায়। Odoo-তে, উচ্চ-মূল্যের আমদানি করা কম্পোনেন্টের (ডিরেইলার, হাব, ব্রেক) জন্য incoming quality check (IQC) সেটআপ করতে Quality মডিউল ব্যবহার করুন। ব্যর্থ IQC আইটেম রিসিপ্ট স্টেজে প্রত্যাখ্যাত হয় এবং রিসিপ্টে একটি Return অপারেশনের মাধ্যমে সাপ্লায়ারকে ফেরত দেওয়া হয়। এটি আপনার ইনভেন্টরি পরিষ্কার রাখে আর ত্রুটিপূর্ণ কম্পোনেন্ট প্রোডাকশনে পৌঁছানো প্রতিরোধ করে।</li>
+        <li><strong>মডেল চেঞ্জওভার প্ল্যানিং:</strong> ইউরোপীয় বায়াররা নির্দিষ্ট মডেল পরিবর্তনসহ (কালার, কম্পোনেন্ট আপগ্রেড, জ্যামিতি পরিবর্তন) সিজনাল অর্ডার ইস্যু করে। প্রতিটি মডেল পরিবর্তনের জন্য Odoo-তে একটি BOM রিভিশন প্রয়োজন। Odoo-র BOM versioning ব্যবহার করুন (বিদ্যমান BOM পরিবর্তনের বদলে একটি নতুন BOM ভার্সন তৈরি করুন) যাতে ঐতিহাসিক প্রোডাকশন অর্ডার তাদের মূল BOM ধরে রাখে এবং পূর্ববর্তীভাবে নতুন কম্পোনেন্ট স্পেসিফিকেশন গ্রহণ না করে।</li>
+      </ul>
+
+      <div class="callout">
+        <span class="tag">সারকথা</span>
+        <p>বাংলাদেশের একজন সাইকেল এক্সপোর্টারের জন্য সবচেয়ে বেশি মূল্য দেয় এমন দুটি কনফিগারেশন হলো: (1) সাব-অ্যাসেম্বলিসহ মাল্টি-লেভেল BOM, যাতে প্রতিটি লেভেলে প্রোডাকশন প্ল্যানিং আর ট্রেসেবিলিটি থাকে; এবং (2) সব আমদানি করা কম্পোনেন্টে লট ট্র্যাকিং, যাতে আপনি আত্মবিশ্বাসের সাথে ডিউটি ড্রব্যাক ক্লেইম তৈরি করতে পারেন। দুটোরই আগে থেকে কনফিগারেশন ডিসিপ্লিন প্রয়োজন — কিন্তু রিটার্ন অপারেশনাল দৃশ্যমানতা আর পুনরুদ্ধার করা ডিউটি — দুটোতেই পরিমাপযোগ্য। <a href="/bn/#contact" style="color:var(--accent)">আপনার সাইকেল কারখানার জন্য Odoo সেটআপ করতে সাহায্য দরকার? যোগাযোগ করুন →</a></p>
+      </div>
+
+      <h2 id="faq">সচরাচর জিজ্ঞাসা</h2>
+
+      <h3>বাংলাদেশে বাইসাইকেল ম্যানুফ্যাকচারিংয়ের জন্য Odoo BOM কীভাবে কনফিগার করবেন?</h3>
+      <p>একটি মাল্টি-লেভেল BOM স্ট্রাকচার ব্যবহার করুন: ফিনিশড বাইসাইকেল (Level 0) সাব-অ্যাসেম্বলি (Frame Assembly, Wheel Assembly, Drivetrain Assembly) Level 1 BOM হিসেবে রেফারেন্স করে। সাব-অ্যাসেম্বলি আলাদাভাবে তৈরি ও স্বাধীনভাবে ইন্সপেক্ট হলে সাব-অ্যাসেম্বলি BOM-কে "Manufacture" টাইপে সেট করুন, অথবা ফিনিশড বাইসাইকেলের সাথে ইনলাইন অ্যাসেম্বল হলে "Kit"-এ সেট করুন। আমদানি করা কম্পোনেন্টে HS কোড আর লট ট্র্যাকিং সক্রিয় থাকে। এটি আপনাকে প্রতি সাব-অ্যাসেম্বলিতে আলাদা প্রোডাকশন অর্ডার, ফিনিশড বাইক থেকে আমদানি করা কম্পোনেন্ট লট পর্যন্ত পূর্ণ ট্রেসেবিলিটি, এবং প্রতিটি BOM লেভেলে সঠিক কস্ট অ্যাকাউন্টিং দেয়।</p>
+
+      <h3>বাংলাদেশে সাইকেল এক্সপোর্টের জন্য Odoo কীভাবে আমদানি করা কম্পোনেন্ট হ্যান্ডল করে?</h3>
+      <p>আমদানি করা কম্পোনেন্ট প্রোডাক্টে রেকর্ড করা HS কোডসহ Purchase Order-এর বিপরীতে রিসিভ করা হয়। সব আমদানি করা আইটেমে লট ট্র্যাকিং সক্রিয় করুন — লট নম্বর আপনার ইমপোর্ট শিপমেন্ট ব্যাচের সাথে মিলে যায়, আর আপনি লট নোটে Bill of Entry নম্বর রেকর্ড করেন। ল্যান্ডেড কস্ট (ইমপোর্ট ডিউটি, ফ্রেইট, ক্লিয়ারিং চার্জ) রিসিপ্টে প্রয়োগ করা হয় আর কম্পোনেন্টগুলোতে ডিস্ট্রিবিউট করা হয়। প্রোডাকশন যখন এই লটগুলো খরচ করে, Odoo রেকর্ড করে ফিনিশড বাইসাইকেল → MO → কম্পোনেন্ট লট → ইমপোর্ট রিসিপ্ট পর্যন্ত চেইন — যা ডিউটি ড্রব্যাক ট্রেসেবিলিটি ক্লেইম সক্ষম করে।</p>
+
+      <h3>বাংলাদেশ থেকে বাইসাইকেল এক্সপোর্টে কী HS কোড প্রযোজ্য?</h3>
+      <p>ফিনিশড বাইসাইকেল HS 8712.00-এর অধীনে এক্সপোর্ট হয় (সাব-কোড 8712.0010 শিশুদের, 8712.0020 মাউন্টেন/রোড, 8712.0090 অন্যান্য)। মূল ইমপোর্ট কম্পোনেন্ট কোড: ফ্রেম/ফর্ক (8714.91), রিম/স্পোক (8714.92), ব্রেক (8714.94), স্যাডল (8714.95), ডিরেইলার/হাব/প্যাডেল (8714.99), টায়ার (4011.50), চেইন (7315.11)। Odoo-র প্রোডাক্ট HS Code ফিল্ডে HS কোড এন্টার করুন — ইমপোর্ট আর এক্সপোর্ট উভয় স্টেজে কাস্টমস ক্লিয়ারেন্সের জন্য এগুলো কমার্শিয়াল ইনভয়েস আর প্যাকিং লিস্টে দেখা যায়।</p>
+
+      <h3>Odoo-তে বাইসাইকেল এক্সপোর্টের জন্য ডিউটি ড্রব্যাক কীভাবে ট্র্যাক করবেন?</h3>
+      <p>সব আমদানি করা কম্পোনেন্টে লট ট্র্যাকিং সক্রিয় করুন। ইমপোর্ট শিপমেন্ট ব্যাচের সাথে ম্যাপ করা লট নম্বর অ্যাসাইন করুন, আর লট নোটে Bill of Entry নম্বর আর ডিউটি অ্যামাউন্ট রেকর্ড করুন। প্রোডাকশন MO যখন এই লটগুলো খরচ করে, Odoo রেকর্ড করে কোন ইমপোর্ট লট কোন বাইসাইকেল MO-তে গিয়েছে। এক্সপোর্টের পর, এক্সপোর্ট ডেলিভারি থেকে ইনপুট কম্পোনেন্ট লট আর তাদের ইমপোর্ট রিসিপ্ট পর্যন্ত ট্রেস করতে Odoo-র Traceability রিপোর্ট (Inventory → Traceability) ব্যবহার করুন। এটি আপনাকে Customs ডিউটি ড্রব্যাক আবেদনের জন্য প্রয়োজনীয় B/E নম্বর, ডিউটি অ্যামাউন্ট, এবং কম্পোনেন্ট HS কোড দেয়।</p>
+    </div>

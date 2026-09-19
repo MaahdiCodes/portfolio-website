@@ -1,0 +1,363 @@
+---
+layout: "layouts/base.njk"
+permalink: "bn/courses/01-requirements-gathering/lesson-05.html"
+bareBody: true
+stylesheetHref: "/lab/_styles.css"
+lang: "bn"
+title: "লেসন ০৫ — এমন ইউজার স্টোরি লেখা যা UAT-তে টিকে থাকে · কোর্স ০১"
+description: "UAT-তে টিকে থাকার মতো অ্যাকসেপ্টেন্স ক্রাইটেরিয়াসহ ইউজার স্টোরি লিখুন — INVEST ক্রাইটেরিয়া, Given/When/Then, স্প্লিটিং টেকনিক, আর অ্যান্টি-প্যাটার্ন গ্যালারি।"
+robots: "noindex, follow"
+canonical: "https://mhasan.me/bn/courses/01-requirements-gathering/lesson-05"
+hreflangEn: "https://mhasan.me/courses/01-requirements-gathering/lesson-05"
+hreflangBn: "https://mhasan.me/bn/courses/01-requirements-gathering/lesson-05"
+extraStyles: |
+  body{ font-family: 'Noto Sans Bengali', var(--sans); }
+  .three-up{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:28px 0}
+  .three-up .card{border:1px solid var(--border);border-radius:12px;padding:20px;background:rgba(21,24,29,0.5)}
+  .three-up .card h4{font-size:14px;font-weight:500;margin:0 0 8px;color:var(--text)}
+  .three-up .card p{font-size:13.5px;color:var(--text-2);margin:0;line-height:1.55}
+  .three-up .card .bad{color:#f87171;font-size:12px;font-family:var(--mono);margin-top:10px;padding-top:10px;border-top:1px solid var(--border)}
+  .three-up .card .good{color:var(--accent);font-size:12px;font-family:var(--mono);margin-top:6px}
+  .field-note{border:1px solid var(--border);border-radius:12px;padding:22px 24px;margin:28px 0;background:linear-gradient(180deg,rgba(21,24,29,0.55),rgba(14,16,19,0.55))}
+  .field-note .fn-label{font-family:var(--mono);font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:var(--accent);margin:0 0 10px}
+  .field-note p{font-size:14.5px;color:var(--text-2);margin:0;line-height:1.6}
+  .field-note p+p{margin-top:10px}
+  .story-card{border:1px solid oklch(0.80 0.17 155 / 0.3);border-radius:12px;padding:22px 24px;margin:28px 0;background:oklch(0.80 0.17 155 / 0.05)}
+  .story-card .sc-label{font-family:var(--mono);font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:var(--accent);margin:0 0 14px}
+  .story-card p{font-size:15px;line-height:1.65;margin:0 0 10px;color:var(--text)}
+  .story-card p:last-child{margin:0}
+  .story-card .ac{font-size:14px;color:var(--text-2);padding-left:18px;border-left:2px solid var(--accent);margin:12px 0}
+  .story-card .ac+.ac{margin-top:6px}
+  @media(max-width:680px){.three-up{grid-template-columns:1fr}}
+  .stat-block{display:grid;grid-template-columns:repeat(3,1fr);gap:0;background:var(--border);border-radius:12px;overflow:hidden;margin:28px 0}
+  .stat-item{background:var(--surface);padding:24px 18px;text-align:center}
+  .stat-num{font-family:var(--mono);font-size:26px;font-weight:300;color:var(--accent);line-height:1;display:block}
+  .stat-label{font-size:12px;color:var(--text-3);margin-top:8px;line-height:1.4;display:block}
+  .bar-chart{margin:28px 0;display:flex;flex-direction:column;gap:14px}
+  .bc-row{display:grid;grid-template-columns:190px 1fr 44px;gap:10px;align-items:center}
+  .bc-label{font-size:13px;color:var(--text-2)}
+  .bc-track{height:6px;background:rgba(255,255,255,0.06);border-radius:4px;overflow:hidden}
+  .bc-fill{height:100%;background:oklch(0.80 0.17 155);border-radius:4px}
+  .bc-pct{font-family:var(--mono);font-size:11px;color:var(--text-3);text-align:right}
+  .donut-stat{display:flex;align-items:center;gap:28px;padding:24px;border:1px solid var(--border);border-radius:12px;background:rgba(21,24,29,0.5);margin:28px 0}
+  .donut-stat svg{flex:none}
+  .donut-label{font-size:14px;color:var(--text-2);line-height:1.6;margin:0}
+  .donut-label strong{color:var(--text)}
+  .insight-row{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin:28px 0}
+  .insight-card{border:1px solid var(--border);border-radius:12px;padding:20px;background:rgba(21,24,29,0.5)}
+  .insight-card .ic-label{font-family:var(--mono);font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-3);margin:0 0 8px}
+  .insight-card h4{font-size:15px;font-weight:500;color:var(--text);margin:0 0 8px}
+  .insight-card p{font-size:13.5px;color:var(--text-2);margin:0;line-height:1.55}
+  @media(max-width:680px){.stat-block{grid-template-columns:1fr}.bc-row{grid-template-columns:140px 1fr 36px}.donut-stat{flex-direction:column;text-align:center}.insight-row{grid-template-columns:1fr}}
+---
+<div class="grid-bg"></div>
+
+<nav class="nav">
+  <div class="shell">
+    <div class="nav-inner">
+      <a href="/bn/" class="brand">
+        <div class="brand-mark"></div>
+        <div class="brand-name"><b>Mehedi Hasan</b><em>ERP কনসালট্যান্ট</em></div>
+      </a>
+      <a href="./" class="back-link">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10 12L6 8l4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+        কোর্স ওভারভিউ
+      </a>
+    </div>
+  </div>
+</nav>
+
+<div class="shell">
+  <div class="post-head">
+    <span class="eyebrow">কোর্স ০১ &nbsp;·&nbsp; লেসন ০৫ &nbsp;·&nbsp; ১৭ মিনিট</span>
+    <div class="post-meta">
+      <span class="chip accent">ইউজার স্টোরি</span>
+      <span class="chip">অ্যাকসেপ্টেন্স ক্রাইটেরিয়া</span>
+      <span class="chip">INVEST</span>
+    </div>
+    <h1>এমন ইউজার স্টোরি লেখা যা UAT-তে <span class="serif">টিকে থাকে</span></h1>
+    <p class="lede">যে ইউজার স্টোরি UAT-তে ব্যর্থ হয়, তা কোনো UAT সমস্যা নয় — এটা এমন একটা রিকোয়ারমেন্ট সমস্যা যা সবচেয়ে খারাপ মুহূর্ত পর্যন্ত ফেলে রাখা হয়েছিল। এখানে দেখুন এমন স্টোরি কীভাবে লিখবেন যা টেস্ট করার মতো যথেষ্ট নিখুঁত, বানানোর মতো যথেষ্ট নির্দিষ্ট, আর ব্যবসার আসল প্রয়োজন প্রতিফলিত করার মতো যথেষ্ট সৎ।</p>
+    <div class="byline">
+      <span>লেসন<b>০৫ / ০৯</b></span>
+      <span>সময়<b>১৭ মিনিট</b></span>
+      <span>কোর্স<b>রিকোয়ারমেন্ট গ্যাদারিং</b></span>
+    </div>
+  </div>
+</div>
+
+<div class="shell">
+  <div class="post">
+    <nav class="toc" id="toc" aria-label="Lesson contents">
+      <button class="toc-toggle" onclick="toggleToc()" aria-expanded="false" aria-controls="toc">
+        <span class="label">এই লেসনে</span>
+        <span class="current" id="toc-current">অ্যানাটমি</span>
+        <span class="chev"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 4l3 3 3-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg></span>
+      </button>
+      <div class="toc-k">বিষয়সূচি</div>
+      <ol>
+        <li><a href="#s1">ইউজার স্টোরির অ্যানাটমি</a></li>
+        <li><a href="#s2">অ্যাকসেপ্টেন্স ক্রাইটেরিয়া</a></li>
+        <li><a href="#s3">INVEST ক্রাইটেরিয়া</a></li>
+        <li><a href="#s4">স্টোরি স্প্লিটিং</a></li>
+        <li><a href="#s5">অ্যান্টি-প্যাটার্ন গ্যালারি</a></li>
+        <li><a href="#s6">RMG কনটেক্সট</a></li>
+        <li><a href="#s7">টেমপ্লেট</a></li>
+        <li><a href="#s_story_quality">ইউজার স্টোরি কোয়ালিটি সেলফ-অডিট</a></li>
+        <li><a href="#s8">রিফ্লেকশন</a></li>
+      </ol>
+      <div class="toc-progress"><span>প্রগ্রেস</span><div class="bar"><i id="prog-bar"></i></div></div>
+    </nav>
+    <div class="toc-progress-mobile"><i id="prog-bar-m"></i></div>
+
+    <article class="body">
+
+      <h2 id="s1">ইউজার স্টোরির অ্যানাটমি</h2>
+      <p>ইউজার স্টোরি ফরম্যাটটা Agile কমিউনিটিতে দীর্ঘ-আকারের রিকোয়ারমেন্ট ডকুমেন্টের একটা হালকা বিকল্প হিসেবে তৈরি হয়েছিল। এর শক্তি ফরম্যাটটার মধ্যে নেই — বরং এই ফরম্যাট আপনাকে যা ভাবতে বাধ্য করে তার মধ্যে আছে: কার কিছু দরকার, তাদের কী দরকার, আর কেন দরকার।</p>
+      <p>স্ট্যান্ডার্ড ফরম্যাট: <strong>As a [role], I want [capability], so that [outcome/value]।</strong></p>
+      <p>তিনটা অংশের প্রতিটি নিজের জায়গা অর্জন করে:</p>
+      <ul>
+        <li><strong>As a [role]</strong> — আপনাকে একটা নির্দিষ্ট ইউজার পারসোনা চিহ্নিত করতে বাধ্য করে, "ইউজার" বা "সিস্টেম" নয়। আলাদা ভূমিকার আলাদা প্রয়োজন আর আলাদা প্রিভিলেজ লেভেল থাকে। এটা ভুল করলে এমন ফিচার তৈরি হয় যা ভুল মানুষের জন্য কাজ করে।</li>
+        <li><strong>I want [capability]</strong> — ইউজার কী করতে পারবেন তার ভিত্তিতে ফিচার বর্ণনা করে, সিস্টেম কীভাবে এটা প্রয়োগ করবে তা নয়। "আমি একটা ড্যাশবোর্ড দেখতে চাই" একটা ক্যাপাবিলিটি। "সিস্টেমের একটা বার চার্ট ব্যবহার করা উচিত" একটা সমাধান — আর এটা রিকোয়ারমেন্টে নয়, ডিজাইনে থাকার কথা।</li>
+        <li><strong>So that [outcome]</strong> — এটা সবচেয়ে গুরুত্বপূর্ণ আর সবচেয়ে বেশি বাদ পড়া অংশ। "so that" ক্লজ বিজনেস ভ্যালু প্রকাশ করে। এটা ডেভেলপার আর টেস্টারদের বাস্তবায়নের বিস্তারিত অস্পষ্ট হলেও সিদ্ধান্ত নিতে সাহায্য করে, কারণ তারা জানেন ফিচারটা আসলে কী অর্জন করতে চাইছে।</li>
+      </ul>
+
+      <div class="story-card">
+        <p class="sc-label">কার্যকর উদাহরণ — শিপমেন্ট ট্র্যাকিং মডিউল</p>
+        <p><strong>As a</strong> merchandiser, <strong>I want</strong> to see the real-time status of each open shipment on a single screen, <strong>so that</strong> I can immediately identify delays and notify buyers before they contact us.</p>
+        <p style="margin-top:10px;color:var(--text-2);font-size:13.5px">(একজন মার্চেন্ডাইজার হিসেবে, আমি একটা স্ক্রিনে প্রতিটা খোলা শিপমেন্টের রিয়েল-টাইম স্ট্যাটাস দেখতে চাই, যাতে বায়াররা যোগাযোগ করার আগেই আমি বিলম্ব শনাক্ত করে তাদের জানাতে পারি।)</p>
+      </div>
+
+      <p>লক্ষ্য করুন এই স্টোরিতে কী নেই: এটা স্ট্যাটাস ইন্ডিকেটরের রং, ডেটাবেস স্ট্রাকচার, বা ডেটা কীভাবে ফেচ করা হবে তা নির্দিষ্ট করে না। এগুলো বাস্তবায়নের সিদ্ধান্ত। স্টোরিটা প্রয়োজন সংজ্ঞায়িত করে। বাস্তবায়ন হলো ডেভেলপমেন্ট টিমের জন্য একটা কথোপকথন, যা এই স্টোরি দিয়ে জ্ঞাত।</p>
+
+      <h2 id="s2">অ্যাকসেপ্টেন্স ক্রাইটেরিয়া: Given/When/Then</h2>
+      <p>অ্যাকসেপ্টেন্স ক্রাইটেরিয়া ছাড়া একটা ইউজার স্টোরি একটা অভিপ্রায়, কোনো রিকোয়ারমেন্ট নয়। অ্যাকসেপ্টেন্স ক্রাইটেরিয়া ঠিক করে "সম্পন্ন" দেখতে কেমন — এমন শর্ত যা একজন টেস্টার দ্ব্যর্থহীনভাবে যাচাই করতে পারেন, পূরণ হয়েছে বা হয়নি।</p>
+      <p>Behaviour-Driven Development (BDD) থেকে নেওয়া Given/When/Then (GWT) ফরম্যাট অ্যাকসেপ্টেন্স ক্রাইটেরিয়ার জন্য সবচেয়ে কার্যকর স্ট্রাকচার:</p>
+      <ul>
+        <li><strong>Given</strong> — শুরুর অবস্থা বা প্রেক্ষাপট</li>
+        <li><strong>When</strong> — ইউজার যে অ্যাকশন নেন</li>
+        <li><strong>Then</strong> — পর্যবেক্ষণযোগ্য ফলাফল</li>
+      </ul>
+
+      <div class="story-card">
+        <p class="sc-label">অ্যাকসেপ্টেন্স ক্রাইটেরিয়া — শিপমেন্ট স্ট্যাটাস স্টোরি</p>
+        <p>AC1:</p>
+        <div class="ac">Given একজন মার্চেন্ডাইজার লগ-ইন আছেন, When তিনি শিপমেন্ট স্ক্রিন খোলেন, Then তিনি স্ক্রল না করেই স্ট্যাটাসসহ (On track / At risk / Delayed) সব খোলা শিপমেন্টের তালিকা দেখেন।</div>
+        <p>AC2:</p>
+        <div class="ac">Given একটা শিপমেন্টের প্রত্যাশিত পৌঁছানোর তারিখ কনফার্মেশন ছাড়াই পার হয়ে গেছে, When মার্চেন্ডাইজার সেই শিপমেন্ট দেখেন, Then এর স্ট্যাটাস "Delayed" দেখায় আর লাল রঙে হাইলাইট হয়।</div>
+        <p>AC3:</p>
+        <div class="ac">Given একজন মার্চেন্ডাইজার একটা শিপমেন্টে ক্লিক করেন, When ডিটেইল ভিউ খোলে, Then এতে দেখায়: PO নম্বর, বায়ারের নাম, অরিজিন পোর্ট, ডেস্টিনেশন পোর্ট, ক্যারিয়ার, কন্টেইনার নম্বর, বর্তমান স্ট্যাটাস, আর সর্বশেষ আপডেটের টাইমস্ট্যাম্প।</div>
+      </div>
+
+      <p>একটা ইউজার স্টোরির জন্য সাধারণত তিনটা অ্যাকসেপ্টেন্স ক্রাইটেরিয়া সঠিক সংখ্যা। সাতটা বা তার বেশি লিখলে, স্টোরিটা অনেক বড় আর ভাগ করা দরকার। একটাও লিখতে না পারলে, স্টোরিটা বাস্তবায়নের জন্য খুব অস্পষ্ট।</p>
+
+      <div class="field-note">
+        <p class="fn-label">UAT টেস্ট</p>
+        <p>আপনার লেখা প্রতিটা অ্যাকসেপ্টেন্স ক্রাইটেরিয়নের জন্য নিজেকে জিজ্ঞেস করুন: "যে টেস্টার আমার সঙ্গে কখনো কথা বলেননি, তিনি কি শুধু এই টেক্সট দিয়ে যাচাই করতে পারবেন এটা পূরণ হয়েছে কিনা?" উত্তর না হলে — যদি এতে ব্যাখ্যা, কোনো কথোপকথনের স্মৃতি, বা লিখিত নয় এমন প্রেক্ষাপট দরকার হয় — ক্রাইটেরিয়নটা প্রস্তুত নয়। উত্তর হ্যাঁ না হওয়া পর্যন্ত এটা আবার লিখুন।</p>
+      </div>
+
+      <div class="stat-block">
+        <div class="stat-item">
+          <span class="stat-num">৪৭%</span>
+          <span class="stat-label">ইউজার স্টোরি অনুপস্থিত বা অস্পষ্ট অ্যাকসেপ্টেন্স ক্রাইটেরিয়ার কারণে UAT-তে ব্যর্থ হয়</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num">INVEST</span>
+          <span class="stat-label">ছয়-বৈশিষ্ট্যের টেস্ট যা প্রতিটা সুগঠিত ইউজার স্টোরিকে স্প্রিন্টে ঢোকার আগে পাশ করতে হবে</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num">৩টি AC</span>
+          <span class="stat-label">প্রতিটা ইউজার স্টোরির জন্য ন্যূনতম অ্যাকসেপ্টেন্স ক্রাইটেরিয়া — কম হলে সাধারণত স্টোরিটা টেস্ট করার জন্য খুব অস্পষ্ট</span>
+        </div>
+      </div>
+
+      <h2 id="s3">INVEST ক্রাইটেরিয়া: কোয়ালিটি চেকলিস্ট</h2>
+      <p>INVEST একটা অ্যাক্রোনিম যা একটা সুগঠিত ইউজার স্টোরির বৈশিষ্ট্য বর্ণনা করে। ডেভেলপমেন্টের জন্য প্রস্তুত বিবেচনা করার আগে প্রতিটা স্টোরিকে এই চেকলিস্ট দিয়ে যাচাই করুন।</p>
+
+      <div class="three-up">
+        <div class="card">
+          <h4>I — Independent (স্বাধীন)</h4>
+          <p>স্টোরিগুলো অন্য স্টোরি দ্বারা আটকে না থেকে ডেলিভার করার মতো হওয়া উচিত। স্টোরি A শুধু স্টোরি B সম্পন্ন হওয়ার পরই বানানো যায় হলে, সেগুলো সম্ভবত একটাই স্টোরি অথবা একটা সংজ্ঞায়িত ডিপেন্ডেন্সিসহ একটা এপিক হওয়া উচিত। অতিরিক্ত যুক্ত স্টোরি স্প্রিন্ট প্ল্যানিংকে অনির্ভরযোগ্য করে তোলে।</p>
+        </div>
+        <div class="card">
+          <h4>N — Negotiable (আলোচনাযোগ্য)</h4>
+          <p>স্টোরি কোনো চুক্তি নয়। BA, ডেভেলপার, আর ব্যবসার মধ্যে কথোপকথনের মাধ্যমে বিস্তারিত পরিমার্জিত হতে পারে আর হওয়া উচিত। একটা স্টোরি যদি এতটাই কঠোর হয় যে কোনো আলোচনা সম্ভব নয়, তাহলে এটা একটা স্টোরি নয়, একটা স্পেসিফিকেশনে পরিণত হয়েছে।</p>
+        </div>
+        <div class="card">
+          <h4>V — Valuable (মূল্যবান)</h4>
+          <p>প্রতিটা স্টোরির একটা নির্দিষ্ট ইউজার বা ব্যবসার জন্য মূল্য দেওয়া উচিত। টেকনিক্যাল স্টোরি ("ডেটাবেস স্কিমা রিফ্যাক্টর করুন") বৈধ, কিন্তু একটা বিজনেস ভ্যালুর সঙ্গে যুক্ত থাকতে হবে। "যাতে পিক এক্সপোর্ট সিজনে সিস্টেম ১,০০০ কনকারেন্ট ইউজার সামলাতে পারে" একটা ভ্যালু স্টেটমেন্ট।</p>
+        </div>
+        <div class="card">
+          <h4>E — Estimable (অনুমানযোগ্য)</h4>
+          <p>ডেভেলপারদের প্রয়োজনীয় প্রচেষ্টা অনুমান করতে সক্ষম হতে হবে। তারা না পারলে — সাধারণত স্টোরিটা খুব অস্পষ্ট বলে, অথবা টেকনিক্যাল তদন্ত দরকার বলে — এটা একটা সংকেত যে এটাকে ভাগ করুন অথবা স্পাইক করুন (প্রথমে একটা সময়-সীমাবদ্ধ তদন্ত করুন)।</p>
+        </div>
+        <div class="card">
+          <h4>S — Small (ছোট)</h4>
+          <p>একটা স্টোরি এক স্প্রিন্টের (সাধারণত এক থেকে দুই সপ্তাহ) মধ্যে সম্পন্ন করার মতো হওয়া উচিত। না হলে, এটা একটা এপিক — একাধিক ছোট স্টোরির একটা কনটেইনার। প্রতিটা স্টোরি স্বাধীনভাবে ডেলিভার আর টেস্ট করা যায় না হওয়া পর্যন্ত এপিক ভাঙুন।</p>
+        </div>
+        <div class="card">
+          <h4>T — Testable (টেস্টযোগ্য)</h4>
+          <p>অন্তত একটা অ্যাকসেপ্টেন্স ক্রাইটেরিয়ন লিখতে না পারলে, স্টোরিটা প্রস্তুত নয়। "সিস্টেমটা ইউজার-ফ্রেন্ডলি হওয়া উচিত" টেস্টযোগ্য নয়। "ইউজার তিন ক্লিকের কম সময়ে শিপমেন্ট অনুমোদন ওয়ার্কফ্লো সম্পন্ন করতে পারেন" টেস্টযোগ্য।</p>
+        </div>
+      </div>
+
+      <h2 id="s4">স্টোরি স্প্লিটিং টেকনিক</h2>
+      <p>এপিক আর বড় স্টোরিকে ডেলিভার করার মতো টুকরায় ভাগ করতে হবে। সবচেয়ে সাধারণ স্প্লিটিং ভুল: টেকনিক্যাল কম্পোনেন্ট অনুযায়ী ভাগ করা (ফ্রন্ট-এন্ড/ব্যাক-এন্ড), যা কখনো একটা সম্পূর্ণ ফিচার ডেলিভার করে না; অথবা টাইমলাইন অনুযায়ী ভাগ করা, যা অর্ধ-সম্পন্ন ফাংশনালিটি ডেলিভার করে।</p>
+      <p>কার্যকর স্প্লিটিং টেকনিক:</p>
+      <ul>
+        <li><strong>ইউজার ওয়ার্কফ্লো ধাপ অনুযায়ী</strong> — "একটা ফাইল আপলোড করুন" আর "আপলোড করা ফাইল রিভিউ করুন" দুটো আলাদা স্টোরি, যদিও এগুলো একটা ওয়ার্কফ্লোর অংশ</li>
+        <li><strong>ডেটা টাইপ অনুযায়ী</strong> — "ফ্যাব্রিক শিপমেন্ট ট্র্যাক করুন" আর "অ্যাক্সেসরিজ শিপমেন্ট ট্র্যাক করুন" দুটো আলাদা স্টোরি হতে পারে যদি তাদের আলাদা নিয়ম থাকে</li>
+        <li><strong>বিজনেস রুল অনুযায়ী</strong> — স্ট্যান্ডার্ড কেসের জন্য একটা স্টোরি, এক্সেপশন হ্যান্ডলিংয়ের জন্য আলাদা স্টোরি</li>
+        <li><strong>ইউজার রোল অনুযায়ী</strong> — "শিপমেন্ট স্ট্যাটাস দেখুন (মার্চেন্ডাইজার)" আর "শিপমেন্ট স্ট্যাটাস এডিট করুন (লজিস্টিকস ম্যানেজার)" আলাদা অ্যাক্সেস নিয়মসহ আলাদা স্টোরি</li>
+        <li><strong>অ্যাকসেপ্টেন্স ক্রাইটেরিয়ন অনুযায়ী</strong> — আপনার স্টোরিতে সাতটা AC থাকলে, এটাকে তিনটা স্টোরিতে ভাগ করুন, প্রতিটায় দুই বা তিনটা করে AC</li>
+      </ul>
+
+      <h2 id="s5">অ্যান্টি-প্যাটার্ন গ্যালারি</h2>
+      <div class="three-up">
+        <div class="card">
+          <h4>খুব বড়</h4>
+          <p>স্টোরিটা পুরো একটা মডিউল জুড়ে বিস্তৃত। "একজন অ্যাডমিন হিসেবে, আমি সব ইউজার পারমিশন ম্যানেজ করতে চাই" শত শত সিনারিও কভার করে।</p>
+          <div class="bad">❌ "সব ইউজার পারমিশন ম্যানেজ করা"</div>
+          <div class="good">✓ "রোল অ্যাসাইনমেন্টসহ একজন নতুন ইউজার যোগ করা"</div>
+        </div>
+        <div class="card">
+          <h4>খুব অস্পষ্ট</h4>
+          <p>স্টোরিতে কোনো টেস্টযোগ্য ফলাফল নেই। "সিস্টেমটা ব্যবহার করা সহজ হওয়া উচিত" একটা ডিজাইন আকাঙ্ক্ষা, রিকোয়ারমেন্ট নয়।</p>
+          <div class="bad">❌ "যাতে এটা ব্যবহার করা সহজ হয়"</div>
+          <div class="good">✓ "যাতে আমি ২ মিনিটের কম সময়ে অনুমোদন সম্পন্ন করতে পারি"</div>
+        </div>
+        <div class="card">
+          <h4>সমাধান-প্রথম</h4>
+          <p>স্টোরিটা প্রয়োজন নয়, বাস্তবায়ন বর্ণনা করে। "একজন ইউজার হিসেবে, আমি ১২টা অপশনসহ একটা ড্রপ-ডাউন মেনু চাই" একটা ডিজাইন সিদ্ধান্ত যা রিকোয়ারমেন্ট হিসেবে ছদ্মবেশ ধরেছে।</p>
+          <div class="bad">❌ "আমি ১২টা অপশনসহ একটা ড্রপ-ডাউন চাই"</div>
+          <div class="good">✓ "আমি স্ট্যাটাস অনুযায়ী শিপমেন্ট ফিল্টার করতে চাই"</div>
+        </div>
+        <div class="card">
+          <h4>"so that" অনুপস্থিত</h4>
+          <p>ভ্যালু ক্লজ ছাড়া, স্টোরিগুলো তুচ্ছ মনে হয় আর ডেভেলপাররা সিদ্ধান্ত নিতে পারেন না। "so that"-ই স্টোরিকে ব্যবসার সঙ্গে যুক্ত করে।</p>
+          <div class="bad">❌ "আমি শিপমেন্ট স্ট্যাটাস দেখতে চাই"</div>
+          <div class="good">✓ "…যাতে বিলম্ব অভিযোগে পরিণত হওয়ার আগেই আমি বায়ারদের সতর্ক করতে পারি"</div>
+        </div>
+        <div class="card">
+          <h4>কোনো অ্যাকসেপ্টেন্স ক্রাইটেরিয়া নেই</h4>
+          <p>স্টোরি অনুমোদিত হয়, স্প্রিন্ট শুরু হয়, ডেভেলপমেন্ট শেষ হয় — তারপর UAT-তে কেউ একমত হতে পারেন না "সম্পন্ন" দেখতে কেমন। ফলাফল হলো স্কোপ নিয়ে তিন দিনের তর্ক।</p>
+          <div class="bad">❌ ব্যাকলগে ০টা AC-সহ স্টোরি</div>
+          <div class="good">✓ প্রতিটা স্টোরিতে ন্যূনতম ১টা AC, আদর্শভাবে ২–৩টা</div>
+        </div>
+        <div class="card">
+          <h4>এতিম স্টোরি</h4>
+          <p>স্টোরিটা ব্যাকলগে থাকে কিন্তু কোনো এপিক, টেস্ট কেস, বা বিজনেস রিকোয়ারমেন্টের সঙ্গে যুক্ত নয়। ফিচারটা UAT-তে ব্যর্থ হলে, কেউ এটাকে কী সম্মত হয়েছিল তার সঙ্গে ফিরে ট্রেস করতে পারেন না।</p>
+          <div class="bad">❌ কোনো প্যারেন্ট এপিক নেই, কোনো টেস্ট কেস লিংক নেই</div>
+          <div class="good">✓ এপিক, বিজনেস রিকোয়ারমেন্ট, আর UAT টেস্ট কেসের সঙ্গে লিংকড</div>
+        </div>
+      </div>
+
+      <h2 id="s6">RMG কনটেক্সটে ইউজার স্টোরি: তিনটা স্তর জুড়ে</h2>
+      <p>একটা গার্মেন্ট ফ্যাক্টরিতে, একই প্রসেস — যেমন শিপমেন্ট ট্র্যাকিং — প্রতিষ্ঠানের তিনটা স্তরে সম্পূর্ণ আলাদা দেখায়। প্রতিটা স্তরের জন্য আলাদাভাবে স্টোরি লিখুন, কারণ তাদের প্রয়োজন, তাদের শব্দভাণ্ডার, আর তাদের প্রিভিলেজ রিকোয়ারমেন্ট আলাদা।</p>
+
+      <div class="story-card">
+        <p class="sc-label">তিন-স্তরের উদাহরণ — RMG-তে শিপমেন্ট ট্র্যাকিং</p>
+        <p><strong>মার্চেন্ডাইজার স্তর</strong></p>
+        <p>একজন মার্চেন্ডাইজার হিসেবে, আমি প্রতিটা খোলা PO-র বিপরীতে কন্টেইনার ছাড়ার আর পৌঁছানোর ইভেন্ট লগ করতে চাই, যাতে স্ট্যাটাস টাইমলাইন সঠিক থাকে আর বায়ারের জিজ্ঞাসার তাৎক্ষণিক উত্তর দেওয়া যায়।</p>
+        <p style="margin-top:16px"><strong>ম্যানেজমেন্ট স্তর</strong></p>
+        <p>একজন প্রোডাকশন ম্যানেজার হিসেবে, আমি বায়ার, স্ট্যাটাস, আর বিলম্বের দিন অনুযায়ী সব শিপমেন্টের একটা সাপ্তাহিক সারাংশ দেখতে চাই, যাতে এই সপ্তাহে কোন বায়ারদের সঙ্গে সক্রিয় যোগাযোগ দরকার তা চিহ্নিত করতে পারি।</p>
+        <p style="margin-top:16px"><strong>এক্সিকিউটিভ স্তর</strong></p>
+        <p>MD হিসেবে, আমি চলতি কোয়ার্টারের সময়মতো শিপমেন্টের হার গত বছরের একই সময়ের তুলনায় দেখানো একটা একক ড্যাশবোর্ড দেখতে চাই, যাতে এক নজরে অপারেশনাল পারফরম্যান্স মূল্যায়ন করতে পারি।</p>
+      </div>
+
+      <h2 id="s7">টেমপ্লেট: ইউজার স্টোরি কার্ড + অ্যাকসেপ্টেন্স ক্রাইটেরিয়া</h2>
+
+      <div class="callout">
+        <span class="tag">টেমপ্লেট</span>
+        <p><strong>ইউজার স্টোরি কার্ড — ফিল্ড</strong><br><br>
+        <strong>ID:</strong> [US-001]<br>
+        <strong>এপিক:</strong> [প্যারেন্ট এপিকের নাম]<br>
+        <strong>As a:</strong> [নির্দিষ্ট ইউজার রোল]<br>
+        <strong>I want:</strong> [ক্যাপাবিলিটি, সমাধান নয়]<br>
+        <strong>So that:</strong> [বিজনেস ভ্যালু/ফলাফল]<br>
+        <strong>প্রায়োরিটি:</strong> [Must-have / Should-have / Could-have / Won't-have]<br>
+        <strong>স্টোরি পয়েন্ট / এস্টিমেট:</strong> [ডেভ টিমের সঙ্গে নির্ধারিত হবে]<br>
+        <strong>অ্যাকসেপ্টেন্স ক্রাইটেরিয়া:</strong><br>
+        AC1: Given… When… Then…<br>
+        AC2: Given… When… Then…<br>
+        AC3: Given… When… Then…<br>
+        <strong>নোট / অনুমান:</strong> [স্পষ্টভাবে বলা হয়নি এমন কী অনুমান করছেন]<br>
+        <strong>স্কোপের বাইরে:</strong> [এই স্টোরি স্পষ্টভাবে কী কভার করে না]<br>
+        <strong>লিংকড টেস্ট কেস:</strong> [TC-001, TC-002]<br>
+        <strong>স্ট্যাটাস:</strong> [Draft / Reviewed / Approved / In progress / Done / Rejected]</p>
+      </div>
+
+      <h2 id="s_story_quality">ইউজার স্টোরি কোয়ালিটি: BA-র সেলফ-অডিট</h2>
+      <p>কোনো ইউজার স্টোরি স্প্রিন্ট ব্যাকলগে ঢোকার আগে, এই অডিটের মধ্য দিয়ে চালান। প্রতিটা চেকে এক মিনিটের কম সময় লাগে। একসঙ্গে এগুলো UAT ব্যর্থতার সবচেয়ে সাধারণ কারণ প্রতিরোধ করে — এমন স্টোরি যা লেখা হয়েছিল, একজন ডেভেলপার গ্রহণ করেছিলেন, স্পেক অনুযায়ী বানানো হয়েছিল, তারপরও UAT-তে প্রত্যাখ্যাত হয়েছিল কারণ স্পেকটাই অস্পষ্ট ছিল।</p>
+
+      <div class="insight-row">
+        <div class="insight-card">
+          <p class="ic-label">অডিট ০১ · রোলের স্পষ্টতা</p>
+          <h4>"কে" যথেষ্ট নির্দিষ্ট, টেস্ট করার মতো?</h4>
+          <p>"একজন ইউজার হিসেবে" যথেষ্ট নির্দিষ্ট নয়। "বায়ার PO ম্যানেজ করা একজন মার্চেন্ডাইজার হিসেবে" একজন টেস্টারকে UAT-এর সময় অভিনয় করার মতো একটা কংক্রিট পারসোনা দেয়। ইউজার স্টোরির রোলটা সরাসরি একটা বাস্তব জব টাইটেল বা সিস্টেম রোলের সঙ্গে মিলতে হবে — একটা সাধারণ "ইউজার" বা "অ্যাডমিন" নয়।</p>
+        </div>
+        <div class="insight-card">
+          <p class="ic-label">অডিট ০২ · গোলের টেস্টযোগ্যতা</p>
+          <h4>"so that"-এর জন্য একটা টেস্ট কেস লিখতে পারবেন?</h4>
+          <p>বেনিফিট ক্লজ ("so that…") যেখানে মূল্য থাকে। বেনিফিটটা অর্জিত হয়েছে তা যাচাই করার একটা টেস্ট কেস লিখতে না পারলে — শুধু ফিচারটা বানানো হয়েছে তা নয় — স্টোরিটা অসম্পূর্ণ। "যাতে আমি এক নজরে সব বিলম্বিত শিপমেন্ট দেখতে পারি" টেস্টযোগ্য। "যাতে সিস্টেমটা বেশি উপযোগী হয়" নয়।</p>
+        </div>
+        <div class="insight-card">
+          <p class="ic-label">অডিট ০৩ · অ্যাকসেপ্টেন্স ক্রাইটেরিয়ার সম্পূর্ণতা</p>
+          <h4>AC-গুলো কি আনহ্যাপি পাথ কভার করে?</h4>
+          <p>বেশিরভাগ ডেভেলপার হ্যাপি পাথের জন্য লেখেন। বেশিরভাগ UAT ব্যর্থতা আসে আনহ্যাপি পাথ থেকে। প্রতিটা ইউজার স্টোরিতে অন্তত একটা অ্যাকসেপ্টেন্স ক্রাইটেরিয়ন থাকা উচিত যা বর্ণনা করে অ্যাকশনটা ব্যর্থ হলে, অনুপলব্ধ হলে, বা কোনো ফলাফল না দিলে কী হয়। "Given ইউজারের কোনো বিলম্বিত শিপমেন্ট নেই, ড্যাশবোর্ড দেখায় 'কোনো বিলম্বিত আইটেম নেই — সব ঠিক আছে।'"</p>
+        </div>
+        <div class="insight-card">
+          <p class="ic-label">অডিট ০৪ · আকার আর স্কোপ</p>
+          <h4>এটা কি এক স্প্রিন্টে সম্পন্ন করা যাবে?</h4>
+          <p>একটা ইউজার স্টোরি সম্পন্ন করতে এক স্প্রিন্টের বেশি সময় লাগলে, এটা একটা স্টোরি নয়, একটা এপিক। স্প্লিট করাটা ঐচ্ছিক নয় — একটা অতিরিক্ত বড় স্টোরি স্প্রিন্ট প্ল্যানিং অসম্ভব করে তোলে আর কোন নির্দিষ্ট অ্যাকসেপ্টেন্স ক্রাইটেরিয়নের কারণে UAT ব্যর্থ হয়েছে তা চিহ্নিত করা কঠিন করে তোলে। প্রতিটা স্টোরি পাঁচ কর্মদিবসে যুক্তিসঙ্গতভাবে বানানো আর টেস্ট করা যায় না হওয়া পর্যন্ত ভাঙুন।</p>
+        </div>
+      </div>
+
+      <div class="donut-stat">
+        <svg width="110" height="110" viewBox="0 0 110 110" aria-hidden="true">
+          <circle cx="55" cy="55" r="42" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="13"></circle>
+          <circle cx="55" cy="55" r="42" fill="none" stroke="oklch(0.80 0.17 155)" stroke-width="13" stroke-dasharray="124.0 263.9" stroke-linecap="round" transform="rotate(-90 55 55)"></circle>
+          <text x="55" y="55" text-anchor="middle" dy="0.35em" fill="oklch(0.80 0.17 155)" font-family="Geist Mono,monospace" font-size="18" font-weight="300">47%</text>
+        </svg>
+        <p class="donut-label"><strong>৪৭% ইউজার স্টোরি যা UAT-তে ব্যর্থ হয়</strong> তা হয় অনুপস্থিত বা অস্পষ্ট অ্যাকসেপ্টেন্স ক্রাইটেরিয়ার কারণে — ডেভেলপার ভুল জিনিস বানিয়েছিলেন বলে নয়, বরং BA যথেষ্ট স্পষ্টভাবে সংজ্ঞায়িত করেননি "সঠিক" দেখতে কেমন। আপনার লেখা প্রতিটা অ্যাকসেপ্টেন্স ক্রাইটেরিয়ন আসলে একটা টেস্ট কেস যা আপনি আগেভাগে লিখছেন।</p>
+      </div>
+
+      <h2 id="s8">রিফ্লেকশন প্রশ্ন</h2>
+      <ol>
+        <li>আপনার পরিচিত একটা প্রজেক্ট থেকে একটা রিকোয়ারমেন্ট নিন: "সিস্টেমটা ইউজারদের তাদের অ্যাকাউন্ট ম্যানেজ করতে দেবে।" এটাকে Given/When/Then ফরম্যাটে অন্তত দুটো অ্যাকসেপ্টেন্স ক্রাইটেরিয়াসহ একটা যথাযথ ইউজার স্টোরি হিসেবে আবার লিখুন। INVEST চেকলিস্ট দিয়ে এটা যাচাই করুন। কী পরিবর্তন দরকার?</li>
+        <li>আপনার কাজ করা একটা প্রজেক্টে "সমাধান-প্রথম" অ্যান্টি-প্যাটার্নের একটা উদাহরণ খুঁজুন। বলা সমাধানের পেছনে আসল প্রয়োজন কী ছিল? একটা যথাযথ ইউজার স্টোরি এটা কীভাবে ভিন্নভাবে ধরত?</li>
+        <li>একটা গার্মেন্ট ফ্যাক্টরির কোয়ালিটি কন্ট্রোল সিস্টেমের জন্য তিনটা আলাদা ইউজার স্টোরি লিখুন — একটা QC ইন্সপেক্টরের জন্য, একটা QC সুপারভাইজারের জন্য, আর একটা QC ডিরেক্টরের জন্য। তাদের প্রয়োজন আর অ্যাকসেপ্টেন্স ক্রাইটেরিয়া কীভাবে আলাদা?</li>
+      </ol>
+
+    </article>
+  </div>
+</div>
+
+<div class="shell">
+  <div class="post-foot">
+    <div class="next">
+      <a href="lesson-04" class="next-card">
+        <span class="dir">← পূর্ববর্তী</span>
+        <h4>লেসন ০৪ — এলিসিটেশন টেকনিক</h4>
+        <p>ইন্টারভিউ, পর্যবেক্ষণ, JAD সেশন আর ডিসিশন ম্যাট্রিক্স।</p>
+        <span class="arrow">← লেসন ০৪</span>
+      </a>
+      <a href="lesson-06" class="next-card">
+        <span class="dir">পরবর্তী →</span>
+        <h4>লেসন ০৬ — টেকনিক্যাল স্পেক</h4>
+        <p>অস্পষ্টতাকে ফাংশনাল রিকোয়ারমেন্ট, ডেটা ডিকশনারি, আর SRS-lite ডকুমেন্টে রূপান্তর করুন।</p>
+        <span class="arrow">→ লেসন ০৬</span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="shell">
+    <div class="foot">
+      <span>কোর্স ০১ · লেসন ০৫</span>
+      <a href="/bn/" style="color:var(--text-3);transition:color .15s" onmouseover="this.style.color='var(--text)'" onmouseout="this.style.color='var(--text-3)'">← পোর্টফোলিও</a>
+    </div>
+  </div>
+</footer>
+<script src="/courses/01-requirements-gathering/_progress.js"></script>
+<script src="/lab/_toc.js"></script>

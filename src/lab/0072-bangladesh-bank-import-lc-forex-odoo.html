@@ -1,0 +1,230 @@
+---
+permalink: "lab/0072-bangladesh-bank-import-lc-forex-odoo.html"
+title: "Bangladesh Bank Import LC & FX Rules in Odoo | Mehedi Hasan"
+description: "Managing Bangladesh Bank import LC regulations and foreign exchange in Odoo: LC margin, multi-currency revaluation, and Bangladesh Bank reporting for importers."
+canonical: "https://mhasan.me/lab/0072-bangladesh-bank-import-lc-forex-odoo"
+ogImage: "https://mhasan.me/assets/og/lab/0072-bangladesh-bank-import-lc-forex-odoo.png"
+ogSiteName: "Mehedi Hasan | Odoo ERP Consultant"
+datePublished: "2026-09-18T12:00:00+06:00"
+dateModified: "2026-09-18T12:00:00+06:00"
+articleSection: "Odoo ERP Bangladesh"
+eyebrowNum: "0072"
+h1: "Bangladesh Bank's FX rules in Odoo: <span class=\"serif\">beyond opening the LC.</span>"
+lede: "Opening a Letter of Credit is only the visible part of import compliance. Behind it sits Bangladesh Bank's foreign exchange regulatory framework: margin requirements, currency revaluation, IMP/EXP reporting, and a currency table that quietly goes stale if nobody is watching it. This is the deeper layer most Odoo import setups never get to."
+chips: ["Guide", "Bangladesh Bank / FX", "Bangladesh"]
+bylineItems:
+  - label: "By"
+    value: "<a href=\"https://www.linkedin.com/in/mehedi-hasan-consultant/\" style=\"color:var(--accent)\" rel=\"author\">Mehedi Hasan</a>"
+  - label: "Published"
+    value: "September 2026"
+  - label: "Read time"
+    value: "14 minutes"
+  - label: "Form"
+    value: "Guide"
+  - label: "Scope"
+    value: "Import Finance &amp; FX Compliance"
+nextArticle:
+  href: "0071-ait-income-tax-withholding-odoo-bangladesh"
+  dir: "Older · 0071"
+  title: "AIT Withholding Tax Configuration in Odoo Bangladesh"
+  desc: "TDS on vendor payments and NBR withholding tax rates by category."
+prevArticle:
+  href: "../#lab"
+  dir: "All articles"
+  title: "Back to Lab Index"
+  desc: "Browse all guides on Odoo ERP, manufacturing operations, and business analysis in Bangladesh."
+jsonLd: |
+  [
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "Bangladesh Bank Import LC Regulations and Foreign Exchange in Odoo",
+      "description": "A deeper look at Bangladesh Bank's foreign exchange regulatory requirements for importers using Odoo: LC margin requirements, multi-currency revaluation at period-end, Form IMP/EXP reporting data, correspondent bank charges, and the risk of outdated exchange rates in Odoo's currency table.",
+      "datePublished": "2026-09-18T12:00:00+06:00",
+      "dateModified": "2026-09-18T12:00:00+06:00",
+      "author": { "@type": "Person", "name": "Mehedi Hasan", "url": "https://mhasan.me", "jobTitle": "Odoo ERP Consultant & Business Analyst", "sameAs": "https://www.linkedin.com/in/mehedi-hasan-consultant/" },
+      "publisher": { "@type": "Person", "name": "Mehedi Hasan", "url": "https://mhasan.me" },
+      "mainEntityOfPage": { "@type": "WebPage", "@id": "https://mhasan.me/lab/0072-bangladesh-bank-import-lc-forex-odoo" }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://mhasan.me" },
+        { "@type": "ListItem", "position": 2, "name": "Lab", "item": "https://mhasan.me/lab/" },
+        { "@type": "ListItem", "position": 3, "name": "Bangladesh Bank Import LC & FX Rules in Odoo", "item": "https://mhasan.me/lab/0072-bangladesh-bank-import-lc-forex-odoo" }
+      ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is LC margin and how should it be recorded in Odoo?",
+          "acceptedAnswer": { "@type": "Answer", "text": "LC margin is the percentage of the LC value that the issuing bank requires an importer to deposit or block as cash security before the bank opens the Letter of Credit, set according to Bangladesh Bank guidelines and the bank's own risk assessment of the importer, typically ranging from 0% for the most creditworthy corporate clients up to 100% margin (fully cash-covered) for higher-risk or new importers. In Odoo, record the LC margin deposit as a separate 'Margin Held with Bank' asset account, not as an expense, since it remains the company's asset until the LC is settled or cancelled, and reconcile it against the specific LC reference so each import shipment's true cost of capital tied up in margin is visible." }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I handle multi-currency revaluation at period-end in Odoo?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Odoo Accounting includes a built-in Currency Exchange Rate Revaluation feature (under Accounting → Accounting → Actions → Currency Revaluation) that recalculates the BDT value of open foreign-currency payables and receivables using the exchange rate as of the revaluation date, posting the resulting unrealized gain or loss to a designated exchange difference account. Run this at every month-end and year-end close for any company holding open USD, EUR, or other foreign-currency payables to overseas suppliers, since Bangladesh Taka has historically shown meaningful volatility against major currencies, and failing to revalue means your balance sheet understates or overstates real foreign currency exposure." }
+        },
+        {
+          "@type": "Question",
+          "name": "What data does Bangladesh Bank's Form IMP/EXP reporting require from an importer's ERP?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Form IMP (for imports) and Form EXP (for exports) are Bangladesh Bank's foreign exchange transaction monitoring forms, filed through the authorized dealer bank, that require details including the LC or contract reference, the exporting country and supplier, the HS code and description of goods, the invoice value in foreign currency, and the exchange rate applied. An ERP supporting Bangladesh Bank compliance should be able to produce a report per shipment or per LC showing these fields directly from the purchase order, LC record, and vendor bill, since reconstructing this data manually from scattered records at each declaration deadline is where most importers lose time." }
+        },
+        {
+          "@type": "Question",
+          "name": "How should correspondent bank charges be accounted for in Odoo?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Correspondent bank charges, fees deducted by intermediary banks handling an international wire transfer or LC settlement between the issuing bank in Bangladesh and the beneficiary's bank overseas, should be recorded as a distinct bank charges expense line on the relevant vendor bill or bank transaction in Odoo, not netted silently against the payment amount. Because these charges are often deducted before the beneficiary receives funds, reconcile the amount actually remitted against the invoice value plus recorded bank charges so any shortfall is visible and traceable to a specific fee rather than appearing as an unexplained payment variance." }
+        },
+        {
+          "@type": "Question",
+          "name": "Why is using an outdated exchange rate in Odoo risky for Bangladesh importers?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Odoo's currency table (Accounting → Configuration → Currencies) does not update itself unless connected to a live rate feed or manually refreshed, and if left stale, every foreign-currency transaction entered against an outdated rate misstates the BDT cost of that purchase, understating landed cost if the Taka has weakened since the rate was last updated, or overstating it if the Taka has strengthened. Bangladesh Bank publishes an official daily reference rate, and importers should synchronize Odoo's currency table with that rate daily or, at minimum, before entering any significant foreign-currency transaction, rather than relying on whatever rate happened to be entered weeks earlier." }
+        }
+      ]
+    }
+  ]
+extraStyles: |
+  .pull{font-family:var(--serif);font-style:italic;font-size:clamp(20px,2.8vw,28px);line-height:1.3;color:var(--text);margin:48px 0;max-width:28ch;letter-spacing:-0.01em}
+      .pull::before{content:"";display:block;width:36px;height:1px;background:var(--accent);margin-bottom:18px}
+      .stat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:26px 0}
+      @media(max-width:680px){.stat-row{grid-template-columns:1fr 1fr}}
+      @media(max-width:440px){.stat-row{grid-template-columns:1fr}}
+      .stat-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:18px 16px;text-align:center}
+      .stat-card .sc-val{font-size:28px;font-weight:700;color:var(--accent);letter-spacing:-0.03em;line-height:1;margin-bottom:6px}
+      .stat-card .sc-label{font-family:var(--mono);font-size:10px;color:var(--text-3);letter-spacing:0.07em;text-transform:uppercase}
+      .stat-card .sc-note{font-size:11.5px;color:var(--text-2);margin-top:5px;line-height:1.4}
+      .margin-table{width:100%;border-collapse:collapse;font-size:13.5px;margin:18px 0}
+      .margin-table th{text-align:left;padding:10px 14px;background:var(--surface);color:var(--text-3);font-family:var(--mono);font-size:10.5px;letter-spacing:0.06em;text-transform:uppercase;border-bottom:1px solid var(--border)}
+      .margin-table td{padding:11px 14px;border-bottom:1px solid var(--border);color:var(--text-2);vertical-align:top}
+      .margin-table td:first-child{color:var(--text);font-weight:600}
+      .margin-table tr:last-child td{border-bottom:none}
+      .tip-box{background:var(--accent-dim);border-left:3px solid var(--accent);border-radius:0 6px 6px 0;padding:14px 18px;margin:18px 0}
+      .tip-box .tlabel{font-family:var(--mono);font-size:10px;color:var(--accent);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:6px}
+      .tip-box p{margin:0;font-size:14px;color:var(--text-2);line-height:1.55}
+      .flow-steps{display:flex;flex-wrap:wrap;gap:10px;margin:22px 0}
+      .flow-steps .fstep{flex:1;min-width:130px;border:1px solid var(--border);border-radius:8px;padding:12px 14px;background:var(--surface);text-align:center}
+      .flow-steps .fstep .fnum{font-family:var(--mono);font-size:10px;color:var(--accent);letter-spacing:0.08em;margin-bottom:6px}
+      .flow-steps .fstep .flabel{font-size:12.5px;color:var(--text);font-weight:600;line-height:1.3}
+      .disclaimer{background:rgba(224,169,92,0.08);border:1px solid rgba(224,169,92,0.25);border-radius:6px;padding:14px 18px;margin:20px 0}
+      .disclaimer p{margin:0;font-size:13px;color:var(--text-2);line-height:1.55}
+      .disclaimer strong{color:var(--text)}
+---
+<aside class="toc">
+      <div class="toc-k">In this guide</div>
+      <ol>
+        <li><a href="#scope">Why this goes beyond basic LC management</a></li>
+        <li><a href="#margin">LC margin requirements</a></li>
+        <li><a href="#revaluation">Multi-currency revaluation at period-end</a></li>
+        <li><a href="#imp-exp">Form IMP/EXP reporting data</a></li>
+        <li><a href="#bank-charges">Correspondent bank charges</a></li>
+        <li><a href="#stale-rates">The stale exchange rate risk</a></li>
+        <li><a href="#setup">Putting it together in Odoo</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ol>
+    </aside>
+    <div class="body">
+
+      <h2 id="scope">Why this goes beyond basic LC management</h2>
+      <p>Most Bangladesh Odoo guides that mention Letters of Credit, including <a href="0020-lc-management-odoo-bangladesh" style="color:var(--accent)">LC Management in Odoo Bangladesh</a> on this site, focus on the document workflow: opening the LC, tracking amendments, matching shipping documents, and closing it out on receipt of goods. That workflow layer is necessary but incomplete. Underneath every import LC sits Bangladesh Bank's foreign exchange regulatory framework, the central bank's rules on how much cash security must be held against an LC, how foreign currency exposure must be revalued and reported, and what transaction-level data must be extractable for statutory FX reporting. An importer whose Odoo setup handles the LC document trail perfectly but ignores this regulatory layer is compliant on paper flow and exposed on the actual foreign exchange risk and reporting obligations that Bangladesh Bank cares about.</p>
+      <p>This matters more as import volumes grow. A company importing occasional small shipments can often get away with manual FX tracking in a spreadsheet. A company running multiple concurrent LCs, holding foreign-currency payables for weeks between shipment and settlement, and reporting through an authorized dealer bank on a regular basis needs this built into the ERP, not maintained alongside it.</p>
+
+      <div class="disclaimer">
+        <p><strong>Important:</strong> Bangladesh Bank's foreign exchange guidelines, margin requirements, and reporting form requirements are set out in its Guidelines for Foreign Exchange Transactions (GFET) and periodic circulars, and specific rates, thresholds, and form requirements are revised from time to time. The structural guidance in this article reflects how these mechanisms generally work and should be configured in an ERP; always confirm current specific requirements with your authorized dealer bank and a trade finance advisor before finalizing your import compliance setup.</p>
+      </div>
+
+      <div class="stat-row">
+        <div class="stat-card">
+          <div class="sc-val">0-100%</div>
+          <div class="sc-label">LC margin range</div>
+          <div class="sc-note">Cash security required by issuing bank, varies by importer credit profile</div>
+        </div>
+        <div class="stat-card">
+          <div class="sc-val">Monthly</div>
+          <div class="sc-label">Revaluation cadence</div>
+          <div class="sc-note">Minimum recommended frequency for FX payable revaluation in Odoo</div>
+        </div>
+        <div class="stat-card">
+          <div class="sc-val">Daily</div>
+          <div class="sc-label">BB reference rate</div>
+          <div class="sc-note">Frequency Bangladesh Bank publishes its official exchange rate</div>
+        </div>
+      </div>
+
+      <h2 id="margin">LC margin requirements</h2>
+      <p>Before an issuing bank in Bangladesh opens an import LC, it requires the importer to place a cash margin, a percentage of the LC value held as security, with the exact percentage determined by the bank's internal risk assessment of the importer within the boundaries set by Bangladesh Bank's guidelines. A well-established corporate importer with a strong banking relationship might negotiate a 0-10% margin, while a newer importer or one bringing in goods considered higher-risk by the bank might face a 50-100% margin, meaning the full LC value is blocked as cash before the bank issues the instrument at all.</p>
+
+      <table class="margin-table">
+        <thead>
+          <tr><th>Importer profile</th><th>Typical margin range</th><th>Practical effect</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Established corporate, strong track record</td><td>0-10%</td><td>Minimal cash tied up, bank relies on credit facility/limit</td></tr>
+          <tr><td>Mid-size regular importer</td><td>10-30%</td><td>Meaningful but manageable working capital impact</td></tr>
+          <tr><td>New or higher-risk importer</td><td>50-100%</td><td>LC value effectively pre-funded, significant capital lockup</td></tr>
+        </tbody>
+      </table>
+
+      <p>In Odoo, this margin deposit should never be recorded as an expense or buried inside the vendor bill. It is the company's own asset, cash that still belongs to the importer but is temporarily held by the bank as security. Create a dedicated "Margin Held with Bank" (or similarly named) current asset account in the Chart of Accounts, and post the margin deposit there when the LC is opened, referencing the specific LC number. When the LC is settled and the underlying goods are paid for, or if the LC is cancelled, the margin either converts into the payment or is released back to the company's operating account, and either way it should be cleared out of the margin account with a traceable entry. This gives your finance team, and your CFO, a clear real-time view of how much company cash is currently locked up across all open LCs, which is a genuine working capital planning number, not just a compliance footnote.</p>
+
+      <div class="tip-box">
+        <div class="tlabel">Margin is a cost of capital, not a rounding error</div>
+        <p>For an importer running several concurrent LCs at 30-50% margin each, the aggregate cash locked up with the bank at any given time can be a meaningful fraction of total working capital, and the opportunity cost of that locked cash (what it could otherwise earn or be deployed toward) is a real cost of doing import business that many companies never quantify because it never appears as a distinct line anywhere. Tracking margin per LC in Odoo, and rolling it up into a "total margin currently held" report, makes this visible enough to actually factor into pricing and financing decisions.</p>
+      </div>
+
+      <h2 id="revaluation">Multi-currency revaluation at period-end</h2>
+      <p>Any import transaction denominated in USD, EUR, or another foreign currency creates a foreign-currency payable in Odoo, recorded at the exchange rate in effect on the transaction date. If that payable remains open (unpaid) at month-end or year-end, and the exchange rate has moved since the transaction was recorded, the BDT value of that payable on your books no longer reflects its true current value, an unrealized foreign exchange gain if the Taka has strengthened since the transaction, or an unrealized loss if it has weakened, which for Bangladesh Taka against USD has historically been the more common direction over multi-year periods.</p>
+      <p>Odoo Accounting includes a built-in mechanism for this: <strong>Accounting → Accounting → Actions → Currency Revaluation</strong> (the exact menu path varies slightly by Odoo version) recalculates the BDT value of open foreign-currency payables and receivables as of a chosen revaluation date, using the exchange rate you specify or the one currently in your currency table, and posts the resulting unrealized gain or loss to a designated exchange difference account, without touching the underlying vendor bill itself. Run this at every month-end close for any company with open foreign-currency payables, and definitely at year-end, since an unrevalued foreign-currency payable balance is one of the most common audit adjustments external auditors make to Bangladesh importers' books when reviewing year-end financials.</p>
+      <p>The distinction between unrealized and realized FX gain or loss matters for how this flows through your P&amp;L. The revaluation entry at period-end creates an unrealized gain or loss, reversed at the start of the next period, while the actual gain or loss becomes realized only when the payable is finally settled, at whatever exchange rate applies on the payment date. Make sure your chart of accounts has separate accounts for realized and unrealized FX gain/loss so your management reporting distinguishes cash-impacting realized movements from paper revaluation adjustments.</p>
+
+      <h2 id="imp-exp">Form IMP/EXP reporting data</h2>
+      <p>Bangladesh Bank requires foreign exchange transactions related to trade, imports and exports, to be reported through the authorized dealer (AD) bank handling the transaction, using Form IMP for imports and Form EXP for exports. These forms capture transaction-level detail: the LC or contract reference number, exporting country and overseas supplier or buyer name, HS code and description of the goods, invoice value in the foreign currency, and the applicable exchange rate, among other fields, feeding into Bangladesh Bank's broader foreign exchange monitoring and country-level trade statistics.</p>
+
+      <div class="flow-steps">
+        <div class="fstep"><div class="fnum">01</div><div class="flabel">LC opened &amp; recorded</div></div>
+        <div class="fstep"><div class="fnum">02</div><div class="flabel">Shipment &amp; invoice</div></div>
+        <div class="fstep"><div class="fnum">03</div><div class="flabel">Bill of Entry filed</div></div>
+        <div class="fstep"><div class="fnum">04</div><div class="flabel">AD bank files Form IMP</div></div>
+        <div class="fstep"><div class="fnum">05</div><div class="flabel">Payment settled</div></div>
+      </div>
+
+      <p>While the AD bank formally files these forms, the underlying data (LC reference, supplier, HS code, invoice value, exchange rate) originates from the importer's own records, and an importer whose ERP cannot produce this data cleanly per shipment ends up reconstructing it manually from scattered purchase orders, LC files, and bank correspondence every time a declaration or bank query comes up. Structure your Odoo data so that each import transaction, the Purchase Order, the linked LC record (if using a custom LC tracking model as covered in <a href="0020-lc-management-odoo-bangladesh" style="color:var(--accent)">LC Management in Odoo Bangladesh</a>), the HS code reference from <a href="0019-hs-code-customs-odoo-bangladesh" style="color:var(--accent)">HS Code &amp; Customs in Odoo Bangladesh</a>, and the vendor bill, are all linked through a common reference, typically the LC number, so a report pulling "everything Bangladesh Bank or my AD bank might ask about this import" can be generated from one query rather than a week of file archaeology.</p>
+
+      <h2 id="bank-charges">Correspondent bank charges</h2>
+      <p>International wire transfers and LC settlements routed between the Bangladeshi issuing bank and an overseas beneficiary's bank frequently pass through one or more correspondent banks, each of which may deduct a handling fee before the funds reach their destination. These charges are often small individually but easy to lose track of, since they show up as a shortfall between the invoiced amount and the amount the beneficiary confirms receiving, rather than as a clearly labeled line item on any single document you receive.</p>
+      <p>Record correspondent bank charges as a distinct expense line, separate from the goods cost, on the relevant vendor bill or a linked bank transaction in Odoo. When reconciling an international payment, check the amount actually remitted against invoice value plus all identified bank charges (your own bank's LC handling fee, the correspondent bank's deduction, and any charges the beneficiary's bank applies), so any unexplained gap is caught and investigated rather than written off as a rounding difference. Over a year of regular imports, unreconciled correspondent bank charges can silently accumulate into a meaningful, entirely avoidable cost leak.</p>
+
+      <h2 id="stale-rates">The stale exchange rate risk</h2>
+      <p>Odoo's currency table, found under <strong>Accounting → Configuration → Currencies</strong>, holds the exchange rate Odoo uses to convert foreign-currency transactions into your company's base currency (BDT) at the moment each transaction is recorded. Unless this table is connected to a live rate feed or manually updated on a disciplined schedule, it drifts out of date, and every transaction entered against a stale rate misstates the true BDT cost of that purchase.</p>
+      <p>This is not a theoretical risk. Bangladesh Taka has shown meaningful movement against the US Dollar and other major currencies over multi-year periods, and even short-term swings of a few percentage points are common. A company that updates its Odoo currency table sporadically, whenever someone happens to remember, will regularly record import costs at rates that were accurate weeks earlier but are no longer, understating landed cost when the Taka has weakened since the stale rate was last entered (making margins look better than they are) or overstating it when the Taka has strengthened. Both directions produce decisions (pricing, purchasing volume, hedging) based on incorrect cost data.</p>
+      <p>The practical fix is procedural, not technical: assign responsibility for updating Odoo's currency table against Bangladesh Bank's official daily reference rate to a specific person, ideally as part of a daily or, at minimum, twice-weekly routine, and absolutely before entering any significant foreign-currency transaction. Larger importers with high transaction volume should evaluate connecting Odoo to an automated exchange rate feed if one is available and reliable for BDT pairs, removing the manual step entirely, though many Bangladesh implementations still rely on disciplined manual updates given the limited availability of BDT-specific automated rate feeds.</p>
+
+      <h2 id="setup">Putting it together in Odoo</h2>
+      <p>For a Bangladesh importer serious about this compliance layer, the practical build order is: first, get the currency table update discipline in place, since every other number depends on using a reasonably current rate. Second, set up the LC margin asset account and start posting margin deposits and releases against specific LC references. Third, schedule monthly currency revaluation as a standing close-of-month task, not an occasional afterthought. Fourth, structure your LC, purchase order, and vendor bill records with a shared reference field so Form IMP/EXP-relevant data can be pulled in one report when your AD bank or Bangladesh Bank asks for it. None of this requires custom development, all four are achievable through Odoo's native accounting and reference-field configuration, applied with the discipline this regulatory layer requires. This same trading-company financial discipline is covered more broadly in <a href="0036-odoo-trading-company-bangladesh" style="color:var(--accent)">Odoo for Trading Companies Bangladesh</a>, worth reviewing alongside this guide if import/export is your core business model rather than a supporting function.</p>
+
+      <div class="callout">
+        <span class="tag">Consultation CTA</span>
+        <p>If your Odoo instance tracks LC documents but has no structured LC margin account, no monthly currency revaluation, and no reliable way to pull Form IMP-relevant data when your bank asks, you are compliant on paper flow but exposed on the FX and reporting layer Bangladesh Bank actually monitors. I can help you close that gap without a rebuild. <a href="../#contact" style="color:var(--accent)">Contact me for a strategy session →</a></p>
+      </div>
+
+      <h2 id="faq">Frequently asked questions</h2>
+
+      <h3>What is LC margin and how should it be recorded in Odoo?</h3>
+      <p>LC margin is the percentage of the LC value that the issuing bank requires an importer to deposit or block as cash security before the bank opens the Letter of Credit, set according to Bangladesh Bank guidelines and the bank's own risk assessment of the importer, typically ranging from 0% for the most creditworthy corporate clients up to 100% margin (fully cash-covered) for higher-risk or new importers. In Odoo, record the LC margin deposit as a separate "Margin Held with Bank" asset account, not as an expense, since it remains the company's asset until the LC is settled or cancelled, and reconcile it against the specific LC reference so each import shipment's true cost of capital tied up in margin is visible.</p>
+
+      <h3>How do I handle multi-currency revaluation at period-end in Odoo?</h3>
+      <p>Odoo Accounting includes a built-in Currency Exchange Rate Revaluation feature (under Accounting → Accounting → Actions → Currency Revaluation) that recalculates the BDT value of open foreign-currency payables and receivables using the exchange rate as of the revaluation date, posting the resulting unrealized gain or loss to a designated exchange difference account. Run this at every month-end and year-end close for any company holding open USD, EUR, or other foreign-currency payables to overseas suppliers, since Bangladesh Taka has historically shown meaningful volatility against major currencies, and failing to revalue means your balance sheet understates or overstates real foreign currency exposure.</p>
+
+      <h3>What data does Bangladesh Bank's Form IMP/EXP reporting require from an importer's ERP?</h3>
+      <p>Form IMP (for imports) and Form EXP (for exports) are Bangladesh Bank's foreign exchange transaction monitoring forms, filed through the authorized dealer bank, that require details including the LC or contract reference, the exporting country and supplier, the HS code and description of goods, the invoice value in foreign currency, and the exchange rate applied. An ERP supporting Bangladesh Bank compliance should be able to produce a report per shipment or per LC showing these fields directly from the purchase order, LC record, and vendor bill, since reconstructing this data manually from scattered records at each declaration deadline is where most importers lose time.</p>
+
+      <h3>How should correspondent bank charges be accounted for in Odoo?</h3>
+      <p>Correspondent bank charges, fees deducted by intermediary banks handling an international wire transfer or LC settlement between the issuing bank in Bangladesh and the beneficiary's bank overseas, should be recorded as a distinct bank charges expense line on the relevant vendor bill or bank transaction in Odoo, not netted silently against the payment amount. Because these charges are often deducted before the beneficiary receives funds, reconcile the amount actually remitted against the invoice value plus recorded bank charges so any shortfall is visible and traceable to a specific fee rather than appearing as an unexplained payment variance.</p>
+
+      <h3>Why is using an outdated exchange rate in Odoo risky for Bangladesh importers?</h3>
+      <p>Odoo's currency table (Accounting → Configuration → Currencies) does not update itself unless connected to a live rate feed or manually refreshed, and if left stale, every foreign-currency transaction entered against an outdated rate misstates the BDT cost of that purchase, understating landed cost if the Taka has weakened since the rate was last updated, or overstating it if the Taka has strengthened. Bangladesh Bank publishes an official daily reference rate, and importers should synchronize Odoo's currency table with that rate daily or, at minimum, before entering any significant foreign-currency transaction, rather than relying on whatever rate happened to be entered weeks earlier.</p>
+
+    </div>

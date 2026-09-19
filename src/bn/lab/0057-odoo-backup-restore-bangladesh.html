@@ -1,0 +1,586 @@
+---
+permalink: "bn/lab/0057-odoo-backup-restore-bangladesh.html"
+title: "বাংলাদেশে Odoo ব্যাকআপ ও রিকভারি | গাইড | মেহেদী হাসান"
+description: "বাংলাদেশে Odoo ব্যাকআপ ও ডিজাস্টার রিকভারি: PostgreSQL ব্যাকআপ স্ক্রিপ্ট, ফাইলস্টোর, অফ-সাইট স্টোরেজ, আর SME-দের জন্য রিকভারি ড্রিল। গাইডটি পড়ুন →"
+robots: "noindex, follow"
+canonical: "https://mhasan.me/bn/lab/0057-odoo-backup-restore-bangladesh"
+hreflangBn: "https://mhasan.me/bn/lab/0057-odoo-backup-restore-bangladesh"
+hreflangEn: "https://mhasan.me/lab/0057-odoo-backup-restore-bangladesh"
+lang: "bn"
+ogDescription: "PostgreSQL ব্যাকআপ, ফাইলস্টোর ব্যাকআপ, অফ-সাইট স্টোরেজ, ডিজাস্টার রিকভারি প্ল্যানিং, আর বাংলাদেশি Odoo ডেপ্লয়মেন্টের জন্য মাসিক রিস্টোর ড্রিল।"
+twitterDescription: "PostgreSQL ব্যাকআপ, ফাইলস্টোর ব্যাকআপ, অফ-সাইট স্টোরেজ, ডিজাস্টার রিকভারি, আর বাংলাদেশি Odoo ডেপ্লয়মেন্টের জন্য রিস্টোর ড্রিল। সম্পূর্ণ গাইড।"
+ogImage: "https://mhasan.me/assets/og-default.jpg"
+ogSiteName: "মেহেদী হাসান | Odoo ERP কনসালট্যান্ট"
+ogLocale: "bn_BD"
+datePublished: "2026-05-12T12:00:00+06:00"
+dateModified: "2026-05-12T12:00:00+06:00"
+articleSection: "Odoo ERP Bangladesh"
+eyebrowNum: "0057"
+h1: "বাংলাদেশে Odoo ব্যাকআপ, রিস্টোর ও ডিজাস্টার রিকভারি — <span class=\"serif\">কারণ \"আমাদের কখনো সমস্যা হয়নি\" কোনো ব্যাকআপ স্ট্র্যাটেজি নয়।</span>"
+lede: "আমি বাংলাদেশি ব্যবসাগুলোকে Odoo ডেটা হারানোর পর পুনরুদ্ধারে সাহায্য করেছি। প্যাটার্নটা সবসময় একই: ব্যাকআপ \"করা হচ্ছিল\" এমন কারও হাতে, যিনি তা ম্যানুয়ালি, অসামঞ্জস্যপূর্ণভাবে, একটি লোকাল ড্রাইভে করতেন — যেটি ছিল সেই একই সার্ভারে যা পরে বিকল হয়ে যায়। এই গাইডে বলা হয়েছে কী ব্যাকআপ নিতে হবে, কীভাবে সেটা অটোমেট করতে হবে, বাংলাদেশের ইনফ্রাস্ট্রাকচার প্রেক্ষাপটে কোথায় সংরক্ষণ করতে হবে, আর সবচেয়ে গুরুত্বপূর্ণ — প্রয়োজনের আগেই কীভাবে যাচাই করবেন যে আপনার ব্যাকআপ আসলেই কাজ করে।"
+chips: ["গাইড", "ব্যাকআপ ও রিকভারি", "IT ও CTO", "বাংলাদেশ"]
+bylineItems:
+  - label: "লেখক"
+    value: "<a href=\"https://www.linkedin.com/in/mehedi-hasan-consultant/\" style=\"color:var(--accent)\" rel=\"author\">Mehedi Hasan</a>"
+  - label: "প্রকাশিত"
+    value: "মে ২০২৬"
+  - label: "পড়ার সময়"
+    value: "১৭ মিনিট"
+  - label: "ধরন"
+    value: "গাইড"
+  - label: "পরিধি"
+    value: "IT ও ইনফ্রাস্ট্রাকচার"
+nextArticle:
+  href: "0056-odoo-iot-box-bangladesh"
+  dir: "Older · 0056"
+  title: "Odoo IoT Box for Bangladesh Factories"
+  desc: "Connect barcode scanners, weighing scales, and POS printers to your manufacturing workflow."
+prevArticle:
+  href: "0058-odoo-ai-features-bangladesh"
+  dir: "Newer · 0058"
+  title: "AI Features in Odoo 17 &amp; 18: Bangladesh SME Guide"
+  desc: "OCR, predictive reordering, ChatGPT — what actually works vs. hype for Bangladesh businesses."
+jsonLd: |
+  [
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "বাংলাদেশি ব্যবসার জন্য Odoo ব্যাকআপ, রিস্টোর ও ডিজাস্টার রিকভারি",
+      "description": "বাংলাদেশি Odoo অন-প্রিমাইজ ও ক্লাউড ডেপ্লয়মেন্টের জন্য PostgreSQL ব্যাকআপ স্ক্রিপ্ট, ফাইলস্টোর ব্যাকআপ, অফ-সাইট স্টোরেজ অপশন, ডিজাস্টার রিকভারি প্ল্যানিং, আর মাসিক রিস্টোর ড্রিল।",
+      "datePublished": "2026-05-12T12:00:00+06:00",
+      "dateModified": "2026-05-12T12:00:00+06:00",
+      "inLanguage": "bn",
+      "author": {
+        "@type": "Person",
+        "name": "Mehedi Hasan",
+        "url": "https://mhasan.me",
+        "jobTitle": "Odoo ERP Consultant & Business Analyst",
+        "sameAs": "https://www.linkedin.com/in/mehedi-hasan-consultant/"
+      },
+      "publisher": { "@type": "Person", "name": "Mehedi Hasan", "url": "https://mhasan.me" },
+      "mainEntityOfPage": { "@type": "WebPage", "@id": "https://mhasan.me/bn/lab/0057-odoo-backup-restore-bangladesh" }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "হোম", "item": "https://mhasan.me/bn" },
+        { "@type": "ListItem", "position": 2, "name": "ল্যাব", "item": "https://mhasan.me/bn/#lab" },
+        { "@type": "ListItem", "position": 3, "name": "বাংলাদেশে Odoo ব্যাকআপ ও রিকভারি", "item": "https://mhasan.me/bn/lab/0057-odoo-backup-restore-bangladesh" }
+      ]
+    }
+  ]
+extraStyles: |
+  body{ font-family: 'Noto Sans Bengali', var(--sans); }
+      .pull {
+        font-family: var(--serif);
+        font-style: italic;
+        font-size: clamp(20px, 2.8vw, 28px);
+        line-height: 1.3;
+        color: var(--text);
+        margin: 48px 0;
+        max-width: 28ch;
+        letter-spacing: -0.01em;
+      }
+      .pull::before {
+        content: "";
+        display: block;
+        width: 36px;
+        height: 1px;
+        background: var(--accent);
+        margin-bottom: 18px;
+      }
+      .backup-block {
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        margin: 26px 0;
+        overflow: hidden;
+      }
+      .backup-header {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 16px 20px;
+        background: var(--surface);
+        border-bottom: 1px solid var(--border);
+      }
+      .backup-badge {
+        font-family: var(--mono);
+        font-size: 10px;
+        font-weight: 600;
+        padding: 3px 10px;
+        border-radius: 4px;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        flex-shrink: 0;
+      }
+      .backup-badge.manual { background: rgba(120,140,200,0.12); color: #8899CC; border: 1px solid rgba(120,140,200,0.25); }
+      .backup-badge.auto { background: var(--accent-dim); color: var(--accent); border: 1px solid rgba(80,230,160,0.3); }
+      .backup-badge.cloud { background: rgba(100,180,255,0.12); color: #70C0FF; border: 1px solid rgba(100,180,255,0.25); }
+      .backup-badge.critical { background: rgba(255,80,80,0.1); color: #FF8080; border: 1px solid rgba(255,80,80,0.2); }
+      .backup-header h3 { margin: 0; font-size: 15px; color: var(--text); letter-spacing: -0.01em; }
+      .backup-body { padding: 20px; }
+      .backup-body p { color: var(--text-2); font-size: 14.5px; line-height: 1.65; margin: 0 0 12px; }
+      .backup-body p:last-child { margin-bottom: 0; }
+      .backup-body ul { color: var(--text-2); font-size: 14px; padding-left: 20px; margin: 10px 0 12px; }
+      .backup-body li { margin-bottom: 6px; line-height: 1.5; }
+      .code-box {
+        background: #0D1117;
+        border: 1px solid var(--border);
+        border-radius: 6px;
+        padding: 14px 18px;
+        margin: 14px 0;
+        overflow-x: auto;
+      }
+      .code-box pre { margin: 0; font-family: var(--mono); font-size: 12.5px; color: #C9D1D9; line-height: 1.6; white-space: pre; }
+      .code-label { font-family: var(--mono); font-size: 10px; color: var(--text-3); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 6px; }
+      .warn-box {
+        background: rgba(200,140,60,0.08);
+        border-left: 3px solid rgba(200,140,60,0.6);
+        border-radius: 0 6px 6px 0;
+        padding: 14px 18px;
+        margin: 18px 0;
+      }
+      .warn-box .wlabel { font-family: var(--mono); font-size: 10px; color: rgba(220,160,70,0.9); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 6px; }
+      .warn-box p { margin: 0; font-size: 14px; color: var(--text-2); line-height: 1.55; }
+      .critical-box {
+        background: rgba(255,80,80,0.06);
+        border-left: 3px solid rgba(255,100,100,0.5);
+        border-radius: 0 6px 6px 0;
+        padding: 14px 18px;
+        margin: 18px 0;
+      }
+      .critical-box .clabel { font-family: var(--mono); font-size: 10px; color: #FF8080; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 6px; }
+      .critical-box p { margin: 0; font-size: 14px; color: var(--text-2); line-height: 1.55; }
+      .tip-box {
+        background: var(--accent-dim);
+        border-left: 3px solid var(--accent);
+        border-radius: 0 6px 6px 0;
+        padding: 14px 18px;
+        margin: 18px 0;
+      }
+      .tip-box .tlabel { font-family: var(--mono); font-size: 10px; color: var(--accent); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 6px; }
+      .tip-box p { margin: 0; font-size: 14px; color: var(--text-2); line-height: 1.55; }
+      .retention-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 13.5px;
+        margin: 16px 0;
+      }
+      .retention-table th {
+        text-align: left;
+        padding: 10px 14px;
+        background: var(--surface);
+        color: var(--text-3);
+        font-family: var(--mono);
+        font-size: 10.5px;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        border-bottom: 1px solid var(--border);
+      }
+      .retention-table td {
+        padding: 11px 14px;
+        border-bottom: 1px solid var(--border);
+        color: var(--text-2);
+        vertical-align: top;
+      }
+      .retention-table td:first-child { color: var(--text); font-weight: 500; }
+      .retention-table tr:last-child td { border-bottom: none; }
+      .step-list {
+        counter-reset: step;
+        list-style: none;
+        padding: 0;
+        margin: 20px 0;
+      }
+      .step-list li {
+        counter-increment: step;
+        display: flex;
+        gap: 16px;
+        padding: 15px 0;
+        border-bottom: 1px solid var(--border);
+      }
+      .step-list li:last-child { border-bottom: none; }
+      .step-list li::before {
+        content: counter(step);
+        width: 26px; height: 26px;
+        border-radius: 50%;
+        background: var(--accent-dim);
+        border: 1px solid var(--accent);
+        color: var(--accent);
+        font-family: var(--mono);
+        font-size: 11px;
+        font-weight: 600;
+        display: flex; align-items: center; justify-content: center;
+        flex-shrink: 0;
+        margin-top: 2px;
+      }
+      .step-list li .sc strong { font-size: 14px; color: var(--text); display: block; margin-bottom: 4px; }
+      .step-list li .sc span { font-size: 13.5px; color: var(--text-2); line-height: 1.5; }
+      .risk-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 13px;
+        margin: 20px 0;
+      }
+      @media(max-width:600px) { .risk-grid { grid-template-columns: 1fr; } }
+      .risk-card {
+        border: 1px solid var(--border);
+        border-radius: 7px;
+        padding: 16px;
+        background: var(--surface);
+      }
+      .risk-card .rk-head { font-weight: 600; font-size: 13.5px; color: var(--text); margin-bottom: 7px; }
+      .risk-card p { color: var(--text-2); font-size: 13px; line-height: 1.5; margin: 0; }
+---
+<aside class="toc">
+      <div class="toc-k">এই গাইডে</div>
+      <ol>
+        <li><a href="#bangladesh-risk">বাংলাদেশ-নির্দিষ্ট ঝুঁকির বিষয়</a></li>
+        <li><a href="#what-to-backup">কী ব্যাকআপ নিতে হবে</a></li>
+        <li><a href="#manual-backup">ম্যানুয়াল ব্যাকআপ: Odoo ডেটাবেস ম্যানেজার</a></li>
+        <li><a href="#automated-backup">অটোমেটেড ব্যাকআপ: pg_dump + Cron</a></li>
+        <li><a href="#filestore">ফাইলস্টোর ব্যাকআপ</a></li>
+        <li><a href="#offsite">বাংলাদেশের জন্য অফ-সাইট স্টোরেজ</a></li>
+        <li><a href="#retention">রিটেনশন পলিসি ও NBR রিকোয়ারমেন্ট</a></li>
+        <li><a href="#odoosh-backup">Odoo.sh ব্যাকআপ ম্যানেজমেন্ট</a></li>
+        <li><a href="#restore">রিস্টোর প্রসেস</a></li>
+        <li><a href="#restore-drill">মাসিক রিস্টোর ড্রিল</a></li>
+        <li><a href="#dr-plan">ডিজাস্টার রিকভারি প্ল্যানিং</a></li>
+        <li><a href="#faq">সচরাচর জিজ্ঞাসা</a></li>
+      </ol>
+    </aside>
+
+    <div class="body">
+
+      <h2 id="bangladesh-risk">বাংলাদেশ-নির্দিষ্ট ঝুঁকির বিষয়</h2>
+      <p>বাংলাদেশে এমন কিছু ইনফ্রাস্ট্রাকচার ঝুঁকি আছে যা আরও স্থিতিশীল পরিবেশের তুলনায় একটি মজবুত ব্যাকআপ স্ট্র্যাটেজিকে আরও বেশি গুরুত্বপূর্ণ করে তোলে। এসব ঝুঁকি সম্পর্কে সচেতন থাকাই এমন একটি ব্যাকআপ আর্কিটেকচার ডিজাইন করার প্রথম ধাপ যা এগুলো মোকাবিলা করতে পারে।</p>
+
+      <div class="risk-grid">
+        <div class="risk-card">
+          <div class="rk-head">পাওয়ার অস্থিরতা</div>
+          <p>ঢাকার শিল্প ও বাণিজ্যিক এলাকাতেও লোডশেডিং, ভোল্টেজ ওঠানামা, আর হঠাৎ পাওয়ার কাটা এখনো সাধারণ ঘটনা। ডেটাবেস রাইটের সময় হঠাৎ শাটডাউন একটি PostgreSQL ডেটাবেস নষ্ট করে দিতে পারে। প্রোডাকশন Odoo সার্ভারের জন্য UPS + জেনারেটর ঐচ্ছিক নয়।</p>
+        </div>
+        <div class="risk-card">
+          <div class="rk-head">সাইক্লোন ও বন্যার ঝুঁকি</div>
+          <p>চট্টগ্রাম আর উপকূলীয় কারখানা এলাকায় সাইক্লোনের ঝুঁকি আছে। ঢাকার নিচু এলাকায় উল্লেখযোগ্য বন্যার ঝুঁকি আছে। আক্রান্ত অঞ্চলের অন-প্রিমাইজ সার্ভার শারীরিকভাবে ধ্বংস হয়ে যেতে পারে। অফ-সাইট ব্যাকআপ ভৌগোলিকভাবে আলাদা জায়গায় থাকতে হবে।</p>
+        </div>
+        <div class="risk-card">
+          <div class="rk-head">চুরি ও অগ্নিকাণ্ড</div>
+          <p>বাংলাদেশের SME প্রতিষ্ঠানে সার্ভার রুমের নিরাপত্তা অসামঞ্জস্যপূর্ণ। গ্রাউন্ড ফ্লোরের একটি অফিসে একটিমাত্র সার্ভার র‍্যাকে ডেটাবেস আর ব্যাকআপ ড্রাইভ একই ঘরে রাখা একটি সিঙ্গেল-পয়েন্ট-অফ-ফেইলিওর পরিস্থিতি, যা ব্যবসা শেষ করে দিতে পারে।</p>
+        </div>
+        <div class="risk-card">
+          <div class="rk-head">ইন্টারনেট নির্ভরযোগ্যতা</div>
+          <p>Odoo ক্লাউড-হোস্টেড হলে আর ইন্টারনেট বন্ধ থাকলে, অপারেশন পুরোপুরি থেমে যায়। লোকাল ব্যাকআপসহ অন-প্রিমাইজ Odoo ইন্টারনেট বিভ্রাটের সময়ও চালু থাকে। আপনার হোস্টিং সিদ্ধান্তে এটি বিবেচনা করুন।</p>
+        </div>
+        <div class="risk-card">
+          <div class="rk-head">মানুষের ভুল</div>
+          <p>বিশ্বব্যাপী ডেটা হারানোর সবচেয়ে সাধারণ কারণ — বাংলাদেশেও তাই। একজন Odoo অ্যাডমিন ভুলবশত একটি প্রোডাক্ট ক্যাটাগরি ডিলিট করে ফেলেন। একজন ডেভেলপার স্টেজিংয়ের বদলে প্রোডাকশনে একটি মাইগ্রেশন স্ক্রিপ্ট চালিয়ে দেন। একটি ভালোভাবে টেস্ট করা রিস্টোর প্রসেস এসব পরিস্থিতি থেকে রক্ষা করে।</p>
+        </div>
+        <div class="risk-card">
+          <div class="rk-head">NBR অডিট রিকোয়ারমেন্ট</div>
+          <p>বাংলাদেশের কর আইনে ব্যবসাগুলোকে অন্তত ৫ বছর আর্থিক রেকর্ড সংরক্ষণ করতে হয়। একটি Odoo সার্ভার বিকল হয়ে অ্যাকাউন্টিং ইতিহাস ধ্বংস হয়ে গেলে তা শুধু অপারেশনাল বিঘ্ন নয়, একটি আইনি কমপ্লায়েন্স ঝুঁকিও তৈরি করে।</p>
+        </div>
+      </div>
+
+      <p class="pull">যে ব্যাকআপ কখনো টেস্ট করা হয়নি, সেটা ব্যাকআপ নয় — সেটা একটি আশা মাত্র। প্রতি মাসে এটি টেস্ট করুন। আপনার ডিজাস্টার রিকভারি ঠিক ততটাই ভালো যতটা ভালো আপনার সবশেষ সফল রিস্টোর ড্রিল।</p>
+
+      <h2 id="what-to-backup">Odoo-তে কী কী ব্যাকআপ নিতে হবে</h2>
+      <p>Odoo-র ডেটা দুটি আলাদা জায়গায় থাকে। দুটোরই ব্যাকআপ নিতে হবে। শুধু একটির ব্যাকআপ নিলে আপনার হাতে একটি অসম্পূর্ণ, রিস্টোর-অযোগ্য অবস্থা থেকে যাবে।</p>
+
+      <p><strong>১. PostgreSQL ডেটাবেস</strong><br>
+      এতে থাকে সব স্ট্রাকচার্ড ডেটা: প্রতিটি ট্রানজ্যাকশন, জার্নাল এন্ট্রি, সেল অর্ডার, ম্যানুফ্যাকচারিং অর্ডার, স্টক মুভ, ইউজার রেকর্ড, আর কনফিগারেশন। এটাই আপনার Odoo ইনস্টলেশনের মূল অংশ। সার্ভারে অবস্থান: PostgreSQL ডেটা ডিরেক্টরি (Ubuntu-তে সাধারণত <code>/var/lib/postgresql/</code>)। এটি pg_dump দিয়ে ব্যাকআপ নেওয়া হয়।</p>
+
+      <p><strong>২. ফাইলস্টোর</strong><br>
+      এতে থাকে সব ফাইল অ্যাটাচমেন্ট: স্ক্যান করা ডকুমেন্ট, আপলোড করা ইনভয়েস, প্রোডাক্ট ইমেজ, রিপোর্ট টেমপ্লেট, ইমেইল অ্যাটাচমেন্ট, আর Odoo-তে সংরক্ষিত যেকোনো বাইনারি ফাইল। সার্ভারে অবস্থান: <code>/var/lib/odoo/filestore/[database-name]/</code>। এটি ডেটাবেস থেকে আলাদাভাবে ব্যাকআপ নিতে হবে। PostgreSQL ডাম্পে ফাইলস্টোর অন্তর্ভুক্ত থাকে না।</p>
+
+      <div class="critical-box">
+        <div class="clabel">গুরুত্বপূর্ণ</div>
+        <p>অনেক বাংলাদেশি IT অ্যাডমিনিস্ট্রেটর শুধু PostgreSQL ডেটাবেসের ব্যাকআপ নেন আর ফাইলস্টোরের কথা পুরোপুরি ভুলে যান। মিলে যাওয়া ফাইলস্টোর ছাড়া একটি ডেটাবেস রিস্টোর করলে, সব ফাইল অ্যাটাচমেন্ট (আপলোড করা ডকুমেন্ট, প্রোডাক্ট ইমেজ, ইমেইল অ্যাটাচমেন্ট) ভাঙা দেখাবে। বেশিরভাগ বাংলাদেশি ব্যবসার ক্ষেত্রে, ৬–৩৬ মাসের স্ক্যান করা ডকুমেন্ট আর ভেন্ডর ইনভয়েস ফাইলস্টোরে থাকে। দুটো উপাদানই একসাথে ব্যাকআপ নিতে হবে।</p>
+      </div>
+
+      <h2 id="manual-backup">ম্যানুয়াল ব্যাকআপ: Odoo ডেটাবেস ম্যানেজার</h2>
+
+      <div class="backup-block">
+        <div class="backup-header">
+          <span class="backup-badge manual">ম্যানুয়াল</span>
+          <h3>ডেটাবেস ম্যানেজারের মাধ্যমে ব্রাউজার-ভিত্তিক ব্যাকআপ</h3>
+        </div>
+        <div class="backup-body">
+          <p>Odoo-র বিল্ট-ইন ডেটাবেস ম্যানেজার সবচেয়ে সহজ ব্যাকআপ পদ্ধতি দেয়। <code>https://your-odoo-server/web/database/manager</code>-এ যান (অথবা লগইন পেজে গিয়ার আইকনে ক্লিক করুন → Manage Databases)।</p>
+          <ol>
+            <li>আপনার ডেটাবেসের নামের পাশে Backup আইকনে ক্লিক করুন।</li>
+            <li>ফরম্যাট বাছাই করুন: <strong>zip</strong> (সুপারিশকৃত — একই ফাইলে ডেটাবেস ডাম্প + ফাইলস্টোর থাকে) অথবা <strong>dump</strong> (শুধু ডেটাবেস, অ্যাটাচমেন্ট ছাড়া)।</li>
+            <li>Download-এ ক্লিক করুন। Odoo ব্যাকআপ তৈরি করে আপনার ব্রাউজারে ডাউনলোড করবে।</li>
+          </ol>
+          <p>ফলাফলের zip ফাইলে যেকোনো কম্প্যাটিবল সার্ভারে Odoo ইনস্ট্যান্স রিস্টোর করার জন্য প্রয়োজনীয় সবকিছু থাকে। একই সার্ভার ছাড়া অন্য কোথাও সাথে সাথে এটি সংরক্ষণ করুন।</p>
+          <div class="warn-box">
+            <div class="wlabel">যখন এটি যথেষ্ট নয়</div>
+            <p>ম্যানুয়াল ব্রাউজার ব্যাকআপ শুধু গ্রহণযোগ্য: টেস্টিং এনভায়রনমেন্টের জন্য, খুব ছোট ডেটাবেসের জন্য (&lt;500MB), অথবা নন-টেকনিক্যাল স্টাফদের সাপ্লিমেন্টারি সাপ্তাহিক ব্যাকআপ হিসেবে। লাইভ বিজনেস ডেটাসহ প্রোডাকশন Odoo-র জন্য, আপনার দরকার অটোমেটেড ব্যাকআপ (pg_dump + cron) যা মানুষের হস্তক্ষেপ ছাড়াই চলে আর কারও বাটন চাপার কথা মনে রাখার ওপর নির্ভর করে না।</p>
+          </div>
+        </div>
+      </div>
+
+      <h2 id="automated-backup">অটোমেটেড ব্যাকআপ: pg_dump + Cron</h2>
+
+      <div class="backup-block">
+        <div class="backup-header">
+          <span class="backup-badge auto">প্রোডাকশনের জন্য সুপারিশকৃত</span>
+          <h3>অটোমেটেড PostgreSQL ব্যাকআপ স্ক্রিপ্ট</h3>
+        </div>
+        <div class="backup-body">
+          <p>নিচের bash স্ক্রিপ্টটি pg_dump ব্যবহার করে আপনার Odoo ডেটাবেসের ব্যাকআপ নেয়, কম্প্রেস করে, আর ৩০ দিনের বেশি পুরনো ব্যাকআপ ডিলিট করে দেয়। এটি <code>/opt/odoo-backup/backup.sh</code>-এ রাখুন আর এক্সিকিউটেবল করুন (<code>chmod +x /opt/odoo-backup/backup.sh</code>)।</p>
+          <div class="code-label">backup.sh — অটোমেটেড Odoo ডেটাবেস ব্যাকআপ</div>
+          <div class="code-box"><pre>#!/bin/bash
+# Odoo Database Backup Script for Bangladesh Production Servers
+# Place in /opt/odoo-backup/backup.sh
+
+DB_NAME="your_odoo_database"
+DB_USER="odoo"
+BACKUP_DIR="/opt/odoo-backup/db"
+FILESTORE_DIR="/var/lib/odoo/filestore/${DB_NAME}"
+FILESTORE_BACKUP_DIR="/opt/odoo-backup/filestore"
+DATE=$(date +%Y-%m-%d_%H-%M)
+KEEP_DAYS=30
+
+# Create backup directories if they don't exist
+mkdir -p "${BACKUP_DIR}" "${FILESTORE_BACKUP_DIR}"
+
+# 1. Dump PostgreSQL database
+pg_dump -U "${DB_USER}" -Fc "${DB_NAME}" \
+    -f "${BACKUP_DIR}/${DB_NAME}_${DATE}.dump"
+
+# 2. Backup filestore (incremental with rsync)
+rsync -a --delete \
+    "${FILESTORE_DIR}/" \
+    "${FILESTORE_BACKUP_DIR}/"
+
+# 3. Remove database dumps older than 30 days
+find "${BACKUP_DIR}" -name "*.dump" -mtime +${KEEP_DAYS} -delete
+
+# 4. Log completion
+echo "$(date): Backup completed — ${DB_NAME}_${DATE}.dump" \
+    &gt;&gt; /var/log/odoo-backup.log</pre></div>
+
+          <div class="code-label">cron দিয়ে শিডিউল করুন — প্রতিদিন বাংলাদেশ সময় রাত ২টায় চালান</div>
+          <div class="code-box"><pre># Edit cron: sudo crontab -e -u odoo
+# Add this line:
+0 2 * * * /opt/odoo-backup/backup.sh</pre></div>
+
+          <p>কেন রাত ২টা: বাংলাদেশের ব্যবসায়িক সময় সকাল ৯টা থেকে সন্ধ্যা ৬টা। রাত ২টার ব্যাকআপ যেকোনো রাত্রিকালীন ব্যাচ জবের ওপর প্রভাব কমিয়ে দেয় আর পুরো দিনের ট্রানজ্যাকশন ধরে ফেলে। আপনার কারখানায় নাইট শিফট চললে সময় পরিবর্তন করুন — সবচেয়ে কম কার্যক্রমের সময়ে ব্যাকআপ চালান।</p>
+
+          <div class="tip-box">
+            <div class="tlabel">স্ক্রিপ্ট কাজ করছে কিনা যাচাই করুন</div>
+            <p>প্রথমবার স্ক্রিপ্টটি ম্যানুয়ালি চালিয়ে যাচাই করুন: (ক) <code>/opt/odoo-backup/db/</code>-এ .dump ফাইল তৈরি হয়েছে; (খ) ফাইলস্টোর ফাইল <code>/opt/odoo-backup/filestore/</code>-এ সিঙ্ক হয়েছে; (গ) <code>/var/log/odoo-backup.log</code>-এ লগ এন্ট্রি দেখা যাচ্ছে। একটি মনিটরিং অ্যালার্ট (cron ব্যর্থ হলে ইমেইল নোটিফিকেশন) সেট করুন যাতে ব্যাকআপ বন্ধ হয়ে গেলে সাথে সাথে জানতে পারেন।</p>
+          </div>
+        </div>
+      </div>
+
+      <h2 id="filestore">ফাইলস্টোর ব্যাকআপ: এটা বাদ দেবেন না</h2>
+      <p>ইউজাররা ডকুমেন্ট আপলোড করলে, অ্যাটাচমেন্টসহ ইমেইল পাঠালে, আর রিপোর্ট সেভ করলে Odoo ফাইলস্টোর ক্রমাগত বড় হতে থাকে। ২–৩ বছর ধরে চালু থাকা একটি বাংলাদেশি কোম্পানির ক্ষেত্রে, ফাইলস্টোরে স্ক্যান করা ভেন্ডর ইনভয়েস, সাইন করা চুক্তি, কোয়ালিটি সার্টিফিকেট, আর এক্সপোর্ট ডকুমেন্টসহ 5–50GB বিজনেস ডকুমেন্ট থাকতে পারে।</p>
+
+      <p>ওপরের স্ক্রিপ্টে rsync পদ্ধতি একটি ইনক্রিমেন্টাল ব্যাকআপ বজায় রাখে — প্রতি রাতে শুধু পরিবর্তিত আর নতুন ফাইল কপি হয়, যা বড় ফাইলস্টোরের জন্যও দ্রুত কাজ করে। বিকল্পভাবে, অফ-সাইটে ব্যাকআপ পাঠাতে চাইলে, ফাইলস্টোর ডিরেক্টরিকে একটি আর্কাইভে কম্প্রেস করতে <code>tar -czf</code> ব্যবহার করুন।</p>
+
+      <div class="code-label">একটি কম্প্রেসড ফাইলস্টোর আর্কাইভ তৈরি করুন (অফ-সাইট আপলোডের জন্য)</div>
+      <div class="code-box"><pre>tar -czf "/opt/odoo-backup/filestore_${DATE}.tar.gz" \
+    -C "/var/lib/odoo/filestore" "${DB_NAME}"
+
+# Upload to cloud storage (example: AWS S3)
+aws s3 cp "/opt/odoo-backup/filestore_${DATE}.tar.gz" \
+    "s3://your-backup-bucket/odoo-filestore/"</pre></div>
+
+      <h2 id="offsite">বাংলাদেশি ব্যবসার জন্য অফ-সাইট স্টোরেজ</h2>
+      <p>আপনার Odoo ইনস্টলেশনের মতো একই সার্ভার বা একই ভবনে রাখা একটি ব্যাকআপ কোনো ডিজাস্টার রিকভারি সমাধান নয় — এটা শুধু একটি কপি যা একই দুর্ঘটনায় হারিয়ে যাবে। অফ-সাইট মানে আপনার প্রাইমারি সার্ভার থেকে শারীরিকভাবে ও লজিক্যালিভাবে আলাদা।</p>
+
+      <div class="backup-block">
+        <div class="backup-header">
+          <span class="backup-badge cloud">সুপারিশকৃত</span>
+          <h3>AWS S3 সিঙ্গাপুর — বাংলাদেশের সবচেয়ে কাছের ক্লাউড</h3>
+        </div>
+        <div class="backup-body">
+          <p>ap-southeast-1 (সিঙ্গাপুর) অঞ্চলের AWS S3 বাংলাদেশের সবচেয়ে কাছের প্রধান ক্লাউড স্টোরেজ — ঢাকা থেকে আনুমানিক 40–60ms লেটেন্সি। নৈকট্য, নির্ভরযোগ্যতা (99.999999999% ডিউরেবিলিটি), আর সহজ প্রাইসিংয়ের কারণে বাংলাদেশি ব্যবসার জন্য এটাই সুপারিশকৃত অফ-সাইট ব্যাকআপ গন্তব্য।</p>
+          <ul>
+            <li><strong>খরচ:</strong> স্ট্যান্ডার্ড স্টোরেজের জন্য $0.023/GB/মাস। 20GB ডেটা + 5GB ফাইলস্টোরসহ একটি সাধারণ ২ বছরের Odoo ইনস্টলেশনের খরচ আনুমানিক $0.58/মাস। প্রতি ডাম্প 1GB-এর দৈনিক ডেটাবেস ডাম্প, ৩০ দিনের রিটেনশন ≈ 30GB ≈ $0.69/মাস। মোট: মাসে ৳200-এর নিচে।</li>
+            <li><strong>পেমেন্ট:</strong> AWS আন্তর্জাতিক Visa/Mastercard গ্রহণ করে। কিছু বাংলাদেশি ব্যাংক আন্তর্জাতিক সাবস্ক্রিপশন পেমেন্ট ব্লক করে — আপনার প্রাইমারি কার্ড রিজেক্ট হলে BRAC Bank, Dutch-Bangla Bank, বা City Bank-এর একটি Visa ডেবিট কার্ড চেষ্টা করুন।</li>
+            <li><strong>সেটআপ:</strong> সিঙ্গাপুর অঞ্চলে একটি S3 বাকেট তৈরি করুন, সেই বাকেটে রাইট-অনলি অ্যাক্সেসসহ একটি IAM ইউজার তৈরি করুন, আপনার সার্ভার এনভায়রনমেন্টে অ্যাক্সেস কী সংরক্ষণ করুন, আপনার ব্যাকআপ স্ক্রিপ্টে <code>aws s3 cp</code> ব্যবহার করুন।</li>
+          </ul>
+          <div class="code-label">Ubuntu-তে AWS CLI কনফিগার করুন (একবারের সেটআপ)</div>
+          <div class="code-box"><pre>sudo apt install awscli
+aws configure
+# Enter: AWS Access Key ID, Secret Access Key
+# Default region: ap-southeast-1 (Singapore)
+# Default output: json</pre></div>
+        </div>
+      </div>
+
+      <div class="backup-block">
+        <div class="backup-header">
+          <span class="backup-badge cloud">বাজেট অপশন</span>
+          <h3>Backblaze B2 — বিশ্বব্যাপী সবচেয়ে সস্তা অবজেক্ট স্টোরেজ</h3>
+        </div>
+        <div class="backup-body">
+          <p>Backblaze B2-এর খরচ $0.006/GB/মাস — AWS S3-এর চেয়ে ৪ গুণ সস্তা। ব্যাকআপ আপলোডের ক্ষেত্রে বাংলাদেশে কোনো লেটেন্সি সমস্যা নেই (লাইভ অ্যাক্সেসের তুলনায় ব্যাকআপের ক্ষেত্রে লেটেন্সি কম গুরুত্বপূর্ণ)। বড় ফাইলস্টোর ব্যাকআপের জন্য চমৎকার পছন্দ। <code>b2</code> CLI বা S3-কম্প্যাটিবল API ব্যবহার করুন (Backblaze B2 S3-কম্প্যাটিবল, তাই একই <code>aws s3 cp</code> কমান্ড ভিন্ন এন্ডপয়েন্ট URL দিয়ে কাজ করে)।</p>
+        </div>
+      </div>
+
+      <div class="backup-block">
+        <div class="backup-header">
+          <span class="backup-badge manual">বাংলাদেশ লোকাল</span>
+          <h3>Fiber@Home / BTCL NaDC — ডেটা সভরেইনটি অপশন</h3>
+        </div>
+        <div class="backup-body">
+          <p>যেসব বাংলাদেশি ব্যবসার ডেটা সভরেইনটি রিকোয়ারমেন্ট আছে (সরকারি চুক্তি, হেলথকেয়ার, ফাইন্যান্সিয়াল সার্ভিস), তাদের জন্য অফ-সাইট ব্যাকআপে বাংলাদেশ-ভিত্তিক ডেটা সেন্টার ব্যবহার করলে ডেটা দেশের মধ্যেই থাকে। Fiber@Home আর BTCL National Data Center (NaDC) ঢাকায় অবজেক্ট স্টোরেজ আর ডেডিকেটেড সার্ভার কোলোকেশন অফার করে। প্রাইসিংয়ের জন্য তাদের এন্টারপ্রাইজ সেলস টিমের সাথে যোগাযোগ করুন — সাধারণত AWS সিঙ্গাপুরের চেয়ে বেশি ব্যয়বহুল, তবে কমপ্লায়েন্সের জন্য প্রয়োজন হতে পারে।</p>
+        </div>
+      </div>
+
+      <h2 id="retention">Backup Retention Policy &amp; NBR Requirements</h2>
+
+      <table class="retention-table">
+        <thead>
+          <tr>
+            <th>Frequency</th>
+            <th>Retention Period</th>
+            <th>Storage Location</th>
+            <th>Purpose</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Hourly (pg_dump)</td>
+            <td>48 hours</td>
+            <td>Local server only</td>
+            <td>Fast recovery from human error (accidental deletion in the last 2 days)</td>
+          </tr>
+          <tr>
+            <td>Daily (pg_dump + filestore)</td>
+            <td>30 days</td>
+            <td>Local + off-site cloud</td>
+            <td>Primary operational backup. Covers most failure scenarios.</td>
+          </tr>
+          <tr>
+            <td>Weekly (full zip backup)</td>
+            <td>6 months</td>
+            <td>Off-site cloud</td>
+            <td>Recovery from slowly-discovered data corruption or deletion</td>
+          </tr>
+          <tr>
+            <td>Monthly (full zip backup)</td>
+            <td>5 years</td>
+            <td>Off-site cloud + cold storage</td>
+            <td>NBR audit compliance — Bangladesh tax law requires 5-year record retention</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="warn-box">
+        <div class="wlabel">NBR Compliance Note</div>
+        <p>Under Section 35 of the Income Tax Ordinance 1984 and related VAT regulations, Bangladesh businesses must maintain financial records for 5 years. Your Odoo database is a financial record. Deleting database backups older than 6 months creates a compliance gap. Monthly backups going back 5 years must be retained. S3 Glacier or Backblaze B2 are cost-effective cold storage options — the monthly backup volumes are small, and costs over 5 years are minimal.</p>
+      </div>
+
+      <h2 id="odoosh-backup">Odoo.sh Backup Management</h2>
+      <p>If your Odoo is hosted on Odoo.sh (Odoo's official cloud hosting), the backup situation is different from self-hosted. Odoo.sh automatically backs up your database daily and retains backups according to your plan tier. You do not need to write pg_dump scripts.</p>
+
+      <p>What to check and configure on Odoo.sh:</p>
+      <ul>
+        <li><strong>Backup retention:</strong> Check your plan's backup retention period in the Odoo.sh dashboard. Some plans only retain 7 days — not sufficient for NBR compliance. Download monthly backups manually and upload to your own cloud storage for long-term retention.</li>
+        <li><strong>Manual download:</strong> Odoo.sh dashboard → your branch → Backups → Download. This gives you a full zip backup (database + filestore) for local retention.</li>
+        <li><strong>Staging database:</strong> Use Odoo.sh's built-in staging environment to periodically restore a backup and verify it. This satisfies your restore drill requirement without needing a separate server.</li>
+      </ul>
+
+      <h2 id="restore">Restore Procedure: Step by Step</h2>
+
+      <ol class="step-list">
+        <li>
+          <div class="sc">
+            <strong>Stop Odoo Service</strong>
+            <span>On the target server, stop Odoo before restoring to prevent write conflicts: <code>sudo systemctl stop odoo</code></span>
+          </div>
+        </li>
+        <li>
+          <div class="sc">
+            <strong>Create New Database (for test restore, not production)</strong>
+            <span>Never restore over your production database until you have confirmed the backup is valid on a test database: <code>sudo -u postgres createdb odoo_restore_test</code></span>
+          </div>
+        </li>
+        <li>
+          <div class="sc">
+            <strong>Restore the pg_dump File</strong>
+            <span>Use pg_restore for custom format dumps: <code>sudo -u postgres pg_restore -d odoo_restore_test /opt/odoo-backup/db/your_backup.dump</code>. For plain SQL dumps: <code>sudo -u postgres psql odoo_restore_test &lt; your_backup.sql</code></span>
+          </div>
+        </li>
+        <li>
+          <div class="sc">
+            <strong>Restore the Filestore</strong>
+            <span>Copy the filestore backup to match the new database name: <code>cp -r /opt/odoo-backup/filestore/ /var/lib/odoo/filestore/odoo_restore_test/</code>. Ensure the directory name matches the database name exactly — Odoo uses the database name to find the correct filestore directory.</span>
+          </div>
+        </li>
+        <li>
+          <div class="sc">
+            <strong>Update odoo.conf for the Test Database</strong>
+            <span>In <code>/etc/odoo/odoo.conf</code> (or your Odoo config file), update <code>db_name</code> to the restore test database name. Start Odoo: <code>sudo systemctl start odoo</code></span>
+          </div>
+        </li>
+        <li>
+          <div class="sc">
+            <strong>Verify the Restore</strong>
+            <span>Log in to the restored database. Check: (a) recent transactions are present; (b) file attachments open correctly (click a document attachment on a sale order); (c) the accounting reports show correct figures. If all three pass, your backup is valid.</span>
+          </div>
+        </li>
+      </ol>
+
+      <p><strong>Restoring from Odoo Database Manager zip file (simpler method):</strong><br>
+      Navigate to <code>/web/database/manager</code> → Restore → upload the zip file → enter a new database name → click Restore. Odoo handles both database and filestore restoration automatically from the zip.</p>
+
+      <h2 id="restore-drill">The Monthly Restore Drill: Why It Matters</h2>
+      <p>A backup you have never tested is not a backup — it is an assumption. Backup files can be corrupted. The restore process can fail due to version mismatches. The filestore can be missing from the archive. You only discover these failures when you need the backup most.</p>
+
+      <p><strong>The monthly drill procedure:</strong></p>
+      <ol>
+        <li>On the first working day of each month, take last week's backup file.</li>
+        <li>Restore it to a test database on a separate machine or a staging environment.</li>
+        <li>Log in, verify 3 random recent records, check one file attachment.</li>
+        <li>Record the result (success/failure, time taken, issues found) in a log document.</li>
+        <li>Drop the test database and delete the test filestore directory.</li>
+      </ol>
+
+      <p>The entire drill takes 20–30 minutes. It verifies that your backup is valid, that your team knows the restore procedure, and that the restore process works within your Recovery Time Objective (the maximum downtime your business can tolerate).</p>
+
+      <div class="tip-box">
+        <div class="tlabel">Recovery Time Objective for Bangladesh SMEs</div>
+        <p>For most Bangladesh manufacturing and trading companies, a Recovery Time Objective (RTO) of 4–8 hours is acceptable for most failure scenarios. This means: if your server fails at 9 AM, you need Odoo restored and operational by 1 PM (or by the next morning at worst). Your restore drill should demonstrate this is achievable. If it takes 6 hours to restore, you need either faster infrastructure or a hot standby server.</p>
+      </div>
+
+      <h2 id="dr-plan">Disaster Recovery Planning for Bangladesh Businesses</h2>
+      <p>A backup is a component of disaster recovery, not a complete plan. A disaster recovery plan answers the question: "If our Odoo server is completely destroyed at 10 AM on a Tuesday, how do we restore operations — and by when?"</p>
+
+      <p>Write a one-page DR document that answers:</p>
+      <ul>
+        <li><strong>Who is responsible?</strong> Name a specific person, not "IT." Include a backup contact.</li>
+        <li><strong>Where is the backup?</strong> Exact location: AWS S3 bucket name, folder structure, and how to access it (credentials stored separately from the server).</li>
+        <li><strong>What hardware do we restore to?</strong> Is there a spare server? Can we provision a cloud VM within 30 minutes? Which cloud provider — same as backup storage or different?</li>
+        <li><strong>How long does restoration take?</strong> Based on your monthly drill results.</li>
+        <li><strong>Who gets notified?</strong> MD, operations head, finance head — in what order, via what channel (phone, not email which may be down).</li>
+        <li><strong>What is the manual fallback?</strong> What paper-based or Excel-based process does each department use while Odoo is down?</li>
+      </ul>
+
+      <p>For the infrastructure decision between on-premise and cloud that underpins all of this, the <a href="0025-odoo-on-premise-vs-cloud-bangladesh" style="color:var(--accent)">On-Premise vs Cloud Odoo guide</a> covers the Bangladesh-specific trade-offs. And for the access rights configuration that determines who can trigger a database restore, the <a href="0042-odoo-user-access-rights-configuration" style="color:var(--accent)">Odoo User Access Rights guide</a> covers how to restrict database manager access to administrators only.</p>
+
+      <div class="callout">
+        <span class="tag">Backup &amp; DR Audit</span>
+        <p>If your Bangladesh business does not have a tested, automated backup strategy for Odoo — or if you have never actually restored a backup — I can audit your current setup and implement a proper backup and DR plan. <a href="../#contact" style="color:var(--accent)">Contact me for a backup audit →</a></p>
+      </div>
+
+      <h2 id="faq">Frequently asked questions</h2>
+
+      <h3>How do I back up my Odoo database in Bangladesh?</h3>
+      <p>Two methods: (1) Simple — use Odoo's database manager at <code>/web/database/manager</code>, click Backup, choose zip format (includes database + filestore), download the file. Manual, no automation. (2) Automated — use <code>pg_dump</code> on the server combined with rsync for the filestore directory, scheduled via cron. For production Odoo, automated pg_dump is required — manual backups will eventually be missed.</p>
+
+      <h3>How long should Bangladesh businesses keep Odoo backups?</h3>
+      <p>NBR requires financial records for 5 years under Bangladesh tax law. Keep: daily backups for 30 days, weekly backups for 6 months, monthly backups for 5 years. Store monthly backups off-site. Daily and weekly backups can be on your primary server plus one off-site location. Never rely on a single location for any backup tier.</p>
+
+      <h3>What are the best off-site backup options for Bangladesh businesses?</h3>
+      <p>AWS S3 Singapore (ap-southeast-1) is the closest and most reliable cloud option — approximately BDT 150–300/month for typical Odoo backup volumes. Backblaze B2 is 4× cheaper if cost is the priority. For data sovereignty (government or regulated industries), Fiber@Home or BTCL NaDC keep data within Bangladesh. All three accept standard payment methods available to Bangladesh businesses.</p>
+
+      <h3>How do I restore an Odoo backup?</h3>
+      <p>For a zip backup from database manager: go to <code>/web/database/manager</code> → Restore → upload the zip file → choose a new database name → click Restore. For pg_dump: create a new database, run <code>pg_restore -d new_db backup.dump</code>, copy the filestore backup to <code>/var/lib/odoo/filestore/new_db/</code>, restart Odoo. Always restore to a test database first — verify data integrity before restoring over production.</p>
+
+    </div>

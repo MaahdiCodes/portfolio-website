@@ -1,0 +1,88 @@
+---
+layout: layouts/base.njk
+---
+<section class="post-head">
+  <div class="shell">
+    <span class="eyebrow">{% if lang == 'bn' %}টেকনিক্যাল ল্যাব{% else %}Technical Lab{% endif %} · {{ eyebrowNum }}</span>
+    <h1>{{ h1 | safe }}</h1>
+    <p class="lede">{{ lede }}</p>
+    <div class="post-meta">
+      {%- for chip in chips %}
+      <span class="chip{% if loop.first %} accent{% endif %}">{{ chip }}</span>
+      {%- endfor %}
+    </div>
+    <div class="byline">
+      {%- for item in bylineItems %}
+      <span>{{ item.label | safe }}<b>{{ item.value | safe }}</b></span>
+      {%- endfor %}
+    </div>
+  </div>
+</section>
+
+<article class="post">
+  {{ content | safe }}
+</article>
+
+<footer>
+  <div class="shell">
+    <div class="post-foot">
+      <span class="eyebrow">{% if lang == 'bn' %}আরও পড়ুন{% else %}Continue exploring{% endif %}</span>
+      <div class="next">
+        {%- if nextArticle %}
+        <a class="next-card" href="{{ nextArticle.href }}">
+          <span class="dir">{{ nextArticle.dir }}</span>
+          <h4>{{ nextArticle.title }}</h4>
+          <p>{{ nextArticle.desc }}</p>
+          <span class="arrow">→</span>
+        </a>
+        {%- else %}
+        <a class="next-card disabled" href="#">
+          {%- if lang == 'bn' %}
+          <span class="dir">নতুন · —</span>
+          <h4>সর্বশেষ আর্টিকেল</h4>
+          <p>এটি ল্যাবের সবচেয়ে সাম্প্রতিক এন্ট্রি।</p>
+          {%- else %}
+          <span class="dir">Newer · —</span>
+          <h4>Latest article</h4>
+          <p>This is the most recent entry in the lab.</p>
+          {%- endif %}
+          <span class="arrow">→</span>
+        </a>
+        {%- endif %}
+        {%- if prevArticle %}
+        <a class="next-card" href="{{ prevArticle.href }}">
+          <span class="dir">{{ prevArticle.dir }}</span>
+          <h4>{{ prevArticle.title }}</h4>
+          <p>{{ prevArticle.desc }}</p>
+          <span class="arrow">→</span>
+        </a>
+        {%- else %}
+        <a class="next-card disabled" href="#">
+          {%- if lang == 'bn' %}
+          <span class="dir">পুরনো · —</span>
+          <h4>প্রথম আর্টিকেল</h4>
+          <p>ল্যাব এখান থেকেই শুরু।</p>
+          {%- else %}
+          <span class="dir">Older · —</span>
+          <h4>First article</h4>
+          <p>This is where the lab begins.</p>
+          {%- endif %}
+          <span class="arrow">→</span>
+        </a>
+        {%- endif %}
+        {%- for card in extraCards %}
+        <a class="next-card" href="{{ card.href }}">
+          <span class="dir">{{ card.dir }}</span>
+          <h4>{{ card.title }}</h4>
+          <p>{{ card.desc }}</p>
+          <span class="arrow">→</span>
+        </a>
+        {%- endfor %}
+      </div>
+    </div>
+    <div class="foot">
+      <span>© {% if lang == 'bn' %}২০২৬{% else %}2026{% endif %} {{ site.author }} · Lab / {{ eyebrowNum }}</span>
+      <span><a href="{{ backHref or '/#lab' }}">{% if lang == 'bn' %}↑ ল্যাব ইনডেক্সে ফিরুন{% else %}↑ Back to lab index{% endif %}</a></span>
+    </div>
+  </div>
+</footer>

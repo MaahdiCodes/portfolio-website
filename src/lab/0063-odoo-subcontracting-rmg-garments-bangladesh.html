@@ -1,0 +1,371 @@
+---
+permalink: "lab/0063-odoo-subcontracting-rmg-garments-bangladesh.html"
+title: "Odoo Subcontracting for RMG Job-Work Bangladesh | Mehedi Hasan"
+description: "Configure Odoo Subcontracting for Bangladesh RMG job-work: raw material issue, subcontractor BOMs, landed cost of outsourced processes, and tracking WIP at third-party units."
+canonical: "https://mhasan.me/lab/0063-odoo-subcontracting-rmg-garments-bangladesh"
+ogImage: "https://mhasan.me/assets/og/lab/0063-odoo-subcontracting-rmg-garments-bangladesh.png"
+ogSiteName: "Mehedi Hasan | Odoo ERP Consultant"
+datePublished: "2026-09-18T12:00:00+06:00"
+dateModified: "2026-09-18T12:00:00+06:00"
+articleSection: "Odoo ERP Bangladesh"
+eyebrowNum: "0063"
+h1: "Odoo Subcontracting for <span class=\"serif\">RMG job-work in Bangladesh.</span>"
+lede: "Almost every Bangladesh garment factory sends some part of production outside its own walls: embroidery to a specialist unit in Narayanganj, washing to a plant in Savar, printing to a job-work house in Gazipur. Odoo has a purpose-built Subcontracting flow for exactly this, and most factories that run Odoo never turn it on properly. This guide covers the configuration, the resupply logic, the costing, and the reconciliation discipline that makes it work."
+chips: ["Guide", "Manufacturing", "RMG & Garments"]
+bylineItems:
+  - label: "By"
+    value: "<a href=\"https://www.linkedin.com/in/mehedi-hasan-consultant/\" style=\"color:var(--accent)\" rel=\"author\">Mehedi Hasan</a>"
+  - label: "Published"
+    value: "September 2026"
+  - label: "Read time"
+    value: "17 minutes"
+  - label: "Form"
+    value: "Guide"
+  - label: "Scope"
+    value: "Odoo Manufacturing / Subcontracting"
+nextArticle:
+  href: "0062-erp-market-bangladesh-2026"
+  dir: "Older · 0062"
+  title: "State of ERP in Bangladesh 2026"
+  desc: "Cloud adoption, vendor landscape, and 5 key trends through 2028."
+prevArticle:
+  href: "../#lab"
+  dir: "All articles"
+  title: "Back to Lab Index"
+  desc: "Browse all guides on Odoo ERP, manufacturing operations, and business analysis in Bangladesh."
+jsonLd: |
+  [
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "Odoo Subcontracting for RMG Job-Work Bangladesh",
+      "description": "Configure Odoo Subcontracting for Bangladesh RMG job-work: raw material issue, subcontractor BOMs, landed cost of outsourced processes, and tracking WIP at third-party units.",
+      "datePublished": "2026-09-18T12:00:00+06:00",
+      "dateModified": "2026-09-18T12:00:00+06:00",
+      "author": {
+        "@type": "Person",
+        "name": "Mehedi Hasan",
+        "url": "https://mhasan.me",
+        "jobTitle": "Odoo ERP Consultant & Business Analyst",
+        "sameAs": "https://www.linkedin.com/in/mehedi-hasan-consultant/"
+      },
+      "publisher": { "@type": "Person", "name": "Mehedi Hasan", "url": "https://mhasan.me" },
+      "mainEntityOfPage": { "@type": "WebPage", "@id": "https://mhasan.me/lab/0063-odoo-subcontracting-rmg-garments-bangladesh" }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://mhasan.me" },
+        { "@type": "ListItem", "position": 2, "name": "Lab", "item": "https://mhasan.me/lab/" },
+        { "@type": "ListItem", "position": 3, "name": "Odoo Subcontracting for RMG Job-Work Bangladesh", "item": "https://mhasan.me/lab/0063-odoo-subcontracting-rmg-garments-bangladesh" }
+      ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How do you track raw material sent to a subcontractor in Odoo?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Odoo tracks this through the resupply subcontractor flow. When a subcontracting route is enabled on a product, Odoo automatically creates a delivery order that moves raw material from your warehouse to a virtual internal location that represents the subcontractor. This location still belongs to your company in Odoo's stock valuation, so the material remains on your books as work-in-progress inventory at a third-party location rather than being written off as consumed. You can view stock on hand at the subcontractor location at any time from Inventory > Reporting, filtered by that location, which gives you a live answer to how much fabric or WIP sits outside your own four walls."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is a subcontracting BOM in Odoo?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A subcontracting BOM is a Bill of Materials with its type set to Subcontracting instead of Manufacture. It lists the components that must be supplied to the subcontractor to produce the finished or semi-finished good, but instead of generating a manufacturing order in your own facility, Odoo generates a purchase order for the subcontracted service and a linked delivery of the listed components to the subcontractor's location. When the vendor bill or the receipt is validated, Odoo automatically consumes the components from the subcontractor location and receives the output into your warehouse, keeping the accounting and inventory in sync without manual journal entries."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do you cost a subcontracted embroidery or washing operation in Odoo?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The subcontractor's service fee is entered as the price on the purchase order line for the subcontracted product, exactly like a normal vendor bill. Odoo then rolls this fee into the landed cost of the finished good alongside the cost of the components you supplied, so the receiving product's valuation reflects raw material cost plus the job-work charge. For operations where the subcontractor also adds a consumable (thread, dye, chemical) that you do not supply, that cost is simply built into their quoted per-piece rate rather than tracked as a separate component in Odoo."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do you handle quality control on goods returned from a subcontractor?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Odoo's Quality module lets you attach a quality check point to the receipt operation type used for subcontracted goods, so every incoming lot from a job-work vendor is flagged for inspection before it is added to sellable or next-stage stock. Common configurations for Bangladesh RMG include a Worksheet-based check for shade and print consistency, a Measure check for size tolerance, and a simple Pass/Fail check tied to an AQL sampling plan. Failed lots can be routed to a quarantine location instead of being received directly into stock, which prevents defective subcontracted output from being packed and shipped to the buyer."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do you reconcile fabric wastage disputes with subcontractors in Odoo?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Because the subcontracting route creates a full stock ledger at the subcontractor's virtual location, you can run an Inventory Valuation report or a Moves History report filtered to that location for any date range and see exactly how much material was issued, how much finished output was received back, and what quantity remains unreconciled. Comparing this to the subcontractor's own consumption report against the agreed BOM ratio (including an approved wastage allowance, typically 2 to 5 percent for cutting and embroidery job-work in Bangladesh) turns a verbal dispute into a documented variance that both sides can review line by line."
+          }
+        }
+      ]
+    }
+  ]
+extraStyles: |
+  .stat-row {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 14px;
+        margin: 26px 0;
+      }
+      @media(max-width:680px) { .stat-row { grid-template-columns: 1fr 1fr; } }
+      @media(max-width:440px) { .stat-row { grid-template-columns: 1fr; } }
+      .stat-card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        padding: 18px 16px;
+        text-align: center;
+      }
+      .stat-card .sc-val { font-size: 30px; font-weight: 700; color: var(--accent); letter-spacing: -0.03em; line-height: 1; margin-bottom: 6px; }
+      .stat-card .sc-label { font-family: var(--mono); font-size: 10px; color: var(--text-3); letter-spacing: 0.07em; text-transform: uppercase; }
+      .stat-card .sc-note { font-size: 11.5px; color: var(--text-2); margin-top: 5px; line-height: 1.4; }
+      .flow-steps { counter-reset: flow; margin: 24px 0; border: 1px solid var(--border); border-radius: 10px; overflow: hidden; }
+      .flow-steps .fs-item { display: flex; gap: 16px; padding: 16px 18px; border-bottom: 1px solid var(--border); background: var(--surface); }
+      .flow-steps .fs-item:last-child { border-bottom: none; }
+      .flow-steps .fs-num { flex: none; counter-increment: flow; font-family: var(--mono); font-size: 12px; font-weight: 600; color: var(--accent); width: 26px; }
+      .flow-steps .fs-num::before { content: counter(flow, decimal-leading-zero); }
+      .flow-steps .fs-body h4 { margin: 0 0 4px; font-size: 14.5px; color: var(--text); font-weight: 600; }
+      .flow-steps .fs-body p { margin: 0; font-size: 13.5px; color: var(--text-2); line-height: 1.55; }
+      .warn-box { background: rgba(230,160,60,0.08); border: 1px solid rgba(230,160,60,0.28); border-radius: 8px; padding: 16px 18px; margin: 22px 0; }
+      .warn-box .wlabel { font-family: var(--mono); font-size: 10px; color: oklch(0.75 0.15 70); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 6px; }
+      .warn-box p { margin: 0; font-size: 13.5px; color: var(--text-2); line-height: 1.6; }
+      .path-tag { font-family: var(--mono); font-size: 12.5px; background: var(--elev); border: 1px solid var(--border); border-radius: 5px; padding: 2px 8px; color: var(--text); }
+---
+<aside class="toc">
+      <div class="toc-k">In this guide</div>
+      <ol>
+        <li><a href="#why-subcontract">Why Job-Work Is Structural in Bangladesh RMG</a></li>
+        <li><a href="#odoo-model">How Odoo Models Subcontracting</a></li>
+        <li><a href="#setup">Turning On the Subcontracting Route</a></li>
+        <li><a href="#bom">Building a Subcontracting BOM</a></li>
+        <li><a href="#resupply">Resupply Flows: On Order vs Fixed Location</a></li>
+        <li><a href="#receipt">Receiving Finished Goods Back</a></li>
+        <li><a href="#costing">Costing the Subcontracted Operation</a></li>
+        <li><a href="#qc">Quality Control on Returned Goods</a></li>
+        <li><a href="#wip">Tracking WIP at the Subcontractor</a></li>
+        <li><a href="#failure">Where Subcontracting Setups Break</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ol>
+    </aside>
+
+    <div class="body">
+
+      <h2 id="why-subcontract">Why Job-Work Is Structural in Bangladesh RMG</h2>
+      <p>No mid-size Bangladesh garment factory does everything in-house. A woven shirt exporter with 400 machines for stitching almost never owns an embroidery unit, a stone-wash plant, or a heat-transfer printing line, because the capital cost and utilization rate for those specialist processes do not justify in-house investment at typical order volumes. Instead, the factory cuts fabric, issues it to a subcontractor for embroidery or washing, and receives finished or semi-finished pieces back for final stitching, finishing, and packing.</p>
+      <p>This job-work model (locally called "subcontract" or simply "outside process") is not a workaround, it is how the industry is structured, and it shows up at every tier: Tier 1 exporters subcontract specialist finishes to dedicated units in Narayanganj and Gazipur, Tier 2 factories subcontract entire cut-and-sew packages to smaller units during peak season, and even large composite mills subcontract overflow capacity to sister concerns when order volume exceeds their own line capacity. The article on <a href="0033-odoo-rmg-garments-bangladesh" style="color:var(--accent)">Odoo for RMG &amp; Garments Bangladesh</a> covers the wider production and compliance picture this sits inside.</p>
+      <p>The operational risk is that job-work is invisible to most accounting systems. Fabric leaves the factory gate on a challan, a paper delivery note that many factories still track in a physical register. Nobody in the ERP knows how much fabric is sitting at the subcontractor's unit, whether the subcontractor's return matches what they were supposed to produce, or what the true landed cost of the finished piece is once the job-work charge is added. Odoo's Subcontracting module exists to close exactly this gap, and it is one of the most underused features in Bangladesh Odoo deployments because most implementation partners configure a basic Manufacturing module and stop there.</p>
+
+      <div class="stat-row">
+        <div class="stat-card">
+          <div class="sc-val">60–80%</div>
+          <div class="sc-label">Factories Using Job-Work</div>
+          <div class="sc-note">Estimated share of Bangladesh RMG factories that subcontract at least one process</div>
+        </div>
+        <div class="stat-card">
+          <div class="sc-val">2–5%</div>
+          <div class="sc-label">Typical Wastage Allowance</div>
+          <div class="sc-note">Agreed fabric loss tolerance for cutting, embroidery, and wash job-work</div>
+        </div>
+        <div class="stat-card">
+          <div class="sc-val">7–15 Days</div>
+          <div class="sc-label">Typical Turnaround</div>
+          <div class="sc-note">Time from material issue to finished goods return for wash/embroidery job-work</div>
+        </div>
+      </div>
+
+      <h2 id="odoo-model">How Odoo Models Subcontracting</h2>
+      <p>Odoo treats a subcontractor as a vendor and, simultaneously, as an internal stock location that happens to sit outside your physical premises. This dual identity is the key concept to understand before configuring anything. When you enable subcontracting, Odoo automatically creates a location under <span class="path-tag">Inventory &gt; Configuration &gt; Locations</span> named after the vendor, typed as an internal location owned by your company. Stock that sits there is still yours, on your balance sheet, valued at cost, even though it is physically at someone else's factory.</p>
+      <p>This is fundamentally different from a standard purchase, where you buy a finished good from a vendor and the vendor's own raw material and process are none of your concern. In subcontracting, you own the components throughout the process and you are only paying the vendor for their labor and machine time (and sometimes a small consumable). Odoo's data model reflects that ownership at every step, which is what lets you answer "how much fabric do we have sitting at the embroidery unit right now" without a phone call.</p>
+
+      <div class="callout">
+        <span class="tag">Prerequisite</span>
+        <p>Subcontracting is available on both Odoo Community and Enterprise Manufacturing apps, but the resupply automation and the subcontracting-specific reporting views are meaningfully better on Enterprise. If you are running Community, budget extra time to build manual stock move templates for the resupply step, since the one-click "resupply subcontractor" button is an Enterprise convenience feature layered on top of the same underlying location logic.</p>
+      </div>
+
+      <h2 id="setup">Turning On the Subcontracting Route</h2>
+      <p>The setup sequence that works reliably in Bangladesh factory deployments:</p>
+
+      <div class="flow-steps">
+        <div class="fs-item">
+          <div class="fs-num"></div>
+          <div class="fs-body">
+            <h4>Enable the Subcontracting setting</h4>
+            <p>Go to <span class="path-tag">Manufacturing &gt; Configuration &gt; Settings</span> and activate Subcontracting. This exposes the Subcontracting BOM type and adds a Subcontracting tab to vendor records.</p>
+          </div>
+        </div>
+        <div class="fs-item">
+          <div class="fs-num"></div>
+          <div class="fs-body">
+            <h4>Mark the vendor as a subcontractor</h4>
+            <p>On the embroidery or washing unit's vendor record, this is largely automatic once a subcontracting BOM references them, but it is worth confirming their address is set correctly since Odoo uses it to auto-name the generated location.</p>
+          </div>
+        </div>
+        <div class="fs-item">
+          <div class="fs-num"></div>
+          <div class="fs-body">
+            <h4>Confirm the subcontractor location exists</h4>
+            <p>Check <span class="path-tag">Inventory &gt; Configuration &gt; Locations</span> for a new internal location, typically named "Partner: [Vendor Name]". This is where issued components and returned finished goods will be tracked.</p>
+          </div>
+        </div>
+        <div class="fs-item">
+          <div class="fs-num"></div>
+          <div class="fs-body">
+            <h4>Set the resupply route on the component or the operation</h4>
+            <p>Decide whether the raw material issue should trigger automatically per purchase order (resupply on order) or run on a fixed replenishment schedule (resupply at fixed location). Most Bangladesh job-work relationships use resupply on order, covered in the next section.</p>
+          </div>
+        </div>
+      </div>
+
+      <h2 id="bom">Building a Subcontracting BOM</h2>
+      <p>A subcontracting BOM looks almost identical to a manufacturing BOM in the Odoo interface, with one critical difference: under <span class="path-tag">Manufacturing &gt; Products &gt; Bills of Materials</span>, the BoM Type field is set to Subcontracting instead of Manufacture, and a Subcontractor field appears where you select the job-work vendor. The Components tab lists exactly what you will send them: for an embroidery job, this is the cut fabric panel and the embroidery thread if you supply it; for a wash job, it is the assembled but unwashed garment plus any wash chemicals you provide.</p>
+      <p>A single style will typically need one subcontracting BOM per subcontracted operation, not one giant BOM covering the whole garment. A factory that sends fabric out for both embroidery and stone-wash on the same style needs two subcontracting BOMs chained through intermediate semi-finished products: raw-cut-panel to embroidered-panel (subcontracted to the embroidery unit), and embroidered-panel to washed-and-finished-panel (subcontracted to the wash plant), before the final in-house stitching BOM assembles the finished garment. This chaining mirrors the actual physical route sheet and makes the routing traceable end to end, which connects directly to the multi-step routing logic covered in <a href="0038-odoo-manufacturing-routing-bangladesh" style="color:var(--accent)">Odoo Manufacturing Routing Bangladesh</a>.</p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>BOM Stage</th>
+            <th>Type</th>
+            <th>Components Issued</th>
+            <th>Output Received</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Cutting</td>
+            <td>Manufacture (in-house)</td>
+            <td>Fabric roll, trims</td>
+            <td>Cut panel set</td>
+          </tr>
+          <tr>
+            <td>Embroidery</td>
+            <td>Subcontracting</td>
+            <td>Cut panel, embroidery thread</td>
+            <td>Embroidered panel</td>
+          </tr>
+          <tr>
+            <td>Wash</td>
+            <td>Subcontracting</td>
+            <td>Assembled garment, wash chemical</td>
+            <td>Washed &amp; finished garment</td>
+          </tr>
+          <tr>
+            <td>Stitching &amp; Packing</td>
+            <td>Manufacture (in-house)</td>
+            <td>Embroidered/washed panels, poly bag, cartons</td>
+            <td>Finished, packed carton</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2 id="resupply">Resupply Flows: On Order vs Fixed Location</h2>
+      <p>Odoo offers two resupply strategies for getting components to the subcontractor, and choosing the right one for each relationship matters more than most implementers realize.</p>
+      <p><strong>Resupply on order (dropship-style):</strong> when you confirm the purchase order for the subcontracted operation, Odoo automatically generates a delivery order moving the required components from your warehouse to the subcontractor's location, tied one-to-one with that purchase order. This is the right model for job-work vendors who process discrete lots or batches per PO, which describes the large majority of Bangladesh embroidery, printing, and wash subcontractors: a lot of 3,000 pieces goes out on Monday, comes back finished the following week, tied to a single reference.</p>
+      <p><strong>Resupply at fixed location (continuous replenishment):</strong> components are pushed to the subcontractor location ahead of time based on a reordering rule, and the subcontractor draws from a running buffer stock rather than waiting for a matched delivery per order. This fits subcontractors who run a continuous line for you, for example a dedicated wash plant capacity block reserved exclusively for one factory, where holding a buffer of unwashed garments at their site keeps their line running without waiting on discrete dispatches.</p>
+
+      <div class="warn-box">
+        <div class="wlabel">Configuration Pitfall</div>
+        <p>The single most common Bangladesh Odoo subcontracting misconfiguration is leaving the resupply route on Buy instead of Resupply Subcontractor on the component's route settings at <span class="path-tag">Inventory &gt; Configuration &gt; Routes</span>. When this is wrong, Odoo will ask you to manually create the material issue, or worse, the purchase order for the subcontracted service confirms without ever prompting a delivery, and the factory falls back into the old paper-challan tracking without anyone deciding to.</p>
+      </div>
+
+      <h2 id="receipt">Receiving Finished Goods Back</h2>
+      <p>When the subcontractor's output is ready, receiving it in Odoo works exactly like receiving any purchased product: you validate the incoming shipment against the purchase order for the subcontracted service. Behind the scenes, Odoo performs two moves simultaneously: it consumes the components that were sitting at the subcontractor's location (per the subcontracting BOM ratio, times the quantity received), and it receives the finished or semi-finished output into your specified warehouse location. If the quantity received differs from what was issued, adjusted for the agreed wastage allowance, Odoo will show a negative or unusually high stock balance at the subcontractor location, which is your signal to investigate before the vendor bill is approved.</p>
+      <p>For partial deliveries, which are the norm rather than the exception in Bangladesh job-work (a subcontractor might return 1,800 of a 3,000-piece lot on the first truck), Odoo supports partial receipt against the same purchase order, consuming components proportionally and leaving the balance of both the PO and the subcontractor's stock location open until the remainder arrives.</p>
+
+      <h2 id="costing">Costing the Subcontracted Operation</h2>
+      <p>The subcontractor's service fee sits on the purchase order line exactly like any vendor bill: a BDT-per-piece rate for embroidery, a BDT-per-kg or BDT-per-piece rate for washing. Odoo rolls this fee into the landed cost of the received product alongside the cost of the components you supplied. In practice, a washed and finished garment's standard cost in Odoo becomes: cost of the assembled garment issued (itself built up from fabric, trims, and in-house labor) plus the wash job-work charge plus any wash chemical you supplied as a component.</p>
+
+      <div class="stat-row">
+        <div class="stat-card">
+          <div class="sc-val">BDT 8–18</div>
+          <div class="sc-label">Embroidery / Piece</div>
+          <div class="sc-note">Typical job-work rate depending on stitch density and design complexity</div>
+        </div>
+        <div class="stat-card">
+          <div class="sc-val">BDT 15–40</div>
+          <div class="sc-label">Wash / Piece</div>
+          <div class="sc-note">Varies by wash type: normal, enzyme, stone, or acid wash</div>
+        </div>
+        <div class="stat-card">
+          <div class="sc-val">BDT 6–20</div>
+          <div class="sc-label">Print / Piece</div>
+          <div class="sc-note">Screen or heat-transfer print, per placement and color count</div>
+        </div>
+      </div>
+
+      <p>This matters directly for costing accuracy on export orders. A factory that treats job-work charges as a lump general expense rather than rolling them into per-style product cost will consistently misprice styles that use heavy embroidery or multi-stage wash processes against styles that do not, because the job-work cost gets averaged across all styles instead of attributed to the ones that actually incur it. Odoo's automatic cost roll-up through the subcontracting BOM chain fixes this without any manual costing spreadsheet.</p>
+
+      <h2 id="qc">Quality Control on Returned Goods</h2>
+      <p>Goods coming back from a subcontractor are exactly the point in the supply chain where defects most often surface. Shade variation between embroidery batches, over-wash or under-wash of denim, misaligned prints, these are the standard failure modes Bangladesh factories deal with, and a buyer audit (H&amp;M, Zara, and similar buyers routinely audit supplier QC records) expects documented inspection at every handoff point, not just at final packing.</p>
+      <p>Odoo's Quality app lets you attach a Quality Check point to the receipt operation type used for subcontracted goods, under <span class="path-tag">Quality &gt; Configuration &gt; Control Points</span>. A practical Bangladesh RMG setup uses a Pass/Fail check on an AQL 2.5 sampling plan for the receiving quantity, plus a Worksheet check that captures shade grading and print alignment with photo attachments for the buyer's audit trail. Lots that fail can be routed to a quarantine location rather than received into sellable stock, which stops a defective subcontracted batch from silently moving into a packed carton destined for shipment.</p>
+
+      <h2 id="wip">Tracking WIP at the Subcontractor</h2>
+      <p>Because the subcontractor's location is a real, valued Odoo internal location, you can pull a live valuation of what is sitting outside your factory at any moment from <span class="path-tag">Inventory &gt; Reporting &gt; Valuation</span>, filtered to that location. This single report answers a question that most Bangladesh factories running job-work on paper registers cannot answer reliably: exactly how much company-owned inventory (measured in taka, not just pieces) is currently at third-party premises, across how many subcontractors, and how long it has been sitting there.</p>
+      <p>This has a direct finance consequence at month-end and year-end closing, since inventory at subcontractor locations still counts as your inventory asset, not the subcontractor's, and auditors reviewing export factories increasingly ask for this breakdown explicitly. It also feeds directly into reorder planning, since the reordering rules covered in <a href="0039-odoo-reordering-rules-mto-bangladesh" style="color:var(--accent)">Odoo Reordering Rules &amp; MTO Bangladesh</a> can account for stock committed to subcontractors when calculating what to cut or procure next, rather than treating that fabric as simply gone.</p>
+
+      <h2 id="failure">Where Subcontracting Setups Break</h2>
+      <p>In practice, the following patterns account for nearly every subcontracting configuration failure I have seen in Bangladesh Odoo deployments:</p>
+
+      <div class="flow-steps">
+        <div class="fs-item">
+          <div class="fs-num"></div>
+          <div class="fs-body">
+            <h4>Subcontractor delays without a linked purchase order status</h4>
+            <p>If nobody updates the purchase order's expected date when a subcontractor runs late, the reordering and production planning modules keep assuming the input will arrive on schedule, and downstream shipment dates silently slip without an early warning.</p>
+          </div>
+        </div>
+        <div class="fs-item">
+          <div class="fs-num"></div>
+          <div class="fs-body">
+            <h4>Material reconciliation disputes with no documented baseline</h4>
+            <p>Without recording the agreed wastage allowance as an explicit BOM ratio, every shortfall becomes a negotiation instead of a calculation. Build the tolerance into the BOM component quantity so Odoo's variance reporting flags genuine overages automatically.</p>
+          </div>
+        </div>
+        <div class="fs-item">
+          <div class="fs-num"></div>
+          <div class="fs-body">
+            <h4>Multiple resupply routes left active on the same product</h4>
+            <p>If a component's route is set to both Buy and Resupply Subcontractor simultaneously, Odoo can generate duplicate or conflicting stock moves. Each subcontracted component should have exactly one resupply route active per subcontracting relationship.</p>
+          </div>
+        </div>
+        <div class="fs-item">
+          <div class="fs-num"></div>
+          <div class="fs-body">
+            <h4>No quarantine location for failed QC lots</h4>
+            <p>Factories that skip this step end up manually holding defective cartons on the floor with a sticky note, which defeats the traceability that buyer audits are specifically checking for.</p>
+          </div>
+        </div>
+      </div>
+
+      <p>For factories still running core manufacturing configuration for the first time, the <a href="0013-odoo-manufacturing-module-bangladesh" style="color:var(--accent)">Odoo Manufacturing Module Bangladesh</a> guide is the right starting point before layering subcontracting on top, since a clean manufacturing order structure makes the subcontracting BOM chain far easier to model correctly.</p>
+
+      <div class="callout">
+        <span class="tag">Subcontracting Setup Consultation</span>
+        <p>If your factory runs embroidery, washing, printing, or cut-and-sew job-work through subcontractors and your ERP still tracks it on paper challans, I can map your actual job-work routes into Odoo's subcontracting BOMs and resupply flows, with proper WIP valuation and QC gates on return. <a href="../#contact" style="color:var(--accent)">Contact me for a strategy session →</a></p>
+      </div>
+
+      <h2 id="faq">Frequently asked questions</h2>
+
+      <h3>How do you track raw material sent to a subcontractor in Odoo?</h3>
+      <p>Odoo tracks this through the resupply subcontractor flow. When a subcontracting route is enabled on a product, Odoo automatically creates a delivery order that moves raw material from your warehouse to a virtual internal location that represents the subcontractor. This location still belongs to your company in Odoo's stock valuation, so the material remains on your books as work-in-progress inventory at a third-party location rather than being written off as consumed. You can view stock on hand at the subcontractor location at any time from Inventory &gt; Reporting, filtered by that location, which gives you a live answer to how much fabric or WIP sits outside your own four walls.</p>
+
+      <h3>What is a subcontracting BOM in Odoo?</h3>
+      <p>A subcontracting BOM is a Bill of Materials with its type set to Subcontracting instead of Manufacture. It lists the components that must be supplied to the subcontractor to produce the finished or semi-finished good, but instead of generating a manufacturing order in your own facility, Odoo generates a purchase order for the subcontracted service and a linked delivery of the listed components to the subcontractor's location. When the vendor bill or the receipt is validated, Odoo automatically consumes the components from the subcontractor location and receives the output into your warehouse, keeping the accounting and inventory in sync without manual journal entries.</p>
+
+      <h3>How do you cost a subcontracted embroidery or washing operation in Odoo?</h3>
+      <p>The subcontractor's service fee is entered as the price on the purchase order line for the subcontracted product, exactly like a normal vendor bill. Odoo then rolls this fee into the landed cost of the finished good alongside the cost of the components you supplied, so the receiving product's valuation reflects raw material cost plus the job-work charge. For operations where the subcontractor also adds a consumable (thread, dye, chemical) that you do not supply, that cost is simply built into their quoted per-piece rate rather than tracked as a separate component in Odoo.</p>
+
+      <h3>How do you handle quality control on goods returned from a subcontractor?</h3>
+      <p>Odoo's Quality module lets you attach a quality check point to the receipt operation type used for subcontracted goods, so every incoming lot from a job-work vendor is flagged for inspection before it is added to sellable or next-stage stock. Common configurations for Bangladesh RMG include a Worksheet-based check for shade and print consistency, a Measure check for size tolerance, and a simple Pass/Fail check tied to an AQL sampling plan. Failed lots can be routed to a quarantine location instead of being received directly into stock, which prevents defective subcontracted output from being packed and shipped to the buyer.</p>
+
+      <h3>How do you reconcile fabric wastage disputes with subcontractors in Odoo?</h3>
+      <p>Because the subcontracting route creates a full stock ledger at the subcontractor's virtual location, you can run an Inventory Valuation report or a Moves History report filtered to that location for any date range and see exactly how much material was issued, how much finished output was received back, and what quantity remains unreconciled. Comparing this to the subcontractor's own consumption report against the agreed BOM ratio (including an approved wastage allowance, typically 2 to 5 percent for cutting and embroidery job-work in Bangladesh) turns a verbal dispute into a documented variance that both sides can review line by line.</p>
+
+    </div>

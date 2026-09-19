@@ -1,0 +1,266 @@
+---
+permalink: "lab/0039-odoo-reordering-rules-mto-bangladesh.html"
+title: "Odoo Reordering Rules vs MTO | Min/Max | Mehedi Hasan"
+description: "Odoo Reordering Rules vs MTO vs Min/Max for Bangladesh supply chains. Learn when to use which automated procurement rule. The full playbook →"
+canonical: "https://mhasan.me/lab/0039-odoo-reordering-rules-mto-bangladesh"
+hreflangBn: "https://mhasan.me/bn/lab/0039-odoo-reordering-rules-mto-bangladesh"
+ogDescription: "Odoo Reordering Rules vs MTO vs Min/Max for Bangladesh supply chains. Learn when to use which automated procurement rule."
+ogImage: "https://mhasan.me/assets/og/lab/0039-odoo-reordering-rules-mto-bangladesh.png"
+ogSiteName: "Mehedi Hasan | Odoo ERP Consultant"
+datePublished: "2026-05-08T12:00:00+06:00"
+dateModified: "2026-05-23T12:00:00+06:00"
+articleSection: "Odoo ERP Bangladesh"
+eyebrowNum: "0039"
+h1: "Odoo Reordering Rules vs MTO — <span class=\"serif\">when to use which.</span>"
+lede: "Automated procurement is the holy grail of ERP, but choosing the wrong strategy leads to bloated warehouses or critical stockouts. Should you use Make to Order, or set Min/Max rules? Here is how to decide for Bangladesh supply chains."
+chips: ["Configuration Guide", "Procurement", "MTO", "Min/Max"]
+bylineItems:
+  - label: "By"
+    value: "<a href=\"https://www.linkedin.com/in/mehedi-hasan-consultant/\" style=\"color:var(--accent)\" rel=\"author\">Mehedi Hasan</a>"
+  - label: "Published"
+    value: "May 2026"
+  - label: "Read time"
+    value: "7 minutes"
+  - label: "Form"
+    value: "Technical Guide"
+  - label: "Scope"
+    value: "Supply Chain · Inventory"
+nextArticle:
+  href: "0038-odoo-manufacturing-routing-bangladesh"
+  dir: "Older · 0038"
+  title: "Odoo Manufacturing Routing"
+  desc: "Work centers, operations, machine capacity, and production time tracking."
+prevArticle:
+  href: "0040-odoo-quality-control-iso-bangladesh"
+  dir: "Newer · 0040"
+  title: "Odoo Quality Control for ISO"
+  desc: "Configure rigorous quality checks, alerts, and tolerances for ISO certified factories."
+jsonLd: |
+  [
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "Odoo Reordering Rules vs MTO vs Min/Max: When to Use Which",
+      "description": "Odoo Reordering Rules vs MTO vs Min/Max for Bangladesh supply chains. Learn when to use which automated procurement rule.",
+      "datePublished": "2026-05-08T12:00:00+06:00",
+      "dateModified": "2026-05-23T12:00:00+06:00",
+      "author": {
+        "@type": "Person",
+        "name": "Mehedi Hasan",
+        "url": "https://mhasan.me",
+        "jobTitle": "Odoo ERP Consultant & Business Analyst",
+        "sameAs": "https://www.linkedin.com/in/mehedi-hasan-consultant/"
+      },
+      "publisher": { "@type": "Person", "name": "Mehedi Hasan", "url": "https://mhasan.me" },
+      "mainEntityOfPage": { "@type": "WebPage", "@id": "https://mhasan.me/lab/0039-odoo-reordering-rules-mto-bangladesh" }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://mhasan.me" },
+        { "@type": "ListItem", "position": 2, "name": "Lab", "item": "https://mhasan.me/lab/" },
+        { "@type": "ListItem", "position": 3, "name": "Odoo Reordering Rules vs MTO Bangladesh", "item": "https://mhasan.me/lab/0039-odoo-reordering-rules-mto-bangladesh" }
+      ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "When should I use Make to Order (MTO) in Odoo?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Use MTO for products that are highly customized, rarely ordered, or have a short shelf life. MTO creates a direct link between the Sales Order and the Procurement Order (Purchase or Manufacturing), meaning you only buy or build exactly what was ordered, bypassing inventory stock levels."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do Reordering Rules (Min/Max) work in Odoo?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Reordering Rules trigger procurement when projected stock falls below a Minimum quantity. Odoo will automatically generate an RFQ or Manufacturing Order to bring the stock back up to the Maximum quantity. This is ideal for fast-moving consumables and standard raw materials."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I use both MTO and Reordering Rules on the same product?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, but it changes how Odoo behaves: a sales order still triggers MTO procurement for the exact quantity while the Reordering Rule independently maintains a buffer. The cleaner pattern for most Bangladesh setups is MTO on the finished good and Reordering Rules on its raw materials. Stacking both on one product without understanding route priorities usually causes duplicate purchase orders."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I set the Minimum quantity for an imported raw material in Odoo?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Calculate average daily consumption, then multiply it by the worst-case replenishment lead time — supplier production, LC processing, ocean freight, and customs clearance combined, often 45–60 days for imported items in Bangladesh. Set the Minimum slightly above that figure and the Maximum to cover the lead time plus a sensible review cycle."
+          }
+        }
+      ]
+    }
+  ]
+extraStyles: |
+  .yarn-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 12.5px;
+        margin: 24px 0;
+      }
+      .yarn-table th {
+        padding: 10px 14px;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        font-family: var(--mono);
+        font-size: 10px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--text-3);
+        text-align: left;
+      }
+      .yarn-table td {
+        padding: 10px 14px;
+        border: 1px solid var(--border);
+        color: var(--text-2);
+        vertical-align: top;
+        line-height: 1.6;
+      }
+      .yarn-table td:first-child { font-weight: 500; color: var(--text); }
+      .pull {
+        font-family: var(--serif);
+        font-style: italic;
+        font-size: clamp(20px, 2.8vw, 30px);
+        line-height: 1.3;
+        color: var(--text);
+        margin: 48px 0;
+        max-width: 26ch;
+        letter-spacing: -0.01em;
+      }
+      .pull::before {
+        content: "";
+        display: block;
+        width: 36px;
+        height: 1px;
+        background: var(--accent);
+        margin-bottom: 18px;
+      }
+      .field-note{margin:28px 0;border:1px solid var(--border);border-radius:12px;overflow:hidden;background:var(--surface)}
+      .fn-hd{display:flex;align-items:center;justify-content:space-between;padding:12px 18px;border-bottom:1px solid var(--border);font-family:var(--mono);font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-3)}
+      .fn-hd .when{color:var(--accent)}
+      .fn-body{padding:18px 22px;font-size:15px;line-height:1.65;color:var(--text-2)}
+      .fn-body strong{color:var(--text);font-weight:500}
+---
+<aside class="toc">
+      <div class="toc-k">In this guide</div>
+      <ol>
+        <li><a href="#mto">Make To Order (MTO)</a></li>
+        <li><a href="#min-max">Reordering Rules (Min/Max)</a></li>
+        <li><a href="#comparison">MTO vs Min/Max Comparison</a></li>
+        <li><a href="#best-practices">Bangladesh Best Practices</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ol>
+    </aside>
+
+    <div class="body">
+      <p>A well-configured Odoo system should do the heavy lifting for your procurement team. Instead of manually checking spreadsheets to figure out what to buy or build, the system should generate draft Requests for Quotation (RFQs) and Manufacturing Orders automatically. But the logic driving this automation must match your physical business model.</p>
+
+      <p>If you're evaluating how these rules impact your financial reporting, see the <a href="0011-odoo-inventory-valuation-cheatsheet" style="color:var(--accent)">Odoo inventory valuation cheatsheet</a>. For setting up your factory parameters correctly, see the <a href="0013-odoo-manufacturing-module-bangladesh" style="color:var(--accent)">Odoo manufacturing module setup guide</a>.</p>
+
+      <p class="pull">MTO ignores your current stock levels. Reordering Rules rely entirely on them. Understanding this difference is the key to preventing supply chain chaos.</p>
+
+      <h2 id="mto">Make To Order (MTO)</h2>
+      <p>Make To Order (also known as Replenish on Order) creates a strict, unbreakable link between a Sales Order (demand) and a Purchase/Manufacturing Order (supply).</p>
+      
+      <p><strong>How it works:</strong> When you confirm a Sales Order for 50 units of Product A, Odoo immediately generates a Purchase Order or Manufacturing Order for exactly 50 units. It does <em>not</em> check if you have 100 units already sitting in your warehouse.</p>
+      
+      <p><strong>When to use MTO:</strong></p>
+      <ul>
+        <li><strong>Highly customized products:</strong> Items that are built exactly to customer specifications (e.g., custom machinery, personalized garments).</li>
+        <li><strong>Perishable or short-shelf-life goods:</strong> Items you don't want to keep in stock to avoid spoilage.</li>
+        <li><strong>High-value, low-volume items:</strong> Expensive components where the holding cost is too high to justify keeping safety stock.</li>
+        <li><strong>Drop-shipping:</strong> Products bought from a supplier and shipped directly to the customer.</li>
+      </ul>
+
+      <h2 id="min-max">Reordering Rules (Min/Max)</h2>
+      <p>Reordering Rules (Min/Max rules) maintain safety stock. They are driven by projected inventory levels rather than individual sales orders.</p>
+
+      <p><strong>How it works:</strong> You set a Minimum quantity (e.g., 20) and a Maximum quantity (e.g., 100). When the "projected stock" (Stock on hand + Incoming - Outgoing) falls below 20, Odoo generates a procurement order to bring the projected stock exactly up to 100. If your projected stock hits 19, Odoo orders 81.</p>
+
+      <p><strong>When to use Min/Max:</strong></p>
+      <ul>
+        <li><strong>Standardized components:</strong> Screws, standard fabrics, packaging materials.</li>
+        <li><strong>Fast-moving consumer goods (FMCG):</strong> Items sold regularly where lead times are predictable.</li>
+        <li><strong>Long lead time items:</strong> Imported raw materials that take 45–60 days to arrive. You must buffer against the lead time with a high Minimum quantity.</li>
+      </ul>
+
+      <h2 id="comparison">MTO vs Min/Max Comparison</h2>
+
+      <table class="yarn-table">
+        <thead>
+          <tr>
+            <th>Feature</th>
+            <th>Make to Order (MTO)</th>
+            <th>Reordering Rules (Min/Max)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Triggers on</td>
+            <td>Sales Order Confirmation</td>
+            <td>Projected Stock falling below Minimum</td>
+          </tr>
+          <tr>
+            <td>Checks existing stock?</td>
+            <td>No. Orders exactly what is sold.</td>
+            <td>Yes. Considers current stock + incoming orders.</td>
+          </tr>
+          <tr>
+            <td>Order Quantity</td>
+            <td>Matches Sales Order quantity</td>
+            <td>Fills up to the Maximum defined quantity</td>
+          </tr>
+          <tr>
+            <td>Best for</td>
+            <td>Custom, expensive, or perishable goods</td>
+            <td>Consumables, standard raw materials</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2 id="best-practices">Bangladesh Best Practices</h2>
+      <p>In Bangladesh, supply chains are often impacted by import delays (LC processing, customs clearance) and volatile local supply. Relying purely on MTO for imported raw materials will almost certainly lead to missed delivery deadlines.</p>
+
+      <ul>
+        <li><strong>Hybrid approach:</strong> Use MTO for the final assembly of finished goods, but use Min/Max Reordering Rules for the underlying raw materials. This ensures your factory can immediately start the MTO assembly because the raw materials are already buffered in the warehouse.</li>
+        <li><strong>Buffer LC lead times:</strong> When setting the Minimum quantity for imported items, calculate your daily consumption and multiply it by the worst-case lead time (including LC and port delays). Set the Minimum slightly above this number.</li>
+      </ul>
+
+      <div class="field-note">
+        <div class="fn-hd"><span>Note · Electrical-goods assembler, Narayanganj</span><span class="when">First export order</span></div>
+        <div class="fn-body">
+          An assembler set its finished product to Make to Order, reasoning that it only built against confirmed orders. The logic was sound — until a buyer confirmed a sizeable order. Odoo dutifully created the Manufacturing Order, but the imported components inside it had a <strong>45–60 day LC-and-customs lead time</strong> and zero buffer stock, because MTO never triggers procurement of the underlying raw materials ahead of demand. The factory could not start building for nearly two months. We kept MTO on the finished good but moved every imported component onto Reordering Rules with a Minimum sized to the worst-case lead time. <strong>MTO is a demand signal for assembly, not a substitute for buffering the materials that assembly depends on.</strong>
+        </div>
+      </div>
+
+      <div class="callout">
+        <span class="tag">Bottom line</span>
+        <p>Automation is only as good as the rules you set. Start by categorizing your inventory. High-volume standard items get Min/Max rules. Custom items get MTO. Never mix them on the same product without fully understanding Odoo's routing priorities. <a href="../#contact" style="color:var(--accent)">Need a procurement audit? Get in touch →</a></p>
+      </div>
+
+      <h2 id="faq">Frequently asked questions</h2>
+
+      <h3>When should I use Make to Order (MTO) in Odoo?</h3>
+      <p>Use MTO for products that are highly customized, rarely ordered, or have a short shelf life. MTO creates a direct link between the Sales Order and the Procurement Order (Purchase or Manufacturing), meaning you only buy or build exactly what was ordered, bypassing inventory stock levels.</p>
+
+      <h3>How do Reordering Rules (Min/Max) work in Odoo?</h3>
+      <p>Reordering Rules trigger procurement when projected stock falls below a Minimum quantity. Odoo will automatically generate an RFQ or Manufacturing Order to bring the stock back up to the Maximum quantity. This is ideal for fast-moving consumables and standard raw materials.</p>
+
+      <h3>Can I use both MTO and Reordering Rules on the same product?</h3>
+      <p>Yes, but be careful — it changes how Odoo behaves. With both routes active, a sales order still triggers MTO procurement for that exact quantity, while the Reordering Rule independently maintains the buffer. For most Bangladesh setups the cleaner pattern is MTO on the finished good and Reordering Rules on its raw materials, rather than stacking both on one product. Stacking them on a single product without understanding Odoo's route priorities usually leads to duplicate purchase orders.</p>
+
+      <h3>How do I set the Minimum quantity for an imported raw material?</h3>
+      <p>Calculate average daily consumption, then multiply it by the worst-case replenishment lead time — supplier production, LC processing, ocean freight, and customs clearance combined. For many imported items in Bangladesh that total is 45–60 days. Set the Minimum slightly above that figure so a reorder is triggered with enough runway, and set the Maximum to cover the lead time plus a sensible review cycle.</p>
+
+    </div>

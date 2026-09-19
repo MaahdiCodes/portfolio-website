@@ -1,0 +1,424 @@
+---
+permalink: "lab/0010-bpmn-templates-manufacturing-discovery.html"
+title: "BPMN Templates for Manufacturing Discovery | Odoo ERP Bangladesh — Mehedi Hasan"
+description: "BPMN 2.0 starter templates for Odoo ERP manufacturing discovery — Procure-to-Pay, Plan-to-Produce, Order-to-Cash. Workshop-ready process maps for Bangladesh factories."
+canonical: "https://mhasan.me/lab/0010-bpmn-templates-manufacturing-discovery"
+hreflangBn: "https://mhasan.me/bn/lab/0010-bpmn-templates-manufacturing-discovery"
+ogTitle: "BPMN Templates for Manufacturing Discovery | Odoo ERP Bangladesh"
+ogImage: "https://mhasan.me/assets/og/lab/0010-bpmn-templates-manufacturing-discovery.png"
+ogSiteName: "Mehedi Hasan | Odoo Consultant"
+datePublished: "2026-03-01T08:00:00+06:00"
+dateModified: "2026-05-22T08:00:00+06:00"
+articleSection: "Odoo ERP Bangladesh"
+eyebrowNum: "0010"
+h1: "BPMN templates for <span class=\"serif\">manufacturing</span> discovery."
+lede: "A starter pack of process maps I use in Week 1 of every engagement — Procure-to-Pay, Plan-to-Produce, Order-to-Cash, and the awkward in-between flows that always show up by Day 3."
+chips: ["Template", ".bpmn · .drawio", "Discovery", "Workshop-ready"]
+bylineItems:
+  - label: "By"
+    value: "<a href=\"https://www.linkedin.com/in/mehedi-hasan-consultant/\" style=\"color:var(--accent)\" rel=\"author\">Mehedi Hasan</a>"
+  - label: "Published"
+    value: "March 2026"
+  - label: "Templates"
+    value: "6 included"
+  - label: "License"
+    value: "CC BY 4.0"
+  - label: "Tooling"
+    value: "Camunda · draw.io"
+nextArticle:
+  href: "0011-odoo-inventory-valuation-cheatsheet"
+  dir: "Newer · 0011"
+  title: "Odoo inventory valuation cheatsheet"
+  desc: "FIFO vs. weighted avg — when each actually makes sense on the factory floor."
+prevArticle:
+  href: "0009-uat-script-200-users-ago"
+  dir: "Older · 0009"
+  title: "The UAT script I wish I had 200 users ago"
+  desc: "On test cases that surface real operational edge cases, not happy paths."
+jsonLd: |
+  [
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "BPMN Templates for Manufacturing Discovery",
+      "description": "BPMN 2.0 starter templates for Odoo ERP manufacturing discovery — Procure-to-Pay, Plan-to-Produce, Order-to-Cash. Workshop-ready process maps for Bangladesh factories.",
+      "author": {
+        "@type": "Person",
+        "name": "Mehedi Hasan",
+        "url": "https://mhasan.me",
+        "sameAs": "https://www.linkedin.com/in/mehedi-hasan-consultant/"
+      },
+      "publisher": {"@type": "Person", "name": "Mehedi Hasan", "url": "https://mhasan.me"},
+      "datePublished": "2026-03-01T08:00:00+06:00",
+      "dateModified": "2026-05-22T08:00:00+06:00",
+      "mainEntityOfPage": {"@type": "WebPage", "@id": "https://mhasan.me/lab/0010-bpmn-templates-manufacturing-discovery"}
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://mhasan.me" },
+        { "@type": "ListItem", "position": 2, "name": "Lab", "item": "https://mhasan.me/#lab" },
+        { "@type": "ListItem", "position": 3, "name": "BPMN Templates for Manufacturing Discovery", "item": "https://mhasan.me/lab/0010-bpmn-templates-manufacturing-discovery" }
+      ]  },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is BPMN and why does it matter for ERP implementation?",
+          "acceptedAnswer": { "@type": "Answer", "text": "BPMN (Business Process Model and Notation) is a standardised diagram language for mapping business workflows. In ERP implementation it creates a shared visual language between business users and technical consultants, replacing ambiguous written requirements with precise process maps showing sequence flows, decision points, and system boundaries." }
+        },
+        {
+          "@type": "Question",
+          "name": "Which manufacturing processes should be mapped in BPMN before Odoo implementation?",
+          "acceptedAnswer": { "@type": "Answer", "text": "At minimum, map: procure-to-pay (purchase requisition to vendor payment), order-to-cash (customer order to receipt), plan-to-produce (MO creation to finished goods), and record-to-report (month-end close). For Bangladesh manufacturers, also map LC management, Mushak invoice flow, and any industry-specific compliance processes." }
+        },
+        {
+          "@type": "Question",
+          "name": "What tools can I use to create BPMN diagrams for Odoo configuration?",
+          "acceptedAnswer": { "@type": "Answer", "text": "draw.io (free, browser-based) is the most practical tool for Bangladesh ERP teams — it supports BPMN 2.0 notation, exports to PDF/PNG, and allows collaborative editing. Lucidchart and Bizagi Modeler are strong alternatives. Avoid PowerPoint flowcharts — they lack standardised notation and create ambiguity during configuration." }
+        }
+      ]
+    }
+  ]
+extraStyles: |
+  .tpl-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin:28px 0}
+    .tpl-card{
+      border:1px solid var(--border);border-radius:12px;
+      background:var(--surface);overflow:hidden;
+      display:flex;flex-direction:column;
+      transition:border-color .2s ease, transform .2s ease;
+    }
+    .tpl-card:hover{border-color:var(--border-2);transform:translateY(-2px)}
+    .tpl-canvas{
+      height:160px;border-bottom:1px solid var(--border);
+      background:
+        linear-gradient(to right, rgba(255,255,255,0.04) 1px, transparent 1px) 0 0/24px 24px,
+        linear-gradient(to bottom, rgba(255,255,255,0.04) 1px, transparent 1px) 0 0/24px 24px,
+        #0B0D10;
+      position:relative;
+    }
+    .tpl-canvas svg{position:absolute;inset:0;width:100%;height:100%;display:block}
+    .tpl-meta{padding:18px 20px;display:flex;flex-direction:column;gap:8px;flex:1}
+    .tpl-meta .row1{display:flex;justify-content:space-between;align-items:center;font-family:var(--mono);font-size:10.5px;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-3)}
+    .tpl-meta .row1 .accent{color:var(--accent)}
+    .tpl-meta h3{margin:4px 0 0;font-size:17px;font-weight:500;letter-spacing:-0.01em}
+    .tpl-meta p{margin:0;font-size:13.5px;color:var(--text-2);line-height:1.55}
+    .tpl-meta .foot{display:flex;justify-content:space-between;align-items:center;margin-top:8px;padding-top:14px;border-top:1px solid var(--border);font-family:var(--mono);font-size:11px;color:var(--text-3);letter-spacing:0.06em}
+    .tpl-meta .foot a{color:var(--accent)}
+    @media(max-width:680px){.tpl-grid{grid-template-columns:1fr}}
+  
+    /* legend */
+    .legend{display:flex;flex-wrap:wrap;gap:18px;margin:24px 0;padding:16px 20px;border:1px solid var(--border);border-radius:10px;background:var(--surface)}
+    .legend .item{display:flex;align-items:center;gap:8px;font-family:var(--mono);font-size:11.5px;color:var(--text-2)}
+    .legend .glyph{width:22px;height:22px;flex:none;display:grid;place-items:center}
+    .legend .g-event{width:14px;height:14px;border-radius:50%;border:1.5px solid var(--accent)}
+    .legend .g-task{width:18px;height:12px;border-radius:3px;border:1.5px solid var(--text-2)}
+    .legend .g-gateway{width:14px;height:14px;border:1.5px solid var(--text-2);transform:rotate(45deg)}
+    .legend .g-end{width:14px;height:14px;border-radius:50%;border:2px solid var(--text);background:transparent}
+  
+    .pack-bar{
+      margin:32px 0;padding:22px;border:1px solid oklch(0.80 0.17 155 / 0.3);border-radius:14px;
+      background:
+        radial-gradient(400px 200px at 100% 0%, oklch(0.80 0.17 155 / 0.08), transparent 70%),
+        linear-gradient(180deg,rgba(21,24,29,0.6),rgba(14,16,19,0.6));
+      display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;
+    }
+    .pack-bar h3{margin:0 0 6px;font-size:18px;font-weight:500;letter-spacing:-0.01em}
+    .pack-bar p{margin:0;font-size:13.5px;color:var(--text-2);line-height:1.5}
+    .pack-bar .meta{font-family:var(--mono);font-size:11px;color:var(--text-3);letter-spacing:0.08em;text-transform:uppercase;margin-top:8px;display:block}
+    .pack-bar .btn-dl{font-family:var(--sans);font-size:13px;font-weight:500;padding:11px 16px;border-radius:8px;background:var(--accent);color:#04140B;border:none;cursor:pointer;display:inline-flex;align-items:center;gap:8px;text-decoration:none}
+    html[data-theme="light"] .pack-bar{background:radial-gradient(400px 200px at 100% 0%,oklch(0.80 0.17 155/0.08),transparent 70%),linear-gradient(180deg,rgba(255,255,255,0.95),rgba(237,240,244,0.95))}
+    html[data-theme="light"] .tpl-canvas{background:linear-gradient(to right,rgba(0,0,0,0.05) 1px,transparent 1px) 0 0/24px 24px,linear-gradient(to bottom,rgba(0,0,0,0.05) 1px,transparent 1px) 0 0/24px 24px,#F0F2F6}
+    html[data-theme="light"] .tpl-canvas svg [fill="#0E1115"]{fill:#D0D5DF}
+    html[data-theme="light"] .tpl-canvas svg circle[stroke="#EDEEF0"]{stroke:#4A5265}
+  
+    .field-note{margin:28px 0;border:1px solid var(--border);border-radius:12px;overflow:hidden;background:var(--surface)}
+    .fn-hd{display:flex;align-items:center;justify-content:space-between;padding:12px 18px;border-bottom:1px solid var(--border);font-family:var(--mono);font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-3)}
+    .fn-hd .when{color:var(--accent)}
+    .fn-body{padding:18px 22px;font-size:15px;line-height:1.65;color:var(--text-2)}
+    .fn-body strong{color:var(--text);font-weight:500}
+---
+<aside class="toc">
+    <div class="toc-k">On this page</div>
+    <ol>
+      <li><a href="#why">Why these six</a></li>
+      <li><a href="#legend">Notation legend</a></li>
+      <li><a href="#templates">The templates</a></li>
+      <li><a href="#download">Get the pack</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ol>
+  </aside>
+
+  <div class="body">
+    <h2 id="why">Why these six</h2>
+    <p>I've sat through enough discovery workshops to notice the pattern: every manufacturer I work with as a <a href="../../services/manufacturing-erp-consultant/" style="color:var(--accent);text-decoration:underline;">manufacturing consultant in Bangladesh</a> has the same six flows. Names change. Departments change. The shape doesn't. So I keep these as <strong>blank scaffolds</strong> and walk into Day 1 with them on a wall.</p>
+    <p>What you get below isn't a finished BPMN diagram — it's a <em>starting prompt</em>. The lanes are right. The decision points are right. The actors are wrong on purpose, so the room argues productively about who owns what. This is the visual half of a structured <a href="0002-discovery-session-business-process-mapping" style="color:var(--accent)">discovery session</a>.</p>
+
+    <div class="field-note">
+      <div class="fn-hd"><span>Note · Discovery workshop · Cycle-parts manufacturer</span><span class="when">Day 1, first hour</span></div>
+      <div class="fn-body">
+        We put the Procure-to-Pay scaffold on the wall with deliberately wrong actor names. Within ten minutes two managers were arguing about who signs off a purchase above BDT 50,000 — and discovered the approval limit in their <strong>written policy hadn't matched actual practice for three years</strong>. No requirements document would have surfaced that. A wrong diagram did, before the first tea break. That gap became a configured approval rule in Odoo instead of a post-go-live dispute.
+      </div>
+    </div>
+
+    <h2 id="legend">Notation legend</h2>
+    <p>Bare-bones BPMN 2.0. If your team has never seen this notation before, three glyphs cover 90% of what we need to draw on Day 1.</p>
+    <div class="legend">
+      <div class="item"><span class="glyph"><span class="g-event"></span></span>Event (start)</div>
+      <div class="item"><span class="glyph"><span class="g-task"></span></span>Task / activity</div>
+      <div class="item"><span class="glyph"><span class="g-gateway"></span></span>Gateway (decision)</div>
+      <div class="item"><span class="glyph"><span class="g-end"></span></span>End event</div>
+    </div>
+
+    <h2 id="templates">The templates</h2>
+
+    <div class="tpl-grid">
+
+      <!-- 1: Procure-to-Pay -->
+      <div class="tpl-card">
+        <div class="tpl-canvas" aria-hidden="true">
+          <svg viewBox="0 0 400 160" preserveAspectRatio="none">
+            <defs>
+              <marker id="a1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                <path d="M0,0 L10,5 L0,10 z" fill="#7E8694"></path>
+              </marker>
+            </defs>
+            <g fill="none" stroke="#2A2F38" stroke-dasharray="3 4">
+              <line x1="0" y1="80" x2="400" y2="80"></line>
+            </g>
+            <circle cx="30" cy="80" r="9" fill="none" stroke="oklch(0.80 0.17 155)" stroke-width="1.6"></circle>
+            <rect x="65" y="68" width="64" height="24" rx="3" fill="#0E1115" stroke="#9BA1AA" stroke-width="1.2"></rect>
+            <g transform="translate(155 80) rotate(45)"><rect x="-11" y="-11" width="22" height="22" fill="#0E1115" stroke="#9BA1AA" stroke-width="1.2"></rect></g>
+            <rect x="190" y="68" width="64" height="24" rx="3" fill="#0E1115" stroke="#9BA1AA" stroke-width="1.2"></rect>
+            <rect x="278" y="68" width="64" height="24" rx="3" fill="#0E1115" stroke="#9BA1AA" stroke-width="1.2"></rect>
+            <circle cx="370" cy="80" r="9" fill="none" stroke="#EDEEF0" stroke-width="2"></circle>
+            <g stroke="#7E8694" stroke-width="1.2" fill="none" marker-end="url(#a1)">
+              <line x1="40" y1="80" x2="62" y2="80"></line>
+              <line x1="130" y1="80" x2="144" y2="80"></line>
+              <line x1="166" y1="80" x2="188" y2="80"></line>
+              <line x1="255" y1="80" x2="276" y2="80"></line>
+              <line x1="343" y1="80" x2="361" y2="80"></line>
+            </g>
+            <g stroke="#7E8694" stroke-width="1.2" fill="none" marker-end="url(#a1)" stroke-dasharray="3 3">
+              <path d="M155 92 L155 120 L222 120 L222 95"></path>
+            </g>
+            <text x="158" y="115" font-family="ui-monospace,Menlo,monospace" font-size="9" fill="#7E8694">reject →</text>
+          </svg>
+        </div>
+        <div class="tpl-meta">
+          <div class="row1"><span class="accent">P2P · 01</span><span>5 lanes</span></div>
+          <h3>Procure-to-Pay</h3>
+          <p>From requisition to vendor payment, with the approval gateway and three-way match where they actually live.</p>
+          <div class="foot"><span>procure-to-pay.bpmn</span><a href="#download">Get template →</a></div>
+        </div>
+      </div>
+
+      <!-- 2: Plan-to-Produce -->
+      <div class="tpl-card">
+        <div class="tpl-canvas" aria-hidden="true">
+          <svg viewBox="0 0 400 160" preserveAspectRatio="none">
+            <defs>
+              <marker id="a2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#7E8694"></path></marker>
+            </defs>
+            <g stroke="#2A2F38" fill="none">
+              <line x1="0" y1="60" x2="400" y2="60" stroke-dasharray="3 4"></line>
+              <line x1="0" y1="110" x2="400" y2="110" stroke-dasharray="3 4"></line>
+            </g>
+            <text x="6" y="40" font-family="ui-monospace,Menlo,monospace" font-size="9" fill="#7E8694" letter-spacing="1">PLN</text>
+            <text x="6" y="90" font-family="ui-monospace,Menlo,monospace" font-size="9" fill="#7E8694" letter-spacing="1">MFG</text>
+            <circle cx="30" cy="35" r="8" fill="none" stroke="oklch(0.80 0.17 155)" stroke-width="1.6"></circle>
+            <rect x="58" y="24" width="60" height="22" rx="3" fill="#0E1115" stroke="#9BA1AA" stroke-width="1.2"></rect>
+            <rect x="138" y="24" width="60" height="22" rx="3" fill="#0E1115" stroke="#9BA1AA" stroke-width="1.2"></rect>
+            <rect x="138" y="76" width="60" height="22" rx="3" fill="#0E1115" stroke="#9BA1AA" stroke-width="1.2"></rect>
+            <rect x="222" y="76" width="60" height="22" rx="3" fill="#0E1115" stroke="#9BA1AA" stroke-width="1.2"></rect>
+            <g transform="translate(310 87) rotate(45)"><rect x="-10" y="-10" width="20" height="20" fill="#0E1115" stroke="#9BA1AA" stroke-width="1.2"></rect></g>
+            <circle cx="370" cy="87" r="8" fill="none" stroke="#EDEEF0" stroke-width="2"></circle>
+            <g stroke="#7E8694" stroke-width="1.2" fill="none" marker-end="url(#a2)">
+              <line x1="38" y1="35" x2="56" y2="35"></line>
+              <line x1="118" y1="35" x2="136" y2="35"></line>
+              <path d="M168 46 L168 76"></path>
+              <line x1="198" y1="87" x2="220" y2="87"></line>
+              <line x1="282" y1="87" x2="299" y2="87"></line>
+              <line x1="320" y1="87" x2="362" y2="87"></line>
+            </g>
+          </svg>
+        </div>
+        <div class="tpl-meta">
+          <div class="row1"><span class="accent">P2M · 02</span><span>3 lanes</span></div>
+          <h3>Plan-to-Produce</h3>
+          <p>MRP run, work order release, shop-floor execution, and the QC gateway that decides what flows back upstream.</p>
+          <div class="foot"><span>plan-to-produce.bpmn</span><a href="#download">Get template →</a></div>
+        </div>
+      </div>
+
+      <!-- 3: Order-to-Cash -->
+      <div class="tpl-card">
+        <div class="tpl-canvas" aria-hidden="true">
+          <svg viewBox="0 0 400 160" preserveAspectRatio="none">
+            <defs><marker id="a3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#7E8694"></path></marker></defs>
+            <g fill="none" stroke="#2A2F38" stroke-dasharray="3 4"><line x1="0" y1="80" x2="400" y2="80"></line></g>
+            <circle cx="26" cy="80" r="9" fill="none" stroke="oklch(0.80 0.17 155)" stroke-width="1.6"></circle>
+            <rect x="56" y="68" width="56" height="24" rx="3" fill="#0E1115" stroke="#9BA1AA" stroke-width="1.2"></rect>
+            <rect x="128" y="68" width="56" height="24" rx="3" fill="#0E1115" stroke="#9BA1AA" stroke-width="1.2"></rect>
+            <rect x="200" y="68" width="56" height="24" rx="3" fill="#0E1115" stroke="#9BA1AA" stroke-width="1.2"></rect>
+            <rect x="272" y="68" width="56" height="24" rx="3" fill="#0E1115" stroke="#9BA1AA" stroke-width="1.2"></rect>
+            <circle cx="368" cy="80" r="9" fill="none" stroke="#EDEEF0" stroke-width="2"></circle>
+            <g stroke="#7E8694" stroke-width="1.2" fill="none" marker-end="url(#a3)">
+              <line x1="36" y1="80" x2="54" y2="80"></line>
+              <line x1="112" y1="80" x2="126" y2="80"></line>
+              <line x1="184" y1="80" x2="198" y2="80"></line>
+              <line x1="256" y1="80" x2="270" y2="80"></line>
+              <line x1="328" y1="80" x2="358" y2="80"></line>
+            </g>
+            <circle cx="160" cy="125" r="9" fill="#0E1115" stroke="#9BA1AA" stroke-width="1.2"></circle>
+            <circle cx="160" cy="125" r="6" fill="none" stroke="#9BA1AA" stroke-width="1"></circle>
+            <line x1="160" y1="125" x2="160" y2="121" stroke="#9BA1AA"></line>
+            <line x1="160" y1="125" x2="163" y2="125" stroke="#9BA1AA"></line>
+            <text x="174" y="129" font-family="ui-monospace,Menlo,monospace" font-size="9" fill="#7E8694">+30 days</text>
+          </svg>
+        </div>
+        <div class="tpl-meta">
+          <div class="row1"><span class="accent">O2C · 03</span><span>4 lanes</span></div>
+          <h3>Order-to-Cash</h3>
+          <p>Quote, order, ship, invoice, dunning. With the boundary timer that catches receivables before finance does.</p>
+          <div class="foot"><span>order-to-cash.bpmn</span><a href="#download">Get template →</a></div>
+        </div>
+      </div>
+
+      <!-- 4: Quality & NCR -->
+      <div class="tpl-card">
+        <div class="tpl-canvas" aria-hidden="true">
+          <svg viewBox="0 0 400 160" preserveAspectRatio="none">
+            <defs><marker id="a4" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#7E8694"></path></marker></defs>
+            <circle cx="30" cy="80" r="9" fill="none" stroke="oklch(0.80 0.17 155)" stroke-width="1.6"></circle>
+            <rect x="60" y="68" width="60" height="24" rx="3" fill="#0E1115" stroke="#9BA1AA" stroke-width="1.2"></rect>
+            <g transform="translate(160 80) rotate(45)"><rect x="-13" y="-13" width="26" height="26" fill="#0E1115" stroke="oklch(0.80 0.17 155)" stroke-width="1.4"></rect></g>
+            <rect x="200" y="40" width="70" height="22" rx="3" fill="#0E1115" stroke="#9BA1AA" stroke-width="1.2"></rect>
+            <rect x="200" y="98" width="70" height="22" rx="3" fill="#0E1115" stroke="#9BA1AA" stroke-width="1.2"></rect>
+            <rect x="290" y="68" width="60" height="24" rx="3" fill="#0E1115" stroke="#9BA1AA" stroke-width="1.2"></rect>
+            <circle cx="378" cy="80" r="9" fill="none" stroke="#EDEEF0" stroke-width="2"></circle>
+            <g stroke="#7E8694" stroke-width="1.2" fill="none" marker-end="url(#a4)">
+              <line x1="40" y1="80" x2="58" y2="80"></line>
+              <line x1="120" y1="80" x2="148" y2="80"></line>
+              <path d="M173 71 L173 51 L198 51"></path>
+              <path d="M173 89 L173 109 L198 109"></path>
+              <path d="M270 51 L290 80"></path>
+              <path d="M270 109 L290 80"></path>
+              <line x1="350" y1="80" x2="368" y2="80"></line>
+            </g>
+            <text x="178" y="48" font-family="ui-monospace,Menlo,monospace" font-size="9" fill="oklch(0.80 0.17 155)">pass</text>
+            <text x="178" y="120" font-family="ui-monospace,Menlo,monospace" font-size="9" fill="#9BA1AA">fail → NCR</text>
+          </svg>
+        </div>
+        <div class="tpl-meta">
+          <div class="row1"><span class="accent">QC · 04</span><span>2 lanes</span></div>
+          <h3>QC &amp; non-conformance</h3>
+          <p>Inspection, deviation, rework loop. Always more contested in the workshop than the actual production flow.</p>
+          <div class="foot"><span>qc-ncr.bpmn</span><a href="#download">Get template →</a></div>
+        </div>
+      </div>
+
+      <!-- 5: Inventory transfer -->
+      <div class="tpl-card">
+        <div class="tpl-canvas" aria-hidden="true">
+          <svg viewBox="0 0 400 160" preserveAspectRatio="none">
+            <defs><marker id="a5" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#7E8694"></path></marker></defs>
+            <g fill="none" stroke="#2A2F38" stroke-dasharray="3 4"><line x1="0" y1="55" x2="400" y2="55"></line><line x1="0" y1="105" x2="400" y2="105"></line></g>
+            <text x="6" y="40" font-family="ui-monospace,Menlo,monospace" font-size="9" fill="#7E8694" letter-spacing="1">SRC</text>
+            <text x="6" y="135" font-family="ui-monospace,Menlo,monospace" font-size="9" fill="#7E8694" letter-spacing="1">DST</text>
+            <circle cx="30" cy="30" r="8" fill="none" stroke="oklch(0.80 0.17 155)" stroke-width="1.6"></circle>
+            <rect x="60" y="20" width="60" height="20" rx="3" fill="#0E1115" stroke="#9BA1AA" stroke-width="1.2"></rect>
+            <rect x="140" y="20" width="60" height="20" rx="3" fill="#0E1115" stroke="#9BA1AA" stroke-width="1.2"></rect>
+            <rect x="220" y="125" width="60" height="20" rx="3" fill="#0E1115" stroke="#9BA1AA" stroke-width="1.2"></rect>
+            <rect x="300" y="125" width="60" height="20" rx="3" fill="#0E1115" stroke="#9BA1AA" stroke-width="1.2"></rect>
+            <circle cx="378" cy="135" r="8" fill="none" stroke="#EDEEF0" stroke-width="2"></circle>
+            <g stroke="#7E8694" stroke-width="1.2" fill="none" marker-end="url(#a5)">
+              <line x1="38" y1="30" x2="58" y2="30"></line>
+              <line x1="120" y1="30" x2="138" y2="30"></line>
+              <path d="M170 40 L170 80 L250 80 L250 123"></path>
+              <line x1="280" y1="135" x2="298" y2="135"></line>
+              <line x1="360" y1="135" x2="370" y2="135"></line>
+            </g>
+            <text x="172" y="76" font-family="ui-monospace,Menlo,monospace" font-size="9" fill="#7E8694">in transit</text>
+          </svg>
+        </div>
+        <div class="tpl-meta">
+          <div class="row1"><span class="accent">INV · 05</span><span>2 lanes</span></div>
+          <h3>Inter-warehouse transfer</h3>
+          <p>Pick, ship, in-transit, receipt. The "in transit" state is where most stock loss arguments begin.</p>
+          <div class="foot"><span>inv-transfer.bpmn</span><a href="#download">Get template →</a></div>
+        </div>
+      </div>
+
+      <!-- 6: Discovery interview -->
+      <div class="tpl-card">
+        <div class="tpl-canvas" aria-hidden="true">
+          <svg viewBox="0 0 400 160" preserveAspectRatio="none">
+            <defs><marker id="a6" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#7E8694"></path></marker></defs>
+            <g fill="none" stroke="#2A2F38" stroke-dasharray="3 4"><line x1="0" y1="80" x2="400" y2="80"></line></g>
+            <circle cx="26" cy="80" r="9" fill="none" stroke="oklch(0.80 0.17 155)" stroke-width="1.6"></circle>
+            <rect x="56" y="68" width="50" height="24" rx="3" fill="#0E1115" stroke="#9BA1AA" stroke-width="1.2"></rect>
+            <rect x="120" y="68" width="50" height="24" rx="3" fill="#0E1115" stroke="#9BA1AA" stroke-width="1.2"></rect>
+            <rect x="184" y="68" width="50" height="24" rx="3" fill="#0E1115" stroke="#9BA1AA" stroke-width="1.2"></rect>
+            <rect x="248" y="68" width="50" height="24" rx="3" fill="#0E1115" stroke="#9BA1AA" stroke-width="1.2"></rect>
+            <rect x="312" y="68" width="50" height="24" rx="3" fill="#0E1115" stroke="#9BA1AA" stroke-width="1.2"></rect>
+            <circle cx="378" cy="80" r="9" fill="none" stroke="#EDEEF0" stroke-width="2"></circle>
+            <g stroke="#7E8694" stroke-width="1.2" fill="none" marker-end="url(#a6)">
+              <line x1="36" y1="80" x2="54" y2="80"></line>
+              <line x1="106" y1="80" x2="118" y2="80"></line>
+              <line x1="170" y1="80" x2="182" y2="80"></line>
+              <line x1="234" y1="80" x2="246" y2="80"></line>
+              <line x1="298" y1="80" x2="310" y2="80"></line>
+              <line x1="362" y1="80" x2="368" y2="80"></line>
+            </g>
+            <g font-family="ui-monospace,Menlo,monospace" font-size="8" fill="#7E8694" letter-spacing="0.5">
+              <text x="62" y="108">scope</text>
+              <text x="126" y="108">map</text>
+              <text x="190" y="108">pain</text>
+              <text x="254" y="108">data</text>
+              <text x="318" y="108">recap</text>
+            </g>
+          </svg>
+        </div>
+        <div class="tpl-meta">
+          <div class="row1"><span class="accent">WS · 06</span><span>1 lane</span></div>
+          <h3>Stakeholder discovery interview</h3>
+          <p>The 45-minute conversation flow. Use it as the agenda; mark it up live; ship it as the meeting notes.</p>
+          <div class="foot"><span>discovery-interview.bpmn</span><a href="#download">Get template →</a></div>
+        </div>
+      </div>
+
+    </div>
+
+    <h2 id="download">Get the pack</h2>
+    <p>The six diagrams above are workshop-ready starter scaffolds — lanes pre-named in English, decision points placed, actors deliberately wrong so the room argues productively. Print them straight from this page, or get the editable source files to adapt in Camunda Modeler or draw.io.</p>
+
+    <div class="pack-bar">
+      <div>
+        <h3>Want the editable pack?</h3>
+        <p>The six scaffolds on this page are free to copy under CC BY 4.0. For the editable <code>.bpmn</code> / <code>.drawio</code> source files — sized for A3 printing — send me a note and I'll email the pack.</p>
+        <span class="meta">6 templates · CC BY 4.0</span>
+      </div>
+      <a class="btn-dl" href="../#contact">Request the pack <span>→</span></a>
+    </div>
+
+    <blockquote>
+      A blank canvas in front of ten department heads is a recipe for silence. A wrong diagram is a recipe for a real conversation.
+    </blockquote>
+
+    <p>Tip from the field: print the templates A3, lay them on the table, and hand out red pens. The first 20 minutes will tell you more about the business than any spreadsheet you'll be sent later. This is exactly how we approach our <a href="../../services/odoo-partner-consultant/" style="color:var(--accent);text-decoration:underline;">Odoo Partner consulting</a> sessions. Once the maps are agreed, the same processes become the backbone of the <a href="0009-uat-script-200-users-ago" style="color:var(--accent)">UAT script</a> that proves the configuration before go-live.</p>
+
+    <h2 id="faq">FAQ</h2>
+
+    <h3>What is BPMN and why does it matter for ERP implementation?</h3>
+    <p>BPMN (Business Process Model and Notation) is a standardised diagram language for mapping business workflows. In ERP implementation it creates a shared visual language between business users and technical consultants, replacing ambiguous written requirements with precise process maps showing sequence flows, decision points, and system boundaries.</p>
+
+    <h3>Which manufacturing processes should be mapped in BPMN before Odoo implementation?</h3>
+    <p>At minimum, map procure-to-pay (purchase requisition to vendor payment), order-to-cash (customer order to receipt), plan-to-produce (MO creation to finished goods), and record-to-report (month-end close). For Bangladesh manufacturers, also map LC management, Mushak (VAT) invoice flow, and any industry-specific compliance processes.</p>
+
+    <h3>What tools can I use to create BPMN diagrams for Odoo configuration?</h3>
+    <p>draw.io (free, browser-based) is the most practical tool for Bangladesh ERP teams — it supports BPMN 2.0 notation, exports to PDF/PNG, and allows collaborative editing. Lucidchart and Bizagi Modeler are strong alternatives. Avoid PowerPoint flowcharts — they lack standardised notation and create ambiguity during configuration.</p>
+  </div>

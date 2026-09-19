@@ -1,0 +1,274 @@
+---
+permalink: "lab/0068-odoo-plastics-packaging-manufacturing-bangladesh.html"
+title: "Odoo for Plastics & Packaging Manufacturing Bangladesh | Mehedi Hasan"
+description: "Odoo Manufacturing for Bangladesh plastics and packaging producers: resin batch tracking, mold/tooling costs, and quality control for injection molding and extrusion."
+canonical: "https://mhasan.me/lab/0068-odoo-plastics-packaging-manufacturing-bangladesh"
+ogImage: "https://mhasan.me/assets/og/lab/0068-odoo-plastics-packaging-manufacturing-bangladesh.png"
+ogSiteName: "Mehedi Hasan | Odoo ERP Consultant"
+datePublished: "2026-09-18T12:00:00+06:00"
+dateModified: "2026-09-18T12:00:00+06:00"
+articleSection: "Odoo ERP Bangladesh"
+eyebrowNum: "0068"
+h1: "Odoo for plastics &amp; packaging manufacturing: <span class=\"serif\">resin, molds, and scrap done right.</span>"
+lede: "Bangladesh's plastics and packaging sector feeds everything from RMG poly-bags and hangtags to FMCG bottles and trays, yet most factories still cost a batch by guesswork and track molds on a whiteboard. This guide covers how to configure Odoo Manufacturing so resin batches, mold investment, and scrap all show up correctly in your numbers."
+chips: ["Guide", "Plastics & Packaging", "Bangladesh"]
+bylineItems:
+  - label: "By"
+    value: "<a href=\"https://www.linkedin.com/in/mehedi-hasan-consultant/\" style=\"color:var(--accent)\" rel=\"author\">Mehedi Hasan</a>"
+  - label: "Published"
+    value: "September 2026"
+  - label: "Read time"
+    value: "14 minutes"
+  - label: "Form"
+    value: "Guide"
+  - label: "Scope"
+    value: "Manufacturing &amp; Costing"
+nextArticle:
+  href: "0067-odoo-jute-products-bangladesh"
+  dir: "Older · 0067"
+  title: "Odoo for Jute &amp; Jute-Diversified Products Bangladesh"
+  desc: "Raw jute grading, batch costing, and export documentation."
+prevArticle:
+  href: "../#lab"
+  dir: "All articles"
+  title: "Back to Lab Index"
+  desc: "Browse all guides on Odoo ERP, manufacturing operations, and business analysis in Bangladesh."
+jsonLd: |
+  [
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "Odoo for Plastics & Packaging Manufacturing in Bangladesh",
+      "description": "A practical guide to configuring Odoo Manufacturing for Bangladesh plastics and packaging producers: resin grade and batch tracking, mold and tooling cost treatment, injection molding vs extrusion routings, scrap/regrind accounting, and quality control checkpoints for RMG poly-bag, hangtag, and FMCG packaging suppliers.",
+      "datePublished": "2026-09-18T12:00:00+06:00",
+      "dateModified": "2026-09-18T12:00:00+06:00",
+      "author": { "@type": "Person", "name": "Mehedi Hasan", "url": "https://mhasan.me", "jobTitle": "Odoo ERP Consultant & Business Analyst", "sameAs": "https://www.linkedin.com/in/mehedi-hasan-consultant/" },
+      "publisher": { "@type": "Person", "name": "Mehedi Hasan", "url": "https://mhasan.me" },
+      "mainEntityOfPage": { "@type": "WebPage", "@id": "https://mhasan.me/lab/0068-odoo-plastics-packaging-manufacturing-bangladesh" }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://mhasan.me" },
+        { "@type": "ListItem", "position": 2, "name": "Lab", "item": "https://mhasan.me/lab/" },
+        { "@type": "ListItem", "position": 3, "name": "Odoo for Plastics & Packaging Manufacturing Bangladesh", "item": "https://mhasan.me/lab/0068-odoo-plastics-packaging-manufacturing-bangladesh" }
+      ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How do I track resin grade and batch in Odoo for a plastics factory?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Enable lots/serial numbers on your resin (PP, PE, PVC, HDPE, LDPE) product categories under Inventory → Configuration → Product Categories, then set each resin product's Traceability to By Lots. Every GRN from your resin importer or local trader creates a new lot carrying the grade code, melt flow index (MFI), color batch, and supplier certificate reference in the lot's Odoo notes or a custom field. This lets you trace a defective bag or tray back to the exact resin drum lot to answer a client's quality complaint or reconcile which lot fed which production order." }
+        },
+        {
+          "@type": "Question",
+          "name": "Should mold and tooling cost be a fixed asset or part of unit product cost in Odoo?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Both, depending on ownership. If you own the mold and use it across many customer orders, capitalize it as a fixed asset in Odoo Accounting and depreciate it over its useful life (typically 3 to 5 years for steel injection molds), while the day-to-day product cost in Odoo Manufacturing reflects only resin, labor, and machine time. If a mold is built specifically for one buyer and its cost is being recovered through that buyer's unit price, add a tooling amortization component into the BOM cost structure using a fixed overhead cost line so the per-unit cost includes a mold recovery charge until the agreed volume is produced." }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the difference between injection molding and extrusion routing in Odoo Manufacturing?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Injection molding is typically modeled as a single fast work center operation per shot cycle, with cycle time in seconds and output in discrete units (bottles, caps, crates, trays) tracked in Odoo's Manufacturing Orders. Extrusion (for poly-bag film, PVC pipe, or PP strap) is modeled as a continuous process with output measured in kilograms or meters, often using a two-step routing: extrude the film or profile as an intermediate product, then a second work order (cutting, sealing, printing) converts it into the finished packaging item. Odoo's routing and work center setup under Manufacturing → Configuration → Work Centers should reflect this so OEE and scrap tracking are meaningful for each process type." }
+        },
+        {
+          "@type": "Question",
+          "name": "How is plastic scrap and regrind material accounted for in Odoo?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Create a separate product for regrind (reground scrap plastic) with its own valuation, typically 40 to 60 percent of virgin resin cost, and register it as a by-product on the manufacturing order's BOM using Odoo's by-product lines. When regrind is fed back into future batches, it enters the BOM as a percentage-blend component alongside virgin resin, and Odoo's inventory valuation automatically reflects the lower cost basis of the blended output, which keeps your finished goods costing accurate instead of assuming 100 percent virgin material cost." }
+        },
+        {
+          "@type": "Question",
+          "name": "What quality control checkpoints matter most for plastics and packaging manufacturing in Odoo?",
+          "acceptedAnswer": { "@type": "Answer", "text": "The two checkpoints that matter most for Bangladesh plastics and packaging exporters are dimensional tolerance (wall thickness, neck finish, bag gusset width, measured against the buyer's technical spec) and burst or seal strength for packaging film and bags. Both should be configured as Odoo Quality Control points tied to the relevant work center or delivery operation, with quantitative measure-type checks for dimensions and pass/fail checks for burst tests, so a failed check automatically triggers a quality alert and blocks the lot from being marked as available finished stock." }
+        }
+      ]
+    }
+  ]
+extraStyles: |
+  .pull{font-family:var(--serif);font-style:italic;font-size:clamp(20px,2.8vw,28px);line-height:1.3;color:var(--text);margin:48px 0;max-width:28ch;letter-spacing:-0.01em}
+      .pull::before{content:"";display:block;width:36px;height:1px;background:var(--accent);margin-bottom:18px}
+      .stat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:26px 0}
+      @media(max-width:680px){.stat-row{grid-template-columns:1fr 1fr}}
+      @media(max-width:440px){.stat-row{grid-template-columns:1fr}}
+      .stat-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:18px 16px;text-align:center}
+      .stat-card .sc-val{font-size:30px;font-weight:700;color:var(--accent);letter-spacing:-0.03em;line-height:1;margin-bottom:6px}
+      .stat-card .sc-label{font-family:var(--mono);font-size:10px;color:var(--text-3);letter-spacing:0.07em;text-transform:uppercase}
+      .stat-card .sc-note{font-size:11.5px;color:var(--text-2);margin-top:5px;line-height:1.4}
+      .route-compare{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:24px 0}
+      @media(max-width:680px){.route-compare{grid-template-columns:1fr}}
+      .route-card{border:1px solid var(--border);border-radius:10px;padding:18px;background:var(--surface)}
+      .route-card h4{margin:0 0 10px;font-size:14px;font-weight:600;color:var(--accent);font-family:var(--mono);letter-spacing:0.03em;text-transform:uppercase}
+      .route-card ul{margin:0;padding-left:0;list-style:none}
+      .route-card li{font-size:13.5px;color:var(--text-2);line-height:1.6;padding:4px 0 4px 16px;position:relative}
+      .route-card li::before{content:"";position:absolute;left:0;top:12px;width:8px;height:1px;background:var(--accent)}
+      .tip-box{background:var(--accent-dim);border-left:3px solid var(--accent);border-radius:0 6px 6px 0;padding:14px 18px;margin:18px 0}
+      .tip-box .tlabel{font-family:var(--mono);font-size:10px;color:var(--accent);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:6px}
+      .tip-box p{margin:0;font-size:14px;color:var(--text-2);line-height:1.55}
+      .step-list{counter-reset:step;list-style:none;padding:0;margin:24px 0}
+      .step-list li{position:relative;padding:12px 0 12px 42px;border-bottom:1px solid var(--border);font-size:14.5px;color:var(--text-2);line-height:1.6}
+      .step-list li:last-child{border-bottom:none}
+      .step-list li::before{counter-increment:step;content:counter(step,decimal-leading-zero);position:absolute;left:0;top:12px;font-family:var(--mono);font-size:12px;color:var(--accent);font-weight:600}
+      .step-list li strong{color:var(--text);font-weight:600}
+---
+<aside class="toc">
+      <div class="toc-k">In this guide</div>
+      <ol>
+        <li><a href="#sector">Bangladesh's plastics &amp; packaging sector</a></li>
+        <li><a href="#resin-tracking">Resin grade &amp; batch tracking</a></li>
+        <li><a href="#mold-tooling">Mold and tooling cost treatment</a></li>
+        <li><a href="#routing">Injection molding vs extrusion routing</a></li>
+        <li><a href="#scrap">Scrap and regrind accounting</a></li>
+        <li><a href="#quality">Quality control checkpoints</a></li>
+        <li><a href="#rollout">A realistic rollout sequence</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ol>
+    </aside>
+    <div class="body">
+
+      <h2 id="sector">Bangladesh's plastics &amp; packaging sector, briefly</h2>
+      <p>Plastics and packaging manufacturing in Bangladesh is not a single industry, it is a support layer underneath several others. RMG factories need woven poly-bags, hangtags, and PP straps by the truckload every week. FMCG brands need blow-molded bottles, injection-molded caps, and printed flexible film. General trading and pharma need trays, jars, and blister packs. Clusters have grown around Old Dhaka (Postogola, Shyampur), Bogura, and increasingly Gazipur and Narayanganj, where factories sit close to both resin importers at Chattogram port and the RMG buyers who consume their output.</p>
+      <p>What makes this sector interesting for ERP work is that it sits at the intersection of process manufacturing (extrusion, blow molding are closer to chemical processing) and discrete manufacturing (injection molding produces individually countable pieces). A generic ERP setup copied from a garment factory's Odoo instance, or from the food industry playbook covered in <a href="0069-odoo-food-beverage-agro-processing-bangladesh" style="color:var(--accent)">Odoo for Food &amp; Beverage / Agro-Processing Bangladesh</a>, will not fit this hybrid nature without deliberate adjustment. The general Manufacturing module setup described in <a href="0013-odoo-manufacturing-module-bangladesh" style="color:var(--accent)">Odoo Manufacturing Module Bangladesh</a> is your starting foundation, but plastics has three areas that need specific configuration beyond the defaults: resin batch tracking, mold and tooling cost treatment, and scrap/regrind valuation.</p>
+
+      <div class="stat-row">
+        <div class="stat-card">
+          <div class="sc-val">60-70%</div>
+          <div class="sc-label">Resin is imported</div>
+          <div class="sc-note">Virgin PP, PE, PVC granules landed via Chattogram, priced in USD, converted to BDT lot cost</div>
+        </div>
+        <div class="stat-card">
+          <div class="sc-val">BDT 3-25L</div>
+          <div class="sc-label">Typical mold cost</div>
+          <div class="sc-note">Per cavity steel injection mold, depending on complexity and cavity count</div>
+        </div>
+        <div class="stat-card">
+          <div class="sc-val">8-15%</div>
+          <div class="sc-label">Typical scrap rate</div>
+          <div class="sc-note">Runners, purge, and reject material recoverable as regrind in most injection shops</div>
+        </div>
+      </div>
+
+      <h2 id="resin-tracking">Resin grade &amp; batch tracking</h2>
+      <p>Every plastics manufacturer buys resin by grade: polypropylene (PP) homopolymer or copolymer, polyethylene (LDPE, LDPE, HDPE), or PVC compound, each with a melt flow index (MFI) that determines how it behaves in your machines. Two drums of "PP" from different suppliers, or even different production runs from the same supplier, can behave differently enough to change cycle time, shrinkage, or surface finish. Yet most Bangladesh plastics factories still record resin purchases as a single generic item code in their accounting software, with grade and MFI living only in the purchase manager's memory or a paper log at the warehouse gate.</p>
+      <p>In Odoo, fix this at the product category level. Go to <strong>Inventory → Configuration → Product Categories</strong>, and for your resin categories (PP, PE, PVC, masterbatch/colorant) set <strong>Tracking</strong> to <strong>By Lots</strong>. Every goods receipt then forces creation of a lot number, and you attach the grade code, MFI, color batch number, and the supplier's certificate of analysis reference either as a custom field on the lot or in the lot's internal notes. When a customer complaint arrives about brittle bags or inconsistent wall thickness, you can trace the affected finished goods lot backward through the manufacturing order to the exact resin lot that fed it, rather than guessing which of the last six weeks' purchases might be the culprit.</p>
+
+      <div class="tip-box">
+        <div class="tlabel">Local sourcing reality</div>
+        <p>Many mid-size Bangladesh plastics factories buy resin through local traders in Old Dhaka rather than importing directly, especially for smaller volumes. These traders re-bag imported resin without always preserving the original mill's batch documentation. Where you cannot get supplier-level batch data, still create an internal lot per delivery based on date and trader invoice number. Partial traceability with internal lots is far better than no traceability at all, and it still lets you isolate a bad delivery from a good one.</p>
+      </div>
+
+      <p>For colorant and masterbatch, apply the same lot discipline, since a wrong colorant ratio is one of the most common causes of rejected packaging batches when a buyer's brand color specification (a Pantone reference, typically) is not matched. Record the masterbatch percentage used per batch as a BOM line with a fixed ratio, not a rough estimate, so your costing and your repeatability both improve at the same time.</p>
+
+      <h2 id="mold-tooling">Mold and tooling cost treatment</h2>
+      <p>Molds are the single most confusing cost element for plastics manufacturers moving onto a proper ERP, because the correct accounting treatment depends on who owns the mold and how its cost is being recovered.</p>
+
+      <div class="route-compare">
+        <div class="route-card">
+          <h4>Factory-owned mold</h4>
+          <ul>
+            <li>Mold used across multiple customers or long-running SKUs</li>
+            <li>Capitalize as a fixed asset in Odoo Accounting (Assets app)</li>
+            <li>Depreciate over 3 to 5 years, typically straight-line</li>
+            <li>Unit product cost in Manufacturing includes only resin, labor, machine time, and overhead, not mold recovery</li>
+          </ul>
+        </div>
+        <div class="route-card">
+          <h4>Customer-funded mold</h4>
+          <ul>
+            <li>Mold built specifically for one buyer's order and recovered through unit price</li>
+            <li>Add a tooling amortization line to the BOM cost structure as a fixed cost per expected volume</li>
+            <li>Track cumulative units produced against agreed recovery volume manually or via a simple spreadsheet linked to production reports</li>
+            <li>Once recovered, remove the amortization line and reduce quoted unit price accordingly</li>
+          </ul>
+        </div>
+      </div>
+
+      <p>In practice, most Bangladesh plastics workshops run a mix of both models in the same factory: a set of standard molds for their own catalog products (crates, buckets, standard caps) that they own outright and depreciate, and a set of customer-specific molds for RMG or FMCG buyers who effectively fund the tooling as part of a purchase agreement. Keep these two categories visually and structurally separate in your Odoo Fixed Assets register, using distinct asset categories so your finance team can see at a glance which molds are company capital and which are recovery-in-progress against a specific buyer contract.</p>
+
+      <p class="pull">A mold that isn't on your balance sheet and isn't in your unit cost is a mold nobody is actually accounting for.</p>
+
+      <p>One practical mistake to avoid: do not bury the full mold cost into the first production run's cost of goods sold. If a BDT 8 lakh mold is used to produce a single 50,000-unit order, expensing the entire mold cost against that one order will make the unit cost look absurd and mislead any pricing decision made from that number. Either capitalize and depreciate it (if it will run again), or spread the recovery across the full agreed production volume using a per-unit tooling charge, not a single-batch dump.</p>
+
+      <h2 id="routing">Injection molding vs extrusion routing</h2>
+      <p>These are structurally different manufacturing processes and Odoo's routing setup needs to reflect that difference, not force both into the same template.</p>
+
+      <div class="route-compare">
+        <div class="route-card">
+          <h4>Injection molding</h4>
+          <ul>
+            <li>Discrete output: caps, crates, trays, bottle preforms, buckets</li>
+            <li>Single work center operation per shot cycle, cycle time in seconds</li>
+            <li>Manufacturing Order quantity tracked in pieces, not weight</li>
+            <li>OEE (availability, performance, quality) tracked per machine work center</li>
+            <li>Cycle time variance is your main efficiency signal</li>
+          </ul>
+        </div>
+        <div class="route-card">
+          <h4>Extrusion (film, pipe, strap)</h4>
+          <ul>
+            <li>Continuous process, output measured in kilograms or meters</li>
+            <li>Two-step routing typical: extrude intermediate roll/profile, then convert (cut, seal, print) into finished item</li>
+            <li>Intermediate product (e.g. blown film roll) is a real inventoried item with its own lot</li>
+            <li>Scrap concentrated at startup and line changeover, not steady-state</li>
+          </ul>
+        </div>
+      </div>
+
+      <p>Set this up under <strong>Manufacturing → Configuration → Work Centers</strong> and <strong>Manufacturing → Configuration → Routings</strong>. For an injection molding shop, a single work center representing each molding machine, with a standard cycle time per part, is usually sufficient, and you can layer Odoo's Manufacturing Order (MO) quantities directly in pieces. For extrusion-based operations such as poly-bag film or PP strap, build a two-step routing: the first Manufacturing Order consumes resin and produces an intermediate item (blown film roll, extruded profile) tracked by weight or length, and a second Manufacturing Order consumes that intermediate item plus any printing ink or seal tape to produce the countable finished good (a bag, a coil of strap) tracked by piece or bundle. This mirrors the routing depth explained generally in <a href="0038-odoo-manufacturing-routing-bangladesh" style="color:var(--accent)">Odoo Manufacturing Routing Bangladesh</a>, applied specifically to the plastics conversion process.</p>
+
+      <p>Getting this two-step structure right also solves a costing problem: without it, factories tend to cost a finished poly-bag purely off resin weight and ignore the fact that film extrusion, printing, and bag-making are three separate value-adding steps each with their own labor and machine time. Splitting the routing makes each step's cost visible and auditable.</p>
+
+      <h2 id="scrap">Scrap and regrind accounting</h2>
+      <p>Every injection molding and extrusion operation generates scrap: sprues, runners, purge material during color changes, and outright rejects. In a well-run Bangladesh plastics factory, most of this scrap is not waste, it is regrind, ground back into pellet form and blended back into future production at a defined ratio (commonly 10 to 30 percent regrind blended with virgin resin, depending on the product's strength requirements).</p>
+
+      <p>Model this properly in Odoo rather than ignoring it, because ignoring regrind means your finished goods cost is systematically overstated (you are assuming 100 percent virgin resin cost when part of the input was recovered material worth less).</p>
+
+      <ol class="step-list">
+        <li><strong>Create a regrind product.</strong> Set up a separate product code for reground material per resin type (e.g. "PP Regrind – Natural"), valued at roughly 40 to 60 percent of virgin resin cost, reflecting the reprocessing labor and the small quality discount versus virgin material.</li>
+        <li><strong>Register it as a by-product.</strong> On the manufacturing BOM, add the regrind output as a by-product line so every production run that generates scrap automatically posts the regrind quantity into stock at its own valuation, rather than it disappearing into an unaccounted "shrinkage" bucket.</li>
+        <li><strong>Feed it back as a blend component.</strong> When regrind is reused, add it to the consuming BOM as a percentage-blend component alongside virgin resin (for example, 80 percent virgin PP plus 20 percent PP regrind by weight). Odoo's costing engine will then reflect the blended, lower-cost input in the resulting finished goods valuation automatically.</li>
+        <li><strong>Reconcile physically, monthly.</strong> Because regrind handling happens informally on many factory floors (an operator sweeping sprues into a bin without a transaction), run a monthly physical count of regrind stock against the system quantity and adjust. This is the single most common leak point in plastics inventory accuracy.</li>
+      </ol>
+
+      <div class="tip-box">
+        <div class="tlabel">Buyer restrictions on regrind</div>
+        <p>Some FMCG and export buyers restrict or prohibit regrind content in packaging that contacts food or has cosmetic surface requirements. Where a buyer's technical specification caps regrind at, say, 10 percent or bans it entirely, encode that as a note on the customer's sales order template and make sure the BOM used for that specific customer's production runs does not include the regrind blend line. Mixing this up, using a regrind-blended BOM for a buyer who specified virgin-only material, is a compliance and reputational risk, not just a costing detail.</p>
+      </div>
+
+      <h2 id="quality">Quality control checkpoints</h2>
+      <p>Plastics and packaging quality failures tend to concentrate in two areas: dimensional tolerance and mechanical strength. Both are checkable, quantifiable, and worth building into Odoo's Quality module rather than relying on a supervisor's eye.</p>
+
+      <p><strong>Dimensional tolerance.</strong> Wall thickness on a blow-molded bottle, neck finish diameter on a cap, gusset width on a poly-bag, all have buyer-specified tolerances, often plus or minus 0.1 to 0.3mm depending on the part. Configure these as measure-type Quality Control Points in Odoo under <strong>Quality → Configuration → Control Points</strong>, tied to the relevant work center, with the acceptable range entered directly so the quality inspector records a number and Odoo automatically flags an out-of-tolerance reading rather than relying on a manual pass/fail judgment call.</p>
+
+      <p><strong>Burst and seal strength.</strong> For packaging film and bags, especially those used for cement, rice, or fertilizer where the bag must survive stacking and transport, burst strength and seam seal strength testing matters more than visual appearance. Configure these as pass/fail Quality Control Points tied to the finished goods lot, sampled per production batch according to your buyer's AQL (Acceptable Quality Level) sampling plan. A failed check should automatically create a Quality Alert in Odoo and hold the lot from being marked available for delivery, which is the same discipline covered in more general terms in <a href="0040-odoo-quality-control-iso-bangladesh" style="color:var(--accent)">Odoo Quality Control &amp; ISO Bangladesh</a>.</p>
+
+      <p>Beyond these two, color match against a Pantone reference (checked visually or with a spectrophotometer for higher-end FMCG clients) and functional testing (cap torque, closure seal for bottles) round out a realistic quality plan for most Bangladesh plastics exporters. Do not try to configure every conceivable check on day one, start with dimensional tolerance and burst/seal strength since those two catch the majority of real-world rejections.</p>
+
+      <h2 id="rollout">A realistic rollout sequence</h2>
+      <p>For a mid-size Bangladesh plastics or packaging factory (typically 60 to 200 workers, one to three extrusion or molding lines), a sensible Odoo rollout sequence looks like this: first get resin procurement and lot tracking live, since this is foundational to everything downstream and delivers immediate traceability value even before manufacturing costing is fully tuned. Second, configure your BOMs and routings correctly for your dominant process (injection or extrusion), including the by-product and regrind lines. Third, bring mold and tooling assets onto the books properly, working with your accountant to classify existing molds and set depreciation schedules. Fourth, layer in quality control points once production data is flowing reliably. Trying to do all four simultaneously in a six-week timeline is the most common reason plastics ERP projects in Bangladesh stall at the costing stage, because the team gets buried in configuration before anyone has validated that the basic transaction flow works.</p>
+
+      <div class="callout">
+        <span class="tag">Consultation CTA</span>
+        <p>If you run a plastics, packaging, or converting operation in Bangladesh and your current costing either ignores mold recovery or treats regrind as an afterthought, I can help you rebuild the Odoo Manufacturing configuration around how your factory actually produces, not a generic template. <a href="../#contact" style="color:var(--accent)">Contact me for a strategy session →</a></p>
+      </div>
+
+      <h2 id="faq">Frequently asked questions</h2>
+
+      <h3>How do I track resin grade and batch in Odoo for a plastics factory?</h3>
+      <p>Enable lots/serial numbers on your resin (PP, PE, PVC, HDPE, LDPE) product categories under Inventory → Configuration → Product Categories, then set each resin product's Traceability to By Lots. Every GRN from your resin importer or local trader creates a new lot carrying the grade code, melt flow index (MFI), color batch, and supplier certificate reference in the lot's Odoo notes or a custom field. This lets you trace a defective bag or tray back to the exact resin drum lot to answer a client's quality complaint or reconcile which lot fed which production order.</p>
+
+      <h3>Should mold and tooling cost be a fixed asset or part of unit product cost in Odoo?</h3>
+      <p>Both, depending on ownership. If you own the mold and use it across many customer orders, capitalize it as a fixed asset in Odoo Accounting and depreciate it over its useful life (typically 3 to 5 years for steel injection molds), while the day-to-day product cost in Odoo Manufacturing reflects only resin, labor, and machine time. If a mold is built specifically for one buyer and its cost is being recovered through that buyer's unit price, add a tooling amortization component into the BOM cost structure using a fixed overhead cost line so the per-unit cost includes a mold recovery charge until the agreed volume is produced.</p>
+
+      <h3>What is the difference between injection molding and extrusion routing in Odoo Manufacturing?</h3>
+      <p>Injection molding is typically modeled as a single fast work center operation per shot cycle, with cycle time in seconds and output in discrete units (bottles, caps, crates, trays) tracked in Odoo's Manufacturing Orders. Extrusion (for poly-bag film, PVC pipe, or PP strap) is modeled as a continuous process with output measured in kilograms or meters, often using a two-step routing: extrude the film or profile as an intermediate product, then a second work order (cutting, sealing, printing) converts it into the finished packaging item. Odoo's routing and work center setup under Manufacturing → Configuration → Work Centers should reflect this so OEE and scrap tracking are meaningful for each process type.</p>
+
+      <h3>How is plastic scrap and regrind material accounted for in Odoo?</h3>
+      <p>Create a separate product for regrind (reground scrap plastic) with its own valuation, typically 40 to 60 percent of virgin resin cost, and register it as a by-product on the manufacturing order's BOM using Odoo's by-product lines. When regrind is fed back into future batches, it enters the BOM as a percentage-blend component alongside virgin resin, and Odoo's inventory valuation automatically reflects the lower cost basis of the blended output, which keeps your finished goods costing accurate instead of assuming 100 percent virgin material cost.</p>
+
+      <h3>What quality control checkpoints matter most for plastics and packaging manufacturing in Odoo?</h3>
+      <p>The two checkpoints that matter most for Bangladesh plastics and packaging exporters are dimensional tolerance (wall thickness, neck finish, bag gusset width, measured against the buyer's technical spec) and burst or seal strength for packaging film and bags. Both should be configured as Odoo Quality Control points tied to the relevant work center or delivery operation, with quantitative measure-type checks for dimensions and pass/fail checks for burst tests, so a failed check automatically triggers a quality alert and blocks the lot from being marked as available finished stock.</p>
+
+    </div>

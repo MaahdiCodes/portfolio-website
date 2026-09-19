@@ -1,0 +1,8 @@
+{
+  "layout": "layouts/lab-article.njk",
+  "lang": "bn",
+  "homeHref": "/bn/",
+  "backHref": "/bn/#lab",
+  "ogType": "article",
+  "stylesheetHref": "/lab/_styles.css"
+}

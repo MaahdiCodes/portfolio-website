@@ -1,0 +1,311 @@
+---
+permalink: "lab/0086-odoo-tea-estate-plantation-management-bangladesh.html"
+title: "Odoo for Tea Estate & Plantation Management Bangladesh | Mehedi Hasan"
+description: "Odoo for Bangladesh tea estates: green leaf harvest tracking, factory processing yield, auction-ready batch costing, and plantation labor management."
+canonical: "https://mhasan.me/lab/0086-odoo-tea-estate-plantation-management-bangladesh"
+ogImage: "https://mhasan.me/assets/og/lab/0086-odoo-tea-estate-plantation-management-bangladesh.png"
+ogSiteName: "Mehedi Hasan | Odoo ERP Consultant"
+datePublished: "2026-09-18T14:00:00+06:00"
+dateModified: "2026-09-18T14:00:00+06:00"
+articleSection: "Odoo ERP Bangladesh"
+eyebrowNum: "0086"
+h1: "Odoo for Bangladesh's <span class=\"serif\">tea estates and plantations.</span>"
+lede: "A tea estate is not quite an agricultural business and not quite a factory, it is both running continuously on the same footprint, with a resident labor force, a daily biological harvest that cannot be delayed or stockpiled, and a processing operation whose output is sold by grade through a specific weekly auction rather than at a price the estate itself sets. Almost nothing in a standard ERP implementation guide anticipates this combination. This guide covers how Odoo's inventory, manufacturing, and HR modules can be configured to fit a business model most ERP consultants in Bangladesh have never actually seen up close."
+chips: ["Guide", "Tea & Plantation", "Agribusiness"]
+bylineItems:
+  - label: "By"
+    value: "<a href=\"https://www.linkedin.com/in/mehedi-hasan-consultant/\" style=\"color:var(--accent)\" rel=\"author\">Mehedi Hasan</a>"
+  - label: "Published"
+    value: "September 2026"
+  - label: "Read time"
+    value: "18 minutes"
+  - label: "Form"
+    value: "Guide"
+  - label: "Scope"
+    value: "Odoo Manufacturing &amp; HR / Tea Sector"
+nextArticle:
+  href: "0085-odoo-furniture-manufacturing-export-bangladesh"
+  dir: "Older · 0085"
+  title: "Odoo for Furniture Manufacturing &amp; Export Bangladesh"
+  desc: "Custom order BOMs, finishing routing, and EUDR-ready wood traceability."
+prevArticle:
+  href: "../#lab"
+  dir: "All articles"
+  title: "Back to Lab Index"
+  desc: "Browse all guides on Odoo ERP, manufacturing operations, and business analysis in Bangladesh."
+jsonLd: |
+  [
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "Odoo for Tea Estate & Plantation Management Bangladesh",
+      "description": "Odoo for Bangladesh tea estates: green leaf harvest tracking, factory processing yield, auction-ready batch costing, and plantation labor management.",
+      "datePublished": "2026-09-18T14:00:00+06:00",
+      "dateModified": "2026-09-18T14:00:00+06:00",
+      "author": {
+        "@type": "Person",
+        "name": "Mehedi Hasan",
+        "url": "https://mhasan.me",
+        "jobTitle": "Odoo ERP Consultant & Business Analyst",
+        "sameAs": "https://www.linkedin.com/in/mehedi-hasan-consultant/"
+      },
+      "publisher": { "@type": "Person", "name": "Mehedi Hasan", "url": "https://mhasan.me" },
+      "mainEntityOfPage": { "@type": "WebPage", "@id": "https://mhasan.me/lab/0086-odoo-tea-estate-plantation-management-bangladesh" }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://mhasan.me" },
+        { "@type": "ListItem", "position": 2, "name": "Lab", "item": "https://mhasan.me/lab/" },
+        { "@type": "ListItem", "position": 3, "name": "Odoo for Tea Estate & Plantation Management Bangladesh", "item": "https://mhasan.me/lab/0086-odoo-tea-estate-plantation-management-bangladesh" }
+      ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How do you track green leaf harvest in Odoo for a tea estate?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Green leaf plucking is recorded daily by garden section (a tea estate is divided into numbered sections or 'sections/divisions' for management purposes) and by plucker, using Odoo's Manufacturing or Inventory receipt functions adapted to log raw material intake rather than a purchase. Each section's daily plucked weight is entered as a goods receipt into a raw material lot tagged with the section, the date, and the plucking round (tea gardens pluck on a 7 to 10 day round through the growing season), which lets the estate compare yield per hectare across sections and across the season, and lets the factory trace a specific day's made tea output back to the specific sections that supplied the green leaf, which matters when a batch's quality or auction price comes in unexpectedly high or low."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is a normal green leaf to made tea processing ratio?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Bangladesh tea factories typically require approximately 4 to 4.5 kilograms of green leaf to produce 1 kilogram of made (finished, processed) tea under good management and favorable leaf quality, with the ratio worsening toward 5 kilograms of green leaf per kilogram of made tea when leaf quality is coarse (over-mature leaf with more stem and less bud content) or during periods of lower moisture content in the plucked leaf. This ratio is the single most important estate-level KPI because green leaf cost (largely plucking labor) and made tea sale price are both fixed in the short term, meaning the conversion ratio is the main lever management actually controls week to week, and tracking it by section and by plucking round in Odoo shows exactly where the ratio is deteriorating."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How is tea batch costing structured for auction sale in Odoo?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Each factory processing run (a specific day's or shift's withering-to-grading cycle) is tracked as a manufacturing order producing several output lots by grade (such as BOP, BOPF, BP, Pekoe, Dust, and Fannings), each carrying its actual green leaf input cost (allocated by the section-level lot cost), processing labor and fuel cost from the withering, rolling/CTC, fermentation, and drying stages, and its own grade-specific valuation. Because tea in Bangladesh is predominantly sold through the Chattogram Tea Auction, where lots are catalogued and bid on by grade and garden mark, having each grade's batch cost and quantity cleanly separated in Odoo before the auction catalogue deadline is what lets an estate's commercial team set a realistic reserve price rather than guessing at cost when the auction broker's catalogue closing date arrives."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can Odoo handle plantation labor management under Bangladesh's tea garden labor rules?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Odoo's HR and Payroll apps can be configured to handle the distinct wage, ration, and housing structure that applies to resident tea garden labor under the Tea Plantation Labour Ordinance and related wage board settlements, which differ substantially from standard factory HR: plucking wages are commonly paid on a daily-task basis with an attendance and plucked-weight component, and workers typically receive in-kind rations (rice allocation) and estate housing as part of total compensation, not just cash wages. This requires custom payroll structures under Employees > Configuration > Salary Structures that combine attendance-linked daily wage, a plucked-weight incentive component tied to the harvest data captured in Inventory, and non-cash ration/housing entitlements tracked for compliance and cost-allocation purposes, rather than relying on Odoo's default salary structure templates built for salaried factory or office staff."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Which Bangladesh tea-growing regions does this apply to?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Bangladesh's tea industry is concentrated in the Sylhet division (Sylhet, Moulvibazar, and Habiganj districts contain the large majority of the country's tea gardens) with a smaller cluster in the Chattogram hill tracts (Chattogram and Rangamati districts). Nearly all commercially graded made tea, regardless of which of these regions it is grown in, moves through the Chattogram Tea Auction for sale, which is why auction-ready batch and grade documentation matters uniformly across the industry rather than varying meaningfully by growing region."
+          }
+        }
+      ]
+    }
+  ]
+extraStyles: |
+  .path-tag { font-family: var(--mono); font-size: 12.5px; background: var(--elev); border: 1px solid var(--border); border-radius: 5px; padding: 2px 8px; color: var(--text); }
+      .grade-table { width: 100%; border-collapse: collapse; font-size: 13.5px; margin: 18px 0; }
+      .grade-table th { text-align: left; padding: 10px 14px; background: var(--surface); color: var(--text-3); font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.06em; text-transform: uppercase; border-bottom: 1px solid var(--border); }
+      .grade-table td { padding: 11px 14px; border-bottom: 1px solid var(--border); color: var(--text-2); vertical-align: top; }
+      .grade-table td:first-child { color: var(--text); font-weight: 600; }
+      .grade-table tr:last-child td { border-bottom: none; }
+---
+<aside class="toc">
+      <div class="toc-k">In this guide</div>
+      <ol>
+        <li><a href="#sector">Bangladesh's Tea Industry</a></li>
+        <li><a href="#harvest">Green Leaf Harvest Tracking</a></li>
+        <li><a href="#ratio">The Green Leaf to Made Tea Ratio</a></li>
+        <li><a href="#factory">Factory Processing Stages &amp; Grading</a></li>
+        <li><a href="#auction">Auction-Ready Batch Costing</a></li>
+        <li><a href="#labor">Plantation Labor Management</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ol>
+    </aside>
+
+    <div class="body">
+
+      <h2 id="sector">Bangladesh's Tea Industry</h2>
+      <p>Bangladesh's tea industry is concentrated in the Sylhet division, spanning Sylhet, Moulvibazar, and Habiganj districts, where the rolling hill terrain and rainfall pattern support tea cultivation, with a smaller cluster in the Chattogram hill tracts. The sector runs through roughly 160 registered tea gardens, most operating as integrated estates that both grow and process their own leaf, ranging from long-established gardens under groups like the Duncan Brothers and James Finlay legacy estates to smaller independent gardens. The Bangladesh Tea Board regulates the industry, and the overwhelming majority of made tea produced is sold through the Chattogram Tea Auction, the country's central wholesale marketplace for tea, where brokers catalogue lots by garden mark and grade for weekly bidding by registered buyers.</p>
+      <p>What makes this sector a genuinely distinct ERP problem, and not just another agro-processing variant of the kind covered in <a href="0069-odoo-food-beverage-agro-processing-bangladesh" style="color:var(--accent)">Odoo for Food, Beverage &amp; Agro-Processing Bangladesh</a>, is the combination of three things happening simultaneously on one estate: continuous seasonal harvest that cannot be stockpiled (green leaf must be processed within hours of plucking or it deteriorates), a factory processing operation with its own multi-stage yield economics, and a resident plantation labor force whose wage, ration, and housing structure is governed by industry-specific labor rules rather than standard factory HR practice. Very few Bangladesh ERP implementers have configured a system for this combination before, which is exactly why getting the underlying logic right from the first requirements conversation matters more here than in almost any other vertical this site covers.</p>
+
+      <div class="big-stat">
+        <div class="bs-val">4–4.5 kg</div>
+        <div class="bs-label">Green Leaf per kg of Made Tea</div>
+        <div class="bs-note">The single most important KPI on any tea estate: a small deterioration in this ratio erodes margin faster than almost any other operational variable the estate controls.</div>
+      </div>
+
+      <h2 id="harvest">Green Leaf Harvest Tracking</h2>
+      <p>Tea gardens are divided into numbered sections (sometimes called divisions or blocks) for management purposes, and plucking runs on a continuous round, typically every 7 to 10 days through the main growing season (roughly March through November in Bangladesh's climate, with a dormant or low-yield winter period), during which pluckers work section by section harvesting the fine leaf standard, two leaves and a bud, that determines tea quality. Yield varies meaningfully by section (soil, bush age, and shade cover differ across an estate's footprint), by season (the "second flush" period in mid-year typically produces the highest quality leaf), and by individual plucker skill and diligence.</p>
+      <p>In Odoo, each section's daily plucked green leaf weight is logged as a raw material receipt, tagged with section, plucking round, and date, functioning as a lot even though no external purchase transaction has occurred, since the estate is both grower and processor. This is set up under <span class="path-tag">Inventory &gt; Configuration &gt; Settings &gt; Traceability</span> with a dedicated "green leaf" raw material product per section or, more practically for larger estates, per section group, so that yield per hectare and leaf quality trends can be compared across the estate's own footprint over a full season rather than only tracked as one undifferentiated daily total. When a specific day's made tea output later shows an unusual grade split or an auction price outcome worth investigating, this section-level tagging is what lets the estate trace the result back to which part of the garden the leaf actually came from.</p>
+
+      <div class="tip-box">
+        <div class="tlabel">Practical Shortcut</div>
+        <p>Do not try to track individual plucker output at the leaf-weight level inside the ERP unless the estate already has a reliable weighing-station process at the collection point. Most Bangladesh gardens weigh baskets at a few fixed collection points per section rather than per worker in real time, and forcing granularity the ground process cannot actually support just produces bad data that looks precise. Match the ERP's tracking level to what the collection process genuinely captures.</p>
+      </div>
+
+      <h2 id="ratio">The Green Leaf to Made Tea Ratio</h2>
+      <p>The green leaf to made tea conversion ratio, the kilograms of raw plucked leaf required to produce one kilogram of finished, processed tea, is the defining economic KPI of a tea estate, more important operationally than almost any other single figure, because it sits at the intersection of the two costs the estate controls (plucking labor and processing) and the one it mostly does not (auction price, which is set by market demand for the estate's specific grade and mark). A ratio of roughly 4 to 4.5 kilograms of green leaf per kilogram of made tea is typical for a well-managed garden processing good-quality fine leaf, while a ratio drifting toward 5 kilograms or higher usually signals coarser leaf (more mature leaf with excess stem content, often from a plucking round that ran too long between harvests) or moisture loss issues before processing.</p>
+
+      <div class="stat-row">
+        <div class="stat-card">
+          <div class="sc-val">4–4.5:1</div>
+          <div class="sc-label">Good Ratio</div>
+          <div class="sc-note">Kilograms of green leaf per kilogram of made tea under favorable leaf quality and good management</div>
+        </div>
+        <div class="stat-card">
+          <div class="sc-val">5:1+</div>
+          <div class="sc-label">Deteriorating Ratio</div>
+          <div class="sc-note">Common result of coarse, over-mature leaf or delayed processing after plucking</div>
+        </div>
+        <div class="stat-card">
+          <div class="sc-val">7–10 days</div>
+          <div class="sc-label">Plucking Round</div>
+          <div class="sc-note">Typical interval between successive plucking passes through the same garden section</div>
+        </div>
+      </div>
+
+      <p>Tracking this ratio in Odoo means comparing the total green leaf weight logged into the factory (aggregated from the section-level receipts described above) against the total made tea output weight recorded at the end of the grading stage, for the same processing day or shift, using a standard Manufacturing app bill-of-material yield comparison the same way a re-rolling mill compares billet input to finished rod output. Tracked by section, by plucking round, and by shift, the ratio becomes an early warning signal, a garden manager who sees the ratio drift over two or three consecutive rounds knows to investigate specific sections before the season's overall output and revenue are affected, rather than discovering the problem only when the season's aggregate cost accounting is finally closed out.</p>
+
+      <h2 id="factory">Factory Processing Stages &amp; Grading</h2>
+      <p>Green leaf becomes made tea through a defined sequence of factory stages, each affecting final quality and grade distribution, and worth modeling as distinct work centers in the same way a manufacturing routing would.</p>
+
+      <div class="timeline-track">
+        <div class="tl-node">
+          <div class="tl-date">Stage 1</div>
+          <div class="tl-title">Withering</div>
+          <div class="tl-body">Fresh leaf is spread in withering troughs with forced air to reduce moisture content, typically over 14 to 18 hours, softening the leaf for rolling.</div>
+        </div>
+        <div class="tl-node">
+          <div class="tl-date">Stage 2</div>
+          <div class="tl-title">Rolling / CTC</div>
+          <div class="tl-body">Withered leaf is rolled (orthodox method) or processed through Crush-Tear-Curl (CTC) machines, the dominant method in Bangladesh for producing granular tea suited to tea-bag and mass-market blends, rupturing leaf cells to release enzymes needed for fermentation.</div>
+        </div>
+        <div class="tl-node">
+          <div class="tl-date">Stage 3</div>
+          <div class="tl-title">Fermentation (oxidation)</div>
+          <div class="tl-body">Rolled or CTC leaf oxidizes under controlled temperature and humidity for roughly 60 to 120 minutes, developing the color and flavor characteristic of black tea, the dominant style produced in Bangladesh.</div>
+        </div>
+        <div class="tl-node">
+          <div class="tl-date">Stage 4</div>
+          <div class="tl-title">Drying</div>
+          <div class="tl-body">Fermented leaf is dried at controlled temperature to halt oxidation and stabilize the product as made tea, consuming significant fuel (commonly firewood or furnace oil-fired dryers) and requiring careful temperature control to avoid scorching.</div>
+        </div>
+        <div class="tl-node">
+          <div class="tl-date">Stage 5</div>
+          <div class="tl-title">Sorting &amp; grading</div>
+          <div class="tl-body">Dried tea is sorted by particle size and appearance into distinct commercial grades: whole-leaf and broken grades like BOP (Broken Orange Pekoe) and BP (Broken Pekoe), fine grades like BOPF (Broken Orange Pekoe Fannings), and the smallest, Dust grades, each selling at a different auction price.</div>
+        </div>
+      </div>
+
+      <table class="grade-table">
+        <thead>
+          <tr>
+            <th>Grade</th>
+            <th>Characteristics</th>
+            <th>Typical Market Position</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>BOP</td>
+            <td>Medium broken leaf particle, good liquor strength</td>
+            <td>Widely traded, solid mid-to-upper auction price</td>
+          </tr>
+          <tr>
+            <td>BOPF</td>
+            <td>Finer broken particle than BOP, strong quick-brewing liquor</td>
+            <td>Popular for blending, consistent demand</td>
+          </tr>
+          <tr>
+            <td>BP</td>
+            <td>Broken Pekoe, larger particle than BOP</td>
+            <td>Moderate demand, generally below BOP pricing</td>
+          </tr>
+          <tr>
+            <td>Dust</td>
+            <td>Smallest particle size, fastest brewing</td>
+            <td>High demand for tea-bag production, price varies by fineness grade</td>
+          </tr>
+          <tr>
+            <td>Fannings</td>
+            <td>Between BOPF and Dust in particle size</td>
+            <td>Steady demand, mid-range pricing</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>Each grade coming off the sorting stage should be recorded as a distinct finished-goods lot in Odoo, since grades sell at genuinely different auction prices and blending them in inventory before the auction catalogue is finalized destroys the pricing precision the estate's commercial team needs. This is the tea-sector equivalent of the multi-grade output splitting covered for ceramics elsewhere on this site, achieved the same way: a quality/grading control point followed by registration of multiple output lots from a single processing batch.</p>
+
+      <h2 id="auction">Auction-Ready Batch Costing</h2>
+      <p>Because nearly all Bangladesh made tea sells through the Chattogram Tea Auction, where brokers catalogue lots by garden mark, grade, and invoice number ahead of each week's sale, an estate's commercial and finance team needs batch-level cost and quantity data finalized before the broker's catalogue closing deadline, not reconstructed afterward for accounting purposes. Each factory processing run (a specific day or shift's withering-to-grading cycle) should be tracked in Odoo as a manufacturing order that accumulates green leaf input cost (allocated from the section-level lots consumed that day), processing labor, and drying fuel cost, then splits into the several grade-specific output lots described above, each carrying its own allocated cost and, once weighed and packed into standard tea chests or multi-wall paper sacks, its own auction lot reference.</p>
+      <p>This structure is what lets an estate's manager set a realistic reserve or expected price ahead of a specific week's auction, cross-referencing the batch's actual cost against recent auction price trends for that grade and mark, rather than relying on a rough seasonal average cost that may already be several weeks stale by the time a specific lot is catalogued. It is the same underlying discipline, batch-level actual costing feeding directly into a sale decision, that a well-run trading or distribution business applies to inventory pricing, covered more generally in <a href="0036-odoo-trading-company-bangladesh" style="color:var(--accent)">Odoo for Trading Companies Bangladesh</a>, and it depends on the same lot-based valuation principles laid out in the site's <a href="0011-odoo-inventory-valuation-cheatsheet" style="color:var(--accent)">Odoo Inventory Valuation Cheatsheet</a>.</p>
+
+      <div class="pull">An estate that cannot tell you what a specific week's BOP lot actually cost to produce is setting its auction reserve price on instinct, in a market where the buyer on the other side of the bid has much better information.</div>
+
+      <h2 id="labor">Plantation Labor Management</h2>
+      <p>Tea garden labor in Bangladesh operates under a distinct regulatory and customary framework, the Tea Plantation Labour Ordinance and associated wage board settlements negotiated periodically between garden owners' associations and tea workers' unions, that differs substantially from standard factory HR practice covered elsewhere on this site. Resident garden workers, overwhelmingly plucking-stage labor, receive compensation combining a daily cash wage (often with a task or plucked-weight component above a minimum daily quota), an in-kind rice ration allocation, and estate-provided housing, alongside access to garden-run primary healthcare and schooling in many cases. This total compensation package, not just the cash wage line, is what actually determines the estate's true labor cost per kilogram of green leaf.</p>
+
+      <div class="feature-grid">
+        <div class="feature-card">
+          <div class="fc-icon">01</div>
+          <div class="fc-body">
+            <h4>Attendance-linked daily wage</h4>
+            <p>Custom salary structure combining base daily wage with an incentive component tied to plucked weight above quota, configured under Employees &gt; Configuration &gt; Salary Structures.</p>
+          </div>
+        </div>
+        <div class="feature-card">
+          <div class="fc-icon">02</div>
+          <div class="fc-body">
+            <h4>In-kind ration tracking</h4>
+            <p>Rice ration entitlements recorded as a non-cash compensation component for accurate total labor cost, even though it does not appear as a cash payroll line.</p>
+          </div>
+        </div>
+        <div class="feature-card">
+          <div class="fc-icon">03</div>
+          <div class="fc-body">
+            <h4>Housing &amp; welfare allocation</h4>
+            <p>Estate housing and welfare facility costs allocated per resident worker for true total labor cost reporting, distinct from a standard factory's cash-only wage model.</p>
+          </div>
+        </div>
+        <div class="feature-card">
+          <div class="fc-icon">04</div>
+          <div class="fc-body">
+            <h4>Section-linked productivity data</h4>
+            <p>Individual or group plucking output, where collection processes support it, links back to the section-level harvest data for a genuine productivity view by garden section.</p>
+          </div>
+        </div>
+      </div>
+
+      <p>None of Odoo's default HR or Payroll templates anticipate this structure out of the box, since they are built around salaried or standard hourly factory and office employment, and building it correctly requires a genuine requirements conversation with the estate's HR and welfare officer before configuration begins, not an assumption that a generic Bangladesh payroll template will simply fit. Getting this piece wrong is the most common reason a tea estate ERP project stalls after go-live, since payroll errors on a resident workforce with union representation and statutory wage board oversight are far more visible and far less tolerated than an equivalent error in a standard office payroll run.</p>
+      <p>There is also a seasonal staffing dimension worth planning for explicitly: peak plucking season (broadly the second flush period through the monsoon months) requires substantially more plucking labor than the slower winter months, and many estates supplement their resident permanent workforce with seasonal or casual pluckers during peak periods. Odoo's Employees module handles this by distinguishing permanent resident staff (entitled to the full ration and housing package) from casual or seasonal workers hired for a defined plucking period on a simpler daily-wage-only basis, configured as separate employee categories under <span class="path-tag">Employees &gt; Configuration &gt; Employee Categories</span>, so that payroll cost reporting can separate the two workforce types cleanly rather than blending permanent welfare-entitled labor cost with short-term seasonal wage cost into one indistinguishable figure that misrepresents the estate's true year-round labor obligation.</p>
+
+      <div class="callout">
+        <span class="tag">Tea Estate ERP Setup Consultation</span>
+        <p>If your estate is still calculating the green leaf to made tea ratio in a ledger book, reconciling grade-level auction costing after the sale has already happened, or running plantation payroll on a spreadsheet that cannot cleanly separate cash wage from ration and housing entitlements, I can configure Odoo's inventory, manufacturing, and HR modules to match how a tea garden actually operates. <a href="../#contact" style="color:var(--accent)">Contact me for a strategy session →</a></p>
+      </div>
+
+      <h2 id="faq">Frequently asked questions</h2>
+
+      <h3>How do you track green leaf harvest in Odoo for a tea estate?</h3>
+      <p>Green leaf plucking is recorded daily by garden section (a tea estate is divided into numbered sections or "sections/divisions" for management purposes) and by plucker, using Odoo's Manufacturing or Inventory receipt functions adapted to log raw material intake rather than a purchase. Each section's daily plucked weight is entered as a goods receipt into a raw material lot tagged with the section, the date, and the plucking round (tea gardens pluck on a 7 to 10 day round through the growing season), which lets the estate compare yield per hectare across sections and across the season, and lets the factory trace a specific day's made tea output back to the specific sections that supplied the green leaf, which matters when a batch's quality or auction price comes in unexpectedly high or low.</p>
+
+      <h3>What is a normal green leaf to made tea processing ratio?</h3>
+      <p>Bangladesh tea factories typically require approximately 4 to 4.5 kilograms of green leaf to produce 1 kilogram of made (finished, processed) tea under good management and favorable leaf quality, with the ratio worsening toward 5 kilograms of green leaf per kilogram of made tea when leaf quality is coarse (over-mature leaf with more stem and less bud content) or during periods of lower moisture content in the plucked leaf. This ratio is the single most important estate-level KPI because green leaf cost (largely plucking labor) and made tea sale price are both fixed in the short term, meaning the conversion ratio is the main lever management actually controls week to week, and tracking it by section and by plucking round in Odoo shows exactly where the ratio is deteriorating.</p>
+
+      <h3>How is tea batch costing structured for auction sale in Odoo?</h3>
+      <p>Each factory processing run (a specific day's or shift's withering-to-grading cycle) is tracked as a manufacturing order producing several output lots by grade (such as BOP, BOPF, BP, Pekoe, Dust, and Fannings), each carrying its actual green leaf input cost (allocated by the section-level lot cost), processing labor and fuel cost from the withering, rolling/CTC, fermentation, and drying stages, and its own grade-specific valuation. Because tea in Bangladesh is predominantly sold through the Chattogram Tea Auction, where lots are catalogued and bid on by grade and garden mark, having each grade's batch cost and quantity cleanly separated in Odoo before the auction catalogue deadline is what lets an estate's commercial team set a realistic reserve price rather than guessing at cost when the auction broker's catalogue closing date arrives.</p>
+
+      <h3>Can Odoo handle plantation labor management under Bangladesh's tea garden labor rules?</h3>
+      <p>Odoo's HR and Payroll apps can be configured to handle the distinct wage, ration, and housing structure that applies to resident tea garden labor under the Tea Plantation Labour Ordinance and related wage board settlements, which differ substantially from standard factory HR: plucking wages are commonly paid on a daily-task basis with an attendance and plucked-weight component, and workers typically receive in-kind rations (rice allocation) and estate housing as part of total compensation, not just cash wages. This requires custom payroll structures under Employees &gt; Configuration &gt; Salary Structures that combine attendance-linked daily wage, a plucked-weight incentive component tied to the harvest data captured in Inventory, and non-cash ration/housing entitlements tracked for compliance and cost-allocation purposes, rather than relying on Odoo's default salary structure templates built for salaried factory or office staff.</p>
+
+      <h3>Which Bangladesh tea-growing regions does this apply to?</h3>
+      <p>Bangladesh's tea industry is concentrated in the Sylhet division (Sylhet, Moulvibazar, and Habiganj districts contain the large majority of the country's tea gardens) with a smaller cluster in the Chattogram hill tracts (Chattogram and Rangamati districts). Nearly all commercially graded made tea, regardless of which of these regions it is grown in, moves through the Chattogram Tea Auction for sale, which is why auction-ready batch and grade documentation matters uniformly across the industry rather than varying meaningfully by growing region.</p>
+
+    </div>

@@ -1,0 +1,287 @@
+---
+permalink: "lab/0090-odoo-real-estate-developers-bangladesh.html"
+title: "Odoo for Real Estate Developers & Plot/Flat Sales Bangladesh | Mehedi Hasan"
+description: "Odoo ERP for Bangladesh real estate developers: installment-based plot/flat sales, project costing, RAJUK-adjacent documentation, and buyer payment tracking."
+canonical: "https://mhasan.me/lab/0090-odoo-real-estate-developers-bangladesh"
+ogImage: "https://mhasan.me/assets/og/lab/0090-odoo-real-estate-developers-bangladesh.png"
+ogSiteName: "Mehedi Hasan | Odoo ERP Consultant"
+datePublished: "2026-09-18T14:00:00+06:00"
+dateModified: "2026-09-18T14:00:00+06:00"
+articleSection: "Odoo ERP Bangladesh"
+eyebrowNum: "0090"
+h1: "Odoo for real estate developers <span class=\"serif\">selling flats over years, not minutes.</span>"
+lede: "A garment factory closes a sale the day the shipment leaves the port. A Bangladesh real estate developer closes a sale the day a buyer signs, and then spends the next two to five years collecting installments against a flat that may not even be finished yet. That single difference, revenue collected over years against an asset still being built, is why a real estate developer's Odoo configuration looks nothing like a trading company's, even though both are, on paper, selling a product to a customer."
+chips: ["Guide", "Real Estate", "Project Costing"]
+bylineItems:
+  - label: "By"
+    value: "<a href=\"https://www.linkedin.com/in/mehedi-hasan-consultant/\" style=\"color:var(--accent)\" rel=\"author\">Mehedi Hasan</a>"
+  - label: "Published"
+    value: "September 2026"
+  - label: "Read time"
+    value: "17 minutes"
+  - label: "Form"
+    value: "Guide"
+  - label: "Scope"
+    value: "Real Estate Developer Operations"
+nextArticle:
+  href: "0089-odoo-hospital-diagnostic-center-bangladesh"
+  dir: "Older · 0089"
+  title: "Odoo for Hospital &amp; Diagnostic Center Operations Bangladesh"
+  desc: "Patient billing, lab inventory tracking, and doctor referral commissions."
+prevArticle:
+  href: "../#lab"
+  dir: "All articles"
+  title: "Back to Lab Index"
+  desc: "Browse all guides on Odoo ERP, manufacturing operations, and business analysis in Bangladesh."
+jsonLd: |
+  [
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "Odoo for Real Estate Developers & Plot/Flat Sales Bangladesh",
+      "description": "Odoo ERP for Bangladesh real estate developers: installment-based plot/flat sales, project costing, RAJUK-adjacent documentation, and buyer payment tracking.",
+      "datePublished": "2026-09-18T14:00:00+06:00",
+      "dateModified": "2026-09-18T14:00:00+06:00",
+      "author": {
+        "@type": "Person",
+        "name": "Mehedi Hasan",
+        "url": "https://mhasan.me",
+        "jobTitle": "Odoo ERP Consultant & Business Analyst",
+        "sameAs": "https://www.linkedin.com/in/mehedi-hasan-consultant/"
+      },
+      "publisher": { "@type": "Person", "name": "Mehedi Hasan", "url": "https://mhasan.me" },
+      "mainEntityOfPage": { "@type": "WebPage", "@id": "https://mhasan.me/lab/0090-odoo-real-estate-developers-bangladesh" }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://mhasan.me" },
+        { "@type": "ListItem", "position": 2, "name": "Lab", "item": "https://mhasan.me/lab/" },
+        { "@type": "ListItem", "position": 3, "name": "Odoo for Real Estate Developers & Plot/Flat Sales Bangladesh", "item": "https://mhasan.me/lab/0090-odoo-real-estate-developers-bangladesh" }
+      ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Does Odoo have a built-in real estate installment sales module?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No, Odoo does not ship a purpose-built real estate payment-plan module the way some dedicated property management software does. A Bangladesh developer builds installment-based plot or flat sales using standard Sales and Accounting building blocks: each unit is a product, each buyer's payment schedule is modeled as a sales order with milestone or recurring invoice lines mapped to the agreed schedule (typically a booking payment, followed by construction-linked or calendar-linked installments over one to five years), and Accounting's customer aging and follow-up tools track collection status per buyer per installment. It takes deliberate configuration rather than a checkbox, but it is a well-supported pattern once built correctly."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do you calculate per-unit profit margin on a real estate project in Odoo?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Per-unit margin requires rolling up land acquisition cost, direct construction cost, and allocated shared overhead (architect and engineering fees, RAJUK approval costs, sales commission, common area construction) across the whole project and then apportioning that total cost to each flat or plot based on a fair allocation basis, most commonly built-up area or plot size. In Odoo this is typically modeled using Project or Analytic Accounting, with the project set up as an analytic account and each cost booked against it, then a costing worksheet (native Odoo reporting supplemented with a spreadsheet extract for the per-unit apportionment) divides total project cost by allocation basis to arrive at a per-unit cost, compared against that unit's actual sale price."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can Odoo track RAJUK approval status for a real estate project?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Odoo does not have a RAJUK-specific compliance module, but its Project or Documents module can track the approval pipeline (land use clearance, building plan approval, occupancy certificate stages) as a series of tasks or milestones with attached scanned documents, due dates, and responsible staff. This gives a developer a single system-of-record view of where every project stands in the RAJUK (Rajdhani Unnayan Kartripakkha) or equivalent local development authority approval process, rather than relying on a coordinator's personal folder of paperwork, which becomes especially valuable when a developer runs several projects at different approval stages simultaneously."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How should buyer default or cancellation be handled in Odoo?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Buyer default and cancellation is a real, recurring scenario in Bangladesh real estate sales, and it needs a documented policy reflected in the system rather than an ad hoc negotiation each time. In Odoo, this is handled by defining the forfeiture or refund percentage in the buyer's sales order terms up front, so when a cancellation is processed, the system calculates the refund due (total paid minus the contractually agreed forfeiture percentage and any documented deductions) consistently rather than through a manual, case-by-case calculation prone to inconsistency between buyers, which is itself a source of disputes and reputational risk for a developer selling repeatedly in the same market."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What does an Odoo implementation cost for a Bangladesh real estate developer?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "For a developer running 1 to 5 active projects with combined unit counts in the range of 50 to 300 flats or plots, an Odoo implementation covering installment sales tracking, project costing, and RAJUK-adjacent document tracking typically runs BDT 10 to 25 lakh, with BDT 4 to 10 lakh per year for support, varying significantly based on how many active projects need concurrent costing and how much customization the payment schedule logic requires beyond Odoo's standard recurring invoicing capability."
+          }
+        }
+      ]
+    }
+  ]
+extraStyles: |
+  .path-tag { font-family: var(--mono); font-size: 12.5px; background: var(--elev); border: 1px solid var(--border); border-radius: 5px; padding: 2px 8px; color: var(--text); }
+---
+<aside class="toc">
+      <div class="toc-k">In this guide</div>
+      <ol>
+        <li><a href="#the-model">The Bangladesh Developer Revenue Model</a></li>
+        <li><a href="#installment-tracking">Structuring Installment Sales in Odoo</a></li>
+        <li><a href="#project-costing">Project-Based Costing Across a Multi-Year Build</a></li>
+        <li><a href="#per-unit-margin">Rolling Costs Up to a Per-Unit Margin</a></li>
+        <li><a href="#rajuk">RAJUK-Adjacent Approval Documentation</a></li>
+        <li><a href="#default-cancellation">Buyer Default and Cancellation</a></li>
+        <li><a href="#collections">Collections and Follow-Up Discipline</a></li>
+        <li><a href="#sales-crm">Managing the Pre-Sale Pipeline</a></li>
+        <li><a href="#reporting">Reporting a Developer Actually Needs</a></li>
+        <li><a href="#rollout">Rolling It Out Across an Active Project Pipeline</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ol>
+    </aside>
+
+    <div class="body">
+
+      <h2 id="the-model">The Bangladesh Developer Revenue Model</h2>
+      <p>Bangladesh's private real estate sector, concentrated heavily in Dhaka and Chattogram and represented industry-wide by REHAB (Real Estate &amp; Housing Association of Bangladesh), runs on a sales model fundamentally different from almost every other business this site covers. A developer sells a flat or a plot years before, or at best around, the point of physical handover, and collects payment across a schedule that typically includes a booking money payment, a down payment on agreement signing, and then a series of installments spread over one to five years, often structured to align loosely with construction milestones (foundation complete, structure complete, finishing stage) even when the legal payment schedule is calendar-based rather than strictly milestone-triggered.</p>
+      <p>This creates two distinct ERP problems that a standard sales order in most other industries never has to solve simultaneously: tracking a single sale's revenue collection across years against dozens or hundreds of individual buyers, and tracking project cost accumulation across the same multi-year timeline to eventually know whether a specific flat, sold at a specific price two years before its walls existed, actually made money once land, construction, and overhead are fully allocated to it.</p>
+
+      <div class="stat-row">
+        <div class="stat-card">
+          <div class="sc-val">1–5 Yrs</div>
+          <div class="sc-label">Typical Installment Period</div>
+          <div class="sc-note">Common span of a buyer's payment schedule from booking to final settlement</div>
+        </div>
+        <div class="stat-card">
+          <div class="sc-val">10–20%</div>
+          <div class="sc-label">Typical Booking Payment</div>
+          <div class="sc-note">Common upfront percentage collected at booking/agreement signing</div>
+        </div>
+        <div class="stat-card">
+          <div class="sc-val">50–300</div>
+          <div class="sc-label">Units per Active Project</div>
+          <div class="sc-note">Typical scale range for a mid-size Dhaka developer's single project</div>
+        </div>
+      </div>
+
+      <p class="pull">In manufacturing, the sale ends when the goods leave. In real estate, the sale begins when the buyer signs, and the real accounting work runs for years afterward.</p>
+
+      <h2 id="installment-tracking">Structuring Installment Sales in Odoo</h2>
+      <p>Odoo has no purpose-built real estate payment-plan module out of the box, and any Bangladesh consultant claiming otherwise is describing a heavily customized build, not a standard feature. What Odoo does offer, and what a properly structured implementation builds on, is a combination of Sales and Accounting capability flexible enough to model an installment schedule accurately: each unit (a specific flat or plot) is set up as a distinct product or project task, the buyer's full payment schedule is captured as a sales order with either a series of scheduled invoice lines dated to the agreed installment dates, or Odoo's recurring invoicing capability under <span class="path-tag">Sales &gt; Configuration &gt; Recurring Plans</span> adapted to the developer's specific schedule rather than a true subscription cadence.</p>
+      <p>The critical configuration decision is whether installments are calendar-based (due on fixed dates regardless of construction progress) or milestone-linked (due when a defined construction stage completes). Calendar-based schedules map cleanly onto Odoo's native recurring invoice or scheduled invoice functionality. Milestone-linked schedules require tying invoice generation to a Project task or milestone completion event, which is a more customized build (typically an automated action or a small server action script triggering invoice creation when a linked project milestone is marked done) but avoids the common real-world problem of a construction delay leaving a calendar-based invoice due for a flat that has not actually advanced to the stage the buyer was told would trigger that payment.</p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Payment Structure</th>
+            <th>Odoo Mechanism</th>
+            <th>Trade-off</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Calendar-based installments</td>
+            <td>Scheduled/recurring invoice lines on the sales order</td>
+            <td>Simple to configure, but disconnected from actual construction progress</td>
+          </tr>
+          <tr>
+            <td>Milestone-linked installments</td>
+            <td>Project milestone completion triggers invoice generation</td>
+            <td>More accurately reflects buyer expectations, requires custom automation</td>
+          </tr>
+          <tr>
+            <td>Hybrid (calendar with milestone gates)</td>
+            <td>Scheduled invoices with a manual hold released on milestone sign-off</td>
+            <td>Most common in practice; balances predictability with fairness</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="tip-box">
+        <div class="tlabel">Practical Shortcut</div>
+        <p>Start every new project with the hybrid model: calendar-scheduled invoices that a sales/finance coordinator manually releases only after confirming the linked construction milestone against the site engineer's progress report. This avoids the upfront cost of building fully automated milestone-triggered invoicing before the developer has proven the model works, while still protecting the relationship with buyers who would otherwise receive a payment demand ahead of visible progress.</p>
+      </div>
+
+      <h2 id="project-costing">Project-Based Costing Across a Multi-Year Build</h2>
+      <p>A real estate project's true cost is not known at the moment units are sold, since sales often begin during or even before land development and construction, well before final costs are locked in. Odoo's Analytic Accounting, with each project set up as its own analytic account under <span class="path-tag">Accounting &gt; Configuration &gt; Analytic Accounts</span>, lets every cost, land acquisition and registration cost, construction contractor bills, architect and structural engineering fees, RAJUK and utility connection charges, and sales and marketing commission, post against that single project regardless of which accounting period the cost falls in across the multi-year build.</p>
+      <p>This is structurally similar to the multi-year project cost tracking any project-based business needs, and the project charter and tracking discipline in <a href="0047-odoo-project-charter-template" style="color:var(--accent)">the Odoo Project Charter Template</a> is directly applicable to structuring a real estate project as a trackable Odoo project with phases, tasks, and budget lines, even though the underlying deliverable here is a physical building rather than a service engagement.</p>
+
+      <h2 id="per-unit-margin">Rolling Costs Up to a Per-Unit Margin</h2>
+      <p>The number a developer actually needs, and the number that is genuinely hard to produce without deliberate system design, is per-unit margin: what did this specific flat cost to build, fully loaded with its fair share of land and overhead, against what it actually sold for. The standard approach is apportionment by built-up area or plot size: total project cost (land plus construction plus overhead) divided by total sellable area gives a cost-per-square-foot figure, multiplied by each unit's specific area to arrive at that unit's allocated cost.</p>
+      <p>In Odoo, this apportionment calculation is typically done as a costing worksheet, native project/analytic cost totals exported or referenced into a structured calculation (either a custom Odoo Studio report or a maintained spreadsheet fed by Odoo's cost data) that applies the allocation basis and compares it against each unit's actual sale price recorded on its sales order. This should be recalculated at defined checkpoints, not just once at project launch, since construction costs in Bangladesh have historically moved meaningfully within a single project's build timeline (steel and cement price volatility being the most common driver), and a developer who priced units at launch based on an early cost estimate needs to know, well before completion, whether actual costs are tracking to plan or eroding margin on units already sold at a fixed price.</p>
+
+      <div class="feature-grid">
+        <div class="feature-card">
+          <div class="fc-icon">01</div>
+          <div class="fc-body">
+            <h4>Land Cost</h4>
+            <p>Acquisition price, registration fees, and any land development cost, allocated across all sellable units by area.</p>
+          </div>
+        </div>
+        <div class="feature-card">
+          <div class="fc-icon">02</div>
+          <div class="fc-body">
+            <h4>Direct Construction Cost</h4>
+            <p>Contractor bills, materials, and site labor, tracked against the project's analytic account as they accrue.</p>
+          </div>
+        </div>
+        <div class="feature-card">
+          <div class="fc-icon">03</div>
+          <div class="fc-body">
+            <h4>Allocated Overhead</h4>
+            <p>Architect, engineering, RAJUK fees, and sales commission, apportioned across units the same way as land cost.</p>
+          </div>
+        </div>
+        <div class="feature-card">
+          <div class="fc-icon">04</div>
+          <div class="fc-body">
+            <h4>Per-Unit Margin</h4>
+            <p>Sale price minus fully loaded allocated cost, recalculated at defined checkpoints as actual costs land.</p>
+          </div>
+        </div>
+      </div>
+
+      <h2 id="rajuk">RAJUK-Adjacent Approval Documentation</h2>
+      <p>Every Dhaka-area development project moves through a sequence of approval stages with the Rajdhani Unnayan Kartripakkha (RAJUK), from land use clearance and building plan approval through to the occupancy certificate at completion, with equivalent authorities (CDA in Chattogram, for instance) governing outside Dhaka. Odoo has no RAJUK-specific compliance module, and no ERP vendor should claim one, but the approval pipeline itself, a sequence of stages, each with required documents, submission dates, and responsible staff, maps cleanly onto Odoo's Project module as a dedicated project with a kanban stage per approval milestone, or onto the Documents module for a structured, centrally accessible repository of scanned approval letters, drawings, and correspondence.</p>
+      <p>The practical value for a developer running several projects simultaneously, each sitting at a different approval stage, is having one system-of-record view answering "where does each project actually stand with RAJUK today" rather than that knowledge living in a single coordinator's memory or a personal folder of paperwork that becomes a serious operational risk if that person is unavailable during a critical filing window. Attaching scanned approval documents directly to the relevant project task also gives finance and sales teams visibility into which stage-gated milestone payments (where a buyer's schedule includes a payment tied to "on approval of building plan," for instance) are legitimately due to trigger.</p>
+
+      <h2 id="default-cancellation">Buyer Default and Cancellation</h2>
+      <p>Buyer default, a purchaser who stops paying installments partway through the schedule, and buyer-initiated cancellation, someone who wants out of an agreement before completion, are both real and recurring situations in Bangladesh real estate sales, not edge cases. Handling them consistently matters both for cash flow planning and for the developer's reputation in a market where word travels fast about how a company treats buyers in distress.</p>
+      <p>The system-level fix is defining the forfeiture and refund policy explicitly in the sales order terms at the point of sale, not improvised at the point of cancellation: typically a percentage of amount paid is retained (covering the developer's incurred marketing, processing, and holding costs) with the remainder refunded, and Odoo's accounting can calculate this consistently once the policy percentage is stored against the sales order rather than negotiated fresh each time. This also gives management a clean reporting view of default and cancellation rate by project and by sales channel, which is a genuinely useful early-warning indicator: a spike in cancellations on a specific project often signals a pricing, construction delay, or sales-process problem worth investigating before it spreads to more buyers.</p>
+
+      <div class="disclaimer">
+        <p><strong>Note:</strong> Forfeiture percentages and refund terms should be reviewed against current consumer protection expectations and standard REHAB member practice, and against the specific legal agreement drafted by the developer's legal counsel for each project, since this guide addresses the system configuration to enforce a policy consistently, not the legal terms of the policy itself.</p>
+      </div>
+
+      <h2 id="collections">Collections and Follow-Up Discipline</h2>
+      <p>With installment schedules running years long across hundreds of buyers, overdue payment tracking cannot be a manual phone-call exercise once a project passes roughly fifty active buyers. Odoo's standard customer aging report under <span class="path-tag">Accounting &gt; Reporting &gt; Aged Receivable</span>, combined with automated payment reminder emails or SMS (the SMS gateway setup covered in <a href="0054-odoo-email-sms-setup-bangladesh" style="color:var(--accent)">Odoo Email &amp; SMS Setup Bangladesh</a> applies directly here, since Bangladesh buyers respond more reliably to SMS payment reminders than email for this kind of transaction), gives a developer's collections team a prioritized, system-generated worklist instead of a spreadsheet someone updates inconsistently.</p>
+      <p>A well-configured collections view segments overdue buyers by how many installments they are behind and by total amount outstanding, since a buyer one installment behind by a small amount needs a different follow-up approach than one several installments behind on a large sum, and conflating the two in a single undifferentiated overdue list is a common reason collections effort gets misallocated on a large active buyer base.</p>
+
+      <h2 id="reporting">Reporting a Developer Actually Needs</h2>
+      <p>Beyond individual project costing and collections, the reports that matter to a developer's principals are portfolio-level ones: cash collected versus cash contractually committed across all active projects (the gap between these two numbers is effectively the developer's remaining financing need for ongoing construction), per-project margin trend as actual costs land against original estimates, and sales velocity by project and unit type, which of the flat sizes and price points in a given project are moving and which are sitting unsold. The dashboard approach in <a href="0055-odoo-dashboards-kpi-bangladesh" style="color:var(--accent)">Odoo Dashboards &amp; KPI Bangladesh</a> applies directly to building this portfolio view for a developer running multiple concurrent projects, which is the normal operating state for any Bangladesh developer beyond its first project.</p>
+
+      <h2 id="sales-crm">Managing the Pre-Sale Pipeline</h2>
+      <p>Before a unit becomes an installment sale, it passes through a pre-sale pipeline, site visit inquiries, price negotiations, booking money collection, and agreement signing, that most Bangladesh developers still manage through a sales team's personal contact lists and a shared spreadsheet updated inconsistently between the sales office and head office. Odoo's CRM module, covered in general terms in <a href="0017-odoo-sales-crm-bangladesh" style="color:var(--accent)">Odoo Sales &amp; CRM Bangladesh</a>, applies directly here with a real estate-specific pipeline structure: stages for inquiry, site visit completed, unit reserved, booking money received, and agreement signed, each unit tagged to its specific flat or plot so the same inventory item cannot be double-booked by two sales staff working the same project from different desks.</p>
+      <p>This matters more in real estate than in most other Bangladesh sales contexts because the inventory being sold is entirely non-fungible: unlike a trading company selling from a stock of identical SKUs, a developer is selling one specific flat on one specific floor with one specific view, and a sales team without a shared, real-time view of which units are reserved routinely wastes a prospective buyer's time confirming interest in a unit someone else already booked an hour earlier. A simple Odoo CRM configuration with unit-level reservation status visible to the whole sales team removes this entirely preventable friction, and it is often the fastest, cheapest win in an early-phase real estate Odoo rollout, well before the more involved project costing and installment billing configuration is built out.</p>
+
+      <h2 id="rollout">Rolling It Out Across an Active Project Pipeline</h2>
+      <p>Real estate developers rarely get the luxury of implementing Odoo before their first project is already selling, which shapes the realistic rollout sequence:</p>
+      <ul>
+        <li><strong>Migrate existing buyer payment schedules for active projects first,</strong> since incomplete or inaccurate migration of who owes what, by when, is the single highest-risk failure point in a real estate ERP rollout.</li>
+        <li><strong>Set up project costing and analytic accounts for every currently active project</strong> even if some are already partway through construction, backdating cost entries where source documents allow, rather than starting cost tracking only from go-live forward and losing visibility into the true project-to-date cost.</li>
+        <li><strong>Build the RAJUK approval tracking structure next,</strong> populated with current status for every active project, since this is usually the fastest win with the least data migration risk.</li>
+        <li><strong>Introduce automated collections reminders gradually,</strong> starting with the most overdue segment first, to avoid overwhelming the sales and collections team with a sudden volume of system-generated follow-ups they are not yet prepared to action.</li>
+        <li><strong>Finalize the default/cancellation policy configuration before the next cancellation happens,</strong> not after, since retrofitting a consistent policy after several inconsistent manual settlements have already occurred creates its own fairness dispute among affected buyers.</li>
+      </ul>
+
+      <div class="callout">
+        <span class="tag">Real Estate ERP Consultation</span>
+        <p>If you are a Bangladesh real estate developer tracking buyer installments and project costs across spreadsheets that no longer scale with your unit count, I can design and implement the Odoo sales, project costing, and collections structure this business model actually requires. <a href="../#contact" style="color:var(--accent)">Contact me for a strategy session →</a></p>
+      </div>
+
+      <h2 id="faq">Frequently asked questions</h2>
+
+      <h3>Does Odoo have a built-in real estate installment sales module?</h3>
+      <p>No, Odoo does not ship a purpose-built real estate payment-plan module the way some dedicated property management software does. A Bangladesh developer builds installment-based plot or flat sales using standard Sales and Accounting building blocks: each unit is a product, each buyer's payment schedule is modeled as a sales order with milestone or recurring invoice lines mapped to the agreed schedule (typically a booking payment, followed by construction-linked or calendar-linked installments over one to five years), and Accounting's customer aging and follow-up tools track collection status per buyer per installment. It takes deliberate configuration rather than a checkbox, but it is a well-supported pattern once built correctly.</p>
+
+      <h3>How do you calculate per-unit profit margin on a real estate project in Odoo?</h3>
+      <p>Per-unit margin requires rolling up land acquisition cost, direct construction cost, and allocated shared overhead (architect and engineering fees, RAJUK approval costs, sales commission, common area construction) across the whole project and then apportioning that total cost to each flat or plot based on a fair allocation basis, most commonly built-up area or plot size. In Odoo this is typically modeled using Project or Analytic Accounting, with the project set up as an analytic account and each cost booked against it, then a costing worksheet (native Odoo reporting supplemented with a spreadsheet extract for the per-unit apportionment) divides total project cost by allocation basis to arrive at a per-unit cost, compared against that unit's actual sale price.</p>
+
+      <h3>Can Odoo track RAJUK approval status for a real estate project?</h3>
+      <p>Odoo does not have a RAJUK-specific compliance module, but its Project or Documents module can track the approval pipeline (land use clearance, building plan approval, occupancy certificate stages) as a series of tasks or milestones with attached scanned documents, due dates, and responsible staff. This gives a developer a single system-of-record view of where every project stands in the RAJUK (Rajdhani Unnayan Kartripakkha) or equivalent local development authority approval process, rather than relying on a coordinator's personal folder of paperwork, which becomes especially valuable when a developer runs several projects at different approval stages simultaneously.</p>
+
+      <h3>How should buyer default or cancellation be handled in Odoo?</h3>
+      <p>Buyer default and cancellation is a real, recurring scenario in Bangladesh real estate sales, and it needs a documented policy reflected in the system rather than an ad hoc negotiation each time. In Odoo, this is handled by defining the forfeiture or refund percentage in the buyer's sales order terms up front, so when a cancellation is processed, the system calculates the refund due (total paid minus the contractually agreed forfeiture percentage and any documented deductions) consistently rather than through a manual, case-by-case calculation prone to inconsistency between buyers, which is itself a source of disputes and reputational risk for a developer selling repeatedly in the same market.</p>
+
+      <h3>What does an Odoo implementation cost for a Bangladesh real estate developer?</h3>
+      <p>For a developer running 1 to 5 active projects with combined unit counts in the range of 50 to 300 flats or plots, an Odoo implementation covering installment sales tracking, project costing, and RAJUK-adjacent document tracking typically runs BDT 10 to 25 lakh, with BDT 4 to 10 lakh per year for support, varying significantly based on how many active projects need concurrent costing and how much customization the payment schedule logic requires beyond Odoo's standard recurring invoicing capability.</p>
+
+    </div>

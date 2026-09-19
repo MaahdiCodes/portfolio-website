@@ -1,0 +1,322 @@
+---
+layout: "layouts/base.njk"
+permalink: "bn/courses/01-requirements-gathering/lesson-04.html"
+bareBody: true
+stylesheetHref: "/lab/_styles.css"
+lang: "bn"
+title: "লেসন ০৪ — এলিসিটেশন টেকনিক গভীরভাবে · কোর্স ০১"
+description: "সম্পূর্ণ এলিসিটেশন টুলকিট আয়ত্ত করুন: ইন্টারভিউ, পর্যবেক্ষণ, ডকুমেন্ট অ্যানালাইসিস, JAD সেশন, প্রোটোটাইপিং — আর কোনটা কখন ব্যবহার করবেন তা জানুন।"
+robots: "noindex, follow"
+canonical: "https://mhasan.me/bn/courses/01-requirements-gathering/lesson-04"
+hreflangEn: "https://mhasan.me/courses/01-requirements-gathering/lesson-04"
+hreflangBn: "https://mhasan.me/bn/courses/01-requirements-gathering/lesson-04"
+extraStyles: |
+  body{ font-family: 'Noto Sans Bengali', var(--sans); }
+  .three-up{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:28px 0}
+  .three-up .card{border:1px solid var(--border);border-radius:12px;padding:20px;background:rgba(21,24,29,0.5)}
+  .three-up .card h4{font-size:14px;font-weight:500;margin:0 0 8px;color:var(--text)}
+  .three-up .card p{font-size:13.5px;color:var(--text-2);margin:0;line-height:1.55}
+  .field-note{border:1px solid var(--border);border-radius:12px;padding:22px 24px;margin:28px 0;background:linear-gradient(180deg,rgba(21,24,29,0.55),rgba(14,16,19,0.55))}
+  .field-note .fn-label{font-family:var(--mono);font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:var(--accent);margin:0 0 10px}
+  .field-note p{font-size:14.5px;color:var(--text-2);margin:0;line-height:1.6}
+  .field-note p+p{margin-top:10px}
+  .decision-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:0;border:1px solid var(--border);border-radius:12px;overflow:hidden;margin:28px 0}
+  .dg-row{display:contents}
+  .dg-cell{padding:14px 18px;border-bottom:1px solid var(--border);border-right:1px solid var(--border);font-size:14px;color:var(--text-2)}
+  .dg-cell:nth-child(even){border-right:none}
+  .dg-cell:nth-last-child(-n+2){border-bottom:none}
+  .dg-cell.hd{font-family:var(--mono);font-size:10.5px;color:var(--text-3);letter-spacing:0.1em;text-transform:uppercase;background:rgba(21,24,29,0.6)}
+  .dg-cell strong{color:var(--text);font-weight:500}
+  @media(max-width:680px){.three-up{grid-template-columns:1fr}.decision-grid{grid-template-columns:1fr}.dg-cell{border-right:none}.dg-cell:nth-last-child(-n+2){border-bottom:1px solid var(--border)}.dg-cell:last-child{border-bottom:none}}
+  .stat-block{display:grid;grid-template-columns:repeat(3,1fr);gap:0;background:var(--border);border-radius:12px;overflow:hidden;margin:28px 0}
+  .stat-item{background:var(--surface);padding:24px 18px;text-align:center}
+  .stat-num{font-family:var(--mono);font-size:26px;font-weight:300;color:var(--accent);line-height:1;display:block}
+  .stat-label{font-size:12px;color:var(--text-3);margin-top:8px;line-height:1.4;display:block}
+  .bar-chart{margin:28px 0;display:flex;flex-direction:column;gap:14px}
+  .bc-row{display:grid;grid-template-columns:190px 1fr 44px;gap:10px;align-items:center}
+  .bc-label{font-size:13px;color:var(--text-2)}
+  .bc-track{height:6px;background:rgba(255,255,255,0.06);border-radius:4px;overflow:hidden}
+  .bc-fill{height:100%;background:oklch(0.80 0.17 155);border-radius:4px}
+  .bc-pct{font-family:var(--mono);font-size:11px;color:var(--text-3);text-align:right}
+  .donut-stat{display:flex;align-items:center;gap:28px;padding:24px;border:1px solid var(--border);border-radius:12px;background:rgba(21,24,29,0.5);margin:28px 0}
+  .donut-stat svg{flex:none}
+  .donut-label{font-size:14px;color:var(--text-2);line-height:1.6;margin:0}
+  .donut-label strong{color:var(--text)}
+  .insight-row{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin:28px 0}
+  .insight-card{border:1px solid var(--border);border-radius:12px;padding:20px;background:rgba(21,24,29,0.5)}
+  .insight-card .ic-label{font-family:var(--mono);font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-3);margin:0 0 8px}
+  .insight-card h4{font-size:15px;font-weight:500;color:var(--text);margin:0 0 8px}
+  .insight-card p{font-size:13.5px;color:var(--text-2);margin:0;line-height:1.55}
+  @media(max-width:680px){.stat-block{grid-template-columns:1fr}.bc-row{grid-template-columns:140px 1fr 36px}.donut-stat{flex-direction:column;text-align:center}.insight-row{grid-template-columns:1fr}}
+---
+<div class="grid-bg"></div>
+
+<nav class="nav">
+  <div class="shell">
+    <div class="nav-inner">
+      <a href="/bn/" class="brand">
+        <div class="brand-mark"></div>
+        <div class="brand-name"><b>Mehedi Hasan</b><em>ERP কনসালট্যান্ট</em></div>
+      </a>
+      <a href="./" class="back-link">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10 12L6 8l4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+        কোর্স ওভারভিউ
+      </a>
+    </div>
+  </div>
+</nav>
+
+<div class="shell">
+  <div class="post-head">
+    <span class="eyebrow">কোর্স ০১ &nbsp;·&nbsp; লেসন ০৪ &nbsp;·&nbsp; ১৭ মিনিট</span>
+    <div class="post-meta">
+      <span class="chip accent">এলিসিটেশন</span>
+      <span class="chip">ইন্টারভিউ</span>
+      <span class="chip">পর্যবেক্ষণ</span>
+    </div>
+    <h1>এলিসিটেশন টেকনিক <span class="serif">গভীরভাবে</span></h1>
+    <p class="lede">রিকোয়ারমেন্ট নিজে থেকে বেরিয়ে আসে না। BA টুলকিটের প্রতিটি টেকনিক আলাদা উৎস থেকে আলাদা ধরনের জ্ঞান বের করে আনে। কোনটা কখন ব্যবহার করবেন তা জানাই সম্পূর্ণ রিকোয়ারমেন্ট আর বিপজ্জনক ফাঁকের মধ্যে পার্থক্য গড়ে দেয়।</p>
+    <div class="byline">
+      <span>লেসন<b>০৪ / ০৯</b></span>
+      <span>সময়<b>১৭ মিনিট</b></span>
+      <span>কোর্স<b>রিকোয়ারমেন্ট গ্যাদারিং</b></span>
+    </div>
+  </div>
+</div>
+
+<div class="shell">
+  <div class="post">
+    <nav class="toc" id="toc" aria-label="Lesson contents">
+      <button class="toc-toggle" onclick="toggleToc()" aria-expanded="false" aria-controls="toc">
+        <span class="label">এই লেসনে</span>
+        <span class="current" id="toc-current">টুলকিট</span>
+        <span class="chev"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 4l3 3 3-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg></span>
+      </button>
+      <div class="toc-k">বিষয়সূচি</div>
+      <ol>
+        <li><a href="#s1">এলিসিটেশন টুলকিট</a></li>
+        <li><a href="#s2">ইন্টারভিউ</a></li>
+        <li><a href="#s3">পর্যবেক্ষণ ও শ্যাডোয়িং</a></li>
+        <li><a href="#s4">ডকুমেন্ট অ্যানালাইসিস</a></li>
+        <li><a href="#s5">JAD সেশন</a></li>
+        <li><a href="#s6">সার্ভে ও প্রশ্নাবলি</a></li>
+        <li><a href="#s7">প্রোটোটাইপিং</a></li>
+        <li><a href="#s8">ডিসিশন ম্যাট্রিক্স</a></li>
+        <li><a href="#s_technique_matrix">টেকনিক ডিসিশন ম্যাট্রিক্স</a></li>
+        <li><a href="#s9">রিফ্লেকশন</a></li>
+      </ol>
+      <div class="toc-progress"><span>প্রগ্রেস</span><div class="bar"><i id="prog-bar"></i></div></div>
+    </nav>
+    <div class="toc-progress-mobile"><i id="prog-bar-m"></i></div>
+
+    <article class="body">
+
+      <h2 id="s1">এলিসিটেশন টুলকিটের ওভারভিউ</h2>
+      <p>এলিসিটেশন হলো স্টেকহোল্ডারদের কাছে থাকা এমন জ্ঞান বের করে আনার প্রক্রিয়া যা তারা এখনও রিকোয়ারমেন্টের আকারে প্রকাশ করেননি। মূল শব্দটা হলো <em>বের করে আনা</em> — শুধু জিজ্ঞেস করে লিখে রাখা নয়, অনুমান করা নয়, ধরে নেওয়াও নয়। মানুষের মাথায় রিকোয়ারমেন্ট থাকে খণ্ডিত, প্রেক্ষাপট-নির্ভর, প্রায়ই পরস্পরবিরোধী আকারে। আপনার কাজ হলো সেগুলোকে স্পষ্ট করে তোলা।</p>
+      <p>আলাদা টেকনিক আলাদা ধরনের জ্ঞানে প্রবেশ করে। ইন্টারভিউ স্পষ্টভাবে বলা পছন্দগুলো সামনে আনে। পর্যবেক্ষণ অব্যক্ত আচরণ সামনে আনে। ডকুমেন্ট অ্যানালাইসিস আনুষ্ঠানিক সীমাবদ্ধতা সামনে আনে। কোনো একটা টেকনিক একা একটা বাস্তব প্রজেক্টের জন্য যথেষ্ট নয়। অভিজ্ঞ BA এগুলোকে একসঙ্গে ব্যবহার করেন।</p>
+
+      <h2 id="s2">ইন্টারভিউ: স্ট্রাকচার্ড বনাম সেমি-স্ট্রাকচার্ড</h2>
+      <p>ওয়ান-অন-ওয়ান স্টেকহোল্ডার ইন্টারভিউ রিকোয়ারমেন্ট এলিসিটেশনের ভিত্তি। এটাই সেই টেকনিক যা আপনাকে সৎ, সূক্ষ্ম ইনপুট দেয় — যা গ্রুপ সেটিংয়ে প্রায় পাওয়া যায় না, বিশেষত হায়ারার্কিক্যাল পরিবেশে যেখানে সহকর্মীদের সামনে মানুষ নিজের মতামত সংযত করে বলেন।</p>
+
+      <h3>স্ট্রাকচার্ড ইন্টারভিউ</h3>
+      <p>একটা নির্দিষ্ট প্রশ্নের সেট, প্রতিটি ইন্টারভিউয়ির কাছে একই ক্রমে জিজ্ঞেস করা হয়। অনেক স্টেকহোল্ডার জুড়ে সামঞ্জস্যপূর্ণ, তুলনাযোগ্য ডেটা সংগ্রহের জন্য ভালো। সাধারণ থিম চিহ্নিত করতে হলে, অথবা একটা বড় গ্রুপ (দশজনের বেশি) ইন্টারভিউ করতে হলে আর রেসপন্স পদ্ধতিগতভাবে তুলনা করতে হলে স্ট্রাকচার্ড ইন্টারভিউ ব্যবহার করুন।</p>
+
+      <h3>সেমি-স্ট্রাকচার্ড ইন্টারভিউ</h3>
+      <p>খোলা প্রশ্নের একটা গাইড, কিন্তু আকর্ষণীয় কিছু সামনে এলে আপনি কথোপকথনের সূত্র অনুসরণ করেন। রিকোয়ারমেন্ট এলিসিটেশনের জন্য সবচেয়ে ফলপ্রসূ ফরম্যাট, কারণ এটা স্ট্রাকচার আর ফ্লেক্সিবিলিটি দুটোই একসঙ্গে দেয়। মূল স্টেকহোল্ডার আর সাবজেক্ট ম্যাটার এক্সপার্টদের জন্য এটা ব্যবহার করুন।</p>
+
+      <p><strong>ইন্টারভিউ গাইড সেরা প্র্যাকটিস:</strong></p>
+      <ul>
+        <li>র‍্যাপোর্ট তৈরি দিয়ে শুরু করুন (দুই মিনিট) — তাদের ভূমিকা আর কতদিন ধরে এটা করছেন জিজ্ঞেস করুন</li>
+        <li>খোলা প্রশ্ন ব্যবহার করুন: "যখন… তখন কী ঘটে আমাকে বলুন" — "সিস্টেম কি X করে?" নয়</li>
+        <li>সূত্র অনুসরণ করুন: কিছু আলগাভাবে উল্লেখ হলে, তাতে চাপ দিন — "আপনি এক্সেপশন প্রসেসের কথা বলেছিলেন — এটা নিয়ে আরেকটু বলতে পারবেন?"</li>
+        <li>নীরবতা ফলপ্রসূ — কোনো উত্তরের পর কথা বলার আগে তিন সেকেন্ড অপেক্ষা করুন। মানুষ প্রায়ই সেই নীরবতায় গুরুত্বপূর্ণ বিস্তারিত যোগ করেন</li>
+        <li>শেষ করুন এভাবে: "আমার এমন কিছু জিজ্ঞেস করা উচিত ছিল যা করিনি? আর কারো সঙ্গে আমার কথা বলা উচিত বলে মনে করেন?"</li>
+      </ul>
+
+      <div class="field-note">
+        <p class="fn-label">BD কনটেক্সট</p>
+        <p>বাংলাদেশে, সৎ রিকোয়ারমেন্ট সংগ্রহের জন্য ওয়ান-অন-ওয়ান ইন্টারভিউ গ্রুপ আলোচনার চেয়ে উল্লেখযোগ্যভাবে বেশি ফলপ্রসূ। গ্রুপে, জুনিয়র স্টাফ সিনিয়রদের কাছে নতি স্বীকার করেন। একান্তে, একই স্টাফ মেম্বার বর্তমান সিস্টেমে ঠিক কী ভেঙে আছে আর তাদের কী দরকার তা স্পষ্টভাবে বলবেন। রিকোয়ারমেন্ট চূড়ান্ত করার আগে আসল সিস্টেম ইউজারদের সঙ্গে কিছু একান্ত সময় — এমনকি ২০ মিনিটও — সবসময় ব্যবস্থা করুন।</p>
+      </div>
+
+      <div class="stat-block">
+        <div class="stat-item">
+          <span class="stat-num">৬+</span>
+          <span class="stat-label">আলাদা এলিসিটেশন টেকনিক যা একজন দক্ষ BA-র প্রেক্ষাপট অনুযায়ী বেছে প্রয়োগ করতে পারা উচিত</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num">৬৮%</span>
+          <span class="stat-label">BA শুধু ইন্টারভিউর ওপর প্রাথমিকভাবে নির্ভর করেন — এমন রিকোয়ারমেন্ট মিস করেন যা শুধু পর্যবেক্ষণে সামনে আসে</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num">৩×</span>
+          <span class="stat-label">বেশি এজ-কেস রিকোয়ারমেন্ট ধরা পড়ে যখন ইন্টারভিউর পাশাপাশি পর্যবেক্ষণ (জব শ্যাডোয়িং) ব্যবহার করা হয়</span>
+        </div>
+      </div>
+
+      <h2 id="s3">পর্যবেক্ষণ ও প্রসেস শ্যাডোয়িং: আখ্যান নয়, কাজকে অনুসরণ করা</h2>
+      <p>মানুষ কী করে বলে <em>বলেন</em> আর আসলে কী <em>করেন</em>, প্রায় সবসময় এই দুটো আলাদা হয়। অসৎ বলে নয় — বরং বেশিরভাগ প্রসেস জ্ঞান অব্যক্ত আর অবচেতন বলে। অভিজ্ঞ ক্লার্ক একটা পারচেজ অর্ডার অনুমোদনের আগে তিনটা ভেরিফিকেশন ধাপের কথা ভাবেন না; তিনি শুধু সেগুলো করেন। ইন্টারভিউতে তিনি এগুলোর কথা উল্লেখ করবেন না, কারণ তার কাছে এগুলো উল্লেখযোগ্য মনে হয় না।</p>
+      <p>পর্যবেক্ষণ সেটাই ধরে যা ইন্টারভিউ মিস করে। আপনি আসল কাজ, আসল পরিবেশে, আসল ডেটা নিয়ে, বাস্তব সময়ের চাপে দেখেন।</p>
+
+      <div class="field-note">
+        <p class="fn-label">RMG উদাহরণ</p>
+        <p>গাজীপুরের একটা ওভেন ফ্যাব্রিক ফ্যাক্টরির জন্য একটা QC ইন্সপেকশন সিস্টেমে কাজ করছিলাম। QC ম্যানেজারকে ইন্টারভিউ করার পর, ইন্সপেকশন ওয়ার্কফ্লোর একটা স্পষ্ট চিত্র আমার কাছে ছিল। তারপর আমি তিন ঘণ্টা ফ্যাক্টরি ফ্লোরে কাটালাম, ইন্সপেক্টররা আসলে কীভাবে কাজ করেন তা দেখে।</p>
+        <p>আমি এমন চারটা জিনিস পর্যবেক্ষণ করেছিলাম যা কোনো ইন্টারভিউতে উল্লেখ হয়নি: মাস্টার ফর্মের পাশাপাশি ইন্সপেক্টররা ক্লিপবোর্ডে একটা আলাদা ট্যালি শিট ব্যবহার করতেন; তারা ব্যক্তিগত মোবাইল ফোনে প্রতিটা ডিফেক্টের ছবি তুলে একটা WhatsApp গ্রুপে পাঠাতেন; ফর্মের ডিফেক্ট কোডগুলো বেশিরভাগ ভুল ছিল কারণ দুই বছর আগে কোডগুলো বদলেছিল আর কেউ ফর্ম আপডেট করেননি; আর "ইন্সপেকশন সম্পন্ন" স্বাক্ষরটা কখনো কখনো এমন একজন সুপারভাইজার করতেন যিনি ইন্সপেকশনটা মোটেও প্রত্যক্ষ করেননি।</p>
+        <p>এই পর্যবেক্ষণগুলোর প্রতিটি একটা রিকোয়ারমেন্ট সিদ্ধান্তে পরিণত হলো।</p>
+      </div>
+
+      <p>পর্যবেক্ষণের নির্দেশিকা: নিজেকে এমন কেউ হিসেবে পরিচয় দিন যিনি প্রসেসটা শিখছেন, অডিট করছেন না। ইউজারের বিপরীতে না বসে পাশে বসুন। নোট নিন, কিন্তু বাধা দেবেন না — প্রশ্নগুলো নোট করে শেষে জিজ্ঞেস করুন। প্রথম দিনটা অস্বাভাবিক হলে পরের দিন আবার আসুন।</p>
+
+      <h2 id="s4">ডকুমেন্ট অ্যানালাইসিস: RMG-তে SOP, এক্সপোর্ট ফর্ম, আর কমপ্লায়েন্স ডকুমেন্ট</h2>
+      <p>প্রতিটি প্রতিষ্ঠানের কাছে তারা যতটা বুঝতে পারে তার চেয়ে বেশি ডকুমেন্টেশন থাকে — আর এর বেশিরভাগে সুপ্ত আকারে রিকোয়ারমেন্ট থাকে। বিদ্যমান ডকুমেন্ট প্রকাশ করে ব্যবসা ইতিমধ্যে কী সত্য বলে মেনে নিয়েছে, কোন নিয়মের অধীনে চলে, আর কোন ডেটা রেকর্ড করার মতো গুরুত্বপূর্ণ মনে করে।</p>
+      <p>RMG আর এক্সপোর্ট ম্যানুফ্যাকচারিংয়ে, এই ডকুমেন্ট টাইপগুলোকে অগ্রাধিকার দিন:</p>
+      <ul>
+        <li><strong>স্ট্যান্ডার্ড অপারেটিং প্রসিডিউর</strong> — এমনকি পুরনো SOP-ও উদ্দিষ্ট প্রসেস আর প্রতিষ্ঠান যে ভাষা ব্যবহার করে তা প্রকাশ করে</li>
+        <li><strong>এক্সপোর্ট ডকুমেন্টেশন</strong> — কমার্শিয়াল ইনভয়েস, প্যাকিং লিস্ট, সার্টিফিকেট অব অরিজিন, LC ডকুমেন্ট। প্রতিটা ফিল্ড একটা ডেটা রিকোয়ারমেন্ট</li>
+        <li><strong>কমপ্লায়েন্স চেকলিস্ট</strong> — বায়ার কোড অব কন্ডাক্ট অডিট, BSCI/SMETA চেকলিস্ট। এগুলোতে বাধ্যতামূলক রিকোয়ারমেন্ট থাকে যা নিয়ে আলোচনা করা যায় না</li>
+        <li><strong>বর্তমান সিস্টেম রিপোর্ট</strong> — ব্যবসা বর্তমানে কোনো রিপোর্ট চালালে, নতুন সিস্টেমেও তাদের সেই ডেটা লাগবে। বর্তমানে ব্যবহৃত প্রতিটা রিপোর্ট ফরম্যাট সংগ্রহ করুন</li>
+        <li><strong>এক্সেপশন রেজিস্টার</strong> — যা ভুল হয়েছে তার লগ। প্রতিটা এক্সেপশন একটা বিজনেস রুল যা সিস্টেমকে সামলাতে হবে</li>
+      </ul>
+
+      <h2 id="s5">JAD সেশন: ক্রস-ফাংশনাল অ্যালাইনমেন্টের জন্য জয়েন্ট অ্যাপ্লিকেশন ডিজাইন</h2>
+      <p>একটা Joint Application Design (JAD) সেশন হলো একটা নিবিড়, ফ্যাসিলিটেটেড ওয়ার্কশপ যেখানে বিজনেস স্টেকহোল্ডার আর টেকনিক্যাল টিম মেম্বাররা রিয়েল টাইমে যৌথভাবে রিকোয়ারমেন্ট — আর কখনো কখনো হাই-লেভেল সমাধান — ডিজাইন করেন। এটা ১৯৭০-এর দশকে IBM-এ উদ্ভূত হয় আর একাধিক ইন্টিগ্রেশন পয়েন্টসহ জটিল সিস্টেমের জন্য এখনও সবচেয়ে কার্যকর টেকনিকগুলোর একটা।</p>
+      <p>JAD একটা স্ট্যান্ডার্ড রিকোয়ারমেন্ট ওয়ার্কশপ থেকে তিনভাবে আলাদা: টেকনিক্যাল টিম সক্রিয়ভাবে অংশগ্রহণ করে (শুধু পর্যবেক্ষক হিসেবে নয়); সেশন দীর্ঘ হয় (সাধারণত পুরো একদিন বা একাধিক দিন); আর আউটপুট আরও বিস্তারিত হয় — প্রায়ই শুধু রিকোয়ারমেন্ট বিবৃতি নয়, ডেটা মডেল, প্রসেস ফ্লো, আর ইন্টারফেস স্কেচও থাকে।</p>
+      <p>JAD ব্যবহার করুন যখন: প্রজেক্টে উল্লেখযোগ্য টেকনিক্যাল জটিলতা আছে; একাধিক সিস্টেম ইন্টিগ্রেট করতে হবে; অথবা একই ধরনের প্রজেক্টে বিজনেস-IT ভুল যোগাযোগের ইতিহাস আছে। সাধারণ রিকোয়ারমেন্ট কাজের জন্য JAD এড়িয়ে চলুন — এর ওভারহেড যুক্তিসঙ্গত নয়।</p>
+
+      <h2 id="s6">সার্ভে ও প্রশ্নাবলি: কখন আর কীভাবে</h2>
+      <p>যখন আপনার অনেক স্টেকহোল্ডার আছে (যাদের সবাইকে আলাদাভাবে ইন্টারভিউ করা সম্ভব নয়) আর কোয়ান্টিটেটিভ বা তুলনামূলক ডেটা দরকার, তখন সার্ভে সঠিক টুল। মূল সিদ্ধান্ত-গ্রহণকারীদের কাছ থেকে সূক্ষ্ম, প্রেক্ষাপট-নির্ভর রিকোয়ারমেন্ট বের করার জন্য এটা ভুল টুল।</p>
+      <p>BA কাজে সার্ভের সেরা ব্যবহার:</p>
+      <ul>
+        <li>রিকোয়ারমেন্ট খসড়া হওয়ার পর একটা বড় ইউজার গ্রুপ জুড়ে অগ্রাধিকার যাচাই করা: "এই ফিচারগুলোর মধ্যে কোনটা আপনার দৈনন্দিন কাজে সবচেয়ে গুরুত্বপূর্ণ?"</li>
+        <li>রিকোয়ারমেন্ট ওয়ার্কশপের আগে বর্তমান সমস্যার ওপর বেসলাইন ডেটা সংগ্রহ করা</li>
+        <li>বিভাগজুড়ে রিকোয়ারমেন্ট সামঞ্জস্যপূর্ণভাবে বোঝা হচ্ছে কিনা তা নিশ্চিত করা</li>
+      </ul>
+      <p>সার্ভে ডিজাইনের ভুল: পরিচালিত প্রশ্ন এড়িয়ে চলুন; পছন্দের প্রশ্নের জন্য হ্যাঁ/না নয়, স্কেল (১–৫) ব্যবহার করুন; প্রতিটা সেকশনে একটা খোলা ফিল্ড রাখুন এমন অন্তর্দৃষ্টির জন্য যা আপনি অনুমান করেননি; মোট সময় দশ মিনিটের নিচে রাখুন। বাংলাদেশে, WhatsApp-এর মাধ্যমে বিতরণ করা Google Forms অপারেশনাল স্টাফদের মধ্যে উচ্চ রেসপন্স রেট পায়।</p>
+
+      <h2 id="s7">রিকোয়ারমেন্ট যাচাইয়ের জন্য প্রোটোটাইপিং</h2>
+      <p>একটা প্রোটোটাইপ — একটা মকআপ, একটা ওয়্যারফ্রেম, অথবা এমনকি হাতে আঁকা একটা স্কেচ — এমন রিকোয়ারমেন্ট সামনে আনে যা কোনো পরিমাণ মৌখিক আলোচনা প্রকাশ করবে না। স্টেকহোল্ডাররা যখন হাতেনাতে কিছু দেখেন, তারা সঙ্গে সঙ্গে যা মিসিং বা ভুল তার প্রতি প্রতিক্রিয়া দেখান। এই প্রতিক্রিয়া এলিসিটেশনেরই একটা রূপ।</p>
+      <p>BA কাজের জন্য দুই ধরনের প্রোটোটাইপ:</p>
+      <ul>
+        <li><strong>থ্রোওয়ে প্রোটোটাইপ</strong> — নির্দিষ্টভাবে রিকোয়ারমেন্ট ফিডব্যাক তৈরির জন্য বানানো একটা দ্রুত স্কেচ বা ওয়্যারফ্রেম, তারপর বাতিল করা হয়। এটা চূড়ান্ত প্রোডাক্ট হয়ে ওঠে না। Balsamiq, Figma, অথবা এমনকি কাগজে কলম ব্যবহার করুন।</li>
+        <li><strong>ইভোলিউশনারি প্রোটোটাইপ</strong> — আসল সিস্টেমের একটা প্রাথমিক সংস্করণ যা ফিডব্যাকের ভিত্তিতে পরিমার্জিত হয়। তৈরি করতে বেশি খরচ হয় কিন্তু পরবর্তী পর্যায়ে রিওয়ার্ক কমায়। Agile প্রজেক্টে ব্যবহৃত হয় যেখানে প্রথম স্প্রিন্ট একটা ব্যবহারযোগ্য, যদিও সরু, প্রোডাক্ট তৈরি করে।</li>
+      </ul>
+      <p>প্রোটোটাইপিং নিয়ম: সবসময় একটা প্রোটোটাইপকে প্রোটোটাইপ হিসেবে লেবেল করুন। "এটা একটা স্কেচ যা আমাদের কী দরকার তা আলোচনা করতে সাহায্য করছে — এটা চূড়ান্ত সিস্টেম নয়।" এই লেবেল ছাড়া, স্টেকহোল্ডাররা লেআউট, রঙের পছন্দ, আর নির্দিষ্ট শব্দচয়নের প্রতি আসক্ত হয়ে পড়েন — যা এমন উপরিতলীয় বিতর্কের জায়গা তৈরি করে যা রিকোয়ারমেন্টের সময় নষ্ট করে।</p>
+
+      <h2 id="s8">ডিসিশন ম্যাট্রিক্স: কোন পরিস্থিতিতে কোন টেকনিক</h2>
+      <div class="decision-grid">
+        <div class="dg-cell hd">পরিস্থিতি</div>
+        <div class="dg-cell hd">সুপারিশকৃত টেকনিক(সমূহ)</div>
+        <div class="dg-cell"><strong>মূল এক্সিকিউটিভ স্টেকহোল্ডার, সীমিত সময়</strong></div>
+        <div class="dg-cell">সেমি-স্ট্রাকচার্ড ইন্টারভিউ (সর্বোচ্চ ৩০–৪৫ মিনিট)</div>
+        <div class="dg-cell"><strong>এন্ড-ইউজারদের বড় গ্রুপ (১০+)</strong></div>
+        <div class="dg-cell">সার্ভে + ফোকাসড গ্রুপ পর্যবেক্ষণ সেশন</div>
+        <div class="dg-cell"><strong>এমন প্রসেস যা কেউ সম্পূর্ণভাবে বর্ণনা করতে পারেন না</strong></div>
+        <div class="dg-cell">পর্যবেক্ষণ + প্রসেস ওয়াকথ্রু ইন্টারভিউ</div>
+        <div class="dg-cell"><strong>জটিল মাল্টি-সিস্টেম ইন্টিগ্রেশন</strong></div>
+        <div class="dg-cell">বিজনেস আর IT একসঙ্গে JAD সেশন</div>
+        <div class="dg-cell"><strong>খসড়া রিকোয়ারমেন্ট যাচাই করা</strong></div>
+        <div class="dg-cell">প্রোটোটাইপ রিভিউ + স্ট্রাকচার্ড ওয়াকথ্রু ইন্টারভিউ</div>
+        <div class="dg-cell"><strong>রেগুলেটরি বা কমপ্লায়েন্স সীমাবদ্ধতা</strong></div>
+        <div class="dg-cell">কমপ্লায়েন্স ডকুমেন্টের ডকুমেন্ট অ্যানালাইসিস + এক্সপার্ট ইন্টারভিউ</div>
+        <div class="dg-cell"><strong>কোনো ডকুমেন্টেশন নেই এমন প্রতিষ্ঠানে প্রথম প্রজেক্ট</strong></div>
+        <div class="dg-cell">পর্যবেক্ষণ + প্রসেস শ্যাডোয়িং + অনানুষ্ঠানিক ইন্টারভিউ</div>
+      </div>
+
+      <h2 id="s_technique_matrix">সঠিক টেকনিক বেছে নেওয়া: একটা ডিসিশন ম্যাট্রিক্স</h2>
+      <p>সবচেয়ে সাধারণ এলিসিটেশন ভুল হলো প্রতিটা পরিস্থিতির জন্য একই টেকনিক ব্যবহার করা। ইন্টারভিউ ডিফল্ট, কিন্তু এটা সবসময় সেরা টুল নয়। এখানে একটা ব্যবহারিক ডিসিশন ফ্রেমওয়ার্ক দেওয়া হলো: আপনার কমফোর্ট জোন নয়, পরিস্থিতির সঙ্গে টেকনিক মেলান।</p>
+
+      <div class="bar-chart">
+        <div class="bc-row">
+          <span class="bc-label">স্টেকহোল্ডার ইন্টারভিউ</span>
+          <div class="bc-track"><div class="bc-fill" style="width:90%"></div></div>
+          <span class="bc-pct">সার্বজনীন</span>
+        </div>
+        <div class="bc-row">
+          <span class="bc-label">পর্যবেক্ষণ / শ্যাডোয়িং</span>
+          <div class="bc-track"><div class="bc-fill" style="width:78%"></div></div>
+          <span class="bc-pct">প্রসেস কাজ</span>
+        </div>
+        <div class="bc-row">
+          <span class="bc-label">ডকুমেন্ট অ্যানালাইসিস</span>
+          <div class="bc-track"><div class="bc-fill" style="width:65%"></div></div>
+          <span class="bc-pct">বিদ্যমান সিস্টেম</span>
+        </div>
+        <div class="bc-row">
+          <span class="bc-label">ওয়ার্কশপ / JAD</span>
+          <div class="bc-track"><div class="bc-fill" style="width:82%"></div></div>
+          <span class="bc-pct">ক্রস-ফাংশনাল</span>
+        </div>
+        <div class="bc-row">
+          <span class="bc-label">প্রোটোটাইপিং</span>
+          <div class="bc-track"><div class="bc-fill" style="width:55%"></div></div>
+          <span class="bc-pct">UI/UX-নির্ভর</span>
+        </div>
+        <div class="bc-row">
+          <span class="bc-label">সার্ভে / প্রশ্নাবলি</span>
+          <div class="bc-track"><div class="bc-fill" style="width:40%"></div></div>
+          <span class="bc-pct">বড় ইউজার বেস</span>
+        </div>
+      </div>
+
+      <div class="insight-row">
+        <div class="insight-card">
+          <p class="ic-label">কখন পর্যবেক্ষণ ব্যবহার করবেন</p>
+          <h4>প্রসেসটা মৌখিকভাবে বর্ণনা করা কঠিন</h4>
+          <p>একজন মার্চেন্ডাইজার যখন বলেন "অর্ডারে কিছু একটা ভুল হলে আমি এমনিতেই বুঝে যাই," এটা একটা সংকেত যে পর্যবেক্ষণ করতে হবে, শুধু ইন্টারভিউ নয়। অব্যক্ত জ্ঞান — যা অভিজ্ঞ হাতে বাস করে — শুধু তখনই সামনে আসে যখন আপনি রিয়েল টাইমে কাজ ঘটতে দেখেন, বিমূর্তভাবে জিজ্ঞেস করলে নয়।</p>
+        </div>
+        <div class="insight-card">
+          <p class="ic-label">কখন ডকুমেন্ট অ্যানালাইসিস ব্যবহার করবেন</p>
+          <h4>"as-is" প্রসেসটা ফর্ম আর রেজিস্টারে বিদ্যমান</h4>
+          <p>যেকোনো ওয়ার্কশপের আগে, বর্তমান-অবস্থার ডকুমেন্টেশন চান: বিদ্যমান ফর্ম, Excel ট্র্যাকিং শিট, কাগজের রেজিস্টার, সিস্টেম স্ক্রিনশট। বাংলাদেশি SME ফ্যাক্টরিতে প্রায়ই তাদের কাস্টম Excel ফাইলে সমৃদ্ধ প্রসেস জ্ঞান থাকে। স্টেকহোল্ডার সেশনের আগে এগুলো বিশ্লেষণ করার মানে হলো আপনি খালি-স্লেট কৌতূহল নিয়ে নয়, তথ্যপূর্ণ প্রশ্ন নিয়ে হাজির হচ্ছেন।</p>
+        </div>
+        <div class="insight-card">
+          <p class="ic-label">কখন প্রোটোটাইপিং ব্যবহার করবেন</p>
+          <h4>স্টেকহোল্ডাররা UI প্রয়োজন বর্ণনা করতে কষ্ট পান</h4>
+          <p>"দেখলেই বুঝব" একজন স্টেকহোল্ডার বলতে পারেন এমন সবচেয়ে সৎ কথা — আর আসল জিনিস না বানিয়ে এটা যাচাই করার একমাত্র উপায় প্রোটোটাইপিং। একটা ওয়ার্কশপে দেখানো কাগজের প্রোটোটাইপ বা Figma ওয়্যারফ্রেম বিমূর্ত পছন্দকে কংক্রিট ফিডব্যাকে রূপান্তর করে। ইউজাররা প্রতিদিন যে স্ক্রিনগুলোর সঙ্গে ইন্টারঅ্যাক্ট করবেন, তার জন্য এটা বিশেষভাবে কার্যকর।</p>
+        </div>
+        <div class="insight-card">
+          <p class="ic-label">কখন সার্ভে ব্যবহার করবেন</p>
+          <h4>একটা বড় ইউজার বেস জুড়ে পরিমাপযোগ্য পছন্দ দরকার</h4>
+          <p>বাংলাদেশে সার্ভে কম ব্যবহৃত হয়, কিন্তু ৫০০ জন শ্রমিকের মধ্যে আসলে কতজনের স্মার্টফোন আছে (মোবাইল অ্যাপ স্কোপের সঙ্গে প্রাসঙ্গিক), অথবা ৮০% মার্চেন্ডাইজার কোন রিপোর্টিং ফরম্যাট পছন্দ করেন তা বুঝতে হলে এটা মূল্যবান। ওয়ার্কশপের বদলে নয়, বরং বৃহত্তর ইউজার জনসংখ্যার সঙ্গে ওয়ার্কশপ আউটপুট যাচাই করতে সার্ভে ব্যবহার করুন।</p>
+        </div>
+      </div>
+
+      <h2 id="s9">রিফ্লেকশন প্রশ্ন</h2>
+      <ol>
+        <li>সাম্প্রতিক একটা প্রজেক্টে, কোন এলিসিটেশন টেকনিক সবচেয়ে বেশি ব্যবহার হয়েছিল? কোনটা ব্যবহার হয়নি — আর পরে কোন রিকোয়ারমেন্ট মিসিং পেয়েছিলেন তা আবিষ্কার করেছিলেন? এর মধ্যে কি কোনো সংযোগ আছে?</li>
+        <li>আপনার প্রতিষ্ঠানে এমন একটা প্রসেসের কথা ভাবুন যা একজন ব্যক্তি করেন, যিনি কখনো এটা সম্পূর্ণভাবে ডকুমেন্ট করেননি। একদিন সেই ব্যক্তিকে শ্যাডো করলে আপনি কী পর্যবেক্ষণ করতেন? আপনার মনে হয় কী রিকোয়ারমেন্ট খুঁজে পেতেন?</li>
+        <li>একটা নতুন অ্যাটেনডেন্স ট্র্যাকিং সিস্টেমের জন্য একজন ফ্যাক্টরি ফ্লোর সুপারভাইজারের কাছ থেকে রিকোয়ারমেন্ট বের করতে পাঁচ-প্রশ্নের একটা সেমি-স্ট্রাকচার্ড ইন্টারভিউ গাইড ডিজাইন করুন। আপনার প্রশ্নগুলো কী হবে, আর কোন ক্রমে?</li>
+      </ol>
+
+    </article>
+  </div>
+</div>
+
+<div class="shell">
+  <div class="post-foot">
+    <div class="next">
+      <a href="lesson-03" class="next-card">
+        <span class="dir">← পূর্ববর্তী</span>
+        <h4>লেসন ০৩ — ডিসকভারি ওয়ার্কশপ</h4>
+        <p>প্রস্তুত করুন, ফ্যাসিলিটেট করুন, আর এমন ওয়ার্কশপ ডকুমেন্ট করুন যা সিদ্ধান্ত তৈরি করে।</p>
+        <span class="arrow">← লেসন ০৩</span>
+      </a>
+      <a href="lesson-05" class="next-card">
+        <span class="dir">পরবর্তী →</span>
+        <h4>লেসন ০৫ — এমন ইউজার স্টোরি যা UAT-তে টিকে থাকে</h4>
+        <p>INVEST, Given/When/Then, আর অ্যান্টি-প্যাটার্ন গ্যালারি।</p>
+        <span class="arrow">→ লেসন ০৫</span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="shell">
+    <div class="foot">
+      <span>কোর্স ০১ · লেসন ০৪</span>
+      <a href="/bn/" style="color:var(--text-3);transition:color .15s" onmouseover="this.style.color='var(--text)'" onmouseout="this.style.color='var(--text-3)'">← পোর্টফোলিও</a>
+    </div>
+  </div>
+</footer>
+<script src="/courses/01-requirements-gathering/_progress.js"></script>
+<script src="/lab/_toc.js"></script>

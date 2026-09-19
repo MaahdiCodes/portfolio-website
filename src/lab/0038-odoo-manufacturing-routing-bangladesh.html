@@ -1,0 +1,265 @@
+---
+permalink: "lab/0038-odoo-manufacturing-routing-bangladesh.html"
+title: "Odoo Manufacturing Routing | Time Tracking | Mehedi Hasan"
+description: "Configure Odoo manufacturing routing for Bangladesh factories — work centers, operations, machine capacity, and production time tracking. Set it up right →"
+canonical: "https://mhasan.me/lab/0038-odoo-manufacturing-routing-bangladesh"
+hreflangBn: "https://mhasan.me/bn/lab/0038-odoo-manufacturing-routing-bangladesh"
+ogDescription: "Configure Odoo manufacturing routing for Bangladesh factories — work centers, operations, machine capacity, and production time tracking."
+ogImage: "https://mhasan.me/assets/og/lab/0038-odoo-manufacturing-routing-bangladesh.png"
+ogSiteName: "Mehedi Hasan | Odoo ERP Consultant"
+datePublished: "2026-05-08T12:00:00+06:00"
+dateModified: "2026-05-23T12:00:00+06:00"
+articleSection: "Odoo ERP Bangladesh"
+eyebrowNum: "0038"
+h1: "Odoo Manufacturing Routing — <span class=\"serif\">work centers, operations, time tracking.</span>"
+lede: "A BOM tells you what you need to build a product, but a Routing tells you how. For Bangladesh factories, correctly mapping the sequence of operations and tracking the actual time taken at each work center is the key to accurate production costing and realistic scheduling."
+chips: ["Configuration Guide", "Manufacturing", "Work Centers", "Routing"]
+bylineItems:
+  - label: "By"
+    value: "<a href=\"https://www.linkedin.com/in/mehedi-hasan-consultant/\" style=\"color:var(--accent)\" rel=\"author\">Mehedi Hasan</a>"
+  - label: "Published"
+    value: "May 2026"
+  - label: "Read time"
+    value: "8 minutes"
+  - label: "Form"
+    value: "Technical Guide"
+  - label: "Scope"
+    value: "Manufacturing · Costing · Operations"
+nextArticle:
+  href: "0037-odoo-spinning-mill-bangladesh"
+  dir: "Older · 0037"
+  title: "Odoo for Spinning Mills Bangladesh"
+  desc: "Yarn inventory management, loom routing, and quality control for the textile sector."
+prevArticle:
+  href: "0039-odoo-reordering-rules-mto-bangladesh"
+  dir: "Newer · 0039"
+  title: "Odoo Reordering Rules vs MTO"
+  desc: "Automate your procurement logic and learn when to use Reordering Rules vs Make to Order."
+jsonLd: |
+  [
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "Manufacturing Routing in Odoo: Work Centers, Operations & Time Tracking",
+      "description": "Configure Odoo manufacturing routing for Bangladesh factories — work centers, operations, machine capacity, and production time tracking.",
+      "datePublished": "2026-05-08T12:00:00+06:00",
+      "dateModified": "2026-05-23T12:00:00+06:00",
+      "author": {
+        "@type": "Person",
+        "name": "Mehedi Hasan",
+        "url": "https://mhasan.me",
+        "jobTitle": "Odoo ERP Consultant & Business Analyst",
+        "sameAs": "https://www.linkedin.com/in/mehedi-hasan-consultant/"
+      },
+      "publisher": { "@type": "Person", "name": "Mehedi Hasan", "url": "https://mhasan.me" },
+      "mainEntityOfPage": { "@type": "WebPage", "@id": "https://mhasan.me/lab/0038-odoo-manufacturing-routing-bangladesh" }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://mhasan.me" },
+        { "@type": "ListItem", "position": 2, "name": "Lab", "item": "https://mhasan.me/lab/" },
+        { "@type": "ListItem", "position": 3, "name": "Odoo Manufacturing Routing Bangladesh", "item": "https://mhasan.me/lab/0038-odoo-manufacturing-routing-bangladesh" }
+      ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How do you configure Work Centers in Odoo?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "In Odoo, a Work Center represents a physical location, machine, or group of machines where production operations occur. You configure them with working hours, capacity (number of items produced in parallel), and cost per hour. Cost per hour is crucial as it rolls up into the final product cost alongside raw materials."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the difference between a BOM and a Routing in Odoo?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A Bill of Materials (BOM) defines WHAT components are needed to make a product. A Routing defines HOW it is made — the specific sequence of operations across different work centers, including the estimated time for each operation."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How does Odoo calculate production cost from a routing?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "For each operation, Odoo multiplies the time spent at a Work Center by that center's Cost per Hour and adds the result to the finished product's valuation alongside raw-material cost. Without Work Order time tracking it uses the expected duration on the routing; with the Shop Floor app it uses the real logged duration. An inaccurate cost-per-hour rate or unrealistic expected duration distorts every margin report."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What happens if the real duration differs from the expected duration in Odoo?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Odoo records both. The expected duration drives capacity planning and delivery-date promises in the Master Production Schedule; the real duration captured in the Shop Floor app drives actual costing. A persistent gap between the two is a signal to re-measure that operation — ignoring it means slipped schedules and wrong product costs."
+          }
+        }
+      ]
+    }
+  ]
+extraStyles: |
+  .flow-card {
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        overflow: hidden;
+        margin: 20px 0;
+      }
+      .flow-row {
+        display: grid;
+        grid-template-columns: 140px 1fr 180px;
+        border-bottom: 1px solid var(--border);
+        align-items: stretch;
+      }
+      .flow-row:last-child { border-bottom: none; }
+      .flow-stage {
+        padding: 14px 16px;
+        background: var(--surface);
+        border-right: 1px solid var(--border);
+        font-size: 12px;
+        font-weight: 600;
+        color: var(--text);
+        display: flex;
+        align-items: center;
+      }
+      .flow-desc {
+        padding: 14px 16px;
+        font-size: 12.5px;
+        color: var(--text-2);
+        line-height: 1.7;
+      }
+      .flow-odoo {
+        padding: 14px 16px;
+        border-left: 1px solid var(--border);
+        font-family: var(--mono);
+        font-size: 10.5px;
+        color: var(--accent);
+        line-height: 1.7;
+        display: flex;
+        align-items: center;
+      }
+      .pull {
+        font-family: var(--serif);
+        font-style: italic;
+        font-size: clamp(20px, 2.8vw, 30px);
+        line-height: 1.3;
+        color: var(--text);
+        margin: 48px 0;
+        max-width: 26ch;
+        letter-spacing: -0.01em;
+      }
+      .pull::before {
+        content: "";
+        display: block;
+        width: 36px;
+        height: 1px;
+        background: var(--accent);
+        margin-bottom: 18px;
+      }
+      .field-note{margin:28px 0;border:1px solid var(--border);border-radius:12px;overflow:hidden;background:var(--surface)}
+      .fn-hd{display:flex;align-items:center;justify-content:space-between;padding:12px 18px;border-bottom:1px solid var(--border);font-family:var(--mono);font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-3)}
+      .fn-hd .when{color:var(--accent)}
+      .fn-body{padding:18px 22px;font-size:15px;line-height:1.65;color:var(--text-2)}
+      .fn-body strong{color:var(--text);font-weight:500}
+      @media(max-width:800px){
+        .flow-row { grid-template-columns: 1fr; }
+        .flow-stage { border-right: none; border-bottom: 1px solid var(--border); }
+        .flow-odoo { border-left: none; border-top: 1px solid var(--border); }
+      }
+---
+<aside class="toc">
+      <div class="toc-k">In this guide</div>
+      <ol>
+        <li><a href="#work-centers">Defining Work Centers</a></li>
+        <li><a href="#operations">Operations &amp; Sequences</a></li>
+        <li><a href="#capacity">Machine Capacity &amp; OEE</a></li>
+        <li><a href="#time-tracking">Time Tracking on Shop Floor</a></li>
+        <li><a href="#overhead">Overhead Cost Allocation</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ol>
+    </aside>
+
+    <div class="body">
+      <p>In many basic ERP implementations, consultants map the Bill of Materials (BOM) perfectly but ignore the Routing. They simply configure a "consume materials and produce finished good" button. This is a missed opportunity. To understand your true manufacturing costs—and to schedule production accurately—you need to map the journey of the product across your factory floor.</p>
+
+      <p>This builds on the foundations laid out in the <a href="0013-odoo-manufacturing-module-bangladesh" style="color:var(--accent)">Odoo Manufacturing Module Setup</a> guide. For specific industry examples like textile, refer to the <a href="0037-odoo-spinning-mill-bangladesh" style="color:var(--accent)">Odoo Spinning Mill Configuration</a>.</p>
+
+      <p class="pull">Routing isn't just about telling workers what to do next. It's the engine that allocates overhead costs to your products based on actual machine time.</p>
+
+      <h2 id="work-centers">Defining Work Centers</h2>
+      <p>A Work Center in Odoo represents a physical location where production takes place. This could be a single machine (e.g., "CNC Lathe #3"), a group of identical machines (e.g., "Sewing Line A"), or a manual assembly station.</p>
+      
+      <p>When setting up a Work Center, you must define:</p>
+      <ul>
+        <li><strong>Working Hours:</strong> The schedule this center operates on (e.g., standard 8-hour shift vs 24/7 operation).</li>
+        <li><strong>Capacity:</strong> How many items can be processed in parallel.</li>
+        <li><strong>OEE Target:</strong> Overall Equipment Effectiveness target percentage.</li>
+        <li><strong>Cost per hour:</strong> This is critical. It includes the depreciation of the machine, electricity costs, floor space rent, and operator wages. If an operation takes 2 hours at a center with a BDT 6,000/hr cost, BDT 12,000 is added to the finished product's valuation.</li>
+      </ul>
+
+      <h2 id="operations">Operations &amp; Sequences</h2>
+      <p>A Routing is simply a sequence of Operations. Each Operation is tied to a Work Center and has an expected duration.</p>
+
+      <div class="flow-card">
+        <div class="flow-row">
+          <div class="flow-stage">Op 1: Cutting</div>
+          <div class="flow-desc">Raw material is cut to size. The operation defines the exact Work Center to use and standard setup time.</div>
+          <div class="flow-odoo">WC: Cutting Room<br>Duration: 15 mins</div>
+        </div>
+        <div class="flow-row">
+          <div class="flow-stage">Op 2: Assembly</div>
+          <div class="flow-desc">Parts are joined together. You can attach PDF instructions or images to this operation for workers to view on their tablets.</div>
+          <div class="flow-odoo">WC: Assembly Line B<br>Duration: 45 mins</div>
+        </div>
+        <div class="flow-row">
+          <div class="flow-stage">Op 3: Quality Check</div>
+          <div class="flow-desc">Final inspection before moving to finished goods. Quality points can be enforced here.</div>
+          <div class="flow-odoo">WC: QC Station<br>Duration: 10 mins</div>
+        </div>
+      </div>
+
+      <h2 id="capacity">Machine Capacity &amp; OEE</h2>
+      <p>Capacity planning in Odoo relies heavily on accurate Work Center configurations. If you receive a large order, Odoo's Master Production Schedule (MPS) will look at the routings to determine if you have the machine hours available to meet the deadline.</p>
+      
+      <p>Odoo also tracks <strong>Overall Equipment Effectiveness (OEE)</strong>. If a machine is stopped due to material shortage or breakdown, operators can log this. OEE metrics help management identify bottlenecks—are we losing time to machine maintenance or supply chain delays?</p>
+
+      <h2 id="time-tracking">Time Tracking on Shop Floor</h2>
+      <p>The Odoo Shop Floor app allows operators to scan a barcode, see their next operation, and click "Start". When they finish, they click "Done".</p>
+      
+      <p>This real-time tracking gives you actual durations vs expected durations. If your routing estimated 45 minutes for assembly but it consistently takes 60 minutes, your costs are wrong and your schedules will always be delayed. The Shop Floor app forces reality into the ERP.</p>
+
+      <h2 id="overhead">Overhead Cost Allocation</h2>
+      <p>Why go through the trouble of routings? <strong>Accurate Costing.</strong></p>
+      <p>Without routings, all you have is material cost. By assigning a BDT/hour rate to each Work Center and tracking the time spent, Odoo automatically adds the overhead cost to the inventory value of the finished good. This ensures your margins are calculated accurately, factoring in the actual machine time and labor used to produce that specific batch.</p>
+
+      <div class="field-note">
+        <div class="fn-hd"><span>Note · Light-engineering factory, Gazipur</span><span class="when">Costing review</span></div>
+        <div class="fn-body">
+          A workshop went live with routings, but the operation durations were copied straight from the demo data and never re-measured against the floor. Every routing said an assembly step took 30 minutes; the Shop Floor app showed it consistently running 50–55. Because the standard durations were too low, the MPS kept promising delivery dates the factory could not hit, and every finished good was carrying roughly <strong>40% too little machine overhead</strong> in its valuation — margins looked healthy on paper while the workshop was barely breaking even. We spent one shift logging real durations through the Shop Floor app, then updated each operation's expected time. <strong>A routing is only as honest as the durations behind it — set them once from demo data and your costs and your schedule are both fiction.</strong>
+        </div>
+      </div>
+
+      <div class="callout">
+        <span class="tag">Bottom line</span>
+        <p>Start simple. Map your Work Centers broadly (e.g., "Cutting", "Sewing", "Finishing") rather than mapping 50 individual machines. Get the supervisors used to tracking time at a macro level, refine your BDT/hour rates, and then drill down into specific machine scheduling once the culture of real-time data entry is established. Want a ballpark on what the whole implementation costs before you start? Try the <a href="/tools/odoo-cost-estimator/" style="color:var(--accent)">Odoo cost estimator</a>. <a href="../#contact" style="color:var(--accent)">Need help mapping your factory floor? Get in touch →</a></p>
+      </div>
+
+      <h2 id="faq">Frequently asked questions</h2>
+
+      <h3>How do you configure Work Centers in Odoo?</h3>
+      <p>Navigate to Manufacturing → Configuration → Work Centers. Define the name, working schedule, capacity, and most importantly, the Cost per Hour. This cost rate is used to calculate the overhead absorbed by products passing through the center.</p>
+
+      <h3>What is the difference between a BOM and a Routing in Odoo?</h3>
+      <p>A Bill of Materials (BOM) lists the components needed. A Routing defines the operational steps (Work Orders) across various Work Centers, dictating how those components are transformed into the finished product.</p>
+
+      <h3>How does Odoo calculate production cost from a routing?</h3>
+      <p>For each operation, Odoo multiplies the time spent at a Work Center by that center's Cost per Hour, then adds the result to the finished product's valuation alongside raw-material cost. If you have not enabled Work Order time tracking, Odoo uses the expected duration on the routing; with the Shop Floor app, it uses the real logged duration. This is why an inaccurate cost-per-hour rate or an unrealistic expected duration quietly distorts every margin report.</p>
+
+      <h3>What happens if the real duration differs from the expected duration in Odoo?</h3>
+      <p>Odoo records both. The expected duration drives capacity planning and delivery-date promises in the Master Production Schedule; the real duration (captured when an operator clicks Start and Done in the Shop Floor app) drives actual costing. A persistent gap between the two is a signal to re-measure that operation — if you ignore it, your schedules slip and your product costs stay wrong.</p>
+
+    </div>

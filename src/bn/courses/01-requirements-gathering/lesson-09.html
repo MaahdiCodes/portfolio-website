@@ -1,0 +1,393 @@
+---
+layout: "layouts/base.njk"
+permalink: "bn/courses/01-requirements-gathering/lesson-09.html"
+bareBody: true
+stylesheetHref: "/lab/_styles.css"
+lang: "bn"
+title: "লেসন ০৯ — BA টুলকিট, টেমপ্লেট ও বাংলাদেশে ক্যারিয়ার · কোর্স ০১"
+description: "আপনার সম্পূর্ণ BA আর্টিফ্যাক্ট চেকলিস্ট, টুলস গাইড, হ্যান্ডওভার ডকুমেন্টেশন, অর্জনযোগ্য সার্টিফিকেশন, আর বাংলাদেশে বিজনেস অ্যানালিস্টদের ক্যারিয়ার পথ।"
+robots: "noindex, follow"
+canonical: "https://mhasan.me/bn/courses/01-requirements-gathering/lesson-09"
+hreflangEn: "https://mhasan.me/courses/01-requirements-gathering/lesson-09"
+hreflangBn: "https://mhasan.me/bn/courses/01-requirements-gathering/lesson-09"
+extraStyles: |
+  body{ font-family: 'Noto Sans Bengali', var(--sans); }
+  .three-up{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:28px 0}
+  .three-up .card{border:1px solid var(--border);border-radius:12px;padding:20px;background:rgba(21,24,29,0.5)}
+  .three-up .card h4{font-size:14px;font-weight:500;margin:0 0 8px;color:var(--text)}
+  .three-up .card p{font-size:13.5px;color:var(--text-2);margin:0;line-height:1.55}
+  .field-note{border:1px solid var(--border);border-radius:12px;padding:22px 24px;margin:28px 0;background:linear-gradient(180deg,rgba(21,24,29,0.55),rgba(14,16,19,0.55))}
+  .field-note .fn-label{font-family:var(--mono);font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:var(--accent);margin:0 0 10px}
+  .field-note p{font-size:14.5px;color:var(--text-2);margin:0;line-height:1.6}
+  .field-note p+p{margin-top:10px}
+  .toolkit-list{list-style:none;padding:0;margin:24px 0;border:1px solid var(--border);border-radius:12px;overflow:hidden}
+  .toolkit-item{padding:14px 20px;border-bottom:1px solid var(--border);display:flex;gap:14px;align-items:flex-start;font-size:14.5px;color:var(--text);background:var(--surface)}
+  .toolkit-item:last-child{border-bottom:none}
+  .toolkit-item::before{content:"✓";font-family:var(--mono);font-size:11px;color:var(--accent);flex:none;margin-top:2px;width:16px}
+  .toolkit-item .tk-desc{font-size:13px;color:var(--text-3);margin-top:2px;display:block}
+  .cert-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin:28px 0}
+  .cert-card{border:1px solid var(--border);border-radius:12px;padding:20px;background:rgba(21,24,29,0.5)}
+  .cert-card .cert-badge{font-family:var(--mono);font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--accent);display:inline-block;padding:3px 8px;border:1px solid oklch(0.80 0.17 155 / 0.4);border-radius:4px;margin-bottom:10px}
+  .cert-card h4{font-size:15px;font-weight:500;margin:0 0 8px;color:var(--text)}
+  .cert-card p{font-size:13.5px;color:var(--text-2);margin:0;line-height:1.55}
+  .career-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:28px 0}
+  .career-card{border:1px solid var(--border);border-radius:12px;padding:20px;background:rgba(21,24,29,0.5)}
+  .career-card .path-label{font-family:var(--mono);font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-3);margin-bottom:8px}
+  .career-card h4{font-size:15px;font-weight:500;margin:0 0 10px;color:var(--text)}
+  .career-card p{font-size:13.5px;color:var(--text-2);margin:0;line-height:1.5}
+  .course-complete{border:1px solid oklch(0.80 0.17 155 / 0.4);border-radius:16px;padding:36px;margin:48px 0;background:oklch(0.80 0.17 155 / 0.06);text-align:center}
+  .course-complete h3{font-size:26px;font-weight:500;letter-spacing:-0.02em;margin:0 0 12px;color:var(--text)}
+  .course-complete p{font-size:15px;color:var(--text-2);margin:0 0 24px;max-width:50ch;display:block;margin-left:auto;margin-right:auto}
+  .course-complete a{display:inline-flex;align-items:center;gap:8px;padding:12px 24px;background:var(--accent);color:#04140B;border-radius:999px;font-weight:500;font-size:14px;transition:opacity .18s,transform .12s}
+  .course-complete a:hover{opacity:0.88;transform:translateY(-1px)}
+  @media(max-width:680px){.three-up,.cert-grid,.career-grid{grid-template-columns:1fr}}
+  .stat-block{display:grid;grid-template-columns:repeat(3,1fr);gap:0;background:var(--border);border-radius:12px;overflow:hidden;margin:28px 0}
+  .stat-item{background:var(--surface);padding:24px 18px;text-align:center}
+  .stat-num{font-family:var(--mono);font-size:26px;font-weight:300;color:var(--accent);line-height:1;display:block}
+  .stat-label{font-size:12px;color:var(--text-3);margin-top:8px;line-height:1.4;display:block}
+  .bar-chart{margin:28px 0;display:flex;flex-direction:column;gap:14px}
+  .bc-row{display:grid;grid-template-columns:190px 1fr 44px;gap:10px;align-items:center}
+  .bc-label{font-size:13px;color:var(--text-2)}
+  .bc-track{height:6px;background:rgba(255,255,255,0.06);border-radius:4px;overflow:hidden}
+  .bc-fill{height:100%;background:oklch(0.80 0.17 155);border-radius:4px}
+  .bc-pct{font-family:var(--mono);font-size:11px;color:var(--text-3);text-align:right}
+  .donut-stat{display:flex;align-items:center;gap:28px;padding:24px;border:1px solid var(--border);border-radius:12px;background:rgba(21,24,29,0.5);margin:28px 0}
+  .donut-stat svg{flex:none}
+  .donut-label{font-size:14px;color:var(--text-2);line-height:1.6;margin:0}
+  .donut-label strong{color:var(--text)}
+  .insight-row{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin:28px 0}
+  .insight-card{border:1px solid var(--border);border-radius:12px;padding:20px;background:rgba(21,24,29,0.5)}
+  .insight-card .ic-label{font-family:var(--mono);font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-3);margin:0 0 8px}
+  .insight-card h4{font-size:15px;font-weight:500;color:var(--text);margin:0 0 8px}
+  .insight-card p{font-size:13.5px;color:var(--text-2);margin:0;line-height:1.55}
+  @media(max-width:680px){.stat-block{grid-template-columns:1fr}.bc-row{grid-template-columns:140px 1fr 36px}.donut-stat{flex-direction:column;text-align:center}.insight-row{grid-template-columns:1fr}}
+---
+<div class="grid-bg"></div>
+
+<nav class="nav">
+  <div class="shell">
+    <div class="nav-inner">
+      <a href="/bn/" class="brand">
+        <div class="brand-mark"></div>
+        <div class="brand-name"><b>Mehedi Hasan</b><em>ERP কনসালট্যান্ট</em></div>
+      </a>
+      <a href="./" class="back-link">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10 12L6 8l4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+        কোর্স ওভারভিউ
+      </a>
+    </div>
+  </div>
+</nav>
+
+<div class="shell">
+  <div class="post-head">
+    <span class="eyebrow">কোর্স ০১ &nbsp;·&nbsp; লেসন ০৯ &nbsp;·&nbsp; ১৫ মিনিট</span>
+    <div class="post-meta">
+      <span class="chip accent">শেষ লেসন</span>
+      <span class="chip">টুলকিট</span>
+      <span class="chip">ক্যারিয়ার</span>
+    </div>
+    <h1>BA টুলকিট, টেমপ্লেট ও বাংলাদেশে <span class="serif">ক্যারিয়ার</span></h1>
+    <p class="lede">এই শেষ লেসনটাই আপনার রেফারেন্স তাক: প্রজেক্টে আপনার তৈরি করা উচিত এমন প্রতিটা আর্টিফ্যাক্ট, জানা দরকার এমন প্রতিটা টুল, দরজা খুলে দেয় এমন সার্টিফিকেশন, আর বাংলাদেশে একজন BA-র ক্যারিয়ার আসলে কেমন দেখতে — কর্পোরেট, কনসালটিং, আর ফ্রিল্যান্স তিন পথেই।</p>
+    <div class="byline">
+      <span>লেসন<b>০৯ / ০৯</b></span>
+      <span>সময়<b>১৫ মিনিট</b></span>
+      <span>কোর্স<b>রিকোয়ারমেন্ট গ্যাদারিং</b></span>
+    </div>
+  </div>
+</div>
+
+<div class="shell">
+  <div class="post">
+    <nav class="toc" id="toc" aria-label="Lesson contents">
+      <button class="toc-toggle" onclick="toggleToc()" aria-expanded="false" aria-controls="toc">
+        <span class="label">এই লেসনে</span>
+        <span class="current" id="toc-current">আর্টিফ্যাক্ট চেকলিস্ট</span>
+        <span class="chev"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 4l3 3 3-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg></span>
+      </button>
+      <div class="toc-k">বিষয়সূচি</div>
+      <ol>
+        <li><a href="#s1">আর্টিফ্যাক্ট চেকলিস্ট</a></li>
+        <li><a href="#s2">হ্যান্ডওভার ডকুমেন্টেশন</a></li>
+        <li><a href="#s3">পোস্ট-ইমপ্লিমেন্টেশন রিভিউ</a></li>
+        <li><a href="#s4">BA-রা যেসব টুল ব্যবহার করেন</a></li>
+        <li><a href="#s5">সার্টিফিকেশন</a></li>
+        <li><a href="#s6">বাংলাদেশে ক্যারিয়ার পথ</a></li>
+        <li><a href="#s7">আন্তর্জাতিক প্রযোজ্যতা</a></li>
+        <li><a href="#s8">আপনার পরবর্তী পদক্ষেপ</a></li>
+        <li><a href="#s_career_paths">তিনটা BA ক্যারিয়ার পথ</a></li>
+        <li><a href="#s_portfolio">আপনার BA পোর্টফোলিও তৈরি</a></li>
+        <li><a href="#s9">রিফ্লেকশন</a></li>
+      </ol>
+      <div class="toc-progress"><span>প্রগ্রেস</span><div class="bar"><i id="prog-bar"></i></div></div>
+    </nav>
+    <div class="toc-progress-mobile"><i id="prog-bar-m"></i></div>
+
+    <article class="body">
+
+      <h2 id="s1">BA আর্টিফ্যাক্ট চেকলিস্ট: প্রজেক্ট শেষে কী হ্যান্ডওভার করবেন</h2>
+      <p>একটা প্রজেক্টের শেষে, BA-র আউটপুট হওয়া উচিত ডকুমেন্টের একটা সম্পূর্ণ, সংগঠিত সেট যা ভবিষ্যতের যেকোনো টিম সদস্য — বা অডিটর — কী তৈরি হয়েছে, কেন, আর কী সম্মত হয়েছিল তা বুঝতে সাহায্য করে। এটা কোনো আমলাতন্ত্র নয়। এটা প্রাতিষ্ঠানিক স্মৃতি।</p>
+      <p>নিচের চেকলিস্টে এই কোর্স আপনাকে যা তৈরি করতে শিখিয়েছে তার প্রতিটা আর্টিফ্যাক্ট আছে। একটা প্রজেক্ট শেষে আপনি কী ডেলিভার করেছেন তা মিলিয়ে নিন:</p>
+
+      <ul class="toolkit-list">
+        <li class="toolkit-item">BA রোল চার্টার<span class="tk-desc">প্রজেক্ট স্পনসরের সাথে সম্মত BA-র দায়িত্বের স্কোপ</span></li>
+        <li class="toolkit-item">স্টেকহোল্ডার রেজিস্টার<span class="tk-desc">সব স্টেকহোল্ডার, তাদের পাওয়ার/ইন্টারেস্ট ম্যাপিং, RACI রোল, যোগাযোগের পছন্দ</span></li>
+        <li class="toolkit-item">ওয়ার্কশপ এজেন্ডা আর ৪৮-ঘণ্টার সারাংশ<span class="tk-desc">পরিচালিত প্রতিটা সেশনের জন্য একটা করে, সিদ্ধান্ত, খোলা প্রশ্ন, আর পরবর্তী পদক্ষেপসহ</span></li>
+        <li class="toolkit-item">ইন্টারভিউ নোট বা সারাংশ<span class="tk-desc">সব মূল স্টেকহোল্ডার ইন্টারভিউয়ের কাঠামোবদ্ধ নোট</span></li>
+        <li class="toolkit-item">As-is প্রসেস ডকুমেন্টেশন<span class="tk-desc">সিস্টেম যে প্রসেসগুলো প্রতিস্থাপন বা পরিবর্তন করে তার ডকুমেন্টেড বর্তমান অবস্থা</span></li>
+        <li class="toolkit-item">বিজনেস রিকোয়ারমেন্ট ডকুমেন্ট<span class="tk-desc">প্রজেক্টকে যা অর্জন করতে হবে তার উচ্চ-স্তরের লক্ষ্য, স্পনসর দ্বারা স্বাক্ষরিত</span></li>
+        <li class="toolkit-item">SRS-lite (ফাংশনাল স্পেসিফিকেশন)<span class="tk-desc">নম্বরযুক্ত ফাংশনাল, নন-ফাংশনাল, আর ইন্টিগ্রেশন রিকোয়ারমেন্ট</span></li>
+        <li class="toolkit-item">ডেটা ডিকশনারি<span class="tk-desc">প্রতিটা ডেটা এনটিটির জন্য ফিল্ড-লেভেল সংজ্ঞা, টাইপ, ভ্যালিডেশন, আর নিয়ম</span></li>
+        <li class="toolkit-item">ইউজার স্টোরি ব্যাকলগ<span class="tk-desc">অ্যাক্সেপ্টেন্স ক্রাইটেরিয়া, প্রায়োরিটি, আর স্ট্যাটাসসহ সব ইউজার স্টোরি</span></li>
+        <li class="toolkit-item">রিকোয়ারমেন্টস ট্রেসেবিলিটি ম্যাট্রিক্স (RTM)<span class="tk-desc">রিকোয়ারমেন্টকে টেস্ট কেস, ডেলিভারি স্প্রিন্ট, আর বিজনেস অবজেক্টিভের সাথে যুক্ত করে</span></li>
+        <li class="toolkit-item">চেঞ্জ রেজিস্টার<span class="tk-desc">উত্থাপিত সব চেঞ্জ রিকোয়েস্ট, সিদ্ধান্ত, ইমপ্যাক্ট অ্যাসেসমেন্ট, আর ফলাফলসহ</span></li>
+        <li class="toolkit-item">UAT প্ল্যান<span class="tk-desc">স্কোপ, শিডিউল, এন্ট্রি/এক্সিট ক্রাইটেরিয়া, টেস্ট টিম, ডিফেক্ট প্রসেস</span></li>
+        <li class="toolkit-item">UAT টেস্ট সিনারিও<span class="tk-desc">রিকোয়ারমেন্ট আর অ্যাক্সেপ্টেন্স ক্রাইটেরিয়ার সাথে যুক্ত নম্বরযুক্ত টেস্ট কেস</span></li>
+        <li class="toolkit-item">ডিফেক্ট লগ<span class="tk-desc">UAT-এর সময় উত্থাপিত সব ডিফেক্ট, সিভিয়ারিটি, সমাধান, আর সাইন-অফ স্ট্যাটাস</span></li>
+        <li class="toolkit-item">সাইন-অফ ম্যাট্রিক্স<span class="tk-desc">সব নির্ধারিত অনুমোদনকারীর কাছ থেকে মডিউল/এরিয়া অনুযায়ী স্বাক্ষরিত গ্রহণযোগ্যতা</span></li>
+        <li class="toolkit-item">পোস্ট-ইমপ্লিমেন্টেশন রিভিউ নোট<span class="tk-desc">শেখা শিক্ষা, রিকোয়ারমেন্টের মান মূল্যায়ন, পরবর্তী প্রজেক্টের জন্য প্রসেস উন্নতি</span></li>
+      </ul>
+
+      <div class="callout">
+        <span class="tag">নিয়ম</span>
+        <p>শুধু আপনার ল্যাপটপে থাকা একটা ডকুমেন্ট কোনো প্রজেক্ট আর্টিফ্যাক্ট নয় — এটা একটা ব্যক্তিগত নোট মাত্র। প্রতিটা আর্টিফ্যাক্ট একটা শেয়ার্ড, ভার্সন-নিয়ন্ত্রিত জায়গায় (SharePoint, Google Drive, Confluence) থাকতে হবে যেখানে প্রজেক্ট স্পনসর আপনাকে না জিজ্ঞেস করেই অ্যাক্সেস করতে পারেন। আপনি আগামীকাল প্রজেক্ট ছেড়ে দিলেও, কাজটা টিকে থাকা উচিত।</p>
+      </div>
+
+      <div class="stat-block">
+        <div class="stat-item">
+          <span class="stat-num">১২+</span>
+          <span class="stat-label">একটা পূর্ণ প্রজেক্ট লাইফসাইকেলে BA-র তৈরি ও মালিকানাধীন থাকা উচিত এমন আর্টিফ্যাক্ট</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num">৪–৭ বছর</span>
+          <span class="stat-label">বাংলাদেশে জুনিয়র BA থেকে সিনিয়র BA/কনসালট্যান্ট হওয়ার সাধারণ সময়কাল</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num">৳80K+</span>
+          <span class="stat-label">ঢাকার টেক ও কনসালটিং খাতে অভিজ্ঞ BA-দের মাসিক মিডিয়ান</span>
+        </div>
+      </div>
+
+      <h2 id="s2">হ্যান্ডওভার ডকুমেন্টেশন: আপনার পরে আসা মানুষটির জন্য লেখা</h2>
+      <p>হ্যান্ডওভার ডকুমেন্টেশনের সবচেয়ে কঠিন অংশ হলো, আপনি এটা লেখেন এমন একটা প্রেক্ষাপট জেনে যা সবকিছু স্পষ্ট করে তোলে — তাই সেই স্পষ্ট প্রেক্ষাপটটাই বাদ পড়ে যায়। এমন একজনের জন্য লিখুন যিনি কোনো স্টেকহোল্ডারের সাথে কখনো কথা বলেননি আর কোনো ওয়ার্কশপে কখনো অংশ নেননি। কোনো ক্ষতি না করে এই প্রজেক্টের দায়িত্ব নিতে তার কী জানা দরকার?</p>
+      <p>একটা ভালো BA হ্যান্ডওভার ডকুমেন্টে থাকে:</p>
+      <ul>
+        <li><strong>প্রজেক্ট সারাংশ</strong> — তিন প্যারাগ্রাফে: কী তৈরি হচ্ছিল, কেন, আর এটা এখন কোথায় দাঁড়িয়ে</li>
+        <li><strong>মূল স্টেকহোল্ডার যোগাযোগ</strong> — নাম, পদবি, প্রজেক্টে ভূমিকা, আর প্রত্যেকের সাথে কার্যকরভাবে কাজ করার একটা বাক্য</li>
+        <li><strong>ডকুমেন্ট ইনডেক্স</strong> — প্রতিটা আর্টিফ্যাক্ট কোথায় আছে, কোন ভার্সন, আর কোন অবস্থায়</li>
+        <li><strong>খোলা আইটেম</strong> — প্রতিটা অমীমাংসিত রিকোয়ারমেন্ট, ওপেন চেঞ্জ রিকোয়েস্ট, পিছিয়ে দেওয়া ডিফেক্ট, আর পেন্ডিং সাইন-অফ। মালিক আর সময়সীমাসহ।</li>
+        <li><strong>জানা ঝুঁকি ও স্পর্শকাতর বিষয়</strong> — আন্তঃব্যক্তিক গতিশীলতা, রাজনৈতিক ভূমি-মাইন, ভঙ্গুর টেকনিক্যাল অনুমান। এগুলো কখনো আনুষ্ঠানিক ডকুমেন্টে আসে না কিন্তু প্রতিটা সিদ্ধান্তকে প্রভাবিত করে।</li>
+        <li><strong>গ্লসারি</strong> — পুরো ডকুমেন্টেশন জুড়ে থাকা প্রতিষ্ঠান-নির্দিষ্ট শব্দ, সংক্ষেপণ, আর প্রোডাক্টের নাম</li>
+      </ul>
+
+      <h2 id="s3">পোস্ট-ইমপ্লিমেন্টেশন রিভিউ: রিকোয়ারমেন্টের লুপ বন্ধ করা</h2>
+      <p>গো-লাইভের চার থেকে আট সপ্তাহ পর, একটা পোস্ট-ইমপ্লিমেন্টেশন রিভিউ (PIR) পরিচালনা করুন। এটা দোষারোপের ব্যায়াম নয় — এটা শেখার ব্যায়াম। যে প্রশ্নগুলোর উত্তর দিতে হবে:</p>
+      <ul>
+        <li>প্রজেক্ট শুরুতে বলা বিজনেস রিকোয়ারমেন্টগুলো সিস্টেম অর্জন করেছে কি? আমরা কীভাবে জানি?</li>
+        <li>কোন রিকোয়ারমেন্টগুলো ভুল, অসম্পূর্ণ, বা অপ্রয়োজনীয় প্রমাণিত হয়েছে? আরও ভালো এলিসিটেশন কেমন হতো?</li>
+        <li>UAT-তে পাওয়া কোন ডিফেক্টগুলো আরও ভালো রিকোয়ারমেন্ট কাজ দিয়ে প্রতিরোধযোগ্য ছিল?</li>
+        <li>কোন চেঞ্জ রিকোয়েস্টগুলো প্রকৃত স্কোপ ফাঁক ছিল (রিকোয়ারমেন্টের ব্যর্থতা) বনাম বৈধ বিজনেস পরিবর্তন?</li>
+        <li>পরের প্রজেক্টে রিকোয়ারমেন্ট ফেজে আমরা কী ভিন্নভাবে করব?</li>
+      </ul>
+      <p>PIR-এর আউটপুট হলো এক পৃষ্ঠার একটা রেট্রোস্পেক্টিভ, যা প্রজেক্ট স্পনসরের সাথে শেয়ার করা হয় আর প্রজেক্ট আর্টিফ্যাক্টের সাথে সংরক্ষণ করা হয়। এই কোর্সের "ফিল্ড নোট"-এর উৎস এটাই।</p>
+
+      <h2 id="s4">BA-রা যেসব টুল ব্যবহার করেন</h2>
+      <div class="three-up">
+        <div class="card">
+          <h4>JIRA</h4>
+          <p>ইন্ডাস্ট্রি-স্ট্যান্ডার্ড ব্যাকলগ আর ইস্যু ট্র্যাকিং। ইউজার স্টোরি রাখে, স্প্রিন্ট ট্র্যাক করে, ডিফেক্ট লগ ম্যানেজ করে। Agile প্রজেক্টের জন্য অপরিহার্য। সফটওয়্যার ডেভেলপমেন্ট টিমের সাথে কাজ করা যেকোনো BA-র জন্য JIRA শেখা অবশ্যপালনীয়।</p>
+        </div>
+        <div class="card">
+          <h4>Confluence</h4>
+          <p>Atlassian-এর উইকি টুল। JIRA ব্যবহারকারী টিমগুলোতে রিকোয়ারমেন্ট ডকুমেন্ট, মিটিং নোট, আর প্রজেক্ট ডকুমেন্টেশনের ঘর। JIRA স্টোরির সাথে নিবিড়ভাবে ইন্টিগ্রেটেড।</p>
+        </div>
+        <div class="card">
+          <h4>Miro / Lucidchart</h4>
+          <p>প্রসেস ম্যাপিং, স্টেকহোল্ডার ম্যাপ, আর ওয়ার্কশপ পরিচালনার জন্য অনলাইন হোয়াইটবোর্ড টুল। ফ্যাসিলিটেটেড সেশনের জন্য Miro ভালো; পরিমার্জিত প্রসেস ফ্লো ডায়াগ্রামের জন্য Lucidchart ভালো।</p>
+        </div>
+        <div class="card">
+          <h4>Figma</h4>
+          <p>UI প্রোটোটাইপিংয়ের স্ট্যান্ডার্ড টুল। Figma-তে low-fidelity ওয়্যারফ্রেম তৈরি করতে পারা একজন BA লিখিত রিকোয়ারমেন্ট আর ডেভেলপাররা আসলে যা তৈরি করেন তার মধ্যকার ফাঁক নাটকীয়ভাবে কমিয়ে দেন।</p>
+        </div>
+        <div class="card">
+          <h4>Microsoft Excel / Google Sheets</h4>
+          <p>বাংলাদেশে, সব খাত জুড়ে সবচেয়ে বেশি ব্যবহৃত BA টুল। RTM, ডেটা ডিকশনারি, UAT লগ, আর স্টেকহোল্ডার রেজিস্টার প্রায়ই স্প্রেডশিটেই থাকে। Excel-এ দক্ষতা মৌলিক।</p>
+        </div>
+        <div class="card">
+          <h4>Visio / draw.io</h4>
+          <p>প্রসেস ফ্লো ডায়াগ্রামিং টুল। BPMN ডায়াগ্রাম, সিস্টেম কনটেক্সট ডায়াগ্রাম, আর ডেটা ফ্লো ডায়াগ্রাম। draw.io (এখন diagrams.net) বিনামূল্যে আর Google Drive-এর সাথে ইন্টিগ্রেটেড।</p>
+        </div>
+      </div>
+
+      <div class="field-note">
+        <p class="fn-label">বাংলাদেশের বাস্তবতা</p>
+        <p>বেশিরভাগ বাংলাদেশি প্রতিষ্ঠানে, BA টুলকিট হলো: Microsoft Word (স্পেক), Excel (বাকি সবকিছু), আর WhatsApp (সব বাস্তব যোগাযোগ)। এটা নিয়ে অহংকারী হবেন না। একটা সুগঠিত, ধারাবাহিকভাবে বজায় রাখা Excel-ভিত্তিক RTM একটা খারাপভাবে রক্ষণাবেক্ষণ করা JIRA ব্যাকলগের চেয়ে সবসময় ভালো ফল দেয়।</p>
+        <p>তবে: অন্তত একটা ডায়াগ্রামিং টুল (draw.io বিনামূল্যে), একটা ব্যাকলগ টুল (JIRA-র একটা ফ্রি টিয়ার আছে), আর Figma (বেসিক ব্যবহারের জন্য বিনামূল্যে) শেখায় বিনিয়োগ করুন। আন্তর্জাতিক ক্লায়েন্ট বা ডিজিটাল ট্রান্সফরমেশন প্রজেক্টে কাজ করার সময় এই দক্ষতাগুলো আপনাকে আলাদা করে তোলে।</p>
+      </div>
+
+      <h2 id="s5">অর্জনযোগ্য সার্টিফিকেশন</h2>
+      <div class="cert-grid">
+        <div class="cert-card">
+          <span class="cert-badge">CBAP</span>
+          <h4>Certified Business Analysis Professional</h4>
+          <p>IIBA (International Institute of Business Analysis) কর্তৃক প্রদত্ত। বিশ্বব্যাপী স্বর্ণ-মানের BA সার্টিফিকেশন। পাঁচ বছরের BA অভিজ্ঞতা লাগে। আন্তর্জাতিক নিয়োগকর্তা আর কনসালটিং ফার্ম দ্বারা স্বীকৃত। প্রস্তুতিতে ৩–৬ মাস লাগে। পরীক্ষার ফি প্রায় USD 325 (সদস্য) বা USD 450 (অ-সদস্য)।</p>
+        </div>
+        <div class="cert-card">
+          <span class="cert-badge">PMI-PBA</span>
+          <h4>PMI Professional in Business Analysis</h4>
+          <p>Project Management Institute কর্তৃক প্রদত্ত। BA আর PM শাখার মধ্যে সেতুবন্ধন — বাংলাদেশের বাজারের জন্য উপযুক্ত যেখানে BA-PM হাইব্রিড রোল সাধারণ। স্নাতক ডিগ্রি আর অভিজ্ঞতা লাগে। PMP-র সাথে ভালোভাবে মেলে।</p>
+        </div>
+        <div class="cert-card">
+          <span class="cert-badge">ECBA / CCBA</span>
+          <h4>এন্ট্রি/ইন্টারমিডিয়েট IIBA সার্টিফিকেশন</h4>
+          <p>ECBA (Entry Certificate)-এ আগের অভিজ্ঞতার দরকার নেই — BA কাজে ট্রানজিশন করা পেশাজীবীদের জন্য ভালো। CCBA (Capability)-তে ৩.৭৫ বছরের অভিজ্ঞতা লাগে। দুটোই কারিকুলাম হিসেবে BABOK (Business Analysis Body of Knowledge) ব্যবহার করে, যা সার্টিফিকেশন ছাড়াও পড়ার মতো।</p>
+        </div>
+        <div class="cert-card">
+          <span class="cert-badge">Agile BA</span>
+          <h4>Agile Business Analysis সার্টিফিকেশন</h4>
+          <p>বাংলাদেশি টেক ফার্মগুলো Agile ডেলিভারি গ্রহণ করার সাথে সাথে IIBA-AACBA (Agile Analysis Certification) আর SAFe POPM (SAFe Product Owner/Product Manager) ক্রমবর্ধমান প্রাসঙ্গিক হয়ে উঠছে। এগুলো ইউজার স্টোরি-কেন্দ্রিক রিকোয়ারমেন্ট কাজ আর স্প্রিন্ট-ভিত্তিক ডেলিভারিতে স্বাচ্ছন্দ্যের ইঙ্গিত দেয়।</p>
+        </div>
+      </div>
+
+      <h2 id="s6">বাংলাদেশে BA-দের ক্যারিয়ার পথ</h2>
+      <div class="career-grid">
+        <div class="career-card">
+          <div class="path-label">পথ ০১</div>
+          <h4>কর্পোরেট / ইন-হাউস</h4>
+          <p>একটা ব্যাংক, টেলকো, কনগ্লোমারেট, বা বড় RMG গ্রুপে BA। স্থিতিশীল বেতন, কাঠামোবদ্ধ পরিবেশ। অগ্রগতি: BA → সিনিয়র BA → বিজনেস সিস্টেমস লিড → IT ম্যানেজার বা প্রসেস এক্সেলেন্স হেড। যাদের জন্য ভালো: একটা ইন্ডাস্ট্রিতে গভীর ডোমেইন জ্ঞান তৈরি করতে চান। বেতন রেঞ্জ: কোম্পানি ও সিনিয়রিটির ওপর নির্ভর করে ৳40,000–150,000/মাস।</p>
+        </div>
+        <div class="career-card">
+          <div class="path-label">পথ ০২</div>
+          <h4>কনসালটিং</h4>
+          <p>একটা ERP বা ডিজিটাল ট্রান্সফরমেশন কনসালটেন্সিতে (স্থানীয় বা বহুজাতিক) BA। বেশি বৈচিত্র্য, দ্রুততর দক্ষতা উন্নয়ন, একাধিক ইন্ডাস্ট্রির সংস্পর্শ। অগ্রগতি: BA → সিনিয়র BA → ফাংশনাল কনসালট্যান্ট → সলিউশন আর্কিটেক্ট বা এনগেজমেন্ট লিড। যাদের জন্য ভালো: বিস্তৃতি আর ক্যারিয়ার ত্বরণ চান। বেতন: বোনাসসহ ৳50,000–200,000/মাস।</p>
+        </div>
+        <div class="career-card">
+          <div class="path-label">পথ ০৩</div>
+          <h4>ফ্রিল্যান্স / স্বাধীন</h4>
+          <p>প্ল্যাটফর্মের (Upwork, Toptal) মাধ্যমে বা সরাসরি সম্পর্কের মাধ্যমে SME, স্টার্টআপ, বা আন্তর্জাতিক ক্লায়েন্টদের সেবা দেওয়া স্বাধীন BA। উচ্চ আয়ের সম্ভাবনা (আন্তর্জাতিক প্ল্যাটফর্মে USD 40–80/ঘণ্টা), উচ্চ অস্থিরতা। যাদের জন্য ভালো: ট্র্যাক রেকর্ড আর সেলফ-মার্কেটিং সক্ষমতাসহ অভিজ্ঞ BA (৩+ বছর)। বিজনেস ডেভেলপমেন্ট শৃঙ্খলা লাগে।</p>
+        </div>
+      </div>
+
+      <div class="field-note">
+        <p class="fn-label">আন্তর্জাতিক প্রযোজ্যতা</p>
+        <p>এই কোর্সের দক্ষতাগুলো বাংলাদেশ-নির্দিষ্ট নয়। রিকোয়ারমেন্ট গ্যাদারিং, স্টেকহোল্ডার ম্যানেজমেন্ট, ইউজার স্টোরি লেখা, আর UAT পরিচালনা বিশ্বব্যাপী প্রতিটা টেকনোলজি প্রজেক্টে ব্যবহৃত বৈশ্বিকভাবে প্রযোজ্য শাখা।</p>
+        <p>বাংলাদেশ নির্দিষ্টভাবে আপনাকে যা শিখিয়েছে — কীভাবে হায়ারার্কিক্যাল প্রতিষ্ঠানে চলাফেরা করতে হয়, ডকুমেন্টেশন না থাকলে কীভাবে রিকোয়ারমেন্ট বের করতে হয়, মিশ্র-সক্ষমতার অংশগ্রহণকারীদের নিয়ে কীভাবে ওয়ার্কশপ চালাতে হয়, ভাষা আর সাংস্কৃতিক ফাঁক পেরিয়ে কীভাবে কাজ করতে হয় — এটা আন্তর্জাতিক কনসালটিংয়ে একটা প্রিমিয়াম দক্ষতা সেট। এই পরিবেশগুলোতেই বেশি ডকুমেন্টেড, কম-প্রেক্ষাপটের সংস্কৃতি থেকে আসা কনসালট্যান্টরা হিমশিম খান। আপনি কঠিন মোডে প্রশিক্ষিত হয়েছেন। এটা একটা সুবিধা।</p>
+      </div>
+
+      <h2 id="s7">এই দক্ষতাগুলো আন্তর্জাতিকভাবে কীভাবে কাজে লাগে</h2>
+      <p>আন্তর্জাতিকভাবে কাজ করতে চাইলে — UK, UAE, সিঙ্গাপুর, বা অন্য কোথাও — CBAP সার্টিফিকেশন আপনার প্রবেশ ক্রেডেনশিয়াল। এটাকে ডকুমেন্টেড প্রজেক্ট অভিজ্ঞতা (নির্দিষ্ট ইন্ডাস্ট্রি, সিস্টেম টাইপ, প্রজেক্ট ফলাফল), অ্যানোনিমাইজড আর্টিফ্যাক্টের একটা পোর্টফোলিও, আর ইংরেজি বিজনেস কমিউনিকেশন দক্ষতার সাথে জোড়া দিন। এই কম্বিনেশন যেকোনো বাজারে প্রতিযোগিতামূলক।</p>
+      <p>বাংলাদেশি BA-রা যারা সফলভাবে আন্তর্জাতিকভাবে ট্রানজিশন করেন, তারা সাধারণত দুটো সুবিধা পান: তারা অস্পষ্টতার সাথে স্বাচ্ছন্দ্য বোধ করেন (কারণ তারা কদাচিৎ সুনির্দিষ্ট প্রসেসের বিলাসিতা পেয়েছেন); আর তারা খুব ভিন্ন স্টেকহোল্ডার ব্যক্তিত্বের মধ্যে ঐকমত্য তৈরি করতে অভ্যস্ত, যা পশ্চিমা-প্রশিক্ষিত BA-দের প্রায়ই অভাব থাকে।</p>
+
+      <h2 id="s8">আপনার পরবর্তী পদক্ষেপ: BA পোর্টফোলিও তৈরি</h2>
+      <p>একটা BA পোর্টফোলিও হলো অ্যানোনিমাইজড আর্টিফ্যাক্টের একটা কিউরেটেড সংগ্রহ যা একজন সম্ভাব্য নিয়োগকর্তা বা ক্লায়েন্টের কাছে আপনার সক্ষমতা প্রদর্শন করে। এখনই তৈরি করা শুরু করুন, আপনার প্রথম BA রোলে থাকলেও:</p>
+      <ol>
+        <li><strong>আপনার সেরা আর্টিফ্যাক্ট অ্যানোনিমাইজ করে সংরক্ষণ করুন</strong> — কোম্পানির নাম আর স্পর্শকাতর ডেটা সরান। কাঠামো, চিন্তার মান, আর কৌশলগুলো রেখে দিন। একটা বাস্তব প্রজেক্ট থেকে একটা শক্তিশালী স্টেকহোল্ডার রেজিস্টার আর RTM যেকোনো সার্টিফিকেশনের চেয়ে বেশি প্রভাবশালী।</li>
+        <li><strong>আপনার প্রজেক্টগুলো ডকুমেন্ট করুন</strong> — একটা প্রজেক্ট লগ বজায় রাখুন: ইন্ডাস্ট্রি, সিস্টেম টাইপ, আপনার ভূমিকা, ব্যবহৃত মূল কৌশল, ফলাফল। প্রতিটা এন্ট্রি এক প্যারাগ্রাফ হলেও, এটাই ইন্টারভিউ উত্তর আর প্রপোজাল লেখার ভিত্তি হয়ে ওঠে।</li>
+        <li><strong>আপনি যা শিখেছেন তা নিয়ে লিখুন</strong> — একটা বাস্তব প্রজেক্টে কার্যকর মনে হওয়া একটা BA কৌশল নিয়ে একটা LinkedIn আর্টিকেল একটা রেজুমে বুলেট পয়েন্টের চেয়ে বেশি বিশ্বাসযোগ্যতা দেখায়। প্রতি কোয়ার্টারে একটা আর্টিকেল লিখুন।</li>
+        <li><strong>IIBA বাংলাদেশ চ্যাপ্টারে যোগ দিন</strong> — অন্য BA-দের সাথে সংযুক্ত হন, ইভেন্ট আর শেখার রিসোর্স অ্যাক্সেস করুন, আর রেফারেল তৈরি করে এমন পেশাদার নেটওয়ার্ক গড়ে তুলুন।</li>
+        <li><strong>একজন মেন্টর খুঁজুন</strong> — একজন অভিজ্ঞ BA যিনি সততার সাথে আপনার কাজ পর্যালোচনা করবেন আর নির্দিষ্ট ফিডব্যাক দেবেন, তিনি দশটা সার্টিফিকেশনের সমান। স্পষ্টভাবে জিজ্ঞেস করুন। বেশিরভাগ অভিজ্ঞ প্র্যাকটিশনার একজন গুরুত্বসহকারে আগ্রহী মানুষকে মেন্টর করতে ইচ্ছুক।</li>
+      </ol>
+
+      <h2 id="s_career_paths">বাংলাদেশে তিনটা BA ক্যারিয়ার পথ</h2>
+      <p>বাংলাদেশে বিজনেস অ্যানালিস্টদের জন্য একটামাত্র ক্যারিয়ার সিঁড়ি নেই। এই শাখাটা প্রথম দিকেই তিনটা স্বীকৃতভাবে ভিন্ন গতিপথে ভাগ হয়ে যায়, প্রতিটার নিজস্ব অগ্রগতির যুক্তি, আয়ের সীমা, আর দৈনন্দিন বাস্তবতা আছে।</p>
+
+      <div class="bar-chart">
+        <div class="bc-row">
+          <span class="bc-label">কর্পোরেট BA → BA লিড</span>
+          <div class="bc-track"><div class="bc-fill" style="width:70%"></div></div>
+          <span class="bc-pct">স্থিতিশীলতা</span>
+        </div>
+        <div class="bc-row">
+          <span class="bc-label">কনসালটিং / ERP ট্র্যাক</span>
+          <div class="bc-track"><div class="bc-fill" style="width:90%"></div></div>
+          <span class="bc-pct">বৈচিত্র্য</span>
+        </div>
+        <div class="bc-row">
+          <span class="bc-label">ফ্রিল্যান্স / আন্তর্জাতিক</span>
+          <div class="bc-track"><div class="bc-fill" style="width:100%"></div></div>
+          <span class="bc-pct">আয়ের সীমা</span>
+        </div>
+      </div>
+
+      <div class="insight-row">
+        <div class="insight-card">
+          <p class="ic-label">পথ A · কর্পোরেট</p>
+          <h4>ইন-হাউস BA → BA লিড → Head of Business Analysis</h4>
+          <p>একটা প্রতিষ্ঠানের মধ্যে স্থির অগ্রগতি। একটা খাতের গভীর জ্ঞান। বাংলাদেশে সীমা সাধারণত একটা সিনিয়র ম্যানেজার রোল, অভিজ্ঞ প্র্যাকটিশনারদের জন্য মাসিক বেতন ৳60K–120K। যারা গভীরতা, স্থিতিশীলতা, আর একটা স্পষ্ট অভ্যন্তরীণ পথ মূল্য দেন তাদের জন্য ভালো।</p>
+        </div>
+        <div class="insight-card">
+          <p class="ic-label">পথ B · কনসালটিং</p>
+          <h4>ERP/IT কনসালট্যান্ট → সিনিয়র কনসালট্যান্ট → প্রিন্সিপাল</h4>
+          <p>ERP আর সিস্টেম ইন্টিগ্রেশন ট্র্যাক — Odoo, SAP, Oracle, Microsoft — কর্পোরেট পথের চেয়ে দ্রুত চলে আর ভালো বেতন দেয়। বৈচিত্র্য বেশি: ভিন্ন ক্লায়েন্ট, ভিন্ন ইন্ডাস্ট্রি। ঢাকায় প্রিন্সিপালদের জন্য আয়ের সীমা ৳150K–250K+। দ্রুত একটা স্পেশালাইজেশন তৈরি করা লাগে।</p>
+        </div>
+        <div class="insight-card">
+          <p class="ic-label">পথ C · ফ্রিল্যান্স</p>
+          <h4>রিমোট কনসালট্যান্ট → আন্তর্জাতিক ক্লায়েন্ট</h4>
+          <p>আন্তর্জাতিক অভিজ্ঞতাসম্পন্ন বাংলাদেশি BA-রা Upwork আর Toptal-এর মতো প্ল্যাটফর্মে, বা LinkedIn নেটওয়ার্কের মাধ্যমে রিমোট কাজ খুঁজে পাচ্ছেন বলে এটা একটা ক্রমবর্ধমান পথ। USD/GBP-তে আয় বাংলাদেশের বেতন সীমা সম্পূর্ণভাবে সরিয়ে দেয়। শক্তিশালী ইংরেজি, প্রদর্শনযোগ্য পোর্টফোলিও কাজ, আর সেলফ-মার্কেটিং লাগে।</p>
+        </div>
+        <div class="insight-card">
+          <p class="ic-label">ট্রানজিশন করা</p>
+          <h4>কর্পোরেট থেকে কনসালটিংয়ে</h4>
+          <p>সবচেয়ে সাধারণ পদক্ষেপ হলো একটা কর্পোরেট BA রোল থেকে একটা ERP বা IT কনসালটিং ফার্মে যাওয়া। আপনি যদি ইতিমধ্যে একটা বড় সিস্টেম (Odoo, SAP, ইত্যাদি) স্পর্শ করা প্রজেক্টে কাজ করে থাকেন তাহলে ট্রানজিশনটা সহজ হয়। প্রথমে সেই অভিজ্ঞতা তৈরি করুন, এমনকি এর জন্য আপনি অন্যথায় যা বেছে নিতেন তার চেয়ে বেশি জটিল একটা অভ্যন্তরীণ প্রজেক্ট নিতে হলেও।</p>
+        </div>
+      </div>
+
+      <h2 id="s_portfolio">আপনার BA পোর্টফোলিও তৈরি করা</h2>
+      <p>একটা BA পোর্টফোলিও স্ক্রিনশটের একটা সংগ্রহ নয়। এটা ডকুমেন্টেড প্রমাণ যে আপনি একটা অস্পষ্ট ব্রিফ থেকে একটা টেস্টযোগ্য স্পেসিফিকেশনে যেতে পারেন। কোনো কনফিডেনশিয়ালিটি চুক্তি লঙ্ঘন না করে কী অন্তর্ভুক্ত করবেন, আর কীভাবে উপস্থাপন করবেন তা এখানে দেওয়া হলো।</p>
+
+      <div class="callout">
+        <span class="tag">পোর্টফোলিও গাইড</span>
+        <p><strong>কী অন্তর্ভুক্ত করবেন (প্রয়োজনে অ্যানোনিমাইজড):</strong><br><br>
+        <strong>১. একটা স্টেকহোল্ডার ম্যাপ</strong> — এমনকি একটা কাল্পনিক হলেও, আপনি কীভাবে এটা প্রয়োগ করবেন তার একটা বাস্তব ব্যাখ্যাসহ। দেখায় আপনি শুধু org চার্ট নয়, পাওয়ার ডাইনামিক্স বোঝেন।<br><br>
+        <strong>২. একটা রিকোয়ারমেন্ট ডকুমেন্ট (SRS-lite)</strong> — আপনার লেখা ফাংশনাল রিকোয়ারমেন্টের এক বাস্তব-বিশ্বের পৃষ্ঠা, অস্পষ্টতা সমাধান করা আর পরিমাপযোগ্য অ্যাক্সেপ্টেন্স ক্রাইটেরিয়াসহ। ক্লায়েন্টের নাম সরান; কাঠামো রেখে দিন।<br><br>
+        <strong>৩. একটা ইউজার স্টোরি সেট</strong> — Given/When/Then অ্যাক্সেপ্টেন্স ক্রাইটেরিয়াসহ পাঁচ থেকে দশটা ইউজার স্টোরি। আদর্শভাবে একটা বাস্তব প্রজেক্ট থেকে, ডোমেইনটা সাধারণভাবে বর্ণনা করা হলেও ("একটা গার্মেন্টস ফ্যাক্টরি অ্যাটেনডেন্স সিস্টেমের জন্য…")।<br><br>
+        <strong>৪. একটা UAT প্ল্যান বা টেস্ট কেস সেট</strong> — দেখায় আপনি রিকোয়ারমেন্ট থেকে ভেরিফিকেশন পর্যন্ত এগিয়ে চিন্তা করতে পারেন। একটা ছোট ফিচারের জন্য হলেও একটা বাস্তব UAT প্ল্যান দশটা তাত্ত্বিক ফ্রেমওয়ার্কের চেয়ে বেশি মূল্যবান।<br><br>
+        <strong>৫. একটা রেট্রোস্পেক্টিভ নোট</strong> — একটা রিকোয়ারমেন্ট ফেজে কী ভুল হয়েছিল, আপনি কী ভিন্নভাবে করতেন, আর আপনি আসলে কী শিখেছেন তার এক পৃষ্ঠা। এটা বিরল আর অত্যন্ত বিশ্বাসযোগ্য। বেশিরভাগ প্রার্থী শুধু সাফল্য দেখান।</p>
+      </div>
+
+      <div class="course-complete">
+        <h3>কোর্স সম্পূর্ণ।</h3>
+        <p>আপনি সম্পূর্ণ রিকোয়ারমেন্ট গ্যাদারিং কারিকুলাম শেষ করেছেন — BA-র মৌলিক বিষয় থেকে শুরু করে স্টেকহোল্ডার ম্যাপিং, ওয়ার্কশপ পরিচালনা, এলিসিটেশন, ইউজার স্টোরি, টেকনিক্যাল স্পেক, দ্বন্দ্ব সমাধান, UAT, আর ক্যারিয়ার উন্নয়ন পর্যন্ত। বাকিটা অনুশীলন।</p>
+        <a href="./">← কোর্স ওভারভিউতে ফিরুন</a>
+      </div>
+
+      <h2 id="s9">রিফ্লেকশন প্রশ্ন</h2>
+      <ol>
+        <li>আপনার বর্তমান বা সাম্প্রতিক প্রজেক্টের বিপরীতে এই লেসনের আর্টিফ্যাক্ট চেকলিস্ট পর্যালোচনা করুন। কী অনুপস্থিত? আগামীকাল একজন নতুন BA শুধু বিদ্যমান আর্টিফ্যাক্ট নিয়ে প্রজেক্টে যোগ দিলে তার পরিণতি কী হবে?</li>
+        <li>তিনটা ক্যারিয়ার পথ — কর্পোরেট, কনসালটিং, ফ্রিল্যান্স — এর মধ্যে কোনটা আপনার বর্তমান পরিস্থিতি আর পাঁচ-বছরের লক্ষ্যের সাথে সবচেয়ে ভালো মেলে? আপনি এখন কোথায় আছেন আর কোথায় যেতে চান তার মধ্যে সবচেয়ে গুরুত্বপূর্ণ একক দক্ষতার ফাঁক কী?</li>
+        <li>এই কোর্স থেকে একটা আর্টিফ্যাক্ট চিহ্নিত করুন যা আপনার প্রতিষ্ঠানে মানক চর্চা না হলেও আপনি পরের প্রজেক্টে তৈরি করতে প্রতিশ্রুতিবদ্ধ হবেন। এটা সময়ের যোগ্য কেন তা ব্যাখ্যা করতে প্রজেক্ট ম্যানেজারকে আপনি কী বলবেন?</li>
+      </ol>
+
+    </article>
+  </div>
+</div>
+
+<div class="shell">
+  <div class="post-foot">
+    <div class="next">
+      <a href="lesson-08" class="next-card">
+        <span class="dir">← পূর্ববর্তী</span>
+        <h4>লেসন ০৮ — UAT পরিকল্পনা</h4>
+        <p>UAT প্ল্যান, ডিফেক্ট ট্রায়াজ, আর সাইন-অফ প্লেবুক।</p>
+        <span class="arrow">← লেসন ০৮</span>
+      </a>
+      <a href="./" class="next-card">
+        <span class="dir">কোর্স সম্পূর্ণ</span>
+        <h4>কোর্স ওভারভিউতে ফিরুন</h4>
+        <p>সম্পূর্ণ লেসন তালিকা দেখুন আর কোর্স ইনডেক্সে ফিরে যান।</p>
+        <span class="arrow">→ কোর্স ইনডেক্স</span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="shell">
+    <div class="foot">
+      <span>কোর্স ০১ · লেসন ০৯ · শেষ লেসন</span>
+      <a href="/bn/" style="color:var(--text-3);transition:color .15s" onmouseover="this.style.color='var(--text)'" onmouseout="this.style.color='var(--text-3)'">← পোর্টফোলিও</a>
+    </div>
+  </div>
+</footer>
+<script src="/courses/01-requirements-gathering/_progress.js"></script>
+<script src="/lab/_toc.js"></script>

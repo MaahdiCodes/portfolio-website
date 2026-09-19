@@ -1,0 +1,297 @@
+---
+permalink: "lab/0095-odoo-helpdesk-ticketing-setup-bangladesh.html"
+title: "Odoo Helpdesk & Customer Support Ticketing Setup Bangladesh | Mehedi Hasan"
+description: "Set up Odoo Helpdesk for Bangladesh support teams: SLA policies, ticket routing, customer portal access, and support-to-invoice workflows for AMC contracts."
+canonical: "https://mhasan.me/lab/0095-odoo-helpdesk-ticketing-setup-bangladesh"
+ogImage: "https://mhasan.me/assets/og/lab/0095-odoo-helpdesk-ticketing-setup-bangladesh.png"
+ogSiteName: "Mehedi Hasan | Odoo ERP Consultant"
+datePublished: "2026-09-18T14:00:00+06:00"
+dateModified: "2026-09-18T14:00:00+06:00"
+articleSection: "Odoo ERP Bangladesh"
+eyebrowNum: "0095"
+h1: "Odoo Helpdesk for Bangladesh Support Teams: <span class=\"serif\">from a WhatsApp inbox to a ticket trail with SLAs.</span>"
+lede: "Most Bangladesh equipment dealers, software companies, and service providers I meet run support through the owner's or a senior technician's personal WhatsApp number. It works, in the sense that customers get answers, until the technician is on leave, a promise made verbally is forgotten, or a customer disputes what was agreed and there is no record to check. Odoo Helpdesk formalizes this without necessarily removing WhatsApp as a channel. This guide covers SLA policies, routing, portal access, and linking tickets to AMC billing."
+chips: ["Guide", "Helpdesk", "Customer Support", "Bangladesh"]
+bylineItems:
+  - label: "By"
+    value: "<a href=\"https://www.linkedin.com/in/mehedi-hasan-consultant/\" style=\"color:var(--accent)\" rel=\"author\">Mehedi Hasan</a>"
+  - label: "Published"
+    value: "September 2026"
+  - label: "Read time"
+    value: "16 minutes"
+  - label: "Form"
+    value: "Guide"
+  - label: "Scope"
+    value: "Support Operations"
+nextArticle:
+  href: "0094-odoo-timesheets-billable-hours-bangladesh"
+  dir: "Older · 0094"
+  title: "Odoo Timesheets &amp; Billable Hours for Service Companies Bangladesh"
+  desc: "Billable tracking, approval workflow, and project profitability analysis."
+prevArticle:
+  href: "../#lab"
+  dir: "All articles"
+  title: "Back to Lab Index"
+  desc: "Browse all guides on Odoo ERP, manufacturing operations, and business analysis in Bangladesh."
+jsonLd: |
+  [
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "Odoo Helpdesk & Customer Support Ticketing Setup for Bangladesh",
+      "description": "Configuring Odoo Helpdesk for Bangladesh businesses running formal customer support: SLA policies by priority, ticket routing rules, customer portal self-service access, and linking helpdesk tickets to Annual Maintenance Contracts for consumption tracking and out-of-contract billing.",
+      "datePublished": "2026-09-18T14:00:00+06:00",
+      "dateModified": "2026-09-18T14:00:00+06:00",
+      "author": {
+        "@type": "Person",
+        "name": "Mehedi Hasan",
+        "url": "https://mhasan.me",
+        "jobTitle": "Odoo ERP Consultant & Business Analyst",
+        "sameAs": "https://www.linkedin.com/in/mehedi-hasan-consultant/"
+      },
+      "publisher": { "@type": "Person", "name": "Mehedi Hasan", "url": "https://mhasan.me" },
+      "mainEntityOfPage": { "@type": "WebPage", "@id": "https://mhasan.me/lab/0095-odoo-helpdesk-ticketing-setup-bangladesh" }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://mhasan.me" },
+        { "@type": "ListItem", "position": 2, "name": "Lab", "item": "https://mhasan.me/lab/" },
+        { "@type": "ListItem", "position": 3, "name": "Odoo Helpdesk Ticketing Setup Bangladesh", "item": "https://mhasan.me/lab/0095-odoo-helpdesk-ticketing-setup-bangladesh" }
+      ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Can customers in Bangladesh raise Odoo Helpdesk tickets without an internet-savvy interface?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, through several channels that do not require a customer to learn a new portal. Tickets can be auto-created from an inbound support email address (a customer emails support@yourcompany.com and Odoo creates a ticket automatically), which requires no behavior change from the customer at all. The customer portal itself is a genuine upgrade for customers who want to track ticket status themselves, but it works best as an addition to email and phone intake, not a replacement, since a portion of any Bangladesh customer base will always prefer calling or messaging directly."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I set SLA response and resolution targets in Odoo Helpdesk?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "SLA Policies are configured under Helpdesk → Configuration → SLA Policies, where you define a target stage (for example, 'First Response') and a deadline in hours or days, filtered by criteria such as team, priority, or ticket tag. A realistic Bangladesh setup typically has separate SLA policies per priority level, for example a 2-hour first response target for Urgent tickets versus a 24-hour target for Low priority tickets, with the countdown visible on the ticket so both the support agent and, if portal access is enabled, the customer can see whether the SLA is on track or breached."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can Odoo Helpdesk track how many support visits or hours a customer has used against their AMC contract?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, by linking the customer's Annual Maintenance Contract to a Helpdesk team or a specific contract record with a defined quota (a number of included visits or hours), and logging time or visit counts against tickets tied to that customer. When a ticket is created for a customer with an active AMC, the consumption against the contract's quota is tracked, and once the quota is exhausted, tickets can be flagged for out-of-contract billing rather than being serviced for free under the assumption that everything is covered. This requires deliberate configuration linking Helpdesk to Sales contract lines; it is not automatic out of the box."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the difference between Odoo Helpdesk and Odoo Field Service?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Helpdesk manages remote, ticket-based support: a customer reports an issue, an agent responds by email, phone, or chat, and the issue is resolved without necessarily sending anyone on-site. Field Service manages the dispatch of a technician to a physical location to perform on-site work. The two are commonly linked: a Helpdesk ticket that cannot be resolved remotely converts into a Field Service task, dispatching a technician with the ticket's history attached. Bangladesh businesses running both equipment sales and after-sales support typically need both apps working together, not one instead of the other."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do I need Odoo Enterprise for the Helpdesk customer portal?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The Helpdesk app itself, including the customer portal for ticket self-service, is available on Odoo Enterprise. Odoo Community does not include the Helpdesk app. For Bangladesh businesses already on Enterprise for other modules such as Accounting or Manufacturing, adding Helpdesk does not require a separate licensing tier, only enabling the app and configuring the teams, SLA policies, and portal access relevant to a formal support operation."
+          }
+        }
+      ]
+    }
+  ]
+---
+<aside class="toc">
+      <div class="toc-k">In this guide</div>
+      <ol>
+        <li><a href="#why-formal-support">Why Formal Ticketing Beats WhatsApp-Only Support</a></li>
+        <li><a href="#sla-policies">SLA Policies by Priority</a></li>
+        <li><a href="#routing">Ticket Routing Rules</a></li>
+        <li><a href="#portal-access">Customer Portal Self-Service</a></li>
+        <li><a href="#amc-linking">Linking Tickets to AMC Contracts</a></li>
+        <li><a href="#helpdesk-vs-field">Helpdesk vs Field Service: Where the Line Sits</a></li>
+        <li><a href="#channels">Intake Channels That Fit Bangladesh Customers</a></li>
+        <li><a href="#reporting">Support Reporting That Actually Gets Used</a></li>
+        <li><a href="#escalation">Escalation Discipline &amp; Staffing Reality</a></li>
+        <li><a href="#limits">Where Helpdesk Configuration Hits Limits</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ol>
+    </aside>
+
+    <div class="body">
+
+      <h2 id="why-formal-support">Why Formal Ticketing Beats WhatsApp-Only Support</h2>
+      <p>I want to be fair to WhatsApp-only support before dismissing it, because it is not an irrational choice. It is fast, customers already have it open, and it requires zero onboarding. The failure mode is not speed; it is memory and accountability. A promise made in a WhatsApp thread at 9pm on a Friday has no deadline attached to it, no owner if the responding staff member changes shift or leaves the company, and no record a manager can review to see whether the team is actually meeting the response times it claims to offer.</p>
+      <p>Odoo Helpdesk does not ask a Bangladesh business to give up WhatsApp entirely, though some do transition customers away from it over time. What it adds is structure around whatever channel the request came through: every request becomes a ticket with an owner, a priority, an SLA deadline, and a history that survives staff turnover. For a business fielding more than a handful of support requests a day, this structure is the difference between support quality being a matter of individual staff diligence and support quality being a property of the system.</p>
+
+      <div class="stat-row">
+        <div class="stat-card">
+          <div class="sc-val">1 owner</div>
+          <div class="sc-label">Per ticket</div>
+          <div class="sc-note">Instead of "whoever picks up the phone this time"</div>
+        </div>
+        <div class="stat-card">
+          <div class="sc-val">SLA clock</div>
+          <div class="sc-label">Visible on every ticket</div>
+          <div class="sc-note">Turns a vague promise into a tracked deadline</div>
+        </div>
+        <div class="stat-card">
+          <div class="sc-val">Full history</div>
+          <div class="sc-label">Survives staff turnover</div>
+          <div class="sc-note">A departing technician does not take the customer's issue history with them</div>
+        </div>
+      </div>
+
+      <p class="pull">A support promise with no deadline and no owner is not a service level. It is a hope.</p>
+
+      <h2 id="sla-policies">SLA Policies by Priority</h2>
+      <p>Odoo's SLA Policies (Helpdesk → Configuration → SLA Policies) let you set a target for how quickly a ticket must reach a given stage, filtered by team, priority, tag, or other criteria. The realistic mistake Bangladesh businesses make here is setting one SLA target for everything, which either sets an unrealistically fast target for low-priority requests (burning out the team) or an unrealistically slow one for urgent issues (frustrating customers with genuine emergencies).</p>
+
+      <table>
+        <thead>
+          <tr><th>Priority</th><th>First Response Target</th><th>Resolution Target</th><th>Typical Trigger</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Urgent</td><td>1–2 hours</td><td>Same business day</td><td>Production system down, safety issue, complete service outage</td></tr>
+          <tr><td>High</td><td>4 hours</td><td>1 business day</td><td>Major function impaired but workaround exists</td></tr>
+          <tr><td>Medium</td><td>1 business day</td><td>3 business days</td><td>Non-critical issue, feature not working as expected</td></tr>
+          <tr><td>Low</td><td>2 business days</td><td>5–7 business days</td><td>Minor request, cosmetic issue, general question</td></tr>
+        </tbody>
+      </table>
+
+      <p>Set these targets to match what your team can realistically sustain, not what sounds impressive in a sales conversation with a prospective client. An SLA policy that is breached on a majority of tickets is worse than no SLA at all, because it turns a credibility-building tool into visible proof of unreliability, both internally on management dashboards and externally if the customer has portal visibility into SLA status.</p>
+
+      <div class="tip-box">
+        <div class="tlabel">Practical Shortcut</div>
+        <p>Start SLA targets slightly looser than your team's actual current average response time for the first month, then tighten them once you have real data on where the team consistently lands. Setting aggressive targets from day one, before you have measured your baseline, guarantees an early SLA breach rate that undermines confidence in the whole system before it has had a chance to prove its value.</p>
+      </div>
+
+      <h2 id="routing">Ticket Routing Rules</h2>
+      <p>Routing determines which team or agent a ticket lands with, and getting this wrong is the second most common Bangladesh Helpdesk misconfiguration after uniform SLAs. Odoo supports routing by team (Helpdesk → Configuration → Helpdesk Teams, each with its own ticket intake email and assignment rules), and within a team, by criteria such as product category, customer tag, or ticket type.</p>
+
+      <div class="feature-grid">
+        <div class="feature-card">
+          <div class="fc-icon">01</div>
+          <div class="fc-body">
+            <h4>By product category</h4>
+            <p>An equipment dealer selling both generators and water pumps routes tickets to the technician group with the relevant product expertise, rather than a single generalist queue.</p>
+          </div>
+        </div>
+        <div class="feature-card">
+          <div class="fc-icon">02</div>
+          <div class="fc-body">
+            <h4>By team</h4>
+            <p>Separate Helpdesk teams for hardware support, software support, and billing queries, each with its own SLA policy and intake email, so a billing question never sits in a technical queue waiting for an engineer.</p>
+          </div>
+        </div>
+        <div class="feature-card">
+          <div class="fc-icon">03</div>
+          <div class="fc-body">
+            <h4>By customer tier</h4>
+            <p>Enterprise or AMC-contracted customers routed to a senior support tier with tighter SLA targets, while walk-in or one-off customers go to a standard queue.</p>
+          </div>
+        </div>
+        <div class="feature-card">
+          <div class="fc-icon">04</div>
+          <div class="fc-body">
+            <h4>By geography</h4>
+            <p>For businesses with regional service centers (Dhaka, Chattogram, Sylhet), routing tickets by the customer's location to the nearest team avoids assigning a Dhaka-based technician to a Chattogram-only issue.</p>
+          </div>
+        </div>
+      </div>
+
+      <p>Within-team assignment can additionally be automated (round-robin across available agents, or manual triage by a team lead) depending on team size and the complexity of the incoming request mix. Smaller Bangladesh support teams (under five agents) usually do better with manual triage by a lead who understands the nuance of each incoming request; larger teams benefit from automated round-robin once ticket volume makes manual triage a bottleneck itself.</p>
+
+      <h2 id="portal-access">Customer Portal Self-Service</h2>
+      <p>The Helpdesk customer portal lets a customer log in, raise a ticket themselves, see its current stage and SLA status, and add follow-up comments, all without calling or messaging your team directly. This is a genuine service-quality upgrade that most Bangladesh businesses have not adopted, and it is worth being specific about why it matters beyond "modern software should have this."</p>
+      <p>First, it gives customers visibility they currently do not have: instead of calling to ask "any update on my issue," they check a status themselves, which reduces inbound status-check calls that consume support team time without resolving anything. Second, it creates a written record from the customer's side too, useful when a customer later claims an issue was never reported, since the portal shows exactly when they raised it. Third, for B2B customers in particular (a factory's maintenance manager tracking multiple open issues with a vendor), portal access professionalizes the vendor relationship in a way that differentiates a support operation from competitors still running support purely over phone and WhatsApp.</p>
+
+      <div class="disclaimer">
+        <p><strong>Note:</strong> Portal adoption in Bangladesh is uneven and should be treated as an additive channel, not a replacement. Some customer contacts, particularly at smaller businesses or in roles less comfortable with web portals, will continue calling or messaging regardless of portal availability. Configure email-to-ticket intake alongside the portal so tickets are created consistently no matter which channel the customer actually uses.</p>
+      </div>
+
+      <h2 id="amc-linking">Linking Helpdesk Tickets to AMC Contracts</h2>
+      <p>For Bangladesh equipment dealers and service providers selling Annual Maintenance Contracts, one of the most practically valuable Helpdesk configurations is linking tickets to the customer's AMC so that support consumption against the contract's included visits or hours is tracked automatically, and work beyond that quota triggers billing rather than being serviced for free by default.</p>
+
+      <div class="timeline-track">
+        <div class="tl-node now">
+          <div class="tl-date">Contract Setup</div>
+          <div class="tl-title">AMC defines an included quota</div>
+          <div class="tl-body">For example, 4 preventive visits and 8 support hours per year, recorded against the customer's Sales Order or a dedicated contract record.</div>
+        </div>
+        <div class="tl-node">
+          <div class="tl-date">Ticket Creation</div>
+          <div class="tl-title">Support ticket is tagged to the customer's active AMC</div>
+          <div class="tl-body">Either automatically, if the customer record is flagged with an active contract, or manually by the agent triaging the ticket.</div>
+        </div>
+        <div class="tl-node">
+          <div class="tl-date">Consumption Tracking</div>
+          <div class="tl-title">Hours or visits logged against the ticket deduct from the contract quota</div>
+          <div class="tl-body">Visible to the support team so they know, before committing time, whether the customer still has quota remaining.</div>
+        </div>
+        <div class="tl-node future">
+          <div class="tl-date">Quota Exhausted</div>
+          <div class="tl-title">Further tickets flagged for out-of-contract billing</div>
+          <div class="tl-body">Prevents the common failure mode of a technician doing free work past the contract's included scope because nobody was tracking consumption in real time.</div>
+        </div>
+      </div>
+
+      <p>This is not an automatic out-of-the-box feature in a single click; it requires deliberate configuration connecting the Helpdesk team or ticket type to the relevant Sales contract line, and in many Bangladesh implementations, a simple custom field marking a ticket as "AMC-covered" or "billable" reviewed by the team lead before closing. The payoff is real: the businesses I have worked with that started tracking this consistently found they had been absorbing meaningfully more free support work than their AMC pricing accounted for, an underpricing pattern service businesses often do not notice until they measure it directly. For the on-site side of this same equipment support relationship, see the <a href="0076-odoo-field-service-after-sales-bangladesh" style="color:var(--accent)">Field Service &amp; after-sales guide</a>, and for the underlying preventive maintenance schedules that generate many of these included visits, the <a href="0061-odoo-preventive-maintenance-bangladesh" style="color:var(--accent)">preventive maintenance guide</a>.</p>
+
+      <h2 id="helpdesk-vs-field">Helpdesk vs Field Service: Where the Line Sits</h2>
+      <p>A recurring point of confusion for Bangladesh businesses new to both apps: Helpdesk and Field Service are not competing solutions to the same problem, they cover different halves of a support operation. Helpdesk owns the remote, ticket-based side: a customer reports an issue by phone, email, portal, or WhatsApp-fed-into-email, and an agent triages, responds, and where possible resolves it without needing to visit the customer's site.</p>
+      <p>Field Service owns the physical dispatch side: when a Helpdesk ticket genuinely requires an on-site visit (a machine that cannot be diagnosed remotely, an installation, a physical repair), it should convert into a Field Service task carrying the ticket's history, so the technician arrives already knowing what has been tried and reported rather than starting the conversation from zero. Bangladesh businesses running physical equipment (generators, industrial machinery, POS hardware) almost always need both apps working together: Helpdesk for the intake and triage layer, Field Service for the dispatch and on-site execution layer.</p>
+
+      <h2 id="channels">Intake Channels That Fit Bangladesh Customers</h2>
+      <p>Beyond the portal, Odoo Helpdesk supports several intake channels worth configuring deliberately rather than defaulting to whichever one is easiest to set up:</p>
+      <ul>
+        <li><strong>Email-to-ticket:</strong> A dedicated support email address (support@yourcompany.com) automatically creates a ticket from any inbound email, requiring zero behavior change from the customer. This should be the baseline for every Bangladesh Helpdesk deployment regardless of what else is added, since it costs nothing to maintain and captures the widest range of customer preferences.</li>
+        <li><strong>Live chat on your website:</strong> For businesses with meaningful website traffic, Odoo's Live Chat can create Helpdesk tickets directly from chat conversations, useful for pre-sales-adjacent support questions.</li>
+        <li><strong>WhatsApp integration:</strong> Where Odoo's WhatsApp Business API integration is configured (see the <a href="0054-odoo-email-sms-setup-bangladesh" style="color:var(--accent)">email &amp; SMS setup guide</a> for the messaging channel configuration this depends on), inbound WhatsApp messages can be routed into Helpdesk tickets, preserving the channel Bangladesh customers already prefer while still gaining the structure of a ticket record.</li>
+        <li><strong>Phone with manual ticket creation:</strong> For customers who will always call, train agents to create the ticket during or immediately after the call, not at the end of the day from memory, to preserve accuracy on timing and details.</li>
+      </ul>
+
+      <h2 id="reporting">Support Reporting That Actually Gets Used</h2>
+      <p>Helpdesk reporting (Helpdesk → Reporting) gives you SLA compliance rate, average first response and resolution time, ticket volume by team and category, and agent workload. The mistake I see most often is generating these reports but never reviewing them against a standing cadence, so they exist in the software without changing any behavior.</p>
+      <p>A minimally useful review cadence: weekly SLA compliance check by the support lead (which tickets breached, why, and whether it is a staffing or process issue), and a monthly review by management of ticket volume trends by category, which often surfaces a recurring product issue worth escalating to a design or manufacturing fix rather than repeatedly resolving the same complaint one customer at a time. This reporting discipline pairs naturally with a broader operational dashboard; see the <a href="0055-odoo-dashboards-kpi-bangladesh" style="color:var(--accent)">dashboards &amp; KPI guide</a> for pulling Helpdesk metrics into a single management view alongside sales and inventory data.</p>
+
+      <h2 id="escalation">Escalation Discipline &amp; Staffing Reality</h2>
+      <p>SLA policies and routing rules only produce good outcomes if there is a real person accountable for what happens when a ticket is about to breach, and this is where the configuration side of Helpdesk meets the staffing reality of most Bangladesh support teams: often two to five people covering a wide range of products, with no dedicated escalation manager and a support lead who is also doing hands-on technical work.</p>
+      <p>The practical fix does not require hiring a new role. It requires a small automated action (built either through Helpdesk's own escalation email settings or, for more nuanced conditions, through the Studio automation approach covered in the <a href="0093-odoo-studio-no-code-bangladesh" style="color:var(--accent)">Odoo Studio guide</a>) that notifies the team lead directly when a ticket's SLA deadline is within a short window of breaching, rather than relying on the team lead to notice it during a periodic manual check of the ticket list. For a small team, this single automation does more for actual customer experience than most of the more visible configuration choices in this guide, because it converts SLA policy from a passive measurement into an active early warning.</p>
+      <p>The second staffing reality worth naming: in a small Bangladesh support team, the person best equipped to resolve a technically difficult ticket is often the same person responsible for triaging new tickets, creating a natural conflict between "answer the next new ticket" and "finish the hard one from yesterday." Helpdesk's stage-based kanban view, with tickets visibly stuck in an "In Progress" column for multiple days, makes this bottleneck visible to management in a way that a phone-and-WhatsApp support operation never surfaces on its own. Treating that visibility as useful management information, rather than as a sign the software is somehow broken, is part of what makes a Helpdesk rollout succeed rather than get quietly abandoned after a few frustrating weeks.</p>
+
+      <h2 id="limits">Where Helpdesk Configuration Hits Limits</h2>
+      <p>Odoo Helpdesk is a genuinely capable ticketing system, but it is not a full ITSM (IT Service Management) platform with change management, asset dependency mapping, or complex multi-level escalation matrices out of the box. Businesses with those requirements, typically larger enterprises with formal IT service frameworks, may find Helpdesk's structure too simple and need either significant Studio-level customization or a dedicated ITSM tool integrated with Odoo rather than replacing it.</p>
+      <p>It also does not replace a knowledge base or self-help documentation system on its own, though Odoo's Knowledge app can be linked alongside Helpdesk to reduce simple, repetitive tickets by letting customers self-serve common answers before raising a ticket at all. And SLA tracking, while visible and reportable, does not automatically escalate a breaching ticket to a manager unless that escalation is configured as an explicit automated action, so a business relying purely on SLA policy definitions without an escalation rule may still miss breaches until the weekly report catches them after the fact.</p>
+
+      <div class="callout">
+        <span class="tag">Helpdesk &amp; Support Operations Setup</span>
+        <p>If your support is still running purely on WhatsApp and phone calls with no ticket trail, or you have Helpdesk installed but SLA and routing were never configured properly, I can set up the ticketing structure, SLA policies, and AMC billing linkage so your support team has an actual system behind it. <a href="../#contact" style="color:var(--accent)">Contact me to set up your Helpdesk operation →</a></p>
+      </div>
+
+      <h2 id="faq">Frequently asked questions</h2>
+
+      <h3>Can customers in Bangladesh raise Odoo Helpdesk tickets without an internet-savvy interface?</h3>
+      <p>Yes, through several channels that do not require a customer to learn a new portal. Tickets can be auto-created from an inbound support email address (a customer emails support@yourcompany.com and Odoo creates a ticket automatically), which requires no behavior change from the customer at all. The customer portal itself is a genuine upgrade for customers who want to track ticket status themselves, but it works best as an addition to email and phone intake, not a replacement, since a portion of any Bangladesh customer base will always prefer calling or messaging directly.</p>
+
+      <h3>How do I set SLA response and resolution targets in Odoo Helpdesk?</h3>
+      <p>SLA Policies are configured under Helpdesk → Configuration → SLA Policies, where you define a target stage (for example, "First Response") and a deadline in hours or days, filtered by criteria such as team, priority, or ticket tag. A realistic Bangladesh setup typically has separate SLA policies per priority level, for example a 2-hour first response target for Urgent tickets versus a 24-hour target for Low priority tickets, with the countdown visible on the ticket so both the support agent and, if portal access is enabled, the customer can see whether the SLA is on track or breached.</p>
+
+      <h3>Can Odoo Helpdesk track how many support visits or hours a customer has used against their AMC contract?</h3>
+      <p>Yes, by linking the customer's Annual Maintenance Contract to a Helpdesk team or a specific contract record with a defined quota (a number of included visits or hours), and logging time or visit counts against tickets tied to that customer. When a ticket is created for a customer with an active AMC, the consumption against the contract's quota is tracked, and once the quota is exhausted, tickets can be flagged for out-of-contract billing rather than being serviced for free under the assumption that everything is covered. This requires deliberate configuration linking Helpdesk to Sales contract lines; it is not automatic out of the box.</p>
+
+      <h3>What is the difference between Odoo Helpdesk and Odoo Field Service?</h3>
+      <p>Helpdesk manages remote, ticket-based support: a customer reports an issue, an agent responds by email, phone, or chat, and the issue is resolved without necessarily sending anyone on-site. Field Service manages the dispatch of a technician to a physical location to perform on-site work. The two are commonly linked: a Helpdesk ticket that cannot be resolved remotely converts into a Field Service task, dispatching a technician with the ticket's history attached. Bangladesh businesses running both equipment sales and after-sales support typically need both apps working together, not one instead of the other.</p>
+
+      <h3>Do I need Odoo Enterprise for the Helpdesk customer portal?</h3>
+      <p>The Helpdesk app itself, including the customer portal for ticket self-service, is available on Odoo Enterprise. Odoo Community does not include the Helpdesk app. For Bangladesh businesses already on Enterprise for other modules such as Accounting or Manufacturing, adding Helpdesk does not require a separate licensing tier, only enabling the app and configuring the teams, SLA policies, and portal access relevant to a formal support operation.</p>
+
+    </div>

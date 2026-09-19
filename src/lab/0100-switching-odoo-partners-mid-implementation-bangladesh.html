@@ -1,0 +1,238 @@
+---
+permalink: "lab/0100-switching-odoo-partners-mid-implementation-bangladesh.html"
+title: "Switching Odoo Partners Mid-Implementation in Bangladesh | Mehedi Hasan"
+description: "A recovery playbook for Bangladesh businesses switching Odoo implementation partners mid-project: data handover, scope audit, and avoiding a second failure."
+canonical: "https://mhasan.me/lab/0100-switching-odoo-partners-mid-implementation-bangladesh"
+ogImage: "https://mhasan.me/assets/og/lab/0100-switching-odoo-partners-mid-implementation-bangladesh.png"
+ogSiteName: "Mehedi Hasan | Odoo ERP Consultant"
+datePublished: "2026-09-18T14:00:00+06:00"
+dateModified: "2026-09-18T14:00:00+06:00"
+articleSection: "Odoo ERP Bangladesh"
+eyebrowNum: "0100"
+h1: "Switching Odoo partners <span class=\"serif\">mid-implementation</span> in Bangladesh."
+lede: "This is the call nobody wants to make: the current vendor is not going to finish this project, and someone has to decide what happens next. I have been the incoming partner on this call more times than I would like, and this is the honest recovery playbook, not the reassuring version."
+chips: ["Guide", "Project Recovery", "Vendor Transition"]
+bylineItems:
+  - label: "By"
+    value: "<a href=\"https://www.linkedin.com/in/mehedi-hasan-consultant/\" style=\"color:var(--accent)\" rel=\"author\">Mehedi Hasan</a>"
+  - label: "Published"
+    value: "September 2026"
+  - label: "Read time"
+    value: "16 minutes"
+  - label: "Form"
+    value: "Guide"
+  - label: "Scope"
+    value: "Project Recovery"
+nextArticle:
+  href: "0099-odoo-implementation-timeline-bangladesh"
+  dir: "Older · 0099"
+  title: "How Long Does an Odoo Implementation Actually Take in Bangladesh?"
+  desc: "A realistic phase-by-phase timeline, not the vendor sales pitch."
+prevArticle:
+  href: "../#lab"
+  dir: "All articles"
+  title: "Back to Lab Index"
+  desc: "Browse the full library of guides on Odoo ERP, manufacturing operations, and business analysis in Bangladesh."
+jsonLd: |
+  [
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "Switching Odoo Partners Mid-Implementation in Bangladesh",
+      "description": "A recovery playbook for Bangladesh businesses switching Odoo implementation partners mid-project: data handover, scope audit, and avoiding a second failure.",
+      "datePublished": "2026-09-18T14:00:00+06:00",
+      "dateModified": "2026-09-18T14:00:00+06:00",
+      "author": {
+        "@type": "Person",
+        "name": "Mehedi Hasan",
+        "url": "https://mhasan.me",
+        "jobTitle": "Odoo ERP Consultant & Business Analyst",
+        "sameAs": "https://www.linkedin.com/in/mehedi-hasan-consultant/"
+      },
+      "publisher": { "@type": "Person", "name": "Mehedi Hasan", "url": "https://mhasan.me" },
+      "mainEntityOfPage": { "@type": "WebPage", "@id": "https://mhasan.me/lab/0100-switching-odoo-partners-mid-implementation-bangladesh" }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://mhasan.me" },
+        { "@type": "ListItem", "position": 2, "name": "Lab", "item": "https://mhasan.me/lab/" },
+        { "@type": "ListItem", "position": 3, "name": "Switching Odoo Partners Mid-Implementation", "item": "https://mhasan.me/lab/0100-switching-odoo-partners-mid-implementation-bangladesh" }
+      ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Can you switch Odoo partners mid-implementation without losing your data?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, in almost every case. Your data lives in a PostgreSQL database that you own regardless of which partner configured it. Request a complete database backup, including file attachments and any custom module source code, before initiating a formal exit conversation with the outgoing vendor. The genuine risk is not data loss but undocumented customization: if the outgoing partner wrote custom code without documentation or a shared repository, the incoming partner needs time to reverse-engineer it before they can safely modify or upgrade it."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Should you salvage the existing Odoo configuration or start over?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "This depends on a structured audit, not instinct. Salvage the build when the core configuration (chart of accounts, master data, main workflows) is fundamentally sound and the problems are isolated to specific modules, missing documentation, or incomplete customization. Restart when the foundational configuration itself is wrong, for example a chart of accounts that does not match statutory requirements or a data model that will not scale, because incremental fixes on a broken foundation typically cost more in the long run than a clean rebuild."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What should a new Odoo partner check before taking over a failed implementation?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A proper technical handover audit covers: what modules are actually installed and configured versus what was promised in the original scope document, the state and completeness of any custom code and who owns its intellectual property, the current state of data migration including what has and has not been imported, database access and hosting ownership, and a comparison between the original Business Requirements Document and what has actually been delivered. This audit typically takes 1-2 weeks and should be a paid, scoped engagement in its own right."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Who owns custom code built by an Odoo partner during a failed implementation?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "This depends entirely on the contract signed with the outgoing vendor. Most well-drafted Bangladesh Odoo implementation contracts specify that custom modules built specifically for the client become the client's intellectual property upon payment, while the underlying Odoo framework remains under its own open-source or proprietary license. If the contract is silent on IP ownership, this becomes a negotiation point during termination, which is one of the strongest reasons to have this clause reviewed before signing any future implementation contract."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do you rebuild staff confidence after a failed Odoo rollout?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Staff who have already been through one disrupted rollout are rightly skeptical of a second attempt, and that skepticism needs to be managed deliberately rather than dismissed. This means being honest with staff about what went wrong the first time, involving department representatives visibly in the new vendor's discovery process rather than repeating a top-down rollout, and setting a realistic, conservative timeline for the second attempt rather than repeating the same overpromise that damaged trust the first time."
+          }
+        }
+      ]
+    }
+  ]
+extraStyles: |
+  .audit-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:24px 0}
+      @media(max-width:680px){.audit-grid{grid-template-columns:1fr}}
+      .audit-card{border:1px solid var(--border);border-radius:10px;padding:18px;background:var(--surface)}
+      .audit-card h4{margin:0 0 8px;font-size:14.5px;color:var(--text)}
+      .audit-card p{margin:0;font-size:13px;color:var(--text-2);line-height:1.55}
+---
+<aside class="toc">
+      <div class="toc-k">In this guide</div>
+      <ol>
+        <li><a href="#why-it-happens">Why This Happens in Bangladesh</a></li>
+        <li><a href="#technical-audit">The Technical Handover Audit</a></li>
+        <li><a href="#commercial">The Commercial and Contractual Reckoning</a></li>
+        <li><a href="#ip-ownership">Who Owns the Custom Code</a></li>
+        <li><a href="#staff-reset">The Staff Confidence Reset</a></li>
+        <li><a href="#salvage-or-restart">Salvage or Restart: A Real Framework</a></li>
+        <li><a href="#sequence">The Transition Sequence, In Order</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ol>
+    </aside>
+
+    <div class="body">
+
+      <h2 id="why-it-happens">Why This Happens in Bangladesh</h2>
+      <p>A vendor relationship breaking down mid-implementation is not rare in Bangladesh's Odoo market, and it is not always a sign that anyone acted in bad faith. It happens for a handful of recurring reasons, and knowing which one you are dealing with changes how the rest of this transition should go. The vendor missed deadline after deadline until the client's confidence ran out. The delivered work quality was poor, workflows that technically function but do not match how the business actually operates, reports that are wrong, approval chains that were never built. Support went silent, calls and messages unanswered for weeks during an active project. Or, less common but real, the vendor itself went out of business or lost the specific consultants who understood the project, which happens more often than buyers expect in a market where implementation firms are frequently small, thinly staffed, and dependent on one or two senior people.</p>
+      <p>Whichever of these it is, the business now sits in an uncomfortable middle state: partially configured, partially trained, partially migrated, with money already spent and a live business that cannot simply pause while a new vendor starts from a blank page. This piece is about navigating exactly that middle state without repeating the mistakes that got you here, and without pretending a clean restart is free just because it feels safer than diagnosing what can be salvaged.</p>
+
+      <div class="stat-row">
+        <div class="stat-card">
+          <div class="sc-val">1-2 wks</div>
+          <div class="sc-label">Audit Duration</div>
+          <div class="sc-note">Realistic time for an incoming partner to properly assess current system state</div>
+        </div>
+        <div class="stat-card">
+          <div class="sc-val">60-70%</div>
+          <div class="sc-label">Salvage Rate</div>
+          <div class="sc-note">Rough share of failed mid-projects I have seen where the core build was worth keeping</div>
+        </div>
+        <div class="stat-card">
+          <div class="sc-val">Day 1</div>
+          <div class="sc-label">When to Secure Data</div>
+          <div class="sc-note">Request the database backup before any confrontation, not after</div>
+        </div>
+      </div>
+
+      <p class="pull">A failed vendor relationship is a project problem. Treating it as a shameful secret to hide from staff is what turns it into an organizational one.</p>
+
+      <h2 id="technical-audit">The Technical Handover Audit</h2>
+      <p>Before any decision about the future gets made, someone needs to establish, factually and without the outgoing vendor's spin, what actually exists in the system today. This is the single most important step in the entire transition, and it is the one most Bangladesh businesses skip because they are in a hurry to feel like progress is being made again.</p>
+      <p>A proper technical handover audit, which I run as a distinct, paid engagement before agreeing to anything about the path forward, covers four things specifically. What is actually configured, module by module, compared against what the original scope document or Business Requirements Document promised, because the gap between promised and delivered is usually wider than either side remembers accurately. The state of any custom code: is it documented, does it live in a version-controlled repository the client can access, or does it exist only on the outgoing developer's laptop. The state of data migration: what has been imported, what is still sitting in spreadsheets, and whether historical data that was migrated is actually correct or was imported hastily to hit a milestone deadline. And database and infrastructure ownership: who controls the hosting account, the domain, the admin credentials, and whether the outgoing vendor has any technical lever (an expiring hosting subscription, an un-transferred domain) that could be used as leverage during a dispute.</p>
+
+      <div class="audit-grid">
+        <div class="audit-card">
+          <h4>Configuration reality check</h4>
+          <p>Walk every module against the original BRD line by line. Note what is fully working, partially built, or entirely absent despite being invoiced as complete.</p>
+        </div>
+        <div class="audit-card">
+          <h4>Custom code inventory</h4>
+          <p>Identify every custom module, report, and automation. Check whether source code exists outside the outgoing developer's own machine.</p>
+        </div>
+        <div class="audit-card">
+          <h4>Data migration status</h4>
+          <p>Confirm what is actually in the database versus what was represented as migrated. Spot-check historical records for accuracy, not just presence.</p>
+        </div>
+        <div class="audit-card">
+          <h4>Access and infrastructure</h4>
+          <p>Verify who holds hosting, domain, and admin credentials. Resolve any dependency on the outgoing vendor's infrastructure before termination is final.</p>
+        </div>
+      </div>
+
+      <p>This audit almost always surfaces at least one uncomfortable finding: a module invoiced as complete that barely functions, a "trained" department that received one demo session, or data migration marked done in a status report that turns out to be a partial import missing two years of transaction history. This is not a reason to panic. It is the actual information you need to negotiate the commercial settlement and to scope the new partner's work honestly, rather than discovering these gaps three months into a second implementation.</p>
+
+      <div class="tip-box">
+        <div class="tlabel">Practical Shortcut</div>
+        <p>Request the database backup and full file attachment export in writing, citing your data ownership, before you say anything to the outgoing vendor about ending the relationship. Once a vendor senses termination is coming, access can quietly become slower to provide. Securing the data first costs you nothing and removes their only real point of leverage.</p>
+      </div>
+
+      <h2 id="commercial">The Commercial and Contractual Reckoning</h2>
+      <p>Parallel to the technical audit, there is a commercial conversation that has to happen, and it is usually more emotionally charged than the technical one because it involves money already spent on work that clearly did not deliver what was promised. Two questions matter here: what have you already paid for that was not delivered, and what do you still owe under the contract regardless of how you feel about the vendor's performance.</p>
+      <p>Go back to the original contract and map every milestone payment against what was actually delivered at that milestone, using the technical audit's findings as evidence rather than argument. If a milestone was paid for "discovery and BRD sign-off" and no usable BRD exists, that is a specific, documentable gap, not a matter of opinion. This mapping exercise is what turns an emotional dispute ("this vendor was terrible") into a commercial negotiation with specific, defensible numbers attached to it.</p>
+      <p>Separately, review what termination actually requires under the contract's own terms: a notice period, a cure period where the vendor gets a final chance to fix specific issues, and any early-termination penalty clause. Terminating a contract outside its own terms, even when the vendor's performance clearly justifies it, can expose you to a counter-claim. This is uncomfortable when you are eager to simply move on, but it is exactly the discipline that protects you if the dispute ever escalates to a formal legal claim. The escalation sequence covered in the <a href="0052-odoo-vendor-red-flags-bangladesh" style="color:var(--accent)">Odoo Vendor Red Flags</a> article, documented memo, senior escalation, formal notice of breach, is the same sequence that should already be in your file by the time you reach the termination conversation, because it is what demonstrates you acted reasonably rather than impulsively.</p>
+
+      <h2 id="ip-ownership">Who Owns the Custom Code</h2>
+      <p>This question surfaces late in almost every transition, usually when the incoming partner asks for the source code to a custom report or automation and the outgoing vendor hesitates. The answer depends entirely on what the original contract said, and this is exactly why the contract clause matters more than it seems to at signing time.</p>
+      <p>Most reasonably drafted Bangladesh Odoo contracts specify that custom modules built specifically for the client, paid for by the client, become the client's property on payment, while the underlying Odoo platform itself remains under its own license (open-source for Community edition modules, Odoo S.A.'s proprietary license for Enterprise-only code). If your contract says this clearly, the outgoing vendor has no legitimate basis to withhold source code once outstanding invoices are settled, and withholding it anyway is itself grounds for escalation. If your contract is silent on IP ownership, and a surprising number of Bangladesh implementation contracts are, this becomes a genuine negotiation point, sometimes the single hardest point, in the termination discussion. This is the clause I now tell every client to have reviewed explicitly before signing their next implementation contract, specifically because I have watched this exact gap cost a client weeks of delay negotiating for code they had, in every reasonable sense, already paid for. The broader set of contract terms worth locking down before signing, SLA definitions, named resources, termination rights, is covered in <a href="0077-negotiating-odoo-enterprise-contract-sla-bangladesh" style="color:var(--accent)">Negotiating an Odoo Enterprise Contract and SLA</a>.</p>
+
+      <h2 id="staff-reset">The Staff Confidence Reset</h2>
+      <p>The part of this process that gets the least attention, and that I think matters as much as anything technical, is what a failed first attempt does to the people who have to actually use the system every day. Staff who sat through months of confusing configuration, contradictory training sessions, and a go-live date that kept moving are not neutral about a second attempt. They are, reasonably, skeptical, and some of them have quietly gone back to their old spreadsheets and workarounds because those, at least, work.</p>
+      <p>Ignoring this dynamic and simply announcing "we have a new vendor, training starts Monday" repeats the exact top-down pattern that damaged trust the first time. What actually rebuilds confidence is deliberate and slower than it feels comfortable being: an honest internal communication about what went wrong with the first vendor, framed around the project rather than blaming individuals, and a visible role for department representatives in the new discovery process rather than a repeat of decisions being made about them without them. It also means the new partner needs to demonstrate competence early and specifically, correcting one visibly broken thing that everyone in the department has been complaining about for months is worth more, in trust terms, than a polished new project kickoff presentation.</p>
+      <p>Setting a conservative, realistic timeline for the second attempt matters more here than it would on a first implementation, precisely because this audience has already learned what an overpromised date looks like when it slips. A team told "12 weeks" who watch the deadline pass without explanation the second time will disengage from the project in a way that is genuinely difficult to recover from a third time. Change management on a recovery project is not the same exercise as change management on a fresh one, and treating it identically is a common, avoidable mistake. For the broader discipline of managing this kind of internal resistance, not as a one-time announcement but as an ongoing process, see <a href="0007-change-management-isnt-a-memo" style="color:var(--accent)">Change Management Isn't a Memo</a>.</p>
+
+      <h2 id="salvage-or-restart">Salvage or Restart: A Real Framework</h2>
+      <p>This is genuinely the hardest decision in the whole process, and I am suspicious of anyone who gives a blanket answer to it without having seen the specific system. What follows is the actual set of criteria I use, not a universal rule, because the right answer depends on where in the build the failure occurred.</p>
+      <p><strong>Lean toward salvage when:</strong> the foundational configuration, chart of accounts, core master data structure, primary workflow logic, is sound and matches how the business actually operates. The gaps are concentrated in specific modules, missing documentation, or incomplete customization rather than structural problems. Staff have already invested real time learning the current interface and workflows, and a full restart would waste that learning on top of everything else already lost. The data migrated so far is accurate, even if incomplete, meaning the effort to finish it is additive rather than corrective.</p>
+      <p><strong>Lean toward restart when:</strong> the core configuration itself is wrong in a way that will not scale, a chart of accounts that does not match statutory or Mushak reporting requirements, for example, or a data model built around a misunderstanding of how the business's production or sales process actually works. Custom code exists with no documentation and no realistic way to safely modify it without risking data integrity. The migrated data itself is unreliable, not just incomplete, meaning trusting any of it going forward would embed errors permanently. And when the psychological cost of continuing to work inside "the old vendor's system," even under new management, is itself an obstacle to staff genuinely re-engaging with the project.</p>
+      <p>In practice, most of the failed mid-projects I have assessed land closer to salvage than restart, because the technical failure is usually concentrated in specific modules or in support responsiveness rather than in the foundational architecture. But I have recommended a full restart more than once, and in every one of those cases the client's instinct going in was to salvage, purely to avoid feeling like the sunk cost was wasted. Sunk cost is a real psychological pull here and it is worth naming explicitly, because it is exactly the bias that leads businesses to keep patching a structurally broken foundation rather than accepting the more expensive but ultimately cheaper choice of starting the configuration cleanly.</p>
+
+      <div class="disclaimer">
+        <p><strong>Note:</strong> A salvage-or-restart decision should never rest solely on the incoming partner's recommendation, since they have their own commercial incentive either way. Ask for the specific evidence behind the recommendation, tied to the technical audit findings, not a general impression, and if the stakes are high enough, get a second independent opinion before committing to either path.</p>
+      </div>
+
+      <h2 id="sequence">The Transition Sequence, In Order</h2>
+      <p>Pulling the above together, the sequence I recommend to clients navigating this, in order, is: secure the database backup and file attachments immediately, before any confrontation. Run the technical handover audit as a distinct, scoped, paid engagement, not a favor squeezed into a sales pitch from the incoming partner. Reconcile the commercial position, milestone payments against actual delivery, against the original contract terms. Resolve IP ownership of custom code explicitly, in writing, before final payment settlement. Make the salvage-or-restart decision based on the audit evidence, not on sunk-cost instinct. Communicate honestly with staff before the new partner's work becomes visible to them, not after. And only then, begin the new partner's actual configuration or remediation work, with a conservative, evidence-based timeline rather than a repeat of the promise that failed the first time.</p>
+      <p>None of this makes a vendor transition painless. It makes it survivable, and it meaningfully reduces the odds of ending up in this exact same article again eighteen months from now with a third vendor. If you are still in the selection phase for either your first or your replacement partner, the criteria that would have prevented this in the first place are covered in the <a href="0049-odoo-partner-selection-bangladesh" style="color:var(--accent)">Odoo Partner Selection guide</a>.</p>
+
+      <div class="callout">
+        <span class="tag">Project Recovery Assessment</span>
+        <p>If your Odoo implementation has stalled with an unreliable vendor and you need an independent, evidence-based technical audit before deciding whether to salvage or restart, I run exactly this assessment as a standalone engagement. <a href="../#contact" style="color:var(--accent)">Contact me for a recovery assessment →</a></p>
+      </div>
+
+      <h2 id="faq">Frequently asked questions</h2>
+
+      <h3>Can you switch Odoo partners mid-implementation without losing your data?</h3>
+      <p>Yes, in almost every case. Your data lives in a PostgreSQL database that you own regardless of which partner configured it. Request a complete database backup, including file attachments and any custom module source code, before initiating a formal exit conversation with the outgoing vendor. The genuine risk is not data loss but undocumented customization: if the outgoing partner wrote custom code without documentation or a shared repository, the incoming partner needs time to reverse-engineer it before they can safely modify or upgrade it.</p>
+
+      <h3>Should you salvage the existing Odoo configuration or start over?</h3>
+      <p>This depends on a structured audit, not instinct. Salvage the build when the core configuration is fundamentally sound and the problems are isolated to specific modules, missing documentation, or incomplete customization. Restart when the foundational configuration itself is wrong, for example a chart of accounts that does not match statutory requirements or a data model that will not scale, because incremental fixes on a broken foundation typically cost more in the long run than a clean rebuild.</p>
+
+      <h3>What should a new Odoo partner check before taking over a failed implementation?</h3>
+      <p>A proper technical handover audit covers: what modules are actually installed and configured versus what was promised in the original scope document, the state and completeness of any custom code and who owns its intellectual property, the current state of data migration including what has and has not been imported, database access and hosting ownership, and a comparison between the original Business Requirements Document and what has actually been delivered. This audit typically takes 1-2 weeks and should be a paid, scoped engagement.</p>
+
+      <h3>Who owns custom code built by an Odoo partner during a failed implementation?</h3>
+      <p>This depends entirely on the contract signed with the outgoing vendor. Most well-drafted Bangladesh Odoo implementation contracts specify that custom modules built specifically for the client become the client's intellectual property upon payment, while the underlying Odoo framework remains under its own open-source or proprietary license. If the contract is silent on IP ownership, this becomes a negotiation point during termination, which is a strong reason to have this clause reviewed before signing any future implementation contract.</p>
+
+      <h3>How do you rebuild staff confidence after a failed Odoo rollout?</h3>
+      <p>Staff who have already been through one disrupted rollout are rightly skeptical of a second attempt, and that skepticism needs to be managed deliberately rather than dismissed. This means being honest with staff about what went wrong the first time, involving department representatives visibly in the new vendor's discovery process rather than repeating a top-down rollout, and setting a realistic, conservative timeline for the second attempt rather than repeating the same overpromise that damaged trust the first time.</p>
+
+    </div>

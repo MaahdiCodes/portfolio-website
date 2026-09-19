@@ -1,0 +1,524 @@
+---
+permalink: "bn/lab/0054-odoo-email-sms-setup-bangladesh.html"
+title: "বাংলাদেশে Odoo ইমেইল ও SMS সেটআপ | SMTP | মেহেদী হাসান"
+description: "বাংলাদেশে Odoo ইমেইল ও SMS সেটআপ: SMTP, ইমেইল অ্যালিয়াস, SSL Wireless SMS এবং নোটিফিকেশন টেমপ্লেট ধাপে ধাপে কনফিগার করুন। সঠিকভাবে কনফিগার করুন →"
+robots: "noindex, follow"
+canonical: "https://mhasan.me/bn/lab/0054-odoo-email-sms-setup-bangladesh"
+hreflangBn: "https://mhasan.me/bn/lab/0054-odoo-email-sms-setup-bangladesh"
+hreflangEn: "https://mhasan.me/lab/0054-odoo-email-sms-setup-bangladesh"
+lang: "bn"
+ogDescription: "বাংলাদেশ অপারেশনের জন্য Odoo আউটগোয়িং SMTP, ইনকামিং ইমেইল অ্যালিয়াস, SSL Wireless SMS গেটওয়ে এবং নোটিফিকেশন টেমপ্লেট কনফিগার করুন। ধাপে ধাপে গাইড।"
+twitterDescription: "বাংলাদেশ অপারেশনের জন্য Odoo SMTP, ইমেইল অ্যালিয়াস, SSL Wireless SMS গেটওয়ে এবং নোটিফিকেশন টেমপ্লেট কনফিগার করুন। ধাপে ধাপে গাইড।"
+ogImage: "https://mhasan.me/assets/og-default.jpg"
+ogSiteName: "মেহেদী হাসান | Odoo ERP কনসালট্যান্ট"
+ogLocale: "bn_BD"
+datePublished: "2026-05-12T10:30:00+06:00"
+dateModified: "2026-05-12T10:30:00+06:00"
+articleSection: "Odoo ERP Bangladesh"
+eyebrowNum: "0054"
+h1: "বাংলাদেশে Odoo ইমেইল ও SMS সেটআপ — <span class=\"serif\">SMTP, অ্যালিয়াস, গেটওয়ে ও নোটিফিকেশন, যা সত্যিই কাজ করে।</span>"
+lede: "ইমেইল আর SMS-এর মাধ্যমেই Odoo আপনার গ্রাহক, ভেন্ডর আর অভ্যন্তরীণ টিমের সাথে যোগাযোগ করে — সেল অর্ডার কনফার্মেশন, পারচেজ অ্যাপ্রুভাল, ডেলিভারি অ্যালার্ট, পেমেন্ট রিমাইন্ডার। তবু আমি যেসব বাংলাদেশি বাস্তবায়ন পর্যালোচনা করি, তার বেশিরভাগেই এগুলো হয় একদমই কনফিগার করা হয়নি (সিস্টেম কাউকে ইমেইল করে না), নয়তো খারাপভাবে কনফিগার করা হয়েছে (ইমেইল স্প্যামে যায়, SMS ক্রেডেনশিয়ালের মেয়াদ শেষ, নোটিফিকেশন ভুল মানুষের কাছে যায়)। এই গাইড এসব সমস্যার সমাধান দেয়।"
+chips: ["গাইড", "ইমেইল ও SMS", "কনফিগারেশন", "বাংলাদেশ"]
+bylineItems:
+  - label: "লেখক"
+    value: "<a href=\"https://www.linkedin.com/in/mehedi-hasan-consultant/\" style=\"color:var(--accent)\" rel=\"author\">Mehedi Hasan</a>"
+  - label: "প্রকাশিত"
+    value: "মে ২০২৬"
+  - label: "পড়ার সময়"
+    value: "১৫ মিনিট"
+  - label: "ধরন"
+    value: "গাইড"
+  - label: "পরিধি"
+    value: "সিস্টেম কনফিগারেশন"
+nextArticle:
+  href: "/bn/lab/0053-odoo-api-integration-bangladesh"
+  dir: "পুরনো · 0053"
+  title: "বাংলাদেশে Odoo API ইন্টিগ্রেশন"
+  desc: "bKash, ব্যাংক ফিড, SSLCommerz এবং শিপিং API আপনার Odoo সিস্টেমের সাথে যুক্ত করুন।"
+prevArticle:
+  href: "/bn/lab/0055-odoo-dashboards-kpi-bangladesh"
+  dir: "নতুন · 0055"
+  title: "বাংলাদেশে Odoo ড্যাশবোর্ড ও KPI"
+  desc: "এক স্ক্রিন থেকেই সেলস পাইপলাইন, ইনভেন্টরি টার্ন, ক্যাশ ফ্লো, আর ম্যানুফ্যাকচারিং OEE ট্র্যাক করুন।"
+jsonLd: |
+  [
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "বাংলাদেশে Odoo ইমেইল ও SMS সেটআপ: SMTP, অ্যালিয়াস ও নোটিফিকেশন",
+      "description": "বাংলাদেশ অপারেশনের জন্য Odoo আউটগোয়িং SMTP, ইনকামিং ইমেইল অ্যালিয়াস, SSL Wireless SMS গেটওয়ে এবং বাংলাদেশ-নির্দিষ্ট নোটিফিকেশন টেমপ্লেট কনফিগার করুন। সম্পূর্ণ সেটআপ গাইড।",
+      "datePublished": "2026-05-12T10:30:00+06:00",
+      "dateModified": "2026-05-12T10:30:00+06:00",
+      "inLanguage": "bn",
+      "author": {
+        "@type": "Person",
+        "name": "Mehedi Hasan",
+        "url": "https://mhasan.me",
+        "jobTitle": "Odoo ERP Consultant & Business Analyst",
+        "sameAs": "https://www.linkedin.com/in/mehedi-hasan-consultant/"
+      },
+      "publisher": { "@type": "Person", "name": "Mehedi Hasan", "url": "https://mhasan.me" },
+      "mainEntityOfPage": { "@type": "WebPage", "@id": "https://mhasan.me/bn/lab/0054-odoo-email-sms-setup-bangladesh" }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "হোম", "item": "https://mhasan.me/bn" },
+        { "@type": "ListItem", "position": 2, "name": "ল্যাব", "item": "https://mhasan.me/bn/#lab" },
+        { "@type": "ListItem", "position": 3, "name": "বাংলাদেশে Odoo ইমেইল ও SMS সেটআপ", "item": "https://mhasan.me/bn/lab/0054-odoo-email-sms-setup-bangladesh" }
+      ]
+    }
+  ]
+extraStyles: |
+  body{ font-family: 'Noto Sans Bengali', var(--sans); }
+      .pull {
+        font-family: var(--serif);
+        font-style: italic;
+        font-size: clamp(20px, 2.8vw, 28px);
+        line-height: 1.3;
+        color: var(--text);
+        margin: 48px 0;
+        max-width: 28ch;
+        letter-spacing: -0.01em;
+      }
+      .pull::before {
+        content: "";
+        display: block;
+        width: 36px;
+        height: 1px;
+        background: var(--accent);
+        margin-bottom: 18px;
+      }
+      .config-block {
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        margin: 26px 0;
+        overflow: hidden;
+      }
+      .config-header {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 15px 20px;
+        background: var(--surface);
+        border-bottom: 1px solid var(--border);
+      }
+      .config-badge {
+        font-family: var(--mono);
+        font-size: 10px;
+        font-weight: 600;
+        padding: 3px 9px;
+        border-radius: 4px;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        flex-shrink: 0;
+      }
+      .config-badge.recommended { background: var(--accent-dim); color: var(--accent); border: 1px solid rgba(80,230,160,0.3); }
+      .config-badge.alternative { background: rgba(120,140,200,0.12); color: #8899CC; border: 1px solid rgba(120,140,200,0.25); }
+      .config-badge.advanced { background: rgba(200,140,80,0.12); color: #E0B84A; border: 1px solid rgba(200,140,80,0.25); }
+      .config-badge.sms { background: rgba(180,100,200,0.12); color: #C070E0; border: 1px solid rgba(180,100,200,0.25); }
+      .config-header h3 { margin: 0; font-size: 15px; color: var(--text); letter-spacing: -0.01em; }
+      .config-body { padding: 20px; }
+      .config-body p { color: var(--text-2); font-size: 14.5px; line-height: 1.65; margin: 0 0 12px; }
+      .config-body p:last-child { margin-bottom: 0; }
+      .config-body ul, .config-body ol { color: var(--text-2); font-size: 14px; padding-left: 20px; margin: 10px 0 12px; }
+      .config-body li { margin-bottom: 6px; line-height: 1.5; }
+      .code-box {
+        background: #0D1117;
+        border: 1px solid var(--border);
+        border-radius: 6px;
+        padding: 14px 18px;
+        margin: 14px 0;
+        overflow-x: auto;
+      }
+      .code-box pre { margin: 0; font-family: var(--mono); font-size: 12.5px; color: #C9D1D9; line-height: 1.6; white-space: pre; }
+      .code-label { font-family: var(--mono); font-size: 10px; color: var(--text-3); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 6px; }
+      .settings-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 16px 0;
+        font-size: 13.5px;
+      }
+      .settings-table th {
+        text-align: left;
+        padding: 10px 14px;
+        background: var(--surface);
+        color: var(--text-2);
+        font-family: var(--mono);
+        font-size: 11px;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        border-bottom: 1px solid var(--border);
+      }
+      .settings-table td {
+        padding: 10px 14px;
+        border-bottom: 1px solid var(--border);
+        color: var(--text-2);
+        vertical-align: top;
+      }
+      .settings-table td:first-child { color: var(--text); font-family: var(--mono); font-size: 12.5px; }
+      .settings-table tr:last-child td { border-bottom: none; }
+      .warn-box {
+        background: rgba(200,140,60,0.08);
+        border-left: 3px solid rgba(200,140,60,0.6);
+        border-radius: 0 6px 6px 0;
+        padding: 14px 18px;
+        margin: 18px 0;
+      }
+      .warn-box .wlabel { font-family: var(--mono); font-size: 10px; color: rgba(220,160,70,0.9); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 6px; }
+      .warn-box p { margin: 0; font-size: 14px; color: var(--text-2); line-height: 1.55; }
+      .tip-box {
+        background: var(--accent-dim);
+        border-left: 3px solid var(--accent);
+        border-radius: 0 6px 6px 0;
+        padding: 14px 18px;
+        margin: 18px 0;
+      }
+      .tip-box .tlabel { font-family: var(--mono); font-size: 10px; color: var(--accent); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 6px; }
+      .tip-box p { margin: 0; font-size: 14px; color: var(--text-2); line-height: 1.55; }
+      .provider-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 12px;
+        margin: 20px 0;
+      }
+      @media(max-width:700px) { .provider-grid { grid-template-columns: 1fr 1fr; } }
+      @media(max-width:480px) { .provider-grid { grid-template-columns: 1fr; } }
+      .provider-card {
+        border: 1px solid var(--border);
+        border-radius: 7px;
+        padding: 15px;
+        background: var(--surface);
+      }
+      .provider-card .pname { font-weight: 600; font-size: 13.5px; color: var(--text); margin-bottom: 6px; }
+      .provider-card .psub { font-size: 12.5px; color: var(--text-2); line-height: 1.45; }
+---
+<aside class="toc">
+      <div class="toc-k">এই গাইডে</div>
+      <ol>
+        <li><a href="#why-it-fails">বাংলাদেশে কেন ইমেইল সেটআপ ব্যর্থ হয়</a></li>
+        <li><a href="#outgoing-smtp">আউটগোয়িং ইমেইল: SMTP কনফিগারেশন</a></li>
+        <li><a href="#smtp-providers">SMTP প্রোভাইডার তুলনা</a></li>
+        <li><a href="#deliverability">ডেলিভারেবিলিটি: SPF, DKIM, DMARC</a></li>
+        <li><a href="#incoming-email">ইনকামিং ইমেইল: অ্যালিয়াস</a></li>
+        <li><a href="#sms-gateways">বাংলাদেশ SMS গেটওয়ে</a></li>
+        <li><a href="#sms-odoo">SMS-কে Odoo-র সাথে সংযুক্ত করা</a></li>
+        <li><a href="#whatsapp">WhatsApp Business ইন্টিগ্রেশন</a></li>
+        <li><a href="#notification-templates">নোটিফিকেশন টেমপ্লেট</a></li>
+        <li><a href="#troubleshooting">সমস্যা সমাধান</a></li>
+        <li><a href="#faq">সচরাচর জিজ্ঞাসা</a></li>
+      </ol>
+    </aside>
+
+    <div class="body">
+
+      <h2 id="why-it-fails">বাংলাদেশে বাস্তবায়নে ইমেইল ও SMS সেটআপ কেন উপেক্ষিত থেকে যায়</h2>
+      <p>এর দুটি কারণ আছে। প্রথমত, বাস্তবায়ন ভেন্ডররা প্রায়ই ইমেইল আর SMS-কে "কনফিগারেশন আইটেম" হিসেবে দেখে — প্রজেক্টের শেষে তাড়াহুড়ো করে সেট করার মতো কিছু, মূল ফাংশনালিটি নয়। দ্বিতীয়ত, যে ব্যক্তি Odoo কনফিগার করেন তার সাধারণত কোম্পানির Gmail অ্যাকাউন্টে অ্যাক্সেস থাকে, কিন্তু ডোমেইনের DNS সেটিংসে থাকে না — ফলে তারা SPF/DKIM সেটআপ সম্পূর্ণ করতে পারেন না, যা ঠিক করে দেয় ইমেইল ইনবক্সে যাবে নাকি স্প্যামে।</p>
+      <p>ফলাফল: Odoo একটি সাধারণ Gmail ঠিকানা থেকে ইমেইল পাঠায় (কোম্পানির ডোমেইন থেকে নয়), ডেলিভারেবিলিটি খারাপ হয়, গ্রাহকমুখী কনফার্মেশনগুলো অপেশাদার দেখায়, আর SMS হয় কখনো কনফিগারই হয় না নয়তো একটি সস্তা নন-মাস্কড গেটওয়ে ব্যবহার করে যা প্রাপককে একটি র‍্যান্ডম নম্বর দেখায় — যা ব্র্যান্ডের বিশ্বাসযোগ্যতা ক্ষতিগ্রস্ত করে।</p>
+      <p>এই গাইড একটি ভিন্ন পদ্ধতি নেয়। এতে পুরো স্ট্যাক কভার করা হয়েছে: SMTP সার্ভার, DNS কনফিগারেশন, ইনকামিং অ্যালিয়াস, SMS গেটওয়ে নির্বাচন, আর নোটিফিকেশন টেমপ্লেট কাস্টমাইজেশন — যে ক্রমে আপনার এগুলো কনফিগার করা উচিত।</p>
+
+      <p class="pull">যে ERP একটি পেশাদার অর্ডার কনফার্মেশন ইমেইল পাঠাতে পারে না, সেটা কোনো বিজনেস সিস্টেম নয় — সেটা একটি UI-সহ ডেটাবেস মাত্র।</p>
+
+      <h2 id="outgoing-smtp">আউটগোয়িং ইমেইল: Odoo-তে SMTP কনফিগারেশন</h2>
+      <p>Odoo সব আউটগোয়িং ইমেইল পাঠায় Settings → Technical → Email → Outgoing Mail Servers-এর মাধ্যমে। Odoo কিছু পাঠানোর আগে অন্তত একটি কনফিগার করা সার্ভার দরকার। প্রতিটি ফিল্ডের মানে কী আর কী এন্টার করবেন, তা এখানে দেওয়া হলো।</p>
+
+      <div class="config-block">
+        <div class="config-header">
+          <span class="config-badge recommended">প্রস্তাবিত</span>
+          <h3>Zoho Mail SMTP — বেশিরভাগ বাংলাদেশি ব্যবসার জন্য সেরা</h3>
+        </div>
+        <div class="config-body">
+          <table class="settings-table">
+            <thead><tr><th>ফিল্ড</th><th>মান</th></tr></thead>
+            <tbody>
+              <tr><td>Description</td><td>Zoho Outgoing SMTP</td></tr>
+              <tr><td>SMTP Server</td><td>smtp.zoho.com</td></tr>
+              <tr><td>SMTP Port</td><td>587 (STARTTLS) অথবা 465 (SSL)</td></tr>
+              <tr><td>Connection Security</td><td>TLS (STARTTLS) — পছন্দনীয়</td></tr>
+              <tr><td>Username</td><td>noreply@yourdomain.com (আপনার Zoho ইমেইল)</td></tr>
+              <tr><td>Password</td><td>অ্যাপ-স্পেসিফিক পাসওয়ার্ড (Zoho অ্যাকাউন্ট সিকিউরিটিতে জেনারেট করুন)</td></tr>
+              <tr><td>From Filter</td><td>yourdomain.com</td></tr>
+              <tr><td>Priority</td><td>10</td></tr>
+            </tbody>
+          </table>
+          <p><strong>কেন Zoho:</strong> সাশ্রয়ী (কাস্টম ডোমেইনে ৫ ইউজার পর্যন্ত ফ্রি), বাংলাদেশি ব্যবসা ৩০ মিনিটে কাস্টম ডোমেইন ইমেইল সেটআপ করতে পারে, চমৎকার ডেলিভারেবিলিটি, আর Gmail-এর মতো 2,000/দিন সীমা নেই। কোম্পানির ঠিকানার জন্য (info@, sales@, noreply@), Zoho-ই সঠিক ডিফল্ট।</p>
+          <div class="tip-box">
+            <div class="tlabel">গুরুত্বপূর্ণ ধাপ</div>
+            <p>Zoho-তে SMTP অথেন্টিকেশনের জন্য অবশ্যই একটি অ্যাপ পাসওয়ার্ড জেনারেট করতে হবে (আপনার অ্যাকাউন্ট পাসওয়ার্ড নয়)। Zoho Account → Security → App Passwords → Generate New Password-এ যান। Odoo-তে এই অ্যাপ পাসওয়ার্ড ব্যবহার করুন — আপনার মূল Zoho পাসওয়ার্ড SMTP-র জন্য কাজ করবে না।</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="config-block">
+        <div class="config-header">
+          <span class="config-badge alternative">বিকল্প</span>
+          <h3>Google Workspace (Gmail) SMTP</h3>
+        </div>
+        <div class="config-body">
+          <table class="settings-table">
+            <thead><tr><th>ফিল্ড</th><th>মান</th></tr></thead>
+            <tbody>
+              <tr><td>SMTP Server</td><td>smtp.gmail.com</td></tr>
+              <tr><td>SMTP Port</td><td>587</td></tr>
+              <tr><td>Connection Security</td><td>TLS (STARTTLS)</td></tr>
+              <tr><td>Username</td><td>your-google-workspace-email@yourdomain.com</td></tr>
+              <tr><td>Password</td><td>অ্যাপ পাসওয়ার্ড (Google Account → Security → 2-Step → App Passwords থেকে জেনারেট করা)</td></tr>
+            </tbody>
+          </table>
+          <p><strong>সীমাবদ্ধতা:</strong> Google Workspace প্রতি ইউজারে দিনে আউটগোয়িং SMTP-কে 2,000 মেসেজে সীমিত রাখে। বড় পরিসরে ট্রানজেকশনাল ইমেইল পাঠানো বাংলাদেশি কোম্পানির জন্য (অর্ডার কনফার্মেশন, বড় আকারে ইনভয়েস) এই সীমা দ্রুত পূরণ হয়ে যায়। একাধিক Gmail অ্যাকাউন্টে ভাগ করুন অথবা বড় ভলিউমের জন্য Mailgun/SendGrid ব্যবহার করুন।</p>
+          <div class="warn-box">
+            <div class="wlabel">গুরুত্বপূর্ণ নোট</div>
+            <p>Odoo SMTP-র জন্য কখনো ব্যক্তিগত @gmail.com অ্যাকাউন্ট ব্যবহার করবেন না। শুধু Google Workspace ব্যবহার করুন (পেইড, নিজের ডোমেইনে)। ব্যক্তিগত Gmail অ্যাকাউন্ট SMTP রিলে থেকে ব্লক করা থাকে এবং উল্লেখযোগ্য ডেলিভারেবিলিটি সমস্যা ছাড়া ব্যবসায়িক সেন্ডার ঠিকানা হিসেবে ব্যবহার করা যায় না।</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="config-block">
+        <div class="config-header">
+          <span class="config-badge advanced">হাই ভলিউম</span>
+          <h3>Mailgun বা SendGrid — দিনে 10,000+ ইমেইলের জন্য</h3>
+        </div>
+        <div class="config-body">
+          <p>আপনার বাংলাদেশি ব্যবসা যদি বড় পরিসরে ট্রানজেকশনাল ইমেইল পাঠায় — ইনভয়েস ব্যাচ, বড় আকারে কাস্টমার নোটিফিকেশন, সাপ্লায়ার রিমাইন্ডার — একটি নিবেদিত ট্রানজেকশনাল ইমেইল সার্ভিস ব্যবহার করুন। Mailgun এবং SendGrid দুটোই SMTP রিলে ক্রেডেনশিয়াল দেয়, যা Odoo-র আউটগোয়িং মেইল সার্ভার কনফিগারেশনে একইভাবে কাজ করে।</p>
+          <table class="settings-table">
+            <thead><tr><th>প্রোভাইডার</th><th>ফ্রি টায়ার</th><th>SMTP হোস্ট</th></tr></thead>
+            <tbody>
+              <tr><td>Mailgun</td><td>100 ইমেইল/দিন</td><td>smtp.mailgun.org</td></tr>
+              <tr><td>SendGrid</td><td>100 ইমেইল/দিন</td><td>smtp.sendgrid.net</td></tr>
+              <tr><td>Brevo (Sendinblue)</td><td>300 ইমেইল/দিন</td><td>smtp-relay.brevo.com</td></tr>
+            </tbody>
+          </table>
+          <p>বাংলাদেশ থেকে পেমেন্ট: Mailgun এবং SendGrid আন্তর্জাতিক Visa/Mastercard গ্রহণ করে। Brevo কখনো কখনো রিসেলারদের মাধ্যমে bKash গ্রহণ করে। বেশিরভাগ মাঝারি আকারের বাংলাদেশি কোম্পানির প্রয়োজনীয় ভলিউম টায়ারের জন্য মাসে প্রায় $15–35 বাজেট রাখুন।</p>
+        </div>
+      </div>
+
+      <h2 id="smtp-providers">বাংলাদেশের জন্য SMTP প্রোভাইডার সিদ্ধান্ত ম্যাট্রিক্স</h2>
+
+      <div class="provider-grid">
+        <div class="provider-card">
+          <div class="pname">Zoho Mail</div>
+          <div class="psub">সেরা ডিফল্ট। কাস্টম ডোমেইন। ফ্রি প্ল্যান আছে। ভালো ডেলিভারেবিলিটি। পেইড প্ল্যানে দিনে 250k।</div>
+        </div>
+        <div class="provider-card">
+          <div class="pname">Google Workspace</div>
+          <div class="psub">চমৎকার ডেলিভারেবিলিটি। প্রতি ইউজারে দিনে 2k সীমা। টিম আগে থেকেই Gmail ব্যবহার করলে সেরা।</div>
+        </div>
+        <div class="provider-card">
+          <div class="pname">Mailgun</div>
+          <div class="psub">বড় পরিসরে ট্রানজেকশনাল। পে-অ্যাজ-ইউ-গো। চমৎকার API আর অ্যানালিটিক্স।</div>
+        </div>
+        <div class="provider-card">
+          <div class="pname">cPanel SMTP</div>
+          <div class="psub">আপনার বাংলাদেশি হোস্টিংয়ে cPanel থাকলে — হোস্টিং SMTP ব্যবহার করুন। ডেলিভারেবিলিটি অসামঞ্জস্যপূর্ণ। শুধু কম ভলিউমের জন্য।</div>
+        </div>
+        <div class="provider-card">
+          <div class="pname">Microsoft 365</div>
+          <div class="psub">কোম্পানি Microsoft 365 ব্যবহার করলে ভালো। smtp.office365.com পোর্ট 587-এর মাধ্যমে SMTP রিলে।</div>
+        </div>
+        <div class="provider-card">
+          <div class="pname">Brevo</div>
+          <div class="psub">সেরা ফ্রি টায়ার (300/দিন)। মাসে 10,000-এর কম ইমেইল পাঠানো ছোট বাংলাদেশি টিমের জন্য ভালো।</div>
+        </div>
+      </div>
+
+      <h2 id="deliverability">ডেলিভারেবিলিটি: SPF, DKIM এবং DMARC</h2>
+      <p>এই অংশটাই বাংলাদেশের বেশিরভাগ বাস্তবায়ন এড়িয়ে যায় — আর এটাই Odoo ইমেইল স্প্যামে যাওয়ার কারণ। SPF, DKIM এবং DMARC হলো DNS রেকর্ড, যা বিশ্বজুড়ে ইমেইল প্রোভাইডারদের বলে দেয় আপনার ডোমেইন ইমেইল পাঠানোর জন্য অনুমোদিত এবং কেউ এটি স্পুফ করছে না। এগুলো ছাড়া, আপনার Odoo সিস্টেমের ইমেইল টেস্টিংয়ে ভালো কাজ করলেও ৪০–৬০% প্রাপকের কাছে স্প্যামে চলে যেতে পারে।</p>
+
+      <div class="config-block">
+        <div class="config-header">
+          <span class="config-badge recommended">প্রয়োজনীয়</span>
+          <h3>SPF রেকর্ড — কোন সার্ভার আপনার ইমেইল পাঠায় তা পৃথিবীকে জানান</h3>
+        </div>
+        <div class="config-body">
+          <p>আপনার ডোমেইন DNS-এ একটি TXT রেকর্ড যোগ করুন (যেখানেই আপনার ডোমেইন রেজিস্টার করা থাকুক না কেন — প্রায়ই GoDaddy, Namecheap, অথবা BDCOM, Fiber@Home-এর মতো একটি বাংলাদেশি রেজিস্ট্রার)। রেকর্ডের নাম হলো <code>@</code> (আপনার ডোমেইনের রুট) আর মানে থাকে আপনার SMTP প্রোভাইডারের SPF include।</p>
+          <div class="code-label">Zoho + অন্য যেকোনো সার্ভারের জন্য SPF রেকর্ড</div>
+          <div class="code-box"><pre>v=spf1 include:zoho.com include:mailgun.org ip4:YOUR_ODOO_SERVER_IP ~all</pre></div>
+          <p>Google Workspace ব্যবহার করলে: <code>include:zoho.com</code>-এর বদলে <code>include:_spf.google.com</code> ব্যবহার করুন। শেষে থাকা <code>~all</code> মানে "সফট ফেল" — তালিকাভুক্ত নয় এমন উৎসের ইমেইলকে সন্দেহজনক চিহ্নিত করা হয়, কিন্তু একেবারে প্রত্যাখ্যান করা হয় না। আপনার SPF রেকর্ড সম্পূর্ণ কিনা তা নিশ্চিত হওয়ার পরই শুধু <code>-all</code> (হার্ড ফেল) ব্যবহার করুন।</p>
+          <div class="warn-box">
+            <div class="wlabel">সাধারণ ভুল</div>
+            <p>আপনার ডোমেইনে শুধু একটি SPF TXT রেকর্ড থাকতে পারে। একাধিক v=spf1 রেকর্ড যোগ করলে সেগুলো একে অপরের সাথে সাংঘর্ষিক হয়ে ডেলিভারেবিলিটি পুরোপুরি ভেঙে দেয়। আপনার সব সেন্ডিং উৎস একটিমাত্র লাইনের SPF রেকর্ডে একত্র করুন।</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="config-block">
+        <div class="config-header">
+          <span class="config-badge recommended">প্রয়োজনীয়</span>
+          <h3>DKIM — প্রতিটি ইমেইলের জন্য ডিজিটাল সিগনেচার</h3>
+        </div>
+        <div class="config-body">
+          <p>DKIM প্রতিটি ইমেইলে একটি ক্রিপ্টোগ্রাফিক সিগনেচার যোগ করে, যা প্রমাণ করে ট্রানজিটে এটি পরিবর্তন করা হয়নি। প্রতিটি SMTP প্রোভাইডার একটি অনন্য DKIM TXT রেকর্ড তৈরি করে দেয়, যা আপনি আপনার ডোমেইন DNS-এ যোগ করেন। রেকর্ডের নাম দেখতে এমন হয়: <code>zoho._domainkey.yourdomain.com</code> (প্রিফিক্স প্রোভাইডার অনুযায়ী ভিন্ন হয়)।</p>
+          <p><strong>Zoho DKIM:</strong> Zoho Admin Console → Domains → SPF/DKIM → Generate DKIM Key → TXT রেকর্ড আপনার ডোমেইন DNS-এ কপি করুন।<br>
+          <strong>Google Workspace DKIM:</strong> Admin Console → Apps → Google Workspace → Gmail → Authenticate Email → Generate New Record → DNS-এ যোগ করুন।<br>
+          <strong>Mailgun DKIM:</strong> Mailgun-এ আপনার ডোমেইন ভেরিফাই করলে স্বয়ংক্রিয়ভাবে তৈরি হয়। দেওয়া দুটি TXT রেকর্ড কপি করুন।</p>
+          <p>DKIM প্রোপাগেশনে ২৪–৪৮ ঘণ্টা লাগে। যাচাই করুন: <code>nslookup -type=TXT zoho._domainkey.yourdomain.com</code></p>
+        </div>
+      </div>
+
+      <div class="config-block">
+        <div class="config-header">
+          <span class="config-badge alternative">SPF ও DKIM-এর পরে যোগ করুন</span>
+          <h3>DMARC — চেক ব্যর্থ হলে প্রাপকরা কী করবে তার নীতি</h3>
+        </div>
+        <div class="config-body">
+          <p>SPF বা DKIM চেক ব্যর্থ হলে DMARC গ্রহণকারী মেইল সার্ভারকে বলে দেয় কী করতে হবে। শুধু মনিটরিং করা একটি নীতি (<code>p=none</code>) দিয়ে শুরু করুন এবং কোয়ারেন্টিন বা রিজেক্টে যাওয়ার আগে রিপোর্ট পর্যালোচনা করুন।</p>
+          <div class="code-label">শুরুর DMARC রেকর্ড (_dmarc.yourdomain.com-এ TXT রেকর্ড হিসেবে যোগ করুন)</div>
+          <div class="code-box"><pre>v=DMARC1; p=none; rua=mailto:dmarc-reports@yourdomain.com; pct=100</pre></div>
+          <p>আপনার রিপোর্টে ৩০ দিন কোনো বৈধ ইমেইল ব্যর্থতা না দেখা গেলে, <code>p=quarantine</code>-এ আপগ্রেড করুন। আরও ৩০ দিন পরিষ্কার থাকলে, <code>p=reject</code>-এ আপগ্রেড করুন। এই ধাপে-ধাপে পদ্ধতি নিশ্চিত করে যে সিকিউরিটি কড়া করার সময় ভুলবশত বৈধ ইমেইল ব্লক হয়ে না যায়।</p>
+        </div>
+      </div>
+
+      <h2 id="incoming-email">ইনকামিং ইমেইল: বাংলাদেশ অপারেশনের জন্য অ্যালিয়াস</h2>
+      <p>Odoo-র ইনকামিং ইমেইল অ্যালিয়াস ইমেইল ঠিকানাকে অ্যাকশন ট্রিগারে রূপান্তরিত করে। <code>sales@yourdomain.com</code>-এ ইমেইল করলে একটি CRM লিড তৈরি হয়। <code>support@yourdomain.com</code>-এ ইমেইল করলে একটি হেল্পডেস্ক টিকেট তৈরি হয়। <code>purchase@yourdomain.com</code>-এ ইমেইল করলে তা পারচেজ মডিউলে যায়। এটি Settings → Technical → Email → Aliases-এ কনফিগার করা হয়।</p>
+
+      <p>ইনকামিং ইমেইল পেতে, আপনার একটি ক্যাচঅল অ্যালিয়াস কনফিগার করা এবং একটি ইনকামিং মেইল সার্ভার দরকার। বাংলাদেশের জন্য দুটি অপশন আছে:</p>
+
+      <p><strong>অপশন ১ — IMAP পোলিং (সহজ):</strong> Odoo প্রতি ৫ মিনিটে IMAP-এর মাধ্যমে আপনার ইমেইল সার্ভারের সাথে সংযুক্ত হয় এবং নতুন ইমেইল প্রসেস করে। Settings → Technical → Email → Incoming Mail Servers-এ কনফিগার করুন। IMAP সাপোর্ট করে এমন যেকোনো ইমেইল প্রোভাইডারের সাথে কাজ করে (Zoho, Gmail, cPanel)। অসুবিধা: ইমেইল আসা আর Odoo-র অ্যাকশনের মধ্যে ৫ মিনিটের বিলম্ব।</p>
+
+      <p><strong>অপশন ২ — Postfix রিলে (দ্রুত, সার্ভার লাগে):</strong> রিয়েল-টাইমে ইমেইল গ্রহণ করে Odoo-র বিল্ট-ইন MTA-তে রিলে করতে আপনার Odoo সার্ভারে Postfix চালান। আপনার সার্ভারের দিকে নির্দেশ করা MX রেকর্ড দরকার। দ্রুত কিন্তু Linux সার্ভার অ্যাডমিনিস্ট্রেশনের জ্ঞান লাগে।</p>
+
+      <div class="tip-box">
+        <div class="tlabel">বাংলাদেশের জন্য সুপারিশ</div>
+        <p>বেশিরভাগ বাংলাদেশি SME-র জন্য IMAP পোলিং-ই সঠিক পছন্দ। এটি কনফিগার করা সহজ, বিদ্যমান ইমেইল প্রোভাইডারদের সাথে কাজ করে, আর বেশিরভাগ অভ্যন্তরীণ ওয়ার্কফ্লোর জন্য ৫ মিনিটের বিলম্ব গ্রহণযোগ্য। রিয়েল-টাইম ইমেইল-থেকে-টিকেট তৈরির দরকার হলেই শুধু (যেমন SLA রিকোয়ারমেন্টসহ কাস্টমার সাপোর্ট অপারেশন) Postfix রিলে বাস্তবায়ন করুন।</p>
+      </div>
+
+      <h2 id="sms-gateways">বাংলাদেশ SMS গেটওয়ে: নির্বাচন ও তুলনা</h2>
+      <p>বাংলাদেশের ব্যবসায়িক অপারেশনে SMS-এর গুরুত্ব অনন্য। WhatsApp-এর ব্যবহার বেশি, কিন্তু সর্বজনীন নয়; SMS মোবাইল ফোন থাকা প্রতিটি মানুষের কাছে পৌঁছায়। Odoo-তে SMS ব্যবহৃত হয় পেমেন্ট রিমাইন্ডার, ডেলিভারি নোটিফিকেশন, OTP, আর ম্যানেজারদের কাছে অ্যাপ্রুভাল অ্যালার্টের জন্য।</p>
+
+      <div class="config-block">
+        <div class="config-header">
+          <span class="config-badge recommended">মার্কেট লিডার</span>
+          <h3>SSL Wireless — সেরা কভারেজ, সবচেয়ে নির্ভরযোগ্য</h3>
+        </div>
+        <div class="config-body">
+          <p>SSL Wireless (SSL EZY) হলো বাংলাদেশের সবচেয়ে বড় বাল্ক SMS প্রোভাইডার, যার সংযোগ আছে সব ৫টি অপারেটরের সাথে: Grameenphone, Robi, Banglalink, Teletalk এবং Airtel Bangladesh। ফিচার:</p>
+          <ul>
+            <li><strong>মাস্কিং (সেন্ডার ID):</strong> র‍্যান্ডম নম্বরের বদলে আপনার কোম্পানির নাম থেকে SMS পাঠান (যেমন, "ACME-BD")। BTRC অনুমোদন লাগে — ৫–৭ কার্যদিবস, কোম্পানির ট্রেড লাইসেন্স প্রয়োজন।</li>
+            <li><strong>নন-মাস্কিং:</strong> সাথে সাথে পাওয়া যায়। SMS-এ একটি সাংখ্যিক সেন্ডার ID দেখায়। কোনো অনুমোদন লাগে না।</li>
+            <li><strong>API:</strong> JSON পেলোডসহ REST API। সহজবোধ্য ডকুমেন্টেশন। ইউজারনেম + পাসওয়ার্ড অথবা API key দিয়ে অথেন্টিকেশন।</li>
+            <li><strong>প্রাইসিং:</strong> প্রতিটি ব্যবসার সাথে আলোচনা করে ঠিক হয়। স্ট্যান্ডার্ড প্ল্যানে প্রতি SMS প্রায় ৳0.35–0.55। বাল্ক কিনলে খরচ কমে।</li>
+            <li><strong>নির্ভরযোগ্যতা:</strong> Grameenphone-এ ৯৮%+ ডেলিভারি রেট। Teletalk-এ একটু কম।</li>
+          </ul>
+          <p>যোগাযোগ: sslwireless.com — ব্যবসায়িক অ্যাকাউন্টের জন্য ঢাকার সেলস টিম।</p>
+        </div>
+      </div>
+
+      <div class="config-block">
+        <div class="config-header">
+          <span class="config-badge alternative">শক্তিশালী বিকল্প</span>
+          <h3>MiCom — প্রতিযোগিতামূলক প্রাইসিং, ভলিউমের জন্য ভালো</h3>
+        </div>
+        <div class="config-body">
+          <p>MiCom বাংলাদেশের দ্বিতীয় সর্ববৃহৎ বাল্ক SMS প্রোভাইডার। SSL Wireless-এর মতো REST API। বড় ভলিউম পাঠানোর জন্য প্রাইসিং একটু বেশি প্রতিযোগিতামূলক (মাসে ১০ লাখ+ SMS)। দৈনিক শিফট নোটিফিকেশন বা বড় আকারে কাস্টমার অ্যালার্ট পাঠানো ম্যানুফ্যাকচারিং কোম্পানির জন্য ভালো।</p>
+          <p>ছোট বাজেটের জন্য <strong>ADN SMS</strong> এবং <strong>BulkSMSBD</strong>-ও পাওয়া যায়। ADN বিশেষভাবে NGO আর শিক্ষা প্রতিষ্ঠানের কাছে জনপ্রিয়। BulkSMSBD-তে কোনো বাড়তি ফিচার নেই, তবে নন-মাস্কড ভলিউম পাঠানোর জন্য সবচেয়ে সস্তা প্রাইসিং।</p>
+        </div>
+      </div>
+
+      <h2 id="sms-odoo">বাংলাদেশ SMS-কে Odoo-র সাথে সংযুক্ত করা</h2>
+      <p>Odoo-তে একটি বিল্ট-ইন SMS মডিউল আছে যা IAP (Odoo-র নিজস্ব SMS ক্রেডিট সার্ভিস) অথবা একটি কাস্টম SMS প্রোভাইডারের সাথে কাজ করে। বাংলাদেশের জন্য, প্রায় সবসময়ই আপনার একটি কাস্টম SMS প্রোভাইডার দরকার — IAP ক্রেডিট ব্যয়বহুল আর বাংলাদেশের অপারেটর রুটের জন্য অপ্টিমাইজড নয়।</p>
+
+      <div class="config-block">
+        <div class="config-header">
+          <span class="config-badge recommended">কাস্টম মডিউল</span>
+          <h3>SSL Wireless REST API-কে Odoo-র সাথে ইন্টিগ্রেশন</h3>
+        </div>
+        <div class="config-body">
+          <p>ইন্টিগ্রেশনটি Odoo-র <code>sms.sms</code> মডেলের সেন্ড মেথড ওভাররাইড করে IAP-এর বদলে SSL Wireless দিয়ে রুট করে। মডিউলের স্ট্রাকচার:</p>
+          <div class="code-label">SSL Wireless API কল (Python — Odoo মডিউলের ভেতরে)</div>
+          <div class="code-box"><pre>import requests
+
+def send_sms_ssl_wireless(to_number, message):
+    """Send SMS via SSL Wireless REST API."""
+    # Normalise Bangladesh number to international format
+    number = to_number.strip().replace(" ", "").replace("-", "")
+    if number.startswith("0"):
+        number = "88" + number  # Add Bangladesh country code
+
+    url = "https://sms.sslwireless.com/pushapi/dynamic/server.php"
+    payload = {
+        "api_token": "YOUR_SSL_API_TOKEN",
+        "sid": "YOUR_SENDER_ID",
+        "sms": message,
+        "msisdn": number,
+        "csmsid": str(hash(f"{number}{message}"))[:15]  # unique message ID
+    }
+    response = requests.post(url, data=payload, timeout=10)
+    return response.json()</pre></div>
+          <p><code>api_token</code> এবং <code>sid</code> Odoo System Parameters-এ সংরক্ষণ করুন, হার্ডকোড করবেন না। নম্বর নরমালাইজেশন ধাপটি গুরুত্বপূর্ণ — Odoo-তে বাংলাদেশি মোবাইল নম্বর প্রায়ই <code>01XXXXXXXXX</code> হিসেবে সংরক্ষিত থাকে, কিন্তু SSL Wireless-এর <code>8801XXXXXXXXX</code> ফরম্যাট দরকার।</p>
+          <div class="warn-box">
+            <div class="wlabel">DND কমপ্লায়েন্স</div>
+            <p>বাংলাদেশ BTRC Do Not Disturb (DND) নিয়ম বলবৎ করে। জাতীয় DND রেজিস্ট্রিতে নিবন্ধিত ইউজাররা প্রোমোশনাল SMS পান না। মাস্কড সেন্ডার ID-ও এর ব্যতিক্রম নয়। তবে, ট্রানজেকশনাল SMS (অর্ডার কনফার্মেশন, পেমেন্ট অ্যালার্ট, OTP) সাধারণত DND বিধিনিষেধ থেকে অব্যাহতিপ্রাপ্ত। ডেলিভারি রেট বজায় রাখতে আপনার SMS কন্টেন্টকে ট্রানজেকশনাল হিসেবে সাজান, প্রোমোশনাল নয়।</p>
+          </div>
+        </div>
+      </div>
+
+      <h2 id="whatsapp">WhatsApp Business ইন্টিগ্রেশন</h2>
+      <p>বাংলাদেশের ব্যবসায় WhatsApp-ই প্রধান মেসেজিং প্ল্যাটফর্ম। প্রতিটি সেলস রেপ, ভেন্ডর আর কাস্টমার WhatsApp-এ যোগাযোগ করে। Odoo-র সাথে WhatsApp ইন্টিগ্রেট করলে আপনি পান একটি একীভূত কমিউনিকেশন লগ এবং স্বয়ংক্রিয় নোটিফিকেশন।</p>
+
+      <p><strong>Odoo 16+ Enterprise:</strong> এতে একটি নেটিভ WhatsApp মডিউল আছে। Settings → WhatsApp → Connect Account-এ যান। Meta Business Suite-এর সাথে যুক্ত একটি WhatsApp Business Account, একটি নিবেদিত ফোন নম্বর (আপনার ব্যক্তিগত WhatsApp নম্বর হতে পারবে না), এবং অনুমোদিত মেসেজ টেমপ্লেট দরকার। Meta ভেরিফিকেশনসহ সেটআপে প্রায় ২–৩ কার্যদিবস লাগে।</p>
+
+      <p><strong>Odoo Community / পুরনো ভার্সন:</strong> মিডলওয়্যার হিসেবে একটি WhatsApp Business API প্রোভাইডার ব্যবহার করুন। বাংলাদেশের অপশন:</p>
+      <ul>
+        <li><strong>Twilio WhatsApp API:</strong> আন্তর্জাতিক প্রোভাইডার, চমৎকার ডকুমেন্টেশন, আন্তর্জাতিক কার্ড গ্রহণ করে। মাসিক খরচ $15 থেকে শুরু, প্লাস প্রতি-মেসেজ ফি।</li>
+        <li><strong>360dialog:</strong> ইউরোপীয় WhatsApp BSP (Business Solution Provider)। বড় ভলিউমের জন্য ভালো প্রাইসিং। Meta Business ভেরিফিকেশন লাগে।</li>
+        <li><strong>স্থানীয় BSP:</strong> বাংলাদেশের কিছু IT ফার্ম WhatsApp Business API অ্যাক্সেস রিসেল করে — আপনার বাস্তবায়ন পার্টনারের সাথে যাচাই করুন।</li>
+      </ul>
+
+      <div class="tip-box">
+        <div class="tlabel">ব্যবহারিক টিপ</div>
+        <p>WhatsApp মেসেজ টেমপ্লেট আগে থেকেই Meta-র অনুমোদন লাগে। টেমপ্লেট অনুমোদনে ২৪–৭২ ঘণ্টা লাগে। টেমপ্লেট দরকার হয় এমন সাধারণ বাংলাদেশি ব্যবহার: অর্ডার কনফার্মেশন, পেমেন্ট প্রাপ্তি, ডেলিভারি ডিসপ্যাচ, মিটিং রিমাইন্ডার। দ্রুত অনুমোদনের জন্য আপনার টেমপ্লেট সাদাসিধা ভাষায় লিখুন (প্রোমোশনাল ভাষা ছাড়া)।</p>
+      </div>
+
+      <h2 id="notification-templates">নোটিফিকেশন টেমপ্লেট: বাংলাদেশ অপারেশনের জন্য কাস্টমাইজেশন</h2>
+      <p>Odoo-র ডিফল্ট ইমেইল টেমপ্লেট ইংরেজিতে এবং একটি সাধারণ বৈশ্বিক দর্শকের জন্য লেখা। বাংলাদেশি ব্যবসার উচিত স্থানীয় ব্যবসায়িক প্রেক্ষাপট, সঠিক ফরম্যাটিং, আর কোম্পানির যোগাযোগের ধরন প্রতিফলিত করতে এগুলো কাস্টমাইজ করা।</p>
+
+      <p>Settings → Technical → Email → Templates-এ টেমপ্লেট অ্যাক্সেস করুন। বাংলাদেশ অপারেশনের জন্য কাস্টমাইজ করার মূল টেমপ্লেট:</p>
+
+      <ul>
+        <li><strong>সেল অর্ডার কনফার্মেশন:</strong> কোম্পানির ট্রেড লাইসেন্স নম্বর, TIN, এবং ব্যাংক অ্যাকাউন্টের বিবরণ যোগ করুন। এক্সপোর্ট কাস্টমারের ক্ষেত্রে প্রযোজ্য হলে LC শর্ত অন্তর্ভুক্ত করুন।</li>
+        <li><strong>ইনভয়েস:</strong> Mushak রেজিস্ট্রেশন নম্বর যোগ করুন, VAT ব্রেকডাউন দৃশ্যমান আছে কিনা নিশ্চিত করুন, আপনার ক্রেডিট শর্ত অনুযায়ী "[X] দিনের মধ্যে পরিশোধ করুন" টেক্সট যোগ করুন।</li>
+        <li><strong>পারচেজ অর্ডার:</strong> বাংলা বা ইংরেজিতে আপনার কোম্পানির স্ট্যান্ডার্ড শর্তাবলী যোগ করুন। ডেলিভারির স্থান এবং যোগাযোগের ব্যক্তি অন্তর্ভুক্ত করুন।</li>
+        <li><strong>পেমেন্ট রিমাইন্ডার:</strong> বাংলাদেশের ব্যবসায়িক সংস্কৃতি প্রতিফলিত করতে কাস্টমাইজ করুন — শ্রদ্ধাশীল কিন্তু দৃঢ় টোন। সহজে পেমেন্টের জন্য bKash/ব্যাংক ট্রান্সফারের বিবরণ অন্তর্ভুক্ত করুন।</li>
+        <li><strong>ডেলিভারি স্লিপ:</strong> ড্রাইভারের নাম, গাড়ির নম্বর, এবং প্রযোজ্য হলে Pathao/Steadfast ট্র্যাকিং নম্বর যোগ করুন।</li>
+      </ul>
+
+      <p>কোন ইউজার কোন Odoo নোটিফিকেশন পাবেন তা নিয়ন্ত্রণকারী ইউজার নোটিফিকেশন সেটিংসের জন্য দেখুন <a href="/bn/lab/0042-odoo-user-access-rights-configuration" style="color:var(--accent)">Odoo ইউজার অ্যাক্সেস রাইটস গাইড</a> — এতে প্রতিটি রোলের শুধু প্রাসঙ্গিক ইউজারদের কাছে নোটিফিকেশনের বন্যা সীমিত রাখার পদ্ধতি বর্ণনা করা আছে। আর গো-লাইভ পরবর্তী কমিউনিকেশন ম্যানেজমেন্টের জন্য, <a href="/bn/lab/0032-odoo-post-go-live-hypercare-bangladesh" style="color:var(--accent)">Post Go-Live Hypercare গাইড</a>-এ আছে লঞ্চের প্রথম ৩০ দিনে নোটিফিকেশন ওভারলোড কীভাবে সামলাতে হয়।</p>
+
+      <h2 id="troubleshooting">ইমেইল ও SMS-এর সাধারণ সমস্যা সমাধান</h2>
+
+      <p><strong>Odoo থেকে ইমেইল পাঠানো হচ্ছে কিন্তু স্প্যামে যাচ্ছে</strong><br>
+      উপরে বর্ণিত SPF, DKIM, DMARC চেক করুন। Odoo টেমপ্লেটের From ঠিকানা SMTP সেন্ডিং ডোমেইনের সাথে মিলছে কিনা তাও চেক করুন। From বনাম সেন্ডার ডোমেইনের অমিল একটি বড় স্প্যাম ট্রিগার।</p>
+
+      <p><strong>Odoo-তে "SMTP Authentication Failed" এরর</strong><br>
+      প্রায় সবসময় এর একটি: (ক) আপনি অ্যাপ পাসওয়ার্ডের বদলে আপনার মূল অ্যাকাউন্ট পাসওয়ার্ড এন্টার করেছেন — Zoho/Google সিকিউরিটি সেটিংসে একটি অ্যাপ পাসওয়ার্ড তৈরি করুন; (খ) ইমেইল অ্যাকাউন্টে 2FA চালু আছে কিন্তু আপনি অ্যাপ পাসওয়ার্ড ব্যবহার করছেন না; (গ) আপনার SMTP প্রোভাইডারের "Less Secure Apps" চালু থাকা দরকার (শুধু Gmail-এর পুরনো অ্যাকাউন্টে — Workspace-এ প্রযোজ্য নয়)।</p>
+
+      <p><strong>SMTP সংযোগে SSL সার্টিফিকেট এরর</strong><br>
+      আপনার Odoo সার্ভার SMTP প্রোভাইডারের SSL সার্টিফিকেট যাচাই করতে পারছে না। আপনার সার্ভারে <code>ca-certificates</code> প্যাকেজ ইনস্টল ও আপডেট করা আছে কিনা নিশ্চিত করুন (<code>sudo apt-get update &amp;&amp; sudo apt-get install ca-certificates</code>)। সার্ভারের ঘড়ি NTP-সিঙ্কড কিনা তাও যাচাই করুন।</p>
+
+      <p><strong>বাংলাদেশি মোবাইল নম্বরের জন্য SMS API "Invalid Number" দেখাচ্ছে</strong><br>
+      ফরম্যাটের সমস্যা। SSL Wireless-এর জন্য বাংলাদেশি নম্বর অবশ্যই <code>8801XXXXXXXXX</code> হতে হবে (880-এর পরে ৯ ডিজিট)। Odoo-তে <code>01XXXXXXXXX</code> হিসেবে সংরক্ষিত নম্বরের সামনে কান্ট্রি কোড যোগ করা দরকার। উপরের কোড উদাহরণে দেখানো মতো আপনার SMS মডিউলে একটি নরমালাইজেশন ধাপ যোগ করুন।</p>
+
+      <p><strong>SMS ডেলিভার হয়েছে কিন্তু Odoo-তে "Failed" চিহ্নিত হচ্ছে</strong><br>
+      SMS মডিউল API রেসপন্স চেক করছে, কিন্তু SSL Wireless-এর রেসপন্স ফরম্যাট Odoo যা আশা করে তার সাথে মেলে না। শুধু HTTP স্ট্যাটাস কোডের ওপর নির্ভর না করে স্পষ্টভাবে SSL Wireless-এর রেসপন্স JSON পার্স করুন — তাদের <code>status</code> ফিল্ডের মান (<code>"success"</code> বা এরর কোড) চেক করুন।</p>
+
+      <div class="callout">
+        <span class="tag">ইমেইল ও SMS কনফিগারেশন রিভিউ</span>
+        <p>আপনার Odoo ইনস্টলেশনের ইমেইল সেটআপ ভাঙা, স্প্যাম-ফিল্টার্ড, বা কখনো কনফিগারই না করা থাকলে, আমি এক রিমোট সেশনেই SMTP, DNS রেকর্ড, SMS গেটওয়ে এবং টেমপ্লেট কনফিগারেশন অডিট করে ঠিক করে দিতে পারি। <a href="/bn/#contact" style="color:var(--accent)">কনফিগারেশন রিভিউ বুক করুন →</a></p>
+      </div>
+
+      <h2 id="faq">সচরাচর জিজ্ঞাসা</h2>
+
+      <h3>বাংলাদেশে Odoo-র জন্য কোন SMTP সার্ভার সবচেয়ে ভালো?</h3>
+      <p>বেশিরভাগ বাংলাদেশি ব্যবসার জন্য, নির্ভরযোগ্যতা, দাম, এবং ডেলিভারেবিলিটির মধ্যে সেরা ভারসাম্য দেয় Zoho Mail SMTP। এটি কাস্টম ডোমেইন ইমেইল সাপোর্ট করে, সাধারণ SME ভলিউমের জন্য কোনো সমস্যাজনক সীমা নেই, আর SMTP ক্রেডেনশিয়াল কনফিগার করা সহজ। Google Workspace চমৎকার, তবে প্রতি ইউজারে দিনে আউটগোয়িং SMTP-কে 2,000 মেসেজে সীমিত রাখে। বড় পরিসরে ট্রানজেকশনাল ইমেইলের জন্য (দিনে 10,000+), SMTP রিলেসহ Mailgun বা SendGrid ব্যবহার করুন।</p>
+
+      <h3>বাংলাদেশে Odoo-র সাথে কোন SMS গেটওয়ে সবচেয়ে ভালো কাজ করে?</h3>
+      <p>সব পাঁচটি বাংলাদেশি অপারেটরে সবচেয়ে বিস্তৃত নেটওয়ার্ক কভারেজসহ SSL Wireless সবচেয়ে নির্ভরযোগ্য। Odoo ইন্টিগ্রেশনের জন্য, JSON পেলোডসহ তাদের REST API ব্যবহার করুন। বড় ভলিউম পাঠানোর জন্য প্রতিযোগিতামূলক প্রাইসিংসহ MiCom একটি শক্তিশালী দ্বিতীয় অপশন। দুটোরই একটি ব্যবসায়িক অ্যাকাউন্ট দরকার। মাস্কিং (আপনার কোম্পানির নাম দেখানো সেন্ডার ID) BTRC অনুমোদন লাগে এবং ৫–৭ কার্যদিবস সময় নেয়।</p>
+
+      <h3>বাংলাদেশি প্রাপকদের কাছে কেন Odoo ইমেইল স্প্যামে যাচ্ছে?</h3>
+      <p>সবচেয়ে সাধারণ কারণ: SPF রেকর্ড অনুপস্থিত (আপনার ডোমেইন DNS-এ SMTP প্রোভাইডারের SPF include যোগ করুন), DKIM সিগনেচার নেই (চালু করে DKIM TXT রেকর্ড যোগ করুন), অথবা কোনো DMARC নীতি নেই। SPF + DKIM + DMARC একসাথে ৯০% ডেলিভারেবিলিটি সমস্যা সমাধান করে। From ঠিকানার ডোমেইন আপনার সেন্ডিং ডোমেইনের সাথে মিলছে কিনা তাও চেক করুন — অমিল স্প্যাম ফিল্টারকে জোরালোভাবে ট্রিগার করে।</p>
+
+      <h3>Odoo কি বাংলাদেশি কাস্টমারদের কাছে WhatsApp মেসেজ পাঠাতে পারে?</h3>
+      <p>হ্যাঁ, WhatsApp Business API-র মাধ্যমে। Odoo 16+ Enterprise-এ একটি নেটিভ WhatsApp মডিউল আছে, যার জন্য একটি WhatsApp Business Account, একটি নিবেদিত ফোন নম্বর, এবং অনুমোদিত মেসেজ টেমপ্লেট দরকার। Community বা পুরনো ভার্সনের জন্য, মিডলওয়্যার হিসেবে একটি WhatsApp Business API প্রোভাইডার (Twilio, 360dialog) ব্যবহার করুন। Meta বিজনেস ভেরিফিকেশনসহ সেটআপে ২–৫ কার্যদিবস লাগে।</p>
+
+    </div>

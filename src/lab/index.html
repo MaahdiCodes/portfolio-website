@@ -1,0 +1,1828 @@
+---
+layout: "layouts/base.njk"
+permalink: "lab/index.html"
+bareBody: true
+stylesheetHref: false
+title: "Lab — Mehedi Hasan | Odoo ERP Consultant Bangladesh"
+description: "Mehedi Hasan's Technical Lab — essays, guides, templates and utilities on Odoo ERP, manufacturing operations, and business analysis in Bangladesh."
+canonical: "https://mhasan.me/lab/"
+hreflangBn: "https://mhasan.me/bn/lab/"
+ogTitle: "Lab — Mehedi Hasan"
+ogDescription: "Essays, guides, templates and utilities on Odoo ERP, manufacturing operations, and business analysis."
+ogType: "website"
+extraStyles: |
+  :root{
+      --bg:#0A0B0D;
+      --bg-1:#0E1013;
+      --surface:#111317;
+      --elev:#15181D;
+      --border:#1E2228;
+      --border-2:#2A2F38;
+      --hair:rgba(255,255,255,0.06);
+      --text:#EDEEF0;
+      --text-2:#9BA1AA;
+      --text-3:#7E8694;
+      --accent:oklch(0.80 0.17 155);
+      --accent-dim:color-mix(in oklch, var(--accent) 14%, transparent);
+      --accent-glow:color-mix(in oklch, var(--accent) 35%, transparent);
+      --sans:'Geist', ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif;
+      --mono:'Geist Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+      --serif:'Instrument Serif', ui-serif, Georgia, serif;
+      --max:1280px;
+      --gutter:24px;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;overflow-x:hidden;background:var(--bg);color:var(--text);font-family:var(--sans);font-feature-settings:"ss01","cv11";-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+    body{
+      background:
+        radial-gradient(900px 600px at 80% -10%, rgba(80,230,160,0.07), transparent 60%),
+        radial-gradient(700px 500px at 10% 10%, rgba(40,60,90,0.15), transparent 70%),
+        var(--bg);
+      min-height:100vh;
+    }
+    a{color:inherit;text-decoration:none}
+    ::selection{background:var(--accent);color:#000}
+  
+    /* light theme (default) — consultive.io-inspired: white/navy-gray, teal accent */
+    html[data-theme="light"]{
+      --bg:#F7F9FC;
+      --bg-1:#EEF1F5;
+      --surface:#FFFFFF;
+      --elev:#EDF0F4;
+      --border:#E2E8F0;
+      --border-2:#CBD5E0;
+      --hair:rgba(0,0,0,0.05);
+      --text:#1A2B3C;
+      --text-2:#4A5568;
+      --text-3:#718096;
+      --accent:#009B8E;
+      --accent-dim:color-mix(in oklch, #009B8E 10%, transparent);
+      --accent-glow:color-mix(in oklch, #009B8E 20%, transparent);
+    }
+    html[data-theme="light"] body{
+      background:radial-gradient(900px 600px at 80% -10%,rgba(0,155,142,0.05),transparent 60%),var(--bg);
+    }
+  
+    /* dark navy theme — same dark family, recolored from near-black to navy, teal accent */
+    html[data-theme="dark-navy"]{
+      --bg:#061628;
+      --bg-1:#0B2545;
+      --surface:#0E2038;
+      --elev:#132C52;
+      --border:#1B3A6B;
+      --border-2:#2A4A7F;
+      --hair:rgba(255,255,255,0.06);
+      --text:#EDEEF0;
+      --text-2:#9BAAC2;
+      --text-3:#6E7F9C;
+      --accent: oklch(0.80 0.16 185);
+      --accent-dim:color-mix(in oklch, oklch(0.80 0.16 185) 14%, transparent);
+      --accent-glow:color-mix(in oklch, oklch(0.80 0.16 185) 35%, transparent);
+    }
+    html[data-theme="dark-navy"] body{
+      background:radial-gradient(900px 600px at 80% -10%,color-mix(in oklch, var(--accent) 10%, transparent),transparent 60%),radial-gradient(700px 500px at 10% 10%, rgba(27,58,107,0.24), transparent 70%),var(--bg);
+    }
+    html[data-theme="dark-navy"] .nav-inner{background:rgba(11,37,69,0.6)}
+  
+    /* layout */
+    .shell{max-width:var(--max);margin:0 auto;padding:0 var(--gutter);position:relative;z-index:1}
+  
+    /* nav */
+    .nav{position:sticky;top:0;z-index:50;padding:16px 0}
+    .nav-inner{
+      display:flex;align-items:center;justify-content:space-between;
+      padding:10px 14px 10px 18px;
+      border:1px solid var(--hair);
+      background:rgba(14,16,19,0.6);
+      backdrop-filter:blur(16px) saturate(140%);
+      -webkit-backdrop-filter:blur(16px) saturate(140%);
+      border-radius:999px;
+    }
+    html[data-theme="light"] .nav-inner{background:rgba(245,247,250,0.9)}
+    .brand{display:flex;align-items:center;gap:12px;font-weight:500;letter-spacing:-0.01em}
+    .brand-mark{
+      width:30px;height:30px;border-radius:8px;
+      background:linear-gradient(135deg,var(--accent) 0%, oklch(0.55 0.14 170) 100%);
+      box-shadow:0 0 0 1px rgba(0,0,0,.35), inset 0 0 0 1px rgba(255,255,255,.18);
+      position:relative;display:grid;place-items:center;
+      font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:0.04em;
+      color:#04140B;
+    }
+    .brand-mark::after{content:"MH";position:relative;z-index:1}
+    .brand-name{display:flex;flex-direction:column;line-height:1.1}
+    .brand-name b{font-weight:500;font-size:14px;letter-spacing:-0.01em;color:var(--text)}
+    .brand-name em{font-style:normal;font-family:var(--mono);font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-3);margin-top:2px}
+    .nav-links{display:flex;gap:6px}
+    .nav-links a{font-size:13.5px;color:var(--text-2);padding:8px 14px;border-radius:999px;transition:all .2s ease}
+    .nav-links a:hover{color:var(--text);background:var(--hair)}
+    .nav-right{display:flex;align-items:center;gap:10px}
+    .nav-cta{
+      display:inline-flex;align-items:center;gap:8px;
+      font-size:13px;font-weight:500;
+      padding:9px 14px;border-radius:999px;
+      background:var(--text);color:#0A0B0D;
+      transition:transform .15s ease, background .15s ease;
+    }
+    .nav-cta:hover{transform:translateY(-1px)}
+    .nav-cta .arrow{display:inline-block;transition:transform .2s ease}
+    .nav-cta:hover .arrow{transform:translate(2px,-2px)}
+    .theme-toggle{
+      appearance:none;border:1px solid var(--border);background:var(--elev);
+      color:var(--text-2);width:34px;height:34px;border-radius:10px;
+      cursor:pointer;display:grid;place-items:center;
+      transition:all .2s ease;flex:none;padding:0;
+    }
+    .theme-toggle:hover{color:var(--text);border-color:var(--border-2)}
+    .theme-toggle svg{display:block;pointer-events:none}
+    .theme-toggle .icon-sun{display:none}
+    .theme-toggle .icon-moon{display:block}
+    html[data-theme="light"] .theme-toggle .icon-sun{display:block}
+    html[data-theme="light"] .theme-toggle .icon-moon{display:none}
+    @media(max-width:760px){.nav-links{display:none}}
+  
+    /* eyebrow */
+    .eyebrow{
+      font-family:var(--mono);font-size:11.5px;letter-spacing:0.14em;color:var(--text-3);
+      text-transform:uppercase;display:inline-flex;align-items:center;gap:10px;
+    }
+    .eyebrow::before{content:"";width:18px;height:1px;background:var(--border-2)}
+  
+    /* page header */
+    .lab-page-head{padding:72px 0 56px}
+    .lab-page-head h1{
+      font-family:var(--sans);font-weight:500;letter-spacing:-0.035em;
+      font-size:clamp(40px,6vw,80px);line-height:0.98;
+      margin:18px 0 0;color:var(--text);
+    }
+    .lab-page-head h1 .serif{font-family:var(--serif);font-style:italic;font-weight:400}
+    .lab-page-head p{font-size:17px;line-height:1.55;color:var(--text-2);margin:20px 0 0;max-width:560px}
+  
+    /* search */
+    .lab-search-wrap{margin:0 0 32px;position:relative}
+    .lab-search{
+      width:100%;padding:13px 18px 13px 46px;
+      border:1px solid var(--border);border-radius:10px;
+      background:var(--surface);color:var(--text);
+      font-family:var(--sans);font-size:15px;
+      outline:none;transition:border-color .2s ease;
+    }
+    .lab-search:focus{border-color:var(--border-2)}
+    .lab-search::placeholder{color:var(--text-3)}
+    .lab-search-icon{
+      position:absolute;left:16px;top:50%;transform:translateY(-50%);
+      color:var(--text-3);pointer-events:none;
+    }
+    .lab-search-count{
+      font-family:var(--mono);font-size:11.5px;color:var(--text-3);letter-spacing:0.08em;
+      margin-bottom:16px;
+    }
+    .lab-no-results{
+      padding:48px 0;text-align:center;
+      font-family:var(--mono);font-size:13px;color:var(--text-3);letter-spacing:0.06em;
+      display:none;
+    }
+    .lab-no-results.visible{display:block}
+  
+    /* lab table */
+    .lab{border:1px solid var(--border);border-radius:14px;overflow:hidden;background:var(--surface)}
+    .lab-head{
+      display:grid;grid-template-columns:80px 1fr 160px 160px 120px;
+      padding:14px 22px;border-bottom:1px solid var(--border);
+      font-family:var(--mono);font-size:10.5px;letter-spacing:0.14em;color:var(--text-3);text-transform:uppercase;
+    }
+    .lab-row{
+      display:grid;grid-template-columns:80px 1fr 160px 160px 120px;
+      padding:22px;border-bottom:1px solid var(--border);align-items:center;gap:16px;
+      transition:background .2s ease;position:relative;cursor:pointer;
+    }
+    .lab-row:last-child{border-bottom:none}
+    .lab-row:hover{background:rgba(255,255,255,0.015)}
+    html[data-theme="light"] .lab-row:hover{background:rgba(0,0,0,0.02)}
+    .lab-row:hover .lab-title{color:var(--accent)}
+    .lab-row:hover .lab-arrow{transform:translate(4px,-4px);color:var(--accent)}
+    .lab-row[hidden]{display:none !important}
+    .lab-num{font-family:var(--mono);font-size:12px;color:var(--text-3);letter-spacing:0.05em}
+    .lab-title{font-size:17px;letter-spacing:-0.01em;color:var(--text);transition:color .2s ease}
+    .lab-title .sub{display:block;font-size:13px;color:var(--text-2);margin-top:4px;letter-spacing:0}
+    .lab-kind{font-family:var(--mono);font-size:11.5px;color:var(--text-2);letter-spacing:0.06em}
+    .lab-date{font-family:var(--mono);font-size:11.5px;color:var(--text-3);letter-spacing:0.06em}
+    .lab-arrow{justify-self:end;font-family:var(--mono);color:var(--text-3);transition:all .2s ease;font-size:16px}
+    @media(max-width:900px){
+      .lab-head{display:none}
+      .lab-row{grid-template-columns:40px 1fr auto;grid-template-rows:auto auto;padding:18px 20px}
+      .lab-kind{grid-column:2;grid-row:2}
+      .lab-date{display:none}
+    }
+  
+    /* toolbar (view toggle + per-page) */
+    .lab-toolbar{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;gap:12px;flex-wrap:wrap}
+    .lab-view-toggle{display:flex;gap:2px;background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:3px;flex:none}
+    .view-btn{
+      display:flex;align-items:center;justify-content:center;
+      width:32px;height:32px;border:none;border-radius:6px;
+      background:transparent;color:var(--text-3);cursor:pointer;transition:all .15s ease;
+    }
+    .view-btn.active{background:var(--border-2);color:var(--text)}
+    .view-btn:hover:not(.active){color:var(--text-2)}
+    .lab-per-page{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+    .per-page-label{font-family:var(--mono);font-size:11.5px;color:var(--text-3);letter-spacing:0.06em;margin-right:4px}
+    .per-page-btn{
+      padding:5px 10px;border:1px solid var(--border);border-radius:6px;
+      background:transparent;color:var(--text-3);
+      font-family:var(--mono);font-size:11.5px;letter-spacing:0.06em;
+      cursor:pointer;transition:all .15s ease;
+    }
+    .per-page-btn.active{background:var(--accent);border-color:var(--accent);color:#000}
+    .per-page-btn:hover:not(.active){border-color:var(--border-2);color:var(--text)}
+  
+    /* pagination */
+    .lab-pagination{display:flex;align-items:center;justify-content:center;gap:16px;padding:24px 0}
+    .page-nav-btn{
+      padding:8px 18px;border:1px solid var(--border);border-radius:8px;
+      background:transparent;color:var(--text-2);
+      font-family:var(--mono);font-size:12px;letter-spacing:0.06em;
+      cursor:pointer;transition:all .15s ease;
+    }
+    .page-nav-btn:hover:not(:disabled){border-color:var(--border-2);color:var(--text)}
+    .page-nav-btn:disabled{opacity:0.3;cursor:default}
+    .page-info{font-family:var(--mono);font-size:12px;color:var(--text-3);letter-spacing:0.06em;min-width:100px;text-align:center}
+  
+    /* thumbnail — hidden in list mode, shown in grid mode */
+    .lab-thumb{display:none}
+  
+    /* grid view */
+    .lab.lab-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;background:transparent;border:none;border-radius:0;overflow:visible}
+    .lab.lab-grid .lab-head{display:none}
+    .lab.lab-grid .lab-row{
+      display:grid;
+      grid-template-areas:"thumb thumb" "num num" "title title" "kind date";
+      grid-template-columns:1fr auto;
+      grid-template-rows:auto auto 1fr auto;
+      padding:0;border:1px solid var(--border);border-radius:12px;
+      background:var(--surface);min-height:180px;align-items:start;gap:0;
+      overflow:hidden;border-bottom:1px solid var(--border);
+    }
+    .lab.lab-grid .lab-row:hover{border-color:var(--border-2);background:rgba(255,255,255,0.025)}
+    html[data-theme="light"] .lab.lab-grid .lab-row:hover{background:rgba(0,0,0,0.025)}
+    .lab.lab-grid .lab-thumb{
+      grid-area:thumb;display:block;
+      width:100%;aspect-ratio:16/9;object-fit:cover;
+    }
+    .lab.lab-grid .lab-num{grid-area:num;padding:16px 20px 0;margin-bottom:6px}
+    .lab.lab-grid .lab-title{grid-area:title;font-size:15px;line-height:1.4;padding:0 20px}
+    .lab.lab-grid .lab-title .sub{
+      display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;
+      overflow:hidden;font-size:12px;color:var(--text-3);margin-top:6px;letter-spacing:0;
+    }
+    .lab.lab-grid .lab-kind{grid-area:kind;align-self:end;padding:10px 0 18px 20px}
+    .lab.lab-grid .lab-date{grid-area:date;align-self:end;text-align:right;padding:10px 20px 18px 0}
+    .lab.lab-grid .lab-arrow{display:none}
+    @media(max-width:900px){
+      .lab.lab-grid{grid-template-columns:repeat(2,1fr)}
+    }
+    @media(max-width:500px){
+      .lab.lab-grid{grid-template-columns:1fr;gap:8px}
+      .lab-toolbar{flex-direction:column;align-items:flex-start}
+    }
+  
+    /* tag filter chips */
+    .lab-tag-filter{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:16px}
+    .tag-chip{
+      padding:5px 14px;border:1px solid var(--border);border-radius:999px;
+      background:transparent;color:var(--text-3);
+      font-family:var(--mono);font-size:11.5px;letter-spacing:0.06em;
+      cursor:pointer;transition:all .15s ease;white-space:nowrap;
+    }
+    .tag-chip.active{background:var(--accent);border-color:var(--accent);color:#000;font-weight:500}
+    .tag-chip:hover:not(.active){border-color:var(--border-2);color:var(--text)}
+  
+    /* newsletter strip */
+    .nl-strip{padding:48px 0 0}
+    .nl-strip-inner{
+      display:flex;align-items:center;gap:32px;flex-wrap:wrap;
+      padding:32px 40px;border:1px solid var(--border);border-radius:14px;
+      background:var(--surface);justify-content:space-between;
+    }
+    .nl-strip-copy{min-width:200px}
+    .nl-strip-head{font-size:18px;font-weight:500;letter-spacing:-0.02em;color:var(--text);margin:0}
+    .nl-strip-sub{font-size:14px;color:var(--text-2);margin:4px 0 0}
+    .nl-strip-form{display:flex;gap:8px;flex:1;min-width:280px;max-width:480px}
+    .nl-strip-input{
+      flex:1;padding:11px 16px;border:1px solid var(--border);border-radius:8px;
+      background:var(--bg);color:var(--text);font-family:var(--sans);font-size:14px;
+      outline:none;transition:border-color .2s;
+    }
+    .nl-strip-input:focus{border-color:var(--accent)}
+    .nl-strip-input::placeholder{color:var(--text-3)}
+    .nl-strip-btn{
+      padding:11px 20px;border:none;border-radius:8px;
+      background:var(--accent);color:#000;font-family:var(--sans);font-size:14px;font-weight:500;
+      cursor:pointer;transition:all .15s;white-space:nowrap;
+    }
+    .nl-strip-btn:hover{transform:translateY(-1px)}
+    .nl-strip-btn:disabled{opacity:.6;cursor:default;transform:none}
+    .nl-strip-msg{font-family:var(--mono);font-size:11.5px;color:var(--accent);letter-spacing:.06em;width:100%;margin:0}
+    .nl-strip-msg.error{color:#f87171}
+    @media(max-width:600px){
+      .nl-strip-inner{padding:24px;gap:20px;flex-direction:column;align-items:flex-start}
+      .nl-strip-form{min-width:0;max-width:none;width:100%}
+    }
+  
+    /* footer */
+    footer{padding:40px 0 48px;border-top:1px solid var(--border);margin-top:64px}
+    .foot{display:flex;justify-content:space-between;align-items:center;font-family:var(--mono);font-size:11.5px;color:var(--text-3);letter-spacing:0.06em;text-transform:uppercase}
+    .foot a:hover{color:var(--text)}
+---
+<!-- NAV -->
+<header class="nav">
+  <div class="shell">
+    <div class="nav-inner">
+      <a class="brand" href="../">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span class="brand-name"><b>Mehedi Hasan</b><em>ERP · Business Analyst</em></span>
+      </a>
+      <nav class="nav-links">
+        <a href="../#work">Work</a>
+        <a href="../#services">Services</a>
+        <a href="../#courses">Courses</a>
+        <a href="./" aria-current="page" style="color:var(--text)">Lab</a>
+        <a href="../#contact">Contact</a>
+      </nav>
+      <div class="nav-right">
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle light/dark theme" title="Toggle light/dark theme">
+          <svg class="icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+          <svg class="icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        </button>
+        <a class="nav-cta" href="../#contact">
+          Start a conversation <span class="arrow">↗</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- PAGE HEADER -->
+<div class="lab-page-head">
+  <div class="shell">
+    <span class="eyebrow">Technical Lab</span>
+    <h1>Small <span class="serif">experiments</span>, honest notes.</h1>
+    <p>A digital garden of utilities, templates and short essays on ERP, data modeling and enterprise workflow. Loose thoughts, publicly.</p>
+  </div>
+</div>
+
+<!-- SEARCH + ARTICLES -->
+<div class="shell">
+  <div class="lab-search-wrap">
+    <svg class="lab-search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+    <input class="lab-search" id="lab-search" type="search" placeholder="Search articles…" aria-label="Search lab articles" autocomplete="off" spellcheck="false">
+  </div>
+
+  <div class="lab-search-count" id="lab-count">Showing all 63 articles</div>
+
+  <div class="lab-tag-filter" role="group" aria-label="Filter by article type">
+    <button class="tag-chip active" data-tag="all">All</button>
+    <button class="tag-chip" data-tag="essay">Essay</button>
+    <button class="tag-chip" data-tag="guide">Guide</button>
+    <button class="tag-chip" data-tag="checklist">Checklist</button>
+    <button class="tag-chip" data-tag="template">Template</button>
+    <button class="tag-chip" data-tag="comparison">Comparison</button>
+  </div>
+
+  <div class="lab-toolbar">
+    <div class="lab-view-toggle" role="group" aria-label="View mode">
+      <button class="view-btn" id="btn-list-view" data-view="list" title="List view" aria-pressed="true">
+        <svg width="15" height="15" viewBox="0 0 15 15" fill="none" aria-hidden="true"><rect x="1" y="2" width="13" height="2" rx="1" fill="currentColor"></rect><rect x="1" y="6.5" width="13" height="2" rx="1" fill="currentColor"></rect><rect x="1" y="11" width="13" height="2" rx="1" fill="currentColor"></rect></svg>
+      </button>
+      <button class="view-btn" id="btn-grid-view" data-view="grid" title="Grid view" aria-pressed="false">
+        <svg width="15" height="15" viewBox="0 0 15 15" fill="none" aria-hidden="true"><rect x="1" y="1" width="5.5" height="5.5" rx="1" fill="currentColor"></rect><rect x="8.5" y="1" width="5.5" height="5.5" rx="1" fill="currentColor"></rect><rect x="1" y="8.5" width="5.5" height="5.5" rx="1" fill="currentColor"></rect><rect x="8.5" y="8.5" width="5.5" height="5.5" rx="1" fill="currentColor"></rect></svg>
+      </button>
+    </div>
+    <div class="lab-per-page" role="group" aria-label="Articles per page">
+      <span class="per-page-label">Show</span>
+      <button class="per-page-btn" data-n="10">10</button>
+      <button class="per-page-btn" data-n="25">25</button>
+      <button class="per-page-btn" data-n="50">50</button>
+      <button class="per-page-btn" data-n="all">All</button>
+    </div>
+  </div>
+
+  <div class="lab" id="lab-table">
+    <div class="lab-head" aria-hidden="true">
+      <span>No.</span><span>Title</span><span>Kind</span><span>Published</span><span>&nbsp;</span>
+    </div>
+
+    <a class="lab-row" href="0102-building-in-house-odoo-superuser-team-bangladesh" data-title="Building an In-House Odoo Super-User Team After Go-Live" data-sub="Role selection, training structure, and reducing consultant dependency after go-live.">
+      <span class="lab-num">0102</span>
+      <span class="lab-title">
+        Building an In-House Odoo Super-User Team
+        <span class="sub">Role selection, training structure, and reducing consultant dependency.</span>
+      </span>
+      <span class="lab-kind">Guide</span>
+      <span class="lab-date">Sep 2026</span>
+      <span class="lab-arrow">↗</span>
+    </a>
+
+    <a class="lab-row" href="0101-odoo-vs-zoho-one-bangladesh" data-title="Odoo vs Zoho One Bangladesh: Which Fits Small Businesses" data-sub="Pricing, manufacturing depth, local support, and which platform fits under 30 users.">
+      <span class="lab-num">0101</span>
+      <span class="lab-title">
+        Odoo vs Zoho One Bangladesh
+        <span class="sub">Pricing, manufacturing depth, and which platform fits under 30 users.</span>
+      </span>
+      <span class="lab-kind">Comparison</span>
+      <span class="lab-date">Sep 2026</span>
+      <span class="lab-arrow">↗</span>
+    </a>
+
+    <a class="lab-row" href="0100-switching-odoo-partners-mid-implementation-bangladesh" data-title="Switching Odoo Partners Mid-Implementation in Bangladesh" data-sub="A recovery playbook: data handover, scope audit, and avoiding a second failure.">
+      <span class="lab-num">0100</span>
+      <span class="lab-title">
+        Switching Odoo Partners Mid-Implementation
+        <span class="sub">A recovery playbook: data handover, scope audit, and second-failure avoidance.</span>
+      </span>
+      <span class="lab-kind">Guide</span>
+      <span class="lab-date">Sep 2026</span>
+      <span class="lab-arrow">↗</span>
+    </a>
+
+    <a class="lab-row" href="0099-odoo-implementation-timeline-bangladesh" data-title="How Long Does an Odoo Implementation Actually Take in Bangladesh?" data-sub="A realistic phase-by-phase timeline, not the vendor sales pitch.">
+      <span class="lab-num">0099</span>
+      <span class="lab-title">
+        How Long Does an Odoo Implementation Take?
+        <span class="sub">A realistic phase-by-phase timeline, not the vendor sales pitch.</span>
+      </span>
+      <span class="lab-kind">Essay</span>
+      <span class="lab-date">Sep 2026</span>
+      <span class="lab-arrow">↗</span>
+    </a>
+
+    <a class="lab-row" href="0098-odoo-consolidation-group-companies-bangladesh" data-title="Odoo Consolidation for Bangladesh Group Companies &amp; Sister Concerns" data-sub="Multi-entity roll-up, inter-company eliminations, and group-level reporting.">
+      <span class="lab-num">0098</span>
+      <span class="lab-title">
+        Odoo Consolidation for Group Companies
+        <span class="sub">Multi-entity roll-up, inter-company eliminations, and group reporting.</span>
+      </span>
+      <span class="lab-kind">Guide</span>
+      <span class="lab-date">Sep 2026</span>
+      <span class="lab-arrow">↗</span>
+    </a>
+
+    <a class="lab-row" href="0097-odoo-recruitment-module-bangladesh" data-title="Odoo Recruitment Module for Bangladesh Hiring" data-sub="Job posting pipelines, candidate evaluation stages, and onboarding handoff.">
+      <span class="lab-num">0097</span>
+      <span class="lab-title">
+        Odoo Recruitment Module for Bangladesh
+        <span class="sub">Job posting pipelines, candidate evaluation, and onboarding handoff.</span>
+      </span>
+      <span class="lab-kind">Guide</span>
+      <span class="lab-date">Sep 2026</span>
+      <span class="lab-arrow">↗</span>
+    </a>
+
+    <a class="lab-row" href="0096-odoo-expenses-employee-reimbursement-bangladesh" data-title="Odoo Expenses &amp; Employee Reimbursement Setup Bangladesh" data-sub="Mobile receipt capture, approval workflows, and reimbursement policy setup.">
+      <span class="lab-num">0096</span>
+      <span class="lab-title">
+        Odoo Expenses &amp; Employee Reimbursement
+        <span class="sub">Mobile receipt capture, approval workflows, and reimbursement policy.</span>
+      </span>
+      <span class="lab-kind">Guide</span>
+      <span class="lab-date">Sep 2026</span>
+      <span class="lab-arrow">↗</span>
+    </a>
+
+    <a class="lab-row" href="0095-odoo-helpdesk-ticketing-setup-bangladesh" data-title="Odoo Helpdesk &amp; Customer Support Ticketing Setup Bangladesh" data-sub="SLA policies, ticket routing, and support-to-invoice workflows for AMC contracts.">
+      <span class="lab-num">0095</span>
+      <span class="lab-title">
+        Odoo Helpdesk &amp; Support Ticketing Setup
+        <span class="sub">SLA policies, ticket routing, and AMC support-to-invoice workflows.</span>
+      </span>
+      <span class="lab-kind">Guide</span>
+      <span class="lab-date">Sep 2026</span>
+      <span class="lab-arrow">↗</span>
+    </a>
+
+    <a class="lab-row" href="0094-odoo-timesheets-billable-hours-bangladesh" data-title="Odoo Timesheets &amp; Billable Hours for Service Companies Bangladesh" data-sub="Billable tracking, approval workflow, and project profitability analysis.">
+      <span class="lab-num">0094</span>
+      <span class="lab-title">
+        Odoo Timesheets &amp; Billable Hours
+        <span class="sub">Billable tracking, approval workflow, and project profitability.</span>
+      </span>
+      <span class="lab-kind">Guide</span>
+      <span class="lab-date">Sep 2026</span>
+      <span class="lab-arrow">↗</span>
+    </a>
+
+    <a class="lab-row" href="0093-odoo-studio-no-code-bangladesh" data-title="Odoo Studio: No-Code App Building for Bangladesh SMEs" data-sub="What Studio can and can't do, and where its real limits are.">
+      <span class="lab-num">0093</span>
+      <span class="lab-title">
+        Odoo Studio: No-Code App Building
+        <span class="sub">What Studio can and can't do, and where its real limits are.</span>
+      </span>
+      <span class="lab-kind">Guide</span>
+      <span class="lab-date">Sep 2026</span>
+      <span class="lab-arrow">↗</span>
+    </a>
+
+    <a class="lab-row" href="0092-odoo-it-professional-services-firms-bangladesh" data-title="Odoo for IT &amp; Professional Services Firms Bangladesh" data-sub="Project-based billing, timesheet-to-invoice workflows, and utilization reporting.">
+      <span class="lab-num">0092</span>
+      <span class="lab-title">
+        Odoo for IT &amp; Professional Services Firms
+        <span class="sub">Project-based billing, timesheets, and utilization reporting.</span>
+      </span>
+      <span class="lab-kind">Guide</span>
+      <span class="lab-date">Sep 2026</span>
+      <span class="lab-arrow">↗</span>
+    </a>
+
+    <a class="lab-row" href="0091-odoo-restaurant-qsr-chains-bangladesh" data-title="Odoo for Restaurant &amp; QSR Chains Bangladesh" data-sub="Recipe costing, kitchen display workflows, and delivery-aggregator integration.">
+      <span class="lab-num">0091</span>
+      <span class="lab-title">
+        Odoo for Restaurant &amp; QSR Chains
+        <span class="sub">Recipe costing, kitchen display workflows, and delivery integration.</span>
+      </span>
+      <span class="lab-kind">Guide</span>
+      <span class="lab-date">Sep 2026</span>
+      <span class="lab-arrow">↗</span>
+    </a>
+
+    <a class="lab-row" href="0090-odoo-real-estate-developers-bangladesh" data-title="Odoo for Real Estate Developers &amp; Plot/Flat Sales Bangladesh" data-sub="Installment-based sales tracking, project costing, and buyer payment schedules.">
+      <span class="lab-num">0090</span>
+      <span class="lab-title">
+        Odoo for Real Estate Developers
+        <span class="sub">Installment-based sales, project costing, and buyer payment schedules.</span>
+      </span>
+      <span class="lab-kind">Guide</span>
+      <span class="lab-date">Sep 2026</span>
+      <span class="lab-arrow">↗</span>
+    </a>
+
+    <a class="lab-row" href="0089-odoo-hospital-diagnostic-center-bangladesh" data-title="Odoo for Hospital &amp; Diagnostic Center Operations Bangladesh" data-sub="Patient billing, lab inventory tracking, and doctor referral commissions.">
+      <span class="lab-num">0089</span>
+      <span class="lab-title">
+        Odoo for Hospital &amp; Diagnostic Centers
+        <span class="sub">Patient billing, lab inventory tracking, and referral commissions.</span>
+      </span>
+      <span class="lab-kind">Guide</span>
+      <span class="lab-date">Sep 2026</span>
+      <span class="lab-arrow">↗</span>
+    </a>
+
+    <a class="lab-row" href="0088-odoo-cold-storage-potato-agri-warehousing-bangladesh" data-title="Odoo for Cold Storage &amp; Potato/Agri Warehousing Bangladesh" data-sub="Farmer deposit ledgers, chamber capacity tracking, and seasonal billing.">
+      <span class="lab-num">0088</span>
+      <span class="lab-title">
+        Odoo for Cold Storage &amp; Agri Warehousing
+        <span class="sub">Farmer deposit ledgers, chamber capacity, and seasonal billing cycles.</span>
+      </span>
+      <span class="lab-kind">Guide</span>
+      <span class="lab-date">Sep 2026</span>
+      <span class="lab-arrow">↗</span>
+    </a>
+
+    <a class="lab-row" href="0087-odoo-poultry-dairy-agribusiness-bangladesh" data-title="Odoo for Poultry &amp; Dairy Agribusiness Bangladesh" data-sub="Flock/batch costing, feed conversion tracking, and cold-chain milk collection.">
+      <span class="lab-num">0087</span>
+      <span class="lab-title">
+        Odoo for Poultry &amp; Dairy Agribusiness
+        <span class="sub">Flock/batch costing, feed conversion, and cold-chain milk collection.</span>
+      </span>
+      <span class="lab-kind">Guide</span>
+      <span class="lab-date">Sep 2026</span>
+      <span class="lab-arrow">↗</span>
+    </a>
+
+    <a class="lab-row" href="0086-odoo-tea-estate-plantation-management-bangladesh" data-title="Odoo for Tea Estate &amp; Plantation Management Bangladesh" data-sub="Green leaf harvest tracking, factory processing yield, and auction-ready costing.">
+      <span class="lab-num">0086</span>
+      <span class="lab-title">
+        Odoo for Tea Estate &amp; Plantation Management
+        <span class="sub">Harvest tracking, factory processing yield, and auction-ready costing.</span>
+      </span>
+      <span class="lab-kind">Guide</span>
+      <span class="lab-date">Sep 2026</span>
+      <span class="lab-arrow">↗</span>
+    </a>
+
+    <a class="lab-row" href="0085-odoo-furniture-manufacturing-export-bangladesh" data-title="Odoo for Furniture Manufacturing &amp; Export Bangladesh" data-sub="Custom order BOMs, finishing routing, and EUDR-ready wood traceability.">
+      <span class="lab-num">0085</span>
+      <span class="lab-title">
+        Odoo for Furniture Manufacturing &amp; Export
+        <span class="sub">Custom order BOMs, finishing routing, and EUDR-ready traceability.</span>
+      </span>
+      <span class="lab-kind">Guide</span>
+      <span class="lab-date">Sep 2026</span>
+      <span class="lab-arrow">↗</span>
+    </a>
+
+    <a class="lab-row" href="0084-odoo-steel-rerolling-light-engineering-bangladesh" data-title="Odoo for Steel Re-Rolling Mills &amp; Light Engineering Bangladesh" data-sub="Scrap/billet costing, rolling mill routing, and yield tracking.">
+      <span class="lab-num">0084</span>
+      <span class="lab-title">
+        Odoo for Steel Re-Rolling &amp; Light Engineering
+        <span class="sub">Scrap/billet costing, rolling mill routing, and yield tracking.</span>
+      </span>
+      <span class="lab-kind">Guide</span>
+      <span class="lab-date">Sep 2026</span>
+      <span class="lab-arrow">↗</span>
+    </a>
+
+    <a class="lab-row" href="0083-odoo-ceramics-tiles-manufacturing-bangladesh" data-title="Odoo for Ceramics &amp; Tiles Manufacturing Bangladesh" data-sub="Raw material batch costing, kiln firing routing, and breakage/wastage tracking.">
+      <span class="lab-num">0083</span>
+      <span class="lab-title">
+        Odoo for Ceramics &amp; Tiles Manufacturing
+        <span class="sub">Raw material batch costing, kiln firing routing, and wastage tracking.</span>
+      </span>
+      <span class="lab-kind">Guide</span>
+      <span class="lab-date">Sep 2026</span>
+      <span class="lab-arrow">↗</span>
+    </a>
+
+    <a class="lab-row" href="0082-vat-input-tax-credit-rebate-odoo-bangladesh" data-title="VAT Input Tax Credit (Rebate) Claim Workflow in Odoo Bangladesh" data-sub="Mushak 6.3 invoice matching, Mushak 9.1 return entry, and rebate claim risk.">
+      <span class="lab-num">0082</span>
+      <span class="lab-title">
+        VAT Input Tax Credit (Rebate) Claims in Odoo
+        <span class="sub">Mushak 6.3 matching, Mushak 9.1 entry, and rebate claim risk.</span>
+      </span>
+      <span class="lab-kind">Guide</span>
+      <span class="lab-date">Sep 2026</span>
+      <span class="lab-arrow">↗</span>
+    </a>
+
+    <a class="lab-row" href="0081-rjsc-annual-compliance-efiling-odoo-bangladesh" data-title="RJSC Annual Compliance &amp; e-Filing: What Your ERP Should Track" data-sub="RJSC annual return, Schedule X, and AGM filing deadlines and data readiness.">
+      <span class="lab-num">0081</span>
+      <span class="lab-title">
+        RJSC Annual Compliance &amp; e-Filing
+        <span class="sub">Annual return, Schedule X, and AGM filing data readiness.</span>
+      </span>
+      <span class="lab-kind">Guide</span>
+      <span class="lab-date">Sep 2026</span>
+      <span class="lab-arrow">↗</span>
+    </a>
+
+    <a class="lab-row" href="0080-cyber-security-ordinance-critical-infrastructure-odoo-bangladesh" data-title="Cyber Security Ordinance 2025 &amp; ERP Hosting Bangladesh" data-sub="What Critical Information Infrastructure rules mean for your Odoo hosting choice.">
+      <span class="lab-num">0080</span>
+      <span class="lab-title">
+        Cyber Security Ordinance 2025 &amp; ERP Hosting
+        <span class="sub">What CII rules mean for where and how you host Odoo.</span>
+      </span>
+      <span class="lab-kind">Guide</span>
+      <span class="lab-date">Sep 2026</span>
+      <span class="lab-arrow">↗</span>
+    </a>
+
+    <a class="lab-row" href="0079-eudr-odoo-traceability-rubber-wood-furniture-bangladesh" data-title="EU Deforestation Regulation (EUDR) &amp; Odoo Traceability Bangladesh" data-sub="Building EUDR-ready traceability data ahead of the December 2026 EU deadline.">
+      <span class="lab-num">0079</span>
+      <span class="lab-title">
+        EUDR &amp; Odoo Traceability for Exporters
+        <span class="sub">EUDR-ready traceability data ahead of the December 2026 deadline.</span>
+      </span>
+      <span class="lab-kind">Guide</span>
+      <span class="lab-date">Sep 2026</span>
+      <span class="lab-arrow">↗</span>
+    </a>
+
+    <a class="lab-row" href="0078-bangladesh-data-protection-act-cloud-erp" data-title="Bangladesh Personal Data Protection Act 2026 &amp; Cloud ERP" data-sub="Data residency rules, restricted data, and what to check before you host abroad.">
+      <span class="lab-num">0078</span>
+      <span class="lab-title">
+        Bangladesh Data Protection Act 2026 &amp; Cloud ERP
+        <span class="sub">Data residency rules and what to check before you host abroad.</span>
+      </span>
+      <span class="lab-kind">Guide</span>
+      <span class="lab-date">Sep 2026</span>
+      <span class="lab-arrow">↗</span>
+    </a>
+
+    <a class="lab-row" href="0077-negotiating-odoo-enterprise-contract-sla-bangladesh" data-title="Negotiating an Odoo Enterprise Contract &amp; SLA in Bangladesh" data-sub="Pricing levers, support tiers, payment milestones, and the clauses vendors hope you skip.">
+      <span class="lab-num">0077</span>
+      <span class="lab-title">
+        Negotiating an Odoo Enterprise Contract &amp; SLA
+        <span class="sub">Pricing levers, support tiers, and the clauses vendors hope you skip.</span>
+      </span>
+      <span class="lab-kind">Guide</span>
+      <span class="lab-date">Sep 2026</span>
+      <span class="lab-arrow">↗</span>
+    </a>
+
+    <a class="lab-row" href="0076-odoo-field-service-after-sales-bangladesh" data-title="Odoo Field Service &amp; After-Sales Support Setup Bangladesh" data-sub="Technician scheduling, spare parts, AMC contracts, and customer SLAs for equipment dealers.">
+      <span class="lab-num">0076</span>
+      <span class="lab-title">
+        Odoo Field Service &amp; After-Sales Bangladesh
+        <span class="sub">Technician scheduling, spare parts, AMC contracts, and customer SLAs.</span>
+      </span>
+      <span class="lab-kind">Guide</span>
+      <span class="lab-date">Sep 2026</span>
+      <span class="lab-arrow">↗</span>
+    </a>
+
+    <a class="lab-row" href="0075-esg-sustainability-reporting-odoo-rmg-bangladesh" data-title="ESG &amp; Sustainability Reporting in Odoo for RMG Exporters" data-sub="Tracking buyer-required ESG data in Odoo for Higg Index, BSCI, and EU CSRD-aligned audits.">
+      <span class="lab-num">0075</span>
+      <span class="lab-title">
+        ESG &amp; Sustainability Reporting for RMG
+        <span class="sub">Higg Index, BSCI, and EU buyer ESG data capture in Odoo.</span>
+      </span>
+      <span class="lab-kind">Essay</span>
+      <span class="lab-date">Sep 2026</span>
+      <span class="lab-arrow">↗</span>
+    </a>
+
+    <a class="lab-row" href="0074-odoo-vs-microsoft-dynamics-365-business-central-bangladesh" data-title="Odoo vs Microsoft Dynamics 365 Business Central Bangladesh" data-sub="Licensing cost, manufacturing depth, local partner ecosystem, and which fits which company size.">
+      <span class="lab-num">0074</span>
+      <span class="lab-title">
+        Odoo vs Microsoft Dynamics 365 Business Central
+        <span class="sub">Licensing cost, manufacturing depth, and which fits which company size.</span>
+      </span>
+      <span class="lab-kind">Comparison</span>
+      <span class="lab-date">Sep 2026</span>
+      <span class="lab-arrow">↗</span>
+    </a>
+
+    <a class="lab-row" href="0073-bonded-warehouse-management-odoo-bangladesh" data-title="Bonded Warehouse Management in Odoo for Export-Oriented Industries" data-sub="Duty-free raw material tracking, utilization declarations, and NBR bond audit readiness.">
+      <span class="lab-num">0073</span>
+      <span class="lab-title">
+        Bonded Warehouse Management in Odoo
+        <span class="sub">Duty-free input tracking and NBR bond audit readiness.</span>
+      </span>
+      <span class="lab-kind">Guide</span>
+      <span class="lab-date">Sep 2026</span>
+      <span class="lab-arrow">↗</span>
+    </a>
+
+    <a class="lab-row" href="0072-bangladesh-bank-import-lc-forex-odoo" data-title="Bangladesh Bank Import LC &amp; Foreign Exchange Rules in Odoo" data-sub="LC margin, multi-currency revaluation, and Bangladesh Bank reporting for importers.">
+      <span class="lab-num">0072</span>
+      <span class="lab-title">
+        Bangladesh Bank Import LC &amp; FX Rules in Odoo
+        <span class="sub">LC margin, multi-currency revaluation, and BB reporting.</span>
+      </span>
+      <span class="lab-kind">Guide</span>
+      <span class="lab-date">Sep 2026</span>
+      <span class="lab-arrow">↗</span>
+    </a>
+
+    <a class="lab-row" href="0071-ait-income-tax-withholding-odoo-bangladesh" data-title="AIT / Income Tax Withholding Configuration in Odoo Bangladesh" data-sub="TDS on vendor payments, NBR withholding tax rates by service category, and certificate generation.">
+      <span class="lab-num">0071</span>
+      <span class="lab-title">
+        AIT Withholding Tax Configuration in Odoo
+        <span class="sub">TDS on vendor payments and NBR withholding certificates.</span>
+      </span>
+      <span class="lab-kind">Guide</span>
+      <span class="lab-date">Sep 2026</span>
+      <span class="lab-arrow">↗</span>
+    </a>
+
+    <a class="lab-row" href="0070-odoo-freight-forwarding-cf-agents-bangladesh" data-title="Odoo for Freight Forwarding &amp; C&amp;F Agents Bangladesh" data-sub="Shipment tracking, HS-code-linked billing, customs documentation, and client invoicing workflows.">
+      <span class="lab-num">0070</span>
+      <span class="lab-title">
+        Odoo for Freight Forwarding &amp; C&amp;F Agents
+        <span class="sub">Shipment tracking, HS-code billing, and customs documentation.</span>
+      </span>
+      <span class="lab-kind">Guide</span>
+      <span class="lab-date">Sep 2026</span>
+      <span class="lab-arrow">↗</span>
+    </a>
+
+    <a class="lab-row" href="0069-odoo-food-beverage-agro-processing-bangladesh" data-title="Odoo for Food &amp; Beverage / Agro-Processing Bangladesh" data-sub="Expiry/lot tracking, BSTI compliance, and recipe-based manufacturing (formulas).">
+      <span class="lab-num">0069</span>
+      <span class="lab-title">
+        Odoo for Food &amp; Beverage / Agro-Processing
+        <span class="sub">Expiry/lot tracking, BSTI compliance, and recipe-based manufacturing.</span>
+      </span>
+      <span class="lab-kind">Guide</span>
+      <span class="lab-date">Sep 2026</span>
+      <span class="lab-arrow">↗</span>
+    </a>
+
+    <a class="lab-row" href="0068-odoo-plastics-packaging-manufacturing-bangladesh" data-title="Odoo for Plastics &amp; Packaging Manufacturing Bangladesh" data-sub="Resin batch tracking, mold/tooling costs, and quality control for injection molding and extrusion.">
+      <span class="lab-num">0068</span>
+      <span class="lab-title">
+        Odoo for Plastics &amp; Packaging Manufacturing
+        <span class="sub">Resin batch tracking, mold/tooling costs, and quality control.</span>
+      </span>
+      <span class="lab-kind">Guide</span>
+      <span class="lab-date">Sep 2026</span>
+      <span class="lab-arrow">↗</span>
+    </a>
+
+    <a class="lab-row" href="0067-odoo-jute-products-bangladesh" data-title="Odoo for Jute &amp; Jute-Diversified Products Bangladesh" data-sub="Raw jute grading, batch costing, and export documentation for jute mills and JDP manufacturers.">
+      <span class="lab-num">0067</span>
+      <span class="lab-title">
+        Odoo for Jute &amp; Jute-Diversified Products
+        <span class="sub">Raw jute grading, batch costing, and export documentation.</span>
+      </span>
+      <span class="lab-kind">Guide</span>
+      <span class="lab-date">Sep 2026</span>
+      <span class="lab-arrow">↗</span>
+    </a>
+
+    <a class="lab-row" href="0066-odoo-leather-footwear-manufacturing-bangladesh" data-title="Odoo for Leather &amp; Footwear Manufacturing Bangladesh" data-sub="Tannery input tracking, size/color BOM variants, and compliance for the leather export sector.">
+      <span class="lab-num">0066</span>
+      <span class="lab-title">
+        Odoo for Leather &amp; Footwear Manufacturing
+        <span class="sub">Tannery input tracking, size/color BOM variants, and export compliance.</span>
+      </span>
+      <span class="lab-kind">Guide</span>
+      <span class="lab-date">Sep 2026</span>
+      <span class="lab-arrow">↗</span>
+    </a>
+
+    <a class="lab-row" href="0065-odoo-barcode-warehouse-scanning-bangladesh" data-title="Odoo Barcode &amp; Warehouse Scanning Setup Bangladesh" data-sub="Scanner hardware options, put-away rules, cycle counting, and shop-floor scanning workflows.">
+      <span class="lab-num">0065</span>
+      <span class="lab-title">
+        Odoo Barcode &amp; Warehouse Scanning
+        <span class="sub">Scanner hardware, put-away rules, and cycle counting for factories.</span>
+      </span>
+      <span class="lab-kind">Guide</span>
+      <span class="lab-date">Sep 2026</span>
+      <span class="lab-arrow">↗</span>
+    </a>
+
+    <a class="lab-row" href="0064-odoo-pos-retail-chains-bangladesh" data-title="Odoo Point of Sale (POS) for Bangladesh Retail Chains" data-sub="Offline mode, multi-location stock sync, loyalty, and NBR-compliant POS receipts.">
+      <span class="lab-num">0064</span>
+      <span class="lab-title">
+        Odoo POS for Bangladesh Retail Chains
+        <span class="sub">Offline mode, multi-location stock sync, and NBR-compliant receipts.</span>
+      </span>
+      <span class="lab-kind">Guide</span>
+      <span class="lab-date">Sep 2026</span>
+      <span class="lab-arrow">↗</span>
+    </a>
+
+    <a class="lab-row" href="0063-odoo-subcontracting-rmg-garments-bangladesh" data-title="Odoo Subcontracting for RMG &amp; Garments Job-Work in Bangladesh" data-sub="Subcontractor BOMs, resupply flows, landed cost of outsourced processes, and WIP tracking at third-party units.">
+      <span class="lab-num">0063</span>
+      <span class="lab-title">
+        Odoo Subcontracting for RMG Job-Work
+        <span class="sub">Subcontractor BOMs, resupply flows, and tracking WIP at third-party units.</span>
+      </span>
+      <span class="lab-kind">Guide</span>
+      <span class="lab-date">Sep 2026</span>
+      <span class="lab-arrow">↗</span>
+    </a>
+
+    <a class="lab-row" href="0062-erp-market-bangladesh-2026" data-title="State of ERP in Bangladesh 2026: Market Report &amp; Key Trends" data-sub="Cloud adoption rates, top vendors, industry breakdown, SME spend benchmarks, and where Odoo fits in the Bangladesh ERP market through 2028.">
+      <span class="lab-num">0062</span>
+      <span class="lab-title">
+        State of ERP in Bangladesh 2026
+        <span class="sub">Cloud adoption, vendor landscape, SME spend benchmarks, and 5 key trends through 2028.</span>
+      </span>
+      <span class="lab-kind">Essay</span>
+      <span class="lab-date">May 2026</span>
+      <span class="lab-arrow">↗</span>
+    </a>
+
+    <a class="lab-row" href="0061-odoo-preventive-maintenance-bangladesh" data-title="Odoo Preventive Maintenance for Bangladesh Factories: Setup &amp; Scheduling" data-sub="Configure Odoo Maintenance for Bangladesh factories: equipment catalog, preventive schedules, work orders, spare parts, and maintenance KPI dashboards.">
+      <span class="lab-num">0061</span>
+      <span class="lab-title">
+        Odoo Preventive Maintenance Bangladesh
+        <span class="sub">Equipment catalog, preventive schedules, work orders, and maintenance KPIs for factories.</span>
+      </span>
+      <span class="lab-kind">Guide</span>
+      <span class="lab-date">May 2026</span>
+      <span class="lab-arrow">↗</span>
+    </a>
+
+    <a class="lab-row" href="0060-mature-odoo-implementation-bangladesh" data-title="5 Years After Go-Live: What Odoo Looks Like at a Mature Bangladesh Company" data-sub="Data quality decay, upgrade cycles, custom module technical debt, ROI reality, and what to do differently from day one of your Odoo implementation.">
+      <span class="lab-num">0060</span>
+      <span class="lab-title">
+        Mature Odoo Implementation Bangladesh
+        <span class="sub">5 years post go-live — data quality, upgrade cycles, ROI reality, and lessons learned.</span>
+      </span>
+      <span class="lab-kind">Essay</span>
+      <span class="lab-date">May 2026</span>
+      <span class="lab-arrow">↗</span>
+    </a>
+
+    <a class="lab-row" href="0059-odoo-ecommerce-integration-bangladesh" data-title="Odoo eCommerce Integration for Bangladesh Exporters: WooCommerce &amp; Shopify" data-sub="Connect Odoo to WooCommerce, Shopify, and Daraz in Bangladesh. Real-time order sync, inventory management, SSLCommerz and bKash payment integration.">
+      <span class="lab-num">0059</span>
+      <span class="lab-title">
+        Odoo eCommerce Integration Bangladesh
+        <span class="sub">WooCommerce, Shopify &amp; Daraz — order sync, inventory, and Bangladesh payment gateways.</span>
+      </span>
+      <span class="lab-kind">Guide</span>
+      <span class="lab-date">May 2026</span>
+      <span class="lab-arrow">↗</span>
+    </a>
+
+    <a class="lab-row" href="0058-odoo-ai-features-bangladesh" data-title="AI Features in Odoo 17 &amp; 18: What Bangladesh SMEs Should Actually Use" data-sub="Honest breakdown of every Odoo AI feature — OCR for vendor bills, predictive reordering, ChatGPT Copilot, email AI, IoT analytics — what works vs. hype.">
+      <span class="lab-num">0058</span>
+      <span class="lab-title">
+        Odoo AI Features Bangladesh: SME Reality Check
+        <span class="sub">OCR, predictive reordering, ChatGPT — what actually works vs. hype for Bangladesh businesses.</span>
+      </span>
+      <span class="lab-kind">Essay</span>
+      <span class="lab-date">May 2026</span>
+      <span class="lab-arrow">↗</span>
+    </a>
+
+    <a class="lab-row" href="0057-odoo-backup-restore-bangladesh" data-title="Odoo Backup, Restore &amp; Disaster Recovery for Bangladesh Businesses" data-sub="PostgreSQL backup scripts, filestore backup, off-site cloud storage, disaster recovery planning, and monthly restore drills for Bangladesh Odoo deployments.">
+      <span class="lab-num">0057</span>
+      <span class="lab-title">
+        Odoo Backup &amp; Disaster Recovery Bangladesh
+        <span class="sub">PostgreSQL backup, filestore, off-site storage, and monthly restore drills for SMEs.</span>
+      </span>
+      <span class="lab-kind">Guide</span>
+      <span class="lab-date">May 2026</span>
+      <span class="lab-arrow">↗</span>
+    </a>
+
+    <a class="lab-row" href="0056-odoo-iot-box-bangladesh" data-title="Odoo IoT Box for Bangladesh Factories: Barcode, Scale &amp; POS Integration" data-sub="Connect barcode scanners, weighing scales, and POS printers to Odoo in Bangladesh factories. Hardware sourcing, network setup, configuration, and troubleshooting.">
+      <span class="lab-num">0056</span>
+      <span class="lab-title">
+        Odoo IoT Box for Bangladesh Factories
+        <span class="sub">Barcode scanners, weighing scales, and POS printers — hardware sourcing to live configuration.</span>
+      </span>
+      <span class="lab-kind">Guide</span>
+      <span class="lab-date">May 2026</span>
+      <span class="lab-arrow">↗</span>
+    </a>
+
+    <a class="lab-row" href="0055-odoo-dashboards-kpi-bangladesh" data-title="Odoo Dashboards &amp; KPIs: What Every Bangladesh Business Owner Should Track" data-sub="Build CEO dashboards in Odoo: track sales pipeline, inventory turnover, cash flow, manufacturing OEE, and VAT compliance for Bangladesh SMEs.">
+      <span class="lab-num">0055</span>
+      <span class="lab-title">
+        Odoo Dashboards &amp; KPIs Bangladesh
+        <span class="sub">What to track, where to find it, and how to make it visible to the right people.</span>
+      </span>
+      <span class="lab-kind">Guide</span>
+      <span class="lab-date">May 2026</span>
+      <span class="lab-arrow">↗</span>
+    </a>
+
+    <a class="lab-row" href="0054-odoo-email-sms-setup-bangladesh" data-title="Odoo Email &amp; SMS Setup Bangladesh: SMTP, Aliases &amp; Notifications" data-sub="Configure Odoo outgoing SMTP, incoming email aliases, SSL Wireless SMS gateway, and Bangladesh-specific notification templates. Complete setup guide.">
+      <span class="lab-num">0054</span>
+      <span class="lab-title">
+        Odoo Email &amp; SMS Setup Bangladesh
+        <span class="sub">SMTP, email aliases, SSL Wireless SMS, and notification templates — configured correctly.</span>
+      </span>
+      <span class="lab-kind">Guide</span>
+      <span class="lab-date">May 2026</span>
+      <span class="lab-arrow">↗</span>
+    </a>
+
+    <a class="lab-row" href="0053-odoo-api-integration-bangladesh" data-title="Odoo API Integration: Connecting Banks &amp; Third-Party Tools in Bangladesh" data-sub="Connect bKash, Nagad, SSLCommerz, bank feeds, and shipping APIs (Pathao, Steadfast, Redx) to your Odoo system. Practical guide for IT managers and CTOs.">
+      <span class="lab-num">0053</span>
+      <span class="lab-title">
+        Odoo API Integration Bangladesh
+        <span class="sub">bKash, SSLCommerz, bank feeds, and shipping APIs — connecting Bangladesh's ecosystem to Odoo.</span>
+      </span>
+      <span class="lab-kind">Guide</span>
+      <span class="lab-date">May 2026</span>
+      <span class="lab-arrow">↗</span>
+    </a>
+
+    <a class="lab-row" href="0052-odoo-vendor-red-flags-bangladesh" data-title="When to Fire Your Odoo Vendor: 7 Red Flags Bangladesh Businesses Know" data-sub="7 warning signs your Odoo implementation partner is failing — no discovery, scope creep without change orders, junior consultants, and disappearing post go-live.">
+      <span class="lab-num">0052</span>
+      <span class="lab-title">
+        When to Fire Your Odoo Vendor
+        <span class="sub">7 red flags Bangladesh businesses know — and exactly what to do when you spot them.</span>
+      </span>
+      <span class="lab-kind">Essay</span>
+      <span class="lab-date">May 2026</span>
+      <span class="lab-arrow">↗</span>
+    </a>
+
+    <a class="lab-row" href="0051-odoo-enterprise-licensing-cost" data-title="Odoo Licensing Explained: Enterprise Apps, Users &amp; Annual Fees" data-sub="Odoo Enterprise licensing explained: app-based pricing, user counts, Odoo.sh vs self-hosted, and real BDT cost estimates for Bangladesh SMEs.">
+      <span class="lab-num">0051</span>
+      <span class="lab-title">
+        Odoo Enterprise Licensing Explained
+        <span class="sub">App pricing, user counts, Odoo.sh vs self-hosted, and BDT cost estimates for Bangladesh.</span>
+      </span>
+      <span class="lab-kind">Guide</span>
+      <span class="lab-date">May 2026</span>
+      <span class="lab-arrow">↗</span>
+    </a>
+
+    <a class="lab-row" href="0050-hidden-erp-costs-bangladesh" data-title="Hidden Costs of ERP Implementation in Bangladesh: What No One Tells You" data-sub="Hidden ERP implementation costs Bangladesh: data cleanup, shadow IT, annual renewals, staff turnover &amp; infrastructure — the true total budget.">
+      <span class="lab-num">0050</span>
+      <span class="lab-title">
+        Hidden Costs of ERP Implementation Bangladesh
+        <span class="sub">9 cost categories nobody discloses — with a complete 3-year budget framework.</span>
+      </span>
+      <span class="lab-kind">Essay</span>
+      <span class="lab-date">May 2026</span>
+      <span class="lab-arrow">↗</span>
+    </a>
+
+    <a class="lab-row" href="0049-odoo-partner-selection-bangladesh" data-title="Odoo Partner Selection Guide: How to Evaluate Vendors in Bangladesh" data-sub="Odoo partner selection guide Bangladesh: 7 evaluation criteria, RFP scoring matrix, demo checklist &amp; contract essentials to find the right vendor.">
+      <span class="lab-num">0049</span>
+      <span class="lab-title">
+        Odoo Partner Selection Bangladesh
+        <span class="sub">7 evaluation criteria, RFP scoring matrix, demo checklist, and contract must-haves.</span>
+      </span>
+      <span class="lab-kind">Guide</span>
+      <span class="lab-date">May 2026</span>
+      <span class="lab-arrow">↗</span>
+    </a>
+
+    <a class="lab-row" href="0048-odoo-roi-calculator-bangladesh" data-title="How to Calculate Odoo ERP ROI for Bangladesh Manufacturing" data-sub="Odoo ROI calculator for Bangladesh manufacturing — quantify labor savings, inventory gains &amp; payback period before committing to ERP.">
+      <span class="lab-num">0048</span>
+      <span class="lab-title">
+        Odoo ERP ROI Calculator Bangladesh
+        <span class="sub">Step-by-step ROI framework with a full worked example for a Bangladesh garment factory.</span>
+      </span>
+      <span class="lab-kind">Guide</span>
+      <span class="lab-date">May 2026</span>
+      <span class="lab-arrow">↗</span>
+    </a>
+
+    <a class="lab-row" href="0047-odoo-project-charter-template" data-title="Odoo Project Charter Template: Scope, Roles &amp; Go/No-Go Criteria" data-sub="Download the Odoo Project Charter Template. Define scope, assign roles, and establish go/no-go criteria before kicking off ERP development.">
+      <span class="lab-num">0047</span>
+      <span class="lab-title">
+        Odoo Project Charter Template
+        <span class="sub">Define scope, assign roles, and establish go/no-go criteria before kicking off ERP development.</span>
+      </span>
+      <span class="lab-kind">Template</span>
+      <span class="lab-date">MAY 2026</span>
+      <span class="lab-arrow">↗</span>
+    </a>
+
+    <a class="lab-row" href="0046-scope-creep-erp-project-management" data-title="Managing Scope Creep in Odoo Projects: Real Bangladesh Examples" data-sub="Manage scope creep in ERP projects effectively. Real examples from Bangladesh Odoo implementations on controlling unauthorized feature requests.">
+      <span class="lab-num">0046</span>
+      <span class="lab-title">
+        Scope Creep in ERP Project Management
+        <span class="sub">Real examples from Bangladesh Odoo implementations on controlling unauthorized feature requests.</span>
+      </span>
+      <span class="lab-kind">Essay</span>
+      <span class="lab-date">MAY 2026</span>
+      <span class="lab-arrow">↗</span>
+    </a>
+
+    <a class="lab-row" href="0045-erp-requirements-document-template" data-title="ERP Requirements Document: 100+ Line Items for Bangladesh SMEs" data-sub="Download the ERP Requirements Document Template with 100+ items for Bangladesh SMEs. Ensure accurate vendor quotes and prevent scope creep.">
+      <span class="lab-num">0045</span>
+      <span class="lab-title">
+        ERP Requirements Document Template
+        <span class="sub">100+ line items for Bangladesh SMEs. Ensure accurate vendor quotes and prevent scope creep.</span>
+      </span>
+      <span class="lab-kind">Template</span>
+      <span class="lab-date">MAY 2026</span>
+      <span class="lab-arrow">↗</span>
+    </a>
+
+    <a class="lab-row" href="0044-erp-business-case-bangladesh" data-title="How to Build a Business Case for Odoo ERP in Bangladesh" data-sub="Build a compelling ERP business case in Bangladesh. Justify your Odoo investment with ROI calculations and strict cost-benefit analysis.">
+      <span class="lab-num">0044</span>
+      <span class="lab-title">
+        ERP Business Case Bangladesh
+        <span class="sub">Justify your Odoo investment with ROI calculations and strict cost-benefit analysis.</span>
+      </span>
+      <span class="lab-kind">Guide</span>
+      <span class="lab-date">MAY 2026</span>
+      <span class="lab-arrow">↗</span>
+    </a>
+
+    <a class="lab-row" href="0043-as-is-to-be-process-mapping-erp" data-title="AS-IS vs TO-BE Process Mapping: A Bangladesh ERP Practitioner's Guide" data-sub="Master AS-IS vs TO-BE process mapping for your ERP implementation. Learn how to document current workflows and design future state Odoo processes.">
+      <span class="lab-num">0043</span>
+      <span class="lab-title">
+        AS-IS vs TO-BE Process Mapping
+        <span class="sub">Learn how to document current workflows and design future state Odoo processes.</span>
+      </span>
+      <span class="lab-kind">Guide</span>
+      <span class="lab-date">MAY 2026</span>
+      <span class="lab-arrow">↗</span>
+    </a>
+
+    <a class="lab-row" href="0042-odoo-user-access-rights-configuration" data-title="Odoo User Roles &amp; Access Rights: Configuration Guide for SMEs" data-sub="Secure your Odoo ERP by configuring precise user access rights and roles. A complete guide for SMEs to manage permissions.">
+      <span class="lab-num">0042</span>
+      <span class="lab-title">
+        Odoo User Roles &amp; Access Rights: Configuration Guide
+        <span class="sub">Secure your Odoo ERP by configuring precise user access rights and roles for SMEs.</span>
+      </span>
+      <span class="lab-kind">Configuration Guide</span>
+      <span class="lab-date">MAY 2026</span>
+      <span class="lab-arrow">↗</span>
+    </a>
+
+    <a class="lab-row" href="0041-odoo-landed-costs-duty-drawback-bangladesh" data-title="Landed Costs &amp; Duty Drawback in Odoo Bangladesh" data-sub="Configure Odoo landed costs for Bangladesh imports. Include freight, insurance, and duty in inventory valuation.">
+      <span class="lab-num">0041</span>
+      <span class="lab-title">
+        Landed Costs &amp; Duty Drawback in Odoo Bangladesh
+        <span class="sub">Configure landed costs for imports. Include freight, insurance, and duty in inventory valuation.</span>
+      </span>
+      <span class="lab-kind">Configuration Guide</span>
+      <span class="lab-date">MAY 2026</span>
+      <span class="lab-arrow">↗</span>
+    </a>
+
+    <a class="lab-row" href="0040-odoo-quality-control-iso-bangladesh" data-title="Odoo Quality Control for ISO-Certified Bangladesh Factories" data-sub="Configure Odoo quality control for ISO-certified Bangladesh factories. Setup quality checks, alerts, and acceptable tolerances.">
+      <span class="lab-num">0040</span>
+      <span class="lab-title">
+        Odoo Quality Control for ISO-Certified Bangladesh Factories
+        <span class="sub">Setup quality checks, alerts, and acceptable tolerances for manufacturing compliance.</span>
+      </span>
+      <span class="lab-kind">Configuration Guide</span>
+      <span class="lab-date">MAY 2026</span>
+      <span class="lab-arrow">↗</span>
+    </a>
+
+    <a class="lab-row" href="0039-odoo-reordering-rules-mto-bangladesh" data-title="Odoo Reordering Rules vs MTO vs Min/Max: When to Use Which" data-sub="Odoo Reordering Rules vs MTO vs Min/Max for Bangladesh supply chains. Learn when to use which automated procurement rule.">
+      <span class="lab-num">0039</span>
+      <span class="lab-title">
+        Odoo Reordering Rules vs MTO vs Min/Max: When to Use Which
+        <span class="sub">Learn when to use which automated procurement rule for your supply chain.</span>
+      </span>
+      <span class="lab-kind">Configuration Guide</span>
+      <span class="lab-date">MAY 2026</span>
+      <span class="lab-arrow">↗</span>
+    </a>
+
+    <a class="lab-row" href="0038-odoo-manufacturing-routing-bangladesh" data-title="Manufacturing Routing in Odoo: Work Centers, Operations &amp; Time Tracking" data-sub="Configure Odoo manufacturing routing for Bangladesh factories — work centers, operations, machine capacity, and production time tracking.">
+      <span class="lab-num">0038</span>
+      <span class="lab-title">
+        Manufacturing Routing in Odoo: Work Centers, Operations &amp; Time Tracking
+        <span class="sub">Configure work centers, operations, machine capacity, and production time tracking.</span>
+      </span>
+      <span class="lab-kind">Configuration Guide</span>
+      <span class="lab-date">MAY 2026</span>
+      <span class="lab-arrow">↗</span>
+    </a>
+
+
+    <a class="lab-row" href="0037-odoo-spinning-mill-bangladesh" data-title="Odoo for Spinning &amp; Weaving Mills Bangladesh: Yarn Stock, Loom Routing &amp; QC" data-sub="Yarn inventory by count and composition, loom work centre routing, grey fabric to finished fabric tracking, and quality control for spinning mills.">
+      <span class="lab-num">0037</span>
+      <span class="lab-title">
+        Odoo for Spinning &amp; Weaving Mills Bangladesh: Yarn Stock, Loom Routing &amp; QC
+        <span class="sub">Yarn inventory by count, loom work centre routing, grey fabric QC, and finished goods tracking for Bangladesh textile mills.</span>
+      </span>
+      <span class="lab-kind">Industry Guide</span>
+      <span class="lab-date">MAY 2026</span>
+      <span class="lab-arrow">↗</span>
+    </a>
+
+    <a class="lab-row" href="0036-odoo-trading-company-bangladesh" data-title="Odoo for Trading Companies Bangladesh: Multi-Warehouse &amp; Procurement" data-sub="Multi-warehouse setup, import procurement with LC management, landed costs, customer pricing tiers, and stock replenishment for wholesale distributors.">
+      <span class="lab-num">0036</span>
+      <span class="lab-title">
+        Odoo for Trading Companies Bangladesh: Multi-Warehouse &amp; Procurement
+        <span class="sub">Multi-warehouse setup, import procurement, landed costs, and customer pricing for wholesale distributors in Bangladesh.</span>
+      </span>
+      <span class="lab-kind">Industry Guide</span>
+      <span class="lab-date">MAY 2026</span>
+      <span class="lab-arrow">↗</span>
+    </a>
+
+    <a class="lab-row" href="0035-odoo-pharma-bangladesh" data-title="Odoo for Pharmaceutical Bangladesh: Batch Tracking &amp; Compliance" data-sub="Lot and batch tracking, expiry date management, DGDA batch manufacturing record requirements, pharma production workflow, and recall traceability in Odoo.">
+      <span class="lab-num">0035</span>
+      <span class="lab-title">
+        Odoo for Pharmaceutical Bangladesh: Batch Tracking &amp; Compliance
+        <span class="sub">Lot tracking, expiry management, DGDA batch compliance, QC release workflow, and recall traceability for pharma manufacturers.</span>
+      </span>
+      <span class="lab-kind">Industry Guide</span>
+      <span class="lab-date">MAY 2026</span>
+      <span class="lab-arrow">↗</span>
+    </a>
+
+    <a class="lab-row" href="0034-odoo-cycle-export-bangladesh" data-title="Odoo for Cycle &amp; Bicycle Export Bangladesh: BOM to Customs" data-sub="Multi-level BOM for bicycle assembly, imported component procurement with landed costs, HS code classification, export documentation, and duty drawback traceability.">
+      <span class="lab-num">0034</span>
+      <span class="lab-title">
+        Odoo for Cycle &amp; Bicycle Export Bangladesh: BOM to Customs
+        <span class="sub">Multi-level BOM, imported component procurement, HS codes, export documentation, and duty drawback traceability for bicycle manufacturers.</span>
+      </span>
+      <span class="lab-kind">Industry Guide</span>
+      <span class="lab-date">MAY 2026</span>
+      <span class="lab-arrow">↗</span>
+    </a>
+
+    <a class="lab-row" href="0033-odoo-rmg-garments-bangladesh" data-title="Odoo for RMG &amp; Garments Bangladesh: From Sample to Shipment" data-sub="Sample-to-shipment workflow, size-colour BOM with product variants, work centre setup, BGMEA wage board compliance, LC export documentation, and production reporting.">
+      <span class="lab-num">0033</span>
+      <span class="lab-title">
+        Odoo for RMG &amp; Garments Bangladesh: From Sample to Shipment
+        <span class="sub">Sample approval to shipment, size-colour BOM variants, work centres, BGMEA wages, LC documentation — full RMG ERP configuration guide.</span>
+      </span>
+      <span class="lab-kind">Industry Guide</span>
+      <span class="lab-date">MAY 2026</span>
+      <span class="lab-arrow">↗</span>
+    </a>
+
+    <a class="lab-row" href="odoo-18-functional-certification-bangladesh" data-title="Odoo Functional Certification — What It Is &amp; Why It Matters for Bangladesh ERP" data-sub="A first-hand account of the Odoo 18 Functional Certification — what it tests, how it differs from experience, and why it matters when choosing a consultant in Bangladesh.">
+      <span class="lab-num">—</span>
+      <span class="lab-title">
+        Odoo Functional Certification — What It Is &amp; Why It Matters for Bangladesh ERP
+        <span class="sub">A first-hand account of the Odoo 18 Functional Certification — what it tests, how it differs from experience, and why it matters when choosing a consultant.</span>
+      </span>
+      <span class="lab-kind">Credential · Essay</span>
+      <span class="lab-date">MAY 2026</span>
+      <span class="lab-arrow">↗</span>
+    </a>
+
+    <a class="lab-row" href="0032-odoo-post-go-live-hypercare-bangladesh" data-title="Odoo Post Go-Live Hypercare Bangladesh: L1/L2/L3 Support Structure" data-sub="L1/L2/L3 support tiers, escalation matrix, 30-60-90 day KPIs, and exit criteria for Bangladesh Odoo hypercare — the full post go-live playbook.">
+      <span class="lab-num">0032</span>
+      <span class="lab-title">
+        Odoo Post Go-Live Hypercare Bangladesh: L1/L2/L3 Support Structure
+        <span class="sub">L1/L2/L3 support tiers, escalation matrix, and 30-60-90 day KPI framework for Bangladesh Odoo teams after go-live.</span>
+      </span>
+      <span class="lab-kind">Guide · Support</span>
+      <span class="lab-date">MAY 2026</span>
+      <span class="lab-arrow">↗</span>
+    </a>
+
+    <a class="lab-row" href="0031-odoo-training-plan-template" data-title="Odoo Training Plan Template: Roles, Modules &amp; Sign-Off Matrix" data-sub="Role-based training matrix, 2-week schedule, assessment design, and sign-off criteria for Bangladesh ERP go-live training.">
+      <span class="lab-num">0031</span>
+      <span class="lab-title">
+        Odoo Training Plan Template: Roles, Modules &amp; Sign-Off Matrix
+        <span class="sub">Role-based training matrix, 2-week schedule, assessment design, and sign-off criteria for Bangladesh ERP go-lives.</span>
+      </span>
+      <span class="lab-kind">Template</span>
+      <span class="lab-date">MAY 2026</span>
+      <span class="lab-arrow">↗</span>
+    </a>
+
+    <a class="lab-row" href="0030-data-migration-checklist-odoo-bangladesh" data-title="Data Migration Checklist for Odoo Bangladesh Go-Live" data-sub="10-point checklist: customer and vendor master, opening balances, Bangladesh-specific fields, and the exact cutover day sequence.">
+      <span class="lab-num">0030</span>
+      <span class="lab-title">
+        Data Migration Checklist for Odoo Bangladesh Go-Live
+        <span class="sub">10-point checklist: master data, open balances, Bangladesh-specific fields, and the exact cutover day sequence.</span>
+      </span>
+      <span class="lab-kind">Checklist</span>
+      <span class="lab-date">MAY 2026</span>
+      <span class="lab-arrow">↗</span>
+    </a>
+
+    <a class="lab-row" href="0029-odoo-rfp-template-bangladesh" data-title="Odoo RFP Template Bangladesh: How to Write + Vendor Scoring Matrix" data-sub="Full 7-section RFP structure, weighted vendor scoring matrix, and red-flag checklist for selecting the right Odoo partner in Bangladesh.">
+      <span class="lab-num">0029</span>
+      <span class="lab-title">
+        Odoo RFP Template Bangladesh: How to Write + Vendor Scoring Matrix
+        <span class="sub">Full 7-section RFP structure, weighted vendor scoring matrix, and red-flag checklist for selecting the right Odoo partner.</span>
+      </span>
+      <span class="lab-kind">Template · RFP</span>
+      <span class="lab-date">MAY 2026</span>
+      <span class="lab-arrow">↗</span>
+    </a>
+
+    <a class="lab-row" href="0028-odoo-implementation-roadmap-bangladesh" data-title="Odoo Implementation Roadmap Bangladesh: The 12-Week Plan" data-sub="Complete 12-week Odoo implementation roadmap for Bangladesh SMEs — RACI matrix, phase milestones, data cutover, and go-live criteria.">
+      <span class="lab-num">0028</span>
+      <span class="lab-title">
+        Odoo Implementation Roadmap Bangladesh: The 12-Week Plan
+        <span class="sub">Complete 12-week roadmap for Bangladesh SMEs — RACI matrix, phase milestones, data cutover, and go-live criteria.</span>
+      </span>
+      <span class="lab-kind">Guide · Roadmap</span>
+      <span class="lab-date">MAY 2026</span>
+      <span class="lab-arrow">↗</span>
+    </a>
+
+    <a class="lab-row" href="0027-sap-b1-vs-odoo-bangladesh" data-title="SAP Business One vs Odoo Bangladesh: A Real Cost Comparison" data-sub="Licensing, implementation TCO, feature depth, and Bangladesh ecosystem — when SAP B1 wins and when Odoo is the right call.">
+      <span class="lab-num">0027</span>
+      <span class="lab-title">
+        SAP Business One vs Odoo Bangladesh: A Real Cost Comparison
+        <span class="sub">Licensing, implementation TCO, feature depth, and Bangladesh ecosystem — when SAP B1 wins and when Odoo is the right call.</span>
+      </span>
+      <span class="lab-kind">Comparison</span>
+      <span class="lab-date">MAY 2026</span>
+      <span class="lab-arrow">↗</span>
+    </a>
+
+    <a class="lab-row" href="0026-odoo-16-17-18-upgrade-bangladesh" data-title="Odoo 16 vs 17 vs 18 vs 19: What Bangladesh Companies Need to Know" data-sub="Key differences across Odoo versions, upgrade path risk for custom modules, and which version to target for new or upgraded deployments.">
+      <span class="lab-num">0026</span>
+      <span class="lab-title">
+        Odoo 16 vs 17 vs 18 vs 19: What Bangladesh Companies Need to Know
+        <span class="sub">Key differences, upgrade path risk for custom modules, and which version to target for new or upgraded Bangladesh deployments.</span>
+      </span>
+      <span class="lab-kind">Version Guide</span>
+      <span class="lab-date">MAY 2026</span>
+      <span class="lab-arrow">↗</span>
+    </a>
+
+    <a class="lab-row" href="0025-odoo-on-premise-vs-cloud-bangladesh" data-title="On-Premise vs Cloud Odoo: Bangladesh Infrastructure Decision Guide" data-sub="Bangladesh power and internet infrastructure reality check — when to run Odoo on a local server vs cloud, with total cost comparison.">
+      <span class="lab-num">0025</span>
+      <span class="lab-title">
+        On-Premise vs Cloud Odoo: Bangladesh Infrastructure Decision Guide
+        <span class="sub">Bangladesh power and internet reality check — when on-premise beats cloud, with 3-year total cost comparison across deployment options.</span>
+      </span>
+      <span class="lab-kind">Infrastructure Guide</span>
+      <span class="lab-date">MAY 2026</span>
+      <span class="lab-arrow">↗</span>
+    </a>
+
+    <a class="lab-row" href="0024-odoo-community-vs-enterprise-bangladesh" data-title="Odoo Community vs Enterprise: Full Feature Comparison for Bangladesh SMEs" data-sub="30-feature matrix, licensing cost in BDT, and the financial calculation of when Enterprise pays for itself at different user counts.">
+      <span class="lab-num">0024</span>
+      <span class="lab-title">
+        Odoo Community vs Enterprise: Full Feature Comparison for Bangladesh SMEs
+        <span class="sub">30-feature matrix, licensing cost in BDT, and when Enterprise pays for itself — the decision framework for Bangladesh companies.</span>
+      </span>
+      <span class="lab-kind">Comparison</span>
+      <span class="lab-date">MAY 2026</span>
+      <span class="lab-arrow">↗</span>
+    </a>
+
+    <a class="lab-row" href="0023-odoo-vs-erpnext-bangladesh" data-title="Odoo vs ERPNext Bangladesh: Which One for Manufacturing?" data-sub="Feature depth, Bangladesh ecosystem, total cost, and compliance support — honest comparison for RMG, textile, and export factories.">
+      <span class="lab-num">0023</span>
+      <span class="lab-title">
+        Odoo vs ERPNext Bangladesh: Which One for Manufacturing?
+        <span class="sub">Feature depth, Bangladesh ecosystem, total cost, and compliance support — honest comparison for RMG, textile, and export factories.</span>
+      </span>
+      <span class="lab-kind">Comparison</span>
+      <span class="lab-date">MAY 2026</span>
+      <span class="lab-arrow">↗</span>
+    </a>
+
+    <a class="lab-row" href="0022-bgmea-wage-board-odoo-payroll" data-title="BGMEA Wage Board Odoo Payroll: RMG Payroll Compliance Bangladesh" data-sub="8th Wage Board grade setup, minimum wage enforcement, overtime rules, PF deductions, and compliant RMG payslips in Odoo.">
+      <span class="lab-num">0022</span>
+      <span class="lab-title">
+        BGMEA Wage Board in Odoo Payroll: Bangladesh RMG Compliance
+        <span class="sub">8th Wage Board grades, minimum wage enforcement, overtime rules, PF deductions, and compliant RMG payslips in Odoo.</span>
+      </span>
+      <span class="lab-kind">Compliance Guide</span>
+      <span class="lab-date">MAY 2026</span>
+      <span class="lab-arrow">↗</span>
+    </a>
+
+    <a class="lab-row" href="0021-epz-sez-compliance-odoo-bangladesh" data-title="EPZ &amp; SEZ Compliance in Odoo: Setup for Bangladesh Export Zones" data-sub="Bonded warehouse location setup, duty-free raw material tracking, BEPZA fiscal positions, and BEPZA MPR data from Odoo.">
+      <span class="lab-num">0021</span>
+      <span class="lab-title">
+        EPZ &amp; SEZ Compliance in Odoo: Bangladesh Export Zones
+        <span class="sub">Bonded warehouse setup, duty-free raw material tracking, BEPZA fiscal positions, and Monthly Progress Report data from Odoo.</span>
+      </span>
+      <span class="lab-kind">Compliance Guide</span>
+      <span class="lab-date">MAY 2026</span>
+      <span class="lab-arrow">↗</span>
+    </a>
+
+    <a class="lab-row" href="0020-lc-management-odoo-bangladesh" data-title="Letter of Credit (LC) Workflow in Odoo: Bangladesh Exporter's Guide" data-sub="Full LC lifecycle in Odoo — proforma invoice, LC registration, shipment document assembly, and bank payment reconciliation.">
+      <span class="lab-num">0020</span>
+      <span class="lab-title">
+        Letter of Credit (LC) Workflow in Odoo: Bangladesh Exporter's Guide
+        <span class="sub">Full LC lifecycle — proforma invoice, LC registration, shipment document assembly, compliance checking, and payment reconciliation.</span>
+      </span>
+      <span class="lab-kind">Compliance Guide</span>
+      <span class="lab-date">MAY 2026</span>
+      <span class="lab-arrow">↗</span>
+    </a>
+
+    <a class="lab-row" href="0019-hs-code-customs-odoo-bangladesh" data-title="Customs &amp; HS Code Management in Odoo for Bangladesh Exporters" data-sub="Product HS code setup, customs fiscal positions, export documents, and landed cost configuration for Bangladesh exporters.">
+      <span class="lab-num">0019</span>
+      <span class="lab-title">
+        Customs &amp; HS Code Management in Odoo for Bangladesh Exporters
+        <span class="sub">Product HS code setup, customs fiscal positions, export documents, and landed costs for Bangladesh importers and exporters.</span>
+      </span>
+      <span class="lab-kind">Compliance Guide</span>
+      <span class="lab-date">MAY 2026</span>
+      <span class="lab-arrow">↗</span>
+    </a>
+
+    <a class="lab-row" href="0018-mushak-63-odoo-bangladesh" data-title="Mushak 6.3 in Odoo: Step-by-Step Configuration for Bangladesh VAT" data-sub="Tax groups, output/input VAT accounts, fiscal positions for zero-rated exports, and generating Mushak 6.3 data from the Tax Report.">
+      <span class="lab-num">0018</span>
+      <span class="lab-title">
+        Mushak 6.3 in Odoo: Step-by-Step NBR VAT Configuration
+        <span class="sub">Tax groups, output/input VAT accounts, fiscal positions for exports, and generating Mushak 6.3 data from Odoo's Tax Report.</span>
+      </span>
+      <span class="lab-kind">Compliance Guide</span>
+      <span class="lab-date">MAY 2026</span>
+      <span class="lab-arrow">↗</span>
+    </a>
+
+    <a class="lab-row" href="0017-odoo-sales-crm-bangladesh" data-title="Odoo Sales &amp; CRM for Bangladesh Exporters: B2B Pipeline Setup" data-sub="Pipeline stages, multi-currency quotations, proforma invoices for LC, and export CRM configuration.">
+      <span class="lab-num">0017</span>
+      <span class="lab-title">
+        Odoo Sales &amp; CRM for Bangladesh Exporters: B2B Pipeline Setup
+        <span class="sub">Pipeline stages, multi-currency quotations, proforma invoices for LC, and export CRM configuration.</span>
+      </span>
+      <span class="lab-kind">Module Guide</span>
+      <span class="lab-date">MAY 2026</span>
+      <span class="lab-arrow">↗</span>
+    </a>
+
+    <a class="lab-row" href="0016-odoo-hr-payroll-bangladesh" data-title="Odoo HR &amp; Payroll Bangladesh: PF, Gratuity &amp; Leave Policy Setup" data-sub="Provident Fund, Gratuity provisions, leave types, salary structures, and income tax on salary.">
+      <span class="lab-num">0016</span>
+      <span class="lab-title">
+        Odoo HR &amp; Payroll Bangladesh: PF, Gratuity &amp; Leave Policy Setup
+        <span class="sub">Provident Fund, Gratuity provisions, leave types, salary structures, and income tax on salary.</span>
+      </span>
+      <span class="lab-kind">Module Guide</span>
+      <span class="lab-date">MAY 2026</span>
+      <span class="lab-arrow">↗</span>
+    </a>
+
+    <a class="lab-row" href="0015-odoo-purchase-vendor-management-bangladesh" data-title="Odoo Purchase &amp; Vendor Management: Bangladesh SME Playbook" data-sub="RFQ workflow, 3-way matching, approval matrix, reorder rules, and vendor payment with TDS.">
+      <span class="lab-num">0015</span>
+      <span class="lab-title">
+        Odoo Purchase &amp; Vendor Management: Bangladesh SME Playbook
+        <span class="sub">RFQ workflow, 3-way matching, approval matrix, reorder rules, and vendor payment with TDS.</span>
+      </span>
+      <span class="lab-kind">Module Guide</span>
+      <span class="lab-date">MAY 2026</span>
+      <span class="lab-arrow">↗</span>
+    </a>
+
+    <a class="lab-row" href="0014-odoo-accounting-setup-bangladesh" data-title="Odoo Accounting Setup for Bangladesh: Chart of Accounts &amp; Fiscal Positions" data-sub="COA structure, fiscal positions for domestic and export, bank journals, and NBR VAT compliance hooks.">
+      <span class="lab-num">0014</span>
+      <span class="lab-title">
+        Odoo Accounting Setup for Bangladesh: Chart of Accounts &amp; Fiscal Positions
+        <span class="sub">COA structure, fiscal positions for domestic and export, bank journals, and NBR VAT compliance hooks.</span>
+      </span>
+      <span class="lab-kind">Module Guide</span>
+      <span class="lab-date">MAY 2026</span>
+      <span class="lab-arrow">↗</span>
+    </a>
+
+    <a class="lab-row" href="0013-odoo-manufacturing-module-bangladesh" data-title="Odoo Manufacturing Module Setup for Bangladesh Factories" data-sub="Bill of Materials, Work Centers, routing, and the full Manufacturing Order lifecycle for Bangladesh factories.">
+      <span class="lab-num">0013</span>
+      <span class="lab-title">
+        Odoo Manufacturing Module Setup for Bangladesh Factories
+        <span class="sub">Bill of Materials, Work Centers, routing, and the full Manufacturing Order lifecycle for Bangladesh factories.</span>
+      </span>
+      <span class="lab-kind">Module Guide</span>
+      <span class="lab-date">MAY 2026</span>
+      <span class="lab-arrow">↗</span>
+    </a>
+
+    <a class="lab-row" href="0012-odoo-erp-cost-bangladesh" data-title="Odoo ERP implementation cost in Bangladesh (2026)" data-sub="Real-world cost breakdown for SMEs and manufacturers — licensing, consulting, training, and TCO.">
+      <span class="lab-num">0012</span>
+      <span class="lab-title">
+        Odoo ERP implementation cost in Bangladesh (2026)
+        <span class="sub">Real-world cost breakdown for SMEs and manufacturers — licensing, consulting, training, and TCO.</span>
+      </span>
+      <span class="lab-kind">Guide · Cost</span>
+      <span class="lab-date">MAY 2026</span>
+      <span class="lab-arrow">↗</span>
+    </a>
+
+    <a class="lab-row" href="0011-odoo-inventory-valuation-cheatsheet" data-title="Odoo inventory valuation cheatsheet" data-sub="FIFO vs. weighted avg — when each actually makes sense on the factory floor.">
+      <span class="lab-num">0011</span>
+      <span class="lab-title">
+        Odoo inventory valuation cheatsheet
+        <span class="sub">FIFO vs. weighted avg — when each actually makes sense on the factory floor.</span>
+      </span>
+      <span class="lab-kind">Utility · CSV</span>
+      <span class="lab-date">APR 2026</span>
+      <span class="lab-arrow">↗</span>
+    </a>
+
+    <a class="lab-row" href="0010-bpmn-templates-manufacturing-discovery" data-title="BPMN templates for manufacturing discovery" data-sub="A starter pack of process maps I use in Week 1 of every engagement.">
+      <span class="lab-num">0010</span>
+      <span class="lab-title">
+        BPMN templates for manufacturing discovery
+        <span class="sub">A starter pack of process maps I use in Week 1 of every engagement.</span>
+      </span>
+      <span class="lab-kind">Template · .bpmn</span>
+      <span class="lab-date">MAR 2026</span>
+      <span class="lab-arrow">↗</span>
+    </a>
+
+    <a class="lab-row" href="0009-uat-script-200-users-ago" data-title="The UAT script I wish I had 200 users ago" data-sub="On writing test cases that surface real operational edge cases, not happy paths.">
+      <span class="lab-num">0009</span>
+      <span class="lab-title">
+        The UAT script I wish I had 200 users ago
+        <span class="sub">On writing test cases that surface real operational edge cases, not happy paths.</span>
+      </span>
+      <span class="lab-kind">Essay</span>
+      <span class="lab-date">FEB 2026</span>
+      <span class="lab-arrow">↗</span>
+    </a>
+
+    <a class="lab-row" href="0008-excel-odoo-migration-checklist" data-title="Excel → Odoo migration checklist (v3)" data-sub="The 40-item list that makes data migration feel like a weekend, not a quarter.">
+      <span class="lab-num">0008</span>
+      <span class="lab-title">
+        Excel → Odoo migration checklist (v3)
+        <span class="sub">The 40-item list that makes data migration feel like a weekend, not a quarter.</span>
+      </span>
+      <span class="lab-kind">Checklist · MD</span>
+      <span class="lab-date">JAN 2026</span>
+      <span class="lab-arrow">↗</span>
+    </a>
+
+    <a class="lab-row" href="0007-change-management-isnt-a-memo" data-title="Change management isn't a memo" data-sub="Short field notes from training 200+ operators through a go-live.">
+      <span class="lab-num">0007</span>
+      <span class="lab-title">
+        Change management isn't a memo
+        <span class="sub">Short field notes from training 200+ operators through a go-live.</span>
+      </span>
+      <span class="lab-kind">Essay</span>
+      <span class="lab-date">DEC 2025</span>
+      <span class="lab-arrow">↗</span>
+    </a>
+
+    <a class="lab-row" href="0006-odoo-multi-company-setup-guide" data-title="Odoo multi-company setup guide" data-sub="When it genuinely helps, when it makes everything worse, and how to configure it right.">
+      <span class="lab-num">0006</span>
+      <span class="lab-title">
+        Odoo multi-company setup guide
+        <span class="sub">When it genuinely helps, when it makes everything worse, and how to configure it right.</span>
+      </span>
+      <span class="lab-kind">Guide</span>
+      <span class="lab-date">NOV 2025</span>
+      <span class="lab-arrow">↗</span>
+    </a>
+
+    <a class="lab-row" href="0005-erp-go-live-cost-manufacturing-bangladesh" data-title="The real cost of going live wrong" data-sub="What a failed ERP go-live actually costs in Bangladesh manufacturing — the hidden invoices.">
+      <span class="lab-num">0005</span>
+      <span class="lab-title">
+        The real cost of going live wrong
+        <span class="sub">What a failed ERP go-live actually costs in Bangladesh manufacturing — the hidden invoices.</span>
+      </span>
+      <span class="lab-kind">Essay</span>
+      <span class="lab-date">OCT 2025</span>
+      <span class="lab-arrow">↗</span>
+    </a>
+
+    <a class="lab-row" href="0004-odoo-vs-sap-vs-tally-bangladesh" data-title="Odoo vs SAP vs Tally: the honest comparison for Bangladesh SMEs" data-sub="Which ERP fits your scale, budget, and operations — from someone who has recommended all three.">
+      <span class="lab-num">0004</span>
+      <span class="lab-title">
+        Odoo vs SAP vs Tally: the honest comparison for Bangladesh SMEs
+        <span class="sub">Which ERP fits your scale, budget, and operations — from someone who has recommended all three.</span>
+      </span>
+      <span class="lab-kind">Comparison</span>
+      <span class="lab-date">OCT 2025</span>
+      <span class="lab-arrow">↗</span>
+    </a>
+
+    <a class="lab-row" href="0003-nbr-vat-compliance-odoo-bangladesh" data-title="NBR VAT compliance in Odoo: a Bangladesh practitioner's guide" data-sub="Mushak forms, BIN setup, and month-end VAT reconciliation for Bangladesh businesses.">
+      <span class="lab-num">0003</span>
+      <span class="lab-title">
+        NBR VAT compliance in Odoo: a Bangladesh practitioner's guide
+        <span class="sub">Mushak forms, BIN setup, and month-end VAT reconciliation for Bangladesh businesses.</span>
+      </span>
+      <span class="lab-kind">Guide · VAT</span>
+      <span class="lab-date">SEP 2025</span>
+      <span class="lab-arrow">↗</span>
+    </a>
+
+    <a class="lab-row" href="0002-discovery-session-business-process-mapping" data-title="The discovery session: map your business before you open Odoo" data-sub="How to run a proper ERP discovery — what to capture, how to run sessions, what to hand off.">
+      <span class="lab-num">0002</span>
+      <span class="lab-title">
+        The discovery session: map your business before you open Odoo
+        <span class="sub">How to run a proper ERP discovery — what to capture, how to run sessions, what to hand off.</span>
+      </span>
+      <span class="lab-kind">Guide</span>
+      <span class="lab-date">AUG 2025</span>
+      <span class="lab-arrow">↗</span>
+    </a>
+
+    <a class="lab-row" href="0001-why-erp-fails-bangladesh" data-title="Why most ERP implementations fail in Bangladesh" data-sub="Five root causes, in order of frequency. None of them are about the software.">
+      <span class="lab-num">0001</span>
+      <span class="lab-title">
+        Why most ERP implementations fail in Bangladesh
+        <span class="sub">Five root causes, in order of frequency. None of them are about the software.</span>
+      </span>
+      <span class="lab-kind">Essay</span>
+      <span class="lab-date">JUL 2025</span>
+      <span class="lab-arrow">↗</span>
+    </a>
+  </div>
+
+  <div class="lab-pagination" id="lab-pagination" hidden="">
+    <button class="page-nav-btn" id="lab-prev">← Prev</button>
+    <span class="page-info" id="lab-page-info">Page 1 of 5</span>
+    <button class="page-nav-btn" id="lab-next">Next →</button>
+  </div>
+
+  <div class="lab-no-results" id="lab-no-results">No articles match your search.</div>
+</div>
+
+<!-- NEWSLETTER STRIP -->
+<div class="nl-strip">
+  <div class="shell">
+    <div class="nl-strip-inner">
+      <div class="nl-strip-copy">
+        <p class="nl-strip-head">Odoo Bangladesh Monthly</p>
+        <p class="nl-strip-sub">New articles and real project insights — monthly, no noise.</p>
+      </div>
+      <form class="nl-strip-form" id="nl-strip-form" novalidate="">
+        <input class="nl-strip-input" id="nl-strip-email" type="email" placeholder="your@email.com" required="" autocomplete="email">
+        <button class="nl-strip-btn" type="submit">Subscribe →</button>
+      </form>
+      <p class="nl-strip-msg" id="nl-strip-msg" aria-live="polite"></p>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="shell">
+    <div class="foot">
+      <span>© 2026 Mehedi Hasan · Built with quiet discipline</span>
+      <span><a href="../">← Back to portfolio</a></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // theme toggle (shared preference with main site) — cycles dark-navy (default) -> dark (classic) -> light
+  (function(){
+    const root = document.documentElement;
+    const btn = document.getElementById('theme-toggle');
+    const TITLES = {
+      light: 'Theme: Light — click for Dark Navy',
+      'dark-navy': 'Theme: Dark Navy — click for Dark (Classic)',
+      dark: 'Theme: Dark (Classic) — click for Light'
+    };
+    function current() { return root.getAttribute('data-theme') || 'dark'; }
+    function setTitle() { btn.title = TITLES[current()]; }
+    setTitle();
+    btn.addEventListener('click', () => {
+      const order = ['dark-navy', 'dark', 'light'];
+      const next = order[(order.indexOf(current()) + 1) % order.length];
+      if (next === 'dark') root.removeAttribute('data-theme');
+      else root.setAttribute('data-theme', next);
+      localStorage.setItem('mh-theme', next);
+      setTitle();
+    });
+  })();
+
+  // lab controller: search + pagination + view toggle
+  (function(){
+    const STORAGE_VIEW = 'mh-lab-view';
+    const STORAGE_PER  = 'mh-lab-per-page';
+
+    const input      = document.getElementById('lab-search');
+    const countEl    = document.getElementById('lab-count');
+    const noResults  = document.getElementById('lab-no-results');
+    const table      = document.getElementById('lab-table');
+    const pagination = document.getElementById('lab-pagination');
+    const prevBtn    = document.getElementById('lab-prev');
+    const nextBtn    = document.getElementById('lab-next');
+    const pageInfo   = document.getElementById('lab-page-info');
+
+    const allRows = Array.from(table.querySelectorAll('.lab-row'));
+    const total   = allRows.length;
+
+    // inject thumbnails — image files live at /lab/thumbs/NNNN.webp
+    allRows.forEach(row => {
+      const numEl = row.querySelector('.lab-num');
+      const num   = numEl ? numEl.textContent.trim() : '';
+      if (!num || num === '—') return;
+      const img = document.createElement('img');
+      img.className = 'lab-thumb';
+      img.src       = '/lab/thumbs/' + num + '.webp';
+      img.alt       = '';
+      img.loading   = 'lazy';
+      img.onerror   = function(){ this.style.display = 'none'; };
+      row.insertBefore(img, row.firstChild);
+    });
+
+    const storedPer = localStorage.getItem(STORAGE_PER);
+    let perPage = [10,25,50].includes(Number(storedPer)) ? Number(storedPer) : storedPer === 'all' ? 'all' : 10;
+
+    const state = {
+      query:   '',
+      perPage: perPage,
+      page:    1,
+      view:    localStorage.getItem(STORAGE_VIEW) === 'grid' ? 'grid' : 'list',
+      tag:     'all',
+    };
+
+    function getCategory(kind) {
+      const k = kind.toLowerCase();
+      if (k.includes('essay')) return 'essay';
+      if (k.includes('checklist')) return 'checklist';
+      if (k.includes('template')) return 'template';
+      if (k.includes('comparison')) return 'comparison';
+      return 'guide';
+    }
+
+    function getFiltered() {
+      let rows = allRows;
+      if (state.tag !== 'all') {
+        rows = rows.filter(row => {
+          const kindEl = row.querySelector('.lab-kind');
+          return kindEl && getCategory(kindEl.textContent.trim()) === state.tag;
+        });
+      }
+      if (!state.query) return rows;
+      const q = state.query.toLowerCase();
+      return rows.filter(row =>
+        (row.dataset.title || '').toLowerCase().includes(q) ||
+        (row.dataset.sub  || '').toLowerCase().includes(q)
+      );
+    }
+
+    function render() {
+      const filtered   = getFiltered();
+      const n          = filtered.length;
+      const showAll    = state.perPage === 'all';
+      const totalPages = showAll ? 1 : Math.ceil(n / state.perPage);
+
+      if (state.page > totalPages) state.page = Math.max(1, totalPages);
+
+      const start = showAll ? 0 : (state.page - 1) * state.perPage;
+      const end   = showAll ? n : Math.min(start + state.perPage, n);
+
+      allRows.forEach(row => { row.hidden = true; });
+      filtered.slice(start, end).forEach(row => { row.hidden = false; });
+
+      if (n === 0) {
+        countEl.textContent = 'No results';
+      } else if (showAll && !state.query) {
+        countEl.textContent = 'Showing all ' + total + ' articles';
+      } else if (showAll) {
+        countEl.textContent = 'Showing ' + n + ' of ' + total + ' articles';
+      } else {
+        const s = start + 1, e = Math.min(end, n);
+        countEl.textContent = state.query
+          ? 'Showing ' + s + '–' + e + ' of ' + n + ' matching articles'
+          : 'Showing ' + s + '–' + e + ' of ' + total + ' articles';
+      }
+
+      noResults.classList.toggle('visible', n === 0 && !!state.query);
+
+      if (showAll || totalPages <= 1) {
+        pagination.hidden = true;
+      } else {
+        pagination.hidden = false;
+        pageInfo.textContent = 'Page ' + state.page + ' of ' + totalPages;
+        prevBtn.disabled = state.page <= 1;
+        nextBtn.disabled = state.page >= totalPages;
+      }
+    }
+
+    function applyView() {
+      table.classList.toggle('lab-grid', state.view === 'grid');
+      document.querySelectorAll('.view-btn').forEach(btn => {
+        const active = btn.dataset.view === state.view;
+        btn.classList.toggle('active', active);
+        btn.setAttribute('aria-pressed', active);
+      });
+    }
+
+    function applyPerPage() {
+      document.querySelectorAll('.per-page-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.n === String(state.perPage));
+      });
+    }
+
+    input.addEventListener('input', () => {
+      state.query = input.value.trim();
+      state.page  = 1;
+      render();
+    });
+
+    document.querySelectorAll('.per-page-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const val = btn.dataset.n;
+        state.perPage = val === 'all' ? 'all' : Number(val);
+        state.page = 1;
+        localStorage.setItem(STORAGE_PER, val);
+        applyPerPage();
+        render();
+      });
+    });
+
+    document.querySelectorAll('.view-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        state.view = btn.dataset.view;
+        localStorage.setItem(STORAGE_VIEW, state.view);
+        applyView();
+      });
+    });
+
+    document.querySelectorAll('.tag-chip').forEach(chip => {
+      chip.addEventListener('click', () => {
+        state.tag  = chip.dataset.tag;
+        state.page = 1;
+        document.querySelectorAll('.tag-chip').forEach(c =>
+          c.classList.toggle('active', c.dataset.tag === state.tag)
+        );
+        render();
+      });
+    });
+
+    prevBtn.addEventListener('click', () => {
+      if (state.page > 1) {
+        state.page--;
+        render();
+        document.getElementById('lab-search').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+
+    nextBtn.addEventListener('click', () => {
+      const totalPages = Math.ceil(getFiltered().length / state.perPage);
+      if (state.page < totalPages) {
+        state.page++;
+        render();
+        document.getElementById('lab-search').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+
+    applyView();
+    applyPerPage();
+    render();
+  })();
+
+  // sticky nav shadow
+  const navInner = document.querySelector('.nav-inner');
+  window.addEventListener('scroll', () => {
+    navInner.style.boxShadow = window.scrollY > 8 ? '0 10px 30px rgba(0,0,0,0.35)' : 'none';
+  }, { passive: true });
+</script>
+<script>
+  // Newsletter strip — submits to existing course Apps Script; stored with course='newsletter'
+  (function(){
+    const NL_URL = 'https://script.google.com/macros/s/AKfycbwePoTRBcwfPmS2C4Zw03OAE0fLaI6QMC5D72-6WZSlHHML1nhKqKowPgpFpUboMFmi/exec';
+    const form  = document.getElementById('nl-strip-form');
+    const email = document.getElementById('nl-strip-email');
+    const msg   = document.getElementById('nl-strip-msg');
+    if (!form) return;
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const val = email.value.trim();
+      if (!val || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val)) {
+        msg.textContent = 'Enter a valid email.';
+        msg.className = 'nl-strip-msg error';
+        return;
+      }
+      const btn = form.querySelector('.nl-strip-btn');
+      btn.disabled = true; btn.textContent = 'Subscribing…';
+      msg.textContent = ''; msg.className = 'nl-strip-msg';
+      fetch(NL_URL, {
+        method:'POST',
+        headers:{'Content-Type':'text/plain'},
+        body: JSON.stringify({email: val, name:'', profession:'', course:'newsletter'})
+      }).then((res)=>{
+        if (!res.ok) throw new Error('status ' + res.status);
+        msg.textContent = '✓ You\'re subscribed.';
+        msg.className = 'nl-strip-msg ok';
+        email.value = '';
+      }).catch(()=>{
+        msg.textContent = 'Couldn\'t confirm — email mhasanju46@gmail.com directly.';
+        msg.className = 'nl-strip-msg error';
+      }).finally(()=>{
+        btn.disabled = false; btn.textContent = 'Subscribe →';
+      });
+    });
+  })();
+</script>

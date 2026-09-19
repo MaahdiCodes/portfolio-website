@@ -1,0 +1,220 @@
+---
+permalink: "lab/0082-vat-input-tax-credit-rebate-odoo-bangladesh.html"
+title: "VAT Input Tax Credit (Rebate) Claim Workflow in Odoo Bangladesh | Mehedi Hasan"
+description: "How to claim NBR VAT input tax credit in Odoo: Mushak 6.3 invoice matching, Mushak 9.1 return entry, and the documentation rules that get rebate claims reversed."
+canonical: "https://mhasan.me/lab/0082-vat-input-tax-credit-rebate-odoo-bangladesh"
+ogImage: "https://mhasan.me/assets/og/lab/0082-vat-input-tax-credit-rebate-odoo-bangladesh.png"
+ogSiteName: "Mehedi Hasan | Odoo ERP Consultant"
+datePublished: "2026-09-18T14:00:00+06:00"
+dateModified: "2026-09-18T14:00:00+06:00"
+articleSection: "Odoo ERP Bangladesh"
+eyebrowNum: "0082"
+h1: "Claiming VAT input tax credit in Odoo: <span class=\"serif\">the rebate your supplier can quietly take back.</span>"
+lede: "Every VAT-registered business in Bangladesh knows the mechanics of claiming rebate on paper: hold a Mushak 6.3, enter it on the Mushak 9.1, done. What fewer businesses plan for is that a perfectly valid invoice from a compliant-looking supplier does not fully protect the claim, because NBR can reverse your rebate months later if it turns out that supplier never deposited the VAT they collected from you. This article is about building an Odoo purchase workflow that treats that risk as a first-class design consideration, not an afterthought discovered during an audit."
+chips: ["Guide", "NBR VAT", "Input Tax Credit", "Bangladesh 2026"]
+bylineItems:
+  - label: "By"
+    value: "<a href=\"https://www.linkedin.com/in/mehedi-hasan-consultant/\" style=\"color:var(--accent)\" rel=\"author\">Mehedi Hasan</a>"
+  - label: "Published"
+    value: "September 2026"
+  - label: "Read time"
+    value: "16 minutes"
+  - label: "Form"
+    value: "Guide"
+  - label: "Scope"
+    value: "VAT Compliance / Accounting"
+nextArticle:
+  href: "0081-rjsc-annual-compliance-efiling-odoo-bangladesh"
+  dir: "Older · 0081"
+  title: "RJSC Annual Compliance &amp; e-Filing: What Your ERP Should Track"
+  desc: "The company-secretarial data your Odoo setup should track and produce on demand."
+prevArticle:
+  href: "../#lab"
+  dir: "All articles"
+  title: "Back to Lab Index"
+  desc: "Browse all guides on Odoo ERP, manufacturing operations, and business analysis in Bangladesh."
+jsonLd: |
+  [
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "VAT Input Tax Credit (Rebate) Claim Workflow in Odoo for Bangladesh Businesses",
+      "description": "A practical guide to claiming NBR VAT input tax credit (rebate) in Odoo: valid Mushak 6.3 documentation, BIN validation, Mushak 9.1 return entry mechanics, the supplier non-deposit risk that reverses rebate claims, and a purchase ledger structure that survives an NBR audit.",
+      "datePublished": "2026-09-18T14:00:00+06:00",
+      "dateModified": "2026-09-18T14:00:00+06:00",
+      "author": { "@type": "Person", "name": "Mehedi Hasan", "url": "https://mhasan.me", "jobTitle": "Odoo ERP Consultant & Business Analyst", "sameAs": "https://www.linkedin.com/in/mehedi-hasan-consultant/" },
+      "publisher": { "@type": "Person", "name": "Mehedi Hasan", "url": "https://mhasan.me" },
+      "mainEntityOfPage": { "@type": "WebPage", "@id": "https://mhasan.me/lab/0082-vat-input-tax-credit-rebate-odoo-bangladesh" }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://mhasan.me" },
+        { "@type": "ListItem", "position": 2, "name": "Lab", "item": "https://mhasan.me/lab/" },
+        { "@type": "ListItem", "position": 3, "name": "VAT Input Tax Credit (Rebate) Claim Workflow in Odoo Bangladesh", "item": "https://mhasan.me/lab/0082-vat-input-tax-credit-rebate-odoo-bangladesh" }
+      ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What documents are required to claim a VAT input tax credit (rebate) in Bangladesh?",
+          "acceptedAnswer": { "@type": "Answer", "text": "A business must hold valid VAT registration (a BIN) to claim a rebate at all; unregistered persons cannot claim input tax credit. The supporting documentation depends on the transaction type: a valid Mushak 6.3 tax invoice from a registered supplier for domestic purchases, a Bill of Entry for imports, or a Mushak 6.6 VDS certificate where VAT was deducted at source. Without one of these as the underlying evidence, the rebate claim has no valid basis even if the VAT was genuinely paid." }
+        },
+        {
+          "@type": "Question",
+          "name": "Can NBR reverse a VAT rebate that was already claimed and approved?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes, and this is the most important practical risk in the entire input tax credit system. Even where a buyer holds a facially valid Mushak 6.3 invoice from a registered supplier, if NBR later discovers that the supplier did not actually deposit that collected VAT with the government, the buyer's own rebate claim can be reversed, with interest and penalty applied to the buyer, not just the non-compliant supplier. This means a buyer's rebate claim is only as safe as its supplier's own VAT compliance history, which is outside the buyer's direct control but not outside its ability to monitor and manage as a risk." }
+        },
+        {
+          "@type": "Question",
+          "name": "How long must Mushak 6.3 invoices be kept for VAT rebate purposes?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Mushak 6.3 invoices must be preserved for a minimum of 5 years. Both physical and digital copies are acceptable as retained records, but the original supplier-signed version carries the most evidentiary weight if the claim is ever questioned during an NBR audit. A business relying solely on a digital scan without retaining the original signed document takes on avoidable evidentiary risk in a dispute." }
+        },
+        {
+          "@type": "Question",
+          "name": "How is the input tax credit actually entered on the VAT return in Bangladesh?",
+          "acceptedAnswer": { "@type": "Answer", "text": "The exact details from the supplier's Mushak 6.3 challan (the invoice number, date, supplier BIN, and VAT amount) are entered into the designated input tax section of the Mushak 9.1 return form. This is a line-by-line reconciliation process, which is exactly why a business's own purchase ledger needs to hold this data cleanly per invoice throughout the tax period; reconstructing it retroactively from a disorganized pile of supplier invoices at return-filing time is where most manual VAT rebate errors originate." }
+        },
+        {
+          "@type": "Question",
+          "name": "How is this article different from the site's existing Mushak 6.3 setup guide?",
+          "acceptedAnswer": { "@type": "Answer", "text": "The existing Mushak 6.3 Odoo Bangladesh guide on this site covers the issuing side: configuring Odoo to generate compliant Mushak 6.3 invoices when your business sells to customers and collects VAT. This article covers the claiming side: how your business, as a buyer, structures its Odoo purchase and accounting workflow to properly record, validate, and claim input tax credit on the VAT you pay to your own suppliers, and how to manage the risk that a supplier's non-deposit later reverses your rebate." }
+        }
+      ]
+    }
+  ]
+---
+<aside class="toc">
+      <div class="toc-k">In this guide</div>
+      <ol>
+        <li><a href="#basics">The basic mechanics of input tax credit</a></li>
+        <li><a href="#documentation">The documentation that qualifies</a></li>
+        <li><a href="#return-entry">From Mushak 6.3 to Mushak 9.1</a></li>
+        <li><a href="#the-real-risk">The real risk: supplier non-deposit reversal</a></li>
+        <li><a href="#odoo-workflow">Structuring the Odoo purchase workflow</a></li>
+        <li><a href="#bin-validation">BIN validation at the vendor level</a></li>
+        <li><a href="#supplier-risk-flagging">Flagging and monitoring risky suppliers</a></li>
+        <li><a href="#retention">Retention rules and evidentiary weight</a></li>
+        <li><a href="#import-vds-nuance">Handling Bill of Entry and VDS rebates differently</a></li>
+        <li><a href="#return-prep">Assembling the Mushak 9.1 from a clean ledger</a></li>
+        <li><a href="#outlook">Where enforcement is heading</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ol>
+    </aside>
+
+    <div class="body">
+
+      <h2 id="basics">The basic mechanics of input tax credit</h2>
+      <p>Input tax credit, commonly called VAT rebate in Bangladesh practice, is the mechanism that keeps VAT a tax on value added rather than a cascading tax on every transaction in a supply chain. A VAT-registered business pays VAT to its suppliers on purchases (input tax), collects VAT from its own customers on sales (output tax), and remits to NBR only the net difference, having first offset the input tax it already paid against the output tax it collected. The eligibility condition that anchors this entire system is registration: a business must hold a valid VAT registration, a Business Identification Number (BIN), to claim rebate at all. An unregistered person cannot claim input tax credit under any circumstance, no matter how well-documented the purchase.</p>
+      <p>This mechanism is what makes VAT compliance in Odoo a two-sided problem rather than a one-sided one. The site's existing <a href="0018-mushak-63-odoo-bangladesh" style="color:var(--accent)">Mushak 6.3 Odoo Bangladesh</a> guide covers the issuing side: configuring Odoo to generate compliant Mushak 6.3 invoices when your business is the seller collecting VAT from customers. This article covers the other half of the same transaction type, the claiming side: how your business, as the buyer, records and protects the input tax credit you are entitled to on VAT you pay to your own suppliers.</p>
+
+      <div class="big-stat">
+        <div class="bs-val">5 Years</div>
+        <div class="bs-label">Mushak 6.3 Retention Minimum</div>
+        <div class="bs-note">Both physical and digital copies are acceptable, but the original supplier-signed version carries the most evidentiary weight.</div>
+      </div>
+
+      <h2 id="documentation">The documentation that qualifies for rebate</h2>
+      <p>Three categories of documentation support a valid input tax credit claim, and the correct one depends on the transaction type:</p>
+
+      <div class="feature-grid">
+        <div class="feature-card">
+          <div class="fc-icon">01</div>
+          <div class="fc-body"><h4>Mushak 6.3</h4><p>The standard VAT tax invoice from a registered domestic supplier. This is the document type most Bangladesh businesses deal with on a daily basis for local purchases.</p></div>
+        </div>
+        <div class="feature-card">
+          <div class="fc-icon">02</div>
+          <div class="fc-body"><h4>Bill of Entry</h4><p>For imports, the customs Bill of Entry serves as the supporting document for VAT paid at the point of import, feeding into the same rebate mechanism as domestic Mushak 6.3 invoices.</p></div>
+        </div>
+        <div class="feature-card">
+          <div class="fc-icon">03</div>
+          <div class="fc-body"><h4>Mushak 6.6 (VDS certificate)</h4><p>Where VAT was deducted at source by the buyer on behalf of the supplier, the Mushak 6.6 VDS certificate is the document that supports the corresponding rebate claim.</p></div>
+        </div>
+      </div>
+
+      <p>An invoice that is missing, incomplete, issued by an unregistered party, or otherwise defective provides no valid basis for a rebate claim, regardless of whether VAT was genuinely paid in the underlying commercial transaction. This is a harder line than many businesses initially assume, and it is why the documentation discipline described later in this article matters as much as the accounting entries themselves.</p>
+
+      <h2 id="return-entry">From Mushak 6.3 to Mushak 9.1</h2>
+      <p>Mechanically, claiming the rebate means transferring the exact details from the supplier's Mushak 6.3 challan, invoice number, date, the supplier's BIN, the taxable value, and the VAT amount, into the designated input tax section of the Mushak 9.1 return form for the relevant tax period. This is a reconciliation exercise at its core: every input tax figure claimed on the return needs to trace back to a specific, valid invoice held in the business's own records, and NBR's audit process is fundamentally about testing that traceability, not simply verifying the arithmetic on the return itself.</p>
+      <p>This is precisely where the quality of a business's underlying purchase ledger determines whether return preparation is routine or painful. A business that has recorded every purchase in Odoo with the Mushak 6.3 details captured cleanly at the time of entry can generate the Mushak 9.1 input tax section from a filtered report in minutes. A business that has been recording purchases loosely, batching vendor bills without capturing invoice-level VAT detail, faces a manual reconciliation exercise against a stack of paper invoices every single filing period, which is exactly the failure mode this article is written to prevent.</p>
+
+      <p class="pull">The rebate isn't really claimed at return time. It's claimed the moment the purchase invoice is entered correctly, or it becomes a reconstruction project later.</p>
+
+      <h2 id="the-real-risk">The real risk: supplier non-deposit reversal</h2>
+      <p>This is the part of input tax credit that deserves far more attention from Bangladesh businesses than it typically gets, and it is the reason I am centering this entire article around it rather than treating it as a footnote. Holding a facially valid Mushak 6.3 invoice, correctly filled out, from a supplier who is genuinely VAT-registered, does not fully insulate your rebate claim. If NBR later discovers that the supplier collected VAT from you but did not actually deposit it with the government, your rebate claim, the one your business made in good faith based on a document that looked entirely valid, can be reversed. Interest and penalty are then applied to your business, the buyer, even though the underlying non-compliance was entirely the supplier's doing.</p>
+
+      <div class="disclaimer">
+        <p><strong>Note:</strong> This risk allocation, where the buyer bears reversal, interest, and penalty exposure for a supplier's failure to deposit VAT they collected, is a real and material feature of Bangladesh's VAT enforcement practice, not a hypothetical edge case. It means supplier selection and ongoing supplier VAT-compliance monitoring are legitimate risk management activities for any business claiming meaningful rebate volume, not just a matter of getting the paperwork format right.</p>
+      </div>
+
+      <p>The uncomfortable reality is that a buyer has no direct, real-time way to verify that a supplier has deposited VAT for a specific invoice at the moment the purchase happens. What a buyer can do is manage the exposure systematically: favoring suppliers with an established compliance track record, watching for red flags (unusually aggressive pricing that might be explained by a supplier planning to skip VAT deposit, resistance to providing standard documentation, a pattern of BIN or registration irregularities), and treating any NBR notice about a specific supplier's non-compliance as an immediate trigger to review every open claim tied to that supplier, not just the specific invoice named in the notice.</p>
+
+      <h2 id="odoo-workflow">Structuring the Odoo purchase workflow for input VAT tracking</h2>
+      <p>The foundational configuration decision, covered in <a href="0014-odoo-accounting-setup-bangladesh" style="color:var(--accent)">Odoo Accounting Setup for Bangladesh</a> and <a href="0003-nbr-vat-compliance-odoo-bangladesh" style="color:var(--accent)">NBR VAT Compliance in Odoo</a>, is making sure input VAT is tracked as a distinct, invoice-level tax line rather than absorbed into a generic expense total. Every vendor bill entered in Odoo Accounting should carry: the correct input VAT tax applied at the line level (Accounting &gt; Vendor Bills, with the appropriate Bangladesh VAT tax configured per product or product category), a reference field capturing the supplier's Mushak 6.3 invoice number and date, matched against the actual physical or digital document, and the supplier's BIN validated and stored on the vendor's Contact record rather than re-typed inconsistently on every bill.</p>
+      <p>The practical build I recommend uses Odoo's standard Vendor Bills workflow with a mandatory attachment policy: no vendor bill gets posted without the actual Mushak 6.3 document attached directly to the bill record in Odoo. This single discipline, trivial to describe, consistently under-enforced in practice, is what turns "we probably have that invoice somewhere" into "here is the exact document, attached to the exact accounting entry, for any invoice NBR asks about." When Mushak 9.1 preparation time arrives, a filtered Vendor Bills report by tax period, with attachments already linked, replaces what would otherwise be a physical document hunt.</p>
+
+      <h2 id="bin-validation">BIN validation at the vendor level</h2>
+      <p>Since an unregistered supplier cannot legally issue a valid Mushak 6.3 in the first place, validating a supplier's BIN before relying on their invoices for rebate purposes is a basic control, not an optional nicety. In Odoo, this means capturing the supplier's BIN as a required field on the vendor Contact record (a custom field via Studio if not already present in the localization), and building a simple onboarding step, checking the BIN against NBR's own registration lookup where available, before the vendor is approved for VAT-bearing purchases. A vendor record without a validated BIN should be a visible flag to accounting staff, not a silent gap discovered only when a rebate claim is later questioned.</p>
+
+      <table>
+        <thead>
+          <tr><th>Control point</th><th>Where it lives in Odoo</th><th>What it prevents</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>BIN captured &amp; validated</td><td>Vendor Contact record (custom field)</td><td>Claiming rebate on invoices from unregistered or invalid suppliers</td></tr>
+          <tr><td>Mushak 6.3 attached to bill</td><td>Vendor Bill attachment</td><td>Missing documentation at audit time</td></tr>
+          <tr><td>Input VAT tax line applied</td><td>Vendor Bill line-level tax</td><td>Input tax buried in expense totals, invisible for Mushak 9.1 prep</td></tr>
+          <tr><td>Supplier compliance flag</td><td>Vendor Contact tag/note</td><td>Continuing to route volume to a supplier with a known non-deposit history</td></tr>
+        </tbody>
+      </table>
+
+      <h2 id="supplier-risk-flagging">Flagging and monitoring risky suppliers</h2>
+      <p>A practical risk-management technique I set up for clients handling meaningful purchase volume is a simple supplier compliance tag in Odoo Contacts: a visible flag (via a contact tag or a custom Studio field) marking any supplier who has ever had an invoice questioned by NBR, been named in a non-deposit notice, or shown other red flags like inconsistent BIN details across invoices. This is not about blacklisting a supplier automatically, sometimes a good supplier resolves a compliance lapse and remains reliable, but it ensures that procurement and accounting staff see the flag at the point of raising a new purchase order, rather than discovering months later that the same supplier's non-compliance pattern repeated across several transactions before anyone noticed.</p>
+      <p>Pair this with a periodic review (quarterly is reasonable for most mid-size businesses) of purchase concentration by supplier, since rebate exposure from a non-deposit reversal scales with how much volume flows through any single supplier relationship. A business that has diversified its VAT-bearing purchases across several compliant suppliers carries less concentrated exposure than one that has consolidated a large share of purchasing with a single vendor whose own VAT compliance the buyer cannot directly control.</p>
+
+      <div class="tip-box">
+        <div class="tlabel">Practical Note</div>
+        <p>This flagging discipline is genuinely more valuable for high-value, high-frequency supplier relationships than for occasional small purchases, where the ratio of monitoring effort to reversal risk does not justify formal tracking. Apply judgment about where to concentrate this control rather than trying to formally risk-score every vendor in the system.</p>
+      </div>
+
+      <h2 id="retention">Retention rules and evidentiary weight</h2>
+      <p>Mushak 6.3 invoices must be preserved for a minimum of 5 years. Both physical and digital copies are acceptable as retained records, which is a meaningful practical relief given how much paper a busy purchasing operation generates, but the original supplier-signed version carries the most evidentiary weight if a specific claim is ever challenged. My standard recommendation is a hybrid approach: scan and attach every Mushak 6.3 directly to its corresponding Odoo vendor bill at the time of entry (satisfying the digital retention requirement and making the document instantly retrievable), while also maintaining the physical originals in an organized, dated filing system for at least the full 5-year window, specifically for the subset of invoices tied to larger transaction values or suppliers with any compliance history worth flagging under the system described above.</p>
+
+      <h2 id="return-prep">Assembling the Mushak 9.1 from a clean ledger</h2>
+      <p>When the purchase ledger has been maintained with the discipline described above throughout the tax period, generating the Mushak 9.1 input tax section becomes a matter of running a filtered Vendor Bills or Purchase report in Odoo Accounting for the relevant period, grouped by tax rate, with invoice references and supplier BIN already attached to each line. The person preparing the return transcribes from a clean, complete source rather than reconciling a stack of loose invoices against bank statements and guessing at what might be missing.</p>
+      <p>This is the single clearest before-and-after contrast I use when explaining the value of this setup work to a client's finance team: a business with disciplined per-invoice VAT tracking in Odoo can typically prepare the input tax section of a Mushak 9.1 return in under an hour. A business reconstructing it manually from paper and memory routinely spends multiple days per filing period, and still faces meaningfully higher error and omission risk in the final figures submitted to NBR.</p>
+
+      <h2 id="import-vds-nuance">Handling Bill of Entry and VDS rebates differently in Odoo</h2>
+      <p>The Mushak 6.3 workflow described above covers the bulk of routine domestic purchase rebate claims, but imports and VAT-deducted-at-source transactions need their own handling inside Odoo rather than being forced into the same document-attachment pattern. For imports, the Bill of Entry is generated through the customs clearance process rather than issued by a private supplier, which means the natural place to attach it in Odoo is the purchase order or the landed cost record tied to that shipment, covered in more depth in <a href="0041-odoo-landed-costs-duty-drawback-bangladesh" style="color:var(--accent)">Odoo Landed Costs &amp; Duty Drawback</a>. The input VAT recoverable on an import should be tracked as its own tax line distinct from customs duty, since duty and VAT have different treatment for rebate purposes and conflating them on a single landed cost line makes the Mushak 9.1 import section harder to populate accurately.</p>
+      <p>For VDS transactions, where your business deducted VAT at source on a payment to a supplier and holds a Mushak 6.6 certificate as the supporting document, the Odoo entry needs to reflect that the VAT was withheld and remitted directly by your business rather than paid to the supplier as part of the invoice value. This is a different accounting treatment from a standard Mushak 6.3 purchase, and conflating the two in the chart of accounts is a common error I see in businesses that have not deliberately separated VDS-related input tax tracking from ordinary purchase VAT tracking. Setting up a distinct tax code or account for VDS-based input tax claims, mirroring the AIT withholding treatment described in <a href="0071-ait-income-tax-withholding-odoo-bangladesh" style="color:var(--accent)">AIT Withholding Tax Configuration in Odoo Bangladesh</a>, keeps this reconciliation clean rather than blended into the general purchase VAT total.</p>
+
+      <h2 id="outlook">Where enforcement is heading</h2>
+      <p>NBR's digitization push, the VAT Online system and the broader move toward e-filing referenced elsewhere on this site, is steadily increasing the traceability NBR itself has into the chain between a supplier's declared sales and a buyer's claimed input tax credit. As that visibility improves on NBR's side, the mismatch between a buyer's rebate claim and a supplier's actual deposit record becomes easier for NBR to detect systematically rather than only through targeted audits, which makes the non-deposit reversal risk discussed in this article more, not less, relevant going forward. Businesses that build clean, invoice-level VAT tracking and supplier risk monitoring into their Odoo workflow now are positioning themselves ahead of an enforcement environment that is only going to get more precise about catching exactly this kind of mismatch.</p>
+
+      <div class="callout">
+        <span class="tag">VAT Workflow Review</span>
+        <p>If your VAT rebate process depends on reconstructing invoices from a filing cabinet every return period, or you want a structured way to flag supplier VAT-compliance risk before it becomes your business's reversal exposure, I can help you build the purchase and accounting workflow in Odoo that fixes this. <a href="../#contact" style="color:var(--accent)">Contact me for a VAT workflow review →</a></p>
+      </div>
+
+      <h2 id="faq">Frequently asked questions</h2>
+
+      <h3>What documents are required to claim a VAT input tax credit (rebate) in Bangladesh?</h3>
+      <p>A business must hold valid VAT registration (a BIN) to claim a rebate at all; unregistered persons cannot claim input tax credit. The supporting documentation depends on the transaction type: a valid Mushak 6.3 tax invoice from a registered supplier for domestic purchases, a Bill of Entry for imports, or a Mushak 6.6 VDS certificate where VAT was deducted at source. Without one of these as the underlying evidence, the rebate claim has no valid basis even if the VAT was genuinely paid.</p>
+
+      <h3>Can NBR reverse a VAT rebate that was already claimed and approved?</h3>
+      <p>Yes, and this is the most important practical risk in the entire input tax credit system. Even where a buyer holds a facially valid Mushak 6.3 invoice from a registered supplier, if NBR later discovers that the supplier did not actually deposit that collected VAT with the government, the buyer's own rebate claim can be reversed, with interest and penalty applied to the buyer, not just the non-compliant supplier. This means a buyer's rebate claim is only as safe as its supplier's own VAT compliance history, which is outside the buyer's direct control but not outside its ability to monitor and manage as a risk.</p>
+
+      <h3>How long must Mushak 6.3 invoices be kept for VAT rebate purposes?</h3>
+      <p>Mushak 6.3 invoices must be preserved for a minimum of 5 years. Both physical and digital copies are acceptable as retained records, but the original supplier-signed version carries the most evidentiary weight if the claim is ever questioned during an NBR audit. A business relying solely on a digital scan without retaining the original signed document takes on avoidable evidentiary risk in a dispute.</p>
+
+      <h3>How is the input tax credit actually entered on the VAT return in Bangladesh?</h3>
+      <p>The exact details from the supplier's Mushak 6.3 challan (the invoice number, date, supplier BIN, and VAT amount) are entered into the designated input tax section of the Mushak 9.1 return form. This is a line-by-line reconciliation process, which is exactly why a business's own purchase ledger needs to hold this data cleanly per invoice throughout the tax period; reconstructing it retroactively from a disorganized pile of supplier invoices at return-filing time is where most manual VAT rebate errors originate.</p>
+
+      <h3>How is this article different from the site's existing Mushak 6.3 setup guide?</h3>
+      <p>The existing Mushak 6.3 Odoo Bangladesh guide on this site covers the issuing side: configuring Odoo to generate compliant Mushak 6.3 invoices when your business sells to customers and collects VAT. This article covers the claiming side: how your business, as a buyer, structures its Odoo purchase and accounting workflow to properly record, validate, and claim input tax credit on the VAT you pay to your own suppliers, and how to manage the risk that a supplier's non-deposit later reverses your rebate.</p>
+
+    </div>

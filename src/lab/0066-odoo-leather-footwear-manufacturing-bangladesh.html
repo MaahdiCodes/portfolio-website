@@ -1,0 +1,270 @@
+---
+permalink: "lab/0066-odoo-leather-footwear-manufacturing-bangladesh.html"
+title: "Odoo for Leather & Footwear Manufacturing Bangladesh | Mehedi Hasan"
+description: "Odoo ERP for Bangladesh leather and footwear manufacturers: tannery input tracking, size/color BOM variants, and compliance for the leather export sector."
+canonical: "https://mhasan.me/lab/0066-odoo-leather-footwear-manufacturing-bangladesh"
+ogImage: "https://mhasan.me/assets/og/lab/0066-odoo-leather-footwear-manufacturing-bangladesh.png"
+ogSiteName: "Mehedi Hasan | Odoo ERP Consultant"
+datePublished: "2026-09-18T12:00:00+06:00"
+dateModified: "2026-09-18T12:00:00+06:00"
+articleSection: "Odoo ERP Bangladesh"
+eyebrowNum: "0066"
+h1: "Odoo for Bangladesh's <span class=\"serif\">leather and footwear export sector.</span>"
+lede: "Bangladesh is the world's fourth-largest exporter of leather footwear, built on a tannery base that has moved from Hazaribagh to the Savar Tannery Industrial Estate, and a growing footwear manufacturing cluster serving Apex, Bata, and international private-label buyers. The sector's ERP problem is specific: hides are not uniform inputs like fabric rolls, a single footwear style multiplies into dozens of size/color BOM variants, and buyer compliance now includes environmental and chemical traceability alongside the usual production reporting. This guide covers how Odoo handles all three."
+chips: ["Guide", "Leather & Footwear", "Manufacturing"]
+bylineItems:
+  - label: "By"
+    value: "<a href=\"https://www.linkedin.com/in/mehedi-hasan-consultant/\" style=\"color:var(--accent)\" rel=\"author\">Mehedi Hasan</a>"
+  - label: "Published"
+    value: "September 2026"
+  - label: "Read time"
+    value: "17 minutes"
+  - label: "Form"
+    value: "Guide"
+  - label: "Scope"
+    value: "Odoo Manufacturing / Leather Sector"
+nextArticle:
+  href: "0065-odoo-barcode-warehouse-scanning-bangladesh"
+  dir: "Older · 0065"
+  title: "Odoo Barcode &amp; Warehouse Scanning Bangladesh"
+  desc: "Scanner hardware, put-away rules, and cycle counting for factories."
+prevArticle:
+  href: "../#lab"
+  dir: "All articles"
+  title: "Back to Lab Index"
+  desc: "Browse all guides on Odoo ERP, manufacturing operations, and business analysis in Bangladesh."
+jsonLd: |
+  [
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "Odoo for Leather & Footwear Manufacturing Bangladesh",
+      "description": "Odoo ERP for Bangladesh leather and footwear manufacturers: tannery input tracking, size/color BOM variants, and compliance for the leather export sector.",
+      "datePublished": "2026-09-18T12:00:00+06:00",
+      "dateModified": "2026-09-18T12:00:00+06:00",
+      "author": {
+        "@type": "Person",
+        "name": "Mehedi Hasan",
+        "url": "https://mhasan.me",
+        "jobTitle": "Odoo ERP Consultant & Business Analyst",
+        "sameAs": "https://www.linkedin.com/in/mehedi-hasan-consultant/"
+      },
+      "publisher": { "@type": "Person", "name": "Mehedi Hasan", "url": "https://mhasan.me" },
+      "mainEntityOfPage": { "@type": "WebPage", "@id": "https://mhasan.me/lab/0066-odoo-leather-footwear-manufacturing-bangladesh" }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://mhasan.me" },
+        { "@type": "ListItem", "position": 2, "name": "Lab", "item": "https://mhasan.me/lab/" },
+        { "@type": "ListItem", "position": 3, "name": "Odoo for Leather & Footwear Manufacturing Bangladesh", "item": "https://mhasan.me/lab/0066-odoo-leather-footwear-manufacturing-bangladesh" }
+      ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How do you track leather batches and grades in Odoo?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Leather hides are tracked in Odoo using Lot/Serial Number tracking enabled on the raw material product (wet blue, crust, or finished leather), with each incoming batch from a tannery recorded as a distinct lot carrying its grade, thickness, and area (in square feet, the standard leather trade unit). Odoo's landed cost and valuation features then let you record each lot's actual cost per square foot, since leather cost varies significantly by grade even within the same hide type, and lot traceability lets you trace a specific pair of shoes back to the specific hide batch it was cut from, which matters for both internal yield analysis and buyer traceability audits."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do you manage size and color BOM variants for footwear in Odoo?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Odoo handles this through product variants combined with variant-specific Bills of Materials. A single footwear style is set up as a template product with Size and Color as variant attributes, generating one variant per size/color combination (a style with 10 sizes and 4 colors produces 40 variants). Each variant can carry its own BOM with size-specific component quantities, since a size 44 shoe consumes measurably more upper leather and sole material than a size 38 of the same style. Odoo's BOM Variants feature lets you define one master BOM structure and override specific component quantities per size band rather than building 40 fully separate BOMs from scratch, which keeps the setup maintainable even for styles with wide size runs."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do you track leather wastage and yield in Odoo?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yield tracking is set up by recording the actual leather area consumed per cutting run against the theoretical area required by the BOM's component quantity, using Odoo's Manufacturing app to log actual material consumption at the cutting work order versus the standard BOM quantity. The variance between actual consumption and BOM standard becomes your measured wastage rate, which can be tracked over time by cutting operator, hide grade, and cutting pattern (nesting layout) to identify which combinations produce below-average yield. Because leather is priced and consumed by area rather than by piece count, this variance has a direct and immediate cost impact that Odoo's standard costing reports surface automatically once consumption is logged accurately."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can Odoo handle Leather Working Group (LWG) compliance data?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Odoo does not have a dedicated LWG compliance module out of the box, but its lot tracking, vendor management, and document attachment features can be configured to capture the data LWG audits typically require: vendor (tannery) certification status and expiry stored on the vendor record, hide batch traceability from tannery lot to finished goods lot, and chemical/input documentation attached to purchase records for tanning inputs. For factories under active LWG certification, this configuration turns an annual audit scramble for paper records into a structured data pull, though the audit and certification process itself remains external to Odoo and is managed through LWG's own assessment framework."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How does Odoo help with CETP effluent compliance reporting for tanneries?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Odoo is not an environmental monitoring system and does not measure effluent discharge directly, but it can track the production volume and chemical input data (via purchase and manufacturing records) that feeds into a tannery's Central Effluent Treatment Plant (CETP) compliance reporting to the Department of Environment and BSCIC's Savar Tannery Industrial Estate management. Recording chemical purchase quantities and production batch volumes in Odoo gives a tannery's environmental compliance team a consistent, auditable data source to cross-reference against CETP volume-based billing and discharge estimates, rather than reconstructing production figures from separate paper logs when a compliance report is due."
+          }
+        }
+      ]
+    }
+  ]
+extraStyles: |
+  .stat-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 26px 0; }
+      @media(max-width:680px) { .stat-row { grid-template-columns: 1fr 1fr; } }
+      @media(max-width:440px) { .stat-row { grid-template-columns: 1fr; } }
+      .stat-card { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 18px 16px; text-align: center; }
+      .stat-card .sc-val { font-size: 30px; font-weight: 700; color: var(--accent); letter-spacing: -0.03em; line-height: 1; margin-bottom: 6px; }
+      .stat-card .sc-label { font-family: var(--mono); font-size: 10px; color: var(--text-3); letter-spacing: 0.07em; text-transform: uppercase; }
+      .stat-card .sc-note { font-size: 11.5px; color: var(--text-2); margin-top: 5px; line-height: 1.4; }
+      .grade-table { width: 100%; border-collapse: collapse; font-size: 13.5px; margin: 18px 0; }
+      .grade-table th { text-align: left; padding: 10px 14px; background: var(--surface); color: var(--text-3); font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.06em; text-transform: uppercase; border-bottom: 1px solid var(--border); }
+      .grade-table td { padding: 11px 14px; border-bottom: 1px solid var(--border); color: var(--text-2); vertical-align: top; }
+      .grade-table td:first-child { color: var(--text); font-weight: 600; }
+      .grade-table tr:last-child td { border-bottom: none; }
+      .tip-box { background: var(--accent-dim); border-left: 3px solid var(--accent); border-radius: 0 6px 6px 0; padding: 14px 18px; margin: 18px 0; }
+      .tip-box .tlabel { font-family: var(--mono); font-size: 10px; color: var(--accent); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 6px; }
+      .tip-box p { margin: 0; font-size: 14px; color: var(--text-2); line-height: 1.55; }
+      .path-tag { font-family: var(--mono); font-size: 12.5px; background: var(--elev); border: 1px solid var(--border); border-radius: 5px; padding: 2px 8px; color: var(--text); }
+---
+<aside class="toc">
+      <div class="toc-k">In this guide</div>
+      <ol>
+        <li><a href="#sector">Bangladesh's Leather &amp; Footwear Sector</a></li>
+        <li><a href="#tannery-tracking">Tannery Input Tracking: Wet Blue to Crust</a></li>
+        <li><a href="#bom-variants">Size and Color BOM Variant Explosion</a></li>
+        <li><a href="#yield">Leather Wastage and Yield Tracking</a></li>
+        <li><a href="#lwg">LWG Compliance Data Needs</a></li>
+        <li><a href="#savar">Savar Relocation and CETP Compliance Context</a></li>
+        <li><a href="#costing">Costing a Footwear Style End to End</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ol>
+    </aside>
+
+    <div class="body">
+
+      <h2 id="sector">Bangladesh's Leather &amp; Footwear Sector</h2>
+      <p>Leather and leather goods are Bangladesh's second-largest export earner after RMG, anchored by a tannery cluster now concentrated at the Savar Tannery Industrial Estate (following the government-mandated relocation from the old Hazaribagh site) and a footwear manufacturing base spanning large integrated players and smaller job-work units feeding both domestic brands and export buyers. The sector's ERP requirements diverge from apparel in three structural ways: raw material (hides) is a natural, non-uniform input priced by grade and area rather than a standardized fabric roll; a single footwear style explodes into dozens of manufacturing variants across size and color; and buyer and regulatory compliance increasingly requires chemical and environmental traceability, not just production and shipping records.</p>
+      <p>Many footwear exporters in Bangladesh also run garment or accessory lines alongside footwear, and the manufacturing routing concepts that apply across both are covered in <a href="0038-odoo-manufacturing-routing-bangladesh" style="color:var(--accent)">Odoo Manufacturing Routing Bangladesh</a>, while the export documentation and duty drawback mechanics that leather exporters rely on (leather goods qualify for specific bond and drawback schemes) are covered in <a href="0041-odoo-landed-costs-duty-drawback-bangladesh" style="color:var(--accent)">Odoo Landed Costs &amp; Duty Drawback Bangladesh</a>.</p>
+
+      <div class="stat-row">
+        <div class="stat-card">
+          <div class="sc-val">#4</div>
+          <div class="sc-label">Global Rank</div>
+          <div class="sc-note">Bangladesh's position among world leather footwear exporters</div>
+        </div>
+        <div class="stat-card">
+          <div class="sc-val">150+</div>
+          <div class="sc-label">Tanneries at Savar</div>
+          <div class="sc-note">Approximate number of relocated tannery units at the Savar Tannery Industrial Estate</div>
+        </div>
+        <div class="stat-card">
+          <div class="sc-val">10 x 4</div>
+          <div class="sc-label">Typical Variant Count</div>
+          <div class="sc-note">A single footwear style at 10 sizes x 4 colors generates 40 saleable variants</div>
+        </div>
+      </div>
+
+      <h2 id="tannery-tracking">Tannery Input Tracking: Wet Blue to Crust</h2>
+      <p>Leather processing runs through defined stages, each producing a distinct tradeable intermediate: raw hide, wet blue (chrome-tanned but unfinished), crust (dried and retanned, ready for finishing), and finished leather (dyed, coated, and ready for cutting). A footwear manufacturer buying finished leather from a tannery, or a tannery itself processing raw hide through to crust, needs each of these stages tracked as a distinct product in Odoo with its own lot traceability, since grade and cost differ materially at each stage and a defect discovered at cutting needs to trace back to the correct incoming batch.</p>
+      <p>Odoo's Lot/Serial tracking, enabled per product under <span class="path-tag">Inventory &gt; Configuration &gt; Settings &gt; Traceability</span>, is the mechanism for this. Each incoming batch of wet blue or crust leather from a tannery is received as a distinct lot, carrying grade, thickness (measured in millimeters or ounces in leather trade convention), and area in square feet, the standard leather billing unit. This lot then flows through the BOM chain (crust to finished leather to cut components to assembled upper) with full backward traceability, so a quality issue discovered in finished shoes can be traced back to the specific hide batch and, if necessary, the specific tannery lot it came from.</p>
+
+      <table class="grade-table">
+        <thead>
+          <tr>
+            <th>Leather Grade</th>
+            <th>Typical Use</th>
+            <th>Relative Cost Index</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Grade A (select)</td>
+            <td>Visible upper panels, premium export styles</td>
+            <td>100 (baseline)</td>
+          </tr>
+          <tr>
+            <td>Grade B</td>
+            <td>Secondary panels, linings on mid-tier styles</td>
+            <td>75–85</td>
+          </tr>
+          <tr>
+            <td>Grade C</td>
+            <td>Internal components, insoles, domestic market styles</td>
+            <td>50–65</td>
+          </tr>
+          <tr>
+            <td>Reject / offcut</td>
+            <td>Small leather goods, accessories, scrap sale</td>
+            <td>15–30</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>Recording grade explicitly on each lot, rather than treating all leather of a given type as one undifferentiated stock item, is what makes Odoo's standard costing meaningful in this sector. A footwear style's true material cost depends heavily on which grade of leather was actually cut for it, and a factory that averages cost across all grades will systematically under-cost premium styles and over-cost budget ones.</p>
+
+      <h2 id="bom-variants">Size and Color BOM Variant Explosion</h2>
+      <p>Footwear is one of the more demanding categories for BOM management in any ERP because a single style is never really one product, it is a matrix of size and color combinations, each with a physically different bill of materials. A men's leather shoe style offered in sizes 39 through 46 (8 sizes) and 3 colors produces 24 distinct saleable variants, and each size genuinely consumes a different quantity of upper leather, sole material, lining, and thread, since a size 46 shoe is measurably larger than a size 39.</p>
+      <p>Odoo handles this through Product Variants (configured with Size and Color as variant attributes on a template product under <span class="path-tag">Inventory &gt; Products &gt; Attributes</span>) combined with BOM Variants, which let a single master BOM structure carry different component quantities per variant rather than requiring 24 fully independent BOMs to be built and maintained separately. In practice, this is set up by defining the BOM at the template level with components expressed as a formula or banded quantity (a common approach uses three or four size bands, such as 39-40, 41-42, 43-44, 45-46, each with its own upper leather area and sole consumption figure, rather than a unique figure for every single size), which keeps the BOM maintainable while still capturing the real material variance across the size run.</p>
+
+      <div class="tip-box">
+        <div class="tlabel">Practical Shortcut</div>
+        <p>Very few Bangladesh footwear factories need size-by-size cost precision down to the exact gram of material. Banding sizes into three or four groups for BOM purposes, validated against actual cutting yield data periodically, gives costing accuracy well within the tolerance that matters for pricing decisions, while keeping the BOM setup and maintenance effort proportional to the actual value of the extra precision.</p>
+      </div>
+
+      <h2 id="yield">Leather Wastage and Yield Tracking</h2>
+      <p>Because leather is a natural material with an irregular shape, cutting yield (the percentage of a hide's area actually used in finished components versus lost to trim, defects, and unusable edge) varies by hide, by cutting pattern (nesting layout), and by operator skill, in a way that manufactured materials like woven fabric do not. A skilled cutting operation on quality hides might achieve 80 to 85 percent yield, while poor nesting or lower-grade hides with more natural blemishes can drop yield into the 60s.</p>
+      <p>Odoo tracks this by comparing actual component consumption recorded at the manufacturing work order (via the Manufacturing app's component consumption screen, ideally captured through barcode scanning at the cutting station rather than end-of-shift manual tally) against the BOM's standard quantity. The resulting variance, aggregated by cutting operator, hide grade, and cutting pattern, surfaces exactly where yield is underperforming, whether that is a specific operator, a specific batch of lower-grade hides, or a specific style's cutting pattern that leaves excessive waste at panel edges.</p>
+
+      <div class="stat-row">
+        <div class="stat-card">
+          <div class="sc-val">80–85%</div>
+          <div class="sc-label">Good Cutting Yield</div>
+          <div class="sc-note">Typical target yield range for quality hides with efficient nesting</div>
+        </div>
+        <div class="stat-card">
+          <div class="sc-val">60–70%</div>
+          <div class="sc-label">Poor Yield</div>
+          <div class="sc-note">Common result from lower-grade hides or inefficient cutting patterns</div>
+        </div>
+        <div class="stat-card">
+          <div class="sc-val">15–25%</div>
+          <div class="sc-label">Cost Swing</div>
+          <div class="sc-note">Approximate per-pair material cost variance between good and poor yield outcomes</div>
+        </div>
+      </div>
+
+      <h2 id="lwg">LWG Compliance Data Needs</h2>
+      <p>Leather Working Group (LWG) certification has become a near-mandatory requirement for tanneries and, increasingly, for footwear manufacturers selling to major international brands, since LWG audits environmental performance, chemical management, and traceability practices. Odoo does not ship a purpose-built LWG compliance module, but the underlying data LWG audits require maps cleanly onto features already covered above: vendor (tannery) certification status and expiry date stored on the vendor record under <span class="path-tag">Contacts &gt; Vendor</span>, full batch traceability from incoming hide lot through to finished goods lot via the standard BOM chain, and chemical input documentation (tanning agents, dyes, finishing chemicals) attached as documents to the relevant purchase orders.</p>
+      <p>Structured this way, an LWG audit becomes a data export exercise, pulling a specific lot's full genealogy and associated vendor certifications from Odoo, rather than the common alternative of a compliance officer manually reconstructing paper trails from separate registers in the days before an auditor arrives. Factories that have already implemented traceable lot tracking for other reasons, such as buyer-mandated RMG traceability covered in <a href="0033-odoo-rmg-garments-bangladesh" style="color:var(--accent)">Odoo for RMG &amp; Garments Bangladesh</a>, find the LWG data structure a natural extension of the same discipline rather than a separate system.</p>
+
+      <h2 id="savar">Savar Relocation and CETP Compliance Context</h2>
+      <p>The relocation of Bangladesh's tannery cluster from Hazaribagh to the Savar Tannery Industrial Estate, driven by environmental compliance requirements and a High Court directive, tied ongoing tannery operation to functioning Central Effluent Treatment Plant (CETP) capacity at the new site. This context matters for ERP configuration because tanneries at Savar face volume-based compliance reporting obligations to the Department of Environment and the estate's management (under BSCIC), tracking production volume and chemical discharge against CETP capacity and billing.</p>
+      <p>Odoo is not an effluent monitoring system, it does not measure discharge directly, but it is a reliable source of the production volume and chemical purchase data that feeds into this reporting. Recording chemical input quantities through standard purchase orders and production batch volumes through manufacturing orders gives a tannery's environmental compliance function a consistent, auditable dataset to reconcile against CETP billing and discharge estimates, replacing the common practice of reconstructing production figures from disconnected paper production logs each time a compliance report or an estate management query comes due.</p>
+
+      <h2 id="costing">Costing a Footwear Style End to End</h2>
+      <p>Pulling the pieces together, a footwear style's true cost in Odoo rolls up through several linked BOM stages: hide procurement (recorded per lot with grade and area), cutting (with actual yield recorded against BOM standard), upper assembly and stitching, sole attachment (often itself a subcontracted or purchased component, particularly for injection-molded or rubber soles sourced from specialist suppliers), and finishing and packing. Each stage's actual cost, including any subcontracted operations handled through the same subcontracting BOM mechanics covered in <a href="0063-odoo-subcontracting-rmg-garments-bangladesh" style="color:var(--accent)">Odoo Subcontracting for RMG Job-Work Bangladesh</a> (many footwear factories subcontract specific finishing or embossing operations the same way garment factories subcontract embroidery), rolls up automatically into the finished pair's standard cost.</p>
+      <p>This end-to-end visibility is what lets a Bangladesh footwear exporter price an export quote with confidence rather than a rule-of-thumb margin on top of a rough material estimate, and it is the same underlying costing discipline that separates factories with reliable margins from those that discover a style was underpriced only after the shipment has already gone out.</p>
+
+      <div class="callout">
+        <span class="tag">Leather &amp; Footwear Setup Consultation</span>
+        <p>If your tannery or footwear factory is tracking hides on paper, guessing at size-variant costing, or scrambling to assemble LWG or CETP compliance data before an audit, I can configure Odoo's lot tracking, BOM variants, and traceability to match how your production actually runs. <a href="../#contact" style="color:var(--accent)">Contact me for a strategy session →</a></p>
+      </div>
+
+      <h2 id="faq">Frequently asked questions</h2>
+
+      <h3>How do you track leather batches and grades in Odoo?</h3>
+      <p>Leather hides are tracked in Odoo using Lot/Serial Number tracking enabled on the raw material product (wet blue, crust, or finished leather), with each incoming batch from a tannery recorded as a distinct lot carrying its grade, thickness, and area (in square feet, the standard leather trade unit). Odoo's landed cost and valuation features then let you record each lot's actual cost per square foot, since leather cost varies significantly by grade even within the same hide type, and lot traceability lets you trace a specific pair of shoes back to the specific hide batch it was cut from, which matters for both internal yield analysis and buyer traceability audits.</p>
+
+      <h3>How do you manage size and color BOM variants for footwear in Odoo?</h3>
+      <p>Odoo handles this through product variants combined with variant-specific Bills of Materials. A single footwear style is set up as a template product with Size and Color as variant attributes, generating one variant per size/color combination (a style with 10 sizes and 4 colors produces 40 variants). Each variant can carry its own BOM with size-specific component quantities, since a size 44 shoe consumes measurably more upper leather and sole material than a size 38 of the same style. Odoo's BOM Variants feature lets you define one master BOM structure and override specific component quantities per size band rather than building 40 fully separate BOMs from scratch, which keeps the setup maintainable even for styles with wide size runs.</p>
+
+      <h3>How do you track leather wastage and yield in Odoo?</h3>
+      <p>Yield tracking is set up by recording the actual leather area consumed per cutting run against the theoretical area required by the BOM's component quantity, using Odoo's Manufacturing app to log actual material consumption at the cutting work order versus the standard BOM quantity. The variance between actual consumption and BOM standard becomes your measured wastage rate, which can be tracked over time by cutting operator, hide grade, and cutting pattern (nesting layout) to identify which combinations produce below-average yield. Because leather is priced and consumed by area rather than by piece count, this variance has a direct and immediate cost impact that Odoo's standard costing reports surface automatically once consumption is logged accurately.</p>
+
+      <h3>Can Odoo handle Leather Working Group (LWG) compliance data?</h3>
+      <p>Odoo does not have a dedicated LWG compliance module out of the box, but its lot tracking, vendor management, and document attachment features can be configured to capture the data LWG audits typically require: vendor (tannery) certification status and expiry stored on the vendor record, hide batch traceability from tannery lot to finished goods lot, and chemical/input documentation attached to purchase records for tanning inputs. For factories under active LWG certification, this configuration turns an annual audit scramble for paper records into a structured data pull, though the audit and certification process itself remains external to Odoo and is managed through LWG's own assessment framework.</p>
+
+      <h3>How does Odoo help with CETP effluent compliance reporting for tanneries?</h3>
+      <p>Odoo is not an environmental monitoring system and does not measure effluent discharge directly, but it can track the production volume and chemical input data (via purchase and manufacturing records) that feeds into a tannery's Central Effluent Treatment Plant (CETP) compliance reporting to the Department of Environment and BSCIC's Savar Tannery Industrial Estate management. Recording chemical purchase quantities and production batch volumes in Odoo gives a tannery's environmental compliance team a consistent, auditable data source to cross-reference against CETP volume-based billing and discharge estimates, rather than reconstructing production figures from separate paper logs when a compliance report is due.</p>
+
+    </div>

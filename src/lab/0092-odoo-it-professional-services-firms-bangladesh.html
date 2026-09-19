@@ -1,0 +1,290 @@
+---
+permalink: "lab/0092-odoo-it-professional-services-firms-bangladesh.html"
+title: "Odoo for IT & Professional Services Firms Bangladesh | Mehedi Hasan"
+description: "Odoo for Bangladesh IT companies and professional services firms: project-based billing, timesheet-to-invoice workflows, and utilization reporting."
+canonical: "https://mhasan.me/lab/0092-odoo-it-professional-services-firms-bangladesh"
+ogImage: "https://mhasan.me/assets/og/lab/0092-odoo-it-professional-services-firms-bangladesh.png"
+ogSiteName: "Mehedi Hasan | Odoo ERP Consultant"
+datePublished: "2026-09-18T14:00:00+06:00"
+dateModified: "2026-09-18T14:00:00+06:00"
+articleSection: "Odoo ERP Bangladesh"
+eyebrowNum: "0092"
+h1: "Odoo for IT and professional services firms <span class=\"serif\">whose only real inventory is billable hours.</span>"
+lede: "A Bangladesh software house or BPO does not have a warehouse, a BOM, or a production line. Its entire commercial engine runs on a much smaller set of moving parts: what was promised to the client, how many hours it actually took, who worked those hours at what cost, and whether the invoice sent out captured enough of that value to keep the business profitable. Odoo covers this cleanly through Project, Timesheets, and Sales, but only when a firm resists the temptation to bolt services billing onto a generic setup built for a company that sells physical goods."
+chips: ["Guide", "IT & Professional Services", "Project Billing"]
+bylineItems:
+  - label: "By"
+    value: "<a href=\"https://www.linkedin.com/in/mehedi-hasan-consultant/\" style=\"color:var(--accent)\" rel=\"author\">Mehedi Hasan</a>"
+  - label: "Published"
+    value: "September 2026"
+  - label: "Read time"
+    value: "16 minutes"
+  - label: "Form"
+    value: "Guide"
+  - label: "Scope"
+    value: "Services Firm Operations"
+nextArticle:
+  href: "0091-odoo-restaurant-qsr-chains-bangladesh"
+  dir: "Older · 0091"
+  title: "Odoo for Restaurant &amp; QSR Chains Bangladesh"
+  desc: "Recipe costing, kitchen display workflows, and delivery-aggregator integration."
+prevArticle:
+  href: "../#lab"
+  dir: "All articles"
+  title: "Back to Lab Index"
+  desc: "Browse all guides on Odoo ERP, manufacturing operations, and business analysis in Bangladesh."
+jsonLd: |
+  [
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "Odoo for IT & Professional Services Firms Bangladesh",
+      "description": "Odoo for Bangladesh IT companies and professional services firms: project-based billing, timesheet-to-invoice workflows, and utilization reporting.",
+      "datePublished": "2026-09-18T14:00:00+06:00",
+      "dateModified": "2026-09-18T14:00:00+06:00",
+      "author": {
+        "@type": "Person",
+        "name": "Mehedi Hasan",
+        "url": "https://mhasan.me",
+        "jobTitle": "Odoo ERP Consultant & Business Analyst",
+        "sameAs": "https://www.linkedin.com/in/mehedi-hasan-consultant/"
+      },
+      "publisher": { "@type": "Person", "name": "Mehedi Hasan", "url": "https://mhasan.me" },
+      "mainEntityOfPage": { "@type": "WebPage", "@id": "https://mhasan.me/lab/0092-odoo-it-professional-services-firms-bangladesh" }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://mhasan.me" },
+        { "@type": "ListItem", "position": 2, "name": "Lab", "item": "https://mhasan.me/lab/" },
+        { "@type": "ListItem", "position": 3, "name": "Odoo for IT & Professional Services Firms Bangladesh", "item": "https://mhasan.me/lab/0092-odoo-it-professional-services-firms-bangladesh" }
+      ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How does Odoo handle fixed-price versus time-and-materials billing for IT projects?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Fixed-price and time-and-materials (T&M) billing are configured differently on an Odoo Sales Order tied to a Project. A fixed-price engagement uses milestone-based invoicing, where the sales order line is invoiced against defined project milestones or a payment schedule regardless of actual hours logged, since the client is paying for a defined deliverable, not hours. A time-and-materials engagement uses Odoo's timesheet-to-invoice flow, where the sales order is set to invoice based on logged timesheet hours at the employee's configured billing rate, so the invoice amount is a direct function of hours actually worked and approved. Many Bangladesh IT firms run both models simultaneously across different client contracts, and Odoo Project supports assigning either invoicing policy per project independently."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do you convert logged timesheets into a client invoice in Odoo?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Employees log hours against specific project tasks under Project > Timesheets, each entry tagged to the task and, indirectly through the project's sales order, to the billing client. When a sales order line is configured with a \"time and materials\" invoicing policy and a defined billing rate (often a different rate per employee role or seniority level, such as a senior developer billing higher than a junior tester on the same project), Odoo aggregates approved timesheet entries within the invoicing period and generates a draft invoice reflecting actual hours at the applicable rate under Sales > Orders > Invoicing, which the firm reviews before sending. This removes the manual, error-prone process of a project manager reconstructing billable hours from separate timesheets or spreadsheets each billing cycle."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is utilization rate and how does Odoo track it?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Utilization rate is billable hours divided by total available working hours for an employee over a period, and it is the core management KPI for a services business because it directly drives profitability: an employee's cost (salary, benefits, overhead) is fixed regardless of how many billable hours they log, so utilization rate determines how much of that fixed cost is actually being recovered through client billing. In Odoo, this is calculated by comparing timesheet entries tagged as billable against an employee's configured working schedule under Employees > Reporting combined with Project > Reporting > Timesheets, and most Bangladesh IT and professional services firms track this weekly per employee and monthly rolled up by team or department, since a sustained utilization rate below the firm's target (commonly 70 to 80 percent for a healthy services business) signals either a sales pipeline problem or a staffing overcapacity problem that needs addressing."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How should a Bangladesh IT firm handle USD invoicing and FX exposure in Odoo?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Odoo supports multi-currency natively under Accounting > Configuration > Currencies, allowing a firm to invoice international clients in USD while its chart of accounts, payroll, and operating costs remain in BDT, with exchange rate gains or losses automatically calculated and posted to a dedicated FX gain/loss account at the point of currency conversion (invoice date versus payment receipt date). Given that Bangladesh Taka has experienced meaningful volatility against the US Dollar in recent years, firms billing significant USD revenue against BDT-denominated staff costs carry real exposure to exchange rate movement between invoicing and actual fund repatriation through their bank, and Odoo's multi-currency reporting gives finance visibility into that exposure rather than only discovering the impact when reconciling bank statements weeks later."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What does an Odoo implementation cost for a Bangladesh IT or professional services firm?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "For an IT company or professional services firm with 30 to 150 billable staff, an Odoo implementation covering Project, Timesheets, multi-currency Sales and Accounting, and utilization reporting typically runs BDT 6 to 15 lakh, with BDT 2 to 6 lakh per year for support. This is generally at the lower end of Odoo implementation cost ranges compared to manufacturing or multi-location retail deployments, since a services firm's core data model (projects, tasks, timesheets, invoices) is comparatively simpler than one requiring inventory, production, or multi-warehouse configuration, though firms with complex multi-tier billing rate structures or heavy client-specific reporting needs should budget toward the higher end."
+          }
+        }
+      ]
+    }
+  ]
+extraStyles: |
+  .path-tag { font-family: var(--mono); font-size: 12.5px; background: var(--elev); border: 1px solid var(--border); border-radius: 5px; padding: 2px 8px; color: var(--text); }
+---
+<aside class="toc">
+      <div class="toc-k">In this guide</div>
+      <ol>
+        <li><a href="#the-model">Why a Services Firm's ERP Model Is Different</a></li>
+        <li><a href="#billing-models">Fixed-Price vs. Time-and-Materials Billing</a></li>
+        <li><a href="#timesheet-invoice">The Timesheet-to-Invoice Workflow</a></li>
+        <li><a href="#bill-rates">Bill Rates by Role and Seniority</a></li>
+        <li><a href="#utilization">Utilization Rate as the Core KPI</a></li>
+        <li><a href="#multicurrency">Multi-Currency Billing and FX Exposure</a></li>
+        <li><a href="#project-profitability">Project-Level Profitability</a></li>
+        <li><a href="#reporting">Reporting for Services Firm Leadership</a></li>
+        <li><a href="#rollout">Rolling It Out Without Disrupting Active Projects</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ol>
+    </aside>
+
+    <div class="body">
+
+      <h2 id="the-model">Why a Services Firm's ERP Model Is Different</h2>
+      <p>Every other industry covered on this site sells a physical thing, whether garments, potatoes, or a plot of land, and its ERP needs revolve around tracking that thing from acquisition or production through to sale. A Bangladesh IT company, software outsourcing firm, BPO, or professional services practice (accounting, legal, management consulting) sells time and expertise, and its core operational unit is the project, staffed by people whose hours are the product being delivered and billed. The <a href="0044-erp-business-case-bangladesh" style="color:var(--accent)">ERP business case for Bangladesh companies</a> generally centers on inventory accuracy and production control, and for a services firm that entire framing does not apply; the business case here is billing accuracy, utilization visibility, and margin control on a project-by-project basis.</p>
+      <p>Bangladesh's IT and BPO export sector, tracked in part by BASIS (Bangladesh Association of Software and Information Services) and the broader Bangladesh IT/ITES export data compiled through Bangladesh Bank remittance categories, has grown into a meaningful services export industry, with a growing number of mid-size firms (30 to 300 employees) reaching the scale where spreadsheet-based project tracking and manual invoice preparation start producing real revenue leakage, hours worked but never billed, projects that quietly ran over budget without anyone noticing until the final invoice, and utilization blind spots that hide staffing inefficiency until cash flow already feels the effect.</p>
+
+      <div class="stat-row">
+        <div class="stat-card">
+          <div class="sc-val">30–300</div>
+          <div class="sc-label">Typical Firm Size</div>
+          <div class="sc-note">Employee range where project-based ERP tracking starts paying for itself</div>
+        </div>
+        <div class="stat-card">
+          <div class="sc-val">70–80%</div>
+          <div class="sc-label">Healthy Utilization Target</div>
+          <div class="sc-note">Common billable-hours-to-available-hours benchmark for a services business</div>
+        </div>
+        <div class="stat-card">
+          <div class="sc-val">USD/BDT</div>
+          <div class="sc-label">Dual-Currency Reality</div>
+          <div class="sc-note">Common billing in USD against BDT-denominated staff and operating costs</div>
+        </div>
+      </div>
+
+      <p class="pull">A factory's margin leaks through scrap and rework. A services firm's margin leaks through hours nobody billed and a utilization number nobody was watching.</p>
+
+      <h2 id="billing-models">Fixed-Price vs. Time-and-Materials Billing</h2>
+      <p>Bangladesh IT export contracts and professional services engagements split fairly evenly between two billing models that need genuinely different Odoo configuration. A fixed-price (or milestone-based) engagement bills a defined total for a defined deliverable regardless of the actual hours it takes, which in Odoo is set up under <span class="path-tag">Sales &gt; Orders</span> with the invoicing policy set to milestone-based, where invoice lines trigger against defined Project milestones (design sign-off, development complete, UAT passed, go-live) rather than against logged time. A time-and-materials (T&amp;M) engagement bills for actual hours worked at an agreed rate, configured with the sales order line's invoicing policy set to timesheet-based, so the client is billed for exactly what the team logged in a given period.</p>
+      <p>The practical risk in fixed-price engagements, and the reason project profitability tracking (covered further below) matters even when the client invoice amount is already fixed, is that actual hours delivered against a fixed-price contract can run well past what was originally estimated, silently eroding margin on a deal that looks fine from the client-facing invoice alone. Odoo Project's ability to log timesheets against a fixed-price project even though those hours are not directly billed line-by-line is what makes this visible: the firm can compare actual cost (hours times internal cost rate) against the fixed revenue to see real margin, not just contracted revenue.</p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Billing Model</th>
+            <th>Odoo Invoicing Policy</th>
+            <th>Key Risk to Monitor</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Fixed-price / milestone</td>
+            <td>Milestone-based invoicing on sales order</td>
+            <td>Scope creep silently eroding margin on a capped-revenue contract</td>
+          </tr>
+          <tr>
+            <td>Time-and-materials (T&amp;M)</td>
+            <td>Timesheet-based invoicing on sales order</td>
+            <td>Unbilled or unapproved hours slipping through the invoicing cycle</td>
+          </tr>
+          <tr>
+            <td>Retainer / block-hours</td>
+            <td>Prepaid sales order credit drawn down by timesheets</td>
+            <td>Hours logged against an exhausted retainer without a renewal trigger</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2 id="timesheet-invoice">The Timesheet-to-Invoice Workflow</h2>
+      <p>The daily operational core of a services firm's Odoo usage is the timesheet, logged by every billable employee against a specific project task under <span class="path-tag">Project &gt; Timesheets</span>, ideally daily rather than reconstructed from memory at week's end, since retrospective timesheet entry is a well-documented source of both billing inaccuracy and understated utilization. Each timesheet entry inherits the task's project and, through the project's linked sales order, the client and applicable billing rate, and once a manager approves the period's timesheets, Odoo aggregates approved billable entries into a draft invoice under <span class="path-tag">Sales &gt; Orders &gt; Invoicing</span>, ready for review before it goes to the client.</p>
+      <p>This structured flow replaces what is still, in a meaningful share of Bangladesh IT firms below a certain scale, a manual process: a project manager or finance staff member reconstructing billable hours from individual developers' self-reported spreadsheets each month, a process that is both slow and prone to quietly dropping hours that were genuinely worked but never made it into the final tally, a direct and avoidable revenue loss.</p>
+
+      <div class="tip-box">
+        <div class="tlabel">Practical Shortcut</div>
+        <p>Make daily timesheet entry a hard habit before worrying about any other configuration refinement. A firm with disciplined daily timesheet logging and a basic Odoo setup will out-bill a firm with a sophisticated Odoo configuration but staff who log three weeks of hours from memory once a month. The workflow only works as well as the underlying data discipline feeding it.</p>
+      </div>
+
+      <h2 id="bill-rates">Bill Rates by Role and Seniority</h2>
+      <p>A realistic Bangladesh IT or professional services firm rarely bills every employee at the same rate: a senior developer or a partner-level consultant bills significantly higher than a junior developer or an associate, and a single project team often blends multiple roles. Odoo handles this through employee-specific billing rates configured under <span class="path-tag">Project &gt; Configuration &gt; Employee Rates</span> or through role-based pricelist rules on the sales order, so a T&amp;M invoice automatically reflects the correct rate per hour logged by each team member rather than a single blended rate that either overcharges for junior time or undercharges for senior time.</p>
+      <p>This granularity also feeds directly into project profitability analysis: a project that looks fine on total billed revenue can still be structurally unprofitable if too much senior (expensive) time was consumed relative to what the client contract's rate structure anticipated, and role-level rate and cost visibility is what surfaces that pattern instead of it hiding inside an aggregate project total.</p>
+
+      <div class="feature-grid">
+        <div class="feature-card">
+          <div class="fc-icon">01</div>
+          <div class="fc-body">
+            <h4>Role-Based Billing Rates</h4>
+            <p>Each employee or role tier carries its own client-facing bill rate, applied automatically at invoicing.</p>
+          </div>
+        </div>
+        <div class="feature-card">
+          <div class="fc-icon">02</div>
+          <div class="fc-body">
+            <h4>Internal Cost Rate</h4>
+            <p>A separate internal cost per hour (salary plus overhead allocation) enables true margin calculation, not just billed revenue.</p>
+          </div>
+        </div>
+        <div class="feature-card">
+          <div class="fc-icon">03</div>
+          <div class="fc-body">
+            <h4>Client-Specific Rate Cards</h4>
+            <p>Different clients or contracts can carry negotiated rate variations without touching the underlying employee cost structure.</p>
+          </div>
+        </div>
+        <div class="feature-card">
+          <div class="fc-icon">04</div>
+          <div class="fc-body">
+            <h4>Rate Card Versioning</h4>
+            <p>Annual rate increases apply going forward without disturbing already-invoiced historical periods.</p>
+          </div>
+        </div>
+      </div>
+
+      <h2 id="utilization">Utilization Rate as the Core KPI</h2>
+      <p>Utilization rate, billable hours divided by total available working hours over a period, is the single most important recurring metric for a services business, in the same way inventory turnover or on-time delivery rate matters for a manufacturer. The reason it matters so directly: an employee's cost (salary, benefits, workspace, equipment) is essentially fixed regardless of how many billable hours they log in a given week, so utilization determines what portion of that fixed cost is actually being recovered through client billing versus quietly absorbed as unrecovered overhead.</p>
+      <p>In Odoo, utilization is calculated by comparing timesheet hours tagged as billable against an employee's configured working schedule, viewable under <span class="path-tag">Project &gt; Reporting &gt; Timesheets</span> combined with employee working calendar data. Bangladesh IT and professional services firms typically track this weekly per employee and rolled up monthly by team, with a healthy target commonly in the 70 to 80 percent range; a sustained utilization figure meaningfully below that signals one of two distinct problems requiring different responses, either a sales pipeline gap (not enough billable work coming in to keep the bench occupied) or a staffing overcapacity issue (more people hired than current client demand actually supports), and the two require entirely different management action, which is exactly why the number needs to be visible continuously rather than discovered retrospectively when cash flow already shows the strain.</p>
+
+      <div class="big-stat">
+        <div class="bs-val">70–80%</div>
+        <div class="bs-label">Healthy Utilization Benchmark</div>
+        <div class="bs-note">A sustained drop below this range signals a pipeline or staffing problem, tracked weekly per employee in Odoo.</div>
+      </div>
+
+      <h2 id="multicurrency">Multi-Currency Billing and FX Exposure</h2>
+      <p>A meaningful share of Bangladesh IT export firms bill international clients, often in the US, UK, Europe, or Australia, in USD, while every internal cost, salaries, office rent, utilities, sits in BDT. Odoo's native multi-currency support under <span class="path-tag">Accounting &gt; Configuration &gt; Currencies</span> allows a client-facing sales order and invoice to be issued in USD while the underlying chart of accounts remains BDT-based, with the system automatically calculating and posting exchange gain or loss to a dedicated account whenever the invoice date's exchange rate differs from the rate on the date payment is actually received and converted.</p>
+      <p>Given how much Bangladesh Taka has moved against the US Dollar over recent years, this is not a theoretical accounting nicety: a firm invoicing a large USD milestone can see meaningfully different BDT value realized depending on the gap between invoice date and actual fund repatriation date through the banking channel, and a firm without multi-currency visibility in its accounting system typically only discovers the impact of that movement when reconciling bank statements weeks after the fact, well after any opportunity to plan around it (through forward contracts, faster repatriation timelines, or simply pricing new contracts with an FX buffer) has passed.</p>
+
+      <div class="disclaimer">
+        <p><strong>Note:</strong> Bangladesh Bank's foreign exchange regulations governing IT/ITES export earnings repatriation and retention (including provisions for retaining a portion of export earnings in foreign currency accounts) should be confirmed with the firm's bank and, where needed, a compliance advisor, since this guide addresses the Odoo accounting configuration for multi-currency visibility, not the regulatory framework governing foreign currency retention itself.</p>
+      </div>
+
+      <h2 id="project-profitability">Project-Level Profitability</h2>
+      <p>Beyond individual invoices, the number that actually tells a services firm's leadership whether a specific client relationship or project type is worth continuing is project-level profitability: total billed revenue (or, for a fixed-price project, contracted revenue) minus the internal cost of hours actually consumed (calculated at each employee's internal cost rate, not their billing rate) minus any direct project expenses. Odoo's Project Profitability report, built from the combination of the project's sales order revenue and its timesheet-driven cost data under <span class="path-tag">Project &gt; Reporting &gt; Profitability</span>, gives this view natively once billing rates, internal cost rates, and timesheet discipline are all correctly configured.</p>
+      <p>This is where the project charter discipline covered in <a href="0047-odoo-project-charter-template" style="color:var(--accent)">the Odoo Project Charter Template</a> becomes directly relevant to a services firm, not just a project-based manufacturer or developer: a well-scoped project charter with a clear budget and milestone structure feeds directly into meaningful profitability tracking, while a loosely scoped engagement makes it much harder to attribute cost overruns to a specific cause after the fact.</p>
+
+      <h2 id="reporting">Reporting for Services Firm Leadership</h2>
+      <p>The aggregate reports that matter most to a services firm's partners or management team are utilization trend by team and by individual over time, project profitability ranked across the active portfolio (surfacing which clients or engagement types are genuinely the firm's best business versus which are quietly subsidized by others), unbilled hours aging (time logged but not yet invoiced, a direct cash flow lever), and revenue mix between fixed-price and T&amp;M engagements, since the two carry meaningfully different risk profiles. The dashboard-building approach in <a href="0055-odoo-dashboards-kpi-bangladesh" style="color:var(--accent)">Odoo Dashboards &amp; KPI Bangladesh</a>, and the multi-location visibility patterns discussed for trading companies in <a href="0036-odoo-trading-company-bangladesh" style="color:var(--accent)">Odoo for Trading Companies Bangladesh</a>, both translate directly into building a firm-wide operations view for a services business with multiple concurrent client engagements.</p>
+
+      <p>A related discipline worth building alongside project profitability from the start is a resource forecast: a forward-looking view of which employees are committed to which projects over the coming weeks, built from planned task assignments in Project rather than only retrospective timesheet data. Firms that only look backward at utilization discover a coming bench problem, several senior developers about to roll off a finishing project with no confirmed next engagement, only after it has already become a cash flow concern. A simple resourcing view under Project &gt; Planning, reviewed weekly by delivery leadership alongside the sales pipeline, closes that gap by turning utilization from a lagging indicator into something closer to a forward planning tool.</p>
+
+      <h2 id="rollout">Rolling It Out Without Disrupting Active Projects</h2>
+      <p>Services firms typically have several client engagements running simultaneously at the point of Odoo adoption, which shapes a realistic rollout sequence:</p>
+      <ul>
+        <li><strong>Start timesheet logging on all active projects immediately,</strong> even before invoicing configuration is finalized, since establishing the daily logging habit is the highest-leverage early step and the one hardest to retrofit later.</li>
+        <li><strong>Configure billing rates and invoicing policy per active project individually,</strong> matching each project's actual contract terms rather than applying one default policy across a firm running a genuine mix of fixed-price and T&amp;M engagements.</li>
+        <li><strong>Run the first billing cycle in parallel with the existing invoicing process,</strong> comparing Odoo-generated draft invoices against what would have been manually prepared, to catch rate or configuration errors before a client-facing invoice actually goes out incorrect.</li>
+        <li><strong>Introduce utilization reporting to team leads before broadcasting it company-wide,</strong> giving managers time to understand and act on the metric with their own teams before it becomes a leadership-level scorecard item.</li>
+        <li><strong>Layer in multi-currency and FX reporting once the core billing workflow is stable,</strong> since finance teams generally need the basic invoicing flow proven correct before trusting a more complex reporting layer built on top of it.</li>
+      </ul>
+
+      <div class="callout">
+        <span class="tag">Services Firm ERP Consultation</span>
+        <p>If you run an IT company, BPO, or professional services firm in Bangladesh and cannot currently tell which projects are actually profitable or what your real utilization rate is, I can design and implement the Odoo Project, Timesheet, and multi-currency billing structure this business model requires. <a href="../#contact" style="color:var(--accent)">Contact me for a strategy session →</a></p>
+      </div>
+
+      <h2 id="faq">Frequently asked questions</h2>
+
+      <h3>How does Odoo handle fixed-price versus time-and-materials billing for IT projects?</h3>
+      <p>Fixed-price and time-and-materials (T&amp;M) billing are configured differently on an Odoo Sales Order tied to a Project. A fixed-price engagement uses milestone-based invoicing, where the sales order line is invoiced against defined project milestones or a payment schedule regardless of actual hours logged, since the client is paying for a defined deliverable, not hours. A time-and-materials engagement uses Odoo's timesheet-to-invoice flow, where the sales order is set to invoice based on logged timesheet hours at the employee's configured billing rate, so the invoice amount is a direct function of hours actually worked and approved. Many Bangladesh IT firms run both models simultaneously across different client contracts, and Odoo Project supports assigning either invoicing policy per project independently.</p>
+
+      <h3>How do you convert logged timesheets into a client invoice in Odoo?</h3>
+      <p>Employees log hours against specific project tasks under Project &gt; Timesheets, each entry tagged to the task and, indirectly through the project's sales order, to the billing client. When a sales order line is configured with a "time and materials" invoicing policy and a defined billing rate (often a different rate per employee role or seniority level, such as a senior developer billing higher than a junior tester on the same project), Odoo aggregates approved timesheet entries within the invoicing period and generates a draft invoice reflecting actual hours at the applicable rate under Sales &gt; Orders &gt; Invoicing, which the firm reviews before sending. This removes the manual, error-prone process of a project manager reconstructing billable hours from separate timesheets or spreadsheets each billing cycle.</p>
+
+      <h3>What is utilization rate and how does Odoo track it?</h3>
+      <p>Utilization rate is billable hours divided by total available working hours for an employee over a period, and it is the core management KPI for a services business because it directly drives profitability: an employee's cost (salary, benefits, overhead) is fixed regardless of how many billable hours they log, so utilization rate determines how much of that fixed cost is actually being recovered through client billing. In Odoo, this is calculated by comparing timesheet entries tagged as billable against an employee's configured working schedule under Employees &gt; Reporting combined with Project &gt; Reporting &gt; Timesheets, and most Bangladesh IT and professional services firms track this weekly per employee and monthly rolled up by team or department, since a sustained utilization rate below the firm's target (commonly 70 to 80 percent for a healthy services business) signals either a sales pipeline problem or a staffing overcapacity problem that needs addressing.</p>
+
+      <h3>How should a Bangladesh IT firm handle USD invoicing and FX exposure in Odoo?</h3>
+      <p>Odoo supports multi-currency natively under Accounting &gt; Configuration &gt; Currencies, allowing a firm to invoice international clients in USD while its chart of accounts, payroll, and operating costs remain in BDT, with exchange rate gains or losses automatically calculated and posted to a dedicated FX gain/loss account at the point of currency conversion (invoice date versus payment receipt date). Given that Bangladesh Taka has experienced meaningful volatility against the US Dollar in recent years, firms billing significant USD revenue against BDT-denominated staff costs carry real exposure to exchange rate movement between invoicing and actual fund repatriation through their bank, and Odoo's multi-currency reporting gives finance visibility into that exposure rather than only discovering the impact when reconciling bank statements weeks later.</p>
+
+      <h3>What does an Odoo implementation cost for a Bangladesh IT or professional services firm?</h3>
+      <p>For an IT company or professional services firm with 30 to 150 billable staff, an Odoo implementation covering Project, Timesheets, multi-currency Sales and Accounting, and utilization reporting typically runs BDT 6 to 15 lakh, with BDT 2 to 6 lakh per year for support. This is generally at the lower end of Odoo implementation cost ranges compared to manufacturing or multi-location retail deployments, since a services firm's core data model (projects, tasks, timesheets, invoices) is comparatively simpler than one requiring inventory, production, or multi-warehouse configuration, though firms with complex multi-tier billing rate structures or heavy client-specific reporting needs should budget toward the higher end.</p>
+
+    </div>

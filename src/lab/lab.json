@@ -1,0 +1,7 @@
+{
+  "layout": "layouts/lab-article.njk",
+  "homeHref": "../",
+  "backHref": "../#lab",
+  "ogType": "article",
+  "stylesheetHref": "_styles.css"
+}

@@ -1,0 +1,270 @@
+---
+permalink: "lab/0041-odoo-landed-costs-duty-drawback-bangladesh.html"
+title: "Odoo Landed Costs Bangladesh | Duty Drawback | Mehedi Hasan"
+description: "Configure Odoo landed costs for Bangladesh imports. Include freight, insurance, and duty in inventory valuation. Configure it right →"
+canonical: "https://mhasan.me/lab/0041-odoo-landed-costs-duty-drawback-bangladesh"
+hreflangBn: "https://mhasan.me/bn/lab/0041-odoo-landed-costs-duty-drawback-bangladesh"
+ogDescription: "Configure Odoo landed costs for Bangladesh imports. Include freight, insurance, and duty in inventory valuation."
+ogImage: "https://mhasan.me/assets/og/lab/0041-odoo-landed-costs-duty-drawback-bangladesh.png"
+ogSiteName: "Mehedi Hasan | Odoo ERP Consultant"
+datePublished: "2026-05-08T12:00:00+06:00"
+dateModified: "2026-05-23T12:00:00+06:00"
+articleSection: "Odoo ERP Bangladesh"
+eyebrowNum: "0041"
+h1: "Odoo Landed Costs — <span class=\"serif\">freight, duty, and true inventory value.</span>"
+lede: "When importing raw materials to Bangladesh, the supplier's invoice is only part of the cost. Freight, insurance, CNF charges, and customs duties can add 30-50% to the product value. Odoo's Landed Costs feature ensures your inventory valuation and profit margins reflect reality."
+chips: ["Configuration Guide", "Landed Costs", "Inventory Valuation", "Import"]
+bylineItems:
+  - label: "By"
+    value: "<a href=\"https://www.linkedin.com/in/mehedi-hasan-consultant/\" style=\"color:var(--accent)\" rel=\"author\">Mehedi Hasan</a>"
+  - label: "Published"
+    value: "May 2026"
+  - label: "Read time"
+    value: "7 minutes"
+  - label: "Form"
+    value: "Technical Guide"
+  - label: "Scope"
+    value: "Finance · Inventory · Customs"
+nextArticle:
+  href: "0040-odoo-quality-control-iso-bangladesh"
+  dir: "Older · 0040"
+  title: "Odoo Quality Control for ISO"
+  desc: "Configure rigorous quality checks, alerts, and tolerances for ISO certified factories."
+prevArticle:
+  href: "0042-odoo-user-access-rights-configuration"
+  dir: "Newer · 0042"
+  title: "Odoo User Roles &amp; Access Rights"
+  desc: "Secure your ERP by configuring precise access rights and user roles for SMEs."
+jsonLd: |
+  [
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "Landed Costs & Duty Drawback in Odoo Bangladesh",
+      "description": "Configure Odoo landed costs for Bangladesh imports. Include freight, insurance, and duty in inventory valuation.",
+      "datePublished": "2026-05-08T12:00:00+06:00",
+      "dateModified": "2026-05-23T12:00:00+06:00",
+      "author": {
+        "@type": "Person",
+        "name": "Mehedi Hasan",
+        "url": "https://mhasan.me",
+        "jobTitle": "Odoo ERP Consultant & Business Analyst",
+        "sameAs": "https://www.linkedin.com/in/mehedi-hasan-consultant/"
+      },
+      "publisher": { "@type": "Person", "name": "Mehedi Hasan", "url": "https://mhasan.me" },
+      "mainEntityOfPage": { "@type": "WebPage", "@id": "https://mhasan.me/lab/0041-odoo-landed-costs-duty-drawback-bangladesh" }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://mhasan.me" },
+        { "@type": "ListItem", "position": 2, "name": "Lab", "item": "https://mhasan.me/lab/" },
+        { "@type": "ListItem", "position": 3, "name": "Odoo Landed Costs Bangladesh", "item": "https://mhasan.me/lab/0041-odoo-landed-costs-duty-drawback-bangladesh" }
+      ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What are Landed Costs in Odoo?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Landed Costs refer to the total price of a product once it has arrived at the buyer's door. This includes the original price of the product, all transportation fees, customs, duties, taxes, insurance, currency conversion, and any other costs."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How does Odoo calculate Landed Costs?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Odoo takes the additional costs (like a freight invoice) and splits them across the products in an incoming shipment based on rules you define: by quantity, by volume, by weight, by cost, or equally."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why must I use FIFO or AVCO for landed costs in Odoo?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Landed costs adjust the valuation of stock already in inventory, so Odoo needs a costing method that tracks valuation dynamically. FIFO and AVCO both recalculate inventory value as moves occur. Standard Price holds a fixed cost and cannot absorb a per-shipment freight or duty adjustment, so Landed Costs is unavailable on Standard Price products. For Bangladesh importers claiming duty drawback, FIFO is usually better because it preserves the specific cost of each imported batch."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "When should I apply a landed cost to a receipt in Odoo?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Apply it as soon as you have the actual freight, insurance, CNF, and duty figures — ideally when the vendor bill arrives. If you wait too long the imported stock may already be sold, and although Odoo can still post the adjustment, the margin reports for the intervening periods will have been wrong. Do not treat a receipt as fully closed until its landed-cost record is posted."
+          }
+        }
+      ]
+    }
+  ]
+extraStyles: |
+  .flow-card {
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        overflow: hidden;
+        margin: 20px 0;
+      }
+      .flow-row {
+        display: grid;
+        grid-template-columns: 140px 1fr 180px;
+        border-bottom: 1px solid var(--border);
+        align-items: stretch;
+      }
+      .flow-row:last-child { border-bottom: none; }
+      .flow-stage {
+        padding: 14px 16px;
+        background: var(--surface);
+        border-right: 1px solid var(--border);
+        font-size: 12px;
+        font-weight: 600;
+        color: var(--text);
+        display: flex;
+        align-items: center;
+      }
+      .flow-desc {
+        padding: 14px 16px;
+        font-size: 12.5px;
+        color: var(--text-2);
+        line-height: 1.7;
+      }
+      .flow-odoo {
+        padding: 14px 16px;
+        border-left: 1px solid var(--border);
+        font-family: var(--mono);
+        font-size: 10.5px;
+        color: var(--accent);
+        line-height: 1.7;
+        display: flex;
+        align-items: center;
+      }
+      .pull {
+        font-family: var(--serif);
+        font-style: italic;
+        font-size: clamp(20px, 2.8vw, 30px);
+        line-height: 1.3;
+        color: var(--text);
+        margin: 48px 0;
+        max-width: 26ch;
+        letter-spacing: -0.01em;
+      }
+      .pull::before {
+        content: "";
+        display: block;
+        width: 36px;
+        height: 1px;
+        background: var(--accent);
+        margin-bottom: 18px;
+      }
+      .field-note{margin:28px 0;border:1px solid var(--border);border-radius:12px;overflow:hidden;background:var(--surface)}
+      .fn-hd{display:flex;align-items:center;justify-content:space-between;padding:12px 18px;border-bottom:1px solid var(--border);font-family:var(--mono);font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-3)}
+      .fn-hd .when{color:var(--accent)}
+      .fn-body{padding:18px 22px;font-size:15px;line-height:1.65;color:var(--text-2)}
+      .fn-body strong{color:var(--text);font-weight:500}
+      @media(max-width:800px){
+        .flow-row { grid-template-columns: 1fr; }
+        .flow-stage { border-right: none; border-bottom: 1px solid var(--border); }
+        .flow-odoo { border-left: none; border-top: 1px solid var(--border); }
+      }
+---
+<aside class="toc">
+      <div class="toc-k">In this guide</div>
+      <ol>
+        <li><a href="#why-landed-costs">Why Landed Costs Matter</a></li>
+        <li><a href="#configuration">Configuration in Odoo</a></li>
+        <li><a href="#split-methods">Cost Splitting Methods</a></li>
+        <li><a href="#duty-drawback">Duty Drawback Tracking</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ol>
+    </aside>
+
+    <div class="body">
+      <p>A common mistake in ERP implementations is treating import duties and freight charges as generic expenses on the P&amp;L. While this is mathematically correct for net profit, it completely destroys your gross margin analysis per product. If you import a specialized component for $10 and pay $4 in shipping and duties, the cost of that component in your warehouse should be $14, not $10.</p>
+
+      <p>Odoo's Landed Costs module automates this calculation. This guide works in tandem with the <a href="0019-hs-code-customs-odoo-bangladesh" style="color:var(--accent)">HS Code &amp; Customs Management</a> and <a href="0014-odoo-accounting-setup-bangladesh" style="color:var(--accent)">Odoo Accounting Setup</a> guides.</p>
+
+      <p class="pull">Without Landed Costs, your inventory is undervalued on the balance sheet, and your product margins are artificially inflated.</p>
+
+      <h2 id="why-landed-costs">Why Landed Costs Matter</h2>
+      <p>Consider importing a container of fabric. The supplier invoice is $50,000. When it arrives in Chittagong port, you pay $3,000 for ocean freight, $500 for insurance, $1,500 for CNF agent fees, and $15,000 in import duties. Your total cash outlay is $70,000.</p>
+
+      <p>If you don't use landed costs:</p>
+      <ul>
+        <li>Your inventory is valued at $50,000.</li>
+        <li>You record a $20,000 expense immediately.</li>
+        <li>If you sell the fabric for $60,000, your system says you made a $10,000 gross profit. In reality, you lost $10,000.</li>
+      </ul>
+
+      <h2 id="configuration">Configuration in Odoo</h2>
+      <p>To use Landed Costs, you must be using Automated Inventory Valuation (AVCO or FIFO). Standard Price does not support dynamic landed costs.</p>
+
+      <div class="flow-card">
+        <div class="flow-row">
+          <div class="flow-stage">Step 1: Receive Goods</div>
+          <div class="flow-desc">Validate the receipt of the products from the supplier in your warehouse. The initial inventory value is booked based on the PO price.</div>
+          <div class="flow-odoo">Stock Valuation: PO Price</div>
+        </div>
+        <div class="flow-row">
+          <div class="flow-stage">Step 2: Create Cost Service</div>
+          <div class="flow-desc">Create service products for "Freight", "Customs Duty", etc. Ensure the "Is a Landed Cost" checkbox is ticked on the product.</div>
+          <div class="flow-odoo">Product Type: Service<br>Landed Cost: True</div>
+        </div>
+        <div class="flow-row">
+          <div class="flow-stage">Step 3: Vendor Bills</div>
+          <div class="flow-desc">When you receive the bill from the freight forwarder or customs, create a vendor bill for the service product.</div>
+          <div class="flow-odoo">Create Bill</div>
+        </div>
+        <div class="flow-row">
+          <div class="flow-stage">Step 4: Apply Landed Cost</div>
+          <div class="flow-desc">Create a Landed Cost record. Link it to the original warehouse receipt and add the cost lines. Odoo distributes the cost and recalculates inventory value.</div>
+          <div class="flow-odoo">Inventory → Landed Costs</div>
+        </div>
+      </div>
+
+      <h2 id="split-methods">Cost Splitting Methods</h2>
+      <p>Odoo can distribute the extra costs across the items in the container using different methods:</p>
+
+      <ul>
+        <li><strong>Equal:</strong> The cost is divided equally among all product lines. Good for admin fees.</li>
+        <li><strong>By Quantity:</strong> Divided by the number of items. Good for items of similar size/weight.</li>
+        <li><strong>By Current Cost:</strong> Expensive items absorb more of the freight cost. Often the most accurate for insurance and duty (which is usually a % of value).</li>
+        <li><strong>By Weight:</strong> Heavy items absorb more freight cost. Requires weight data to be accurately maintained on product cards.</li>
+        <li><strong>By Volume:</strong> Bulky items absorb more freight cost.</li>
+      </ul>
+
+      <h2 id="duty-drawback">Duty Drawback Tracking</h2>
+      <p>For Bangladesh exporters, Duty Drawback is a critical financial incentive. When you export finished goods made from imported raw materials, you can claim back the import duties paid.</p>
+
+      <p>To track this accurately, you must use FIFO costing combined with Landed Costs. FIFO ensures that the specific cost of the imported batch (including its specific landed duties) is tracked as it moves through production and is finally exported. By running a valuation report on the exported lots, you can precisely document the duty value embedded in that shipment for your drawback claim.</p>
+
+      <div class="field-note">
+        <div class="fn-hd"><span>Note · Importer-distributor, Dhaka</span><span class="when">Year-end stock count</span></div>
+        <div class="fn-body">
+          A distributor had the Landed Costs module switched on and used it correctly — for the first few months. Then the warehouse and finance teams drifted out of sync: goods were received and sold, but the CNF agent's freight-and-duty bill arrived five to six weeks later and quietly piled up unprocessed. By year-end, several large shipments had <strong>never had their landed cost applied at all</strong> — inventory sat undervalued on the balance sheet, and the gross margin on those products looked far healthier than it was. Nobody noticed until the auditors reconciled the stock value. We fixed it with a standing rule: a receipt is not considered closed until its landed-cost record is posted, and a weekly review flags any receipt older than four weeks with no linked cost. <strong>Landed costs do not fail because the feature is hard — they fail because the freight bill and the receipt live in two different inboxes.</strong>
+        </div>
+      </div>
+
+      <div class="callout">
+        <span class="tag">Bottom line</span>
+        <p>Landed costs require discipline. The warehouse team receives the goods, but the finance team receives the freight and duty bills weeks later. You must establish a workflow where finance links these delayed bills back to the original receipts. Want to size the duty, freight, and implementation budget before you commit? Try the <a href="/tools/odoo-cost-estimator/" style="color:var(--accent)">Odoo cost estimator</a>. <a href="../#contact" style="color:var(--accent)">Need help designing your import accounting workflows? Get in touch →</a></p>
+      </div>
+
+      <h2 id="faq">Frequently asked questions</h2>
+
+      <h3>What are Landed Costs in Odoo?</h3>
+      <p>Landed Costs refer to the total price of a product once it has arrived at the buyer's door. This includes the original price of the product, all transportation fees, customs, duties, taxes, insurance, currency conversion, and any other costs.</p>
+
+      <h3>How does Odoo calculate Landed Costs?</h3>
+      <p>Odoo takes the additional costs (like a freight invoice) and splits them across the products in an incoming shipment based on rules you define: by quantity, by volume, by weight, by cost, or equally.</p>
+
+      <h3>Why must I use FIFO or AVCO for landed costs in Odoo?</h3>
+      <p>Landed costs adjust the valuation of stock that is already in your inventory, so Odoo needs a costing method that tracks valuation dynamically. FIFO and AVCO (Average Cost) both do this — they recalculate inventory value as moves and adjustments occur. Standard Price holds a fixed cost per product and cannot absorb a per-shipment freight or duty adjustment, so the Landed Costs feature is unavailable on Standard Price products. For Bangladesh importers claiming duty drawback, FIFO is usually the better choice because it preserves the specific cost of each imported batch.</p>
+
+      <h3>When should I apply a landed cost to a receipt in Odoo?</h3>
+      <p>Apply it as soon as you have the actual freight, insurance, CNF, and duty figures — ideally when the vendor bill arrives. If you wait too long, the imported stock may already be consumed or sold, and while Odoo can still post the adjustment, the margin reports for the periods in between will have been wrong. The practical rule: do not treat a receipt as fully closed until its landed-cost record is posted.</p>
+
+    </div>

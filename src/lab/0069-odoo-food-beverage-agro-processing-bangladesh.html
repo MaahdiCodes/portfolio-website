@@ -1,0 +1,222 @@
+---
+permalink: "lab/0069-odoo-food-beverage-agro-processing-bangladesh.html"
+title: "Odoo for Food & Beverage / Agro-Processing Bangladesh | Mehedi Hasan"
+description: "Odoo ERP for Bangladesh food, beverage, and agro-processing companies: expiry/lot tracking, BSTI compliance, and recipe-based manufacturing (formulas)."
+canonical: "https://mhasan.me/lab/0069-odoo-food-beverage-agro-processing-bangladesh"
+ogImage: "https://mhasan.me/assets/og/lab/0069-odoo-food-beverage-agro-processing-bangladesh.png"
+ogSiteName: "Mehedi Hasan | Odoo ERP Consultant"
+datePublished: "2026-09-18T12:00:00+06:00"
+dateModified: "2026-09-18T12:00:00+06:00"
+articleSection: "Odoo ERP Bangladesh"
+eyebrowNum: "0069"
+h1: "Odoo for food, beverage &amp; agro-processing: <span class=\"serif\">recipes, expiry, and BSTI in one system.</span>"
+lede: "Rice mills, edible oil refiners, spice processors, dairies, and beverage bottlers all share a set of ERP problems that discrete manufacturers never face: ingredient ratios instead of fixed BOMs, expiry dates that gate every sale, and a regulator (BSTI) that expects batch-level traceability. Here is how to configure Odoo so it fits how food is actually made in Bangladesh."
+chips: ["Guide", "Food, Beverage & Agro", "Bangladesh"]
+bylineItems:
+  - label: "By"
+    value: "<a href=\"https://www.linkedin.com/in/mehedi-hasan-consultant/\" style=\"color:var(--accent)\" rel=\"author\">Mehedi Hasan</a>"
+  - label: "Published"
+    value: "September 2026"
+  - label: "Read time"
+    value: "14 minutes"
+  - label: "Form"
+    value: "Guide"
+  - label: "Scope"
+    value: "Manufacturing &amp; Compliance"
+nextArticle:
+  href: "0068-odoo-plastics-packaging-manufacturing-bangladesh"
+  dir: "Older · 0068"
+  title: "Odoo for Plastics &amp; Packaging Manufacturing Bangladesh"
+  desc: "Resin batch tracking, mold/tooling costs, and quality control."
+prevArticle:
+  href: "../#lab"
+  dir: "All articles"
+  title: "Back to Lab Index"
+  desc: "Browse all guides on Odoo ERP, manufacturing operations, and business analysis in Bangladesh."
+jsonLd: |
+  [
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "Odoo for Food & Beverage and Agro-Processing Companies in Bangladesh",
+      "description": "A practical guide to configuring Odoo for Bangladesh food, beverage, and agro-processing businesses: recipe/formula-based manufacturing, expiry and lot tracking for food safety, BSTI certification data, seasonal raw material procurement, and cold-chain tracking.",
+      "datePublished": "2026-09-18T12:00:00+06:00",
+      "dateModified": "2026-09-18T12:00:00+06:00",
+      "author": { "@type": "Person", "name": "Mehedi Hasan", "url": "https://mhasan.me", "jobTitle": "Odoo ERP Consultant & Business Analyst", "sameAs": "https://www.linkedin.com/in/mehedi-hasan-consultant/" },
+      "publisher": { "@type": "Person", "name": "Mehedi Hasan", "url": "https://mhasan.me" },
+      "mainEntityOfPage": { "@type": "WebPage", "@id": "https://mhasan.me/lab/0069-odoo-food-beverage-agro-processing-bangladesh" }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://mhasan.me" },
+        { "@type": "ListItem", "position": 2, "name": "Lab", "item": "https://mhasan.me/lab/" },
+        { "@type": "ListItem", "position": 3, "name": "Odoo for Food & Beverage / Agro-Processing Bangladesh", "item": "https://mhasan.me/lab/0069-odoo-food-beverage-agro-processing-bangladesh" }
+      ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How does recipe-based manufacturing differ from a standard BOM in Odoo?",
+          "acceptedAnswer": { "@type": "Answer", "text": "A standard discrete BOM assumes fixed unit quantities: one bicycle needs exactly two wheels. A food recipe or formula is proportional: a batch of spice mix might need ingredients in fixed percentage ratios that scale to whatever batch size you are producing, and the actual yield often varies slightly due to moisture loss, evaporation, or trim waste. In Odoo, you still use the Bill of Materials structure, but you configure it as a batch-yield BOM where the finished quantity reflects an expected yield percentage rather than an exact 1:1 conversion, and you track yield variance batch to batch as a quality and cost control metric rather than treating every batch as identical." }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I set up expiry date tracking in Odoo for food products?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Enable lots and expiration dates on your food product categories under Inventory → Configuration → Product Categories, and turn on the Expiration Dates feature in Inventory settings. Each product master then carries a shelf life in days, and every lot created at production or receipt automatically calculates its expiry date, best-before date, and a removal date used for FEFO (first-expired-first-out) picking. Configure your warehouse removal strategy as FEFO rather than the default FIFO so Odoo automatically directs pickers to the soonest-expiring stock first, which is essential for perishables and anything with a defined shelf life." }
+        },
+        {
+          "@type": "Question",
+          "name": "What BSTI-related data should my Odoo system be able to produce?",
+          "acceptedAnswer": { "@type": "Answer", "text": "For BSTI (Bangladesh Standards and Testing Institution) certified products, your ERP should be able to produce, per batch: the raw material lots consumed, the formula/recipe version used, quality test results recorded against that batch, and the finished goods lot that resulted. This is exactly the lot-to-lot traceability chain Odoo's Inventory and Quality modules build automatically once lot tracking is enabled end to end, and it is the same documentation trail a BSTI inspector or a renewal audit will ask for when reviewing your CM (Certification Mark) license compliance." }
+        },
+        {
+          "@type": "Question",
+          "name": "How should seasonal raw material procurement like paddy or rice be handled in Odoo?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Seasonal raw materials such as paddy, mustard seed, or certain spices are typically bought in large volumes during a short harvest window (Aman and Boro rice seasons, for example) and stored for months before processing. Model this in Odoo using a dedicated seasonal procurement plan: create purchase forecasts tied to the harvest calendar, use warehouse locations that reflect actual storage conditions (godown vs silo), and track landed cost carefully since financing cost, storage cost, and moisture-related weight loss over the storage period all affect the true cost of that raw material by the time it reaches production, which should be captured through Odoo's landed cost feature rather than left out of the standard purchase cost." }
+        },
+        {
+          "@type": "Question",
+          "name": "Does Odoo support cold-chain or storage condition tracking?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Odoo does not have a dedicated temperature-logging sensor module out of the box, but it supports cold-chain discipline through configuration: separate warehouse locations for chilled, frozen, and ambient storage, storage condition notes on the product master, and putaway rules that force incoming dairy, juice concentrate, or frozen goods to the correct zone automatically. For businesses with regulatory or buyer requirements for continuous temperature logging, a simple IoT temperature logger integrated via Odoo's API to record readings against a storage location is the practical add-on, layered on top of the base location and lot structure rather than replacing it." }
+        }
+      ]
+    }
+  ]
+extraStyles: |
+  .pull{font-family:var(--serif);font-style:italic;font-size:clamp(20px,2.8vw,28px);line-height:1.3;color:var(--text);margin:48px 0;max-width:28ch;letter-spacing:-0.01em}
+      .pull::before{content:"";display:block;width:36px;height:1px;background:var(--accent);margin-bottom:18px}
+      .stat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:26px 0}
+      @media(max-width:680px){.stat-row{grid-template-columns:1fr 1fr}}
+      @media(max-width:440px){.stat-row{grid-template-columns:1fr}}
+      .stat-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:18px 16px;text-align:center}
+      .stat-card .sc-val{font-size:30px;font-weight:700;color:var(--accent);letter-spacing:-0.03em;line-height:1;margin-bottom:6px}
+      .stat-card .sc-label{font-family:var(--mono);font-size:10px;color:var(--text-3);letter-spacing:0.07em;text-transform:uppercase}
+      .stat-card .sc-note{font-size:11.5px;color:var(--text-2);margin-top:5px;line-height:1.4}
+      .sector-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:22px 0}
+      @media(max-width:600px){.sector-grid{grid-template-columns:1fr}}
+      .sector-card{border:1px solid var(--border);border-radius:7px;padding:16px;background:var(--surface)}
+      .sector-card .sec-head{display:flex;align-items:baseline;gap:10px;margin-bottom:8px}
+      .sector-card .sec-name{font-weight:600;font-size:13.5px;color:var(--text)}
+      .sector-card .sec-pct{font-family:var(--mono);font-size:11.5px;color:var(--accent);font-weight:700}
+      .sector-card p{color:var(--text-2);font-size:12.5px;line-height:1.5;margin:0}
+      .tip-box{background:var(--accent-dim);border-left:3px solid var(--accent);border-radius:0 6px 6px 0;padding:14px 18px;margin:18px 0}
+      .tip-box .tlabel{font-family:var(--mono);font-size:10px;color:var(--accent);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:6px}
+      .tip-box p{margin:0;font-size:14px;color:var(--text-2);line-height:1.55}
+      .season-bar{display:flex;border-radius:8px;overflow:hidden;margin:20px 0;border:1px solid var(--border)}
+      .season-bar div{padding:14px 10px;text-align:center;font-family:var(--mono);font-size:10.5px;color:var(--text-2);border-right:1px solid var(--border)}
+      .season-bar div:last-child{border-right:none}
+      .season-bar div.peak{background:var(--accent-dim);color:var(--accent);font-weight:600}
+      .season-bar div b{display:block;font-size:12px;color:var(--text);margin-bottom:2px}
+---
+<aside class="toc">
+      <div class="toc-k">In this guide</div>
+      <ol>
+        <li><a href="#sector">The sector, and why it needs different ERP thinking</a></li>
+        <li><a href="#recipe">Recipe / formula-based manufacturing</a></li>
+        <li><a href="#expiry">Expiry date and lot tracking</a></li>
+        <li><a href="#bsti">BSTI certification and data needs</a></li>
+        <li><a href="#seasonal">Seasonal raw material procurement</a></li>
+        <li><a href="#coldchain">Cold-chain and storage condition tracking</a></li>
+        <li><a href="#rollout">Implementation priorities</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ol>
+    </aside>
+    <div class="body">
+
+      <h2 id="sector">The sector, and why it needs different ERP thinking</h2>
+      <p>Bangladesh's food, beverage, and agro-processing sector spans rice mills (auto rice mills in Naogaon, Dinajpur, Kushtia), edible oil refiners, spice grinding and packaging units, dairy processors, beverage bottlers, and a large snack and confectionery segment feeding both domestic retail and export. What unites them from an ERP perspective is that none of them manufacture in fixed, exact unit quantities the way a discrete manufacturer does. A rice mill's output depends on paddy moisture content and milling yield. A spice blend's output depends on the exact mix ratio and how much moisture is lost during roasting. A juice bottler's syrup batch depends on Brix concentration, which varies with fruit pulp quality that season.</p>
+      <p>This variability is the core reason a straight copy of a discrete manufacturer's Odoo setup, of the kind described in <a href="0013-odoo-manufacturing-module-bangladesh" style="color:var(--accent)">Odoo Manufacturing Module Bangladesh</a>, does not fit food processing without adjustment. The batch-and-lot discipline this sector needs is closer to what is described for pharmaceutical manufacturing in <a href="0035-odoo-pharma-bangladesh" style="color:var(--accent)">Odoo for Pharma Bangladesh</a>, since both industries live or die by being able to answer "which batch, which ingredients, which test result" for every unit that leaves the factory.</p>
+
+      <div class="stat-row">
+        <div class="stat-card">
+          <div class="sc-val">2-8%</div>
+          <div class="sc-label">Typical yield variance</div>
+          <div class="sc-note">Batch-to-batch swing in output weight for milled, roasted, or evaporated products</div>
+        </div>
+        <div class="stat-card">
+          <div class="sc-val">FEFO</div>
+          <div class="sc-label">Correct picking rule</div>
+          <div class="sc-note">First-Expired-First-Out, not FIFO, for any product with a shelf life</div>
+        </div>
+        <div class="stat-card">
+          <div class="sc-val">6-12 mo</div>
+          <div class="sc-label">Post-harvest storage</div>
+          <div class="sc-note">Typical paddy/rice or spice storage window before full processing</div>
+        </div>
+      </div>
+
+      <h2 id="recipe">Recipe / formula-based manufacturing</h2>
+      <p>The single biggest configuration mismatch when a food processor first sets up Odoo Manufacturing is treating the Bill of Materials like a discrete parts list. A discrete BOM says "one bicycle needs exactly two wheels, one frame, one chain." A food recipe says "a 500kg batch of five-spice mix needs cumin, coriander, chili, turmeric, and cardamom in a fixed percentage ratio, and the actual yield after roasting and moisture loss is typically 92 to 96 percent of input weight, varying batch to batch."</p>
+      <p>To model this correctly in Odoo, keep the underlying BOM structure but build it as a percentage-ratio formula scaled to batch size rather than a fixed quantity list, and set the expected output quantity to reflect your historical average yield rather than assuming a 1:1 input-to-output conversion. Then, critically, record actual yield per batch against expected yield as a tracked variance. A rice mill milling 10,000kg of paddy at an expected 65 percent milling yield (6,500kg of rice) that only achieves 61 percent has lost roughly 260kg of expected output, worth real money, and that variance should show up as a reportable number in Odoo's Manufacturing Orders, not get absorbed silently into "difference in inventory."</p>
+
+      <div class="tip-box">
+        <div class="tlabel">Why yield variance tracking pays for itself</div>
+        <p>Once yield variance is visible batch by batch, patterns emerge that are invisible without the data: a particular paddy supplier consistently delivering higher moisture content and lower milling yield, a particular roasting operator running temperatures too high and losing more moisture than necessary, a spice blend recipe that technically works but wastes 3 percent more raw material than an alternate ratio. None of these patterns are visible from a monthly P&amp;L. They are visible from batch-level yield data, which is exactly what a properly configured Manufacturing Order in Odoo captures automatically once you set expected yield percentages and record actuals at batch closure.</p>
+      </div>
+
+      <p>For multi-stage products such as a bottled beverage (syrup batch, then dilution and bottling as a second stage), split this into a two-step routing similar to the extrusion example in plastics manufacturing: a syrup-making Manufacturing Order produces an intermediate item (concentrated syrup, tracked by weight or liters and by lot), consumed by a bottling Manufacturing Order that adds water, carbonation, and packaging to produce the final countable finished good.</p>
+
+      <h2 id="expiry">Expiry date and lot tracking</h2>
+      <p>Every food product Odoo tracks should carry two things: a lot number and an expiry-relevant date, whether that is a strict expiry date (dairy, juice) or a best-before date (dry spices, packaged rice). Enable this under <strong>Inventory → Configuration → Settings → Expiration Dates</strong>, then set a shelf life in days on each product master. Odoo then calculates the expiry date automatically at the point a lot is created, either at goods receipt for purchased raw materials or at production confirmation for manufactured finished goods.</p>
+      <p>The setting that actually changes daily operations, and the one most Bangladesh food companies skip even after enabling expiry dates, is the warehouse removal strategy. By default Odoo uses FIFO (first-in-first-out). For anything with a shelf life, switch the relevant storage locations to <strong>FEFO (first-expired-first-out)</strong> under the location's removal strategy setting. FIFO picks the oldest received stock; FEFO picks the stock closest to expiring, which is not always the same lot if a later delivery happens to have a shorter remaining shelf life. Getting this wrong means a delivery van goes out with stock that expires sooner while older, longer-dated stock sits in the warehouse, a completely avoidable but very common mistake.</p>
+      <p>This same lot-and-valuation discipline connects directly to how your finished goods and raw material inventory get valued on the balance sheet, covered in general terms in <a href="0011-odoo-inventory-valuation-cheatsheet" style="color:var(--accent)">Odoo Inventory Valuation Cheatsheet</a>; food and agro-processing businesses should pay particular attention to how expired or written-off stock gets valued out, since a large expired batch, uncleared from the books, quietly overstates inventory value on every subsequent balance sheet until someone catches it.</p>
+
+      <h2 id="bsti">BSTI certification and data needs</h2>
+      <p>Products under BSTI's (Bangladesh Standards and Testing Institution) mandatory certification mark (CM license) scheme, which covers a wide range of packaged food items including edible oil, biscuits, spices, and bottled water, require the manufacturer to demonstrate ongoing quality control discipline, not just a one-time product test at certification. BSTI inspectors and renewal audits expect to see a traceable chain: which raw material batch went into which production batch, what quality tests were run and what the results were, and which finished goods lot resulted.</p>
+      <p>This is precisely the chain Odoo's Inventory and Quality modules build automatically once lot tracking is switched on end to end and quality control points are configured against production. Set up Quality Control Points under <strong>Quality → Configuration → Control Points</strong> tied to your critical BSTI-relevant tests (moisture content, acid value for edible oil, microbial testing for dairy), record pass/fail or measured values against each production lot, and Odoo retains this as a queryable record. When a BSTI inspector visits, or when your CM license comes up for renewal, being able to pull a batch's full trace (raw material lots in, tests performed, finished lot out) in minutes rather than days of digging through paper registers is a meaningful operational advantage, separate from the compliance requirement itself.</p>
+
+      <div class="tip-box">
+        <div class="tlabel">Do not conflate BSTI with export buyer audits</div>
+        <p>BSTI's CM license scheme is a domestic regulatory requirement for products sold within Bangladesh. Export buyers, particularly in the EU and Gulf markets, often layer their own audit requirements (HACCP, ISO 22000, or buyer-specific supplier codes) on top of BSTI. Keep your Odoo Quality configuration flexible enough to record both sets of checks against the same batch, since a single production lot destined partly for domestic sale and partly for export may need to satisfy both regimes simultaneously.</p>
+      </div>
+
+      <h2 id="seasonal">Seasonal raw material procurement</h2>
+      <p>Rice, mustard, and many spices are harvested within short seasonal windows and then stored for months before or during processing. A rice mill buying Boro season paddy in April-May and Aman season paddy in November-December needs to procure enough volume during each harvest window to sustain milling operations through the months in between, since off-season paddy purchases carry a significant price premium.</p>
+
+      <div class="season-bar">
+        <div><b>Jan</b>Low buying</div>
+        <div><b>Feb</b>Low buying</div>
+        <div><b>Mar</b>Boro planting</div>
+        <div class="peak"><b>Apr-May</b>Boro harvest peak</div>
+        <div><b>Jun-Sep</b>Processing/storage</div>
+        <div><b>Oct</b>Aman planting</div>
+        <div class="peak"><b>Nov-Dec</b>Aman harvest peak</div>
+      </div>
+
+      <p>Model this in Odoo through a deliberate seasonal procurement plan rather than treating purchasing as a continuous reactive process. Set up purchase forecasts tied to the harvest calendar in the Purchase app, and if volumes are large enough, use Odoo's Master Production Schedule (MPS) to project raw material requirements across the storage period against expected milling or processing throughput. Just as importantly, capture the true landed cost of seasonally stored raw material using Odoo's Landed Cost feature: financing cost on capital tied up in stored paddy for six to eight months, storage and fumigation cost, and moisture-related weight loss during storage all add real cost that a simple purchase price does not reflect. A mill that only records the harvest-time purchase price and ignores these carrying costs will consistently underprice its output relative to true cost.</p>
+
+      <h2 id="coldchain">Cold-chain and storage condition tracking</h2>
+      <p>Dairy, juice concentrate, and some beverage inputs require cold storage, while dry spices and packaged rice need controlled humidity rather than refrigeration. Odoo does not ship a dedicated temperature-sensor module out of the box, but the discipline is achievable through configuration: create separate warehouse locations for chilled, frozen, and ambient/dry storage under <strong>Inventory → Configuration → Locations</strong>, tag each raw material and finished product with its required storage condition as a product attribute, and set putaway rules so that incoming stock is automatically routed to the correct zone rather than relying on a warehouse worker's judgment.</p>
+      <p>Where a buyer or regulation demands continuous temperature logging (common for dairy exports or pharma-adjacent nutraceutical products), the practical approach is a simple IoT temperature logger that pushes readings into Odoo via its API against the relevant storage location, layered on top of this location structure rather than replacing it. This keeps the core traceability (which lot, which location, which condition) inside Odoo's native data model while handling the sensor integration as an add-on.</p>
+
+      <h2 id="rollout">Implementation priorities</h2>
+      <p>For a food or agro-processing business rolling out Odoo, sequence the work as: lot and expiry tracking first (this alone typically justifies the project through reduced spoilage losses and FEFO discipline), recipe/formula BOMs with yield tracking second, BSTI-relevant quality control points third, and seasonal procurement planning and cold-chain location structure fourth. Attempting quality control configuration before lot tracking is stable is a common sequencing mistake, since quality checks are only meaningful once you can reliably tie a test result to a specific traceable batch.</p>
+
+      <div class="callout">
+        <span class="tag">Consultation CTA</span>
+        <p>If you run a rice mill, oil refinery, spice unit, dairy, or beverage plant in Bangladesh and your current system cannot answer "which raw material batch is in this finished lot" in under five minutes, that gap is both a BSTI compliance risk and a lost-cost problem. I can help you build the recipe, lot, and quality structure in Odoo that closes it. <a href="../#contact" style="color:var(--accent)">Contact me for a strategy session →</a></p>
+      </div>
+
+      <h2 id="faq">Frequently asked questions</h2>
+
+      <h3>How does recipe-based manufacturing differ from a standard BOM in Odoo?</h3>
+      <p>A standard discrete BOM assumes fixed unit quantities: one bicycle needs exactly two wheels. A food recipe or formula is proportional: a batch of spice mix might need ingredients in fixed percentage ratios that scale to whatever batch size you are producing, and the actual yield often varies slightly due to moisture loss, evaporation, or trim waste. In Odoo, you still use the Bill of Materials structure, but you configure it as a batch-yield BOM where the finished quantity reflects an expected yield percentage rather than an exact 1:1 conversion, and you track yield variance batch to batch as a quality and cost control metric rather than treating every batch as identical.</p>
+
+      <h3>How do I set up expiry date tracking in Odoo for food products?</h3>
+      <p>Enable lots and expiration dates on your food product categories under Inventory → Configuration → Product Categories, and turn on the Expiration Dates feature in Inventory settings. Each product master then carries a shelf life in days, and every lot created at production or receipt automatically calculates its expiry date, best-before date, and a removal date used for FEFO (first-expired-first-out) picking. Configure your warehouse removal strategy as FEFO rather than the default FIFO so Odoo automatically directs pickers to the soonest-expiring stock first, which is essential for perishables and anything with a defined shelf life.</p>
+
+      <h3>What BSTI-related data should my Odoo system be able to produce?</h3>
+      <p>For BSTI (Bangladesh Standards and Testing Institution) certified products, your ERP should be able to produce, per batch: the raw material lots consumed, the formula/recipe version used, quality test results recorded against that batch, and the finished goods lot that resulted. This is exactly the lot-to-lot traceability chain Odoo's Inventory and Quality modules build automatically once lot tracking is enabled end to end, and it is the same documentation trail a BSTI inspector or a renewal audit will ask for when reviewing your CM (Certification Mark) license compliance.</p>
+
+      <h3>How should seasonal raw material procurement like paddy or rice be handled in Odoo?</h3>
+      <p>Seasonal raw materials such as paddy, mustard seed, or certain spices are typically bought in large volumes during a short harvest window (Aman and Boro rice seasons, for example) and stored for months before processing. Model this in Odoo using a dedicated seasonal procurement plan: create purchase forecasts tied to the harvest calendar, use warehouse locations that reflect actual storage conditions (godown vs silo), and track landed cost carefully since financing cost, storage cost, and moisture-related weight loss over the storage period all affect the true cost of that raw material by the time it reaches production, which should be captured through Odoo's landed cost feature rather than left out of the standard purchase cost.</p>
+
+      <h3>Does Odoo support cold-chain or storage condition tracking?</h3>
+      <p>Odoo does not have a dedicated temperature-logging sensor module out of the box, but it supports cold-chain discipline through configuration: separate warehouse locations for chilled, frozen, and ambient storage, storage condition notes on the product master, and putaway rules that force incoming dairy, juice concentrate, or frozen goods to the correct zone automatically. For businesses with regulatory or buyer requirements for continuous temperature logging, a simple IoT temperature logger integrated via Odoo's API to record readings against a storage location is the practical add-on, layered on top of the base location and lot structure rather than replacing it.</p>
+
+    </div>

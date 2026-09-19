@@ -1,0 +1,262 @@
+---
+permalink: "lab/0065-odoo-barcode-warehouse-scanning-bangladesh.html"
+title: "Odoo Barcode & Warehouse Scanning Bangladesh | Mehedi Hasan"
+description: "Set up Odoo Barcode app for Bangladesh warehouses: scanner hardware options, put-away rules, cycle counting, and shop-floor scanning workflows for manufacturers."
+canonical: "https://mhasan.me/lab/0065-odoo-barcode-warehouse-scanning-bangladesh"
+ogImage: "https://mhasan.me/assets/og/lab/0065-odoo-barcode-warehouse-scanning-bangladesh.png"
+ogSiteName: "Mehedi Hasan | Odoo ERP Consultant"
+datePublished: "2026-09-18T12:00:00+06:00"
+dateModified: "2026-09-18T12:00:00+06:00"
+articleSection: "Odoo ERP Bangladesh"
+eyebrowNum: "0065"
+h1: "Odoo Barcode: <span class=\"serif\">getting the shop floor to actually scan.</span>"
+lede: "Buying scanners is the easy part. The hard part is a warehouse worker in a Gazipur factory who has never used a handheld device, a receiving dock where the barcode label peeled off in the rain, and a supervisor who still trusts the paper register more than the screen. This guide covers the realistic hardware, the put-away and counting configuration, and the adoption discipline that makes Odoo's Barcode app work on a real Bangladesh shop floor."
+chips: ["Guide", "Inventory & Warehouse", "Shop Floor"]
+bylineItems:
+  - label: "By"
+    value: "<a href=\"https://www.linkedin.com/in/mehedi-hasan-consultant/\" style=\"color:var(--accent)\" rel=\"author\">Mehedi Hasan</a>"
+  - label: "Published"
+    value: "September 2026"
+  - label: "Read time"
+    value: "15 minutes"
+  - label: "Form"
+    value: "Guide"
+  - label: "Scope"
+    value: "Odoo Barcode / Inventory"
+nextArticle:
+  href: "0064-odoo-pos-retail-chains-bangladesh"
+  dir: "Older · 0064"
+  title: "Odoo POS Setup for Bangladesh Retail Chains"
+  desc: "Offline mode, multi-location stock sync, and NBR-compliant receipts."
+prevArticle:
+  href: "../#lab"
+  dir: "All articles"
+  title: "Back to Lab Index"
+  desc: "Browse all guides on Odoo ERP, manufacturing operations, and business analysis in Bangladesh."
+jsonLd: |
+  [
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "Odoo Barcode & Warehouse Scanning Bangladesh",
+      "description": "Set up Odoo Barcode app for Bangladesh warehouses: scanner hardware options, put-away rules, cycle counting, and shop-floor scanning workflows for manufacturers.",
+      "datePublished": "2026-09-18T12:00:00+06:00",
+      "dateModified": "2026-09-18T12:00:00+06:00",
+      "author": {
+        "@type": "Person",
+        "name": "Mehedi Hasan",
+        "url": "https://mhasan.me",
+        "jobTitle": "Odoo ERP Consultant & Business Analyst",
+        "sameAs": "https://www.linkedin.com/in/mehedi-hasan-consultant/"
+      },
+      "publisher": { "@type": "Person", "name": "Mehedi Hasan", "url": "https://mhasan.me" },
+      "mainEntityOfPage": { "@type": "WebPage", "@id": "https://mhasan.me/lab/0065-odoo-barcode-warehouse-scanning-bangladesh" }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://mhasan.me" },
+        { "@type": "ListItem", "position": 2, "name": "Lab", "item": "https://mhasan.me/lab/" },
+        { "@type": "ListItem", "position": 3, "name": "Odoo Barcode & Warehouse Scanning Bangladesh", "item": "https://mhasan.me/lab/0065-odoo-barcode-warehouse-scanning-bangladesh" }
+      ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Do you need a dedicated scanner for Odoo Barcode, or can a phone work?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Both work, and the right choice depends on the environment. Odoo's Barcode app runs in a mobile browser or the Odoo mobile app, and a budget Android phone with its camera used as a scanner is genuinely usable for low-volume operations like a small retail stockroom or an office supply store. For a factory floor or a high-throughput warehouse, a dedicated laser or 2D imager scanner (Zebra, Honeywell, or comparable Chinese-market brands sold in Bangladesh) is worth the extra cost because it scans faster, survives drops and dust far better than a phone, and does not tie up a device someone also uses to browse Facebook between tasks."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How much does a barcode scanner cost in Bangladesh for Odoo?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A basic USB wired laser scanner suitable for a receiving desk costs approximately BDT 2,500 to 5,000. A Bluetooth or 2D imager handheld scanner capable of reading damaged or angled barcodes on factory floor runs BDT 6,000 to 15,000. A rugged, dedicated Android data terminal with a built-in industrial-grade scanner (Zebra TC-series or Honeywell equivalents) suited to constant factory floor use runs BDT 35,000 to 90,000 per unit. Most Bangladesh SME warehouses start with the mid-tier handheld option and only move to rugged terminals once scanner damage or loss from budget devices becomes a recurring cost."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How does Odoo Barcode handle put-away rules in a warehouse?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Put-away rules are configured under Inventory > Configuration > Put-Away Rules, and they tell Odoo which storage location a received product should be directed to based on product category, package type, or storage capacity constraints. When a warehouse worker scans a received item using the Barcode app, Odoo automatically suggests the correct bin or rack location on screen based on the applicable put-away rule, removing the guesswork that leads to the same SKU being scattered across multiple locations in an unstructured warehouse. This is particularly valuable in Bangladesh trading company warehouses with thousands of SKUs where staff turnover makes tribal knowledge of \"where things go\" unreliable."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the difference between cycle counting and annual physical count in Odoo?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "An annual physical count is a full stock-take of every location and every product, typically done once a year, often requiring a full or partial shutdown of warehouse operations for one or more days. Cycle counting, configured through Odoo's Inventory Adjustments with scheduled counts on a rotating subset of locations or product categories, spreads counting activity across the year, counting a portion of stock weekly or monthly so that high-value or fast-moving items get counted more frequently than slow-moving ones. Most Bangladesh manufacturers running Odoo Barcode use cycle counting for A-category high-value items (counted monthly) and reserve the full annual count for less critical stock, which catches discrepancies faster and disrupts operations far less than a single annual count alone."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why does barcode adoption fail on Bangladesh factory floors?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The most common causes are worker literacy and comfort with a screen-based device, physical damage or loss of scanners in a factory environment with dust, moisture, and high worker turnover, and management skipping floor-level training in favor of training only supervisors. Successful rollouts assign scanners to specific individuals with accountability for damage, use large, high-contrast icon-based screen layouts in the Barcode app configuration, and run a shadow period where workers use both the old paper method and the new scanning method side by side for one to two weeks before fully switching over."
+          }
+        }
+      ]
+    }
+  ]
+extraStyles: |
+  .stat-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 26px 0; }
+      @media(max-width:680px) { .stat-row { grid-template-columns: 1fr 1fr; } }
+      @media(max-width:440px) { .stat-row { grid-template-columns: 1fr; } }
+      .stat-card { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 18px 16px; text-align: center; }
+      .stat-card .sc-val { font-size: 30px; font-weight: 700; color: var(--accent); letter-spacing: -0.03em; line-height: 1; margin-bottom: 6px; }
+      .stat-card .sc-label { font-family: var(--mono); font-size: 10px; color: var(--text-3); letter-spacing: 0.07em; text-transform: uppercase; }
+      .stat-card .sc-note { font-size: 11.5px; color: var(--text-2); margin-top: 5px; line-height: 1.4; }
+      .device-table { width: 100%; border-collapse: collapse; font-size: 13.5px; margin: 18px 0; }
+      .device-table th { text-align: left; padding: 10px 14px; background: var(--surface); color: var(--text-3); font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.06em; text-transform: uppercase; border-bottom: 1px solid var(--border); }
+      .device-table td { padding: 11px 14px; border-bottom: 1px solid var(--border); color: var(--text-2); vertical-align: top; }
+      .device-table td:first-child { color: var(--text); font-weight: 600; }
+      .device-table tr:last-child td { border-bottom: none; }
+      .warn-box { background: rgba(230,160,60,0.08); border: 1px solid rgba(230,160,60,0.28); border-radius: 8px; padding: 16px 18px; margin: 22px 0; }
+      .warn-box .wlabel { font-family: var(--mono); font-size: 10px; color: oklch(0.75 0.15 70); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 6px; }
+      .warn-box p { margin: 0; font-size: 13.5px; color: var(--text-2); line-height: 1.6; }
+      .path-tag { font-family: var(--mono); font-size: 12.5px; background: var(--elev); border: 1px solid var(--border); border-radius: 5px; padding: 2px 8px; color: var(--text); }
+---
+<aside class="toc">
+      <div class="toc-k">In this guide</div>
+      <ol>
+        <li><a href="#why-barcode">Why Bangladesh Warehouses Still Run on Paper</a></li>
+        <li><a href="#hardware">Scanner Hardware Options and Real Pricing</a></li>
+        <li><a href="#label-printing">Barcode Label Printing Setup</a></li>
+        <li><a href="#putaway">Put-Away and Picking Workflows</a></li>
+        <li><a href="#counting">Cycle Counting vs Annual Physical Count</a></li>
+        <li><a href="#shopfloor">Component Scanning on the Manufacturing Floor</a></li>
+        <li><a href="#adoption">Where Shop-Floor Adoption Breaks</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ol>
+    </aside>
+
+    <div class="body">
+
+      <h2 id="why-barcode">Why Bangladesh Warehouses Still Run on Paper</h2>
+      <p>Walk into most mid-size Bangladesh trading company or factory warehouses and you will still find a hard-bound stock register, a supervisor who knows "where things go" from memory, and receiving documented on a carbon-copy challan book. This is not because barcode technology is unavailable or expensive, it is because the transition from paper to scan-based inventory requires a level of shop-floor discipline that most ERP rollouts underestimate. A company can configure a perfect Odoo Inventory setup and still fail at the point where it matters most: the actual person receiving a carton at the dock, who now has to hold a device instead of writing in a book.</p>
+      <p>Odoo's Barcode app, available in both Community and Enterprise, is designed to make this transition manageable, with a scan-driven interface that guides workers through receiving, put-away, picking, delivery, and cycle counts using large icon-based screens rather than a full desktop-style interface. Done properly, it eliminates the manual data entry step that causes the majority of stock discrepancies in Bangladesh SME inventory operations. The valuation and costing implications of accurate stock counts are covered in <a href="0011-odoo-inventory-valuation-cheatsheet" style="color:var(--accent)">Odoo Inventory Valuation Cheatsheet</a>, which this article's counting accuracy feeds directly into.</p>
+
+      <div class="stat-row">
+        <div class="stat-card">
+          <div class="sc-val">2–5%</div>
+          <div class="sc-label">Typical Stock Variance</div>
+          <div class="sc-note">Discrepancy rate found at first physical count after switching from manual to barcode tracking</div>
+        </div>
+        <div class="stat-card">
+          <div class="sc-val">1–2 Weeks</div>
+          <div class="sc-label">Shadow Period</div>
+          <div class="sc-note">Recommended overlap running paper and scanning side by side before full cutover</div>
+        </div>
+        <div class="stat-card">
+          <div class="sc-val">BDT 6K–90K</div>
+          <div class="sc-label">Scanner Price Range</div>
+          <div class="sc-note">From a basic USB scanner to a rugged industrial handheld terminal</div>
+        </div>
+      </div>
+
+      <h2 id="hardware">Scanner Hardware Options and Real Pricing</h2>
+      <p>The hardware decision should follow the environment, not the other way around. A budget Android phone camera can technically scan a barcode through Odoo's mobile app, and this is genuinely a reasonable starting point for a low-volume back office or a single-till retail stockroom. It is a poor choice for a factory receiving dock or a high-throughput distribution warehouse, where a phone's camera-based scan is slower and less reliable on damaged, angled, or poorly printed labels than a dedicated laser or 2D imager scanner.</p>
+
+      <table class="device-table">
+        <thead>
+          <tr>
+            <th>Device Type</th>
+            <th>Approx. Price (BDT)</th>
+            <th>Best Fit</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Android phone (camera scan)</td>
+            <td>Existing device</td>
+            <td>Low-volume back office, small retail stockroom, quick pilot testing</td>
+          </tr>
+          <tr>
+            <td>USB wired laser scanner</td>
+            <td>2,500 – 5,000</td>
+            <td>Fixed receiving desk, checkout counter, low-mobility use</td>
+          </tr>
+          <tr>
+            <td>Bluetooth 2D imager handheld</td>
+            <td>6,000 – 15,000</td>
+            <td>Mobile picking and receiving, reads damaged/angled labels reliably</td>
+          </tr>
+          <tr>
+            <td>Rugged Android data terminal (Zebra, Honeywell)</td>
+            <td>35,000 – 90,000</td>
+            <td>Continuous factory floor use, drop and dust resistant, high worker turnover environments</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="warn-box">
+        <div class="wlabel">Total Cost of Ownership</div>
+        <p>Budget handheld scanners in dusty or wet factory environments (dye houses, wash plants, cutting floors with lint) have a real failure and loss rate that is easy to underestimate at purchase time. Factor in replacement cost, not just purchase cost, when comparing a BDT 8,000 handheld against a BDT 50,000 rugged terminal. A factory replacing three budget scanners a year at BDT 8,000 each spends BDT 24,000 annually before counting the productivity loss from scanners being unavailable while replacements are sourced.</p>
+      </div>
+
+      <h2 id="label-printing">Barcode Label Printing Setup</h2>
+      <p>Odoo generates barcodes automatically for products, lots, and locations, but printing them onto usable physical labels requires a dedicated label printer, typically a desktop thermal transfer printer (common Bangladesh market brands include TSC and Zebra desktop models), configured under <span class="path-tag">Inventory &gt; Configuration &gt; Reporting Templates</span> for lot and product label formats. For a manufacturer producing custom finished goods, a practical setup prints a lot/batch label at the end of the production line that includes the product barcode, batch number, and production date, which becomes the single source of truth scanned at every subsequent step: put-away, picking, and shipping.</p>
+      <p>Label durability matters more in Bangladesh's climate than in many barcode software guides acknowge: humidity and heat degrade cheap direct-thermal labels within weeks, causing them to fade to unreadable before the stock they are attached to is consumed, particularly for slower-moving raw material stored for months. Thermal transfer labels with a ribbon, though marginally more expensive per label, hold up far better for anything expected to sit in inventory longer than 60 to 90 days.</p>
+
+      <h2 id="putaway">Put-Away and Picking Workflows</h2>
+      <p>Put-away rules, configured under <span class="path-tag">Inventory &gt; Configuration &gt; Put-Away Rules</span>, tell Odoo which specific storage location a received product should go to, based on product category, package type, or defined storage capacity. When a worker scans a received carton using the Barcode app, Odoo displays the suggested bin or rack location on screen immediately, removing the dependency on one experienced supervisor's memory of "where things go" that breaks down the moment that person is on leave or leaves the company.</p>
+      <p>Picking workflows work the reverse direction: Odoo's Barcode app presents a picking list generated from a sales order or manufacturing order component list, guiding the worker location by location and prompting a scan-to-confirm at each pick, which catches wrong-item picks in real time rather than discovering the error at packing or, worse, after the customer receives the wrong item. For Bangladesh trading companies managing thousands of SKUs across a multi-level warehouse, this single feature typically has the fastest and most visible return on the barcode investment, since picking errors are usually the most expensive and most customer-visible inventory mistake a warehouse makes.</p>
+
+      <h2 id="counting">Cycle Counting vs Annual Physical Count</h2>
+      <p>Most Bangladesh manufacturers historically ran a single annual physical stock count, often shutting down operations for one or two days once a year to count everything by hand. This approach concentrates all counting risk (and all business disruption) into one event, and discrepancies discovered during it are often months old and impossible to trace to a specific cause.</p>
+      <p>Odoo's Barcode app makes cycle counting practical: scheduled inventory adjustments, configured under <span class="path-tag">Inventory &gt; Operations &gt; Physical Inventory</span>, can be scoped to a subset of locations or product categories and run weekly or monthly rather than annually. A practical Bangladesh setup counts A-category high-value or fast-moving SKUs monthly, B-category items quarterly, and reserves the full annual count for low-value C-category stock, catching discrepancies while they are recent enough to investigate (a specific week's transactions rather than a full year) and without a full operational shutdown.</p>
+
+      <div class="warn-box">
+        <div class="wlabel">Do Not Skip This</div>
+        <p>A common mistake is running cycle counts through the Barcode app but never actually validating the resulting inventory adjustment in Odoo, leaving discrepancies visible in a report that nobody reviews and acts on. Assign a specific person (not "whoever is free") to review and approve every cycle count adjustment weekly, and track the total value of write-offs and write-ons over time as a management KPI.</p>
+      </div>
+
+      <h2 id="shopfloor">Component Scanning on the Manufacturing Floor</h2>
+      <p>For manufacturers, the Barcode app integrates directly with work orders: a worker on the production line can scan a component's barcode to confirm consumption against a manufacturing order, rather than a supervisor manually recording what was used at the end of the shift from memory or a paper tally sheet. This is particularly valuable for high-mix manufacturers, such as those running multiple concurrent styles or SKUs on the same line, where manual consumption tracking routinely misattributes material use between orders running side by side.</p>
+      <p>This scanning discipline connects directly to accurate reordering: the reordering rules and make-to-order flows covered in <a href="0039-odoo-reordering-rules-mto-bangladesh" style="color:var(--accent)">Odoo Reordering Rules &amp; MTO Bangladesh</a> depend on real-time, accurate consumption data, and a factory that scans component usage at the work order level gets materially more reliable automatic replenishment triggers than one relying on end-of-day manual entry. For factories that have already invested in shop-floor connectivity through Odoo's IoT Box, covered in <a href="0056-odoo-iot-box-bangladesh" style="color:var(--accent)">Odoo IoT Box Bangladesh</a>, barcode scanning is a natural complementary layer, since the IoT Box can bridge scanner hardware that lacks native network connectivity into the same work order interface.</p>
+
+      <h2 id="adoption">Where Shop-Floor Adoption Breaks</h2>
+      <p>The technology rarely fails first. Adoption does. The recurring patterns across Bangladesh factory barcode rollouts:</p>
+      <ul>
+        <li><strong>Worker literacy and device comfort:</strong> a meaningful share of factory floor workers have limited experience with any screen-based device beyond a basic phone call and messaging app. Training needs to be hands-on, repeated, and built around large, icon-heavy screen layouts rather than assuming familiarity with menu-driven interfaces.</li>
+        <li><strong>Device damage and loss:</strong> factory environments with dust, moisture, lint, and high worker turnover see real device attrition. Assigning scanners to specific individuals with basic accountability (a sign-out log, replacement cost awareness) meaningfully reduces loss and careless damage compared to shared, unassigned devices.</li>
+        <li><strong>Supervisor-only training:</strong> a common shortcut is training only supervisors and expecting them to train the floor informally. This consistently produces inconsistent, degraded practice within weeks. Floor-level workers who will use the scanner daily need direct training, not secondhand instruction.</li>
+        <li><strong>No shadow period:</strong> switching from paper to scanning in a single day, with no overlap, leaves no safety net when workers make early mistakes. A one to two week shadow period, running both methods in parallel with paper as the fallback of record, catches configuration and training gaps before the paper method is retired.</li>
+      </ul>
+      <p>Factories that get the shop-floor rollout right treat it as a change management project with a technology component, not a technology project with a training footnote, which is the same lesson that applies across most Bangladesh ERP work covered in <a href="0013-odoo-manufacturing-module-bangladesh" style="color:var(--accent)">Odoo Manufacturing Module Bangladesh</a>.</p>
+      <p>One underrated adoption lever is language. Odoo's Barcode app interface can be set to Bangla for the worker-facing labels and prompts under user language preferences, and factories that make this small change consistently report faster comfort on the floor than those that leave every screen in English and expect workers to memorize icon positions instead of reading them. Pairing this with a simple laminated one-page cheat sheet at each station, showing the exact scan sequence for receiving, picking, and counting in Bangla with screenshots, closes most of the gap between a rollout that stalls in week two and one that sticks past month three.</p>
+      <p>It is also worth budgeting for a phased hardware replacement cycle rather than treating the initial scanner purchase as a one-time capital cost. A realistic three-year total cost of ownership model for a mid-size factory running 15 to 20 handheld scanners should include an annual replacement allowance of roughly 15 to 20 percent of the fleet, covering both hardware failure and the inevitable loss that comes with high floor-worker turnover. Building this into the original ERP budget, rather than treating each replacement as a surprise, prevents the common pattern where a factory's barcode discipline quietly degrades back toward paper simply because a third of the scanners on the floor are broken and nobody allocated funds to replace them.</p>
+
+      <div class="callout">
+        <span class="tag">Barcode Rollout Consultation</span>
+        <p>If your warehouse or factory floor is still running on paper registers and you want to move to scan-based receiving, put-away, picking, and cycle counting without losing your team in the transition, I can design the hardware selection, the Odoo configuration, and the floor-level training plan together. <a href="../#contact" style="color:var(--accent)">Contact me for a strategy session →</a></p>
+      </div>
+
+      <h2 id="faq">Frequently asked questions</h2>
+
+      <h3>Do you need a dedicated scanner for Odoo Barcode, or can a phone work?</h3>
+      <p>Both work, and the right choice depends on the environment. Odoo's Barcode app runs in a mobile browser or the Odoo mobile app, and a budget Android phone with its camera used as a scanner is genuinely usable for low-volume operations like a small retail stockroom or an office supply store. For a factory floor or a high-throughput warehouse, a dedicated laser or 2D imager scanner (Zebra, Honeywell, or comparable Chinese-market brands sold in Bangladesh) is worth the extra cost because it scans faster, survives drops and dust far better than a phone, and does not tie up a device someone also uses to browse Facebook between tasks.</p>
+
+      <h3>How much does a barcode scanner cost in Bangladesh for Odoo?</h3>
+      <p>A basic USB wired laser scanner suitable for a receiving desk costs approximately BDT 2,500 to 5,000. A Bluetooth or 2D imager handheld scanner capable of reading damaged or angled barcodes on factory floor runs BDT 6,000 to 15,000. A rugged, dedicated Android data terminal with a built-in industrial-grade scanner (Zebra TC-series or Honeywell equivalents) suited to constant factory floor use runs BDT 35,000 to 90,000 per unit. Most Bangladesh SME warehouses start with the mid-tier handheld option and only move to rugged terminals once scanner damage or loss from budget devices becomes a recurring cost.</p>
+
+      <h3>How does Odoo Barcode handle put-away rules in a warehouse?</h3>
+      <p>Put-away rules are configured under Inventory &gt; Configuration &gt; Put-Away Rules, and they tell Odoo which storage location a received product should be directed to based on product category, package type, or storage capacity constraints. When a warehouse worker scans a received item using the Barcode app, Odoo automatically suggests the correct bin or rack location on screen based on the applicable put-away rule, removing the guesswork that leads to the same SKU being scattered across multiple locations in an unstructured warehouse. This is particularly valuable in Bangladesh trading company warehouses with thousands of SKUs where staff turnover makes tribal knowledge of "where things go" unreliable.</p>
+
+      <h3>What is the difference between cycle counting and annual physical count in Odoo?</h3>
+      <p>An annual physical count is a full stock-take of every location and every product, typically done once a year, often requiring a full or partial shutdown of warehouse operations for one or more days. Cycle counting, configured through Odoo's Inventory Adjustments with scheduled counts on a rotating subset of locations or product categories, spreads counting activity across the year, counting a portion of stock weekly or monthly so that high-value or fast-moving items get counted more frequently than slow-moving ones. Most Bangladesh manufacturers running Odoo Barcode use cycle counting for A-category high-value items (counted monthly) and reserve the full annual count for less critical stock, which catches discrepancies faster and disrupts operations far less than a single annual count alone.</p>
+
+      <h3>Why does barcode adoption fail on Bangladesh factory floors?</h3>
+      <p>The most common causes are worker literacy and comfort with a screen-based device, physical damage or loss of scanners in a factory environment with dust, moisture, and high worker turnover, and management skipping floor-level training in favor of training only supervisors. Successful rollouts assign scanners to specific individuals with accountability for damage, use large, high-contrast icon-based screen layouts in the Barcode app configuration, and run a shadow period where workers use both the old paper method and the new scanning method side by side for one to two weeks before fully switching over.</p>
+
+    </div>

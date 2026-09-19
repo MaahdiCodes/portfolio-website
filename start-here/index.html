@@ -11,6 +11,13 @@
 <meta name="robots" content="index, follow" />
 <title>Start Here — Odoo ERP Guide for Bangladesh | Mehedi Hasan</title>
 <link rel="canonical" href="https://mhasan.me/start-here/" />
+<script>
+  (function () {
+    var t = localStorage.getItem('mh-theme');
+    if (t === 'light') document.documentElement.setAttribute('data-theme', 'light');
+    else if (t !== 'dark') document.documentElement.setAttribute('data-theme', 'dark-navy');
+  })();
+</script>
 <link rel="alternate" hreflang="en" href="https://mhasan.me/start-here/" />
 <link rel="alternate" hreflang="bn-BD" href="https://mhasan.me/bn/start-here/" />
 <link rel="alternate" hreflang="x-default" href="https://mhasan.me/start-here/" />
@@ -18,13 +25,13 @@
 <meta property="og:description" content="Three guided reading paths for your ERP journey: evaluating Odoo, implementing it, or optimising post go-live." />
 <meta property="og:url" content="https://mhasan.me/start-here/" />
 <meta property="og:type" content="website" />
-<meta property="og:image" content="https://mhasan.me/assets/og-default.jpg" />
+<meta property="og:image" content="https://mhasan.me/assets/og/start-here/start-here.png" />
 <meta property="og:locale" content="en_US" />
 <meta property="og:site_name" content="Mehedi Hasan | Odoo Consultant" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="Start Here — Odoo ERP Guide for Bangladesh" />
 <meta name="twitter:description" content="Three guided reading paths for your ERP journey: evaluating Odoo, implementing it, or optimising post go-live." />
-<meta name="twitter:image" content="https://mhasan.me/assets/og-default.jpg" />
+<meta name="twitter:image" content="https://mhasan.me/assets/og/start-here/start-here.png" />
 <script type="application/ld+json">
 [
   {
@@ -94,13 +101,28 @@
   ::selection{background:var(--accent);color:#000}
 
   html[data-theme="light"]{
-    --bg:#F5F7FA;--bg-1:#EEF1F5;--surface:#FFFFFF;--elev:#EDF0F4;
-    --border:#E2E6EC;--border-2:#CBD0D9;--hair:rgba(0,0,0,0.05);
-    --text:#0E1013;--text-2:#4A5265;--text-3:#8A909E;
+    --bg:#F7F9FC;--bg-1:#EEF1F5;--surface:#FFFFFF;--elev:#EDF0F4;
+    --border:#E2E8F0;--border-2:#CBD5E0;--hair:rgba(0,0,0,0.05);
+    --text:#1A2B3C;--text-2:#4A5568;--text-3:#718096;
+    --accent:#009B8E;--accent-dim:color-mix(in oklch, #009B8E 10%, transparent);
   }
   html[data-theme="light"] body{
-    background:radial-gradient(900px 600px at 80% -10%,rgba(80,230,160,0.05),transparent 60%),var(--bg);
+    background:radial-gradient(900px 600px at 80% -10%,rgba(0,155,142,0.05),transparent 60%),var(--bg);
   }
+
+  html[data-theme="dark-navy"]{
+    --bg:#061628;--bg-1:#0B2545;--surface:#0E2038;--elev:#132C52;
+    --border:#1B3A6B;--border-2:#2A4A7F;--hair:rgba(255,255,255,0.06);
+    --text:#EDEEF0;--text-2:#9BAAC2;--text-3:#6E7F9C;
+    --accent:oklch(0.80 0.16 185);--accent-dim:color-mix(in oklch, oklch(0.80 0.16 185) 14%, transparent);
+  }
+  html[data-theme="dark-navy"] body{
+    background:
+      radial-gradient(900px 600px at 80% -10%,rgba(20,120,150,0.10),transparent 60%),
+      radial-gradient(700px 500px at 10% 10%,rgba(20,60,110,0.20),transparent 70%),
+      var(--bg);
+  }
+  html[data-theme="dark-navy"] .nav-inner{background:rgba(11,37,69,0.6)}
 
   .grid-bg{position:fixed;inset:0;pointer-events:none;z-index:0;
     background-image:linear-gradient(to right,rgba(255,255,255,0.022) 1px,transparent 1px),linear-gradient(to bottom,rgba(255,255,255,0.022) 1px,transparent 1px);
@@ -676,12 +698,6 @@
 <script src="/whatsapp.js" defer></script>
 <script src="/scroll-top.js" defer></script>
 <script>
-  // Theme persistence
-  (function(){
-    if(localStorage.getItem('mh-theme')==='light')
-      document.documentElement.setAttribute('data-theme','light');
-  })();
-
   // Theme toggle
   (function(){
     function init(){
@@ -696,10 +712,20 @@
       var backLink = navInner.querySelector('.back-link');
       if(backLink) navInner.insertBefore(btn, backLink);
       else navInner.appendChild(btn);
+      var TITLES = {
+        light: 'Theme: Light — click for Dark Navy',
+        'dark-navy': 'Theme: Dark Navy — click for Dark (Classic)',
+        dark: 'Theme: Dark (Classic) — click for Light'
+      };
+      function current(){ return document.documentElement.getAttribute('data-theme') || 'dark'; }
+      btn.title = TITLES[current()];
       btn.addEventListener('click', function(){
-        var isLight = document.documentElement.getAttribute('data-theme')==='light';
-        if(isLight){ document.documentElement.removeAttribute('data-theme'); localStorage.setItem('mh-theme','dark'); }
-        else { document.documentElement.setAttribute('data-theme','light'); localStorage.setItem('mh-theme','light'); }
+        var order = ['dark-navy', 'dark', 'light'];
+        var next = order[(order.indexOf(current()) + 1) % order.length];
+        if(next === 'dark') document.documentElement.removeAttribute('data-theme');
+        else document.documentElement.setAttribute('data-theme', next);
+        localStorage.setItem('mh-theme', next);
+        btn.title = TITLES[current()];
       });
     }
     if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',init);

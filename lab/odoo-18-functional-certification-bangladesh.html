@@ -9,6 +9,13 @@
   <meta name="robots" content="index, follow" />
   <title>Odoo Functional Certification — What It Is & Why It Matters for Bangladesh ERP | Mehedi Hasan</title>
   <link rel="canonical" href="https://mhasan.me/lab/odoo-18-functional-certification-bangladesh" />
+  <script>
+    (function () {
+      var t = localStorage.getItem('mh-theme');
+      if (t === 'light') document.documentElement.setAttribute('data-theme', 'light');
+      else if (t !== 'dark') document.documentElement.setAttribute('data-theme', 'dark-navy');
+    })();
+  </script>
   <link rel="alternate" hreflang="en" href="https://mhasan.me/lab/odoo-18-functional-certification-bangladesh" />
   <link rel="alternate" hreflang="bn-BD" href="https://mhasan.me/bn/lab/odoo-18-functional-certification-bangladesh" />
   <link rel="alternate" hreflang="x-default" href="https://mhasan.me/lab/odoo-18-functional-certification-bangladesh" />
@@ -21,7 +28,7 @@
     content="What the Odoo Functional Certification actually tests, how it differs from experience, and what to look for when choosing a certified Odoo consultant in Bangladesh." />
   <meta property="og:url" content="https://mhasan.me/lab/odoo-18-functional-certification-bangladesh" />
   <meta property="og:type" content="article" />
-  <meta property="og:image" content="https://mhasan.me/assets/og-default.jpg" />
+  <meta property="og:image" content="https://mhasan.me/assets/og/lab/odoo-18-functional-certification-bangladesh.png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <meta property="og:locale" content="en_US" />
@@ -31,7 +38,7 @@
   <meta name="twitter:title" content="Odoo Functional Certification — What It Is & Why It Matters for Bangladesh ERP" />
   <meta name="twitter:description"
     content="What the Odoo Functional Certification tests and why it matters when selecting an Odoo consultant in Bangladesh. First-hand account." />
-  <meta name="twitter:image" content="https://mhasan.me/assets/og-default.jpg" />
+  <meta name="twitter:image" content="https://mhasan.me/assets/og/lab/odoo-18-functional-certification-bangladesh.png" />
   <!-- JSON-LD: Article + BreadcrumbList + FAQPage -->
   <script type="application/ld+json">
 [
@@ -432,12 +439,21 @@
   <script>
     const btn = document.getElementById('theme-btn');
     const html = document.documentElement;
-    const saved = localStorage.getItem('mh-theme');
-    if (saved) html.setAttribute('data-theme', saved);
+    const TITLES = {
+      light: 'Theme: Light — click for Dark Navy',
+      'dark-navy': 'Theme: Dark Navy — click for Dark (Classic)',
+      dark: 'Theme: Dark (Classic) — click for Light'
+    };
+    function current() { return html.getAttribute('data-theme') || 'dark'; }
+    function setTitle() { btn.title = TITLES[current()]; }
+    setTitle();
     btn.addEventListener('click', () => {
-      const next = html.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
-      html.setAttribute('data-theme', next);
+      const order = ['dark-navy', 'dark', 'light'];
+      const next = order[(order.indexOf(current()) + 1) % order.length];
+      if (next === 'dark') html.removeAttribute('data-theme');
+      else html.setAttribute('data-theme', next);
       localStorage.setItem('mh-theme', next);
+      setTitle();
     });
   </script>
 <script src="/whatsapp.js" defer></script>

@@ -2036,12 +2036,18 @@
       btn.disabled = true; btn.textContent = 'Subscribing…';
       msg.textContent = ''; msg.className = 'nl-strip-msg';
       fetch(NL_URL, {
-        method:'POST', mode:'no-cors',
-        headers:{'Content-Type':'application/json'},
+        method:'POST',
+        headers:{'Content-Type':'text/plain'},
         body: JSON.stringify({email: val, name:'', profession:'', course:'newsletter'})
-      }).catch(()=>{}).finally(()=>{
+      }).then((res)=>{
+        if (!res.ok) throw new Error('status ' + res.status);
         msg.textContent = '✓ You\'re subscribed.';
+        msg.className = 'nl-strip-msg ok';
         email.value = '';
+      }).catch(()=>{
+        msg.textContent = 'Couldn\'t confirm — email mhasanju46@gmail.com directly.';
+        msg.className = 'nl-strip-msg error';
+      }).finally(()=>{
         btn.disabled = false; btn.textContent = 'Subscribe →';
       });
     });

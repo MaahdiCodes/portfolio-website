@@ -1,0 +1,8 @@
+{
+  "name": "mhasan-me-tooling",
+  "private": true,
+  "description": "Build-time tooling for mhasan.me (OG image generation, etc.) — not part of the deployed static site.",
+  "devDependencies": {
+    "sharp": "^0.35.4"
+  }
+}

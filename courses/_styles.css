@@ -22,6 +22,53 @@
   --measure: 680px;
   --gutter: 24px;
 }
+/* Light theme */
+html[data-theme="light"]{
+  --bg:#F7F9FC;
+  --bg-1:#EEF1F5;
+  --surface:#FFFFFF;
+  --elev:#EDF0F4;
+  --border:#E2E8F0;
+  --border-2:#CBD5E0;
+  --hair:rgba(0,0,0,0.05);
+  --text:#1A2B3C;
+  --text-2:#4A5568;
+  --text-3:#718096;
+  --accent:#009B8E;
+  --accent-dim: color-mix(in oklch, #009B8E 10%, transparent);
+  --accent-glow: color-mix(in oklch, #009B8E 20%, transparent);
+}
+html[data-theme="light"] body{
+  background: radial-gradient(900px 600px at 80% -10%, rgba(0,155,142,0.05), transparent 60%), var(--bg);
+}
+html[data-theme="light"] .grid-bg{
+  background-image: linear-gradient(to right, rgba(0,0,0,0.04) 1px, transparent 1px), linear-gradient(to bottom, rgba(0,0,0,0.04) 1px, transparent 1px);
+}
+
+/* Dark Navy theme — same dark family as the default dark mode, recolored
+   from near-black to consultive.io's navy gradient, with a teal accent */
+html[data-theme="dark-navy"]{
+  --bg:#061628;
+  --bg-1:#0B2545;
+  --surface:#0E2038;
+  --elev:#132C52;
+  --border:#1B3A6B;
+  --border-2:#2A4A7F;
+  --hair:rgba(255,255,255,0.06);
+  --text:#EDEEF0;
+  --text-2:#9BAAC2;
+  --text-3:#6E7F9C;
+  --accent: oklch(0.80 0.16 185);
+  --accent-dim: color-mix(in oklch, oklch(0.80 0.16 185) 14%, transparent);
+  --accent-glow: color-mix(in oklch, oklch(0.80 0.16 185) 35%, transparent);
+}
+html[data-theme="dark-navy"] body{
+  background:
+    radial-gradient(900px 600px at 80% -10%, rgba(20,120,150,0.10), transparent 60%),
+    radial-gradient(700px 500px at 10% 10%, rgba(20,60,110,0.20), transparent 70%),
+    var(--bg);
+}
+
 *{box-sizing:border-box}
 html,body{margin:0;background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
 body{
@@ -33,6 +80,15 @@ body{
 }
 a{color:inherit;text-decoration:none}
 ::selection{background:var(--accent);color:#000}
+
+/* Theme toggle button */
+.theme-toggle{appearance:none;border:1px solid var(--border);background:var(--elev);color:var(--text-2);width:34px;height:34px;border-radius:10px;cursor:pointer;display:grid;place-items:center;transition:all .2s ease;flex:none;padding:0}
+.theme-toggle:hover{color:var(--text);border-color:var(--border-2)}
+.theme-toggle svg{display:block;pointer-events:none}
+.theme-toggle .icon-sun{display:none}
+.theme-toggle .icon-moon{display:block}
+html[data-theme="light"] .theme-toggle .icon-sun{display:block}
+html[data-theme="light"] .theme-toggle .icon-moon{display:none}
 
 .grid-bg{position:fixed;inset:0;pointer-events:none;z-index:0;
   background-image:

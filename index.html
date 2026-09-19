@@ -17,13 +17,15 @@
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png" />
   <link rel="apple-touch-icon" href="/favicon.png" />
+  <link rel="manifest" href="/manifest.json" />
+  <meta name="theme-color" content="#061628" />
   <!-- Open Graph -->
   <meta property="og:title" content="Odoo Certified Functional Consultant in Bangladesh | Mehedi Hasan" />
   <meta property="og:description"
     content="Mehedi Hasan is an Odoo Certified Functional Consultant in Bangladesh — certified by Odoo S.A., specialising in manufacturing ERP implementation and business process automation. Led Bangladesh's largest Odoo deployment." />
   <meta property="og:url" content="https://mhasan.me/" />
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="https://mhasan.me/assets/og-default.jpg" />
+  <meta property="og:image" content="https://mhasan.me/assets/og/home.png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <meta property="og:locale" content="en_US" />
@@ -33,7 +35,7 @@
   <meta name="twitter:title" content="Odoo Certified Functional Consultant in Bangladesh | Mehedi Hasan" />
   <meta name="twitter:description"
     content="Mehedi Hasan is an Odoo Certified Functional Consultant in Bangladesh — certified by Odoo S.A., specialising in manufacturing ERP implementation and business process automation. Led Bangladesh's largest Odoo deployment." />
-  <meta name="twitter:image" content="https://mhasan.me/assets/og-default.jpg" />
+  <meta name="twitter:image" content="https://mhasan.me/assets/og/home.png" />
   <!-- JSON-LD: Person + LocalBusiness + ProfessionalService + WebSite + FAQPage -->
   <script type="application/ld+json">
 [
@@ -2985,8 +2987,8 @@
             <span class="index">CASE / 001</span>
             <span class="status-chip live">● Live</span>
           </div>
-          <h3>A National textile group — multi-site manufacturing ERP</h3>
-          <div class="client">Bangladesh · 5 production facilities · 10+ departments</div>
+          <h3>Premier1888 Ltd — multi-site textile manufacturing ERP</h3>
+          <div class="client"><a href="https://premier1888.com" target="_blank" rel="noopener noreferrer" style="color:var(--accent)">Premier1888 Ltd</a> · Chattogram EPZ, Bangladesh · 5 production facilities</div>
           <p class="summary">Led the largest manufacturing Odoo ERP implementation in Bangladesh. Mapped operations
             across spinning, weaving, dyeing and finishing into a unified system; re-engineered inventory and production
             planning.</p>
@@ -3012,8 +3014,8 @@
             <span class="index">CASE / 002</span>
             <span class="status-chip live">● Live</span>
           </div>
-          <h3>Cycle export manufacturer — traceable procurement</h3>
-          <div class="client">Export market · Multi-currency · Global supply chain</div>
+          <h3>M&amp;U Cycles Limited — traceable procurement</h3>
+          <div class="client"><a href="https://mnubd.com/more-about-mu-cycles/" target="_blank" rel="noopener noreferrer" style="color:var(--accent)">M&amp;U Cycles Limited</a> · Export market · Multi-currency</div>
           <p class="summary">Delivered the largest cycle export manufacturing Odoo implementation — full traceability
             from raw material to finished goods, automated procurement workflows, and multi-currency financial ops.</p>
 
@@ -3030,6 +3032,7 @@
             </div>
             <div class="metric-lbl">Procurement efficiency through end-to-end automation</div>
           </div>
+          <a href="https://www.odoo.com/fr_FR/customers/m-u-cycles-ltd-11976279" target="_blank" rel="noopener noreferrer" style="display:inline-block;margin-top:14px;font-family:var(--mono);font-size:11.5px;color:var(--text-3);letter-spacing:0.04em">Verified on Odoo.com ↗</a>
         </article>
 
         <!-- Card 3 -->
@@ -3039,7 +3042,7 @@
             <span class="status-chip">● Ongoing</span>
           </div>
           <h3>Cross-module business process optimization</h3>
-          <div class="client">Manufacturing · Inventory · Sales · Purchase · Finance</div>
+          <div class="client"><a href="https://premier1888.com" target="_blank" rel="noopener noreferrer" style="color:var(--accent)">Premier1888 Ltd</a> · Manufacturing · Inventory · Sales · Purchase · Finance</div>
           <p class="summary">Conducted requirements gathering with 10+ department heads, translating business needs into
             technical specifications and orchestrating UAT cycles before production release.</p>
 
@@ -3065,7 +3068,7 @@
             <span class="status-chip">● Delivered</span>
           </div>
           <h3>End-user enablement &amp; post-go-live support</h3>
-          <div class="client">200+ employees · Multiple departments · Multi-site rollout</div>
+          <div class="client"><a href="https://premier1888.com" target="_blank" rel="noopener noreferrer" style="color:var(--accent)">Premier1888 Ltd</a> · 200+ employees · Multi-site rollout</div>
           <p class="summary">Built the training curriculum and change management program that took an entire
             organization from spreadsheet-driven operations to an integrated ERP — without pausing production.</p>
 
@@ -3787,13 +3790,18 @@
         btn.disabled = true; btn.textContent = 'Subscribing…';
         msg.textContent = ''; msg.className = 'nl-msg';
         fetch(NL_URL, {
-          method: 'POST', mode: 'no-cors',
-          headers: { 'Content-Type': 'application/json' },
+          method: 'POST',
+          headers: { 'Content-Type': 'text/plain' },
           body: JSON.stringify({ email: val, name: '', profession: '', course: 'newsletter' })
-        }).catch(() => { }).finally(() => {
+        }).then((res) => {
+          if (!res.ok) throw new Error('status ' + res.status);
           msg.textContent = '✓ You\'re subscribed. Welcome aboard.';
           msg.className = 'nl-msg ok';
           email.value = '';
+        }).catch(() => {
+          msg.textContent = 'Couldn\'t confirm this went through — email mhasanju46@gmail.com and I\'ll add you.';
+          msg.className = 'nl-msg error';
+        }).finally(() => {
           btn.disabled = false;
           btn.innerHTML = 'Subscribe <span>→</span>';
         });
@@ -3827,13 +3835,18 @@
         btn.disabled = true; btn.textContent = 'Sending…';
         msg.textContent = ''; msg.className = 'cf-msg';
         fetch(CONTACT_SCRIPT_URL, {
-          method: 'POST', mode: 'no-cors',
+          method: 'POST',
           headers: { 'Content-Type': 'text/plain' },
           body: JSON.stringify({ name, email, message, budget, timeline })
-        }).catch(() => { }).finally(() => {
+        }).then((res) => {
+          if (!res.ok) throw new Error('status ' + res.status);
           msg.textContent = '✓ Message sent. I\'ll reply within 1 business day.';
           msg.className = 'cf-msg ok';
           form.reset();
+        }).catch(() => {
+          msg.textContent = 'Couldn\'t confirm delivery — please email mhasanju46@gmail.com directly so I don\'t miss you.';
+          msg.className = 'cf-msg error';
+        }).finally(() => {
           btn.disabled = false;
           btn.innerHTML = 'Send message <span>→</span>';
         });

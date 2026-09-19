@@ -21,7 +21,7 @@
     content="PostgreSQL backup, filestore backup, off-site storage, disaster recovery planning, and monthly restore drills for Bangladesh Odoo deployments." />
   <meta property="og:url" content="https://mhasan.me/lab/0057-odoo-backup-restore-bangladesh" />
   <meta property="og:type" content="article" />
-  <meta property="og:image" content="https://mhasan.me/assets/og-default.jpg" />
+  <meta property="og:image" content="https://mhasan.me/assets/og/lab/0057-odoo-backup-restore-bangladesh.png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <meta property="og:locale" content="en_US" />
@@ -35,7 +35,7 @@
   <meta name="twitter:title" content="Odoo Backup & Recovery Bangladesh | Guide | Mehedi Hasan" />
   <meta name="twitter:description"
     content="PostgreSQL backup, filestore backup, off-site storage, disaster recovery, and restore drills for Bangladesh Odoo deployments. Complete guide." />
-  <meta name="twitter:image" content="https://mhasan.me/assets/og-default.jpg" />
+  <meta name="twitter:image" content="https://mhasan.me/assets/og/lab/0057-odoo-backup-restore-bangladesh.png" />
   <!-- JSON-LD -->
   <script type="application/ld+json">
 [
@@ -109,6 +109,13 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet"
     href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap">
+<script>
+  (function () {
+    var t = localStorage.getItem('mh-theme');
+    if (t === 'light') document.documentElement.setAttribute('data-theme', 'light');
+    else if (t !== 'dark') document.documentElement.setAttribute('data-theme', 'dark-navy');
+  })();
+</script>
   <link rel="stylesheet" href="_styles.css">
   <style>
     .pull {

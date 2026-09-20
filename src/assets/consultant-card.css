@@ -1,0 +1,23 @@
+/* "Your consultant" card — shared by Start Here and the service pages (EN + BN).
+   Markup lives in src/_includes/partials/consultant-card.njk. Uses each page's own
+   theme tokens (--text, --border-2, --accent, ...), so it follows light/dark. */
+.cc-wrap{padding-top:56px;padding-bottom:72px}
+.consultant-card{display:grid;grid-template-columns:auto 1fr auto;gap:24px 28px;align-items:center;padding:24px 28px;border:1px solid var(--border-2);border-radius:16px;background:var(--elev)}
+.cc-photo{display:block;width:88px;height:88px;border-radius:50%;overflow:hidden;border:1px solid var(--border-2);background:var(--surface)}
+.cc-photo img{display:block;width:100%;height:100%;object-fit:cover}
+.cc-eyebrow{display:block;font-family:var(--mono);font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-3)}
+.cc-name{margin:6px 0 0;font-size:20px;font-weight:500;letter-spacing:-0.01em;color:var(--text);line-height:1.25}
+.cc-role{margin:2px 0 0;font-size:14px;color:var(--text-2)}
+.cc-line{margin:10px 0 0;font-size:15px;line-height:1.55;color:var(--text-2);max-width:58ch}
+.cc-actions{display:flex;flex-direction:column;gap:10px;align-items:stretch}
+.cc-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:11px 22px;border-radius:999px;border:1px solid transparent;font-family:var(--mono);font-size:12px;font-weight:600;letter-spacing:0.08em;text-decoration:none;white-space:nowrap;transition:opacity .18s ease,transform .18s ease}
+.cc-btn:hover{opacity:.88;transform:translateY(-1px)}
+.cc-btn-primary{background:var(--accent);color:#04140B}
+.cc-btn-wa{background:transparent;color:#25D366;border-color:#25D366}
+@media(max-width:720px){
+  .cc-wrap{padding-top:40px;padding-bottom:56px}
+  .consultant-card{grid-template-columns:72px 1fr;padding:20px}
+  .cc-photo{width:72px;height:72px}
+  .cc-actions{grid-column:1/-1;flex-direction:row;flex-wrap:wrap}
+  .cc-btn{flex:1 1 auto}
+}

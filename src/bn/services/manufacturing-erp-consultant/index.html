@@ -41,7 +41,7 @@ extraStyles: |
     .hero-svc p { font-size: 18px; color: var(--text-2); max-width: 600px; margin: 0 auto; line-height: 1.6; }
     .btn-primary{display:inline-flex;align-items:center;gap:10px;font-size:14px;font-weight:600;padding:12px 18px;border-radius:10px;background:var(--accent);color:#04140B;text-decoration:none;transition:transform .2s ease;margin-top:32px}
     .btn-primary:hover{background:oklch(0.85 0.17 155);transform:translateY(-1px)}
-    .content-block { padding: 48px 0; }
+    .content-block { padding: 48px var(--gutter); }
     .content-block h2 { font-size: 28px; margin-bottom: 24px; color: var(--text); }
     .content-block p { font-size: 16px; color: var(--text-2); line-height: 1.6; margin-bottom: 16px; }
 ---
@@ -85,6 +85,8 @@ extraStyles: |
   <h2>কেস স্টাডি: ন্যাশনাল টেক্সটাইল গ্রুপ</h2>
   <p>সম্প্রতি, আমরা ৫টি প্রোডাকশন ফ্যাসিলিটি জুড়ে ২০০-র বেশি ইউজার নিয়ে Odoo ডেপ্লয় করেছি। বিক্ষিপ্ত স্প্রেডশিট থেকে একটি সুসংহত ERP-তে মাইগ্রেট করে, আমরা প্রোডাকশন প্ল্যানিং এবং ইনভেন্টরি রিকনসিলিয়েশনে ৬০% দক্ষতা বৃদ্ধি অর্জন করেছি। এটাই আমাদের <a href="../odoo-partner-consultant/" style="color:var(--accent);">বাংলাদেশে শীর্ষ Odoo কনসালট্যান্ট</a> হিসেবে আলাদা করে তোলে।</p>
 </div>
+
+{% include "partials/consultant-card.njk" %}
 
 <footer>
   <div class="shell">

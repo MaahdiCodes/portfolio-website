@@ -1,0 +1,28 @@
+<link rel="stylesheet" href="/assets/consultant-card.css">
+<div class="shell cc-wrap">
+  <aside class="consultant-card" aria-label="{% if lang == 'bn' %}আপনার কনসালট্যান্ট{% else %}Your consultant{% endif %}">
+    <picture class="cc-photo"><source type="image/webp" srcset="/assets/people/mehedi-hasan-avatar-160.webp"><img src="/assets/people/mehedi-hasan-avatar-160.jpg" width="88" height="88" alt="" loading="lazy" decoding="async"></picture>
+    <div class="cc-body">
+      {%- if lang == 'bn' %}
+      <span class="cc-eyebrow">আপনার কনসালট্যান্ট</span>
+      <p class="cc-name">Mehedi Hasan</p>
+      <p class="cc-role">Odoo সার্টিফায়েড ERP কনসালট্যান্ট · ঢাকা</p>
+      <p class="cc-line">Odoo S.A.-এর সার্টিফিকেশন আছে। বাংলাদেশের সবচেয়ে বড় Odoo ম্যানুফ্যাকচারিং রোলআউটটা পরিচালনা করেছি — ৫টি সাইট, ১০+ ডিপার্টমেন্ট, ২০০+ প্রশিক্ষিত ইউজার।</p>
+      {%- else %}
+      <span class="cc-eyebrow">Your consultant</span>
+      <p class="cc-name">Mehedi Hasan</p>
+      <p class="cc-role">Odoo Certified ERP Consultant · Dhaka</p>
+      <p class="cc-line">Certified by Odoo S.A. I led the largest Odoo manufacturing rollout in Bangladesh — 5 sites, 10+ departments, 200+ users trained.</p>
+      {%- endif %}
+    </div>
+    <div class="cc-actions">
+      {%- if lang == 'bn' %}
+      <a class="cc-btn cc-btn-primary" href="/bn/#contact">আমার সাথে কথা বলুন →</a>
+      <a class="cc-btn cc-btn-wa" href="https://wa.me/8801521414851?text=Hi%20Mehedi%2C%20I%27d%20like%20to%20discuss%20an%20Odoo%20project." target="_blank" rel="noopener noreferrer">WhatsApp-এ চ্যাট করুন ↗</a>
+      {%- else %}
+      <a class="cc-btn cc-btn-primary" href="/#contact">Talk to Mehedi →</a>
+      <a class="cc-btn cc-btn-wa" href="https://wa.me/8801521414851?text=Hi%20Mehedi%2C%20I%27d%20like%20to%20discuss%20an%20Odoo%20project." target="_blank" rel="noopener noreferrer">Chat on WhatsApp ↗</a>
+      {%- endif %}
+    </div>
+  </aside>
+</div>

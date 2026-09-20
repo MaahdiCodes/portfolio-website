@@ -35,7 +35,7 @@ extraStyles: |
     .hero-svc p { font-size: 18px; color: var(--text-2); max-width: 600px; margin: 0 auto; line-height: 1.6; }
     .btn-primary{display:inline-flex;align-items:center;gap:10px;font-size:14px;font-weight:600;padding:12px 18px;border-radius:10px;background:var(--accent);color:#04140B;text-decoration:none;transition:transform .2s ease;margin-top:32px}
     .btn-primary:hover{background:oklch(0.85 0.17 155);transform:translateY(-1px)}
-    .content-block { padding: 48px 0; }
+    .content-block { padding: 48px var(--gutter); }
     .content-block h2 { font-size: 28px; margin-bottom: 24px; color: var(--text); }
     .content-block p { font-size: 16px; color: var(--text-2); line-height: 1.6; margin-bottom: 16px; }
 ---
@@ -90,6 +90,8 @@ extraStyles: |
   <h2>Case Study: National Textile Group</h2>
   <p>Recently, we deployed Odoo across 5 production facilities with over 200 users. By migrating them from fragmented spreadsheets to a unified ERP, we achieved a 60% efficiency gain in production planning and inventory reconciliation. This is what sets us apart as a top <a href="../odoo-partner-consultant/" style="color:var(--accent);">Odoo consultant in Bangladesh</a>.</p>
 </div>
+
+{% include "partials/consultant-card.njk" %}
 
 <footer>
   <div class="shell">

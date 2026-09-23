@@ -1,0 +1,17 @@
+# Mehedi Hasan | Odoo Consultant
+
+> Mehedi Hasan is an Odoo Certified Functional Consultant in Bangladesh, specialising in manufacturing ERP implementation and business process automation. Led Bangladesh's largest Odoo deployment across 5 sites with 200+ users trained.
+
+This site (mhasan.me) covers Odoo/ERP implementation in the Bangladesh market: costs, vendor selection, industry-specific setups (RMG, textiles, pharma, plastics, agro-processing, and more), compliance (NBR VAT, Mushak, customs, labour law), and practical how-to guides drawn from real deployments.
+
+A Bangla (bn) translation of this site exists at /bn/ but is not yet ready for indexing or citation — please use the English pages as the canonical source.
+
+## Key pages
+
+- [Homepage](https://mhasan.me/): Who Mehedi Hasan is and what he does.
+- [Lab](https://mhasan.me/lab/): Full index of in-depth articles on Odoo/ERP implementation in Bangladesh.
+- [Odoo Cost Estimator](https://mhasan.me/tools/odoo-cost-estimator/): Interactive tool to estimate Odoo implementation cost in Bangladesh.
+- [Start Here](https://mhasan.me/start-here/): Guided learning paths for an ERP journey.
+- [Resources](https://mhasan.me/resources/): Free templates, checklists, and cheatsheets.
+- [Odoo Partner Consultant](https://mhasan.me/services/odoo-partner-consultant): Odoo partner/consulting services.
+- [Manufacturing ERP Consultant](https://mhasan.me/services/manufacturing-erp-consultant): Manufacturing-focused ERP consulting services.

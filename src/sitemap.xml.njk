@@ -1,0 +1,31 @@
+---
+permalink: "sitemap.xml"
+eleventyExcludeFromCollections: true
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+{%- set staticExtras = [
+  { loc: "https://mhasan.me/lab/0011-odoo-inventory-valuation-cheatsheet", lastmod: "2026-05-22" },
+  { loc: "https://mhasan.me/lab/odoo-18-functional-certification-bangladesh", lastmod: "2026-05-07" }
+] %}
+{%- for url in staticExtras %}
+  <url>
+    <loc>{{ url.loc }}</loc>
+    <lastmod>{{ url.lastmod }}</lastmod>
+  </url>
+{%- endfor %}
+{%- for item in collections.all %}
+{%- set loc = item.data.canonical %}
+{%- set robotsTag = item.data.robots %}
+{%- if loc and loc.indexOf("/bn/") == -1 and (not robotsTag or robotsTag.indexOf("noindex") == -1) %}
+  <url>
+    <loc>{{ loc }}</loc>
+{%- if item.data.dateModified %}
+    <lastmod>{{ item.data.dateModified }}</lastmod>
+{%- elif item.data.datePublished %}
+    <lastmod>{{ item.data.datePublished }}</lastmod>
+{%- endif %}
+  </url>
+{%- endif %}
+{%- endfor %}
+</urlset>

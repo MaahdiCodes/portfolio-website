@@ -2267,17 +2267,41 @@ extraStyles: |
         content: '"'
       }
   
+      .testi-person {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-top: auto
+      }
+
+      .testi-avatar {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        object-fit: cover;
+        flex: none;
+        border: 1px solid var(--border)
+      }
+
       .testi-author {
         display: flex;
         flex-direction: column;
         gap: 3px;
-        margin-top: auto
       }
-  
+
       .testi-name {
         font-size: 14px;
         font-weight: 500;
         color: var(--text)
+      }
+
+      .testi-name a {
+        color: inherit;
+        text-decoration: none
+      }
+
+      .testi-name a:hover {
+        text-decoration: underline
       }
   
       .testi-role {
@@ -3556,8 +3580,8 @@ extraStyles: |
     </div>
   </section>
 
-  <!-- TESTIMONIALS STRIP — hidden until real data collected -->
-  <section id="testimonials" style="display:none">
+  <!-- TESTIMONIALS STRIP -->
+  <section id="testimonials">
     <div class="shell">
       <div class="reveal">
         <span class="testi-eyebrow">Client Testimonials</span>
@@ -3565,34 +3589,44 @@ extraStyles: |
 
           <div class="testi-card">
             <div class="testi-stars">★★★★★</div>
-            <p class="testi-quote">Mehedi mapped our entire factory floor in three weeks. The BOM configuration he built
-              for bicycle assembly — with duty drawback tracking — was something our previous consultants said wasn't
-              possible in Odoo. We went live on time.</p>
-            <div class="testi-author">
-              <span class="testi-name">Head of Operations</span>
-              <span class="testi-role">Cycle &amp; Textile Manufacturer · Dhaka</span>
+            <p class="testi-quote">Mehedi is a rare find in the business consulting world. While he brings sharp
+              strategic insights to his role at Metamorphosis Ltd, it is his character that truly sets him apart. He
+              has a gift for simplifying complex requirements and fostering a positive, collaborative environment,
+              even during high-pressure phases of development.</p>
+            <div class="testi-person">
+              <picture><source type="image/webp" srcset="/assets/people/jony-ghosh-avatar-160.webp"><img class="testi-avatar" src="/assets/people/jony-ghosh-avatar-160.jpg" width="40" height="40" alt="Jony Ghosh" loading="lazy" decoding="async"></picture>
+              <div class="testi-author">
+                <span class="testi-name"><a href="https://www.linkedin.com/in/jony--ghosh/" target="_blank" rel="noopener">Jony Ghosh</a></span>
+                <span class="testi-role">Software Developer · Metamorphosis Ltd</span>
+              </div>
             </div>
           </div>
 
           <div class="testi-card">
             <div class="testi-stars">★★★★★</div>
-            <p class="testi-quote">We'd burned through two consultants before Mehedi. What set him apart was the UAT
-              methodology — he didn't just test happy paths. He found the edge cases before go-live that would have cost
-              us months of reconciliation.</p>
-            <div class="testi-author">
-              <span class="testi-name">Finance Director</span>
-              <span class="testi-role">RMG Exporter · Chittagong</span>
+            <p class="testi-quote">He consistently demonstrated strong expertise in implementation, customization,
+              and support. His ability to align system functionality with business needs, combined with clear
+              communication and professionalism, made him an invaluable contributor.</p>
+            <div class="testi-person">
+              <picture><source type="image/webp" srcset="/assets/people/md-kamrul-hassan-avatar-160.webp"><img class="testi-avatar" src="/assets/people/md-kamrul-hassan-avatar-160.jpg" width="40" height="40" alt="Md. Kamrul Hassan" loading="lazy" decoding="async"></picture>
+              <div class="testi-author">
+                <span class="testi-name"><a href="https://www.linkedin.com/in/md-kamrul-hassan-49362a103/" target="_blank" rel="noopener">Md. Kamrul Hassan</a></span>
+                <span class="testi-role">Finance Lead · Premier 1888 Ltd</span>
+              </div>
             </div>
           </div>
 
           <div class="testi-card">
             <div class="testi-stars">★★★★★</div>
-            <p class="testi-quote">The Mushak 6.3 VAT configuration alone saved us 40+ hours per month in manual
-              reconciliation. Mehedi understood Bangladesh's NBR requirements better than we expected from any ERP
-              consultant.</p>
-            <div class="testi-author">
-              <span class="testi-name">CEO</span>
-              <span class="testi-role">FMCG Company · Dhaka</span>
+            <p class="testi-quote">Mehedi consistently demonstrates excellent behavior, strong communication skills,
+              and a positive attitude that makes every interaction smooth and productive. His understanding of Odoo
+              workflows and commitment to delivering quality solutions have added real value to our project.</p>
+            <div class="testi-person">
+              <picture><source type="image/webp" srcset="/assets/people/md-iqram-hossain-rabbi-avatar-160.webp"><img class="testi-avatar" src="/assets/people/md-iqram-hossain-rabbi-avatar-160.jpg" width="40" height="40" alt="Md. Iqram Hossain Rabbi" loading="lazy" decoding="async"></picture>
+              <div class="testi-author">
+                <span class="testi-name"><a href="https://www.linkedin.com/in/ihrabbi/" target="_blank" rel="noopener">Md. Iqram Hossain Rabbi</a></span>
+                <span class="testi-role">Project Manager · Premier 1888 Ltd</span>
+              </div>
             </div>
           </div>
 
@@ -3822,7 +3856,7 @@ extraStyles: |
       <div class="foot">
         <span>© 2026 Mehedi Hasan · Built with quiet discipline</span>
         <span style="display:flex;gap:20px;align-items:center">
-          <!-- <a href="/testimonials/">Testimonials</a> -->
+          <a href="/testimonials/">Testimonials</a>
           <a href="/resources/">Resources</a>
           <a href="#">↑ Back to top</a>
         </span>

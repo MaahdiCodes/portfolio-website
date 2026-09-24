@@ -169,8 +169,12 @@ extraStyles: |
     }
     .testi-quote::before{content:'\201C';color:var(--accent);font-size:24px;font-style:normal;display:block;margin-bottom:8px;line-height:1}
     .testi-divider{height:1px;background:var(--border);margin:0}
+    .testi-person{display:flex;align-items:center;gap:14px}
+    .testi-avatar{width:44px;height:44px;border-radius:50%;object-fit:cover;flex:none;border:1px solid var(--border)}
     .testi-author{display:flex;flex-direction:column;gap:4px}
     .testi-name{font-size:14.5px;font-weight:500;color:var(--text)}
+    .testi-name a{color:inherit;text-decoration:none}
+    .testi-name a:hover{text-decoration:underline}
     .testi-role{font-family:var(--mono);font-size:11px;color:var(--text-3);letter-spacing:.06em;text-transform:uppercase}
     .testi-project{font-size:13px;color:var(--accent);margin-top:2px}
     @media(max-width:700px){.testi-grid{grid-template-columns:1fr}}
@@ -267,6 +271,48 @@ extraStyles: |
   <div class="shell">
 
     <div class="testi-grid">
+
+      <div class="testi-card">
+        <div class="testi-stars" aria-label="5 out of 5 stars">★★★★★</div>
+        <p class="testi-quote">I had the pleasure of working closely with Mehedi on several projects, most notably Premier 1888, where I served as a Software Developer. Mehedi is a rare find in the business consulting world. While he brings sharp strategic insights to his role at Metamorphosis Ltd, it is his character that truly sets him apart. He is an incredibly kind-hearted professional who approaches every challenge with empathy and a genuine desire to see his teammates succeed. Throughout our collaboration, Mehedi acted as a vital bridge between business objectives and technical execution. He has a gift for simplifying complex requirements and fostering a positive, collaborative environment, even during high-pressure phases of development. Any organization would be lucky to have his leadership and vision.</p>
+        <div class="testi-divider"></div>
+        <div class="testi-person">
+          <picture><source type="image/webp" srcset="/assets/people/jony-ghosh-avatar-160.webp"><img class="testi-avatar" src="/assets/people/jony-ghosh-avatar-160.jpg" width="44" height="44" alt="Jony Ghosh" loading="lazy" decoding="async"></picture>
+          <div class="testi-author">
+            <span class="testi-name"><a href="https://www.linkedin.com/in/jony--ghosh/" target="_blank" rel="noopener">Jony Ghosh</a></span>
+            <span class="testi-role">Software Developer · Metamorphosis Ltd</span>
+            <span class="testi-project">Colleague · Premier 1888 Odoo ERP Project</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi-card">
+        <div class="testi-stars" aria-label="5 out of 5 stars">★★★★★</div>
+        <p class="testi-quote">I had the opportunity to work with Mr. Mehedi on Premier 1888 Ltd.'s Odoo ERP projects, where he represented Metamorphosis as a Consultant. He consistently demonstrated strong expertise in implementation, customization, and support. His ability to align system functionality with business needs, combined with clear communication and professionalism, made him an invaluable contributor. I highly recommend him as a reliable and skilled Odoo Consultant, with a promising future ahead.</p>
+        <div class="testi-divider"></div>
+        <div class="testi-person">
+          <picture><source type="image/webp" srcset="/assets/people/md-kamrul-hassan-avatar-160.webp"><img class="testi-avatar" src="/assets/people/md-kamrul-hassan-avatar-160.jpg" width="44" height="44" alt="Md. Kamrul Hassan" loading="lazy" decoding="async"></picture>
+          <div class="testi-author">
+            <span class="testi-name"><a href="https://www.linkedin.com/in/md-kamrul-hassan-49362a103/" target="_blank" rel="noopener">Md. Kamrul Hassan</a></span>
+            <span class="testi-role">Finance Lead · Premier 1888 Ltd</span>
+            <span class="testi-project">Client · Odoo ERP Financial Module</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi-card">
+        <div class="testi-stars" aria-label="5 out of 5 stars">★★★★★</div>
+        <p class="testi-quote">I'm pleased to recommend Mehedi for his outstanding work as an Odoo Functional Consultant. As a client, I've had the opportunity to collaborate with him closely, and I am genuinely impressed by his professionalism, deep functional knowledge, and dedication. Mehedi consistently demonstrates excellent behavior, strong communication skills, and a positive attitude that makes every interaction smooth and productive. His understanding of Odoo workflows, ability to translate requirements, and commitment to delivering quality solutions have added real value to our project. Overall, I am truly pleased with his service and the support he has provided. Mehedi would be an asset to any team, and I wholeheartedly recommend him.</p>
+        <div class="testi-divider"></div>
+        <div class="testi-person">
+          <picture><source type="image/webp" srcset="/assets/people/md-iqram-hossain-rabbi-avatar-160.webp"><img class="testi-avatar" src="/assets/people/md-iqram-hossain-rabbi-avatar-160.jpg" width="44" height="44" alt="Md. Iqram Hossain Rabbi" loading="lazy" decoding="async"></picture>
+          <div class="testi-author">
+            <span class="testi-name"><a href="https://www.linkedin.com/in/ihrabbi/" target="_blank" rel="noopener">Md. Iqram Hossain Rabbi</a></span>
+            <span class="testi-role">Project Manager · Premier 1888 Ltd</span>
+            <span class="testi-project">Client · Full ERP + Supply Chain Rollout</span>
+          </div>
+        </div>
+      </div>
 
       <div class="testi-card">
         <div class="testi-stars" aria-label="5 out of 5 stars">★★★★★</div>

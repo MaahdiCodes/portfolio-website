@@ -762,7 +762,12 @@ extraStyles: |
       }
   
       @media(max-width:860px) {
-  
+
+        /* collapse to one column — 11 × 24px gaps alone overflow a phone screen */
+        .section-head {
+          grid-template-columns: minmax(0, 1fr)
+        }
+
         .section-title,
         .section-desc {
           grid-column: 1/-1

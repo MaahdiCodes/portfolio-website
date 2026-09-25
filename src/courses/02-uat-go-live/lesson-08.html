@@ -1,0 +1,86 @@
+---
+layout: "layouts/lesson.njk"
+permalink: "courses/02-uat-go-live/lesson-08.html"
+lessonN: "08"
+title: "Lesson 08 — From Hypercare to Business-as-Usual · Course 02 | Mehedi Hasan"
+description: "How to exit hypercare, set up business-as-usual Odoo support, measure adoption and benefits, and keep the system healthy after go-live in Bangladesh."
+canonical: "https://mhasan.me/courses/02-uat-go-live/lesson-08"
+hreflangBn: "https://mhasan.me/bn/courses/02-uat-go-live/lesson-08"
+ogImage: "https://mhasan.me/assets/og/courses/02-uat-go-live.png"
+backHref: "/courses/02-uat-go-live/"
+backLabel: "← Course overview"
+eyebrow: "Course 02 · Lesson 08 · 13 min"
+h1: 'From hypercare to <span class="serif">business-as-usual</span>'
+lede: "Go-live is the start of the return, not the end of the project. What you do in the next six months decides whether the business case comes true."
+chips: ["BAU", "Benefits", "Continuous improvement"]
+footLabel: "Course 02 / Lesson 08"
+---
+<h2>Exit criteria</h2>
+<p>Leave hypercare when all of these are true, not when the calendar says so:</p>
+<ul>
+  <li>No S1 or S2 issue has been open for more than 24 hours in the last five consecutive business days.</li>
+  <li>Superusers resolve 80% or more of queries without the partner, for five consecutive business days.</li>
+  <li>The first month-end close is completed in Odoo, and finance has confirmed the numbers.</li>
+  <li>If payroll is live, the first full pay run was processed and approved without consultant help.</li>
+  <li>All in-scope daily transactions are in Odoo, with no parallel Tally or Excel records for the same data.</li>
+  <li>A BAU support arrangement is signed and every user knows how to raise an issue.</li>
+</ul>
+
+<h2>Business-as-usual support</h2>
+<p>After hypercare, support moves to a steady model:</p>
+<ul>
+  <li><strong>L1 stays in-house</strong>: superusers, with time protected in their role.</li>
+  <li><strong>An internal Odoo lead</strong> (for mid-sized companies and up) owns configuration changes, user management and the improvement backlog.</li>
+  <li><strong>The partner</strong> provides L3 under an AMC or retainer with a written SLA, and a clear definition of what's a bug (covered) versus a change (quoted).</li>
+  <li><strong>A change-control routine</strong>: small monthly releases tested on a staging copy first, never direct changes to production.</li>
+</ul>
+
+<h2>Measure the benefits you promised</h2>
+<p>The business case promised numbers: a shorter close, lower inventory, faster collections, less admin time. Now measure them, against the baseline you recorded before the project:</p>
+<table>
+  <thead><tr><th>KPI</th><th>Baseline</th><th>At 3 months</th><th>At 6 months</th><th>At 12 months</th></tr></thead>
+  <tbody>
+    <tr><td>Month-end close (days)</td><td>12</td><td></td><td></td><td></td></tr>
+    <tr><td>Stock accuracy (count vs system)</td><td>unknown</td><td></td><td></td><td></td></tr>
+    <tr><td>Inventory value (৳)</td><td></td><td></td><td></td><td></td></tr>
+    <tr><td>DSO (days)</td><td>45</td><td></td><td></td><td></td></tr>
+    <tr><td>VAT return preparation (hours)</td><td></td><td></td><td></td><td></td></tr>
+  </tbody>
+</table>
+<p>Expect the ramp we used in the <a href="/tools/odoo-roi-calculator/">ROI calculator</a>: labour and procurement benefits first, inventory and collections from month 7, and production and waste later. If a benefit isn't showing up on schedule, find out why. It's usually a process that's being run around the system, not through it.</p>
+
+<h2>The 3-month and 6-month reviews</h2>
+<p>Hold a structured review at three and six months with the sponsor and process owners:</p>
+<ol>
+  <li>What are we still doing outside Odoo, and why?</li>
+  <li>Which reports do managers actually use, and which do they rebuild in Excel?</li>
+  <li>Which open S3/S4 items and change requests matter now?</li>
+  <li>Are the benefits on track against the business case?</li>
+  <li>What's phase 2 (payroll, quality, maintenance, a second site)?</li>
+</ol>
+
+<div class="callout"><span class="tag">Key idea</span><p>A mature implementation isn't the one with the most modules. It's the one where management takes decisions from Odoo's numbers without checking them against a spreadsheet first.</p></div>
+
+<h2>Keep it healthy</h2>
+<ul>
+  <li><strong>Access review every quarter.</strong> Deactivate leavers the day they leave, and remove access nobody needs anymore.</li>
+  <li><strong>Backups tested, not just taken.</strong> Restore to a test database twice a year.</li>
+  <li><strong>Compliance updates.</strong> Every June's budget changes rates and forms. Plan a configuration check each July. <a href="/compliance-watch/">Compliance Watch</a> lists the changes and what to update.</li>
+  <li><strong>Refresher training</strong> for new joiners and whenever processes change.</li>
+  <li><strong>Upgrade planning.</strong> Keep customisations few and documented so each Odoo version upgrade stays affordable.</li>
+</ul>
+
+<div class="exercise"><p><strong>Exercise (15 minutes).</strong> Fill in the baseline column of the KPI table for your company today. If you can't, that's the first task: without a baseline, you'll never be able to show the ERP paid off.</p></div>
+
+<div class="takeaways">
+  <h3>Key takeaways</h3>
+  <ul>
+    <li>Exit hypercare on criteria: stability, L1 capability, a clean first close, full adoption.</li>
+    <li>BAU means in-house L1, an internal Odoo lead, partner L3 under SLA, and change control.</li>
+    <li>Measure benefits against the baseline at 3, 6 and 12 months.</li>
+    <li>Review access, backups and compliance on a fixed rhythm.</li>
+  </ul>
+</div>
+
+<h2>You've finished the course</h2>
+<p>Well done. Put it to work with the free tools: check your <a href="/tools/erp-readiness-assessment/">readiness</a>, build your <a href="/tools/odoo-roi-calculator/">business case</a>, and download the <a href="/resources/#downloads">UAT, migration, training and hypercare templates</a>. If you'd like an experienced second opinion on your go-live plan, <a href="/#contact">get in touch</a>.</p>

@@ -1,0 +1,82 @@
+---
+layout: "layouts/tool.njk"
+permalink: "bn/tools/erp-readiness-assessment/index.html"
+title: "ERP প্রস্তুতি যাচাই — বাংলাদেশি কোম্পানির জন্য (বিনামূল্যে, ৫ মিনিট) | মেহেদী হাসান"
+description: "বাংলাদেশের উৎপাদক আর ব্যবসায়ীদের জন্য ২৫ প্রশ্নের বিনামূল্যের ERP প্রস্তুতি যাচাই। নেতৃত্ব, প্রসেস, ডেটা, মানুষ আর বাজেটের স্কোর, ERP প্রজেক্ট ডোবানোর ঝুঁকিগুলো, আর পরের ৩টি ধাপ।"
+canonical: "https://mhasan.me/bn/tools/erp-readiness-assessment/"
+hreflangEn: "https://mhasan.me/tools/erp-readiness-assessment/"
+hreflangBn: "https://mhasan.me/bn/tools/erp-readiness-assessment/"
+ogTitle: "আপনার কোম্পানি কি ERP-র জন্য প্রস্তুত? ৫ মিনিটের বিনামূল্যের যাচাই"
+ogDescription: "২৫টি প্রশ্ন, ৫টি দিকের স্কোর, লাল পতাকা আর পরের ধাপ। বাংলাদেশের ERP প্রজেক্ট থেকে তৈরি।"
+ogImage: "https://mhasan.me/assets/og/tools/erp-readiness-assessment.png"
+jsonLd: |
+  [
+    { "@context": "https://schema.org", "@type": "WebApplication", "name": "ERP প্রস্তুতি যাচাই — বাংলাদেশ", "url": "https://mhasan.me/bn/tools/erp-readiness-assessment/", "applicationCategory": "BusinessApplication", "operatingSystem": "Any (web-based)", "offers": { "@type": "Offer", "price": "0", "priceCurrency": "BDT" }, "isAccessibleForFree": true, "inLanguage": "bn", "creator": { "@type": "Person", "name": "Mehedi Hasan", "url": "https://mhasan.me" } },
+    { "@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "হোম", "item": "https://mhasan.me/bn/" },
+      { "@type": "ListItem", "position": 2, "name": "টুল", "item": "https://mhasan.me/bn/tools/" },
+      { "@type": "ListItem", "position": 3, "name": "ERP প্রস্তুতি যাচাই", "item": "https://mhasan.me/bn/tools/erp-readiness-assessment/" } ] }
+  ]
+toolScripts: ["/tools/_calc/readiness.js"]
+eyebrow: "ফ্রি টুল · টুল / ০৩"
+h1: 'আপনার কোম্পানি কি ERP-র জন্য <span class="serif">প্রস্তুত?</span>'
+lede: "২৫টি সোজাসাপ্টা প্রশ্ন, মোটামুটি পাঁচ মিনিট। পাবেন নেতৃত্ব, প্রসেস, ডেটা, মানুষ আর বাজেট মিলিয়ে একটি প্রস্তুতির স্কোর। সঙ্গে থাকবে বাংলাদেশে ERP প্রজেক্ট ডুবিয়ে দেয় এমন নির্দিষ্ট লাল পতাকা, আর আপনার পরের তিনটি ধাপ। সাইন-আপ লাগবে না।"
+chips: ["ফ্রি টুল", "নিজে যাচাই", "৫ মিনিট", "লাল পতাকা"]
+footLabel: "টুল / ERP প্রস্তুতি যাচাই"
+related:
+  - { href: "/bn/lab/0001-why-erp-fails-bangladesh", dir: "পড়ুন · কেন", title: "বাংলাদেশে ERP কেন ব্যর্থ হয়", desc: "চুক্তিতে সই করার আগেই যে ব্যর্থতার ধরনগুলো এই যাচাই ধরতে চায়।" }
+  - { href: "/bn/tools/odoo-quote-checker/", dir: "টুল · পরের ধাপ", title: "Odoo কোটেশন চেকার", desc: "ভেন্ডরের কোটেশন হাতে? যে ফাঁকগুলো পরে চেঞ্জ রিকোয়েস্ট হয়ে দাঁড়ায়, তা খুঁজে দেখুন।" }
+---
+<div class="shell tl-wrap">
+  <div class="tl-grid wide-left">
+    <section class="tl-card" id="ra-card" aria-live="polite">
+      <div class="tl-progress no-print"><div class="p-track"><div class="p-fill" id="ra-fill"></div></div><span class="p-label" id="ra-plabel">০টির উত্তর দেওয়া হয়েছে</span></div>
+      <div id="ra-quiz">
+        <span class="tl-section-tag" id="ra-tag">—</span>
+        <p class="tl-q" id="ra-q">প্রশ্ন লোড হচ্ছে…</p>
+        <p class="tl-q-sub">যা পরিকল্পনা করছেন তা নয়, আজ যেটা সত্য সেই উত্তরটা বেছে নিন।</p>
+        <div class="tl-options" id="ra-options"></div>
+        <div class="tl-wizard-nav">
+          <button type="button" class="btn-ghost" id="ra-back">← আগের</button>
+          <button type="button" class="btn-ghost" id="ra-next">বাদ দিন →</button>
+        </div>
+      </div>
+      <div id="ra-result" hidden>
+        <div class="tl-headline">
+          <div class="h-label">প্রস্তুতির স্কোর</div>
+          <div class="h-value" id="rr-score">—</div>
+          <div class="h-sub"><span class="tl-pill" id="rr-pill">—</span></div>
+        </div>
+        <h3 id="rr-level" style="margin-top:0">—</h3>
+        <p id="rr-desc">—</p>
+        <h3>দিক অনুযায়ী</h3>
+        <div id="rr-dims"></div>
+        <h3>আগে যে লাল পতাকাগুলো মেটাতে হবে</h3>
+        <ul class="tl-list" id="rr-flags"></ul>
+        <h3>আপনার পরের ৩টি ধাপ</h3>
+        <ul class="tl-list" id="rr-steps"></ul>
+        <div class="tl-cta-row">
+          <a class="btn-primary" href="/bn/#contact">ফলাফল নিয়ে আমার সঙ্গে কথা বলুন (বিনামূল্যে, ৩০ মিনিট) →</a>
+          <div class="tl-cta-row inline" style="margin-top:0">
+            <button type="button" class="btn-ghost" id="rr-share" style="flex:1">ফলাফলের লিংক কপি করুন</button>
+            <button type="button" class="btn-ghost" data-print style="flex:1">PDF হিসেবে সেভ করুন</button>
+            <button type="button" class="btn-ghost" id="rr-retake" style="flex:1">আবার শুরু করুন</button>
+          </div>
+        </div>
+      </div>
+    </section>
+    <aside class="tl-card no-print">
+      <h2>যা যাচাই করা হয়</h2>
+      <ul class="tl-list">
+        <li><strong>নেতৃত্ব ও দায়িত্ব:</strong> সত্যিকারের একজন মালিক, সিদ্ধান্ত নেওয়ার পথ, আর মাপা যায় এমন লক্ষ্য আছে কি?</li>
+        <li><strong>প্রসেসের স্বচ্ছতা:</strong> বাংলাদেশের কমপ্লায়েন্সসহ ব্যবসা আসলে কীভাবে চলে, তা কি জানা?</li>
+        <li><strong>ডেটার প্রস্তুতি:</strong> আইটেম মাস্টার, স্টকের সঠিকতা, BOM, আর কী মাইগ্রেট করবেন।</li>
+        <li><strong>মানুষ ও পরিবর্তন:</strong> মূল ইউজারদের সময়, সুপারইউজার, ট্রেনিং আর আগের অভিজ্ঞতা।</li>
+        <li><strong>বাজেট, IT ও পার্টনার:</strong> বাস্তবসম্মত TCO, পার্টনার বাছাই, কানেকশন, আর সিস্টেমের নিয়ন্ত্রণ কার হাতে।</li>
+      </ul>
+      <p class="tl-note">প্রশ্নগুলো এসেছে <a href="/bn/lab/0001-why-erp-fails-bangladesh">বাংলাদেশে ERP কেন ব্যর্থ হয়</a> আর্টিকেলের ব্যর্থতার ধরন আর উদ্ধার-প্রজেক্ট থেকে। স্কোর কম মানে "ERP করবেন না" নয়। এটা দেখায় টাকা খরচের আগে কী ঠিক করতে হবে।</p>
+      <p class="tl-hint">আপনার কোনো উত্তর কোথাও পাঠানো হয় না। স্কোর আপনার ব্রাউজারেই হিসাব হয়।</p>
+    </aside>
+  </div>
+</div>
+<script src="/tools/_calc/readiness-ui.js"></script>

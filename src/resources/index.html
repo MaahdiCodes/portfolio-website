@@ -32,6 +32,12 @@ jsonLd: |
     }
   ]
 extraStyles: |
+  .dl-intro{color:var(--text-2);font-size:14px;margin:-6px 0 18px;max-width:760px;line-height:1.6}
+  .dl-card{cursor:default}
+  .dl-actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:4px}
+  .dl-btn{display:inline-flex;align-items:center;gap:6px;padding:8px 14px;border-radius:9px;background:var(--accent);color:#04140B;font-weight:600;font-size:13px;text-decoration:none}
+  html[data-theme="light"] .dl-btn{color:#fff}
+  .dl-link{color:var(--accent);font-size:12.5px;text-decoration:none}
   :root{
       --bg:#0A0B0D;--bg-1:#0E1013;--surface:#111317;--elev:#15181D;
       --border:#1E2228;--border-2:#2A2F38;--hair:rgba(255,255,255,0.06);
@@ -176,9 +182,9 @@ extraStyles: |
   <div class="shell">
     <span class="eyebrow">Resources</span>
     <h1>Free <em>ERP tools</em> &amp; templates</h1>
-    <p class="lede">Practical templates, checklists, and reference sheets built from real Odoo deployments in Bangladesh. Download, adapt, and use on your next project.</p>
+    <p class="lede">Practical templates, checklists, and reference sheets built from real Odoo deployments in Bangladesh. 14 of them are ready-to-use Excel and Word files. Download, adapt, and use them on your next project.</p>
     <div class="hero-stats">
-      <div class="stat"><b>14</b><span>Resources</span></div>
+      <div class="stat"><b>14</b><span>Downloads</span></div>
       <div class="stat"><b>4</b><span>Categories</span></div>
       <div class="stat"><b>Free</b><span>Always</span></div>
     </div>
@@ -187,6 +193,8 @@ extraStyles: |
 
 <div class="categories">
   <div class="shell">
+
+    {% include "partials/downloads-grid.njk" %}
 
     <!-- TEMPLATES -->
     <div class="category">

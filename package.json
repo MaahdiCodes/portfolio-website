@@ -4,7 +4,9 @@
   "description": "mhasan.me site source (Eleventy build) and build-time tooling (OG image generation, migration/verification scripts).",
   "scripts": {
     "build": "eleventy",
-    "serve": "eleventy --serve"
+    "serve": "eleventy --serve",
+    "og": "node scripts/generate-og-new.js",
+    "templates": "python scripts/build-templates.py"
   },
   "devDependencies": {
     "@11ty/eleventy": "^3.1.6",

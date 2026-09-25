@@ -1,0 +1,90 @@
+---
+layout: "layouts/tool.njk"
+permalink: "courses/02-uat-go-live/index.html"
+title: "UAT, Cut-over & Go-Live Course for ERP Projects (Free) | Mehedi Hasan"
+description: "Free 8-lesson course on getting an Odoo/ERP project live in Bangladesh: readiness criteria, UAT scripts, defect management, data cut-over, training, go/no-go, hypercare and BAU."
+canonical: "https://mhasan.me/courses/02-uat-go-live/"
+hreflangBn: "https://mhasan.me/bn/courses/02-uat-go-live/"
+ogTitle: "Free course: UAT, cut-over & go-live for ERP projects"
+ogImage: "https://mhasan.me/assets/og/courses/02-uat-go-live.png"
+backHref: "/#courses"
+backLabel: "← All courses"
+jsonLd: |
+  [
+    {
+      "@context": "https://schema.org",
+      "@type": "Course",
+      "name": "UAT, cut-over & go-live for ERP projects",
+      "description": "8-lesson course on readiness criteria, UAT design and execution, data cut-over, training, the go/no-go decision, hypercare and moving to business-as-usual — for Odoo projects in Bangladesh.",
+      "url": "https://mhasan.me/courses/02-uat-go-live/",
+      "provider": { "@type": "Person", "name": "Mehedi Hasan", "url": "https://mhasan.me", "sameAs": "https://www.linkedin.com/in/mehedi-hasan-consultant/" },
+      "hasCourseInstance": { "@type": "CourseInstance", "courseMode": "Online", "courseWorkload": "PT2H", "instructor": { "@type": "Person", "name": "Mehedi Hasan", "url": "https://mhasan.me" } },
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "BDT", "category": "Free" },
+      "isAccessibleForFree": true,
+      "inLanguage": "en"
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://mhasan.me/" },
+        { "@type": "ListItem", "position": 2, "name": "Courses", "item": "https://mhasan.me/#courses" },
+        { "@type": "ListItem", "position": 3, "name": "UAT, cut-over & go-live", "item": "https://mhasan.me/courses/02-uat-go-live/" }
+      ]
+    }
+  ]
+eyebrow: "Course · 02 · 8 lessons · ~2 hours · Free"
+h1: 'UAT, cut-over &amp; <span class="serif">go-live.</span>'
+lede: "Course 01 covered getting requirements right. This one covers the part where most ERP projects actually fail: proving the system works, moving the data, preparing people, deciding to go live, and surviving the first month. It's built for Odoo projects in Bangladesh and works for any ERP."
+chips: ["Free", "No sign-up", "8 lessons", "Templates included"]
+footLabel: "Course 02"
+related:
+  - { href: "/courses/01-requirements-gathering/", dir: "Course 01", title: "Requirements gathering", desc: "The 9-lesson course that comes before this one." }
+  - { href: "/resources/#downloads", dir: "Templates", title: "The templates used in this course", desc: "UAT scripts, migration checklist, training plan, roadmap and hypercare log." }
+extraStyles: |
+  .c2-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; }
+  .c2-list a { display: grid; grid-template-columns: 44px 1fr auto; gap: 14px; align-items: center; border: 1px solid var(--border); border-radius: 12px; padding: 16px 18px; background: var(--surface); text-decoration: none; }
+  .c2-list a:hover { border-color: color-mix(in oklch, var(--accent) 45%, transparent); }
+  .c2-n { font-family: var(--mono); font-size: 13px; color: var(--accent); }
+  .c2-t { color: var(--text); font-size: 15.5px; line-height: 1.4; }
+  .c2-m { font-family: var(--mono); font-size: 11.5px; color: var(--text-3); white-space: nowrap; }
+  .c2-list li.is-done .c2-n::after { content: " ✓"; }
+---
+<div class="shell tl-wrap">
+  <div class="tl-grid wide-left">
+    <section>
+      <ol class="c2-list" id="c2-list">
+        {%- for l in course02.lessons %}
+        <li data-l="{{ l.n }}"><a href="/courses/02-uat-go-live/lesson-{{ l.n }}"><span class="c2-n">{{ l.n }}</span><span class="c2-t">{{ l.en }}</span><span class="c2-m">{{ l.min }} min</span></a></li>
+        {%- endfor %}
+      </ol>
+      <div class="tl-prose" style="margin-top:36px">
+        <h2>Why this course exists</h2>
+        <p>Most ERP failures aren't configuration failures. They happen in the last 20% of the project. UAT becomes a formality, opening stock comes from the old system instead of a count, training is a demo, and nobody agreed what "ready" meant. This course is a practical playbook for that last stretch. Each lesson ends with an exercise you can do on your own project, and links to a free template.</p>
+      </div>
+    </section>
+    <aside class="tl-card tl-sticky">
+      <h2>What you'll be able to do</h2>
+      <ul class="tl-list">
+        <li>Define yes/no readiness criteria and plan around the Bangladesh calendar</li>
+        <li>Write UAT scripts that catch the edge cases, including VAT, TDS, VDS, landed cost and payroll</li>
+        <li>Run UAT cycles with one defect log and honest severity</li>
+        <li>Cut over data and reconcile it to the taka</li>
+        <li>Train by role and assess practically</li>
+        <li>Run the go/no-go meeting and a rehearsed cut-over weekend</li>
+        <li>Run hypercare, the first month-end close, and exit to BAU</li>
+      </ul>
+      <div class="tl-cta-row">
+        <a class="btn-primary" href="/courses/02-uat-go-live/lesson-01">Start lesson 01 →</a>
+        <p class="tl-hint" id="c2-progress" style="text-align:center"></p>
+      </div>
+    </aside>
+  </div>
+</div>
+<script>
+(function () {
+  var done = {}; try { done = JSON.parse(localStorage.getItem('mh-course02') || '{}'); } catch (e) {}
+  var n = 0; document.querySelectorAll('#c2-list li').forEach(function (li) { if (done[li.getAttribute('data-l')]) { li.classList.add('is-done'); n++; } });
+  if (n) document.getElementById('c2-progress').textContent = n + ' of 8 lessons completed';
+})();
+</script>

@@ -1,0 +1,57 @@
+---
+layout: "layouts/tool.njk"
+---
+{#- Course 02 lesson shell: lesson body + sticky lesson list, progress (localStorage) and prev/next.
+    Pages set: lessonN ("01"…"08"), lang. -#}
+{%- set L = 'bn' if lang == 'bn' else 'en' -%}
+{%- set pre = '/bn' if lang == 'bn' else '' -%}
+{%- set base = pre + '/courses/' + course02.slug + '/' -%}
+{%- set idx = (lessonN | int) - 1 -%}
+{%- set prevL = course02.lessons[idx - 1] if idx > 0 else null -%}
+{%- set nextL = course02.lessons[idx + 1] if idx < course02.lessons.length - 1 else null -%}
+<div class="shell tl-wrap">
+  <div class="ls-layout">
+    <article class="ls-body tl-prose">
+      {{ content | safe }}
+      <div class="ls-done no-print">
+        <button type="button" class="btn-primary" id="ls-complete" data-lesson="{{ lessonN }}">{{ 'Mark lesson complete ✓' if L == 'en' else 'লেসন শেষ হয়েছে ✓' }}</button>
+      </div>
+      <nav class="ls-pn no-print" aria-label="{{ 'Lesson navigation' if L == 'en' else 'লেসন নেভিগেশন' }}">
+        {%- if prevL %}<a class="ls-prev" href="{{ base }}lesson-{{ prevL.n }}"><small>← {{ 'Previous' if L == 'en' else 'আগের' }}</small><b>{{ prevL.n }} · {{ prevL[L] }}</b></a>{% else %}<a class="ls-prev" href="{{ base }}"><small>← {{ 'Course overview' if L == 'en' else 'কোর্সের পরিচিতি' }}</small><b>{{ course02[L].title }}</b></a>{% endif %}
+        {%- if nextL %}<a class="ls-next" href="{{ base }}lesson-{{ nextL.n }}"><small>{{ 'Next' if L == 'en' else 'পরের' }} →</small><b>{{ nextL.n }} · {{ nextL[L] }}</b></a>{% else %}<a class="ls-next" href="{{ pre }}/tools/"><small>{{ 'Finished — now use the tools' if L == 'en' else 'শেষ, এবার টুলগুলো ব্যবহার করুন' }} →</small><b>{{ 'All free tools' if L == 'en' else 'সব ফ্রি টুল' }}</b></a>{% endif %}
+      </nav>
+    </article>
+    <aside class="ls-side no-print">
+      <div class="tl-card">
+        <h2>{{ course02[L].title }}</h2>
+        <div class="tl-progress"><div class="p-track"><div class="p-fill" id="ls-fill"></div></div><span class="p-label" id="ls-plabel">0/{{ course02.lessons.length }}</span></div>
+        <ol class="ls-list">
+          {%- for l in course02.lessons %}
+          <li data-l="{{ l.n }}"{% if l.n == lessonN %} class="is-current"{% endif %}><a class="ls-a" href="{{ base }}lesson-{{ l.n }}"><span class="ls-n">{{ l.n }}</span><span class="ls-t">{{ l[L] }}</span><span class="ls-m">{{ l.min }}{{ ' min' if L == 'en' else ' মিনিট' }}</span></a></li>
+          {%- endfor %}
+        </ol>
+      </div>
+    </aside>
+  </div>
+</div>
+<script>
+(function () {
+  var KEY = 'mh-course02', done = {};
+  try { done = JSON.parse(localStorage.getItem(KEY) || '{}'); } catch (e) {}
+  function paint() {
+    var n = 0, items = document.querySelectorAll('.ls-list li');
+    items.forEach(function (li) { var d = !!done[li.getAttribute('data-l')]; li.classList.toggle('is-done', d); if (d) n++; });
+    document.getElementById('ls-fill').style.width = (n / items.length * 100) + '%';
+    document.getElementById('ls-plabel').textContent = n + '/' + items.length;
+    var b = document.getElementById('ls-complete'); if (b && done[b.getAttribute('data-lesson')]) b.classList.add('is-done');
+  }
+  var btn = document.getElementById('ls-complete');
+  if (btn) btn.addEventListener('click', function () {
+    done[btn.getAttribute('data-lesson')] = 1;
+    try { localStorage.setItem(KEY, JSON.stringify(done)); } catch (e) {}
+    paint();
+    var next = document.querySelector('.ls-next'); if (next) setTimeout(function () { location.href = next.href; }, 350);
+  });
+  paint();
+})();
+</script>

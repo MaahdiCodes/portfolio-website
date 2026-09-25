@@ -1,0 +1,84 @@
+---
+layout: "layouts/tool.njk"
+permalink: "bn/tools/odoo-quote-checker/index.html"
+title: "Odoo কোটেশন চেকার — আপনার বাস্তবায়ন প্রস্তাব কি সম্পূর্ণ? | মেহেদী হাসান"
+description: "বাংলাদেশে Odoo বাস্তবায়নের কোটেশন যাচাইয়ের বিনামূল্যের চেকলিস্ট: ভেন্ডররা যে ২৪টি জিনিস বাদ দেন, সম্পূর্ণতার স্কোর, প্রতিটি ফাঁকের লুকানো খরচ, বাজারদরের সঙ্গে দামের তুলনা আর ভেন্ডরকে পাঠানোর মতো প্রশ্ন।"
+canonical: "https://mhasan.me/bn/tools/odoo-quote-checker/"
+hreflangEn: "https://mhasan.me/tools/odoo-quote-checker/"
+hreflangBn: "https://mhasan.me/bn/tools/odoo-quote-checker/"
+ogTitle: "Odoo কোটেশন চেকার — আপনার প্রস্তাবে কী বাদ পড়েছে?"
+ogDescription: "ভেন্ডরের কোটেশনে কী আছে টিক দিন, দেখুন কোন ফাঁক পরে চেঞ্জ রিকোয়েস্ট হবে, তার সাধারণ খরচ, আর কী জিজ্ঞেস করবেন।"
+ogImage: "https://mhasan.me/assets/og/tools/odoo-quote-checker.png"
+jsonLd: |
+  [
+    { "@context": "https://schema.org", "@type": "WebApplication", "name": "Odoo কোটেশন চেকার — বাংলাদেশ", "url": "https://mhasan.me/bn/tools/odoo-quote-checker/", "applicationCategory": "BusinessApplication", "operatingSystem": "Any (web-based)", "offers": { "@type": "Offer", "price": "0", "priceCurrency": "BDT" }, "isAccessibleForFree": true, "inLanguage": "bn", "creator": { "@type": "Person", "name": "Mehedi Hasan", "url": "https://mhasan.me" } },
+    { "@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "হোম", "item": "https://mhasan.me/bn/" },
+      { "@type": "ListItem", "position": 2, "name": "টুল", "item": "https://mhasan.me/bn/tools/" },
+      { "@type": "ListItem", "position": 3, "name": "Odoo কোটেশন চেকার", "item": "https://mhasan.me/bn/tools/odoo-quote-checker/" } ] }
+  ]
+toolScripts: ["/tools/_calc/quote.js"]
+eyebrow: "ফ্রি টুল · টুল / ০৭"
+h1: 'Odoo কোটেশন <span class="serif">চেকার।</span>'
+lede: "বাংলাদেশে বেশিরভাগ Odoo কোটেশন সস্তা দেখায়, কারণ দামি অংশগুলোই বাদ থাকে: ডেটা মাইগ্রেশন, UAT, হাইপারকেয়ার, মূসকের আউটপুট। আপনার প্রস্তাবে আসলে কী আছে টিক দিন। দেখবেন কোথায় ফাঁক, পরে সেগুলোর সাধারণত কত খরচ হয়, আর ভেন্ডরকে ঠিক কী প্রশ্ন পাঠাবেন।"
+chips: ["ফ্রি টুল", "ভেন্ডরের প্রস্তাব", "২৪ পয়েন্টের যাচাই", "পাঠানোর মতো প্রশ্ন"]
+footLabel: "টুল / Odoo কোটেশন চেকার"
+related:
+  - { href: "/bn/lab/0052-odoo-vendor-red-flags-bangladesh", dir: "পড়ুন · ভেন্ডর", title: "Odoo ভেন্ডরের লাল পতাকা", desc: "কোটেশন হাতে আসার আগেই বিক্রির প্রক্রিয়ায় যে সতর্কসংকেতগুলো দেখা যায়।" }
+  - { href: "/bn/benchmarks/odoo-implementation-pricing-bangladesh/", dir: "গাইড · দাম", title: "ন্যায্য Odoo কোটেশন দেখতে কেমন", desc: "কোম্পানির আকার, ইন্ডাস্ট্রি আর স্কোপ অনুযায়ী বাস্তবায়নের দামের পরিসর।" }
+---
+<div class="shell tl-wrap">
+  <form id="qc-form" autocomplete="off" novalidate>
+  <div class="tl-grid wide-left">
+    <section class="tl-card">
+      <h2>কোটেশনে কী কী আছে?</h2>
+      <p class="tl-hint" style="margin:-8px 0 18px">প্রস্তাবে লিখিতভাবে থাকলে তবেই টিক দিন। মিটিংয়ে "আমরা দেখে নেব" বলা গোনায় ধরা হবে না।</p>
+      <div id="qc-list"></div>
+    </section>
+    <div>
+      <section class="tl-card">
+        <h2>দাম</h2>
+        <div class="tl-field"><label for="qc-price">কোটেশনের বাস্তবায়ন ফি (৳, Odoo লাইসেন্স বাদে)</label><input class="tl-input" type="number" min="0" step="10000" id="qc-price" data-money value=""></div>
+        <div class="tl-row">
+          <div class="tl-field"><label for="qc-band">Odoo ইউজার</label>
+            <select class="tl-select" id="qc-band">
+              <option value="1-10">১–১০</option><option value="11-25">১১–২৫</option><option value="26-50" selected>২৬–৫০</option>
+              <option value="51-100">৫১–১০০</option><option value="101-200">১০১–২০০</option><option value="200+">২০০+</option>
+            </select></div>
+          <div class="tl-field"><label for="qc-ind">ইন্ডাস্ট্রি</label>
+            <select class="tl-select" id="qc-ind">
+              <option value="trading">ট্রেডিং / ডিস্ট্রিবিউশন</option><option value="services">সেবা / রিটেইল</option>
+              <option value="manufacturing" selected>ম্যানুফ্যাকচারিং</option><option value="textile">টেক্সটাইল</option>
+              <option value="rmg">RMG / গার্মেন্টস</option><option value="pharma">ফার্মা</option>
+            </select></div>
+        </div>
+      </section>
+      <section class="tl-card tl-sticky" aria-live="polite">
+        <h2>রায়</h2>
+        <div class="tl-headline">
+          <div class="h-label">কোটেশনের সম্পূর্ণতা</div>
+          <div class="h-value" id="qc-cov">—</div>
+          <div class="h-sub"><span class="tl-pill" id="qc-crit">—</span></div>
+        </div>
+        <div class="tl-stats two">
+          <div class="tl-stat"><div class="s-v" id="qc-hidden">—</div><div class="s-l">ফাঁকগুলোর সম্ভাব্য বাড়তি খরচ</div></div>
+          <div class="tl-stat"><div class="s-v" id="qc-real">—</div><div class="s-l">বাস্তবসম্মত মোট (কোটেশন + ফাঁক)</div></div>
+        </div>
+        <p class="tl-hint" style="margin:0 0 6px">সাধারণ বাস্তবায়ন পরিসর: <b id="qc-rangev" style="font-family:var(--mono);color:var(--text)">—</b></p>
+        <div id="qc-pos"></div>
+        <h3>ফাঁক, আর কী জিজ্ঞেস করবেন</h3>
+        <ul class="tl-list" id="qc-missing"></ul>
+        <div class="tl-cta-row">
+          <button type="button" class="btn-primary" id="qc-copy">ভেন্ডরের জন্য প্রশ্নগুলো কপি করুন</button>
+          <div class="tl-cta-row inline" style="margin-top:0">
+            <button type="button" class="btn-ghost" data-print style="flex:1">PDF হিসেবে সেভ করুন</button>
+            <a class="btn-ghost" href="/bn/#contact" style="flex:1">স্বাধীন রিভিউ নিন</a>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+  </form>
+  <p class="tl-disclosure"><strong>কীভাবে পড়বেন।</strong> দামের পরিসরটা আপনার আকারের জন্য <a href="/bn/tools/odoo-cost-estimator/">কস্ট এস্টিমেটরের</a> বাস্তবায়ন-ফির স্তর, ইন্ডাস্ট্রি অনুযায়ী সমন্বয় করা। এতে Odoo লাইসেন্স ধরা নেই। "পরে যোগ করলে সাধারণ খরচ" হলো বাংলাদেশি পার্টনারদের কাছে এই কাজগুলো চেঞ্জ রিকোয়েস্ট হিসেবে সাধারণত যত খরচ হয়। তাই এগুলো বাদ রাখা কোটেশন শুধু কাগজে সস্তা। আপনি যা লেখেন, তা আপনার ব্রাউজারের বাইরে যায় না।</p>
+</div>
+<script src="/tools/_calc/quote-ui.js"></script>

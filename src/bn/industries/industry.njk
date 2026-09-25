@@ -1,0 +1,35 @@
+---
+layout: "layouts/tool.njk"
+pagination:
+  data: industries
+  size: 1
+  alias: ind
+permalink: "bn/industries/{{ ind.slug }}/index.html"
+backHref: "/bn/industries/"
+backLabel: "← সব ইন্ডাস্ট্রি"
+eleventyComputed:
+  title: "{{ ind.bn.name }}-এর জন্য Odoo ERP — মডিউল, কমপ্লায়েন্স ও খরচ | মেহেদী হাসান"
+  description: "বাংলাদেশে {{ ind.bn.name }}-এর জন্য Odoo ERP: {{ ind.bn.short }} কোন মডিউল লাগবে, কোন কমপ্লায়েন্সের পরিকল্পনা রাখতে হবে, খরচের হিসাব আর বিস্তারিত গাইড।"
+  canonical: "https://mhasan.me/bn/industries/{{ ind.slug }}/"
+  hreflangEn: "https://mhasan.me/industries/{{ ind.slug }}/"
+  hreflangBn: "https://mhasan.me/bn/industries/{{ ind.slug }}/"
+  ogTitle: "{{ ind.bn.name }}-এর জন্য Odoo — বাংলাদেশ"
+  ogImage: "https://mhasan.me/assets/og/industries/{{ ind.slug }}.png"
+  eyebrow: "ইন্ডাস্ট্রি · {{ ind.tagBn }}"
+  h1: '<span class="serif">{{ ind.bn.name }}</span>-এর জন্য Odoo।'
+  lede: "{{ ind.bn.short }} বাংলাদেশে এই ইন্ডাস্ট্রিতে ERP প্রজেক্ট কোথায় কঠিন হয়, কোন Odoo মডিউল মূল ভার বহন করে, কোন কমপ্লায়েন্সের পরিকল্পনা রাখতে হবে, আর আরও গভীরে যেতে কোন গাইড পড়বেন।"
+  chips: ["ইন্ডাস্ট্রি গাইড", "{{ ind.tagBn }}", "বাংলাদেশ"]
+  footLabel: "ইন্ডাস্ট্রি / {{ ind.bn.name }}"
+  jsonLd: |
+    [
+      { "@context": "https://schema.org", "@type": "WebPage", "name": "{{ ind.bn.name }}-এর জন্য Odoo ERP", "url": "https://mhasan.me/bn/industries/{{ ind.slug }}/", "inLanguage": "bn" },
+      { "@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "হোম", "item": "https://mhasan.me/bn/" },
+        { "@type": "ListItem", "position": 2, "name": "ইন্ডাস্ট্রি", "item": "https://mhasan.me/bn/industries/" },
+        { "@type": "ListItem", "position": 3, "name": "{{ ind.bn.name }}", "item": "https://mhasan.me/bn/industries/{{ ind.slug }}/" } ] }
+    ]
+related:
+  - { href: "/bn/industries/", dir: "ইন্ডাস্ট্রি", title: "অন্যান্য ইন্ডাস্ট্রি", desc: "২০টির বেশি বাংলাদেশি খাত, প্রতিটির মডিউল, কমপ্লায়েন্স আর গাইডসহ।" }
+  - { href: "/bn/tools/", dir: "টুল", title: "সব ফ্রি টুল", desc: "খরচ, ROI, প্রস্তুতি, কোটেশন, মজুরি, আমদানি শুল্ক আর VAT।" }
+---
+{% include "partials/industry-body.njk" %}

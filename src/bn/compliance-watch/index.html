@@ -1,0 +1,54 @@
+---
+layout: "layouts/tool.njk"
+permalink: "bn/compliance-watch/index.html"
+title: "কমপ্লায়েন্স ওয়াচ — ERP-র জন্য বাংলাদেশের VAT, কাস্টমস, কর ও মজুরির পরিবর্তন | মেহেদী হাসান"
+description: "ERP কনফিগারেশনে প্রভাব ফেলে এমন বাংলাদেশের প্রতিটি VAT, কাস্টমস, আয়কর আর RMG মজুরির পরিবর্তন: কী বদলেছে, কাদের ওপর প্রভাব, আর Odoo-তে ঠিক কী বদলাতে হবে। প্রতি মাসে হালনাগাদ, সূত্রসহ।"
+canonical: "https://mhasan.me/bn/compliance-watch/"
+hreflangEn: "https://mhasan.me/compliance-watch/"
+hreflangBn: "https://mhasan.me/bn/compliance-watch/"
+ogTitle: "কমপ্লায়েন্স ওয়াচ — কী বদলেছে, আর ERP-তে কী বদলাবেন"
+ogDescription: "অর্থ আইন ২০২৬-এর ত্রৈমাসিক VAT রিটার্ন, মূসক ৯.১.১, ERP থেকে ৬.৩, উৎসে করের পরিবর্তন আর RMG মজুরি, ERP টিমের জন্য ব্যাখ্যা।"
+ogImage: "https://mhasan.me/assets/og/compliance-watch.png"
+ogType: "article"
+datePublished: "2026-09-25"
+dateModified: "2026-09-25"
+backHref: "/bn/tools/"
+jsonLd: |
+  [
+    { "@context": "https://schema.org", "@type": "Article", "headline": "কমপ্লায়েন্স ওয়াচ — ERP টিমের জন্য বাংলাদেশের VAT, কাস্টমস, কর ও মজুরির পরিবর্তন", "datePublished": "2026-09-25", "dateModified": "2026-09-25", "inLanguage": "bn", "author": { "@type": "Person", "name": "Mehedi Hasan", "url": "https://mhasan.me" }, "mainEntityOfPage": "https://mhasan.me/bn/compliance-watch/" },
+    { "@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "হোম", "item": "https://mhasan.me/bn/" },
+      { "@type": "ListItem", "position": 2, "name": "কমপ্লায়েন্স ওয়াচ", "item": "https://mhasan.me/bn/compliance-watch/" } ] }
+  ]
+eyebrow: "কমপ্লায়েন্স ওয়াচ · সর্বশেষ পর্যালোচনা ২৫ সেপ্টেম্বর ২০২৬"
+h1: 'কী বদলেছে, আর <span class="serif">ERP-তে কী বদলাবেন।</span>'
+lede: "বাজেট, SRO আর মজুরির গেজেট আপনার ERP-র হিসাবের নিয়ম বদলে দেয়। প্রতিটি এন্ট্রিতে আছে কী বদলেছে, কাদের ওপর প্রভাব, Odoo-তে ঠিক কোন কনফিগারেশন বদলাতে হবে, আর সূত্র। নতুনটা সবার আগে।"
+chips: ["অর্থ আইন ২০২৬", "VAT · কাস্টমস · কর · মজুরি", "সূত্রসহ", "মাসিক"]
+footLabel: "কমপ্লায়েন্স ওয়াচ"
+related:
+  - { href: "/bn/tools/vat-mushak-helper/", dir: "টুল · VAT", title: "VAT ও মূসক হেল্পার", desc: "ত্রৈমাসিক রিটার্নের পরিবর্তনের পর কোন ফর্ম আর রিটার্ন আপনার জন্য প্রযোজ্য।" }
+  - { href: "/bn/tools/import-duty-calculator/", dir: "টুল · কাস্টমস", title: "আমদানি শুল্ক ও ল্যান্ডেড কস্ট", desc: "২০২৬-২৭ অর্থবছরের হারে হালনাগাদ। প্রতিটি হার বদলানো যায়।" }
+extraStyles: |
+  .cw-filters { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 20px; }
+  .cw-filters .is-on { color: var(--accent); border-color: color-mix(in oklch, var(--accent) 45%, transparent); }
+  .cw-list { list-style: none; padding: 0; margin: 0; max-width: 860px; }
+  .cw-item { margin-bottom: 18px; }
+  .cw-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-bottom: 10px; }
+  .cw-date { font-family: var(--mono); font-size: 12px; color: var(--text-3); margin-right: 4px; }
+  .tl-card h2.cw-title { font-size: 19px; line-height: 1.35; margin: 0 0 12px; }
+  .tl-card h2.cw-title::before { display: none; }
+  .cw-erp { margin: 12px 0; }
+  .cw-foot { display: flex; flex-wrap: wrap; gap: 14px; align-items: baseline; font-size: 13px; }
+  .cw-foot a { color: var(--accent); }
+  .cw-src { color: var(--text-3); font-size: 12px; margin-left: auto; }
+  .cw-sub { max-width: 860px; margin-top: 28px; }
+---
+<div class="shell tl-wrap">
+  {% include "partials/compliance-list.njk" %}
+  <div class="tl-card cw-sub">
+    <h2>এই হালনাগাদ ইমেইলে পান</h2>
+    <p>কমপ্লায়েন্স ওয়াচ মাসিক <strong>Odoo Bangladesh</strong> নিউজলেটারের সঙ্গে যায়: মাসে একটি ইমেইল, শুধু তখনই যখন ERP-তে প্রভাব ফেলার মতো কিছু বদলায়।</p>
+    <div class="tl-cta-row inline"><a class="btn-primary" href="/bn/#newsletter">নিউজলেটারে সাবস্ক্রাইব করুন →</a><a class="btn-ghost" href="/bn/#contact">আপনার সেটআপে কোনো পরিবর্তনের মানে কী, জিজ্ঞেস করুন</a></div>
+  </div>
+  <p class="tl-disclosure"><strong>কীভাবে সংকলিত।</strong> এন্ট্রিগুলো এসেছে অর্থ আইন, NBR-এর SRO, গেজেট আর নির্ভরযোগ্য সারাংশ থেকে (প্রতিটিতে নাম দেওয়া আছে)। আমি এগুলো পড়ি একজন ERP কনসালট্যান্ট হিসেবে, কনফিগারেশনে প্রভাব বোঝার জন্য। এটা আইনি বা কর পরামর্শ নয়। অর্থ আইন পাস হওয়ার পর SRO দিয়ে খুঁটিনাটি বদলাতে পারে, তাই রিটার্ন দাখিলের আগে কর উপদেষ্টার সঙ্গে নিশ্চিত হয়ে নিন। কোনো পরিবর্তন বাদ পড়েছে? <a href="/bn/#contact">আমাকে জানান</a>।</p>
+</div>

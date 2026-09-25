@@ -3,6 +3,7 @@ layout: "layouts/base.njk"
 permalink: "tools/odoo-cost-estimator/index.html"
 bareBody: true
 stylesheetHref: "/lab/_styles.css"
+toolsCss: true
 title: "Odoo Cost Estimator Bangladesh 2026 (Free Tool) | Mehedi Hasan"
 description: "Free Odoo ERP cost estimator for Bangladesh — get a personalised price range in BDT and USD based on industry, users, modules, hosting, edition, and timeline. Built by an Odoo-certified consultant who led Bangladesh's largest manufacturing deployment."
 canonical: "https://mhasan.me/tools/odoo-cost-estimator/"
@@ -552,6 +553,7 @@ extraStyles: |
     </div>
   </section>
 
+  <div class="print-only print-head" id="print-head"></div>
   <div class="shell est-wrap">
     <div class="est-grid">
 
@@ -669,12 +671,16 @@ extraStyles: |
           Estimate based on 200+ Bangladesh deployments. Year 1 licence reflects Odoo's 12-month discount on initial users; year 2 onwards uses regular Bangladesh-tier rates. Final scope requires a discovery session.
         </p>
 
-        <div class="est-cta-row">
+        <div class="est-cta-row no-print">
           <a href="https://mhasan.me/#contact" class="btn-primary">Request a free 30-min scoping call →</a>
-          <button type="button" id="btn-share" class="btn-ghost">Copy shareable link</button>
+          <a id="btn-roi" class="btn-ghost" href="/tools/odoo-roi-calculator/">Calculate ROI with this cost →</a>
+          <div style="display:flex;gap:10px">
+            <button type="button" id="btn-share" class="btn-ghost" style="flex:1">Copy shareable link</button>
+            <button type="button" id="btn-print" class="btn-ghost" style="flex:1">Save as PDF</button>
+          </div>
         </div>
 
-        <div class="est-email-form">
+        <div class="est-email-form no-print">
           <div class="ef-label">Or — email me this estimate</div>
           <form id="email-form" autocomplete="off" novalidate="">
             <input type="text" id="lead-hp" name="company_website" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0" aria-hidden="true">
@@ -979,6 +985,15 @@ extraStyles: |
       $("r-licence-y3").textContent = fmtRange(r.licence_y3[0], r.licence_y3[1]);
       $("r-tco").textContent        = fmtRange(r.tco_3yr[0],    r.tco_3yr[1]);
       buildShareLink();
+      // Hand the cost side to the ROI calculator (midpoints of each range).
+      const mid = (a) => Math.round((a[0] + a[1]) / 2 / 1000) * 1000;
+      const roi = new URLSearchParams({
+        implementation: mid(r.impl) + mid(r.bd_specific),
+        trainingInitial: mid(r.training),
+        licenceAnnual: mid(r.licence_y2),
+        hostingAnnual: 0
+      });
+      $("btn-roi").href = "/tools/odoo-roi-calculator/?" + roi.toString();
     }
 
     // ===== Read form state =====
@@ -1170,6 +1185,15 @@ extraStyles: |
         } catch (err) {
           window.prompt("Copy this link:", link);
         }
+      });
+
+      // Print / save as PDF
+      $("btn-print").addEventListener("click", () => {
+        const ph = $("print-head");
+        ph.innerHTML = "<b>Odoo Cost Estimate — Bangladesh 2026</b><br>Generated " +
+          new Date().toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" }) +
+          " · mhasan.me/tools/odoo-cost-estimator/<br>Indicative range — final scope needs a discovery session.";
+        window.print();
       });
 
       // Email form

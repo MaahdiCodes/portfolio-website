@@ -1,0 +1,92 @@
+---
+layout: "layouts/lesson.njk"
+permalink: "courses/02-uat-go-live/lesson-04.html"
+lessonN: "04"
+title: "Lesson 04 — Data Cut-over: Trial Loads and Reconciling to the Taka · Course 02 | Mehedi Hasan"
+description: "How to plan data cut-over for an Odoo go-live: what to migrate, load order, trial loads, reconciliation to the taka, and why opening stock must come from a physical count."
+canonical: "https://mhasan.me/courses/02-uat-go-live/lesson-04"
+hreflangBn: "https://mhasan.me/bn/courses/02-uat-go-live/lesson-04"
+ogImage: "https://mhasan.me/assets/og/courses/02-uat-go-live.png"
+backHref: "/courses/02-uat-go-live/"
+backLabel: "← Course overview"
+eyebrow: "Course 02 · Lesson 04 · 17 min"
+h1: 'Data cut-over: trial loads and <span class="serif">reconciling to the taka</span>'
+lede: "If the numbers in Odoo don't match the old books on day one, nothing else you do will earn the finance team's trust. Cut-over is where that trust is won or lost."
+chips: ["Data migration", "Cut-over", "Reconciliation"]
+footLabel: "Course 02 / Lesson 04"
+---
+<h2>Decide what to migrate, and what not to</h2>
+<p>The instinct is to bring everything: all customers since 2012, every invoice, five years of stock movements. Resist it. Every extra year you migrate multiplies cost and risk for data nobody will open in Odoo. The standard approach is:</p>
+<ul>
+  <li><strong>Masters</strong>: active customers, vendors, products, BOMs, employees, chart of accounts, fixed assets.</li>
+  <li><strong>Opening balances</strong> at the cut-over date: trial balance, open receivables and payables (per invoice), stock quantities and values, and assets at net book value.</li>
+  <li><strong>Open documents</strong>: purchase orders not yet received, sales orders not yet delivered, open LCs.</li>
+  <li><strong>History</strong>: archived, read-only, in the old system or an export. It's available if auditors ask, but not migrated.</li>
+</ul>
+<p>Write this decision down and get the finance head to sign it. It stops "can we also bring last year's sales?" arriving two days before go-live.</p>
+
+<h2>Clean before you map</h2>
+<p>Data cleaning is business work, not IT work, and it takes longer than anyone budgets for. In Bangladesh projects, the recurring problems are:</p>
+<ul>
+  <li>The same customer entered three ways ("ABC Garments Ltd", "ABC Garments Limited", "A.B.C. Garments").</li>
+  <li>Vendors without TIN or TDS category, so withholding can't be configured correctly.</li>
+  <li>Customers without BIN, so Mushak 6.3 can't be printed correctly.</li>
+  <li>Products with inconsistent units: yards in purchase, metres in stock, pieces in sales, with no conversion recorded.</li>
+  <li>Opening stock taken from the old system instead of a count.</li>
+</ul>
+<p>The <a href="/assets/downloads/odoo-data-migration-checklist.xlsx">data migration checklist</a> has all 40 cleaning and loading tasks, plus a sheet of Bangladesh-specific fields to capture.</p>
+
+<h2>Opening stock comes from a physical count</h2>
+<p>This is the rule most often broken and most often regretted. If you load opening stock from Tally or Excel, you're loading every past error into your new system, and the warehouse will spend three months doing adjustments. Instead:</p>
+<ol>
+  <li>Count everything physically, by location, as close to cut-over as possible (usually the Thursday–Friday before going live).</li>
+  <li>Compare the count with the old system and investigate the big differences.</li>
+  <li>Get finance approval to write off the differences <em>in the old system</em>, so its closing value equals the count.</li>
+  <li>Load the counted quantities with unit costs into Odoo.</li>
+  <li>Check: Odoo stock valuation = physical count value = old system closing stock (after the write-off) = the stock account in the opening trial balance.</li>
+</ol>
+
+<div class="field-note"><span class="tag">Common pitfall</span><p>The count shows materially less stock than the books, and nobody wants to approve a write-off during go-live week, so the book figure gets loaded "for now". The first month&rsquo;s production cost then absorbs years of old losses, and costing loses credibility from day one. Delaying a week to get the approval is cheaper.</p></div>
+
+<h2>Load order</h2>
+<p>Dependencies decide the order. Load in this sequence, and never load a later object before the one it depends on is verified:</p>
+<p><strong>Company settings → chart of accounts and taxes → partners (customers, vendors) → products and categories → BOMs → opening stock → opening AR/AP → assets → open documents.</strong></p>
+
+<h2>Trial loads: rehearse twice</h2>
+<p>Run at least two full trial loads before the real one:</p>
+<ul>
+  <li><strong>Trial load #1</strong> (before UAT cycle 1) finds mapping errors, missing fields and bad data. Expect a long error list.</li>
+  <li><strong>Trial load #2</strong> (before UAT cycle 2) is run by the actual cut-over team, timed per object, following the written runbook. Its timing tells you whether the cut-over fits in a weekend.</li>
+</ul>
+<p>Both loads feed UAT, which means testers are also checking the data, not just the configuration.</p>
+
+<h2>Reconcile to the taka</h2>
+<p>After every load, reconcile counts and sums against the source. "Close enough" is not a reconciliation.</p>
+<table>
+  <thead><tr><th>Check</th><th>Source</th><th>Odoo</th><th>Must match</th></tr></thead>
+  <tbody>
+    <tr><td>Customer count</td><td>Active customer list</td><td>Customers imported</td><td>Exactly</td></tr>
+    <tr><td>Open AR</td><td>Legacy trial balance</td><td>Aged receivables total</td><td>To ৳1</td></tr>
+    <tr><td>Open AP</td><td>Legacy trial balance</td><td>Aged payables total</td><td>To ৳1</td></tr>
+    <tr><td>Stock value</td><td>Approved count value</td><td>Stock valuation report</td><td>To ৳1</td></tr>
+    <tr><td>Trial balance</td><td>Legacy closing TB</td><td>Odoo opening TB</td><td>Every account</td></tr>
+  </tbody>
+</table>
+<p>Then have each data owner spot-check 20 random records against the source. Totals can match while individual records are wrong, for example two customers' balances swapped.</p>
+
+<h2>The freeze</h2>
+<p>From the final snapshot until Odoo is live, nobody enters transactions in the old system. Announce the freeze window to operations at least two weeks ahead. Anything that happens during the freeze (an urgent delivery, a payment) is recorded on paper and entered into Odoo as the first transaction after go-live. Plan for it rather than pretending it won't happen.</p>
+
+<div class="exercise"><p><strong>Exercise (15 minutes).</strong> Write your migration scope in three lines: what you'll migrate, what you won't, and where history will live. Then pick the date for your physical stock count and name who signs off the write-off.</p></div>
+
+<div class="takeaways">
+  <h3>Key takeaways</h3>
+  <ul>
+    <li>Migrate masters, opening balances and open documents. Archive history.</li>
+    <li>Opening stock comes from a physical count, with differences written off in the old system first.</li>
+    <li>Load in dependency order, and rehearse with two timed trial loads.</li>
+    <li>Reconcile counts and sums to the taka, then spot-check individual records.</li>
+    <li>Announce the freeze early and plan for transactions during it.</li>
+  </ul>
+</div>
+<p>Go deeper: <a href="/lab/0030-data-migration-checklist-odoo-bangladesh">Data migration checklist for Odoo in Bangladesh</a> and <a href="/lab/0008-excel-odoo-migration-checklist">Excel → Odoo migration checklist</a>.</p>

@@ -1,0 +1,75 @@
+{#- Body of an industry hub page. Expects `ind` (from industries.js) and lang. -#}
+{%- set L = 'bn' if lang == 'bn' else 'en' -%}
+{%- set pre = '/bn' if lang == 'bn' else '' -%}
+{%- set t = ind[L] -%}
+{%- set labs = labIndex[L] -%}
+{%- if L == 'bn' -%}
+{%- set COMP = {
+  wage: { name: 'ওয়েজ বোর্ডের পে-রোল', desc: 'গ্রেড, ৯% ইনক্রিমেন্ট, OT আর উৎসব বোনাস', href: '/tools/rmg-wage-calculator/' },
+  lc: { name: 'LC আর রপ্তানি অর্থায়ন', desc: 'ব্যাক-টু-ব্যাক LC, ডকুমেন্ট আর রপ্তানি আয় আদায়', href: '/lab/0020-lc-management-odoo-bangladesh' },
+  bond: { name: 'বন্ডেড ওয়্যারহাউস', desc: 'বন্ডে আমদানি করা কাঁচামাল আর কনজাম্পশনের হিসাব', href: '/lab/0073-bonded-warehouse-management-odoo-bangladesh' },
+  vat: { name: 'VAT ও Mushak', desc: 'ত্রৈমাসিক রিটার্ন, 6.3, রেজিস্টার আর VDS', href: '/tools/vat-mushak-helper/' },
+  esg: { name: 'ESG ও বায়ারের রিপোর্টিং', desc: 'শক্তি, পানি, বর্জ্য আর সামাজিক ডেটা', href: '/lab/0075-esg-sustainability-reporting-odoo-rmg-bangladesh' },
+  duty: { name: 'আমদানি শুল্ক ও ল্যান্ডেড কস্ট', desc: 'CD, RD, SD আর রেয়াতযোগ্য VAT/AT', href: '/tools/import-duty-calculator/' },
+  tds: { name: 'উৎসে কর (TDS/AIT)', desc: 'অর্থ আইন ২০২৬-এর নতুন হার', href: '/lab/0071-ait-income-tax-withholding-odoo-bangladesh' },
+  eudr: { name: 'EUDR ট্রেসেবিলিটি', desc: 'EU বায়ারের জন্য কাঠ আর রাবারের উৎসের প্রমাণ', href: '/lab/0079-eudr-odoo-traceability-rubber-wood-furniture-bangladesh' },
+  data: { name: 'ব্যক্তিগত তথ্য সুরক্ষা', desc: 'রোগী ও কাস্টমারের ডেটা, ক্লাউড হোস্টিং', href: '/lab/0078-bangladesh-data-protection-act-cloud-erp' }
+} -%}
+{%- set TOOLN = { 'odoo-cost-estimator': 'Odoo কস্ট এস্টিমেটর', 'rmg-wage-calculator': 'RMG মজুরি ক্যালকুলেটর', 'import-duty-calculator': 'আমদানি শুল্ক ক্যালকুলেটর', 'vat-mushak-helper': 'VAT ও মূসক হেল্পার' } -%}
+{%- else -%}
+{%- set COMP = {
+  wage: { name: 'Wage-board payroll', desc: 'Grades, 9% increment, OT and festival bonus', href: '/tools/rmg-wage-calculator/' },
+  lc: { name: 'LC & export finance', desc: 'Back-to-back LCs, documents and export proceeds', href: '/lab/0020-lc-management-odoo-bangladesh' },
+  bond: { name: 'Bonded warehouse', desc: 'Raw material imported under bond and consumption records', href: '/lab/0073-bonded-warehouse-management-odoo-bangladesh' },
+  vat: { name: 'VAT & Mushak', desc: 'Quarterly returns, 6.3, registers and VDS', href: '/tools/vat-mushak-helper/' },
+  esg: { name: 'ESG & buyer reporting', desc: 'Energy, water, waste and social data', href: '/lab/0075-esg-sustainability-reporting-odoo-rmg-bangladesh' },
+  duty: { name: 'Import duty & landed cost', desc: 'CD, RD, SD and creditable VAT/AT', href: '/tools/import-duty-calculator/' },
+  tds: { name: 'Withholding tax (TDS/AIT)', desc: 'New Finance Act 2026 rates', href: '/lab/0071-ait-income-tax-withholding-odoo-bangladesh' },
+  eudr: { name: 'EUDR traceability', desc: 'Timber and rubber origin evidence for EU buyers', href: '/lab/0079-eudr-odoo-traceability-rubber-wood-furniture-bangladesh' },
+  data: { name: 'Personal data protection', desc: 'Patient and customer data, cloud hosting', href: '/lab/0078-bangladesh-data-protection-act-cloud-erp' }
+} -%}
+{%- set TOOLN = { 'odoo-cost-estimator': 'Odoo Cost Estimator', 'rmg-wage-calculator': 'RMG Wage Calculator', 'import-duty-calculator': 'Import Duty Calculator', 'vat-mushak-helper': 'VAT & Mushak Helper' } -%}
+{%- endif -%}
+<div class="shell tl-wrap">
+  <div class="tl-grid wide-left">
+    <div>
+      <section class="tl-card">
+        <h2>{{ 'Where ERP projects in this industry get hard' if L == 'en' else 'এই ইন্ডাস্ট্রিতে ERP প্রজেক্ট কোথায় কঠিন হয়' }}</h2>
+        <ul class="tl-list">{% for p in t.pains %}<li>{{ p }}</li>{% endfor %}</ul>
+      </section>
+      <section class="tl-card">
+        <h2>{{ 'Odoo modules you will likely need' if L == 'en' else 'যে Odoo মডিউলগুলো সম্ভবত লাগবে' }}</h2>
+        <div class="tl-chips">{% for m in t.modules %}<span class="tl-pill good">{{ m }}</span>{% endfor %}</div>
+      </section>
+      <section class="tl-card">
+        <h2>{{ 'Bangladesh compliance to plan for' if L == 'en' else 'যে বাংলাদেশি কমপ্লায়েন্সের পরিকল্পনা রাখতে হবে' }}</h2>
+        <ul class="tl-list">
+          {%- for c in ind.compliance %}{% set cc = COMP[c] %}
+          <li><strong><a href="{{ pre }}{{ cc.href }}">{{ cc.name }}</a></strong>: {{ cc.desc }}</li>
+          {%- endfor %}
+        </ul>
+      </section>
+      <section class="tl-card">
+        <h2>{{ 'Read the deep-dives' if L == 'en' else 'বিস্তারিত পড়ুন' }}</h2>
+        <ul class="tl-list">
+          {%- for a in ind.articles %}{% set art = labs[a] %}{% if art %}
+          <li><a href="{{ pre }}/lab/{{ a }}"><strong>{{ art.title }}</strong></a><br><span style="color:var(--text-3);font-size:13px">{{ art.description | truncate(150) }}</span></li>
+          {%- endif %}{% endfor %}
+        </ul>
+      </section>
+    </div>
+    <aside class="tl-card tl-sticky">
+      <h2>{{ 'Plan it with numbers' if L == 'en' else 'সংখ্যা দিয়ে পরিকল্পনা করুন' }}</h2>
+      <p>{{ ('Open the cost estimator pre-set for ' + t.name + ', then run the readiness assessment before you talk to vendors.') if L == 'en' else ('আগে ' + t.name + '-এর জন্য সাজানো কস্ট এস্টিমেটর খুলুন, তারপর ভেন্ডরের সঙ্গে কথা বলার আগে প্রস্তুতি যাচাই করে নিন।') }}</p>
+      <div class="tl-cta-row">
+        <a class="btn-primary" href="{{ pre }}/tools/odoo-cost-estimator/?ind={{ ind.est }}">{{ 'Estimate the cost for this industry →' if L == 'en' else 'এই ইন্ডাস্ট্রির খরচ হিসাব করুন →' }}</a>
+        <a class="btn-ghost" href="{{ pre }}/tools/erp-readiness-assessment/">{{ 'Check your ERP readiness' if L == 'en' else 'ERP প্রস্তুতি যাচাই করুন' }}</a>
+        {%- for tl in ind.tools %}{% if tl != 'odoo-cost-estimator' %}
+        <a class="btn-ghost" href="{{ pre }}/tools/{{ tl }}/">{{ TOOLN[tl] }}</a>
+        {%- endif %}{% endfor %}
+      </div>
+      <p class="tl-note">{{ 'The compliance and traceability work above is what moves implementation cost up or down in this industry. The estimator applies the typical complexity factor for it.' if L == 'en' else 'এই ইন্ডাস্ট্রিতে বাস্তবায়নের খরচ কম-বেশি হয় মূলত ওপরের কমপ্লায়েন্স আর ট্রেসেবিলিটির কাজের জন্য। কস্ট এস্টিমেটর এই ইন্ডাস্ট্রির সাধারণ জটিলতার হিসাবটা ধরে নেয়।' }}</p>
+      <a class="btn-ghost" style="width:100%;margin-top:6px" href="{{ pre }}/#contact">{{ 'Talk to a consultant who knows this industry' if L == 'en' else 'এই ইন্ডাস্ট্রি জানেন এমন কনসালট্যান্টের সঙ্গে কথা বলুন' }}</a>
+    </aside>
+  </div>
+</div>

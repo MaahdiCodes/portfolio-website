@@ -1423,6 +1423,9 @@ extraStyles: |
         gap: 24px
       }
   
+      @media(min-width:1001px) { .courses.four > .course-card { grid-column: span 3 } }
+      .tools-more { margin-top: 22px; display: flex; flex-wrap: wrap; gap: 10px; align-items: center; font-size: 14px; color: var(--text-2) }
+      .tools-more a { color: var(--accent) }
       .course-card {
         grid-column: span 4;
         border: 1px solid var(--border);
@@ -3120,7 +3123,7 @@ extraStyles: |
         </p>
       </div>
 
-      <div class="courses">
+      <div class="courses four">
         <a class="course-card reveal" href="/bn/courses/01-requirements-gathering/">
           <div class="c-top">
             <span class="badge">কোর্স · 01</span>
@@ -3133,9 +3136,21 @@ extraStyles: |
           <div class="meta-row"><span>এখনই উপলব্ধ</span><span>~ ২.৫ ঘণ্টা</span></div>
         </a>
 
-        <a class="course-card reveal" href="#">
+        <a class="course-card reveal" href="/bn/courses/02-uat-go-live/">
           <div class="c-top">
             <span class="badge">কোর্স · 02</span>
+            <span class="lessons">৮টি লেসন</span>
+          </div>
+          <h4>UAT, কাট-ওভার ও গো-লাইভ</h4>
+          <p class="sub">প্রস্তুতির শর্ত, আসল সমস্যা ধরে এমন UAT স্ক্রিপ্ট, টাকায় টাকায় ডেটা কাট-ওভার, go/no-go আর হাইপারকেয়ার।
+            বিনামূল্যে, সাইন-আপ ছাড়া।</p>
+          <div class="progress"><span style="width:100%"></span></div>
+          <div class="meta-row"><span>এখনই উপলব্ধ</span><span>~ ২ ঘণ্টা</span></div>
+        </a>
+
+        <a class="course-card reveal" href="#">
+          <div class="c-top">
+            <span class="badge">কোর্স · 03</span>
             <span class="lessons">১২টি লেসন</span>
           </div>
           <h4>ম্যানুফ্যাকচারিং-এর জন্য Odoo — ম্যাপিং থেকে গো-লাইভ পর্যন্ত</h4>
@@ -3146,7 +3161,7 @@ extraStyles: |
 
         <a class="course-card reveal" href="#">
           <div class="c-top">
-            <span class="badge soon">কোর্স · 03</span>
+            <span class="badge soon">কোর্স · 04</span>
             <span class="lessons">শীঘ্রই</span>
           </div>
           <h4>মাল্টি-কারেন্সি ও এক্সপোর্ট অপারেশন, সহজভাবে ব্যাখ্যা</h4>
@@ -3174,17 +3189,76 @@ extraStyles: |
       </div>
 
       <div class="courses">
-        <a class="course-card reveal" href="/bn/tools/odoo-cost-estimator/" style="grid-column:4 / span 6;">
+        <a class="course-card reveal" href="/bn/tools/odoo-cost-estimator/">
           <div class="c-top">
             <span class="badge">টুল · 01</span>
             <span class="lessons">বিনামূল্যে</span>
           </div>
           <h4>Odoo কস্ট এস্টিমেটর — বাংলাদেশ 2026</h4>
-          <p class="sub">একটি ব্যক্তিগতকৃত Odoo ERP কস্ট রেঞ্জ পান — লাইসেন্স, বাস্তবায়ন, ট্রেনিং, এবং
-            বাংলাদেশ-নির্দিষ্ট কমপ্লায়েন্স — BDT ও USD-এ। বছর-১-এর প্রোমো + বছর-২-এর নিয়মিত প্রাইসিং দুটোই দেখানো হয়।</p>
+          <p class="sub">লাইসেন্স, বাস্তবায়ন, ট্রেনিং আর বাংলাদেশের কমপ্লায়েন্সের খরচ BDT ও USD-এ, ১–৩ বছরের TCO সহ।</p>
           <div class="progress"><span style="width:100%"></span></div>
           <div class="meta-row"><span>লাইভ ক্যালকুলেটর</span><span>~ ৬০ সেকেন্ড</span></div>
         </a>
+        <a class="course-card reveal" href="/bn/tools/odoo-roi-calculator/">
+          <div class="c-top">
+            <span class="badge">টুল · 02</span>
+            <span class="lessons">বিনামূল্যে</span>
+          </div>
+          <h4>Odoo ROI ক্যালকুলেটর</h4>
+          <p class="sub">পাঁচ ধরনের লাভ থেকে ৩ বছরের ROI আর ব্রেক-ইভেনের মাস, বাস্তবসম্মত গো-লাইভ র‍্যাম্পসহ।</p>
+          <div class="progress"><span style="width:100%"></span></div>
+          <div class="meta-row"><span>বিজনেস কেস</span><span>~ ৩ মিনিট</span></div>
+        </a>
+        <a class="course-card reveal" href="/bn/tools/erp-readiness-assessment/">
+          <div class="c-top">
+            <span class="badge">টুল · 03</span>
+            <span class="lessons">বিনামূল্যে</span>
+          </div>
+          <h4>ERP প্রস্তুতি যাচাই</h4>
+          <p class="sub">২৫টি প্রশ্ন। প্রস্তুতির স্কোর, ERP প্রজেক্ট ডোবায় এমন লাল পতাকা, আর পরের তিনটি ধাপ।</p>
+          <div class="progress"><span style="width:100%"></span></div>
+          <div class="meta-row"><span>নিজে যাচাই</span><span>~ ৫ মিনিট</span></div>
+        </a>
+        <a class="course-card reveal" href="/bn/tools/odoo-quote-checker/">
+          <div class="c-top">
+            <span class="badge">টুল · 04</span>
+            <span class="lessons">বিনামূল্যে</span>
+          </div>
+          <h4>Odoo কোটেশন চেকার</h4>
+          <p class="sub">ভেন্ডরের প্রস্তাবে কী আছে টিক দিন। দেখুন ফাঁক, তার সম্ভাব্য খরচ, আর কী প্রশ্ন পাঠাবেন।</p>
+          <div class="progress"><span style="width:100%"></span></div>
+          <div class="meta-row"><span>ভেন্ডরের প্রস্তাব</span><span>~ ৫ মিনিট</span></div>
+        </a>
+        <a class="course-card reveal" href="/bn/tools/vat-mushak-helper/">
+          <div class="c-top">
+            <span class="badge">টুল · 05</span>
+            <span class="lessons">অর্থ আইন ২০২৬</span>
+          </div>
+          <h4>VAT ও মূসক হেল্পার</h4>
+          <p class="sub">ত্রৈমাসিক রিটার্নের পরিবর্তনের পর কোন মূসক ফর্ম আর রিটার্ন প্রযোজ্য, আর Odoo-তে কীভাবে তৈরি হয়।</p>
+          <div class="progress"><span style="width:100%"></span></div>
+          <div class="meta-row"><span>কমপ্লায়েন্স</span><span>~ ২ মিনিট</span></div>
+        </a>
+        <a class="course-card reveal" href="/bn/tools/rmg-wage-calculator/">
+          <div class="c-top">
+            <span class="badge">টুল · 06</span>
+            <span class="lessons">ওয়েজ বোর্ড</span>
+          </div>
+          <h4>RMG মজুরি ও পে-রোল ক্যালকুলেটর</h4>
+          <p class="sub">৯% ইনক্রিমেন্টসহ গ্রেডের মজুরি, ওভারটাইম, উৎসব বোনাস আর কারখানার পে-রোল খরচ।</p>
+          <div class="progress"><span style="width:100%"></span></div>
+          <div class="meta-row"><span>কমপ্লায়েন্স</span><span>~ ২ মিনিট</span></div>
+        </a>
+      </div>
+      <div class="tools-more reveal">
+        <span>আরও বিনামূল্যে:</span>
+        <a href="/bn/tools/import-duty-calculator/">আমদানি শুল্ক ও ল্যান্ডেড কস্ট</a> ·
+        <a href="/bn/benchmarks/odoo-implementation-pricing-bangladesh/">Odoo-র দামের মানদণ্ড</a> ·
+        <a href="/bn/compliance-watch/">কমপ্লায়েন্স ওয়াচ</a> ·
+        <a href="/bn/glossary/">শব্দকোষ (বাংলা + English)</a> ·
+        <a href="/bn/industries/">ইন্ডাস্ট্রি অনুযায়ী Odoo</a> ·
+        <a href="/bn/resources/#downloads">১৪টি ডাউনলোডযোগ্য টেমপ্লেট</a> ·
+        <a href="/bn/tools/"><strong>সব টুল →</strong></a>
       </div>
     </div>
   </section>

@@ -37,6 +37,12 @@ jsonLd: |
     }
   ]
 extraStyles: |
+  .dl-intro{color:var(--text-2);font-size:14px;margin:-6px 0 18px;max-width:760px;line-height:1.6}
+  .dl-card{cursor:default}
+  .dl-actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:4px}
+  .dl-btn{display:inline-flex;align-items:center;gap:6px;padding:8px 14px;border-radius:9px;background:var(--accent);color:#04140B;font-weight:600;font-size:13px;text-decoration:none}
+  html[data-theme="light"] .dl-btn{color:#fff}
+  .dl-link{color:var(--accent);font-size:12.5px;text-decoration:none}
   body{ font-family: 'Noto Sans Bengali', var(--sans); }
     :root{
       --bg:#0A0B0D;--bg-1:#0E1013;--surface:#111317;--elev:#15181D;
@@ -169,7 +175,7 @@ extraStyles: |
     <h1>বিনামূল্যের <em>ERP টুলস</em> ও টেমপ্লেট</h1>
     <p class="lede">বাংলাদেশে বাস্তব Odoo ডেপ্লয়মেন্ট থেকে তৈরি ব্যবহারিক টেমপ্লেট, চেকলিস্ট এবং রেফারেন্স শিট। ডাউনলোড করুন, নিজের মতো করে বদলে নিন, এবং আপনার পরবর্তী প্রজেক্টে ব্যবহার করুন।</p>
     <div class="hero-stats">
-      <div class="stat"><b>১৪</b><span>রিসোর্স</span></div>
+      <div class="stat"><b>১৪</b><span>ডাউনলোড</span></div>
       <div class="stat"><b>৪</b><span>ক্যাটাগরি</span></div>
       <div class="stat"><b>বিনামূল্যে</b><span>সবসময়</span></div>
     </div>
@@ -178,6 +184,8 @@ extraStyles: |
 
 <div class="categories">
   <div class="shell">
+
+    {% include "partials/downloads-grid.njk" %}
 
     <!-- TEMPLATES -->
     <div class="category">

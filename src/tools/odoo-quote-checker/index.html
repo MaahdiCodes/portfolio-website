@@ -1,0 +1,104 @@
+---
+layout: "layouts/tool.njk"
+permalink: "tools/odoo-quote-checker/index.html"
+title: "Odoo Quote Checker — Is Your Implementation Proposal Complete? (Bangladesh) | Mehedi Hasan"
+description: "Free checklist tool for Odoo implementation quotes in Bangladesh: 24 items vendors leave out, a coverage score, the hidden cost of each gap, a price check against market ranges, and ready-to-send questions for the vendor."
+canonical: "https://mhasan.me/tools/odoo-quote-checker/"
+hreflangBn: "https://mhasan.me/bn/tools/odoo-quote-checker/"
+ogTitle: "Odoo Quote Checker — what's missing from your proposal?"
+ogDescription: "Tick what your vendor's quote includes and see the gaps that turn into change requests, their typical cost, and the questions to send back."
+ogImage: "https://mhasan.me/assets/og/tools/odoo-quote-checker.png"
+extraHead: |
+  <meta name="keywords" content="odoo quotation checklist, erp proposal evaluation, odoo implementation quote bangladesh, erp vendor proposal review, odoo partner quote comparison">
+jsonLd: |
+  [
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Odoo Quote Checker — Bangladesh",
+      "url": "https://mhasan.me/tools/odoo-quote-checker/",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Any (web-based)",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "BDT" },
+      "isAccessibleForFree": true,
+      "inLanguage": "en",
+      "creator": { "@type": "Person", "name": "Mehedi Hasan", "url": "https://mhasan.me" },
+      "description": "Checks an Odoo implementation quote against 24 commonly omitted items, estimates the hidden cost of gaps, compares the fee with Bangladesh market ranges and generates questions for the vendor."
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://mhasan.me/" },
+        { "@type": "ListItem", "position": 2, "name": "Tools", "item": "https://mhasan.me/tools/" },
+        { "@type": "ListItem", "position": 3, "name": "Odoo Quote Checker", "item": "https://mhasan.me/tools/odoo-quote-checker/" }
+      ]
+    }
+  ]
+toolScripts: ["/tools/_calc/quote.js"]
+eyebrow: "Free Tool · Tools / 07"
+h1: 'Odoo Quote <span class="serif">Checker.</span>'
+lede: "Most Odoo quotes in Bangladesh look cheap because the expensive parts are missing: data migration, UAT, hypercare, Mushak output. Tick what your proposal actually includes to see the gaps, what they typically cost later, and the exact questions to send the vendor."
+chips: ["Free Tool", "Vendor proposals", "24-point check", "Questions to send"]
+footLabel: "Tools / Odoo quote checker"
+related:
+  - { href: "/lab/0052-odoo-vendor-red-flags-bangladesh", dir: "Read · Vendors", title: "Odoo vendor red flags", desc: "The warning signs in the sales process, before you ever see a quote." }
+  - { href: "/benchmarks/odoo-implementation-pricing-bangladesh/", dir: "Guide · Prices", title: "What a fair Odoo quote looks like", desc: "Implementation price ranges by company size, industry and scope." }
+---
+<div class="shell tl-wrap">
+  <form id="qc-form" autocomplete="off" novalidate>
+  <div class="tl-grid wide-left">
+    <section class="tl-card">
+      <h2>What does the quote include?</h2>
+      <p class="tl-hint" style="margin:-8px 0 18px">Tick an item only if the proposal states it in writing. "We'll handle it" in a meeting doesn't count.</p>
+      <div id="qc-list"></div>
+    </section>
+
+    <div>
+      <section class="tl-card">
+        <h2>The price</h2>
+        <div class="tl-field"><label for="qc-price">Implementation fee quoted (৳, excl. Odoo licence)</label><input class="tl-input" type="number" min="0" step="10000" id="qc-price" data-money value=""></div>
+        <div class="tl-row">
+          <div class="tl-field"><label for="qc-band">Odoo users</label>
+            <select class="tl-select" id="qc-band">
+              <option value="1-10">1–10</option><option value="11-25">11–25</option><option value="26-50" selected>26–50</option>
+              <option value="51-100">51–100</option><option value="101-200">101–200</option><option value="200+">200+</option>
+            </select></div>
+          <div class="tl-field"><label for="qc-ind">Industry</label>
+            <select class="tl-select" id="qc-ind">
+              <option value="trading">Trading / distribution</option><option value="services">Services / retail</option>
+              <option value="manufacturing" selected>Manufacturing</option><option value="textile">Textile</option>
+              <option value="rmg">RMG / garments</option><option value="pharma">Pharma</option>
+            </select></div>
+        </div>
+      </section>
+
+      <section class="tl-card tl-sticky" aria-live="polite">
+        <h2>Verdict</h2>
+        <div class="tl-headline">
+          <div class="h-label">Quote completeness</div>
+          <div class="h-value" id="qc-cov">—</div>
+          <div class="h-sub"><span class="tl-pill" id="qc-crit">—</span></div>
+        </div>
+        <div class="tl-stats two">
+          <div class="tl-stat"><div class="s-v" id="qc-hidden">—</div><div class="s-l">Likely extra cost of the gaps</div></div>
+          <div class="tl-stat"><div class="s-v" id="qc-real">—</div><div class="s-l">Realistic total (quote + gaps)</div></div>
+        </div>
+        <p class="tl-hint" style="margin:0 0 6px"><span id="qc-rangelbl">Usual implementation range</span>: <b id="qc-rangev" style="font-family:var(--mono);color:var(--text)">—</b></p>
+        <div id="qc-pos"></div>
+        <h3>Gaps, and what to ask</h3>
+        <ul class="tl-list" id="qc-missing"></ul>
+        <div class="tl-cta-row">
+          <button type="button" class="btn-primary" id="qc-copy">Copy questions for the vendor</button>
+          <div class="tl-cta-row inline" style="margin-top:0">
+            <button type="button" class="btn-ghost" data-print style="flex:1">Save as PDF</button>
+            <a class="btn-ghost" href="/#contact" style="flex:1">Get an independent review</a>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+  </form>
+  <p class="tl-disclosure"><strong>How to read this.</strong> The price range is the implementation-fee band used by the <a href="/tools/odoo-cost-estimator/">cost estimator</a> for your size, adjusted for industry. It excludes the Odoo licence. "Typical cost if added later" is what these items usually cost as change requests from Bangladeshi partners. That's why a quote missing them is cheaper only on paper. Nothing you enter leaves your browser.</p>
+</div>
+<script src="/tools/_calc/quote-ui.js"></script>

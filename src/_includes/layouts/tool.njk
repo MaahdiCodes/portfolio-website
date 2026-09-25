@@ -1,0 +1,84 @@
+---
+layout: "layouts/base.njk"
+bareBody: true
+stylesheetHref: "/lab/_styles.css"
+ogType: "website"
+toolsCss: true
+---
+{#- Shared shell for interactive tools and hub pages (tools, glossary,
+    compliance watch, industries, benchmarks). Pages supply front matter:
+    eyebrow, h1 (HTML allowed), lede, chips[], related[{href,dir,title,desc}],
+    footLabel, and optional backHref/backLabel. Everything is lang-aware. -#}
+{%- set isBn = (lang == 'bn') -%}
+{%- set home = '/bn/' if isBn else '/' -%}
+<div class="grid-bg"></div>
+
+<header class="nav">
+  <div class="shell">
+    <div class="nav-inner">
+      <a class="brand" href="{{ home }}">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span class="brand-name"><b>{% if isBn %}মেহেদী হাসান{% else %}Mehedi Hasan{% endif %}</b><em>{% if isBn %}ERP · বিজনেস অ্যানালিস্ট{% else %}ERP · Business Analyst{% endif %}</em></span>
+      </a>
+      <a class="back-link" href="{{ backHref or (home + 'tools/') }}">{{ backLabel or ('← সব টুল' if isBn else '← All tools') }}</a>
+      <button class="theme-toggle" id="theme-toggle" aria-label="{% if isBn %}থিম পরিবর্তন করুন{% else %}Toggle light/dark theme{% endif %}">
+        <svg class="icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line>
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+          <line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line>
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+        </svg>
+        <svg class="icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+        </svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<section class="post-head">
+  <div class="shell">
+    {%- if eyebrow %}<span class="eyebrow">{{ eyebrow }}</span>{% endif %}
+    <h1>{{ h1 }}</h1>
+    {%- if lede %}<p class="lede">{{ lede }}</p>{% endif %}
+    {%- if chips %}
+    <div class="post-meta">
+      {%- for c in chips %}<span class="chip{% if loop.first %} accent{% endif %}">{{ c }}</span>{% endfor %}
+    </div>
+    {%- endif %}
+  </div>
+</section>
+
+<script src="/tools/_tools.js"></script>
+{%- for sc in toolScripts %}
+<script src="{{ sc }}"></script>
+{%- endfor %}
+<div class="print-only print-head" id="print-head"></div>
+
+{{ content | safe }}
+
+<footer>
+  <div class="shell">
+    {%- if related %}
+    <div class="post-foot">
+      <span class="eyebrow">{% if isBn %}আরও দেখুন{% else %}Continue exploring{% endif %}</span>
+      <div class="next">
+        {%- for r in related %}
+        <a class="next-card" href="{{ r.href }}">
+          <span class="dir">{{ r.dir }}</span>
+          <h4>{{ r.title }}</h4>
+          <p>{{ r.desc }}</p>
+          <span class="arrow">→</span>
+        </a>
+        {%- endfor %}
+      </div>
+    </div>
+    {%- endif %}
+    <div class="foot">
+      <span>© 2026 {% if isBn %}মেহেদী হাসান{% else %}Mehedi Hasan{% endif %}{% if footLabel %} · {{ footLabel }}{% endif %}</span>
+      <span><a href="{{ home }}tools/">{% if isBn %}সব টুল{% else %}All tools{% endif %}</a> · <a href="{{ home }}#contact">{% if isBn %}যোগাযোগ{% else %}Contact{% endif %}</a></span>
+    </div>
+  </div>
+</footer>
+
+<script src="/lab/_toc.js" defer></script>

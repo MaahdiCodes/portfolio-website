@@ -1,0 +1,75 @@
+---
+layout: "layouts/tool.njk"
+permalink: "bn/courses/02-uat-go-live/index.html"
+title: "ERP প্রজেক্টের UAT, কাট-ওভার ও গো-লাইভ কোর্স (বিনামূল্যে) | মেহেদী হাসান"
+description: "বাংলাদেশে Odoo/ERP প্রজেক্ট চালু করার ৮ লেসনের বিনামূল্যের কোর্স: প্রস্তুতির শর্ত, UAT স্ক্রিপ্ট, ত্রুটি ব্যবস্থাপনা, ডেটা কাট-ওভার, ট্রেনিং, go/no-go, হাইপারকেয়ার আর স্বাভাবিক কাজে ফেরা।"
+canonical: "https://mhasan.me/bn/courses/02-uat-go-live/"
+hreflangEn: "https://mhasan.me/courses/02-uat-go-live/"
+hreflangBn: "https://mhasan.me/bn/courses/02-uat-go-live/"
+ogTitle: "বিনামূল্যের কোর্স: ERP প্রজেক্টের UAT, কাট-ওভার ও গো-লাইভ"
+ogImage: "https://mhasan.me/assets/og/courses/02-uat-go-live.png"
+backHref: "/bn/#courses"
+backLabel: "← সব কোর্স"
+jsonLd: |
+  [
+    { "@context": "https://schema.org", "@type": "Course", "name": "ERP প্রজেক্টের UAT, কাট-ওভার ও গো-লাইভ", "description": "প্রস্তুতির শর্ত, UAT, ডেটা কাট-ওভার, ট্রেনিং, go/no-go, হাইপারকেয়ার আর স্বাভাবিক কাজে ফেরা নিয়ে ৮ লেসনের কোর্স।", "url": "https://mhasan.me/bn/courses/02-uat-go-live/", "provider": { "@type": "Person", "name": "Mehedi Hasan", "url": "https://mhasan.me" }, "isAccessibleForFree": true, "inLanguage": "bn" },
+    { "@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "হোম", "item": "https://mhasan.me/bn/" },
+      { "@type": "ListItem", "position": 2, "name": "কোর্স", "item": "https://mhasan.me/bn/#courses" },
+      { "@type": "ListItem", "position": 3, "name": "UAT, কাট-ওভার ও গো-লাইভ", "item": "https://mhasan.me/bn/courses/02-uat-go-live/" } ] }
+  ]
+eyebrow: "কোর্স · ০২ · ৮ লেসন · ~২ ঘণ্টা · বিনামূল্যে"
+h1: 'UAT, কাট-ওভার ও <span class="serif">গো-লাইভ।</span>'
+lede: "কোর্স ০১-এ ছিল রিকোয়ারমেন্ট ঠিকভাবে সংগ্রহ করা। এই কোর্স সেই অংশ নিয়ে, যেখানে বেশিরভাগ ERP প্রজেক্ট আসলে ব্যর্থ হয়: সিস্টেম কাজ করে তা প্রমাণ করা, ডেটা সরানো, মানুষকে প্রস্তুত করা, গো-লাইভের সিদ্ধান্ত নেওয়া, আর প্রথম মাসটা পার করা। বাংলাদেশের Odoo প্রজেক্টের জন্য তৈরি, তবে যেকোনো ERP-তে কাজে লাগবে।"
+chips: ["বিনামূল্যে", "সাইন-আপ লাগবে না", "৮ লেসন", "টেমপ্লেটসহ"]
+footLabel: "কোর্স ০২"
+related:
+  - { href: "/bn/courses/01-requirements-gathering/", dir: "কোর্স ০১", title: "রিকোয়ারমেন্ট সংগ্রহ", desc: "এর আগের ৯ লেসনের কোর্স।" }
+  - { href: "/bn/resources/#downloads", dir: "টেমপ্লেট", title: "এই কোর্সে ব্যবহৃত টেমপ্লেট", desc: "UAT স্ক্রিপ্ট, মাইগ্রেশন চেকলিস্ট, ট্রেনিং প্ল্যান, রোডম্যাপ আর হাইপারকেয়ার লগ।" }
+extraStyles: |
+  .c2-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; }
+  .c2-list a { display: grid; grid-template-columns: 44px 1fr auto; gap: 14px; align-items: center; border: 1px solid var(--border); border-radius: 12px; padding: 16px 18px; background: var(--surface); text-decoration: none; }
+  .c2-list a:hover { border-color: color-mix(in oklch, var(--accent) 45%, transparent); }
+  .c2-n { font-family: var(--mono); font-size: 13px; color: var(--accent); }
+  .c2-t { color: var(--text); font-size: 15.5px; line-height: 1.45; }
+  .c2-m { font-size: 12px; color: var(--text-3); white-space: nowrap; }
+  .c2-list li.is-done .c2-n::after { content: " ✓"; }
+---
+<div class="shell tl-wrap">
+  <div class="tl-grid wide-left">
+    <section>
+      <ol class="c2-list" id="c2-list">
+        {%- for l in course02.lessons %}
+        <li data-l="{{ l.n }}"><a href="/bn/courses/02-uat-go-live/lesson-{{ l.n }}"><span class="c2-n">{{ l.n }}</span><span class="c2-t">{{ l.bn }}</span><span class="c2-m">{{ l.min }} মিনিট</span></a></li>
+        {%- endfor %}
+      </ol>
+      <div class="tl-prose" style="margin-top:36px">
+        <h2>কোর্সটা কেন</h2>
+        <p>বেশিরভাগ ERP ব্যর্থতা কনফিগারেশনের ব্যর্থতা নয়। সেগুলো ঘটে প্রজেক্টের শেষ ২০%-এ। UAT হয়ে যায় আনুষ্ঠানিকতা, ওপেনিং স্টক আসে গণনা থেকে নয়, পুরোনো সিস্টেম থেকে, ট্রেনিং মানে একটা ডেমো, আর "প্রস্তুত" মানে কী, তা নিয়ে কেউ একমত হয়নি। এই কোর্স সেই শেষ পথটুকুর ব্যবহারিক নির্দেশিকা। প্রতিটি লেসনের শেষে আছে নিজের প্রজেক্টে করার মতো একটা অনুশীলন, আর একটি ফ্রি টেমপ্লেটের লিংক।</p>
+      </div>
+    </section>
+    <aside class="tl-card tl-sticky">
+      <h2>যা করতে পারবেন</h2>
+      <ul class="tl-list">
+        <li>হ্যাঁ/না ধরনের প্রস্তুতির শর্ত ঠিক করা, আর বাংলাদেশের ক্যালেন্ডার মাথায় রেখে পরিকল্পনা</li>
+        <li>VAT, TDS, VDS, ল্যান্ডেড কস্ট আর পে-রোলসহ কঠিন কেস ধরতে পারে এমন UAT স্ক্রিপ্ট লেখা</li>
+        <li>একটি ত্রুটির লগ আর সৎ সিভিয়ারিটি দিয়ে UAT সাইকেল চালানো</li>
+        <li>ডেটা কাট-ওভার করে টাকায় টাকায় মেলানো</li>
+        <li>দায়িত্ব অনুযায়ী ট্রেনিং আর হাতে-কলমে যাচাই</li>
+        <li>go/no-go মিটিং আর মহড়া দেওয়া কাট-ওভার সপ্তাহান্ত চালানো</li>
+        <li>হাইপারকেয়ার, প্রথম মাস-শেষের ক্লোজিং আর স্বাভাবিক কাজে ফেরা</li>
+      </ul>
+      <div class="tl-cta-row">
+        <a class="btn-primary" href="/bn/courses/02-uat-go-live/lesson-01">লেসন ০১ শুরু করুন →</a>
+        <p class="tl-hint" id="c2-progress" style="text-align:center"></p>
+      </div>
+    </aside>
+  </div>
+</div>
+<script>
+(function () {
+  var done = {}; try { done = JSON.parse(localStorage.getItem('mh-course02') || '{}'); } catch (e) {}
+  var n = 0; document.querySelectorAll('#c2-list li').forEach(function (li) { if (done[li.getAttribute('data-l')]) { li.classList.add('is-done'); n++; } });
+  if (n) document.getElementById('c2-progress').textContent = '৮টির মধ্যে ' + n + 'টি লেসন শেষ';
+})();
+</script>

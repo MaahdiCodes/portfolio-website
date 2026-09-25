@@ -1,0 +1,79 @@
+---
+layout: "layouts/lesson.njk"
+permalink: "courses/02-uat-go-live/lesson-06.html"
+lessonN: "06"
+title: "Lesson 06 — The Go/No-Go Decision and the Cut-over Weekend · Course 02 | Mehedi Hasan"
+description: "How to run the go/no-go meeting and the cut-over weekend for an Odoo go-live in Bangladesh: criteria, runbook, hour-by-hour plan, rollback and day-one support."
+canonical: "https://mhasan.me/courses/02-uat-go-live/lesson-06"
+hreflangBn: "https://mhasan.me/bn/courses/02-uat-go-live/lesson-06"
+ogImage: "https://mhasan.me/assets/og/courses/02-uat-go-live.png"
+backHref: "/courses/02-uat-go-live/"
+backLabel: "← Course overview"
+eyebrow: "Course 02 · Lesson 06 · 15 min"
+h1: 'The go/no-go decision and the <span class="serif">cut-over weekend</span>'
+lede: "Go-live day should be boring. If it's exciting, something wasn't rehearsed. This lesson turns the readiness criteria into one decision meeting and one written runbook."
+chips: ["Go/no-go", "Cut-over", "Runbook"]
+footLabel: "Course 02 / Lesson 06"
+---
+<h2>The go/no-go meeting</h2>
+<p>Hold it three to five working days before the planned cut-over, early enough to postpone without chaos. The sponsor chairs. The client PM presents evidence against each criterion. Each process owner confirms their area. The partner PM confirms technical readiness. Then the sponsor decides: go, go with named conditions, or no-go with a new target window.</p>
+<table>
+  <thead><tr><th>Criterion</th><th>Evidence to bring</th></tr></thead>
+  <tbody>
+    <tr><td>UAT passed</td><td>Defect log: 0 open S1/S2; all Must cases passed; signed UAT sign-offs</td></tr>
+    <tr><td>Data ready</td><td>Trial load #2 reconciliation sheet, all rows OK; physical count date confirmed</td></tr>
+    <tr><td>Opening balances</td><td>Finance head's written approval of the cut-over method and figures</td></tr>
+    <tr><td>Users trained</td><td>Sign-off sheet; list of users needing a buddy on day one</td></tr>
+    <tr><td>Infrastructure</td><td>Printers, scanners and backup internet tested at every site</td></tr>
+    <tr><td>Support</td><td>Hypercare roster; superusers named; how users raise issues</td></tr>
+    <tr><td>Rollback</td><td>Written rollback plan and the decision point for using it</td></tr>
+    <tr><td>Calendar</td><td>Not within 7 days before Eid, fiscal year-end or a VAT quarter-end</td></tr>
+  </tbody>
+</table>
+<p>The go/no-go sheet in the <a href="/assets/downloads/odoo-implementation-roadmap-gantt.xlsx">roadmap template</a> calculates the decision automatically once every criterion is marked.</p>
+
+<div class="callout"><span class="tag">Key idea</span><p>A no-go is not a failure. It's the system working. Postponing a week costs a week. Going live unready costs months of workarounds and a finance team that never trusts the numbers again.</p></div>
+
+<h2>The runbook</h2>
+<p>The runbook is a numbered, hour-by-hour list of every cut-over step, with who does it, how long it took in trial load #2, how it's checked, and who signs. It's written before the weekend and followed literally during it. Nobody improvises.</p>
+<p>A typical Bangladeshi weekend cut-over for a mid-sized company looks like this:</p>
+<table>
+  <thead><tr><th>When</th><th>Step</th><th>Owner</th></tr></thead>
+  <tbody>
+    <tr><td>Thursday afternoon</td><td>Freeze starts: no more entries in the old system. Last deliveries dispatched; final invoices posted.</td><td>Client PM</td></tr>
+    <tr><td>Thursday evening</td><td>Physical stock count begins, by location, with count sheets.</td><td>Warehouse head</td></tr>
+    <tr><td>Friday morning</td><td>Count completed and variances approved. Final legacy trial balance and ageing extracted and signed.</td><td>Finance head</td></tr>
+    <tr><td>Friday afternoon</td><td>Load masters, stock, AR/AP, assets, open documents, in runbook order.</td><td>Partner tech lead</td></tr>
+    <tr><td>Friday night</td><td>Reconciliation: counts and sums to the taka; spot checks by data owners.</td><td>Finance + data owners</td></tr>
+    <tr><td>Saturday morning</td><td>Smoke test: 10 real transactions across all modules; print 6.3 and a challan; scan a barcode at each site.</td><td>Key users</td></tr>
+    <tr><td>Saturday afternoon</td><td>Written sign-off from each process owner. Old system set to read-only.</td><td>Process owners</td></tr>
+    <tr><td>Sunday 9 AM</td><td>Live. Hypercare team on site; floor-walkers in accounts and warehouse.</td><td>Everyone</td></tr>
+  </tbody>
+</table>
+
+<h2>The rollback plan</h2>
+<p>Write down in advance the point of no return and what triggers a rollback before it. For example: "If reconciliation doesn't match by Saturday 12 noon, or the smoke test finds an S1 we can't fix by 4 PM, we reopen the old system on Sunday and reschedule." Once real transactions have been entered in Odoo on Sunday, rolling back gets much harder. That's why the decision point sits on Saturday.</p>
+<p>Print the rollback plan and put it on the wall of the project room. In a stressful moment, nobody should be searching email for it.</p>
+
+<h2>Day one</h2>
+<ul>
+  <li><strong>Floor-walkers.</strong> Superusers and consultants walk the accounts office and warehouse, helping people at their desks rather than waiting for calls.</li>
+  <li><strong>One channel for issues.</strong> A single WhatsApp group or form feeds the issue log. Every issue gets an ID.</li>
+  <li><strong>A 5 PM stand-up</strong> reviews the day's issues, confirms severities, and plans tomorrow.</li>
+  <li><strong>Freeze transactions entered.</strong> Anything that happened on paper during the freeze is entered first thing.</li>
+  <li><strong>Visible leadership.</strong> A short visit from the MD on day one tells everyone this is the system now.</li>
+</ul>
+
+<div class="field-note"><span class="tag">Common pitfall</span><p>The smoke test passes at head office, but nobody tests the second site&rsquo;s printer on the new network, and on Sunday morning no delivery challans can be printed there. Make "test physical devices at every site" a named runbook step, with a photo of the printed page as evidence.</p></div>
+
+<div class="exercise"><p><strong>Exercise (20 minutes).</strong> Draft your cut-over runbook as a table: step, owner, planned duration (from trial load #2), check, and sign-off. Mark the point of no return and write your rollback trigger in one sentence.</p></div>
+
+<div class="takeaways">
+  <h3>Key takeaways</h3>
+  <ul>
+    <li>Hold go/no-go 3–5 days ahead. The sponsor decides on evidence, not optimism.</li>
+    <li>The runbook is written, timed from rehearsals, and followed literally.</li>
+    <li>Define the rollback trigger and point of no return before the weekend.</li>
+    <li>Day one runs on floor-walkers, one issue channel and a daily stand-up.</li>
+  </ul>
+</div>

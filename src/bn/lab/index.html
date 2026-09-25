@@ -360,6 +360,14 @@ extraStyles: |
   </div>
 
   <div class="lab-search-count" id="lab-count">সবগুলো ১০১টি আর্টিকেল দেখানো হচ্ছে</div>
+  <p style="margin:-4px 0 18px;font-size:13px"><a id="lab-deep" href="/bn/lab/search/" style="color:var(--accent)">প্রতিটি আর্টিকেল, টুল আর গাইডের ভেতরে খুঁজুন →</a></p>
+  <script>
+  (function () {
+    var i = document.getElementById('lab-search'), a = document.getElementById('lab-deep');
+    if (!i || !a) return;
+    i.addEventListener('input', function () { a.href = '/bn/lab/search/' + (i.value.trim() ? '?q=' + encodeURIComponent(i.value.trim()) : ''); });
+  })();
+  </script>
 
   <div class="lab-tag-filter" role="group" aria-label="আর্টিকেলের ধরন অনুযায়ী ফিল্টার করুন">
     <button class="tag-chip active" data-tag="all">সব</button>

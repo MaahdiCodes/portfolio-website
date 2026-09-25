@@ -1,0 +1,80 @@
+---
+layout: "layouts/lesson.njk"
+permalink: "courses/02-uat-go-live/lesson-02.html"
+lessonN: "02"
+title: "Lesson 02 — Designing UAT Scripts That Find Real Problems · Course 02 | Mehedi Hasan"
+description: "How to write Odoo UAT test scripts that find real problems: persona, moment, constraint, one off-happy-path variable, and a measurable expected result. Bangladesh examples."
+canonical: "https://mhasan.me/courses/02-uat-go-live/lesson-02"
+hreflangBn: "https://mhasan.me/bn/courses/02-uat-go-live/lesson-02"
+ogImage: "https://mhasan.me/assets/og/courses/02-uat-go-live.png"
+backHref: "/courses/02-uat-go-live/"
+backLabel: "← Course overview"
+eyebrow: "Course 02 · Lesson 02 · 16 min"
+h1: 'Designing UAT scripts that find <span class="serif">real problems</span>'
+lede: "A test that only follows the happy path proves the demo works. Your users won't live on the happy path, so your scripts shouldn't either."
+chips: ["UAT", "Test design", "Templates"]
+footLabel: "Course 02 / Lesson 02"
+---
+<h2>Why happy-path testing lies</h2>
+<p>The typical UAT script says: "Create a sales order with two lines, confirm, deliver, invoice. Expected: invoice created." It passes. Everyone signs. Then on the first month-end a sales order that was partially delivered needs a price change, the customer is over their credit limit, and the invoice has to carry VDS because the buyer is a withholding entity. Nobody tested that, because nobody wrote it down.</p>
+<p>Happy paths pass because the consultant configured the system for them. The value of UAT comes from deliberately going where configuration is weakest: exceptions, late changes, foreign currency, partial quantities, missing approvals and tax edge cases.</p>
+
+<h2>The anatomy of a useful test case</h2>
+<p>Every case in your script should have five parts. If one is missing, the case is weaker than it looks.</p>
+<table>
+  <thead><tr><th>Part</th><th>Weak version</th><th>Useful version</th></tr></thead>
+  <tbody>
+    <tr><td>Persona</td><td>"User"</td><td>Shila, the AP accountant</td></tr>
+    <tr><td>Moment</td><td>(none)</td><td>On the last working day of the month</td></tr>
+    <tr><td>Constraint</td><td>(none)</td><td>The vendor is a service provider with no TIN</td></tr>
+    <tr><td>Steps</td><td>"Create bill"</td><td>Create bill from PO, post, register payment</td></tr>
+    <tr><td>Measurable result</td><td>"Bill is created"</td><td>TDS at the no-TIN rate is deducted; payment = bill − TDS; certificate data is available</td></tr>
+  </tbody>
+</table>
+<p>The last row matters most. "Screen shows X" is a smoke test. A UAT result must be something a finance or operations person can verify with numbers: <em>stock value equals received quantity × PO price × exchange rate on the receipt date</em>, or <em>the tax report's output VAT equals the GL balance of the output VAT account</em>.</p>
+
+<div class="callout"><span class="tag">Rule of thumb</span><p>Force exactly one variable off the happy path per case. If you change three things at once and it fails, you won't know which one broke it.</p></div>
+
+<h2>Where to find the scenarios</h2>
+<p>You don't need to invent them. They're already in your business:</p>
+<ul>
+  <li><strong>The as-is process maps</strong> from discovery. Every pain point you recorded ("GRN posted days late", "6.3 numbering errors") becomes at least one test case.</li>
+  <li><strong>Last year's problems.</strong> Ask accounts for the five worst month-ends, and ask the warehouse for the five worst stock discrepancies. Turn each into a case.</li>
+  <li><strong>Compliance rules.</strong> Every Mushak form you need, every TDS category, the VDS rules, wage-board OT, and landed cost for imports. These are where Bangladeshi implementations most often fail.</li>
+  <li><strong>The approval matrix.</strong> Test every approval threshold just below and just above the limit.</li>
+</ul>
+
+<h2>Bangladesh cases every project should include</h2>
+<p>These cases catch the configuration gaps I see most often. They're all in the <a href="/assets/downloads/odoo-uat-test-script-template.xlsx">UAT template</a> ready to adapt:</p>
+<ul>
+  <li><strong>TDS on a vendor without a TIN</strong>, which is charged at a higher rate. It's often configured for one category only.</li>
+  <li><strong>VDS on a sale to a withholding entity</strong>: the invoice is paid net, and the 6.6 certificate must be tracked.</li>
+  <li><strong>Landed cost on an import</strong>: CD, RD and SD increase unit cost, while VAT and AT at import go to VAT receivable, not to cost. Get this wrong and every margin report is wrong. Check it against the <a href="/tools/import-duty-calculator/">import duty calculator</a>.</li>
+  <li><strong>Export invoice at 0%</strong> via fiscal position, showing on the zero-rated line of the tax report.</li>
+  <li><strong>Mushak 6.3 print</strong>: both BINs, correct serial numbering, VAT per line, and SD where applicable.</li>
+  <li><strong>Quarterly VAT data</strong>: the tax report for three months reconciles with the GL, with the monthly advance deposits recorded.</li>
+  <li><strong>Payroll for a worker with OT and one absent day</strong>: OT at basic ÷ 208 × 2, absence deducted, attendance bonus not paid. Check it against the <a href="/tools/rmg-wage-calculator/">wage calculator</a>.</li>
+  <li><strong>Access rights</strong>: a store keeper must not see product cost or vendor prices.</li>
+</ul>
+
+<h2>How many cases?</h2>
+<p>For a mid-sized manufacturer on Accounting, Inventory, Purchase, Sales and Manufacturing, 80–150 cases is normal, with about a third marked Must. Fewer than 40 usually means the edge cases are missing. More than 300 usually means the same happy path is being tested repeatedly with different product codes.</p>
+<p>Prioritise with MoSCoW, like the requirements. <strong>Must</strong> cases are the ones where a failure would stop go-live. <strong>Should</strong> cases can go live with a documented workaround.</p>
+
+<h2>End-to-end cases</h2>
+<p>Module-by-module testing misses the handovers. Include at least one case per core process that runs across modules with the real users of each step: a sales order that triggers manufacturing, which triggers purchasing of a short component, which is received with landed cost, consumed, produced, delivered, invoiced with Mushak 6.3, and paid net of VDS. When that single chain reconciles in stock, cost and tax, you've learned more than from 30 isolated cases.</p>
+
+<div class="field-note"><span class="tag">Common pitfall</span><p>Every module passes UAT on its own, then the first end-to-end test shows the finished-goods cost ignores the landed cost of imported material, because the landed cost was validated after the manufacturing order consumed the stock. Sequencing problems like this only show up end-to-end.</p></div>
+
+<div class="exercise"><p><strong>Exercise (20 minutes).</strong> Take your three biggest pain points from discovery. Write each as a test case using the five parts: persona, moment, constraint, steps, measurable result. Then write one end-to-end case for your main order-to-cash chain.</p></div>
+
+<div class="takeaways">
+  <h3>Key takeaways</h3>
+  <ul>
+    <li>Every case needs a persona, a moment, a constraint, steps and a <em>measurable</em> result.</li>
+    <li>Force one variable off the happy path per case.</li>
+    <li>Mine scenarios from pain points, past problems, compliance rules and approval limits.</li>
+    <li>Include end-to-end chains; handovers between modules are where most defects hide.</li>
+  </ul>
+</div>
+<p>Go deeper: <a href="/lab/0009-uat-script-200-users-ago">The UAT script I wish I'd written 200 users ago</a>.</p>

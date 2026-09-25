@@ -16,6 +16,10 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/lab/_toc.js");
   eleventyConfig.addPassthroughCopy("src/courses/01-requirements-gathering/_progress.js");
   eleventyConfig.addPassthroughCopy("src/courses/_styles.css");
+  // Shared runtime + styles + pure calculation modules for the interactive tools.
+  eleventyConfig.addPassthroughCopy("src/tools/_tools.css");
+  eleventyConfig.addPassthroughCopy("src/tools/_tools.js");
+  eleventyConfig.addPassthroughCopy("src/tools/_calc");
 
   // 0011 is a bespoke one-off "cheatsheet" page (tabbed doc UI, its own JS/CSS)
   // that doesn't fit the standard lab-article template. Mirrored straight from

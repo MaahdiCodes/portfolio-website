@@ -1,0 +1,157 @@
+---
+layout: "layouts/tool.njk"
+permalink: "bn/tools/rmg-wage-calculator/index.html"
+title: "RMG মজুরি ক্যালকুলেটর ২০২৬ — ন্যূনতম মজুরি, OT ও পে-রোল | মেহেদী হাসান"
+description: "গার্মেন্টস শ্রমিকের মজুরির বিনামূল্যের ক্যালকুলেটর: ২০২৩ ওয়েজ বোর্ডের গ্রেড, ৯% বার্ষিক ইনক্রিমেন্ট, মূল÷২০৮×২ হারে ওভারটাইম, অনুপস্থিতির কর্তন, উৎসব বোনাস আর কারখানার মাসিক পে-রোল।"
+canonical: "https://mhasan.me/bn/tools/rmg-wage-calculator/"
+hreflangEn: "https://mhasan.me/tools/rmg-wage-calculator/"
+hreflangBn: "https://mhasan.me/bn/tools/rmg-wage-calculator/"
+ogTitle: "RMG মজুরি ও ওভারটাইম ক্যালকুলেটর — বাংলাদেশ ২০২৬"
+ogDescription: "ওয়েজ বোর্ডের গ্রেড আর ৯% ইনক্রিমেন্ট ধরে শ্রমিকের মোট মজুরি, ওভারটাইম, হাতে পাওয়া বেতন আর কারখানার পে-রোল খরচ।"
+ogImage: "https://mhasan.me/assets/og/tools/rmg-wage-calculator.png"
+jsonLd: |
+  [
+    { "@context": "https://schema.org", "@type": "WebApplication", "name": "RMG মজুরি ক্যালকুলেটর — বাংলাদেশ", "url": "https://mhasan.me/bn/tools/rmg-wage-calculator/", "applicationCategory": "BusinessApplication", "operatingSystem": "Any (web-based)", "offers": { "@type": "Offer", "price": "0", "priceCurrency": "BDT" }, "isAccessibleForFree": true, "inLanguage": "bn", "creator": { "@type": "Person", "name": "Mehedi Hasan", "url": "https://mhasan.me" } },
+    { "@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "হোম", "item": "https://mhasan.me/bn/" },
+      { "@type": "ListItem", "position": 2, "name": "টুল", "item": "https://mhasan.me/bn/tools/" },
+      { "@type": "ListItem", "position": 3, "name": "RMG মজুরি ক্যালকুলেটর", "item": "https://mhasan.me/bn/tools/rmg-wage-calculator/" } ] }
+  ]
+toolScripts: ["/tools/_calc/wage.js"]
+eyebrow: "ফ্রি টুল · টুল / ০৪ · কমপ্লায়েন্স"
+h1: 'RMG মজুরি ক্যালকুলেটর: <span class="serif">গ্রেড, OT, হাতে পাওয়া বেতন।</span>'
+lede: "ওয়েজ বোর্ডের গ্রেড, ৯% বার্ষিক ইনক্রিমেন্ট, মূল মজুরির দ্বিগুণ হারে ওভারটাইম, অনুপস্থিতির কর্তন আর উৎসব বোনাস। একজন শ্রমিকের পে-স্লিপ বা পুরো কারখানার পে-রোল, দুটোই হিসাব করুন। আপনার Odoo পে-রোলেরও ঠিক এই নিয়মগুলোই মানা উচিত।"
+chips: ["ফ্রি টুল", "ওয়েজ বোর্ড ২০২৩", "৯% ইনক্রিমেন্ট", "শ্রম আইন ধারা ১০৮"]
+footLabel: "টুল / RMG মজুরি ক্যালকুলেটর"
+related:
+  - { href: "/bn/lab/0022-bgmea-wage-board-odoo-payroll", dir: "পড়ুন · পে-রোল", title: "Odoo পে-রোলে BGMEA ওয়েজ বোর্ড", desc: "গ্রেড, ইনক্রিমেন্ট, OT আর বোনাস কীভাবে কনফিগার করবেন, যাতে Odoo নিজেই এটা হিসাব করে।" }
+  - { href: "/bn/lab/0016-odoo-hr-payroll-bangladesh", dir: "পড়ুন · HR", title: "বাংলাদেশের জন্য Odoo HR ও পে-রোল", desc: "হাজিরা, ছুটি, বেতনের নিয়ম আর ব্যাংক ট্রান্সফার, দেশের আইন মেনে।" }
+---
+<div class="shell tl-wrap">
+  <div class="tl-tabs no-print" role="tablist" aria-label="মোড">
+    <button type="button" class="is-active" data-mode="worker" role="tab" aria-selected="true">একজন শ্রমিকের পে-স্লিপ</button>
+    <button type="button" data-mode="factory" role="tab" aria-selected="false">কারখানার পে-রোল</button>
+  </div>
+
+  <div class="tl-grid" id="mode-worker">
+    <section class="tl-card">
+      <h2>শ্রমিকের তথ্য</h2>
+      <form id="wage-worker-form" autocomplete="off" novalidate>
+        <div class="tl-field"><label for="w-grade">ওয়েজ বোর্ডের গ্রেড</label>
+          <select class="tl-select" id="w-grade">
+            <option value="g1">গ্রেড ১ · মূল মজুরি ৳৮,২০০</option>
+            <option value="g2">গ্রেড ২ · মূল মজুরি ৳৭,৮০০</option>
+            <option value="g3">গ্রেড ৩ · মূল মজুরি ৳৭,৪০০</option>
+            <option value="g4">গ্রেড ৪ · মূল মজুরি ৳৭,০৫০</option>
+            <option value="g5" selected>গ্রেড ৫ (এন্ট্রি) · মূল মজুরি ৳৬,৭০০</option>
+            <option value="app">শিক্ষানবিশ · মূল মজুরি ৳৪,৯৫০</option>
+          </select>
+        </div>
+        <div class="tl-row">
+          <div class="tl-field"><label for="w-joined">যোগদানের তারিখ (আগে হলে ১ ডিসেম্বর ২০২৩)</label><input class="tl-input" type="date" id="w-joined" value="2023-12-01"></div>
+          <div class="tl-field"><label for="w-asof">বেতনের মাস</label><input class="tl-input" type="date" id="w-asof"></div>
+        </div>
+        <div class="tl-row three">
+          <div class="tl-field"><label for="w-ot">এই মাসে OT ঘণ্টা</label><input class="tl-input" type="number" min="0" id="w-ot" value="40"></div>
+          <div class="tl-field"><label for="w-abs">অনুপস্থিত দিন</label><input class="tl-input" type="number" min="0" id="w-abs" value="0"></div>
+          <div class="tl-field"><label for="w-days">মাসের দিন</label><input class="tl-input" type="number" min="28" max="31" id="w-days" value="30"></div>
+        </div>
+        <div class="tl-row three">
+          <div class="tl-field"><label for="w-att">হাজিরা বোনাস (৳)</label><input class="tl-input" type="number" min="0" id="w-att" value="0"></div>
+          <div class="tl-field"><label for="w-stamp">স্ট্যাম্প / অন্যান্য কর্তন (৳)</label><input class="tl-input" type="number" min="0" id="w-stamp" value="0"></div>
+          <div class="tl-field"><label for="w-inc">বার্ষিক ইনক্রিমেন্ট</label><div class="tl-suffix"><input class="tl-input" type="number" min="0" max="20" step="0.5" id="w-inc" value="9"><span>%</span></div></div>
+        </div>
+        <p class="tl-hint">হাজিরা বোনাস কারখানার নীতি, আইন নয়, তাই শুধু শূন্য অনুপস্থিতিতে দেওয়া হয়। ডিসেম্বর ২০২৪ থেকে ইনক্রিমেন্ট মূল মজুরির ৯% (আগে ছিল ৫%)। মজুরি বোর্ড বদলালে এখানে পরিবর্তন করুন।</p>
+      </form>
+    </section>
+    <section class="tl-card tl-sticky" aria-live="polite">
+      <h2>পে-স্লিপ</h2>
+      <div class="tl-headline">
+        <div class="h-label">এই মাসে হাতে পাবেন</div>
+        <div class="h-value" id="w-net">—</div>
+        <div class="h-sub" id="w-gross-sub">—</div>
+      </div>
+      <div class="tl-stats">
+        <div class="tl-stat"><div class="s-v" id="w-basic">—</div><div class="s-l">বর্তমান মূল মজুরি</div></div>
+        <div class="tl-stat"><div class="s-v" id="w-otrate">—</div><div class="s-l">OT হার (মূল ÷ ২০৮ × ২)</div></div>
+        <div class="tl-stat"><div class="s-v" id="w-annual">—</div><div class="s-l">উৎসব বোনাসসহ বার্ষিক মোট</div></div>
+      </div>
+      <table class="tl-table"><tbody id="w-table"></tbody></table>
+      <ul class="tl-list" id="w-notes" style="margin-top:12px"></ul>
+      <div class="tl-cta-row inline">
+        <button type="button" class="btn-ghost" id="w-share" style="flex:1">শেয়ার লিংক কপি করুন</button>
+        <button type="button" class="btn-ghost" data-print style="flex:1">PDF হিসেবে সেভ করুন</button>
+      </div>
+    </section>
+  </div>
+
+  <div class="tl-grid" id="mode-factory" hidden>
+    <section class="tl-card">
+      <h2>গ্রেড অনুযায়ী শ্রমিকসংখ্যা</h2>
+      <form id="wage-factory-form" autocomplete="off" novalidate>
+        <div class="tl-row three">
+          <div class="tl-field"><label for="f-g1">গ্রেড ১</label><input class="tl-input" type="number" min="0" id="f-g1" value="80"></div>
+          <div class="tl-field"><label for="f-g2">গ্রেড ২</label><input class="tl-input" type="number" min="0" id="f-g2" value="150"></div>
+          <div class="tl-field"><label for="f-g3">গ্রেড ৩</label><input class="tl-input" type="number" min="0" id="f-g3" value="250"></div>
+        </div>
+        <div class="tl-row three">
+          <div class="tl-field"><label for="f-g4">গ্রেড ৪</label><input class="tl-input" type="number" min="0" id="f-g4" value="200"></div>
+          <div class="tl-field"><label for="f-g5">গ্রেড ৫</label><input class="tl-input" type="number" min="0" id="f-g5" value="300"></div>
+          <div class="tl-field"><label for="f-app">শিক্ষানবিশ</label><input class="tl-input" type="number" min="0" id="f-app" value="20"></div>
+        </div>
+        <div class="tl-row">
+          <div class="tl-field"><label for="f-ot">শ্রমিকপ্রতি মাসে গড় OT ঘণ্টা</label><input class="tl-input" type="number" min="0" id="f-ot" value="40"></div>
+          <div class="tl-field"><label for="f-years">গড়ে কয়টি ইনক্রিমেন্ট পেয়েছেন</label><input class="tl-input" type="number" min="0" max="10" step="0.5" id="f-years" value="2"></div>
+        </div>
+        <div class="tl-row">
+          <div class="tl-field"><label for="f-att">শ্রমিকপ্রতি হাজিরা বোনাস (৳)</label><input class="tl-input" type="number" min="0" id="f-att" value="0"></div>
+          <div class="tl-field"><label for="f-inc">বার্ষিক ইনক্রিমেন্ট</label><div class="tl-suffix"><input class="tl-input" type="number" min="0" max="20" step="0.5" id="f-inc" value="9"><span>%</span></div></div>
+        </div>
+        <p class="tl-hint">শুধু শ্রমিকদের গ্রেড। স্টাফ, অফিসার আর ম্যানেজমেন্টের বেতন ওয়েজ বোর্ডের কাঠামোর বাইরে, তাই সেগুলো আলাদা যোগ করুন।</p>
+      </form>
+    </section>
+    <section class="tl-card tl-sticky" aria-live="polite">
+      <h2>পে-রোলের খরচ</h2>
+      <div class="tl-headline">
+        <div class="h-label">শ্রমিকদের মাসিক পে-রোল</div>
+        <div class="h-value" id="f-monthly">—</div>
+        <div class="h-sub">মোট মজুরি + ওভারটাইম + হাজিরা বোনাস</div>
+      </div>
+      <div class="tl-stats">
+        <div class="tl-stat"><div class="s-v" id="f-annual">—</div><div class="s-l">২টি উৎসব বোনাসসহ বার্ষিক</div></div>
+        <div class="tl-stat"><div class="s-v" id="f-workers">—</div><div class="s-l">শ্রমিক</div></div>
+        <div class="tl-stat"><div class="s-v" id="f-otshare">—</div><div class="s-l">পে-রোলে OT-র অংশ</div></div>
+      </div>
+      <div class="tl-table-wrap"><table class="tl-table" id="f-table"></table></div>
+      <p class="tl-note">এত বড় পে-রোল Excel-এ চালাতে সাধারণত মাসে ৩–৫ দিন লাগে, আর OT-তে দুই দিকেই ভুল হয়। ঠিকভাবে কনফিগার করা Odoo পে-রোলে লাগে কয়েক ঘণ্টা। দেখুন <a href="/bn/lab/0022-bgmea-wage-board-odoo-payroll">কীভাবে সেটআপ করবেন</a>।</p>
+      <div class="tl-cta-row inline"><button type="button" class="btn-ghost" data-print style="flex:1">PDF হিসেবে সেভ করুন</button></div>
+    </section>
+  </div>
+
+  <section class="tl-card" style="margin-top:28px">
+    <h2>২০২৩ সালের ওয়েজ বোর্ড কাঠামো (গার্মেন্টস)</h2>
+    <div class="tl-table-wrap">
+      <table class="tl-table">
+        <thead><tr><th>গ্রেড</th><th class="num">মূল মজুরি</th><th class="num">বাড়ি ভাড়া</th><th class="num">মোট</th></tr></thead>
+        <tbody id="grade-ref"></tbody>
+      </table>
+    </div>
+    <p class="tl-hint">প্রতিটি গ্রেডে আরও আছে চিকিৎসা ৳৭৫০, যাতায়াত ৳৪৫০ আর খাদ্য ৳১,২৫০। এগুলো ১ ডিসেম্বর ২০২৩ থেকে শুরুর ন্যূনতম, কোনো বার্ষিক ইনক্রিমেন্টের আগে।</p>
+  </section>
+
+  <details class="tl-details">
+    <summary>যে নিয়ম মেনে হিসাব হয়, আর সূত্র</summary>
+    <div class="d-body">
+      <ul>
+        <li><strong>গ্রেড ও উপাদান:</strong> RMG খাতের ন্যূনতম মজুরি বোর্ডের গেজেট, ১ ডিসেম্বর ২০২৩ থেকে কার্যকর। ৫টি শ্রমিক গ্রেড, মোট মজুরি ৳১২,৫০০ থেকে ৳১৪,৭৫০। শিক্ষানবিশের মজুরি ৳৯,৮৭৫, সর্বোচ্চ ৩ মাস (আরও ৩ মাস বাড়ানো যায়)।</li>
+        <li><strong>বার্ষিক ইনক্রিমেন্ট:</strong> ২০২৩ কাঠামোতে মূল মজুরির ৫%। সরকারের জানুয়ারি ২০২৫-এর গেজেট এটা ৯% করেছে, ১ ডিসেম্বর ২০২৪ থেকে কার্যকর, পরের মজুরি বোর্ড পর্যন্ত। ক্যালকুলেটর প্রতি পূর্ণ চাকরি-বছরে একবার এটা যোগ করে।</li>
+        <li><strong>ওভারটাইম:</strong> বাংলাদেশ শ্রম আইন ২০০৬, ধারা ১০৮ অনুযায়ী মূল মজুরির সাধারণ হারের দ্বিগুণ। ঘণ্টাপ্রতি মূল মজুরি = মূল ÷ ২০৮ (৪৮ ঘণ্টা × ৫২ সপ্তাহ ÷ ১২)।</li>
+        <li><strong>উৎসব বোনাস:</strong> বাংলাদেশ শ্রম বিধিমালা ২০১৫, বিধি ১১১। টানা এক বছর চাকরির পর বছরে দুটি, প্রতিটি সর্বোচ্চ এক মাসের মূল মজুরি।</li>
+        <li><strong>অনুপস্থিতির কর্তন:</strong> প্রচলিত পদ্ধতি মূল ÷ মাসের দিন × অনুপস্থিত দিন। নিজের কারখানার নীতি আর শ্রম আইনে কর্তনের সীমা দেখে নিন।</li>
+      </ul>
+      <p><strong>নজরে রাখুন:</strong> আগস্ট ২০২৬-এ শ্রমিক ইউনিয়নগুলো ন্যূনতম মজুরি বোর্ড পুনর্গঠনের দাবি জানিয়েছে, যাতে এই ডিসেম্বরে নতুন কাঠামো কার্যকর হতে পারে। নতুন গেজেট প্রকাশ হলে এই ক্যালকুলেটর হালনাগাদ হবে। খবর রাখে <a href="/bn/compliance-watch/">কমপ্লায়েন্স ওয়াচ</a>।</p>
+    </div>
+  </details>
+  <p class="tl-disclosure"><strong>আইনি পরামর্শ নয়।</strong> পে-রোল কনফিগারেশনের জন্য প্রকাশিত গেজেট আর শ্রম আইনের নিয়ম আমি যেভাবে বুঝি, এই ক্যালকুলেটর সেভাবে হিসাব করে। কারখানার চুক্তি, বায়ারের আচরণবিধি আর পরের গেজেট সংখ্যা বদলে দিতে পারে। বেতন দেওয়ার আগে আপনার HR বা কমপ্লায়েন্স উপদেষ্টার সঙ্গে নিশ্চিত হয়ে নিন।</p>
+</div>
+<script src="/tools/_calc/wage-ui.js"></script>

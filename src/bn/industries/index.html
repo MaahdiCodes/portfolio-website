@@ -1,0 +1,41 @@
+---
+layout: "layouts/tool.njk"
+permalink: "bn/industries/index.html"
+title: "ইন্ডাস্ট্রি অনুযায়ী Odoo ERP — বাংলাদেশের ২০টির বেশি খাতের গাইড | মেহেদী হাসান"
+description: "বাংলাদেশের ২০টির বেশি ইন্ডাস্ট্রির জন্য Odoo ERP গাইড: RMG, টেক্সটাইল, ফার্মা, ট্রেডিং, চামড়া, পাট, প্লাস্টিক, খাদ্য, স্টিল, সিরামিক, ফার্নিচার, চা, হাসপাতাল, রিয়েল এস্টেট, রিটেইল আর আরও। প্রতিটির মডিউল, কমপ্লায়েন্স আর খরচ।"
+canonical: "https://mhasan.me/bn/industries/"
+hreflangEn: "https://mhasan.me/industries/"
+hreflangBn: "https://mhasan.me/bn/industries/"
+ogTitle: "ইন্ডাস্ট্রি অনুযায়ী Odoo ERP — বাংলাদেশ"
+ogImage: "https://mhasan.me/assets/og/industries/index.png"
+backHref: "/bn/"
+backLabel: "← mhasan.me"
+eyebrow: "ইন্ডাস্ট্রি"
+h1: 'ইন্ডাস্ট্রি অনুযায়ী <span class="serif">Odoo।</span>'
+lede: "গার্মেন্টস কারখানার ERP আর ডায়াগনস্টিক সেন্টারের ERP-র নাম এক হলেও মিল সামান্য। আপনার ইন্ডাস্ট্রি বেছে নিন। দেখবেন প্রজেক্ট কোথায় কঠিন হয়, কোন Odoo মডিউল জরুরি, কোন বাংলাদেশি কমপ্লায়েন্সের পরিকল্পনা রাখতে হবে, আর আপনার খাতের জন্য সাজানো খরচের হিসাব।"
+chips: ["২১টি ইন্ডাস্ট্রি", "মডিউল", "কমপ্লায়েন্স", "খরচের প্রিসেট"]
+footLabel: "ইন্ডাস্ট্রি"
+jsonLd: |
+  [
+    { "@context": "https://schema.org", "@type": "CollectionPage", "name": "বাংলাদেশে ইন্ডাস্ট্রি অনুযায়ী Odoo ERP", "url": "https://mhasan.me/bn/industries/", "inLanguage": "bn" },
+    { "@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "হোম", "item": "https://mhasan.me/bn/" },
+      { "@type": "ListItem", "position": 2, "name": "ইন্ডাস্ট্রি", "item": "https://mhasan.me/bn/industries/" } ] }
+  ]
+related:
+  - { href: "/bn/tools/", dir: "টুল", title: "সব ফ্রি টুল", desc: "খরচ, ROI, প্রস্তুতি, কোটেশন, মজুরি, আমদানি শুল্ক আর VAT।" }
+  - { href: "/bn/compliance-watch/", dir: "হালনাগাদ", title: "কমপ্লায়েন্স ওয়াচ", desc: "VAT, কাস্টমস আর মজুরিতে কী বদলেছে, আর আপনার ERP-র জন্য তার মানে কী।" }
+---
+<div class="shell tl-wrap">
+  <div class="hub-grid">
+    {%- for ind in industries %}
+    <a class="hub-card" href="/bn/industries/{{ ind.slug }}/">
+      <span class="hc-tag">{{ ind.tagBn }}</span>
+      <h3>{{ ind.bn.name }}</h3>
+      <p>{{ ind.bn.short }}</p>
+      <span class="hc-meta"><span>{{ ind.articles | length }}টি গাইড</span><span>→</span></span>
+    </a>
+    {%- endfor %}
+  </div>
+  <p class="tl-disclosure">আপনার ইন্ডাস্ট্রি তালিকায় নেই? <a href="/bn/lab/">ল্যাবে</a> এমন মডিউল আর প্রসেস নিয়ে লেখা আছে যা সব খাতেই কাজে লাগে, আর <a href="/bn/tools/erp-readiness-assessment/">প্রস্তুতি যাচাই</a> যেকোনো ব্যবসার জন্য চলে। অথবা <a href="/bn/#contact">সরাসরি জিজ্ঞেস করুন</a>।</p>
+</div>

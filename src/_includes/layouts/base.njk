@@ -56,7 +56,7 @@
 {%- endif %}
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500{% if lang == 'bn' %}&family=Noto+Sans+Bengali:wght@400;500;600;700{% endif %}&family=Instrument+Serif:ital@0;1&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500{% if lang == 'bn' or fontsBn %}&family=Noto+Sans+Bengali:wght@400;500;600;700{% endif %}&family=Instrument+Serif:ital@0;1&display=swap">
 <script>
   (function () {
     var t = localStorage.getItem('mh-theme');
@@ -66,6 +66,9 @@
 </script>
 {%- if stylesheetHref != false %}
 <link rel="stylesheet" href="{{ stylesheetHref or '/lab/_styles.css' }}">
+{%- endif %}
+{%- if toolsCss %}
+<link rel="stylesheet" href="/tools/_tools.css">
 {%- endif %}
 {%- if extraStyles %}
 <style>

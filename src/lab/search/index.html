@@ -1,0 +1,54 @@
+---
+layout: "layouts/tool.njk"
+permalink: "lab/search/index.html"
+stylesheetHref: "/lab/_styles.css"
+title: "Search the Lab — Odoo & ERP in Bangladesh | Mehedi Hasan"
+description: "Search 100+ in-depth articles, tools, industry guides and courses on Odoo ERP, NBR VAT, customs, payroll and ERP projects in Bangladesh."
+canonical: "https://mhasan.me/lab/search/"
+hreflangBn: "https://mhasan.me/bn/lab/search/"
+ogType: "website"
+ogTitle: "Search the Lab — Odoo & ERP in Bangladesh"
+ogImage: "https://mhasan.me/assets/og/lab/search.png"
+robots: "noindex, follow"
+backHref: "/lab/"
+backLabel: "← Back to Lab"
+eyebrow: "Search · Lab, tools & guides"
+h1: 'Find the <span class="serif">answer.</span>'
+lede: "Search 100+ Lab articles, the tools, the industry guides and both courses. Try a question, a Mushak number, a module, or an article number like 0048."
+chips: ["100+ articles", "Tools", "Industries", "Instant"]
+footLabel: "Lab / Search"
+related:
+  - { href: "/glossary/", dir: "Glossary", title: "Look up a term instead", desc: "500+ ERP and compliance terms in English and Bangla." }
+  - { href: "/#contact", dir: "Ask", title: "Can't find it?", desc: "Send me the question. If it's useful to others, it becomes the next Lab article." }
+extraStyles: |
+  .s-box { max-width: 820px; }
+  .s-try { display: flex; flex-wrap: wrap; gap: 6px; margin: 12px 0 4px; }
+  .s-try .btn-ghost { padding: 6px 11px; font-size: 12px; }
+  .s-results { max-width: 820px; margin-top: 14px; display: grid; gap: 10px; }
+  .s-res { display: block; border: 1px solid var(--border); border-radius: 12px; padding: 14px 18px; background: var(--surface); text-decoration: none; transition: border-color .15s ease; }
+  .s-res:hover { border-color: color-mix(in oklch, var(--accent) 45%, transparent); }
+  .s-kind { font-family: var(--mono); font-size: 10.5px; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); }
+  .s-res h3 { margin: 4px 0 6px; font-size: 16.5px; font-weight: 500; color: var(--text); line-height: 1.35; }
+  .s-res p { margin: 0; font-size: 13.5px; color: var(--text-2); line-height: 1.55; }
+  .s-res mark { background: var(--accent-dim); color: var(--text); border-radius: 3px; padding: 0 2px; }
+---
+<div class="shell tl-wrap">
+  <div class="s-box">
+    <div class="tl-search">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+      <input class="tl-input" type="search" id="s-q" placeholder="e.g. Mushak 6.3, landed cost, wage board, UAT" aria-label="Search" autocomplete="off" autofocus>
+    </div>
+    <div class="s-try">
+      <span class="tl-hint" style="margin:6px 4px 0 0">Try:</span>
+      <button type="button" class="btn-ghost" data-try="mushak">mushak</button>
+      <button type="button" class="btn-ghost" data-try="cost">cost</button>
+      <button type="button" class="btn-ghost" data-try="garments payroll">garments payroll</button>
+      <button type="button" class="btn-ghost" data-try="data migration">data migration</button>
+      <button type="button" class="btn-ghost" data-try="LC">LC</button>
+      <button type="button" class="btn-ghost" data-try="vendor">vendor</button>
+    </div>
+    <p class="tl-hint" id="s-meta" aria-live="polite"></p>
+  </div>
+  <div class="s-results" id="s-results"></div>
+</div>
+<script src="/tools/_calc/search-ui.js"></script>

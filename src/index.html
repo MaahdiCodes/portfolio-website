@@ -1466,6 +1466,9 @@ extraStyles: |
         gap: 24px
       }
   
+      @media(min-width:1001px) { .courses.four > .course-card { grid-column: span 3 } }
+      .tools-more { margin-top: 22px; display: flex; flex-wrap: wrap; gap: 10px; align-items: center; font-size: 14px; color: var(--text-2) }
+      .tools-more a { color: var(--accent) }
       .course-card {
         grid-column: span 4;
         border: 1px solid var(--border);
@@ -3302,7 +3305,7 @@ extraStyles: |
         </p>
       </div>
 
-      <div class="courses">
+      <div class="courses four">
         <a class="course-card reveal" href="courses/01-requirements-gathering/">
           <div class="c-top">
             <span class="badge">Course · 01</span>
@@ -3315,9 +3318,21 @@ extraStyles: |
           <div class="meta-row"><span>Available now</span><span>~ 2.5 hrs</span></div>
         </a>
 
-        <a class="course-card reveal" href="#">
+        <a class="course-card reveal" href="courses/02-uat-go-live/">
           <div class="c-top">
             <span class="badge">Course · 02</span>
+            <span class="lessons">8 LESSONS</span>
+          </div>
+          <h4>UAT, cut-over &amp; go-live</h4>
+          <p class="sub">Readiness criteria, UAT scripts that find real problems, data cut-over to the taka, go/no-go, and
+            hypercare. Free, no sign-up.</p>
+          <div class="progress"><span style="width:100%"></span></div>
+          <div class="meta-row"><span>Available now</span><span>~ 2 hrs</span></div>
+        </a>
+
+        <a class="course-card reveal" href="#">
+          <div class="c-top">
+            <span class="badge">Course · 03</span>
             <span class="lessons">12 LESSONS</span>
           </div>
           <h4>Odoo for Manufacturing — from mapping to go-live</h4>
@@ -3329,7 +3344,7 @@ extraStyles: |
 
         <a class="course-card reveal" href="#">
           <div class="c-top">
-            <span class="badge soon">Course · 03</span>
+            <span class="badge soon">Course · 04</span>
             <span class="lessons">SOON</span>
           </div>
           <h4>Multi-currency &amp; export operations, demystified</h4>
@@ -3351,23 +3366,82 @@ extraStyles: |
           <h2 class="section-title">Tools that <span class="serif">help</span> you decide.</h2>
         </div>
         <p class="section-desc reveal">
-          Free interactive utilities built from real Bangladesh ERP projects. No sign-up, no email gate — just answer
+          Free calculators, checklists and compliance tools built from real Bangladesh ERP projects. No sign-up, no email gate. Answer
           a few questions and get a number you can take to the boardroom.
         </p>
       </div>
 
       <div class="courses">
-        <a class="course-card reveal" href="tools/odoo-cost-estimator/" style="grid-column:4 / span 6;">
+        <a class="course-card reveal" href="tools/odoo-cost-estimator/">
           <div class="c-top">
             <span class="badge">Tool · 01</span>
             <span class="lessons">FREE</span>
           </div>
           <h4>Odoo Cost Estimator — Bangladesh 2026</h4>
-          <p class="sub">Get a personalised Odoo ERP cost range — licence, implementation, training, and
-            Bangladesh-specific compliance — in BDT and USD. Year-1 promo + year-2 regular pricing both shown.</p>
+          <p class="sub">Licence, implementation, training and Bangladesh compliance costs in BDT and USD, with year 1–3 TCO.</p>
           <div class="progress"><span style="width:100%"></span></div>
           <div class="meta-row"><span>Live calculator</span><span>~ 60 seconds</span></div>
         </a>
+        <a class="course-card reveal" href="tools/odoo-roi-calculator/">
+          <div class="c-top">
+            <span class="badge">Tool · 02</span>
+            <span class="lessons">FREE</span>
+          </div>
+          <h4>Odoo ROI Calculator</h4>
+          <p class="sub">3-year ROI and your break-even month across five benefit categories, with a realistic go-live ramp.</p>
+          <div class="progress"><span style="width:100%"></span></div>
+          <div class="meta-row"><span>Business case</span><span>~ 3 minutes</span></div>
+        </a>
+        <a class="course-card reveal" href="tools/erp-readiness-assessment/">
+          <div class="c-top">
+            <span class="badge">Tool · 03</span>
+            <span class="lessons">FREE</span>
+          </div>
+          <h4>ERP Readiness Assessment</h4>
+          <p class="sub">25 questions. A readiness score, the red flags that sink ERP projects, and your next three steps.</p>
+          <div class="progress"><span style="width:100%"></span></div>
+          <div class="meta-row"><span>Self-assessment</span><span>~ 5 minutes</span></div>
+        </a>
+        <a class="course-card reveal" href="tools/odoo-quote-checker/">
+          <div class="c-top">
+            <span class="badge">Tool · 04</span>
+            <span class="lessons">FREE</span>
+          </div>
+          <h4>Odoo Quote Checker</h4>
+          <p class="sub">Tick what a vendor's proposal includes. See the gaps, their likely cost, and the questions to send back.</p>
+          <div class="progress"><span style="width:100%"></span></div>
+          <div class="meta-row"><span>Vendor proposals</span><span>~ 5 minutes</span></div>
+        </a>
+        <a class="course-card reveal" href="tools/vat-mushak-helper/">
+          <div class="c-top">
+            <span class="badge">Tool · 05</span>
+            <span class="lessons">FINANCE ACT 2026</span>
+          </div>
+          <h4>VAT &amp; Mushak Helper</h4>
+          <p class="sub">Which Mushak forms and returns apply after the quarterly-return change, and how to produce each in Odoo.</p>
+          <div class="progress"><span style="width:100%"></span></div>
+          <div class="meta-row"><span>Compliance</span><span>~ 2 minutes</span></div>
+        </a>
+        <a class="course-card reveal" href="tools/rmg-wage-calculator/">
+          <div class="c-top">
+            <span class="badge">Tool · 06</span>
+            <span class="lessons">WAGE BOARD</span>
+          </div>
+          <h4>RMG Wage &amp; Payroll Calculator</h4>
+          <p class="sub">Grade wages with the 9% increment, overtime, festival bonus and factory payroll cost.</p>
+          <div class="progress"><span style="width:100%"></span></div>
+          <div class="meta-row"><span>Compliance</span><span>~ 2 minutes</span></div>
+        </a>
+      </div>
+      <div class="tools-more reveal">
+        <span>Also free:</span>
+        <a href="tools/import-duty-calculator/">Import duty &amp; landed cost</a> ·
+        <a href="benchmarks/odoo-implementation-pricing-bangladesh/">Odoo price benchmarks</a> ·
+        <a href="compliance-watch/">Compliance Watch</a> ·
+        <a href="glossary/">Glossary (EN + বাংলা)</a> ·
+        <a href="industries/">Odoo by industry</a> ·
+        <a href="resources/#downloads">14 downloadable templates</a> ·
+        <a href="tools/"><strong>All tools →</strong></a>
       </div>
     </div>
   </section>

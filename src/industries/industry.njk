@@ -1,0 +1,35 @@
+---
+layout: "layouts/tool.njk"
+pagination:
+  data: industries
+  size: 1
+  alias: ind
+permalink: "industries/{{ ind.slug }}/index.html"
+backHref: "/industries/"
+backLabel: "← All industries"
+eleventyComputed:
+  title: "Odoo ERP for {{ ind.en.name }} in Bangladesh — Modules, Compliance & Cost | Mehedi Hasan"
+  description: "Odoo ERP for {{ ind.en.name }} in Bangladesh: {{ ind.en.short }} Modules to use, compliance to plan for, cost estimate and in-depth guides."
+  canonical: "https://mhasan.me/industries/{{ ind.slug }}/"
+  hreflangBn: "https://mhasan.me/bn/industries/{{ ind.slug }}/"
+  ogTitle: "Odoo for {{ ind.en.name }} — Bangladesh"
+  ogImage: "https://mhasan.me/assets/og/industries/{{ ind.slug }}.png"
+  eyebrow: "Industries · {{ ind.tag }}"
+  h1: 'Odoo for <span class="serif">{{ ind.en.name }}.</span>'
+  lede: "{{ ind.en.short }} Here's where ERP projects in this industry get hard in Bangladesh, which Odoo modules carry the load, the compliance to plan for, and the guides that go deeper."
+  chips: ["Industry guide", "{{ ind.tag }}", "Bangladesh"]
+  footLabel: "Industries / {{ ind.en.name }}"
+  jsonLd: |
+    [
+      { "@context": "https://schema.org", "@type": "WebPage", "name": "Odoo ERP for {{ ind.en.name }} in Bangladesh", "url": "https://mhasan.me/industries/{{ ind.slug }}/", "inLanguage": "en",
+        "about": { "@type": "Thing", "name": "{{ ind.en.name }}" }, "author": { "@type": "Person", "name": "Mehedi Hasan", "url": "https://mhasan.me" } },
+      { "@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://mhasan.me/" },
+        { "@type": "ListItem", "position": 2, "name": "Industries", "item": "https://mhasan.me/industries/" },
+        { "@type": "ListItem", "position": 3, "name": "{{ ind.en.name }}", "item": "https://mhasan.me/industries/{{ ind.slug }}/" } ] }
+    ]
+related:
+  - { href: "/industries/", dir: "Industries", title: "Other industries", desc: "20+ Bangladeshi sectors, each with modules, compliance and guides." }
+  - { href: "/tools/", dir: "Tools", title: "All free tools", desc: "Cost, ROI, readiness, quotes, wages, import duty and VAT." }
+---
+{% include "partials/industry-body.njk" %}

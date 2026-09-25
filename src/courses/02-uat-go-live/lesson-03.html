@@ -1,0 +1,81 @@
+---
+layout: "layouts/lesson.njk"
+permalink: "courses/02-uat-go-live/lesson-03.html"
+lessonN: "03"
+title: "Lesson 03 — Running UAT: Cycles, Defects, Severity and Sign-off · Course 02 | Mehedi Hasan"
+description: "How to run UAT on an Odoo project: who tests, how many cycles, how to log and classify defects (S1–S4), daily triage, and what sign-off really means."
+canonical: "https://mhasan.me/courses/02-uat-go-live/lesson-03"
+hreflangBn: "https://mhasan.me/bn/courses/02-uat-go-live/lesson-03"
+ogImage: "https://mhasan.me/assets/og/courses/02-uat-go-live.png"
+backHref: "/courses/02-uat-go-live/"
+backLabel: "← Course overview"
+eyebrow: "Course 02 · Lesson 03 · 15 min"
+h1: 'Running UAT: cycles, defects, <span class="serif">severity and sign-off</span>'
+lede: "Good scripts are half of UAT. The other half is running it with discipline: the right testers, protected time, a single defect log and an honest sign-off."
+chips: ["UAT", "Defect management", "Sign-off"]
+footLabel: "Course 02 / Lesson 03"
+---
+<h2>Who tests</h2>
+<p>UAT is done by the people who'll do the work, not by the consultant and not by the IT team. The AP accountant tests vendor bills. The store keeper tests receipts, in the warehouse, on the scanner they'll actually use. The consultant's job during UAT is to watch, explain and fix, not to click.</p>
+<p>That only works if testers' time is protected. Three hours a day for two to four weeks is typical for key users on a mid-sized project. If their normal workload hasn't been reduced to make room, UAT becomes something they squeeze in after 6 PM, and it gets skipped. Get this agreed in writing with their managers before UAT starts.</p>
+
+<h2>Prepare the environment</h2>
+<ul>
+  <li><strong>A separate UAT database</strong>, a copy of the configuration, never the production database.</li>
+  <li><strong>Migrated data from a trial load</strong>, not demo data. Testing with "Test Customer 1" hides problems that real customer data will expose: duplicate names, missing BINs, odd units of measure.</li>
+  <li><strong>Real devices</strong>: the label printer, the barcode scanner, the 6.3 printer in the accounts office.</li>
+  <li><strong>User accounts with the real access rights.</strong> If testers use admin accounts, access-rights problems stay hidden until go-live day.</li>
+</ul>
+
+<h2>Cycles</h2>
+<p>Plan for at least two cycles, three on larger projects:</p>
+<table>
+  <thead><tr><th>Cycle</th><th>Purpose</th><th>Typical length</th></tr></thead>
+  <tbody>
+    <tr><td>Cycle 1</td><td>Run every case once. Expect failures, which is the point.</td><td>1–2 weeks</td></tr>
+    <tr><td>Fix window</td><td>Partner fixes configuration and defects; you re-run trial load #2.</td><td>3–5 days</td></tr>
+    <tr><td>Cycle 2</td><td>Re-run every failed case plus all Must cases, and run the end-to-end chains on the new data load.</td><td>1 week</td></tr>
+    <tr><td>Cycle 3 (if needed)</td><td>Only for remaining failures and regression checks.</td><td>2–3 days</td></tr>
+  </tbody>
+</table>
+<p>Why re-run Must cases that already passed? Because fixing one thing often breaks another. A change to tax configuration for exports can quietly change domestic invoices.</p>
+
+<h2>One defect log, four severities</h2>
+<p>Every failure goes into one shared log: not WhatsApp, not email threads, not the consultant's notebook. Each defect has an ID, the test case it came from, steps to reproduce, a severity, an owner and a status. The <a href="/assets/downloads/odoo-uat-test-script-template.xlsx">UAT template</a> includes this log with a summary that counts open defects automatically.</p>
+<table>
+  <thead><tr><th>Severity</th><th>Meaning</th><th>Example</th></tr></thead>
+  <tbody>
+    <tr><td>S1 — Critical</td><td>A core process can't be done, and there's no workaround</td><td>Vendor bills can't be posted; Mushak 6.3 can't be generated</td></tr>
+    <tr><td>S2 — High</td><td>Wrong result, or only a painful workaround</td><td>TDS not calculated for one vendor category</td></tr>
+    <tr><td>S3 — Medium</td><td>Minor issue with an easy workaround</td><td>Report missing a column; print alignment off</td></tr>
+    <tr><td>S4 — Low</td><td>Cosmetic or a request for something new</td><td>Change a label; reorder columns</td></tr>
+  </tbody>
+</table>
+<p>Watch for S4s in disguise. "The system doesn't do it the way Tally did" is usually a change request, not a defect. Log it separately, because change requests go through change control (and possibly cost), not through the defect fix list.</p>
+
+<h2>Daily triage</h2>
+<p>During UAT, hold a 20-minute stand-up every morning with the client PM, the partner PM and the key users. Go through the new defects: confirm the severity, assign an owner, and agree when the fix will be ready to retest. Resist the urge to debate solutions in this meeting. Its only job is to keep the log accurate and moving.</p>
+
+<div class="field-note"><span class="tag">Common pitfall</span><p>Severity drift. Under deadline pressure, S2s get relabelled as S3s so the exit criteria look met. Agree the severity definitions before UAT starts, and let the process owner, not the vendor, have the final word on severity.</p></div>
+
+<h2>What sign-off means</h2>
+<p>A process owner's UAT sign-off means: "I tested my process with my team, with real data, and I'm willing to run the business on it." It doesn't mean "the consultant told me it's fine". Sign-off is per process area (finance, supply chain, production, HR), each by its owner, and the exit criteria are:</p>
+<ul>
+  <li>All Must cases have passed in the latest cycle.</li>
+  <li>There are no open S1 or S2 defects.</li>
+  <li>Open S3/S4 defects are listed with agreed workarounds and fix dates.</li>
+  <li>The end-to-end chains have reconciled in stock, cost and tax.</li>
+</ul>
+
+<div class="exercise"><p><strong>Exercise (15 minutes).</strong> List your UAT testers by name, with the hours per day each will spend and who covers their normal work. If you can't name who covers their work, that's your first risk to escalate.</p></div>
+
+<div class="takeaways">
+  <h3>Key takeaways</h3>
+  <ul>
+    <li>The people who'll do the work test it, in their real environment, with protected time.</li>
+    <li>Use trial-load data and real access rights, never demo data and admin accounts.</li>
+    <li>Plan two or three cycles; re-run Must cases every cycle.</li>
+    <li>Keep one defect log with agreed S1–S4 definitions, and triage it daily.</li>
+    <li>Sign-off is per process owner, against written exit criteria.</li>
+  </ul>
+</div>

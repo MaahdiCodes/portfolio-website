@@ -1,0 +1,24 @@
+---
+pagination:
+  data: searchLangs
+  size: 1
+  alias: sl
+permalink: "{{ sl.prefix }}search-index.json"
+eleventyExcludeFromCollections: true
+searchLangs:
+  - { lang: "en", prefix: "" }
+  - { lang: "bn", prefix: "bn/" }
+---
+{%- set L = sl.lang -%}
+{%- set pre = '/bn' if L == 'bn' else '' -%}
+{%- set items = [] -%}
+{%- for slug, a in labIndex[L] -%}
+{%- set items = (items.push({ u: pre + '/lab/' + slug, t: a.title, k: 'lab', n: a.num, d: a.description, h: a.headings | join(' · '), x: a.text | truncate(900, true, '') }), items) -%}
+{%- endfor -%}
+{%- for ind in industries -%}
+{%- set items = (items.push({ u: pre + '/industries/' + ind.slug + '/', t: ('Odoo for ' + ind.en.name) if L == 'en' else ('Odoo: ' + ind.bn.name), k: 'industry', d: ind[L].short, h: ind[L].modules | join(' · '), x: ind[L].pains | join(' ') }), items) -%}
+{%- endfor -%}
+{%- for p in searchPages -%}
+{%- set items = (items.push({ u: pre + p.u, t: p[L].t, k: p.k, d: p[L].d, h: '', x: '' }), items) -%}
+{%- endfor -%}
+{{ items | dump | safe }}

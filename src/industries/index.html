@@ -1,0 +1,40 @@
+---
+layout: "layouts/tool.njk"
+permalink: "industries/index.html"
+title: "Odoo ERP by Industry in Bangladesh — 20+ Sector Guides | Mehedi Hasan"
+description: "Odoo ERP guides for 20+ Bangladeshi industries: RMG, textile, pharma, trading, leather, jute, plastics, food, steel, ceramics, furniture, tea, hospitals, real estate, retail and more. Modules, compliance and cost for each."
+canonical: "https://mhasan.me/industries/"
+hreflangBn: "https://mhasan.me/bn/industries/"
+ogTitle: "Odoo ERP by Industry — Bangladesh"
+ogImage: "https://mhasan.me/assets/og/industries/index.png"
+backHref: "/"
+backLabel: "← mhasan.me"
+eyebrow: "Industries"
+h1: 'Odoo, by <span class="serif">industry.</span>'
+lede: "An ERP for a garment factory and one for a diagnostic centre share a name and little else. Pick your industry to see where projects get hard, which Odoo modules matter, the Bangladesh compliance to plan for, and a cost estimate pre-set for your sector."
+chips: ["21 industries", "Modules", "Compliance", "Cost presets"]
+footLabel: "Industries"
+jsonLd: |
+  [
+    { "@context": "https://schema.org", "@type": "CollectionPage", "name": "Odoo ERP by industry in Bangladesh", "url": "https://mhasan.me/industries/", "inLanguage": "en" },
+    { "@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://mhasan.me/" },
+      { "@type": "ListItem", "position": 2, "name": "Industries", "item": "https://mhasan.me/industries/" } ] }
+  ]
+related:
+  - { href: "/tools/", dir: "Tools", title: "All free tools", desc: "Cost, ROI, readiness, quotes, wages, import duty and VAT." }
+  - { href: "/compliance-watch/", dir: "Updates", title: "Compliance Watch", desc: "What changed in VAT, customs and wages, and what it means for your ERP." }
+---
+<div class="shell tl-wrap">
+  <div class="hub-grid">
+    {%- for ind in industries %}
+    <a class="hub-card" href="/industries/{{ ind.slug }}/">
+      <span class="hc-tag">{{ ind.tag }}</span>
+      <h3>{{ ind.en.name }}</h3>
+      <p>{{ ind.en.short }}</p>
+      <span class="hc-meta"><span>{{ ind.articles | length }} guide{% if ind.articles | length != 1 %}s{% endif %}</span><span>→</span></span>
+    </a>
+    {%- endfor %}
+  </div>
+  <p class="tl-disclosure">Don't see your industry? The <a href="/lab/">Lab</a> covers modules and processes that apply across sectors, and the <a href="/tools/erp-readiness-assessment/">readiness assessment</a> works for any business. Or <a href="/#contact">ask me directly</a>.</p>
+</div>

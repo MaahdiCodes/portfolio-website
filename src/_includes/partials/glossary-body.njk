@@ -1,0 +1,60 @@
+{#- Bilingual glossary body. glossary = { erp: {...}, accounting: {...}, ... } from _data/glossary/. -#}
+{%- set L = 'bn' if lang == 'bn' else 'en' -%}
+{%- set pre = '/bn' if lang == 'bn' else '' -%}
+{%- set order = ['erp', 'accounting', 'tax', 'trade', 'supply', 'manufacturing', 'hr', 'ba'] -%}
+{%- set total = glossary.erp.terms.length + glossary.accounting.terms.length + glossary.tax.terms.length + glossary.trade.terms.length + glossary.supply.terms.length + glossary.manufacturing.terms.length + glossary.hr.terms.length + glossary.ba.terms.length -%}
+<div class="shell tl-wrap">
+  <div class="gl-tools no-print">
+    <div class="tl-search">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+      <input class="tl-input" type="search" id="gl-q" placeholder="{{ 'Search 500+ terms in English or Bangla — e.g. BOM, মূসক, landed cost' if L == 'en' else '৫০০+ শব্দ খুঁজুন, ইংরেজি বা বাংলায়: যেমন BOM, মূসক, ল্যান্ডেড কস্ট' }}" aria-label="{{ 'Search the glossary' if L == 'en' else 'শব্দকোষে খুঁজুন' }}" autocomplete="off">
+    </div>
+    <div class="gl-cats" role="group">
+      <button type="button" class="btn-ghost is-on" data-cat="all">{{ 'All' if L == 'en' else 'সব' }} · {{ total }}</button>
+      {%- for k in order %}<button type="button" class="btn-ghost" data-cat="{{ k }}">{{ glossary[k][L] }}</button>{% endfor %}
+    </div>
+    <p class="tl-hint" id="gl-count" aria-live="polite"></p>
+  </div>
+
+  {%- for k in order %}{% set g = glossary[k] %}
+  <section class="gl-sec" data-sec="{{ k }}" id="{{ k }}">
+    <h2 class="gl-h">{{ g[L] }} <span>{{ g.terms.length }}</span></h2>
+    <dl class="gl-list">
+      {%- for t in g.terms %}
+      <div class="gl-item" data-cat="{{ k }}" id="{{ k }}-{{ loop.index }}">
+        <dt>
+          {%- if L == 'en' %}<b>{{ t[0] }}</b> <span class="gl-alt" lang="bn">{{ t[1] }}</span>
+          {%- else %}<b>{{ t[1] }}</b>{% if t[1] != t[0] %} <span class="gl-alt" lang="en">{{ t[0] }}</span>{% endif %}{% endif %}
+        </dt>
+        <dd>
+          {%- if L == 'en' %}{{ t[2] }}<span class="gl-bn" lang="bn">{{ t[3] }}</span>
+          {%- else %}{{ t[3] }}<span class="gl-bn" lang="en">{{ t[2] }}</span>{% endif %}
+          {%- if t[4] %} <a class="gl-more" href="{{ pre }}{{ t[4] }}">{{ 'Learn more →' if L == 'en' else 'আরও জানুন →' }}</a>{% endif %}
+        </dd>
+      </div>
+      {%- endfor %}
+    </dl>
+  </section>
+  {%- endfor %}
+  <p class="gl-empty tl-note" id="gl-empty" hidden>{{ 'No term matches that search. Try a shorter word, or ask me and I will add it.' if L == 'en' else 'এই খোঁজে কোনো শব্দ মেলেনি। ছোট কোনো শব্দ দিয়ে চেষ্টা করুন, অথবা আমাকে জানান, যোগ করে দেব।' }}</p>
+</div>
+<script>
+(function () {
+  var q = document.getElementById('gl-q'), items = [].slice.call(document.querySelectorAll('.gl-item')),
+      secs = [].slice.call(document.querySelectorAll('.gl-sec')), cat = 'all', count = document.getElementById('gl-count');
+  items.forEach(function (it) { it._t = it.textContent.toLowerCase(); });
+  var isBn = document.documentElement.lang.indexOf('bn') === 0;
+  function apply() {
+    var s = q.value.trim().toLowerCase(), n = 0;
+    items.forEach(function (it) { var ok = (cat === 'all' || it.getAttribute('data-cat') === cat) && (!s || it._t.indexOf(s) !== -1); it.hidden = !ok; if (ok) n++; });
+    secs.forEach(function (sec) { sec.hidden = !sec.querySelector('.gl-item:not([hidden])'); });
+    document.getElementById('gl-empty').hidden = n > 0;
+    count.textContent = (s || cat !== 'all') ? (isBn ? n + 'টি শব্দ' : n + ' term' + (n === 1 ? '' : 's')) : '';
+  }
+  q.addEventListener('input', apply);
+  document.querySelectorAll('.gl-cats [data-cat]').forEach(function (b) {
+    b.addEventListener('click', function () { cat = b.getAttribute('data-cat'); document.querySelectorAll('.gl-cats [data-cat]').forEach(function (x) { x.classList.toggle('is-on', x === b); }); apply(); });
+  });
+  var p = new URLSearchParams(location.search).get('q'); if (p) { q.value = p; apply(); }
+})();
+</script>

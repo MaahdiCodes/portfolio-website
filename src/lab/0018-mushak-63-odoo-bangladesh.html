@@ -1,20 +1,20 @@
 ---
 permalink: "lab/0018-mushak-63-odoo-bangladesh.html"
 title: "Mushak 6.3 Odoo Bangladesh | VAT Setup | Mehedi Hasan"
-description: "Mushak 6.3 in Odoo — configure NBR VAT compliance for Bangladesh. Tax groups, fiscal positions & monthly return data. Configure it right →"
+description: "Mushak 6.3 in Odoo — configure NBR VAT compliance for Bangladesh. Tax groups, fiscal positions, 6.3 invoices & quarterly return data (Finance Act 2026). Configure it right →"
 canonical: "https://mhasan.me/lab/0018-mushak-63-odoo-bangladesh"
 hreflangBn: "https://mhasan.me/bn/lab/0018-mushak-63-odoo-bangladesh"
 ogDescription: "Step-by-step guide to configuring Mushak 6.3 VAT returns in Odoo for Bangladesh — tax group setup, fiscal positions, output/input VAT accounts, and generating Mushak data from the Tax Report."
 twitterTitle: "Mushak 6.3 Odoo Bangladesh | VAT Setup"
-twitterDescription: "Configure Mushak 6.3 monthly VAT returns in Odoo for Bangladesh — tax groups, fiscal positions, and NBR-compliant output/input VAT accounts."
+twitterDescription: "Configure Mushak 6.3 invoices and VAT return data in Odoo for Bangladesh — tax groups, fiscal positions, and NBR-compliant output/input VAT accounts."
 ogImage: "https://mhasan.me/assets/og/lab/0018-mushak-63-odoo-bangladesh.png"
 ogSiteName: "Mehedi Hasan | Odoo ERP Consultant"
 datePublished: "2026-05-05T09:00:00+06:00"
-dateModified: "2026-05-23T09:00:00+06:00"
+dateModified: "2026-09-25T09:00:00+06:00"
 articleSection: "Odoo ERP Bangladesh"
 eyebrowNum: "0018"
 h1: "Mushak 6.3 in Odoo — <span class=\"serif\">step-by-step NBR VAT configuration.</span>"
-lede: "How to configure Odoo so the Tax Report produces correct Mushak 6.3 data every month — tax groups, output/input VAT accounts, fiscal positions for zero-rated exports, and how to handle the monthly submission. Built from VAT audit experience across multiple Bangladesh manufacturing clients."
+lede: "How to configure Odoo so the Tax Report produces correct Mushak 6.3 invoices and VAT return data — tax groups, output/input VAT accounts, fiscal positions for zero-rated exports, and how to handle the return (now quarterly). Built from VAT audit experience across multiple Bangladesh manufacturing clients."
 chips: ["Compliance Guide", "VAT · Mushak", "NBR Bangladesh", "Tax Configuration"]
 bylineItems:
   - label: "By"
@@ -43,9 +43,9 @@ jsonLd: |
       "@context": "https://schema.org",
       "@type": "Article",
       "headline": "Mushak 6.3 in Odoo: Step-by-Step Configuration for Bangladesh VAT Compliance",
-      "description": "A practitioner's guide to configuring Mushak 6.3 (monthly VAT return) in Odoo for Bangladesh — covering NBR tax group setup, output and input VAT accounts, fiscal positions for exports, and generating Mushak 6.3 data from Odoo's Tax Report.",
+      "description": "A practitioner's guide to configuring Mushak 6.3 invoices and VAT return data in Odoo for Bangladesh — covering NBR tax group setup, output and input VAT accounts, fiscal positions for exports, and generating Mushak 6.3 data from Odoo's Tax Report.",
       "datePublished": "2026-05-05T09:00:00+06:00",
-      "dateModified": "2026-05-23T09:00:00+06:00",
+      "dateModified": "2026-09-25T09:00:00+06:00",
       "author": {
         "@type": "Person",
         "name": "Mehedi Hasan",
@@ -74,7 +74,7 @@ jsonLd: |
           "name": "What is Mushak 6.3 in Bangladesh?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Mushak 6.3 is the monthly VAT return form required under the Value Added Tax and Supplementary Duty Act, 2012 of Bangladesh. Every VAT-registered business must submit it to the NBR (National Board of Revenue) by the 15th of the following month. It summarises: total output VAT collected on sales, total input VAT paid on eligible purchases, and the net VAT payable or credit carried forward. In Odoo, this data is generated through the Tax Report (Accounting → Reporting → Tax Report)."
+            "text": "Mushak 6.3 is the tax invoice (chalanpatra) that a VAT-registered business must issue for every taxable supply under the Value Added Tax and Supplementary Duty Act, 2012. The VAT return itself is Mushak 9.1 (9.1.1 for registered traders), filed quarterly since the Finance Act 2026. In Odoo, 6.3 is a print format on the customer invoice, and the return data comes from the Tax Report (Accounting → Reporting → Tax Report)."
           }
         },
         {
@@ -291,9 +291,11 @@ extraStyles: |
     </aside>
 
     <div class="body">
-      <p>Every VAT-registered business in Bangladesh must submit Mushak 6.3 by the 15th of the following month. The form shows NBR how much output VAT you collected, how much input VAT you can claim, and what you owe. Get it wrong and you face penalties, audit exposure, or — worse — pay more VAT than you legally owe because your input credits aren't being claimed.</p>
+      <p class="update-note" style="border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:0 10px 10px 0;padding:12px 16px;font-size:14.5px"><strong>Updated September 2026.</strong> To be precise about the forms: <strong>Mushak 6.3 is the tax invoice</strong> issued for every taxable sale. The VAT <strong>return</strong> is <strong>Mushak 9.1</strong> (9.1.1 for registered traders), and since the Finance Act 2026 it is filed <strong>quarterly</strong>, within 15 days after each three-month cycle, with a monthly advance deposit of one-third of the previous quarter's tax. The Odoo configuration below produces both: correct 6.3 invoices and the tax-report data for the return. See <a href="/compliance-watch/">Compliance Watch</a> and the <a href="/tools/vat-mushak-helper/">VAT &amp; Mushak helper</a>.</p>
 
-      <p>Odoo doesn't ship a pre-built Mushak 6.3 report for Bangladesh. But if you configure taxes correctly, the Tax Report generates every number you need. This guide covers exactly that configuration — from tax group setup to fiscal positions to the monthly close process.</p>
+      <p>Every VAT-registered business in Bangladesh must issue Mushak 6.3 tax invoices and file a VAT return (Mushak 9.1). The return shows NBR how much output VAT you collected, how much input VAT you can claim, and what you owe. Get it wrong and you face penalties, audit exposure, or — worse — pay more VAT than you legally owe because your input credits aren't being claimed.</p>
+
+      <p>Odoo doesn't ship a pre-built Mushak 6.3 report for Bangladesh. But if you configure taxes correctly, the Tax Report generates every number you need. This guide covers exactly that configuration — from tax group setup to fiscal positions to the period close.</p>
 
       <p class="pull">A misconfigured tax account means every invoice for the past 12 months has posted to the wrong place. The fix is worse than the original setup.</p>
 
@@ -305,15 +307,15 @@ extraStyles: |
         <li>Collect <strong>15% VAT</strong> on taxable domestic sales (output VAT)</li>
         <li>Pay VAT on eligible purchases — raw materials, services (input VAT)</li>
         <li>Claim the difference: output VAT − input VAT = net VAT payable</li>
-        <li>Submit <strong>Mushak 6.3</strong> monthly by the 15th of the following month</li>
-        <li>Make the VAT payment to the NBR-designated bank account by the same date</li>
+        <li>Issue a <strong>Mushak 6.3</strong> tax invoice for every taxable supply</li>
+        <li>File the VAT return (<strong>Mushak 9.1</strong>, or 9.1.1 for traders) quarterly, within 15 days after each three-month cycle, and deposit one-third of the previous quarter's tax as an advance each month (Finance Act 2026)</li>
       </ul>
 
-      <p>Mushak 6.3 requires the following data, which Odoo must be able to produce:</p>
+      <p>The VAT return needs the following data, which Odoo must be able to produce from correctly taxed invoices and bills:</p>
 
       <table class="tax-table">
         <thead>
-          <tr><th>Mushak 6.3 Line</th><th>What it captures</th><th>Odoo source</th></tr>
+          <tr><th>Return line</th><th>What it captures</th><th>Odoo source</th></tr>
         </thead>
         <tbody>
           <tr>
@@ -547,7 +549,7 @@ extraStyles: |
       <h2 id="faq">Frequently asked questions</h2>
 
       <h3>What is Mushak 6.3 in Bangladesh?</h3>
-      <p>Mushak 6.3 is the monthly VAT return form under the VAT and Supplementary Duty Act, 2012. Every VAT-registered business submits it to NBR by the 15th of the following month. It shows output VAT collected on sales, input VAT paid on purchases (eligible for credit), and the net VAT payable. In Odoo, the data is produced by the Tax Report (Accounting → Reporting → Tax Report) — provided taxes are correctly configured with the right groups and accounts.</p>
+      <p>Mushak 6.3 is the tax invoice every VAT-registered business must issue for each taxable supply under the VAT and Supplementary Duty Act, 2012. The VAT return is Mushak 9.1 (9.1.1 for traders), filed quarterly since the Finance Act 2026. The return shows output VAT collected on sales, input VAT paid on purchases (eligible for credit), and the net VAT payable. In Odoo, the data is produced by the Tax Report (Accounting → Reporting → Tax Report) — provided taxes are correctly configured with the right groups and accounts.</p>
 
       <h3>Does Odoo have a built-in Mushak 6.3 report for Bangladesh?</h3>
       <p>No — Odoo does not ship a pre-formatted Mushak 6.3 PDF. The Tax Report provides all the figures you need to complete the NBR form manually. Some Odoo partners in Bangladesh offer a custom Mushak 6.3 module that generates the NBR-formatted PDF directly; ask your implementation partner or search the Odoo App Store. For most SMEs, the manual approach (Tax Report → transfer to Mushak form) is sufficient and more auditable.</p>

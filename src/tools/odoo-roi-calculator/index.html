@@ -1,0 +1,285 @@
+---
+layout: "layouts/tool.njk"
+permalink: "tools/odoo-roi-calculator/index.html"
+title: "Odoo ROI Calculator Bangladesh 2026 (Free Tool) | Mehedi Hasan"
+description: "Free Odoo ERP ROI calculator for Bangladesh manufacturers — 3-year ROI, payback month and benefit breakdown across labour, inventory, procurement, production waste and collections, with a realistic post-go-live ramp."
+canonical: "https://mhasan.me/tools/odoo-roi-calculator/"
+hreflangBn: "https://mhasan.me/bn/tools/odoo-roi-calculator/"
+ogTitle: "Odoo ROI Calculator — Bangladesh 2026 (Free Tool)"
+ogDescription: "3-year ROI and payback month for an Odoo ERP project, in BDT, using Bangladesh benchmarks and a realistic go-live ramp."
+ogImage: "https://mhasan.me/assets/og/tools/odoo-roi-calculator.png"
+extraHead: |
+  <meta name="keywords" content="odoo roi calculator, erp roi bangladesh, odoo payback period, erp business case calculator, odoo roi bangladesh 2026">
+jsonLd: |
+  [
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Odoo ROI Calculator — Bangladesh 2026",
+      "url": "https://mhasan.me/tools/odoo-roi-calculator/",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Any (web-based)",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "BDT" },
+      "isAccessibleForFree": true,
+      "inLanguage": "en",
+      "creator": { "@type": "Person", "name": "Mehedi Hasan", "url": "https://mhasan.me", "jobTitle": "Odoo Certified Functional Consultant" },
+      "description": "Calculates 3-year ROI and payback month for an Odoo ERP implementation in Bangladesh across five benefit categories with a realistic post-go-live adoption ramp."
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://mhasan.me/" },
+        { "@type": "ListItem", "position": 2, "name": "Tools", "item": "https://mhasan.me/tools/" },
+        { "@type": "ListItem", "position": 3, "name": "Odoo ROI Calculator", "item": "https://mhasan.me/tools/odoo-roi-calculator/" }
+      ]
+    }
+  ]
+toolScripts: ["/tools/_calc/roi.js"]
+eyebrow: "Free Tool · Tools / 02"
+h1: 'Odoo ROI Calculator — <span class="serif">is it worth it?</span>'
+lede: "The cost estimator tells you what Odoo will cost. This tells you what it will return. Enter your own numbers — admin payroll, inventory, procurement, waste, receivables — and get a 3-year ROI and the month you break even, with a realistic ramp instead of day-one magic."
+chips: ["Free Tool", "Business Case", "Payback Month", "BDT"]
+footLabel: "Tools / Odoo ROI calculator"
+related:
+  - { href: "/lab/0048-odoo-roi-calculator-bangladesh", dir: "Read · Method", title: "How to build an Odoo ROI model", desc: "The five benefit categories, the ramp curve, and a worked garment-factory example." }
+  - { href: "/tools/odoo-cost-estimator/", dir: "Tool · Cost side", title: "Odoo Cost Estimator", desc: "Get the 3-year TCO first, then bring it here with one click." }
+extraStyles: |
+  .roi-chart { width: 100%; height: auto; display: block; margin: 8px 0 4px; }
+  .roi-chart .axis { stroke: var(--border-2); stroke-width: 1; }
+  .roi-chart .zero { stroke: var(--text-3); stroke-dasharray: 3 4; stroke-width: 1; }
+  .roi-chart .line { fill: none; stroke: var(--accent); stroke-width: 2.25; }
+  .roi-chart .area-neg { fill: rgba(229,98,94,0.12); }
+  .roi-chart .area-pos { fill: color-mix(in oklch, var(--accent) 14%, transparent); }
+  .roi-chart text { fill: var(--text-3); font-family: var(--mono); font-size: 10px; }
+  .roi-chart .pb { stroke: var(--accent); stroke-width: 1; stroke-dasharray: 2 3; }
+  .roi-group { border-top: 1px solid var(--border); padding-top: 18px; margin-top: 18px; }
+  .roi-group:first-of-type { border-top: none; padding-top: 0; margin-top: 0; }
+  .roi-group h3 { margin-top: 0; display: flex; justify-content: space-between; gap: 8px; }
+  .roi-group h3 span { font-family: var(--mono); font-size: 12px; color: var(--accent); font-weight: 400; }
+---
+<div class="shell tl-wrap">
+  <div class="tl-grid wide-left">
+
+    <section class="tl-card" aria-labelledby="roi-in">
+      <h2 id="roi-in">Your numbers</h2>
+      <p class="tl-hint" style="margin:-8px 0 18px">Defaults describe a typical mid-sized Bangladeshi manufacturer. Replace them with figures from your last balance sheet — conservative is better.</p>
+
+      <form id="roi-form" autocomplete="off" novalidate>
+        <fieldset>
+          <legend>Scenario</legend>
+          <div class="tl-chips" role="radiogroup" aria-label="Scenario">
+            <div class="tl-chip"><input type="radio" name="scenario" id="sc-c" value="conservative" checked><label for="sc-c">Conservative</label></div>
+            <div class="tl-chip"><input type="radio" name="scenario" id="sc-e" value="expected"><label for="sc-e">Expected (+25%)</label></div>
+            <div class="tl-chip"><input type="radio" name="scenario" id="sc-o" value="optimistic"><label for="sc-o">Optimistic (+50%)</label></div>
+          </div>
+          <p class="tl-hint">Take the conservative case to your board. If it still clears 100%, the project is defensible.</p>
+        </fieldset>
+
+        <div class="roi-group">
+          <h3>1 · Labour efficiency <span id="b-labour">—</span></h3>
+          <div class="tl-row three">
+            <div class="tl-field"><label for="adminStaff">Admin / data-entry staff</label><input class="tl-input" type="number" min="0" id="adminStaff" value="10"></div>
+            <div class="tl-field"><label for="adminSalary">Avg monthly cost (৳)</label><input class="tl-input" type="number" min="0" step="1000" id="adminSalary" value="25000"></div>
+            <div class="tl-field"><label for="labourGainPct">Time recovered</label><div class="tl-suffix"><input class="tl-input" type="number" min="0" max="100" id="labourGainPct" value="20"><span>%</span></div></div>
+          </div>
+          <p class="tl-hint">Accounts, store, planning, MIS, HR/payroll clerks. Benchmark: 20–25% — roles are redeployed, rarely removed.</p>
+        </div>
+
+        <div class="roi-group">
+          <h3>2 · Inventory &amp; working capital <span id="b-inventory">—</span></h3>
+          <div class="tl-row">
+            <div class="tl-field"><label for="inventoryValue">Average inventory at cost (৳)</label><input class="tl-input" type="number" min="0" step="100000" id="inventoryValue" data-money value="30000000"></div>
+            <div class="tl-field"><label for="inventoryCutPct">Realistic reduction</label><div class="tl-suffix"><input class="tl-input" type="number" min="0" max="60" id="inventoryCutPct" value="12"><span>%</span></div></div>
+          </div>
+          <div class="tl-row">
+            <div class="tl-field"><label for="costOfCapitalPct">Bank working-capital rate</label><div class="tl-suffix"><input class="tl-input" type="number" min="0" max="30" step="0.5" id="costOfCapitalPct" value="11"><span>%</span></div></div>
+            <div class="tl-field"><label for="carryingCostPct">Carrying cost (storage, insurance)</label><div class="tl-suffix"><input class="tl-input" type="number" min="0" max="20" step="0.5" id="carryingCostPct" value="3"><span>%</span></div></div>
+          </div>
+          <p class="tl-hint">Usually the biggest line for importers holding 60–90 days of raw material because of LC lead times.</p>
+        </div>
+
+        <div class="roi-group">
+          <h3>3 · Procurement <span id="b-procurement">—</span></h3>
+          <div class="tl-row">
+            <div class="tl-field"><label for="procurementSpend">Annual purchase spend (৳)</label><input class="tl-input" type="number" min="0" step="100000" id="procurementSpend" data-money value="50000000"></div>
+            <div class="tl-field"><label for="procurementSavePct">Savings rate</label><div class="tl-suffix"><input class="tl-input" type="number" min="0" max="15" step="0.5" id="procurementSavePct" value="2"><span>%</span></div></div>
+          </div>
+          <p class="tl-hint">3-way matching, consolidated buying, vendor performance data. Benchmark: 2–5%.</p>
+        </div>
+
+        <div class="roi-group">
+          <h3>4 · Production &amp; waste <span id="b-production">—</span></h3>
+          <div class="tl-row three">
+            <div class="tl-field"><label for="productionValue">Annual production value (৳)</label><input class="tl-input" type="number" min="0" step="100000" id="productionValue" data-money value="100000000"></div>
+            <div class="tl-field"><label for="wasteNowPct">Waste today</label><div class="tl-suffix"><input class="tl-input" type="number" min="0" max="30" step="0.1" id="wasteNowPct" value="4"><span>%</span></div></div>
+            <div class="tl-field"><label for="wasteAfterPct">Waste after</label><div class="tl-suffix"><input class="tl-input" type="number" min="0" max="30" step="0.1" id="wasteAfterPct" value="3"><span>%</span></div></div>
+          </div>
+          <p class="tl-hint">Traders: set production value to 0. Manufacturers: accurate BOMs typically cut 1–3 points.</p>
+        </div>
+
+        <div class="roi-group">
+          <h3>5 · Finance &amp; collections <span id="b-finance">—</span></h3>
+          <div class="tl-row three">
+            <div class="tl-field"><label for="arBalance">Accounts receivable (৳)</label><input class="tl-input" type="number" min="0" step="100000" id="arBalance" data-money value="20000000"></div>
+            <div class="tl-field"><label for="dsoNow">DSO today (days)</label><input class="tl-input" type="number" min="0" id="dsoNow" value="45"></div>
+            <div class="tl-field"><label for="dsoCutDays">Days saved</label><input class="tl-input" type="number" min="0" id="dsoCutDays" value="10"></div>
+          </div>
+          <p class="tl-hint">Invoices raised from the delivery order, LC documents submitted faster. Benchmark: 7–15 days.</p>
+        </div>
+
+        <div class="roi-group">
+          <h3>Costs <span id="b-costs">—</span></h3>
+          <div class="tl-row">
+            <div class="tl-field"><label for="implementation">Implementation fee (৳, one-time)</label><input class="tl-input" type="number" min="0" step="10000" id="implementation" data-money value="1800000"></div>
+            <div class="tl-field"><label for="internalTeam">Internal team time (৳, one-time)</label><input class="tl-input" type="number" min="0" step="10000" id="internalTeam" data-money value="500000"></div>
+          </div>
+          <div class="tl-row">
+            <div class="tl-field"><label for="trainingInitial">Training at go-live (৳)</label><input class="tl-input" type="number" min="0" step="10000" id="trainingInitial" data-money value="250000"></div>
+            <div class="tl-field"><label for="hardwareOneTime">Hardware, scanners, set-up (৳)</label><input class="tl-input" type="number" min="0" step="10000" id="hardwareOneTime" data-money value="100000"></div>
+          </div>
+          <div class="tl-row">
+            <div class="tl-field"><label for="licenceAnnual">Licence per year (৳)</label><input class="tl-input" type="number" min="0" step="10000" id="licenceAnnual" data-money value="300000"></div>
+            <div class="tl-field"><label for="hostingAnnual">Hosting per year (৳)</label><input class="tl-input" type="number" min="0" step="10000" id="hostingAnnual" data-money value="150000"></div>
+          </div>
+          <div class="tl-row">
+            <div class="tl-field"><label for="supportAnnual">Support contract per year (৳)</label><input class="tl-input" type="number" min="0" step="10000" id="supportAnnual" data-money value="300000"></div>
+            <div class="tl-field"><label for="trainingAnnual">Refresher training per year (৳)</label><input class="tl-input" type="number" min="0" step="10000" id="trainingAnnual" data-money value="50000"></div>
+          </div>
+          <p class="tl-hint">Don't know these yet? <a href="/tools/odoo-cost-estimator/">Run the cost estimator</a> — its result has a "Calculate ROI" button that fills this section.</p>
+        </div>
+      </form>
+    </section>
+
+    <section class="tl-card tl-sticky" aria-labelledby="roi-out" aria-live="polite">
+      <h2 id="roi-out">Your 3-year business case</h2>
+      <div class="tl-headline">
+        <div class="h-label">3-year ROI (ramp-adjusted)</div>
+        <div class="h-value" id="r-roi">—</div>
+        <div class="h-sub" id="r-verdict">—</div>
+      </div>
+      <div class="tl-stats">
+        <div class="tl-stat"><div class="s-v" id="r-payback">—</div><div class="s-l">Break-even month after go-live</div></div>
+        <div class="tl-stat"><div class="s-v" id="r-annual">—</div><div class="s-l">Benefit per year at full run-rate</div></div>
+        <div class="tl-stat"><div class="s-v" id="r-net">—</div><div class="s-l">Net gain over 3 years</div></div>
+      </div>
+
+      <svg class="roi-chart" id="r-chart" viewBox="0 0 400 150" role="img" aria-label="Cumulative net cash position over 36 months"></svg>
+      <p class="tl-hint" style="margin-top:0">Cumulative net position, months 0–36 after go-live. Below the dashed line you are still paying back.</p>
+
+      <div class="tl-table-wrap">
+        <table class="tl-table">
+          <thead><tr><th>Line</th><th class="num">Year 1</th><th class="num">3 years</th></tr></thead>
+          <tbody>
+            <tr><td>Benefits realised<small>ramp: month 1–3 ≈ nothing</small></td><td class="num" id="t-b1">—</td><td class="num" id="t-b3">—</td></tr>
+            <tr><td>One-time costs</td><td class="num" id="t-o1">—</td><td class="num" id="t-o3">—</td></tr>
+            <tr><td>Recurring costs</td><td class="num" id="t-r1">—</td><td class="num" id="t-r3">—</td></tr>
+            <tr class="total"><td>Net position</td><td class="num" id="t-n1">—</td><td class="num" id="t-n3">—</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p class="tl-note" id="r-note">—</p>
+
+      <div class="tl-cta-row">
+        <a href="/#contact" class="btn-primary">Get a custom ROI study for your factory →</a>
+        <div class="tl-cta-row inline" style="margin-top:0">
+          <button type="button" class="btn-ghost" id="btn-share" style="flex:1">Copy shareable link</button>
+          <button type="button" class="btn-ghost" data-print style="flex:1">Save as PDF</button>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <details class="tl-details">
+    <summary>How this is calculated</summary>
+    <div class="d-body">
+      <p><strong>Benefits at full run-rate</strong> (per year):</p>
+      <ul>
+        <li>Labour = staff × monthly cost × 12 × time recovered</li>
+        <li>Inventory = inventory × reduction × (bank rate + carrying cost)</li>
+        <li>Procurement = annual spend × savings rate</li>
+        <li>Production = production value × (waste today − waste after)</li>
+        <li>Finance = (receivables ÷ DSO) × days saved × bank rate</li>
+      </ul>
+      <p><strong>The ramp.</strong> Nothing is counted in hypercare (months 1–3). Labour and procurement benefits start in month 4, inventory and collections in month 7, production and waste in month 10. Each reaches full run-rate over 3–4 months. That's why the ROI here is lower than the simple formula, and more honest.</p>
+      <p><strong>Costs.</strong> One-time costs are counted at go-live. Recurring costs are spread evenly across 36 months.</p>
+      <p><strong>ROI</strong> = (3-year benefits − 3-year cost) ÷ 3-year cost. For comparison, the simple payback in <a href="/lab/0048-odoo-roi-calculator-bangladesh">article 0048</a> divides the 3-year cost by the full monthly benefit, with no ramp. It's shown in the note above.</p>
+    </div>
+  </details>
+  <p class="tl-disclosure"><strong>Use it for direction, not decisions alone.</strong> The benchmarks come from Bangladesh manufacturing projects and represent the middle of the range. Your result depends on data quality, adoption and scope discipline. The <a href="/tools/erp-readiness-assessment/">readiness assessment</a> tells you how likely you are to actually get these benefits.</p>
+</div>
+
+<script>
+(function () {
+  var C = MHCalc.roi, $ = function (id) { return document.getElementById(id); };
+  var FIELDS = ['adminStaff','adminSalary','labourGainPct','inventoryValue','inventoryCutPct','costOfCapitalPct','carryingCostPct','procurementSpend','procurementSavePct','productionValue','wasteNowPct','wasteAfterPct','arBalance','dsoNow','dsoCutDays','implementation','internalTeam','trainingInitial','hardwareOneTime','licenceAnnual','hostingAnnual','supportAnnual','trainingAnnual'];
+  var VERDICT = {
+    incomplete: 'Enter at least one benefit and one cost.',
+    negative: 'Doesn’t pay back within 3 years on these numbers. Narrow the scope or re-check the costs.',
+    caution: 'Below 100%: proceed with caution. Is a benefit category missing, or is the cost unusually high?',
+    acceptable: '100–200%: acceptable. Most Bangladeshi SME projects land here.',
+    good: '200–400%: a strong case. Typical for mid-sized manufacturers moving off Excel/Tally.',
+    check: 'Above 400%: excellent, or optimistic. Re-check your assumptions before taking it to the board.'
+  };
+
+  function read() {
+    var o = {};
+    FIELDS.forEach(function (f) { o[f] = MH.val(f); });
+    var sc = document.querySelector('input[name="scenario"]:checked');
+    o.scenario = sc ? sc.value : 'conservative';
+    return o;
+  }
+
+  function chart(cum) {
+    var svg = $('r-chart'), W = 400, H = 150, pad = 26;
+    var min = Math.min.apply(null, cum.concat([0])), max = Math.max.apply(null, cum.concat([0]));
+    if (max === min) max = min + 1;
+    var x = function (i) { return pad + (W - pad - 18) * i / 36; };
+    var y = function (v) { return 8 + (H - 30) * (1 - (v - min) / (max - min)); };
+    var pts = cum.map(function (v, i) { return x(i).toFixed(1) + ',' + y(v).toFixed(1); });
+    var zeroY = y(0).toFixed(1);
+    var html = '<line class="axis" x1="' + pad + '" y1="' + (H - 22) + '" x2="' + (W - 6) + '" y2="' + (H - 22) + '"/>' +
+      '<polygon class="' + (cum[36] >= 0 ? 'area-pos' : 'area-neg') + '" points="' + x(0) + ',' + zeroY + ' ' + pts.join(' ') + ' ' + x(36) + ',' + zeroY + '"/>' +
+      '<line class="zero" x1="' + pad + '" y1="' + zeroY + '" x2="' + (W - 6) + '" y2="' + zeroY + '"/>' +
+      '<polyline class="line" points="' + pts.join(' ') + '"/>';
+    [0, 12, 24, 36].forEach(function (m) { html += '<text x="' + x(m) + '" y="' + (H - 8) + '" text-anchor="middle">M' + m + '</text>'; });
+    html += '<text x="2" y="' + (Number(zeroY) + 3) + '">0</text>';
+    svg.innerHTML = html;
+  }
+
+  function render() {
+    var i = read(), r = C.calculate(i);
+    ['labour','inventory','procurement','production','finance'].forEach(function (c) { MH.setText('b-' + c, MH.bdt(r.annual[c]) + '/yr'); });
+    MH.setText('b-costs', MH.bdt(r.tco3) + ' / 3 yrs');
+    MH.setText('r-roi', r.verdict === 'incomplete' ? '—' : MH.pct(r.roiPct, 0));
+    MH.setText('r-verdict', VERDICT[r.verdict]);
+    MH.setText('r-payback', r.paybackMonth ? 'Month ' + r.paybackMonth : '> 36 mo');
+    MH.setText('r-annual', MH.bdt(r.fullAnnual));
+    MH.setText('r-net', MH.bdt(r.net3));
+    var y1Rec = r.recurring;
+    MH.setText('t-b1', MH.bdt(r.yearBenefit[0])); MH.setText('t-b3', MH.bdt(r.benefits3));
+    MH.setText('t-o1', MH.bdt(r.oneTime)); MH.setText('t-o3', MH.bdt(r.oneTime));
+    MH.setText('t-r1', MH.bdt(y1Rec)); MH.setText('t-r3', MH.bdt(y1Rec * 3));
+    MH.setText('t-n1', MH.bdt(r.yearBenefit[0] - r.oneTime - y1Rec)); MH.setText('t-n3', MH.bdt(r.net3));
+    var biggest = ['labour','inventory','procurement','production','finance'].sort(function (a, b) { return r.annual[b] - r.annual[a]; })[0];
+    var NAMES = { labour: 'labour efficiency', inventory: 'inventory & working capital', procurement: 'procurement', production: 'production & waste', finance: 'collections' };
+    $('r-note').innerHTML = r.fullAnnual > 0
+      ? 'Your biggest lever is <strong>' + NAMES[biggest] + '</strong> (' + MH.esc(MH.bdt(r.annual[biggest])) + '/yr). Protect it during scoping. ' +
+        (r.simplePaybackMonths ? 'Using the simple formula (no ramp), payback would be ' + r.simplePaybackMonths.toFixed(1) + ' months. The ramp-adjusted figure above is the one to plan cash around.' : '')
+      : 'Fill in the benefit sections to see where the return comes from.';
+    chart(r.cumulative);
+  }
+
+  function load() {
+    var p = MH.readParams();
+    FIELDS.forEach(function (f) { if (p[f] != null && isFinite(parseFloat(p[f]))) $(f).value = parseFloat(p[f]); });
+    if (p.scenario) { var el = document.querySelector('input[name="scenario"][value="' + p.scenario + '"]'); if (el) el.checked = true; }
+  }
+
+  load(); MH.refreshMoney && setTimeout(MH.refreshMoney, 0); render();
+  $('roi-form').addEventListener('input', render);
+  $('roi-form').addEventListener('change', render);
+  $('btn-share').addEventListener('click', function () { MH.copyLink(this, MH.buildLink(read())); });
+})();
+</script>

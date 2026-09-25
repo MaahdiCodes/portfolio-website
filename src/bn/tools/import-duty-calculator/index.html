@@ -1,0 +1,106 @@
+---
+layout: "layouts/tool.njk"
+permalink: "bn/tools/import-duty-calculator/index.html"
+title: "আমদানি শুল্ক ও ল্যান্ডেড কস্ট ক্যালকুলেটর ২০২৬ (CD, RD, SD, VAT, AIT, AT) | মেহেদী হাসান"
+description: "বাংলাদেশের জন্য বিনামূল্যের আমদানি শুল্ক ক্যালকুলেটর: শুল্কায়নযোগ্য মূল্য, CD, RD, SD, VAT, AIT আর AT, মোট কর ভার, আর প্রতি ইউনিটের প্রকৃত ল্যান্ডেড কস্ট। ফেরতযোগ্য নয় এমন শুল্ক আর রেয়াতযোগ্য VAT/AT আলাদা করে দেখায়।"
+canonical: "https://mhasan.me/bn/tools/import-duty-calculator/"
+hreflangEn: "https://mhasan.me/tools/import-duty-calculator/"
+hreflangBn: "https://mhasan.me/bn/tools/import-duty-calculator/"
+ogTitle: "আমদানি শুল্ক ও ল্যান্ডেড কস্ট ক্যালকুলেটর — বাংলাদেশ ২০২৬"
+ogDescription: "আপনার আমদানিতে CD, RD, SD, VAT, AIT আর AT, কোনটা আসল খরচ আর কোনটা রেয়াতযোগ্য, আর প্রতি ইউনিটের সত্যিকারের ল্যান্ডেড কস্ট।"
+ogImage: "https://mhasan.me/assets/og/tools/import-duty-calculator.png"
+jsonLd: |
+  [
+    { "@context": "https://schema.org", "@type": "WebApplication", "name": "আমদানি শুল্ক ও ল্যান্ডেড কস্ট ক্যালকুলেটর — বাংলাদেশ", "url": "https://mhasan.me/bn/tools/import-duty-calculator/", "applicationCategory": "BusinessApplication", "operatingSystem": "Any (web-based)", "offers": { "@type": "Offer", "price": "0", "priceCurrency": "BDT" }, "isAccessibleForFree": true, "inLanguage": "bn", "creator": { "@type": "Person", "name": "Mehedi Hasan", "url": "https://mhasan.me" } },
+    { "@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "হোম", "item": "https://mhasan.me/bn/" },
+      { "@type": "ListItem", "position": 2, "name": "টুল", "item": "https://mhasan.me/bn/tools/" },
+      { "@type": "ListItem", "position": 3, "name": "আমদানি শুল্ক ক্যালকুলেটর", "item": "https://mhasan.me/bn/tools/import-duty-calculator/" } ] }
+  ]
+toolScripts: ["/tools/_calc/duty.js"]
+eyebrow: "ফ্রি টুল · টুল / ০৫ · কমপ্লায়েন্স"
+h1: 'আমদানি শুল্ক ও <span class="serif">ল্যান্ডেড কস্ট।</span>'
+lede: "কাস্টমস যেভাবে হিসাব করে, সেভাবেই আমদানির কর বের করুন: CIF থেকে শুল্কায়নযোগ্য মূল্য, তারপর CD → RD → SD → VAT ধাপে ধাপে। তারপর দেখুন দাম ঠিক করার জন্য আসল সংখ্যাটা, আপনার ল্যান্ডেড কস্ট। সেখানে ফেরত না পাওয়া শুল্ক আর ফেরত পাওয়া VAT ও AT আলাদা করা থাকে।"
+chips: ["ফ্রি টুল", "কাস্টমস", "ল্যান্ডেড কস্ট", "অর্থবছর ২০২৬-২৭"]
+footLabel: "টুল / আমদানি শুল্ক ক্যালকুলেটর"
+related:
+  - { href: "/bn/lab/0041-odoo-landed-costs-duty-drawback-bangladesh", dir: "পড়ুন · Odoo", title: "Odoo-তে ল্যান্ডেড কস্ট ও শুল্ক প্রত্যর্পণ", desc: "এই সংখ্যাগুলো Odoo-র ল্যান্ডেড কস্ট ফিচারে বসান, যাতে স্টকের মূল্যায়ন ঠিক থাকে।" }
+  - { href: "/bn/lab/0019-hs-code-customs-odoo-bangladesh", dir: "পড়ুন · কাস্টমস", title: "Odoo-তে HS কোড ও কাস্টমস", desc: "প্রোডাক্টে HS কোড রাখুন, প্রতিটি বিল অব এন্ট্রির জন্য কাস্টমসের ডেটা তৈরি রাখুন।" }
+---
+<div class="shell tl-wrap">
+  <div class="tl-grid wide-left">
+    <section class="tl-card">
+      <h2>চালান</h2>
+      <form id="duty-form" autocomplete="off" novalidate>
+        <div class="tl-row three">
+          <div class="tl-field"><label for="d-fob">FOB মূল্য (USD)</label><input class="tl-input" type="number" min="0" id="d-fob" value="10000"></div>
+          <div class="tl-field"><label for="d-freight">ফ্রেইট (USD)</label><input class="tl-input" type="number" min="0" id="d-freight" value="800"></div>
+          <div class="tl-field"><label for="d-insurance">বিমা (USD)</label><input class="tl-input" type="number" min="0" id="d-insurance" value="100"></div>
+        </div>
+        <div class="tl-row">
+          <div class="tl-field"><label for="d-fx">কাস্টমসের বিনিময় হার (৳ প্রতি USD)</label><input class="tl-input" type="number" min="0" step="0.01" id="d-fx" value="122"></div>
+          <div class="tl-field"><label for="d-qty">পরিমাণ (ইউনিট, কেজি…)</label><input class="tl-input" type="number" min="0" id="d-qty" value="1000"></div>
+        </div>
+        <p class="tl-hint">ব্যাংকের LC রেট নয়, বিল অব এন্ট্রির তারিখের বিনিময় হার ব্যবহার করুন। অন্য মুদ্রা হলে সেই মুদ্রায় মূল্য আর তার টাকার হার দিন।</p>
+        <fieldset style="margin-top:18px">
+          <legend>শুল্ক ও করের হার <span class="tl-help">কাস্টমস ট্যারিফে আপনার HS কোড দেখুন</span></legend>
+          <div class="tl-tabs" role="group" aria-label="শুরুর হার">
+            <button type="button" class="is-active" data-preset="commercial">তৈরি পণ্য</button>
+            <button type="button" data-preset="manufacturer">শিল্পের কাঁচামাল</button>
+            <button type="button" data-preset="capital">মূলধনী যন্ত্রপাতি</button>
+          </div>
+          <div class="tl-row three">
+            <div class="tl-field"><label for="d-cd">CD</label><div class="tl-suffix"><input class="tl-input" type="number" min="0" step="0.5" id="d-cd" value="25"><span>%</span></div></div>
+            <div class="tl-field"><label for="d-rd">RD</label><div class="tl-suffix"><input class="tl-input" type="number" min="0" step="0.5" id="d-rd" value="3"><span>%</span></div></div>
+            <div class="tl-field"><label for="d-sd">SD</label><div class="tl-suffix"><input class="tl-input" type="number" min="0" step="1" id="d-sd" value="0"><span>%</span></div></div>
+          </div>
+          <div class="tl-row three">
+            <div class="tl-field"><label for="d-vat">VAT</label><div class="tl-suffix"><input class="tl-input" type="number" min="0" step="0.5" id="d-vat" value="15"><span>%</span></div></div>
+            <div class="tl-field"><label for="d-ait">AIT</label><div class="tl-suffix"><input class="tl-input" type="number" min="0" step="0.5" id="d-ait" value="5"><span>%</span></div></div>
+            <div class="tl-field"><label for="d-at">AT</label><div class="tl-suffix"><input class="tl-input" type="number" min="0" step="0.5" id="d-at" value="7.5"><span>%</span></div></div>
+          </div>
+          <p class="tl-hint">বাটনগুলো সাধারণ শুরুর হার বসায়: CD-র স্তর ০/১/৫/১০/১৫/২৫%। বাণিজ্যিক আমদানিকারকের AT ৭.৫% (২০২৫-২৬ অর্থবছর থেকে)। কাঁচামাল আর মূলধনী যন্ত্রপাতিতে সাধারণত CD, AIT আর AT কম, অনেক ক্ষেত্রে অব্যাহতিও আছে। <strong>আপনার নির্দিষ্ট HS কোডের হার অবশ্যই যাচাই করুন।</strong></p>
+        </fieldset>
+        <div class="tl-row">
+          <div class="tl-field"><label for="d-localCosts">বন্দর, C&amp;F, পরিবহন (৳)</label><input class="tl-input" type="number" min="0" step="1000" id="d-localCosts" value="45000"></div>
+          <div class="tl-field" style="display:flex;align-items:flex-end">
+            <div class="tl-check" style="width:100%"><input type="checkbox" id="d-vatreg" checked><label for="d-vatreg">VAT-নিবন্ধিত আমদানিকারক<small>VAT আর AT রেয়াতযোগ্য</small></label></div>
+          </div>
+        </div>
+      </form>
+    </section>
+    <section class="tl-card tl-sticky" aria-live="polite">
+      <h2>ফলাফল</h2>
+      <div class="tl-headline">
+        <div class="h-label">ল্যান্ডেড কস্ট (মালের আসল খরচ)</div>
+        <div class="h-value" id="d-landed">—</div>
+        <div class="h-sub" id="d-landed-sub">—</div>
+      </div>
+      <div class="tl-stats">
+        <div class="tl-stat"><div class="s-v" id="d-cash">—</div><div class="s-l">বন্দরে নগদ লাগবে</div></div>
+        <div class="tl-stat"><div class="s-v" id="d-sunk">—</div><div class="s-l">ফেরত হয় না (CD+RD+SD)</div></div>
+        <div class="tl-stat"><div class="s-v" id="d-rec">—</div><div class="s-l">রেয়াত / সমন্বয়যোগ্য</div></div>
+      </div>
+      <div class="tl-table-wrap"><table class="tl-table"><tbody id="d-table"></tbody></table></div>
+      <p class="tl-note"><strong>বন্দরে নগদ</strong> আর <strong>ল্যান্ডেড কস্টের</strong> পার্থক্যটা চলতি মূলধন, খরচ নয়। আপনার কস্টিং শিটে VAT বা AIT প্রোডাক্টের খরচে যোগ হলে দাম বেশি ধরা হচ্ছে। Odoo-তে ল্যান্ডেড কস্টের লাইনে শুধু CD, RD, SD আর স্থানীয় খরচ থাকবে।</p>
+      <div class="tl-cta-row inline">
+        <button type="button" class="btn-ghost" id="d-share" style="flex:1">শেয়ার লিংক কপি করুন</button>
+        <button type="button" class="btn-ghost" data-print style="flex:1">PDF হিসেবে সেভ করুন</button>
+      </div>
+    </section>
+  </div>
+  <details class="tl-details">
+    <summary>ফর্মুলা আর সূত্র</summary>
+    <div class="d-body">
+      <ul>
+        <li><strong>শুল্কায়নযোগ্য মূল্য</strong> = CIF + CIF-এর ১% ল্যান্ডিং চার্জ (বাংলাদেশ কাস্টমস)।</li>
+        <li><strong>CD</strong> আর <strong>RD</strong> বসে শুল্কায়নযোগ্য মূল্যের ওপর। <strong>SD</strong> বসে শুল্কায়নযোগ্য মূল্য + CD + RD-এর ওপর।</li>
+        <li><strong>VAT</strong> আর <strong>AT</strong> বসে শুল্কায়নযোগ্য মূল্য + CD + RD + SD-এর ওপর। <strong>AIT</strong> বসে শুল্কায়নযোগ্য মূল্যের ওপর।</li>
+        <li><strong>TTI</strong> (মোট কর ভার) = আমদানির সব কর ÷ শুল্কায়নযোগ্য মূল্য। ব্যবসায়ীরা এই সংখ্যাটাই বলেন, তবে VAT-নিবন্ধিত আমদানিকারকের আসল খরচ এর চেয়ে কম।</li>
+      </ul>
+      <p>হারগুলো প্রতি জুনের বাজেটে বদলায়, HS কোড ধরে নির্ধারিত হয়, কখনো SRO দিয়ে অব্যাহতিও থাকে। ২০২৬-২৭ অর্থবছরের অর্থ আইন কয়েকটি হার বদলেছে (যেমন POS মেশিন আর EV চার্জারে AT ৭.৫% থেকে ০%, কিছু প্রসাধনীতে SD কমেছে)। আপনার HS কোড দেখুন <a href="https://bangladeshcustoms.gov.bd/trade_info/operative_tariff" target="_blank" rel="noopener">বাংলাদেশ কাস্টমসের অপারেটিভ ট্যারিফে</a>, আর সাম্প্রতিক পরিবর্তন দেখুন <a href="/bn/compliance-watch/">কমপ্লায়েন্স ওয়াচে</a>।</p>
+    </div>
+  </details>
+  <p class="tl-disclosure"><strong>শুধু আনুমানিক হিসাব।</strong> আপনার বিল অব এন্ট্রির শুল্কায়িত মূল্য, বিনিময় হার আর প্রযোজ্য SRO-ই ঠিক করে আসলে কত দিতে হবে। কস্টিং আর নগদ পরিকল্পনার জন্য এটা ব্যবহার করুন, আর আপনার C&amp;F এজেন্টের সঙ্গে নিশ্চিত হয়ে নিন।</p>
+</div>
+<script src="/tools/_calc/duty-ui.js"></script>

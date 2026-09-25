@@ -1,0 +1,156 @@
+---
+layout: "layouts/tool.njk"
+permalink: "tools/vat-mushak-helper/index.html"
+title: "VAT & Mushak Helper Bangladesh 2026 — Which Forms Apply + VAT Calculator | Mehedi Hasan"
+description: "Find out which Mushak forms, registers and VAT returns apply to your business after the Finance Act 2026 (quarterly returns, 9.1.1, ৳50 lakh enlistment), how each maps to Odoo, and calculate VAT, SD and VDS."
+canonical: "https://mhasan.me/tools/vat-mushak-helper/"
+hreflangBn: "https://mhasan.me/bn/tools/vat-mushak-helper/"
+ogTitle: "VAT & Mushak Helper — Bangladesh 2026"
+ogDescription: "Which Mushak forms and returns apply to you after the Finance Act 2026, how to produce each in Odoo, plus a VAT/SD/VDS calculator."
+ogImage: "https://mhasan.me/assets/og/tools/vat-mushak-helper.png"
+extraHead: |
+  <meta name="keywords" content="mushak forms list, which mushak form, vat calculator bangladesh, vds calculation, mushak 9.1 quarterly, mushak 6.3 erp, vat return quarterly bangladesh 2026">
+jsonLd: |
+  [
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "VAT & Mushak Helper — Bangladesh",
+      "url": "https://mhasan.me/tools/vat-mushak-helper/",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Any (web-based)",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "BDT" },
+      "isAccessibleForFree": true,
+      "inLanguage": "en",
+      "creator": { "@type": "Person", "name": "Mehedi Hasan", "url": "https://mhasan.me" },
+      "description": "Determines the Mushak forms, registers and VAT return that apply to a Bangladeshi business profile and calculates VAT, SD and VDS on a supply."
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://mhasan.me/" },
+        { "@type": "ListItem", "position": 2, "name": "Tools", "item": "https://mhasan.me/tools/" },
+        { "@type": "ListItem", "position": 3, "name": "VAT & Mushak Helper", "item": "https://mhasan.me/tools/vat-mushak-helper/" }
+      ]
+    }
+  ]
+toolScripts: ["/tools/_calc/mushak.js"]
+eyebrow: "Free Tool · Tools / 06 · Compliance"
+h1: 'VAT &amp; Mushak <span class="serif">helper.</span>'
+lede: "Answer five questions about your business to see which Mushak forms, registers and returns apply to you after the Finance Act 2026, and how to produce each one from Odoo instead of Excel. There's a VAT, SD and VDS calculator on the second tab."
+chips: ["Free Tool", "Finance Act 2026", "Mushak 6.3 · 9.1", "Odoo mapping"]
+footLabel: "Tools / VAT & Mushak helper"
+related:
+  - { href: "/lab/0018-mushak-63-odoo-bangladesh", dir: "Read · Odoo", title: "Mushak 6.3 in Odoo", desc: "Field-by-field: how to produce a compliant tax invoice from Odoo." }
+  - { href: "/lab/0003-nbr-vat-compliance-odoo-bangladesh", dir: "Read · Compliance", title: "NBR VAT compliance in Odoo", desc: "Tax configuration, registers, returns and VDS end to end." }
+---
+<div class="shell tl-wrap">
+  <div class="tl-tabs no-print" role="tablist" aria-label="Mode">
+    <button type="button" class="is-active" data-mode="forms" role="tab" aria-selected="true">Which forms apply to me?</button>
+    <button type="button" data-mode="calc" role="tab" aria-selected="false">VAT / SD / VDS calculator</button>
+  </div>
+
+  <div class="tl-grid" id="mode-forms">
+    <section class="tl-card">
+      <h2>Your business</h2>
+      <form id="forms-form" autocomplete="off" novalidate>
+        <div class="tl-field"><label for="m-turnover">Annual turnover (৳)</label><input class="tl-input" type="number" min="0" step="100000" id="m-turnover" data-money value="100000000"></div>
+        <fieldset>
+          <legend>What do you do? <span class="tl-help">select all</span></legend>
+          <div class="tl-checks">
+            <div class="tl-check"><input type="checkbox" name="act" value="mfg" id="a-mfg" checked><label for="a-mfg">Manufacture goods</label></div>
+            <div class="tl-check"><input type="checkbox" name="act" value="trade" id="a-trade"><label for="a-trade">Buy &amp; resell (trading)</label></div>
+            <div class="tl-check"><input type="checkbox" name="act" value="service" id="a-svc"><label for="a-svc">Provide services</label></div>
+            <div class="tl-check"><input type="checkbox" name="act" value="import" id="a-imp"><label for="a-imp">Import</label></div>
+            <div class="tl-check"><input type="checkbox" name="act" value="export" id="a-exp"><label for="a-exp">Export</label></div>
+          </div>
+        </fieldset>
+        <fieldset>
+          <legend>Also true for you?</legend>
+          <div class="tl-checks one">
+            <div class="tl-check"><input type="checkbox" id="m-vds"><label for="m-vds">We are a VDS withholding entity<small>e.g. a company above the NBR threshold, bank, NGO, or public body that must deduct VAT from supplier bills</small></label></div>
+            <div class="tl-check"><input type="checkbox" id="m-sub"><label for="m-sub">We use subcontractors / contract manufacturing</label></div>
+            <div class="tl-check"><input type="checkbox" id="m-branch"><label for="m-branch">We move goods between our own units or branches</label></div>
+            <div class="tl-check"><input type="checkbox" id="m-exempt"><label for="m-exempt">We sell goods that were exempt or reduced-rated at production</label></div>
+          </div>
+        </fieldset>
+      </form>
+    </section>
+
+    <section class="tl-card tl-sticky" aria-live="polite">
+      <h2>What applies</h2>
+      <div class="tl-headline">
+        <div class="h-label">Your VAT regime</div>
+        <div class="h-value" id="m-regime" style="font-size:clamp(18px,2.6vw,24px)">—</div>
+        <div class="h-sub" id="m-count">—</div>
+      </div>
+      <div class="tl-table-wrap"><table class="tl-table"><tbody id="m-forms"></tbody></table></div>
+      <h3>What's changed for you</h3>
+      <ul class="tl-list" id="m-notes"></ul>
+      <div class="tl-cta-row">
+        <a class="btn-primary" href="/#contact">Get these forms coming out of Odoo →</a>
+        <button type="button" class="btn-ghost" data-print>Save as PDF checklist</button>
+      </div>
+    </section>
+  </div>
+
+  <div class="tl-grid" id="mode-calc" hidden>
+    <section class="tl-card">
+      <h2>Supply</h2>
+      <form id="calc-form" autocomplete="off" novalidate>
+        <div class="tl-field"><label for="c-amount">Amount (৳)</label><input class="tl-input" type="number" min="0" step="0.01" id="c-amount" value="100000"></div>
+        <fieldset>
+          <legend>This amount is</legend>
+          <div class="tl-chips">
+            <div class="tl-chip"><input type="radio" name="incl" id="i-ex" value="exclusive" checked><label for="i-ex">Before tax</label></div>
+            <div class="tl-chip"><input type="radio" name="incl" id="i-in" value="inclusive"><label for="i-in">Including SD + VAT</label></div>
+          </div>
+        </fieldset>
+        <div class="tl-row">
+          <div class="tl-field"><label for="c-vat">VAT rate</label><div class="tl-suffix"><input class="tl-input" type="number" min="0" step="0.5" id="c-vat" value="15"><span>%</span></div></div>
+          <div class="tl-field"><label for="c-sd">SD rate</label><div class="tl-suffix"><input class="tl-input" type="number" min="0" step="1" id="c-sd" value="0"><span>%</span></div></div>
+        </div>
+        <div class="tl-chips" style="margin:-4px 0 16px">
+          <button type="button" class="btn-ghost" data-rate="15">15%</button>
+          <button type="button" class="btn-ghost" data-rate="10">10%</button>
+          <button type="button" class="btn-ghost" data-rate="7.5">7.5%</button>
+          <button type="button" class="btn-ghost" data-rate="5">5%</button>
+          <button type="button" class="btn-ghost" data-rate="0">0% / export</button>
+        </div>
+        <div class="tl-check" style="margin-bottom:12px"><input type="checkbox" id="c-vdson"><label for="c-vdson">Buyer is a VDS withholding entity</label></div>
+        <div class="tl-field"><label for="c-vds">Share of VAT withheld</label><div class="tl-suffix"><input class="tl-input" type="number" min="0" max="100" id="c-vds" value="100"><span>%</span></div></div>
+        <p class="tl-hint">For most standard-rated services the buyer withholds the full VAT on your 6.3. Check the VDS guideline for your service code.</p>
+      </form>
+    </section>
+    <section class="tl-card tl-sticky" aria-live="polite">
+      <h2>Breakdown</h2>
+      <div class="tl-headline">
+        <div class="h-label">Invoice total</div>
+        <div class="h-value" id="c-total">—</div>
+        <div class="h-sub" id="c-vatamt">—</div>
+      </div>
+      <table class="tl-table"><tbody id="c-table"></tbody></table>
+      <p class="tl-note">SD is charged on the value, then VAT on value + SD. That's why an "inclusive" price can't be split by simply dividing by 1.15 when SD applies.</p>
+    </section>
+  </div>
+
+  <details class="tl-details" open>
+    <summary>What the Finance Act 2026 changed (effective 1 July 2026)</summary>
+    <div class="d-body">
+      <ul>
+        <li><strong>Quarterly VAT returns.</strong> Returns now cover three tax periods and are due within 15 days of the cycle ending. Each month you deposit one-third of the previous quarter's tax as an advance. Monthly filing is still allowed voluntarily, and NBR is empowered to make electronic filing mandatory.</li>
+        <li><strong>Mushak 9.1.1</strong> is a new return form for registered traders.</li>
+        <li><strong>Mushak 6.3 from your ERP.</strong> Tax invoices can be issued and preserved electronically from the company's ERP, and records kept in ERP/VAT software are admissible evidence.</li>
+        <li><strong>Tampering penalty.</strong> Altering data in approved VAT software now carries a penalty of 1–2× the tax evaded. Audit trails matter.</li>
+        <li><strong>Enlistment for everyone up to ৳50 lakh.</strong> The ৳30 lakh "no obligation" band is deleted. Above ৳50 lakh, VAT registration is mandatory.</li>
+        <li><strong>Turnover tax</strong> moves from 4% to a fixed amount set by NBR (capped at ৳2 lakh), with a four-month period and yearly return.</li>
+        <li><strong>Input credit:</strong> labour is off the negative list, and transport services now get 100% credit (was 80%).</li>
+        <li><strong>BIN everywhere:</strong> needed for bank accounts, loans, trade licence renewal, MFS merchant accounts, utilities and vehicle registration.</li>
+      </ul>
+      <p>Source: Rahman Rahman Huq (KPMG in Bangladesh), <em>Salient features of Finance Bill 2026</em>, cross-checked against Finance Act 2026 summaries. NBR SROs and guidelines set the details. Check the <a href="https://nbr.gov.bd" target="_blank" rel="noopener">NBR website</a> before you file.</p>
+    </div>
+  </details>
+  <p class="tl-disclosure"><strong>Not tax advice.</strong> This is a configuration checklist written by an ERP consultant, not a VAT consultant. Your exact obligations depend on your service codes, SROs, exemptions and your VAT circle's instructions. Confirm with your VAT adviser.</p>
+</div>
+<script src="/tools/_calc/mushak-ui.js"></script>

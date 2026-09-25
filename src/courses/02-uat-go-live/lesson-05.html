@@ -1,0 +1,73 @@
+---
+layout: "layouts/lesson.njk"
+permalink: "courses/02-uat-go-live/lesson-05.html"
+lessonN: "05"
+title: "Lesson 05 — Training People So They Can Work on Day One · Course 02 | Mehedi Hasan"
+description: "Role-based ERP training that works: training matrix, small batches, Bangla where needed, practice data, practical assessment and superusers — for Odoo go-lives in Bangladesh."
+canonical: "https://mhasan.me/courses/02-uat-go-live/lesson-05"
+hreflangBn: "https://mhasan.me/bn/courses/02-uat-go-live/lesson-05"
+ogImage: "https://mhasan.me/assets/og/courses/02-uat-go-live.png"
+backHref: "/courses/02-uat-go-live/"
+backLabel: "← Course overview"
+eyebrow: "Course 02 · Lesson 05 · 14 min"
+h1: 'Training people so they can <span class="serif">work on day one</span>'
+lede: "A demo is not training. Training has worked when a store keeper can receive a real shipment in Odoo without calling anyone. Anything less is a presentation."
+chips: ["Training", "Adoption", "Superusers"]
+footLabel: "Course 02 / Lesson 05"
+---
+<h2>Train roles, not modules</h2>
+<p>Module-based training ("today: Inventory") teaches people features they'll never use and misses the steps they need that sit in another module. A store keeper doesn't need "Inventory". They need to receive against a PO, scan, handle a partial delivery, and report damage, and some of that touches Purchase and Quality.</p>
+<p>So start with a <strong>training matrix</strong>: roles down the side, modules across the top, and a depth in each cell.</p>
+<table>
+  <thead><tr><th>Depth</th><th>Meaning</th><th>Who</th></tr></thead>
+  <tbody>
+    <tr><td>DEEP</td><td>All transactions, configuration options, period-close tasks</td><td>Superusers, the finance manager for Accounting</td></tr>
+    <tr><td>BASIC</td><td>The specific transactions this role does daily</td><td>Most end users</td></tr>
+    <tr><td>VIEW</td><td>How to run and read the reports they need</td><td>Management, adjacent departments</td></tr>
+    <tr><td>—</td><td>No training, no access</td><td>Everyone else</td></tr>
+  </tbody>
+</table>
+<p>The matrix also becomes your access-rights design. If a role gets no training in a module, it gets no access to it. The <a href="/assets/downloads/odoo-training-plan-signoff.xlsx">training plan template</a> has the matrix, schedule and sign-off sheets.</p>
+
+<h2>How to run sessions that stick</h2>
+<ul>
+  <li><strong>Small batches.</strong> Six to ten people, with a computer each. A projector session for 40 people is a lecture.</li>
+  <li><strong>Their language.</strong> Many operational users learn faster in Bangla, even when the screens are in English. Run sessions in Bangla where it helps, and give them screen guides with Bangla notes.</li>
+  <li><strong>Their data.</strong> Train on the UAT database with migrated data, so they see their own customers, products and warehouses.</li>
+  <li><strong>Their scenarios.</strong> Reuse the UAT scripts. They're already written around real personas and real exceptions.</li>
+  <li><strong>Timing.</strong> Train one to two weeks before go-live. Earlier and they forget. Later and there's no time to fix what the training reveals.</li>
+  <li><strong>Shifts.</strong> Factories run shifts. Schedule sessions so supervisors on every shift are covered, not just day shift.</li>
+</ul>
+
+<div class="field-note"><span class="tag">Common pitfall</span><p>Training sessions are also the last UAT. A warehouse batch may find in the first ten minutes that the label printer produces barcodes the handheld scanners can&rsquo;t read, because UAT used a different printer. Treat anything found in training as a defect and log it.</p></div>
+
+<h2>Assess, don't take attendance</h2>
+<p>"Attended training" proves nothing. Every user completes a short practical exercise for their role, alone, on the training database: receive this shipment, raise this bill with TDS, run this payroll for three workers. The trainer checks the result, and the user and trainer both sign.</p>
+<p>Users who can't pass get a refresher before go-live, or a named buddy on day one. That list is one of your go/no-go inputs. If 30% of the warehouse can't pass, the warehouse isn't ready, whatever the configuration status says.</p>
+
+<h2>Superusers are your real support team</h2>
+<p>After hypercare, the consultant leaves and your superusers stay. Choose one per department: someone respected, curious, and not the busiest person in the team. Give them DEEP training, involve them in UAT, and make them the first line of support from go-live.</p>
+<p>Put it in their job description and their appraisal. Superuser work done on top of a full job, for no recognition, disappears within three months.</p>
+
+<h2>Materials that survive staff turnover</h2>
+<p>Factories and trading companies in Bangladesh often see 20–30% staff turnover a year. Within 18 months, a large share of the people you trained will have left. So the materials have to train the next person without a consultant:</p>
+<ul>
+  <li>Short screen guides per task (one page, screenshots, Bangla notes).</li>
+  <li>Short screen-recorded videos of the ten most common transactions.</li>
+  <li>An onboarding checklist for new joiners by role, owned by the superuser.</li>
+  <li>A budget line for refresher training every year.</li>
+</ul>
+
+<div class="exercise"><p><strong>Exercise (15 minutes).</strong> Draft your training matrix for three roles. For each cell, pick DEEP, BASIC, VIEW or —. Then name one superuser candidate per department, and one reason they'd want the role.</p></div>
+
+<div class="takeaways">
+  <h3>Key takeaways</h3>
+  <ul>
+    <li>Train by role with a depth matrix, which doubles as your access-rights design.</li>
+    <li>Small batches, the users' language, their data and their scenarios.</li>
+    <li>Assess every user practically. Those who fail are a go/no-go input.</li>
+    <li>Superusers need recognition, not just training.</li>
+    <li>Write materials that can train the next hire without you.</li>
+  </ul>
+</div>
+<p>Go deeper: <a href="/lab/0031-odoo-training-plan-template">Odoo training plan template</a> and <a href="/lab/0102-building-in-house-odoo-superuser-team-bangladesh">Building an in-house superuser team</a>.</p>

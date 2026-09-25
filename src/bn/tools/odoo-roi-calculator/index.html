@@ -1,0 +1,240 @@
+---
+layout: "layouts/tool.njk"
+permalink: "bn/tools/odoo-roi-calculator/index.html"
+title: "Odoo ROI ক্যালকুলেটর বাংলাদেশ ২০২৬ (বিনামূল্যের টুল) | মেহেদী হাসান"
+description: "বাংলাদেশের উৎপাদকদের জন্য বিনামূল্যের Odoo ERP ROI ক্যালকুলেটর: ৩ বছরের ROI, ব্রেক-ইভেনের মাস, আর শ্রম, স্টক, ক্রয়, উৎপাদনের অপচয় ও আদায় থেকে লাভের বিভাজন, বাস্তবসম্মত গো-লাইভ র‍্যাম্পসহ।"
+canonical: "https://mhasan.me/bn/tools/odoo-roi-calculator/"
+hreflangEn: "https://mhasan.me/tools/odoo-roi-calculator/"
+hreflangBn: "https://mhasan.me/bn/tools/odoo-roi-calculator/"
+ogTitle: "Odoo ROI ক্যালকুলেটর — বাংলাদেশ ২০২৬"
+ogDescription: "Odoo ERP প্রজেক্টের ৩ বছরের ROI আর ব্রেক-ইভেনের মাস, BDT-তে, বাংলাদেশের মানদণ্ড আর বাস্তবসম্মত র‍্যাম্প দিয়ে।"
+ogImage: "https://mhasan.me/assets/og/tools/odoo-roi-calculator.png"
+jsonLd: |
+  [
+    { "@context": "https://schema.org", "@type": "WebApplication", "name": "Odoo ROI ক্যালকুলেটর — বাংলাদেশ", "url": "https://mhasan.me/bn/tools/odoo-roi-calculator/", "applicationCategory": "BusinessApplication", "operatingSystem": "Any (web-based)", "offers": { "@type": "Offer", "price": "0", "priceCurrency": "BDT" }, "isAccessibleForFree": true, "inLanguage": "bn", "creator": { "@type": "Person", "name": "Mehedi Hasan", "url": "https://mhasan.me" } },
+    { "@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "হোম", "item": "https://mhasan.me/bn/" },
+      { "@type": "ListItem", "position": 2, "name": "টুল", "item": "https://mhasan.me/bn/tools/" },
+      { "@type": "ListItem", "position": 3, "name": "Odoo ROI ক্যালকুলেটর", "item": "https://mhasan.me/bn/tools/odoo-roi-calculator/" } ] }
+  ]
+toolScripts: ["/tools/_calc/roi.js"]
+eyebrow: "ফ্রি টুল · টুল / ০২"
+h1: 'Odoo ROI ক্যালকুলেটর: <span class="serif">টাকাটা কি উঠে আসবে?</span>'
+lede: "কস্ট এস্টিমেটর বলে Odoo-তে কত খরচ হবে। এই টুল বলে কত ফেরত আসবে। আপনার নিজের সংখ্যা দিন: অফিস স্টাফের বেতন, স্টক, কেনাকাটা, অপচয়, পাওনা। পাবেন ৩ বছরের ROI আর কোন মাসে বিনিয়োগ উঠে আসবে। প্রথম দিন থেকে লাভ ধরা হয় না, বাস্তবসম্মত র‍্যাম্প মেনে হিসাব হয়।"
+chips: ["ফ্রি টুল", "বিজনেস কেস", "পেব্যাকের মাস", "BDT"]
+footLabel: "টুল / Odoo ROI ক্যালকুলেটর"
+related:
+  - { href: "/bn/lab/0048-odoo-roi-calculator-bangladesh", dir: "পড়ুন · পদ্ধতি", title: "Odoo ROI মডেল কীভাবে বানাবেন", desc: "পাঁচ ধরনের লাভ, র‍্যাম্প কার্ভ আর একটি গার্মেন্টস কারখানার উদাহরণ।" }
+  - { href: "/bn/tools/odoo-cost-estimator/", dir: "টুল · খরচের দিক", title: "Odoo কস্ট এস্টিমেটর", desc: "আগে ৩ বছরের TCO বের করুন, তারপর এক ক্লিকে এখানে আনুন।" }
+extraStyles: |
+  .roi-chart { width: 100%; height: auto; display: block; margin: 8px 0 4px; }
+  .roi-chart .axis { stroke: var(--border-2); stroke-width: 1; }
+  .roi-chart .zero { stroke: var(--text-3); stroke-dasharray: 3 4; stroke-width: 1; }
+  .roi-chart .line { fill: none; stroke: var(--accent); stroke-width: 2.25; }
+  .roi-chart .area-neg { fill: rgba(229,98,94,0.12); }
+  .roi-chart .area-pos { fill: color-mix(in oklch, var(--accent) 14%, transparent); }
+  .roi-chart text { fill: var(--text-3); font-family: var(--mono); font-size: 10px; }
+  .roi-group { border-top: 1px solid var(--border); padding-top: 18px; margin-top: 18px; }
+  .roi-group:first-of-type { border-top: none; padding-top: 0; margin-top: 0; }
+  .roi-group h3 { margin-top: 0; display: flex; justify-content: space-between; gap: 8px; }
+  .roi-group h3 span { font-family: var(--mono); font-size: 12px; color: var(--accent); font-weight: 400; }
+---
+<div class="shell tl-wrap">
+  <div class="tl-grid wide-left">
+    <section class="tl-card">
+      <h2>আপনার সংখ্যা</h2>
+      <p class="tl-hint" style="margin:-8px 0 18px">ডিফল্ট সংখ্যাগুলো একটি সাধারণ মাঝারি আকারের বাংলাদেশি কারখানার। শেষ ব্যালেন্স শিট দেখে আপনার নিজের সংখ্যা বসান। রক্ষণশীল থাকাই ভালো।</p>
+      <form id="roi-form" autocomplete="off" novalidate>
+        <fieldset>
+          <legend>পরিস্থিতি</legend>
+          <div class="tl-chips" role="radiogroup" aria-label="পরিস্থিতি">
+            <div class="tl-chip"><input type="radio" name="scenario" id="sc-c" value="conservative" checked><label for="sc-c">রক্ষণশীল</label></div>
+            <div class="tl-chip"><input type="radio" name="scenario" id="sc-e" value="expected"><label for="sc-e">প্রত্যাশিত (+২৫%)</label></div>
+            <div class="tl-chip"><input type="radio" name="scenario" id="sc-o" value="optimistic"><label for="sc-o">আশাবাদী (+৫০%)</label></div>
+          </div>
+          <p class="tl-hint">বোর্ডের সামনে রক্ষণশীল হিসাবটাই নিয়ে যান। সেটাতেও ১০০% পেরোলে প্রজেক্টের পক্ষে যুক্তি শক্ত।</p>
+        </fieldset>
+
+        <div class="roi-group">
+          <h3>১ · শ্রমের দক্ষতা <span id="b-labour">—</span></h3>
+          <div class="tl-row three">
+            <div class="tl-field"><label for="adminStaff">অফিস / ডেটা-এন্ট্রি স্টাফ</label><input class="tl-input" type="number" min="0" id="adminStaff" value="10"></div>
+            <div class="tl-field"><label for="adminSalary">গড় মাসিক খরচ (৳)</label><input class="tl-input" type="number" min="0" step="1000" id="adminSalary" value="25000"></div>
+            <div class="tl-field"><label for="labourGainPct">সময় বাঁচবে</label><div class="tl-suffix"><input class="tl-input" type="number" min="0" max="100" id="labourGainPct" value="20"><span>%</span></div></div>
+          </div>
+          <p class="tl-hint">অ্যাকাউন্টস, স্টোর, প্ল্যানিং, MIS, HR/পে-রোলের কর্মী। মানদণ্ড ২০–২৫%। পদগুলো সাধারণত বাদ পড়ে না, অন্য কাজে লাগানো হয়।</p>
+        </div>
+
+        <div class="roi-group">
+          <h3>২ · স্টক ও চলতি মূলধন <span id="b-inventory">—</span></h3>
+          <div class="tl-row">
+            <div class="tl-field"><label for="inventoryValue">খরচমূল্যে গড় স্টক (৳)</label><input class="tl-input" type="number" min="0" step="100000" id="inventoryValue" data-money value="30000000"></div>
+            <div class="tl-field"><label for="inventoryCutPct">বাস্তবসম্মত কমানো</label><div class="tl-suffix"><input class="tl-input" type="number" min="0" max="60" id="inventoryCutPct" value="12"><span>%</span></div></div>
+          </div>
+          <div class="tl-row">
+            <div class="tl-field"><label for="costOfCapitalPct">ব্যাংকের চলতি মূলধনের সুদ</label><div class="tl-suffix"><input class="tl-input" type="number" min="0" max="30" step="0.5" id="costOfCapitalPct" value="11"><span>%</span></div></div>
+            <div class="tl-field"><label for="carryingCostPct">মজুদ রাখার খরচ (গুদাম, বিমা)</label><div class="tl-suffix"><input class="tl-input" type="number" min="0" max="20" step="0.5" id="carryingCostPct" value="3"><span>%</span></div></div>
+          </div>
+          <p class="tl-hint">LC-র দীর্ঘ লিড টাইমের কারণে যাঁরা ৬০–৯০ দিনের কাঁচামাল রাখেন, তাঁদের জন্য সাধারণত এটাই সবচেয়ে বড় লাভ।</p>
+        </div>
+
+        <div class="roi-group">
+          <h3>৩ · ক্রয় <span id="b-procurement">—</span></h3>
+          <div class="tl-row">
+            <div class="tl-field"><label for="procurementSpend">বছরে মোট কেনাকাটা (৳)</label><input class="tl-input" type="number" min="0" step="100000" id="procurementSpend" data-money value="50000000"></div>
+            <div class="tl-field"><label for="procurementSavePct">সাশ্রয়ের হার</label><div class="tl-suffix"><input class="tl-input" type="number" min="0" max="15" step="0.5" id="procurementSavePct" value="2"><span>%</span></div></div>
+          </div>
+          <p class="tl-hint">তিন-পথে মিলকরণ, একসঙ্গে কেনা, ভেন্ডরের পারফরম্যান্স ডেটা। মানদণ্ড ২–৫%।</p>
+        </div>
+
+        <div class="roi-group">
+          <h3>৪ · উৎপাদন ও অপচয় <span id="b-production">—</span></h3>
+          <div class="tl-row three">
+            <div class="tl-field"><label for="productionValue">বছরে উৎপাদনের মূল্য (৳)</label><input class="tl-input" type="number" min="0" step="100000" id="productionValue" data-money value="100000000"></div>
+            <div class="tl-field"><label for="wasteNowPct">এখন অপচয়</label><div class="tl-suffix"><input class="tl-input" type="number" min="0" max="30" step="0.1" id="wasteNowPct" value="4"><span>%</span></div></div>
+            <div class="tl-field"><label for="wasteAfterPct">পরে অপচয়</label><div class="tl-suffix"><input class="tl-input" type="number" min="0" max="30" step="0.1" id="wasteAfterPct" value="3"><span>%</span></div></div>
+          </div>
+          <p class="tl-hint">ট্রেডিং কোম্পানি হলে উৎপাদনের মূল্য ০ দিন। উৎপাদকদের ক্ষেত্রে সঠিক BOM সাধারণত ১–৩ পয়েন্ট অপচয় কমায়।</p>
+        </div>
+
+        <div class="roi-group">
+          <h3>৫ · হিসাব ও আদায় <span id="b-finance">—</span></h3>
+          <div class="tl-row three">
+            <div class="tl-field"><label for="arBalance">পাওনা (৳)</label><input class="tl-input" type="number" min="0" step="100000" id="arBalance" data-money value="20000000"></div>
+            <div class="tl-field"><label for="dsoNow">এখন DSO (দিন)</label><input class="tl-input" type="number" min="0" id="dsoNow" value="45"></div>
+            <div class="tl-field"><label for="dsoCutDays">কত দিন কমবে</label><input class="tl-input" type="number" min="0" id="dsoCutDays" value="10"></div>
+          </div>
+          <p class="tl-hint">ডেলিভারি থেকেই ইনভয়েস, LC-র কাগজ দ্রুত জমা। মানদণ্ড ৭–১৫ দিন।</p>
+        </div>
+
+        <div class="roi-group">
+          <h3>খরচ <span id="b-costs">—</span></h3>
+          <div class="tl-row">
+            <div class="tl-field"><label for="implementation">বাস্তবায়নের ফি (৳, এককালীন)</label><input class="tl-input" type="number" min="0" step="10000" id="implementation" data-money value="1800000"></div>
+            <div class="tl-field"><label for="internalTeam">ভেতরের টিমের সময় (৳, এককালীন)</label><input class="tl-input" type="number" min="0" step="10000" id="internalTeam" data-money value="500000"></div>
+          </div>
+          <div class="tl-row">
+            <div class="tl-field"><label for="trainingInitial">গো-লাইভের ট্রেনিং (৳)</label><input class="tl-input" type="number" min="0" step="10000" id="trainingInitial" data-money value="250000"></div>
+            <div class="tl-field"><label for="hardwareOneTime">হার্ডওয়্যার, স্ক্যানার, সেটআপ (৳)</label><input class="tl-input" type="number" min="0" step="10000" id="hardwareOneTime" data-money value="100000"></div>
+          </div>
+          <div class="tl-row">
+            <div class="tl-field"><label for="licenceAnnual">বছরে লাইসেন্স (৳)</label><input class="tl-input" type="number" min="0" step="10000" id="licenceAnnual" data-money value="300000"></div>
+            <div class="tl-field"><label for="hostingAnnual">বছরে হোস্টিং (৳)</label><input class="tl-input" type="number" min="0" step="10000" id="hostingAnnual" data-money value="150000"></div>
+          </div>
+          <div class="tl-row">
+            <div class="tl-field"><label for="supportAnnual">বছরে সাপোর্ট চুক্তি (৳)</label><input class="tl-input" type="number" min="0" step="10000" id="supportAnnual" data-money value="300000"></div>
+            <div class="tl-field"><label for="trainingAnnual">বছরে রিফ্রেশার ট্রেনিং (৳)</label><input class="tl-input" type="number" min="0" step="10000" id="trainingAnnual" data-money value="50000"></div>
+          </div>
+          <p class="tl-hint">খরচ এখনো জানা নেই? <a href="/bn/tools/odoo-cost-estimator/">কস্ট এস্টিমেটর চালান</a>। ফলাফলের "ROI হিসাব করুন" বাটন এই অংশটা পূরণ করে দেয়।</p>
+        </div>
+      </form>
+    </section>
+
+    <section class="tl-card tl-sticky" aria-live="polite">
+      <h2>আপনার ৩ বছরের বিজনেস কেস</h2>
+      <div class="tl-headline">
+        <div class="h-label">৩ বছরের ROI (র‍্যাম্পসহ)</div>
+        <div class="h-value" id="r-roi">—</div>
+        <div class="h-sub" id="r-verdict">—</div>
+      </div>
+      <div class="tl-stats">
+        <div class="tl-stat"><div class="s-v" id="r-payback">—</div><div class="s-l">গো-লাইভের পর ব্রেক-ইভেনের মাস</div></div>
+        <div class="tl-stat"><div class="s-v" id="r-annual">—</div><div class="s-l">পূর্ণ গতিতে বছরে লাভ</div></div>
+        <div class="tl-stat"><div class="s-v" id="r-net">—</div><div class="s-l">৩ বছরে নিট লাভ</div></div>
+      </div>
+      <svg class="roi-chart" id="r-chart" viewBox="0 0 400 150" role="img" aria-label="৩৬ মাসে ক্রমবর্ধমান নিট অবস্থান"></svg>
+      <p class="tl-hint" style="margin-top:0">গো-লাইভের পর ০–৩৬ মাসের ক্রমবর্ধমান নিট অবস্থান। ড্যাশ-লাইনের নিচে থাকা মানে এখনো বিনিয়োগ উঠে আসছে।</p>
+      <div class="tl-table-wrap">
+        <table class="tl-table">
+          <thead><tr><th>খাত</th><th class="num">বছর ১</th><th class="num">৩ বছর</th></tr></thead>
+          <tbody>
+            <tr><td>প্রাপ্ত লাভ<small>র‍্যাম্প: ১–৩ মাসে প্রায় কিছুই না</small></td><td class="num" id="t-b1">—</td><td class="num" id="t-b3">—</td></tr>
+            <tr><td>এককালীন খরচ</td><td class="num" id="t-o1">—</td><td class="num" id="t-o3">—</td></tr>
+            <tr><td>চলমান খরচ</td><td class="num" id="t-r1">—</td><td class="num" id="t-r3">—</td></tr>
+            <tr class="total"><td>নিট অবস্থান</td><td class="num" id="t-n1">—</td><td class="num" id="t-n3">—</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="tl-note" id="r-note">—</p>
+      <div class="tl-cta-row">
+        <a href="/bn/#contact" class="btn-primary">আপনার কারখানার জন্য আলাদা ROI স্টাডি নিন →</a>
+        <div class="tl-cta-row inline" style="margin-top:0">
+          <button type="button" class="btn-ghost" id="btn-share" style="flex:1">শেয়ার লিংক কপি করুন</button>
+          <button type="button" class="btn-ghost" data-print style="flex:1">PDF হিসেবে সেভ করুন</button>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <details class="tl-details">
+    <summary>হিসাবটা কীভাবে হয়</summary>
+    <div class="d-body">
+      <p><strong>পূর্ণ গতিতে বছরে লাভ:</strong></p>
+      <ul>
+        <li>শ্রম = স্টাফ × মাসিক খরচ × ১২ × বাঁচানো সময়</li>
+        <li>স্টক = স্টক × কমানোর হার × (ব্যাংকের সুদ + মজুদ খরচ)</li>
+        <li>ক্রয় = বছরে কেনাকাটা × সাশ্রয়ের হার</li>
+        <li>উৎপাদন = উৎপাদনের মূল্য × (এখনকার অপচয় − পরের অপচয়)</li>
+        <li>আদায় = (পাওনা ÷ DSO) × কমানো দিন × ব্যাংকের সুদ</li>
+      </ul>
+      <p><strong>র‍্যাম্প।</strong> হাইপারকেয়ারের সময় (১–৩ মাস) কোনো লাভ ধরা হয় না। শ্রম আর ক্রয়ের লাভ শুরু হয় ৪র্থ মাস থেকে, স্টক আর আদায়ের ৭ম মাস থেকে, উৎপাদন আর অপচয়ের ১০ম মাস থেকে। প্রতিটি ৩–৪ মাসে পূর্ণ গতিতে পৌঁছায়। তাই এখানকার ROI সরল ফর্মুলার চেয়ে কম, আর বেশি সৎ।</p>
+      <p><strong>খরচ।</strong> এককালীন খরচ গো-লাইভে ধরা হয়। চলমান খরচ ৩৬ মাসে সমানভাবে ভাগ করা হয়।</p>
+      <p><strong>ROI</strong> = (৩ বছরের লাভ − ৩ বছরের খরচ) ÷ ৩ বছরের খরচ। তুলনার জন্য, <a href="/bn/lab/0048-odoo-roi-calculator-bangladesh">আর্টিকেল ০০৪৮</a>-এর সরল পেব্যাক ৩ বছরের খরচকে পূর্ণ মাসিক লাভ দিয়ে ভাগ করে, র‍্যাম্প ছাড়া। সেটা ওপরের নোটে দেখানো আছে।</p>
+    </div>
+  </details>
+  <p class="tl-disclosure"><strong>দিক-নির্দেশনার জন্য ব্যবহার করুন, একমাত্র সিদ্ধান্তের ভিত্তি হিসেবে নয়।</strong> মানদণ্ডগুলো বাংলাদেশের উৎপাদন খাতের প্রজেক্ট থেকে নেওয়া, আর পরিসরের মাঝামাঝি। আপনার ফলাফল নির্ভর করবে ডেটার মান, গ্রহণযোগ্যতা আর স্কোপের শৃঙ্খলার ওপর। এই লাভগুলো আসলে পাবেন কি না, তা বলবে <a href="/bn/tools/erp-readiness-assessment/">প্রস্তুতি যাচাই</a>।</p>
+</div>
+
+<script>
+(function () {
+  var C = MHCalc.roi, $ = function (id) { return document.getElementById(id); };
+  var FIELDS = ['adminStaff','adminSalary','labourGainPct','inventoryValue','inventoryCutPct','costOfCapitalPct','carryingCostPct','procurementSpend','procurementSavePct','productionValue','wasteNowPct','wasteAfterPct','arBalance','dsoNow','dsoCutDays','implementation','internalTeam','trainingInitial','hardwareOneTime','licenceAnnual','hostingAnnual','supportAnnual','trainingAnnual'];
+  var VERDICT = {
+    incomplete: 'অন্তত একটি লাভ আর একটি খরচ দিন।',
+    negative: 'এই সংখ্যায় ৩ বছরে বিনিয়োগ উঠে আসে না। স্কোপ ছোট করুন বা খরচগুলো আবার দেখুন।',
+    caution: '১০০%-এর নিচে: সাবধানে এগোন। কোনো লাভের খাত বাদ পড়েছে, নাকি খরচ অস্বাভাবিক বেশি?',
+    acceptable: '১০০–২০০%: গ্রহণযোগ্য। বাংলাদেশের বেশিরভাগ SME প্রজেক্ট এখানেই পড়ে।',
+    good: '২০০–৪০০%: শক্ত বিজনেস কেস। Excel/Tally থেকে সরে আসা মাঝারি উৎপাদকদের ক্ষেত্রে সাধারণ।',
+    check: '৪০০%-এর বেশি: চমৎকার, অথবা বেশি আশাবাদী। বোর্ডে নেওয়ার আগে ধারণাগুলো আবার যাচাই করুন।'
+  };
+  var NAMES = { labour: 'শ্রমের দক্ষতা', inventory: 'স্টক ও চলতি মূলধন', procurement: 'ক্রয়', production: 'উৎপাদন ও অপচয়', finance: 'আদায়' };
+  function read() { var o = {}; FIELDS.forEach(function (f) { o[f] = MH.val(f); }); var sc = document.querySelector('input[name="scenario"]:checked'); o.scenario = sc ? sc.value : 'conservative'; return o; }
+  function chart(cum) {
+    var svg = $('r-chart'), W = 400, H = 150, pad = 26;
+    var min = Math.min.apply(null, cum.concat([0])), max = Math.max.apply(null, cum.concat([0])); if (max === min) max = min + 1;
+    var x = function (i) { return pad + (W - pad - 18) * i / 36; }, y = function (v) { return 8 + (H - 30) * (1 - (v - min) / (max - min)); };
+    var pts = cum.map(function (v, i) { return x(i).toFixed(1) + ',' + y(v).toFixed(1); }), zeroY = y(0).toFixed(1);
+    var html = '<line class="axis" x1="' + pad + '" y1="' + (H - 22) + '" x2="' + (W - 6) + '" y2="' + (H - 22) + '"/>' +
+      '<polygon class="' + (cum[36] >= 0 ? 'area-pos' : 'area-neg') + '" points="' + x(0) + ',' + zeroY + ' ' + pts.join(' ') + ' ' + x(36) + ',' + zeroY + '"/>' +
+      '<line class="zero" x1="' + pad + '" y1="' + zeroY + '" x2="' + (W - 6) + '" y2="' + zeroY + '"/><polyline class="line" points="' + pts.join(' ') + '"/>';
+    [0, 12, 24, 36].forEach(function (m) { html += '<text x="' + x(m) + '" y="' + (H - 8) + '" text-anchor="middle">M' + m + '</text>'; });
+    svg.innerHTML = html + '<text x="2" y="' + (Number(zeroY) + 3) + '">0</text>';
+  }
+  function render() {
+    var r = C.calculate(read());
+    ['labour','inventory','procurement','production','finance'].forEach(function (c) { MH.setText('b-' + c, MH.bdt(r.annual[c]) + '/বছর'); });
+    MH.setText('b-costs', MH.bdt(r.tco3) + ' / ৩ বছর');
+    MH.setText('r-roi', r.verdict === 'incomplete' ? '—' : MH.pct(r.roiPct, 0));
+    MH.setText('r-verdict', VERDICT[r.verdict]);
+    MH.setText('r-payback', r.paybackMonth ? r.paybackMonth + ' মাস' : '> ৩৬ মাস');
+    MH.setText('r-annual', MH.bdt(r.fullAnnual)); MH.setText('r-net', MH.bdt(r.net3));
+    MH.setText('t-b1', MH.bdt(r.yearBenefit[0])); MH.setText('t-b3', MH.bdt(r.benefits3));
+    MH.setText('t-o1', MH.bdt(r.oneTime)); MH.setText('t-o3', MH.bdt(r.oneTime));
+    MH.setText('t-r1', MH.bdt(r.recurring)); MH.setText('t-r3', MH.bdt(r.recurring * 3));
+    MH.setText('t-n1', MH.bdt(r.yearBenefit[0] - r.oneTime - r.recurring)); MH.setText('t-n3', MH.bdt(r.net3));
+    var big = ['labour','inventory','procurement','production','finance'].sort(function (a, b) { return r.annual[b] - r.annual[a]; })[0];
+    $('r-note').innerHTML = r.fullAnnual > 0
+      ? 'আপনার সবচেয়ে বড় লাভের জায়গা <strong>' + NAMES[big] + '</strong> (' + MH.esc(MH.bdt(r.annual[big])) + '/বছর)। স্কোপ ঠিক করার সময় এটা রক্ষা করুন। ' +
+        (r.simplePaybackMonths ? 'সরল ফর্মুলায় (র‍্যাম্প ছাড়া) পেব্যাক হতো ' + r.simplePaybackMonths.toFixed(1) + ' মাসে। নগদ প্রবাহের পরিকল্পনা ওপরের র‍্যাম্পসহ হিসাব ধরে করুন।' : '')
+      : 'কোথা থেকে লাভ আসছে দেখতে লাভের অংশগুলো পূরণ করুন।';
+    chart(r.cumulative);
+  }
+  var p = MH.readParams();
+  FIELDS.forEach(function (f) { if (p[f] != null && isFinite(parseFloat(p[f]))) $(f).value = parseFloat(p[f]); });
+  if (p.scenario) { var el = document.querySelector('input[name="scenario"][value="' + p.scenario + '"]'); if (el) el.checked = true; }
+  render();
+  $('roi-form').addEventListener('input', render);
+  $('roi-form').addEventListener('change', render);
+  $('btn-share').addEventListener('click', function () { MH.copyLink(this, MH.buildLink(read())); });
+})();
+</script>

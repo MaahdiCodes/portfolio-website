@@ -1,0 +1,79 @@
+---
+layout: "layouts/lesson.njk"
+permalink: "courses/02-uat-go-live/lesson-01.html"
+lessonN: "01"
+title: "Lesson 01 — Why Go-Lives Fail, and What \"Ready\" Means · Course 02 | Mehedi Hasan"
+description: "Why ERP go-lives fail in Bangladesh — the four readiness gaps (data, people, process, support) and how to define readiness before you set a date."
+canonical: "https://mhasan.me/courses/02-uat-go-live/lesson-01"
+hreflangBn: "https://mhasan.me/bn/courses/02-uat-go-live/lesson-01"
+ogImage: "https://mhasan.me/assets/og/courses/02-uat-go-live.png"
+backHref: "/courses/02-uat-go-live/"
+backLabel: "← Course overview"
+eyebrow: "Course 02 · Lesson 01 · 14 min"
+h1: 'Why go-lives fail, and what <span class="serif">"ready"</span> really means'
+lede: "Most failed go-lives weren't caused by the software. They were scheduled before the company was ready, and nobody had agreed what ready meant."
+chips: ["Foundations", "Readiness", "Bangladesh context"]
+footLabel: "Course 02 / Lesson 01"
+---
+<h2>The date comes first, and that's the problem</h2>
+<p>In most Bangladeshi ERP projects I've seen go wrong, the go-live date was fixed before discovery finished. It might have been the start of the fiscal year in July, a board meeting, or a buyer audit. Everything after that became a race to hit the date. Testing got shortened. Data was loaded "as is, we'll clean it later". Training became a one-hour demo on Thursday before a Sunday go-live.</p>
+<p>Then the system went live. It technically worked, and within three weeks the accounts team was keeping Tally open "just to check", the warehouse had a parallel Excel sheet, and the MD was asking why nobody trusts the stock report.</p>
+<p>None of that was a software failure. Odoo did what it was configured to do. The company simply wasn't ready, and nobody had written down what ready meant, so there was nothing to say "not yet" with.</p>
+
+<div class="field-note"><span class="tag">Common pitfall</span><p>Teams write a detailed configuration spec but never write down the conditions under which they would <em>not</em> go live. A one-page list of those conditions, signed by the sponsor, is often the most useful document in the project. Once it exists, the date stops being the boss.</p></div>
+
+<h2>The four readiness gaps</h2>
+<p>When a go-live fails, the cause almost always sits in one of four places. Learn to check all four, because each one fails differently.</p>
+<table>
+  <thead><tr><th>Gap</th><th>What it looks like after go-live</th><th>How you detect it before</th></tr></thead>
+  <tbody>
+    <tr><td>Data</td><td>Opening stock doesn't match the shelf; customer balances are wrong; duplicate products</td><td>Trial loads reconciled to the taka; a physical stock count, not a system count</td></tr>
+    <tr><td>People</td><td>Users can log in but can't do their job; Excel workarounds appear within days</td><td>A practical assessment per role, not attendance at a demo</td></tr>
+    <tr><td>Process</td><td>Transactions get stuck at approvals nobody owns; edge cases have no answer</td><td>UAT scripts built on real scenarios, including the ugly ones</td></tr>
+    <tr><td>Support</td><td>Small questions wait days; users give up and go back to the old way</td><td>A named hypercare roster, internal superusers, severity SLAs</td></tr>
+  </tbody>
+</table>
+<p>Notice that software bugs aren't on this list. Bugs happen, but a good hypercare process absorbs them. The four gaps above are what make a go-live collapse, because they undermine trust. Once users decide the system is wrong, they stop entering data into it, and then it really is wrong.</p>
+
+<h2>Readiness is a checklist, not a feeling</h2>
+<p>"Are we ready?" asked in a meeting always gets the answer "mostly". That isn't a decision. Replace the question with criteria that can only be answered yes or no, with evidence:</p>
+<ul>
+  <li>All <strong>Must</strong> UAT cases have passed, and there are no open S1 or S2 defects.</li>
+  <li>The second trial data load reconciled to the taka: AR, AP and stock value all match the legacy trial balance.</li>
+  <li>A physical stock count has been completed and approved by finance.</li>
+  <li>Every user has passed a practical assessment for their role.</li>
+  <li>Opening balances have been approved in writing by the finance head.</li>
+  <li>Printers, scanners and the internet, including a backup link, have been tested at every site that will use the system.</li>
+  <li>The hypercare roster is agreed: who is on site, on which days, and who answers the phone at 9 PM.</li>
+  <li>There's a written rollback plan.</li>
+</ul>
+<p>We'll build each of these in the lessons that follow. By Lesson 06 you'll have a complete go/no-go checklist, and the <a href="/assets/downloads/odoo-implementation-roadmap-gantt.xlsx">roadmap template</a> already includes one.</p>
+
+<h2>The Bangladesh calendar is a readiness criterion too</h2>
+<p>Some dates are simply bad for going live here, however ready the system is:</p>
+<ul>
+  <li><strong>The two weeks before Eid.</strong> Production peaks, festival bonuses are calculated, and half the key users take leave straight after. If payroll is in scope, going live in the Eid bonus month doubles the risk.</li>
+  <li><strong>Fiscal year-end (June).</strong> Finance is closing the old books. Asking them to also learn the new system and reconcile opening balances in the same weeks is how year-end gets delayed.</li>
+  <li><strong>VAT quarter-end.</strong> Since the Finance Act 2026, VAT returns are quarterly, due 15 days after the cycle ends. Don't cut over in the last week of a VAT quarter unless you've tested the return data first.</li>
+  <li><strong>Buyer shipment peaks</strong> for exporters, when the warehouse can't afford a slow day.</li>
+</ul>
+<p>A good time is usually the start of a month in a quiet period, with the cut-over over a weekend (Friday–Saturday) and the first working day on Sunday.</p>
+
+<div class="callout"><span class="tag">Key idea</span><p>You don't choose a go-live date. You choose readiness criteria and a target window, and the date is the first day in that window when every criterion is met.</p></div>
+
+<h2>Who decides</h2>
+<p>The go/no-go decision belongs to the <strong>project sponsor</strong>, usually the MD or CFO, not the vendor and not the IT manager. The client project manager presents the evidence against each criterion, process owners confirm their areas, and the sponsor decides. Write this into the project charter before the project starts. If you have a charter already, check that it says so. The <a href="/assets/downloads/odoo-project-charter-template.docx">charter template</a> has a governance section for exactly this.</p>
+<p>Vendors have an understandable interest in going live on schedule: it triggers their milestone payment. That's not a criticism, just a reason why they shouldn't be the ones deciding.</p>
+
+<div class="exercise"><p><strong>Exercise (10 minutes).</strong> Write down your current planned go-live date. Next to it, list which of the eight readiness criteria above you could answer "yes, with evidence" today. For each "no", write the name of the person who owns closing it. If you don't have a planned date yet, even better: write the criteria first.</p></div>
+
+<div class="takeaways">
+  <h3>Key takeaways</h3>
+  <ul>
+    <li>Go-lives fail because of data, people, process and support gaps, rarely because of software.</li>
+    <li>Readiness must be a yes/no checklist with evidence, signed off by the sponsor.</li>
+    <li>Plan around Eid, fiscal year-end, VAT quarter-ends and shipment peaks.</li>
+    <li>The date follows the criteria, not the other way round.</li>
+  </ul>
+</div>
+<p>Before the next lesson, check how ready your company is overall with the <a href="/tools/erp-readiness-assessment/">ERP readiness assessment</a>. It takes about five minutes.</p>

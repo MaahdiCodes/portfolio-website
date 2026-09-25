@@ -3,6 +3,7 @@ layout: "layouts/base.njk"
 permalink: "bn/tools/odoo-cost-estimator/index.html"
 bareBody: true
 stylesheetHref: "/lab/_styles.css"
+toolsCss: true
 lang: "bn"
 title: "Odoo কস্ট এস্টিমেটর বাংলাদেশ 2026 (বিনামূল্যের টুল) | মেহেদী হাসান"
 description: "বাংলাদেশের জন্য বিনামূল্যের Odoo ERP কস্ট এস্টিমেটর — ইন্ডাস্ট্রি, ইউজার সংখ্যা, মডিউল, হোস্টিং, এডিশন এবং টাইমলাইনের ভিত্তিতে BDT ও USD-এ একটি ব্যক্তিগতকৃত প্রাইস রেঞ্জ পান। তৈরি করেছেন একজন Odoo-সার্টিফাইড কনসালট্যান্ট, যিনি বাংলাদেশের সবচেয়ে বড় ম্যানুফ্যাকচারিং ডেপ্লয়মেন্টের নেতৃত্ব দিয়েছেন।"
@@ -530,6 +531,7 @@ extraStyles: |
     </div>
   </section>
 
+  <div class="print-only print-head" id="print-head"></div>
   <div class="shell est-wrap">
     <div class="est-grid">
 
@@ -649,12 +651,16 @@ extraStyles: |
           সেশন লাগবেই।
         </p>
 
-        <div class="est-cta-row">
+        <div class="est-cta-row no-print">
           <a href="https://mhasan.me/bn/#contact" class="btn-primary">বিনামূল্যে ৩০ মিনিটের স্কোপিং কল রিকোয়েস্ট করুন →</a>
-          <button type="button" id="btn-share" class="btn-ghost">শেয়ারেবল লিংক কপি করুন</button>
+          <a id="btn-roi" class="btn-ghost" href="/bn/tools/odoo-roi-calculator/">এই খরচ দিয়ে ROI হিসাব করুন →</a>
+          <div style="display:flex;gap:10px">
+            <button type="button" id="btn-share" class="btn-ghost" style="flex:1">শেয়ারেবল লিংক কপি করুন</button>
+            <button type="button" id="btn-print" class="btn-ghost" style="flex:1">PDF হিসেবে সেভ করুন</button>
+          </div>
         </div>
 
-        <div class="est-email-form">
+        <div class="est-email-form no-print">
           <div class="ef-label">অথবা — এই এস্টিমেট ইমেইল করুন</div>
           <form id="email-form" autocomplete="off" novalidate="">
             <input type="text" id="lead-hp" name="company_website" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0" aria-hidden="true">
@@ -959,6 +965,9 @@ extraStyles: |
       $("r-licence-y3").textContent = fmtRange(r.licence_y3[0], r.licence_y3[1]);
       $("r-tco").textContent        = fmtRange(r.tco_3yr[0],    r.tco_3yr[1]);
       buildShareLink();
+      const mid = (a) => Math.round((a[0] + a[1]) / 2 / 1000) * 1000;
+      const roi = new URLSearchParams({ implementation: mid(r.impl) + mid(r.bd_specific), trainingInitial: mid(r.training), licenceAnnual: mid(r.licence_y2), hostingAnnual: 0 });
+      $("btn-roi").href = "/bn/tools/odoo-roi-calculator/?" + roi.toString();
     }
 
     // ===== Read form state =====
@@ -1152,6 +1161,10 @@ extraStyles: |
       });
 
       // Email form
+      $("btn-print").addEventListener("click", () => {
+        $("print-head").innerHTML = "<b>Odoo খরচের হিসাব — বাংলাদেশ ২০২৬</b><br>তৈরি: " + new Date().toLocaleDateString("bn-BD", { day: "numeric", month: "long", year: "numeric" }) + " · mhasan.me/bn/tools/odoo-cost-estimator/<br>আনুমানিক পরিসর — চূড়ান্ত স্কোপের জন্য ডিসকভারি সেশন লাগবে।";
+        window.print();
+      });
       $("email-form").addEventListener("submit", handleEmailSubmit);
 
       // First render

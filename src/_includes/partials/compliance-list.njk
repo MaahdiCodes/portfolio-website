@@ -1,0 +1,47 @@
+{#- Renders compliance.entries in the current language (lang = 'en' | 'bn'). -#}
+{%- set L = 'bn' if lang == 'bn' else 'en' -%}
+{%- set pre = '/bn' if lang == 'bn' else '' -%}
+{%- if L == 'bn' -%}
+{%- set AREA = { vat: 'VAT · NBR', tax: 'আয়কর', customs: 'কাস্টমস', wages: 'মজুরি' } -%}
+{%- else -%}
+{%- set AREA = { vat: 'VAT · NBR', tax: 'Income tax', customs: 'Customs', wages: 'Wages' } -%}
+{%- endif -%}
+<div class="cw-filters no-print" role="group" aria-label="{{ 'Filter' if L == 'en' else 'ফিল্টার' }}">
+  <button type="button" class="btn-ghost is-on" data-area="all">{{ 'All' if L == 'en' else 'সব' }}</button>
+  <button type="button" class="btn-ghost" data-area="vat">VAT</button>
+  <button type="button" class="btn-ghost" data-area="tax">{{ AREA.tax }}</button>
+  <button type="button" class="btn-ghost" data-area="customs">{{ AREA.customs }}</button>
+  <button type="button" class="btn-ghost" data-area="wages">{{ AREA.wages }}</button>
+</div>
+<ol class="cw-list">
+{%- for e in compliance.entries %}
+  {%- set t = e[L] %}
+  <li class="cw-item tl-card" data-area="{{ e.area }}" id="cw-{{ loop.index }}">
+    <div class="cw-meta">
+      <span class="cw-date">{{ e.date }}</span>
+      <span class="tl-pill">{{ AREA[e.area] }}</span>
+      {%- if e.status == 'watch' %}<span class="tl-pill warn">{{ 'Watching' if L == 'en' else 'নজরে রাখছি' }}</span>{% else %}<span class="tl-pill good">{{ 'In force' if L == 'en' else 'কার্যকর' }}</span>{% endif %}
+    </div>
+    <h2 class="cw-title">{{ t.title }}</h2>
+    <p><strong>{{ 'What changed.' if L == 'en' else 'কী বদলেছে।' }}</strong> {{ t.what }}</p>
+    <p><strong>{{ 'Who it affects.' if L == 'en' else 'কাদের ওপর প্রভাব।' }}</strong> {{ t.who }}</p>
+    <div class="tl-note cw-erp"><strong>{{ 'What to change in your ERP.' if L == 'en' else 'ERP-তে কী বদলাবেন।' }}</strong> {{ t.erp }}</div>
+    <div class="cw-foot">
+      {%- for l in e.links %}<a href="{{ pre }}{{ l.href }}">{{ l[L] }} →</a>{% endfor %}
+      <span class="cw-src">{{ 'Source' if L == 'en' else 'সূত্র' }}: {{ e.source }}</span>
+    </div>
+  </li>
+{%- endfor %}
+</ol>
+<script>
+(function () {
+  var btns = document.querySelectorAll('.cw-filters [data-area]');
+  btns.forEach(function (b) {
+    b.addEventListener('click', function () {
+      var a = b.getAttribute('data-area');
+      btns.forEach(function (x) { x.classList.toggle('is-on', x === b); });
+      document.querySelectorAll('.cw-item').forEach(function (it) { it.hidden = a !== 'all' && it.getAttribute('data-area') !== a; });
+    });
+  });
+})();
+</script>

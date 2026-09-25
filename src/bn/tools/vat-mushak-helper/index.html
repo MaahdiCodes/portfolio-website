@@ -1,0 +1,134 @@
+---
+layout: "layouts/tool.njk"
+permalink: "bn/tools/vat-mushak-helper/index.html"
+title: "VAT ও মূসক হেল্পার ২০২৬ — কোন ফর্ম প্রযোজ্য + VAT ক্যালকুলেটর | মেহেদী হাসান"
+description: "অর্থ আইন ২০২৬-এর পর (ত্রৈমাসিক রিটার্ন, 9.1.1, ৳৫০ লাখে তালিকাভুক্তি) আপনার ব্যবসায় কোন মূসক ফর্ম, রেজিস্টার আর VAT রিটার্ন প্রযোজ্য, Odoo-তে প্রতিটি কীভাবে তৈরি হয়, আর VAT, SD ও VDS-এর হিসাব।"
+canonical: "https://mhasan.me/bn/tools/vat-mushak-helper/"
+hreflangEn: "https://mhasan.me/tools/vat-mushak-helper/"
+hreflangBn: "https://mhasan.me/bn/tools/vat-mushak-helper/"
+ogTitle: "VAT ও মূসক হেল্পার — বাংলাদেশ ২০২৬"
+ogDescription: "অর্থ আইন ২০২৬-এর পর কোন মূসক ফর্ম আর রিটার্ন আপনার জন্য প্রযোজ্য, Odoo-তে প্রতিটি কীভাবে তৈরি হয়, সঙ্গে VAT/SD/VDS ক্যালকুলেটর।"
+ogImage: "https://mhasan.me/assets/og/tools/vat-mushak-helper.png"
+jsonLd: |
+  [
+    { "@context": "https://schema.org", "@type": "WebApplication", "name": "VAT ও মূসক হেল্পার — বাংলাদেশ", "url": "https://mhasan.me/bn/tools/vat-mushak-helper/", "applicationCategory": "BusinessApplication", "operatingSystem": "Any (web-based)", "offers": { "@type": "Offer", "price": "0", "priceCurrency": "BDT" }, "isAccessibleForFree": true, "inLanguage": "bn", "creator": { "@type": "Person", "name": "Mehedi Hasan", "url": "https://mhasan.me" } },
+    { "@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "হোম", "item": "https://mhasan.me/bn/" },
+      { "@type": "ListItem", "position": 2, "name": "টুল", "item": "https://mhasan.me/bn/tools/" },
+      { "@type": "ListItem", "position": 3, "name": "VAT ও মূসক হেল্পার", "item": "https://mhasan.me/bn/tools/vat-mushak-helper/" } ] }
+  ]
+toolScripts: ["/tools/_calc/mushak.js"]
+eyebrow: "ফ্রি টুল · টুল / ০৬ · কমপ্লায়েন্স"
+h1: 'VAT ও মূসক <span class="serif">হেল্পার।</span>'
+lede: "আপনার ব্যবসা নিয়ে পাঁচটি প্রশ্নের উত্তর দিন। দেখবেন অর্থ আইন ২০২৬-এর পর কোন মূসক ফর্ম, রেজিস্টার আর রিটার্ন আপনার জন্য প্রযোজ্য, আর Excel-এর বদলে Odoo থেকে প্রতিটি কীভাবে বের করবেন। দ্বিতীয় ট্যাবে আছে VAT, SD আর VDS-এর ক্যালকুলেটর।"
+chips: ["ফ্রি টুল", "অর্থ আইন ২০২৬", "মূসক ৬.৩ · ৯.১", "Odoo ম্যাপিং"]
+footLabel: "টুল / VAT ও মূসক হেল্পার"
+related:
+  - { href: "/bn/lab/0018-mushak-63-odoo-bangladesh", dir: "পড়ুন · Odoo", title: "Odoo-তে Mushak 6.3", desc: "ফিল্ড ধরে ধরে: Odoo থেকে নিয়মমাফিক কর চালানপত্র কীভাবে তৈরি করবেন।" }
+  - { href: "/bn/lab/0003-nbr-vat-compliance-odoo-bangladesh", dir: "পড়ুন · কমপ্লায়েন্স", title: "Odoo-তে NBR VAT কমপ্লায়েন্স", desc: "ট্যাক্স কনফিগারেশন, রেজিস্টার, রিটার্ন আর VDS, শুরু থেকে শেষ।" }
+---
+<div class="shell tl-wrap">
+  <div class="tl-tabs no-print" role="tablist" aria-label="মোড">
+    <button type="button" class="is-active" data-mode="forms" role="tab" aria-selected="true">আমার জন্য কোন ফর্ম?</button>
+    <button type="button" data-mode="calc" role="tab" aria-selected="false">VAT / SD / VDS ক্যালকুলেটর</button>
+  </div>
+  <div class="tl-grid" id="mode-forms">
+    <section class="tl-card">
+      <h2>আপনার ব্যবসা</h2>
+      <form id="forms-form" autocomplete="off" novalidate>
+        <div class="tl-field"><label for="m-turnover">বার্ষিক টার্নওভার (৳)</label><input class="tl-input" type="number" min="0" step="100000" id="m-turnover" data-money value="100000000"></div>
+        <fieldset>
+          <legend>আপনি কী করেন? <span class="tl-help">সবগুলো বেছে নিন</span></legend>
+          <div class="tl-checks">
+            <div class="tl-check"><input type="checkbox" name="act" value="mfg" id="a-mfg" checked><label for="a-mfg">পণ্য উৎপাদন</label></div>
+            <div class="tl-check"><input type="checkbox" name="act" value="trade" id="a-trade"><label for="a-trade">কিনে বিক্রি (ট্রেডিং)</label></div>
+            <div class="tl-check"><input type="checkbox" name="act" value="service" id="a-svc"><label for="a-svc">সেবা প্রদান</label></div>
+            <div class="tl-check"><input type="checkbox" name="act" value="import" id="a-imp"><label for="a-imp">আমদানি</label></div>
+            <div class="tl-check"><input type="checkbox" name="act" value="export" id="a-exp"><label for="a-exp">রপ্তানি</label></div>
+          </div>
+        </fieldset>
+        <fieldset>
+          <legend>এগুলোও কি প্রযোজ্য?</legend>
+          <div class="tl-checks one">
+            <div class="tl-check"><input type="checkbox" id="m-vds"><label for="m-vds">আমরা উৎসে কর্তনকারী সত্তা (VDS)<small>যেমন NBR-এর সীমার ওপরের কোম্পানি, ব্যাংক, NGO বা সরকারি সংস্থা, যাদের সরবরাহকারীর বিল থেকে VAT কাটতে হয়</small></label></div>
+            <div class="tl-check"><input type="checkbox" id="m-sub"><label for="m-sub">আমরা সাবকন্ট্র্যাক্টর / চুক্তিভিত্তিক উৎপাদন ব্যবহার করি</label></div>
+            <div class="tl-check"><input type="checkbox" id="m-branch"><label for="m-branch">আমরা নিজেদের ইউনিট বা শাখার মধ্যে মাল পাঠাই</label></div>
+            <div class="tl-check"><input type="checkbox" id="m-exempt"><label for="m-exempt">উৎপাদন পর্যায়ে অব্যাহতিপ্রাপ্ত বা হ্রাসকৃত হারের পণ্য আমরা বিক্রি করি</label></div>
+          </div>
+        </fieldset>
+      </form>
+    </section>
+    <section class="tl-card tl-sticky" aria-live="polite">
+      <h2>যা প্রযোজ্য</h2>
+      <div class="tl-headline">
+        <div class="h-label">আপনার VAT ব্যবস্থা</div>
+        <div class="h-value" id="m-regime" style="font-size:clamp(18px,2.6vw,24px)">—</div>
+        <div class="h-sub" id="m-count">—</div>
+      </div>
+      <div class="tl-table-wrap"><table class="tl-table"><tbody id="m-forms"></tbody></table></div>
+      <h3>আপনার জন্য যা বদলেছে</h3>
+      <ul class="tl-list" id="m-notes"></ul>
+      <div class="tl-cta-row">
+        <a class="btn-primary" href="/bn/#contact">এই ফর্মগুলো Odoo থেকে বের করার ব্যবস্থা করুন →</a>
+        <button type="button" class="btn-ghost" data-print>চেকলিস্ট হিসেবে PDF সেভ করুন</button>
+      </div>
+    </section>
+  </div>
+  <div class="tl-grid" id="mode-calc" hidden>
+    <section class="tl-card">
+      <h2>সরবরাহ</h2>
+      <form id="calc-form" autocomplete="off" novalidate>
+        <div class="tl-field"><label for="c-amount">পরিমাণ (৳)</label><input class="tl-input" type="number" min="0" step="0.01" id="c-amount" value="100000"></div>
+        <fieldset>
+          <legend>এই অঙ্কটি</legend>
+          <div class="tl-chips">
+            <div class="tl-chip"><input type="radio" name="incl" id="i-ex" value="exclusive" checked><label for="i-ex">করের আগের</label></div>
+            <div class="tl-chip"><input type="radio" name="incl" id="i-in" value="inclusive"><label for="i-in">SD + VAT সহ</label></div>
+          </div>
+        </fieldset>
+        <div class="tl-row">
+          <div class="tl-field"><label for="c-vat">VAT হার</label><div class="tl-suffix"><input class="tl-input" type="number" min="0" step="0.5" id="c-vat" value="15"><span>%</span></div></div>
+          <div class="tl-field"><label for="c-sd">SD হার</label><div class="tl-suffix"><input class="tl-input" type="number" min="0" step="1" id="c-sd" value="0"><span>%</span></div></div>
+        </div>
+        <div class="tl-chips" style="margin:-4px 0 16px">
+          <button type="button" class="btn-ghost" data-rate="15">১৫%</button>
+          <button type="button" class="btn-ghost" data-rate="10">১০%</button>
+          <button type="button" class="btn-ghost" data-rate="7.5">৭.৫%</button>
+          <button type="button" class="btn-ghost" data-rate="5">৫%</button>
+          <button type="button" class="btn-ghost" data-rate="0">০% / রপ্তানি</button>
+        </div>
+        <div class="tl-check" style="margin-bottom:12px"><input type="checkbox" id="c-vdson"><label for="c-vdson">ক্রেতা উৎসে কর্তনকারী সত্তা</label></div>
+        <div class="tl-field"><label for="c-vds">VAT-এর কত অংশ কাটা হবে</label><div class="tl-suffix"><input class="tl-input" type="number" min="0" max="100" id="c-vds" value="100"><span>%</span></div></div>
+        <p class="tl-hint">বেশিরভাগ মানক হারের সেবায় ক্রেতা আপনার 6.3-এর পুরো VAT কেটে রাখেন। আপনার সেবা কোডের জন্য VDS নির্দেশিকা দেখে নিন।</p>
+      </form>
+    </section>
+    <section class="tl-card tl-sticky" aria-live="polite">
+      <h2>বিভাজন</h2>
+      <div class="tl-headline">
+        <div class="h-label">চালানের মোট</div>
+        <div class="h-value" id="c-total">—</div>
+        <div class="h-sub" id="c-vatamt">—</div>
+      </div>
+      <table class="tl-table"><tbody id="c-table"></tbody></table>
+      <p class="tl-note">SD বসে মূল্যের ওপর, তারপর VAT বসে মূল্য + SD-এর ওপর। তাই SD থাকলে "সহ" দামকে শুধু ১.১৫ দিয়ে ভাগ করে আলাদা করা যায় না।</p>
+    </section>
+  </div>
+  <details class="tl-details" open>
+    <summary>অর্থ আইন ২০২৬ যা বদলেছে (১ জুলাই ২০২৬ থেকে কার্যকর)</summary>
+    <div class="d-body">
+      <ul>
+        <li><strong>ত্রৈমাসিক VAT রিটার্ন।</strong> রিটার্ন এখন তিনটি করমেয়াদ জুড়ে, চক্র শেষের ১৫ দিনের মধ্যে জমা দিতে হয়। প্রতি মাসে আগের ত্রৈমাসিকের করের এক-তৃতীয়াংশ অগ্রিম জমা দিতে হয়। চাইলে মাসিক রিটার্ন দেওয়া যায়, আর NBR ইলেকট্রনিক দাখিল বাধ্যতামূলক করতে পারে।</li>
+        <li><strong>Mushak 9.1.1</strong> নিবন্ধিত ব্যবসায়ীদের জন্য নতুন রিটার্ন ফর্ম।</li>
+        <li><strong>ERP থেকে Mushak 6.3।</strong> কোম্পানির ERP থেকে ইলেকট্রনিকভাবে কর চালানপত্র ইস্যু আর সংরক্ষণ করা যায়, আর ERP বা VAT সফটওয়্যারে রাখা রেকর্ড আইনগত প্রমাণ হিসেবে গ্রহণযোগ্য।</li>
+        <li><strong>ডেটা বদলানোর জরিমানা।</strong> অনুমোদিত VAT সফটওয়্যারে ডেটা বদলালে ফাঁকি দেওয়া করের ১–২ গুণ জরিমানা। অডিট ট্রেইল তাই জরুরি।</li>
+        <li><strong>৳৫০ লাখ পর্যন্ত সবার তালিকাভুক্তি।</strong> ৳৩০ লাখের "কোনো বাধ্যবাধকতা নেই" অংশ বাতিল। ৳৫০ লাখের ওপরে VAT নিবন্ধন বাধ্যতামূলক।</li>
+        <li><strong>টার্নওভার কর</strong> ৪% থেকে NBR-নির্ধারিত নির্দিষ্ট অঙ্কে (সর্বোচ্চ ৳২ লাখ), চার মাসের করমেয়াদ আর বার্ষিক রিটার্নসহ।</li>
+        <li><strong>উপকরণ কর রেয়াত:</strong> শ্রম নেতিবাচক তালিকা থেকে বাদ, আর পরিবহন সেবায় এখন ১০০% রেয়াত (আগে ৮০%)।</li>
+        <li><strong>সবখানে BIN:</strong> ব্যাংক হিসাব, ঋণ, ট্রেড লাইসেন্স নবায়ন, MFS মার্চেন্ট অ্যাকাউন্ট, ইউটিলিটি আর গাড়ি নিবন্ধনে লাগবে।</li>
+      </ul>
+      <p>সূত্র: Rahman Rahman Huq (বাংলাদেশে KPMG), <em>Salient features of Finance Bill 2026</em>, অর্থ আইন ২০২৬-এর সারাংশের সঙ্গে মিলিয়ে দেখা। বিস্তারিত ঠিক করে NBR-এর SRO আর নির্দেশিকা। রিটার্ন দাখিলের আগে <a href="https://nbr.gov.bd" target="_blank" rel="noopener">NBR ওয়েবসাইট</a> দেখে নিন।</p>
+    </div>
+  </details>
+  <p class="tl-disclosure"><strong>কর পরামর্শ নয়।</strong> এটা একজন ERP কনসালট্যান্টের লেখা কনফিগারেশন চেকলিস্ট, VAT কনসালট্যান্টের নয়। আপনার সুনির্দিষ্ট দায় নির্ভর করে সেবা কোড, SRO, অব্যাহতি আর আপনার VAT সার্কেলের নির্দেশনার ওপর। আপনার VAT উপদেষ্টার সঙ্গে নিশ্চিত হয়ে নিন।</p>
+</div>
+<script src="/tools/_calc/mushak-ui.js"></script>

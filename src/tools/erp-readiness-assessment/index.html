@@ -1,0 +1,107 @@
+---
+layout: "layouts/tool.njk"
+permalink: "tools/erp-readiness-assessment/index.html"
+title: "ERP Readiness Assessment for Bangladesh Companies (Free, 5 min) | Mehedi Hasan"
+description: "Free 25-question ERP readiness assessment for Bangladeshi manufacturers and traders. Scores leadership, processes, data, people and budget, flags the risks that sink ERP projects, and gives your next 3 steps."
+canonical: "https://mhasan.me/tools/erp-readiness-assessment/"
+hreflangBn: "https://mhasan.me/bn/tools/erp-readiness-assessment/"
+ogTitle: "Is your company ready for ERP? Free 5-minute assessment"
+ogDescription: "25 questions, a readiness score across 5 dimensions, red flags and next steps. Built from Bangladesh ERP projects."
+ogImage: "https://mhasan.me/assets/og/tools/erp-readiness-assessment.png"
+extraHead: |
+  <meta name="keywords" content="erp readiness assessment, erp readiness checklist bangladesh, odoo readiness, are we ready for erp, erp implementation risk assessment">
+jsonLd: |
+  [
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "ERP Readiness Assessment — Bangladesh",
+      "url": "https://mhasan.me/tools/erp-readiness-assessment/",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Any (web-based)",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "BDT" },
+      "isAccessibleForFree": true,
+      "inLanguage": "en",
+      "creator": { "@type": "Person", "name": "Mehedi Hasan", "url": "https://mhasan.me", "jobTitle": "Odoo Certified Functional Consultant" },
+      "description": "A 25-question self-assessment that scores a company's readiness for an ERP implementation across leadership, process, data, people and budget, with red flags and next steps."
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://mhasan.me/" },
+        { "@type": "ListItem", "position": 2, "name": "Tools", "item": "https://mhasan.me/tools/" },
+        { "@type": "ListItem", "position": 3, "name": "ERP Readiness Assessment", "item": "https://mhasan.me/tools/erp-readiness-assessment/" }
+      ]
+    }
+  ]
+toolScripts: ["/tools/_calc/readiness.js"]
+eyebrow: "Free Tool · Tools / 03"
+h1: 'Is your company <span class="serif">ready</span> for ERP?'
+lede: "25 honest questions, about five minutes. You get a readiness score across leadership, processes, data, people and budget, the specific red flags that sink ERP projects in Bangladesh, and your next three steps. No sign-up."
+chips: ["Free Tool", "Self-assessment", "5 minutes", "Red flags"]
+footLabel: "Tools / ERP readiness assessment"
+related:
+  - { href: "/lab/0001-why-erp-fails-bangladesh", dir: "Read · Why", title: "Why ERP fails in Bangladesh", desc: "The failure patterns this assessment is designed to catch before you sign a contract." }
+  - { href: "/tools/odoo-quote-checker/", dir: "Tool · Next", title: "Odoo Quote Checker", desc: "Got a vendor quote? Check it for the gaps that turn into change requests." }
+---
+<div class="shell tl-wrap">
+  <div class="tl-grid wide-left">
+    <section class="tl-card" id="ra-card" aria-live="polite">
+      <div class="tl-progress no-print"><div class="p-track"><div class="p-fill" id="ra-fill"></div></div><span class="p-label" id="ra-plabel">0 answered</span></div>
+
+      <div id="ra-quiz">
+        <span class="tl-section-tag" id="ra-tag">—</span>
+        <p class="tl-q" id="ra-q">Loading questions…</p>
+        <p class="tl-q-sub">Pick the answer that is true today, not what you plan to do.</p>
+        <div class="tl-options" id="ra-options"></div>
+        <div class="tl-wizard-nav">
+          <button type="button" class="btn-ghost" id="ra-back">← Back</button>
+          <button type="button" class="btn-ghost" id="ra-next">Skip →</button>
+        </div>
+      </div>
+
+      <div id="ra-result" hidden>
+        <div class="tl-headline">
+          <div class="h-label">Readiness score</div>
+          <div class="h-value" id="rr-score">—</div>
+          <div class="h-sub"><span class="tl-pill" id="rr-pill">—</span></div>
+        </div>
+        <h3 id="rr-level" style="margin-top:0">—</h3>
+        <p id="rr-desc">—</p>
+
+        <h3>By dimension</h3>
+        <div id="rr-dims"></div>
+
+        <h3>Red flags to fix first</h3>
+        <ul class="tl-list" id="rr-flags"></ul>
+
+        <h3>Your next 3 steps</h3>
+        <ul class="tl-list" id="rr-steps"></ul>
+
+        <div class="tl-cta-row">
+          <a class="btn-primary" href="/#contact">Talk through your result with me (free, 30 min) →</a>
+          <div class="tl-cta-row inline" style="margin-top:0">
+            <button type="button" class="btn-ghost" id="rr-share" style="flex:1">Copy link to result</button>
+            <button type="button" class="btn-ghost" data-print style="flex:1">Save as PDF</button>
+            <button type="button" class="btn-ghost" id="rr-retake" style="flex:1">Start again</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <aside class="tl-card no-print">
+      <h2>What this measures</h2>
+      <ul class="tl-list">
+        <li><strong>Leadership &amp; ownership:</strong> is there a real owner, a decision path, and goals you can measure?</li>
+        <li><strong>Process clarity:</strong> do you know how your business actually runs, including Bangladesh compliance?</li>
+        <li><strong>Data readiness:</strong> item masters, stock accuracy, BOMs, and what you plan to migrate.</li>
+        <li><strong>People &amp; change:</strong> key-user time, superusers, training and past experience.</li>
+        <li><strong>Budget, IT &amp; partner:</strong> realistic TCO, partner selection, connectivity, and who controls the system.</li>
+      </ul>
+      <p class="tl-note">The questions come from the failure patterns in <a href="/lab/0001-why-erp-fails-bangladesh">Why ERP fails in Bangladesh</a> and from rescue projects. A low score doesn't mean "don't do ERP". It shows what to fix before you spend money.</p>
+      <p class="tl-hint">Nothing you answer is sent anywhere. The score is calculated in your browser.</p>
+    </aside>
+  </div>
+</div>
+<script src="/tools/_calc/readiness-ui.js"></script>

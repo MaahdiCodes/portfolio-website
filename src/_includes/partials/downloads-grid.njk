@@ -1,0 +1,20 @@
+{#- Download cards for the template files (EN + BN). Used on /resources/ and /bn/resources/. -#}
+{%- set L = 'bn' if lang == 'bn' else 'en' -%}
+{%- set pre = '/bn' if lang == 'bn' else '' -%}
+<div class="category" id="downloads">
+  <div class="section-label">{{ 'Download the templates · Excel &amp; Word' if L == 'en' else 'টেমপ্লেট ডাউনলোড করুন · Excel ও Word' }}</div>
+  <p class="dl-intro">{{ ('Ready-to-use files with dropdowns, formulas and Bangladesh-specific examples. No sign-up. Each one links to the Lab article that explains the method.') if L == 'en' else ('ড্রপডাউন, ফর্মুলা আর বাংলাদেশের উদাহরণসহ ব্যবহারের জন্য প্রস্তুত ফাইল। সাইন-আপ লাগবে না। প্রতিটির সঙ্গে পদ্ধতি ব্যাখ্যা করা ল্যাব আর্টিকেলের লিংক আছে।') }}</p>
+  <div class="resource-grid">
+    {%- for f in downloads %}
+    <div class="resource-card dl-card">
+      <span class="resource-kind">{{ f.type }}{% if f.size %} · {{ f.size }}{% endif %}</span>
+      <h3>{{ f[L].t }}</h3>
+      <p>{{ f[L].d }}</p>
+      <div class="dl-actions">
+        <a class="dl-btn" href="{{ f.href }}" download>{{ 'Download' if L == 'en' else 'ডাউনলোড' }} ↓</a>
+        <a class="dl-link" href="{{ pre }}/lab/{{ f.article }}">{{ 'Read the method' if L == 'en' else 'পদ্ধতি পড়ুন' }} →</a>
+      </div>
+    </div>
+    {%- endfor %}
+  </div>
+</div>

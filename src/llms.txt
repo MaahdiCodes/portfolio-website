@@ -15,3 +15,22 @@ A Bangla (bn) translation of this site exists at /bn/ but is not yet ready for i
 - [Resources](https://mhasan.me/resources/): Free templates, checklists, and cheatsheets.
 - [Odoo Partner Consultant](https://mhasan.me/services/odoo-partner-consultant): Odoo partner/consulting services.
 - [Manufacturing ERP Consultant](https://mhasan.me/services/manufacturing-erp-consultant): Manufacturing-focused ERP consulting services.
+
+## Free tools (interactive, run in the browser)
+
+- [All tools](https://mhasan.me/tools/): Index of every free tool.
+- [Odoo ROI Calculator](https://mhasan.me/tools/odoo-roi-calculator/): 3-year ROI and break-even month for an Odoo project, five benefit categories with a realistic post-go-live ramp.
+- [ERP Readiness Assessment](https://mhasan.me/tools/erp-readiness-assessment/): 25-question readiness score with red flags and next steps.
+- [Odoo Quote Checker](https://mhasan.me/tools/odoo-quote-checker/): Checks an implementation proposal against 24 commonly omitted items and Bangladesh price ranges.
+- [RMG Wage Calculator](https://mhasan.me/tools/rmg-wage-calculator/): Bangladesh garment wage-board grades (2023 structure), 9% annual increment, overtime (basic ÷ 208 × 2), festival bonus, factory payroll.
+- [Import Duty & Landed Cost Calculator](https://mhasan.me/tools/import-duty-calculator/): Bangladesh customs cascade (AV, CD, RD, SD, VAT, AIT, AT), TTI and landed cost; separates sunk duties from creditable VAT/AT.
+- [VAT & Mushak Helper](https://mhasan.me/tools/vat-mushak-helper/): Which Mushak forms and VAT returns apply after the Finance Act 2026 (quarterly returns, Mushak 9.1.1), mapped to Odoo; VAT/SD/VDS calculator.
+
+## Guides and reference
+
+- [Odoo implementation price benchmarks](https://mhasan.me/benchmarks/odoo-implementation-pricing-bangladesh/): Fee ranges by company size and industry, Bangladesh line items, licence prices, red-flag price points.
+- [Compliance Watch](https://mhasan.me/compliance-watch/): Dated log of Bangladesh VAT, customs, income-tax and wage changes with the ERP configuration impact of each, with sources.
+- [ERP & compliance glossary](https://mhasan.me/glossary/): 500+ terms explained in English and Bangla.
+- [Odoo by industry](https://mhasan.me/industries/): 21 Bangladeshi industry guides (modules, compliance, cost presets, articles).
+- [Course 02 — UAT, cut-over & go-live](https://mhasan.me/courses/02-uat-go-live/): Free 8-lesson course on getting an ERP live safely.
+- [Downloadable templates](https://mhasan.me/resources/#downloads): 11 Excel and 3 Word templates (RFP scoring, UAT scripts, data migration, hypercare, business case, roadmap, access rights, Mushak configuration map, charter, BRD, RFP).

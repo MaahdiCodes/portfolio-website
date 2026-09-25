@@ -1,0 +1,88 @@
+---
+layout: "layouts/lesson.njk"
+permalink: "courses/02-uat-go-live/lesson-07.html"
+lessonN: "07"
+title: "Lesson 07 — Hypercare: the First 30 Days · Course 02 | Mehedi Hasan"
+description: "Running Odoo hypercare in Bangladesh: support tiers, severity SLAs, the issue log, adoption signals, the first month-end close and the first payroll in Odoo."
+canonical: "https://mhasan.me/courses/02-uat-go-live/lesson-07"
+hreflangBn: "https://mhasan.me/bn/courses/02-uat-go-live/lesson-07"
+ogImage: "https://mhasan.me/assets/og/courses/02-uat-go-live.png"
+backHref: "/courses/02-uat-go-live/"
+backLabel: "← Course overview"
+eyebrow: "Course 02 · Lesson 07 · 16 min"
+h1: 'Hypercare: <span class="serif">the first 30 days</span>'
+lede: "The first month decides whether people trust the system. Fast answers, visible fixes and a clean first month-end matter more than anything that happened before go-live."
+chips: ["Hypercare", "Support", "Month-end"]
+footLabel: "Course 02 / Lesson 07"
+---
+<h2>How long, and who</h2>
+<p>Hypercare is a period of intensive, priority support straight after go-live. Typical lengths:</p>
+<ul>
+  <li><strong>25–50 users, core modules:</strong> about 2 weeks, with the consultant on site for days 1–3.</li>
+  <li><strong>50–150 users, manufacturing plus compliance:</strong> 3–4 weeks, on site for the first week.</li>
+  <li><strong>Multi-company or multi-site:</strong> 4–6 weeks, rolling site by site.</li>
+</ul>
+<p>What matters more than the length is that the period ends on exit criteria (Lesson 08), not on a date in the contract. Make sure the contract says so.</p>
+
+<h2>Three tiers of support</h2>
+<table>
+  <thead><tr><th>Tier</th><th>Who</th><th>Handles</th></tr></thead>
+  <tbody>
+    <tr><td>L1</td><td>Internal superusers</td><td>How-to questions, password resets, user errors, report help</td></tr>
+    <tr><td>L2</td><td>Internal Odoo lead or partner functional consultant</td><td>Configuration, stuck workflows, data corrections, access rights</td></tr>
+    <tr><td>L3</td><td>Partner developer</td><td>Bugs, custom code, performance, integrations</td></tr>
+  </tbody>
+</table>
+<p>Route every issue through L1 first, even in week one. It builds your superusers' confidence, and it shows which problems are knowledge gaps (fix with training) versus system problems (fix with configuration).</p>
+
+<h2>Severity SLAs</h2>
+<table>
+  <thead><tr><th>Severity</th><th>Response</th><th>Resolution</th></tr></thead>
+  <tbody>
+    <tr><td>S1 — operations stopped</td><td>2 hours, any time</td><td>4 hours</td></tr>
+    <tr><td>S2 — major function impaired</td><td>4 hours</td><td>Same business day</td></tr>
+    <tr><td>S3 — minor, easy workaround</td><td>Next business day</td><td>3 business days</td></tr>
+    <tr><td>S4 — cosmetic or enhancement</td><td>Next business day</td><td>Post-hypercare backlog</td></tr>
+  </tbody>
+</table>
+<p>Log every issue in one place: the <a href="/assets/downloads/odoo-hypercare-plan-issue-log.xlsx">hypercare issue log</a> has these SLAs, the tiers, and a daily summary that counts open S1/S2 issues and the share handled by L1.</p>
+
+<h2>Watch adoption, not just tickets</h2>
+<p>A quiet issue log can mean everything works, or it can mean nobody is using the system. Check these signals weekly:</p>
+<ul>
+  <li><strong>Transaction volume vs expected.</strong> If the warehouse normally does 60 receipts a week and Odoo shows 25, the rest are somewhere else.</li>
+  <li><strong>Backdated entries.</strong> Many entries posted days after the event mean people are recording from paper.</li>
+  <li><strong>Shadow spreadsheets.</strong> Ask directly: "What are you still keeping in Excel?" The honest answer is the most valuable feedback you'll get.</li>
+  <li><strong>Draft documents piling up.</strong> Unconfirmed POs and invoices point to approval bottlenecks or uncertainty.</li>
+</ul>
+
+<h2>The first month-end close</h2>
+<p>The first close in Odoo is the moment finance decides whether the system is trustworthy. Plan it as a project task, with the consultant present:</p>
+<ol>
+  <li>Bank reconciliation: all statement lines matched, and charges and interest posted.</li>
+  <li>AP/AR cut-off: nothing left in draft for the month.</li>
+  <li>Stock valuation report equals the inventory account on the balance sheet.</li>
+  <li>Depreciation posted, if Fixed Assets is live.</li>
+  <li>Accruals and provisions (gratuity, leave) reviewed.</li>
+  <li>VAT: tax report run, and the monthly one-third advance deposit calculated. It's a quarterly return now, so the first quarter-end needs its own rehearsal.</li>
+  <li>Lock the period with a lock date.</li>
+  <li>Walk the sponsor through the P&amp;L and balance sheet. It's often their first look at Odoo reports.</li>
+</ol>
+
+<h2>The first payroll</h2>
+<p>If payroll is live, the first pay run carries the highest risk of the whole go-live, because mistakes reach every worker's pocket within days. Run it in parallel with the old method for the first month: calculate in both, compare every payslip, and investigate every difference before paying. Pay particular attention to OT, absence deductions, new joiners and leavers, and the festival bonus if an Eid falls in the month.</p>
+
+<div class="field-note"><span class="tag">Common pitfall</span><p>Assuming the old spreadsheet is the "right" answer. When a parallel run shows differences, investigate both sides. Legacy Excel payrolls sometimes use the wrong OT base (gross &divide; 208 instead of basic &divide; 208), so the parallel run can expose past errors as well as new ones.</p></div>
+
+<div class="exercise"><p><strong>Exercise (10 minutes).</strong> Write your hypercare roster for week one: who is on site each day, who covers evenings, and the one channel users will report issues on. Then pick the date and owner for the first month-end close rehearsal.</p></div>
+
+<div class="takeaways">
+  <h3>Key takeaways</h3>
+  <ul>
+    <li>Hypercare ends on exit criteria, not on a contract date.</li>
+    <li>Route through L1 first, and keep one issue log with agreed SLAs.</li>
+    <li>Watch adoption signals: volume, backdating, shadow spreadsheets, drafts.</li>
+    <li>Treat the first month-end close and first payroll as rehearsed project tasks.</li>
+  </ul>
+</div>
+<p>Go deeper: <a href="/lab/0032-odoo-post-go-live-hypercare-bangladesh">Odoo post go-live hypercare in Bangladesh</a>.</p>

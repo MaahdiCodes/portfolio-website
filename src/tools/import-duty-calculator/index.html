@@ -1,0 +1,128 @@
+---
+layout: "layouts/tool.njk"
+permalink: "tools/import-duty-calculator/index.html"
+title: "Import Duty & Landed Cost Calculator Bangladesh 2026 (CD, RD, SD, VAT, AIT, AT) | Mehedi Hasan"
+description: "Free Bangladesh import duty calculator: assessable value, CD, RD, SD, VAT, AIT and AT, total tax incidence, and the real landed cost per unit, separating sunk duties from creditable VAT/AT."
+canonical: "https://mhasan.me/tools/import-duty-calculator/"
+hreflangBn: "https://mhasan.me/bn/tools/import-duty-calculator/"
+ogTitle: "Import Duty & Landed Cost Calculator — Bangladesh 2026"
+ogDescription: "CD, RD, SD, VAT, AIT and AT on your import, what is sunk cost vs creditable, and your true landed cost per unit."
+ogImage: "https://mhasan.me/assets/og/tools/import-duty-calculator.png"
+extraHead: |
+  <meta name="keywords" content="import duty calculator bangladesh, landed cost calculator bangladesh, customs duty calculation bd, TTI calculator, AV CD RD SD VAT AIT AT calculation">
+jsonLd: |
+  [
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Import Duty & Landed Cost Calculator — Bangladesh",
+      "url": "https://mhasan.me/tools/import-duty-calculator/",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Any (web-based)",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "BDT" },
+      "isAccessibleForFree": true,
+      "inLanguage": "en",
+      "creator": { "@type": "Person", "name": "Mehedi Hasan", "url": "https://mhasan.me" },
+      "description": "Calculates Bangladesh import taxes (CD, RD, SD, VAT, AIT, AT) on the assessable value and the resulting landed cost, separating sunk duties from creditable taxes."
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://mhasan.me/" },
+        { "@type": "ListItem", "position": 2, "name": "Tools", "item": "https://mhasan.me/tools/" },
+        { "@type": "ListItem", "position": 3, "name": "Import Duty Calculator", "item": "https://mhasan.me/tools/import-duty-calculator/" }
+      ]
+    }
+  ]
+toolScripts: ["/tools/_calc/duty.js"]
+eyebrow: "Free Tool · Tools / 05 · Compliance"
+h1: 'Import duty &amp; <span class="serif">landed cost.</span>'
+lede: "Work out the taxes on an import the way Customs does, from CIF to assessable value to the CD → RD → SD → VAT cascade. Then see the number that matters for pricing: your landed cost, with sunk duties separated from the VAT and AT you get back."
+chips: ["Free Tool", "Customs", "Landed cost", "FY 2026-27"]
+footLabel: "Tools / Import duty calculator"
+related:
+  - { href: "/lab/0041-odoo-landed-costs-duty-drawback-bangladesh", dir: "Read · Odoo", title: "Landed costs & duty drawback in Odoo", desc: "Put these numbers into Odoo's landed-cost feature so inventory valuation is right." }
+  - { href: "/lab/0019-hs-code-customs-odoo-bangladesh", dir: "Read · Customs", title: "HS codes & customs in Odoo", desc: "Store HS codes on products and keep customs data ready for every bill of entry." }
+---
+<div class="shell tl-wrap">
+  <div class="tl-grid wide-left">
+    <section class="tl-card">
+      <h2>Shipment</h2>
+      <form id="duty-form" autocomplete="off" novalidate>
+        <div class="tl-row three">
+          <div class="tl-field"><label for="d-fob">FOB value (USD)</label><input class="tl-input" type="number" min="0" id="d-fob" value="10000"></div>
+          <div class="tl-field"><label for="d-freight">Freight (USD)</label><input class="tl-input" type="number" min="0" id="d-freight" value="800"></div>
+          <div class="tl-field"><label for="d-insurance">Insurance (USD)</label><input class="tl-input" type="number" min="0" id="d-insurance" value="100"></div>
+        </div>
+        <div class="tl-row">
+          <div class="tl-field"><label for="d-fx">Customs exchange rate (৳ per USD)</label><input class="tl-input" type="number" min="0" step="0.01" id="d-fx" value="122"></div>
+          <div class="tl-field"><label for="d-qty">Quantity (units, kg…)</label><input class="tl-input" type="number" min="0" id="d-qty" value="1000"></div>
+        </div>
+        <p class="tl-hint">Use the exchange rate on your bill of entry date, not your bank's LC rate. For another currency, enter values in that currency and its ৳ rate.</p>
+
+        <fieldset style="margin-top:18px">
+          <legend>Duty &amp; tax rates <span class="tl-help">look up your HS code on the Customs tariff</span></legend>
+          <div class="tl-tabs" role="group" aria-label="Starting values">
+            <button type="button" class="is-active" data-preset="commercial">Finished goods</button>
+            <button type="button" data-preset="manufacturer">Industrial raw material</button>
+            <button type="button" data-preset="capital">Capital machinery</button>
+          </div>
+          <div class="tl-row three">
+            <div class="tl-field"><label for="d-cd">CD</label><div class="tl-suffix"><input class="tl-input" type="number" min="0" step="0.5" id="d-cd" value="25"><span>%</span></div></div>
+            <div class="tl-field"><label for="d-rd">RD</label><div class="tl-suffix"><input class="tl-input" type="number" min="0" step="0.5" id="d-rd" value="3"><span>%</span></div></div>
+            <div class="tl-field"><label for="d-sd">SD</label><div class="tl-suffix"><input class="tl-input" type="number" min="0" step="1" id="d-sd" value="0"><span>%</span></div></div>
+          </div>
+          <div class="tl-row three">
+            <div class="tl-field"><label for="d-vat">VAT</label><div class="tl-suffix"><input class="tl-input" type="number" min="0" step="0.5" id="d-vat" value="15"><span>%</span></div></div>
+            <div class="tl-field"><label for="d-ait">AIT</label><div class="tl-suffix"><input class="tl-input" type="number" min="0" step="0.5" id="d-ait" value="5"><span>%</span></div></div>
+            <div class="tl-field"><label for="d-at">AT</label><div class="tl-suffix"><input class="tl-input" type="number" min="0" step="0.5" id="d-at" value="7.5"><span>%</span></div></div>
+          </div>
+          <p class="tl-hint">The buttons fill in typical starting values: CD slabs run 0/1/5/10/15/25%. AT is 7.5% for commercial importers (from FY 2025-26). Raw materials and capital machinery usually carry lower CD, AIT and AT, and many are exempt. <strong>Always check the rate for your exact HS code.</strong></p>
+        </fieldset>
+
+        <div class="tl-row">
+          <div class="tl-field"><label for="d-localCosts">Port, C&amp;F, transport (৳)</label><input class="tl-input" type="number" min="0" step="1000" id="d-localCosts" value="45000"></div>
+          <div class="tl-field" style="display:flex;align-items:flex-end">
+            <div class="tl-check" style="width:100%"><input type="checkbox" id="d-vatreg" checked><label for="d-vatreg">VAT-registered importer<small>VAT and AT are creditable</small></label></div>
+          </div>
+        </div>
+      </form>
+    </section>
+
+    <section class="tl-card tl-sticky" aria-live="polite">
+      <h2>Result</h2>
+      <div class="tl-headline">
+        <div class="h-label">Landed cost (what the goods really cost you)</div>
+        <div class="h-value" id="d-landed">—</div>
+        <div class="h-sub" id="d-landed-sub">—</div>
+      </div>
+      <div class="tl-stats">
+        <div class="tl-stat"><div class="s-v" id="d-cash">—</div><div class="s-l">Cash needed at port</div></div>
+        <div class="tl-stat"><div class="s-v" id="d-sunk">—</div><div class="s-l">Sunk duties (CD+RD+SD)</div></div>
+        <div class="tl-stat"><div class="s-v" id="d-rec">—</div><div class="s-l">Recoverable / adjustable</div></div>
+      </div>
+      <div class="tl-table-wrap"><table class="tl-table"><tbody id="d-table"></tbody></table></div>
+      <p class="tl-note">The gap between <strong>cash at port</strong> and <strong>landed cost</strong> is working capital, not cost. If your costing sheet adds VAT or AIT to product cost, your prices are too high. In Odoo, only CD, RD, SD and local charges belong in the landed-cost lines.</p>
+      <div class="tl-cta-row inline">
+        <button type="button" class="btn-ghost" id="d-share" style="flex:1">Copy shareable link</button>
+        <button type="button" class="btn-ghost" data-print style="flex:1">Save as PDF</button>
+      </div>
+    </section>
+  </div>
+
+  <details class="tl-details">
+    <summary>Formula and sources</summary>
+    <div class="d-body">
+      <ul>
+        <li><strong>Assessable value</strong> = CIF + landing charge of 1% of CIF (Bangladesh Customs).</li>
+        <li><strong>CD</strong> and <strong>RD</strong> are charged on AV. <strong>SD</strong> is charged on AV + CD + RD.</li>
+        <li><strong>VAT</strong> and <strong>AT</strong> are charged on AV + CD + RD + SD. <strong>AIT</strong> is charged on AV.</li>
+        <li><strong>TTI</strong> (total tax incidence) = all import taxes ÷ AV. It's the figure traders quote, and it overstates cost for VAT-registered importers.</li>
+      </ul>
+      <p>Rates change every June with the budget and are set per HS code, sometimes with SRO exemptions. The FY 2026-27 Finance Act changed several (for example, AT on POS machines and EV chargers went from 7.5% to 0%, and some cosmetics' SD was cut). Look up your HS code on the <a href="https://bangladeshcustoms.gov.bd/trade_info/operative_tariff" target="_blank" rel="noopener">Bangladesh Customs operative tariff</a> and check <a href="/compliance-watch/">Compliance Watch</a> for recent changes.</p>
+    </div>
+  </details>
+  <p class="tl-disclosure"><strong>Estimate only.</strong> The assessed value, exchange rate and applicable SROs on your bill of entry decide what you actually pay. Use this for costing and cash planning, and confirm with your C&amp;F agent.</p>
+</div>
+<script src="/tools/_calc/duty-ui.js"></script>

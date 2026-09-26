@@ -642,8 +642,11 @@ extraStyles: |
         white-space: nowrap
       }
 
+      /* reduced motion: still cycle the words, but as a plain crossfade — no sliding */
       @media (prefers-reduced-motion: reduce) {
-        .rot, .rot-word { transition: none }
+        .rot { transition: none }
+        .rot-word,
+        .rot-word.is-leaving { transform: none; transition: opacity .4s }
         .rot::after { display: none }
       }
 
@@ -3183,7 +3186,6 @@ extraStyles: |
               fit(words[0]);
               if (document.fonts) document.fonts.ready.then(function () { fit(words[i]); });
               window.addEventListener('resize', function () { fit(words[i]); });
-              if (reduce) return;
               setInterval(function () {
                 if (document.hidden) return;
                 var cur = words[i];
@@ -3195,7 +3197,7 @@ extraStyles: |
                 next.classList.add('is-active');
                 fit(next);
                 setTimeout(function () { cur.classList.remove('is-leaving'); }, 600);
-              }, +rot.dataset.interval);
+              }, +rot.dataset.interval * (reduce ? 1.5 : 1));
             })();
           </script>
           <p class="hero-h1-tag">Manufacturing Implementations · Bangladesh.</p>

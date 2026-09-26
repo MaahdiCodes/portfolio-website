@@ -573,7 +573,7 @@ extraStyles: |
   
       /* hero rotator — "One Odoo system for your ___" with a sliding word */
       .hero-rotator {
-        font-size: clamp(20px, 2.4vw, 34px);
+        font-size: clamp(22px, 2.8vw, 40px);
         font-weight: 500;
         letter-spacing: -0.025em;
         line-height: 1.2;
@@ -586,6 +586,7 @@ extraStyles: |
         display: inline-block;
         vertical-align: bottom;
         height: 1.2em;
+        font-size: 1.25em;
         overflow: hidden;
         transition: width .5s cubic-bezier(.7, 0, .2, 1);
       }
@@ -601,7 +602,7 @@ extraStyles: |
         color: var(--accent);
         transform: translateY(110%);
         opacity: 0;
-        transition: transform .6s cubic-bezier(.7, 0, .2, 1), opacity .6s;
+        transition: transform .45s cubic-bezier(.7, 0, .2, 1), opacity .45s;
       }
 
       .rot-word.is-active {
@@ -625,7 +626,7 @@ extraStyles: |
         background: var(--accent);
         opacity: .35;
         transform-origin: left;
-        animation: rot-progress 2.6s linear infinite
+        animation: rot-progress 1.8s linear infinite
       }
 
       @keyframes rot-progress {
@@ -646,7 +647,7 @@ extraStyles: |
       @media (prefers-reduced-motion: reduce) {
         .rot { transition: none }
         .rot-word,
-        .rot-word.is-leaving { transform: none; transition: opacity .4s }
+        .rot-word.is-leaving { transform: none; transition: opacity .3s }
         .rot::after { display: none }
       }
 
@@ -3167,7 +3168,7 @@ extraStyles: |
           <p class="hero-rotator">
             <span class="sr-only">One Odoo system for your production floor, inventory, purchasing, accounts, payroll and quality checks.</span>
             <span aria-hidden="true">One Odoo system for your
-              <span class="rot" data-interval="2600">
+              <span class="rot" data-interval="1800">
                 <span class="rot-word is-active">production floor</span>
                 <span class="rot-word">inventory</span>
                 <span class="rot-word">purchasing</span>
@@ -3181,7 +3182,6 @@ extraStyles: |
               var rot = document.currentScript.previousElementSibling.querySelector('.rot');
               var words = rot.querySelectorAll('.rot-word');
               var i = 0;
-              var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
               function fit(el) { rot.style.width = el.offsetWidth + 'px'; }
               fit(words[0]);
               if (document.fonts) document.fonts.ready.then(function () { fit(words[i]); });
@@ -3196,8 +3196,8 @@ extraStyles: |
                 next.classList.remove('is-leaving');
                 next.classList.add('is-active');
                 fit(next);
-                setTimeout(function () { cur.classList.remove('is-leaving'); }, 600);
-              }, +rot.dataset.interval * (reduce ? 1.5 : 1));
+                setTimeout(function () { cur.classList.remove('is-leaving'); }, 450);
+              }, +rot.dataset.interval);
             })();
           </script>
           <p class="hero-h1-tag">Manufacturing Implementations · Bangladesh.</p>

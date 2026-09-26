@@ -531,7 +531,7 @@ extraStyles: |
          Bangla-safe: sans (the italic serif has no Bangla glyphs) and a taller
          line box so vowel signs above/below aren't clipped. */
       .hero-rotator {
-        font-size: clamp(20px, 2.4vw, 34px);
+        font-size: clamp(22px, 2.8vw, 40px);
         font-weight: 500;
         letter-spacing: -0.01em;
         line-height: 1.45;
@@ -544,6 +544,7 @@ extraStyles: |
         display: inline-block;
         vertical-align: bottom;
         height: 1.45em;
+        font-size: 1.12em;
         overflow: hidden;
         transition: width .5s cubic-bezier(.7, 0, .2, 1);
       }
@@ -557,7 +558,7 @@ extraStyles: |
         color: var(--accent);
         transform: translateY(110%);
         opacity: 0;
-        transition: transform .6s cubic-bezier(.7, 0, .2, 1), opacity .6s;
+        transition: transform .45s cubic-bezier(.7, 0, .2, 1), opacity .45s;
       }
 
       .rot-word.is-active {
@@ -581,7 +582,7 @@ extraStyles: |
         background: var(--accent);
         opacity: .35;
         transform-origin: left;
-        animation: rot-progress 2.6s linear infinite
+        animation: rot-progress 1.8s linear infinite
       }
 
       @keyframes rot-progress {
@@ -602,7 +603,7 @@ extraStyles: |
       @media (prefers-reduced-motion: reduce) {
         .rot { transition: none }
         .rot-word,
-        .rot-word.is-leaving { transform: none; transition: opacity .4s }
+        .rot-word.is-leaving { transform: none; transition: opacity .3s }
         .rot::after { display: none }
       }
 
@@ -2978,7 +2979,7 @@ extraStyles: |
           <p class="hero-rotator">
             <span class="sr-only">এক Odoo সিস্টেমেই আপনার প্রোডাকশন ফ্লোর, ইনভেন্টরি, পারচেজ, অ্যাকাউন্টস, পেরোল আর কোয়ালিটি চেক।</span>
             <span aria-hidden="true">এক Odoo সিস্টেমেই আপনার
-              <span class="rot" data-interval="2600">
+              <span class="rot" data-interval="1800">
                 <span class="rot-word is-active">প্রোডাকশন ফ্লোর</span>
                 <span class="rot-word">ইনভেন্টরি</span>
                 <span class="rot-word">পারচেজ</span>
@@ -2992,7 +2993,6 @@ extraStyles: |
               var rot = document.currentScript.previousElementSibling.querySelector('.rot');
               var words = rot.querySelectorAll('.rot-word');
               var i = 0;
-              var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
               function fit(el) { rot.style.width = el.offsetWidth + 'px'; }
               fit(words[0]);
               if (document.fonts) document.fonts.ready.then(function () { fit(words[i]); });
@@ -3007,8 +3007,8 @@ extraStyles: |
                 next.classList.remove('is-leaving');
                 next.classList.add('is-active');
                 fit(next);
-                setTimeout(function () { cur.classList.remove('is-leaving'); }, 600);
-              }, +rot.dataset.interval * (reduce ? 1.5 : 1));
+                setTimeout(function () { cur.classList.remove('is-leaving'); }, 450);
+              }, +rot.dataset.interval);
             })();
           </script>
           <p class="hero-h1-tag">ম্যানুফ্যাকচারিং ইমপ্লিমেন্টেশন · বাংলাদেশ।</p>

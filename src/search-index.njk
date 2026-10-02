@@ -7,7 +7,6 @@ permalink: "{{ sl.prefix }}search-index.json"
 eleventyExcludeFromCollections: true
 searchLangs:
   - { lang: "en", prefix: "" }
-  - { lang: "bn", prefix: "bn/" }
 ---
 {%- set L = sl.lang -%}
 {%- set pre = '/bn' if L == 'bn' else '' -%}

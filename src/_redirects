@@ -1,0 +1,4 @@
+# Bangla edition unpublished (2026-10-02): send old /bn/ URLs to their English page.
+# 302 (temporary) because /bn/ is planned to return after the translations are rewritten.
+/bn /  302
+/bn/* /:splat 302

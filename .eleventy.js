@@ -1,4 +1,9 @@
+const BN_PUBLISHED = require("./src/_data/site.js").bnPublished;
+
 module.exports = function (eleventyConfig) {
+  // Bangla edition is held back from the build while unpublished (see site.js).
+  if (!BN_PUBLISHED) eleventyConfig.ignores.add("src/bn/**");
+  eleventyConfig.addPassthroughCopy("src/_redirects");
   // Static assets carried straight through to the build output, unchanged.
   eleventyConfig.addPassthroughCopy("src/assets");
   eleventyConfig.addPassthroughCopy("src/favicon.ico");
@@ -30,8 +35,10 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy({
     "lab/0011-odoo-inventory-valuation-cheatsheet.html": "lab/0011-odoo-inventory-valuation-cheatsheet.html",
     "lab/odoo-18-functional-certification-bangladesh.html": "lab/odoo-18-functional-certification-bangladesh.html",
-    "bn/lab/0011-odoo-inventory-valuation-cheatsheet.html": "bn/lab/0011-odoo-inventory-valuation-cheatsheet.html",
-    "bn/lab/odoo-18-functional-certification-bangladesh.html": "bn/lab/odoo-18-functional-certification-bangladesh.html",
+    ...(BN_PUBLISHED ? {
+      "bn/lab/0011-odoo-inventory-valuation-cheatsheet.html": "bn/lab/0011-odoo-inventory-valuation-cheatsheet.html",
+      "bn/lab/odoo-18-functional-certification-bangladesh.html": "bn/lab/odoo-18-functional-certification-bangladesh.html",
+    } : {}),
   });
 
   // This is a fully author-controlled static site (no user-submitted content is

@@ -14,7 +14,7 @@
 <title>{{ title }}</title>
 <link rel="canonical" href="{{ canonical }}" />
 <link rel="alternate" hreflang="en" href="{{ hreflangEn or canonical }}" />
-{%- if hreflangBn %}
+{%- if hreflangBn and site.bnPublished %}
 <link rel="alternate" hreflang="bn-BD" href="{{ hreflangBn }}" />
 {%- endif %}
 <link rel="alternate" hreflang="x-default" href="{{ hreflangEn or canonical }}" />

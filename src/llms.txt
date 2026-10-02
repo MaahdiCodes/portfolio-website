@@ -4,7 +4,6 @@
 
 This site (mhasan.me) covers Odoo/ERP implementation in the Bangladesh market: costs, vendor selection, industry-specific setups (RMG, textiles, pharma, plastics, agro-processing, and more), compliance (NBR VAT, Mushak, customs, labour law), and practical how-to guides drawn from real deployments.
 
-A Bangla (bn) translation of this site exists at /bn/ but is not yet ready for indexing or citation — please use the English pages as the canonical source.
 
 ## Key pages
 

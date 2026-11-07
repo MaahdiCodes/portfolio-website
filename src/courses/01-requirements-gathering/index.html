@@ -246,7 +246,8 @@ extraStyles: |
     <h2 id="modal-title">Unlock this course — it's free</h2>
     <p class="modal-sub">Enter your details and get instant access to all 9 lessons.</p>
 
-    <form id="enrol-form" onsubmit="handleSubmit(event)">
+    <form id="enrol-form" data-mh-form="course" data-status="modal-error" data-err-class="show" data-busy="Saving…" data-msg-ok="" novalidate>
+      <input type="text" name="company_website" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0" aria-hidden="true">
       <div class="field">
         <label for="f-name">Full Name *</label>
         <input type="text" id="f-name" name="name" placeholder="Rahim Uddin" autocomplete="name" required="">
@@ -282,16 +283,7 @@ extraStyles: |
 </div>
 
 <script>
-/* ─── Google Apps Script endpoint ─── */
-/* SETUP: Replace the URL below after deploying your Apps Script web app.
-   Steps:
-   1. Go to script.google.com → New project
-   2. Paste the Apps Script code from the plan (see README or plan file)
-   3. Deploy → New deployment → Web App
-      Execute as: Me | Who has access: Anyone
-   4. Copy the Web App URL and paste it below
-*/
-const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwePoTRBcwfPmS2C4Zw03OAE0fLaI6QMC5D72-6WZSlHHML1nhKqKowPgpFpUboMFmi/exec';
+/* Sign-ups are sent by /assets/forms.js (data-mh-form="course"). */
 
 /* ─── Lesson links ─── */
 const LESSONS = [
@@ -386,58 +378,33 @@ function handleRoleChange(select) {
   }
 }
 
-/* ─── Form submit ─── */
-async function handleSubmit(e) {
-  e.preventDefault();
-  clearError();
-
-  const name = document.getElementById('f-name').value.trim();
-  const email = document.getElementById('f-email').value.trim();
-  const roleSelect = document.getElementById('f-role').value;
-  const roleOther = document.getElementById('f-role-other').value.trim();
-
-  const profession = roleSelect === 'Other' ? ('Other: ' + roleOther) : roleSelect;
-
-  if (!name || !email || !roleSelect) {
-    showError('Please fill in all fields.');
-    return;
-  }
-  if (roleSelect === 'Other' && !roleOther) {
-    showError('Please specify your role.');
-    document.getElementById('f-role-other').focus();
-    return;
-  }
-  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-    showError('Please enter a valid email address.');
-    return;
-  }
-
-  const btn = document.getElementById('modal-submit');
-  btn.disabled = true;
-  btn.textContent = 'Saving…';
-
-  const payload = { name, email, profession, course: 'course-01-requirements-gathering', timestamp: new Date().toISOString() };
-
-  /* Save to Google Sheets — fire and forget; unlock regardless */
-  if (SCRIPT_URL && SCRIPT_URL !== 'GOOGLE_APPS_SCRIPT_URL') {
-    try {
-      await fetch(SCRIPT_URL, {
-        method: 'POST',
-        mode: 'no-cors',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload),
-      });
-    } catch (err) { console.warn('Enrollment log failed to send:', err); }
-  }
-
-  /* Save locally and unlock */
-  localStorage.setItem(LS_KEY, JSON.stringify({ name, email, profession, unlockedAt: new Date().toISOString() }));
-  closeModal();
-  unlockUI(name);
-
-  btn.disabled = false;
-  btn.textContent = 'Get Instant Access';
-}
+/* ─── Form submit (sending is done by /assets/forms.js) ─── */
+(function () {
+  const form = document.getElementById('enrol-form');
+  let enrolled = null;
+  form.addEventListener('mh:collect', function (e) {
+    clearError();
+    const roleSelect = document.getElementById('f-role').value;
+    const roleOther = document.getElementById('f-role-other').value.trim();
+    const profession = roleSelect === 'Other' ? ('Other: ' + roleOther) : roleSelect;
+    e.detail.data.details = 'Course 01 (Requirements gathering). Role: ' + profession;
+    enrolled = { name: e.detail.data.name, email: e.detail.data.email, profession: profession };
+  });
+  form.addEventListener('mh:done', function (e) {
+    if (!enrolled) return;
+    const user = Object.assign({ unlockedAt: new Date().toISOString() }, enrolled);
+    function unlock() {
+      localStorage.setItem(LS_KEY, JSON.stringify(user));
+      closeModal();
+      unlockUI(user.name);
+      handleRoleChange(document.getElementById('f-role'));
+    }
+    if (e.detail.ok) { unlock(); return; }
+    // Saving failed: say so, but don't lock the learner out of a free course.
+    showError("Couldn't save your details, but the course is unlocked. Email mhasanju46@gmail.com if you'd like updates.");
+    setTimeout(unlock, 2500);
+  });
+})();
 
 function showError(msg) {
   const el = document.getElementById('modal-error');

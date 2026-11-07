@@ -3,8 +3,15 @@
 // top; /compliance-watch/ and /bn/compliance-watch/ render from this file.
 // status: "in-force" | "watch" (announced/demanded, not yet law)
 module.exports = {
-  lastReviewed: "2026-09-25",
+  lastReviewed: "2026-11-07",
   entries: [
+    {
+      date: "2026-09", area: "vat", status: "in-force",
+      en: { title: "Online (eVAT) return filing made mandatory for listed sectors", what: "A general order dated 20 September 2026 makes online submission of VAT returns through the NBR eVAT system mandatory for listed manufacturers and service providers, reported to include cigarettes, mobile phones, medicines, beverages, cement, tiles, paints and varnishes, plus banking, non-bank financial and insurance services. Covered businesses must file online for their other activities too, and NBR can add sectors to the list. The deadline for the July–September online returns was later extended to 25 October.", who: "Businesses in the listed sectors now; every VAT payer should expect the list to grow.", erp: "Make sure the VAT return figures come straight from the ERP: every sale and purchase carries the right VAT treatment, 6.3 and VDS are recorded in the system, and the return reconciles to the ledger without an Excel step. If your return is still assembled from exports, fix that before your sector is added." },
+      bn: { title: "তালিকাভুক্ত খাতে অনলাইন (eVAT) রিটার্ন বাধ্যতামূলক", what: "২০ সেপ্টেম্বর ২০২৬-এর একটি সাধারণ আদেশে তালিকাভুক্ত উৎপাদক ও সেবাদাতাদের জন্য NBR-এর eVAT সিস্টেমে অনলাইনে VAT রিটার্ন জমা বাধ্যতামূলক করা হয়েছে। খবরে এসেছে সিগারেট, মোবাইল ফোন, ওষুধ, পানীয়, সিমেন্ট, টাইলস, রং ও বার্নিশ, আর ব্যাংক, আর্থিক প্রতিষ্ঠান ও বিমা সেবার নাম। আওতাভুক্ত প্রতিষ্ঠানকে অন্য কার্যক্রমের রিটার্নও অনলাইনে দিতে হবে, আর NBR তালিকায় নতুন খাত যোগ করতে পারবে। জুলাই–সেপ্টেম্বরের অনলাইন রিটার্নের সময়সীমা পরে ২৫ অক্টোবর পর্যন্ত বাড়ানো হয়।", who: "এখন তালিকাভুক্ত খাতের প্রতিষ্ঠান; বাকি সব VAT-দাতার ধরে নেওয়া উচিত তালিকা বড় হবে।", erp: "VAT রিটার্নের সংখ্যা যেন সরাসরি ERP থেকে আসে: প্রতিটি বিক্রি ও ক্রয়ে সঠিক VAT ট্রিটমেন্ট, 6.3 আর VDS সিস্টেমেই রেকর্ড, আর রিটার্ন Excel ছাড়াই লেজারের সঙ্গে মেলে। এখনো এক্সপোর্ট থেকে রিটার্ন বানালে, আপনার খাত তালিকায় আসার আগেই সেটা ঠিক করুন।" },
+      links: [{ href: "/tools/vat-mushak-helper/", en: "VAT & Mushak helper", bn: "VAT ও মূসক হেল্পার" }, { href: "/services/odoo-rescue/", en: "VAT still in Excel? Odoo rescue", bn: "VAT এখনো Excel-এ? Odoo রেসকিউ" }],
+      source: "NBR general order of 20 Sep 2026 as reported by The Financial Express and VATupdate (Sep–Oct 2026); deadline extension reported by Dhaka Tribune, 15 Oct 2026"
+    },
     {
       date: "2026-08", area: "wages", status: "watch",
       en: { title: "Unions call for a new RMG Minimum Wage Board", what: "Garment unions and labour alliances urged the government to reconstitute the Minimum Wage Board without delay so a new wage structure can take effect by December, in line with the shorter three-year review cycle.", who: "RMG and textile factories, and anyone running worker payroll.", erp: "No change yet. Keep grade basics and the increment % as editable salary-rule parameters, not hard-coded values, so a new gazette means a configuration change, not development work." },

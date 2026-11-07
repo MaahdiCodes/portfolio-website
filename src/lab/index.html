@@ -378,7 +378,7 @@ extraStyles: |
     <input class="lab-search" id="lab-search" type="search" placeholder="Search articles…" aria-label="Search lab articles" autocomplete="off" spellcheck="false">
   </div>
 
-  <div class="lab-search-count" id="lab-count">Showing all 101 articles</div>
+  <div class="lab-search-count" id="lab-count">Showing all 105 articles</div>
   <p style="margin:-4px 0 18px;font-size:13px"><a id="lab-deep" href="/lab/search/" style="color:var(--accent)">Search inside every article, tool and guide →</a></p>
   <script>
   (function () {
@@ -419,6 +419,28 @@ extraStyles: |
     <div class="lab-head" aria-hidden="true">
       <span>No.</span><span>Title</span><span>Kind</span><span>Published</span><span>&nbsp;</span>
     </div>
+
+    <a class="lab-row" href="0104-in-house-ai-built-erp-bangladesh" data-title="Built Your ERP In-House With AI? Where It Breaks" data-sub="The six places in-house and AI-assisted ERP builds usually fail, and a self-check for owners.">
+      <span class="lab-num">0104</span>
+      <span class="lab-title">
+        Built Your ERP In-House With AI? Where It Breaks
+        <span class="sub">Six failure points, an owner's self-check, and fixing it without starting over.</span>
+      </span>
+      <span class="lab-kind">Essay</span>
+      <span class="lab-date">Nov 2026</span>
+      <span class="lab-arrow">↗</span>
+    </a>
+
+    <a class="lab-row" href="0103-rescue-failing-odoo-implementation-30-day-plan" data-title="How to Rescue a Failing Odoo Implementation: The First 30 Days" data-sub="A 30-day triage plan: stop the bleeding, diagnose, decide rescue or restart, win users back.">
+      <span class="lab-num">0103</span>
+      <span class="lab-title">
+        How to Rescue a Failing Odoo Implementation
+        <span class="sub">A 30-day triage plan: stop the bleeding, diagnose, rescue or restart.</span>
+      </span>
+      <span class="lab-kind">Guide</span>
+      <span class="lab-date">Nov 2026</span>
+      <span class="lab-arrow">↗</span>
+    </a>
 
     <a class="lab-row" href="0102-building-in-house-odoo-superuser-team-bangladesh" data-title="Building an In-House Odoo Super-User Team After Go-Live" data-sub="Role selection, training structure, and reducing consultant dependency after go-live.">
       <span class="lab-num">0102</span>
@@ -1572,8 +1594,9 @@ extraStyles: |
         <p class="nl-strip-head">Odoo Bangladesh Monthly</p>
         <p class="nl-strip-sub">New articles and real project insights — monthly, no noise.</p>
       </div>
-      <form class="nl-strip-form" id="nl-strip-form" novalidate="">
-        <input class="nl-strip-input" id="nl-strip-email" type="email" placeholder="your@email.com" required="" autocomplete="email">
+      <form class="nl-strip-form" id="nl-strip-form" data-mh-form="newsletter" data-status="nl-strip-msg" data-busy="Subscribing…" data-msg-ok="✓ You're subscribed." novalidate="">
+        <input type="text" name="company_website" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0" aria-hidden="true">
+        <input class="nl-strip-input" id="nl-strip-email" name="email" type="email" placeholder="your@email.com" required="" autocomplete="email">
         <button class="nl-strip-btn" type="submit">Subscribe →</button>
       </form>
       <p class="nl-strip-msg" id="nl-strip-msg" aria-live="polite"></p>
@@ -1797,41 +1820,4 @@ extraStyles: |
   window.addEventListener('scroll', () => {
     navInner.style.boxShadow = window.scrollY > 8 ? '0 10px 30px rgba(0,0,0,0.35)' : 'none';
   }, { passive: true });
-</script>
-<script>
-  // Newsletter strip — submits to existing course Apps Script; stored with course='newsletter'
-  (function(){
-    const NL_URL = 'https://script.google.com/macros/s/AKfycbwePoTRBcwfPmS2C4Zw03OAE0fLaI6QMC5D72-6WZSlHHML1nhKqKowPgpFpUboMFmi/exec';
-    const form  = document.getElementById('nl-strip-form');
-    const email = document.getElementById('nl-strip-email');
-    const msg   = document.getElementById('nl-strip-msg');
-    if (!form) return;
-    form.addEventListener('submit', function(e) {
-      e.preventDefault();
-      const val = email.value.trim();
-      if (!val || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val)) {
-        msg.textContent = 'Enter a valid email.';
-        msg.className = 'nl-strip-msg error';
-        return;
-      }
-      const btn = form.querySelector('.nl-strip-btn');
-      btn.disabled = true; btn.textContent = 'Subscribing…';
-      msg.textContent = ''; msg.className = 'nl-strip-msg';
-      fetch(NL_URL, {
-        method:'POST',
-        headers:{'Content-Type':'text/plain'},
-        body: JSON.stringify({email: val, name:'', profession:'', course:'newsletter'})
-      }).then((res)=>{
-        if (!res.ok) throw new Error('status ' + res.status);
-        msg.textContent = '✓ You\'re subscribed.';
-        msg.className = 'nl-strip-msg ok';
-        email.value = '';
-      }).catch(()=>{
-        msg.textContent = 'Couldn\'t confirm — email mhasanju46@gmail.com directly.';
-        msg.className = 'nl-strip-msg error';
-      }).finally(()=>{
-        btn.disabled = false; btn.textContent = 'Subscribe →';
-      });
-    });
-  })();
 </script>

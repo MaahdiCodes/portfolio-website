@@ -1,0 +1,39 @@
+/* Reusable enquiry form (partials/contact-form.njk). Uses the site tokens
+   from /lab/_styles.css: --text, --text-2, --text-3, --border, --surface, --accent. */
+.mhf-wrap { padding-top: 24px; padding-bottom: 56px; scroll-margin-top: 90px; }
+.mhf {
+  display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: 40px;
+  border: 1px solid var(--border); border-radius: 16px; padding: 32px; background: var(--surface);
+}
+@media (max-width: 860px) { .mhf { grid-template-columns: 1fr; gap: 24px; padding: 24px 18px; } }
+.mhf-eyebrow { font-family: var(--mono); font-size: 10.5px; letter-spacing: .14em; text-transform: uppercase; color: var(--accent); }
+.mhf h2 { font-size: clamp(24px, 3vw, 32px); font-weight: 500; letter-spacing: -0.02em; color: var(--text); margin: 10px 0 12px; line-height: 1.15; }
+.mhf-copy p { color: var(--text-2); font-size: 15px; line-height: 1.6; margin: 0 0 18px; }
+.mhf-alt { list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; }
+.mhf-alt a { color: var(--accent); font-size: 14px; text-decoration: none; }
+.mhf-alt a:hover { text-decoration: underline; }
+.mhf-form { display: grid; gap: 14px; min-width: 0; }
+.mhf-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+@media (max-width: 520px) { .mhf-row { grid-template-columns: 1fr; } }
+.mhf-field { display: grid; gap: 6px; min-width: 0; }
+.mhf-field span { font-family: var(--mono); font-size: 10.5px; letter-spacing: .1em; text-transform: uppercase; color: var(--text-3); }
+.mhf-field input, .mhf-field select, .mhf-field textarea {
+  width: 100%; box-sizing: border-box; padding: 11px 13px; border-radius: 10px;
+  border: 1px solid var(--border); background: rgba(0, 0, 0, 0.18); color: var(--text);
+  font: inherit; font-size: 14px;
+}
+html[data-theme="light"] .mhf-field input, html[data-theme="light"] .mhf-field select, html[data-theme="light"] .mhf-field textarea { background: #fff; }
+.mhf-field textarea { resize: vertical; min-height: 120px; line-height: 1.5; }
+.mhf-field input:focus, .mhf-field select:focus, .mhf-field textarea:focus { outline: none; border-color: var(--accent); }
+.mhf-submit {
+  justify-self: start; display: inline-flex; align-items: center; gap: 10px; padding: 13px 20px;
+  border: none; border-radius: 10px; background: var(--accent); color: #04140B;
+  font-weight: 600; font-size: 14px; cursor: pointer; transition: transform .15s ease;
+}
+html[data-theme="light"] .mhf-submit { color: #fff; }
+.mhf-submit:hover { transform: translateY(-1px); }
+.mhf-submit:disabled { opacity: .6; cursor: progress; transform: none; }
+.mhf-status { margin: 0; min-height: 1.2em; font-size: 13.5px; color: var(--text-2); }
+.mhf-status.ok { color: var(--accent); }
+.mhf-status.error { color: #f87171; }
+.mhf-hp { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }

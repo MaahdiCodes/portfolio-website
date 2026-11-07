@@ -1,0 +1,45 @@
+{#- Reusable enquiry form. Before including, a page may set:
+      cfType   form type sent to the inbox: "contact" (default) or "rescue"
+      cfNeed   option preselected in "What do you need?"
+      cfTitle  heading (HTML allowed)
+      cfLede   one-line intro
+    Submits through /assets/forms.js like every other form on the site. -#}
+{%- set _type = cfType or "contact" -%}
+{%- set _need = cfNeed or "" -%}
+{%- set _needs = ["New Odoo implementation", "Rescue a stalled or failing ERP", "Second opinion on a proposal", "Training or super-user programme", "Something else"] -%}
+<link rel="stylesheet" href="/assets/contact-form.css">
+<section class="shell mhf-wrap" id="contact">
+  <div class="mhf">
+    <div class="mhf-copy">
+      <span class="mhf-eyebrow">Send a message</span>
+      <h2>{{ cfTitle or 'Tell me what’s <span class="serif">going on.</span>' }}</h2>
+      <p>{{ cfLede or "Your industry, team size and what isn't working. I reply within one business day." }}</p>
+      <ul class="mhf-alt">
+        <li><a href="https://wa.me/8801521414851?text=Hi%20Mehedi%2C%20I%27d%20like%20to%20discuss%20an%20Odoo%20project." target="_blank" rel="noopener noreferrer">WhatsApp: +880 1521 414 851</a></li>
+        <li><a href="mailto:mhasanju46@gmail.com">mhasanju46@gmail.com</a></li>
+      </ul>
+    </div>
+    <form class="mhf-form" data-mh-form="{{ _type }}" id="{{ _type }}-form" data-msg-ok="Message sent. I'll reply within one business day." novalidate>
+      <input type="text" name="company_website" tabindex="-1" autocomplete="off" class="mhf-hp" aria-hidden="true">
+      <div class="mhf-row">
+        <label class="mhf-field"><span>Name *</span><input name="name" type="text" required autocomplete="name"></label>
+        <label class="mhf-field"><span>Email *</span><input name="email" type="email" required autocomplete="email"></label>
+      </div>
+      <div class="mhf-row">
+        <label class="mhf-field"><span>Phone / WhatsApp</span><input name="phone" type="tel" autocomplete="tel"></label>
+        <label class="mhf-field"><span>Company</span><input name="company" type="text" autocomplete="organization"></label>
+      </div>
+      <label class="mhf-field"><span>What do you need?</span>
+        <select name="need">
+          <option value="">Choose one</option>
+          {%- for n in _needs %}
+          <option{% if n == _need %} selected{% endif %}>{{ n }}</option>
+          {%- endfor %}
+        </select>
+      </label>
+      <label class="mhf-field"><span>Message *</span><textarea name="message" rows="5" required placeholder="Your industry, team size, what was implemented and what's breaking today…"></textarea></label>
+      <button class="mhf-submit" type="submit">Send message <span aria-hidden="true">→</span></button>
+      <p class="mhf-status" data-mh-status aria-live="polite"></p>
+    </form>
+  </div>
+</section>

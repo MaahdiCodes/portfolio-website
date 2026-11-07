@@ -682,15 +682,15 @@ extraStyles: |
 
         <div class="est-email-form no-print">
           <div class="ef-label">Or — email me this estimate</div>
-          <form id="email-form" autocomplete="off" novalidate="">
+          <form id="email-form" data-mh-form="estimator" data-status="ef-msg" data-err-class="err" data-msg-ok="Sent. I'll email your estimate within 24 hours." data-msg-error="Couldn't confirm delivery. Please try again, or contact me on WhatsApp." autocomplete="off" novalidate="">
             <input type="text" id="lead-hp" name="company_website" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0" aria-hidden="true">
             <div class="ef-row">
-              <input type="text" id="lead-name" placeholder="Your name" required="">
-              <input type="email" id="lead-email" placeholder="Email address" required="">
+              <input type="text" id="lead-name" name="name" placeholder="Your name" required="">
+              <input type="email" id="lead-email" name="email" placeholder="Email address" required="">
             </div>
             <div class="ef-row">
-              <input type="text" id="lead-company" placeholder="Company (optional)">
-              <input type="tel" id="lead-phone" placeholder="Phone (optional)">
+              <input type="text" id="lead-company" name="company" placeholder="Company (optional)">
+              <input type="tel" id="lead-phone" name="phone" placeholder="Phone (optional)">
             </div>
             <button type="submit" class="btn-ghost" style="width:100%;margin-top:4px">Email me a copy →</button>
             <div class="ef-msg" id="ef-msg" role="status"></div>
@@ -1076,64 +1076,22 @@ extraStyles: |
       renderTimer = setTimeout(render, 120);
     }
 
-    // ===== Email-me form =====
-    const ESTIMATOR_ENDPOINT = "https://script.google.com/macros/s/AKfycbwePoTRBcwfPmS2C4Zw03OAE0fLaI6QMC5D72-6WZSlHHML1nhKqKowPgpFpUboMFmi/exec";
-
-    function handleEmailSubmit(e) {
-      e.preventDefault();
-      if ($("lead-hp").value.trim()) { $("email-form").reset(); return; }
-      const name = $("lead-name").value.trim();
-      const email = $("lead-email").value.trim();
-      const company = $("lead-company").value.trim();
-      const phone = $("lead-phone").value.trim();
-      const msg = $("ef-msg");
-      msg.className = "ef-msg";
-      msg.textContent = "";
-
-      if (!name || !email || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) {
-        msg.className = "ef-msg err";
-        msg.textContent = "Please enter your name and a valid email.";
-        return;
-      }
-
+    // ===== Email-me form (sent by /assets/forms.js) =====
+    // Attach the current estimate so the request arrives with everything needed to reply.
+    function estimateDetails() {
       const r = calculate(state);
-      const payload = {
-        source: "odoo-cost-estimator",
-        name, email, company, phone,
-        inputs: { ...state },
-        estimate: {
-          y1_total_bdt: r.y1_total,
-          tco_3yr_bdt: r.tco_3yr,
-          licence_y1_bdt: r.licence_y1,
-          impl_bdt: r.impl,
-          training_bdt: r.training,
-          bd_specific_bdt: r.bd_specific
-        },
-        shareLink: buildShareLink(),
-        submittedAt: new Date().toISOString()
-      };
-
-      msg.className = "ef-msg";
-      msg.textContent = "Sending…";
-
-      const data = new FormData();
-      data.append("payload", JSON.stringify(payload));
-      data.append("email", email);
-      data.append("name", name);
-      data.append("source", "odoo-cost-estimator");
-
-      fetch(ESTIMATOR_ENDPOINT, { method: "POST", body: data })
-        .then((res) => {
-          if (!res.ok) throw new Error('status ' + res.status);
-          msg.className = "ef-msg ok";
-          msg.textContent = "Sent. I'll email your estimate within 24 hours.";
-          $("email-form").reset();
-        })
-        .catch(() => {
-          msg.className = "ef-msg err";
-          msg.textContent = "Couldn't confirm delivery — please try again, or contact via WhatsApp.";
-        });
+      const range = (v) => Array.isArray(v) ? fmtRange(v[0], v[1]) : String(v);
+      return [
+        r ? "Year-1 total: " + range(r.y1_total) : "Estimate not complete yet (some questions unanswered)",
+        r ? "3-year TCO: " + range(r.tco_3yr) : "",
+        "Industry: " + state.industry,
+        "Size: " + (state.size || "-"),
+        "Modules: " + (state.modules.join(", ") || "-"),
+        "Hosting: " + (state.hosting || "-") + ", edition: " + (state.edition || "-") + ", timeline: " + (state.timeline || "-"),
+        "Link: " + buildShareLink()
+      ].filter(Boolean).join("\n");
     }
+    $("email-form").addEventListener("mh:collect", (e) => { e.detail.data.details = estimateDetails(); });
 
     // ===== Wire up =====
     function init() {
@@ -1196,8 +1154,6 @@ extraStyles: |
         window.print();
       });
 
-      // Email form
-      $("email-form").addEventListener("submit", handleEmailSubmit);
 
       // First render
       render();

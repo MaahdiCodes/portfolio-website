@@ -1,0 +1,174 @@
+---
+permalink: "lab/0104-in-house-ai-built-erp-bangladesh.html"
+title: "Built Your ERP In-House With AI? Where It Breaks, and How to Check | Mehedi Hasan"
+description: "More Bangladeshi companies are building their own ERP with a small team and AI coding tools. The six places in-house builds usually break, a self-check for owners, and how to fix them without starting over."
+canonical: "https://mhasan.me/lab/0104-in-house-ai-built-erp-bangladesh"
+ogImage: "https://mhasan.me/assets/og/lab/0104-in-house-ai-built-erp-bangladesh.png"
+ogSiteName: "Mehedi Hasan | Odoo ERP Consultant"
+datePublished: "2026-11-07T12:00:00+06:00"
+dateModified: "2026-11-07T12:00:00+06:00"
+articleSection: "Odoo ERP Bangladesh"
+eyebrowNum: "0104"
+h1: "Built your ERP in-house with AI? <span class=\"serif\">Here’s where it breaks.</span>"
+lede: "A growing number of Bangladeshi companies meet an ERP partner, decide it's too expensive, and hire a few developers to build their own with AI coding tools. Some of these builds work well. Many hit the same wall at the same point. This is where it usually happens, how to check your own system, and what to do about it."
+chips: ["Essay", "In-House ERP", "AI", "Rescue"]
+bylineItems:
+  - label: "By"
+    value: "<a href=\"https://www.linkedin.com/in/mehedi-hasan-consultant/\" style=\"color:var(--accent)\" rel=\"author\">Mehedi Hasan</a>"
+  - label: "Published"
+    value: "November 2026"
+  - label: "Read time"
+    value: "11 minutes"
+  - label: "Form"
+    value: "Essay"
+  - label: "Scope"
+    value: "Build vs Buy"
+nextArticle:
+  href: "0103-rescue-failing-odoo-implementation-30-day-plan"
+  dir: "Older · 0103"
+  title: "How to Rescue a Failing Odoo Implementation: The First 30 Days"
+  desc: "Stop the bleeding, diagnose, decide rescue or restart, and win users back."
+prevArticle:
+  href: "../#lab"
+  dir: "All articles"
+  title: "Back to Lab Index"
+  desc: "Browse the full library of guides on Odoo ERP, manufacturing operations, and business analysis in Bangladesh."
+extraCards:
+  - href: "/services/odoo-rescue/"
+    dir: "Service"
+    title: "ERP Rescue & Recovery"
+    desc: "Independent audit and fix support for Odoo and in-house systems."
+jsonLd: |
+  [
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "Built Your ERP In-House With AI? Where It Breaks, and How to Check",
+      "description": "The six places in-house and AI-assisted ERP builds usually break, a self-check for owners, and how to fix them without starting over.",
+      "datePublished": "2026-11-07T12:00:00+06:00",
+      "dateModified": "2026-11-07T12:00:00+06:00",
+      "author": {
+        "@type": "Person",
+        "name": "Mehedi Hasan",
+        "url": "https://mhasan.me",
+        "jobTitle": "Odoo Certified Functional Consultant & ERP Rescue Specialist",
+        "sameAs": "https://www.linkedin.com/in/mehedi-hasan-consultant/"
+      },
+      "publisher": { "@type": "Person", "name": "Mehedi Hasan", "url": "https://mhasan.me" },
+      "mainEntityOfPage": { "@type": "WebPage", "@id": "https://mhasan.me/lab/0104-in-house-ai-built-erp-bangladesh" }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://mhasan.me" },
+        { "@type": "ListItem", "position": 2, "name": "Lab", "item": "https://mhasan.me/lab/" },
+        { "@type": "ListItem", "position": 3, "name": "In-House AI-Built ERP", "item": "https://mhasan.me/lab/0104-in-house-ai-built-erp-bangladesh" }
+      ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        { "@type": "Question", "name": "Is it a good idea to build our own ERP with AI coding tools?", "acceptedAnswer": { "@type": "Answer", "text": "It can be, for a narrow scope with a team that has strong engineering discipline and someone who deeply understands the business rules. It gets risky once one system has to handle payroll, inventory valuation, production, accounting and VAT together, because every change then has side effects that AI tools don't see. The risk is less in writing the code than in specifying the rules correctly and testing them." } },
+        { "@type": "Question", "name": "How do I know if our in-house ERP is in trouble?", "acceptedAnswer": { "@type": "Answer", "text": "Ask whether stock value in the system ties to the balance sheet, whether the VAT return can be produced from the system without Excel, whether payroll can be recalculated for a past month and give the same answer, and whether more than one developer understands each module. If the answer to two or more is no, the system needs an independent review." } },
+        { "@type": "Question", "name": "Should we replace our in-house system with Odoo?", "acceptedAnswer": { "@type": "Answer", "text": "Not automatically. If the in-house system fits the business and its problems are in rules, data and testing, fixing those is usually cheaper than migrating. Replacing makes sense when the system cannot be maintained by anyone except its original authors, or when a standard ERP already does most of what the company built by hand." } }
+      ]
+    }
+  ]
+---
+<aside class="toc">
+      <div class="toc-k">In this essay</div>
+      <ol>
+        <li><a href="#the-trend">The Trend Is Real</a></li>
+        <li><a href="#the-wall">Where the Wall Is</a></li>
+        <li><a href="#six-places">Six Places In-House Builds Break</a></li>
+        <li><a href="#self-check">A Self-Check for Owners</a></li>
+        <li><a href="#fix">Fixing It Without Starting Over</a></li>
+        <li><a href="#odoo">When Switching to Odoo Makes Sense</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ol>
+    </aside>
+
+    <div class="body">
+
+      <h2 id="the-trend">The Trend Is Real</h2>
+      <p>The conversation goes like this. A large company meets two or three ERP partners, gets quotes, and balks at the licence cost and the timeline. Someone points out that AI coding tools now let a small team build software far faster than before. So the company hires three or four developers and builds its own system for payroll, inventory and accounts, priced in Taka and shaped exactly the way the business already works.</p>
+      <p>This isn't a foolish decision. A system built around your own processes, owned outright, with no licence bill, has real advantages. Bangladeshi enterprises have been moving away from expensive imported software toward locally built and locally priced systems for a while, and AI tools have sped that up. The money isn't leaving business software. It's moving from licences to local build and local services.</p>
+      <p>The problem isn't the decision to build. It's what the decision assumes: that the hard part of an ERP is writing the code.</p>
+
+      <h2 id="the-wall">Where the Wall Is</h2>
+      <p>The first months of an in-house build usually go very well. Screens appear quickly, the owner sees progress every week, and each department gets exactly the form it asked for. AI tools are genuinely good at this stage.</p>
+      <p>The wall comes when the modules start depending on each other. A goods receipt has to update stock, stock value, the vendor's payable balance, the VAT input credit and the production plan, all consistently, and all reversibly when the receipt turns out to be wrong. Payroll has to apply wage-board grades, attendance, overtime, festival bonuses, advances and tax withholding, and give the same answer when you recalculate a past month. At that point the system is no longer a set of forms. It's a set of business rules, and every change to one rule can break three others.</p>
+      <p>AI coding tools speed up whatever discipline a team already has. A team with clear specifications, automated tests and code review gets faster. A team without them produces more code, faster, that nobody fully understands. And in an ERP, the code nobody understands is usually the code that moves money.</p>
+
+      <p class="pull">AI made code cheap. It didn't make process design, data cleanup, user training or business rules any cheaper, and those are what decide whether an ERP works.</p>
+
+      <h2 id="six-places">Six Places In-House Builds Break</h2>
+
+      <h3>1. Inventory valuation</h3>
+      <p>Stock quantity is easy. Stock <em>value</em> is hard: average cost versus FIFO, landed costs added after receipt, returns at the original cost, and the link from every stock move to the general ledger. In-house systems often track quantity well and value approximately. The symptom is a stock figure on the balance sheet that accounts adjust by hand every month. See the <a href="0011-odoo-inventory-valuation-cheatsheet" style="color:var(--accent)">inventory valuation cheatsheet</a> for what a correct design has to handle.</p>
+
+      <h3>2. VAT and Mushak</h3>
+      <p>Bangladesh VAT has rules that generic examples, and AI tools trained on them, don't know: Mushak 6.3 content requirements, VDS, truncated rates, input credit restrictions, and the return structure that changed with the Finance Act 2026. With online eVAT filing now mandatory for many manufacturers and service providers, a system that can't produce the return directly turns every quarter into a reconciliation exercise. See <a href="0018-mushak-63-odoo-bangladesh" style="color:var(--accent)">Mushak 6.3</a> and <a href="/compliance-watch/" style="color:var(--accent)">Compliance Watch</a>.</p>
+
+      <h3>3. Payroll that can't be recalculated</h3>
+      <p>A payroll module that calculates this month correctly isn't enough. It has to reproduce any past month exactly, handle arrears when a wage gazette is applied retroactively, and keep grade amounts as parameters rather than numbers in code. When the next wage board announces new grades, a well-built system needs a configuration change. A fragile one needs a developer and a prayer. (Background: <a href="0022-bgmea-wage-board-odoo-payroll" style="color:var(--accent)">wage-board payroll</a>.)</p>
+
+      <h3>4. No audit trail</h3>
+      <p>Who changed this invoice, when, and from what? In-house systems often allow posted records to be edited directly, so mistakes get "fixed" by overwriting them. That destroys the audit trail auditors and NBR expect, and since the Finance Act 2026 treats ERP records as evidence, it is a compliance risk as well as an accounting one.</p>
+
+      <h3>5. Access control as an afterthought</h3>
+      <p>Early builds give everyone broad access because it's faster. Later, nobody can say who is allowed to approve a purchase, change a price or see salaries. AI-generated code is especially prone to missing permission checks on new screens, because the check is rarely in the prompt. Retrofitting access control across a grown system is slow and error-prone.</p>
+
+      <h3>6. The key-person problem</h3>
+      <p>When one developer built the payroll module with heavy AI assistance, often nobody else, sometimes not even that developer, can explain why it works the way it does. When that person leaves, and in Bangladesh's tight developer market they often do, the company owns code it can't safely change.</p>
+
+      <h2 id="self-check">A Self-Check for Owners</h2>
+      <p>You don't need to read code to know whether your system is in trouble. Ask your team these questions and look at the answers yourself:</p>
+      <table>
+        <thead><tr><th>Question</th><th>Healthy answer</th></tr></thead>
+        <tbody>
+          <tr><td>Does stock value in the system match the balance sheet without manual adjustment?</td><td>Yes, every month</td></tr>
+          <tr><td>Can the VAT return be produced from the system without Excel?</td><td>Yes, with the figures traceable to invoices</td></tr>
+          <tr><td>If we recalculate payroll for six months ago, do we get the same result?</td><td>Yes, to the taka</td></tr>
+          <tr><td>Can a posted invoice be edited without leaving a record?</td><td>No, only reversed or credited</td></tr>
+          <tr><td>Is there a written list of who can approve purchases and change prices?</td><td>Yes, and the system enforces it</td></tr>
+          <tr><td>Does more than one developer understand each module?</td><td>Yes, with documentation</td></tr>
+          <tr><td>Are there automated tests for the money-moving rules?</td><td>Yes, run before every release</td></tr>
+          <tr><td>Do departments still keep their own spreadsheets?</td><td>No</td></tr>
+        </tbody>
+      </table>
+      <p>Two or more unhealthy answers mean the system needs an independent review before the next big change, not after.</p>
+
+      <h2 id="fix">Fixing It Without Starting Over</h2>
+      <p>The answer is rarely to throw the system away. It's to put back the layer the build skipped: someone who owns the business rules and checks the software against them.</p>
+      <ol>
+        <li><strong>Write the rules down.</strong> In plain language, owned by the business: how stock is valued, how VAT is treated per transaction type, how each payroll component is calculated. This is functional design work, and it's the document your developers and their AI tools have been missing.</li>
+        <li><strong>Test against real transactions.</strong> Turn last quarter's real documents into test cases with known correct results, and run them before every release.</li>
+        <li><strong>Clean the data.</strong> Duplicates, wrong units and unreconciled balances get fixed once, with an owner assigned to each master-data type so they stay fixed.</li>
+        <li><strong>Lock what's posted.</strong> Reversal instead of editing, an audit log, and access rights that match the approval matrix.</li>
+        <li><strong>Spread the knowledge.</strong> Documentation and pairing, so every module has at least two people who understand it.</li>
+      </ol>
+      <p>This is the role I take on in-house projects: functional architect and QA partner to your developers, not their replacement. They keep building. The business gets an independent check that what they build is right.</p>
+
+      <h2 id="odoo">When Switching to Odoo Makes Sense</h2>
+      <p>Sometimes the honest answer is to stop building. That's usually the case when most of what the team built by hand, accounting, inventory valuation, purchase approvals, already exists in a standard ERP, and the in-house code has become too fragile to change safely. In that case a move to Odoo, keeping the genuinely unique parts as a small integration or custom module, can cost less than another year of patching. The <a href="0004-odoo-vs-sap-vs-tally-bangladesh" style="color:var(--accent)">ERP comparison</a> and <a href="/tools/odoo-cost-estimator/" style="color:var(--accent)">cost estimator</a> will help you size that option. But make the decision from an audit, not from frustration.</p>
+
+      <div class="callout">
+        <span class="tag">Independent review</span>
+        <p>If your in-house or AI-built system is showing these signs, I can review it at the process, data and compliance level and give your developers a prioritised, testable fix list. It starts with a free 45-minute health check. <a href="/services/odoo-rescue/#in-house" style="color:var(--accent)">How ERP rescue works →</a></p>
+      </div>
+
+      <h2 id="faq">Frequently asked questions</h2>
+
+      <h3>Is it a good idea to build our own ERP with AI coding tools?</h3>
+      <p>It can be, for a narrow scope with a team that has strong engineering discipline and someone who deeply understands the business rules. It gets risky once one system has to handle payroll, inventory valuation, production, accounting and VAT together, because every change then has side effects that AI tools don't see. The risk is less in writing the code than in specifying the rules correctly and testing them.</p>
+
+      <h3>How do I know if our in-house ERP is in trouble?</h3>
+      <p>Ask whether stock value in the system ties to the balance sheet, whether the VAT return can be produced from the system without Excel, whether payroll can be recalculated for a past month and give the same answer, and whether more than one developer understands each module. If the answer to two or more is no, the system needs an independent review.</p>
+
+      <h3>Should we replace our in-house system with Odoo?</h3>
+      <p>Not automatically. If the in-house system fits the business and its problems are in rules, data and testing, fixing those is usually cheaper than migrating. Replacing makes sense when the system cannot be maintained by anyone except its original authors, or when a standard ERP already does most of what the company built by hand.</p>
+
+    </div>

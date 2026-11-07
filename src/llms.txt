@@ -1,6 +1,6 @@
 # Mehedi Hasan | Odoo Consultant
 
-> Mehedi Hasan is an Odoo Certified Functional Consultant in Bangladesh, specialising in manufacturing ERP implementation and business process automation. Led Bangladesh's largest Odoo deployment across 5 sites with 200+ users trained.
+> Mehedi Hasan is an Odoo Certified Functional Consultant and ERP rescue specialist in Bangladesh, specialising in manufacturing ERP implementation and in recovering stalled or failing Odoo and in-house ERP projects (in Bangladesh and remotely). Led Bangladesh's largest Odoo deployment across 5 sites with 200+ users trained.
 
 This site (mhasan.me) covers Odoo/ERP implementation in the Bangladesh market: costs, vendor selection, industry-specific setups (RMG, textiles, pharma, plastics, agro-processing, and more), compliance (NBR VAT, Mushak, customs, labour law), and practical how-to guides drawn from real deployments.
 
@@ -12,8 +12,11 @@ This site (mhasan.me) covers Odoo/ERP implementation in the Bangladesh market: c
 - [Odoo Cost Estimator](https://mhasan.me/tools/odoo-cost-estimator/): Interactive tool to estimate Odoo implementation cost in Bangladesh.
 - [Start Here](https://mhasan.me/start-here/): Guided learning paths for an ERP journey.
 - [Resources](https://mhasan.me/resources/): Free templates, checklists, and cheatsheets.
-- [Odoo Partner Consultant](https://mhasan.me/services/odoo-partner-consultant): Odoo partner/consulting services.
-- [Manufacturing ERP Consultant](https://mhasan.me/services/manufacturing-erp-consultant): Manufacturing-focused ERP consulting services.
+- [Odoo Rescue & Recovery](https://mhasan.me/services/odoo-rescue/): Audit, stabilisation and user-adoption recovery for stalled or failing Odoo and in-house/AI-built ERP projects; free health check, fixed-price audit, fix sprint, care retainer; Bangladesh and remote.
+- [Independent Odoo Consultant](https://mhasan.me/services/odoo-partner-consultant/): Independent Odoo functional consulting (not an official Odoo partner): discovery, partner-proposal review, implementation oversight.
+- [Manufacturing ERP Consultant](https://mhasan.me/services/manufacturing-erp-consultant/): Manufacturing-focused ERP consulting services.
+- [Rescue a failing Odoo implementation](https://mhasan.me/lab/0103-rescue-failing-odoo-implementation-30-day-plan): 30-day triage plan.
+- [In-house / AI-built ERP](https://mhasan.me/lab/0104-in-house-ai-built-erp-bangladesh): Where in-house builds break and an owner's self-check.
 
 ## Free tools (interactive, run in the browser)
 

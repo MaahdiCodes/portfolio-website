@@ -1,0 +1,10 @@
+# Cloudflare Pages response headers.
+# Keep the *.pages.dev copies of the site out of search results so they don't
+# compete with https://mhasan.me (the canonical domain). These rules match only
+# the pages.dev hostnames; mhasan.me itself is unaffected.
+
+https://:project.pages.dev/*
+  X-Robots-Tag: noindex
+
+https://:version.:project.pages.dev/*
+  X-Robots-Tag: noindex

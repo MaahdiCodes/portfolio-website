@@ -1,8 +1,16 @@
-name: Build and deploy site
+name: Redirect GitHub Pages copy to mhasan.me
+
+# The real site is built and served by Cloudflare Pages at https://mhasan.me.
+# This workflow used to publish a full second copy of the site to
+# maahdicodes.github.io/portfolio-website/, which Google could treat as
+# duplicate content. It now publishes only a redirect stub: every URL under
+# /portfolio-website/ forwards to the same path on mhasan.me and is noindex.
+# (index.html covers the root; 404.html catches every other path.)
 
 on:
   push:
     branches: [main]
+    paths: ['.github/workflows/deploy.yml']
   workflow_dispatch:
 
 permissions:
@@ -18,17 +26,31 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: npm
-      - run: npm ci
-      - run: npm run build
+      - name: Write redirect stub
+        run: |
+          mkdir -p stub
+          cat > stub/index.html <<'HTML'
+          <!doctype html>
+          <html lang="en">
+          <head>
+          <meta charset="utf-8">
+          <title>Moved to mhasan.me</title>
+          <meta name="robots" content="noindex, follow">
+          <link rel="canonical" href="https://mhasan.me/">
+          <meta http-equiv="refresh" content="0; url=https://mhasan.me/">
+          <script>
+            location.replace('https://mhasan.me/' + location.pathname.replace(/^\/portfolio-website\/?/, '') + location.search + location.hash);
+          </script>
+          </head>
+          <body><p>This site has moved to <a href="https://mhasan.me/">mhasan.me</a>.</p></body>
+          </html>
+          HTML
+          cp stub/index.html stub/404.html
+          touch stub/.nojekyll
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: _site
+          path: stub
 
   deploy:
     needs: build

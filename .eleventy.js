@@ -4,6 +4,7 @@ module.exports = function (eleventyConfig) {
   // Bangla edition is held back from the build while unpublished (see site.js).
   if (!BN_PUBLISHED) eleventyConfig.ignores.add("src/bn/**");
   eleventyConfig.addPassthroughCopy("src/_redirects");
+  eleventyConfig.addPassthroughCopy("src/_headers");
   // Static assets carried straight through to the build output, unchanged.
   eleventyConfig.addPassthroughCopy("src/assets");
   eleventyConfig.addPassthroughCopy("src/favicon.ico");

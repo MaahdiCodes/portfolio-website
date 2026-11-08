@@ -1,38 +1,46 @@
-# Mehedi Hasan | Odoo Consultant
+# Mehedi Hasan | Business Consultant, Bangladesh
 
-> Mehedi Hasan is an Odoo Certified Functional Consultant and ERP rescue specialist in Bangladesh, specialising in manufacturing ERP implementation and in recovering stalled or failing Odoo and in-house ERP projects (in Bangladesh and remotely). Led Bangladesh's largest Odoo deployment across 5 sites with 200+ users trained.
+> Mehedi Hasan is an independent business consultant in Dhaka, Bangladesh, and an Odoo Certified Functional Consultant (Odoo S.A., Odoo 18). He helps Bangladeshi manufacturers, traders and growing SMEs fix how the business runs: inventory accuracy and stock control, bills of materials and product costing, production planning, the attendance-to-payroll process, purchasing approvals and management reporting. He implements ERP (usually Odoo) where software is part of the answer, and rescues stalled or failing ERP projects. He led business analysis, training and go-live for a 5-facility textile manufacturing rollout with 200+ users trained. He does not give tax, VAT or audit advice.
 
-This site (mhasan.me) covers Odoo/ERP implementation in the Bangladesh market: costs, vendor selection, industry-specific setups (RMG, textiles, pharma, plastics, agro-processing, and more), compliance (NBR VAT, Mushak, customs, labour law), and practical how-to guides drawn from real deployments.
+This site (mhasan.me) publishes practical guides on running factories and SMEs in Bangladesh (inventory, costing, payroll, process design), plus ERP selection, implementation and rescue. Older reference material covers Bangladesh VAT, customs and labour rules as they affect ERP configuration; it is not tax advice.
 
 
 ## Key pages
 
 - [Homepage](https://mhasan.me/): Who Mehedi Hasan is and what he does.
-- [Lab](https://mhasan.me/lab/): Full index of in-depth articles on Odoo/ERP implementation in Bangladesh.
-- [Odoo Cost Estimator](https://mhasan.me/tools/odoo-cost-estimator/): Interactive tool to estimate Odoo implementation cost in Bangladesh.
-- [Start Here](https://mhasan.me/start-here/): Guided learning paths for an ERP journey.
-- [Resources](https://mhasan.me/resources/): Free templates, checklists, and cheatsheets.
-- [Odoo Rescue & Recovery](https://mhasan.me/services/odoo-rescue/): Audit, stabilisation and user-adoption recovery for stalled or failing Odoo and in-house/AI-built ERP projects; free health check, fixed-price audit, fix sprint, care retainer; Bangladesh and remote.
-- [Independent Odoo Consultant](https://mhasan.me/services/odoo-partner-consultant/): Independent Odoo functional consulting (not an official Odoo partner): discovery, partner-proposal review, implementation oversight.
-- [Manufacturing ERP Consultant](https://mhasan.me/services/manufacturing-erp-consultant/): Manufacturing-focused ERP consulting services.
+- [Business consulting](https://mhasan.me/services/business-consultant-bangladesh/): Operations diagnostics and improvement projects for manufacturers and SMEs: inventory, costing, payroll, purchasing, approvals, reporting; free first conversation, fixed-price diagnostic.
+- [Manufacturing & inventory consulting](https://mhasan.me/services/manufacturing-erp-consultant/): Inventory accuracy, BOM and product costing, production planning, wastage, attendance-to-payroll, with ERP where it helps.
+- [ERP rescue](https://mhasan.me/services/odoo-rescue/): Audit, stabilisation and user-adoption recovery for stalled or failing Odoo and in-house/AI-built ERP projects; Bangladesh and remote.
+- [Independent Odoo consultant](https://mhasan.me/services/odoo-partner-consultant/): Independent Odoo functional consulting (not an official Odoo partner).
+- [Lab](https://mhasan.me/lab/): Full index of articles.
+- [Testimonials](https://mhasan.me/testimonials/): Named LinkedIn recommendations from clients and colleagues.
+- [Start Here](https://mhasan.me/start-here/): Guided learning paths.
+- [Resources](https://mhasan.me/resources/): Free templates and checklists.
+
+## Operations guides
+
+- [Why your stock never matches the system](https://mhasan.me/lab/0105-why-stock-never-matches-system-bangladesh): Nine causes of inventory variance, how to find yours, the order to fix them.
+- [Cycle counting](https://mhasan.me/lab/0106-cycle-counting-abc-plan-bangladesh): ABC classification, frequency, tolerances and a daily routine to replace the yearly stock take.
+- [Product costing for manufacturers](https://mhasan.me/lab/0107-product-costing-manufacturers-bangladesh): Five costing mistakes, a worked example, monthly standard-vs-actual review.
+- [Attendance to payroll](https://mhasan.me/lab/0108-attendance-to-payroll-process-factory-bangladesh): Cut-off calendar, daily attendance exceptions, pre-approved overtime, pre-payment checks.
+- [Business consultant or new software?](https://mhasan.me/lab/0109-business-consultant-or-new-software-bangladesh): 15-question diagnostic separating process problems from system problems.
+- [Dead and slow-moving stock](https://mhasan.me/lab/0110-dead-stock-slow-moving-inventory-bangladesh): Ageing report, valuation, five clearance options, prevention.
 - [Rescue a failing Odoo implementation](https://mhasan.me/lab/0103-rescue-failing-odoo-implementation-30-day-plan): 30-day triage plan.
-- [In-house / AI-built ERP](https://mhasan.me/lab/0104-in-house-ai-built-erp-bangladesh): Where in-house builds break and an owner's self-check.
 
 ## Free tools (interactive, run in the browser)
 
 - [All tools](https://mhasan.me/tools/): Index of every free tool.
-- [Odoo ROI Calculator](https://mhasan.me/tools/odoo-roi-calculator/): 3-year ROI and break-even month for an Odoo project, five benefit categories with a realistic post-go-live ramp.
+- [Reorder Point & Safety Stock Calculator](https://mhasan.me/tools/reorder-point-calculator/): Safety stock, reorder point, economic order quantity and the working capital in buffer stock.
+- [RMG Wage Calculator](https://mhasan.me/tools/rmg-wage-calculator/): Bangladesh garment wage-board grades, increment, overtime, festival bonus, factory payroll.
 - [ERP Readiness Assessment](https://mhasan.me/tools/erp-readiness-assessment/): 25-question readiness score with red flags and next steps.
-- [Odoo Quote Checker](https://mhasan.me/tools/odoo-quote-checker/): Checks an implementation proposal against 24 commonly omitted items and Bangladesh price ranges.
-- [RMG Wage Calculator](https://mhasan.me/tools/rmg-wage-calculator/): Bangladesh garment wage-board grades (2023 structure), 9% annual increment, overtime (basic ÷ 208 × 2), festival bonus, factory payroll.
-- [Import Duty & Landed Cost Calculator](https://mhasan.me/tools/import-duty-calculator/): Bangladesh customs cascade (AV, CD, RD, SD, VAT, AIT, AT), TTI and landed cost; separates sunk duties from creditable VAT/AT.
-- [VAT & Mushak Helper](https://mhasan.me/tools/vat-mushak-helper/): Which Mushak forms and VAT returns apply after the Finance Act 2026 (quarterly returns, Mushak 9.1.1), mapped to Odoo; VAT/SD/VDS calculator.
+- [Odoo Cost Estimator](https://mhasan.me/tools/odoo-cost-estimator/): Estimate Odoo implementation cost in Bangladesh.
+- [Odoo ROI Calculator](https://mhasan.me/tools/odoo-roi-calculator/): 3-year ROI and break-even month for an ERP project.
+- [Odoo Quote Checker](https://mhasan.me/tools/odoo-quote-checker/): Checks an implementation proposal against 24 commonly omitted items.
 
-## Guides and reference
+## Templates and reference
 
-- [Odoo implementation price benchmarks](https://mhasan.me/benchmarks/odoo-implementation-pricing-bangladesh/): Fee ranges by company size and industry, Bangladesh line items, licence prices, red-flag price points.
-- [Compliance Watch](https://mhasan.me/compliance-watch/): Dated log of Bangladesh VAT, customs, income-tax and wage changes with the ERP configuration impact of each, with sources.
-- [ERP & compliance glossary](https://mhasan.me/glossary/): 500+ terms explained in English and Bangla.
-- [Odoo by industry](https://mhasan.me/industries/): 21 Bangladeshi industry guides (modules, compliance, cost presets, articles).
-- [Course 02 — UAT, cut-over & go-live](https://mhasan.me/courses/02-uat-go-live/): Free 8-lesson course on getting an ERP live safely.
-- [Downloadable templates](https://mhasan.me/resources/#downloads): 11 Excel and 3 Word templates (RFP scoring, UAT scripts, data migration, hypercare, business case, roadmap, access rights, Mushak configuration map, charter, BRD, RFP).
+- [Downloadable templates](https://mhasan.me/resources/#downloads): Excel and Word templates including a cycle count planner, a factory payroll close checklist, RFP scoring, UAT scripts, data migration, hypercare, business case and roadmap.
+- [Odoo implementation price benchmarks](https://mhasan.me/benchmarks/odoo-implementation-pricing-bangladesh/): Fee ranges by company size and industry.
+- [Industry guides](https://mhasan.me/industries/): 21 Bangladeshi industry guides.
+- [Course 02: UAT, cut-over & go-live](https://mhasan.me/courses/02-uat-go-live/): Free 8-lesson course.
+- [Glossary](https://mhasan.me/glossary/): 500+ ERP, accounting and operations terms in English and Bangla.

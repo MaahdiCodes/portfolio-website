@@ -3,6 +3,10 @@ const BN_PUBLISHED = require("./src/_data/site.js").bnPublished;
 module.exports = function (eleventyConfig) {
   // Bangla edition is held back from the build while unpublished (see site.js).
   if (!BN_PUBLISHED) eleventyConfig.ignores.add("src/bn/**");
+  // Hand-written one-off pages that are copied as-is, never templated (see below).
+  eleventyConfig.ignores.add("src/_static/**");
+  // Downloadable files (e.g. the Markdown checklist) are copied, never rendered as pages.
+  eleventyConfig.ignores.add("src/assets/**");
   eleventyConfig.addPassthroughCopy("src/_redirects");
   eleventyConfig.addPassthroughCopy("src/_headers");
   // Static assets carried straight through to the build output, unchanged.
@@ -29,16 +33,17 @@ module.exports = function (eleventyConfig) {
 
   // 0011 is a bespoke one-off "cheatsheet" page (tabbed doc UI, its own JS/CSS)
   // that doesn't fit the standard lab-article template. Mirrored straight from
-  // its original location rather than forced into the shared layout.
+  // src/_static/ rather than forced into the shared layout.
   // odoo-18-functional-certification-bangladesh.html is a similar one-off
   // (credential/certificate page, different head structure and no nav) that
   // doesn't fit the standard lab-article template either.
+  // Edit these files directly: they don't get base.njk changes automatically.
   eleventyConfig.addPassthroughCopy({
-    "lab/0011-odoo-inventory-valuation-cheatsheet.html": "lab/0011-odoo-inventory-valuation-cheatsheet.html",
-    "lab/odoo-18-functional-certification-bangladesh.html": "lab/odoo-18-functional-certification-bangladesh.html",
+    "src/_static/lab/0011-odoo-inventory-valuation-cheatsheet.html": "lab/0011-odoo-inventory-valuation-cheatsheet.html",
+    "src/_static/lab/odoo-18-functional-certification-bangladesh.html": "lab/odoo-18-functional-certification-bangladesh.html",
     ...(BN_PUBLISHED ? {
-      "bn/lab/0011-odoo-inventory-valuation-cheatsheet.html": "bn/lab/0011-odoo-inventory-valuation-cheatsheet.html",
-      "bn/lab/odoo-18-functional-certification-bangladesh.html": "bn/lab/odoo-18-functional-certification-bangladesh.html",
+      "src/_static/bn/lab/0011-odoo-inventory-valuation-cheatsheet.html": "bn/lab/0011-odoo-inventory-valuation-cheatsheet.html",
+      "src/_static/bn/lab/odoo-18-functional-certification-bangladesh.html": "bn/lab/odoo-18-functional-certification-bangladesh.html",
     } : {}),
   });
 

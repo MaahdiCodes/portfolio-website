@@ -68,7 +68,7 @@ function buildSvg({ title, badge }) {
   <rect x="88" y="64" width="44" height="44" rx="12" fill="url(#brandmark)"/>
   <text x="110" y="93" font-family="Arial, sans-serif" font-size="15" font-weight="700" fill="#04140B" text-anchor="middle">MH</text>
   <text x="146" y="82" font-family="Arial, sans-serif" font-size="19" font-weight="600" fill="#EDEEF0">Mehedi Hasan</text>
-  <text x="146" y="102" font-family="Arial, sans-serif" font-size="12.5" letter-spacing="1.5" fill="#6E7F9C">ERP · BUSINESS ANALYST</text>
+  <text x="146" y="102" font-family="Arial, sans-serif" font-size="12.5" letter-spacing="1.5" fill="#6E7F9C">BUSINESS CONSULTANT · DHAKA</text>
 
   <!-- badge -->
   ${badge ? `<rect x="88" y="150" width="${Math.min(560, 24 + badge.length * 9.5)}" height="34" rx="17" fill="${ACCENT_DIM}" stroke="rgba(31,217,196,0.4)"/>
@@ -79,7 +79,7 @@ function buildSvg({ title, badge }) {
 
   <!-- footer -->
   <text x="88" y="566" font-family="Arial, sans-serif" font-size="15" fill="#6E7F9C">mhasan.me</text>
-  <text x="1112" y="566" font-family="Arial, sans-serif" font-size="15" fill="#6E7F9C" text-anchor="end">Odoo ERP Consultant · Bangladesh</text>
+  <text x="1112" y="566" font-family="Arial, sans-serif" font-size="15" fill="#6E7F9C" text-anchor="end">Business Consultant · Odoo Certified</text>
 </svg>`;
 }
 

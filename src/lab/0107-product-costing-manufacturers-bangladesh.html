@@ -1,0 +1,185 @@
+---
+permalink: "lab/0107-product-costing-manufacturers-bangladesh.html"
+title: "Product Costing for Manufacturers: Why Your Cost Per Unit Is Wrong | Mehedi Hasan"
+description: "The five costing mistakes that make Bangladeshi manufacturers misprice orders: outdated BOMs, assumed wastage, guessed labour, overhead on the wrong basis and ignored capacity. With a worked example."
+canonical: "https://mhasan.me/lab/0107-product-costing-manufacturers-bangladesh"
+ogImage: "https://mhasan.me/assets/og/lab/0107-product-costing-manufacturers-bangladesh.png"
+ogSiteName: "Mehedi Hasan | Business Consultant"
+datePublished: "2026-11-08T11:00:00+06:00"
+dateModified: "2026-11-08T11:00:00+06:00"
+articleSection: "Manufacturing"
+eyebrowNum: "0107"
+h1: "Why your cost per unit is wrong, <span class=\"serif\">and what it's costing you.</span>"
+lede: "Most factories price orders from a costing sheet built years ago and adjusted by habit. Consumption has changed, wastage has grown, and overhead is spread by a percentage nobody remembers choosing. The result isn't a small rounding error: it's orders that look profitable and quietly lose money."
+chips: ["Guide", "Manufacturing", "Costing"]
+bylineItems:
+  - label: "By"
+    value: "<a href=\"https://www.linkedin.com/in/mehedi-hasan-consultant/\" style=\"color:var(--accent)\" rel=\"author\">Mehedi Hasan</a>"
+  - label: "Published"
+    value: "November 2026"
+  - label: "Read time"
+    value: "11 minutes"
+  - label: "Form"
+    value: "Guide"
+  - label: "Scope"
+    value: "Product costing"
+nextArticle:
+  href: "0106-cycle-counting-abc-plan-bangladesh"
+  dir: "Older · 0106"
+  title: "Cycle Counting: Replace the Yearly Stock Take"
+  desc: "An ABC counting plan, tolerances and a weekly routine that keeps stock accurate."
+prevArticle:
+  href: "0108-attendance-to-payroll-process-factory-bangladesh"
+  dir: "Newer · 0108"
+  title: "Attendance to Payroll: Close in Two Days, Not Seven"
+  desc: "Where factory payroll time goes, and the calendar and checks that fix it."
+extraCards:
+  - href: "/services/manufacturing-erp-consultant/"
+    dir: "Service"
+    title: "Manufacturing consulting"
+    desc: "BOM cleanup, wastage measurement and a costing review with your team."
+jsonLd: |
+  [
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "Product Costing for Manufacturers: Why Your Cost Per Unit Is Wrong",
+      "description": "The five costing mistakes that make manufacturers misprice orders, with a worked example and a monthly review routine.",
+      "datePublished": "2026-11-08T11:00:00+06:00",
+      "dateModified": "2026-11-08T11:00:00+06:00",
+      "author": { "@type": "Person", "name": "Mehedi Hasan", "url": "https://mhasan.me", "jobTitle": "Business Consultant & Odoo Certified Functional Consultant", "sameAs": "https://www.linkedin.com/in/mehedi-hasan-consultant/" },
+      "publisher": { "@type": "Person", "name": "Mehedi Hasan", "url": "https://mhasan.me" },
+      "mainEntityOfPage": { "@type": "WebPage", "@id": "https://mhasan.me/lab/0107-product-costing-manufacturers-bangladesh" }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://mhasan.me" },
+        { "@type": "ListItem", "position": 2, "name": "Lab", "item": "https://mhasan.me/lab/" },
+        { "@type": "ListItem", "position": 3, "name": "Product Costing for Manufacturers", "item": "https://mhasan.me/lab/0107-product-costing-manufacturers-bangladesh" }
+      ]
+    }
+  ]
+---
+<aside class="toc">
+      <div class="toc-k">In this guide</div>
+      <ol>
+        <li><a href="#why">Why It Matters More Than It Looks</a></li>
+        <li><a href="#bom">Mistake 1: The BOM Isn't Real</a></li>
+        <li><a href="#wastage">Mistake 2: Wastage Is Assumed</a></li>
+        <li><a href="#labour">Mistake 3: Labour Is Guessed</a></li>
+        <li><a href="#overhead">Mistake 4: Overhead on the Wrong Basis</a></li>
+        <li><a href="#capacity">Mistake 5: Capacity and Order Size Ignored</a></li>
+        <li><a href="#example">A Worked Example</a></li>
+        <li><a href="#pricing">Using Cost for Pricing</a></li>
+        <li><a href="#review">The Monthly Review</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ol>
+    </aside>
+
+    <div class="body">
+
+      <h2 id="why">Why It Matters More Than It Looks</h2>
+      <p>In most Bangladeshi factories, margins on export and B2B orders are thin. A cost per unit that's wrong by 8–10% isn't a detail: it can be the whole margin. And because the error is usually in the same direction, costs understated, the business keeps accepting the orders that hurt most, often the ones with the most demanding specifications, smallest quantities and tightest delivery dates.</p>
+      <p>Getting costs right doesn't need an accounting system overhaul. It needs five honest corrections to the costing sheet, and a monthly habit of comparing it with what actually happened.</p>
+
+      <h2 id="bom">Mistake 1: The BOM Isn't Real</h2>
+      <p>The bill of materials says what a product should consume. Over time, reality moves away from it: a supplier changes a material's specification, a design is modified for one buyer and the change becomes permanent, the marker efficiency on a garment style is lower than planned, a different yarn count is substituted when the usual one is short.</p>
+      <p>Check the BOM against actual consumption for your main products. Take a recent production order, record what was actually issued for it, including any extra issues during production, and compare per unit. Where the difference is consistent, update the BOM. Where it varies widely, the problem is control on the floor, not the BOM.</p>
+      <p>If consumption is posted automatically from the BOM ("backflushing"), the system will never show you this gap; it will just show up later as a stock difference. See <a href="0105-why-stock-never-matches-system-bangladesh" style="color:var(--accent)">why stock never matches the system</a>.</p>
+
+      <h2 id="wastage">Mistake 2: Wastage Is Assumed</h2>
+      <p>Most costing sheets include a wastage percentage. Very few factories know where theirs came from. It was 3% when someone first built the sheet, and it has stayed 3% while machines aged, products became more complex and operators changed.</p>
+      <p>Measure it. For a month, record for your main products what goes in and what comes out as good product, by process step: cutting, moulding, machining, printing, dyeing. Separate three kinds of loss:</p>
+      <ul>
+        <li><strong>Normal process loss.</strong> Unavoidable with your current method: offcuts, start-up material, runners, trimming. This belongs in the product cost.</li>
+        <li><strong>Rejects and rework.</strong> Product made and then rejected by quality. Part may be normal; a high or rising rate is a problem to fix, not a cost to pass on.</li>
+        <li><strong>Abnormal loss.</strong> Spoiled batches, machine breakdowns, wrong material. Track it separately; including it in the standard cost hides it from management.</li>
+      </ul>
+      <p>Also record what scrap is sold for. If you sell scrap, its value reduces the true cost of loss, but only if the sale is recorded against the stock it came from.</p>
+
+      <h2 id="labour">Mistake 3: Labour Is Guessed</h2>
+      <p>Labour is often costed as "total wages ÷ total units", or as a fixed amount per piece copied from a similar product. Both ignore how much work each product actually takes.</p>
+      <p>Use time per unit instead. In garments this is the standard minute value (SMV) for the style, multiplied by the cost per minute of the line, adjusted for the line's real efficiency. In machine-based production it's the cycle time and the number of operators per machine. Then use a realistic efficiency, the one your lines actually achieve, not the one in the planning sheet. A product that takes twice the time costs twice the labour, even if the old sheet says otherwise.</p>
+      <p>Include the real cost of labour: wages plus allowances, overtime premium where overtime is normal, bonuses, and the employer's share of benefits. A labour rate of "basic salary only" can understate labour cost considerably. For the wage components themselves, the <a href="/tools/rmg-wage-calculator/" style="color:var(--accent)">RMG wage calculator</a> shows a typical structure.</p>
+
+      <h2 id="overhead">Mistake 4: Overhead on the Wrong Basis</h2>
+      <p>Overhead is every cost that isn't direct material or direct labour: power and gas, depreciation, maintenance, supervision, quality, store, rent, factory administration. Many factories spread it as a percentage of material cost. That's simple, and usually wrong: a product with expensive material isn't necessarily the one that uses the most machine time, power or supervision.</p>
+      <p>Spread overhead on what actually drives it:</p>
+      <table>
+        <thead><tr><th>Overhead</th><th>Better basis</th></tr></thead>
+        <tbody>
+          <tr><td>Power, machine depreciation, maintenance, mould or die wear</td><td>Machine hours used by the product</td></tr>
+          <tr><td>Supervision, line support, factory welfare</td><td>Labour hours or minutes</td></tr>
+          <tr><td>Store, receiving, material handling</td><td>Number of materials or issues per product, or a share of material value</td></tr>
+          <tr><td>Quality inspection, testing</td><td>Inspection time or number of tests the product requires</td></tr>
+          <tr><td>Factory rent, administration</td><td>Machine or labour hours, whichever is the factory's real constraint</td></tr>
+        </tbody>
+      </table>
+      <p>You don't need perfect precision. Moving from "10% of material" to a rate per machine hour or labour minute usually corrects most of the distortion.</p>
+
+      <h2 id="capacity">Mistake 5: Capacity and Order Size Ignored</h2>
+      <p>Two products with the same unit cost on paper can cost very differently in practice:</p>
+      <ul>
+        <li><strong>Set-up and changeover.</strong> Changing a mould, a colour or a line set-up takes hours, whatever the order size. Spread over 50,000 units it's nothing; over 2,000 units it can be significant. Cost set-up per order, not per unit.</li>
+        <li><strong>Learning curve.</strong> New or complex styles run below normal efficiency for the first days. Small orders never reach full speed.</li>
+        <li><strong>Overhead rate assumptions.</strong> An overhead rate per hour is calculated from an assumed volume. If the factory runs at 60% of the volume assumed, the real overhead per unit is higher. Check the assumption at least twice a year.</li>
+      </ul>
+
+      <h2 id="example">A Worked Example</h2>
+      <p>An illustrative injection-moulded plastic bucket, comparing a typical old costing sheet with a corrected one. The figures are examples, not market prices.</p>
+      <table>
+        <thead><tr><th>Cost element</th><th>Old sheet</th><th>Corrected</th><th>What changed</th></tr></thead>
+        <tbody>
+          <tr><td>Resin, 0.45 kg at ৳165</td><td>৳74.25</td><td>৳74.25</td><td>—</td></tr>
+          <tr><td>Process loss</td><td>—</td><td>৳2.97</td><td>4% measured, previously ignored</td></tr>
+          <tr><td>Masterbatch</td><td>৳4.05</td><td>৳4.05</td><td>—</td></tr>
+          <tr><td>Handle and packaging</td><td>৳6.00</td><td>৳6.00</td><td>—</td></tr>
+          <tr><td>Labour</td><td>৳1.33</td><td>৳1.57</td><td>At the real 85% efficiency, not 100%</td></tr>
+          <tr><td>Machine overhead</td><td rowspan="2">৳8.43 (10% of material)</td><td>৳11.11</td><td>৳850 per machine hour</td></tr>
+          <tr><td>Factory overhead</td><td>৳3.92</td><td>৳300 per machine hour</td></tr>
+          <tr><td><strong>Cost per unit</strong></td><td><strong>৳94.06</strong></td><td><strong>৳103.87</strong></td><td>+10.4%</td></tr>
+          <tr><td>Margin at ৳110 selling price</td><td>14.5%</td><td>5.6%</td><td></td></tr>
+        </tbody>
+      </table>
+      <p>The machine runs a 40-second cycle with one cavity, so 90 pieces an hour at standard and 76.5 at 85% efficiency. Nothing in the old sheet was dishonest. It was just built on assumptions nobody had checked, and it made a thin product look like a comfortable one.</p>
+
+      <p class="pull">The orders that look most profitable on an old costing sheet are often the ones losing money. You only find out by checking.</p>
+
+      <h2 id="pricing">Using Cost for Pricing</h2>
+      <p>A corrected full cost tells you what a product really costs to make in a normal month. Use it for normal pricing and for deciding which products and customers to grow.</p>
+      <p>There's one legitimate exception: when the factory has idle capacity it can't otherwise fill, an order that covers its material, direct labour and variable overhead (power, consumables) still adds to profit, even below full cost. That's a decision for a specific order and period, made deliberately. It goes wrong when the low price becomes the customer's normal price.</p>
+      <p>For imported materials, cost them at their full landed cost: purchase price, freight, insurance, port and clearing charges, local transport, and any duties and charges that aren't recoverable. Which taxes are recoverable is a question for your accountant; the point here is only that the material cost in the sheet should be what the material really costs you at the factory gate.</p>
+
+      <h2 id="review">The Monthly Review</h2>
+      <p>A costing sheet is only right on the day it's made. Keep it right with a one-hour review each month for your top 10 products by revenue:</p>
+      <ol>
+        <li><strong>Material usage:</strong> actual issued per unit vs the BOM. Investigate differences above a few percent.</li>
+        <li><strong>Material price:</strong> latest purchase price vs the price in the sheet.</li>
+        <li><strong>Efficiency:</strong> actual output per hour vs the standard used.</li>
+        <li><strong>Wastage and rejects:</strong> measured vs the percentage in the sheet.</li>
+        <li><strong>Decision:</strong> update the sheet, fix the floor problem, or reprice. Write down which.</li>
+      </ol>
+      <p>An ERP makes this much easier, because it records actual material issued and time spent against each production order, and compares them with the BOM and routing. <a href="0013-odoo-manufacturing-module-bangladesh" style="color:var(--accent)">Odoo's manufacturing module</a> and <a href="0038-odoo-manufacturing-routing-bangladesh" style="color:var(--accent)">routing and time tracking</a> cover the set-up. But the review itself is a management habit, and it works in Excel too.</p>
+
+      <div class="callout">
+        <span class="tag">Costing review</span>
+        <p>A costing review is often the fastest-paying piece of consulting a factory can buy: it usually finds products to reprice in the first month. I do it as part of a <a href="/services/manufacturing-erp-consultant/" style="color:var(--accent)">manufacturing engagement</a>, working with your accounts and production teams. <a href="/services/business-consultant-bangladesh/" style="color:var(--accent)">See how consulting works →</a></p>
+      </div>
+
+      <h2 id="faq">Frequently asked questions</h2>
+
+      <h3>How often should we update our costing sheets?</h3>
+      <p>Review the top products monthly and update when something material changes: a supplier price, a BOM, a measured wastage rate, a wage change or a big shift in volume. Do a full refresh of overhead rates at least twice a year.</p>
+
+      <h3>Is standard costing or actual costing better?</h3>
+      <p>Use both. A standard cost is the agreed expectation you quote from; actual cost is what really happened. The value is in comparing them every month, because the difference tells you where the floor or the purchasing is drifting.</p>
+
+      <h3>How do we allocate overhead in a factory with many products?</h3>
+      <p>Group overheads by what drives them, usually machine hours and labour hours, calculate a rate per hour for each, and charge products by the hours they use. That's accurate enough for most pricing decisions and far better than a percentage of material.</p>
+
+      <h3>Can we do this without an ERP?</h3>
+      <p>Yes. A well-built spreadsheet and a disciplined monthly review get you most of the benefit. An ERP removes the manual collection of actual consumption and time, which makes the review faster and harder to skip.</p>
+
+    </div>

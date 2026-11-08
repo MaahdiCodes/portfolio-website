@@ -9,7 +9,7 @@
     <span style="display:block;font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:10px">{{ 'Put it into practice · free' if L == 'en' else 'কাজে লাগান · বিনামূল্যে' }}</span>
     <div style="display:grid;gap:10px">
       {%- for k in keys %}{% set t = articleTools.TOOLS[k] %}
-      <a href="{{ pre }}{{ t.href }}" style="display:flex;justify-content:space-between;gap:12px;align-items:baseline;text-decoration:none;color:var(--text)"><span><b style="font-weight:500">{{ t[L][0] }}</b> <span style="color:var(--text-2);font-size:14px">· {{ t[L][1] }}</span></span><span style="color:var(--accent)">→</span></a>
+      <a href="{{ '' if t.href.indexOf('/assets/') == 0 else pre }}{{ t.href }}" style="display:flex;justify-content:space-between;gap:12px;align-items:baseline;text-decoration:none;color:var(--text)"><span><b style="font-weight:500">{{ t[L][0] }}</b> <span style="color:var(--text-2);font-size:14px">· {{ t[L][1] }}</span></span><span style="color:var(--accent)">→</span></a>
       {%- endfor %}
     </div>
   </aside>

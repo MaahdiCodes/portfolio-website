@@ -18,7 +18,7 @@ toolsCss: true
     <div class="nav-inner">
       <a class="brand" href="{{ home }}">
         <span class="brand-mark" aria-hidden="true"></span>
-        <span class="brand-name"><b>{% if isBn %}মেহেদী হাসান{% else %}Mehedi Hasan{% endif %}</b><em>{% if isBn %}ERP · বিজনেস অ্যানালিস্ট{% else %}ERP · Business Analyst{% endif %}</em></span>
+        <span class="brand-name"><b>{% if isBn %}মেহেদী হাসান{% else %}Mehedi Hasan{% endif %}</b><em>{% if isBn %}ERP · বিজনেস অ্যানালিস্ট{% else %}{{ site.brandTagline }}{% endif %}</em></span>
       </a>
       <a class="back-link" href="{{ backHref or (home + 'tools/') }}">{{ backLabel or ('← সব টুল' if isBn else '← All tools') }}</a>
       <button class="theme-toggle" id="theme-toggle" aria-label="{% if isBn %}থিম পরিবর্তন করুন{% else %}Toggle light/dark theme{% endif %}">

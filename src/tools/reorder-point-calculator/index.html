@@ -1,0 +1,199 @@
+---
+layout: "layouts/tool.njk"
+permalink: "tools/reorder-point-calculator/index.html"
+title: "Reorder Point & Safety Stock Calculator (Free) | Mehedi Hasan"
+description: "Free reorder point and safety stock calculator: enter daily usage, supplier lead time and service level to get when to reorder, how much to order, and what the buffer costs in BDT."
+canonical: "https://mhasan.me/tools/reorder-point-calculator/"
+datePublished: "2026-11-08"
+dateModified: "2026-11-08"
+ogTitle: "Reorder Point & Safety Stock Calculator"
+ogDescription: "When to reorder, how much buffer to hold, and what that buffer costs in working capital. Free, in your browser."
+ogImage: "https://mhasan.me/assets/og/tools/reorder-point-calculator.png"
+extraHead: |
+  <meta name="keywords" content="reorder point calculator, safety stock calculator, reorder level formula, inventory management bangladesh, economic order quantity calculator, minimum stock level, raw material planning">
+jsonLd: |
+  [
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Reorder Point & Safety Stock Calculator",
+      "url": "https://mhasan.me/tools/reorder-point-calculator/",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Any (web-based)",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "BDT" },
+      "isAccessibleForFree": true,
+      "inLanguage": "en",
+      "creator": { "@type": "Person", "name": "Mehedi Hasan", "url": "https://mhasan.me" },
+      "description": "Calculates safety stock, reorder point, economic order quantity and the working capital tied up in buffer stock, from daily usage, lead time and a target service level."
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://mhasan.me/" },
+        { "@type": "ListItem", "position": 2, "name": "Tools", "item": "https://mhasan.me/tools/" },
+        { "@type": "ListItem", "position": 3, "name": "Reorder Point Calculator", "item": "https://mhasan.me/tools/reorder-point-calculator/" }
+      ]
+    }
+  ]
+toolScripts: ["/tools/_calc/reorder.js"]
+eyebrow: "Free Tool · Inventory"
+h1: 'Reorder point &amp; safety stock, <span class="serif">for one item.</span>'
+lede: "Most stock-outs and most dead stock come from the same mistake: reorder levels set by feel. Enter how much you use, how long the supplier takes and how often you can afford to run out. You get when to reorder, how much to order, and what the buffer costs you."
+chips: ["Free Tool", "Inventory", "Safety stock", "EOQ", "Runs in your browser"]
+footLabel: "Tools / Reorder point calculator"
+related:
+  - { href: "/lab/0105-why-stock-never-matches-system-bangladesh", dir: "Read · Inventory", title: "Why your stock never matches the system", desc: "A reorder point is only as good as the stock figure it's compared with. Fix that first." }
+  - { href: "/lab/0110-dead-stock-slow-moving-inventory-bangladesh", dir: "Read · Inventory", title: "Dead and slow-moving stock", desc: "How to find it, value it honestly, and stop creating more." }
+  - { href: "/lab/0039-odoo-reordering-rules-mto-bangladesh", dir: "Read · Odoo", title: "Reordering rules vs MTO in Odoo", desc: "Putting these numbers into Odoo's min/max rules." }
+---
+<div class="shell tl-wrap">
+  <div class="tl-grid">
+    <section class="tl-card">
+      <h2>The item</h2>
+      <form id="rp-form" autocomplete="off" novalidate>
+        <div class="tl-row">
+          <div class="tl-field"><label for="rp-d">Average usage per working day</label><input class="tl-input" type="number" min="0" step="any" id="rp-d" value="40"></div>
+          <div class="tl-field"><label for="rp-unit">Unit (for labels)</label><input class="tl-input" type="text" id="rp-unit" value="kg"></div>
+        </div>
+        <div class="tl-field"><label for="rp-var">How steady is daily usage?</label>
+          <select class="tl-select" id="rp-var">
+            <option value="steady">Steady: about the same every day</option>
+            <option value="variable" selected>Variable: busy and quiet days</option>
+            <option value="lumpy">Lumpy: big orders some days, nothing on others</option>
+            <option value="known">I know the standard deviation</option>
+          </select>
+        </div>
+        <div class="tl-field" id="rp-sd-wrap" hidden><label for="rp-sd">Standard deviation of daily usage</label><input class="tl-input" type="number" min="0" step="any" id="rp-sd" value="20"></div>
+        <div class="tl-row">
+          <div class="tl-field"><label for="rp-L">Supplier lead time (working days)</label><input class="tl-input" type="number" min="0" step="any" id="rp-L" value="14"></div>
+          <div class="tl-field"><label for="rp-Lsd">Lead-time variation (days, std. dev.)</label><input class="tl-input" type="number" min="0" step="any" id="rp-Lsd" value="3"></div>
+        </div>
+        <p class="tl-hint">Lead time runs from the day you raise the order to the day goods are usable in store, including approval, payment, shipping, clearing and inspection. If a supplier is "usually up to 4–6 days late", a variation of 2–3 days is a fair start.</p>
+        <div class="tl-field"><label for="rp-sl">How often can you afford to run out?</label>
+          <select class="tl-select" id="rp-sl">
+            <option value="0.9">90%: a stock-out in 1 of 10 order cycles is acceptable</option>
+            <option value="0.95" selected>95%: 1 in 20 (a common default)</option>
+            <option value="0.975">97.5%: 1 in 40</option>
+            <option value="0.99">99%: 1 in 100 (line stops are very costly)</option>
+          </select>
+        </div>
+        <div class="tl-row">
+          <div class="tl-field"><label for="rp-cost">Unit cost (৳)</label><input class="tl-input" type="number" min="0" step="any" id="rp-cost" value="250"></div>
+          <div class="tl-field"><label for="rp-oc">Cost to place one order (৳)</label><input class="tl-input" type="number" min="0" step="any" id="rp-oc" value="2000"></div>
+        </div>
+        <div class="tl-row three">
+          <div class="tl-field"><label for="rp-h">Holding cost per year</label><div class="tl-suffix"><input class="tl-input" type="number" min="0" max="100" step="any" id="rp-h" value="20"><span>%</span></div></div>
+          <div class="tl-field"><label for="rp-days">Working days per year</label><input class="tl-input" type="number" min="1" max="366" id="rp-days" value="300"></div>
+          <div class="tl-field"><label for="rp-moq">Supplier minimum order</label><input class="tl-input" type="number" min="0" step="any" id="rp-moq" value="0"></div>
+        </div>
+        <p class="tl-hint">Ordering cost covers the staff time, approvals, LC or bank charges, transport and inspection for one order. Holding cost covers the money tied up, storage, insurance, damage and obsolescence; 18–25% of the item's value per year is a reasonable starting range.</p>
+      </form>
+    </section>
+
+    <section class="tl-card tl-sticky" aria-live="polite">
+      <h2>Result</h2>
+      <div class="tl-headline">
+        <div class="h-label">Reorder when stock falls to</div>
+        <div class="h-value" id="o-rop">—</div>
+        <div class="h-sub" id="o-rop-sub">—</div>
+      </div>
+      <div class="tl-stats">
+        <div class="tl-stat"><div class="s-v" id="o-ss">—</div><div class="s-l">Safety stock</div></div>
+        <div class="tl-stat"><div class="s-v" id="o-q">—</div><div class="s-l">Order quantity</div></div>
+        <div class="tl-stat"><div class="s-v" id="o-ssv">—</div><div class="s-l">Cash in safety stock</div></div>
+      </div>
+      <table class="tl-table"><tbody id="o-table"></tbody></table>
+      <h3 style="margin:18px 0 8px;font-size:14px">What a higher service level costs</h3>
+      <table class="tl-table">
+        <thead><tr><th>Service level</th><th>Safety stock</th><th>Reorder at</th><th>Buffer value</th></tr></thead>
+        <tbody id="o-levels"></tbody>
+      </table>
+      <ul class="tl-list" id="o-notes" style="margin-top:12px"></ul>
+      <div class="tl-cta-row inline">
+        <button type="button" class="btn-ghost" id="o-share" style="flex:1">Copy shareable link</button>
+        <button type="button" class="btn-ghost" data-print style="flex:1">Save as PDF</button>
+      </div>
+    </section>
+  </div>
+
+  <div class="tl-prose">
+    <h2 id="how">How the numbers are worked out</h2>
+    <p><strong>Safety stock</strong> is the buffer that covers the two things that go wrong during a lead time: you use more than average, or the supplier is late. The calculator combines both: safety stock = z × √(lead time × usage variation² + daily usage² × lead-time variation²), where z comes from the service level (1.645 for 95%).</p>
+    <p><strong>Reorder point</strong> = average usage during the lead time + safety stock. When the stock you actually have, plus what is already on order, falls to this level, raise the next order.</p>
+    <p><strong>Order quantity</strong> is the economic order quantity, √(2 × annual usage × ordering cost ÷ holding cost per unit). It balances the cost of ordering often against the cost of holding a lot. If the supplier's minimum order is higher, the calculator uses the minimum.</p>
+    <p>If you choose a usage pattern instead of a standard deviation, the calculator assumes the daily variation is 25%, 50% or 90% of average usage. For a better figure, take 3–6 months of daily issues from your store records and use Excel's <code>STDEV.S</code> on them.</p>
+
+    <h2 id="before">Before you trust any reorder point</h2>
+    <ul>
+      <li><strong>The stock figure must be right.</strong> A reorder point compared with a wrong on-hand quantity orders too late or too early. If your physical counts don't match the system, fix that first: <a href="/lab/0105-why-stock-never-matches-system-bangladesh">why stock never matches the system</a> and <a href="/lab/0106-cycle-counting-abc-plan-bangladesh">cycle counting</a>.</li>
+      <li><strong>Count what's on order.</strong> Compare the reorder point with on-hand plus open purchase orders, or you will order the same goods twice.</li>
+      <li><strong>Use real lead times.</strong> Measure them from your own purchase orders and receipts, not from the supplier's quotation.</li>
+      <li><strong>Review quarterly.</strong> Usage and lead times change with seasons, buyers and suppliers. A reorder point set once and never reviewed becomes either a stock-out or a pile of dead stock.</li>
+      <li><strong>Not every item needs one.</strong> Make-to-order items, one-off customer materials and very slow movers are better ordered against actual demand.</li>
+    </ul>
+  </div>
+</div>
+
+<script>
+  (function () {
+    var F = ['rp-d', 'rp-unit', 'rp-var', 'rp-sd', 'rp-L', 'rp-Lsd', 'rp-sl', 'rp-cost', 'rp-oc', 'rp-h', 'rp-days', 'rp-moq'];
+    var KEYS = { 'rp-d': 'd', 'rp-unit': 'u', 'rp-var': 'v', 'rp-sd': 'sd', 'rp-L': 'L', 'rp-Lsd': 'Lsd', 'rp-sl': 'sl', 'rp-cost': 'c', 'rp-oc': 'oc', 'rp-h': 'h', 'rp-days': 'wd', 'rp-moq': 'moq' };
+    var $ = function (id) { return document.getElementById(id); };
+    var num = MH.num, bdt = MH.bdt;
+
+    // Restore from a shared link.
+    var p = MH.readParams();
+    F.forEach(function (id) { var k = KEYS[id]; if (p[k] != null && $(id)) $(id).value = p[k]; });
+
+    function update() {
+      var known = $('rp-var').value === 'known';
+      $('rp-sd-wrap').hidden = !known;
+      var unit = ($('rp-unit').value || 'units').trim();
+      var r = MHReorder.calc({
+        dailyUsage: MH.val('rp-d'), variability: known ? null : $('rp-var').value,
+        usageSd: known ? MH.val('rp-sd') : null, leadDays: MH.val('rp-L'), leadSd: MH.val('rp-Lsd'),
+        serviceLevel: +$('rp-sl').value, unitCost: MH.val('rp-cost'), orderCost: MH.val('rp-oc'),
+        holdPct: MH.val('rp-h'), workDays: MH.val('rp-days') || 300, moq: MH.val('rp-moq')
+      });
+      MH.setText('o-rop', num(r.reorderPoint) + ' ' + unit);
+      MH.setText('o-rop-sub', isFinite(r.coverDays) ? 'About ' + num(r.coverDays, 1) + ' working days of usage, of which ' + num(r.safetyStock) + ' ' + unit + ' is buffer' : '—');
+      MH.setText('o-ss', num(r.safetyStock) + ' ' + unit);
+      MH.setText('o-q', isFinite(r.orderQty) ? num(r.orderQty) + ' ' + unit : '—');
+      MH.setText('o-ssv', bdt(r.safetyStockValue));
+      var rows = [
+        ['Usage during the lead time', num(r.leadDemand) + ' ' + unit],
+        ['Daily usage variation used', num(r.sdUsed, 1) + ' ' + unit],
+        ['Annual usage', num(r.annualUsage) + ' ' + unit],
+        ['Orders per year', isFinite(r.ordersPerYear) ? num(r.ordersPerYear, 1) : '—'],
+        ['Days between orders', isFinite(r.daysBetweenOrders) ? num(r.daysBetweenOrders, 0) + ' working days' : '—'],
+        ['Average stock held', num(r.avgStockUnits) + ' ' + unit + ' · ' + bdt(r.avgStockValue)],
+        ['Holding cost per year', bdt(r.holdingCostYear)],
+        ['Ordering cost per year', isFinite(r.orderingCostYear) ? bdt(r.orderingCostYear) : '—']
+      ];
+      $('o-table').innerHTML = rows.map(function (x) { return '<tr><td>' + MH.esc(x[0]) + '</td><td>' + MH.esc(x[1]) + '</td></tr>'; }).join('');
+      var cur = +$('rp-sl').value;
+      $('o-levels').innerHTML = r.levels.map(function (l) {
+        var b = l.level === cur ? ' style="font-weight:600;color:var(--text)"' : '';
+        return '<tr' + b + '><td>' + (l.level * 100) + '%</td><td>' + num(l.safetyStock) + '</td><td>' + num(l.reorderPoint) + '</td><td>' + bdt(l.value) + '</td></tr>';
+      }).join('');
+      var notes = [];
+      var lo = r.levels[0], hi = r.levels[3];
+      if (hi.value > lo.value) notes.push('Going from 90% to 99% adds ' + num(hi.safetyStock - lo.safetyStock) + ' ' + unit + ' of buffer (' + bdt(hi.value - lo.value) + ' of stock). Spend it on the items where a stock-out stops production, not on everything.');
+      if (MH.val('rp-Lsd') > 0 && MH.val('rp-L') > 0) {
+        var noLate = MHReorder.calc({ dailyUsage: MH.val('rp-d'), variability: known ? null : $('rp-var').value, usageSd: known ? MH.val('rp-sd') : null, leadDays: MH.val('rp-L'), leadSd: 0, serviceLevel: cur });
+        var share = r.safetyStock > 0 ? 1 - noLate.safetyStock / r.safetyStock : 0;
+        if (share > 0.25) notes.push('About ' + Math.round(share * 100) + '% of this buffer exists only because the supplier\'s delivery date is unreliable. A firmer lead time is often cheaper than more stock.');
+      }
+      if (MH.val('rp-moq') > 0 && isFinite(r.eoq) && MH.val('rp-moq') > r.eoq) notes.push('The supplier minimum (' + num(MH.val('rp-moq')) + ') is above the economic order quantity (' + num(r.eoq) + '), so you will hold more stock than ideal. Worth negotiating, or sharing orders with a sister concern.');
+      $('o-notes').innerHTML = notes.map(function (n) { return '<li>' + MH.esc(n) + '</li>'; }).join('');
+    }
+
+    F.forEach(function (id) { var el = $(id); if (el) { el.addEventListener('input', update); el.addEventListener('change', update); } });
+    $('o-share').addEventListener('click', function () {
+      var o = {}; F.forEach(function (id) { o[KEYS[id]] = $(id).value; });
+      MH.copyLink($('o-share'), MH.buildLink(o));
+    });
+    update();
+  })();
+</script>

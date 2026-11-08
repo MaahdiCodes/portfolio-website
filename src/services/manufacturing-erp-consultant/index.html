@@ -1,127 +1,172 @@
 ---
-layout: "layouts/base.njk"
+layout: "layouts/tool.njk"
 permalink: "services/manufacturing-erp-consultant/index.html"
-bareBody: true
-stylesheetHref: "/lab/_styles.css"
-title: "Manufacturing Consultant Bangladesh | Odoo ERP | Mehedi Hasan"
-description: "Expert manufacturing consultant in Bangladesh specializing in Odoo ERP implementation for RMG, Textiles, and Export operations."
+title: "Manufacturing & Inventory Consultant in Bangladesh | Mehedi Hasan"
+description: "Manufacturing consultant in Bangladesh: inventory accuracy, BOMs and product costing, production planning, wastage control and attendance-to-payroll, with ERP (Odoo) where it helps."
 canonical: "https://mhasan.me/services/manufacturing-erp-consultant/"
 hreflangBn: "https://mhasan.me/bn/services/manufacturing-erp-consultant"
 ogType: "website"
+datePublished: "2026-05-01"
+dateModified: "2026-11-08"
+ogTitle: "Manufacturing & Inventory Consultant — Bangladesh"
+ogDescription: "Stock that matches, product costs you can quote from, a production plan the floor follows, and payroll that closes on time."
 ogImage: "https://mhasan.me/assets/og/services/manufacturing-erp-consultant.png"
-ogSiteName: "Mehedi Hasan | Odoo Consultant"
+backHref: "/#services"
+backLabel: "← Services"
+extraHead: |
+  <meta name="keywords" content="manufacturing consultant bangladesh, inventory management consultant bangladesh, factory consultant dhaka, production planning consultant, product costing consultant, garment factory consultant, manufacturing erp consultant bangladesh">
 jsonLd: |
-  {
-    "@context": "https://schema.org",
-    "@type": "ProfessionalService",
-    "name": "Mehedi Hasan — Manufacturing Consultant",
-    "url": "https://mhasan.me/services/manufacturing-erp-consultant/",
-    "description": "Expert manufacturing consultant in Bangladesh specializing in Odoo ERP implementation for RMG, Textiles, and Export operations. Focus on Bill of Materials, routing, and AVCO.",
-    "areaServed": "Bangladesh",
-    "priceRange": "$$$",
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "Dhaka",
-      "addressCountry": "Bangladesh"
+  [
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": "Manufacturing and inventory consulting in Bangladesh",
+      "serviceType": "Manufacturing operations consulting",
+      "url": "https://mhasan.me/services/manufacturing-erp-consultant/",
+      "description": "Inventory accuracy, bills of materials and product costing, production planning, wastage control and attendance-to-payroll for Bangladeshi factories, with ERP implementation where it helps.",
+      "provider": {
+        "@type": "Person",
+        "name": "Mehedi Hasan",
+        "url": "https://mhasan.me",
+        "jobTitle": "Business Consultant & Odoo Certified Functional Consultant",
+        "sameAs": ["https://www.linkedin.com/in/mehedi-hasan-consultant/"],
+        "address": { "@type": "PostalAddress", "addressLocality": "Dhaka", "addressCountry": "BD" }
+      },
+      "areaServed": { "@type": "Country", "name": "Bangladesh" }
     },
-    "email": "mhasanju46@gmail.com",
-    "telephone": "+8801521414851",
-    "founder": { "@type": "Person", "name": "Mehedi Hasan" },
-    "knowsAbout": ["Manufacturing Consultant Bangladesh", "Odoo Manufacturing ERP", "Bill of Materials", "AVCO", "Routing", "Textile ERP", "Export Manufacturing"]
-  }
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://mhasan.me/" },
+        { "@type": "ListItem", "position": 2, "name": "Services", "item": "https://mhasan.me/#services" },
+        { "@type": "ListItem", "position": 3, "name": "Manufacturing & inventory consulting", "item": "https://mhasan.me/services/manufacturing-erp-consultant/" }
+      ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        { "@type": "Question", "name": "Do we need an ERP to fix inventory problems in our factory?", "acceptedAnswer": { "@type": "Answer", "text": "Not always, and never first. Most stock differences come from process gaps: goods issued without a document, receipts posted late, units of measure that differ between purchase and store, and no counting routine. Those must be fixed whether you use Excel or an ERP. An ERP helps once the process is agreed, because it enforces it and removes re-keying." } },
+        { "@type": "Question", "name": "How long does it take to get stock accurate?", "acceptedAnswer": { "@type": "Answer", "text": "For a single factory, a reconciliation and the start of a cycle-counting routine usually take four to eight weeks. Accuracy on high-value items improves first; the long tail of low-value items takes a few more months of regular counting." } },
+        { "@type": "Question", "name": "Can you work with our existing ERP or software?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Most of the work is process, data and discipline, which applies to any system. Where configuration has to change, I work with your vendor or in-house team. If the system itself is the problem, the ERP rescue service covers that." } },
+        { "@type": "Question", "name": "Which industries do you work with?", "acceptedAnswer": { "@type": "Answer", "text": "Mainly textile and garments, light engineering and bicycles, plastics and packaging, food processing and other discrete or batch manufacturers, plus importers and distributors with large stores." } }
+      ]
+    }
+  ]
+eyebrow: "Service · Manufacturing & inventory"
+h1: 'Manufacturing consultant in Bangladesh: <span class="serif">stock, costs, plans and payroll.</span>'
+lede: "Factories lose money quietly: stock that disappears between store and floor, orders priced from an old costing sheet, plans that change every morning, and a payroll rebuilt in Excel each month. I fix those four things with your team, and bring in an ERP only where it earns its place."
+chips: ["Inventory", "BOM & costing", "Production planning", "Wastage", "Payroll", "ERP where needed"]
+footLabel: "Services / Manufacturing & inventory"
 extraStyles: |
-  .hero-svc { padding: 96px 0 64px; text-align: center; }
-    .hero-svc h1 { font-family:var(--sans);font-weight:500;letter-spacing:-0.035em;font-size: clamp(38px, 5vw, 64px);line-height:1;margin:16px 0;color:var(--text); }
-    .hero-svc p { font-size: 18px; color: var(--text-2); max-width: 600px; margin: 0 auto; line-height: 1.6; }
-    .btn-primary{display:inline-flex;align-items:center;gap:10px;font-size:14px;font-weight:600;padding:12px 18px;border-radius:10px;background:var(--accent);color:#04140B;text-decoration:none;transition:transform .2s ease;margin-top:32px}
-    .btn-primary:hover{background:oklch(0.85 0.17 155);transform:translateY(-1px)}
-    .content-block { padding: 48px var(--gutter); }
-    .content-block h2 { font-size: 28px; margin-bottom: 24px; color: var(--text); }
-    .content-block p { font-size: 16px; color: var(--text-2); line-height: 1.6; margin-bottom: 16px; }
+  .rs-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin:20px 0 8px}
+  @media(max-width:700px){.rs-grid{grid-template-columns:1fr}}
+  .rs-card{border:1px solid var(--border);border-radius:14px;padding:20px;background:var(--surface)}
+  .rs-card .rs-tag{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+  .rs-card h3{font-size:16px;font-weight:500;color:var(--text);margin:8px 0 6px;line-height:1.35}
+  .rs-card p{font-size:14px;color:var(--text-2);margin:0 0 8px;line-height:1.6}
+  .rs-card ul{margin:0;padding-left:18px;font-size:14px;color:var(--text-2);line-height:1.6}
+  .rs-card a{color:var(--accent)}
+related:
+  - { href: "/services/business-consultant-bangladesh/", dir: "Service", title: "Business consulting", desc: "The wider operations diagnostic: purchasing, approvals, reporting and more." }
+  - { href: "/tools/reorder-point-calculator/", dir: "Free tool", title: "Reorder point calculator", desc: "Safety stock, reorder level and order quantity for one item." }
+  - { href: "/services/odoo-rescue/", dir: "Service", title: "ERP rescue", desc: "When the system you already have is the problem." }
 ---
-<div class="grid-bg"></div>
+<div class="shell tl-wrap">
+  <div class="tl-prose">
+    <h2 id="four">The four problems that cost factories most</h2>
+    <p>In Bangladeshi factories, the same four problems come up again and again, whatever the product. Each has a clear fix, and none of them starts with buying software.</p>
+  </div>
 
-<header class="nav">
-  <div class="shell">
-    <div class="nav-inner">
-      <a class="brand" href="../../">
-        <span class="brand-mark" aria-hidden="true"></span>
-        <span class="brand-name"><b>Mehedi Hasan</b><em>ERP · Business Analyst</em></span>
-      </a>
-      <a class="back-link" href="../../#services">← Back to Home</a>
-      <button class="theme-toggle" id="theme-toggle" aria-label="Toggle light/dark theme" title="Toggle light/dark theme">
-        <svg class="icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line>
-          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-          <line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line>
-          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-        </svg>
-        <svg class="icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-        </svg>
-      </button>
+  <div class="rs-grid">
+    <div class="rs-card">
+      <span class="rs-tag">01 · Inventory accuracy</span>
+      <h3>Stock that matches the records</h3>
+      <p>Differences between the physical store and the books are rarely theft or software bugs. They come from undocumented issues, late receipts, mixed units of measure and no counting routine.</p>
+      <ul>
+        <li>Reconcile and agree an opening position</li>
+        <li>Clean the item master, units and locations</li>
+        <li>Receiving and issuing rules people can follow</li>
+        <li>An ABC cycle-counting routine instead of a yearly shutdown</li>
+      </ul>
+      <p style="margin-top:8px">Read: <a href="/lab/0105-why-stock-never-matches-system-bangladesh">why stock never matches</a>, <a href="/lab/0106-cycle-counting-abc-plan-bangladesh">cycle counting</a>.</p>
+    </div>
+    <div class="rs-card">
+      <span class="rs-tag">02 · BOM &amp; costing</span>
+      <h3>A cost per unit you can quote from</h3>
+      <p>Costing sheets drift: consumption changes, wastage grows, overheads are spread by habit. The orders that look most profitable can be the ones losing money.</p>
+      <ul>
+        <li>Bills of materials checked against real consumption</li>
+        <li>Wastage and scrap measured, not assumed</li>
+        <li>Labour and overhead allocated on a sensible basis</li>
+        <li>Standard vs actual review each month</li>
+      </ul>
+      <p style="margin-top:8px">Read: <a href="/lab/0107-product-costing-manufacturers-bangladesh">why your cost per unit is wrong</a>.</p>
+    </div>
+    <div class="rs-card">
+      <span class="rs-tag">03 · Planning &amp; wastage</span>
+      <h3>A production plan the floor follows</h3>
+      <p>When the plan changes every morning, materials arrive late, lines wait, overtime climbs and wastage hides in the noise.</p>
+      <ul>
+        <li>Capacity by line or machine, in hours, not hope</li>
+        <li>Material availability checked before an order is released</li>
+        <li>A 15-minute daily production meeting with a fixed agenda</li>
+        <li>Reorder levels for the materials that stop lines</li>
+      </ul>
+      <p style="margin-top:8px">Try: <a href="/tools/reorder-point-calculator/">reorder point calculator</a>. Read: <a href="/lab/0110-dead-stock-slow-moving-inventory-bangladesh">dead stock</a>.</p>
+    </div>
+    <div class="rs-card">
+      <span class="rs-tag">04 · Attendance &amp; payroll</span>
+      <h3>Payroll that closes in two or three days</h3>
+      <p>Most payroll delays happen before payroll: attendance arrives late, overtime is approved on paper, joiners and leavers aren't updated, and corrections pile up.</p>
+      <ul>
+        <li>A cut-off calendar every department signs up to</li>
+        <li>Overtime approved before it's worked, in one place</li>
+        <li>Pre-payment checks and a month-on-month variance review</li>
+        <li>Salary structures that the system calculates, not Excel</li>
+      </ul>
+      <p style="margin-top:8px">Read: <a href="/lab/0108-attendance-to-payroll-process-factory-bangladesh">attendance to payroll</a>.</p>
     </div>
   </div>
-</header>
 
-<section class="hero-svc">
-  <div class="shell">
-    <span class="eyebrow">Service Pillar</span>
-    <h1>The Leading Manufacturing Consultant in Bangladesh</h1>
-    <p>We map, automate, and scale RMG, Textile, and Export manufacturing operations with world-class Odoo ERP implementations.</p>
-    <a href="#contact" class="btn-primary">Request a Consultation</a>
-    <a href="https://wa.me/8801521414851?text=Hi%20Mehedi%2C%20I%27d%20like%20to%20discuss%20an%20Odoo%20manufacturing%20project." target="_blank" rel="noopener noreferrer" class="btn-primary" style="background:#25D366;margin-left:12px">Chat on WhatsApp</a>
+  <div class="tl-prose">
+    <h2 id="how">How the work runs</h2>
+    <ol>
+      <li><strong>Floor walk and diagnostic (1–2 weeks).</strong> I follow materials from the gate to the store, the floor and dispatch, sample-count a set of items, trace a few orders through costing, and sit with HR through a payroll cycle. You get a short report with the evidence and a 90-day plan.</li>
+      <li><strong>Fix the foundations (4–8 weeks).</strong> Item master and BOM cleanup, the receiving and issuing rules, the counting routine, the payroll calendar. This is mostly your team's work with me alongside; it's what makes everything after it hold.</li>
+      <li><strong>Systems where they help (optional).</strong> Once the process is agreed, an ERP removes re-keying and enforces the rules. I implement Odoo (I'm an Odoo Certified Functional Consultant) or work with the system you already have.</li>
+      <li><strong>Hand over and measure.</strong> Three or four numbers prove it's working: inventory record accuracy, cost variance, plan adherence, payroll close days. Your managers own them; I check in monthly until they're stable.</li>
+    </ol>
+
+    <h2 id="work">Factory work I've done</h2>
+    <p>At <a href="https://premier1888.com" target="_blank" rel="noopener noreferrer">Premier1888 Ltd</a>, a multi-site textile manufacturer in Chattogram EPZ, I handled project management, business analysis, user training and go-live from the implementation side, mapping spinning, weaving, dyeing and finishing across 5 production facilities into one system. That meant requirements workshops with 10+ department heads and training 200+ end users without stopping operations. At M&amp;U Cycles, an exporter, I delivered most of an implementation covering traceability from raw material to finished goods and automated procurement. More in <a href="/#work">selected work</a>.</p>
+
+    <h2 id="erp">When ERP is, and isn't, the answer</h2>
+    <table>
+      <thead><tr><th>Fix the process first</th><th>Then a system pays off</th></tr></thead>
+      <tbody>
+        <tr><td>Nobody agrees who issues material, or with which document</td><td>Agreed rules that need enforcing across many people and shifts</td></tr>
+        <tr><td>The same material has three names and two units</td><td>A clean item master that many departments must share</td></tr>
+        <tr><td>Overtime is approved after it's worked</td><td>Approved attendance that must flow into payroll without re-keying</td></tr>
+        <tr><td>The plan changes because sales promise dates without checking</td><td>Capacity and material checks that must happen on every order</td></tr>
+      </tbody>
+    </table>
+    <p>If you already have an ERP and the floor still runs on paper and Excel, that's a rescue rather than a new project: see <a href="/services/odoo-rescue/">ERP rescue</a>.</p>
+
+    <h2 id="faq">Frequently asked questions</h2>
+    <h3>Do we need an ERP to fix inventory problems in our factory?</h3>
+    <p>Not always, and never first. Most stock differences come from process gaps: goods issued without a document, receipts posted late, units of measure that differ between purchase and store, and no counting routine. Those must be fixed whether you use Excel or an ERP. An ERP helps once the process is agreed, because it enforces it and removes re-keying.</p>
+    <h3>How long does it take to get stock accurate?</h3>
+    <p>For a single factory, a reconciliation and the start of a cycle-counting routine usually take four to eight weeks. Accuracy on high-value items improves first; the long tail of low-value items takes a few more months of regular counting.</p>
+    <h3>Can you work with our existing ERP or software?</h3>
+    <p>Yes. Most of the work is process, data and discipline, which applies to any system. Where configuration has to change, I work with your vendor or in-house team.</p>
+    <h3>Which industries do you work with?</h3>
+    <p>Mainly textile and garments, light engineering and bicycles, plastics and packaging, food processing and other discrete or batch manufacturers, plus importers and distributors with large stores. See the <a href="/industries/">industry guides</a>.</p>
   </div>
-</section>
-
-<div class="shell content-block">
-  <h2>Optimizing Manufacturing ERP in Bangladesh</h2>
-  <p>As a specialized <strong>manufacturing consultant in Bangladesh</strong>, I have led the largest Odoo ERP deployments across spinning, weaving, dyeing, and finishing facilities. Implementing an ERP in a manufacturing plant is vastly different from a retail environment. It requires deep knowledge of shop-floor realities, Bill of Materials (BoM), routing, and precise inventory valuation like AVCO.</p>
-  
-  <h2>Our Approach for RMG and Textiles</h2>
-  <p>Bangladesh's export backbone requires systems that handle multi-currency, end-to-end traceability, and high-volume production planning. Our consulting process includes:</p>
-  <ul>
-    <li>Detailed Business Process Modeling Notation (BPMN) for manufacturing workflows.</li>
-    <li>Optimizing Work Centers and Routings to reduce bottlenecks.</li>
-    <li>Integrating Quality Control (QC) directly into the manufacturing orders.</li>
-    <li>Training operators on the floor—ensuring high adoption rates.</li>
-  </ul>
-
-  <h2>Case Study: National Textile Group</h2>
-  <p>Recently, we deployed Odoo across 5 production facilities with over 200 users. By migrating them from fragmented spreadsheets to a unified ERP, we achieved a 60% efficiency gain in production planning and inventory reconciliation. This is what sets us apart as a top <a href="../odoo-partner-consultant/" style="color:var(--accent);">Odoo consultant in Bangladesh</a>.</p>
-  <p>Already live on Odoo, or on a system your own team built, and the factory floor still runs on paper and Excel? That's a rescue, not a new project. See <a href="../odoo-rescue/" style="color:var(--accent);">Odoo rescue for stalled or failing implementations</a>.</p>
 </div>
 
+{% set cfType = "contact" %}{% set cfNeed = "Inventory or stock control" %}{% set cfTitle = 'Tell me what’s happening <span class="serif">on the floor.</span>' %}{% set cfLede = "Your product, number of sites and workers, and the problem you'd fix first. I reply within one business day." %}
 {% include "partials/contact-form.njk" %}
 
 {% include "partials/consultant-card.njk" %}
-
-<footer>
-  <div class="shell">
-    <div class="foot">
-      <span>© 2026 Mehedi Hasan · Manufacturing Consultant Bangladesh</span>
-    </div>
-  </div>
-</footer>
-<script>
-  (function () {
-    const root = document.documentElement;
-    const btn = document.getElementById('theme-toggle');
-    const TITLES = {
-      light: 'Theme: Light — click for Dark Navy',
-      'dark-navy': 'Theme: Dark Navy — click for Dark (Classic)',
-      dark: 'Theme: Dark (Classic) — click for Light'
-    };
-    function current() { return root.getAttribute('data-theme') || 'dark'; }
-    function setTitle() { btn.title = TITLES[current()]; }
-    setTitle();
-    btn.addEventListener('click', () => {
-      const order = ['dark-navy', 'dark', 'light'];
-      const next = order[(order.indexOf(current()) + 1) % order.length];
-      if (next === 'dark') root.removeAttribute('data-theme');
-      else root.setAttribute('data-theme', next);
-      localStorage.setItem('mh-theme', next);
-      setTitle();
-    });
-  })();
-</script>

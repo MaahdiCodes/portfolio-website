@@ -6,7 +6,7 @@
     Submits through /assets/forms.js like every other form on the site. -#}
 {%- set _type = cfType or "contact" -%}
 {%- set _need = cfNeed or "" -%}
-{%- set _needs = ["New Odoo implementation", "Rescue a stalled or failing ERP", "Second opinion on a proposal", "Training or super-user programme", "Something else"] -%}
+{%- set _needs = ["Operations diagnostic", "Inventory or stock control", "Product costing or production planning", "Payroll or HR process", "New ERP / Odoo implementation", "Rescue a stalled or failing ERP", "Second opinion on a proposal", "Something else"] -%}
 <link rel="stylesheet" href="/assets/contact-form.css">
 <section class="shell mhf-wrap" id="contact">
   <div class="mhf">
@@ -15,7 +15,7 @@
       <h2>{{ cfTitle or 'Tell me what’s <span class="serif">going on.</span>' }}</h2>
       <p>{{ cfLede or "Your industry, team size and what isn't working. I reply within one business day." }}</p>
       <ul class="mhf-alt">
-        <li><a href="https://wa.me/8801521414851?text=Hi%20Mehedi%2C%20I%27d%20like%20to%20discuss%20an%20Odoo%20project." target="_blank" rel="noopener noreferrer">WhatsApp: +880 1521 414 851</a></li>
+        <li><a href="https://wa.me/8801521414851?text=Hi%20Mehedi%2C%20I%27d%20like%20to%20discuss%20a%20project." target="_blank" rel="noopener noreferrer">WhatsApp: +880 1521 414 851</a></li>
         <li><a href="mailto:mhasanju46@gmail.com">mhasanju46@gmail.com</a></li>
       </ul>
     </div>

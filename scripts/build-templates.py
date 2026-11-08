@@ -4,11 +4,13 @@ src/assets/downloads/. Content mirrors the matching Lab articles so the
 templates and the articles never disagree; the Excel→Odoo checklist is parsed
 straight from lab article 0008.
 
-Usage:  python scripts/build-templates.py
+Usage:  python scripts/build-templates.py                           (all templates)
+        python scripts/build-templates.py cycle_count payroll_close  (only the named builders)
 Needs:  openpyxl, python-docx
 """
 import os
 import re
+import sys
 import html
 from datetime import date
 
@@ -38,11 +40,11 @@ BORDER = Border(left=THIN, right=THIN, top=THIN, bottom=THIN)
 WRAP = Alignment(wrap_text=True, vertical="top")
 CENTER = Alignment(horizontal="center", vertical="center", wrap_text=True)
 TODAY = date(2026, 9, 25).strftime("%d %B %Y")
-CREDIT = "Free template by Mehedi Hasan, Odoo Certified Functional Consultant · mhasan.me · Free to use and adapt; please keep this credit line."
+CREDIT = "Free template by Mehedi Hasan, Business Consultant & Odoo Certified Functional Consultant · mhasan.me · Free to use and adapt; please keep this credit line."
 
 
 # ---------------------------------------------------------------- helpers
-def about_sheet(wb, title, purpose, how, article):
+def about_sheet(wb, title, purpose, how, article, version=None):
     ws = wb.active
     ws.title = "About"
     ws["A1"] = title
@@ -63,7 +65,7 @@ def about_sheet(wb, title, purpose, how, article):
     c.font = Font(color=TEAL, underline="single")
     ws.cell(row=r + 3, column=1, value="Yellow cells are for your input. Formulas are in plain cells, so avoid overwriting them.").font = Font(italic=True, color="666666")
     ws.cell(row=r + 5, column=1, value=CREDIT).font = Font(size=9, color="888888")
-    ws.cell(row=r + 6, column=1, value="Version: " + TODAY).font = Font(size=9, color="888888")
+    ws.cell(row=r + 6, column=1, value="Version: " + (version or TODAY)).font = Font(size=9, color="888888")
     ws.column_dimensions["A"].width = 120
     for row in ws.iter_rows(min_row=1, max_row=r + 6):
         for cell in row:
@@ -1042,7 +1044,230 @@ def rfp_docx():
     print("wrote odoo-rfp-document-template.docx")
 
 
+# ---------------------------------------------------------------- 15. Cycle count planner
+def cycle_count():
+    V = date(2026, 11, 8).strftime("%d %B %Y")
+    wb = Workbook()
+    about_sheet(wb, "Cycle Count Planner & Inventory Accuracy Tracker",
+                "Replace the yearly stock take with cycle counting. Classify items A/B/C by annual consumption value, count the important ones most often, record every count against tolerance, and track accuracy and root causes month by month.",
+                ["Set class thresholds, count frequency and tolerances in 'Settings' (the defaults are common starting points).",
+                 "Paste your items into 'Items & ABC': code, description, location, unit, annual usage (12 months of issues) and unit cost. Class, counts per year and tolerance fill in automatically; no sorting needed.",
+                 "Each day, count the items due, without looking at the system quantity, and enter them in 'Count sheet'. Anything outside tolerance turns red: recount it with a different person before accepting it.",
+                 "For every confirmed difference, choose a root cause before posting the adjustment, and record who approved it.",
+                 "Review 'Dashboard' monthly: accuracy by class, absolute value of differences, and the causes that keep coming back."],
+                "/lab/0106-cycle-counting-abc-plan-bangladesh", V)
+    st = wb.create_sheet("Settings")
+    table(st, ["Setting", "A", "B", "C", "Notes"], [
+        ["Cumulative value share up to (class boundary)", 0.80, 0.95, 1.00, "Items making up the first 80% of annual consumption value are A, the next 15% B, the rest C"],
+        ["Counts per year", 12, 4, 1, "Monthly / quarterly / once a year"],
+        ["Tolerance (± share of system quantity)", 0.01, 0.02, 0.05, "Use 0 for items counted by piece if you prefer"],
+        ["Working days per year", 300, None, None, "Six-day week, less holidays"],
+    ], [44, 12, 12, 12, 70], freeze=False)
+    for c in ("B2", "C2", "D2", "B4", "C4", "D4"):
+        st[c].number_format = "0.0%"
+    input_cells(st, "B2:D4")
+    input_cells(st, "B5:B5")
+    st.cell(row=7, column=1, value="Workload").font = Font(bold=True, color=TEAL)
+    st.cell(row=8, column=1, value="Counts per year (all items)")
+    st.cell(row=8, column=2, value="=SUM('Items & ABC'!J2:J501)")
+    st.cell(row=9, column=1, value="Items to count per working day")
+    st.cell(row=9, column=2, value="=IFERROR(ROUNDUP(B8/B5,0),0)")
+
+    it = wb.create_sheet("Items & ABC")
+    sample = [
+        ["RM-0001", "Cotton yarn 30s combed", "Main store R1", "kg", 18000, 410],
+        ["RM-0002", "Reactive dye, navy", "Chemical store", "kg", 1200, 1650],
+        ["RM-0003", "Polybag 12x16", "Main store R4", "pcs", 250000, 2.2],
+        ["SP-0101", "Bearing 6205", "Spares cage", "pcs", 300, 380],
+        ["CN-0201", "Cable tie 200 mm", "Spares rack", "pcs", 5000, 1.1],
+    ]
+    rows = []
+    for i in range(500):
+        r = i + 2
+        base = sample[i] if i < len(sample) else [None] * 6
+        rows.append(base + [
+            f'=IF(OR(E{r}="",F{r}=""),"",E{r}*F{r})',
+            f'=IF(G{r}="","",SUMIF($G$2:$G$501,">="&G{r})/SUM($G$2:$G$501))',
+            f'=IF(H{r}="","",IF(H{r}<=Settings!$B$2,"A",IF(H{r}<=Settings!$C$2,"B","C")))',
+            f'=IF(I{r}="","",INDEX(Settings!$B$3:$D$3,MATCH(I{r},Settings!$B$1:$D$1,0)))',
+            f'=IF(I{r}="","",INDEX(Settings!$B$4:$D$4,MATCH(I{r},Settings!$B$1:$D$1,0)))',
+        ])
+    end = table(it, ["Item code", "Description", "Location", "Unit", "Annual usage (qty)", "Unit cost (৳)", "Annual value (৳)", "Cumulative share", "Class", "Counts / year", "Tolerance"],
+                rows, [12, 34, 16, 8, 16, 13, 16, 14, 8, 12, 11])
+    input_cells(it, f"A2:F{end}")
+    for r in range(2, end + 1):
+        it[f"G{r}"].number_format = "#,##0"
+        it[f"H{r}"].number_format = "0.0%"
+        it[f"K{r}"].number_format = "0.0%"
+    it.conditional_formatting.add(f"I2:I{end}", CellIsRule(operator="equal", formula=['"A"'], fill=PatternFill("solid", fgColor="D8F3E8")))
+
+    cs = wb.create_sheet("Count sheet")
+    causes = ["Issued without document", "Receipt late or early", "Unit of measure", "Duplicate / wrong code",
+              "Consumption by standard", "Return / reject / scrap not recorded", "Transfer in transit", "Cut-off timing",
+              "Counting error", "Theft / loss", "Unknown (investigating)"]
+    rows = []
+    for i in range(300):
+        r = i + 2
+        rows.append([None, None,
+                     f'=IF(B{r}="","",IFERROR(VLOOKUP(B{r},\'Items & ABC\'!$A$2:$K$501,2,FALSE),"Not in item list"))',
+                     f'=IF(B{r}="","",IFERROR(VLOOKUP(B{r},\'Items & ABC\'!$A$2:$K$501,9,FALSE),""))',
+                     None, None, None,
+                     f'=IF(OR(E{r}="",F{r}=""),"",IF(G{r}<>"",G{r},F{r})-E{r})',
+                     f'=IF(H{r}="","",IF(E{r}=0,IF(H{r}=0,0,1),ABS(H{r})/E{r}))',
+                     f'=IF(H{r}="","",IFERROR(H{r}*VLOOKUP(B{r},\'Items & ABC\'!$A$2:$K$501,6,FALSE),""))',
+                     f'=IF(I{r}="","",IF(I{r}<=IFERROR(VLOOKUP(B{r},\'Items & ABC\'!$A$2:$K$501,11,FALSE),0),"Within","OUTSIDE"))',
+                     None, None, None, None])
+    end = table(cs, ["Count date", "Item code", "Description", "Class", "System qty", "Counted qty", "Recount qty", "Difference (qty)", "Difference %", "Difference (৳)", "Tolerance check", "Root cause", "Counted by", "Approved by", "Notes"],
+                rows, [12, 12, 30, 7, 12, 12, 12, 14, 12, 14, 14, 30, 14, 14, 30])
+    input_cells(cs, f"A2:B{end}")
+    input_cells(cs, f"E2:G{end}")
+    input_cells(cs, f"L2:O{end}")
+    dropdown(cs, f"L2:L{end}", causes)
+    for r in range(2, end + 1):
+        cs[f"A{r}"].number_format = "dd-mmm-yy"
+        cs[f"I{r}"].number_format = "0.0%"
+        cs[f"J{r}"].number_format = "#,##0"
+    cs.conditional_formatting.add(f"K2:K{end}", CellIsRule(operator="equal", formula=['"OUTSIDE"'], fill=PatternFill("solid", fgColor="FBE0DF")))
+    cs.conditional_formatting.add(f"K2:K{end}", CellIsRule(operator="equal", formula=['"Within"'], fill=PatternFill("solid", fgColor="D8F3E8")))
+
+    db = wb.create_sheet("Dashboard")
+    rng = f"'Count sheet'!K2:K{end}"
+    cls = f"'Count sheet'!D2:D{end}"
+    table(db, ["Measure", "All", "A", "B", "C"], [
+        ["Counts recorded", f'=COUNTIF({rng},"Within")+COUNTIF({rng},"OUTSIDE")',
+         f'=COUNTIFS({cls},"A",{rng},"Within")+COUNTIFS({cls},"A",{rng},"OUTSIDE")',
+         f'=COUNTIFS({cls},"B",{rng},"Within")+COUNTIFS({cls},"B",{rng},"OUTSIDE")',
+         f'=COUNTIFS({cls},"C",{rng},"Within")+COUNTIFS({cls},"C",{rng},"OUTSIDE")'],
+        ["Within tolerance", f'=COUNTIF({rng},"Within")', f'=COUNTIFS({cls},"A",{rng},"Within")', f'=COUNTIFS({cls},"B",{rng},"Within")', f'=COUNTIFS({cls},"C",{rng},"Within")'],
+        ["Inventory record accuracy", "=IFERROR(B3/B2,0)", "=IFERROR(C3/C2,0)", "=IFERROR(D3/D2,0)", "=IFERROR(E3/E2,0)"],
+        ["Absolute value of differences (৳)", f"=SUMIF('Count sheet'!J2:J{end},\">0\")-SUMIF('Count sheet'!J2:J{end},\"<0\")", "", "", ""],
+        ["Net value of differences (৳)", f"=SUM('Count sheet'!J2:J{end})", "", "", ""],
+    ], [36, 16, 12, 12, 12], freeze=False)
+    for c in ("B4", "C4", "D4", "E4"):
+        db[c].number_format = "0.0%"
+    db["B5"].number_format = "#,##0"
+    db["B6"].number_format = "#,##0"
+    for col, label in ((1, "Root cause"), (2, "Count"), (3, "Value (৳)")):
+        cell = db.cell(row=8, column=col, value=label)
+        cell.font = HEAD_FONT
+        cell.fill = HEAD_FILL
+    for i, c in enumerate(causes):
+        r = 9 + i
+        db.cell(row=r, column=1, value=c).border = BORDER
+        db.cell(row=r, column=2, value=f"=COUNTIF('Count sheet'!L2:L{end},A{r})").border = BORDER
+        cell = db.cell(row=r, column=3, value=f"=SUMIF('Count sheet'!L2:L{end},A{r},'Count sheet'!J2:J{end})")
+        cell.border = BORDER
+        cell.number_format = "#,##0"
+    db.cell(row=9 + len(causes) + 1, column=1, value="Absolute value counts overs and unders as separate problems; the net figure lets them cancel out and hides the real size of the gap.").font = Font(italic=True, color="666666")
+    save(wb, "cycle-count-planner-inventory-accuracy.xlsx")
+
+
+# ---------------------------------------------------------------- 16. Payroll close calendar & checklist
+def payroll_close():
+    V = date(2026, 11, 8).strftime("%d %B %Y")
+    wb = Workbook()
+    about_sheet(wb, "Factory Payroll Close: Calendar, Checks & Variance Review",
+                "Close a monthly factory payroll in two or three working days and catch errors before anyone is paid: a cut-off calendar every department signs up to, pre-payment checks, a month-on-month variance review and an overtime approval log.",
+                ["Adapt the 'Calendar' dates to your pay period and publish them to every department.",
+                 "Use the 'Overtime log' to approve overtime before it is worked; pay the lower of approved and recorded hours.",
+                 "Each month, paste last month's and this month's net pay into 'Variance check'; explain every flagged change before approval.",
+                 "Tick off 'Pre-payment checks' and get the three signatures before the payment file is sent.",
+                 "Working-hour and overtime limits in 'Settings' are placeholders: confirm the current legal limits and your policy with your HR or legal adviser."],
+                "/lab/0108-attendance-to-payroll-process-factory-bangladesh", V)
+    se = wb.create_sheet("Settings")
+    table(se, ["Setting", "Value", "Notes"], [
+        ["Variance threshold (net pay change vs last month)", 0.10, "Changes above this are flagged for an explanation"],
+        ["Daily working-hour limit incl. overtime", 10, "Placeholder: confirm with your HR or legal adviser"],
+        ["Weekly working-hour limit incl. overtime", 60, "Placeholder: confirm with your HR or legal adviser"],
+    ], [48, 12, 60], freeze=False)
+    se["B2"].number_format = "0%"
+    input_cells(se, "B2:B4")
+    cal = wb.create_sheet("Calendar")
+    steps = [
+        ["D−5", "Last date for salary changes, promotions and new bank / wallet details for this month", "HR, department heads", "Approved change forms"],
+        ["D−3", "Joiners and leavers for the month entered; final settlements listed", "HR", "Updated employee master"],
+        ["Daily", "Previous day's attendance exceptions cleared by each section (missing punches, absence without leave, off-shift punches, unapproved OT)", "Section heads, HR", "Clean daily attendance"],
+        ["D", "Period closes; devices synced; outside-location attendance received", "HR, IT, site in-charges", "Complete attendance"],
+        ["D+1", "Remaining exceptions cleared; leave and overtime approvals locked; attendance signed off per section", "Section heads, HR", "Signed-off attendance"],
+        ["D+2", "Payroll run; pre-payment checks; variance review; approval", "Payroll, finance, management", "Approved payroll"],
+        ["D+3", "Bank / mobile-wallet file generated from the approved run and sent; payment confirmations reconciled", "Finance", "Payment confirmation"],
+        ["D+3", "Payslips issued; queries logged with cause", "HR", "Query log"],
+    ]
+    end = table(cal, ["When", "What", "Who", "Output", "Planned date", "Done on", "Status"], [s_ + [None, None, "Not started"] for s_ in steps], [8, 70, 24, 22, 13, 12, 13])
+    input_cells(cal, f"E2:G{end}")
+    dropdown(cal, f"G2:G{end}", ["Not started", "In progress", "Done", "Blocked"])
+    status_colours(cal, f"G2:G{end}")
+    ck = wb.create_sheet("Pre-payment checks")
+    checks = [
+        "Headcount: last month + joiners − leavers = paid headcount, by department",
+        "Every change above the variance threshold explained in 'Variance check'",
+        "Department totals (gross, overtime, deductions, net) compared with last month and budget",
+        "Nobody paid with zero attendance unless on approved paid leave",
+        "No two employees share a bank account or wallet number",
+        "No negative net pay",
+        "Overtime within the limits in 'Settings'; exceptions approved in writing",
+        "Every final settlement has a separation record and approval",
+        "Bank / wallet detail changes verified by call-back to the employee",
+        "Payment file generated from the approved run, not retyped",
+    ]
+    end = table(ck, ["#", "Check", "Result", "Checked by", "Notes"], [[i, c, None, None, None] for i, c in enumerate(checks, 1)], [5, 80, 12, 16, 40])
+    dropdown(ck, f"C2:C{end}", ["Pass", "Fail", "N/A"])
+    status_colours(ck, f"C2:C{end}")
+    input_cells(ck, f"C2:E{end}")
+    r = end + 2
+    for lbl in ("Prepared by (payroll)", "Checked by (finance)", "Approved by (management)"):
+        ck.cell(row=r, column=2, value=lbl).font = Font(bold=True)
+        ck.cell(row=r, column=3).fill = INPUT_FILL
+        r += 1
+    ck.cell(row=r + 1, column=2, value="Ready to pay?").font = Font(bold=True)
+    ck.cell(row=r + 1, column=3, value=f'=IF(COUNTIF(C2:C{end},"Fail")>0,"NO — fix failed checks",IF(COUNTBLANK(C2:C{end})>0,"NOT YET","YES"))')
+    va = wb.create_sheet("Variance check")
+    rows = []
+    for i in range(1000):
+        rr = i + 2
+        rows.append([None, None, None, None, None,
+                     f'=IF(OR(D{rr}="",E{rr}=""),"",E{rr}-D{rr})',
+                     f'=IF(F{rr}="","",IF(D{rr}=0,1,F{rr}/D{rr}))',
+                     f'=IF(G{rr}="","",IF(ABS(G{rr})>Settings!$B$2,"EXPLAIN",""))',
+                     None])
+    end = table(va, ["Employee ID", "Name", "Department", "Net pay last month (৳)", "Net pay this month (৳)", "Change (৳)", "Change %", "Flag", "Explanation (e.g. OT, leave, joiner, increment)"],
+                rows, [12, 26, 16, 18, 18, 14, 11, 11, 50])
+    input_cells(va, f"A2:E{end}")
+    input_cells(va, f"I2:I{end}")
+    for rr in range(2, end + 1):
+        va[f"G{rr}"].number_format = "0.0%"
+        va[f"D{rr}"].number_format = "#,##0"
+        va[f"E{rr}"].number_format = "#,##0"
+        va[f"F{rr}"].number_format = "#,##0"
+    va.conditional_formatting.add(f"H2:H{end}", CellIsRule(operator="equal", formula=['"EXPLAIN"'], fill=PatternFill("solid", fgColor="FFF1D6")))
+    va.cell(row=1, column=11, value="Flagged, not explained").font = Font(bold=True)
+    va.cell(row=2, column=11, value=f'=COUNTIFS(H2:H{end},"EXPLAIN",I2:I{end},"")')
+    va.column_dimensions["K"].width = 24
+    ot = wb.create_sheet("Overtime log")
+    rows = []
+    for i in range(500):
+        rr = i + 2
+        rows.append([None, None, None, None, None, None,
+                     f'=IF(OR(E{rr}="",F{rr}=""),"",MIN(E{rr},F{rr}))',
+                     None,
+                     f'=IF(OR(F{rr}="",H{rr}=""),"",IF(H{rr}+F{rr}>Settings!$B$3,"OVER LIMIT",""))',
+                     None, None])
+    end = table(ot, ["Date", "Employee ID", "Name", "Section", "Approved OT hrs", "Recorded OT hrs", "Hours to pay", "Normal hours worked that day", "Daily limit check", "Approved by (before shift)", "Reason"],
+                rows, [12, 12, 24, 14, 14, 14, 12, 16, 14, 20, 34])
+    input_cells(ot, f"A2:F{end}")
+    input_cells(ot, f"H2:H{end}")
+    input_cells(ot, f"J2:K{end}")
+    for rr in range(2, end + 1):
+        ot[f"A{rr}"].number_format = "dd-mmm-yy"
+    ot.conditional_formatting.add(f"I2:I{end}", CellIsRule(operator="equal", formula=['"OVER LIMIT"'], fill=PatternFill("solid", fgColor="FBE0DF")))
+    save(wb, "factory-payroll-close-calendar-checklist.xlsx")
+
+
 if __name__ == "__main__":
+    if len(sys.argv) > 1:
+        for name in sys.argv[1:]:
+            globals()[name]()
+        sys.exit(0)
     rfp_scoring()
     uat()
     migration()
@@ -1057,4 +1282,6 @@ if __name__ == "__main__":
     charter_docx()
     brd_docx()
     rfp_docx()
+    cycle_count()
+    payroll_close()
     print("done ->", OUT)

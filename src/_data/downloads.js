@@ -5,6 +5,12 @@ const path = require("path");
 const DIR = path.join(__dirname, "..", "assets", "downloads");
 
 const items = [
+  { file: "cycle-count-planner-inventory-accuracy.xlsx", article: "0106-cycle-counting-abc-plan-bangladesh",
+    en: { t: "Cycle count planner & inventory accuracy", d: "ABC classification by consumption value, count frequency and tolerances, a count sheet with root causes, and an accuracy dashboard." },
+    bn: { t: "Cycle count planner & inventory accuracy", d: "ABC classification by consumption value, count frequency and tolerances, a count sheet with root causes, and an accuracy dashboard." } },
+  { file: "factory-payroll-close-calendar-checklist.xlsx", article: "0108-attendance-to-payroll-process-factory-bangladesh",
+    en: { t: "Factory payroll close: calendar & checks", d: "Cut-off calendar, pre-payment checks with sign-off, month-on-month variance review and an overtime approval log." },
+    bn: { t: "Factory payroll close: calendar & checks", d: "Cut-off calendar, pre-payment checks with sign-off, month-on-month variance review and an overtime approval log." } },
   { file: "odoo-project-charter-template.docx", article: "0047-odoo-project-charter-template",
     en: { t: "Odoo Project Charter", d: "Objective, measurable success criteria, scope in/out, milestones, budget, governance, change control and sign-off." },
     bn: { t: "Odoo প্রজেক্ট চার্টার", d: "লক্ষ্য, মাপা যায় এমন সাফল্যের মানদণ্ড, স্কোপের ভেতর-বাহির, মাইলফলক, বাজেট, পরিচালনা, চেঞ্জ কন্ট্রোল আর সাইন-অফ।" } },

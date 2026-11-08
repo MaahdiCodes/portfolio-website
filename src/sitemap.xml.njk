@@ -17,6 +17,9 @@ eleventyExcludeFromCollections: true
 {%- for item in collections.all %}
 {%- set loc = item.data.canonical %}
 {%- set robotsTag = item.data.robots %}
+{#- Paginated templates (industry.njk) expose only their first page's data here,
+    so they are skipped and listed from their data file below instead. -#}
+{%- if item.data.pagination %}{% set loc = false %}{% endif %}
 {%- if loc and loc.indexOf("/bn/") == -1 and (not robotsTag or robotsTag.indexOf("noindex") == -1) %}
   <url>
     <loc>{{ loc }}</loc>
@@ -27,5 +30,10 @@ eleventyExcludeFromCollections: true
 {%- endif %}
   </url>
 {%- endif %}
+{%- endfor %}
+{%- for ind in industries %}
+  <url>
+    <loc>https://mhasan.me/industries/{{ ind.slug }}/</loc>
+  </url>
 {%- endfor %}
 </urlset>

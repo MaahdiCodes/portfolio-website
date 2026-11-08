@@ -17,7 +17,7 @@ const W = 1200, H = 630;
 const ACCENT = '#1FD9C4';
 const PW = 344, PH = 430, PX = 768, PY = 100, R = 24;   // portrait box (4:5)
 
-const lines = ['Odoo Certified', 'Functional Consultant', 'in Bangladesh'];
+const lines = ['Business Consultant', 'in Bangladesh'];
 const fontSize = 52, lineHeight = fontSize * 1.2;
 const startY = 330 - (lines.length * lineHeight) / 2 + fontSize * 0.8;
 const tspans = lines.map((l, i) => `<tspan x="88" y="${(startY + i * lineHeight).toFixed(1)}">${l}</tspan>`).join('');
@@ -40,13 +40,13 @@ const svg = `<svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" xmlns="http
   <rect x="88" y="64" width="44" height="44" rx="12" fill="url(#brandmark)"/>
   <text x="110" y="93" font-family="Arial, sans-serif" font-size="15" font-weight="700" fill="#04140B" text-anchor="middle">MH</text>
   <text x="146" y="82" font-family="Arial, sans-serif" font-size="19" font-weight="600" fill="#EDEEF0">Mehedi Hasan</text>
-  <text x="146" y="102" font-family="Arial, sans-serif" font-size="12.5" letter-spacing="1.5" fill="#6E7F9C">ERP · BUSINESS ANALYST</text>
+  <text x="146" y="102" font-family="Arial, sans-serif" font-size="12.5" letter-spacing="1.5" fill="#6E7F9C">BUSINESS CONSULTANT · DHAKA</text>
   <rect x="88" y="150" width="330" height="34" rx="17" fill="rgba(31,217,196,0.14)" stroke="rgba(31,217,196,0.4)"/>
-  <text x="106" y="172" font-family="Arial, sans-serif" font-size="13" letter-spacing="1.2" fill="${ACCENT}">ODOO ERP CONSULTANT · BANGLADESH</text>
+  <text x="106" y="172" font-family="Arial, sans-serif" font-size="13" letter-spacing="1.2" fill="${ACCENT}">OPERATIONS · INVENTORY · PAYROLL</text>
   <text font-family="Arial, sans-serif" font-weight="600" font-size="${fontSize}" fill="#F5F7FA">${tspans}</text>
   <text x="88" y="566" font-family="Arial, sans-serif" font-size="15" fill="#6E7F9C">mhasan.me</text>
   <rect x="${PX - 1}" y="${PY - 1}" width="${PW + 2}" height="${PH + 2}" rx="${R + 1}" fill="none" stroke="rgba(31,217,196,0.45)" stroke-width="2"/>
-  <text x="${PX}" y="${PY + PH + 34}" font-family="Arial, sans-serif" font-size="15" letter-spacing="1.2" fill="#6E7F9C">DHAKA · ODOO S.A. CERTIFIED</text>
+  <text x="${PX}" y="${PY + PH + 34}" font-family="Arial, sans-serif" font-size="15" letter-spacing="1.2" fill="#6E7F9C">DHAKA · ODOO CERTIFIED</text>
 </svg>`;
 
 async function main() {

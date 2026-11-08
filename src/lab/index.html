@@ -3,12 +3,13 @@ layout: "layouts/base.njk"
 permalink: "lab/index.html"
 bareBody: true
 stylesheetHref: false
-title: "Lab — Mehedi Hasan | Odoo ERP Consultant Bangladesh"
-description: "Mehedi Hasan's Technical Lab — essays, guides, templates and utilities on Odoo ERP, manufacturing operations, and business analysis in Bangladesh."
+title: "Lab: Operations, Manufacturing & ERP Guides | Mehedi Hasan"
+description: "100+ practical guides from Mehedi Hasan on running Bangladeshi factories and SMEs: inventory control, production costing, payroll, process design and ERP."
 canonical: "https://mhasan.me/lab/"
 hreflangBn: "https://mhasan.me/bn/lab/"
 ogTitle: "Lab — Mehedi Hasan"
-ogDescription: "Essays, guides, templates and utilities on Odoo ERP, manufacturing operations, and business analysis."
+ogDescription: "Practical guides on inventory, manufacturing, payroll, process design and ERP for Bangladeshi businesses."
+ogImage: "https://mhasan.me/assets/og-default.jpg"
 ogType: "website"
 extraStyles: |
   :root{
@@ -365,9 +366,9 @@ extraStyles: |
 <!-- PAGE HEADER -->
 <div class="lab-page-head">
   <div class="shell">
-    <span class="eyebrow">Technical Lab</span>
-    <h1>Small <span class="serif">experiments</span>, honest notes.</h1>
-    <p>A digital garden of utilities, templates and short essays on ERP, data modeling and enterprise workflow. Loose thoughts, publicly.</p>
+    <span class="eyebrow">The Lab</span>
+    <h1>Practical guides for <span class="serif">running</span> the business.</h1>
+    <p>Guides, templates and short essays on running factories and growing SMEs in Bangladesh: inventory, product costing, payroll, process design and ERP.</p>
   </div>
 </div>
 
@@ -378,7 +379,7 @@ extraStyles: |
     <input class="lab-search" id="lab-search" type="search" placeholder="Search articles…" aria-label="Search lab articles" autocomplete="off" spellcheck="false">
   </div>
 
-  <div class="lab-search-count" id="lab-count">Showing all 105 articles</div>
+  <div class="lab-search-count" id="lab-count">Showing all {{ stats.labArticles }} articles</div>
   <p style="margin:-4px 0 18px;font-size:13px"><a id="lab-deep" href="/lab/search/" style="color:var(--accent)">Search inside every article, tool and guide →</a></p>
   <script>
   (function () {
@@ -419,6 +420,72 @@ extraStyles: |
     <div class="lab-head" aria-hidden="true">
       <span>No.</span><span>Title</span><span>Kind</span><span>Published</span><span>&nbsp;</span>
     </div>
+
+    <a class="lab-row" href="0110-dead-stock-slow-moving-inventory-bangladesh" data-title="Dead and Slow-Moving Stock: Find It, Clear It, Stop It" data-sub="Ageing report, honest valuation, five ways to clear it, and the habits that stop new dead stock.">
+      <span class="lab-num">0110</span>
+      <span class="lab-title">
+        Dead and Slow-Moving Stock: Find It, Clear It, Stop It
+        <span class="sub">Ageing report, honest valuation, five ways to clear it, and the habits that stop new dead stock.</span>
+      </span>
+      <span class="lab-kind">Guide</span>
+      <span class="lab-date">Nov 2026</span>
+      <span class="lab-arrow">↗</span>
+    </a>
+
+    <a class="lab-row" href="0109-business-consultant-or-new-software-bangladesh" data-title="Do You Need a Business Consultant or New Software?" data-sub="A 15-question diagnostic: which problems are process, which are system, and what to fix first.">
+      <span class="lab-num">0109</span>
+      <span class="lab-title">
+        Do You Need a Business Consultant or New Software?
+        <span class="sub">A 15-question diagnostic: which problems are process, which are system, and what to fix first.</span>
+      </span>
+      <span class="lab-kind">Guide</span>
+      <span class="lab-date">Nov 2026</span>
+      <span class="lab-arrow">↗</span>
+    </a>
+
+    <a class="lab-row" href="0108-attendance-to-payroll-process-factory-bangladesh" data-title="Attendance to Payroll: Close in Two Days, Not Seven" data-sub="Cut-off calendar, daily attendance exceptions, pre-approved overtime and pre-payment checks.">
+      <span class="lab-num">0108</span>
+      <span class="lab-title">
+        Attendance to Payroll: Close in Two Days, Not Seven
+        <span class="sub">Cut-off calendar, daily attendance exceptions, pre-approved overtime and pre-payment checks.</span>
+      </span>
+      <span class="lab-kind">Guide</span>
+      <span class="lab-date">Nov 2026</span>
+      <span class="lab-arrow">↗</span>
+    </a>
+
+    <a class="lab-row" href="0107-product-costing-manufacturers-bangladesh" data-title="Why Your Cost Per Unit Is Wrong" data-sub="Five costing mistakes, a worked example, and a monthly standard-vs-actual review.">
+      <span class="lab-num">0107</span>
+      <span class="lab-title">
+        Why Your Cost Per Unit Is Wrong
+        <span class="sub">Five costing mistakes, a worked example, and a monthly standard-vs-actual review.</span>
+      </span>
+      <span class="lab-kind">Guide</span>
+      <span class="lab-date">Nov 2026</span>
+      <span class="lab-arrow">↗</span>
+    </a>
+
+    <a class="lab-row" href="0106-cycle-counting-abc-plan-bangladesh" data-title="Cycle Counting: Replace the Yearly Stock Take" data-sub="ABC classes, count frequency, tolerances and a daily routine, with a free Excel planner.">
+      <span class="lab-num">0106</span>
+      <span class="lab-title">
+        Cycle Counting: Replace the Yearly Stock Take
+        <span class="sub">ABC classes, count frequency, tolerances and a daily routine, with a free Excel planner.</span>
+      </span>
+      <span class="lab-kind">Guide</span>
+      <span class="lab-date">Nov 2026</span>
+      <span class="lab-arrow">↗</span>
+    </a>
+
+    <a class="lab-row" href="0105-why-stock-never-matches-system-bangladesh" data-title="Why Your Stock Never Matches the System" data-sub="Nine causes of inventory variance, how to find yours, and the order to fix them in.">
+      <span class="lab-num">0105</span>
+      <span class="lab-title">
+        Why Your Stock Never Matches the System
+        <span class="sub">Nine causes of inventory variance, how to find yours, and the order to fix them in.</span>
+      </span>
+      <span class="lab-kind">Guide</span>
+      <span class="lab-date">Nov 2026</span>
+      <span class="lab-arrow">↗</span>
+    </a>
 
     <a class="lab-row" href="0104-in-house-ai-built-erp-bangladesh" data-title="Built Your ERP In-House With AI? Where It Breaks" data-sub="The six places in-house and AI-assisted ERP builds usually fail, and a self-check for owners.">
       <span class="lab-num">0104</span>

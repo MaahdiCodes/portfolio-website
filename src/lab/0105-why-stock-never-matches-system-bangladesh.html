@@ -1,0 +1,207 @@
+---
+permalink: "lab/0105-why-stock-never-matches-system-bangladesh.html"
+title: "Why Your Stock Never Matches the System: 9 Causes and Fixes | Mehedi Hasan"
+description: "Physical stock never matches the books? The nine causes of inventory variance in Bangladeshi factories and warehouses, how to find which ones are yours, and the order to fix them in."
+canonical: "https://mhasan.me/lab/0105-why-stock-never-matches-system-bangladesh"
+ogImage: "https://mhasan.me/assets/og/lab/0105-why-stock-never-matches-system-bangladesh.png"
+ogSiteName: "Mehedi Hasan | Business Consultant"
+datePublished: "2026-11-08T09:00:00+06:00"
+dateModified: "2026-11-08T09:00:00+06:00"
+articleSection: "Inventory"
+eyebrowNum: "0105"
+h1: "Why your stock never matches the system, <span class=\"serif\">and how to fix it.</span>"
+lede: "Every count finds a difference. Store blames production, production blames purchase, accounts writes it off at year-end, and next year the gap is back. It's rarely theft and rarely the software. It's usually nine ordinary process gaps, and you only need to close the two or three that cause most of the damage."
+chips: ["Guide", "Inventory", "Stock Control"]
+bylineItems:
+  - label: "By"
+    value: "<a href=\"https://www.linkedin.com/in/mehedi-hasan-consultant/\" style=\"color:var(--accent)\" rel=\"author\">Mehedi Hasan</a>"
+  - label: "Published"
+    value: "November 2026"
+  - label: "Read time"
+    value: "11 minutes"
+  - label: "Form"
+    value: "Guide"
+  - label: "Scope"
+    value: "Inventory accuracy"
+nextArticle:
+  href: "0104-in-house-ai-built-erp-bangladesh"
+  dir: "Older · 0104"
+  title: "Built Your ERP In-House With AI? Where It Breaks"
+  desc: "The six places in-house and AI-assisted ERP builds usually fail, and how to check yours."
+prevArticle:
+  href: "0106-cycle-counting-abc-plan-bangladesh"
+  dir: "Newer · 0106"
+  title: "Cycle Counting: Replace the Yearly Stock Take"
+  desc: "An ABC counting plan, tolerances and a weekly routine that keeps stock accurate all year."
+extraCards:
+  - href: "/services/manufacturing-erp-consultant/"
+    dir: "Service"
+    title: "Manufacturing & inventory consulting"
+    desc: "Stock reconciliation, item master cleanup and a counting routine, done with your team."
+jsonLd: |
+  [
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "Why Your Stock Never Matches the System: 9 Causes and Fixes",
+      "description": "The nine causes of inventory variance in Bangladeshi factories and warehouses, how to find which ones are yours, and the order to fix them in.",
+      "datePublished": "2026-11-08T09:00:00+06:00",
+      "dateModified": "2026-11-08T09:00:00+06:00",
+      "author": { "@type": "Person", "name": "Mehedi Hasan", "url": "https://mhasan.me", "jobTitle": "Business Consultant & Odoo Certified Functional Consultant", "sameAs": "https://www.linkedin.com/in/mehedi-hasan-consultant/" },
+      "publisher": { "@type": "Person", "name": "Mehedi Hasan", "url": "https://mhasan.me" },
+      "mainEntityOfPage": { "@type": "WebPage", "@id": "https://mhasan.me/lab/0105-why-stock-never-matches-system-bangladesh" }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://mhasan.me" },
+        { "@type": "ListItem", "position": 2, "name": "Lab", "item": "https://mhasan.me/lab/" },
+        { "@type": "ListItem", "position": 3, "name": "Why Stock Never Matches the System", "item": "https://mhasan.me/lab/0105-why-stock-never-matches-system-bangladesh" }
+      ]
+    }
+  ]
+---
+<aside class="toc">
+      <div class="toc-k">In this guide</div>
+      <ol>
+        <li><a href="#cost">What the Gap Really Costs</a></li>
+        <li><a href="#measure">Measure It Properly First</a></li>
+        <li><a href="#causes">The Nine Causes</a></li>
+        <li><a href="#find">Finding Which Causes Are Yours</a></li>
+        <li><a href="#order">The Order to Fix Them In</a></li>
+        <li><a href="#dont">What Not to Do</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ol>
+    </aside>
+
+    <div class="body">
+
+      <h2 id="cost">What the Gap Really Costs</h2>
+      <p>A stock difference looks like an accounting problem: a number on the balance sheet that has to be adjusted once a year. The real cost shows up elsewhere, every day.</p>
+      <ul>
+        <li><strong>Stock-outs that "shouldn't happen".</strong> The system says 400 kg of a material is in store, nobody reorders, and the line stops when the store keeper finds 60 kg. Every emergency purchase after that costs more and arrives late.</li>
+        <li><strong>Cash tied up in stock nobody can find.</strong> The opposite error: material bought again because the first lot is in the wrong location or under a different code.</li>
+        <li><strong>Product costs built on wrong numbers.</strong> If consumption is calculated as "opening + purchases − closing", every error in closing stock flows straight into the cost of what you made.</li>
+        <li><strong>Lost trust.</strong> Once managers believe the system is wrong, they keep their own spreadsheets, and the system becomes even less accurate because fewer people use it properly.</li>
+      </ul>
+      <p>The last one matters most. Inventory is usually the first place where a business stops trusting its records, whether it runs on Excel, Tally or a full ERP.</p>
+
+      <h2 id="measure">Measure It Properly First</h2>
+      <p>Most companies measure stock accuracy as a single value: "we wrote off ৳6 lakh this year". That number hides almost everything, because overs and unders cancel each other out. A store can be wildly wrong item by item and still show a small net difference.</p>
+      <p>Use two measures instead:</p>
+      <ul>
+        <li><strong>Inventory record accuracy (item level).</strong> Count a sample of items and record what share of them match the system within an agreed tolerance. If you count 50 items and 41 are within tolerance, accuracy is 82%. This is the number that tells you whether you can plan from your records.</li>
+        <li><strong>Absolute value variance.</strong> Add up the value of every difference ignoring the sign. ৳3 lakh over on one item and ৳3 lakh under on another is a ৳6 lakh problem, not zero.</li>
+      </ul>
+      <p>Set tolerances by value. A ±0.5–1% tolerance on expensive imported materials is reasonable; ±5% on low-value consumables like cable ties is fine. Many well-run stores aim for 95% or better item-level accuracy, with tighter tolerances on high-value items. Most stores that have never measured it start far lower, and that's normal.</p>
+
+      <div class="stat-row">
+        <div class="stat-card">
+          <div class="sc-val">2</div>
+          <div class="sc-label">Measures, not one</div>
+          <div class="sc-note">Item-level accuracy and absolute value variance. Net write-off hides the problem.</div>
+        </div>
+        <div class="stat-card">
+          <div class="sc-val">9</div>
+          <div class="sc-label">Usual causes</div>
+          <div class="sc-note">Almost all of them are process gaps between departments, not theft or software bugs</div>
+        </div>
+        <div class="stat-card">
+          <div class="sc-val">2–3</div>
+          <div class="sc-label">That matter most</div>
+          <div class="sc-note">In most companies a few causes explain most of the value variance. Fix those first.</div>
+        </div>
+      </div>
+
+      <h2 id="causes">The Nine Causes</h2>
+      <p>These are the causes I look for, roughly in the order they tend to matter in Bangladeshi factories and warehouses.</p>
+
+      <h3>1. Goods issued without a document</h3>
+      <p>A supervisor needs material urgently, asks the store keeper verbally or on WhatsApp, and promises the requisition "later". Later never comes, or comes with a different quantity. This is the single most common cause, and it gets worse on night shifts and during peak season. The rule that fixes it is simple to say and hard to enforce: no document, no issue. A paper slip signed on the spot is fine; an approved requisition in the system is better.</p>
+
+      <h3>2. Receipts posted late, or before the goods arrive</h3>
+      <p>Goods arrive on Thursday evening and are posted on Sunday. Or the receipt is posted when the truck is at the gate, before quality inspection rejects a third of it. For those days the system and the store disagree, and anything counted or issued in between makes it worse. Post receipts the same day, and keep goods waiting for inspection in a separate, clearly marked location so they are counted as "received, not usable".</p>
+
+      <h3>3. Units of measure that don't match</h3>
+      <p>Purchase buys yarn in kilograms, the store keeps it in cones, production consumes it in kilograms again. Fabric is bought in yards, issued in metres. Paint is bought in drums and issued in litres. Every conversion is a chance for error, and wrong conversion factors set up once in the item master corrupt every transaction after that. Check every item that is bought and used in different units, and agree one stock unit per item with a tested conversion.</p>
+
+      <h3>4. Duplicate and vague item codes</h3>
+      <p>The same 6 mm bolt exists as three items created by three people. "Misc. spare parts" holds forty different things. When stock is received under one code and issued under another, one shows a surplus and the other goes negative. A short item-master cleanup, with one person authorised to create new codes, prevents this from returning.</p>
+
+      <h3>5. Consumption booked by standard, not by actual</h3>
+      <p>Many systems post material consumption automatically from the bill of materials when production is reported. That's convenient, but if real consumption differs, because of wastage, substitutions or a BOM that's out of date, the system slowly drifts from reality. The difference only appears at the next count, months later, when nobody can explain it. Record actual issues for the expensive materials, or at least compare standard with actual every month. More in <a href="0107-product-costing-manufacturers-bangladesh" style="color:var(--accent)">why your cost per unit is wrong</a>.</p>
+
+      <h3>6. Returns, rejects and scrap that are never recorded</h3>
+      <p>Unused material goes back from the floor to the store without a return note. Quality rejects sit in a corner. Scrap is sold by the kilogram without anyone reducing the stock. Returns to suppliers leave on a truck before the debit note is raised. Each of these is small; together they are often a large share of the variance. Every movement out of normal flow needs its own simple document and its own location.</p>
+
+      <h3>7. Transfers that disappear in between</h3>
+      <p>Material moves between two stores, two factories of the same group, or to a subcontractor for printing, washing or machining. The sender reduces stock; the receiver records it a week later, or not at all, or records a different quantity. Treat every transfer as two steps, sent and received, with the receiver confirming the quantity, and review open transfers weekly. Job-work and subcontracting deserve particular attention: <a href="0063-odoo-subcontracting-rmg-garments-bangladesh" style="color:var(--accent)">subcontracting for RMG job-work</a> covers the flow.</p>
+
+      <h3>8. Cut-off errors at count time</h3>
+      <p>The count happens while goods are still moving, or while documents for yesterday's movements are still on someone's desk. The physical count is right, the system is right for a different moment, and the "difference" is just timing. Freeze movement for the items being counted, or count at a fixed time and post all documents up to that time before comparing.</p>
+
+      <h3>9. Counting errors</h3>
+      <p>Sometimes the record is right and the count is wrong: the counter read the label instead of counting, counted cartons instead of pieces, or missed a second location. Train counters, count blind (without seeing the system quantity), and recount anything outside tolerance with a different person before accepting a difference.</p>
+
+      <div class="tip-box">
+        <div class="tlabel">What about theft?</div>
+        <p>Theft happens, and some controls exist only to prevent it. But it is rarely the main cause of variance, and it hides most easily in a store where the other eight causes are uncontrolled. Close the process gaps first. Whatever difference remains afterwards is much easier to investigate.</p>
+      </div>
+
+      <h2 id="find">Finding Which Causes Are Yours</h2>
+      <p>You don't need a full stock take to find the causes. A two-week investigation on a sample works better, because you can trace each difference while the transactions are still fresh.</p>
+      <ol>
+        <li><strong>Pick 30–50 items.</strong> Include the 20 highest-value items you hold and the 10–20 items with the largest differences at the last count.</li>
+        <li><strong>Count them carefully.</strong> Blind count, freeze movement during the count, and recount any difference with a second person.</li>
+        <li><strong>Trace the last 30–60 days.</strong> For each item with a difference, list every receipt, issue, return and transfer, and compare with what store, production and purchase say happened.</li>
+        <li><strong>Name a cause for each difference.</strong> Use the nine causes above as categories. Don't accept "unknown" until you've asked the people involved.</li>
+        <li><strong>Rank by value.</strong> Sort causes by the absolute value of the differences they explain. In most companies two or three causes account for most of it.</li>
+      </ol>
+      <p>The result is a short, evidence-based list that department heads can't easily argue with, because each item is traced to specific documents and dates.</p>
+
+      <h2 id="order">The Order to Fix Them In</h2>
+      <p>Fixing in the wrong order wastes effort: a perfect count is wasted if undocumented issues start again the next morning. This order works:</p>
+      <table>
+        <thead><tr><th>Step</th><th>What to do</th><th>Owner</th></tr></thead>
+        <tbody>
+          <tr><td>1. Stop new errors</td><td>"No document, no issue". Same-day receipts. Separate locations for inspection, rejects, returns and scrap.</td><td>Factory head, store in-charge</td></tr>
+          <tr><td>2. Clean the master data</td><td>Merge duplicate codes, fix units and conversions, restrict who can create items.</td><td>One named item-master owner</td></tr>
+          <tr><td>3. Reconcile and agree a starting point</td><td>Count, investigate, approve adjustments with management sign-off, and record why.</td><td>Store, accounts, management</td></tr>
+          <tr><td>4. Count continuously</td><td>Replace the yearly stock take with an ABC <a href="0106-cycle-counting-abc-plan-bangladesh" style="color:var(--accent)">cycle-counting routine</a>.</td><td>Store, with an independent counter</td></tr>
+          <tr><td>5. Let the system enforce it</td><td>Block negative stock, require approvals for adjustments, add barcode scanning where volume justifies it.</td><td>ERP owner</td></tr>
+        </tbody>
+      </table>
+      <p>Notice that the system comes last. Barcode scanners and a new ERP can enforce good rules, but they can't decide what those rules are or make people follow them. If the process isn't agreed, scanning just records the wrong transactions faster. Where barcode makes sense, <a href="0065-odoo-barcode-warehouse-scanning-bangladesh" style="color:var(--accent)">barcode and warehouse scanning</a> covers the set-up.</p>
+
+      <p class="pull">A stock difference is a message from your process. Writing it off every year is deciding not to read it.</p>
+
+      <h2 id="dont">What Not to Do</h2>
+      <ul>
+        <li><strong>Don't adjust and move on.</strong> An adjustment without a cause means the same difference returns next year.</li>
+        <li><strong>Don't blame the store keeper by default.</strong> Most causes sit between departments. A store keeper who is blamed for everything stops reporting problems.</li>
+        <li><strong>Don't let the person who counts approve the adjustment.</strong> Separate counting, approving and posting, even in a small company.</li>
+        <li><strong>Don't start with a new system.</strong> Fix the process first; then the system will help you keep it.</li>
+        <li><strong>Don't set reorder levels on wrong stock.</strong> Reorder levels compared with wrong on-hand figures produce both stock-outs and dead stock. Once stock is accurate, use the <a href="/tools/reorder-point-calculator/" style="color:var(--accent)">reorder point calculator</a> to set them properly.</li>
+      </ul>
+
+      <div class="callout">
+        <span class="tag">Inventory consulting</span>
+        <p>If you want this done with an outside pair of eyes, I run the investigation, reconciliation and the start of a counting routine with your team, usually in four to eight weeks for one factory. <a href="/services/manufacturing-erp-consultant/" style="color:var(--accent)">See manufacturing &amp; inventory consulting →</a></p>
+      </div>
+
+      <h2 id="faq">Frequently asked questions</h2>
+
+      <h3>What is a normal stock variance for a factory?</h3>
+      <p>There isn't one figure, because it depends on the materials. A useful target is item-level accuracy: the share of counted items that match the records within a tolerance set by value. Many well-run stores aim for 95% or better, with tolerances of about ±1% on high-value items and ±5% on low-value consumables. If you've never measured it, start by measuring, not by setting a target.</p>
+
+      <h3>Should we do a full stock take or cycle counting?</h3>
+      <p>Both have a place. A full count is useful once, to set a clean starting point after the process gaps are closed. After that, regular cycle counting, with high-value items counted most often, keeps stock accurate all year without stopping the factory. See the <a href="0106-cycle-counting-abc-plan-bangladesh" style="color:var(--accent)">cycle counting guide</a>.</p>
+
+      <h3>Will an ERP fix our stock problems?</h3>
+      <p>Only partly. An ERP can block negative stock, enforce approvals and remove re-keying, which helps. It can't make people issue material with a document or record scrap. Those are process decisions, and they have to be made and enforced by management first.</p>
+
+      <h3>Who should own inventory accuracy?</h3>
+      <p>One named manager, usually the store or supply-chain head, with the factory head behind them. Accounts approves adjustments, but it shouldn't own accuracy, because most causes happen in store, production and purchase.</p>
+
+    </div>

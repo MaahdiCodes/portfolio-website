@@ -1,12 +1,12 @@
 ---
 layout: "layouts/tool.njk"
 permalink: "tools/index.html"
-title: "Free ERP & Compliance Tools for Bangladesh Businesses | Mehedi Hasan"
-description: "Free tools for Bangladeshi manufacturers and traders: Odoo cost estimator, ROI calculator, ERP readiness assessment, quote checker, RMG wage calculator, import duty calculator and VAT/Mushak helper."
+title: "Free Business, Inventory & ERP Tools for Bangladesh | Mehedi Hasan"
+description: "Free tools for Bangladeshi manufacturers and traders: reorder point and safety stock calculator, RMG wage calculator, ERP readiness assessment, Odoo cost estimator, ROI calculator and quote checker."
 canonical: "https://mhasan.me/tools/"
 hreflangBn: "https://mhasan.me/bn/tools/"
-ogTitle: "Free ERP & Compliance Tools — Bangladesh"
-ogDescription: "Seven free calculators and checkers for planning an ERP project and running Bangladesh compliance: cost, ROI, readiness, quotes, wages, import duty and VAT."
+ogTitle: "Free Business, Inventory & ERP Tools — Bangladesh"
+ogDescription: "Free calculators and checkers for running operations and planning an ERP project: stock, wages, readiness, cost, ROI and vendor quotes."
 ogImage: "https://mhasan.me/assets/og/tools/index.png"
 backHref: "/"
 backLabel: "← mhasan.me"
@@ -15,11 +15,12 @@ jsonLd: |
     {
       "@context": "https://schema.org",
       "@type": "CollectionPage",
-      "name": "Free ERP & Compliance Tools for Bangladesh",
+      "name": "Free Business, Inventory & ERP Tools for Bangladesh",
       "url": "https://mhasan.me/tools/",
       "inLanguage": "en",
       "author": { "@type": "Person", "name": "Mehedi Hasan", "url": "https://mhasan.me" },
       "hasPart": [
+        { "@type": "WebApplication", "name": "Reorder Point & Safety Stock Calculator", "url": "https://mhasan.me/tools/reorder-point-calculator/" },
         { "@type": "WebApplication", "name": "Odoo Cost Estimator", "url": "https://mhasan.me/tools/odoo-cost-estimator/" },
         { "@type": "WebApplication", "name": "Odoo ROI Calculator", "url": "https://mhasan.me/tools/odoo-roi-calculator/" },
         { "@type": "WebApplication", "name": "ERP Readiness Assessment", "url": "https://mhasan.me/tools/erp-readiness-assessment/" },
@@ -40,14 +41,57 @@ jsonLd: |
   ]
 eyebrow: "Free Tools · No sign-up"
 h1: 'Tools that help you <span class="serif">decide.</span>'
-lede: "Free calculators and checklists built from real Bangladesh ERP projects: for planning an ERP project, and for the compliance work your ERP has to get right. Everything runs in your browser, and nothing you type is sent anywhere."
-chips: ["7 tools", "BDT", "Finance Act 2026", "Save as PDF"]
+lede: "Free calculators and checklists built from real projects in Bangladesh: for running stock, purchasing and payroll, and for planning an ERP project. Everything runs in your browser, and nothing you type is sent anywhere."
+chips: ["Free", "BDT", "Inventory", "Payroll", "Save as PDF"]
 footLabel: "Tools"
 related:
   - { href: "/resources/", dir: "Templates", title: "Download the ERP project templates", desc: "RFP, charter, UAT scripts, migration checklists and more, as Excel and Word files." }
-  - { href: "/compliance-watch/", dir: "Updates", title: "Compliance Watch", desc: "What changed in VAT, customs and wages, and what it means for your ERP." }
+  - { href: "/services/business-consultant-bangladesh/", dir: "Consulting", title: "Business consulting", desc: "When the numbers point to a process problem: inventory, costing, payroll and approvals." }
 ---
 <div class="shell tl-wrap">
+  <div class="hub-section">
+    <h2>Running operations</h2>
+    <p class="hs-desc">Day-to-day numbers for stock, purchasing and payroll, plus the templates that go with them.</p>
+    <div class="hub-grid">
+      <a class="hub-card" href="/tools/reorder-point-calculator/">
+        <span class="hc-tag">Inventory</span>
+        <h3>Reorder Point &amp; Safety Stock</h3>
+        <p>When to reorder, how much to order, and what the buffer costs in working capital, from usage, lead time and service level.</p>
+        <span class="hc-meta"><span>2 minutes</span><span>→</span></span>
+      </a>
+      <a class="hub-card" href="/tools/rmg-wage-calculator/">
+        <span class="hc-tag">Payroll · Wage board</span>
+        <h3>RMG Wage Calculator</h3>
+        <p>Grade wages with the 9% increment, OT at basic ÷ 208 × 2, deductions, festival bonus and factory payroll cost.</p>
+        <span class="hc-meta"><span>2 minutes</span><span>→</span></span>
+      </a>
+      <a class="hub-card" href="/assets/downloads/cycle-count-planner-inventory-accuracy.xlsx">
+        <span class="hc-tag">Excel · Inventory</span>
+        <h3>Cycle Count Planner</h3>
+        <p>ABC classes, count frequency and tolerances, a count sheet with root causes, and an accuracy dashboard.</p>
+        <span class="hc-meta"><span>Download</span><span>↓</span></span>
+      </a>
+      <a class="hub-card" href="/assets/downloads/factory-payroll-close-calendar-checklist.xlsx">
+        <span class="hc-tag">Excel · Payroll</span>
+        <h3>Payroll Close Checklist</h3>
+        <p>Cut-off calendar, pre-payment checks, month-on-month variance review and an overtime approval log.</p>
+        <span class="hc-meta"><span>Download</span><span>↓</span></span>
+      </a>
+      <a class="hub-card" href="/services/business-consultant-bangladesh/">
+        <span class="hc-tag">Consulting</span>
+        <h3>Talk through a problem</h3>
+        <p>A free 45-minute conversation about stock, costing, payroll or process problems in your business.</p>
+        <span class="hc-meta"><span>Free</span><span>→</span></span>
+      </a>
+      <a class="hub-card" href="/lab/search/">
+        <span class="hc-tag">Search</span>
+        <h3>Search the Lab</h3>
+        <p>Find the answer across 100+ practical guides on operations, manufacturing, inventory and ERP.</p>
+        <span class="hc-meta"><span>Instant</span><span>→</span></span>
+      </a>
+    </div>
+  </div>
+
   <div class="hub-section">
     <h2>Planning an ERP project</h2>
     <p class="hs-desc">Use them in this order. Check you're ready, estimate the cost, prove the return, then check the vendor's quote.</p>
@@ -92,8 +136,8 @@ related:
   </div>
 
   <div class="hub-section">
-    <h2>Bangladesh compliance</h2>
-    <p class="hs-desc">The rules your ERP has to calculate correctly, updated for the Finance Act 2026. Each tool shows its source and the date it was checked.</p>
+    <h2>Reference: VAT, customs &amp; compliance</h2>
+    <p class="hs-desc">Reference tools on how Bangladesh rules affect ERP configuration. They are not tax advice: confirm anything you act on with your accountant or tax adviser.</p>
     <div class="hub-grid">
       <a class="hub-card" href="/tools/vat-mushak-helper/">
         <span class="hc-tag">VAT · NBR</span>
@@ -107,12 +151,6 @@ related:
         <p>CD, RD, SD, VAT, AIT and AT on your import, and the landed cost with sunk duties separated from creditable taxes.</p>
         <span class="hc-meta"><span>FY 2026-27</span><span>→</span></span>
       </a>
-      <a class="hub-card" href="/tools/rmg-wage-calculator/">
-        <span class="hc-tag">Payroll · Wage board</span>
-        <h3>RMG Wage Calculator</h3>
-        <p>Grade wages with the 9% increment, OT at basic ÷ 208 × 2, deductions, festival bonus and factory payroll cost.</p>
-        <span class="hc-meta"><span>Labour Act</span><span>→</span></span>
-      </a>
       <a class="hub-card" href="/glossary/">
         <span class="hc-tag">Reference · বাংলা</span>
         <h3>ERP &amp; Compliance Glossary</h3>
@@ -124,12 +162,6 @@ related:
         <h3>Compliance Watch</h3>
         <p>Every VAT, customs, tax and wage change that affects ERP configuration, with what to change in Odoo.</p>
         <span class="hc-meta"><span>Updated monthly</span><span>→</span></span>
-      </a>
-      <a class="hub-card" href="/lab/search/">
-        <span class="hc-tag">Search</span>
-        <h3>Search the Lab</h3>
-        <p>Find the answer across 100+ in-depth articles on Odoo and ERP in Bangladesh.</p>
-        <span class="hc-meta"><span>Instant</span><span>→</span></span>
       </a>
     </div>
   </div>
